@@ -1,17 +1,25 @@
+{{BITwiki meta}}
 = Source consolidation =
 
-This page records how major V1 and historical design families are consolidated into the smaller V2 canon. It preserves conceptual provenance without reproducing every superseded meta page.
+This page records how V1 public page families and useful historical design material are represented in the V2 public corpus. It preserves provenance without reproducing architecture-about-architecture as parallel canonical pages.
+
+== Source authority ==
+# Live public `bitwiki.org` — authority for inherited V1 public content and revision history.
+# Current public BITwiki/BIThub sources — authority for current public ecosystem language.
+# Historical Notion and old design artifacts — evidence of design intent, not current truth.
 
 == Foundations ==
-Historical manifesto, welcome, introduction, philosophy, charter, constitution, and foundational-triad material is distilled into:
+Manifesto, welcome/introduction, philosophy, charter, constitution, and foundational-triad material is represented by:
+* [[BITwiki:Manifesto]]
+* [[BITwiki:Charter]]
+* [[BITwiki:Constitution]]
+* [[BITwiki:Foundational triad]]
 * [[BITwiki:Principles]]
-* [[BITwiki:Governance]]
-* [[BITwiki:Content model]]
 
-The durable themes are knowledge compounding, modular memory, ontology/epistemology/axiology, evidence, pluralism, human agency, and revisionability.
+The durable themes are knowledge compounding, semantic memory, modularity, ontology/epistemology/axiology, evidence, pluralism, human agency, and revisionability.
 
 == Organization and taxonomy ==
-V1 families such as Wiki Organization Guidelines, taxonomy architecture, page types, entity types, domain/schema indexes, portal specifications, organization guidelines, and ontology-alignment documents are consolidated into:
+Organization guidelines, taxonomy/page/entity-type work, portal specifications, ontology-alignment documents, and schema indexes are consolidated into:
 * [[BITwiki:Architecture]]
 * [[BITwiki:Organization]]
 * [[BITwiki:Classification]]
@@ -20,36 +28,38 @@ V1 families such as Wiki Organization Guidelines, taxonomy architecture, page ty
 * [[BITwiki:Naming conventions]]
 
 == Book Matter and modularity ==
-Historical modular-template, section-component, transclusion, literacy, overview/framework/application, and book-matter work is consolidated into:
+Historical modular-template, component-section, recursive-article, progressive-disclosure, and Book Matter work is represented by:
 * [[BITwiki:Book matter]]
 * [[BITwiki:Transclusion]]
 * [[BITwiki:Content model]]
+* actual transcluded Main-namespace Book Matter such as [[Bioluminescent Organisms/Overview]];
+* reusable presentation content in the Template namespace.
 
-The preserved idea is semantic content anatomy with selective reuse, not a filesystem of article fragments.
+The preserved idea is semantic content anatomy with selective reuse, not arbitrary fragmentation.
 
 == Evidence and epistemics ==
-V1 families including epistemic framework/status/tier pages, evidence framework/evaluation/tier pages, source hierarchy/types, provenance models, uncertainty markers, and epistemic audit material are consolidated into:
+Epistemic frameworks, tiers, evidence evaluation, source hierarchy, provenance, uncertainty, and validation material is consolidated into:
 * [[BITwiki:Epistemics]]
 * [[BITwiki:Provenance]]
+* [[BITwiki:Quality standards]]
 * [[BITwiki:Governance]]
 
-== Templates, properties, concepts, modules, and schemas ==
-Historical infobox catalogs, template catalogs, property dictionaries, SMW property definitions/types/query references, Lua specifications, dependency/event schemas, and related schema documentation are treated as design evidence for:
-* [[BITwiki:Schema]]
-* [[BITwiki:Architecture]]
-* [[BITwiki:Capability model]]
+== Executable schema ==
+V2 does not stop at schema documentation. Actual `Property:`, `Template:`, `Category:`, and content pages are included in this repository and should be populated by real pages immediately.
 
-Actual Template:, Property:, Concept:, Module:, and schema objects should be created only when the V2 implementation needs them.
+See [[BITwiki:Schema]] and [[BITwiki:MediaWiki primitives]].
 
-== Extensions and capability research ==
-Historical MediaWiki extension research and experimental plugin inventories are consolidated into:
-* [[BITwiki:Capability model]]
+== Capability research ==
+Historical MediaWiki extension inventories and experimental plugin research are summarized in [[BITwiki:Capability model]]. Extension availability is a capability concern, not content ontology.
 
-Extension availability is not content ontology.
+== V1 continuity ==
+Legacy V1 titles are retained through canonical pages, Book Matter, Templates, or redirects rather than duplicate `.REVISED`, `FINAL`, component, or index copies.
 
-== Audits, revised copies, and deployment-era pages ==
-Revision summaries, deployment audits, REVISED/styled variants, duplicate component names, and architecture-about-architecture pages contribute lessons and provenance but do not survive as parallel canonical V2 pages unless their substantive content is unique.
+See [[BITwiki:V1 public title ledger]].
 
-See [[BITwiki:Lessons learned]] and [[BITwiki:Provenance]].
+== Fidelity status ==
+A redirect preserves title continuity but does not prove that unique prose from the former page has been recovered. Where exact V1 wikitext or citations were not available during this reconstruction, the corresponding canonical V2 page must be treated as a distilled reconstruction until compared against MediaWiki source/history.
 
-[[Category:BITwiki]]
+{{Source status|This consolidation is based on the public V1 inventory, accessible public page bodies, current public ecosystem sources, and historical Notion design evidence. Historical Notion content is non-canonical.}}
+
+[[Category:BITwiki meta]]

@@ -1,0 +1,56 @@
+= Schema =
+
+The V2 schema is intentionally small. It expands only when real content demonstrates a repeated need.
+
+== Core semantic fields ==
+Candidate baseline fields:
+* Entity type
+* Domain
+* Epistemic status
+* Related to
+* Part of
+* Implements
+* Implemented by
+* Supports
+* Contradicts
+* Derived from
+* Source
+* Verification date
+
+Not every page requires every field.
+
+== Entity types ==
+Entity types describe what a page is about. The vocabulary should be derived from actual content and remain controlled. Likely recurring classes include:
+* Concept
+* Theory
+* Model
+* Method
+* Project
+* Implementation
+* Organization
+* Person
+* Publication
+* Dataset
+* Software
+* Protocol
+* Species
+* Technology
+
+This list is provisional until the corpus mapping is complete.
+
+== Domains ==
+Domains are disciplinary or subject fields, for example Systems science, Biology, Computer science, Mathematics, Philosophy, Physics, Engineering, Economics, and Environmental science. Pages may belong to more than one domain.
+
+== Scope ==
+Scope is optional. Use it only for a meaningful boundary such as geographic, temporal, jurisdictional, organizational, experimental, system-level, or level-of-analysis scope.
+
+== Semantic MediaWiki ==
+SMW properties encode typed attributes and relationships. Property pages should document actual implemented properties, not speculative ones. SMW Concepts should be used for useful query-defined collections such as active projects or unverified theories, not as a replacement namespace for ordinary concept articles.
+
+== Cargo ==
+Cargo is complementary, not mandatory. Use it for repeated relational/tabular datasets where SQL-like aggregation and filtering are valuable. Do not mirror every SMW fact into Cargo.
+
+== Templates and modules ==
+Templates are interfaces to the schema: they normalize entry and rendering. Modules contain reusable logic when template code becomes too complex. Templates and modules must not become parallel ontologies.
+
+[[Category:BITwiki]]

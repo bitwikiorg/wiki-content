@@ -1,0 +1,32 @@
+= Provenance and revision =
+
+V2 preserves content fidelity while allowing aggressive structural refactoring.
+
+== Source fidelity ==
+The live public BITwiki is the authority for inherited public content. Historical design material can explain intent, but it does not override the current public wiki.
+
+== Revision policy ==
+MediaWiki already provides revision history. Ordinary evolution should not create title variants such as:
+* Revised
+* Final
+* Final 2
+* Styled
+* New
+
+Use redirects, archives, explicit historical editions, or page history when those mechanisms correctly represent the relationship.
+
+== Duplicate families ==
+Before merging or retiring duplicates:
+# compare their content;
+# identify provenance and chronology;
+# preserve materially distinct information;
+# choose a canonical title;
+# redirect or archive superseded public pages when appropriate.
+
+== Public repository boundary ==
+This repository contains public wiki content and public architecture only. Protected user content, private identity mappings, credentials, internal queues, private configuration, and unpublished operational material are excluded.
+
+== Git and MediaWiki ==
+Git provides a developer-readable working representation. MediaWiki remains the live knowledge system and retains page histories, redirects, permissions, and runtime behavior.
+
+[[Category:BITwiki]]

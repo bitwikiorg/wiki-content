@@ -1,0 +1,47 @@
+= Transclusion and composition =
+
+BITwiki is designed for modular, composable knowledge without fragmenting every article into a pseudo-filesystem.
+
+== Canonical page first ==
+A topic should normally have one coherent canonical page. Important semantic portions of that page can be selectively addressed or transcluded when reuse is useful.
+
+== Book Matter as addressable anatomy ==
+Book Matter gives names to recurring semantic sections such as:
+* Introduction
+* Definition
+* Overview
+* Background
+* History
+* Theory
+* Mechanism
+* Methods
+* Evidence
+* Results
+* Examples
+* Applications
+* Implementation
+* Limitations
+* Challenges
+* Criticism
+* Related concepts
+* See also
+* Sources
+* References
+* Bibliography
+* Further reading
+
+A page does not need every section. Section names should reflect what the content actually contains.
+
+== Progressive disclosure ==
+Modularity should support multiple levels of reading: a concise overview, intermediate explanation, and deeper technical material where appropriate. Humans and agents should be able to retrieve only the content needed for a task without losing access to the canonical whole.
+
+== What not to do ==
+* Do not automatically create one subpage per section.
+* Do not create generic Main pages named Overview, Mechanism, Applications, and similar fragments.
+* Do not use categories to represent Book Matter.
+* Do not make templates named after Book Matter merely because the section exists.
+
+== Implementation independence ==
+Book Matter is a content model, not a dependency on one extension. MediaWiki transclusion, templates, section-level mechanisms, or later extensions may implement selective composition as appropriate.
+
+[[Category:BITwiki]]

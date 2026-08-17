@@ -1,0 +1,41 @@
+= Organization =
+
+BITwiki V2 separates independent dimensions of knowledge instead of forcing them into one hierarchy.
+
+== Structural dimensions ==
+* '''Namespace''' — system role or page class.
+* '''Entity type''' — what kind of thing the page describes.
+* '''Domain''' — field or fields of knowledge.
+* '''Scope''' — optional contextual boundary when one is real and useful.
+* '''Book Matter''' — reusable semantic sections of the content.
+* '''Epistemics''' — source, evidence, provenance, status, confidence, uncertainty, and verification.
+* '''Relationships''' — semantic links between knowledge objects.
+
+These dimensions are orthogonal. Namespace is not domain; domain is not Book Matter; epistemic status is not a category family.
+
+== Namespace policy ==
+Use native MediaWiki namespaces for their real purposes:
+* Main — primary public knowledge.
+* User / User talk — users and user discussion.
+* BITwiki / BITwiki talk — project policy, architecture, governance, standards, and meta documentation.
+* Help — editing and usage guidance.
+* Template — reusable transclusion and presentation interfaces.
+* Module — reusable Lua logic.
+* Property — Semantic MediaWiki property definitions.
+* Concept — stored semantic queries and computed collections.
+* Category — human classification and navigation.
+* File — media and file metadata.
+* MediaWiki — site interface and system-message content.
+
+Create custom namespaces only when a genuine operational boundary justifies them, such as materially different permissions or behavior.
+
+== Categories ==
+Categories should group pages that share meaningful characteristics, especially knowledge domains and useful navigational classes. They should not imitate folders and should not duplicate every semantic property.
+
+== Portals and indexes ==
+Portals, indexes, outlines, graphs, and dashboards are generated or curated views over the underlying model. Their purpose is orientation and discovery.
+
+== Historical lesson ==
+V1 mixed domains, page types, Book Matter, epistemics, governance, implementation details, and navigation into overlapping category and Main-namespace families. V2 preserves the useful concepts while removing that coupling.
+
+[[Category:BITwiki]]

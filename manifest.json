@@ -1,12 +1,17 @@
 {
-  "schema_version": 1,
-  "site": "https://bitwiki.org",
-  "generation": "v2",
-  "status": "working",
-  "public_only": true,
-  "format": "mediawiki",
-  "file_extension": ".mediawiki",
-  "path_model": "<Namespace>/<Page title>.mediawiki",
-  "main_namespace_directory": "Main",
-  "source_policy": "Live public BITwiki is authoritative for inherited content. V2 may refactor organization while preserving factual, citation, and provenance fidelity."
+  "project": "BITwiki V2",
+  "repository": "bitwikiorg/wiki-content",
+  "source_of_truth_for_inherited_content": "https://bitwiki.org",
+  "visibility": "public-only",
+  "format": "MediaWiki source",
+  "status": "canonicalization-in-progress",
+  "principles": [
+    "source fidelity",
+    "native MediaWiki semantics",
+    "modular Book Matter",
+    "semantic relationships",
+    "explicit epistemics and provenance",
+    "generated navigation",
+    "minimal schema"
+  ]
 }

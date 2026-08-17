@@ -1,12 +1,29 @@
 {
   "project": "BITwiki V2",
   "repository": "bitwikiorg/wiki-content",
-  "source_of_truth_for_inherited_content": "https://bitwiki.org",
+  "source_of_truth_for_inherited_v1_public_content": "https://bitwiki.org",
   "visibility": "public-only",
-  "format": "MediaWiki source",
-  "status": "canonicalization-in-progress",
+  "format": "MediaWiki wikitext",
+  "deployment_target": "bitwiki.org",
+  "status": "public-corpus-canonicalization",
+  "namespace_directories": {
+    "Main": "Main",
+    "BITwiki": "BITwiki",
+    "Template": "Template",
+    "Property": "Property",
+    "Category": "Category",
+    "Portal": "Portal"
+  },
+  "page_dispositions": [
+    "canonical",
+    "book-matter",
+    "template",
+    "redirect",
+    "distilled-reconstruction"
+  ],
   "principles": [
     "source fidelity",
+    "public continuity",
     "native MediaWiki semantics",
     "modular Book Matter",
     "semantic relationships",

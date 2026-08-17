@@ -1,0 +1,49 @@
+= MediaWiki primitives =
+
+BITwiki V2 is built on MediaWiki's actual primitives rather than a simulated directory structure.
+
+== Core units ==
+; Page
+: A durable MediaWiki knowledge entry.
+
+; Namespace
+: A page class with system meaning, permissions, behavior, or editorial purpose.
+
+; Category
+: A grouping mechanism that also produces automatic indexes of member pages.
+
+; Template
+: Reusable wikicode or content transcluded into other pages.
+
+; Module
+: Reusable program logic, typically Lua through Scribunto.
+
+; Redirect
+: A continuity mechanism for aliases, renames, and terminology changes.
+
+; Talk page
+: Discussion associated with a page or namespace object.
+
+; Revision
+: A saved version of a page.
+
+; History
+: The ordered revision record of a page.
+
+; Diff
+: A comparison between revisions.
+
+; Special page
+: A software-generated operational/query surface; Special pages are not ordinary content files.
+
+== Semantic MediaWiki units ==
+; Property
+: A typed attribute or relationship attached to semantic content.
+
+; Concept
+: A stored semantic query that defines a computed collection.
+
+== Rule ==
+V2 should express a requirement with an existing native primitive whenever that primitive already has the correct semantics. New abstractions are justified only when the native model cannot represent the requirement cleanly.
+
+[[Category:BITwiki]]

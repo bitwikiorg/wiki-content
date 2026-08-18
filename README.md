@@ -16,7 +16,9 @@ V1 provenance  → archive-v1/
 | Need | Open |
 |---|---|
 | Public entry | [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki) |
+| Foundational map | [`BITwiki/Foundations.mediawiki`](BITwiki/Foundations.mediawiki) |
 | Why BITwiki exists | [`BITwiki/Manifesto.mediawiki`](BITwiki/Manifesto.mediawiki) |
+| Original BITCORE manifesto | [`BITwiki/BITCORE Manifesto.mediawiki`](BITwiki/BITCORE%20Manifesto.mediawiki) |
 | Charter | [`BITwiki/Charter.mediawiki`](BITwiki/Charter.mediawiki) |
 | Constitution | [`BITwiki/Constitution.mediawiki`](BITwiki/Constitution.mediawiki) |
 | Ontology / Epistemology / Axiology | [`BITwiki/Foundational triad.mediawiki`](BITwiki/Foundational%20triad.mediawiki) |
@@ -25,6 +27,7 @@ V1 provenance  → archive-v1/
 | Knowledge lifecycle | [`BITwiki/Knowledge lifecycle.mediawiki`](BITwiki/Knowledge%20lifecycle.mediawiki) |
 | Organization | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
 | Templates + categories | [`BITwiki/Templates and categories.mediawiki`](BITwiki/Templates%20and%20categories.mediawiki) |
+| Source authority / lineage | [`BITwiki/Source lineage.mediawiki`](BITwiki/Source%20lineage.mediawiki) |
 | Exact V1 implementation | [`BITwiki/V1 implementation audit.mediawiki`](BITwiki/V1%20implementation%20audit.mediawiki) |
 | V1 category refactor | [`BITwiki/V1 category migration.mediawiki`](BITwiki/V1%20category%20migration.mediawiki) |
 | V1 Special-page baseline | [`BITwiki/V1 maintenance baseline.mediawiki`](BITwiki/V1%20maintenance%20baseline.mediawiki) |
@@ -33,6 +36,19 @@ V1 provenance  → archive-v1/
 | Unresolved deleted titles | [`v1-deleted-unresolved.json`](v1-deleted-unresolved.json) |
 | Exhaustive current-public V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
 | V2 structural validation | [`v2-validation.json`](v2-validation.json) |
+
+## How to read the foundation layer
+
+The foundational writings have different jobs and should not be collapsed into one generic philosophy page:
+
+```text
+Manifestos          → direction / worldview / thesis
+Charter             → operating covenant
+Constitution        → durable invariants
+Foundational triad  → being / knowing / valuing
+```
+
+`BITwiki:Foundations` maps the current canon to the distinct V1 lineages. Historical branches remain source material even when V2 chooses a different current formulation.
 
 ## Repository map
 

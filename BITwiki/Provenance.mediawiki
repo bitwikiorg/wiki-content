@@ -1,0 +1,194 @@
+{{Source status|status=source-reconciled framework|note=Preserves the central V1 Provenance Model formulation: provenance as the etymology and phylogeny of knowledge, with origin, transmission, transformation, and validation as distinct dimensions.}}
+
+= Provenance =
+
+'''Provenance is the etymology and phylogeny of knowledge.'''
+
+Just as etymology traces how words originate and change, and phylogeny traces ancestry, divergence, inheritance, and extinction, knowledge claims have lineages.
+
+Provenance is therefore not a bureaucratic citation field. It helps explain what a claim means, how faithfully it has been transmitted, what transformed it, and why its current form should or should not be trusted.
+
+== Four dimensions ==
+
+=== Origin ===
+
+Where did the claim or artifact begin?
+
+Useful details can include:
+
+* originator / author / system;
+* original source;
+* date or period of origin;
+* context and problem being addressed;
+* original wording or data where relevant.
+
+Origin matters both for verification and interpretation. The same sentence can carry different meaning when inherited from different theoretical traditions.
+
+=== Transmission ===
+
+How did it reach the current page or system?
+
+A transmission path may be short:
+
+<pre>
+original source → BITwiki
+</pre>
+
+or long:
+
+<pre>
+observation → paper → review → textbook → discussion → agent synthesis → BITwiki
+</pre>
+
+Each intermediary can summarize, reinterpret, omit, exaggerate, translate, or combine material.
+
+=== Transformation ===
+
+What changed along the path?
+
+Transformation includes:
+
+* paraphrase;
+* translation;
+* compression;
+* synthesis across multiple sources;
+* adaptation to another domain;
+* agent generation/editing;
+* editorial normalization;
+* semantic/schema mapping;
+* correction or reframing.
+
+A transformed claim can be valuable, but it should not be presented as a direct quotation or direct-source fact when it is actually synthesis.
+
+=== Validation ===
+
+What scrutiny has the claim undergone?
+
+This can include:
+
+* source verification;
+* replication;
+* logical/proof checking;
+* peer or expert review;
+* adversarial critique;
+* practical application;
+* correction history;
+* cross-domain challenge;
+* comparison with contradictory evidence.
+
+Validation history is itself part of provenance.
+
+== Provenance patterns ==
+
+V1 identified several recurring patterns that remain useful.
+
+=== Direct observation ===
+<pre>
+observer / instrument → record → BITwiki
+</pre>
+
+Keep the distinction between the observation and interpretation of the observation.
+
+=== Cited source ===
+<pre>
+source → editor/agent extraction → BITwiki claim
+</pre>
+
+Verify that the source actually contains and supports what is attributed to it.
+
+=== Synthesized claim ===
+<pre>
+source A + source B + source C
+            ↓
+         synthesis
+            ↓
+         BITwiki
+</pre>
+
+The synthesis is a new knowledge artifact. Its provenance includes all major contributing sources and the method or reasoning used to combine them.
+
+=== Inherited / adapted claim ===
+<pre>
+claim in context A → transformation → claim in context B
+</pre>
+
+Adaptation across domains can change meaning or validity. The new context needs its own assessment.
+
+== Knowledge lineages branch ==
+
+A claim can have:
+
+* ancestors — earlier formulations it descends from;
+* descendants — later work that builds on it;
+* siblings/cousins — parallel or competing formulations;
+* branch points — revisions that diverge materially;
+* extinct branches — abandoned or falsified versions;
+* recombinations — later syntheses joining separate lineages.
+
+This model is especially appropriate for BITwiki V2 because canonicalization should not erase the branches from which canon emerged.
+
+The current Charter lineage is a concrete example: three distinct V1 Charter traditions now remain traceable rather than being represented as if they were always one document.
+
+== Verification of provenance ==
+
+A strong provenance check asks:
+
+# Does the source exist?
+# Does it actually contain the attributed claim?
+# Is attribution accurate?
+# Can the transmission path be reconstructed?
+# What transformations occurred?
+# Was important context lost?
+# What validation occurred after transformation?
+
+== Red flags ==
+
+* unknown or concealed origin;
+* cited source cannot be located;
+* citation does not contain the attributed claim;
+* circular attribution with no original source;
+* transformations are undocumented;
+* generated text is presented as source-authored text;
+* synthesis is presented as direct observation;
+* provenance ends at another summary rather than the evidentiary origin;
+* revision overwrites an earlier intellectual branch without preserving ancestry.
+
+These are reasons for scrutiny, not necessarily automatic deletion.
+
+== Public-source lineage in this repository ==
+
+For V1→V2 work:
+
+<pre>
+archive-v1 exact source + public revisions
+→ identify parallel pages / historical branches
+→ compare wording, semantics, citations, and implementation
+→ record V2 disposition
+→ preserve compatibility / history
+</pre>
+
+The V1 public archive is evidence, not deployable V2 content.
+
+== AI and provenance ==
+
+Agent assistance makes provenance more important because fluent synthesis can obscure where information originated.
+
+Where material transformation matters, distinguish:
+
+* human direction;
+* retrieved/source-authored text;
+* agent inference or synthesis;
+* editorial revision;
+* later verification.
+
+Do not cite the agent's confidence as evidence for the claim.
+
+== Source lineage ==
+
+Primary V1 source: [[BITwiki Provenance Model]], supplemented by the Charter, Source Types, Claim Validation, and evidence frameworks. Exact source/history is preserved under <code>archive-v1/</code>.
+
+See [[BITwiki:Source lineage]], [[BITwiki:Sources]], [[BITwiki:Evidence]], and [[BITwiki:Claim validation]].
+
+[[Category:Provenance]]
+[[Category:Epistemics]]
+[[Category:BITwiki architecture]]

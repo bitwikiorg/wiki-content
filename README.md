@@ -3,32 +3,33 @@
 **Public MediaWiki source. Start here.**
 
 BITwiki is the durable knowledge layer of the **BITwiki / BIThub / BITCORE** ecosystem.
-This repository has two clearly separated layers:
 
 ```text
 V2 canon       → Main/ BITwiki/ Portal/ Template/ Property/ Category/
 V1 provenance  → archive-v1/
 ```
 
-`archive-v1/` is read-only evidence. It is **not** a second deployable wiki.
+`archive-v1/` is read-only evidence. **Do not deploy it as V2.**
 
-## Start in 60 seconds
+## Start here
 
 | Need | Open |
 |---|---|
-| Public wiki entry | [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki) |
+| Public entry | [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki) |
 | Why BITwiki exists | [`BITwiki/Manifesto.mediawiki`](BITwiki/Manifesto.mediawiki) |
-| Operating covenant | [`BITwiki/Charter.mediawiki`](BITwiki/Charter.mediawiki) |
-| Durable invariants | [`BITwiki/Constitution.mediawiki`](BITwiki/Constitution.mediawiki) |
+| Charter | [`BITwiki/Charter.mediawiki`](BITwiki/Charter.mediawiki) |
+| Constitution | [`BITwiki/Constitution.mediawiki`](BITwiki/Constitution.mediawiki) |
 | Ontology / Epistemology / Axiology | [`BITwiki/Foundational triad.mediawiki`](BITwiki/Foundational%20triad.mediawiki) |
-| How knowledge is composed | [`BITwiki/Book Matter.mediawiki`](BITwiki/Book%20Matter.mediawiki) |
-| Default knowledge-page format | [`BITwiki/Page format.mediawiki`](BITwiki/Page%20format.mediawiki) |
-| How knowledge becomes canon | [`BITwiki/Knowledge lifecycle.mediawiki`](BITwiki/Knowledge%20lifecycle.mediawiki) |
-| Organization model | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
+| Book Matter / transclusion | [`BITwiki/Book Matter.mediawiki`](BITwiki/Book%20Matter.mediawiki) |
+| Default page format | [`BITwiki/Page format.mediawiki`](BITwiki/Page%20format.mediawiki) |
+| Knowledge lifecycle | [`BITwiki/Knowledge lifecycle.mediawiki`](BITwiki/Knowledge%20lifecycle.mediawiki) |
+| Organization | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
 | Templates + categories | [`BITwiki/Templates and categories.mediawiki`](BITwiki/Templates%20and%20categories.mediawiki) |
-| Exact V1 implementation audit | [`BITwiki/V1 implementation audit.mediawiki`](BITwiki/V1%20implementation%20audit.mediawiki) |
+| Exact V1 implementation | [`BITwiki/V1 implementation audit.mediawiki`](BITwiki/V1%20implementation%20audit.mediawiki) |
 | V1 category refactor | [`BITwiki/V1 category migration.mediawiki`](BITwiki/V1%20category%20migration.mediawiki) |
+| V1 Special-page baseline | [`BITwiki/V1 maintenance baseline.mediawiki`](BITwiki/V1%20maintenance%20baseline.mediawiki) |
 | Exhaustive V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
+| V2 structural validation | [`v2-validation.json`](v2-validation.json) |
 
 ## Repository map
 
@@ -41,81 +42,96 @@ wiki-content/
 ├── Property/      Semantic MediaWiki properties
 ├── Category/      intentional human-readable indexes
 ├── archive-v1/    exhaustive read-only public V1 snapshot
-├── scripts/       reproducible archive tooling
-└── .github/       validation/archive automation
+├── scripts/       archive + validation tooling
+└── .github/       reproducible automation
 ```
 
-**Repository paths mirror MediaWiki roles; they are not the ontology.**
+**Repository paths are organization surfaces, not the ontology.**
 
 ```text
 namespace ≠ entity type ≠ domain ≠ Book Matter ≠ epistemic status ≠ relationship
 ```
 
-## V1 archive: exhaustive, not sampled
+## V1 archive — exhaustive, not sampled
 
-The public V1 snapshot is generated directly from the anonymous MediaWiki Action API with continuation followed until exhaustion. The current audited snapshot contains:
+Latest verified snapshot: **2026-08-18T17:20:10Z**.
 
-- **24** nonnegative namespaces enumerated;
-- **186** public pages;
-- **606** revision bodies, including historical wikitext;
-- **162** Main-namespace pages;
-- **9** actual Template pages and every transclusion caller;
-- **162** used categories and every category membership;
-- **0** created `Category:` pages in V1 — all 162 categories existed only through membership tags;
-- **4** actual Property pages (imported FOAF/OWL vocabulary);
-- **3** `smw/schema` pages;
-- **6** MediaWiki pages;
-- **2** File description pages;
-- **0** Concept pages and **0** Module pages.
+| Surface | Exact archived state |
+|---|---:|
+| Nonnegative namespaces | 24 |
+| Public pages | 186 |
+| Revision bodies | 606 |
+| Main pages | 162 |
+| Actual Template pages | 9 |
+| Used category names | 162 |
+| Created `Category:` pages | 0 |
+| Property pages | 4 |
+| `smw/schema` pages | 3 |
+| MediaWiki pages | 6 |
+| File description pages | 2 |
+| File binary revision records | 2 |
+| Retrievable file binaries | 0 |
+| Historical binary references now unavailable | 2 |
+| Concept pages | 0 |
+| Module pages | 0 |
 
-Open:
+The two historical PNG upload records are preserved with timestamps, dimensions, size, SHA-1, original API URLs, and failed-resolution evidence. The files themselves now return 404 and are **not fabricated or silently omitted**.
 
-- [`archive-v1/audit.json`](archive-v1/audit.json) — completeness checks + counts
-- [`archive-v1/index.json`](archive-v1/index.json) — every archived page
-- [`archive-v1/pages/`](archive-v1/pages/) — current exact wikitext
-- [`archive-v1/history/`](archive-v1/history/) — complete archived revision bodies
-- [`archive-v1/categories/index.json`](archive-v1/categories/index.json) — all 162 categories
-- [`archive-v1/templates/index.json`](archive-v1/templates/index.json) — all 9 real templates
-- [`archive-v1/special/`](archive-v1/special/) — generated maintenance reports
+Open the evidence directly:
 
-The archive is reproducible with [`scripts/archive_v1.py`](scripts/archive_v1.py) and [`.github/workflows/archive-v1.yml`](.github/workflows/archive-v1.yml).
+- [`archive-v1/audit.json`](archive-v1/audit.json) — machine completeness assertions and exact counts
+- [`archive-v1/index.json`](archive-v1/index.json) — every public page
+- [`archive-v1/pages/`](archive-v1/pages/) — exact current wikitext
+- [`archive-v1/history/`](archive-v1/history/) — complete captured public revision bodies
+- [`archive-v1/templates/index.json`](archive-v1/templates/index.json) — all 9 implemented templates
+- [`archive-v1/categories/index.json`](archive-v1/categories/index.json) — all 162 categories + membership graph
+- [`archive-v1/special/`](archive-v1/special/) — complete maintenance-report snapshots
+- [`archive-v1/files/index.json`](archive-v1/files/index.json) — file revision/binary availability records
+- [`archive-v1-run-status.json`](archive-v1-run-status.json) — last archive run outcome
 
-### Important V1 distinction
+The archive is generated by [`scripts/archive_v1.py`](scripts/archive_v1.py) through [`.github/workflows/archive-v1.yml`](.github/workflows/archive-v1.yml). MediaWiki continuation is followed until exhaustion. The latest machine run reports **harvest: success / verify: success**.
 
-V1 contains sophisticated architecture documents that describe many templates, properties, categories, modules and semantic systems that were **planned or documented but not actually instantiated as namespace objects**. V2 preserves both layers:
+### Design intent ≠ deployed implementation
+
+V1 contains sophisticated architecture documents describing templates, categories, properties, concepts, modules and validation systems that were not all instantiated as namespace objects.
 
 ```text
-design intent      → archived writings
-live implementation → archived namespaces / membership / transclusion state
+design intent       → archived writings and references
+live implementation → archived namespaces, revisions, memberships, transclusions
 ```
 
-Neither is allowed to masquerade as the other.
+Both are preserved. Neither is allowed to masquerade as the other.
+
+Examples:
+
+- `Template:Infobox` is real and has **80 callers**.
+- V1 has **59 wanted templates** that were referenced but never created.
+- `Category:BITwiki Templates` had **7 Main-namespace documentation members**; it was not the inventory of the 9 actual Template pages.
+- V1 had **162 used category names but zero authored Category pages**.
 
 ## 12 domain exemplars
 
-Each major domain has one small V2 page using the same page grammar.
-
-| Domain | Portal | Example page |
+| Domain | Portal | Example |
 |---|---|---|
-| Systems science | [`Portal/Systems science.mediawiki`](Portal/Systems%20science.mediawiki) | [`System boundary`](Main/System%20boundary.mediawiki) |
-| Science | [`Portal/Science.mediawiki`](Portal/Science.mediawiki) | [`Hypothesis`](Main/Hypothesis.mediawiki) |
-| Biology | [`Portal/Biology.mediawiki`](Portal/Biology.mediawiki) | [`Cell membrane`](Main/Cell%20membrane.mediawiki) |
-| Mathematics | [`Portal/Mathematics.mediawiki`](Portal/Mathematics.mediawiki) | [`Prime number`](Main/Prime%20number.mediawiki) |
-| Philosophy | [`Portal/Philosophy.mediawiki`](Portal/Philosophy.mediawiki) | [`Causality`](Main/Causality.mediawiki) |
-| Technology | [`Portal/Technology.mediawiki`](Portal/Technology.mediawiki) | [`Version control`](Main/Version%20control.mediawiki) |
-| Electronics | [`Portal/Electronics.mediawiki`](Portal/Electronics.mediawiki) | [`Resistor`](Main/Resistor.mediawiki) |
-| Energy | [`Portal/Energy.mediawiki`](Portal/Energy.mediawiki) | [`Energy efficiency`](Main/Energy%20efficiency.mediawiki) |
-| Engineering | [`Portal/Engineering.mediawiki`](Portal/Engineering.mediawiki) | [`Safety factor`](Main/Safety%20factor.mediawiki) |
-| Chemistry | [`Portal/Chemistry.mediawiki`](Portal/Chemistry.mediawiki) | [`pH`](Main/pH.mediawiki) |
-| Physics | [`Portal/Physics.mediawiki`](Portal/Physics.mediawiki) | [`Momentum`](Main/Momentum.mediawiki) |
-| Medicine | [`Portal/Medicine.mediawiki`](Portal/Medicine.mediawiki) | [`Pulse`](Main/Pulse.mediawiki) |
+| Systems science | [`Portal:Systems science`](Portal/Systems%20science.mediawiki) | [`System boundary`](Main/System%20boundary.mediawiki) |
+| Science | [`Portal:Science`](Portal/Science.mediawiki) | [`Hypothesis`](Main/Hypothesis.mediawiki) |
+| Biology | [`Portal:Biology`](Portal/Biology.mediawiki) | [`Cell membrane`](Main/Cell%20membrane.mediawiki) |
+| Mathematics | [`Portal:Mathematics`](Portal/Mathematics.mediawiki) | [`Prime number`](Main/Prime%20number.mediawiki) |
+| Philosophy | [`Portal:Philosophy`](Portal/Philosophy.mediawiki) | [`Causality`](Main/Causality.mediawiki) |
+| Technology | [`Portal:Technology`](Portal/Technology.mediawiki) | [`Version control`](Main/Version%20control.mediawiki) |
+| Electronics | [`Portal:Electronics`](Portal/Electronics.mediawiki) | [`Resistor`](Main/Resistor.mediawiki) |
+| Energy | [`Portal:Energy`](Portal/Energy.mediawiki) | [`Energy efficiency`](Main/Energy%20efficiency.mediawiki) |
+| Engineering | [`Portal:Engineering`](Portal/Engineering.mediawiki) | [`Safety factor`](Main/Safety%20factor.mediawiki) |
+| Chemistry | [`Portal:Chemistry`](Portal/Chemistry.mediawiki) | [`pH`](Main/pH.mediawiki) |
+| Physics | [`Portal:Physics`](Portal/Physics.mediawiki) | [`Momentum`](Main/Momentum.mediawiki) |
+| Medicine | [`Portal:Medicine`](Portal/Medicine.mediawiki) | [`Pulse`](Main/Pulse.mediawiki) |
 
-## Default knowledge-page anatomy
+## Default page grammar
 
-Use only the matter the subject needs. A small concept generally starts with:
+Use only the matter the subject needs:
 
 ```text
-identity / semantic metadata
+semantic identity
 Overview
 Definition
 Scope & importance
@@ -126,49 +142,35 @@ Epistemic notes
 References
 ```
 
-A mature page may expand into history, frameworks, methods, evidence, case studies, controversies, timelines, primary/secondary sources, bibliography, knowledge maps, implementation, limitations and related concepts.
+Mature pages may expand into history, frameworks, methods, evidence, case studies, controversies, timelines, bibliography, knowledge maps, implementation and limitations.
 
-**Modularity does not mean fragmentation.** Keep the canonical parent coherent. Split/transclude matter only when the portion is independently useful.
+**Modularity does not mean fragmentation.** Keep the canonical parent coherent; split/transclude only when a portion is independently useful.
 
-## V1 → V2 refactor rule
-
-The archive preserves everything; V2 preserves the useful function with the correct primitive.
+## V1 → V2 rule
 
 ```text
-V1 source + full revision history + usage
-→ identify what job the object was doing
-→ compare variants and intended architecture
+exact V1 source + revisions + usage
+→ determine what job the object was doing
+→ compare variants + intended architecture
 → preserve unique writing / behavior / provenance
-→ assign correct V2 primitive
+→ choose the correct V2 primitive
 → implement
 → validate against Special pages
 ```
 
-Examples:
+Typical refactors:
 
-- V1 domain categories → `Domain` property + curated domain categories/portals.
-- V1 entity-type categories → `Entity type` property; category only when a human index is useful.
-- V1 epistemic-state categories → `Epistemic status` / evidence model, not a parallel category ontology.
-- V1 section/fragment categories → Book Matter/transclusion.
-- V1 error/validation categories → validation logic and generated maintenance reports.
-- V1 templates that never existed → design-intent evidence, not automatically recreated code.
+- domain category → `Domain` property + curated category/portal;
+- entity-type category → `Entity type` property;
+- epistemic category → epistemic/evidence model;
+- section/fragment category → Book Matter/transclusion;
+- temporary workflow/provenance category → provenance/revision metadata;
+- error category → generated validation/maintenance surface;
+- referenced-but-never-created template → design-intent evidence, not automatic V2 code.
 
-## Canon workflow
+## Validation
 
-```text
-source
-→ preserve raw signal
-→ compare revisions
-→ research / cross-check
-→ distill redundancy
-→ revise
-→ verify
-→ canonicalize
-→ transclude / relate
-→ publish
-```
-
-A cleaner sentence is not automatically a better sentence. Preserve authored voice, unique distinctions, citations, provenance and meaningful historical development.
+Current V2 validation is **green**: all category references resolve to documented `Category/` pages, all template transclusions resolve, no deployable Main/BITwiki/Portal/Template pages are uncategorized, all 12 domain portals/categories exist, and exactly 12 domain exemplars are present.
 
 ## Public boundary
 

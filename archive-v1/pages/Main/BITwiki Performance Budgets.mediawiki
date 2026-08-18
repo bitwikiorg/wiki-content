@@ -1,0 +1,83 @@
+{{Infobox
+| title = BITwiki Performance Budgets
+| description = Documented constraints for template expansion and query performance
+| type = front-matter
+| category = system-documentation
+}}
+
+= BITwiki Performance Budgets =
+
+== Hard Limits (MediaWiki Defaults) ==
+
+{| class="wikitable"
+! Metric !! Default Limit !! BITwiki Recommended !! Exceeding Consequence
+|-
+| Template expansion depth || 40 levels || 3-4 levels || Parse failure
+|-
+| Post-expand include size (PEIS) || 2,097,152 bytes || 1,048,576 bytes (50%) || Hard failure
+|-
+| Expensive parser functions || 100 per page || 50 per page || Parse failure
+|-
+| {{#ask:}} result limit || unlimited || 50 || Performance degradation
+|}
+
+== Template-Specific Budgets ==
+
+{| class="wikitable"
+! Template !! Max Nesting !! PEIS Budget !! Expensive Functions
+|-
+| Infobox Concept || 2 levels || 100KB || 5
+|-
+| Infobox Idea || 2 levels || 100KB || 5
+|-
+| Infobox Implementation || 2 levels || 100KB || 5
+|-
+| Infobox Project || 2 levels || 100KB || 5
+|-
+| Navbox Concepts || 3 levels || 200KB || 10
+|}
+
+== Fragment Budgets ==
+
+{| class="wikitable"
+! Fragment Type !! Max Transclusions/Page !! PEIS Impact
+|-
+| L1 (Paragraphs) || 20 || ~5KB each
+|-
+| L2 (Sections) || 5 || ~20KB each
+|-
+| L3 (Templates) || 10 || Variable
+|}
+
+== Monitoring ==
+
+Track via SMW properties:
+'' [[Has template depth::]]
+'' [[Has PEIS usage::]]
+'' [[Has expensive function count::]]
+
+== Optimization Strategies ==
+
+= Reduce Nesting: Flatten template call graphs =
+= Limit Queries: Always specify <code>|limit=</code> on {{#ask:}} =
+= Use Lua Modules: Move complex logic to Module: namespace =
+= Cache Results: Use concept caching for expensive queries =
+= Fragment Reuse: Prefer L1 fragments over full section transclusion =
+
+== Validation Rules ==
+
+'' All templates must document their depth/PEIS usage in /doc
+'' Pre-import checks must validate against budgets
+'' SMW queries must specify explicit limits
+* Circular dependencies are prohibited (see Dependency Schema)
+
+== Emergency Procedures ==
+
+If PEIS exceeded:
+= Identify largest transclusion via Special:ExpandTemplates =
+= Replace with direct content or reduce fragment size =
+= Consider splitting page into subpages =
+
+[[Category:BITwiki Front Matter]]
+[[Category:System Documentation]]
+[[Category:Performance]]

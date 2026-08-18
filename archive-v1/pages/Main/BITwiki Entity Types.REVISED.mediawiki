@@ -1,0 +1,249 @@
+{{Infobox
+| title = BITwiki Entity Types: Emergent Knowledge Patterns
+| description = Entity types in BITwiki emerge from use and practice. These patterns facilitate organization without constraining possibility.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| revised = 2026-02-15
+| version = 3.established
+| epistemic_status = Evolving
+| license = CC-BY-SA-4.0
+| ontology = entity_type: taxonomy
+domain: entity-classification
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+
+
+= BITwiki Entity Types: Emergent Knowledge Patterns =
+
+== What Entity Types Are
+
+Entity types in BITwiki are patterns that have emerged through use. They are not categories imposed from above but regularities discovered through practice.
+
+Think of them as paths through a forest—worn by travelers who found similar routes useful. The paths exist because people walk them. The types exist because editors use them.
+
+== Core Patterns
+
+These patterns have achieved stability through extensive use. They are not exhaustive; new patterns emerge, and existing patterns transform.
+
+=== Topic
+
+A subject domain or field of knowledge.
+
+'''What it looks like:'''
+* Systems Science
+* Cybernetics
+* Epistemology
+* Artificial Intelligence
+
+'''Minimum criteria:'''
+* Broad conceptual area
+* Contains or connects to multiple sub-areas
+* Serves as entry point for exploration
+
+'''SMW:'''
+```wiki
+[[Has entity type::Topic]]
+[[Has subtopic::Subtopic]]
+```
+
+----
+=== Idea
+
+An abstract concept, theory, or mental construct.
+
+'''What it looks like:'''
+* Feedback Loop
+* Emergence
+* Recursion
+* Homeostasis
+
+'''Minimum criteria:'''
+* Abstract rather than concrete
+* Can be realized in multiple ways
+* Has identifiable origin or development
+
+'''SMW:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has originator::Person]]
+[[Has implementation::Implementation]]
+```
+
+----
+=== Implementation
+
+A concrete realization of an idea.
+
+'''What it looks like:'''
+* Thermostat (implements feedback control)
+* Neural Network (implements learning)
+* distributed ledger (implements distributed trust)
+
+'''Minimum criteria:'''
+* Concrete instantiation
+* Can be observed or measured
+* Connects to abstract idea(s)
+
+'''SMW:'''
+```wiki
+[[Has entity type::Implementation]]
+[[Implements::Idea]]
+```
+
+----
+=== Project
+
+An organized effort with defined goals.
+
+'''What it looks like:'''
+* BITCORE Research Initiative
+* Semantic MediaWiki Development
+* Distributed Systems Study
+
+'''Minimum criteria:'''
+* Organized effort
+* Defined goals or outcomes
+* Has timeline or milestones
+
+'''SMW:'''
+```wiki
+[[Has entity type::Project]]
+[[Has goal::Objective]]
+[[Has status::Active]]
+```
+
+----
+=== Protocol
+
+A prescribed procedure or method.
+
+'''What it looks like:'''
+* Scientific Method
+* Peer Review Process
+* Validation Protocol
+
+'''Minimum criteria:'''
+* Prescribed steps or procedures
+* Reproducible across contexts
+* Has defined outcomes
+
+'''SMW:'''
+```wiki
+[[Has entity type::Protocol]]
+[[Has step::Procedure]]
+```
+
+----
+=== Dataset
+
+A collection of structured data.
+
+'''What it looks like:'''
+* Genome Database
+* Climate Measurements
+* Experimental Results
+
+'''Minimum criteria:'''
+* Structured collection
+* Documented provenance
+* Queryable or analyzable
+
+'''SMW:'''
+```wiki
+[[Has entity type::Dataset]]
+[[Has source::Origin]]
+[[Has format::Structure]]
+```
+
+----
+== Extended Patterns
+
+Beyond the core patterns, additional types emerge for specialized domains:
+
+=== Person
+
+An individual who contributed to knowledge.
+
+'''Examples:''' Norbert Wiener, Ada Lovelace, founder Nakamoto
+
+'''SMW:''' `[[Has entity type::Person]]`
+
+----
+=== Organization
+
+A group or institution.
+
+'''Examples:''' BITCORE, MIT Media Lab, Santa Fe Institute
+
+'''SMW:''' `[[Has entity type::Organization]]`
+
+----
+=== Event
+
+A specific occurrence in time.
+
+'''Examples:''' 1956 Dartmouth Workshop, 2008 distributed systems Whitepaper
+
+'''SMW:''' `[[Has entity type::Event]]`
+
+----
+=== Publication
+
+A documented work.
+
+'''Examples:''' Cybernetics (Wiener), distributed systems Whitepaper
+
+'''SMW:''' `[[Has entity type::Publication]]`
+
+----
+== When Patterns Overlap
+
+Entities often fit multiple patterns. distributed systems is simultaneously:
+* '''Idea''': Decentralized trust concept
+* '''Implementation''': Running network
+* '''Event''': Whitepaper publication
+* '''Topic''': Cryptocurrency domain
+
+Multiple patterns apply. Use what serves the knowledge.
+
+----
+== Creating New Patterns
+
+New types emerge when existing patterns prove insufficient.
+
+'''Process:'''
+# Document the pattern in use (3+ examples)
+# Define minimum criteria
+# Create SMW template
+# Propose in discussion
+# Iterate based on feedback
+
+'''Criteria for new patterns:'''
+* Serves distinct organizational need
+* Has multiple existing examples
+* Cannot be served by existing patterns
+
+Patterns are recognized through use, not created by decree.
+
+----
+== Summary
+
+Entity types in BITwiki:
+* '''Emerge from practice''', not imposed
+* '''Use minimum criteria''', not fixed definitions
+* '''Facilitate organization''', not constrain
+* '''Evolve over time''', not fixed
+* '''Overlap freely''', not exclusive
+
+----
+''Document: BITwiki Entity Types v3.established''
+''Status: Evolving''
+''Last Revised: 2026-02-15''
+
+[[Has page type::Entity Type Taxonomy]]
+[[Has epistemic tier::Evolving]]

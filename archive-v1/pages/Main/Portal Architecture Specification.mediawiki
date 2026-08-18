@@ -1,0 +1,459 @@
+{{Infobox
+| title = Portal Architecture Specification
+| description = Integration of Wikipedia Systems portal architecture research into BITwiki's navigation framework. Analysis of interconnected Wikipedia portals reveals patterns for hub-and-spoke navigation, progressive disclosure, and cross-domain linking.
+| type = specification
+| author = BITCORE
+| created = 2026-02-11
+| version = 2.0.0
+| epistemic_status = Attribution-Traced
+| confidence = Emerging
+| license = CC-BY-SA-4.0
+| ontology = entity_type: specification-document
+domain: research-integration
+| workflow = state: Beta
+}}
+
+= Portal Architecture Specification =
+== From Wikipedia Systems Research to BITwiki Navigation Framework ==
+
+'''Version:''' 2.0 | '''Date:''' 2026-02-12 | '''Source:''' Wikipedia Systems Research
+
+----
+== Executive Summary ==
+
+This specification integrates Wikipedia Systems portal architecture research into BITwiki's navigation framework. Analysis of interconnected Wikipedia portals reveals patterns for hub-and-spoke navigation, progressive disclosure, and cross-domain linking that inform BITwiki's portal system design.
+
+=== Key Research Findings ===
+
+| Metric | Wikipedia Pattern | BITwiki Adaptation |
+|--------|-------------------|-------------------|
+| Section Flexibility | 13 average, variable | Context-dependent structure |
+| Category Depth | 4-5 levels | Scalable taxonomy |
+| Portal Connectivity | 20 average links | Rich interconnection |
+| Taxonomy Structure | Hierarchical | Adaptive hierarchy |
+
+----
+== 1. Portal Architecture Principles ==
+
+=== 1.1 Core Design Philosophy ===
+
+'''Wikipedia Pattern:''' Hub-and-spoke with progressive disclosure
+
+'''BITwiki Implementation:'''
+```
+┌─────────────────────────────────────────────────────────────┐
+│ BITWIKI PORTAL ARCHITECTURE │
+├─────────────────────────────────────────────────────────────┤
+│ │
+│ ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ │
+│ │ META HUBS │───→│ DOMAIN PORTALS│───→│ TOPICAL PORTALS│ │
+│ │ │ │ │ │ │ │
+│ │ • Systems │ │ • Science │ │ • Networks │ │
+│ │ • Research │ │ • Technology │ │ • Complexity │ │
+│ │ • Knowledge │ │ • Humanities │ │ • Cybernetics│ │
+│ └──────────────┘ └──────────────┘ └──────────────┘ │
+│ │ │ │ │
+│ └───────────────────┼───────────────────┘ │
+│ ↓ │
+│ ┌──────────────┐ │
+│ │ CROSS-LINKS │ │
+│ │ (Rich mesh) │ │
+│ └──────────────┘ │
+│ │
+└─────────────────────────────────────────────────────────────┘
+```
+
+=== 1.2 Portal Types ===
+
+| Type | Description | Examples | Characteristics |
+|------|-------------|----------|-----------------|
+| '''Meta Hub''' | Root navigation nodes | Systems Science, Research Methods | Multi-domain coverage, broad scope |
+| '''Domain Portal''' | Subject area hubs | Complexity Science, Network Science | Domain focus with adjacent connections |
+| '''Topical Portal''' | Specific topic focus | Network Theory, Cybernetics | Thematic depth, specialized content |
+| '''Functional Portal''' | Process/Method oriented | Quantitative Methods, Analysis | Methodology-centered |
+| '''Temporal Portal''' | Time-based organization | History of Systems, Evolution | Chronological structure |
+| '''Comparative Portal''' | Cross-domain synthesis | Comparative Analysis, Integration | Multi-perspective views |
+
+----
+== 2. Portal Structure Framework ==
+
+=== 2.1 Flexible Section Architecture ===
+
+'''Based on Wikipedia Analysis:'''
+
+| Section | Priority | Content Type | Purpose |
+|---------|----------|--------------|---------|
+| '''Introduction''' | Required | Static overview | Establish context |
+| '''Selected Content''' | Required | Rotating featured content | Showcase quality |
+| '''Categories''' | Required | Taxonomy navigation | Structural access |
+| '''Related Portals''' | Required | Cross-domain links | Network navigation |
+| '''Selected Biography''' | Recommended | People highlights | Human dimension |
+| '''Current Developments''' | Recommended | Recent updates | Temporal relevance |
+| '''Topics''' | Recommended | Sub-domain index | Granular access |
+| '''Resources''' | Optional | Curated materials | Deep engagement |
+| '''References''' | Optional | Key sources | Verification |
+| '''External Links''' | Optional | Outbound resources | Extended context |
+
+'''Section Content Specifications:'''
+
+==== Introduction Section ====
+```markdown
+{{Portal:Introduction
+ | name = Systems Science
+ | image = Systems_Science_Diagram.svg
+ | description = Systems science is an interdisciplinary field that studies 
+ complex systems and their behaviors.
+ | scope = Includes complexity theory, cybernetics, network science, 
+ and dynamical systems
+ | parent = [[Portal:Research_Methods]]
+}}
+```
+
+==== Selected Content Section ====
+```markdown
+{{Portal:SelectedArticle
+ | article = [[Topic:Complexity_Theory]]
+ | excerpt = Complexity theory studies how complex systems emerge from 
+ simple interactions, revealing patterns across biology, 
+ economics, and technology.
+ | image = Complexity_Network.png
+}}
+```
+
+==== Categories Section ====
+```markdown
+{{Portal:Categories
+ | root = Systems Science
+ | depth = adaptive
+ | display = tree
+}}
+```
+
+==== Related Portals Section ====
+```markdown
+{{Portal:Related
+ | parent = [[Portal:Research_Methods]]
+ | siblings = [[Portal:Mathematics]], [[Portal:Computer_Science]]
+ | children = [[Portal:Network_Analysis]], [[Portal:Complexity_Modeling]]
+ | related = [[Portal:Cybernetics]], [[Portal:Information_Theory]]
+}}
+```
+
+----
+== 3. Category Taxonomy Design ==
+
+=== 3.1 Adaptive Hierarchical Structure ===
+
+'''Wikipedia Pattern:''' 3-5 levels maximum depth
+
+'''BITwiki Implementation:'''
+```
+Root Category: [Portal Name]
+│
+├── Core Concepts
+│ ├── Fundamental Principles
+│ ├── Key Theories
+│ ├── Methods & Techniques
+│ └── Applications
+│
+├── Domain Areas
+│ ├── [Specific Domain 1]
+│ ├── [Specific Domain 2]
+│ └── [Additional Domains as needed]
+│
+├── Related Fields
+│ ├── Adjacent Discipline 1
+│ ├── Adjacent Discipline 2
+│ └── [Dynamic expansion]
+│
+└── Resources
+ ├── Organizations
+ ├── Publications
+ ├── People
+ └── Tools & Software
+```
+
+=== 3.2 Category Naming Conventions ===
+
+| Pattern | Example | Usage |
+|---------|---------|-------|
+| '''Field + Aspect''' | "Systems Science Concepts" | Core content categories |
+| '''Aspect + Type''' | "Complexity Theories" | Thematic groupings |
+| '''Domain + Application''' | "Network Analysis Methods" | Applied categories |
+| '''Entity Type''' | "Systems Scientists" | People/organizations |
+| '''Temporal + Domain''' | "History of Cybernetics" | Chronological categories |
+
+=== 3.3 Cross-Category Linking ===
+
+Each category should link to:
+* Parent category (structural)
+* Sibling categories (contextual)
+* Related portal categories (semantic)
+
+----
+== 4. Interconnection Strategy ==
+
+=== 4.1 Portal Link Architecture ===
+
+| Portal Type | Link Approach | Diversity |
+|-------------|--------------|-----------|
+| Meta Hub | Rich multi-domain | Cross-cutting connections |
+| Domain Portal | Domain-centric with bridges | Adjacent fields |
+| Topical Portal | Thematic clustering | Related concepts |
+| Functional Portal | Method-based | Applicable domains |
+| Temporal Portal | Chronological | Period connections |
+| Comparative Portal | Multi-perspective | Synthesis views |
+
+=== 4.2 Link Categorization ===
+
+```
+Portal Links Include:
+├── Parent Portal (structural hierarchy)
+│ └── Meta-hub or domain parent
+├── Sibling Portals (same level)
+│ └── Related at same hierarchical level
+├── Child Portals (specialization)
+│ └── More specific sub-topics
+├── Related Domains (semantic)
+│ └── Adjacent fields and concepts
+├── Cross-Cutting Themes (transversal)
+│ └── Shared concepts across domains
+└── External Resources (extension)
+ └── Sister projects, external sites
+```
+
+=== 4.3 Relationship Indicators ===
+
+| Symbol | Relationship | Example |
+|--------|--------------|---------|
+| ↑ | Parent portal | ↑ Systems Science |
+| → | Sibling portal | → Mathematics |
+| ↓ | Child portal | ↓ Network Theory |
+| ↔ | Bidirectional | ↔ Complexity Science |
+| ⇄ | Strong coupling | ⇄ Cybernetics |
+| ⊕ | Cross-cutting | ⊕ Information Theory |
+
+----
+== 5. BITwiki Portal Network ==
+
+=== 5.1 Portal Network Architecture ===
+
+```
+BITCORE Knowledge Base (Root)
+│
+├── Meta Hubs
+│ ├── [[Portal:Systems_Science]]
+│ ├── [[Portal:Research_Methods]]
+│ ├── [[Portal:Knowledge_Management]]
+│ └── [[Portal:Integration_Synthesis]]
+│
+├── Domain Portals
+│ ├── [[Portal:Complexity_Science]]
+│ ├── [[Portal:Network_Science]]
+│ ├── [[Portal:Cybernetics]]
+│ ├── [[Portal:Information_Theory]]
+│ ├── [[Portal:Data_Science]]
+│ ├── [[Portal:Computational_Methods]]
+│ └── [[Portal:Philosophy_of_Science]]
+│
+├── Topical Portals
+│ ├── [[Portal:Network_Analysis]]
+│ ├── [[Portal:Complexity_Modeling]]
+│ ├── [[Portal:Agent-Based_Models]]
+│ ├── [[Portal:Dynamical_Systems]]
+│ └── [[Portal:Emergence_Patterns]]
+│
+├── Functional Portals
+│ ├── [[Portal:Quantitative_Methods]]
+│ ├── [[Portal:Qualitative_Methods]]
+│ ├── [[Portal:Mixed_Methods]]
+│ └── [[Portal:Computational_Analysis]]
+│
+└── Temporal Portals
+ ├── [[Portal:History_of_Systems_Thinking]]
+ ├── [[Portal:Evolution_of_Complexity]]
+ └── [[Portal:Future_of_Knowledge_Systems]]
+```
+
+=== 5.2 Portal Network Visualization ===
+
+<pre class="mermaid">
+graph TD
+    BC[BITCORE_Knowledge_Base]
+
+    BC --> SS[Portal_Systems_Science]
+    BC --> RM[Portal_Research_Methods]
+    BC --> KM[Portal_Knowledge_Management]
+
+    SS --> COMP[Portal_Complexity]
+    SS --> NET[Portal_Networks]
+    SS --> CYB[Portal_Cybernetics]
+    SS --> IT[Portal_Information_Theory]
+
+    RM --> QM[Portal_Quantitative_Methods]
+    RM --> QLM[Portal_Qualitative_Methods]
+    RM --> DS[Portal_Data_Science]
+
+    KM --> KG[Portal_Knowledge_Graphs]
+    KM --> ONTO[Portal_Ontologies]
+    KM --> SMW[Portal_Semantic_MediaWiki]
+
+    %% Cross connections
+    COMP --> NET
+    NET --> CYB
+    CYB --> IT
+    QM --> DS
+    QLM --> DS
+    KG --> ONTO
+    ONTO --> SMW
+</pre>
+
+----
+== 6. Technical Implementation ==
+
+=== 6.1 MediaWiki Configuration ===
+
+```php
+// LocalSettings.php additions for BITwiki portals
+
+// Enable portal namespace
+$wgExtraNamespaces[100] = "Portal";
+$wgExtraNamespaces[101] = "Portal_talk";
+
+// Portal-specific settings
+$wgPortalNavigationCacheExpiry = 3600; // 1 hour
+$wgPortalSelectedArticlePoolSize = 50;
+$wgPortalAutoRotationEnabled = true;
+```
+
+=== 6.2 Template Structure ===
+
+```markdown
+<!-- Template:Portal header -->
+{{Portal header
+ | name = {{{name}}}
+ | image = {{{image}}}
+ | description = {{{description}}}
+ | parent = {{{parent}}}
+}}
+
+<!-- Template:Portal selected article -->
+{{Portal selected article
+ | article = {{{article}}}
+ | excerpt = {{{excerpt}}}
+ | image = {{{image}}}
+}}
+
+<!-- Template:Portal categories -->
+{{Portal categories
+ | root = {{{root_category}}}
+ | depth = adaptive
+}}
+
+<!-- Template:Portal related -->
+{{Portal related
+ | portals = {{{portal_list}}}
+}}
+```
+
+=== 6.3 Category Structure (JSON) ===
+
+```json
+{
+ "portal": "Systems_science",
+ "root_category": "Systems Science",
+ "taxonomy": {
+ "concepts": {
+ "name": "Systems Science Concepts",
+ "subcategories": [
+ "Emergence",
+ "Feedback Loops",
+ "Self-Organization",
+ "Adaptation"
+ ]
+ },
+ "theories": {
+ "name": "Systems Theories",
+ "subcategories": [
+ "General Systems Theory",
+ "Complexity Theory",
+ "Cybernetics",
+ "Chaos Theory"
+ ]
+ },
+ "methods": {
+ "name": "Systems Methods",
+ "subcategories": [
+ "Systems Analysis",
+ "Systems Dynamics",
+ "Network Analysis",
+ "Agent-Based Modeling"
+ ]
+ }
+ }
+}
+```
+
+----
+== 7. Maintenance & Governance ==
+
+=== 7.1 Portal Maintenance Roles ===
+
+| Role | Responsibilities | Frequency |
+|------|-----------------|-----------|
+| '''Portal Curator''' | Content selection, quality review | Ongoing |
+| '''Taxonomy Steward''' | Category management, restructuring | As needed |
+| '''Link Manager''' | Cross-portal link maintenance | Periodic |
+| '''Technical Admin''' | Template updates, automation | As needed |
+
+=== 7.2 Quality Indicators ===
+
+| Metric | Indicator | Measurement |
+|--------|-----------|-------------|
+| Portal freshness | Content currency | Update frequency |
+| Link validity | Connection health | Working cross-portal links |
+| Category coverage | Taxonomic completeness | Article categorization |
+| User engagement | Interaction depth | Time on portal pages |
+
+----
+== 8. Integration with BITwiki Systems ==
+
+=== 8.1 Front Matter Integration ===
+* [[BITwiki_How_to_Navigate.wiki]] - Portal navigation guide
+* [[BITwiki_Start_Here.wiki]] - Entry point with portal links
+* [[BITwiki_Naming_Conventions.wiki]] - Portal naming standards
+
+=== 8.2 Ontology Integration ===
+* [[BITwiki_Ontology_Index.wiki]] - Portal taxonomy alignment
+* [[BITwiki_Taxonomy_Architecture.wiki]] - Category structure
+* [[BITwiki_Semantic_Patterns.wiki]] - Portal semantic markup
+
+=== 8.3 Governance Integration ===
+* [[BITwiki_Community_Portal.wiki]] - Portal maintenance coordination
+* [[BITwiki_Administrator_Guide.wiki]] - Portal administration
+
+----
+== 9. References ==
+
+# Wikipedia Systems Research: `hyperion/research/wikipedia_systems/bitwiki_portal_spec.md`
+# Wikipedia Systems Research: `hyperion/research/wikipedia_systems/portal_hierarchy.md`
+# Wikipedia Systems Research: `hyperion/research/wikipedia_systems/interconnection_graph.md`
+# BITwiki Navigation: [[BITwiki_How_to_Navigate.wiki]]
+# BITwiki Ontology: [[BITwiki_Ontology_Index.wiki]]
+
+----
+''Portal architecture specification integrating Wikipedia Systems research into BITwiki navigation framework.''
+
+
+
+
+== 9. References ==
+
+# Wikipedia Systems Research: `hyperion/research/wikipedia_systems/bitwiki_portal_spec.md`
+# Wikipedia Systems Research: `hyperion/research/wikipedia_systems/portal_hierarchy.md`
+# Wikipedia Systems Research: `hyperion/research/wikipedia_systems/interconnection_graph.md`
+# BITwiki Navigation: [[BITwiki_How_to_Navigate.wiki]]
+# BITwiki Ontology: [[BITwiki_Ontology_Index.wiki]]
+
+----
+''Portal architecture specification integrating Wikipedia Systems research into BITwiki navigation framework.''

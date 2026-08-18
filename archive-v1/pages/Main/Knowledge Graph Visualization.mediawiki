@@ -1,0 +1,513 @@
+{{Infobox
+| title = Knowledge Graph Visualization: Rendering Recursive Knowledge
+| description = Technical guide for visualizing BITwiki knowledge graphs including force-directed layouts, hierarchical views, and epistemic filtering.
+| type = technical-guide
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: technical-guide
+domain: visualization
+| workflow = state: Active
+| sources = - "https://d3js.org/"
+- "https://en.wikipedia.org/wiki/Force-directed_graph_drawing"
+- "https://en.wikipedia.org/wiki/Graph_drawing"
+- "https://www.semantic-mediawiki.org/wiki/Help:Result_formats"
+- "https://en.wikipedia.org/wiki/Network_visualization"
+- "https://visjs.org/"
+- "https://en.wikipedia.org/wiki/Social_network_analysis"
+- "https://www.mediawiki.org/wiki/Extension:Graph"
+- "https://en.wikipedia.org/wiki/Information_visualization"
+- "https://en.wikipedia.org/wiki/Knowledge_representation_and_reasononing"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Technical Guide]]
+[[Category:BITwiki Visualization]]
+[[Category:Hyperion Workspace]]
+
+
+= Knowledge Graph Visualization: Rendering Recursive Knowledge =
+
+== Executive Summary
+
+This guide documents methods for visualizing BITwiki knowledge graphs, including force-directed layouts, hierarchical views, temporal animations, and epistemic filtering.
+
+'''Purpose:''' Transform SMW query results into visual knowledge representations that surface patterns, relationships, and epistemic quality.
+
+----
+== 1. Visualization Principles
+
+=== 1.1 Epistemic Transparency in Visualization
+
+Visualizations must preserve epistemic information:
+* '''Node color:''' Epistemic status (Axiomatic=gold, Established=green, Emerging=yellow, Hypothetical=gray, Contested=red)
+* '''Node size:''' Confidence score (larger = higher confidence)
+* '''Edge thickness:''' Relationship strength
+* '''Edge style:''' Relationship type (solid=implements, dashed=related, dotted=contradicts)
+
+=== 1.2 Recursive Visualization
+
+Visualizations should show:
+* '''Self-reference:''' Entities that reference themselves
+* '''Cycles:''' Circular dependency chains
+* '''Emergence:''' Higher-order patterns from simple rules
+* '''Evolution:''' Temporal changes in the graph
+
+=== 1.3 Interaction Patterns
+
+'''Required Interactions:'''
+* Zoom and pan
+* Node selection (show details)
+* Filter by epistemic status
+* Filter by confidence threshold
+* Highlight paths between nodes
+* Expand/collapse clusters
+
+----
+== 2. Layout Algorithms
+
+=== 2.1 Force-Directed Layout
+
+'''Best for:''' General exploration, community detection
+
+'''Algorithm:'''
+* Nodes repel each other (Coulomb's law)
+* Edges attract connected nodes (Hooke's law)
+* Iterative optimization until equilibrium
+
+'''BITwiki Adaptation:'''
+* Confidence as node mass (higher confidence = larger mass)
+* Epistemic status as charge (Axiomatic repels more)
+* Relationship type as spring constant
+
+'''D3.js Implementation:'''
+```javascript
+const simulation = d3.forceSimulation(nodes)
+  .force("charge", d3.forceManyBody()
+    .strength(d => -300 * d.confidence))
+  .force("link", d3.forceLink(links)
+    .id(d => d.id)
+    .strength(d => d.relationshipStrength))
+  .force("center", d3.forceCenter(width / 2, height / 2));
+```
+
+=== 2.2 Hierarchical Layout
+
+'''Best for:''' Taxonomies, ontologies, dependency chains
+
+'''Algorithm:'''
+* Tree or DAG layout
+* Parent nodes above children
+* Minimize edge crossings
+
+'''BITwiki Adaptation:'''
+* Has parent concept → hierarchical edge
+* Domain → top-level nodes
+* Confidence → vertical position (higher = higher)
+
+'''Implementation:'''
+```javascript
+const treeLayout = d3.tree()
+  .size([width, height]);
+
+const root = d3.hierarchy(data);
+treeLayout(root);
+```
+
+=== 2.3 Radial Layout
+
+'''Best for:''' Central concepts with related entities
+
+'''Algorithm:'''
+* Central node at origin
+* Related nodes on concentric circles
+* Distance from center = relationship depth
+
+'''BITwiki Adaptation:'''
+* Query entity at center
+* Related entities by distance
+* Epistemic status as angular position
+
+=== 2.4 Temporal Layout
+
+'''Best for:''' Evolution tracking, version history
+
+'''Algorithm:'''
+* X-axis = time
+* Y-axis = confidence or quality
+* Nodes positioned by creation/modification date
+
+'''BITwiki Adaptation:'''
+* Creation date → X position
+* Confidence → Y position
+* Epistemic status → color
+* Size → citation count
+
+----
+== 3. SMW Integration
+
+=== 3.1 Query-to-Graph Pipeline
+
+'''Step 1: SMW Query'''
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|?Has title
+|?Has epistemic status
+|?Has confidence
+|?Has related entity
+|format=json
+}}
+```
+
+'''Step 2: Data Transformation'''
+```javascript
+function smwToGraph(smwData) {
+  const nodes = smwData.results.map(result => ({
+    id: result.fulltext,
+    label: result.printouts["Has title"][0],
+    epistemicStatus: result.printouts["Has epistemic status"][0],
+    confidence: parseFloat(result.printouts["Has confidence"][0])
+  }));
+  
+  const edges = smwData.results.flatMap(result => 
+    result.printouts["Has related entity"].map(related => ({
+      source: result.fulltext,
+      target: related.fulltext,
+      type: "related"
+    }))
+  );
+  
+  return { nodes, edges };
+}
+```
+
+'''Step 3: Visualization Rendering'''
+```javascript
+const svg = d3.select("#graph-container")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+// Render nodes and edges using D3
+```
+
+=== 3.2 Embedded Visualization
+
+'''SMW Result Format:'''
+```mediawiki
+{{#ask: [[Has entity type::Concept]]
+|?Has title
+|?Has confidence
+|format=jqplotchart
+|charttype=bubble
+|charttitle=Concept Confidence Distribution
+}}
+```
+
+'''Custom Result Format:'''
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|?Has title
+|?Has epistemic status
+|?Has confidence
+|?Has related entity
+|format=bitwiki-graph
+|layout=force
+|width=800
+|height=600
+}}
+```
+
+----
+== 4. Visualization Types
+
+=== 4.1 Entity Network
+
+'''Purpose:''' Show relationships between entities
+
+'''Features:'''
+* Nodes = entities
+* Edges = relationships
+* Color = epistemic status
+* Size = confidence
+
+'''Use Case:''' Explore concept dependencies
+
+=== 4.2 Epistemic Landscape
+
+'''Purpose:''' Show confidence distribution
+
+'''Features:'''
+* X-axis = confidence
+* Y-axis = entity count
+* Color = epistemic status
+* Interactive filtering
+
+'''Use Case:''' Identify knowledge gaps
+
+=== 4.3 Temporal Evolution
+
+'''Purpose:''' Show knowledge development over time
+
+'''Features:'''
+* X-axis = time
+* Y-axis = confidence/quality
+* Animation of changes
+* Version comparison
+
+'''Use Case:''' Track epistemic progress
+
+=== 4.4 Domain Map
+
+'''Purpose:''' Show knowledge organization by domain
+
+'''Features:'''
+* Treemap or sunburst
+* Hierarchical domains
+* Entity density
+* Quality heatmap
+
+'''Use Case:''' Assess domain coverage
+
+=== 4.5 Provenance Graph
+
+'''Purpose:''' Show knowledge derivation
+
+'''Features:'''
+* Nodes = entities and sources
+* Edges = derivation relationships
+* Source quality indicators
+* Verification status
+
+'''Use Case:''' Audit knowledge origins
+
+----
+== 5. Implementation Examples
+
+=== 5.1 D3.js Force-Directed Graph
+
+```html
+<div id="graph"></div>
+<script>
+const width = 800, height = 600;
+
+const colorScale = {
+  "Axiomatic": "#FFD700",
+  "Established": "#00AA00",
+  "Emerging": "#FFAA00",
+  "Hypothetical": "#888888",
+  "Contested": "#FF0000"
+};
+
+const svg = d3.select("#graph")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+// Load data from SMW API
+fetch('/api.php?action=ask&query=...&format=json')
+  .then(response => response.json())
+  .then(data => {
+    const graph = smwToGraph(data);
+    renderGraph(graph);
+  });
+
+function renderGraph(graph) {
+  const simulation = d3.forceSimulation(graph.nodes)
+    .force("link", d3.forceLink(graph.edges).id(d => d.id))
+    .force("charge", d3.forceManyBody().strength(-300))
+    .force("center", d3.forceCenter(width / 2, height / 2));
+  
+  const link = svg.append("g")
+    .selectAll("line")
+    .data(graph.edges)
+    .enter().append("line")
+    .attr("stroke", "#999")
+    .attr("stroke-opacity", 0.6);
+  
+  const node = svg.append("g")
+    .selectAll("circle")
+    .data(graph.nodes)
+    .enter().append("circle")
+    .attr("r", d => 5 + d.confidence * 10)
+    .attr("fill", d => colorScale[d.epistemicStatus])
+    .call(d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended));
+  
+  simulation.on("tick", () => {
+    link
+      .attr("x1", d => d.source.x)
+      .attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x)
+      .attr("y2", d => d.target.y);
+    
+    node
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y);
+  });
+}
+</script>
+```
+
+=== 5.2 MediaWiki Graph Extension
+
+```mediawiki
+<graph mode="interactive">
+{
+  "version": 2,
+  "width": 800,
+  "height": 600,
+  "data": [
+    {
+      "name": "nodes",
+      "values": [
+        {"id": 1, "label": "BITwiki", "status": "Established", "confidence": "Established"},
+        {"id": 2, "label": "SMW", "status": "Established", "confidence": "Established"}
+      ]
+    },
+    {
+      "name": "edges",
+      "values": [
+        {"source": 1, "target": 2, "type": "implements"}
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "type": "symbol",
+      "from": {"data": "nodes"},
+      "properties": {
+        "x": {"scale": "x", "field": "id"},
+        "y": {"scale": "y", "field": "confidence"},
+        "fill": {"scale": "color", "field": "status"},
+        "size": {"scale": "size", "field": "confidence"}
+      }
+    }
+  ]
+}
+</graph>
+```
+
+----
+== 6. Interaction Design
+
+=== 6.1 Filtering Controls
+
+'''Epistemic Status Filter:'''
+```javascript
+const statusFilter = d3.select("#controls")
+  .append("select")
+  .on("change", function() {
+    const selected = this.value;
+    node.style("display", d => 
+      selected === "all" || d.epistemicStatus === selected ? "block" : "none");
+  });
+
+statusFilter.selectAll("option")
+  .data(["all", "Axiomatic", "Established", "Emerging", "Hypothetical", "Contested"])
+  .enter().append("option")
+  .attr("value", d => d)
+  .text(d => d);
+```
+
+'''Confidence Threshold Slider:'''
+```javascript
+const confidenceSlider = d3.select("#controls")
+  .append("input")
+  .attr("type", "range")
+  .attr("min", 0)
+  .attr("max", 1)
+  .attr("step", 0.1)
+  .on("input", function() {
+    const threshold = parseFloat(this.value);
+    node.style("opacity", d => d.confidence >= threshold ? 1 : 0.2);
+  });
+```
+
+=== 6.2 Node Details on Hover
+
+```javascript
+node.on("mouseover", function(event, d) {
+  const tooltip = d3.select("#tooltip");
+  tooltip.style("visibility", "visible")
+    .html(`
+      <strong>${d.label}</strong><br/>
+      Status: ${d.epistemicStatus}<br/>
+      Confidence: ${d.confidence}<br/>
+      Domain: ${d.domain}
+    `)
+    .style("left", (event.pageX + 10) + "px")
+    .style("top", (event.pageY + 10) + "px");
+});
+```
+
+=== 6.3 Path Highlighting
+
+```javascript
+function highlightPath(sourceId, targetId) {
+  // Find shortest path using Dijkstra's algorithm
+  const path = findShortestPath(graph, sourceId, targetId);
+  
+  // Highlight path edges
+  link.attr("stroke", d => 
+    path.includes(d) ? "#FF0000" : "#999");
+  
+  // Highlight path nodes
+  node.attr("stroke", d => 
+    path.nodes.includes(d.id) ? "#FF0000" : "none");
+}
+```
+
+----
+== 7. Performance Optimization
+
+=== 7.1 Large Graph Handling
+
+'''Strategies:'''
+* Level-of-detail rendering
+* Clustering for overview
+* Progressive loading
+* WebGL for >1000 nodes
+
+'''Implementation:'''
+```javascript
+// Cluster nodes by domain
+const clusters = d3.group(graph.nodes, d => d.domain);
+
+// Render clusters instead of individual nodes
+const clusterNodes = Array.from(clusters, ([key, values]) => ({
+  id: key,
+  size: values.length,
+  confidence: d3.mean(values, d => d.confidence)
+}));
+```
+
+=== 7.2 Animation Performance
+
+'''Best Practices:'''
+* Use requestAnimationFrame
+* Limit simultaneous animations
+* Debounce interaction handlers
+* Use CSS transitions where possible
+
+----
+== Conclusion
+
+Knowledge graph visualization transforms BITwiki's semantic data into explorable visual landscapes. By encoding epistemic information visually, users can assess knowledge quality at a glance and navigate complex relationships intuitively.
+
+'''Key Principles:'''
+* Preserve epistemic information in visual encoding
+* Support multiple layout algorithms for different tasks
+* Enable interactive filtering and exploration
+* Optimize for performance with large graphs
+
+'''Next Steps:'''
+# Implement D3.js visualization components
+# Create SMW result format for graphs
+# Develop interactive dashboard
+# Deploy visualization gallery

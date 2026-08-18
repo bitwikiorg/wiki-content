@@ -1,0 +1,93 @@
+{
+  "title": "Doc",
+  "namespace": 0,
+  "pageid": 204,
+  "revision_count": 5,
+  "revisions": [
+    {
+      "revid": 526,
+      "parentid": 389,
+      "minor": true,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:35:10Z",
+      "size": 1299,
+      "sha1": "c8c480121b68c9bdae61e2aec31481684b6582dd",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "= Template:Infobox Project =\n\n== Purpose ==\nDisplay project information with lifecycle tracking and SMW property generation.\n\n== Parameters ==\n\n{| class=\"wikitable\"\n! Parameter !! Type !! Required !! Description\n|-\n| name || string || Yes || Display name of project\n| description || string || Yes || Core description text\n| status || enum || Yes || Proposed, Planning, Active, On Hold, Completed, Cancelled\n| lead || string || No || Project lead person/entity\n| domain || string || No || Subject domain\n| start_date || string || No || Project start date\n| end_date || string || No || Project end date (if completed)\n| deliverables || string || No || Comma-separated list of deliverables\n| related_projects || string || No || Comma-separated list of related projects\n|}\n\n== Examples ==\n\n=== Basic Usage ===\n<pre>\n{{Infobox Project\n|name=BITWIKI Migration\n|description=Migrate content to MediaWiki/SMW\n|status=Active\n|lead=BITCORE\n}}\n</pre>\n\n== SMW Properties Generated ==\n'' [[Has entity type::Project]]\n'' [[Has name::]]\n'' [[Has description::]]\n'' [[Has status::]]\n'' [[Has lead::]] (if provided)\n'' [[Has start date::]] (if provided)\n'' [[Has end date::]] (if provided)\n\n== See Also ==\n'' [[Template:Infobox Implementation]]\n* [[Template:Infobox Idea]]\n\n[[Category:BITwiki Template Documentation]]"
+        }
+      },
+      "comment": "BITCOREOS moved page [[Doc final]] to [[Doc]]: Removing 'final' suffix from title"
+    },
+    {
+      "revid": 389,
+      "parentid": 387,
+      "minor": false,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:19:50Z",
+      "size": 1299,
+      "sha1": "c8c480121b68c9bdae61e2aec31481684b6582dd",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "= Template:Infobox Project =\n\n== Purpose ==\nDisplay project information with lifecycle tracking and SMW property generation.\n\n== Parameters ==\n\n{| class=\"wikitable\"\n! Parameter !! Type !! Required !! Description\n|-\n| name || string || Yes || Display name of project\n| description || string || Yes || Core description text\n| status || enum || Yes || Proposed, Planning, Active, On Hold, Completed, Cancelled\n| lead || string || No || Project lead person/entity\n| domain || string || No || Subject domain\n| start_date || string || No || Project start date\n| end_date || string || No || Project end date (if completed)\n| deliverables || string || No || Comma-separated list of deliverables\n| related_projects || string || No || Comma-separated list of related projects\n|}\n\n== Examples ==\n\n=== Basic Usage ===\n<pre>\n{{Infobox Project\n|name=BITWIKI Migration\n|description=Migrate content to MediaWiki/SMW\n|status=Active\n|lead=BITCORE\n}}\n</pre>\n\n== SMW Properties Generated ==\n'' [[Has entity type::Project]]\n'' [[Has name::]]\n'' [[Has description::]]\n'' [[Has status::]]\n'' [[Has lead::]] (if provided)\n'' [[Has start date::]] (if provided)\n'' [[Has end date::]] (if provided)\n\n== See Also ==\n'' [[Template:Infobox Implementation]]\n* [[Template:Infobox Idea]]\n\n[[Category:BITwiki Template Documentation]]"
+        }
+      },
+      "comment": "BITwiki content upload (130/148)"
+    },
+    {
+      "revid": 387,
+      "parentid": 385,
+      "minor": false,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:19:30Z",
+      "size": 1169,
+      "sha1": "ce300cb187752d00108cd15df3a6036a252604d8",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "= Template:Infobox Implementation =\n\n== Purpose ==\nDisplay implementation information with status tracking and SMW property generation.\n\n== Parameters ==\n\n{| class=\"wikitable\"\n! Parameter !! Type !! Required !! Description\n|-\n| name || string || Yes || Display name of implementation\n| description || string || Yes || Core description text\n| status || enum || Yes || Proposed, In Development, Active, Deprecated, Archived\n| technology || string || No || Primary technology used\n| originator || string || No || Person/entity who created implementation\n| domain || string || No || Subject domain\n| related_implementations || string || No || Comma-separated list of related implementations\n|}\n\n== Examples ==\n\n=== Basic Usage ===\n<pre>\n{{Infobox Implementation\n|name=BITCORE Engine\n|description=Recursive AI agent framework\n|status=Active\n|technology=Python, FastAPI\n}}\n</pre>\n\n== SMW Properties Generated ==\n'' [[Has entity type::Implementation]]\n'' [[Has name::]]\n'' [[Has description::]]\n'' [[Has status::]]\n'' [[Has technology::]] (if provided)\n\n== See Also ==\n'' [[Template:Infobox Project]]\n* [[Template:Infobox Concept]]\n\n[[Category:BITwiki Template Documentation]]"
+        }
+      },
+      "comment": "BITwiki content upload (128/148)"
+    },
+    {
+      "revid": 385,
+      "parentid": 383,
+      "minor": false,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:19:11Z",
+      "size": 1243,
+      "sha1": "727b018704c0dbcf5804094f8a55612465f40812",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "= Template:Infobox Idea =\n\n== Purpose ==\nDisplay idea information with epistemic validation and SMW property generation.\n\n== Parameters ==\n\n{| class=\"wikitable\"\n! Parameter !! Type !! Required !! Description\n|-\n| name || string || Yes || Display name of idea\n| description || string || Yes || Core description text\n| epistemic_status || enum || Yes || Hypothetical, Emerging, Established, Verified, Axiomatic\n| confidence_category || enum || No || High, Medium, Low, Unverified, Contested\n| originator || string || No || Person/entity who originated idea\n| domain || string || No || Subject domain\n| related_ideas || string || No || Comma-separated list of related ideas\n| implementations || string || No || Comma-separated list of implementations\n|}\n\n== Examples ==\n\n=== Basic Usage ===\n<pre>\n{{Infobox Idea\n|name=Recursive Intelligence\n|description=Intelligence that can improve itself\n|epistemic_status=Emerging\n|confidence_category=Medium\n}}\n</pre>\n\n== SMW Properties Generated ==\n'' [[Has entity type::Idea]]\n'' [[Has name::]]\n'' [[Has description::]]\n'' [[Has epistemic status::]]\n'' [[Has confidence category::]]\n\n== See Also ==\n'' [[Template:Infobox Concept]]\n* [[Template:Infobox Project]]\n\n[[Category:BITwiki Template Documentation]]"
+        }
+      },
+      "comment": "BITwiki content upload (126/148)"
+    },
+    {
+      "revid": 383,
+      "parentid": 0,
+      "minor": false,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:18:50Z",
+      "size": 2136,
+      "sha1": "5b6dbe50b9265d0bd8f82da4f5ae4035fd4770cc",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "= Template:Infobox Concept =\n\n== Purpose ==\nDisplay concept information with epistemic validation and SMW property generation.\n\n== Parameters ==\n\n{| class=\"wikitable\"\n! Parameter !! Type !! Required !! Description\n|-\n| name || string || Yes || Display name of concept\n| definition || string || Yes || Core definition text\n| epistemic_status || enum || Yes || Hypothetical, Emerging, Established, Verified, Axiomatic\n| confidence_category || enum || No || High, Medium, Low, Unverified, Contested\n| originator || string || No || Person/entity who originated concept\n| domain || string || No || Subject domain (e.g., Cybernetics)\n| related_concepts || string || No || Comma-separated list of related concepts\n| implementations || string || No || Comma-separated list of implementations\n| image || string || No || Image filename (without File: prefix)\n| caption || string || No || Image caption\n| origin_date || string || No || Date concept was originated\n|}\n\n== Examples ==\n\n=== Basic Usage ===\n<pre>\n{{Infobox Concept\n|name=Feedback Loop\n|definition=Process where outputs modify inputs\n|epistemic_status=Established\n|confidence_category=High\n}}\n</pre>\n\n=== Full Usage ===\n<pre>\n{{Infobox Concept\n|name=Autopoiesis\n|definition=A system capable of reproducing and maintaining itself\n|epistemic_status=Verified\n|confidence_category=High\n|originator=Humberto Maturana\n|domain=Cybernetics\n|related_concepts=Autonomy, Self-organization\n|origin_date=1972\n}}\n</pre>\n\n== SMW Properties Generated ==\n'' [[Has entity type::Concept]]\n'' [[Has name::]]\n'' [[Has definition::]]\n'' [[Has epistemic status::]]\n'' [[Has confidence category::]]\n'' [[Has originator::]] (if provided)\n'' [[Has domain::]] (if provided)\n\n== Validation ==\n'' name: Required, displays error if missing\n'' definition: Required, displays error if missing\n'' epistemic_status: Required, must be one of: Hypothetical, Emerging, Established, Verified, Axiomatic\n'' confidence_category: Optional, defaults to Unverified\n\n== See Also ==\n'' [[Template:Infobox Idea]]\n'' [[Template:Infobox Implementation]]\n'' [[BITwiki Epistemic Framework]]\n\n[[Category:BITwiki Template Documentation]]"
+        }
+      },
+      "comment": "BITwiki content upload (124/148)"
+    }
+  ]
+}

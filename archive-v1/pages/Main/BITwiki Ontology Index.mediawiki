@@ -1,0 +1,246 @@
+{{Infobox
+| title = BITwiki Ontology Index: Living Reference for Knowledge Structure
+| description = An evolving reference for BITwiki's ontology—entity types, properties, relationships, and semantic patterns that structure the knowledge graph. Not a fixed taxonomy but a substrate for emergence.
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-14
+| version = 2.1.0-revised
+| epistemic_status = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: ontology-index
+domain: knowledge-structure
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+
+
+= BITwiki Ontology Index: Living Reference for Knowledge Structure =
+
+== Etymology: The Study of Being ==
+
+''Ontology'' — from Greek ''ontos'' (being, present participle of ''einai'', to be) + ''logia'' (study of, from ''legein'', to speak). The study of being, of what exists, of the nature of existence itself.
+
+But what if existence is not static? What if being is becoming? This index treats ontology not as a fixed catalog of categories but as a living substrate—an evolving field of distinctions that emerge from use, stabilize through validation, and dissolve when no longer serviceable.
+
+== Purpose: Why Structure Matters ==
+
+This document serves as a reference point for BITwiki's ontology. It offers:
+* '''Orientation''': Ways to navigate the knowledge field
+* '''Vocabulary''': Shared language for describing entities
+* '''Patterns''': Recurring structures that facilitate query and discovery
+* '''Extension points''': Places where new distinctions can emerge
+
+It does not prescribe. It describes what has stabilized. It marks what remains provisional. It leaves space for what has not yet emerged.
+
+== Ontology Overview: An Evolving Field ==
+
+BITwiki's ontology consists of:
+* '''Canonical Entity Types''': Core categories that have achieved stability through use
+* '''Extended Entity Types''': Additional categories that serve specific domains
+* '''Core Properties''': Attributes that describe entities across types
+* '''Relationship Types''': Connections that weave entities into webs of meaning
+
+These are not fixed. They are sedimentations—temporary stabilizations from the flow of knowledge-making.
+
+== Entity Types: Modes of Crystallization ==
+
+=== Canonical Types ===
+
+These types have achieved stability through extensive use and cross-domain validation:
+
+| Type | Description | Example |
+|------|-------------|---------|
+| Topic | A subject domain or field of knowledge | Systems Science |
+| Idea | An abstract concept or theoretical construct | Feedback Loop |
+| Implementation | A concrete realization of an idea | Thermostat |
+| Project | An organized effort with defined goals | BITwiki Development |
+| Protocol | A prescribed procedure or set of rules | Validation Protocol |
+| Dataset | A structured collection of data | GenBank |
+
+'''Note''': These types emerged from use. They are not final. New types may crystallize; existing types may dissolve or transform.
+
+'''Details''': [[BITwiki Page Types]]
+
+=== Extended Types ===
+
+These types serve specific domains and may achieve pattern stability through validation:
+
+| Type | Description | Example |
+|------|-------------|---------|
+| Person | Individual human agent | Norbert Wiener |
+| Organization | Structured group of agents | MIT |
+| Event | Time-bounded occurrence | Macy Conferences |
+| Publication | Documented work | Cybernetics (1948) |
+| Location | Physical or virtual place | Cambridge, MA |
+| Technology | Tool or system | Semantic MediaWiki |
+
+'''Details''': [[BITwiki Expanded Entity Types]]
+
+== Core Properties: Dimensions of Description ==
+
+Properties are not final. They emerge from the need to describe, to differentiate, to query. The following properties have achieved stability:
+
+=== Identification ===
+
+| Property | Type | Purpose |
+|----------|------|---------|
+| Has entity type | Page | Classification into entity types |
+| Has name | Text | Human-readable identifier |
+| Has description | Text | Brief characterization |
+
+=== Epistemic ===
+
+| Property | Type | Purpose |
+|----------|------|---------|
+| Has epistemic status | Text | Validation tier (Hypothetical/Emerging/Established/Verified/Axiomatic) |
+| Has confidence | Text | Qualitative certainty assessment |
+| Has source count | Number | Distribution of validation sources |
+
+=== Provenance ===
+
+| Property | Type | Purpose |
+|----------|------|---------|
+| Has originator | Page | Initial crystallization agent |
+| Has date | Date | Moment of emergence |
+| Has source | URL | External validation trajectory |
+
+=== Workflow ===
+
+| Property | Type | Purpose |
+|----------|------|---------|
+| Has workflow state | Text | Current phase (Draft/Beta/Stable) |
+| Has version | Text | Version identifier |
+| Has validator | Page | Validation agent |
+
+'''Details''': [[Property Types]]
+
+== Relationship Types: Webs of Connection ==
+
+Relationships are paths through the knowledge field. They describe how entities influence, contain, depend upon, and validate each other.
+
+=== Structural ===
+
+| Relationship | From | To | Example |
+|--------------|------|-----|-----------|
+| Is a | Entity | Type | Feedback Loop is a Idea |
+| Part of | Part | Whole | Wheel part of Car |
+| Contains | Whole | Part | Car contains Wheel |
+
+=== Causal ===
+
+| Relationship | From | To | Example |
+|--------------|------|-----|-----------|
+| Causes | Cause | Effect | Stress causes Cortisol |
+| Depends on | Dependent | Dependency | App depends on Framework |
+| Enables | Enabler | Enabled | SMW enables Queries |
+
+=== Epistemic ===
+
+| Relationship | From | To | Example |
+|--------------|------|-----|-----------|
+| Supported by | Claim | Evidence | Theory supported by Data |
+| Contradicts | Claim | Claim | A contradicts B |
+| Implements | Concrete | Abstract | Thermostat implements Feedback |
+
+'''Details''': [[BITwiki Semantic Patterns]]
+
+== SMW Queries: Patterns of Discovery ==
+
+=== Entity Queries ===
+
+'''All Ideas:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]}}
+```
+
+'''Established Ideas:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has epistemic status::Established]]
+}}
+```
+
+'''Verified Claims:'''
+```wiki
+{{#ask: [[Has epistemic status::Verified]]}}
+```
+
+=== Property Queries ===
+
+'''All properties:'''
+```wiki
+{{#ask: [[Has type::+]]}}
+```
+
+'''Numeric properties:'''
+```wiki
+{{#ask: [[Has type::Number]]}}
+```
+
+=== Relationship Queries ===
+
+'''What implements Feedback Loop:'''
+```wiki
+{{#ask: [[Implements::Feedback Loop]]}}
+```
+
+'''What depends on X:'''
+```wiki
+{{#ask: [[Depends on::X]]}}
+```
+
+== Ontology Principles: Guidelines, Not Rules ==
+
+=== 1. Machine Readability ===
+
+Content should be machine-readable where possible:
+* Typed properties enable queries
+* Structured data facilitates export
+* Semantic markup supports discovery
+
+But readability serves human understanding. Never sacrifice clarity for structure.
+
+=== 2. Human Legibility ===
+
+Content should be human-legible:
+* Clear labels reduce cognitive load
+* Accessible language invites participation
+* Progressive disclosure respects attention
+* Visual hierarchy guides navigation
+
+=== 3. Extensibility ===
+
+Ontology should accommodate growth:
+* New types can emerge from use
+* New properties can be defined
+* Relationships can be customized
+* Queries can be adapted
+
+Extension is not failure of foresight. It is recognition that knowledge evolves.
+
+=== 4. Validation ===
+
+Ontology should be validated:
+* Property types can be checked
+* Constraints can be enforced
+* Consistency can be verified
+* Errors can be flagged
+
+Validation is service, not constraint. It helps maintain coherence without preventing innovation.
+
+== References ==
+
+# BITwiki Page Types. (2026). Canonical entity classifications.
+# BITwiki Expanded Entity Types. (2026). Extended classifications.
+# Property Types. (2026). SMW property reference.
+# BITwiki Semantic Patterns. (2026). Relationship documentation.
+# Semantic MediaWiki. (2026). Technical documentation.
+# W3C. (2014). RDF Schema 1.1.
+# OWL 2 Web Ontology Language. (2012).
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+# Smith, B. (2003). Ontology.
+# BITwiki Constitution. (2026). Foundational principles.
+
+[[Has page type::Ontology Index]]
+[[Has epistemic tier::Established]]

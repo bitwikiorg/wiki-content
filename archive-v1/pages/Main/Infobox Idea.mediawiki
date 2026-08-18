@@ -1,0 +1,171 @@
+{{Infobox
+| title = Infobox Idea: Template for Idea Documentation
+| description = Standardized infobox template for documenting ideas in BITwiki with validation, TemplateStyles CSS isolation, and parser function validation.
+| type = template
+| author = BITCORE
+| created = 2026-02-12
+| version = 3.established
+| epistemic_status = Established
+| confidence = established
+| license = CC-BY-SA-4.0
+| modified = 2026-02-13
+| ontology = entity_type: infobox-template
+domain: idea-documentation
+| workflow = state: Beta
+}}
+
+{{Documentation}}
+[[Category:BITwiki Templates]]
+[[Category:Infobox Templates]]
+
+
+
+<templatestyles src="Template:Infobox_Idea/styles.css" />
+
+
+{{#if: {{{name|}}}
+| 
+| <div class="infobox-idea error-box">Error: Missing required parameter name. [[Category:Infobox Idea missing name]]</div>
+}}
+
+{{#if: {{{definition|}}}
+| 
+| <div class="infobox-idea error-box">Error: Missing required parameter definition. [[Category:Infobox Idea missing definition]]</div>
+}}
+
+{{#if: {{{epistemic_status|}}}
+| 
+{{#switch: {{{epistemic_status}}}
+| Hypothetical = 
+| Emerging = 
+| Established = 
+| Verified = 
+| Axiomatic = 
+| #default = <div class="infobox-idea error-box">Error: Invalid epistemic_status. Must be: Hypothetical, Emerging, Established, Verified, or Axiomatic. [[Category:Infobox Idea invalid epistemic status]]</div>
+}}
+| <div class="infobox-idea error-box">Error: Missing required parameter epistemic_status. [[Category:Infobox Idea missing epistemic status]]</div>
+}}
+
+{{#if: {{{confidence_score|}}}
+| 
+{{#ifexpr: {{{confidence_score}}} >= 0 and {{{confidence_score}}} <= 1
+| 
+| <div class="infobox-idea error-box">Error: confidence_score must be between established and 1.0. [[Category:Infobox Idea invalid confidence]]</div>
+}}
+| <div class="infobox-idea error-box">Error: Missing required parameter confidence_score. [[Category:Infobox Idea missing confidence]]</div>
+}}
+
+
+<div class="infobox-idea">
+<div class="infobox-header">Idea: {{{name|{{PAGENAME}}}}}</div>
+
+{{#if: {{{image|}}}
+| <div class="infobox-image">[[File:{{{image}}}|frameless|upright=1.0|{{#if: {{{caption|}}}|{{{caption}}}|Image of {{{name|{{PAGENAME}}}}}}}]]</div>
+{{#if: {{{caption|}}}
+| <div class="infobox-caption">{{{caption}}}</div>
+}}
+}}
+
+<div class="infobox-section">
+<div class="infobox-label">Definition</div>
+<div class="infobox-value">{{{definition|Not provided}}}</div>
+</div>
+
+{{#if: {{{originator|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Originator</div>
+<div class="infobox-value">[[{{{originator}}}]]</div>
+</div>
+}}
+
+{{#if: {{{origin_date|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Origin Date</div>
+<div class="infobox-value">{{{origin_date}}}</div>
+</div>
+}}
+
+{{#if: {{{field|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Field</div>
+<div class="infobox-value">[[{{{field}}}]]</div>
+</div>
+}}
+
+{{#if: {{{related_ideas|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Related Ideas</div>
+<div class="infobox-value">{{{related_ideas}}}</div>
+</div>
+}}
+
+{{#if: {{{implementations|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Implementations</div>
+<div class="infobox-value">{{{implementations}}}</div>
+</div>
+}}
+
+{{#if: {{{criticisms|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Criticisms</div>
+<div class="infobox-value">{{{criticisms}}}</div>
+</div>
+}}
+
+<div class="infobox-section epistemic-section">
+<div class="infobox-label">Epistemic Status</div>
+<div class="infobox-value epistemic-{{#switch: {{{epistemic_status|Unknown}}
+| Hypothetical = hypothetical
+| Emerging = emerging
+| Established = established
+| Verified = verified
+| Axiomatic = axiomatic
+| #default = unknown
+}}">{{{epistemic_status|Unknown}}}</div>
+</div>
+
+{{#if: {{{confidence_score|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Confidence Score</div>
+<div class="infobox-value">{{#expr: {{{confidence_score}}} * 100 round 0}}%</div>
+</div>
+}}
+
+{{#if: {{{source_count|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Source Count</div>
+<div class="infobox-value">{{{source_count}}}</div>
+</div>
+}}
+
+</div>
+
+
+
+{{#if: {{{name|}}}
+| {{#if: {{{definition|}}}
+| {{#if: {{{epistemic_status|}}}
+| {{#if: {{{confidence_score|}}}
+| {{#ifexpr: {{{confidence_score}}} >= 0 and {{{confidence_score}}} <= 1
+| 
+[[Has entity type::Idea]]
+[[Has name::{{{name|{{PAGENAME}}}}}]]
+[[Has definition::{{{definition}}}]]
+{{#if: {{{originator|}}}|[[Has originator::{{{originator}}}]]}}
+{{#if: {{{origin_date|}}}|[[Has origin date::{{{origin_date}}}]]}}
+{{#if: {{{field|}}}|[[Has field::{{{field}}}]]}}
+[[Has epistemic status::{{{epistemic_status}}}]]
+[[Has confidence trajectory::{{{confidence_score}}}]]
+{{#if: {{{source_count|}}}|[[Has source count::{{{source_count}}}]]}}
+[[Has template version::3.established]]
+| 
+}}
+| 
+}}
+| 
+}}
+| 
+}}
+| 
+}}

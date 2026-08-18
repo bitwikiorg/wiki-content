@@ -1,0 +1,425 @@
+{{Infobox
+| title = Epistemic Audit Framework: Systematic Knowledge Quality Assessment
+| description = Framework for auditing BITwiki content epistemic quality, including confidence calibration, source verification, and bias detection protocols.
+| type = validation-framework
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: validation-framework
+domain: epistemic-audit
+| workflow = state: Active
+| sources = - "https://en.wikipedia.org/wiki/Epistemology"
+- "https://plato.stanford.edu/entries/epistemology/"
+- "https://www.lesswrong.com/posts/7g8Q9jJzG3wD9z9Xz/calibration"
+- "https://en.wikipedia.org/wiki/Confirmation_bias"
+- "https://en.wikipedia.org/wiki/Source_criticism"
+- "https://plato.stanford.edu/entries/scientific-method/"
+- "https://en.wikipedia.org/wiki/Falsifiability"
+- "https://www.rationality.org/wiki/Calibration"
+- "https://en.wikipedia.org/wiki/Cognitive_bias"
+- "https://plato.stanford.edu/entries/social-epistemology/"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Validation]]
+[[Category:BITwiki Epistemics]]
+[[Category:Hyperion Workspace]]
+
+
+= Epistemic Audit Framework: Systematic Knowledge Quality Assessment =
+
+== Executive Summary
+
+This framework provides systematic procedures for auditing BITwiki content epistemic quality. It addresses confidence calibration, source verification, bias detection, and falsification condition assessment.
+
+'''Purpose:''' Ensure all BITwiki content meets epistemic transparency standards and accurately reflects evidence quality.
+
+----
+== 1. Audit Dimensions
+
+=== 1.1 Confidence Calibration
+
+'''Definition:''' The alignment between stated confidence and actual accuracy.
+
+'''Audit Procedure:'''
+# Sample claims with stated confidence scores
+# Verify against primary sources
+# Calculate calibration curve
+# Identify systematic over/under-confidence
+
+'''Calibration Standards:'''
+
+| Stated Confidence | Expected Accuracy | Tolerance |
+|-------------------|-------------------|-----------|
+| 0.9-1.0 | 90-100% | ±5% |
+| 0.7-0.89 | 70-89% | ±10% |
+| 0.5-0.69 | 50-69% | ±15% |
+| 0.3-0.49 | 30-49% | ±20% |
+| <0.3 | <30% | ±25% |
+
+'''Red Flags:'''
+* Confidence >0.9 without primary sources
+* Confidence >0.8 without falsification conditions
+* All claims by author have confidence >0.85 (overconfidence pattern)
+* Confidence never changes despite new evidence
+
+=== 1.2 Source Verification
+
+'''Definition:''' The validity and relevance of cited sources.
+
+'''Audit Procedure:'''
+# Extract all citations from content
+# Verify source existence and accessibility
+# Assess source quality per hierarchy
+# Check for citation-context alignment
+
+'''Source Hierarchy Verification:'''
+
+| Tier | Criteria | Verification Method |
+|------|----------|---------------------|
+| T1 | Primary sources, raw data | Direct access verification |
+| T2 | Peer-reviewed research | DOI/citation verification |
+| T3 | Expert synthesis | Author credential verification |
+| T4 | Secondary sources | Cross-reference verification |
+| T5 | Tertiary sources | Multiple source comparison |
+
+'''Red Flags:'''
+* T4/T5 sources cited for empirical claims
+* Circular citations (A cites B cites A)
+* Dead links without archival alternatives
+* Sources that don't support cited claims
+
+=== 1.3 Falsification Conditions
+
+'''Definition:''' Explicit conditions under which claims would be proven false.
+
+'''Audit Procedure:'''
+# Identify all empirical claims
+# Check for falsification conditions
+# Assess testability
+# Verify prediction track record
+
+'''Falsification Standards:'''
+
+| Claim Type | Required Falsification |
+|------------|------------------------|
+| Empirical | Specific observation that would disprove |
+| Theoretical | Logical contradiction or failed prediction |
+| Historical | Documentary evidence contradicting |
+| Mathematical | Counter-example or proof of contradiction |
+
+'''Red Flags:'''
+* No falsification conditions stated
+* Falsification conditions are impossible (e.g., "if logic fails")
+* Moving goalposts (conditions change when tested)
+* Unfalsifiable claims presented as fact
+
+=== 1.4 Bias Detection
+
+'''Definition:''' Systematic deviation from accuracy due to cognitive or structural factors.
+
+'''Audit Procedure:'''
+# Analyze content for bias indicators
+# Check author contribution patterns
+# Assess topic coverage balance
+# Evaluate framing and language
+
+'''Bias Indicators:'''
+
+| Type | Indicator | Detection Method |
+|------|-----------|------------------|
+| Confirmation | Only supporting evidence cited | Citation balance analysis |
+| Availability | Recent/salient events overweighted | Temporal distribution check |
+| Authority | Credential-based over evidence-based | Source quality vs. claim strength |
+| Selection | Cherry-picked data | Full dataset verification |
+| Framing | Loaded language | Linguistic analysis |
+
+'''Red Flags:'''
+* Only one perspective represented
+* Opposing views straw-manned
+* Emotional language for contested claims
+* Absence of uncertainty markers
+
+----
+== 2. Audit Protocols
+
+=== 2.1 Random Sampling Audit
+
+'''Purpose:''' General quality assessment across corpus.
+
+'''Procedure:'''
+# Randomly select 5% of pages
+# Apply all four audit dimensions
+# Score each page 0-4 per dimension
+# Aggregate and analyze patterns
+
+'''Scoring:'''
+* 4: Exceeds standards
+* 3: Meets standards
+* 2: Minor issues
+* 1: Major issues
+* 0: Critical failures
+
+=== 2.2 Targeted Audit
+
+'''Purpose:''' Deep assessment of specific content areas.
+
+'''Triggers:'''
+* High-traffic pages
+* Contested content
+* Recent major edits
+* User reports
+
+'''Procedure:'''
+# Select target pages
+# Apply intensive audit (all dimensions)
+# Document specific issues
+# Recommend remediation
+
+=== 2.3 Author Audit
+
+'''Purpose:''' Assess individual contributor patterns.
+
+'''Procedure:'''
+# Select author contribution sample
+# Analyze confidence calibration
+# Check source quality patterns
+# Assess bias indicators
+
+'''Privacy Note:''' Author audits are for quality improvement, not punishment. Focus on patterns, not individual errors.
+
+=== 2.4 Temporal Audit
+
+'''Purpose:''' Track quality changes over time.
+
+'''Procedure:'''
+# Select pages with 6+ months history
+# Compare current vs. historical versions
+# Assess epistemic status changes
+# Evaluate confidence calibration trends
+
+----
+== 3. Audit Tools
+
+=== 3.1 SMW Queries for Audit
+
+'''High-confidence claims without sources:'''
+```mediawiki
+{{#ask: [[Has confidence::>0.8]] [[Has source count::0]]
+|?Has title
+|?Has confidence
+|format=table
+}}
+```
+
+'''Claims without falsification conditions:'''
+```mediawiki
+{{#ask: [[Has falsification conditions::""]] [[Has epistemic status::Established]]
+|?Has title
+|format=ul
+}}
+```
+
+'''Authors with calibration concerns:'''
+```mediawiki
+{{#ask: [[Has author::+]]
+|?Has author
+|?Has average confidence
+|format=table
+|sort=Has average confidence
+|order=desc
+}}
+```
+
+=== 3.2 Manual Review Checklist
+
+'''Per-Page Checklist:'''
+* [ ] Epistemic status appropriate for evidence
+* [ ] Confidence score justified
+* [ ] Sources support claims
+* [ ] Falsification conditions stated
+* [ ] Multiple perspectives represented
+* [ ] Uncertainty acknowledged
+* [ ] Language neutral where appropriate
+* [ ] Provenance complete
+
+'''Per-Author Checklist:'''
+* [ ] Confidence calibration reasonable
+* [ ] Source quality consistent
+* [ ] Bias patterns absent
+* [ ] Responsive to feedback
+* [ ] Epistemic humility demonstrated
+
+=== 3.3 Automated Checks
+
+'''Script: Epistemic Auditor (Pseudocode)'''
+```python
+def audit_page(page):
+    issues = []
+    
+    # Confidence check
+    if page.confidence > 0.9 and page.source_count < 3:
+        issues.append("High confidence with few sources")
+    
+    # Falsification check
+    if page.epistemic_status == "Established" and not page.falsification_conditions:
+        issues.append("Established claim without falsification conditions")
+    
+    # Source check
+    if page.primary_sources == 0 and page.epistemic_status in ["Established", "Axiomatic"]:
+        issues.append("Strong epistemic status without primary sources")
+    
+    # Bias check
+    if page.perspective_count == 1 and page.epistemic_status == "Contested":
+        issues.append("Single perspective on contested topic")
+    
+    return issues
+```
+
+----
+== 4. Remediation Protocols
+
+=== 4.1 Minor Issues (Score 2)
+
+'''Action:''' Suggest improvements via talk page.
+
+'''Template:'''
+```
+Epistemic Audit Note:
+- Issue: [Description]
+- Standard: [Relevant standard]
+- Suggestion: [Specific improvement]
+- Priority: Low
+```
+
+=== 4.2 Major Issues (Score 1)
+
+'''Action:''' Flag for review, notify author.
+
+'''Template:'''
+```
+Epistemic Audit Flag:
+- Issue: [Description]
+- Standard: [Relevant standard]
+- Required Action: [Specific fix]
+- Timeline: 7 days
+- Priority: Medium
+```
+
+=== 4.3 Critical Failures (Score 0)
+
+'''Action:''' Immediate review, potential content removal.
+
+'''Template:'''
+```
+Epistemic Audit Critical:
+- Issue: [Description]
+- Standard: [Relevant standard]
+- Immediate Action: [Specific action]
+- Review Required: Yes
+- Priority: High
+```
+
+=== 4.4 Pattern Remediation
+
+'''Author-Level Issues:'''
+# Private communication with author
+# Specific examples provided
+# Resources for improvement shared
+# Follow-up audit scheduled
+
+'''System-Level Issues:'''
+# Template/guideline updates
+# Training documentation
+# Process improvements
+# Community discussion
+
+----
+== 5. Audit Reporting
+
+=== 5.1 Individual Reports
+
+'''Per-Page Report:'''
+```markdown
+# Epistemic Audit: [Page Title]
+**Date:** [Audit Date]
+**Auditor:** [Auditor Name]
+**Overall Score:** [0-4]
+
+## Dimension Scores
+- Confidence Calibration: [0-4]
+- Source Verification: [0-4]
+- Falsification Conditions: [0-4]
+- Bias Detection: [0-4]
+
+## Findings
+[Specific findings]
+
+## Recommendations
+[Actionable recommendations]
+
+## Follow-up
+[Timeline and responsible party]
+```
+
+=== 5.2 Aggregate Reports
+
+'''Quarterly Audit Summary:'''
+```markdown
+# BITwiki Epistemic Audit: Q1 2026
+**Pages Audited:** [N]
+**Average Score:** [0-4]
+**Critical Issues:** [N]
+**Major Issues:** [N]
+**Minor Issues:** [N]
+
+## Trends
+[Improvement/decline patterns]
+
+## Common Issues
+[Most frequent findings]
+
+## Recommendations
+[System-level improvements]
+```
+
+----
+== 6. Continuous Improvement
+
+=== 6.1 Calibration Feedback
+* Track auditor calibration
+* Compare auditor assessments
+* Adjust standards based on evidence
+* Update procedures quarterly
+
+=== 6.2 Standard Evolution
+* Review standards annually
+* Incorporate new research
+* Adapt to platform changes
+* Community input integration
+
+=== 6.3 Training
+* New auditor onboarding
+* Calibration exercises
+* Bias recognition training
+* Tool proficiency
+
+----
+== Conclusion
+
+Epistemic audit ensures BITwiki maintains rigorous knowledge standards. Systematic assessment prevents quality drift and maintains community trust.
+
+'''Key Principles:'''
+* Audit for improvement, not punishment
+* Focus on patterns, not isolated errors
+* Balance automation and human judgment
+* Evolve standards with evidence
+
+'''Next Steps:'''
+# Deploy audit tools
+# Train initial auditor cohort
+# Conduct baseline assessment
+# Establish regular audit schedule

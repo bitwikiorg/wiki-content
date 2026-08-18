@@ -1,0 +1,36 @@
+== Semantic Organization ==
+
+BITwiki leverages Semantic MediaWiki to create explicit relationships between pages, enabling dynamic navigation and knowledge discovery. This approach replaces traditional categorization with machine-readable semantic properties.
+
+=== Semantic Properties ===
+
+Semantic properties define relationships between wiki pages:
+* [[Has implementation::Page name]] - Links ideas to their implementations
+* [[Implements idea::Page name]] - Links implementations to their theoretical foundations
+* [[Related to::Page name]] - Creates general knowledge connections
+* [[Category::Domain name]] - Assigns pages to knowledge domains
+
+=== Semantic Queries ===
+
+Semantic queries dynamically generate content based on page properties:
+* {{#ask: [[Category:Ideas]] | ?Has implementation | format=table }}
+* {{#ask: [[Has implementation::+]] | ?Implements idea | format=list }}
+
+=== Knowledge Navigation ===
+
+Semantic properties enable powerful navigation features:
+* Dynamic lists of related content
+* Faceted browsing by properties
+* Automatic categorization based on relationships
+* Knowledge graph visualization
+
+=== Semantic Best Practices ===
+
+When adding semantic properties to pages:
+# Use consistent property naming conventions
+# Define clear relationships between concepts
+# Apply properties to all relevant pages
+# Regularly review and update semantic structures
+# Use semantic forms for consistent data entry
+
+This semantic approach allows BITwiki to function as both a traditional knowledge base and a dynamic knowledge graph, connecting ideas to implementations through explicit relationships.

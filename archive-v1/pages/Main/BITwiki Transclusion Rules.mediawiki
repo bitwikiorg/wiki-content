@@ -1,0 +1,352 @@
+{{Infobox
+| title = BITwiki Transclusion Rules: Standards for Modular Content Composition
+| description = Standards for transcluding content across BITwiki pages, ensuring epistemic integrity, proper attribution, and machine-readable modularity.
+| type = front-matter
+| author = BITCORE
+| version = 4.0.0-consolidated
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| revised_by = Front-Matter Revision Specialist
+| revision_date = 2026-02-14
+| revision_note = Consolidated with Rules5.md: added quick reference sections, key principle phrases, and condensed syntax/integrity rules
+| ontology = entity_type: technical-standard
+domain: content-management
+| workflow = state: Beta
+}}
+
+{{Documentation}}
+[[Category:BITwiki Front Matter]]
+
+
+= BITwiki Transclusion Rules: Standards for Modular Content Composition =
+
+== Quick Reference: The Principle ==
+
+Transclusion is not copying. Content lives in one place, appears in many, maintains single source of truth.
+
+Copying creates divergence. Update the source; update every copy. Error and inconsistency propagate.
+
+Transclusion creates multiple views of single source. Update the source; all views update automatically. Consistency is enforced.
+
+Single source of truth is not optional. It is structural.
+
+== Quick Reference: Syntax ==
+
+'''Full page''': {{:Page Name}}
+
+'''Section''': {{:Page Name#Section}}
+
+'''Template''': {{Template Name}}
+
+'''Parameterized''': {{Template Name|param=value}}
+
+== Quick Reference: Integrity Rules ==
+
+Preserve epistemic markers. Transcluded content carries its uncertainty, its status, its sources.
+
+Do not transclude across confidence tiers without marking. A Hypothetical claim transcluded into an Established context must retain its Hypothetical status.
+
+== Why Transclusion Matters ==
+
+Transclusion is the inclusion of content from one page into another by reference. It is not just a technical convenience—it is the foundation of BITwiki's knowledge architecture.
+
+'''Self-Standing Pages:''' Each page in BITwiki is designed to stand alone, complete with its own context, metadata, and epistemic markers. A page about "Feedback Loops" contains everything needed to understand feedback loops, regardless of where it appears.
+
+'''Emergent Complexity:''' When transcluded, these self-standing pages combine to form larger documents that reflect on their own composition. The whole becomes greater than the sum of its parts because each part carries its complete identity into the whole.
+
+'''Metadata Inheritance:''' Pages hold their own metadata—confidence scores, sources, authorship. When combined through transclusion, these individual metadata records form a complex web of interconnected knowledge. The system knows not just what is said, but how confidently, by whom, and based on what evidence.
+
+'''Manual Extraction:''' Transclusion allows agents and users to pull exactly what they need. If you only need citations for a specific topic, you can extract just that section. If you need definitions, you can grep for them. The modular structure enables precise, surgical access to knowledge.
+
+== Transclusion Syntax ==
+
+Include entire page: {{:Page Name}}
+Include section: {{:Page Name#Section Name}}
+Include with parameters: {{Template Name|param1=value1}}
+
+== Epistemic Integrity Rules ==
+
+=== Rule 1: Preserve Epistemic Markers ===
+
+Transcluded content must maintain its epistemic status through SMW properties. When you transclude a claim marked as "Hypothetical" with confidence 0.3, that claim does not become "Verified" with confidence 0.9 simply because it appears in a new context.
+
+'''Why this matters:''' Epistemic status is a property of the claim itself, not its container. Transclusion is reference, not transformation.
+
+=== Rule 2: Attribute Sources ===
+
+Transcluded content must reference its source page. Readers should be able to trace any transcluded content back to its origin.
+
+'''Why this matters:''' Provenance is essential for epistemic evaluation. A claim's value depends partly on where it comes from.
+
+=== Rule 3: Contextualize Claims ===
+
+Claims may need contextualization when transcluded to different contexts. A definition of "emergence" from systems science may need a note when transcluded into a philosophy article.
+
+'''Why this matters:''' Context shapes meaning. The same words can mean different things in different neighborhoods of the knowledge graph.
+
+=== Rule 4: Handle Conflicts ===
+
+When transcluded content conflicts with host page, document the conflict. Do not silently override or ignore the contradiction.
+
+'''Why this matters:''' Contradictions are epistemically significant. They indicate boundaries of knowledge, areas of active debate, or errors requiring resolution.
+
+== Transclusion Patterns ==
+
+=== Pattern 1: Definition Transclusion ===
+
+Include standardized definitions from source pages using onlyinclude tags. This ensures that the same concept is defined consistently wherever it appears.
+
+'''Example:''' A definition of "Recursion" defined once and transcluded wherever needed ensures consistency across the system.
+
+=== Pattern 2: Epistemic Marker Transclusion ===
+
+Include epistemic status boxes through templates. This allows visual indicators of confidence to appear consistently.
+
+'''Example:''' An "Established" claim displays the same visual marker whether viewed on its source page or transcluded elsewhere.
+
+=== Pattern 3: Citation Transclusion ===
+
+Include standardized citations from citation pages. This allows references to be maintained in one place and updated everywhere.
+
+'''Example:''' A citation to Bateson 1972 updated in the citation page automatically updates in every article that transcludes it.
+
+=== Pattern 4: Query Result Transclusion ===
+
+Include dynamic query results using ask queries. This allows live lists that update as the knowledge graph changes.
+
+'''Example:''' A list of "All Verified claims about Cybernetics" that updates automatically as claims are validated.
+
+== Prohibited Transclusions ==
+
+Do not transclude:
+* Entire articles (transclude sections instead)
+* Epistemic markers without context
+* Conflicting claims without documentation
+* Unstable content
+* Circular transclusions
+
+'''Why these prohibitions exist:''' Each prevents a specific failure mode. Transcluding entire articles creates maintenance nightmares. Transcluding markers without context strips them of meaning. Circular transclusions create infinite loops.
+
+== SMW Property Handling ==
+
+Transcluded content inherits SMW properties from source. The host page can override transcluded properties when necessary. Multiple transclusions aggregate properties, creating rich composite metadata.
+
+'''Example:''' Transcluding three "Established" claims into a new page creates a page with three established sources, each traceable to its origin.
+
+== Quality Standards ==
+
+Test transclusions before deployment. Document dependencies so others know what content relies on what. Version control transcluded content so changes can be tracked. Include transclusions in epistemic review cycles.
+
+'''Why this matters:''' Transclusions create dependencies. Changes to source content affect all transclusions. Quality control must account for these relationships.
+
+== Troubleshooting ==
+
+'''Problem:''' Transcluded content not appearing
+'''Causes:''' Source page does not exist, includeonly block is empty
+'''Solutions:''' Verify source, check includeonly content
+
+'''Problem:''' Epistemic markers lost
+'''Causes:''' Properties outside includeonly
+'''Solutions:''' Move properties inside includeonly
+
+'''Problem:''' Circular transclusion
+'''Causes:''' Page A transcludes B, B transcludes A
+'''Solutions:''' Break the cycle, use intermediate pages
+
+== Performance Limits ==
+
+MediaWiki imposes constraints on transclusion complexity to prevent performance degradation. Understanding these limits is essential for scalable wiki architecture.
+
+=== Template Expansion Limits ===
+
+MediaWiki enforces several hard limits on template processing:
+
+{| class="wikitable"
+! Limit !! Default Value !! Purpose
+|-
+| Max template size || 2,048,000 bytes || Prevents excessively large template output
+|-
+| Max template depth || 40 levels || Prevents infinite recursion in nested templates
+|-
+| Max template count || 2,048 per page || Limits total template calls per page
+|-
+| Max parser function count || 2,048 per page || Limits expensive parser operations
+|-
+| Max preprocessor node count || 1,000,000 || Prevents memory exhaustion
+|}
+
+Source: MediaWiki Manual:$wgMaxTemplateDepth, MediaWiki Manual:$wgMaxArticleSize
+
+=== Performance Impact Factors ===
+
+Transclusion performance degrades with:
+
+'' Deep nesting: Each level of template transclusion adds parsing overhead
+'' Complex conditionals: Parser functions like #if and #switch consume more resources than static content
+'' Dynamic queries: SMW #ask queries execute database operations on each page load
+'' Large transclusions: Transcluding entire articles instead of sections increases parse time
+'' Circular dependencies: Undetected cycles cause exponential processing or timeouts
+
+=== Optimization Strategies ===
+
+'' Section transclusion: Use <onlyinclude> tags to transclude specific sections rather than entire pages
+'' Lua modules: For complex logic, Scribunto Lua modules execute faster than nested parser functions
+'' Caching: Frequently transcluded content benefits from MediaWiki's parser cache
+'' Lazy loading: Defer non-critical transclusions to reduce initial page load
+'' Dependency tracking: Document template dependencies to identify optimization candidates
+
+=== Monitoring Performance ===
+
+BITwiki monitors transclusion performance through:
+
+'' Page parse time metrics
+'' Template expansion size reports
+'' Dependency chain analysis
+'' Cache hit/miss ratios
+
+Pages exceeding performance thresholds are flagged for optimization.
+
+== Circular Dependency Detection ==
+
+Circular transclusions occur when page A transcludes page B, which transcludes page C, which transcludes page A (or any closed loop). These cycles must be detected and prevented.
+
+=== The DAG Integrity Protocol ===
+
+BITwiki maintains a Directed Acyclic Graph (DAG) of transclusion relationships. The DAG integrity protocol ensures:
+
+= No cycles: Every transclusion path must terminate =
+= Single source of truth: Each fragment has one canonical location =
+= Dependency tracking: All transclusion relationships are documented =
+= Validation on edit: Transclusion changes are validated against the DAG =
+
+=== Detection Mechanisms ===
+
+{| class="wikitable"
+! Method !! Implementation !! Trigger
+|-
+| Static analysis || Parse template calls before save || Page edit
+| Runtime detection || Track transclusion depth during render || Page view
+| Dependency graph || Maintain adjacency matrix of transclusions || Background job
+| Lint checks || Scan for suspicious patterns || Maintenance script
+|}
+
+=== Breaking Circular Dependencies ===
+
+When cycles are detected, resolution follows this hierarchy:
+
+= Identify the cycle: Trace the transclusion path to find the loop =
+= Determine the break point: Select the weakest link (least critical transclusion) =
+= Extract common content: Move shared content to a neutral third page =
+= Redirect transclusions: Point both pages to the extracted content =
+= Document the change: Update dependency documentation =
+
+Example:
+
+'' Before: A -> B -> C -> A (cycle)
+'' After: A -> D, B -> D, C -> D (star pattern with D as common content)
+
+=== Prevention Guidelines ===
+
+'' Document dependencies: Every template page lists pages it transcludes and pages that transclude it
+'' One-way transclusion: Design templates to be transcluded, not to transclude
+'' Content fragments: Use <onlyinclude> to create content fragments that don't transclude back
+'' Namespace conventions: Template namespace for reusable components, main namespace for content
+'' Review process: Transclusion changes require validation against dependency graph
+
+== Fragment Naming Conventions ==
+
+Standardized naming enables discoverability, consistency, and machine-readable transclusion relationships.
+
+=== Namespace Conventions ===
+
+{| class="wikitable"
+! Namespace !! Purpose !! Transclusion Pattern
+|-
+| Template: || Reusable components || {{TemplateName}}
+| Main (:) || Content fragments || {{:PageName}}
+| Module: || Lua scripts || {{#invoke:Module|function}}
+| User: || Personal sandboxes || {{User:Name/Page}}
+| Project: || Wiki governance || {{Project:Policy}}
+|}
+
+=== Fragment Type Suffixes ===
+
+Append type indicators to fragment names for clarity:
+
+{| class="wikitable"
+! Suffix !! Meaning !! Example
+|-
+| /def || Definition fragment || {{:Recursion/def}}
+| /cite || Citation fragment || {{:Bateson1972/cite}}
+| /nav || Navigation fragment || {{:Cybernetics/nav}}
+| /box || Infobox fragment || {{:Bitcoin/box}}
+| /doc || Documentation subpage || {{Template:Notice/doc}}
+| /test || Test cases || {{Template:Notice/test}}
+|}
+
+=== Hierarchical Organization ===
+
+For complex topics, use hierarchical naming:
+
+Topic/
+├── Overview (inline content)
+├── Subtopic A/
+│   ├── Content (transcluded to main)
+│   └── Details (inline)
+├── Subtopic B/
+│   ├── Content (transcluded to main)
+│   └── Details (inline)
+└── Summary (transcludes from subtopics)
+
+Example:
+
+'' {{:Systems Science/Overview}}
+'' {{:Systems Science/Cybernetics/Definition}}
+'' {{:Systems Science/Complexity/Key Concepts}}
+
+=== Semantic Naming ===
+
+Fragment names should be:
+
+'' Self-documenting: Name indicates content purpose
+'' Consistent: Same pattern across similar fragments
+'' Stable: Names don't change with content updates
+'' Unique: No ambiguity about which fragment is referenced
+'' Machine-readable: Parseable by automated tools
+
+Anti-patterns to avoid:
+
+'' Generic names: {{:Content}}, {{:Section1}}
+'' Versioned names: {{:Topic-v2}}, {{:Topic-2026}}
+'' Ambiguous names: {{:Info}}, {{:Data}}
+'' Overly long names: {{:This Is The Complete Definition Of The Concept Of Recursion In Systems Science}}
+
+=== Transclusion Hygiene ===
+
+Maintain transclusion hygiene through:
+
+'' Explicit markers: Use <noinclude>, , <onlyinclude> appropriately
+'' Documentation: Every fragment includes usage documentation
+'' Test transclusions: Verify fragments render correctly before deployment
+'' Dependency lists: Fragments list what they depend on and what depends on them
+'' Version control: Track fragment changes with semantic versioning
+
+== References ==
+
+# MediaWiki. (2026). Transclusion. https://www.mediawiki.org/wiki/Transclusion
+# Semantic MediaWiki. (2026). Templates. https://www.semantic-mediawiki.org/
+# Nelson, T.H. (1981). Literary Machines. Mindful Press.
+# Bolter, J.D. (2001). Writing Space. Lawrence Erlbaum.
+# Landow, G.P. (2006). Hypertext 3.0. Johns Hopkins University Press.
+# BITwiki Constitution. (2026). https://bitwiki.org/BITwiki_Constitution
+# BITwiki Ontology Index. (2026). https://bitwiki.org/BITwiki_Ontology_Index
+
+[[Has page type::Technical Standard]]
+[[Has pattern count::4]]
+[[Has source count::10]]
+[[Has word count::650]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.86]]
+[[Has confidence trajectory::established]]
+[[Has source count::7]]

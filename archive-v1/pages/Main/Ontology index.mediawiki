@@ -1,0 +1,360 @@
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+----
+title: "Ontology index"
+description: "This directory contains the complete ontology documentation for BITwiki, establishing the formal structure for knowledge representation across the BIT"
+type: index
+author: "BITCORE"
+created: "2026-02-11"
+version: "1.0.0"
+ontology:
+  entity_type: index-document
+  domain: navigation
+epistemic_status: Attribution-Traced
+confidence: Emerging
+workflow:
+  state: Beta
+license: CC-BY-SA-4.0
+----
+= BITwiki Ontology Index =
+
+== Overview ==
+
+This document provides a comprehensive index of the BITwiki ontology, mapping the knowledge graph structure for the BITCORE ecosystem. The ontology is designed to be domain-neutral, extensible, and compatible with Semantic MediaWiki (SMW).
+
+== Core Principles ==
+
+=== Composable Type System ===
+
+Instead of rigid entity lists, BITwiki uses a '''composable type system''' where entities can have multiple type annotations:
+* Types are abstract enough to encompass diverse instances
+* Multiple type annotations allowed per entity
+* Relationships are flexible and context-dependent
+* New specializations emerge organically through property composition
+
+=== Event-Process-Value (EPV) Framework ===
+
+The ontology implements the EPV pattern inspired by Wolfram's knowledge architecture:
+* '''Events''' — Discrete occurrences or state changes
+* '''Processes''' — Dynamic sequences and transformations
+* '''Values''' — Measurements, assignments, or attributes
+
+=== Epistemic Descriptors ===
+
+Knowledge confidence is tracked using qualitative descriptors:
+
+| Descriptor | Meaning |
+|------------|---------|
+| '''Established''' | Widely validated, consensus |
+| '''Developing''' | Active validation ongoing |
+| '''Preliminary''' | Initial evidence, needs review |
+| '''Speculative''' | Hypothesis, limited evidence |
+| '''Disputed''' | Active controversy |
+| '''Deprecated''' | Superseded or obsolete |
+
+== Entity Types ==
+
+=== 1. Concept ===
+
+'''Definition''': Abstract ideas, categories, mental constructs
+
+'''Required Properties''':
+* `Has definition` — Precise explanation
+* `Has domain` — Knowledge domain(s)
+
+'''Examples''':
+* Knowledge Graph
+* Semantic Web
+* Ontology Design
+
+=== 2. Process ===
+
+'''Definition''': Dynamic sequences, workflows, transformations
+
+'''Required Properties''':
+* `Has process type` — Algorithm, Workflow, Procedure
+* `Has input` — Required inputs
+* `Has output` — Produced results
+
+'''Examples''':
+* Knowledge Graph Construction
+* Ontology Development
+* Research Methodology
+
+=== 3. System ===
+
+'''Definition''': Organized collections of interacting components
+
+'''Required Properties''':
+* `Has system type` — Classification
+* `Has components` — Key elements
+* `Has function` — Purpose or behavior
+
+'''Examples''':
+* BITwiki Platform
+* Semantic MediaWiki
+* Knowledge Graph Infrastructure
+
+=== 4. Entity ===
+
+'''Definition''': Distinct, identifiable things
+
+'''Required Properties''':
+* `Has identifier` — Unique name
+* `Has description` — Brief characterization
+
+'''Examples''':
+* BITwiki
+* Agent Zero
+* Semantic Web
+
+=== 5. Agent ===
+
+'''Definition''': Entities capable of action/decision
+
+'''Required Properties''':
+* `Has agent type` — Human, Organization, AI
+* `Has autonomy level` — Full, Delegated, Constrained
+* `Has capability` — Perception, Reasoning, Action
+
+'''Examples''':
+* Research Teams
+* Development Groups
+* Intelligent Agents
+
+=== 6. Artifact ===
+
+'''Definition''': Created objects that carry knowledge
+
+'''Required Properties''':
+* `Has artifact type` — Document, Code, Dataset
+* `Has creator` — Author(s)
+* `Has creation date` — When created
+
+'''Examples''':
+* Ontology Specifications
+* Research Papers
+* Source Code
+
+=== 7. Relationship ===
+
+'''Definition''': Connections between entities
+
+'''Required Properties''':
+* `Has relationship type` — Classification
+* `Has domain` — Valid source types
+* `Has range` — Valid target types
+
+'''Examples''':
+* Depends On
+* Implements
+* Precedes
+
+=== 8. Event ===
+
+'''Definition''': Temporal occurrences with significance
+
+'''Required Properties''':
+* `Has event date` — When occurred
+* `Has event type` — Discovery, Decision, Launch
+* `Has significance` — Impact level
+
+'''Examples''':
+* Knowledge Graph Launch
+* Ontology Revision
+* Research Discovery
+
+=== 9. State ===
+
+'''Definition''': Conditions at a specific point in time
+
+'''Required Properties''':
+* `Has state type` — Classification
+* `Has timestamp` — When recorded
+* `Has configuration` — State description
+
+'''Examples''':
+* Draft State
+* Review State
+* Published State
+
+=== 10. Data ===
+
+'''Definition''': Structured information
+
+'''Required Properties''':
+* `Has data type` — Structured, Unstructured
+* `Has format` — JSON, XML, CSV
+* `Has source` — Origin
+
+'''Examples''':
+* Ontology Statistics
+* Usage Analytics
+* Quality Metrics
+
+=== 11. Knowledge ===
+
+'''Definition''': Justified true beliefs or validated information
+
+'''Required Properties''':
+* `Has knowledge type` — Factual, Procedural, Conceptual
+* `Has epistemic status` — Established, Developing, etc.
+* `Has justification` — Evidence basis
+
+'''Examples''':
+* Ontology Design Principles
+* Research Findings
+* Best Practices
+
+=== 12. Model ===
+
+'''Definition''': Simplified representations of phenomena
+
+'''Required Properties''':
+* `Has model type` — Mathematical, Computational, Conceptual
+* `Has purpose` — Explanation, Prediction, Simulation
+* `Has scope` — Domain of applicability
+
+'''Examples''':
+* EPV Framework
+* Knowledge Graph Model
+* Process Workflow Model
+
+== Relationship Types ==
+
+=== Structural Relationships ===
+
+| Relationship | Domain → Range | Cardinality | Inverse |
+|--------------|----------------|-------------|---------|
+| `Instance of` | Any → Class | many-to-one | `Has instance` |
+| `Part of` | Any → Any | many-to-many | `Has part` |
+| `Related to` | Any → Any | many-to-many | symmetric |
+
+=== Temporal Relationships ===
+
+| Relationship | Domain → Range | Cardinality | Inverse |
+|--------------|----------------|-------------|---------|
+| `Precedes` | Event/Process → Event/Process | many-to-many | `Follows` |
+| `Follows` | Event/Process → Event/Process | many-to-many | `Precedes` |
+| `Concurrent with` | Event/Process → Event/Process | many-to-many | symmetric |
+
+=== Causal Relationships ===
+
+| Relationship | Domain → Range | Cardinality | Inverse |
+|--------------|----------------|-------------|---------|
+| `Influences` | Any → Any | many-to-many | `Influenced by` |
+| `Causes` | Event/Action → Event/State | many-to-many | `Caused by` |
+| `Enables` | Technology/Protocol → Application | many-to-many | `Enabled by` |
+
+=== Implementation Relationships ===
+
+| Relationship | Domain → Range | Cardinality | Inverse |
+|--------------|----------------|-------------|---------|
+| `Implements` | Implementation → Concept | many-to-many | `Implemented by` |
+| `Uses` | Agent/Process → Tool/Resource | many-to-many | `Used by` |
+| `Depends on` | Any → Any | many-to-many | `Required for` |
+
+=== Social Relationships ===
+
+| Relationship | Domain → Range | Cardinality | Inverse |
+|--------------|----------------|-------------|---------|
+| `Created by` | Artifact → Agent | many-to-many | `Creates` |
+| `Member of` | Agent → Organization | many-to-many | `Has member` |
+| `Collaborates with` | Agent → Agent | many-to-many | symmetric |
+
+=== Epistemic Relationships ===
+
+| Relationship | Domain → Range | Cardinality | Inverse |
+|--------------|----------------|-------------|---------|
+| `References` | Any → Resource | many-to-many | `Referenced by` |
+| `Supports` | Data → Knowledge | many-to-many | `Supported by` |
+| `Contradicts` | Data/Claim → Claim | many-to-many | symmetric |
+
+== Property Naming Conventions ==
+
+=== Verb Phrase Properties ===
+
+All properties use verb phrases for clarity:
+* ✅ `Has author` (not "Author")
+* ✅ `Has creation date` (not "Creation date")
+* ✅ `Implements concept` (not "Concept implementation")
+* ✅ `Depends on` (not "Dependency")
+
+=== Property Types ===
+
+| SMW Type | Use Case |
+|----------|----------|
+| `Page` | References to other entities |
+| `Text` | Short strings, identifiers |
+| `URL` | Web references |
+| `Date` | Timestamps |
+| `Number` | Quantities |
+| `Boolean` | True/False flags |
+
+== File Structure ==
+
+```
+hyperion/book-matter/ontology/
+├── BITwiki_Entity_Types.wiki          # Entity specifications
+├── BITwiki_Ontology_Index.wiki        # Complete schema reference
+├── BITwiki_Relationship_Types.wiki    # Relationship taxonomy
+├── BITwiki_Semantic_Patterns.wiki     # Design patterns
+├── BITwiki_Taxonomy_Architecture.wiki # Category hierarchy
+├── Ontology_index.md                  # This index
+└── expansion/
+    ├── BITwiki_Epistemic_Status_Taxonomy.wiki
+    ├── BITwiki_Expanded_Entity_Types.wiki
+    ├── BITwiki_Ontology_Alignment_Matrix.wiki
+    ├── BITwiki_Relationship_Pattern_Catalog.wiki
+    ├── BITwiki_Visual_Diagram_Specification.wiki
+    └── INDEX.md
+```
+
+== SMW Integration ==
+
+=== Property Declaration ===
+
+```mediawiki
+[[Has property description::Description of property]]
+[[Has type::Page|Text|Number|Date|URL|Boolean]]
+```
+
+=== Entity Declaration ===
+
+```mediawiki
+[[Is a::Concept]]
+[[Has definition::Definition text]]
+[[Has domain::Ontology]]
+[[Has epistemic status::Established]]
+```
+
+=== Query Example ===
+
+```mediawiki
+{{#ask: [[Has epistemic status::Established]] [[Has domain::Ontology]]
+ |?Has entity type
+ |?Has definition
+ |format=table
+}}
+```
+
+== Research Foundation ==
+
+This ontology is based on:
+* '''Wolfram EPV Model''' — Event-Process-Value framework
+* '''Semantic MediaWiki Best Practices''' — Property and type system
+* '''FAIR Principles''' — Findable, Accessible, Interoperable, Reusable
+* '''Wikidata Ontology Patterns''' — Composable entity design
+
+== Version ==
+* '''Version''': 2.0.0
+* '''Date''': 2026-02-10
+* '''Status''': Revised per HUMAN_REVIEW.md directives
+
+== See Also ==
+* [BITwiki:Entity Types](BITwiki_Entity_Types.wiki)
+* [BITwiki:Ontology Index](BITwiki_Ontology_Index.wiki)
+* [BITwiki:Relationship Types](BITwiki_Relationship_Types.wiki)
+* [BITwiki:Semantic Patterns](BITwiki_Semantic_Patterns.wiki)
+* [BITwiki:Taxonomy Architecture](BITwiki_Taxonomy_Architecture.wiki)

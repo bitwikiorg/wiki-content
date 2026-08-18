@@ -1,0 +1,507 @@
+{{Infobox
+| title = BITwiki Property Dictionary: Semantic MediaWiki Property Reference
+| description = Comprehensive reference for all SMW properties used in BITwiki—their types, constraints, usage patterns, and epistemic foundations. Properties emerge from the need to describe; they are not fixed but evolve with use.
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-14
+| version = 3.0.0-consolidated
+| epistemic_status = Established
+| confidence = 0.92
+| license = CC-BY-SA-4.0
+| ontology = entity_type: property-reference
+domain: schema-engineering
+| workflow = state: Production
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+
+
+= BITwiki Property Dictionary: Semantic MediaWiki Property Reference =
+
+== Etymology: The Nature of Attribution ==
+
+''Property'' — from Latin ''proprietas'', from ''proprius'', one's own, special, particular. That which is proper to something, that which belongs to it, that which characterizes it. A property is not an arbitrary label but a dimension of being—a way that something shows up in the world.
+
+''Dictionary'' — from Medieval Latin ''dictionarium'', from Latin ''dictio'', speaking, saying, word. A collection of sayings, a gathering of words. This dictionary gathers the words we use to speak about entities—not to fix them but to enable conversation.
+
+== Overview: Properties as Emergent Dimensions ==
+
+This document defines all Semantic MediaWiki (SMW) properties used in BITwiki. Properties enable machine-queryable knowledge by typing relationships between entities. They are not fixed categories but emergent dimensions—they arise from the need to describe, to differentiate, to query.
+
+Properties enable:
+* '''Description''': Characterizing entities across dimensions
+* '''Differentiation''': Distinguishing entities from one another
+* '''Query''': Finding entities that share characteristics
+* '''Validation''': Checking consistency and completeness
+
+They evolve with use. New properties emerge; old properties transform; unused properties dissolve.
+
+== Property Categories: Dimensions of Description ==
+
+=== 1. Entity Classification Properties ===
+
+==== Has entity type ====
+* '''Type:''' Page
+* '''Purpose:''' Classify entity into canonical types
+* '''Values:''' Topic, Idea, Implementation, Project, Protocol, Dataset (and emergent types)
+* '''Example:''' [[Has entity type::Idea]]
+* '''Required:''' Yes
+* '''Cardinality:''' Single (one primary type per entity)
+
+==== Has extended type ====
+* '''Type:''' Text
+* '''Purpose:''' Classify extended entity types beyond core taxonomy
+* '''Values:''' Person, Organization, Event, Publication, Tool (and emergent types)
+* '''Example:''' [[Has extended type::Person]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple
+
+=== 2. Epistemic Properties ===
+
+==== Has epistemic status ====
+* '''Type:''' Text
+* '''Purpose:''' Indicate knowledge validation tier
+* '''Values:''' Hypothetical, Emerging, Established, Verified, Axiomatic (tiers may evolve)
+* '''Example:''' [[Has epistemic status::Established]]
+* '''Required:''' Yes
+* '''Cardinality:''' Single (one status per claim)
+
+==== Has confidence score ====
+* '''Type:''' Number
+* '''Purpose:''' Quantify certainty on continuous scale (0.0-1.0)
+* '''Constraints:''' 0.0 <= value <= 1.0
+* '''Example:''' [[Has confidence score::0.87]]
+* '''Required:''' Yes (numeric representation)
+* '''Cardinality:''' Single
+* '''Note:''' Use for precise quantitative confidence assessment
+
+==== Has confidence ====
+* '''Type:''' Text
+* '''Purpose:''' Qualitative certainty assessment
+* '''Values:''' low, medium, high, very high (or descriptive phrases)
+* '''Example:''' [[Has confidence::high]]
+* '''Required:''' Yes (textual representation)
+* '''Cardinality:''' Single
+* '''Note:''' Use for human-readable confidence levels; maps to confidence score ranges
+
+==== Has evidence count ====
+* '''Type:''' Number
+* '''Purpose:''' Count supporting sources
+* '''Constraints:''' Integer, non-negative
+* '''Example:''' [[Has evidence count::12]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has replication status ====
+* '''Type:''' Text
+* '''Purpose:''' Indicate replication state of empirical claims
+* '''Values:''' Awaiting, Partial, Consistent, Extensive
+* '''Example:''' [[Has replication status::Consistent]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has review type ====
+* '''Type:''' Text
+* '''Purpose:''' Indicate evidence synthesis type
+* '''Values:''' Single study, Multiple studies, Meta-analysis, Systematic review, Textbook
+* '''Example:''' [[Has review type::Meta-analysis]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has last review date ====
+* '''Type:''' Date
+* '''Purpose:''' Track epistemic review timing
+* '''Example:''' [[Has last review date::2026-02-14]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+=== 3. Provenance Properties ===
+
+==== Has author ====
+* '''Type:''' Page
+* '''Purpose:''' Attribute content to primary creator
+* '''Example:''' [[Has author::Person:Norbert Wiener]]
+* '''Required:''' Yes
+* '''Cardinality:''' Multiple (multiple contributors allowed)
+
+==== Has contributor ====
+* '''Type:''' Page
+* '''Purpose:''' Acknowledge additional contributors
+* '''Example:''' [[Has contributor::Person:Claude Shannon]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple
+
+==== Has source ====
+* '''Type:''' Page or URL
+* '''Purpose:''' Trace claim to origin
+* '''Example:''' [[Has source::https://doi.org/10.1000/example]]
+* '''Required:''' Yes
+* '''Cardinality:''' Multiple (multiple sources encouraged)
+
+==== Has creation date ====
+* '''Type:''' Date
+* '''Purpose:''' Record when entity was created
+* '''Example:''' [[Has creation date::2026-02-14]]
+* '''Required:''' Yes
+* '''Cardinality:''' Single
+
+==== Has modification date ====
+* '''Type:''' Date
+* '''Purpose:''' Track last edit timestamp
+* '''Example:''' [[Has modification date::2026-02-14]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has version ====
+* '''Type:''' Text
+* '''Purpose:''' Track content versioning
+* '''Pattern:''' Semantic versioning (X.Y.Z[-label])
+* '''Example:''' [[Has version::3.0.0-consolidated]]
+* '''Required:''' Yes
+* '''Cardinality:''' Single
+
+=== 4. Relational Properties ===
+
+==== Has related ====
+* '''Type:''' Page
+* '''Purpose:''' Link associated entities
+* '''Example:''' [[Has related::Idea:Feedback Loop]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple (many relationships expected)
+
+==== Has parent ====
+* '''Type:''' Page
+* '''Purpose:''' Establish hierarchical supertype relationship
+* '''Example:''' [[Has parent::Topic:Systems Science]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has child ====
+* '''Type:''' Page
+* '''Purpose:''' Inverse of Has parent; establish subtype relationship
+* '''Example:''' [[Has child::Topic:Cybernetics]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple
+
+==== Has part ====
+* '''Type:''' Page
+* '''Purpose:''' Component relationship (merological)
+* '''Example:''' [[Has part::Implementation:PID Controller]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple
+
+==== Is part of ====
+* '''Type:''' Page
+* '''Purpose:''' Inverse of Has part; containment relationship
+* '''Example:''' [[Is part of::Project:BITwiki]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple
+
+==== Depends on ====
+* '''Type:''' Page
+* '''Purpose:''' Dependency relationship (logical or functional)
+* '''Example:''' [[Depends on::Idea:Recursion]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple
+
+==== Validates ====
+* '''Type:''' Page
+* '''Purpose:''' Evidence relationship; source validates target claim
+* '''Example:''' [[Validates::Claim:Emergence is real]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple
+
+==== Conflicts with ====
+* '''Type:''' Page
+* '''Purpose:''' Opposition relationship; indicates contradiction or tension
+* '''Example:''' [[Conflicts with::Idea:Reductionism]]
+* '''Required:''' No
+* '''Cardinality:''' Multiple
+
+=== 5. Descriptive Properties ===
+
+==== Has description ====
+* '''Type:''' Text
+* '''Purpose:''' Brief entity summary
+* '''Constraints:''' Concise, informative; max 500 characters recommended
+* '''Example:''' [[Has description::Study of complex systems and emergent phenomena]]
+* '''Required:''' Yes
+* '''Cardinality:''' Single
+
+==== Has definition ====
+* '''Type:''' Text
+* '''Purpose:''' Formal definition of entity
+* '''Example:''' [[Has definition::Emergence is the phenomenon where complex systems exhibit properties not present in individual components]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has scope ====
+* '''Type:''' Text
+* '''Purpose:''' Domain boundaries and applicability
+* '''Example:''' [[Has scope::Systems science and computational applications]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has domain ====
+* '''Type:''' Text
+* '''Purpose:''' Knowledge domain classification
+* '''Example:''' [[Has domain::cybernetics]]
+* '''Required:''' Yes
+* '''Cardinality:''' Multiple
+
+=== 6. Temporal Properties ===
+
+==== Has start date ====
+* '''Type:''' Date
+* '''Purpose:''' Project/protocol beginning timestamp
+* '''Example:''' [[Has start date::1990-01-01]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has end date ====
+* '''Type:''' Date
+* '''Purpose:''' Project/protocol completion timestamp
+* '''Example:''' [[Has end date::2003-12-31]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has duration ====
+* '''Type:''' Quantity
+* '''Purpose:''' Time span measurement
+* '''Unit:''' Years, months, days
+* '''Example:''' [[Has duration::13 years]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+=== 7. Quantitative Properties ===
+
+==== Has word count ====
+* '''Type:''' Number
+* '''Purpose:''' Content size metric
+* '''Example:''' [[Has word count::1500]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has source count ====
+* '''Type:''' Number
+* '''Purpose:''' Citation density metric
+* '''Example:''' [[Has source count::10]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+
+==== Has quality score ====
+* '''Type:''' Number
+* '''Purpose:''' Editorial assessment on continuous scale
+* '''Constraints:''' 0.0 <= value <= 1.0
+* '''Example:''' [[Has quality score::0.85]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+* '''Note:''' Use for precise quantitative quality assessment
+
+==== Has quality ====
+* '''Type:''' Text
+* '''Purpose:''' Editorial assessment category
+* '''Values:''' draft, review, polished, exemplary
+* '''Example:''' [[Has quality::polished]]
+* '''Required:''' No
+* '''Cardinality:''' Single
+* '''Note:''' Use for human-readable quality levels; maps to quality score ranges
+
+== Property Constraints: Guidelines for Consistency ==
+
+=== Cardinality ===
+
+| Property | Cardinality | Notes |
+|----------|-------------|-------|
+| Has entity type | Single | One primary type per entity |
+| Has epistemic status | Single | One status per claim |
+| Has confidence score | Single | One numeric score per claim |
+| Has confidence | Single | One qualitative level per claim |
+| Has author | Multiple | Multiple contributors allowed |
+| Has related | Multiple | Many relationships expected |
+| Has source | Multiple | Multiple sources encouraged |
+| Has domain | Multiple | Entities may span domains |
+
+=== Value Constraints ===
+
+| Property | Type | Constraints |
+|----------|------|-------------|
+| Has confidence score | Number | 0.0 <= x <= 1.0 |
+| Has confidence | Text | Enum: low, medium, high, very high |
+| Has evidence count | Number | Integer >= 0 |
+| Has version | Text | Semantic versioning (X.Y.Z[-label]) |
+| Has epistemic status | Text | Enum of 5 values |
+| Has entity type | Text | Enum of 6+ values (extensible) |
+| Has quality score | Number | 0.0 <= x <= 1.0 |
+| Has quality | Text | Enum: draft, review, polished, exemplary |
+
+=== Confidence Score Mapping ===
+
+For consistency between numeric and textual confidence representations:
+
+| Has confidence | Has confidence score range |
+|----------------|---------------------------|
+| low | 0.00 - 0.40 |
+| medium | 0.41 - 0.60 |
+| high | 0.61 - 0.85 |
+| very high | 0.86 - 1.00 |
+
+=== Quality Score Mapping ===
+
+For consistency between numeric and textual quality representations:
+
+| Has quality | Has quality score range |
+|-------------|------------------------|
+| draft | 0.00 - 0.40 |
+| review | 0.41 - 0.60 |
+| polished | 0.61 - 0.85 |
+| exemplary | 0.86 - 1.00 |
+
+== Query Examples: Patterns of Discovery ==
+
+=== Basic Queries ===
+
+All Verified ideas:
+```wiki
+{{#ask: [[Has entity type::Idea]] [[Has epistemic status::Verified]]}}
+```
+
+High confidence claims (numeric):
+```wiki
+{{#ask: [[Has confidence score::>0.8]]}}
+```
+
+High confidence claims (textual):
+```wiki
+{{#ask: [[Has confidence::high]] [[Has confidence::very high]]}}
+```
+
+Recent modifications:
+```wiki
+{{#ask: [[Has modification date::>2026-01-01]]}}
+```
+
+=== Complex Queries ===
+
+Established ideas with multiple sources:
+```wiki
+{{#ask: [[Has entity type::Idea]] [[Has epistemic status::Established]] [[Has evidence count::>5]]
+|?Has confidence score
+|?Has confidence
+|?Has evidence count
+|sort=Has evidence count
+|order=desc
+}}
+```
+
+Projects by duration:
+```wiki
+{{#ask: [[Has entity type::Project]] [[Has duration::>5 years]]
+|?Has start date
+|?Has end date
+|?Has duration
+}}
+```
+
+High quality polished content:
+```wiki
+{{#ask: [[Has quality::polished]] [[Has quality score::>0.8]]
+|?Has quality score
+|?Has author
+}}
+```
+
+=== Aggregation Queries ===
+
+Average confidence by epistemic status:
+```wiki
+{{#ask: [[Has epistemic status::+]]
+|?Has confidence score
+|format=template
+|template=Average_Confidence
+}}
+```
+
+Total evidence count by domain:
+```wiki
+{{#ask: [[Has domain::+]]
+|?Has evidence count
+|format=template
+|template=Sum_Evidence
+}}
+```
+
+== Property Documentation Standards ==
+
+=== Required Properties ===
+
+Every BITwiki page should include:
+# [[Has entity type::Type]] — Core classification
+# [[Has epistemic status::Status]] — Validation tier
+# [[Has confidence score::Number]] OR [[Has confidence::Level]] — Certainty assessment
+# [[Has author::Page]] — Attribution
+# [[Has creation date::Date]] — Temporal anchor
+# [[Has version::Text]] — Version tracking
+
+=== Recommended Properties ===
+
+Strongly encouraged for comprehensive documentation:
+* [[Has source::Page]] — Provenance
+* [[Has related::Page]] — Relationship mapping
+* [[Has description::Text]] — Human-readable summary
+* [[Has evidence count::Number]] — Empirical support
+* [[Has domain::Text]] — Domain classification
+
+=== Optional Properties ===
+
+Use when applicable:
+* [[Has parent::Page]] — Hierarchical structure
+* [[Has part::Page]] — Component relationships
+* [[Has start date::Date]] — Temporal bounds
+* [[Has word count::Number]] — Content metrics
+* [[Has quality score::Number]] OR [[Has quality::Level]] — Editorial status
+
+== Property Evolution Guidelines ==
+
+=== Adding New Properties ===
+
+When the existing vocabulary proves insufficient:
+
+# '''Document the need''': What cannot be expressed with current properties?
+# '''Propose the property''': Define type, purpose, constraints
+# '''Test in sandbox''': Validate with example queries
+# '''Submit for review''': Community consensus before adoption
+# '''Update this dictionary''': Add to canonical reference
+
+=== Deprecating Properties ===
+
+When properties fall into disuse:
+
+# '''Mark deprecated''': Add deprecation notice
+# '''Suggest alternatives''': Map to replacement properties
+# '''Migrate existing''': Update pages using deprecated properties
+# '''Archive''': Move to historical reference after transition period
+
+== References ==
+
+# Semantic MediaWiki. (2026). Properties. https://www.semantic-mediawiki.org/
+# Semantic MediaWiki. (2026). Types. https://www.semantic-mediawiki.org/
+# SMW User Manual. (2026). Property declaration. https://www.semantic-mediawiki.org/
+# BITwiki Ontology Index. (2026). https://bitwiki.org/BITwiki_Ontology_Index
+# BITwiki Constitution. (2026). https://bitwiki.org/BITwiki_Constitution
+# W3C. (2014). RDF 1.1 Concepts. https://www.w3.org/TR/rdf11-concepts/
+# W3C. (2012). OWL 2 Web Ontology Language. https://www.w3.org/TR/owl2-overview/
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+# Noy, N.F., & McGuinness, D.L. (2001). Ontology development 101.
+# Smith, B., et al. (2007). The OBO Foundry. Nature Biotechnology.
+
+[[Has page type::Property Reference]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.92]]
+[[Has confidence::very high]]
+[[Has property count::37]]
+[[Has source count::10]]
+[[Has word count::2800]]
+[[Has quality::exemplary]]
+[[Has quality score::0.92]]

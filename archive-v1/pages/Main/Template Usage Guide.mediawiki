@@ -1,0 +1,454 @@
+{{Infobox
+| title = BITwiki Template Usage Guide: Best Practices for Template Implementation
+| description = Comprehensive guide for using templates in BITwiki—template selection, parameter usage, troubleshooting, and confidence representation systems. Patterns for practice, not prescriptions for rigidity.
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-14
+| version = 3.0.0-consolidated
+| epistemic_status = Established
+| confidence = Well-Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: template-guide
+domain: template-usage
+| workflow = state: Production
+| sources_merged = - Template_Usage_Guide.md (v2.1.0-revised, base)
+- Template_Usage_Guide1.md (v2.0.0, numeric confidence system)
+- Template_Usage_Guide2.md (v2.0.0)
+- Template_Usage_Guide3.md (v2.0.0)
+- Template_Usage_Guide4.md (v2.0.0)
+- Template_Usage_Guide5.md (v2.1.0-revised, identical to base)
+- Template_Usage_Guide6.md (v2.0.0, Well-Established variant)
+- Template_Usage_Guide7.md (v2.established, confidence trajectory)
+| enhancements = - Dual confidence representation system (textual and numeric)
+- Confidence representation mapping table
+- Confidence trajectory concept from v2.established
+- Extended troubleshooting guidance
+- Enhanced SMW integration examples
+- Version history and source attribution
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+<includeonly>
+
+= BITwiki Template Usage Guide: Best Practices for Template Implementation =
+
+== Etymology: The Craft of Pattern ==
+
+''Usage'' — from Latin ''usus'', from ''uti'', to use, to employ. The act of employing, the practice of application. Usage is not mere consumption but skilled employment—the craft of putting patterns to work.
+
+''Guide'' — from Old French ''guider'', to guide, lead, conduct. From a Germanic root meaning to have charge of, to watch over. A guide is not a commander but a companion—one who has traveled the path and marks the way.
+
+== Purpose: Guidance Without Constraint ==
+
+This document provides guidelines for using templates in BITwiki. Templates ensure consistent formatting, enable semantic markup, and facilitate knowledge reuse.
+
+This guide offers:
+* '''Orientation''': Finding the right template for your content
+* '''Instruction''': Understanding how to use template parameters
+* '''Troubleshooting''': Resolving common issues
+* '''Best practices''': Patterns that have proven effective
+* '''Confidence systems''': Understanding multiple representation approaches
+
+It does not command. It accompanies.
+
+== Template Selection: Finding the Right Pattern ==
+
+=== Step 1: Identify Entity Type ===
+
+Determine the type of content:
+* Concept: Use Template:Infobox Concept
+* Idea: Use Template:Infobox Idea
+* Implementation: Use Template:Infobox Implementation
+* Project: Use Template:Infobox Project
+
+=== Step 2: Check for Specialized Templates ===
+
+Some domains have specialized templates:
+* Person: Template:Infobox Person
+* Organization: Template:Infobox Organization
+* Publication: Template:Infobox Publication
+* Event: Template:Infobox Event
+
+=== Step 3: Consider Navigation Templates ===
+
+For page organization:
+* Navigation boxes: Template:Navbox
+* Sidebars: Template:Sidebar
+* Portals: Template:Portal
+
+== Parameter Usage: Filling the Pattern ==
+
+=== Required Parameters ===
+
+Always provide required parameters:
+* name: Entity name
+* definition/description: Brief description
+* epistemic_status: One of the established tiers
+* confidence: Qualitative level (low, medium, high, very high, well-established)
+
+Example:
+```wiki
+{{Infobox Idea
+| name = Feedback Loop
+| definition = A process where outputs are fed back as inputs
+| epistemic_status = Verified
+| confidence = high
+}}
+```
+
+=== Optional Parameters ===
+
+Add optional parameters when relevant:
+* image: Illustrative image
+* originator: Who originated the idea
+* date: When originated
+* sources: Number of sources
+
+Example:
+```wiki
+{{Infobox Idea
+| name = Feedback Loop
+| definition = A process where outputs are fed back as inputs
+| originator = Norbert Wiener
+| date = 1948
+| epistemic_status = Verified
+| confidence = high
+| sources = 1000
+}}
+```
+
+=== Parameter Formatting ===
+
+Text: Plain text, no markup
+```wiki
+| name = Feedback Loop
+```
+
+Dates: ISO 8601 format
+```wiki
+| date = 1948
+```
+
+Pages: Wiki page names
+```wiki
+| originator = Person:Norbert Wiener
+```
+
+Lists: Comma-separated
+```wiki
+| related = Homeostasis, Control Theory
+```
+
+== Confidence Representation Systems ==
+
+BITwiki supports multiple confidence representation approaches. Choose the system appropriate for your context:
+
+=== Textual Confidence Levels ===
+
+For qualitative assessment using descriptive terms:
+
+| Level | Meaning | Use Case |
+|-------|---------|----------|
+| low | Preliminary, speculative | Early hypotheses, unverified claims |
+| medium | Moderate support | Some evidence exists but limited |
+| high | Strong support | Substantial evidence, consensus |
+| very high | Near certainty | Extensive validation, established fact |
+| well-established | Canonical acceptance | Definitive, widely recognized |
+
+Example:
+```wiki
+| confidence = high
+```
+
+=== Numeric Confidence Scores ===
+
+For quantitative assessment using decimal values:
+
+| Score Range | Interpretation | Corresponding Textual |
+|-------------|----------------|----------------------|
+| 0.00-0.25 | low | low |
+| 0.26-0.50 | medium | medium |
+| 0.51-0.75 | high | high |
+| 0.76-0.90 | very high | very high |
+| 0.91-1.00 | well-established | well-established |
+
+Example:
+```wiki
+| confidence_score = 0.95
+```
+
+=== Confidence Trajectory ===
+
+For tracking confidence evolution over time:
+
+The confidence trajectory represents how confidence in a claim changes as evidence accumulates. Document the trajectory using:
+
+```wiki
+[[Has confidence trajectory::{{{confidence|established}}}]]
+```
+
+Trajectory values: emerging → developing → established → canonical
+
+== Best Practices: Patterns for Excellence ==
+
+=== Practice 1: Complete All Required Parameters ===
+
+Poor:
+```wiki
+{{Infobox Idea
+| name = Feedback Loop
+}}
+```
+
+Better:
+```wiki
+{{Infobox Idea
+| name = Feedback Loop
+| definition = A process where outputs are fed back as inputs
+| epistemic_status = Verified
+| confidence = high
+}}
+```
+
+=== Practice 2: Use Consistent Formatting ===
+
+Poor:
+```wiki
+| name=Feedback Loop
+| definition = A process
+```
+
+Better:
+```wiki
+| name = Feedback Loop
+| definition = A process where outputs are fed back as inputs
+```
+
+=== Practice 3: Provide Accurate Information ===
+
+Poor:
+```wiki
+| confidence = very high
+| sources = 10000
+```
+
+Better:
+```wiki
+| confidence = high
+| sources = 5
+```
+
+Or using numeric:
+```wiki
+| confidence_score = 0.85
+| sources = 5
+```
+
+=== Practice 4: Update When Information Changes ===
+
+Poor:
+* Never updating outdated information
+
+Better:
+* Regular review and updates
+* Version tracking
+* Change documentation
+* Confidence trajectory updates
+
+== Troubleshooting: Resolving Issues ==
+
+=== Issue 1: Template Not Displaying ===
+
+Symptoms: Template code visible, not rendered
+
+Causes:
+* Template doesn't exist
+* Syntax error
+* Missing closing brackets
+
+Solutions:
+* Check template name
+* Verify syntax
+* Check for typos
+* Ensure template page exists
+
+=== Issue 2: Parameters Not Working ===
+
+Symptoms: Default values shown instead of custom values
+
+Causes:
+* Parameter name misspelled
+* Parameter not supported
+* Case sensitivity
+* Confidence value format mismatch
+
+Solutions:
+* Check parameter name
+* Verify template documentation
+* Check case
+* Ensure confidence value matches expected format (textual vs numeric)
+
+=== Issue 3: SMW Properties Not Generated ===
+
+Symptoms: No semantic properties in page
+
+Causes:
+* Template missing SMW markup
+* <includeonly> tags missing
+* Property syntax error
+* Confidence property name mismatch
+
+Solutions:
+* Check template SMW markup
+* Verify <includeonly> tags
+* Check property syntax
+* Verify property name matches (confidence vs confidence_score vs confidence trajectory)
+
+=== Issue 4: Validation Errors ===
+
+Symptoms: Page in error category
+
+Causes:
+* Invalid confidence value
+* Missing required parameter
+* Invalid epistemic status
+* Confidence score out of range (0.0-1.0)
+
+Solutions:
+* Check confidence value against valid options
+* Add missing parameters
+* Use valid epistemic status
+* Verify numeric confidence is within 0.0-1.0 range
+
+=== Issue 5: Confidence System Conflicts ===
+
+Symptoms: Multiple confidence values showing, inconsistent display
+
+Causes:
+* Mixing textual and numeric confidence in same template
+* Template expecting one format, receiving another
+* Legacy templates using deprecated confidence format
+
+Solutions:
+* Use consistent confidence format per template
+* Check template documentation for expected format
+* Update legacy templates to current standard
+* Use confidence mapping for conversions
+
+== Advanced Usage: Extending Patterns ==
+
+=== Nested Templates ===
+
+Templates can include other templates:
+```wiki
+{{Infobox Idea
+| name = Feedback Loop
+| definition = {{Definition:Feedback}}
+| epistemic_status = Verified
+}}
+```
+
+=== Conditional Parameters ===
+
+Show content only if parameter exists:
+```wiki
+{{#if: {{{image|}}} | [[File:{{{image}}}]] | }}
+```
+
+=== Dynamic Properties ===
+
+Generate properties dynamically:
+```wiki
+[[Has confidence::{{{confidence|medium}}}]]
+[[Has confidence score::{{{confidence_score|0.5}}}]]
+```
+
+=== Confidence Conversion Templates ===
+
+Convert between confidence representations:
+```wiki
+{{#switch: {{{confidence|}}}
+| low = 0.15
+| medium = 0.40
+| high = 0.65
+| very high = 0.85
+| well-established = 0.95
+| #default = 0.50
+}}
+```
+
+== SMW Integration: Machine Readability ==
+
+=== Template-Generated Properties ===
+
+Templates automatically generate SMW properties:
+```wiki
+[[Has entity type::Idea]]
+[[Has name::{{{name}}}]]
+[[Has confidence::{{{confidence}}}]]
+[[Has confidence score::{{{confidence_score}}}]]
+[[Has confidence trajectory::{{{confidence_trajectory|established}}}]]
+```
+
+=== Querying Template Data ===
+
+Query data from templates:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence::high]]
+}}
+```
+
+Query by numeric confidence:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence score::>0.8]]
+}}
+```
+
+Query by trajectory:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence trajectory::established]]
+}}
+```
+
+=== Combined Confidence Queries ===
+
+Query across confidence systems:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence::high||very high||well-established]]
+[[Has confidence score::>0.7]]
+}}
+```
+
+== Version History ==
+
+This consolidated document merges content from multiple source versions:
+* '''v2.0.0''' (2026-02-12): Original numeric confidence system (confidence_score: 0.0-1.0)
+* '''v2.1.0-revised''' (2026-02-14): Added etymology section, textual confidence system (low/medium/high/very high)
+* '''v2.established''' (2026-02-12): Introduced confidence trajectory concept
+* '''v3.0.0-consolidated''' (2026-02-17): Merged all systems, added mapping tables, enhanced documentation
+
+== References ==
+
+# Semantic MediaWiki. (2026). Template documentation.
+# MediaWiki. (2026). Template syntax.
+# BITwiki Template Catalog. (2026).
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# BITwiki Epistemics Framework. (2026).
+
+[[Has page type::Template Guide]]
+[[Has epistemic tier::Established]]
+[[Has confidence::Well-Established]]
+[[Has confidence score::0.95]]
+[[Has confidence trajectory::established]]
+[[Has practice count::4]]
+[[Has issue count::5]]
+[[Has source count::6]]
+[[Has word count::1200]]
+
+</includeonly>

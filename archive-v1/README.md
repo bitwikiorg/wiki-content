@@ -1,53 +1,33 @@
-# archive-v1 — public V1 source archive
+# archive-v1 — exhaustive public BITwiki V1 snapshot
 
 **Read-only provenance. Do not deploy this directory as V2 pages.**
 
-The archive now distinguishes the **Main-namespace corpus** from the rest of the wiki surface.
+Generated from the anonymous MediaWiki Action API with continuation followed until exhaustion.
 
-## Coverage map
+## Snapshot
+- Captured: **2026-08-18T16:44:57Z**
+- API: `https://bitwiki.org/w/api.php`
+- Namespaces enumerated: **24**
+- Pages: **186**
+- Revision bodies: **606**
+- Templates: **9**
+- Categories (used ∪ created): **162**
+- Used categories: **162**
+- Created Category: pages: **0**
+- Used categories lacking Category: pages: **162**
 
-- [`manifest.json`](manifest.json) — **162 / 162 Main-namespace titles accounted for**.
-- [`wiki-surface-manifest.json`](wiki-surface-manifest.json) — public namespaces and maintenance/source surfaces beyond Main.
-- [`templates/manifest.json`](templates/manifest.json) — V1 Template titles observed during reconstruction; raw-body verification is tracked per record.
-- [`categories/manifest.json`](categories/manifest.json) — category-index snapshot and category-page state.
-- [`special/README.md`](special/README.md) — Special pages used to enumerate/validate the corpus.
-- [`raw-snapshots-1.md`](raw-snapshots-1.md) and [`raw-snapshots-2.md`](raw-snapshots-2.md) — exact public View-source wikitext already captured.
+## Files
+`siteinfo.json` site model; `index.json` every page; `namespaces/*` exhaustive title lists; `pages/*` current wikitext; `history/*` complete revision histories with bodies; `categories/*` complete category graph; `templates/*` every template and transclusion caller; `special/*` maintenance reports; `audit.json` completeness checks.
 
-## Four states
-
-| State | Meaning |
-|---|---|
-| accounted | title/surface + authoritative source reference are recorded |
-| archived | exact raw source/revision material is stored in Git |
-| reconciled | related versions were compared and unique content understood |
-| refactored | a deliberate V2 implementation exists |
-
-**Accounted does not mean archived. Archived does not mean reconciled. Reconciled does not automatically mean merged.**
-
-## Main namespace
-
-Current checkpoint: all 162 visible Main-namespace titles are accounted for in `manifest.json`. Exact raw source has been captured for a subset and continues to accumulate in `raw-snapshots-*.md`.
-
-## Other namespaces
-
-The live `Special:AllPages` surface exposes Main, Talk, User, User talk, BITwiki, BITwiki talk, File, File talk, MediaWiki, MediaWiki talk, Template, Template talk, Help, Help talk, Category, Category talk, Property, Property talk, Concept, Concept talk, smw/schema, smw/schema talk, Module, and Module talk.
-
-Those namespaces are now explicitly archive targets in `wiki-surface-manifest.json`. Do not assume the 162-page Main manifest covers them.
-
-## Migration rule
-
+## Migration
 ```text
-archive V1 source
-→ map transclusions / categories / semantic dependencies
-→ compare revisions / related pages
-→ preserve unique writing, citations, properties and behavior
+archive exact V1 source + history + usage
+→ compare related versions
+→ preserve unique writing / citations / semantics / behavior
 → separate durable ideas from obsolete implementation
-→ decide V2 disposition
-→ publish
+→ KEEP / REWRITE / MERGE / SPLIT / REDIRECT / RETIRE
+→ implement V2
+→ rerun maintenance reports
 ```
 
-Similarity of titles is never sufficient evidence for a merge.
-
-## Authority
-
-The live public wiki and its revision history remain authoritative for inherited V1 content. This directory is the Git-side preservation and lookup surface.
+Special pages are generated reports, not deployable content pages. Similar titles are never sufficient evidence for a merge.

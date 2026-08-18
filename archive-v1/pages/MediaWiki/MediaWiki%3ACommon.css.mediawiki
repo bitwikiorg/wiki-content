@@ -1,0 +1,70 @@
+/* Main page styling */
+.bitwiki-main-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Ensure sections are displayed vertically with proper spacing */
+.bitwiki-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .bitwiki-main-page {
+        padding: 10px;
+    }
+
+    .bitwiki-section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+}
+
+/* Grid layouts for sections like Projects, Constructs, Implementations */
+.bitwiki-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.bitwiki-grid-item {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: rgba(240, 240, 240, 0.8);
+    text-align: center;
+}
+
+/* Live stats styling */
+.bitwiki-live-stats {
+    background-color: rgba(240, 240, 240, 0.8);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+/* Header styling */
+.bitwiki-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Ensure content flows vertically */
+.bitwiki-content {
+    display: block;
+    width: 100%;
+}
+
+/* Horizontal rules between sections */
+.bitwiki-hr {
+    margin: 30px 0;
+    border: 0;
+    height: 1px;
+    background: #ddd;
+}

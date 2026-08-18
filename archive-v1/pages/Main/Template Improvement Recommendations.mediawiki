@@ -1,0 +1,512 @@
+{{Infobox
+| title = Template Improvement Recommendations
+| description = Actionable recommendations for addressing CRITICAL-003 template system gaps
+| type = schema-matter
+| author = BITCORE - Template Validation Engineer (TEMP-001)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Attribution-Traced
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: recommendation-document
+domain: template-system
+| workflow = state: Draft
+}}
+
+= Template Improvement Recommendations =
+
+'''Document ID:''' TEMP-001-REC-20260213  
+'''Date:''' 2026-02-13  
+'''Status:''' Draft for Review  
+'''Constraint:''' Prototype only - no production changes without approval
+
+----
+== Executive Summary ==
+
+This document provides concrete, actionable recommendations for addressing the 8 user concerns identified in CRITICAL-003. Each recommendation includes:
+* Problem statement
+* Proposed solution
+* Implementation steps
+* Risk assessment
+* Testing approach
+
+'''Priority Levels:'''
+* '''P0-Critical:''' Must fix immediately - blocks reliable template operation
+* '''P1-High:''' Should fix soon - significantly impacts template quality
+* '''P2-Medium:''' Fix when possible - improves maintainability
+* '''P3-Low:''' Nice to have - future enhancement
+
+----
+== Recommendation 1: Implement Lua-Based Validation (P0) ==
+
+=== Problem ===
+Current templates use nested `#if` parser functions for validation, which:
+* Don't actually halt execution on validation failure
+* Allow `#set` to execute with empty/default values
+* Create false sense of security with error messages
+
+=== Solution ===
+Create centralized Lua validation modules that:
+* Strictly validate all required fields before any SMW operations
+* Return error HTML that blocks template rendering
+* Centralize controlled vocabulary definitions
+* Provide consistent error messaging
+
+=== Implementation ===
+
+'''Step 1: Create Module:ValidatorBase'''
+```lua
+local p = {}
+
+-- Controlled vocabularies
+local VOCABS = {
+    epistemic_status = {["Hypothetical"]=true, ["Provisional"]=true, ["Established"]=true, ["Deprecated"]=true},
+    stability_class = {["Volatile"]=true, ["Evolving"]=true, ["Stable"]=true, ["Canonical"]=true},
+    concept_type = {["Theory"]=true, ["Model"]=true, ["Framework"]=true, ["Principle"]=true, ["Pattern"]=true}
+}
+
+function p.validate_required(args, fields)
+    local missing = {}
+    for _, f in ipairs(fields) do
+        if not args[f] or args[f]:match("^%s*$") then
+            table.insert(missing, f)
+        end
+    end
+    return #missing == 0, missing
+end
+
+function p.validate_vocab(value, vocab_name)
+    if not value or value == "" then return true end
+    local vocab = VOCABS[vocab_name]
+    if not vocab then return false, "Unknown vocab: " .. vocab_name end
+    if vocab[value] then return true end
+    local valid = {}
+    for k, _ in pairs(vocab) do table.insert(valid, k) end
+    return false, "Invalid '" .. value .. "'. Valid: " .. table.concat(valid, ", ")
+end
+
+function p.render_error(errors)
+    local html = '<div class="bitwiki-validation-error">'
+    html = html .. "<strong>Template Error:</strong><ul>"
+    for _, e in ipairs(errors) do
+        html = html .. "<li>" .. e .. "</li>"
+    end
+    return html .. "</ul></div>"
+end
+
+return p
+```
+
+'''Step 2: Update Template'''
+```mediawiki
+{{#invoke:InfoboxValidator|concept
+  |title={{{title|}}}
+  |definition={{{definition|}}}
+  |domain={{{domain|}}}
+}}
+```
+
+=== Risk Assessment ===
+* '''Risk:''' Low - Lua modules are well-established in MediaWiki
+* '''Mitigation:''' Test thoroughly in staging environment
+* '''Rollback:''' Revert to previous template version
+
+=== Testing ===
+* [ ] Test with all required fields
+* [ ] Test with each required field missing
+* [ ] Test with invalid vocab values
+* [ ] Verify no SMW properties set on validation failure
+
+----
+== Recommendation 2: Fix #set Execution Guard (P0) ==
+
+=== Problem ===
+`#set` parser function executes even when validation fails, creating invalid SMW data.
+
+=== Solution ===
+Move all `#set` calls inside Lua validation success block only.
+
+=== Implementation ===
+
+'''Before (Current):'''
+```mediawiki
+{{#if: {{{Title|}}} | 
+  {{#if: {{{Definition|}}} |
+    {{#set: Has title = {{{Title|}}} }}  <!-- Still executes if Title exists -->
+  | {{Error|Missing Definition}} }}
+| {{Error|Missing Title}} }}
+```
+
+'''After (Fixed):'''
+```lua
+-- In Module:InfoboxValidator
+function p.concept(frame)
+    local args = frame.args
+    local base = require("Module:ValidatorBase")
+
+    -- Validate FIRST
+    local valid, missing = base.validate_required(args, {"title", "definition", "domain"})
+    if not valid then
+        return base.render_error(missing)
+    end
+
+    -- Only NOW generate SMW
+    local smw = "{{#set:"
+    smw = smw .. "|Has title=" .. args.title
+    smw = smw .. "|Has definition=" .. args.definition
+    smw = smw .. "|Has domain=" .. args.domain
+    smw = smw .. "}}"
+
+    return smw .. render_infobox_html(args)
+end
+```
+
+=== Risk Assessment ===
+* '''Risk:''' Medium - changes SMW data generation timing
+* '''Mitigation:''' Test with existing pages to ensure properties still set
+* '''Rollback:''' Immediate revert if SMW queries break
+
+----
+== Recommendation 3: Enforce Controlled Vocabularies (P1) ==
+
+=== Problem ===
+Controlled vocabularies documented in TemplateData but not enforced in template code.
+
+=== Solution ===
+Centralize vocabularies in Lua module and validate all inputs.
+
+=== Implementation ===
+
+'''Step 1: Define Vocabularies'''
+```lua
+-- In Module:ValidatorBase
+local CONTROLLED_VOCABS = {
+    epistemic_status = {
+        values = {["Hypothetical"]=1, ["Provisional"]=2, ["Established"]=3, ["Deprecated"]=4},
+        default = "Provisional"
+    },
+    concept_type = {
+        values = {["Theory"]=true, ["Model"]=true, ["Framework"]=true, ["Principle"]=true, ["Pattern"]=true},
+        default = nil
+    }
+}
+
+function p.get_vocab(name)
+    return CONTROLLED_VOCABS[name]
+end
+```
+
+'''Step 2: Validate in Template'''
+```lua
+function p.validate_concept_type(value)
+    local vocab = CONTROLLED_VOCABS.concept_type
+    if not value then return true, nil end  -- optional
+    if vocab.values[value] then return true, value end
+    return false, "Invalid concept_type. Valid: " .. table.concat(vocab.values, ", ")
+end
+```
+
+'''Step 3: Add SMW Constraints'''
+```smw
+[[Has concept type::]]
+[[Allows value::Theory]]
+[[Allows value::Model]]
+[[Allows value::Framework]]
+[[Allows value::Principle]]
+[[Allows value::Pattern]]
+```
+
+=== Risk Assessment ===
+* '''Risk:''' Low - prevents bad data entry
+* '''Mitigation:''' Allow migration period for existing pages
+* '''Rollback:''' Remove SMW constraints if needed
+
+----
+== Recommendation 4: Implement Relationship Field Specification (P1) ==
+
+=== Problem ===
+Relationship fields use comma-separated values without type pairing, creating ambiguity.
+
+=== Solution ===
+Use structured format: `PageName[relationship_type]`
+
+=== Implementation ===
+
+'''New Format:'''
+```mediawiki
+{{Infobox_Concept
+| title = Machine Learning
+| definition = ...
+| domain = CS
+| related_concepts = Neural Networks[part-of], Deep Learning[extends], Statistics[depends-on]
+}}
+```
+
+'''Lua Parser:'''
+```lua
+function p.parse_relationships(rel_string)
+    local rels = {}
+    for entry in rel_string:gmatch("([^,]+)") do
+        entry = entry:gsub("^%s+", ""):gsub("%s+$", "")
+        local page, rel_type = entry:match("^(.-)%s*%[(.-)%]$")
+        if page then
+            table.insert(rels, {page=page, type=rel_type})
+        else
+            table.insert(rels, {page=entry, type="related-to"})  -- default
+        end
+    end
+    return rels
+end
+```
+
+'''SMW Generation:'''
+```lua
+for _, rel in ipairs(rels) do
+    smw = smw .. "[[Has relationship to::" .. rel.page .. "]]"
+    smw = smw .. "[[Has relationship type::" .. rel.type .. "]]"
+end
+```
+
+=== Risk Assessment ===
+* '''Risk:''' Medium - changes parameter format
+* '''Mitigation:''' Support both old and new formats during transition
+* '''Migration:''' Bot to update existing pages
+
+----
+== Recommendation 5: Create CSS Theme System (P1) ==
+
+=== Problem ===
+Inline styles throughout templates make theming difficult and create fragility.
+
+=== Solution ===
+Move all styling to MediaWiki:Common.css with semantic class names.
+
+=== Implementation ===
+
+'''Step 1: Create CSS Classes'''
+```css
+/* MediaWiki:Common.css */
+
+/* Infobox base */
+.bitwiki-infobox {
+    border: 1px solid var(--border-color, #ccc);
+    border-radius: 4px;
+    margin: 0.5em 0;
+}
+
+.bitwiki-infobox-header {
+    background: var(--header-bg, #f5f5f5);
+    padding: 0.5em 1em;
+    font-weight: bold;
+}
+
+/* Epistemic badges */
+.bitwiki-epistemic-badge {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.bitwiki-epistemic-established { background: #d4edda; color: #155724; }
+.bitwiki-epistemic-provisional { background: #fff3cd; color: #856404; }
+.bitwiki-epistemic-hypothetical { background: #f8d7da; color: #721c24; }
+.bitwiki-epistemic-deprecated { background: #e2e3e5; color: #383d41; }
+
+/* Validation errors */
+.bitwiki-validation-error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    color: #721c24;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bitwiki-infobox { width: 100%; }
+}
+```
+
+'''Step 2: Update Templates'''
+```mediawiki
+<!-- Before -->
+<span style="background: #d4edda; padding: 0.2em 0.5em; border-radius: 3px;">Established</span>
+
+<!-- After -->
+<span class="bitwiki-epistemic-badge bitwiki-epistemic-established">Established</span>
+```
+
+=== Risk Assessment ===
+* '''Risk:''' Low - CSS changes are reversible
+* '''Mitigation:''' Test on multiple browsers
+* '''Rollback:''' Revert CSS file
+
+----
+== Recommendation 6: Simplify Template_EvidenceEpistemics (P2) ==
+
+=== Problem ===
+Template is overly complex with nested template calls and no validation.
+
+=== Solution ===
+Refactor into composable components with Lua-based validation.
+
+=== Implementation ===
+
+'''Break into Components:'''
+# `Template:EvidenceHeader` - Document metadata
+# `Template:EvidenceClaim` - Claim with validation
+# `Template:EvidenceSource` - Source evaluation
+# `Template:EvidenceNavigation` - Related frameworks
+
+'''New Structure:'''
+```mediawiki
+
+{{#invoke:EvidenceValidator|main
+  |title={{{title|}}}
+  |primary_claim={{{primary_claim|}}}
+  |epistemic_tier={{{epistemic_tier|}}}
+  |sources={{{sources|}}}
+}}
+
+```
+
+=== Risk Assessment ===
+* '''Risk:''' Medium - changes template interface
+* '''Mitigation:''' Create new version, deprecate old
+* '''Migration:''' Update pages gradually
+
+----
+== Recommendation 7: Implement Template Drift Detection (P2) ==
+
+=== Problem ===
+Four infobox templates share 85% code but can drift out of sync.
+
+=== Solution ===
+Create base module and automated drift detection.
+
+=== Implementation ===
+
+'''Step 1: Create Module:InfoboxBase'''
+```lua
+local p = {}
+
+function p.render_infobox(args, config)
+    -- Shared infobox rendering logic
+    -- config specifies template-specific fields
+end
+
+function p.validate_infobox(args, config)
+    -- Shared validation logic
+    -- config specifies required fields and vocabularies
+end
+
+return p
+```
+
+'''Step 2: Drift Detection Script'''
+```python
+# compare_templates.py
+import re
+
+def extract_validation_pattern(template_text):
+    # Extract validation logic
+    pass
+
+def compare_templates(template1, template2):
+    # Compare patterns and report differences
+    pass
+```
+
+=== Risk Assessment ===
+* '''Risk:''' Low - detection is non-invasive
+* '''Mitigation:''' Run in CI/CD pipeline
+* '''Rollback:''' Disable detection if noisy
+
+----
+== Recommendation 8: Add Comprehensive Testing (P1) ==
+
+=== Problem ===
+No automated testing for template validation.
+
+=== Solution ===
+Create test suite for all validation scenarios.
+
+=== Implementation ===
+
+'''Test Cases:'''
+```yaml
+test_cases:
+  - name: "Valid concept"
+    template: "Infobox_Concept"
+    params:
+      title: "Test Concept"
+      definition: "A test concept"
+      domain: "CS"
+    expected: "pass"
+
+  - name: "Missing required"
+    template: "Infobox_Concept"
+    params:
+      title: "Test"
+      # definition missing
+      domain: "CS"
+    expected: "fail"
+    error_contains: "definition"
+
+  - name: "Invalid vocab"
+    template: "Infobox_Concept"
+    params:
+      title: "Test"
+      definition: "A test"
+      domain: "CS"
+      concept_type: "InvalidType"
+    expected: "fail"
+    error_contains: "concept_type"
+```
+
+=== Risk Assessment ===
+* '''Risk:''' Very low - testing doesn't affect production
+* '''Mitigation:''' Run tests before any deployment
+
+----
+== Implementation Roadmap ==
+
+=== Phase 1: Foundation (Week 1-2) ===
+* [ ] Create Module:ValidatorBase
+* [ ] Create Module:InfoboxValidator
+* [ ] Create CSS theme system
+* [ ] Set up test framework
+
+=== Phase 2: Core Templates (Week 3-4) ===
+* [ ] Migrate Infobox_Concept
+* [ ] Migrate Infobox_Idea
+* [ ] Migrate Infobox_Implementation
+* [ ] Migrate Infobox_Project
+
+=== Phase 3: Secondary Templates (Week 5-6) ===
+* [ ] Migrate Template_Comment
+* [ ] Refactor Template_EpistemicTier
+* [ ] Refactor Template_EvidenceEpistemics
+
+=== Phase 4: Enhancement (Week 7-8) ===
+* [ ] Implement drift detection
+* [ ] Add relationship validation
+* [ ] Complete test coverage
+
+----
+== Approval Required ==
+
+Before implementing any changes:
+
+# '''Review this document''' - Ensure recommendations align with goals
+# '''Approve prototypes''' - Review prototype templates in `/prototypes/`
+# '''Schedule maintenance window''' - Plan for template updates
+# '''Define rollback plan''' - Ensure quick revert if issues arise
+
+'''Do NOT implement without explicit approval.'''
+
+----
+''Document generated by Template Validation Engineer (TEMP-001)''  
+''Epistemic status: Attribution-Traced | Confidence: Established''

@@ -1,0 +1,208 @@
+{{Infobox
+| title = BITwiki Validation Rules: Content Quality Standards
+| description = Rules for validating BITwiki content structure, semantics, and epistemic integrity.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| version = 3.0.0
+| epistemic_status = Established
+| confidence = High
+| license = CC-BY-SA-4.0
+| ontology = entity_type: validation-rules
+domain: quality-control
+| workflow = state: Active
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+<includeonly>
+
+= BITwiki Validation Rules =
+
+== Purpose ==
+
+Validation rules ensure BITwiki content meets structural, semantic, and epistemic standards. They are not barriers to contribution but quality checks that maintain knowledge integrity.
+
+Rules operate at three levels:
+* '''Structural''': Required fields, valid formats
+* '''Semantic''': Meaningful relationships, consistent typing
+* '''Epistemic''': Appropriate confidence, traceable sources
+
+== Structural Validation ==
+
+=== Required Properties ===
+
+| Rule | Check | Severity | Rationale |
+|------|-------|----------|-----------|
+| Entity type | `Has entity type` present | Error | Cannot query without type |
+| Title | `Has title` or page title present | Error | Cannot identify without title |
+| Epistemic status | `Has epistemic status` present | Warning | Users need confidence guidance |
+
+'''Example Violation:'''
+```wiki
+[[Has name::Feedback Loop]]  # Missing entity type
+```
+
+'''Correction:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has name::Feedback Loop]]
+[[Has epistemic status::Verified]]
+```
+
+=== Valid Values ===
+
+| Property | Valid Values | Severity |
+|----------|--------------|----------|
+| Entity type | Topic, Idea, Implementation, Project, Protocol, Dataset, Person, Organization, Event, Publication, Location | Error |
+| Epistemic status | Hypothetical, Emerging, Established, Verified, Deprecated, Disputed | Error |
+| Confidence score | 0.0-1.0 | Warning |
+
+'''Example Violation:'''
+```wiki
+[[Has epistemic status::Proven]]  # Invalid value
+```
+
+'''Correction:'''
+```wiki
+[[Has epistemic status::Verified]]  # Valid value
+```
+
+== Semantic Validation ==
+
+=== Relationship Targets ===
+
+| Rule | Check | Severity |
+|------|-------|----------|
+| Target exists | Linked page exists | Warning |
+| Type compatibility | Source and target types compatible | Warning |
+| No circularity | Part-of relationships don't create cycles | Error |
+
+'''Example Violation (Circularity):'''
+```wiki
+Page A: [[Part of::Page B]]
+Page B: [[Part of::Page A]]
+```
+
+'''Resolution:''' Remove one relationship or clarify part-whole semantics.
+
+=== Property Types ===
+
+| Property | Expected Type | Example |
+|----------|---------------|---------|
+| Has date | Date (ISO 8601) | 2026-02-12 |
+| Has confidence score | Float (0.0-1.0) | 0.85 |
+| Has citation count | Integer | 15000 |
+| Has coordinates | Geo coordinates | 42.3601,-71.0942 |
+
+'''Example Violation:'''
+```wiki
+[[Has confidence score::High]]  # Wrong type
+```
+
+'''Correction:'''
+```wiki
+[[Has confidence score::0.85]]  # Correct type
+```
+
+== Epistemic Validation ==
+
+=== Confidence Calibration ===
+
+| Status | Confidence Range | Evidence Required |
+|----------|------------------|-------------------|
+| Hypothetical | 0.0-0.3 | Logical coherence |
+| Emerging | 0.3-0.5 | Single credible source |
+| Established | 0.5-0.75 | Multiple sources |
+| Verified | 0.75-1.0 | Extensive replication |
+| Deprecated | Any | Explanation of replacement |
+| Disputed | Any | Multiple conflicting sources |
+
+'''Example Violation:'''
+```wiki
+[[Has epistemic status::Hypothetical]]
+[[Has confidence score::0.9]]  # Mismatch: hypothetical with high confidence
+```
+
+'''Correction:'''
+```wiki
+[[Has epistemic status::Verified]]
+[[Has confidence score::0.9]]
+```
+
+=== Source Requirements ===
+
+| Claim Type | Source Requirement | Severity |
+|------------|-------------------|----------|
+| Established | At least 2 independent sources | Warning |
+| Verified | At least 5 sources or meta-analysis | Warning |
+| Quantitative | Primary source with methodology | Error |
+| Attribution | Source linking claim to originator | Warning |
+
+'''Example Violation:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has name::New Theory]]
+[[Has epistemic status::Verified]]  # No sources provided
+```
+
+'''Correction:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has name::New Theory]]
+[[Has epistemic status::Emerging]]
+[[Has source::Single study 2025]]
+```
+
+== Content Validation ==
+
+=== Definition Requirements ===
+
+| Entity Type | Definition Required | Severity |
+|-------------|---------------------|----------|
+| Idea | Yes | Warning |
+| Topic | Yes | Warning |
+| Protocol | Yes | Warning |
+| Implementation | Recommended | Info |
+
+'''Example Violation:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has name::Emergence]]
+# No definition provided
+```
+
+'''Correction:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has name::Emergence]]
+[[Has definition::System properties not predictable from component properties]]
+```
+
+=== Citation Requirements ===
+
+| Claim Type | Citation Required | Severity |
+|------------|-------------------|----------|
+| Direct quote | Yes | Error |
+| Statistical claim | Yes | Warning |
+| Historical fact | Recommended | Info |
+| Common knowledge | No | None |
+
+'''Example:'''
+```wiki
+"Cybernetics was founded in 1948"  # Common knowledge, no citation needed
+
+"Wiener's book sold 10,000 copies in first year"  # Statistical, citation needed
+[[Has source::Publisher records 1948-1949]]
+```
+
+== Validation Process ==
+
+# '''Automated checks''': Run on save, flag violations
+# '''Editor review''': Human judgment on warnings
+# '''Community audit''': Periodic review of disputed content
+# '''Epistemic committee''': Final arbitration on status changes
+
+Violations are not failures—they are opportunities for improvement. A page with warnings is still valuable; a page with errors may need correction before it can be fully trusted.
+
+</includeonly>

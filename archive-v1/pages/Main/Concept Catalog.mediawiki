@@ -1,0 +1,447 @@
+= Concept Catalog =
+
+> '''Consolidated Document''' | Generated: 2026-02-18
+> '''Sources Merged:''' Concept_Catalog.md, Concept_Catalog1-7.md (8 files → 4 unique content groups)
+> '''Enhancement:''' Deduplicated, cross-referenced, structurally optimized, quality enhanced
+
+----
+----
+----
+title: "BITwiki Concept Catalog: Core Concepts and Definitions"
+description: "Catalog of core concepts in BITwiki—their definitions, relationships, and epistemic status. Concepts are not fixed but evolve through use and validation."
+type: schema-matter
+author: "BITCORE"
+created: "2026-02-14"
+version: "2.1.0-revised"
+ontology:
+ entity_type: concept-catalog
+ domain: core-concepts
+epistemic_status: Established
+license: CC-BY-SA-4.0
+----
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+
+
+= BITwiki Concept Catalog: Core Concepts and Definitions =
+
+== Etymology: The Architecture of Thought ==
+
+''Concept'' — from Latin ''conceptum'', past participle of ''concipere'', to take in, to conceive. From ''con-'' (together) + ''capere'' (to take, to grasp). A concept is that which the mind grasps together—a gathering of characteristics into a unity.
+
+''Catalog'' — from Greek ''katalogos'', from ''kata-'' (down, completely) + ''legein'' (to say, to count). A complete counting, a thorough saying. This catalog gathers concepts that have achieved stability in BITwiki—not to fix them but to make them navigable.
+
+== Purpose: Concepts as Navigational Aids ==
+
+This document catalogs concepts that have achieved stability in BITwiki. Concepts are abstract ideas that form the foundation of the knowledge graph. They are not eternal truths but temporary stabilizations—attractors that have gathered sufficient concentration to persist.
+
+This catalog serves:
+* '''Orientation''': Finding one's way in the conceptual landscape
+* '''Connection''': Linking concepts to their origins and applications
+* '''Extension''': Building upon established concepts
+* '''Evolution''': Recognizing when concepts transform or dissolve
+
+== Concept Categories: Domains of Stability ==
+
+=== Epistemic Concepts ===
+
+Concepts about knowledge itself—how we know, how we validate, how we remain uncertain.
+
+'''Confidence'''
+* Definition: Assessment of certainty in a claim
+* Epistemic Status: Axiomatic
+* Usage: All claims should indicate confidence level
+* SMW: [[Has confidence::high]]
+
+'''Epistemic Status'''
+* Definition: Classification of claim validation level
+* Values: Hypothetical, Emerging, Established, Verified, Axiomatic
+* Epistemic Status: Axiomatic
+* Usage: All pages should declare status
+* SMW: [[Has epistemic status::Established]]
+
+'''Provenance'''
+* Definition: Origin and history of knowledge
+* Epistemic Status: Established
+* Usage: Track knowledge sources
+* SMW: [[Has originator::Person]]
+
+=== Ontological Concepts ===
+
+Concepts about being and structure—what exists, how it is organized, how it relates.
+
+'''Entity Type'''
+* Definition: Classification of entities in the ontology
+* Values: Topic, Idea, Implementation, Project, Protocol, Dataset (and emergent types)
+* Epistemic Status: Axiomatic
+* Usage: All pages should declare type
+* SMW: [[Has entity type::Idea]]
+
+'''Property'''
+* Definition: Attribute of an entity
+* Epistemic Status: Established
+* Usage: Define entity characteristics
+* SMW: [[Has property::Value]]
+
+'''Relationship'''
+* Definition: Connection between entities
+* Epistemic Status: Established
+* Usage: Link related entities
+* SMW: [[Implements::Idea]]
+
+=== Recursive Concepts ===
+
+Concepts about self-reference—systems that describe themselves, knowledge that knows itself.
+
+'''Recursion'''
+* Definition: Self-reference in knowledge systems
+* Epistemic Status: Axiomatic
+* Usage: System describes itself
+* SMW: [[Has foundational concept::Recursion]]
+
+'''Self-Description'''
+* Definition: System documenting itself
+* Epistemic Status: Established
+* Usage: Meta-knowledge
+* SMW: [[Has page type::Documentation]]
+
+'''Self-Validation'''
+* Definition: System validating itself
+* Epistemic Status: Established
+* Usage: Quality assurance
+* SMW: [[Has validation status::Validated]]
+
+=== Systems Concepts ===
+
+Concepts from systems theory—how wholes emerge from parts, how systems regulate themselves.
+
+'''Feedback Loop'''
+* Definition: Process where outputs feed back as inputs
+* Epistemic Status: Verified
+* Origin: Cybernetics (Wiener, 1948)
+* SMW: [[Has entity type::Idea]]
+
+'''Emergence'''
+* Definition: System properties not reducible to components
+* Epistemic Status: Established
+* Origin: Systems theory
+* SMW: [[Has entity type::Idea]]
+
+'''Homeostasis'''
+* Definition: Self-regulating stability in systems
+* Epistemic Status: Verified
+* Origin: Physiology (Cannon, 1926)
+* SMW: [[Has entity type::Idea]]
+
+=== Governance Concepts ===
+
+Concepts about collective organization—how groups make decisions, how power is distributed.
+
+'''Decentralization'''
+* Definition: Distributed control without central authority
+* Epistemic Status: Established
+* Usage: Governance structure
+* SMW: [[Has governance principle::Decentralization]]
+
+'''Transparency'''
+* Definition: Openness and visibility of processes
+* Epistemic Status: Axiomatic
+* Usage: All decisions documented
+* SMW: [[Has governance principle::Transparency]]
+
+'''Consensus'''
+* Definition: Agreement through deliberation
+* Epistemic Status: Established
+* Usage: Decision-making
+* SMW: [[Has decision method::Consensus]]
+
+== Concept Relationships: Webs of Meaning ==
+
+=== Hierarchy ===
+
+```
+Concept
+├── Epistemic Concept
+│ ├── Confidence
+│ ├── Epistemic Status
+│ └── Provenance
+├── Ontological Concept
+│ ├── Entity Type
+│ ├── Property
+│ └── Relationship
+└── Systems Concept
+ ├── Feedback Loop
+ ├── Emergence
+ └── Homeostasis
+```
+
+=== Dependencies ===
+
+| Concept | Depends On | Reason |
+|---------|-----------|--------|
+| Epistemic Status | Confidence | Status implies confidence |
+| Provenance | Entity Type | Tracking requires classification |
+| Self-Validation | Self-Description | Validation requires description |
+
+== SMW Implementation ==
+
+=== Concept Properties ===
+
+```wiki
+[[Has concept name::Feedback Loop]]
+[[Has concept category::Systems]]
+[[Has concept definition::Process where outputs feed back as inputs]]
+[[Has concept origin::Cybernetics]]
+[[Has concept originator::Person:Norbert Wiener]]
+[[Has concept date::1948]]
+```
+
+=== Concept Queries ===
+
+All concepts:
+
+```wiki
+{{#ask: [[Has concept name::+]]}}
+```
+
+By category:
+
+```wiki
+{{#ask: [[Has concept category::Epistemic]]}}
+```
+
+By originator:
+
+```wiki
+{{#ask: [[Has concept originator::Person:Norbert Wiener]]}}
+```
+
+== References ==
+
+# Wiener, N. (1948). Cybernetics.
+# Cannon, W.B. (1926). Physiological regulation.
+# Ashby, W.R. (1956). An Introduction to Cybernetics.
+# von Bertalanffy, L. (1968). General System Theory.
+# Maturana, H.R., & Varela, F.J. (1987). The Tree of Knowledge.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+# Smith, B. (2003). Ontology.
+# Sowa, J.F. (2000). Knowledge Representation.
+
+[[Has page type::Concept Catalog]]
+[[Has epistemic tier::Established]]
+
+
+
+----
+title: "BITwiki Concept Catalog: Core Concepts and Definitions"
+description: "Comprehensive catalog of core concepts in BITwiki, including definitions, relationships, and epistemic status for foundational knowledge."
+type: schema-matter
+author: "BITCORE"
+created: "2026-02-12"
+version: "2.0.0"
+ontology:
+ entity_type: concept-catalog
+ domain: core-concepts
+epistemic_status: Established
+confidence: 0.87
+workflow:
+ state: Beta
+license: CC-BY-SA-4.0
+----
+== Purpose ==
+
+This document catalogs core concepts in BITwiki. Concepts are abstract ideas that form the foundation of the knowledge graph, organized by domain and epistemic status.
+
+== Concept Categories ==
+
+=== 1. Epistemic Concepts ===
+
+'''Confidence Score'''
+* '''Definition:''' Numerical measure of certainty (0.0-1.0)
+* '''Epistemic Status:''' Axiomatic
+* '''Usage:''' All claims must have confidence scores
+* '''SMW:''' [[Has confidence score::0.85]]
+
+'''Epistemic Status'''
+* '''Definition:''' Classification of claim validation level
+* '''Values:''' Hypothetical, Emerging, Established, Verified, Axiomatic
+* '''Epistemic Status:''' Axiomatic
+* '''Usage:''' All pages must declare status
+* '''SMW:''' [[Has epistemic status::Established]]
+
+'''Provenance'''
+* '''Definition:''' Origin and history of knowledge
+* '''Epistemic Status:''' Established
+* '''Usage:''' Track knowledge sources
+* '''SMW:''' [[Has originator::Person]]
+
+=== 2. Ontological Concepts ===
+
+'''Entity Type'''
+* '''Definition:''' Classification of entities in the ontology
+* '''Values:''' Topic, Idea, Implementation, Project, Protocol, Dataset
+* '''Epistemic Status:''' Axiomatic
+* '''Usage:''' All pages must declare type
+* '''SMW:''' [[Has entity type::Idea]]
+
+'''Property'''
+* '''Definition:''' Attribute of an entity
+* '''Epistemic Status:''' Established
+* '''Usage:''' Define entity characteristics
+* '''SMW:''' [[Has property::Value]]
+
+'''Relationship'''
+* '''Definition:''' Connection between entities
+* '''Epistemic Status:''' Established
+* '''Usage:''' Link related entities
+* '''SMW:''' [[Implements::Idea]]
+
+=== 3. Recursive Concepts ===
+
+'''Recursion'''
+* '''Definition:''' Self-reference in knowledge systems
+* '''Epistemic Status:''' Axiomatic
+* '''Usage:''' System describes itself
+* '''SMW:''' [[Has foundational concept::Recursion]]
+
+'''Self-Description'''
+* '''Definition:''' System documenting itself
+* '''Epistemic Status:''' Established
+* '''Usage:''' Meta-knowledge
+* '''SMW:''' [[Has page type::Documentation]]
+
+'''Self-Validation'''
+* '''Definition:''' System validating itself
+* '''Epistemic Status:''' Established
+* '''Usage:''' Quality assurance
+* '''SMW:''' [[Has validation status::Validated]]
+
+=== 4. Systems Concepts ===
+
+'''Feedback Loop'''
+* '''Definition:''' Process where outputs feed back as inputs
+* '''Epistemic Status:''' Verified
+* '''Origin:''' Cybernetics (Wiener, 1948)
+* '''SMW:''' [[Has entity type::Idea]]
+
+'''Emergence'''
+* '''Definition:''' System properties not reducible to components
+* '''Epistemic Status:''' Established
+* '''Origin:''' Systems theory
+* '''SMW:''' [[Has entity type::Idea]]
+
+'''Homeostasis'''
+* '''Definition:''' Self-regulating stability in systems
+* '''Epistemic Status:''' Verified
+* '''Origin:''' Physiology (Cannon, 1926)
+* '''SMW:''' [[Has entity type::Idea]]
+
+=== 5. Governance Concepts ===
+
+'''Decentralization'''
+* '''Definition:''' Distributed control without central authority
+* '''Epistemic Status:''' Established
+* '''Usage:''' Governance structure
+* '''SMW:''' [[Has governance principle::Decentralization]]
+
+'''Transparency'''
+* '''Definition:''' Openness and visibility of processes
+* '''Epistemic Status:''' Axiomatic
+* '''Usage:''' All decisions documented
+* '''SMW:''' [[Has governance principle::Transparency]]
+
+'''Consensus'''
+* '''Definition:''' Agreement through deliberation
+* '''Epistemic Status:''' Established
+* '''Usage:''' Decision-making
+* '''SMW:''' [[Has decision method::Consensus]]
+
+== Concept Relationships ==
+
+----
+title: "BITwiki Concept Catalog: Core Concepts and Definitions"
+description: "Comprehensive catalog of core concepts in BITwiki, including definitions, relationships, and epistemic status for foundational knowledge."
+type: schema-matter
+author: "BITCORE"
+created: "2026-02-12"
+version: "2.0.0"
+ontology:
+ entity_type: concept-catalog
+ domain: core-concepts
+epistemic_status: Established
+confidence: Well-Established
+workflow:
+ state: Beta
+license: CC-BY-SA-4.0
+----
+----
+title: "BITwiki Concept Catalog: Core Concepts and Definitions"
+description: "Comprehensive catalog of core concepts in BITwiki, including definitions, relationships, and epistemic status for foundational knowledge."
+type: schema-matter
+author: "BITCORE"
+created: "2026-02-12"
+version: "2.established"
+ontology:
+ entity_type: concept-catalog
+ domain: core-concepts
+epistemic_status: Established
+confidence: established
+workflow:
+ state: Beta
+license: CC-BY-SA-4.0
+----
+'''Confidence Score'''
+* '''Definition:''' Numerical measure of certainty (established-1.0)
+* '''Epistemic Status:''' Axiomatic
+* '''Usage:''' All claims must have confidence trajectorys
+* '''SMW:''' [[Has confidence trajectory::established]]
+
+=== Hierarchy ===
+
+
+```
+Concept
+├── Epistemic Concept
+│   ├── Confidence Score
+│   ├── Epistemic Status
+│   └── Provenance
+├── Ontological Concept
+│   ├── Entity Type
+│   ├── Property
+│   └── Relationship
+└── Systems Concept
+    ├── Feedback Loop
+    ├── Emergence
+    └── Homeostasis
+```
+
+=== Dependencies ===
+
+
+| Concept | Depends On | Reason |
+|---------|-----------|--------|
+| Epistemic Status | Confidence Score | Status implies confidence |
+| Provenance | Entity Type | Tracking requires classification |
+| Self-Validation | Self-Description | Validation requires description |
+
+=== Concept Properties ===
+
+
+=== Concept Queries ===
+
+
+'''All concepts:'''
+
+'''By category:'''
+
+'''By originator:'''
+
+[[Has confidence score::0.87]]
+[[Has concept count::15]]
+[[Has concept category count::5]]
+[[Has source count::10]]
+[[Has word count::450]]
+
+[[Has confidence trajectory::established]]

@@ -1,0 +1,209 @@
+{{Infobox
+| title = BITwiki Quality Bar: Guardrails for Content Integrity
+| description = Quality guardrails and validation checkpoints for BITwiki content, replacing rating systems with structural integrity checks.
+| type = front-matter
+| author = BITCORE
+| version = 3.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| revised_by = Front-Matter Revision Specialist
+| revision_date = 2026-02-14
+| revision_note = Major revision based on human review feedback: simplified language, clarified guardrail purpose, removed numbered lists where not needed
+| ontology = entity_type: quality-standard
+domain: editorial-policy
+| workflow = state: Stable
+}}
+
+{{Documentation}}
+[[Category:BITwiki Front Matter]]
+
+
+= BITwiki Quality Bar: Guardrails for Content Integrity =
+
+== Purpose ==
+
+The Quality Bar defines guardrails (validation checkpoints) for BITwiki content. Unlike rating systems that reduce quality to a score, guardrails ensure structural integrity without oversimplifying epistemic complexity.
+
+== Core Principle ==
+
+'''Ratings are useless. Guardrails are essential.'''
+
+A rating tells you nothing about why content fails. A guardrail prevents failure modes.
+
+== Quality Guardrails ==
+
+=== Guardrail: Epistemic Markers Required ===
+
+'''Check:''' Every claim has explicit epistemic status.
+
+'''Validation:'''
+* Hypothetical claims marked as such
+* Emerging claims note preliminary status
+* Established claims cite multiple sources
+* Verified claims show replication evidence
+* Axiomatic claims reference constitutional status
+
+'''Failure Mode:''' Unmarked claims default to "Unverified" and trigger review.
+
+'''SMW:'''
+```wiki
+[[Has epistemic status::Established]]
+[[Has confidence score::0.75]]
+[[Has confidence trajectory::established]]
+```
+
+=== Guardrail: Provenance Transparency ===
+
+'''Check:''' All sources traceable to origin.
+
+'''Validation:'''
+* Primary sources preferred
+* Funding sources disclosed
+* Methodology documented
+* Data available or accessible
+* Replication status tracked
+
+'''Failure Mode:''' Opaque sources rejected pending disclosure.
+
+'''SMW:'''
+```wiki
+[[Has source type::Primary]]
+[[Has funding disclosed::true]]
+[[Has replication status::Replicated]]
+```
+
+=== Guardrail: Logical Coherence ===
+
+'''Check:''' Content internally consistent.
+
+'''Validation:'''
+* No contradictions within page
+* Definitions used consistently
+* Arguments valid (conclusions follow premises)
+* Evidence relevant to claims
+
+'''Failure Mode:''' Contradictions flagged for resolution.
+
+=== Guardrail: Structural Completeness ===
+
+'''Check:''' Required fields populated.
+
+'''Validation:'''
+* Name/definition present
+* Author attributed
+* Creation date recorded
+* Category assigned
+* SMW infobox valid
+
+'''Failure Mode:''' Incomplete pages marked with error category.
+
+=== Guardrail: Transclusion Hygiene ===
+
+'''Check:''' Templates properly isolated.
+
+'''Validation:'''
+* <noinclude> tags on documentation
+*  tags on transcluded content
+* No category leakage
+* Parser functions valid
+
+'''Failure Mode:''' Malformed templates trigger validation errors.
+
+== Alternative View: v4.0.0 Simplified Structure ==
+
+The following presents the guardrails in a more compact, principle-driven format:
+
+= Quality Bar =
+
+Ratings are useless. Guardrails are essential.
+
+Traditional systems ask: how good is this? They answer with stars, grades, scores. These answers create illusion of precision while obscuring actual problems.
+
+We ask: does this content fail any critical checks? The answer is binary: pass or fail. The checks are specific, actionable, tied to structural integrity.
+
+== The Guardrails ==
+
+'''Epistemic Markers''': Every claim has explicit status. Hypothetical, Emerging, Established, Verified, Axiomatic.
+
+'''Source Traceability''': Every claim traces to origin. Sources declared. Evidence visible.
+
+'''Value Explicit''': Every artifact declares its generative potential. What does this enable? What does this connect?
+
+'''Structural Integrity''': Ontology consistent. Relationships valid. Machine-readable layer coherent.
+
+Failure on any guardrail is failure. No partial credit. Fix or remove.
+
+[[Has page type::Quality Standard]]
+[[Has epistemic tier::Established]]
+
+== Workflow Stages ==
+
+Content progresses through stages, not ratings:
+
+| Stage | Criteria | Exit Condition |
+|-------|----------|----------------|
+| '''Alpha''' | Initial creation | Passes all guardrails |
+| '''Beta''' | Guardrails passed | Community review complete |
+| '''Stable''' | Review complete | No changes for 30 days |
+| '''Crystallized''' | Stable + replicated | Constitutional status |
+
+'''SMW:'''
+```wiki
+[[Has workflow stage::Stable]]
+[[Last reviewed::2026-02-14]]
+```
+
+== Validation Flags ==
+
+Binary flags replace subjective ratings:
+
+| Flag | Meaning | Check |
+|------|---------|-------|
+| Metadata-Complete | All required fields present | Automated |
+| Transclusion-Verified | Template syntax valid | Automated |
+| Source-Transparent | Funding disclosed | Manual |
+| Logic-Coherent | No contradictions | Automated |
+| Epistemic-Marked | Status assigned | Automated |
+
+'''SMW:'''
+```wiki
+[[Has validation flag::Metadata-Complete]]
+[[Has validation flag::Transclusion-Verified]]
+```
+
+== Rejection Criteria ==
+
+Content is rejected (not rated down) if:
+* Funding undisclosed
+* Methodology opaque
+* Contradictions unresolved
+* Epistemic status missing
+* Source unverifiable
+
+== No Scoring ==
+
+BITwiki does not use:
+* Numerical ratings
+* Star systems
+* Letter grades
+* Aggregate scores
+
+'''Why:''' Scores obscure failure modes. Guardrails reveal them.
+
+== Quality Checklist ==
+
+Before publishing, verify:
+* [ ] Epistemic status assigned
+* [ ] Confidence score justified
+* [ ] Sources cited with provenance
+* [ ] Funding disclosed
+* [ ] No contradictions
+* [ ] Template syntax valid
+* [ ] Categories correct
+* [ ] SMW properties valid
+
+== References ==
+* BITwiki Epistemic Framework
+* BITwiki Source Types
+* Template Validation Implementation

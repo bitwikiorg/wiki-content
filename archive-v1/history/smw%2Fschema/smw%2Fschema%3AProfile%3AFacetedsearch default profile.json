@@ -1,0 +1,25 @@
+{
+  "title": "smw/schema:Profile:Facetedsearch default profile",
+  "namespace": 112,
+  "pageid": 12,
+  "revision_count": 1,
+  "revisions": [
+    {
+      "revid": 12,
+      "parentid": 0,
+      "minor": false,
+      "user": "Maintenance script",
+      "timestamp": "2025-11-09T17:46:49Z",
+      "size": 1237,
+      "sha1": "d0ca4220843b002d381de0ddd29fdd00758f4ff8",
+      "slots": {
+        "main": {
+          "contentmodel": "smw/schema",
+          "contentformat": "application/json",
+          "content": "{\n    \"type\": \"FACETEDSEARCH_PROFILE_SCHEMA\",\n    \"profiles\": {\n        \"default_profile\": {\n            \"message_key\": \"smw-facetedsearch-profile-label-default\",\n            \"debug_output\": false,\n            \"theme\": \"default-theme\",\n            \"result\": {\n                \"default_limit\": 50,\n                \"paging_limit\": [\n                    10,\n                    20,\n                    50,\n                    250,\n                    500\n                ]\n            },\n            \"filters\": {\n                \"property_filter\": {\n                    \"hierarchy_tree\": false,\n                    \"filter_input\": {\n                        \"min_item\": 10\n                    }\n                },\n                \"category_filter\": {\n                    \"hierarchy_tree\": false,\n                    \"filter_input\": {\n                        \"min_item\": 10\n                    }\n                },\n                \"value_filter\": {\n                    \"default_filter\": \"list_filter\",\n                    \"condition_field\": false,\n                    \"filter_input\": {\n                        \"min_item\": 10\n                    }\n                }\n            }\n        }\n    },\n    \"tags\": [\n        \"faceted search\"\n    ]\n}"
+        }
+      },
+      "comment": "Semantic MediaWiki search import"
+    }
+  ]
+}

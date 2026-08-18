@@ -1,0 +1,59 @@
+{
+  "title": "Dependency Schema",
+  "namespace": 0,
+  "pageid": 182,
+  "revision_count": 3,
+  "revisions": [
+    {
+      "revid": 713,
+      "parentid": 524,
+      "minor": true,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T04:44:52Z",
+      "size": 2341,
+      "sha1": "b4e297c9c5dc4c9eac4ce9554e12ac35f5c0ac79",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox\n| title = BITwiki Dependency Schema\n| description = SMW property definitions for template and fragment dependency tracking\n| type = schema-matter\n| category = dependency-management\n}}\n\n= BITwiki Dependency Schema =\n\n== Purpose ==\n\nProactive tracking of transclusion dependencies using SMW properties to detect circular references before they cause parse failures.\n\n== Property Definitions ==\n\n=== Property:Depends on ===\n\n[[Has type::Page]]\n[[Has description::Template or fragment that this artifact depends on]]\n[[Has property scope::Template, Fragment]]\n\n=== Property:Required by ===\n\n[[Has type::Page]]\n[[Has description::Templates or fragments that depend on this artifact]]\n[[Has property scope::Template, Fragment]]\n\n=== Property:Has dependency depth ===\n\n[[Has type::Number]]\n[[Has description::Maximum depth of dependency chain from this artifact]]\n[[Has property scope::Template, Fragment]]\n\n== Template Integration ==\n\nAdd to each template's  section:\n\n<pre>\n\n[[Has entity type::Concept]]\n[[Depends on::Template:Infobox Core]]\n[[Depends on::Module:Validation]]\n\n</pre>\n\n== Fragment Integration ==\n\nAdd to each fragment:\n\n<pre>\n<onlyinclude>\n...content...\n</onlyinclude>\n[[Depends on::Template:Infobox Concept]]\n[[Has fragment level::L1]]\n</pre>\n\n== Circular Detection Query ==\n\nDetect potential circular dependencies:\n\n<pre>\n{{#ask: [[Depends on::{{PAGENAME}}]]\n|?Depends on\n|format=table\n|limit=50\n}}\n</pre>\n\n== Dependency Chain Query ==\n\nTrace full dependency chain:\n\n<pre>\n{{#ask: [[Depends on::+]]\n|?Depends on\n|?Required by\n|format=table\n|limit=100\n}}\n</pre>\n\n== Validation Rules ==\n\n= All templates must declare dependencies =\n= No circular chains allowed (A → B → C → A) =\n= Maximum dependency depth: 5 levels =\n= Update dependencies when refactoring =\n= Document breaking changes in talk page =\n\n== Automated Checks ==\n\nPre-commit validation should:\n= Parse all [[Depends on::]] declarations =\n= Build dependency graph =\n= Detect cycles using DFS =\n= Report depth violations =\n\n== Breaking Change Protocol ==\n\nWhen removing or renaming a dependency:\n= Update all dependent templates first =\n= Add redirect if renaming =\n= Document in [[BITwiki Changelog]] =\n= Notify via [[Category:Breaking Changes]] =\n\n[[Category:BITwiki Schema Matter]]\n[[Category:Dependency Management]]\n[[Category:System Documentation]]"
+        }
+      },
+      "comment": "Fix: Remove <includeonly> tags to make content visible on page view"
+    },
+    {
+      "revid": 524,
+      "parentid": 361,
+      "minor": true,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:35:00Z",
+      "size": 2381,
+      "sha1": "842af036cbf67eeb4127766b05b429b0a2d74118",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox\n| title = BITwiki Dependency Schema\n| description = SMW property definitions for template and fragment dependency tracking\n| type = schema-matter\n| category = dependency-management\n}}\n\n= BITwiki Dependency Schema =\n\n== Purpose ==\n\nProactive tracking of transclusion dependencies using SMW properties to detect circular references before they cause parse failures.\n\n== Property Definitions ==\n\n=== Property:Depends on ===\n\n[[Has type::Page]]\n[[Has description::Template or fragment that this artifact depends on]]\n[[Has property scope::Template, Fragment]]\n\n=== Property:Required by ===\n\n[[Has type::Page]]\n[[Has description::Templates or fragments that depend on this artifact]]\n[[Has property scope::Template, Fragment]]\n\n=== Property:Has dependency depth ===\n\n[[Has type::Number]]\n[[Has description::Maximum depth of dependency chain from this artifact]]\n[[Has property scope::Template, Fragment]]\n\n== Template Integration ==\n\nAdd to each template's <includeonly> section:\n\n<pre>\n<includeonly>\n[[Has entity type::Concept]]\n[[Depends on::Template:Infobox Core]]\n[[Depends on::Module:Validation]]\n</includeonly>\n</pre>\n\n== Fragment Integration ==\n\nAdd to each fragment:\n\n<pre>\n<onlyinclude>\n...content...\n</onlyinclude>\n[[Depends on::Template:Infobox Concept]]\n[[Has fragment level::L1]]\n</pre>\n\n== Circular Detection Query ==\n\nDetect potential circular dependencies:\n\n<pre>\n{{#ask: [[Depends on::{{PAGENAME}}]]\n|?Depends on\n|format=table\n|limit=50\n}}\n</pre>\n\n== Dependency Chain Query ==\n\nTrace full dependency chain:\n\n<pre>\n{{#ask: [[Depends on::+]]\n|?Depends on\n|?Required by\n|format=table\n|limit=100\n}}\n</pre>\n\n== Validation Rules ==\n\n= All templates must declare dependencies =\n= No circular chains allowed (A → B → C → A) =\n= Maximum dependency depth: 5 levels =\n= Update dependencies when refactoring =\n= Document breaking changes in talk page =\n\n== Automated Checks ==\n\nPre-commit validation should:\n= Parse all [[Depends on::]] declarations =\n= Build dependency graph =\n= Detect cycles using DFS =\n= Report depth violations =\n\n== Breaking Change Protocol ==\n\nWhen removing or renaming a dependency:\n= Update all dependent templates first =\n= Add redirect if renaming =\n= Document in [[BITwiki Changelog]] =\n= Notify via [[Category:Breaking Changes]] =\n\n[[Category:BITwiki Schema Matter]]\n[[Category:Dependency Management]]\n[[Category:System Documentation]]"
+        }
+      },
+      "comment": "BITCOREOS moved page [[Dependency Schema final]] to [[Dependency Schema]]: Removing 'final' suffix from title"
+    },
+    {
+      "revid": 361,
+      "parentid": 0,
+      "minor": false,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:15:08Z",
+      "size": 2381,
+      "sha1": "842af036cbf67eeb4127766b05b429b0a2d74118",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox\n| title = BITwiki Dependency Schema\n| description = SMW property definitions for template and fragment dependency tracking\n| type = schema-matter\n| category = dependency-management\n}}\n\n= BITwiki Dependency Schema =\n\n== Purpose ==\n\nProactive tracking of transclusion dependencies using SMW properties to detect circular references before they cause parse failures.\n\n== Property Definitions ==\n\n=== Property:Depends on ===\n\n[[Has type::Page]]\n[[Has description::Template or fragment that this artifact depends on]]\n[[Has property scope::Template, Fragment]]\n\n=== Property:Required by ===\n\n[[Has type::Page]]\n[[Has description::Templates or fragments that depend on this artifact]]\n[[Has property scope::Template, Fragment]]\n\n=== Property:Has dependency depth ===\n\n[[Has type::Number]]\n[[Has description::Maximum depth of dependency chain from this artifact]]\n[[Has property scope::Template, Fragment]]\n\n== Template Integration ==\n\nAdd to each template's <includeonly> section:\n\n<pre>\n<includeonly>\n[[Has entity type::Concept]]\n[[Depends on::Template:Infobox Core]]\n[[Depends on::Module:Validation]]\n</includeonly>\n</pre>\n\n== Fragment Integration ==\n\nAdd to each fragment:\n\n<pre>\n<onlyinclude>\n...content...\n</onlyinclude>\n[[Depends on::Template:Infobox Concept]]\n[[Has fragment level::L1]]\n</pre>\n\n== Circular Detection Query ==\n\nDetect potential circular dependencies:\n\n<pre>\n{{#ask: [[Depends on::{{PAGENAME}}]]\n|?Depends on\n|format=table\n|limit=50\n}}\n</pre>\n\n== Dependency Chain Query ==\n\nTrace full dependency chain:\n\n<pre>\n{{#ask: [[Depends on::+]]\n|?Depends on\n|?Required by\n|format=table\n|limit=100\n}}\n</pre>\n\n== Validation Rules ==\n\n= All templates must declare dependencies =\n= No circular chains allowed (A → B → C → A) =\n= Maximum dependency depth: 5 levels =\n= Update dependencies when refactoring =\n= Document breaking changes in talk page =\n\n== Automated Checks ==\n\nPre-commit validation should:\n= Parse all [[Depends on::]] declarations =\n= Build dependency graph =\n= Detect cycles using DFS =\n= Report depth violations =\n\n== Breaking Change Protocol ==\n\nWhen removing or renaming a dependency:\n= Update all dependent templates first =\n= Add redirect if renaming =\n= Document in [[BITwiki Changelog]] =\n= Notify via [[Category:Breaking Changes]] =\n\n[[Category:BITwiki Schema Matter]]\n[[Category:Dependency Management]]\n[[Category:System Documentation]]"
+        }
+      },
+      "comment": "BITwiki content upload (102/148)"
+    }
+  ]
+}

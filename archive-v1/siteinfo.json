@@ -1,0 +1,1684 @@
+{
+  "batchcomplete": true,
+  "query": {
+    "general": {
+      "mainpage": "Main Page",
+      "base": "https://bitwiki.org/Main_Page",
+      "sitename": "BITwiki",
+      "mainpageisdomainroot": false,
+      "logo": "https://bitwiki.org/images/logo.png",
+      "generator": "MediaWiki 1.43.0",
+      "phpversion": "8.1.33",
+      "phpsapi": "apache2handler",
+      "dbtype": "mysql",
+      "dbversion": "8.0.44",
+      "imagewhitelistenabled": false,
+      "langconversion": true,
+      "linkconversion": true,
+      "titleconversion": true,
+      "linkprefixcharset": "",
+      "linkprefix": "",
+      "linktrail": "/^([a-z]+)(.*)$/sD",
+      "legaltitlechars": " %!\"$&'()*,\\-.\\/0-9:;=?@A-Z\\\\^_`a-z~\\x80-\\xFF+",
+      "invalidusernamechars": "@:>=",
+      "allunicodefixes": false,
+      "fixarabicunicode": true,
+      "fixmalayalamunicode": true,
+      "case": "first-letter",
+      "lang": "en",
+      "fallback": [],
+      "rtl": false,
+      "fallback8bitEncoding": "windows-1252",
+      "readonly": false,
+      "writeapi": true,
+      "maxarticlesize": 2097152,
+      "timezone": "UTC",
+      "timeoffset": 0,
+      "articlepath": "/$1",
+      "scriptpath": "/w",
+      "script": "/w/index.php",
+      "variantarticlepath": false,
+      "server": "https://bitwiki.org",
+      "servername": "bitwiki.org",
+      "wikiid": "bitwiki",
+      "time": "2026-08-18T16:43:59Z",
+      "misermode": false,
+      "uploadsenabled": true,
+      "maxuploadsize": 104857600,
+      "minuploadchunksize": 1024,
+      "galleryoptions": {
+        "imagesPerRow": 0,
+        "imageWidth": 120,
+        "imageHeight": 120,
+        "captionLength": true,
+        "showBytes": true,
+        "showDimensions": true,
+        "mode": "traditional"
+      },
+      "thumblimits": {
+        "0": 120,
+        "1": 150,
+        "2": 180,
+        "3": 200,
+        "4": 250,
+        "5": 300
+      },
+      "imagelimits": {
+        "0": {
+          "width": 320,
+          "height": 240
+        },
+        "1": {
+          "width": 640,
+          "height": 480
+        },
+        "2": {
+          "width": 800,
+          "height": 600
+        },
+        "3": {
+          "width": 1024,
+          "height": 768
+        },
+        "4": {
+          "width": 1280,
+          "height": 1024
+        },
+        "5": {
+          "width": 2560,
+          "height": 2048
+        }
+      },
+      "favicon": "https://bitwiki.org/favicon.ico",
+      "centralidlookupprovider": "local",
+      "allcentralidlookupproviders": [
+        "local"
+      ],
+      "interwikimagic": true,
+      "magiclinks": {
+        "ISBN": false,
+        "PMID": false,
+        "RFC": false
+      },
+      "categorycollation": "uppercase",
+      "nofollowlinks": true,
+      "nofollownsexceptions": [],
+      "nofollowdomainexceptions": [
+        "mediawiki.org"
+      ],
+      "externallinktarget": false
+    },
+    "namespaces": {
+      "-2": {
+        "id": -2,
+        "case": "first-letter",
+        "name": "Media",
+        "subpages": false,
+        "canonical": "Media",
+        "content": false,
+        "nonincludable": false
+      },
+      "-1": {
+        "id": -1,
+        "case": "first-letter",
+        "name": "Special",
+        "subpages": false,
+        "canonical": "Special",
+        "content": false,
+        "nonincludable": false
+      },
+      "0": {
+        "id": 0,
+        "case": "first-letter",
+        "name": "",
+        "subpages": false,
+        "content": true,
+        "nonincludable": false
+      },
+      "1": {
+        "id": 1,
+        "case": "first-letter",
+        "name": "Talk",
+        "subpages": true,
+        "canonical": "Talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "2": {
+        "id": 2,
+        "case": "first-letter",
+        "name": "User",
+        "subpages": true,
+        "canonical": "User",
+        "content": false,
+        "nonincludable": false
+      },
+      "3": {
+        "id": 3,
+        "case": "first-letter",
+        "name": "User talk",
+        "subpages": true,
+        "canonical": "User talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "4": {
+        "id": 4,
+        "case": "first-letter",
+        "name": "BITwiki",
+        "subpages": true,
+        "canonical": "Project",
+        "content": false,
+        "nonincludable": false
+      },
+      "5": {
+        "id": 5,
+        "case": "first-letter",
+        "name": "BITwiki talk",
+        "subpages": true,
+        "canonical": "Project talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "6": {
+        "id": 6,
+        "case": "first-letter",
+        "name": "File",
+        "subpages": false,
+        "canonical": "File",
+        "content": false,
+        "nonincludable": false
+      },
+      "7": {
+        "id": 7,
+        "case": "first-letter",
+        "name": "File talk",
+        "subpages": true,
+        "canonical": "File talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "8": {
+        "id": 8,
+        "case": "first-letter",
+        "name": "MediaWiki",
+        "subpages": true,
+        "canonical": "MediaWiki",
+        "content": false,
+        "nonincludable": false,
+        "namespaceprotection": "editinterface"
+      },
+      "9": {
+        "id": 9,
+        "case": "first-letter",
+        "name": "MediaWiki talk",
+        "subpages": true,
+        "canonical": "MediaWiki talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "10": {
+        "id": 10,
+        "case": "first-letter",
+        "name": "Template",
+        "subpages": true,
+        "canonical": "Template",
+        "content": false,
+        "nonincludable": false
+      },
+      "11": {
+        "id": 11,
+        "case": "first-letter",
+        "name": "Template talk",
+        "subpages": true,
+        "canonical": "Template talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "12": {
+        "id": 12,
+        "case": "first-letter",
+        "name": "Help",
+        "subpages": true,
+        "canonical": "Help",
+        "content": false,
+        "nonincludable": false
+      },
+      "13": {
+        "id": 13,
+        "case": "first-letter",
+        "name": "Help talk",
+        "subpages": true,
+        "canonical": "Help talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "14": {
+        "id": 14,
+        "case": "first-letter",
+        "name": "Category",
+        "subpages": false,
+        "canonical": "Category",
+        "content": false,
+        "nonincludable": false
+      },
+      "15": {
+        "id": 15,
+        "case": "first-letter",
+        "name": "Category talk",
+        "subpages": true,
+        "canonical": "Category talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "102": {
+        "id": 102,
+        "case": "first-letter",
+        "name": "Property",
+        "subpages": false,
+        "canonical": "Property",
+        "content": false,
+        "nonincludable": false
+      },
+      "103": {
+        "id": 103,
+        "case": "first-letter",
+        "name": "Property talk",
+        "subpages": false,
+        "canonical": "Property talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "108": {
+        "id": 108,
+        "case": "first-letter",
+        "name": "Concept",
+        "subpages": false,
+        "canonical": "Concept",
+        "content": false,
+        "nonincludable": false
+      },
+      "109": {
+        "id": 109,
+        "case": "first-letter",
+        "name": "Concept talk",
+        "subpages": false,
+        "canonical": "Concept talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "112": {
+        "id": 112,
+        "case": "first-letter",
+        "name": "smw/schema",
+        "subpages": false,
+        "canonical": "smw/schema",
+        "content": false,
+        "nonincludable": false,
+        "defaultcontentmodel": "smw/schema"
+      },
+      "113": {
+        "id": 113,
+        "case": "first-letter",
+        "name": "smw/schema talk",
+        "subpages": false,
+        "canonical": "smw/schema talk",
+        "content": false,
+        "nonincludable": false
+      },
+      "828": {
+        "id": 828,
+        "case": "first-letter",
+        "name": "Module",
+        "subpages": true,
+        "canonical": "Module",
+        "content": false,
+        "nonincludable": false
+      },
+      "829": {
+        "id": 829,
+        "case": "first-letter",
+        "name": "Module talk",
+        "subpages": true,
+        "canonical": "Module talk",
+        "content": false,
+        "nonincludable": false
+      }
+    },
+    "namespacealiases": [
+      {
+        "id": 6,
+        "alias": "Image"
+      },
+      {
+        "id": 7,
+        "alias": "Image talk"
+      }
+    ],
+    "specialpagealiases": [
+      {
+        "realname": "BrokenRedirects",
+        "aliases": [
+          "BrokenRedirects"
+        ]
+      },
+      {
+        "realname": "Deadendpages",
+        "aliases": [
+          "DeadendPages"
+        ]
+      },
+      {
+        "realname": "DoubleRedirects",
+        "aliases": [
+          "DoubleRedirects"
+        ]
+      },
+      {
+        "realname": "Longpages",
+        "aliases": [
+          "LongPages"
+        ]
+      },
+      {
+        "realname": "Ancientpages",
+        "aliases": [
+          "AncientPages"
+        ]
+      },
+      {
+        "realname": "Lonelypages",
+        "aliases": [
+          "LonelyPages",
+          "OrphanedPages"
+        ]
+      },
+      {
+        "realname": "Fewestrevisions",
+        "aliases": [
+          "FewestRevisions"
+        ]
+      },
+      {
+        "realname": "Withoutinterwiki",
+        "aliases": [
+          "WithoutInterwiki"
+        ]
+      },
+      {
+        "realname": "Protectedpages",
+        "aliases": [
+          "ProtectedPages"
+        ]
+      },
+      {
+        "realname": "Protectedtitles",
+        "aliases": [
+          "ProtectedTitles"
+        ]
+      },
+      {
+        "realname": "Shortpages",
+        "aliases": [
+          "ShortPages"
+        ]
+      },
+      {
+        "realname": "Uncategorizedcategories",
+        "aliases": [
+          "UncategorizedCategories"
+        ]
+      },
+      {
+        "realname": "Uncategorizedimages",
+        "aliases": [
+          "UncategorizedFiles",
+          "UncategorizedImages"
+        ]
+      },
+      {
+        "realname": "Uncategorizedpages",
+        "aliases": [
+          "UncategorizedPages"
+        ]
+      },
+      {
+        "realname": "Uncategorizedtemplates",
+        "aliases": [
+          "UncategorizedTemplates"
+        ]
+      },
+      {
+        "realname": "Unusedcategories",
+        "aliases": [
+          "UnusedCategories"
+        ]
+      },
+      {
+        "realname": "Unusedimages",
+        "aliases": [
+          "UnusedFiles",
+          "UnusedImages"
+        ]
+      },
+      {
+        "realname": "Unusedtemplates",
+        "aliases": [
+          "UnusedTemplates"
+        ]
+      },
+      {
+        "realname": "Unwatchedpages",
+        "aliases": [
+          "UnwatchedPages"
+        ]
+      },
+      {
+        "realname": "Wantedcategories",
+        "aliases": [
+          "WantedCategories"
+        ]
+      },
+      {
+        "realname": "Wantedfiles",
+        "aliases": [
+          "WantedFiles"
+        ]
+      },
+      {
+        "realname": "Wantedpages",
+        "aliases": [
+          "WantedPages",
+          "BrokenLinks"
+        ]
+      },
+      {
+        "realname": "Wantedtemplates",
+        "aliases": [
+          "WantedTemplates"
+        ]
+      },
+      {
+        "realname": "Allpages",
+        "aliases": [
+          "AllPages"
+        ]
+      },
+      {
+        "realname": "Prefixindex",
+        "aliases": [
+          "PrefixIndex"
+        ]
+      },
+      {
+        "realname": "Categories",
+        "aliases": [
+          "Categories"
+        ]
+      },
+      {
+        "realname": "Listredirects",
+        "aliases": [
+          "ListRedirects"
+        ]
+      },
+      {
+        "realname": "PagesWithProp",
+        "aliases": [
+          "PagesWithProp",
+          "Pageswithprop",
+          "PagesByProp",
+          "Pagesbyprop"
+        ]
+      },
+      {
+        "realname": "TrackingCategories",
+        "aliases": [
+          "TrackingCategories"
+        ]
+      },
+      {
+        "realname": "Userlogin",
+        "aliases": [
+          "UserLogin",
+          "Login"
+        ]
+      },
+      {
+        "realname": "Userlogout",
+        "aliases": [
+          "UserLogout",
+          "Logout"
+        ]
+      },
+      {
+        "realname": "CreateAccount",
+        "aliases": [
+          "CreateAccount"
+        ]
+      },
+      {
+        "realname": "LinkAccounts",
+        "aliases": [
+          "LinkAccounts"
+        ]
+      },
+      {
+        "realname": "UnlinkAccounts",
+        "aliases": [
+          "UnlinkAccounts"
+        ]
+      },
+      {
+        "realname": "ChangeCredentials",
+        "aliases": [
+          "ChangeCredentials"
+        ]
+      },
+      {
+        "realname": "RemoveCredentials",
+        "aliases": [
+          "RemoveCredentials"
+        ]
+      },
+      {
+        "realname": "AuthenticationPopupSuccess",
+        "aliases": [
+          "AuthenticationPopupSuccess"
+        ]
+      },
+      {
+        "realname": "Activeusers",
+        "aliases": [
+          "ActiveUsers"
+        ]
+      },
+      {
+        "realname": "Block",
+        "aliases": [
+          "Block",
+          "BlockIP",
+          "BlockUser"
+        ]
+      },
+      {
+        "realname": "Unblock",
+        "aliases": [
+          "Unblock"
+        ]
+      },
+      {
+        "realname": "BlockList",
+        "aliases": [
+          "BlockList",
+          "ListBlocks",
+          "IPBlockList"
+        ]
+      },
+      {
+        "realname": "AutoblockList",
+        "aliases": [
+          "AutoblockList",
+          "ListAutoblocks"
+        ]
+      },
+      {
+        "realname": "ChangePassword",
+        "aliases": [
+          "ChangePassword",
+          "ResetPass",
+          "ResetPassword"
+        ]
+      },
+      {
+        "realname": "BotPasswords",
+        "aliases": [
+          "BotPasswords"
+        ]
+      },
+      {
+        "realname": "PasswordReset",
+        "aliases": [
+          "PasswordReset"
+        ]
+      },
+      {
+        "realname": "DeletedContributions",
+        "aliases": [
+          "DeletedContributions"
+        ]
+      },
+      {
+        "realname": "Preferences",
+        "aliases": [
+          "Preferences"
+        ]
+      },
+      {
+        "realname": "ResetTokens",
+        "aliases": [
+          "ResetTokens"
+        ]
+      },
+      {
+        "realname": "Contributions",
+        "aliases": [
+          "Contributions",
+          "Contribs"
+        ]
+      },
+      {
+        "realname": "Listgrouprights",
+        "aliases": [
+          "ListGroupRights",
+          "UserGroupRights"
+        ]
+      },
+      {
+        "realname": "Listgrants",
+        "aliases": [
+          "ListGrants"
+        ]
+      },
+      {
+        "realname": "Listusers",
+        "aliases": [
+          "ListUsers",
+          "UserList",
+          "Users"
+        ]
+      },
+      {
+        "realname": "Listadmins",
+        "aliases": [
+          "ListAdmins"
+        ]
+      },
+      {
+        "realname": "Listbots",
+        "aliases": [
+          "ListBots"
+        ]
+      },
+      {
+        "realname": "Userrights",
+        "aliases": [
+          "UserRights",
+          "MakeSysop",
+          "MakeBot"
+        ]
+      },
+      {
+        "realname": "EditWatchlist",
+        "aliases": [
+          "EditWatchlist"
+        ]
+      },
+      {
+        "realname": "PasswordPolicies",
+        "aliases": [
+          "PasswordPolicies"
+        ]
+      },
+      {
+        "realname": "Newimages",
+        "aliases": [
+          "NewFiles",
+          "NewImages"
+        ]
+      },
+      {
+        "realname": "Log",
+        "aliases": [
+          "Log",
+          "Logs"
+        ]
+      },
+      {
+        "realname": "Watchlist",
+        "aliases": [
+          "Watchlist"
+        ]
+      },
+      {
+        "realname": "Newpages",
+        "aliases": [
+          "NewPages"
+        ]
+      },
+      {
+        "realname": "Recentchanges",
+        "aliases": [
+          "RecentChanges"
+        ]
+      },
+      {
+        "realname": "Recentchangeslinked",
+        "aliases": [
+          "RecentChangesLinked",
+          "RelatedChanges"
+        ]
+      },
+      {
+        "realname": "Tags",
+        "aliases": [
+          "Tags"
+        ]
+      },
+      {
+        "realname": "Listfiles",
+        "aliases": [
+          "ListFiles",
+          "FileList",
+          "ImageList"
+        ]
+      },
+      {
+        "realname": "Filepath",
+        "aliases": [
+          "FilePath"
+        ]
+      },
+      {
+        "realname": "MediaStatistics",
+        "aliases": [
+          "MediaStatistics"
+        ]
+      },
+      {
+        "realname": "MIMEsearch",
+        "aliases": [
+          "MIMESearch"
+        ]
+      },
+      {
+        "realname": "FileDuplicateSearch",
+        "aliases": [
+          "FileDuplicateSearch"
+        ]
+      },
+      {
+        "realname": "Upload",
+        "aliases": [
+          "Upload"
+        ]
+      },
+      {
+        "realname": "UploadStash",
+        "aliases": [
+          "UploadStash"
+        ]
+      },
+      {
+        "realname": "ListDuplicatedFiles",
+        "aliases": [
+          "ListDuplicatedFiles",
+          "ListFileDuplicates"
+        ]
+      },
+      {
+        "realname": "ApiSandbox",
+        "aliases": [
+          "ApiSandbox"
+        ]
+      },
+      {
+        "realname": "RestSandbox",
+        "aliases": [
+          "RestSandbox"
+        ]
+      },
+      {
+        "realname": "Statistics",
+        "aliases": [
+          "Statistics",
+          "Stats"
+        ]
+      },
+      {
+        "realname": "Allmessages",
+        "aliases": [
+          "AllMessages"
+        ]
+      },
+      {
+        "realname": "Version",
+        "aliases": [
+          "Version"
+        ]
+      },
+      {
+        "realname": "Lockdb",
+        "aliases": [
+          "LockDB"
+        ]
+      },
+      {
+        "realname": "Unlockdb",
+        "aliases": [
+          "UnlockDB"
+        ]
+      },
+      {
+        "realname": "NamespaceInfo",
+        "aliases": [
+          "NamespaceInfo"
+        ]
+      },
+      {
+        "realname": "LinkSearch",
+        "aliases": [
+          "LinkSearch"
+        ]
+      },
+      {
+        "realname": "Randompage",
+        "aliases": [
+          "Random",
+          "RandomPage"
+        ]
+      },
+      {
+        "realname": "RandomInCategory",
+        "aliases": [
+          "RandomInCategory"
+        ]
+      },
+      {
+        "realname": "Randomredirect",
+        "aliases": [
+          "RandomRedirect"
+        ]
+      },
+      {
+        "realname": "Randomrootpage",
+        "aliases": [
+          "RandomRootpage"
+        ]
+      },
+      {
+        "realname": "GoToInterwiki",
+        "aliases": [
+          "GoToInterwiki"
+        ]
+      },
+      {
+        "realname": "Mostlinkedcategories",
+        "aliases": [
+          "MostLinkedCategories",
+          "MostUsedCategories"
+        ]
+      },
+      {
+        "realname": "Mostimages",
+        "aliases": [
+          "MostLinkedFiles",
+          "MostFiles",
+          "MostImages"
+        ]
+      },
+      {
+        "realname": "Mostinterwikis",
+        "aliases": [
+          "MostInterwikis"
+        ]
+      },
+      {
+        "realname": "Mostlinked",
+        "aliases": [
+          "MostLinkedPages",
+          "MostLinked"
+        ]
+      },
+      {
+        "realname": "Mostlinkedtemplates",
+        "aliases": [
+          "MostTranscludedPages",
+          "MostLinkedTemplates",
+          "MostUsedTemplates"
+        ]
+      },
+      {
+        "realname": "Mostcategories",
+        "aliases": [
+          "MostCategories"
+        ]
+      },
+      {
+        "realname": "Mostrevisions",
+        "aliases": [
+          "MostRevisions"
+        ]
+      },
+      {
+        "realname": "ComparePages",
+        "aliases": [
+          "ComparePages"
+        ]
+      },
+      {
+        "realname": "Export",
+        "aliases": [
+          "Export"
+        ]
+      },
+      {
+        "realname": "Import",
+        "aliases": [
+          "Import"
+        ]
+      },
+      {
+        "realname": "Undelete",
+        "aliases": [
+          "Undelete"
+        ]
+      },
+      {
+        "realname": "Whatlinkshere",
+        "aliases": [
+          "WhatLinksHere"
+        ]
+      },
+      {
+        "realname": "MergeHistory",
+        "aliases": [
+          "MergeHistory"
+        ]
+      },
+      {
+        "realname": "ExpandTemplates",
+        "aliases": [
+          "ExpandTemplates"
+        ]
+      },
+      {
+        "realname": "ChangeContentModel",
+        "aliases": [
+          "ChangeContentModel"
+        ]
+      },
+      {
+        "realname": "Booksources",
+        "aliases": [
+          "BookSources"
+        ]
+      },
+      {
+        "realname": "ApiHelp",
+        "aliases": [
+          "ApiHelp"
+        ]
+      },
+      {
+        "realname": "Blankpage",
+        "aliases": [
+          "BlankPage"
+        ]
+      },
+      {
+        "realname": "DeletePage",
+        "aliases": [
+          "DeletePage",
+          "Delete"
+        ]
+      },
+      {
+        "realname": "Diff",
+        "aliases": [
+          "Diff"
+        ]
+      },
+      {
+        "realname": "EditPage",
+        "aliases": [
+          "EditPage",
+          "Edit"
+        ]
+      },
+      {
+        "realname": "EditTags",
+        "aliases": [
+          "EditTags"
+        ]
+      },
+      {
+        "realname": "Emailuser",
+        "aliases": [
+          "EmailUser",
+          "Email"
+        ]
+      },
+      {
+        "realname": "Movepage",
+        "aliases": [
+          "MovePage"
+        ]
+      },
+      {
+        "realname": "Mycontributions",
+        "aliases": [
+          "MyContributions",
+          "MyContribs"
+        ]
+      },
+      {
+        "realname": "MyLanguage",
+        "aliases": [
+          "MyLanguage"
+        ]
+      },
+      {
+        "realname": "Mylog",
+        "aliases": [
+          "MyLog"
+        ]
+      },
+      {
+        "realname": "Mypage",
+        "aliases": [
+          "MyPage"
+        ]
+      },
+      {
+        "realname": "Mytalk",
+        "aliases": [
+          "MyTalk"
+        ]
+      },
+      {
+        "realname": "PageHistory",
+        "aliases": [
+          "PageHistory",
+          "History"
+        ]
+      },
+      {
+        "realname": "PageInfo",
+        "aliases": [
+          "PageInfo",
+          "Info"
+        ]
+      },
+      {
+        "realname": "ProtectPage",
+        "aliases": [
+          "ProtectPage",
+          "Protect"
+        ]
+      },
+      {
+        "realname": "Purge",
+        "aliases": [
+          "Purge"
+        ]
+      },
+      {
+        "realname": "Myuploads",
+        "aliases": [
+          "MyUploads",
+          "MyFiles"
+        ]
+      },
+      {
+        "realname": "AllMyUploads",
+        "aliases": [
+          "AllMyUploads",
+          "AllMyFiles"
+        ]
+      },
+      {
+        "realname": "NewSection",
+        "aliases": [
+          "NewSection",
+          "Newsection"
+        ]
+      },
+      {
+        "realname": "PermanentLink",
+        "aliases": [
+          "PermanentLink",
+          "PermaLink"
+        ]
+      },
+      {
+        "realname": "Redirect",
+        "aliases": [
+          "Redirect"
+        ]
+      },
+      {
+        "realname": "Renameuser",
+        "aliases": [
+          "RenameUser"
+        ]
+      },
+      {
+        "realname": "Revisiondelete",
+        "aliases": [
+          "RevisionDelete"
+        ]
+      },
+      {
+        "realname": "RunJobs",
+        "aliases": [
+          "RunJobs"
+        ]
+      },
+      {
+        "realname": "Specialpages",
+        "aliases": [
+          "SpecialPages"
+        ]
+      },
+      {
+        "realname": "PageData",
+        "aliases": [
+          "PageData"
+        ]
+      },
+      {
+        "realname": "Contribute",
+        "aliases": [
+          "Contribute"
+        ]
+      },
+      {
+        "realname": "TalkPage",
+        "aliases": [
+          "TalkPage"
+        ]
+      },
+      {
+        "realname": "Search",
+        "aliases": [
+          "Search"
+        ]
+      },
+      {
+        "realname": "Confirmemail",
+        "aliases": [
+          "ConfirmEmail"
+        ]
+      },
+      {
+        "realname": "Invalidateemail",
+        "aliases": [
+          "InvalidateEmail"
+        ]
+      },
+      {
+        "realname": "ChangeEmail",
+        "aliases": [
+          "ChangeEmail"
+        ]
+      },
+      {
+        "realname": "ExportRDF",
+        "aliases": [
+          "ExportRDF"
+        ]
+      },
+      {
+        "realname": "SMWAdmin",
+        "aliases": [
+          "SemanticMediaWiki",
+          "SMWAdmin"
+        ]
+      },
+      {
+        "realname": "PendingTaskList",
+        "aliases": [
+          "PendingTaskList"
+        ]
+      },
+      {
+        "realname": "Ask",
+        "aliases": [
+          "Ask"
+        ]
+      },
+      {
+        "realname": "FacetedSearch",
+        "aliases": [
+          "FacetedSearch"
+        ]
+      },
+      {
+        "realname": "Browse",
+        "aliases": [
+          "Browse"
+        ]
+      },
+      {
+        "realname": "Concepts",
+        "aliases": [
+          "Concepts"
+        ]
+      },
+      {
+        "realname": "PageProperty",
+        "aliases": [
+          "PageProperty"
+        ]
+      },
+      {
+        "realname": "SearchByProperty",
+        "aliases": [
+          "SearchByProperty"
+        ]
+      },
+      {
+        "realname": "PropertyLabelSimilarity",
+        "aliases": [
+          "PropertyLabelSimilarity"
+        ]
+      },
+      {
+        "realname": "ProcessingErrorList",
+        "aliases": [
+          "ProcessingErrorList"
+        ]
+      },
+      {
+        "realname": "MissingRedirectAnnotations",
+        "aliases": [
+          "MissingRedirectAnnotations"
+        ]
+      },
+      {
+        "realname": "ConstraintErrorList",
+        "aliases": [
+          "ConstraintErrorList"
+        ]
+      },
+      {
+        "realname": "Types",
+        "aliases": [
+          "Types"
+        ]
+      },
+      {
+        "realname": "URIResolver",
+        "aliases": [
+          "URIResolver"
+        ]
+      },
+      {
+        "realname": "Properties",
+        "aliases": [
+          "Properties"
+        ]
+      },
+      {
+        "realname": "UnusedProperties",
+        "aliases": [
+          "UnusedProperties"
+        ]
+      },
+      {
+        "realname": "WantedProperties",
+        "aliases": [
+          "WantedProperties"
+        ]
+      },
+      {
+        "realname": "Network",
+        "aliases": [
+          "Network"
+        ]
+      },
+      {
+        "realname": "CargoTables",
+        "aliases": [
+          "CargoTables"
+        ]
+      },
+      {
+        "realname": "CargoTableDiagram",
+        "aliases": [
+          "CargoTableDiagram"
+        ]
+      },
+      {
+        "realname": "DeleteCargoTable",
+        "aliases": [
+          "DeleteCargoTable"
+        ]
+      },
+      {
+        "realname": "SwitchCargoTable",
+        "aliases": [
+          "SwitchCargoTable"
+        ]
+      },
+      {
+        "realname": "RecreateCargoData",
+        "aliases": [
+          "RecreateCargoData"
+        ]
+      },
+      {
+        "realname": "CargoQuery",
+        "aliases": [
+          "CargoQuery",
+          "ViewData"
+        ]
+      },
+      {
+        "realname": "CargoExport",
+        "aliases": [
+          "CargoExport"
+        ]
+      },
+      {
+        "realname": "PageValues",
+        "aliases": [
+          "PageValues"
+        ]
+      },
+      {
+        "realname": "Drilldown",
+        "aliases": [
+          "Drilldown"
+        ]
+      },
+      {
+        "realname": "CollabPad",
+        "aliases": [
+          "CollabPad",
+          "Collab_Pad"
+        ]
+      },
+      {
+        "realname": "MathShowImage",
+        "aliases": [
+          "MathShowImage"
+        ]
+      },
+      {
+        "realname": "MathStatus",
+        "aliases": [
+          "MathStatus"
+        ]
+      },
+      {
+        "realname": "Wanda",
+        "aliases": [
+          "Wanda"
+        ]
+      },
+      {
+        "realname": "WandaScore",
+        "aliases": [
+          "WandaScore",
+          "Wanda_Score"
+        ]
+      }
+    ],
+    "statistics": {
+      "pages": 184,
+      "articles": 137,
+      "edits": 943,
+      "images": 2,
+      "users": 5,
+      "activeusers": 1,
+      "admins": 2,
+      "jobs": 0
+    },
+    "extensions": [
+      {
+        "type": "media",
+        "name": "3DAlloy",
+        "description": "This extension provides a 3D viewer for JSON/Buff files",
+        "author": "Dolfinus",
+        "url": "https://www.mediawiki.org/wiki/Extension:3DAlloy",
+        "version": "1.10",
+        "vcs-system": "git",
+        "vcs-version": "d5a8c6cc3992429d5bd6783919939a72d169b347",
+        "vcs-url": false,
+        "vcs-date": "2025-10-27T19:45:40Z",
+        "license-name": "MIT",
+        "license": "/Special:Version/License/3DAlloy"
+      },
+      {
+        "type": "semantic",
+        "name": "SemanticMediaWiki",
+        "namemsg": "smw-title",
+        "descriptionmsg": "smw-desc",
+        "author": "[https://korrekt.org Markus Krötzsch], [https://EntropyWins.wtf/mediawiki Jeroen De Dauw], James Hong Kong, [https://Professional.Wiki Professional Wiki], [https://www.semantic-mediawiki.org/wiki/Contributors ...]",
+        "url": "https://www.semantic-mediawiki.org",
+        "version": "6.1.0-alpha",
+        "vcs-system": "git",
+        "vcs-version": "bed66e6a651410044a4e8977b312163e2e240447",
+        "vcs-url": false,
+        "vcs-date": "2025-11-28T23:04:57Z",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/SemanticMediaWiki"
+      },
+      {
+        "type": "other",
+        "name": "Discourse",
+        "namemsg": "discourse",
+        "descriptionmsg": "discourse-desc",
+        "author": "[https://samwilson.id.au/ Sam Wilson]",
+        "url": "https://www.mediawiki.org/wiki/Extension:Discourse",
+        "vcs-system": "git",
+        "vcs-version": "36cd337678a4ac6e1f7d5d58b71daada2fd0aa53",
+        "vcs-url": false,
+        "vcs-date": "2025-11-27T23:39:13Z",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/Discourse"
+      },
+      {
+        "type": "other",
+        "name": "VisualEditorPlus",
+        "descriptionmsg": "visualeditorplus-desc",
+        "author": "[http://www.hallowelt.com Hallo Welt! GmbH]",
+        "url": "https://en.wiki.bluespice.com/wiki/Reference:VisualEditorPlus",
+        "version": "3.0.0-alpha",
+        "vcs-system": "git",
+        "vcs-version": "966bdb8b9b3d0fe27d45264f380a0eb2fbcde9ce",
+        "vcs-url": false,
+        "vcs-date": "2025-11-26T03:10:02Z",
+        "license-name": "GPL-3.0-only",
+        "license": "/Special:Version/License/VisualEditorPlus"
+      },
+      {
+        "type": "other",
+        "name": "AIEditingAssistant",
+        "descriptionmsg": "aieditingassistant-desc",
+        "author": "[http://www.hallowelt.com Hallo Welt! GmbH]",
+        "url": "https://www.mediawiki.org/wiki/Extension:AIEditingAssistant",
+        "version": "3.0.0-alpha",
+        "vcs-system": "git",
+        "vcs-version": "6d7a82b65727e02a2938690acf0b0596a64fb0ec",
+        "vcs-url": false,
+        "vcs-date": "2025-12-04T00:56:15Z",
+        "license-name": "GPL-3.0-only",
+        "license": "/Special:Version/License/AIEditingAssistant"
+      },
+      {
+        "type": "parserhook",
+        "name": "NCBITaxonomyLookup",
+        "descriptionmsg": "ncbitaxonomylookup-desc",
+        "author": "WikiTeq",
+        "url": "https://www.mediawiki.org/wiki/Extension:NCBITaxonomyLookup",
+        "version": "1.1",
+        "vcs-system": "git",
+        "vcs-version": "e7a6d523f3129396e8b9f6ba495053906248fac9",
+        "vcs-url": false,
+        "vcs-date": "2025-11-15T21:00:40Z"
+      },
+      {
+        "type": "parserhook",
+        "name": "Network",
+        "descriptionmsg": "network-desc",
+        "author": "[https://www.entropywins.wtf/mediawiki Jeroen De Dauw], [https://professional.wiki/ Professional Wiki]",
+        "url": "https://professional.wiki/en/extension/network",
+        "version": "4.0.0",
+        "vcs-system": "git",
+        "vcs-version": "698b02ece8e3602b0e9346a5fac195d7fcf8135f",
+        "vcs-url": false,
+        "vcs-date": "2025-11-10T12:21:59Z",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/Network"
+      },
+      {
+        "type": "parserhook",
+        "name": "PubmedParser",
+        "descriptionmsg": "pubmedparser-desc",
+        "author": "[https://github.com/bovender Daniel Kraus (bovender)], [https://github.com/kghbln Karsten Hoffmeyer (kghbln)], [https://github.com/strimo378 Timo Stripf (strimo378)], [https://github.com/jeffw16 Jeffrey Wang (jeffw16)], [https://github.com/vedmaka Vedmaka]",
+        "url": "https://www.mediawiki.org/wiki/Extension:PubmedParser",
+        "version": "6.0.0",
+        "vcs-system": "git",
+        "vcs-version": "e8847b72f4e35b250e0aa80e1729e5f062c4ff91",
+        "vcs-url": false,
+        "vcs-date": "2025-02-12T20:45:15Z",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/PubmedParser"
+      },
+      {
+        "type": "parserhook",
+        "name": "ParserFunctions",
+        "descriptionmsg": "pfunc_desc",
+        "author": "Tim Starling, Robert Rohde, Ross McClure, Juraj Simlovic",
+        "url": "https://www.mediawiki.org/wiki/Extension:ParserFunctions",
+        "version": "1.6.1",
+        "vcs-system": "git",
+        "vcs-version": "1e9a54b48e00dc8fff0a33060e5b0df4165e22ca",
+        "vcs-url": "https://gerrit.wikimedia.org/g/mediawiki/extensions/ParserFunctions/+/1e9a54b48e00dc8fff0a33060e5b0df4165e22ca",
+        "vcs-date": "2025-12-02T06:20:57Z",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/ParserFunctions"
+      },
+      {
+        "type": "parserhook",
+        "name": "Scribunto",
+        "descriptionmsg": "scribunto-desc",
+        "author": "Victor Vasiliev, Tim Starling, Brad Jorsch",
+        "url": "https://www.mediawiki.org/wiki/Extension:Scribunto",
+        "vcs-system": "git",
+        "vcs-version": "474608d45d8d9101c2a4a35070379a1739e2a446",
+        "vcs-url": "https://gerrit.wikimedia.org/g/mediawiki/extensions/Scribunto/+/474608d45d8d9101c2a4a35070379a1739e2a446",
+        "vcs-date": "2025-12-02T06:21:54Z",
+        "license-name": "GPL-2.0-or-later AND MIT",
+        "license": "/Special:Version/License/Scribunto"
+      },
+      {
+        "type": "parserhook",
+        "name": "Cargo",
+        "namemsg": "cargo-extensionname",
+        "descriptionmsg": "cargo-desc",
+        "author": "Yaron Koren",
+        "url": "https://www.mediawiki.org/wiki/Extension:Cargo",
+        "version": "3.8.5",
+        "vcs-system": "git",
+        "vcs-version": "faa978b0c8ead58bc39d198484bdbfb271106111",
+        "vcs-url": "https://gerrit.wikimedia.org/g/mediawiki/extensions/Cargo/+/faa978b0c8ead58bc39d198484bdbfb271106111",
+        "vcs-date": "2025-12-01T08:18:56Z",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/Cargo"
+      },
+      {
+        "type": "parserhook",
+        "name": "Math",
+        "descriptionmsg": "math-desc",
+        "author": "Tomasz Wegrzanowski, Brion Vibber, Moritz Schubotz, Derk-Jan Hartman, André Greiner-Petter, Johannes Stegmüller",
+        "url": "https://www.mediawiki.org/wiki/Extension:Math",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/Math"
+      },
+      {
+        "type": "editor",
+        "name": "WikiEditor",
+        "descriptionmsg": "wikieditor-desc",
+        "author": "Derk-Jan Hartman, Trevor Parscal, Roan Kattouw, Nimish Gautam, Adam Miller",
+        "url": "https://www.mediawiki.org/wiki/Extension:WikiEditor",
+        "version": "0.5.4",
+        "vcs-system": "git",
+        "vcs-version": "af572396f39138d17a1714ee9d52fdbafc2e71f4",
+        "vcs-url": "https://gerrit.wikimedia.org/g/mediawiki/extensions/WikiEditor/+/af572396f39138d17a1714ee9d52fdbafc2e71f4",
+        "vcs-date": "2025-12-02T06:24:20Z",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/WikiEditor"
+      },
+      {
+        "type": "editor",
+        "name": "VisualEditor",
+        "descriptionmsg": "visualeditor-desc",
+        "author": "Alex Monk, Bartosz Dziewoński, C. Scott Ananian, Christian Williams, David Lynch, Ed Sanders, Inez Korczyński, James D. Forrester, Moriel Schottlender, Roan Kattouw, Rob Moen, Subramanya Sastry, Thalia Chan, Timo Tijhof, Trevor Parscal, ...",
+        "url": "https://www.mediawiki.org/wiki/Extension:VisualEditor",
+        "license-name": "MIT",
+        "license": "/Special:Version/License/VisualEditor",
+        "credits": "/Special:Version/Credits/VisualEditor"
+      },
+      {
+        "type": "editor",
+        "name": "CodeEditor",
+        "descriptionmsg": "codeeditor-desc",
+        "author": "Brion Vibber, Derk-Jan Hartman",
+        "url": "https://www.mediawiki.org/wiki/Extension:CodeEditor",
+        "license-name": "GPL-2.0-or-later AND BSD-3-Clause",
+        "license": "/Special:Version/License/CodeEditor"
+      },
+      {
+        "type": "editor",
+        "name": "WandaScribe",
+        "descriptionmsg": "wandascribe-desc",
+        "author": "Naresh Kumar Babu",
+        "url": "https://www.mediawiki.org/wiki/Extension:WandaScribe",
+        "version": "1.0.0",
+        "vcs-system": "git",
+        "vcs-version": "57954430c5fceb9eedf1bd6d11cfaed4ad537c69",
+        "vcs-url": false,
+        "vcs-date": "2025-11-19T18:05:25Z"
+      },
+      {
+        "type": "api",
+        "name": "PageImages",
+        "descriptionmsg": "pageimages-desc",
+        "author": "Max Semenik",
+        "url": "https://www.mediawiki.org/wiki/Extension:PageImages",
+        "license-name": "WTFPL",
+        "license": "/Special:Version/License/PageImages"
+      },
+      {
+        "type": "specialpage",
+        "name": "Wanda",
+        "namemsg": "wanda-name",
+        "descriptionmsg": "wanda-desc",
+        "author": "Sanjay Thiyagarajan",
+        "url": "https://www.mediawiki.org/wiki/Extension:Wanda",
+        "version": "2.0.0",
+        "vcs-system": "git",
+        "vcs-version": "e40bed67d00055601d0a20ff90184a7f71cf6161",
+        "vcs-url": false,
+        "vcs-date": "2025-11-28T08:34:50Z"
+      },
+      {
+        "type": "specialpage",
+        "name": "WandaScore",
+        "descriptionmsg": "wandascore-desc",
+        "author": "Sanjay Thiyagarajan",
+        "url": "https://www.mediawiki.org/wiki/Extension:WandaScore",
+        "version": "1.0.0",
+        "vcs-system": "git",
+        "vcs-version": "0118a63f8c77fc1788260e4ad60bb4aa9693d74f",
+        "vcs-url": false,
+        "vcs-date": "2025-12-01T08:23:38Z"
+      },
+      {
+        "type": "skin",
+        "name": "Vector",
+        "namemsg": "vector-specialversion-name",
+        "descriptionmsg": "vector-skin-desc",
+        "author": "[https://www.mediawiki.org/wiki/Readers/Web/Team Readers Web Team], Trevor Parscal, Roan Kattouw, Alex Hollender, Bernard Wang, Clare Ming, Jan Drewniak, Jon Robson, Nick Ray, Sam Smith, Stephen Niedzielski, Volker E.",
+        "url": "https://www.mediawiki.org/wiki/Skin:Vector",
+        "version": "1.0.0",
+        "license-name": "GPL-2.0-or-later",
+        "license": "/Special:Version/License/Vector"
+      }
+    ]
+  }
+}

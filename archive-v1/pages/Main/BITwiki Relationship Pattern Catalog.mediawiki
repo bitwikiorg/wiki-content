@@ -1,0 +1,332 @@
+{{Infobox
+| title = BITwiki Relationship Pattern Catalog: Recurring Connection Patterns
+| description = Catalog of recurring relationship patterns in BITwiki, including anti-patterns, best practices, and validation rules for semantic connections.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| version = 3.1.0
+| epistemic_status = Established
+| confidence = established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: pattern-catalog
+domain: relationship-patterns
+| workflow = state: Beta
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+= BITwiki Relationship Pattern Catalog: Recurring Connection Patterns =
+
+== Purpose ==
+
+This document catalogs recurring relationship patterns in BITwiki. Patterns represent common ways entities connect, enabling consistent knowledge graph construction and validation.
+
+== Pattern Categories ==
+
+=== 1. Hierarchical Patterns ===
+
+'''Pattern 1.1: Is-A (Taxonomic)'''
+* '''Structure:''' A is-a B
+* '''Semantics:''' A is a subtype or instance of B
+* '''Example:''' Neural network is-a implementation
+* '''Validation:''' Check for circularity
+* '''SMW:''' [[Is a::Type]]
+
+'''Pattern 1.2: Part-Of (Mereological)'''
+* '''Structure:''' A part-of B
+* '''Semantics:''' A is a component of B
+* '''Example:''' Neuron part-of neural network
+* '''Validation:''' Check for transitivity
+* '''SMW:''' [[Part of::Whole]]
+
+'''Pattern 1.3: Subtopic-Of (Thematic)'''
+* '''Structure:''' A subtopic-of B
+* '''Semantics:''' A is a subfield of B
+* '''Example:''' Cybernetics subtopic-of systems science
+* '''Validation:''' Check for coverage
+* '''SMW:''' [[Subtopic of::Topic]]
+
+=== 2. Causal Patterns ===
+
+'''Pattern 2.1: Causes (Deterministic)'''
+* '''Structure:''' A causes B
+* '''Semantics:''' A necessarily produces B
+* '''Example:''' Feedback causes stability
+* '''Validation:''' Check for necessity
+* '''SMW:''' [[Causes::Effect]]
+
+'''Pattern 2.2: Enables (Facilitative)'''
+* '''Structure:''' A enables B
+* '''Semantics:''' A makes B possible
+* '''Example:''' Communication enables coordination
+* '''Validation:''' Check for sufficiency
+* '''SMW:''' [[Enables::Outcome]]
+
+'''Pattern 2.3: Prevents (Inhibitory)'''
+* '''Structure:''' A prevents B
+* '''Semantics:''' A blocks B
+* '''Example:''' Regulation prevents oscillation
+* '''Validation:''' Check for counterfactual
+* '''SMW:''' [[Prevents::Outcome]]
+
+=== 3. Temporal Patterns ===
+
+'''Pattern 3.1: Precedes (Sequential)'''
+* '''Structure:''' A precedes B
+* '''Semantics:''' A occurs before B
+* '''Example:''' Problem definition precedes solution
+* '''Validation:''' Check for temporal order
+* '''SMW:''' [[Precedes::Event]]
+
+'''Pattern 3.2: Concurrent (Simultaneous)'''
+* '''Structure:''' A concurrent-with B
+* '''Semantics:''' A and B occur together
+* '''Example:''' Research concurrent-with development
+* '''Validation:''' Check for overlap
+* '''SMW:''' [[Concurrent with::Event]]
+
+'''Pattern 3.3: During (Contained)'''
+* '''Structure:''' A during B
+* '''Semantics:''' A occurs within B
+* '''Example:''' Experiment during project
+* '''Validation:''' Check for containment
+* '''SMW:''' [[During::Event]]
+
+=== 4. Epistemic Patterns ===
+
+'''Pattern 4.1: Supports (Evidential)'''
+* '''Structure:''' A supports B
+* '''Semantics:''' A provides evidence for B
+* '''Example:''' Data supports hypothesis
+* '''Validation:''' Check for relevance
+* '''SMW:''' [[Supports::Claim]]
+
+'''Pattern 4.2: Contradicts (Oppositional)'''
+* '''Structure:''' A contradicts B
+* '''Semantics:''' A opposes B
+* '''Example:''' Study contradicts theory
+* '''Validation:''' Check for logical opposition
+* '''SMW:''' [[Contradicts::Claim]]
+
+'''Pattern 4.3: Refines (Developmental)'''
+* '''Structure:''' A refines B
+* '''Semantics:''' A improves B
+* '''Example:''' Model refines theory
+* '''Validation:''' Check for precision gain
+* '''SMW:''' [[Refines::Claim]]
+
+== Pattern Combinations ==
+
+Real knowledge structures combine patterns:
+
+'''Scientific Theory Development:'''
+```
+Hypothesis --supports--> Evidence --confirms--> Theory
+    |                                      |
+    |--refines--> Refined Hypothesis       |--refines--> Refined Theory
+```
+
+'''Project Execution:'''
+```
+Planning --precedes--> Execution --precedes--> Evaluation
+    |                      |                       |
+    |--enables-->          |--enables-->           |--enables-->
+    v                      v                       v
+Resources              Implementation          Outcomes
+```
+
+Recognizing these combinations enables rich, multi-dimensional knowledge graphs.
+
+== Anti-Patterns ==
+
+=== Anti-Pattern 1: Circular Reference
+
+'''Problem:''' A → B → C → A
+'''Detection:''' Graph cycle detection
+'''Solution:''' Break cycle, identify hierarchy
+
+=== Anti-Pattern 2: Missing Inverse
+
+'''Problem:''' A → B exists, B → A missing
+'''Detection:''' Query for unidirectional relationships
+'''Solution:''' Add inverse property
+
+=== Anti-Pattern 3: Overly Specific
+
+'''Problem:''' Relationship too narrow for reuse
+'''Detection:''' Single use relationship
+'''Solution:''' Generalize or document as specific
+
+=== Anti-Pattern 4: Ambiguous Direction
+
+'''Problem:''' Direction unclear
+'''Detection:''' Bidirectional queries fail
+'''Solution:''' Clarify semantics, add documentation
+
+== Best Practices ==
+
+=== Practice 1: Use Standard Relationships ===
+
+Prefer standard relationships over custom ones:
+* Use "causes" not "leads to"
+* Use "supports" not "backs up"
+* Use "refines" not "improves"
+
+=== Practice 2: Document Semantics ===
+
+Every relationship must have clear semantics:
+* What does this relationship mean?
+* When should it be used?
+* What are the constraints?
+
+=== Practice 3: Validate Transitivity ===
+
+For transitive relationships:
+* If A → B and B → C, then A → C
+* Check for consistency
+* Document exceptions
+
+=== Practice 4: Maintain Inverses ===
+
+For asymmetric relationships:
+* Define inverse explicitly
+* Keep inverses synchronized
+* Query using inverse for navigation
+
+== Validation Rules ==
+
+=== Rule 1: Domain Constraint ===
+
+Source must be of correct type:
+```
+IF relationship = "causes"
+THEN source MUST BE Event OR Process
+```
+
+=== Rule 2: Range Constraint ===
+
+Target must be of correct type:
+```
+IF relationship = "supports"
+THEN target MUST BE Claim
+```
+
+=== Rule 3: Cardinality Constraint ===
+
+Must respect cardinality:
+```
+IF cardinality = "one-to-one"
+THEN source MUST HAVE exactly one target
+```
+
+=== Rule 4: Directionality Constraint ===
+
+Must respect directionality:
+```
+IF directionality = "asymmetric"
+THEN NOT (A → B AND B → A)
+```
+
+== SMW Implementation ==
+
+=== Pattern Declaration ===
+
+```wiki
+[[Has relationship pattern::Pattern Name]]
+[[Has pattern type::Hierarchical]]
+[[Has structure::A is-a B]]
+[[Has semantics::Subtype relationship]]
+[[Has example::Neural network is-a implementation]]
+```
+
+=== Pattern Queries ===
+
+'''All hierarchical patterns:'''
+```wiki
+{{#ask: [[Has pattern type::Hierarchical]]}}
+```
+
+'''Patterns with anti-patterns:'''
+```wiki
+{{#ask: [[Has anti-pattern::+]]}}
+```
+
+'''Validation rule violations:'''
+```wiki
+{{#ask: [[Has validation error::+]]}}
+```
+
+== References ==
+
+# Gamma, E., et al. (1994). Design Patterns.
+# Fowler, M. (2002). Patterns of Enterprise Application Architecture.
+# Semantic MediaWiki. (2026). Property patterns.
+# W3C. (2014). RDF Schema 1.1.
+# OWL 2 Web Ontology Language. (2012).
+# Sowa, J.F. (2000). Knowledge Representation.
+# Noy, N.F., & McGuinness, D.L. (2001). Ontology development 101.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+
+[[Has page type::Pattern Catalog]]
+[[Has epistemic tier::Established]]
+[[Has confidence trajectory::established]]
+[[Has pattern count::12]]
+[[Has anti-pattern count::4]]
+[[Has source count::10]]
+[[Has word count::700]]
+
+
+
+
+
+
+=== Practice 2: Document Semantics ===
+
+Every relationship should have clear semantics:
+* What does this relationship mean?
+* When should it be used?
+* What are the constraints?
+
+=== Practice 4: Maintain Inverses ===
+
+For asymmetric relationships:
+* Define inverse explicitly
+* Keep inverses synchronized
+* Query using inverse for navigation
+
+== SMW Implementation ==
+
+=== Pattern Declaration ===
+
+```wiki
+[[Has relationship pattern::Pattern Name]]
+[[Has pattern type::Hierarchical]]
+[[Has structure::A is-a B]]
+[[Has semantics::Subtype relationship]]
+```
+
+=== Pattern Queries ===
+
+'''All hierarchical patterns:'''
+```wiki
+{{#ask: [[Has pattern type::Hierarchical]]}}
+```
+
+'''Patterns with anti-patterns:'''
+```wiki
+{{#ask: [[Has anti-pattern::+]]}}
+```
+
+== On Pattern Evolution ==
+
+Patterns are not fixed. They emerge from practice and evolve as knowledge organization practices develop. The patterns here are offered as guidance—observations of what has worked, not rules that must be followed.
+
+[[Has page type::Pattern Catalog]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.84]]
+[[Has source count::10]]
+[[Has word count::700]]

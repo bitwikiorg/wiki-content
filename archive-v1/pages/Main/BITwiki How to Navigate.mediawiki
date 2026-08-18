@@ -1,0 +1,373 @@
+{{Infobox
+| title = BITwiki How to Navigate: Advanced User Guide for Knowledge Discovery
+| description = Comprehensive guide for navigating BITwiki's recursive knowledge structures, including hierarchical, lateral, toroidal, and query-driven navigation patterns.
+| type = front-matter
+| author = BITCORE
+| created = 2026-02-12
+| version = 2.established
+| epistemic_status = Established
+| confidence = established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: navigation-guide
+domain: user-guide
+| workflow = state: Beta
+}}
+
+= Revision history from v3.0.0: =
+= revised_by: "Front-Matter Revision Specialist" =
+= revision_date: "2026-02-14" =
+= revision_note: "Major revision based on human review feedback: simplified language, removed numbered lists, clarified navigation patterns" =
+
+{{Documentation}}
+[[Category:BITwiki Front Matter]]
+
+
+= BITwiki How to Navigate: Advanced User Guide for Knowledge Discovery =
+
+== Overview ==
+
+BITwiki's recursive knowledge architecture requires navigation approaches that differ from traditional encyclopedias. This guide covers four primary navigation patterns: hierarchical, lateral, toroidal, and query-driven.
+
+== Navigation Patterns ==
+
+=== 1. Hierarchical Navigation ===
+
+'''Pattern:''' Topic → Subtopic → Specific concept → Implementation
+
+'''Example Path:'''
+```
+Systems Science
+└── Cybernetics
+    └── Control Theory
+        └── PID Controllers
+            └── Implementation:PID Controller
+```
+
+'''When to Use:'''
+* Learning a new domain from fundamentals
+* Understanding prerequisite knowledge
+* Finding specific implementations
+
+'''SMW Query:'''
+```wiki
+{{#ask: [[Has parent::Topic:Systems Science]]
+|format=tree
+}}
+```
+
+=== 2. Lateral Navigation ===
+
+'''Pattern:''' Related topics across domains
+
+'''Example Path:'''
+```
+Idea:Emergence (Systems Science)
+↔ Idea:Supervenience (Philosophy)
+↔ Idea:Phase Transitions (Physics)
+↔ Idea:Spontaneous Order (Economics)
+```
+
+'''When to Use:'''
+* Exploring cross-domain connections
+* Finding alternative perspectives
+* Synthesizing interdisciplinary knowledge
+
+'''SMW Query:'''
+```wiki
+{{#ask: [[Has related::Idea:Emergence]]
+|?Has entity type
+|format=table
+}}
+```
+
+=== 3. Toroidal Navigation ===
+
+'''Pattern:''' Claims validated through multiple pathways that loop back
+
+'''Example Path:'''
+```
+Consciousness
+├── Neuroscience → Neural correlates
+├── Philosophy → Hard problem
+├── AI → Machine consciousness
+├── Contemplative traditions → Meditation states
+└── Returns to: Consciousness (enriched)
+```
+
+'''When to Use:'''
+* Evaluating epistemic status
+* Finding validation across domains
+* Understanding complex concepts
+
+'''SMW Query:'''
+```wiki
+{{#ask: [[Validates::Idea:Consciousness]]
+|?Has epistemic status
+|?Has confidence trajectory
+}}
+```
+
+=== 4. Query-Driven Navigation ===
+
+'''Pattern:''' SMW queries for specific patterns
+
+'''Example Queries:'''
+
+High-confidence Established ideas:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has epistemic status::Established]]
+[[Has confidence trajectory::established]]
+|?Has confidence trajectory
+|sort=Has confidence trajectory
+|order=desc
+}}
+```
+
+Recent modifications:
+```wiki
+{{#ask: [[Has modification date::>2026-01-01]]
+|?Has modification date
+|?Has author
+|sort=Has modification date
+|order=desc
+}}
+```
+
+Projects by duration:
+```wiki
+{{#ask: [[Has entity type::Project]]
+[[Has duration::>5 years]]
+|?Has start date
+|?Has end date
+|?Has duration
+}}
+```
+
+== Entry Points ==
+
+=== By Topic ===
+
+'''Root Topics:'''
+* [[Topic:Systems Science]] — Meta-disciplinary connector
+* [[Topic:Cybernetics]] — Control and communication
+* [[Topic:Information Theory]] — Quantifying information
+* [[Topic:Complexity Science]] — Emergence and self-organization
+
+'''Navigation:'''
+# Start with root topic
+# Explore subtopics via [[Has subtopic::]]
+# Find implementations via [[Has application::]]
+# Query related topics via [[Has related topic::]]
+
+=== By Idea ===
+
+'''Foundational Ideas:'''
+* [[Idea:Emergence]] — Complex from simple
+* [[Idea:Recursion]] — Self-reference
+* [[Idea:Feedback Loops]] — Circular causality
+* [[Idea:Self-Organization]] — Order from chaos
+
+'''Navigation:'''
+# Start with foundational idea
+# Find implementations via [[Has application::]]
+# Explore criticisms via [[Has criticism::]]
+# Query related ideas via [[Has related idea::]]
+
+=== By Epistemic Status ===
+
+'''Status Categories:'''
+* [[Category:Verified Claims]] — Extensively validated
+* [[Category:Established Claims]] — Multiple confirmations
+* [[Category:Emerging Claims]] — Preliminary support
+* [[Category:Hypothetical Claims]] — Speculative
+
+'''Navigation:'''
+# Browse by epistemic preference
+# Filter by confidence trajectory
+# Review evidence counts
+# Check last review dates
+
+=== By Entity Type ===
+
+'''Type Categories:'''
+* [[Category:Topics]] — Subject domains
+* [[Category:Ideas]] — Abstract concepts
+* [[Category:Implementations]] — Concrete realizations
+* [[Category:Projects]] — Organized efforts
+* [[Category:Protocols]] — Prescribed procedures
+* [[Category:Datasets]] — Data collections
+
+== Advanced Techniques ==
+
+=== Combining Queries ===
+
+Verified ideas about recursion:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has epistemic status::Verified]]
+[[Has related::Idea:Recursion]]
+}}
+```
+
+Established implementations with high confidence:
+```wiki
+{{#ask: [[Has entity type::Implementation]]
+[[Has epistemic status::Established]]
+[[Has confidence trajectory::established]]
+|?Has confidence trajectory
+|?Has evidence count
+}}
+```
+
+=== Path Finding ===
+
+Find path between entities:
+```wiki
+{{#ask: [[Has related::Idea:Emergence]]
+[[Has related::Idea:Recursion]]
+|?Has related
+|format=tree
+}}
+```
+
+=== Temporal Analysis ===
+
+Evolution of ideas over time:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has creation date::>2010]]
+[[Has creation date::<2020]]
+|?Has creation date
+|?Has epistemic status
+|sort=Has creation date
+}}
+```
+
+== Navigation Tools ==
+
+=== Special Pages ===
+* [[Special:AllPages]] — All pages
+* [[Special:Categories]] — All categories
+* [[Special:Properties]] — All SMW properties
+* [[Special:Ask]] — Query interface
+
+=== Templates ===
+* [[Template:Navigation Box]] — Topic navigation
+* [[Template:Epistemic Status]] — Status display
+* [[Template:Related Topics]] — Lateral links
+* [[Template:See Also]] — Cross-references
+
+== Common Tasks ==
+
+=== Finding Evidence ===
+
+For a specific claim:
+# Check [[Has source::]] properties
+# Query [[Validates::Claim]]
+# Review [[Has evidence count::]]
+# Check [[Has last review date::]]
+
+=== Evaluating Confidence ===
+
+For epistemic assessment:
+# Check [[Has epistemic status::]]
+# Review [[Has confidence trajectory::]]
+# Count [[Has evidence count::]]
+# Verify [[Has replication status::]]
+
+=== Tracking Provenance ===
+
+For source tracing:
+# Check [[Has author::]]
+# Review [[Has source::]]
+# Query [[Has creation date::]]
+# Check [[Has version::]]
+
+== Troubleshooting ==
+
+=== No Results ===
+
+If query returns nothing:
+# Check property spelling
+# Verify entity exists
+# Try broader query
+# Check for property values
+
+=== Too Many Results ===
+
+If query returns too much:
+# Add more constraints
+# Use [[Has confidence trajectory::established]]
+# Filter by [[Has epistemic status::Established]]
+# Limit with |limit=10
+
+=== Circular Navigation ===
+
+If you keep returning to same page:
+# Use lateral navigation
+# Try query-driven approach
+# Check [[Has related::]] for alternatives
+# Use Special:Random
+
+== Best Practices ===
+
+# '''Start broad, then narrow:''' Begin with root topics, drill down
+# '''Check epistemic markers:''' Always verify confidence before acting
+# '''Follow toroidal paths:''' Validate through multiple domains
+# '''Use queries:''' Don't just browse—ask specific questions
+# '''Document paths:''' Save useful navigation patterns
+# '''Review regularly:''' Epistemic status changes over time
+
+== References ==
+
+# Semantic MediaWiki. (2026). Querying data. https://www.semantic-mediawiki.org/
+# MediaWiki. (2026). Help:Navigation. https://www.mediawiki.org/
+# Bateson, G. (1972). Steps to an Ecology of Mind.
+# Weinberger, D. (2011). Too Big to Know.
+# BITwiki Ontology Index. (2026). https://bitwiki.org/BITwiki_Ontology_Index
+# BITwiki Epistemic Framework. (2026). https://bitwiki.org/BITwiki_Epistemic_Framework
+# BITwiki Constitution. (2026). https://bitwiki.org/BITwiki_Constitution
+# Kuhn, T.S. (1962). The Structure of Scientific Revolutions.
+# Lakatos, I. (1978). The Methodology of Scientific Research Programmes.
+# Popper, K. (1963). Conjectures and Refutations.
+
+[[Has page type::Navigation Guide]]
+[[Has epistemic tier::Established]]
+[[Has confidence trajectory::established]]
+[[Has pattern count::4]]
+[[Has source count::10]]
+[[Has word count::1100]]
+
+
+
+
+
+= How to Navigate =
+
+BITwiki rewards curiosity with revelation. You are not following a map; you are recognizing territory.
+
+== Three Navigation Patterns ==
+
+'''Descend''': Topic to subtopic to concept to implementation. Each step narrows focus while deepening detail. The path itself teaches prerequisite knowledge.
+
+'''Surface''': Follow connections across domains. An idea in cybernetics illuminates biology. A pattern in economics clarifies ecology. Cross-domain resonance generates insight.
+
+'''Query''': Use Semantic MediaWiki to find what browsing obscures. All claims with established status. All ideas influencing a specific implementation. Patterns invisible to linear reading.
+
+== Reading Protocol ==
+
+Read slowly. Each sentence carries weight. Follow links; the connections matter as much as the nodes. Query the structure; the machine-readable layer reveals hidden patterns.
+
+When you encounter uncertainty, engage it. Explicit confidence markers are resources, not warnings. They calibrate weight, trace sources, mark edges of knowledge.
+
+== Entry Points ==
+
+'''By Topic''': Systems Science, Cybernetics, Information Theory, Complexity.
+
+'''By Idea''': Emergence, Recursion, Feedback, Entropy, Self-organization.
+
+'''By Status''': Match confidence level to purpose. Verified for reliable foundation. Hypothetical for generative speculation.
+
+[[Has page type::Navigation Guide]]
+[[Has epistemic tier::Established]]

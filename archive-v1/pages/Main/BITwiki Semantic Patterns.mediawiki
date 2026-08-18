@@ -1,0 +1,462 @@
+{{Infobox
+| title = BITwiki Semantic Patterns: Recurring Knowledge Structures
+| description = Comprehensive catalog of recurring semantic patterns in BITwiki knowledge organization, including design patterns, anti-patterns, best practices, and pattern combinations for effective knowledge graph construction.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| revised = 2026-02-18
+| version = 3.1.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| revision_note = Consolidated from multiple versions: merged detailed pattern descriptions, Pattern Combinations section, and What Are Semantic Patterns introduction from v5
+| ontology = entity_type: pattern-catalog
+domain: semantic-patterns
+| workflow = state: Active
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+= BITwiki Semantic Patterns: Recurring Knowledge Structures =
+
+== Purpose ==
+
+This document catalogs recurring semantic patterns observed in knowledge organization. Patterns represent solutions that have emerged from practice—approaches that tend to work well, offered as guidance rather than prescription.
+
+Patterns are not rules but observations. They evolve as knowledge practices develop.
+
+== What Are Semantic Patterns? ==
+
+Knowledge organizes itself into recurring structures. The same patterns appear across domains: hierarchies, causal chains, temporal sequences, dependency networks. Recognizing these patterns enables consistent knowledge representation and powerful cross-domain queries.
+
+BITwiki patterns are not prescriptive rules but observed regularities. They emerge from how knowledge actually structures itself, not from top-down imposition.
+
+== Pattern Categories ==
+
+=== 1. Structural Patterns ===
+
+==== Pattern 1.1: Entity-Attribute-Value (EAV) ====
+
+'''Structure:''' Entity → Attribute → Value
+
+'''Description:''' Flexible property assignment. Any entity can have any attribute with any value, enabling rich description without rigid schema.
+
+'''Purpose:''' Flexible property assignment
+
+'''Example:'''
+```
+Project: Apollo Program
+├── Attribute: Cost
+│   └── Value: $25.4 billion
+├── Attribute: Duration
+│   └── Value: 11 years
+└── Attribute: Outcome
+    └── Value: Lunar landing
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Project]]
+[[Has cost::$25.4 billion]]
+[[Has duration::11 years]]
+[[Has outcome::Lunar landing]]
+```
+
+'''Simple SMW:''' [[Has age::30]]
+
+==== Pattern 1.2: Type Hierarchy ====
+
+'''Structure:''' General → Specific → Instance
+
+'''Description:''' Knowledge organizes taxonomically. General categories contain specific subcategories which contain instances. This is not rigid classification but flexible navigation—entities may belong to multiple hierarchies.
+
+'''Purpose:''' Taxonomic organization
+
+'''Example:'''
+```
+Systems Science
+├── Cybernetics
+│ ├── First-Order Cybernetics
+│ └── Second-Order Cybernetics
+└── Information Theory
+    └── Channel Capacity
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Topic]]
+[[Is a::Systems Science]]
+[[Has subtopic::Cybernetics]]
+```
+
+'''Simple SMW:''' [[Is a::Mammal]]
+
+'''Query:''' "All topics that are subtopics of Cybernetics"
+
+==== Pattern 1.3: Part-Whole ====
+
+'''Structure:''' Part → Whole
+
+'''Description:''' Mereological relationships—how components compose systems. Parts may be physical (neurons in brain) or abstract (functions in algorithm).
+
+'''Purpose:''' Mereological relationships
+
+'''Example:'''
+```
+Neural Network
+├── Layers
+│ ├── Input layer
+│ ├── Hidden layers
+│ └── Output layer
+├── Neurons
+└── Connections (weights)
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Implementation]]
+[[Part of::Neural Network]]
+[[Has part::Neuron]]
+```
+
+'''Simple SMW:''' [[Part of::Car]]
+
+'''Query:''' "All parts of systems that implement feedback"
+
+=== 2. Relational Patterns ===
+
+==== Pattern 2.1: Causal Chain ====
+
+'''Structure:''' Cause → Effect → Consequence
+
+'''Description:''' Causal relationships propagate through systems. Understanding causal chains enables prediction and intervention.
+
+'''Purpose:''' Causal reasoning
+
+'''Example:'''
+```
+Increased CO2 → Global warming → Sea level rise → Coastal displacement
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Idea]]
+[[Causes::Global warming]]
+[[Has consequence::Sea level rise]]
+```
+
+'''Simple SMW:''' [[Causes::Effect]]
+
+'''Query:''' "All effects of increased CO2 with confidence >0.8"
+
+==== Pattern 2.2: Temporal Sequence ====
+
+'''Structure:''' Before → During → After
+
+'''Description:''' Temporal ordering constrains possibility. Some things must happen before others.
+
+'''Purpose:''' Temporal reasoning
+
+'''Example:'''
+```
+Problem definition → Hypothesis formation → Experiment design → Data collection → Analysis → Publication
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Protocol]]
+[[Precedes::Hypothesis formation]]
+[[Follows::Observation]]
+```
+
+'''Simple SMW:''' [[Precedes::Execution]]
+
+'''Query:''' "All protocols that precede data collection"
+
+==== Pattern 2.3: Dependency Network ====
+
+'''Structure:''' A depends on B depends on C
+
+'''Description:''' Dependencies create constraint networks. Changes to dependencies propagate through the network.
+
+'''Purpose:''' Dependency tracking
+
+'''Example:'''
+```
+Machine Learning Application
+├── Depends on: Framework (PyTorch)
+│   └── Depends on: Language (Python)
+│       └── Depends on: Interpreter (CPython)
+└── Depends on: Hardware (GPU)
+    └── Depends on: Manufacturing (TSMC)
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Implementation]]
+[[Depends on::PyTorch]]
+[[Depends on::CUDA]]
+```
+
+'''Simple SMW:''' [[Depends on::Framework]]
+
+'''Query:''' "All implementations that depend on Python"
+
+=== 3. Epistemic Patterns ===
+
+==== Pattern 3.1: Evidence Hierarchy ====
+
+'''Structure:''' Hypothesis → Evidence → Confirmation
+
+'''Description:''' Claims require support. Evidence quality varies—anecdote < observation < experiment < meta-analysis.
+
+'''Purpose:''' Epistemic validation
+
+'''Example:'''
+```
+Hypothesis: Meditation reduces stress
+├── Evidence: Self-report (low quality)
+├── Evidence: Cortisol measurement (medium quality)
+└── Evidence: fMRI meta-analysis (high quality)
+    └── Confirmation: Verified
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Idea]]
+[[Supported by::Meta-analysis of 163 studies]]
+[[Has epistemic status::Verified]]
+[[Has confidence score::0.85]]
+```
+
+'''Simple SMW:''' [[Supported by::Evidence]]
+
+==== Pattern 3.2: Confidence Calibration ====
+
+'''Structure:''' Claim → Confidence → Justification
+
+'''Description:''' Uncertainty is quantifiable. Confidence scores should match evidence strength.
+
+'''Purpose:''' Uncertainty management
+
+'''Example:'''
+```
+Claim: Climate change is anthropogenic
+├── Confidence: 0.99
+└── Justification: IPCC AR6, 234 authors, 14,000+ references
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has confidence score::0.99]]
+[[Has confidence justification::IPCC AR6 synthesis]]
+```
+
+'''Simple SMW:''' [[Has confidence score::0.8]]
+
+==== Pattern 3.3: Provenance Chain ====
+
+'''Structure:''' Origin → Transmission → Current
+
+'''Description:''' Knowledge has history. Understanding where claims come from enables assessment of reliability.
+
+'''Purpose:''' Source tracking
+
+'''Example:'''
+```
+Original research (1972) → Peer-reviewed publication → Textbook citation → Wikipedia article → Current understanding
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has originator::Gregory Bateson]]
+[[Has source::Steps to an Ecology of Mind]]
+[[Has transmission::Cited in 500+ works]]
+```
+
+'''Simple SMW:''' [[Has originator::Researcher]]
+
+'''Query:''' "All ideas with provenance traceable to Macy Conferences"
+
+=== 4. Recursive Patterns ===
+
+==== Pattern 4.1: Self-Description ====
+
+'''Structure:''' System describes itself
+
+'''Description:''' Meta-knowledge—knowledge about the knowledge system itself. BITwiki documents BITwiki.
+
+'''Purpose:''' Meta-knowledge
+
+'''Example:'''
+```
+This document (BITwiki Semantic Patterns) is an instance of the patterns it describes.
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Documentation]]
+[[Documents::BITwiki]]
+[[Instance of::Semantic Pattern]]
+```
+
+'''Simple SMW:''' [[Has page type::Documentation]]
+
+==== Pattern 4.2: Self-Validation ====
+
+'''Structure:''' System validates its own outputs
+
+'''Description:''' Quality control applied to the system itself. Validation rules check that BITwiki content follows BITwiki standards.
+
+'''Purpose:''' Quality assurance
+
+'''Example:'''
+```
+Validation rule: All ideas must have epistemic status
+Applied to: This document
+Result: Pass (has status: Established)
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Protocol]]
+[[Validates::BITwiki content]]
+[[Has validation target::Self]]
+```
+
+'''Simple SMW:''' [[Has validation status::Validated]]
+
+==== Pattern 4.3: Self-Improvement ====
+
+'''Structure:''' System improves itself
+
+'''Description:''' Continuous refinement through recursive upgrade protocols.
+
+'''Purpose:''' Continuous refinement
+
+'''Example:'''
+```
+Recursive upgrade protocols
+```
+
+'''SMW:''' [[Has improvement cycle::Active]]
+
+== Pattern Combinations ==
+
+Real knowledge structures combine multiple patterns:
+
+=== Scientific Publication ===
+* Temporal sequence (research → writing → review → publication)
+* Dependency network (builds on prior work)
+* Evidence hierarchy (supports claims)
+* Provenance chain (attribution)
+
+=== Software Project ===
+* Type hierarchy (language → framework → application)
+* Part-whole (modules, functions, lines)
+* Dependency network (libraries, services)
+* Temporal sequence (planning → development → deployment)
+
+Recognizing these combinations enables rich, multi-dimensional knowledge representation.
+
+== Anti-Patterns ==
+
+=== Anti-Pattern 1: Orphaned Entity ===
+
+'''Problem:''' Entity with no relationships
+'''Detection:''' No incoming or outgoing properties
+'''Solution:''' Add relationships or remove
+
+=== Anti-Pattern 2: Circular Definition ====
+
+'''Problem:''' A defined in terms of B, B in terms of A
+'''Detection:''' Graph cycle in definitions
+'''Solution:''' Break cycle, identify base concept
+
+=== Anti-Pattern 3: Property Bloat ====
+
+'''Problem:''' Too many properties on single entity
+'''Detection:''' >20 properties
+'''Solution:''' Split into related entities
+
+=== Anti-Pattern 4: Type Confusion ====
+
+'''Problem:''' Entity with conflicting types
+'''Detection:''' Multiple type assignments
+'''Solution:''' Clarify type hierarchy
+
+== Best Practices ==
+
+=== Practice 1: Consistent Naming ===
+* Use standard property names
+* Follow naming conventions
+* Document abbreviations
+
+=== Practice 2: Explicit Relationships ====
+* Declare all relationships
+* Use inverse properties
+* Document semantics
+
+=== Practice 3: Minimal Redundancy ====
+* Store data once
+* Use transclusion for reuse
+* Avoid duplication
+
+=== Practice 4: Query Optimization ====
+* Index frequently queried properties
+* Use efficient query patterns
+* Cache results
+
+== SMW Implementation ==
+
+=== Pattern Properties ===
+
+```wiki
+[[Has pattern type::Structural]]
+[[Has pattern name::EAV]]
+[[Has anti-pattern::Orphaned Entity]]
+[[Has best practice::Consistent Naming]]
+```
+
+=== Pattern Queries ===
+
+'''All structural patterns:'''
+```wiki
+{{#ask: [[Has pattern type::Structural]]}}
+```
+
+'''Patterns with anti-patterns:'''
+```wiki
+{{#ask: [[Has anti-pattern::+]]}}
+```
+
+== On Pattern Evolution ==
+
+Patterns emerge from practice, not theory. They represent what has worked, not what must work. As knowledge practices evolve, new patterns will emerge and existing patterns may become obsolete.
+
+The patterns here are offered as guidance—tools that have proven useful, not constraints that must be followed.
+
+== References ==
+
+# Gamma, E., et al. (1994). Design Patterns.
+# Fowler, M. (2002). Patterns of Enterprise Application Architecture.
+# Semantic MediaWiki. (2026).
+# W3C. (2014). RDF Schema 1.1.
+# OWL 2 Web Ontology Language. (2012).
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# Sowa, J.F. (2000). Knowledge Representation.
+# Noy, N.F., & McGuinness, D.L. (2001). Ontology development 101.
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+
+[[Has page type::Pattern Catalog]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.85]]
+[[Has pattern count::15]]
+[[Has anti-pattern count::4]]
+[[Has source count::10]]
+[[Has word count::1200]]

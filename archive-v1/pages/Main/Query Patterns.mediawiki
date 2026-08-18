@@ -1,0 +1,488 @@
+{{Infobox
+| title = BITwiki Query Patterns: SMW Query Syntax and Examples
+| description = Comprehensive reference for Semantic MediaWiki query patterns used in BITwiki—enabling knowledge retrieval, filtering, aggregation, and discovery. Patterns are tools for inquiry, not prescriptions.
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-17
+| version = 3.0.0-consolidated
+| epistemic_status = Established
+| confidence = Well-Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: query-reference
+domain: smw-queries
+| workflow = state: Stable
+| sources_consolidated = - Query_Patterns.md (v2.1.0-revised)
+- Query_Patterns1.md through Query_Patterns4.md (v2.0.0)
+- Query_Patterns5.md (v2.1.0-revised)
+- Query_Patterns6.md (v2.0.0, Well-Established)
+- Query_Patterns7.md (v2.established)
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+
+
+= BITwiki Query Patterns: SMW Query Syntax and Examples =
+
+== Etymology: The Art of Asking ==
+
+''Query'' — from Latin ''quaerere'', to ask, to seek, to inquire. A query is not a demand but a question—an opening toward discovery. The Latin root carries the sense of seeking with effort, of pursuing what is not yet known.
+
+''Pattern'' — from Latin ''patronus'', protector, defender, from ''pater'', father. A pattern is that which protects the shape, that which preserves the form. In query patterns, we preserve the shapes of effective asking.
+
+== Purpose: Queries as Discovery Tools ==
+
+This document provides query patterns for Semantic MediaWiki (SMW) in BITwiki. These patterns enable machine-readable knowledge retrieval, filtering, aggregation, and discovery. They are not rules but tools—proven forms that can be adapted to specific needs.
+
+Queries serve:
+* '''Retrieval''': Finding what exists
+* '''Filtering''': Narrowing to what matters
+* '''Aggregation''': Summarizing across entities
+* '''Discovery''': Revealing unexpected connections
+
+== Basic Queries: Foundations of Discovery ==
+
+=== Query 1: All Pages with Property ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::Value]]}}
+```
+
+'''Example:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]}}
+```
+
+'''Result:''' All pages with entity type "Idea"
+
+=== Query 2: Property Exists ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]}}
+```
+
+'''Examples:'''
+```wiki
+{{#ask: [[Has confidence score::+]]}}
+{{#ask: [[Has confidence::+]]}}
+{{#ask: [[Has confidence trajectory::+]]}}
+{{#ask: [[Has evidence count::+]]}}
+```
+
+'''Result:''' All pages with any value for the specified property
+
+=== Query 3: Multiple Properties ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property1::Value1]]
+[[Has property2::Value2]]
+}}
+```
+
+'''Examples:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence score::>0.8]]
+}}
+
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence::high]]
+}}
+
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence trajectory::established]]
+}}
+```
+
+'''Result:''' Pages matching all specified conditions
+
+== Comparison Queries: Finding Relations ==
+
+=== Numeric Comparisons ===
+
+'''Greater than:'''
+```wiki
+{{#ask: [[Has confidence score::>0.8]]}}
+{{#ask: [[Has evidence count::>5]]}}
+```
+
+'''Less than:'''
+```wiki
+{{#ask: [[Has confidence score::<0.5]]}}
+{{#ask: [[Has evidence count::<3]]}}
+```
+
+'''Range:'''
+```wiki
+{{#ask: [[Has confidence score::>0.5]]
+[[Has confidence score::<0.9]]
+}}
+
+{{#ask: [[Has evidence count::>5]]
+[[Has evidence count::<20]]
+}}
+```
+
+=== Date Comparisons ===
+
+'''After date:'''
+```wiki
+{{#ask: [[Has date::>2025-01-01]]}}
+```
+
+'''Before date:'''
+```wiki
+{{#ask: [[Has date::<2026-01-01]]}}
+```
+
+'''Date range:'''
+```wiki
+{{#ask: [[Has date::>2025-01-01]]
+[[Has date::<2026-01-01]]
+}}
+```
+
+== Filtered Queries: Narrowing the Field ==
+
+=== Filter by Category ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Category:CategoryName]]}}
+```
+
+'''Example:'''
+```wiki
+{{#ask: [[Category:BITwiki Ideas]]}}
+```
+
+=== Filter by Namespace ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Namespace:PageName]]}}
+```
+
+'''Example:'''
+```wiki
+{{#ask: [[Idea:Feedback Loop]]}}
+```
+
+=== Exclude Values ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::!Value]]}}
+```
+
+'''Example:'''
+```wiki
+{{#ask: [[Has epistemic status::!Hypothetical]]}}
+```
+
+'''Result:''' All pages except those with status "Hypothetical"
+
+== Aggregated Queries: Summarizing Knowledge ==
+
+=== Count Results ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::Value]]
+| format=count
+}}
+```
+
+'''Example:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+| format=count
+}}
+```
+
+'''Result:''' Number of matching entities
+
+=== Sum Values ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| ?Has numeric property
+| format=sum
+}}
+```
+
+'''Example:'''
+```wiki
+{{#ask: [[Has entity type::Project]]
+| ?Has budget
+| format=sum
+}}
+```
+
+=== Average Values ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| ?Has numeric property
+| format=average
+}}
+```
+
+'''Examples:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+| ?Has confidence score
+| format=average
+}}
+
+{{#ask: [[Has entity type::Idea]]
+| ?Has evidence count
+| format=average
+}}
+```
+
+== Sorted Queries: Ordering Results ==
+
+=== Sort by Property ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| sort=Property
+| order=ascending
+}}
+```
+
+'''Examples:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+| sort=Has confidence score
+| order=descending
+}}
+
+{{#ask: [[Has entity type::Idea]]
+| sort=Has evidence count
+| order=descending
+}}
+
+{{#ask: [[Has entity type::Idea]]
+| sort=Has confidence trajectory
+| order=descending
+}}
+```
+
+'''Result:''' Entities sorted by specified property
+
+== Limited Queries: Managing Output ==
+
+=== Limit Results ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| limit=10
+}}
+```
+
+'''Examples:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+| sort=Has confidence score
+| order=descending
+| limit=10
+}}
+
+{{#ask: [[Has entity type::Idea]]
+| sort=Has evidence count
+| order=descending
+| limit=10
+}}
+```
+
+'''Result:''' Top N results by specified criteria
+
+=== Offset Results ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| offset=10
+| limit=10
+}}
+```
+
+'''Result:''' Results 11-20 (pagination)
+
+== Display Formats: Presenting Results ==
+
+=== Table Format ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| format=table
+}}
+```
+
+=== List Format ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| format=list
+}}
+```
+
+=== Category Format ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| format=category
+}}
+```
+
+=== Template Format ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::+]]
+| format=template
+| template=TemplateName
+}}
+```
+
+== Advanced Patterns: Complex Discovery ==
+
+=== Subqueries ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::{{#ask: [[Has subproperty::Value]]}}]]}}
+```
+
+=== Chain Queries ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[Has property::Value]]
+| ?Has related property
+}}
+```
+
+=== Inverse Queries ===
+
+'''Pattern:'''
+```wiki
+{{#ask: [[-Has property::Value]]}}
+```
+
+'''Result:''' Pages that link to Value via Has property
+
+== Common Use Cases: Patterns in Practice ==
+
+=== Use Case 1: Find High-Confidence Ideas ===
+
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence score::>0.8]]
+| sort=Has confidence score
+| order=descending
+| limit=20
+}}
+```
+
+Alternative using evidence count:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence::high]]
+| sort=Has evidence count
+| order=descending
+| limit=20
+}}
+```
+
+Alternative using confidence trajectory:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence trajectory::established]]
+| sort=Has confidence trajectory
+| order=descending
+| limit=20
+}}
+```
+
+=== Use Case 2: Find Recent Publications ===
+
+```wiki
+{{#ask: [[Has entity type::Publication]]
+[[Has date::>2025-01-01]]
+| sort=Has date
+| order=descending
+| limit=10
+}}
+```
+
+=== Use Case 3: Find Verified Claims ===
+
+```wiki
+{{#ask: [[Has epistemic status::Verified]]
+| sort=Has confidence score
+| order=descending
+}}
+```
+
+Alternative:
+```wiki
+{{#ask: [[Has epistemic status::Verified]]
+| sort=Has evidence count
+| order=descending
+}}
+```
+
+=== Use Case 4: Count by Type ===
+
+```wiki
+{{#ask: [[Has entity type::+]]
+| format=count
+}}
+```
+
+== Property Variants Reference ==
+
+This consolidated document includes multiple confidence-related property patterns used across BITwiki variants:
+
+{| class="wikitable"
+! Property !! Type !! Usage
+|-
+| Has confidence score || Numeric (0.0-1.0) || Quantitative confidence measurement
+|-
+| Has confidence || Categorical (high/medium/low) || Qualitative confidence level
+|-
+| Has confidence trajectory || Categorical (emerging/established/well-established) || Developmental stage
+|-
+| Has evidence count || Integer || Quantitative evidence support
+|}
+
+== References ==
+
+# Semantic MediaWiki. (2026). Query documentation.
+# MediaWiki. (2026). Parser functions.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# W3C. (2013). SPARQL 1.1 Query Language.
+# RDF Working Group. (2014). RDF 1.1 Concepts.
+
+[[Has page type::Query Reference]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.95]]
+[[Has query pattern count::25]]
+[[Has source count::6]]
+[[Has word count::1200]]
+[[Has consolidation date::2026-02-17]]
+[[Has source variants::8]]

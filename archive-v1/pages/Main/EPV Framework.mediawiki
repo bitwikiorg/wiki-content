@@ -1,0 +1,152 @@
+{{Infobox
+| title = EPV Framework
+| description = Comprehensive documentation for EPV Framework in the BITwiki schema-matter system
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-11
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: epistemic_framework
+domain: template-system
+| word_count = 274
+| sources_count = 12
+| workflow = state: Beta
+}}
+
+
+{{Schema-Matter Document}}
+{{DISPLAYTITLE:EPV Framework}}
+__NOTOC__
+
+{{#set:
+ |Has epistemic status=Established
+ |Has confidence=Established
+ |Has ontology=epistemic_framework
+ |Has document type=Schema-Matter
+ |Has version=1.0.0
+}}
+
+
+# EPV Framework
+
+The '''Event-Process-Value (EPV) Framework''' is an ontological model adapted from the Wolfram Physics Project for Semantic MediaWiki. It provides a three-dimensional approach to knowledge representation.
+
+== Three Dimensions ==
+
+=== Events ===
+Events represent state changes in the knowledge graph. They are discrete occurrences that transform the state of entities.
+* '''Definition''': A temporal marker indicating a change in entity state
+* '''SMW Mapping''': Properties use "Was" prefix (e.g., [Property:Was created at](Property:Was created at)(Property:Was created at.md), [Property:Was modified by](Property:Was modified by)(Property:Was modified by.md))
+* '''Temporal nature''': Events are anchored to specific time points
+
+=== Propositions ===
+Propositions represent relationships between entities. They define how entities connect and interact within the knowledge space.
+* '''Definition''': A statement asserting a relationship between two or more entities
+* '''SMW Mapping''': Properties use "Has" prefix (e.g., [Property:Has author](Property:Has author)(Property:Has author.md), [Property:Has source](Property:Has source)(Property:Has source.md))
+* '''Relational nature''': Propositions establish semantic links
+
+=== Values ===
+Values represent measurements and attributes. They quantify properties of entities.
+* '''Definition''': A measurable attribute or characteristic of an entity
+* '''SMW Mapping''': Properties use "Has" prefix with type annotations (e.g., [Property:Has confidence level](Property:Has confidence level)(Property:Has confidence level.md), [Property:Has evidence strength](Property:Has evidence strength)(Property:Has evidence strength.md))
+* '''Quantitative nature''': Values enable comparison and filtering
+
+== SMW Property Mapping Table ==
+
+| EPV Dimension | SMW Property Pattern | Example | Type |
+|---|---|---|---|
+| Event | Was [past participle](past participle) | Was created at | Date |
+| Event | Was [attributed](attributed) by | Was attributed to | Page |
+| Proposition | Has [relationship](relationship) | Has author | Page |
+| Proposition | Has [source](source) | Has source | Text |
+| Value | Has [attribute](attribute) | Has confidence level | Text |
+| Value | Has [measurement](measurement) | Has evidence strength | Text |
+
+== Usage Pattern ==
+
+To annotate a claim with EPV framework:
+
+```
+
+{{#set:
+ |Was created at=2026-02-12
+ |Was attributed to=User:Researcher
+ |Has confidence level=High
+ |Has evidence strength=Primary
+}}
+
+```
+
+== Theoretical Foundations ==
+
+The EPV Framework draws upon multiple philosophical and computational traditions to create a robust knowledge representation system. At its core, the framework recognizes that knowledge is not merely a static collection of facts, but a dynamic process involving temporal events, relational propositions, and measurable values.
+
+=== Philosophical Underpinnings ===
+
+The three-dimensional structure of the EPV Framework reflects deep insights from epistemology and metaphysics. The Event dimension acknowledges the temporal nature of knowledge acquisition and change, drawing from process philosophy and temporal logic. The Proposition dimension captures the relational structure of knowledge, reflecting insights from structuralist epistemology and network theory. The Value dimension enables quantitative assessment of knowledge claims, incorporating principles from measurement theory and evidence evaluation.
+
+=== Computational Implementation ===
+
+In Semantic MediaWiki, the EPV Framework is implemented through a systematic property naming convention that encodes the dimensional classification of each property. This convention enables automated reasoning about knowledge structure and supports sophisticated queries that traverse the epistemic landscape of the knowledge base.
+
+== Integration with BITwiki Architecture ==
+
+The EPV Framework serves as the foundational ontology for the BITwiki knowledge management system. It provides the semantic infrastructure that enables:
+* '''Attribution Tracking''': Every claim can be traced to its source through provenance properties
+* '''Confidence Assessment''': Knowledge claims carry explicit confidence levels and evidence strength ratings
+* '''Temporal Reasoning''': Events are timestamped and can be ordered chronologically
+* '''Relational Navigation''': Entities are connected through explicit semantic relationships
+* '''Quality Assurance''': Epistemic properties enable systematic evaluation of knowledge quality
+
+== Practical Applications ==
+
+=== Knowledge Base Construction ===
+
+When constructing a new knowledge base using the EPV Framework, editors should:
+
+# '''Identify Events''': Determine what temporal markers are relevant for each entity
+# '''Establish Propositions''': Define the key relationships between entities
+# '''Assign Values''': Quantify confidence, evidence strength, and other measurable attributes
+# '''Annotate Sources''': Link claims to their originating sources
+# '''Validate Structure''': Ensure all properties follow the naming conventions
+
+=== Query Construction ===
+
+The EPV Framework enables sophisticated queries that combine temporal, relational, and quantitative constraints:
+* Find all entities created after a specific date with high confidence
+* Identify claims derived from a particular source with primary evidence
+* Trace the attribution chain for disputed claims
+* Compare confidence levels across different knowledge domains
+
+== Future Directions ==
+
+The EPV Framework continues to evolve as new requirements emerge from the BITwiki community. Potential extensions include:
+* '''Probabilistic Extensions''': Incorporating Bayesian confidence measures
+* '''Multi-Agent Attribution''': Tracking contributions from AI systems and human editors
+* '''Cross-Reference Validation''': Automated verification of claim consistency
+* '''Temporal Logic''': Formal reasoning about event sequences and causality
+
+
+
+== See Also ==
+* [Event Types](Event Types)(Event Types.md)
+* [Epistemic Properties](Epistemic Properties)(Epistemic Properties.md)
+* [Provenance Model](Provenance Model)(Provenance Model.md)
+
+
+== References ==
+
+# Wolfram, S. (2020). A Project to Find the Fundamental Theory of Physics. Wolfram Media.
+# Wolfram, S. (2002). A New Kind of Science. Wolfram Media.
+# Goldman, A. (1986). Epistemology and Cognition. Harvard.
+# Williamson, T. (2000). Knowledge and Its Limits. Oxford.
+# Sosa, E. (2007). A Virtue Epistemology. Oxford.
+# Zagzebski, L. (1996). Virtues of the Mind. Cambridge.
+# Plantinga, A. (1993). Warrant and Proper Function. Oxford.
+# BonJour, L. (1985). The Structure of Empirical Knowledge. Harvard.
+# Alston, W. (2005). Beyond Justification. Cornell.
+# Audi, R. (1998). Epistemology: A Contemporary Introduction. Routledge.
+# Pritchard, D. (2012). Epistemological Disjunctivism. Oxford.
+# Turri, J. (2011). Manifest Failure: The Gettier Problem Solved. Philosopher's Imprint.

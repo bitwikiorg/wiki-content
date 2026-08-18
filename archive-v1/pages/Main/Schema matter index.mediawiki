@@ -1,0 +1,257 @@
+{{Infobox
+| title = BITwiki Schema Matter Index: Structural Framework and Templates
+| description = Comprehensive index of BITwiki's schema matter—page types, properties, templates, and query patterns for structured knowledge capture. A living reference synthesizing all canonical variants.
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-12
+| revised = 2026-02-14
+| version = 2.2.0-consolidated
+| epistemic_status = Established
+| confidence = Well-Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: schema-index
+domain: structural-framework
+| confidence_score = 0.87
+| workflow = state: Stable
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+<includeonly>
+
+= BITwiki Schema Matter Index: Structural Framework and Templates =
+
+== Etymology: The Matter of Structure ==
+
+''Schema'' — from Greek ''skhema'', form, figure, appearance. From ''ekhein'', to have, to hold. A schema is that which holds form—the pattern that shapes without determining, the structure that enables without constraining.
+
+''Matter'' — from Latin ''materia'', substance, stuff, material. From ''mater'', mother. Matter is that from which things are made—the substrate that receives form. Schema matter is the material of structure, the substance of pattern.
+
+== Purpose: Structure as Enabling Substrate ==
+
+This document serves as the central reference for BITwiki's schema matter. Schema matter defines the structural framework for knowledge capture—page types, properties, templates, and query patterns.
+
+This index offers:
+* '''Orientation''': Finding one's way in the schema landscape
+* '''Connection''': Linking components to their purposes
+* '''Extension''': Building upon established patterns
+* '''Evolution''': Recognizing when structures transform
+
+It is not a fixed specification. It is a living reference that evolves with use.
+
+== Schema Components: The Elements of Structure ==
+
+=== 1. Page Types ===
+
+'''Location:''' [[BITwiki Page Types]]
+
+'''Purpose:''' Defines the six canonical entity types (emergent patterns of organization).
+
+'''Content:'''
+* Topic, Idea, Implementation, Project, Protocol, Dataset
+* Type-specific properties
+* Type relationships
+* Usage guidelines
+
+'''Status:''' Established (0.86 confidence)
+
+=== 2. Property Types ===
+
+'''Location:''' [[Property Types]]
+
+'''Purpose:''' Defines SMW property types.
+
+'''Content:'''
+* Text, Number, Date, Page, etc.
+* Property constraints
+* Validation rules
+* Query patterns
+
+'''Status:''' Established (0.85 confidence)
+
+=== 3. Ontology Index ===
+
+'''Location:''' [[BITwiki Ontology Index]]
+
+'''Purpose:''' Central ontology reference.
+
+'''Content:'''
+* Entity types
+* Properties
+* Relationships
+* SMW queries
+
+'''Status:''' Established (0.88 confidence)
+
+=== 4. Template Catalog ===
+
+'''Location:''' [[Template Catalog]]
+
+'''Purpose:''' Catalog of all templates.
+
+'''Content:'''
+* Infobox templates
+* Navigation templates
+* Formatting templates
+* Usage guidelines
+
+'''Status:''' Established (0.84 confidence)
+
+=== 5. Query Patterns ===
+
+'''Location:''' [[Query Patterns]]
+
+'''Purpose:''' Common SMW query patterns.
+
+'''Content:'''
+* Basic queries
+* Advanced queries
+* Filtered queries
+* Aggregated queries
+
+'''Status:''' Established (0.85 confidence)
+
+=== 6. Template Usage Guide ===
+
+'''Location:''' [[Template Usage Guide]]
+
+'''Purpose:''' Guidelines for template use.
+
+'''Content:'''
+* Template selection
+* Parameter usage
+* Best practices
+* Troubleshooting
+
+'''Status:''' Established (0.84 confidence)
+
+== Schema Principles: Guidelines for Structure ==
+
+=== 1. Machine Readability ===
+
+Content should be machine-readable:
+* Typed properties enable queries
+* Structured data facilitates export
+* Semantic markup supports discovery
+
+But readability serves human understanding. Never sacrifice clarity for structure.
+
+=== 2. Human Legibility ===
+
+Content should be human-legible:
+* Clear labels reduce cognitive load
+* Accessible language invites participation
+* Progressive disclosure respects attention
+* Visual hierarchy guides navigation
+
+=== 3. Extensibility ===
+
+Schema should accommodate growth:
+* New types can emerge from use
+* New properties can be defined
+* Templates can be customized
+* Queries can be adapted
+
+Extension is not failure of foresight. It is recognition that knowledge evolves.
+
+=== 4. Validation ===
+
+Schema should be validated:
+* Property types can be checked
+* Constraints can be enforced
+* Consistency can be verified
+* Errors can be flagged
+
+Validation is service, not constraint. It helps maintain coherence without preventing innovation.
+
+== SMW Implementation: Technical Foundation ==
+
+=== Schema Properties ===
+
+```wiki
+[[Has page type::Page Type]]
+[[Has property type::Property Type]]
+[[Has template::Template]]
+[[Has query pattern::Query Pattern]]
+```
+
+=== Schema Queries ===
+
+'''All page types:'''
+```wiki
+{{#ask: [[Has page type::+]]}}
+```
+
+'''All properties:'''
+```wiki
+{{#ask: [[Has property type::+]]}}
+```
+
+'''All templates:'''
+```wiki
+{{#ask: [[Has template::+]]}}
+```
+
+== Common Tasks: Working with Schema ==
+
+=== Task 1: Create New Page Type ===
+
+# Define type properties
+# Create template
+# Add to ontology
+# Document usage
+
+=== Task 2: Add New Property ===
+
+# Define property type
+# Add constraints
+# Update templates
+# Document usage
+
+=== Task 3: Create Template ===
+
+# Design template structure
+# Define parameters
+# Add SMW properties
+# Document usage
+
+== Consolidation Metadata ==
+
+This document represents the consolidated synthesis of all Schema Matter Index variants:
+* Schema_matter_index.md (v2.1.0-revised, etymology foundation)
+* Schema_matter_index1.md through Schema_matter_index4.md (v2.0.0, numbered structure)
+* Schema_matter_index5.md (Well-Established confidence variant)
+* Schema_matter_index6.md (v2.1.0-revised, etymology foundation)
+* Schema_matter_index7.md (v2.established, emergent phrasing)
+
+'''Enhancements Applied:'''
+* Merged etymology section from revised variants
+* Preserved numbered component structure for clarity
+* Synthesized confidence metrics (numeric and descriptive)
+* Unified philosophical and technical tones
+* Added consolidation metadata section
+* Maintained all SMW semantic properties
+
+== References ==
+
+# BITwiki Page Types. (2026).
+# Property Types. (2026).
+# BITwiki Ontology Index. (2026).
+# Template Catalog. (2026).
+# Query Patterns. (2026).
+# Template Usage Guide. (2026).
+# Semantic MediaWiki. (2026).
+# W3C. (2014). RDF Schema 1.1.
+# OWL 2 Web Ontology Language. (2012).
+# BITwiki Constitution. (2026).
+
+[[Has page type::Schema Index]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.87]]
+[[Has confidence trajectory::established]]
+[[Has component count::6]]
+[[Has source count::10]]
+[[Has variant count::8]]
+[[Has word count::450]]
+
+</includeonly>

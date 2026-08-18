@@ -1,0 +1,375 @@
+{{Infobox
+| title = BITwiki SMW Template System: Semantic MediaWiki Integration
+| description = Comprehensive template architecture for Semantic MediaWiki integration, including epistemic markers, entity infoboxes, query patterns, and transclusion hygiene.
+| type = template-system
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: template-system
+domain: smw-integration
+| workflow = state: Beta
+}}
+
+{{Documentation}}
+[[Category:BITwiki Templates]]
+[[Category:BITwiki Book Matter]]
+
+
+= BITwiki SMW Template System: Semantic MediaWiki Integration =
+
+== Purpose ==
+
+This document defines BITwiki's Semantic MediaWiki (SMW) template architecture—enabling machine-queryable, semantically rich content that transcends traditional wiki limitations. Unlike Wikipedia's static categories, BITwiki templates encode ontological relationships, epistemic status, and computable properties.
+
+== Template Architecture ==
+
+=== Design Principles ===
+
+# '''Semantic First''': Every template encodes machine-readable properties
+# '''Epistemic Transparency''': All claims carry confidence and status metadata
+# '''Transclusion Hygiene''': Clear boundaries between template logic and content
+# '''Composability''': Templates nest and combine without conflict
+# '''Queryability''': All data extractable via SMW #ask queries
+
+=== Template Categories ===
+
+| Category | Purpose | Examples |
+|----------|---------|----------|
+| Infobox | Entity metadata display | Infobox_Concept, Infobox_Agent |
+| Marker | Epistemic status indicators | Epistemic_Marker, Uncertainty_Marker |
+| Navigation | Cross-page linking | Navigation_Box, Portal_Template |
+| Query | Reusable query patterns | Related_Pages, Property_Listing |
+| Formatting | Consistent presentation | Citation_Box, Definition_Box |
+
+== Core Templates ==
+
+=== Template:Infobox_Entity ===
+
+'''Purpose:''' Universal entity metadata container
+
+'''Usage:'''
+```
+{{Infobox_Entity
+|entity_type=Concept
+|name=Autopoiesis
+|definition=Self-producing system that generates its own components
+|domain=Systems Science
+|epistemic_status=Established
+|confidence=0.92
+|created_by=Maturana and Varela
+|creation_date=1972
+|key_properties=Self-reference, Boundary maintenance, Component generation
+|related_entities=Cybernetics, Homeostasis, Emergence
+|source_count=47
+}}
+```
+
+'''SMW Properties Set:'''
+* [[Has entity type::{{#var:entity_type}}]]
+* [[Has name::{{#var:name}}]]
+* [[Has domain::{{#var:domain}}]]
+* [[Has epistemic status::{{#var:epistemic_status}}]]
+* [[Has confidence::{{#var:confidence}}]]
+* [[Has creation date::{{#var:creation_date}}]]
+
+=== Template:Epistemic_Marker ===
+
+'''Purpose:''' Visual and semantic epistemic status indicator
+
+'''Usage:'''
+```
+{{Epistemic_Marker
+|status=Established
+|confidence=0.87
+|sources=12
+|last_verified=2026-02-13
+}}
+```
+
+'''Visual Output:'''
+[Established] ●●●●○ (0.87) | 12 sources | Verified 2026-02-13
+
+'''SMW Properties:'''
+* [[Has epistemic status::{{#var:status}}]]
+* [[Has confidence::{{#var:confidence}}]]
+* [[Has source count::{{#var:sources}}]]
+* [[Has verification date::{{#var:last_verified}}]]
+
+'''Status Values:'''
+* 🔴 Axiomatic (1.0)
+* 🟢 Established (0.85-0.99)
+* 🟡 Supported (0.70-0.84)
+* 🔵 Working (0.50-0.69)
+* ⚪ Speculative (0.20-0.49)
+* ⚫ Disputed (variable)
+
+=== Template:Uncertainty_Marker ===
+
+'''Purpose:''' Granular uncertainty quantification
+
+'''Usage:'''
+```
+{{Uncertainty_Marker
+|type=Measurement
+|value=0.15
+|unit=confidence_interval
+|description=Standard error of measurement
+}}
+```
+
+'''Types:'''
+* Measurement: Instrument precision
+* Statistical: Confidence intervals
+* Epistemic: Knowledge limitations
+* Temporal: Time-based uncertainty
+* Ontological: Category boundary fuzziness
+
+=== Template:Property_Citation ===
+
+'''Purpose:''' Link properties to evidence sources
+
+'''Usage:'''
+```
+{{Property_Citation
+|property=Has population
+|value=8.1 billion
+|source=UN World Population Prospects 2024
+|url=https://population.un.org/
+|access_date=2026-02-13
+|confidence=0.95
+}}
+```
+
+'''SMW Properties:'''
+* [[Has property::{{#var:property}}]]
+* [[Has value::{{#var:value}}]]
+* [[Has citation::{{#var:source}}]]
+* [[Has source URL::{{#var:url}}]]
+* [[Has access date::{{#var:access_date}}]]
+
+== Query Templates ==
+
+=== Template:Related_Entities ===
+
+'''Purpose:''' Dynamic entity relationship discovery
+
+'''Usage:'''
+```
+{{Related_Entities
+|entity={{PAGENAME}}
+|relationship=Has related entity
+|limit=10
+|format=list
+}}
+```
+
+'''Implementation:'''
+```
+{{#ask: [[{{#var:relationship}}::{{#var:entity}}]]
+ |?Has entity type
+ |?Has epistemic status
+ |format={{#var:format}}
+ |limit={{#var:limit}}
+ |sort=Has confidence
+ |order=desc
+}}
+```
+
+=== Template:Domain_Index ===
+
+'''Purpose:''' Auto-generated domain content listing
+
+'''Usage:'''
+```
+{{Domain_Index
+|domain=Systems Science
+|include_subdomains=true
+|min_confidence=0.70
+}}
+```
+
+'''Output:''' Table of all entities in domain with confidence filtering
+
+=== Template:Epistemic_Distribution ===
+
+'''Purpose:''' Visualize epistemic status across content
+
+'''Usage:'''
+```
+{{Epistemic_Distribution
+|category=BITwiki Article
+|chart_type=pie
+}}
+```
+
+'''Output:''' Pie chart showing distribution of epistemic tiers
+
+== Transclusion Hygiene ==
+
+===  Boundaries ===
+
+'''Required for:'''
+* Template documentation
+* SMW property declarations
+* Category assignments
+* Maintenance categories
+
+'''Example:'''
+```
+<noinclude>
+{{Documentation}}
+[[Category:BITwiki Templates]]
+[[Category:Infobox Templates]]
+
+
+<!-- Template logic here -->
+
+```
+
+=== Parameter Validation ===
+
+'''Default Values:'''
+```
+{{#vardefine: confidence | {{#if: {{{confidence|}}} | {{{confidence}}} | 0.50 }} }}
+```
+
+'''Type Checking:'''
+```
+{{#if: {{#expr: {{#var:confidence}} > 0 and {{#var:confidence}} <= 1 }}
+ | <!-- valid -->
+ | [[Category:Template Error/Invalid Confidence]]
+}}
+```
+
+=== Nesting Rules ===
+
+'''Maximum Depth:''' 5 levels
+'''Circular Detection:''' SMW query timeout prevents infinite loops
+'''Parameter Passing:''' Explicit only, no global state
+
+== Advanced Patterns ==
+
+=== Conditional Display ===
+
+'''Epistemic Status-Based:'''
+```
+{{#switch: {{#var:epistemic_status}}
+ | Axiomatic = [[File:Axiomatic_icon.svg|20px]]
+ | Established = [[File:Established_icon.svg|20px]]
+ | Supported = [[File:Supported_icon.svg|20px]]
+ | #default = [[File:Working_icon.svg|20px]]
+}}
+```
+
+=== Computed Properties ===
+
+'''Confidence Aggregation:'''
+```
+{{#expr: 
+  ({{#ask: [[Has entity::{{PAGENAME}}]] [[Has confidence::+]]
+    |?Has confidence
+    |format=sum
+  }} / {{#ask: [[Has entity::{{PAGENAME}}]]
+    |format=count
+  }})
+}}
+```
+
+=== Temporal Queries ===
+
+'''Recently Updated:'''
+```
+{{#ask: [[Category:BITwiki Article]]
+  [[Modification date::>{{#expr:{{#time:U}}-604800}}]]
+ |?Has epistemic status
+ |?Modification date
+ |format=table
+ |sort=Modification date
+ |order=desc
+}}
+```
+
+== SMW Property Definitions ==
+
+=== Core Properties ===
+
+```
+[[Has type::Page]] properties:
+- Has entity type
+- Has domain
+- Has epistemic status
+- Has related entity
+- Has prerequisite
+
+[[Has type::Number]] properties:
+- Has confidence (range: 0-1)
+- Has source count
+- Has version
+
+[[Has type::Date]] properties:
+- Has creation date
+- Has verification date
+- Has modification date
+
+[[Has type::Text]] properties:
+- Has definition
+- Has description
+- Has source URL
+```
+
+=== Property Constraints ===
+
+'''Confidence:'''
+* Type: Number
+* Range: 0.0 to 1.0
+* Display format: Percentage
+
+'''Epistemic Status:'''
+* Allowed values: Axiomatic, Established, Supported, Working, Speculative, Disputed
+* Display format: Icon + text
+
+== Integration with Coraline's Templates ==
+
+Coraline's templates (Infobox_Concept, Infobox_Project, etc.) are extended with:
+
+# '''Additional SMW properties''' for queryability
+# '''Epistemic markers''' for transparency
+# '''Validation rules''' for data quality
+# '''Documentation''' for maintainability
+
+'''Migration Path:'''
+* Phase 1: Add SMW properties to existing templates
+* Phase 2: Implement epistemic markers
+* Phase 3: Add query templates
+* Phase 4: Deprecate non-semantic templates
+
+== Validation Checklist ==
+
+=== Template Creation ===
+* [ ] SMW properties defined
+* [ ] <noinclude> boundaries correct
+* [ ] Default values set
+* [ ] Documentation included
+* [ ] Categories assigned
+* [ ] Test cases written
+
+=== Template Usage ===
+* [ ] Parameters validated
+* [ ] Epistemic status appropriate
+* [ ] Sources cited
+* [ ] Confidence justified
+* [ ] Queryable via SMW
+
+== Conclusion ==
+
+BITwiki's SMW template system transforms static articles into living knowledge graphs. By encoding semantics at the template level, we enable:
+* Machine-queryable content
+* Dynamic relationship discovery
+* Epistemic transparency
+* Automated quality assessment
+* Cross-domain reasoning
+
+This is not merely templating—it is the infrastructure for recursive knowledge.

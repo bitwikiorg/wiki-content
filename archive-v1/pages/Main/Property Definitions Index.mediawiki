@@ -1,0 +1,335 @@
+= SMW Property Definitions Index =
+
+This index catalogs all Semantic MediaWiki property definitions created for the BITwiki ontology system.
+
+== Overview ==
+
+{| class="wikitable"
+! Category
+! Property Count
+! Directory
+|-
+| Epistemic Properties
+| 5
+| <code>Epistemic_Properties/</code>
+|-
+| Ontology Properties
+| 8
+| <code>Ontology_Properties/</code>
+|-
+| Provenance Properties
+| 6
+| <code>Provenance_Properties/</code>
+|-
+| Template Properties
+| 5
+| <code>Template_Properties/</code>
+|-
+| Quality Properties
+| 5
+| <code>Quality_Properties/</code>
+|-
+! Total
+! 29
+! —
+|}
+
+== Epistemic Properties (5) ==
+
+Properties for managing knowledge certainty and verification status.
+
+{| class="wikitable sortable"
+! Property Name
+! SMW Type
+! Description
+! File
+|-
+| Has epistemic status
+| [[Has type::Text|Text]]
+| Indicates the epistemic status of a claim (Established, Hypothetical, Disputed, Deprecated)
+| [[:File:Epistemic_Properties/Has_epistemic_status.mediawiki|Has_epistemic_status.mediawiki]]
+|-
+| Has confidence score
+| [[Has type::Number|Number]]
+| Numerical confidence level from 0.0 to 1.0
+| [[:File:Epistemic_Properties/Has_confidence_score.mediawiki|Has_confidence_score.mediawiki]]
+|-
+| Has verification date
+| [[Has type::Date|Date]]
+| Date when information was last verified
+| [[:File:Epistemic_Properties/Has_verification_date.mediawiki|Has_verification_date.mediawiki]]
+|-
+| Has review cycle
+| [[Has type::Text|Text]]
+| Recommended review cycle (Annual, Quarterly, etc.)
+| [[:File:Epistemic_Properties/Has_review_cycle.mediawiki|Has_review_cycle.mediawiki]]
+|-
+| Has uncertainty marker
+| [[Has type::Text|Text]]
+| Type of uncertainty (Measurement, Statistical, Model, Epistemic)
+| [[:File:Epistemic_Properties/Has_uncertainty_marker.mediawiki|Has_uncertainty_marker.mediawiki]]
+|}
+
+== Ontology Properties (8) ==
+
+Properties for semantic classification and hierarchical relationships.
+
+{| class="wikitable sortable"
+! Property Name
+! SMW Type
+! Description
+! File
+|-
+| Has entity type
+| [[Has type::Text|Text]]
+| Classifies entity type (Concept, Instance, Class, Relation, Property)
+| [[:File:Ontology_Properties/Has_entity_type.mediawiki|Has_entity_type.mediawiki]]
+|-
+| Has domain
+| [[Has type::Page|Page]]
+| Domain or subject area of the entity
+| [[:File:Ontology_Properties/Has_domain.mediawiki|Has_domain.mediawiki]]
+|-
+| Has scope
+| [[Has type::Text|Text]]
+| Scope coverage (Global, Local, Temporal, Universal)
+| [[:File:Ontology_Properties/Has_scope.mediawiki|Has_scope.mediawiki]]
+|-
+| Has related entity
+| [[Has type::Page|Page]]
+| Links to semantically related entities
+| [[:File:Ontology_Properties/Has_related_entity.mediawiki|Has_related_entity.mediawiki]]
+|-
+| Has parent category
+| [[Has type::Page|Page]]
+| Parent category in hierarchical structure
+| [[:File:Ontology_Properties/Has_parent_category.mediawiki|Has_parent_category.mediawiki]]
+|-
+| Has subcategory
+| [[Has type::Page|Page]]
+| Subcategories of current entity
+| [[:File:Ontology_Properties/Has_subcategory.mediawiki|Has_subcategory.mediawiki]]
+|-
+| Has established form
+| [[Has type::Text|Text]]
+| Standardized representation of entity name
+| [[:File:Ontology_Properties/Has_established_form.mediawiki|Has_established_form.mediawiki]]
+|-
+| Has extended type
+| [[Has type::Text|Text]]
+| Extended type classification
+| [[:File:Ontology_Properties/Has_extended_type.mediawiki|Has_extended_type.mediawiki]]
+|}
+
+== Provenance Properties (6) ==
+
+Properties for tracking origin, authorship, and versioning.
+
+{| class="wikitable sortable"
+! Property Name
+! SMW Type
+! Description
+! File
+|-
+| Has source
+| [[Has type::Text|Text]]
+| Original source (URL, citation, reference)
+| [[:File:Provenance_Properties/Has_source.mediawiki|Has_source.mediawiki]]
+|-
+| Has creation date
+| [[Has type::Date|Date]]
+| Date when entity was created
+| [[:File:Provenance_Properties/Has_creation_date.mediawiki|Has_creation_date.mediawiki]]
+|-
+| Has modification date
+| [[Has type::Date|Date]]
+| Date of most recent modification
+| [[:File:Provenance_Properties/Has_modification_date.mediawiki|Has_modification_date.mediawiki]]
+|-
+| Has author
+| [[Has type::Page|Page]]
+| Primary author or creator
+| [[:File:Provenance_Properties/Has_author.mediawiki|Has_author.mediawiki]]
+|-
+| Has contributor
+| [[Has type::Page|Page]]
+| Additional contributors
+| [[:File:Provenance_Properties/Has_contributor.mediawiki|Has_contributor.mediawiki]]
+|-
+| Has version
+| [[Has type::Text|Text]]
+| Version identifier (semantic versioning)
+| [[:File:Provenance_Properties/Has_version.mediawiki|Has_version.mediawiki]]
+|}
+
+== Template Properties (5) ==
+
+Properties for template validation and field management.
+
+{| class="wikitable sortable"
+! Property Name
+! SMW Type
+! Description
+! File
+|-
+| Has template type
+| [[Has type::Text|Text]]
+| Template classification (Infobox, Navigation, Citation, Stub)
+| [[:File:Template_Properties/Has_template_type.mediawiki|Has_template_type.mediawiki]]
+|-
+| Has validation rule
+| [[Has type::Text|Text]]
+| Validation rule or constraint
+| [[:File:Template_Properties/Has_validation_rule.mediawiki|Has_validation_rule.mediawiki]]
+|-
+| Has required field
+| [[Has type::Text|Text]]
+| Name of required template field
+| [[:File:Template_Properties/Has_required_field.mediawiki|Has_required_field.mediawiki]]
+|-
+| Has optional field
+| [[Has type::Text|Text]]
+| Name of optional template field
+| [[:File:Template_Properties/Has_optional_field.mediawiki|Has_optional_field.mediawiki]]
+|-
+| Has default value
+| [[Has type::Text|Text]]
+| Default value for template field
+| [[:File:Template_Properties/Has_default_value.mediawiki|Has_default_value.mediawiki]]
+|}
+
+== Quality Properties (5) ==
+
+Properties for content quality assessment and metrics.
+
+{| class="wikitable sortable"
+! Property Name
+! SMW Type
+! Description
+! File
+|-
+| Has quality tier
+| [[Has type::Text|Text]]
+| Quality classification (Featured, Good, Standard, Stub)
+| [[:File:Quality_Properties/Has_quality_tier.mediawiki|Has_quality_tier.mediawiki]]
+|-
+| Has word count
+| [[Has type::Number|Number]]
+| Total word count of content
+| [[:File:Quality_Properties/Has_word_count.mediawiki|Has_word_count.mediawiki]]
+|-
+| Has source count
+| [[Has type::Number|Number]]
+| Number of distinct sources cited
+| [[:File:Quality_Properties/Has_source_count.mediawiki|Has_source_count.mediawiki]]
+|-
+| Has citation density
+| [[Has type::Number|Number]]
+| Citations per 1000 words
+| [[:File:Quality_Properties/Has_citation_density.mediawiki|Has_citation_density.mediawiki]]
+|-
+| Has completeness score
+| [[Has type::Number|Number]]
+| Completeness rating 0.0 to 1.0
+| [[:File:Quality_Properties/Has_completeness_score.mediawiki|Has_completeness_score.mediawiki]]
+|}
+
+== SMW Type Distribution ==
+
+{| class="wikitable"
+! SMW Type
+! Property Count
+! Properties
+|-
+| Text
+| 14
+| epistemic status, review cycle, uncertainty marker, entity type, scope, established form, extended type, source, version, template type, validation rule, required field, optional field, default value, quality tier
+|-
+| Number
+| 5
+| confidence score, word count, source count, citation density, completeness score
+|-
+| Date
+| 3
+| verification date, creation date, modification date
+|-
+| Page
+| 7
+| domain, related entity, parent category, subcategory, author, contributor
+|}
+
+== Usage in SMW Queries ==
+
+=== Query All Properties by Category ===
+
+<syntaxhighlight lang="mediawiki">
+{{#ask:
+  [[Category:SMW Property Definitions]]
+  [[Has domain::Epistemology]]
+  |?Has type
+  |?Has description
+  |format=table
+}}
+</syntaxhighlight>
+
+=== Query by Property Type ===
+
+<syntaxhighlight lang="mediawiki">
+{{#ask:
+  [[Has type::Number]]
+  [[Category:SMW Property Definitions]]
+  |format=list
+}}
+</syntaxhighlight>
+
+== File Structure ==
+
+<pre>
+smw-properties/
+├── Property_Definitions_Index.md
+├── Epistemic_Properties/
+│   ├── Has_epistemic_status.mediawiki
+│   ├── Has_confidence_score.mediawiki
+│   ├── Has_verification_date.mediawiki
+│   ├── Has_review_cycle.mediawiki
+│   └── Has_uncertainty_marker.mediawiki
+├── Ontology_Properties/
+│   ├── Has_entity_type.mediawiki
+│   ├── Has_domain.mediawiki
+│   ├── Has_scope.mediawiki
+│   ├── Has_related_entity.mediawiki
+│   ├── Has_parent_category.mediawiki
+│   ├── Has_subcategory.mediawiki
+│   ├── Has_established_form.mediawiki
+│   └── Has_extended_type.mediawiki
+├── Provenance_Properties/
+│   ├── Has_source.mediawiki
+│   ├── Has_creation_date.mediawiki
+│   ├── Has_modification_date.mediawiki
+│   ├── Has_author.mediawiki
+│   ├── Has_contributor.mediawiki
+│   └── Has_version.mediawiki
+├── Template_Properties/
+│   ├── Has_template_type.mediawiki
+│   ├── Has_validation_rule.mediawiki
+│   ├── Has_required_field.mediawiki
+│   ├── Has_optional_field.mediawiki
+│   └── Has_default_value.mediawiki
+└── Quality_Properties/
+    ├── Has_quality_tier.mediawiki
+    ├── Has_word_count.mediawiki
+    ├── Has_source_count.mediawiki
+    ├── Has_citation_density.mediawiki
+    └── Has_completeness_score.mediawiki
+</pre>
+
+== See Also ==
+
+'' [[:Category:SMW Property Definitions]]
+'' [[BITwiki Ontology]]
+'' [[Semantic MediaWiki Configuration]]
+'' [[Special:Properties]]
+
+[[Category:SMW Property Definitions]]
+[[Category:BITwiki Ontology]]
+[[Category:Schema Matter]]

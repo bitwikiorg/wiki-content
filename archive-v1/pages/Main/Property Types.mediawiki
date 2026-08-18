@@ -1,0 +1,436 @@
+{{Infobox
+| title = BITwiki Property Types: SMW Data Types and Constraints
+| description = Comprehensive reference for Semantic MediaWiki property types used in BITwiki—their characteristics, constraints, and usage patterns. Types enable structure without rigidity.
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-14
+| version = 3.0.0-consolidated
+| epistemic_status = Established
+| confidence = Well-Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: property-reference
+domain: data-types
+| workflow = state: Stable
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+
+
+= BITwiki Property Types: SMW Data Types and Constraints =
+
+== Etymology: The Shapes of Data ==
+
+''Type'' — from Greek ''typos'', impression, figure, model. In data, a type is the shape that values take—the pattern that distinguishes text from number, date from location.
+
+''Property'' — from Latin ''proprietas'', that which is proper, characteristic. A property type is the characteristic form of a characteristic—the way that attributes show up in the knowledge field.
+
+== Purpose: Types as Enabling Constraints ==
+
+This document describes property types used in BITwiki's Semantic MediaWiki implementation. Types are not prisons but foundations—they enable queries, ensure consistency, and facilitate exchange.
+
+Types serve:
+* '''Validation''': Checking that values match expected forms
+* '''Query''': Enabling comparisons and filters
+* '''Display''': Formatting values appropriately
+* '''Export''': Facilitating data exchange
+
+They constrain only to enable. They are provisional, subject to extension.
+
+== Core Property Types: Foundational Forms ==
+
+=== Text ===
+
+'''Definition:''' Plain text strings.
+
+'''Usage:''' Names, descriptions, definitions.
+
+'''SMW:'''
+```wiki
+[[Has type::Text]]
+```
+
+'''Examples:'''
+```wiki
+[[Has name::Feedback Loop]]
+[[Has description::A process where outputs are fed back as inputs]]
+```
+
+'''Characteristics:'''
+* Flexible content
+* Unicode supported
+* No fixed length
+* Maximum length: 255 characters (default)
+* No markup (unless specified)
+
+'''Constraints:'''
+* Maximum length: 255 characters (default)
+* No markup (unless specified)
+* Unicode supported
+
+=== Number ===
+
+'''Definition:''' Numeric values (integers or decimals).
+
+'''Usage:''' Counts, measurements, quantitative assessments, confidence scores.
+
+'''SMW:'''
+```wiki
+[[Has type::Number]]
+```
+
+'''Examples:'''
+```wiki
+[[Has evidence count::12]]
+[[Has temperature::23.5]]
+[[Has confidence score::0.85]]
+[[Has source count::10]]
+```
+
+'''Characteristics:'''
+* Supports arithmetic
+* Decimal precision configurable
+* Units can be specified
+* Range: -∞ to +∞
+* Decimal precision: configurable
+* Units: optional
+
+'''Constraints:'''
+* Range: -∞ to +∞
+* Decimal precision: configurable
+* Units: optional
+
+=== Date ===
+
+'''Definition:''' Calendar dates and times.
+
+'''Usage:''' Origin dates, validation dates, timelines.
+
+'''SMW:'''
+```wiki
+[[Has type::Date]]
+```
+
+'''Examples:'''
+```wiki
+[[Has origin date::1948]]
+[[Has validation date::2026-02-12]]
+```
+
+'''Characteristics:'''
+* ISO 8601 format
+* Range from historical to future
+* Timezone awareness
+* Format: ISO 8601
+* Range: historical to future
+* Timezone: UTC default
+
+'''Constraints:'''
+* Format: ISO 8601
+* Range: historical to future
+* Timezone: UTC default
+
+=== Page ===
+
+'''Definition:''' References to other wiki pages.
+
+'''Usage:''' Relationships, categorization, linking.
+
+'''SMW:'''
+```wiki
+[[Has type::Page]]
+```
+
+'''Examples:'''
+```wiki
+[[Has originator::Person:Norbert Wiener]]
+[[Has related::Idea:Homeostasis]]
+```
+
+'''Characteristics:'''
+* Creates bidirectional links
+* Namespace flexible
+* Inverse relationships configurable
+* Must exist (optional)
+* Namespace: any
+* Inverse: configurable
+
+'''Constraints:'''
+* Must exist (optional)
+* Namespace: any
+* Inverse: configurable
+
+=== Boolean ===
+
+'''Definition:''' True/false values.
+
+'''Usage:''' Flags, status indicators.
+
+'''SMW:'''
+```wiki
+[[Has type::Boolean]]
+```
+
+'''Examples:'''
+```wiki
+[[Has constitutional status::true]]
+[[Has validation required::false]]
+```
+
+'''Characteristics:'''
+* Binary values
+* Default handling
+* Logical operations
+* Values: true/false, yes/no, 1/0
+* Default: false
+
+'''Constraints:'''
+* Values: true/false, yes/no, 1/0
+* Default: false
+
+=== URL ===
+
+'''Definition:''' Web addresses.
+
+'''Usage:''' External links, references.
+
+'''SMW:'''
+```wiki
+[[Has type::URL]]
+```
+
+'''Examples:'''
+```wiki
+[[Has source URL::https://example.com/paper]]
+[[Has DOI::https://doi.org/10.xxxx/xxxxx]]
+```
+
+'''Characteristics:'''
+* Link validation
+* Protocol flexibility
+* Clickable output
+* Must be valid URL format
+* Protocol: http/https/ftp/etc.
+
+'''Constraints:'''
+* Must be valid URL format
+* Protocol: http/https/ftp/etc.
+
+== Specialized Property Types: Extended Forms ==
+
+=== Email ===
+
+'''Definition:''' Email addresses.
+
+'''Usage:''' Contact information.
+
+'''SMW:'''
+```wiki
+[[Has type::Email]]
+```
+
+'''Characteristics:'''
+* Format validation
+* Clickable mailto links
+* Domain checking optional
+* Must be valid email format
+* Domain validation: optional
+
+'''Constraints:'''
+* Must be valid email format
+* Domain validation: optional
+
+=== Telephone ===
+
+'''Definition:''' Phone numbers.
+
+'''Usage:''' Contact information.
+
+'''SMW:'''
+```wiki
+[[Has type::Telephone number]]
+```
+
+'''Characteristics:'''
+* International format
+* Country code support
+* Clickable dial links
+* Format: international
+* Country code: required
+
+'''Constraints:'''
+* Format: international
+* Country code: required
+
+=== Geographic Coordinate ===
+
+'''Definition:''' Latitude and longitude.
+
+'''Usage:''' Location data.
+
+'''SMW:'''
+```wiki
+[[Has type::Geographic coordinate]]
+```
+
+'''Example:'''
+```wiki
+[[Has coordinates::42.3601,-71.0589]]
+```
+
+'''Characteristics:'''
+* Map integration
+* Distance calculations
+* Range validation
+* Latitude: -90 to +90
+* Longitude: -180 to +180
+
+'''Constraints:'''
+* Latitude: -90 to +90
+* Longitude: -180 to +180
+
+=== Temperature ===
+
+'''Definition:''' Temperature values.
+
+'''Usage:''' Scientific measurements.
+
+'''SMW:'''
+```wiki
+[[Has type::Temperature]]
+```
+
+'''Characteristics:'''
+* Unit conversion
+* Range validation
+* Scientific notation
+* Units: Celsius, Fahrenheit, Kelvin
+* Range: absolute zero to infinity
+
+'''Constraints:'''
+* Units: Celsius, Fahrenheit, Kelvin
+* Range: absolute zero to infinity
+
+== Property Constraints: Guidelines for Consistency ==
+
+=== Cardinality ===
+
+'''Single Value:''' One value per property per page.
+```wiki
+[[Has type::Text]]
+[[Has cardinality::Single]]
+```
+
+'''Multiple Values:''' Many values allowed.
+```wiki
+[[Has type::Page]]
+[[Has cardinality::Multiple]]
+```
+
+=== Range ===
+
+'''Numeric Range:''' Minimum and maximum values.
+```wiki
+[[Has type::Number]]
+[[Has minimum value::0]]
+[[Has maximum value::100]]
+```
+
+'''Date Range:''' Temporal boundaries.
+```wiki
+[[Has type::Date]]
+[[Has minimum date::1900]]
+[[Has maximum date::2100]]
+```
+
+=== Allowed Values ===
+
+'''Enumeration:''' Specific allowed values.
+```wiki
+[[Has type::Text]]
+[[Has allowed value::Hypothetical]]
+[[Has allowed value::Emerging]]
+[[Has allowed value::Established]]
+[[Has allowed value::Verified]]
+[[Has allowed value::Axiomatic]]
+```
+
+== Validation: Ensuring Integrity ==
+
+=== Type Validation ===
+* Property value must match declared type
+* Type coercion: configurable
+* Invalid values: flagged
+
+=== Constraint Validation ===
+* Cardinality: enforced
+* Range: enforced
+* Allowed values: enforced
+
+=== Error Handling ===
+
+'''Invalid Type:'''
+```wiki
+[[Category:Property type error]]
+```
+
+'''Constraint Violation:'''
+```wiki
+[[Category:Constraint violation]]
+```
+
+== SMW Queries: Discovering by Type ==
+
+=== By Type ===
+
+All text properties:
+```wiki
+{{#ask: [[Has type::Text]]}}
+```
+
+All numeric properties:
+```wiki
+{{#ask: [[Has type::Number]]}}
+```
+
+=== By Constraint ===
+
+Single cardinality:
+```wiki
+{{#ask: [[Has cardinality::Single]]}}
+```
+
+With range:
+```wiki
+{{#ask: [[Has minimum value::+]]}}
+```
+
+== Property Metadata ==
+
+The following properties can be used to annotate property definitions themselves:
+* `[[Has confidence score::0.87]]` — Quantitative confidence assessment
+* `[[Has confidence trajectory::established]]` — Qualitative confidence trajectory
+* `[[Has property type count::10]]` — Count of property types defined
+* `[[Has source count::10]]` — Number of reference sources
+* `[[Has word count::500]]` — Document word count estimate
+
+== References ==
+
+# Semantic MediaWiki. (2026). Property types documentation.
+# W3C. (2014). RDF Schema 1.1.
+# OWL 2 Web Ontology Language. (2012).
+# XML Schema Datatypes. (2004).
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+# Smith, B. (2003). Ontology.
+# Noy, N.F., & McGuinness, D.L. (2001). Ontology development 101.
+# Sowa, J.F. (2000). Knowledge Representation.
+
+[[Has page type::Property Reference]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.87]]
+[[Has confidence trajectory::established]]
+[[Has property type count::10]]
+[[Has source count::10]]
+[[Has word count::500]]

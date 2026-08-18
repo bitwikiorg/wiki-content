@@ -1,0 +1,335 @@
+{{Infobox
+| title = Template Validation Implementation Guide
+| description = Documentation of improved template validation system for BITwiki infobox templates
+| type = documentation
+| author = BITCORE
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = 0.90
+| ontology = entity_type: implementation-guide
+domain: template-validation
+}}
+
+= Template Validation Implementation Guide =
+
+'''Implementation Date:''' 2026-02-13  
+'''Agent:''' dev_theta (BITCORE Swarm)  
+'''Epistemic Status:''' Established  
+'''Confidence:''' 0.90
+
+----
+== Executive Summary ==
+
+This document describes the implementation of an improved template validation system for BITwiki infobox templates. The improvements address user concerns about universal block duplication, missing parameter handling, required field enforcement, controlled vocabulary validation, and HTML/CSS fragility.
+
+== Templates Updated ==
+
+| Template | Version | Key Improvements |
+|----------|---------|------------------|
+| Infobox_Concept | 3.0.0 | TemplateStyles CSS, parser validation, SMW guards |
+| Infobox_Idea | 3.0.0 | TemplateStyles CSS, parser validation, SMW guards |
+| Infobox_Project | 3.0.0 | TemplateStyles CSS, parser validation, status validation |
+
+----
+== 1. TemplateStyles CSS Isolation ==
+
+=== Problem Addressed ===
+Global CSS in `MediaWiki:Common.css` causes:
+* Style conflicts between templates
+* Unintended side effects on unrelated pages
+* Security risks from unsanitized CSS
+
+=== Solution Implemented ===
+Each template now includes scoped CSS via TemplateStyles extension:
+
+```wiki
+<templatestyles src="Template:Infobox_Concept/styles.css" />
+```
+
+=== CSS Files Created ===
+
+| Template | CSS File | Size |
+|----------|----------|------|
+| Infobox_Concept | Infobox_Concept_styles.css | ~2,100 chars |
+| Infobox_Idea | Infobox_Idea_styles.css | ~2,100 chars |
+| Infobox_Project | Infobox_Project_styles.css | ~2,300 chars |
+
+=== CSS Features ===
+* Scoped selectors (`.infobox-concept`, `.infobox-idea`, `.infobox-project`)
+* Responsive design (stacks on mobile <600px)
+* Epistemic status color coding
+* Error box styling for validation failures
+* Clearfix for floated layout
+
+----
+== 2. Parser Function Validation ==
+
+=== Problem Addressed ===
+* Missing parameters cause broken rendering
+* Invalid values silently accepted
+* SMW properties set with malformed data
+
+=== Solution Implemented ===
+Multi-layer validation using ParserFunctions:
+
+==== 2.1 Required Field Validation ====
+
+```wiki
+{{#if: {{{name|}}}
+| <!-- name exists, proceed -->
+| <div class="infobox-concept error-box">Error: Missing required parameter name. [[Category:Infobox Concept missing name]]</div>
+}}
+```
+
+'''Required Fields by Template:'''
+
+| Template | Required Fields |
+|----------|-----------------|
+| Infobox_Concept | name, definition, epistemic_status, confidence_score |
+| Infobox_Idea | name, definition, epistemic_status, confidence_score |
+| Infobox_Project | name, description, goal, status, epistemic_status, confidence_score |
+
+==== 2.2 Controlled Vocabulary Validation ====
+
+'''Epistemic Status (all templates):'''
+```wiki
+{{#switch: {{{epistemic_status}}}
+| Hypothetical = <!-- valid -->
+| Emerging = <!-- valid -->
+| Established = <!-- valid -->
+| Verified = <!-- valid -->
+| Axiomatic = <!-- valid -->
+| #default = <div class="error-box">Error: Invalid epistemic_status...</div>
+}}
+```
+
+'''Project Status (Infobox_Project only):'''
+```wiki
+{{#switch: {{{status}}}
+| Active = <!-- valid -->
+| Completed = <!-- valid -->
+| On Hold = <!-- valid -->
+| Cancelled = <!-- valid -->
+| #default = <div class="error-box">Error: Invalid status...</div>
+}}
+```
+
+==== 2.3 Range Validation ====
+
+'''Confidence Score (0.0-1.0):'''
+```wiki
+{{#if: {{{confidence_score|}}}
+| {{#ifexpr: {{{confidence_score}}} >= 0 and {{{confidence_score}}} <= 1
+| <!-- valid -->
+| <div class="error-box">Error: confidence_score must be between 0.0 and 1.0</div>
+}}
+| <div class="error-box">Error: Missing required parameter confidence_score</div>
+}}
+```
+
+----
+== 3. SMW Property Assignment Guards ==
+
+=== Problem Addressed ===
+* SMW properties set even with invalid data
+* Silent failures in semantic queries
+* Data integrity issues
+
+=== Solution Implemented ===
+Nested conditional guards ensure properties only set when ALL validations pass:
+
+```wiki
+{{#if: {{{name|}}}
+| {{#if: {{{definition|}}}
+| {{#if: {{{epistemic_status|}}}
+| {{#if: {{{confidence_score|}}}
+| {{#ifexpr: {{{confidence_score}}} >= 0 and {{{confidence_score}}} <= 1
+| <!-- All validations passed, set SMW properties -->
+[[Has entity type::Concept]]
+[[Has name::{{{name|{{PAGENAME}}}}}]]
+[[Has definition::{{{definition}}}]]
+...
+| <!-- Invalid confidence score, skip SMW -->
+}}
+| <!-- Missing confidence_score, skip SMW -->
+}}
+| <!-- Missing epistemic_status, skip SMW -->
+}}
+| <!-- Missing definition, skip SMW -->
+}}
+| <!-- Missing name, skip SMW -->
+}}
+```
+
+=== Conditional Property Assignment ===
+
+Optional fields use `#if` before setting properties:
+
+```wiki
+{{#if: {{{originator|}}}|[[Has originator::{{{originator}}}]]}}
+{{#if: {{{origin_date|}}}|[[Has origin date::{{{origin_date}}}]]}}
+{{#if: {{{domain|}}}|[[Has domain::{{{domain}}}]]}}
+```
+
+----
+== 4. Error Handling and Categories ==
+
+=== Validation Error Categories ===
+
+Each validation failure adds a tracking category:
+
+| Template | Error Category |
+|----------|----------------|
+| Infobox_Concept | Infobox Concept missing name |
+| Infobox_Concept | Infobox Concept missing definition |
+| Infobox_Concept | Infobox Concept missing epistemic status |
+| Infobox_Concept | Infobox Concept missing confidence |
+| Infobox_Concept | Infobox Concept invalid epistemic status |
+| Infobox_Concept | Infobox Concept invalid confidence |
+| Infobox_Idea | (same pattern) |
+| Infobox_Project | (same pattern + status categories) |
+
+=== Error Display ===
+
+Errors render as visible red boxes with clear messages:
+
+```html
+<div class="infobox-concept error-box">
+  Error: Missing required parameter name. 
+  [Category:Infobox Concept missing name]
+</div>
+```
+
+----
+== 5. Graceful Degradation ==
+
+=== Default Values ===
+
+Parameters use pipe syntax for defaults:
+
+```wiki
+{{{name|{{PAGENAME}}}}}  <!-- Falls back to page name -->
+{{{definition|Not provided}}}  <!-- Shows placeholder text -->
+{{{epistemic_status|Unknown}}}  <!-- Shows Unknown -->
+```
+
+=== Conditional Rendering ===
+
+Optional sections only render when data exists:
+
+```wiki
+{{#if: {{{image|}}}
+| <div class="infobox-image">[[File:{{{image}}}...]]</div>
+}}
+```
+
+----
+== 6. Migration Guide ==
+
+=== For Template Editors ===
+
+# '''Update existing template calls''' to include all required parameters
+# '''Validate epistemic_status''' is one of: Hypothetical, Emerging, Established, Verified, Axiomatic
+# '''Validate confidence_score''' is between 0.0 and 1.0
+# '''Check error categories''' to find pages needing updates
+
+=== For Template Administrators ===
+
+# '''Upload CSS files''' to corresponding Template:Name/styles.css pages
+# '''Enable TemplateStyles extension''' if not already active
+# '''Test template output''' on sandbox pages before deployment
+# '''Monitor error categories''' for validation failures
+
+=== For Content Migrators ===
+
+# '''Audit existing pages''' using these templates
+# '''Add missing required parameters'''
+# '''Fix invalid epistemic_status values'''
+# '''Normalize confidence_score to 0.0-1.0 range'''
+
+----
+== 7. Future Considerations ==
+
+=== Scribunto/Lua Migration ===
+
+For complex validation logic, consider migrating to Lua modules:
+
+```lua
+local p = {}
+
+function p.validateInfobox(frame)
+    local errors = {}
+
+    if not frame.args.name or frame.args.name == "" then
+        table.insert(errors, "Missing required parameter: name")
+    end
+
+    local score = tonumber(frame.args.confidence_score)
+    if not score or score < 0 or score > 1 then
+        table.insert(errors, "confidence_score must be between 0.0 and 1.0")
+    end
+
+    return errors
+end
+
+return p
+```
+
+=== Cargo Alternative ===
+
+For strict type validation, consider Cargo extension:
+
+```wiki
+{{#cargo_store:_table=Concepts
+|Name={{{name|}}}
+|Definition={{{definition|}}}
+|EpistemicStatus={{{epistemic_status|}}}
+|ConfidenceScore={{{confidence_score|}}}
+}}
+```
+
+Cargo provides:
+* Schema-level type validation
+* NOT NULL constraints
+* Enum value restrictions
+* SQL-like querying
+
+----
+== 8. Validation Checklist ==
+
+Before deploying templates, verify:
+* [ ] All required parameters have validation
+* [ ] Controlled vocabularies use `#switch` statements
+* [ ] Range validations use `#ifexpr`
+* [ ] SMW properties wrapped in conditional guards
+* [ ] CSS scoped via TemplateStyles
+* [ ] Error categories are trackable
+* [ ] Default values prevent empty output
+* [ ] Responsive design works on mobile
+* [ ] Documentation updated with new parameters
+
+----
+== 9. Files Delivered ==
+
+| File | Path | Purpose |
+|------|------|---------|
+| Infobox_Concept.md | `/coraline/book-matter/templates/` | Updated template with validation |
+| Infobox_Idea.md | `/coraline/book-matter/templates/` | Updated template with validation |
+| Infobox_Project.md | `/coraline/book-matter/templates/` | Updated template with validation |
+| Infobox_Concept_styles.css | `/coraline/book-matter/templates/` | Scoped CSS for Concept infobox |
+| Infobox_Idea_styles.css | `/coraline/book-matter/templates/` | Scoped CSS for Idea infobox |
+| Infobox_Project_styles.css | `/coraline/book-matter/templates/` | Scoped CSS for Project infobox |
+| Template_Validation_Implementation.md | `/coraline/book-matter/templates/` | This documentation |
+
+----
+== 10. References ==
+
+# MediaWiki. (2026). ''Extension:TemplateStyles''. https://www.mediawiki.org/wiki/Extension:TemplateStyles
+# MediaWiki. (2026). ''Help:ParserFunctions''. https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions
+# Semantic MediaWiki. (2026). ''Help:Using templates''. https://www.semantic-mediawiki.org/wiki/Help:Using_templates
+# MediaWiki. (2026). ''Extension:Scribunto/Lua reference manual''. https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual
+# BITCORE Swarm. (2026). ''Template Validation Research''. `/coraline/research/template_validation_research.md`
+
+----
+''Document generated by BITCORE Swarm developer node. For BITwiki Book-Matter system.''

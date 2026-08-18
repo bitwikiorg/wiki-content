@@ -1,0 +1,241 @@
+{{Infobox
+| title = Infobox Project: Template for Project Documentation
+| description = Standardized infobox template for documenting projects in BITwiki with validation, TemplateStyles CSS isolation, and parser function validation.
+| type = template
+| author = BITCORE
+| created = 2026-02-12
+| version = 3.established
+| epistemic_status = Established
+| confidence = established
+| license = CC-BY-SA-4.0
+| modified = 2026-02-13
+| ontology = entity_type: infobox-template
+domain: project-documentation
+| workflow = state: Beta
+}}
+
+{{Documentation}}
+[[Category:BITwiki Templates]]
+[[Category:Infobox Templates]]
+
+
+
+<templatestyles src="Template:Infobox_Project/styles.css" />
+
+
+{{#if: {{{name|}}}
+| 
+| <div class="infobox-project error-box">Error: Missing required parameter name. [[Category:Infobox Project missing name]]</div>
+}}
+
+{{#if: {{{description|}}}
+| 
+| <div class="infobox-project error-box">Error: Missing required parameter description. [[Category:Infobox Project missing description]]</div>
+}}
+
+{{#if: {{{goal|}}}
+| 
+| <div class="infobox-project error-box">Error: Missing required parameter goal. [[Category:Infobox Project missing goal]]</div>
+}}
+
+{{#if: {{{status|}}}
+| 
+{{#switch: {{{status}}}
+| Active = 
+| Completed = 
+| On Hold = 
+| Cancelled = 
+| #default = <div class="infobox-project error-box">Error: Invalid status. Must be: Active, Completed, On Hold, or Cancelled. [[Category:Infobox Project invalid status]]</div>
+}}
+| <div class="infobox-project error-box">Error: Missing required parameter status. [[Category:Infobox Project missing status]]</div>
+}}
+
+{{#if: {{{epistemic_status|}}}
+| 
+{{#switch: {{{epistemic_status}}}
+| Hypothetical = 
+| Emerging = 
+| Established = 
+| Verified = 
+| Axiomatic = 
+| #default = <div class="infobox-project error-box">Error: Invalid epistemic_status. Must be: Hypothetical, Emerging, Established, Verified, or Axiomatic. [[Category:Infobox Project invalid epistemic status]]</div>
+}}
+| <div class="infobox-project error-box">Error: Missing required parameter epistemic_status. [[Category:Infobox Project missing epistemic status]]</div>
+}}
+
+{{#if: {{{confidence_score|}}}
+| 
+{{#ifexpr: {{{confidence_score}}} >= 0 and {{{confidence_score}}} <= 1
+| 
+| <div class="infobox-project error-box">Error: confidence_score must be between established and 1.0. [[Category:Infobox Project invalid confidence]]</div>
+}}
+| <div class="infobox-project error-box">Error: Missing required parameter confidence_score. [[Category:Infobox Project missing confidence]]</div>
+}}
+
+
+<div class="infobox-project">
+<div class="infobox-header">Project: {{{name|{{PAGENAME}}}}}</div>
+
+{{#if: {{{image|}}}
+| <div class="infobox-image">[[File:{{{image}}}|frameless|upright=1.0|{{#if: {{{caption|}}}|{{{caption}}}|Image of {{{name|{{PAGENAME}}}}}}}]]</div>
+{{#if: {{{caption|}}}
+| <div class="infobox-caption">{{{caption}}}</div>
+}}
+}}
+
+<div class="infobox-section">
+<div class="infobox-label">Description</div>
+<div class="infobox-value">{{{description|Not provided}}}</div>
+</div>
+
+<div class="infobox-section">
+<div class="infobox-label">Goal</div>
+<div class="infobox-value">{{{goal|Not provided}}}</div>
+</div>
+
+{{#if: {{{lead|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Lead</div>
+<div class="infobox-value">[[{{{lead}}}]]</div>
+</div>
+}}
+
+{{#if: {{{organization|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Organization</div>
+<div class="infobox-value">[[{{{organization}}}]]</div>
+</div>
+}}
+
+{{#if: {{{start_date|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Start Date</div>
+<div class="infobox-value">{{{start_date}}}</div>
+</div>
+}}
+
+{{#if: {{{end_date|}}}
+| <div class="infobox-section">
+<div class="infobox-label">End Date</div>
+<div class="infobox-value">{{{end_date}}}</div>
+</div>
+}}
+
+<div class="infobox-section">
+<div class="infobox-label">Status</div>
+<div class="infobox-value status-{{#switch: {{{status|Unknown}}
+| Active = active
+| Completed = completed
+| On Hold = on-hold
+| Cancelled = cancelled
+| #default = unknown
+}}">{{{status|Unknown}}}</div>
+</div>
+
+{{#if: {{{budget|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Budget</div>
+<div class="infobox-value">{{{budget}}}</div>
+</div>
+}}
+
+{{#if: {{{team_size|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Team Size</div>
+<div class="infobox-value">{{{team_size}}}</div>
+</div>
+}}
+
+{{#if: {{{outputs|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Outputs</div>
+<div class="infobox-value">{{{outputs}}}</div>
+</div>
+}}
+
+{{#if: {{{impact|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Impact</div>
+<div class="infobox-value">{{{impact}}}</div>
+</div>
+}}
+
+{{#if: {{{related_projects|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Related Projects</div>
+<div class="infobox-value">{{{related_projects}}}</div>
+</div>
+}}
+
+<div class="infobox-section epistemic-section">
+<div class="infobox-label">Epistemic Status</div>
+<div class="infobox-value epistemic-{{#switch: {{{epistemic_status|Unknown}}
+| Hypothetical = hypothetical
+| Emerging = emerging
+| Established = established
+| Verified = verified
+| Axiomatic = axiomatic
+| #default = unknown
+}}">{{{epistemic_status|Unknown}}}</div>
+</div>
+
+{{#if: {{{confidence_score|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Confidence Score</div>
+<div class="infobox-value">{{#expr: {{{confidence_score}}} * 100 round 0}}%</div>
+</div>
+}}
+
+{{#if: {{{source_count|}}}
+| <div class="infobox-section">
+<div class="infobox-label">Source Count</div>
+<div class="infobox-value">{{{source_count}}}</div>
+</div>
+}}
+
+</div>
+
+
+
+{{#if: {{{name|}}}
+| {{#if: {{{description|}}}
+| {{#if: {{{goal|}}}
+| {{#if: {{{status|}}}
+| {{#switch: {{{status}}}
+| Active = 
+| Completed = 
+| On Hold = 
+| Cancelled = 
+| {{#if: {{{epistemic_status|}}}
+| {{#if: {{{confidence_score|}}}
+| {{#ifexpr: {{{confidence_score}}} >= 0 and {{{confidence_score}}} <= 1
+| 
+[[Has entity type::Project]]
+[[Has name::{{{name|{{PAGENAME}}}}}]]
+[[Has description::{{{description}}}]]
+[[Has goal::{{{goal}}}]]
+{{#if: {{{lead|}}}|[[Has lead::{{{lead}}}]]}}
+{{#if: {{{organization|}}}|[[Has organization::{{{organization}}}]]}}
+{{#if: {{{start_date|}}}|[[Has start date::{{{start_date}}}]]}}
+{{#if: {{{end_date|}}}|[[Has end date::{{{end_date}}}]]}}
+[[Has status::{{{status}}}]]
+[[Has epistemic status::{{{epistemic_status}}}]]
+[[Has confidence trajectory::{{{confidence_score}}}]]
+{{#if: {{{source_count|}}}|[[Has source count::{{{source_count}}}]]}}
+[[Has template version::3.established]]
+| 
+}}
+| 
+}}
+| 
+}}
+| 
+}}
+| 
+}}
+| 
+}}
+| 
+}}
+| 
+}}

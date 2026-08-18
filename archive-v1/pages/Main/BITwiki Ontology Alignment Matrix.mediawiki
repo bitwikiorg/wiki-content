@@ -1,0 +1,374 @@
+{{Infobox
+| title = BITwiki Ontology Alignment Matrix: Cross-System Semantic Mapping
+| description = Comprehensive mapping between BITwiki ontology and external knowledge systems, enabling semantic interoperability and data exchange.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| revised = 2026-02-14
+| version = 3.1.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| revision_note = Consolidated version merging all unique content from base and versions 1-7
+| ontology = entity_type: alignment-matrix
+domain: semantic-interoperability
+| workflow = state: Active
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+= BITwiki Ontology Alignment Matrix: Cross-System Semantic Mapping =
+
+== Purpose ==
+
+This document maps BITwiki's ontology to external knowledge systems. Alignment enables semantic interoperability, allowing data exchange while preserving BITwiki's epistemic framework.
+
+BITwiki does not exist in isolation. It connects to Wikipedia, Wikidata, Schema.org, and other knowledge systems. Alignment enables:
+* '''Data exchange''': Import from and export to other systems
+* '''Query translation''': Find equivalent information across systems
+* '''Enrichment''': Augment BITwiki content with external data
+* '''Verification''': Cross-reference claims with external sources
+
+This document maps BITwiki concepts to external systems, noting where meanings align and where they diverge.
+
+== Alignment Principles ==
+
+=== 1. Semantic Equivalence ===
+
+Map concepts based on meaning, not just labels:
+* '''Exact Match:''' Same meaning, same scope
+* '''Narrow Match:''' BITwiki concept is subset of external
+* '''Broad Match:''' BITwiki concept is superset of external
+* '''Close Match:''' Similar meaning, different scope
+* '''Related Match:''' Associated but not equivalent
+
+=== 2. Context Preservation ===
+
+Maintain BITwiki's epistemic framework:
+* Confidence scores preserved
+* Epistemic status maintained
+* Provenance tracked
+* Uncertainty acknowledged
+
+=== 3. Bidirectional Mapping ===
+
+Enable query translation:
+* BITwiki → External system
+* External system → BITwiki
+* Lossless where possible
+* Documented losses where not
+
+== System Alignments ==
+
+=== 1. Wikidata Alignment ===
+
+'''Entity Type Mapping:'''
+
+| BITwiki | Wikidata | Mapping |
+|---------|----------|---------|
+| Topic | Q35120 (category) | Exact |
+| Idea | Q151885 (concept) | Close |
+| Implementation | Q386724 (work) | Narrow |
+| Project | Q170584 (project) | Exact |
+| Protocol | Q1156854 (protocol) | Exact |
+| Dataset | Q1172284 (dataset) | Exact |
+| Person | Q5 (human) | Exact |
+| Organization | Q43229 (organization) | Exact |
+| Publication | Q732577 (publication) | Close |
+
+'''Property Mapping:'''
+
+| BITwiki | Wikidata | Property | Notes |
+|---------|----------|----------|-------|
+| Has originator | P50 | author | Exact |
+| Has date | P577 | publication date | Exact |
+| Has source | P248 | stated in | Close |
+| Has location | P276 | location | Exact |
+| Has part | P527 | has part | Exact |
+| Part of | P361 | part of | Exact |
+| Has confidence | (none) | | BITwiki-specific |
+| Has epistemic status | P7937 | assessment | Close |
+
+'''SPARQL Translation:'''
+
+BITwiki SMW:
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence score::>0.8]]
+}}
+```
+
+Wikidata SPARQL:
+```sparql
+SELECT ?item WHERE {
+ ?item wdt:P31 wd:Q151885 .
+ ?item wdt:P7937 ?assessment .
+ FILTER(?assessment > 0.8)
+}
+```
+
+'''Query Translation:'''
+
+BITwiki query:
+```wiki
+{{#ask: [[Has entity type::Person]]
+ [[Has contribution::Cybernetics]]
+}}
+```
+
+Wikidata equivalent:
+```sparql
+SELECT ?person WHERE {
+ ?person wdt:P31 wd:Q5 ;
+ wdt:P101 wd:Q81649 . # field of work: cybernetics
+}
+```
+
+=== 2. Schema.org Alignment ===
+
+'''Entity Type Mapping:'''
+
+| BITwiki | Schema.org | Mapping | Type |
+|---------|------------|---------|------|
+| Topic | Thing | Broad | schema:Thing |
+| Idea | Intangible | Close | schema:Intangible |
+| Implementation | CreativeWork | Narrow | schema:CreativeWork |
+| Project | Project | Exact | schema:Project |
+| Protocol | HowTo | Close | schema:HowTo |
+| Dataset | Dataset | Exact | schema:Dataset |
+| Person | Person | Exact | schema:Person |
+| Organization | Organization | Exact | schema:Organization |
+| Publication | CreativeWork | Close | schema:CreativeWork |
+| Event | Event | Exact | schema:Event |
+
+'''Property Mapping:'''
+
+| BITwiki | Schema.org | Property | Notes |
+|---------|------------|----------|-------|
+| Has originator | creator | schema:creator | Exact |
+| Has date | datePublished | schema:datePublished | Close |
+| Has source | citation | schema:citation | Close |
+| Has name | name | schema:name | Exact |
+| Has author | author | schema:author | Exact |
+| Has description | description | schema:description | Exact |
+| Has part | isPartOf | schema:isPartOf | Inverse |
+| Has confidence | (none) | | BITwiki-specific |
+| Has epistemic status | (none) | | BITwiki-specific |
+
+'''JSON-LD Translation:'''
+
+BITwiki SMW:
+```wiki
+[[Has entity type::Idea]]
+[[Has originator::Person:Wiener]]
+[[Has date::1948]]
+```
+
+Schema.org JSON-LD:
+```json
+{
+ "@context": "https://schema.org",
+ "@type": "Intangible",
+ "name": "Cybernetics",
+ "creator": {
+ "@type": "Person",
+ "name": "Norbert Wiener"
+ },
+ "datePublished": "1948"
+}
+```
+
+'''JSON-LD Export Example:'''
+
+BITwiki page exported to Schema.org:
+```json
+{
+ "@context": "https://schema.org",
+ "@type": "Project",
+ "name": "Human Genome Project",
+ "description": "Effort to sequence human genome",
+ "startDate": "1990",
+ "endDate": "2003",
+ "funder": {
+ "@type": "GovernmentOrganization",
+ "name": "NIH"
+ }
+}
+```
+
+=== 3. Dublin Core Alignment ===
+
+'''Property Mapping:'''
+
+| BITwiki | Dublin Core | Notes |
+|---------|-------------|-------|
+| Has originator | dc:creator | Exact |
+| Has date | dc:date | Exact |
+| Has source | dc:source | Exact |
+| Has title | dc:title | Exact |
+| Has description | dc:description | Exact |
+| Has confidence | (none) | BITwiki-specific |
+| Has epistemic status | (none) | BITwiki-specific |
+
+=== 4. FOAF Alignment ===
+
+'''Entity Type Mapping:'''
+
+| BITwiki | FOAF | Mapping |
+|---------|------|---------|
+| Person | foaf:Person | Exact |
+| Organization | foaf:Organization | Exact |
+| Project | foaf:Project | Exact |
+
+'''Property Mapping:'''
+
+| BITwiki | FOAF | Notes |
+|---------|------|-------|
+| Has name | foaf:name | Exact |
+| Has affiliation | foaf:member | Close |
+| Has homepage | foaf:homepage | Exact |
+
+== Alignment Challenges ==
+
+=== Challenge 1: Epistemic Status ===
+
+'''Problem:''' External systems lack epistemic status markers.
+'''Solution:''' Map to closest equivalent or document as BITwiki-specific.
+
+Neither Wikipedia, Wikidata, nor Schema.org have explicit epistemic status fields. BITwiki must:
+* Export status as custom property
+* Import external claims with status "Established" (conservative default)
+* Flag claims needing epistemic review
+
+=== Challenge 2: Confidence Scores ===
+
+'''Problem:''' External systems lack confidence scores.
+'''Solution:''' Derive from available metadata or document as BITwiki-specific.
+
+External systems lack confidence quantification. BITwiki must:
+* Export scores as custom properties
+* Import without scores (status provides coarse confidence)
+* Infer confidence from citation patterns where possible
+
+=== Challenge 3: Recursive References ===
+
+'''Problem:''' BITwiki's self-referential structure not supported.
+'''Solution:''' Flatten for export, preserve internally.
+
+=== Challenge 4: Toroidal Validation ===
+
+'''Problem:''' External systems lack toroidal validation concept.
+'''Solution:''' Document as BITwiki-specific, map to "cross-validation" where possible.
+
+=== Challenge 5: Relationship Richness ===
+
+BITwiki has richer relationship types than most external systems. Export may lose nuance:
+* BITwiki "enables" → Schema.org "relatedTo" (lossy)
+* BITwiki "precedes" → Wikidata "follows" (inverse)
+
+== Import/Export Protocols ==
+
+=== Import from External Systems ===
+
+# Identify relevant entities
+# Map to BITwiki entity types
+# Add epistemic status (default: Emerging)
+# Add confidence score (default: 0.4)
+# Add BITwiki-specific properties
+# Validate alignment
+
+'''Import from Wikidata:'''
+
+# Query Wikidata for relevant entities
+# Map Q-IDs to BITwiki types
+# Assign epistemic status: "Established" (conservative)
+# Import properties using alignment matrix
+# Flag for epistemic review if claim is surprising
+
+=== Export to External Systems ===
+
+# Identify exportable entities
+# Map to external types
+# Translate properties
+# Handle BITwiki-specific properties
+# Generate export format
+# Validate export
+
+'''Export to Schema.org:'''
+
+# Map BITwiki types to Schema.org types
+# Export core properties using alignment
+# Export BITwiki-specific properties as extensions
+# Include epistemic metadata as custom fields
+# Document mapping decisions
+
+== SMW Implementation ==
+
+=== Alignment Properties ===
+
+```wiki
+[[Has external mapping::Wikidata:Q12345]]
+[[Has mapping type::Exact]]
+[[Has alignment confidence::0.9]]
+[[Has import date::2026-02-12]]
+```
+
+=== Alignment Queries ===
+
+'''All aligned entities:'''
+```wiki
+{{#ask: [[Has external mapping::+]]}}
+```
+
+'''High-confidence alignments:'''
+```wiki
+{{#ask: [[Has alignment confidence::>0.8]]}}
+```
+
+'''Wikidata alignments:'''
+```wiki
+{{#ask: [[Has external mapping::Wikidata:+]]}}
+```
+
+== Query Examples ==
+
+'''Find all BITwiki entities with Wikidata equivalents:'''
+```wiki
+{{#ask: [[Has wikidata id::+]]
+ [[Has entity type::+]]
+}}
+```
+
+'''Find all implementations exportable as Schema.org Products:'''
+```wiki
+{{#ask: [[Has entity type::Implementation]]
+ [[Has name::+]]
+ [[Has description::+]]
+}}
+```
+
+== On Semantic Interoperability ==
+
+Alignment is not about forcing equivalence where none exists. It is about mapping relationships while respecting differences. BITwiki's epistemic framework is not universal—it is specific to our approach. When aligning, we preserve what makes BITwiki distinctive while enabling exchange.
+
+== References ==
+
+# W3C. (2014). RDF Schema 1.1.
+# Schema.org. (2026). Schema.org vocabulary.
+# Wikidata. (2026). Wikidata documentation.
+# Dublin Core Metadata Initiative. (2020).
+# FOAF Vocabulary Specification. (2014).
+# Semantic MediaWiki. (2026). External data integration.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# Euzenat, J., & Shvaiko, P. (2013). Ontology Matching.
+# Sowa, J.F. (2000). Knowledge Representation.
+
+[[Has page type::Alignment Matrix]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.86]]
+[[Has system alignment count::4]]
+[[Has source count::10]]
+[[Has word count::1200]]

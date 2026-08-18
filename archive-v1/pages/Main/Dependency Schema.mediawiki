@@ -1,0 +1,109 @@
+{{Infobox
+| title = BITwiki Dependency Schema
+| description = SMW property definitions for template and fragment dependency tracking
+| type = schema-matter
+| category = dependency-management
+}}
+
+= BITwiki Dependency Schema =
+
+== Purpose ==
+
+Proactive tracking of transclusion dependencies using SMW properties to detect circular references before they cause parse failures.
+
+== Property Definitions ==
+
+=== Property:Depends on ===
+
+[[Has type::Page]]
+[[Has description::Template or fragment that this artifact depends on]]
+[[Has property scope::Template, Fragment]]
+
+=== Property:Required by ===
+
+[[Has type::Page]]
+[[Has description::Templates or fragments that depend on this artifact]]
+[[Has property scope::Template, Fragment]]
+
+=== Property:Has dependency depth ===
+
+[[Has type::Number]]
+[[Has description::Maximum depth of dependency chain from this artifact]]
+[[Has property scope::Template, Fragment]]
+
+== Template Integration ==
+
+Add to each template's  section:
+
+<pre>
+
+[[Has entity type::Concept]]
+[[Depends on::Template:Infobox Core]]
+[[Depends on::Module:Validation]]
+
+</pre>
+
+== Fragment Integration ==
+
+Add to each fragment:
+
+<pre>
+<onlyinclude>
+...content...
+</onlyinclude>
+[[Depends on::Template:Infobox Concept]]
+[[Has fragment level::L1]]
+</pre>
+
+== Circular Detection Query ==
+
+Detect potential circular dependencies:
+
+<pre>
+{{#ask: [[Depends on::{{PAGENAME}}]]
+|?Depends on
+|format=table
+|limit=50
+}}
+</pre>
+
+== Dependency Chain Query ==
+
+Trace full dependency chain:
+
+<pre>
+{{#ask: [[Depends on::+]]
+|?Depends on
+|?Required by
+|format=table
+|limit=100
+}}
+</pre>
+
+== Validation Rules ==
+
+= All templates must declare dependencies =
+= No circular chains allowed (A → B → C → A) =
+= Maximum dependency depth: 5 levels =
+= Update dependencies when refactoring =
+= Document breaking changes in talk page =
+
+== Automated Checks ==
+
+Pre-commit validation should:
+= Parse all [[Depends on::]] declarations =
+= Build dependency graph =
+= Detect cycles using DFS =
+= Report depth violations =
+
+== Breaking Change Protocol ==
+
+When removing or renaming a dependency:
+= Update all dependent templates first =
+= Add redirect if renaming =
+= Document in [[BITwiki Changelog]] =
+= Notify via [[Category:Breaking Changes]] =
+
+[[Category:BITwiki Schema Matter]]
+[[Category:Dependency Management]]
+[[Category:System Documentation]]

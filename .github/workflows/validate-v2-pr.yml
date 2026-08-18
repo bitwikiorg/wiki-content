@@ -1,0 +1,38 @@
+name: Validate BITwiki V2 PR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Main/**'
+      - 'BITwiki/**'
+      - 'Portal/**'
+      - 'Template/**'
+      - 'Property/**'
+      - 'Category/**'
+      - 'scripts/validate_v2.py'
+      - '.github/workflows/validate-v2-pr.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-bitwiki-v2-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Validate deployable MediaWiki structure
+        run: python scripts/validate_v2.py
+
+      - name: Show validation report
+        if: always()
+        run: cat v2-validation.json

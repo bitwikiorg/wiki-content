@@ -1,0 +1,57 @@
+name: Validate BITwiki V2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'Main/**'
+      - 'BITwiki/**'
+      - 'Portal/**'
+      - 'Template/**'
+      - 'Property/**'
+      - 'Category/**'
+      - 'scripts/validate_v2.py'
+      - '.github/workflows/validate-v2.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: validate-bitwiki-v2
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Validate deployable MediaWiki structure
+        id: validate
+        continue-on-error: true
+        run: python scripts/validate_v2.py
+
+      - name: Commit validation report
+        run: |
+          git config user.name 'BITwiki Validation Bot'
+          git config user.email 'bitwikicryptopedia@gmail.com'
+          git add v2-validation.json
+          if git diff --cached --quiet; then
+            echo 'Validation report unchanged.'
+          else
+            git commit -m 'Refresh V2 structural validation report'
+            git push origin HEAD:main
+          fi
+
+      - name: Enforce validation
+        if: steps.validate.outcome != 'success'
+        run: |
+          cat v2-validation.json
+          exit 1

@@ -2,12 +2,12 @@
 import hashlib, json, os, shutil, time
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 import requests
 
 BASE=os.getenv('BITWIKI_BASE_URL','https://bitwiki.org').rstrip('/')
 OUT=Path('archive-v1')
-UA='BITwiki-V1-Archive/2.1 (+https://github.com/bitwikiorg/wiki-content)'
+UA='BITwiki-V1-Archive/2.2 (+https://github.com/bitwikiorg/wiki-content)'
 REPORTS={
 'broken-redirects':'BrokenRedirects','dead-end-pages':'Deadendpages','double-redirects':'DoubleRedirects',
 'long-pages':'Longpages','oldest-pages':'Ancientpages','fewest-revisions':'Fewestrevisions',
@@ -52,33 +52,23 @@ class API:
         out=[]; cont={}
         while True:
             x=self.get(**p,**cont); value=(x.get('query') or {}).get(key,[]) or []
-            if not isinstance(value,list):
-                raise TypeError(f'Expected list for query.{key}, got {type(value).__name__}')
-            out += value
-            cont=x.get('continue') or {}
+            if not isinstance(value,list): raise TypeError(f'Expected list for query.{key}, got {type(value).__name__}')
+            out += value; cont=x.get('continue') or {}
             if not cont:return out
 
 def querypage(a,qp):
-    """Return every result row from MediaWiki list=querypage, following continuation."""
     out=[]; cont={}
     while True:
         x=a.get(action='query',list='querypage',qppage=qp,qplimit='max',**cont)
         q=(x.get('query') or {}).get('querypage')
         if isinstance(q,dict):
-            rows=q.get('results') or []
-            reported_name=q.get('name')
-            if reported_name and reported_name.casefold()!=qp.casefold():
-                raise RuntimeError(f'QueryPage mismatch: requested {qp}, got {reported_name}')
-        elif isinstance(q,list):
-            rows=q
-        elif q is None:
-            rows=[]
-        else:
-            raise TypeError(f'Unexpected querypage payload for {qp}: {type(q).__name__}')
-        if not isinstance(rows,list):
-            raise TypeError(f'Expected querypage.results list for {qp}, got {type(rows).__name__}')
-        out += rows
-        cont=x.get('continue') or {}
+            rows=q.get('results') or []; reported=q.get('name')
+            if reported and reported.casefold()!=qp.casefold(): raise RuntimeError(f'QueryPage mismatch: requested {qp}, got {reported}')
+        elif isinstance(q,list): rows=q
+        elif q is None: rows=[]
+        else: raise TypeError(f'Unexpected querypage payload for {qp}: {type(q).__name__}')
+        if not isinstance(rows,list): raise TypeError(f'Expected querypage.results list for {qp}, got {type(rows).__name__}')
+        out += rows; cont=x.get('continue') or {}
         if not cont:return out
 
 def pages_of(a,ns): return a.all('allpages',action='query',list='allpages',apnamespace=ns,aplimit='max')
@@ -101,10 +91,38 @@ def relations(a,title):
         cont=x.get('continue') or {}
         if not cont:return sorted(cats),sorted(tpls)
 
+def imageinfo(a,title):
+    out=[]; cont={}
+    while True:
+        x=a.get(action='query',prop='imageinfo',titles=title,iiprop='timestamp|user|comment|url|size|sha1|mime|mediatype|archivename',iilimit='max',**cont)
+        ps=(x.get('query') or {}).get('pages') or []; ps=list(ps.values()) if isinstance(ps,dict) else ps
+        if not ps: raise RuntimeError('No file page: '+title)
+        out += ps[0].get('imageinfo') or []; cont=x.get('continue') or {}
+        if not cont:return out
+
+def archive_files(a,file_pages):
+    records=[]; blobs={}; revision_count=0
+    for p in file_pages:
+        title=p['title']; infos=imageinfo(a,title); revision_count += len(infos); out=[]
+        for n,info in enumerate(infos):
+            url=info.get('url')
+            if not url: raise RuntimeError(f'Missing binary URL for {title} revision {n}')
+            r=a.s.get(url,timeout=90); r.raise_for_status(); data=r.content
+            sha256=hashlib.sha256(data).hexdigest(); ext=Path(urlparse(url).path).suffix
+            bp=OUT/'files'/'blobs'/(sha256+ext)
+            bp.parent.mkdir(parents=True,exist_ok=True)
+            if not bp.exists(): bp.write_bytes(data)
+            blobs[str(bp)]={'sha256':sha256,'bytes':len(data),'mime':info.get('mime')}
+            rec=dict(info); rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)
+        record={'title':title,'pageid':p.get('pageid'),'binary_revision_count':len(out),'revisions':out}
+        dump(OUT/'files'/'records'/(safe(title)+'.json'),record); records.append(record)
+    dump(OUT/'files'/'index.json',{'file_page_count':len(file_pages),'binary_revision_count':revision_count,'unique_blob_count':len(blobs),'records':records,'blobs':blobs})
+    return revision_count,len(blobs)
+
 def main():
     started=iso(); a=API(); print('API',a.url)
     OUT.mkdir(exist_ok=True)
-    for d in ('pages','history','namespaces','categories','templates','special'):
+    for d in ('pages','history','namespaces','categories','templates','special','files'):
         if (OUT/d).exists(): shutil.rmtree(OUT/d)
     for f in ('manifest.json','raw-snapshots-1.md','raw-snapshots-2.md','wiki-surface-manifest.json','index.json','siteinfo.json','audit.json'):
         if (OUT/f).exists():(OUT/f).unlink()
@@ -125,6 +143,9 @@ def main():
         cats,tpls=relations(a,title); rel[title]={'categories':cats,'templates':tpls}
         p.update(current_revid=hs[0].get('revid'),current_timestamp=hs[0].get('timestamp'),revision_count=len(hs),sha1=hs[0].get('sha1'),source_sha256=hashlib.sha256(src.encode()).hexdigest(),current_source_path=str(pp),history_path=str(hp),categories=cats,templates=tpls)
         if j%25==0 or j==len(allp):print('pages',j,'/',len(allp))
+
+    file_binary_revisions,file_blob_count=archive_files(a,byns.get(6,[]))
+
     used=a.all('allcategories',action='query',list='allcategories',aclimit='max',acprop='size|hidden'); usedmap={r['category']:r for r in used}; created={p['title'] for p in byns.get(14,[])}
     ctitles=created|{'Category:'+x for x in usedmap}; crecs=[]
     for t in sorted(ctitles,key=str.casefold):
@@ -146,11 +167,11 @@ def main():
     dump(OUT/'special'/'index.json',{'reports':rix})
     if fails: raise RuntimeError('Required reports failed: '+','.join(fails))
     rc={r['querypage']:r.get('count') for r in rix if r['status']=='captured'}; un=sum(x['unused'] for x in trecs); uc=sum(not x['categories'] for x in trecs)
-    audit={'snapshot_started':started,'snapshot_completed':iso(),'site':BASE,'api_endpoint':a.url,'api_calls':a.calls,'namespace_count':len(nss),'page_count':len(allp),'revision_count':revtotal,'namespace_counts_by_name':{x['archive_name']:x['count'] for x in nsum},'category_count_union':len(crecs),'used_category_count':sum(x['used'] for x in crecs),'created_category_page_count':sum(x['created_page'] for x in crecs),'wanted_category_page_count':sum(x['used'] and not x['created_page'] for x in crecs),'template_count':len(trecs),'unused_template_count_independent':un,'uncategorized_template_count_independent':uc,'querypage_counts':rc,'special_page_alias_count':len((si.get('query') or {}).get('specialpagealiases') or []),'continuation_policy':'Every list/revision/category/template/report request follows MediaWiki continuation until absent.','completeness':{'all_nonnegative_namespaces_enumerated':True,'all_current_page_sources_captured':True,'all_revision_bodies_captured':True,'all_used_and_created_categories_enumerated':True,'all_category_memberships_captured':True,'all_template_pages_enumerated':True,'all_template_transclusion_callers_captured':True,'required_maintenance_reports_captured':True}}
+    audit={'snapshot_started':started,'snapshot_completed':iso(),'site':BASE,'api_endpoint':a.url,'api_calls':a.calls,'namespace_count':len(nss),'page_count':len(allp),'revision_count':revtotal,'namespace_counts_by_name':{x['archive_name']:x['count'] for x in nsum},'file_page_count':len(byns.get(6,[])),'file_binary_revision_count':file_binary_revisions,'file_unique_blob_count':file_blob_count,'category_count_union':len(crecs),'used_category_count':sum(x['used'] for x in crecs),'created_category_page_count':sum(x['created_page'] for x in crecs),'wanted_category_page_count':sum(x['used'] and not x['created_page'] for x in crecs),'template_count':len(trecs),'unused_template_count_independent':un,'uncategorized_template_count_independent':uc,'querypage_counts':rc,'special_page_alias_count':len((si.get('query') or {}).get('specialpagealiases') or []),'continuation_policy':'Every list/revision/category/template/report request follows MediaWiki continuation until absent.','completeness':{'all_nonnegative_namespaces_enumerated':True,'all_current_page_sources_captured':True,'all_revision_bodies_captured':True,'all_file_binary_revisions_captured':True,'all_used_and_created_categories_enumerated':True,'all_category_memberships_captured':True,'all_template_pages_enumerated':True,'all_template_transclusion_callers_captured':True,'required_maintenance_reports_captured':True}}
     audit['warnings']=[]
     if rc.get('Unusedtemplates') is not None and rc['Unusedtemplates']!=un:audit['warnings'].append(f"Unusedtemplates report={rc['Unusedtemplates']} vs embeddedin={un}")
     if rc.get('Uncategorizedtemplates') is not None and rc['Uncategorizedtemplates']!=uc:audit['warnings'].append(f"Uncategorizedtemplates report={rc['Uncategorizedtemplates']} vs category-tags={uc}")
     dump(OUT/'audit.json',audit); dump(OUT/'index.json',{'snapshot_completed':audit['snapshot_completed'],'site':BASE,'api_endpoint':a.url,'namespace_summary':nsum,'page_count':len(allp),'revision_count':revtotal,'records':sorted(allp,key=lambda x:(int(x.get('ns',0)),x['title'].casefold()))})
-    (OUT/'README.md').write_text(f'''# archive-v1 — exhaustive public BITwiki V1 snapshot\n\n**Read-only provenance. Do not deploy this directory as V2 pages.**\n\nGenerated from the anonymous MediaWiki Action API with continuation followed until exhaustion.\n\n## Snapshot\n- Captured: **{audit["snapshot_completed"]}**\n- API: `{a.url}`\n- Namespaces enumerated: **{len(nss)}**\n- Pages: **{len(allp)}**\n- Revision bodies: **{revtotal}**\n- Templates: **{len(trecs)}**\n- Categories (used ∪ created): **{len(crecs)}**\n- Used categories: **{audit["used_category_count"]}**\n- Created Category: pages: **{audit["created_category_page_count"]}**\n- Used categories lacking Category: pages: **{audit["wanted_category_page_count"]}**\n\n## Files\n`siteinfo.json` site model; `index.json` every page; `namespaces/*` exhaustive title lists; `pages/*` current wikitext; `history/*` complete revision histories with bodies; `categories/*` complete category graph; `templates/*` every template and transclusion caller; `special/*` maintenance reports; `audit.json` completeness checks.\n\n## Migration\n```text\narchive exact V1 source + history + usage\n→ compare related versions\n→ preserve unique writing / citations / semantics / behavior\n→ separate durable ideas from obsolete implementation\n→ KEEP / REWRITE / MERGE / SPLIT / REDIRECT / RETIRE\n→ implement V2\n→ rerun maintenance reports\n```\n\nSpecial pages are generated reports, not deployable content pages. Similar titles are never sufficient evidence for a merge.\n''',encoding='utf-8')
+    (OUT/'README.md').write_text(f'''# archive-v1 — exhaustive public BITwiki V1 snapshot\n\n**Read-only provenance. Do not deploy this directory as V2 pages.**\n\nGenerated from the anonymous MediaWiki Action API with continuation followed until exhaustion.\n\n## Snapshot\n- Captured: **{audit["snapshot_completed"]}**\n- API: `{a.url}`\n- Namespaces enumerated: **{len(nss)}**\n- Pages: **{len(allp)}**\n- Revision bodies: **{revtotal}**\n- File pages: **{audit["file_page_count"]}**\n- File binary revisions: **{file_binary_revisions}**\n- Unique binary blobs: **{file_blob_count}**\n- Templates: **{len(trecs)}**\n- Categories (used ∪ created): **{len(crecs)}**\n- Used categories: **{audit["used_category_count"]}**\n- Created Category: pages: **{audit["created_category_page_count"]}**\n- Used categories lacking Category: pages: **{audit["wanted_category_page_count"]}**\n\n## Files\n`siteinfo.json` site model; `index.json` every page; `namespaces/*` exhaustive title lists; `pages/*` current wikitext; `history/*` complete revision histories with bodies; `files/*` uploaded file revisions and metadata; `categories/*` complete category graph; `templates/*` every template and transclusion caller; `special/*` maintenance reports; `audit.json` completeness checks.\n\n## Migration\n```text\narchive exact V1 source + history + usage\n→ compare related versions\n→ preserve unique writing / citations / semantics / behavior\n→ separate durable ideas from obsolete implementation\n→ KEEP / REWRITE / MERGE / SPLIT / REDIRECT / RETIRE\n→ implement V2\n→ rerun maintenance reports\n```\n\nSpecial pages are generated reports, not deployable content pages. Similar titles are never sufficient evidence for a merge.\n''',encoding='utf-8')
     print(json.dumps(audit,indent=2))
 if __name__=='__main__': main()

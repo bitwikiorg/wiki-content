@@ -1,0 +1,254 @@
+{{Source status|status=source-grounded V2 maturation audit|note=Compares V1 ontology/classification design writings with the exhaustive archived implementation and current V2 semantic model. Corpus inventory and page-role migration now provide empirical tests of the architectural decomposition.}}
+
+= V1 ontology maturation =
+
+This audit applies the [[BITwiki:V1 to V2 maturation|V1 → V2 maturation sequence]] to ontology and classification:
+
+'''preserve → understand → identify signal → mature primitive → enhance → integrate.'''
+
+The purpose is not to decide whether V1's ontology was "right" or "wrong." V1 contains overlapping models developed through experimentation. The task is to identify durable functions inside those models, distinguish them from implementation reality, and express them through coherent V2 primitives.
+
+== Evidence boundary ==
+
+This audit distinguishes three evidence layers:
+
+# '''Archived implementation''' — namespaces, pages, revisions, category memberships, template callers, and other objects preserved in <code>archive-v1/</code>.
+# '''V1 design/source syntax''' — ontology, taxonomy, page-type, entity-type, relationship, property, interoperability specifications, and semantic examples, whether or not all proposed machinery was instantiated as a coherent production schema.
+# '''Current V2 architecture''' — the source-reconciled semantic model in [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Relationships]], [[BITwiki:Semantic properties]], [[Property:Entity type]], [[Property:Domain]], Categories, Portals, and related standards.
+
+A proposal or example in layer 2 is design/source evidence, not automatically proof of implementation in layer 1.
+
+== Primary V1 source family ==
+
+The initial ontology pass is grounded in archived sources including:
+
+{| class="wikitable"
+! V1 source !! Archived revision !! Primary signal
+|-
+| <code>BITwiki Entity Types</code> || rev 670 || Types as constructed, evolving lenses; Topic, Idea, Implementation, Project, Protocol, Dataset plus extended actor/event/publication types; conceptual overlap allowed.
+|-
+| <code>BITwiki Page Types</code> || rev 689 || Page types as emergent patterns; minimum criteria; new types should emerge from repeated use.
+|-
+| <code>BITwiki Taxonomy Architecture</code> || rev 700 || Hierarchy, polyhierarchy, porous boundaries, facets, multiple navigation directions, category evolution.
+|-
+| <code>BITwiki Property Dictionary</code> || rev 690 || Large proposed semantic surface spanning classification, epistemics, provenance, relations, description, time, and quantitative metadata.
+|-
+| <code>BITwiki Ontology Alignment Matrix</code> || rev 686 || Meaning-based alignment to Wikidata, Schema.org, Dublin Core, and FOAF; mapping loss should remain explicit.
+|}
+
+Exact bodies remain under <code>archive-v1/pages/Main/</code>; exact revisions remain under <code>archive-v1/history/Main/</code>.
+
+== What V1 imagined ==
+
+V1's ontology family was substantially more ambitious than a category tree. It imagined:
+
+* evolving entity types rather than a permanently closed class system;
+* subject/topic hierarchies and lateral topic relations;
+* polyhierarchy and faceted classification;
+* semantic properties for queryable attributes and relationships;
+* typed relationships between ideas, implementations, projects, protocols, datasets, people, organizations, events, and publications;
+* epistemic status and confidence as queryable dimensions;
+* provenance and attribution;
+* external ontology alignment and import/export;
+* navigation from broad → narrow, narrow → broad, lateral, and faceted directions;
+* schema evolution from demonstrated use rather than immutable metaphysical categories.
+
+The later V1 writings repeatedly express a strong principle that survives intact: '''types are useful constructed lenses whose value is demonstrated through use.'''
+
+== What V1 actually implemented ==
+
+[[BITwiki:V1 implementation audit]] establishes a much smaller deployed surface:
+
+* 186 public pages and 606 archived revision bodies;
+* 162 Main-namespace pages;
+* 162 distinct category names but zero authored Category namespace pages;
+* four authored Property namespace pages, all imported vocabulary;
+* zero Concept namespace pages;
+* zero Module namespace pages;
+* nine implemented Template namespace pages;
+* extensive ontology/property/schema documentation in Main namespace.
+
+The semantic design surface was therefore much richer than the instantiated namespace machinery.
+
+V2 must preserve both facts: V1 had substantial design imagination, and that imagination was not equivalent to one fully deployed ontology.
+
+== Productive tensions inside V1 ==
+
+{| class="wikitable"
+! V1 tension !! Durable interpretation
+|-
+| Tree vs polyhierarchy || Human navigation may use hierarchies, but knowledge identity cannot be reduced to one tree.
+|-
+| Mutual exclusivity vs overlapping lenses || Preserve a primary orientation when useful while representing secondary roles deliberately rather than uncontrolled multi-labeling.
+|-
+| Topic as type vs Topic as subject/navigation || Topic encoded several legitimate jobs that should become separate primitives.
+|-
+| Entity type cardinality || Conceptual non-exclusivity can coexist with one primary modeled identity for a canonical page.
+|-
+| Category hierarchy vs facets || Domain, type, epistemics, lifecycle, method, scale, application, and provenance should not collapse into one category tree.
+|-
+| Rich property dictionary vs sparse deployed properties || Proposed properties are candidate vocabulary, not an automatic implementation backlog.
+|-
+| Confidence as scalar vs confidence as epistemic structure || Domain-specific scores may exist, but they must not replace inspectable evidence/justification structures.
+|-
+| External equivalence vs BITwiki-specific semantics || Interoperability should map meanings explicitly without flattening local semantics.
+|}
+
+== Durable V1 signal ==
+
+=== Types are lenses ===
+A type is a recognition pattern that helps answer what kind of object is being modeled. It may evolve, specialize, merge, or retire.
+
+=== Knowledge is polyhierarchical ===
+A subject can belong to several legitimate contexts. A single rigid category tree cannot represent every useful path through knowledge.
+
+=== Facets should compose ===
+Subject/domain, object kind, epistemic standing, lifecycle, method, scale, application, provenance, and other dimensions answer different questions.
+
+=== Relationships carry meaning ===
+Implementation, support, contradiction, dependency, part-whole, refinement, attribution, and other relationships are graph semantics, not decorative links.
+
+=== Schema should evolve from use ===
+New types and properties should emerge from repeated content/query needs rather than from the fact that a larger ontology can be imagined.
+
+=== Interoperability must preserve semantic loss ===
+Exact/close/broad/narrow/related distinctions and transformation loss should remain visible.
+
+=== Classification itself may be uncertain ===
+Porous boundaries and contested categories should not be hidden behind false precision.
+
+== Mature V2 primitive mapping ==
+
+{| class="wikitable"
+! V1 overloaded function !! Mature V2 primitive
+|-
+| What kind of thing is this? || [[Property:Entity type|Entity type]]
+|-
+| What subject/field is it in? || [[Property:Domain|Domain]]
+|-
+| How should humans browse it? || Category / Portal / index / outline
+|-
+| What reusable role does part of the page play? || [[BITwiki:Book Matter|Book Matter]]
+|-
+| What is its evidentiary standing? || Epistemic status + contextual validation machinery
+|-
+| Where is it in publication/workflow life? || Review / lifecycle properties
+|-
+| How does one object connect to another? || [[BITwiki:Relationships|Relationship properties]]
+|-
+| How does it map outside BITwiki? || Explicit alignment/mapping layer when implemented
+|}
+
+This decomposition preserves more of V1's imagination than retaining <code>Topic</code> as one overloaded universal primitive would.
+
+== Current V2 entity-type disposition ==
+
+Current base vocabulary:
+
+* Concept
+* Method
+* Protocol
+* Implementation
+* Project
+* Dataset
+* Person
+* Organization
+* Event
+* Publication
+* Location
+* Technology
+
+This is a '''floor, not a closed world'''.
+
+V2 <code>Concept</code> broadly matures V1 <code>Idea</code>. <code>Topic</code> is decomposed into Domain + navigation surfaces + Concept where the page truly represents an abstract object. Method is separated from Protocol. Location and Technology become first-class when the corpus requires spatial or technological reasoning.
+
+Potential specialized types such as Theory, Model, Framework, Software, Species, Material, Instrument, Standard, Algorithm, Chemical substance, and Biological process remain candidates until repeated content demonstrates that the distinctions improve queries, relationships, validation, or composition.
+
+== Empirical corpus test ==
+
+[[BITwiki:Corpus evidence]] and [[BITwiki:V1 page-role migration]] now test this architecture against the actual corpus.
+
+=== V2 ===
+The initial V2 Main subject surface consists of twelve domain exemplars plus the Main Page and V1 compatibility redirects. All twelve exemplars currently exercise <code>Concept</code>; this is insufficient evidence to freeze the broader type vocabulary.
+
+=== V1 ===
+All 162 archived V1 Main pages are classified by migration role before ontology:
+
+* 83 architecture/system sources;
+* 52 Book Matter/reusable composition artifacts;
+* 19 navigation/interface surfaces;
+* 6 maintenance/validation/test artifacts;
+* 2 first-class subject candidates;
+* 0 unresolved.
+
+The two first-class historical subject candidates are <code>Bioluminescent Organisms</code> and <code>Fluorescent Coral Reefs</code>.
+
+The reusable composition family also contains subject signals such as concept-definition fragments (Emergence, Feedback-loop, Homeostasis), a Method-like systems-analysis fragment, Protocol-like peer-review/validation fragments, and evidence-summary fragments.
+
+This empirical result strengthens the current decomposition and sharply narrows what should directly pressure the ontology.
+
+== What is accepted now ==
+
+The following architectural decisions are sufficiently source- and corpus-grounded to retain as V2 invariants unless later evidence overturns them:
+
+# '''Ontology is not navigation.'''
+# '''Topic should not simultaneously encode domain, page type, hierarchy node, and portal.'''
+# '''Entity type and Domain are independent dimensions.'''
+# '''Category hierarchy is a navigation graph, not the ontology itself.'''
+# '''Page/artifact role is not Entity type.'''
+# '''Types remain constructed/evolving recognition patterns rather than an eternally closed taxonomy.'''
+# '''A canonical page normally has one primary modeled entity type for orientation without claiming the real-world subject has only one possible lens.'''
+# '''Relationships should be typed from demonstrated semantic need.'''
+# '''External alignment should preserve mapping type and information loss.'''
+# '''Large V1 property/type dictionaries are evidence for research, not automatic implementation backlogs.'''
+# '''Fragments, subpages, navigation, maintenance, architecture, and historical variants must not be forced into subject ontology merely because they are pages.'''
+
+== What remains research ==
+
+=== Subject canonicalization ===
+Review the two first-class V1 subject pages and reusable subject fragments against their full source/revision lineage. Determine object boundaries, mature Entity type/Domain values, secondary relationships, Book Matter composition, citations, uncertainty, and provenance.
+
+=== Vocabulary coverage ===
+Use canonical subject candidates—not system architecture pages—to test whether the current base vocabulary needs specialized types or additional Domains.
+
+=== V1 category functional map ===
+The 162 V1 category names still require job-level mapping rather than mechanical recreation.
+
+=== Semantic validation ===
+Future validation should detect, where appropriate:
+
+* unknown canonical Entity type values;
+* malformed or undocumented Domain values;
+* relation targets that do not resolve;
+* invalid controlled epistemic/lifecycle values;
+* accidental use of navigation categories as semantic status;
+* duplicate/contradictory primary classifications;
+* deprecated V1 vocabulary without explicit compatibility paths.
+
+=== Interoperability revalidation ===
+Historical Wikidata IDs, Schema.org mappings, import defaults, confidence defaults, and examples must be revalidated before becoming executable rules.
+
+== Explicit non-decisions ==
+
+This audit does not yet:
+
+* add Computer science, AI, Knowledge representation, Governance, Economics, or other candidate Domains;
+* add Theory, Model, Framework, Software, Species, Material, Instrument, Algorithm, or other candidate Entity types;
+* recreate V1 <code>Topic</code>;
+* introduce the whole V1 Property Dictionary;
+* recreate a root category tree;
+* require multiple entity types on every overlapping subject;
+* implement universal numeric confidence;
+* create imported ontology mappings;
+* mass-migrate historical subject pages.
+
+== Disposition ==
+
+'''Core V1 ontology signal: Accepted and integrated at the architectural level. Vocabulary expansion: Research.'''
+
+The separation of Entity type, Domain, Category/Portal, Book Matter, epistemics/lifecycle, Relationship, and migration/page role is not a rejection of V1. It is the maturation of V1's strongest later ideas: lenses, polyhierarchy, facets, porous boundaries, semantic relationships, evolving schema, and composable knowledge.
+
+See [[BITwiki:V1 maturation register]], [[BITwiki:Corpus evidence]], [[BITwiki:V1 page-role migration]], [[BITwiki:V1 implementation audit]], [[BITwiki:Entity types]], [[BITwiki:Semantic properties]], [[BITwiki:Relationships]], [[BITwiki:V1 category migration]], and [[BITwiki:Source lineage]].
+
+[[Category:BITwiki architecture]]
+[[Category:Provenance]]

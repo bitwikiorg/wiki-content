@@ -44,10 +44,25 @@
   },
   "v2_validation": {
     "path": "v2-validation.json",
+    "generator": "scripts/validate_v2.py",
     "valid": true,
-    "category_pages": 25,
-    "template_pages": 2,
-    "domain_exemplars": 12
+    "category_pages": 26,
+    "template_pages": 3,
+    "domain_exemplars": 12,
+    "semantic_identity_validation": true,
+    "knowledge_object_fields_required": [
+      "entity_type",
+      "domain",
+      "status",
+      "provenance"
+    ]
+  },
+  "migration_evidence": {
+    "corpus_inventory": "scripts/inventory_corpus.py",
+    "page_role_classifier": "scripts/classify_v1_page_roles.py",
+    "architecture_family_classifier": "scripts/classify_v1_architecture_families.py",
+    "v1_main_pages_classified": 162,
+    "v1_architecture_sources_classified": 83
   },
   "canonicalization_loop": [
     "recover source",

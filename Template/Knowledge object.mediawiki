@@ -3,16 +3,16 @@
 ! colspan="2" | {{{title|{{PAGENAME}}}}}
 |-
 ! Entity type
-| [[Entity type::{{{entity_type|Concept}}}]]
+| {{#if:{{{entity_type|}}}|[[Entity type::{{{entity_type}}}]]|''Not specified''}}
 |-
 ! Domain
-| [[Domain::{{{domain|Unspecified}}}]]
+| {{#if:{{{domain|}}}|[[Domain::{{{domain}}}]]|''Not specified''}}
 |-
 ! Epistemic status
-| [[Epistemic status::{{{status|Established}}}]]
+| {{#if:{{{status|}}}|[[Epistemic status::{{{status}}}]]|''Not specified''}}
 |-
 ! Provenance
-| [[Provenance::{{{provenance|V2 public corpus}}}]]
+| {{#if:{{{provenance|}}}|[[Provenance::{{{provenance}}}]]|''Not specified''}}
 |}
 </includeonly>
 <noinclude>
@@ -29,11 +29,17 @@ Lightweight V2 semantic infobox for the common identity fields used across knowl
 }}
 </pre>
 
-== Deliberate minimalism ==
+== Explicit identity only ==
 
-This is a baseline identity surface, not the complete BITwiki schema and not a replacement for every historical V1 infobox parameter.
+Identity fields intentionally have '''no semantic defaults'''. Omitting a parameter displays <code>Not specified</code> and emits no corresponding semantic assertion.
 
-V1's heavily used [[Template:Infobox]] and the larger proposed property catalogs are preserved in <code>archive-v1/</code> as implementation and design lineage. V2 promotes a field only when its semantic job is stable and recurring.
+This prevents missing information from silently becoming claims such as <code>Concept</code>, <code>Established</code>, <code>Unspecified</code>, or <code>V2 public corpus</code>.
+
+Repository validation requires instantiated <code>Knowledge object</code> calls to provide explicit <code>entity_type</code>, <code>domain</code>, <code>status</code>, and <code>provenance</code>, and checks controlled values for Entity type, Domain, and Epistemic status.
+
+This template is a baseline identity surface, not the complete BITwiki schema and not a replacement for every historical V1 infobox parameter.
+
+V1's heavily used [[Template:Infobox]] and larger proposed property catalogs are preserved in <code>archive-v1/</code> as implementation and design lineage. V2 promotes a field only when its semantic job is stable and recurring.
 
 Do not add optional dimensions merely to fill an infobox. When they materially improve the knowledge object, use the dedicated properties documented in [[BITwiki:Semantic properties]], including:
 
@@ -48,7 +54,7 @@ The page-level <code>status</code> describes the evidentiary standing of the pag
 
 Use claim- or section-level qualification in the prose when a page contains mixed evidence or genuine dispute. Do not manufacture numerical confidence or review status from the page-level label.
 
-See [[BITwiki:Page format]], [[BITwiki:Epistemics]], and [[BITwiki:Epistemic status]].
+See [[BITwiki:Page format]], [[BITwiki:Epistemics]], [[BITwiki:Epistemic status]], and [[BITwiki:V1 subject and composition migration]].
 
 [[Category:BITwiki templates]]
 </noinclude>

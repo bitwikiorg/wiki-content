@@ -1,0 +1,221 @@
+{{Source status|status=machine-grounded architecture evidence|note=Summarizes reproducible V1/V2 corpus inventories and the complete V1 page-role migration matrix. API-recorded implementation evidence is kept distinct from source-syntax design signals. Counts describe the audited corpus state and do not themselves authorize schema expansion.}}
+
+= Corpus evidence =
+
+This page records the empirical corpus tests used by the [[BITwiki:V1 to V2 maturation|V1 → V2 maturation]] architecture.
+
+The governing question is not “What ontology can we imagine?” It is:
+
+<blockquote>'''What distinctions does the actual corpus require us to represent?'''</blockquote>
+
+The machine-readable evidence is generated during pull-request validation:
+
+* <code>v2-validation.json</code> — structural V2 validation;
+* <code>v2-corpus-inventory.json</code> — every deployable V2 MediaWiki page and its objective structural/semantic signals;
+* <code>v1-classification-usage.json</code> — all 162 archived V1 Main pages with API-recorded categories/templates, revision identity, subpage state, Infobox type source parameter, classification source syntax, and Topic signal;
+* <code>v1-page-role-matrix.json</code> — all 162 V1 Main pages classified by migration role before ontology.
+
+These outputs are evidence artifacts, not a substitute for human interpretation.
+
+== V2 Main-namespace reality ==
+
+At the first complete inventory pass, the V2 Main namespace contained '''49 pages''':
+
+{| class="wikitable"
+! Role !! Count
+|-
+| V1 compatibility or other redirects || 36
+|-
+| Explicit <code>Knowledge object</code> pages || 12
+|-
+| Main Page || 1
+|-
+| Other non-redirect Main pages || 0
+|}
+
+The twelve explicit knowledge objects are the twelve domain exemplars. Their explicit identity distribution is:
+
+* Entity type: <code>Concept</code> — 12 / 12;
+* Epistemic status: <code>Established</code> — 12 / 12;
+* Domain: one exemplar in each current domain — Systems science, Science, Biology, Mathematics, Philosophy, Technology, Electronics, Energy, Engineering, Chemistry, Physics, and Medicine.
+
+'''V2 is therefore a strong architectural/semantic scaffold whose canonical subject corpus is still deliberately small.'''
+
+This does not prove that every future BITwiki object is a Concept. It proves only that the present exemplar surface exercises the Concept path and cannot by itself finalize the broader type/domain vocabularies.
+
+== V1 Main-namespace reality ==
+
+The archived V1 Main namespace contains '''162 pages'''. The complete source/API inventory finds:
+
+{| class="wikitable"
+! Signal !! Count
+|-
+| Main pages inventoried || 162
+|-
+| Subpages || 14
+|-
+| Pages with any classification / Topic signal || 130
+|-
+| Pages without classification / Topic signal || 32
+|-
+| Pages with classification-property source syntax || 83
+|-
+| Pages with an API-recorded identity-like category || 85
+|-
+| Pages carrying an Infobox <code>type</code> source parameter || 78
+|-
+| Pages containing the literal term <code>Topic</code> || 48
+|}
+
+The absence of classification on 32 pages is itself evidence. Many are fragments, subpages, Main Page components, maintenance/test objects, or interface material rather than missing ontology classes.
+
+== API implementation versus source syntax ==
+
+The exhaustive V1 API archive records identity-like category memberships including:
+
+{| class="wikitable"
+! V1 category !! Recorded memberships
+|-
+| Concepts || 78
+|-
+| Projects || 5
+|-
+| Ideas || 4
+|-
+| Implementations || 3
+|-
+| Datasets || 2
+|-
+| Protocols || 2
+|-
+| Topics || 2
+|-
+| Events || 1
+|-
+| People || 1
+|-
+| Publications || 1
+|}
+
+These are implementation evidence because MediaWiki returned the memberships and they are preserved in <code>archive-v1/index.json</code>.
+
+Source recovery is much richer. Common <code>Has entity type</code> source values include Idea, Project, Implementation, Concept, Event, Person, Topic, Organization, Publication, Protocol, Dataset, Location, and Technology, but also page/system-role terms such as Index, Ontology, Governance, Documentation, Schema-Matter, Front-Matter, Research, and Validation.
+
+That mixture is a direct warning against copying V1 source values into one V2 entity vocabulary.
+
+Source annotations may also appear inside examples/specifications. They are source-syntax evidence, not a complete exported SMW semantic-store snapshot.
+
+== Topic decomposition test ==
+
+Topic-associated source syntax appears in several functions:
+
+* domain / field signal — 43 occurrences;
+* hierarchy or Topic-relation signal — 22 occurrences;
+* entity/page-type use of <code>Topic</code> — 9 occurrences.
+
+The exact counts include documentation/specification syntax; their architectural value is qualitative: '''Topic was visibly doing several different jobs.'''
+
+Current V2 separates those jobs into:
+
+* [[Property:Domain|Domain]] — subject/field membership;
+* Entity type — primary modeled identity;
+* Category / Portal / index / outline — human navigation;
+* explicit Relationships — graph semantics;
+* Book Matter — reusable content anatomy.
+
+The corpus therefore supports the decomposition recorded in [[BITwiki:V1 ontology maturation]] rather than restoration of one overloaded Topic primitive.
+
+== Page-role migration result ==
+
+The next empirical pass is now complete. [[BITwiki:V1 page-role migration]] classifies every archived V1 Main page by the job of the historical artifact before asking what entity type its subject might have.
+
+{| class="wikitable"
+! Migration role !! Pages
+|-
+| Architecture / system source || 83
+|-
+| Book Matter / reusable composition || 52
+|-
+| Navigation / interface || 19
+|-
+| Maintenance / validation / test || 6
+|-
+| Canonical subject candidate || '''2'''
+|-
+| Unresolved || '''0'''
+|}
+
+'''V1 Main was primarily a laboratory for BITwiki itself: architecture, epistemics, schema, composition, navigation, validation, and governance. It was not a 162-article encyclopedia awaiting reclassification.'''
+
+== First-class subject evidence ==
+
+Only two historical pages currently qualify as coherent first-class subject/project candidates:
+
+* <code>Bioluminescent Organisms</code>;
+* <code>Fluorescent Coral Reefs</code>.
+
+Both are composed parent pages with transcluded subpages, providing direct implementation evidence for the V1 composability/Book Matter idea.
+
+The role audit deliberately does not finalize their V2 entity types. Bioluminescent Organisms carries an old <code>Ideas</code> signal, while Fluorescent Coral Reefs mixes implementation/project language. Those are questions for canonicalization, not mechanical migration.
+
+== Reusable subject signal ==
+
+The 52 composition artifacts contain real subject/method/protocol/evidence signal even though the historical artifacts themselves are Book Matter.
+
+Notable examples:
+
+* Emergence — concept definition fragment;
+* Feedback-loop — concept definition fragment;
+* Homeostasis — concept definition fragment;
+* Systems-analysis — method fragment;
+* Peer-review-protocol — protocol fragment;
+* Validation-procedure — protocol fragment;
+* Empirical-validation — evidence-summary fragment;
+* Peer-review-summary — evidence-summary fragment.
+
+This supports current broad V2 patterns such as Concept, Method, Protocol, and explicit evidence/epistemic structures without requiring the fragments themselves to become top-level ontology objects.
+
+== What the evidence authorizes ==
+
+The current corpus evidence is strong enough to retain the following architectural conclusions:
+
+# Entity type, Domain, navigation, Book Matter, epistemics/lifecycle, Relationships, and migration/page role must remain independent dimensions.
+# V1 Topic should not be restored as one universal primitive.
+# Page role must be separated from subject ontology.
+# V1 categories cannot be migrated mechanically into V2 semantic identity.
+# V1 source-level type values mix ontology, page role, system role, and documentation role and require contextual disposition.
+# Book Matter/transclusion have direct implementation evidence, not merely design intent.
+# The current V2 exemplars plus the two V1 first-class subject pages are still insufficient to freeze the final Entity type or Domain vocabularies.
+# Architecture sources and historical branches are valuable lineage, not disposable meta-content.
+
+== Next empirical work ==
+
+The evidence now splits the migration into two clean streams.
+
+=== Subject canonicalization ===
+
+Review the two first-class subject pages and reusable subject fragments against their full revision/source lineage. Determine canonical object boundaries, mature Entity type and Domain values, secondary relationships, Book Matter, citations, uncertainty, and provenance. Only repeated unresolved subject patterns should create pressure for new ontology terms.
+
+=== Architecture maturation ===
+
+Group the 83 architecture/system sources by design family—ontology, epistemics, confidence, templates, schema, governance, constitutional writing, navigation, research systems, and related families—and mature each through the [[BITwiki:V1 maturation register]].
+
+The subject corpus should test the architecture; the architecture corpus should not impersonate subject ontology.
+
+== Reproducibility ==
+
+Run:
+
+<pre>
+python scripts/validate_v2.py
+python scripts/inventory_corpus.py
+python scripts/classify_v1_page_roles.py
+</pre>
+
+Pull-request validation runs all three and uploads the generated evidence files as a workflow artifact.
+
+See [[BITwiki:V1 page-role migration]], [[BITwiki:V1 maturation register]], [[BITwiki:V1 ontology maturation]], [[BITwiki:V1 implementation audit]], [[BITwiki:V1 category migration]], [[BITwiki:Ontology]], [[BITwiki:Book Matter]], and [[BITwiki:Source lineage]].
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]
+[[Category:Provenance]]

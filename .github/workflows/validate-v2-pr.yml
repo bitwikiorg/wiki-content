@@ -1,0 +1,65 @@
+name: Validate BITwiki V2 PR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'Main/**'
+      - 'BITwiki/**'
+      - 'Portal/**'
+      - 'Template/**'
+      - 'Property/**'
+      - 'Category/**'
+      - 'archive-v1/**'
+      - 'manifest.json'
+      - 'scripts/validate_v2.py'
+      - 'scripts/inventory_corpus.py'
+      - 'scripts/classify_v1_page_roles.py'
+      - 'scripts/classify_v1_architecture_families.py'
+      - '.github/workflows/validate-v2-pr.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-bitwiki-v2-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Validate deployable MediaWiki structure and identity semantics
+        run: python scripts/validate_v2.py
+
+      - name: Build V2 corpus and V1 classification inventories
+        run: python scripts/inventory_corpus.py
+
+      - name: Classify V1 page roles before ontology
+        run: python scripts/classify_v1_page_roles.py
+
+      - name: Classify V1 architecture sources by maturation family
+        run: python scripts/classify_v1_architecture_families.py
+
+      - name: Show validation report
+        if: always()
+        run: cat v2-validation.json
+
+      - name: Upload architecture evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitwiki-v2-architecture-evidence
+          path: |
+            v2-validation.json
+            v2-corpus-inventory.json
+            v1-classification-usage.json
+            v1-page-role-matrix.json
+            v1-architecture-family-matrix.json
+          if-no-files-found: error

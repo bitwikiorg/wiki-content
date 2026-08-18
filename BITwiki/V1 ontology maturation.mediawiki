@@ -25,26 +25,22 @@ The initial ontology pass is grounded in the following archived sources and thei
 {| class="wikitable"
 ! V1 source !! Current archived revision !! Primary signal in this audit
 |-
-| <code>BITwiki Entity Types</code> || rev 686? See archive index/history for authoritative revision || Types as constructed, evolving lenses; Topic, Idea, Implementation, Project, Protocol, Dataset plus extended actor/event/publication types; overlap allowed conceptually.
+| <code>BITwiki Entity Types</code> || rev 670 || Types as constructed, evolving lenses; Topic, Idea, Implementation, Project, Protocol, Dataset plus extended actor/event/publication types; overlap allowed conceptually.
 |-
-| <code>BITwiki Page Types</code> || preserved in archive index/history || Page types as emergent patterns rather than decreed boxes; minimum criteria; new types should emerge from repeated use.
+| <code>BITwiki Page Types</code> || rev 689 || Page types as emergent patterns rather than decreed boxes; minimum criteria; new types should emerge from repeated use.
 |-
 | <code>BITwiki Taxonomy Architecture</code> || rev 700 || Hierarchy, polyhierarchy, porous boundaries, facets, multiple navigation directions, category evolution, subject/type/epistemic/temporal/domain dimensions.
 |-
-| <code>BITwiki Property Dictionary</code> || preserved in archive index/history || Large proposed semantic surface spanning classification, epistemics, provenance, relations, description, time, and quantitative metadata.
+| <code>BITwiki Property Dictionary</code> || rev 690 || Large proposed semantic surface spanning classification, epistemics, provenance, relations, description, time, and quantitative metadata.
 |-
 | <code>BITwiki Ontology Alignment Matrix</code> || rev 686 || Meaning-based alignment to Wikidata, Schema.org, Dublin Core, and FOAF; mapping loss should remain explicit.
 |}
 
 Exact bodies remain under <code>archive-v1/pages/Main/</code>; exact revisions remain under <code>archive-v1/history/Main/</code>. The archive index supplies page IDs, revision IDs, source hashes, category memberships, and current-source paths.
 
-'''Note:''' revision identifiers above are descriptive conveniences only; <code>archive-v1/index.json</code> and the individual history records are authoritative when a number is in doubt.
-
 == What V1 imagined ==
 
-V1's ontology family was substantially more ambitious than a category tree.
-
-Across the source family, it imagined:
+V1's ontology family was substantially more ambitious than a category tree. Across the source family, it imagined:
 
 * evolving entity types rather than a permanently closed class system;
 * subject/topic hierarchies and lateral topic relations;
@@ -106,8 +102,6 @@ V1 did not contain one perfectly consistent ontology. It contains tensions creat
 V2 should resolve these tensions architecturally rather than erase the branch that generated them.
 
 == Durable V1 signal ==
-
-The ontology family contains several ideas strong enough to treat as durable design signal.
 
 === 1. Types are lenses ===
 A type is a recognition pattern that helps answer what kind of object is being modeled. It may evolve, specialize, merge, or retire as the corpus changes.
@@ -197,8 +191,6 @@ The following architectural decisions are sufficiently source-grounded to retain
 
 The core separation is mature, but the vocabulary is not finished.
 
-Before expanding the V2 ontology, we still need:
-
 === Corpus coverage audit ===
 Inventory every deployable V2 knowledge page and record:
 * primary entity type;
@@ -212,13 +204,7 @@ Inventory every deployable V2 knowledge page and record:
 A new type should be justified from these unresolved cases rather than speculation.
 
 === V1 Topic recovery ===
-Recover every actual V1 use of <code>Topic</code>, <code>Has entity type</code>, <code>Has page type</code>, <code>Has domain</code>, topic/subtopic relations, and topic-oriented categories. Classify each use by the function it was really performing:
-* domain;
-* navigation;
-* abstract concept;
-* hierarchy relation;
-* page/content pattern;
-* other.
+Recover every actual V1 use of <code>Topic</code>, <code>Has entity type</code>, <code>Has page type</code>, <code>Has domain</code>, topic/subtopic relations, and topic-oriented categories. Classify each use by the function it was really performing: domain; navigation; abstract concept; hierarchy relation; page/content pattern; or other.
 
 This will test whether any distinct Topic primitive survives decomposition.
 

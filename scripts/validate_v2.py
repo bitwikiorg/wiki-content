@@ -6,6 +6,11 @@ ROOTS=['Main','BITwiki','Portal','Template','Property','Category']
 CATEGORY_RE=re.compile(r'\[\[\s*Category:([^\]|#]+)',re.I)
 # Exactly two braces: do not mistake template parameters {{{name}}} for transclusions.
 TEMPLATE_RE=re.compile(r'(?<!\{)\{\{(?!\{)\s*([^{}|\n]+)')
+# Markup in these blocks is literal documentation, not an executable wiki dependency.
+LITERAL_BLOCK_RE=re.compile(
+    r'<!--.*?-->|<(pre|nowiki|syntaxhighlight|source)\b[^>]*>.*?</\1\s*>',
+    re.I | re.S,
+)
 MAGIC_WORDS={
 'PAGENAME','PAGENAMEE','FULLPAGENAME','FULLPAGENAMEE','BASEPAGENAME','BASEPAGENAMEE',
 'SUBPAGENAME','SUBPAGENAMEE','ROOTPAGENAME','ROOTPAGENAMEE','NAMESPACE','NAMESPACEE',
@@ -30,6 +35,10 @@ def files(root):
     p=Path(root)
     return sorted(p.rglob('*.mediawiki')) if p.exists() else []
 
+def executable_text(text):
+    """Remove blocks where MediaWiki treats template-like markup as literal documentation."""
+    return LITERAL_BLOCK_RE.sub('', text)
+
 def main():
     all_files=[p for r in ROOTS for p in files(r)]
     category_pages={title(p.relative_to('Category').as_posix()[:-10]) for p in files('Category')}
@@ -39,10 +48,11 @@ def main():
     uncategorized=[]
     for p in all_files:
         text=p.read_text(encoding='utf-8')
-        cats=sorted({title(x) for x in CATEGORY_RE.findall(text) if '{' not in x})
+        parsed=executable_text(text)
+        cats=sorted({title(x) for x in CATEGORY_RE.findall(parsed) if '{' not in x})
         for c in cats: category_refs.setdefault(c,[]).append(str(p))
         temps=[]
-        for raw in TEMPLATE_RE.findall(text):
+        for raw in TEMPLATE_RE.findall(parsed):
             t=title(raw)
             low=t.casefold()
             if not t or t.startswith(('#',':','!')) or '{' in t or low.startswith(('subst:','safesubst:')):

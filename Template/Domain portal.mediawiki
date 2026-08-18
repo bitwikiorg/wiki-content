@@ -1,0 +1,56 @@
+<includeonly>
+= {{{title|{{PAGENAME}}}}} =
+
+{{{description}}}
+
+== Start here ==
+{{{start}}}
+
+== Browse this domain ==
+{{#ask:
+ [[Domain::{{{domain}}}]]
+ |?Entity type
+ |?Epistemic status
+ |?Lifecycle status
+ |limit=100
+ |format=table
+ |mainlabel=Page
+}}
+
+[[:Category:{{{category}}}|Browse the {{{category}}} category]]
+
+{{{tree|}}}
+
+== Related portals ==
+{{{related}}}
+
+== About this portal ==
+This portal is a reader-facing view over the knowledge corpus. It does not define the ontology and does not imply that the domain is exclusive. A knowledge object may belong to multiple domains.
+
+See [[BITwiki:Navigation]], [[BITwiki:Organization]], and [[BITwiki:Semantic properties]].
+
+[[Category:Portals]]
+</includeonly>
+<noinclude>
+= Domain portal =
+
+Reusable navigation shell for V2 domain portals.
+
+<pre>
+{{Domain portal
+ |title=Biology
+ |domain=Biology
+ |category=Biology
+ |description=Entry point for living systems...
+ |start=[[Cell membrane]] — compact domain exemplar
+ |tree=<categorytree mode="pages" depth="2">Biology</categorytree>
+ |related=[[Portal:Science|Science]] · [[Portal:Medicine|Medicine]]
+}}
+</pre>
+
+The template supplies navigation mechanics only. Domain-specific orientation and cross-domain relationships remain explicit on each portal.
+
+The semantic table queries the [[Property:Domain|Domain]] property rather than treating category membership as ontology. The category remains a complementary human browse surface.
+
+[[Category:BITwiki templates]]
+</noinclude>

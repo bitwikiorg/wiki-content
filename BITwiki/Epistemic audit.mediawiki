@@ -1,0 +1,118 @@
+{{Source status|status=source-reconciled operational guide|note=Preserves useful audit practice from V1 Epistemic Audit Framework while removing universal numeric thresholds and source ladders contradicted by later human-reviewed epistemic revisions.}}
+
+= Epistemic audit =
+
+An epistemic audit tests whether BITwiki's stated epistemic practices are actually visible in content.
+
+The purpose is '''improvement, not punishment'''. Audits should identify patterns, hidden assumptions, source/provenance failures, overclaiming, stale assessments, and structural weaknesses that ordinary editing misses.
+
+== Audit dimensions ==
+
+=== Claim / confidence alignment ===
+* Does the epistemic standing match the evidence actually presented?
+* Is the confidence rationale intelligible?
+* Is strong language carrying stronger certainty than the evidence supports?
+* Has confidence remained static despite materially changed evidence?
+
+=== Source verification ===
+* Do cited sources exist?
+* Do they contain the attributed claim?
+* Are important claims traceable closer to their evidentiary origin?
+* Are many citations actually descendants of one source?
+* Are dead/retracted/superseded sources identified?
+
+=== Evidence architecture ===
+* Are supporting and contradictory signals represented?
+* Are methods appropriate to the claim?
+* Is evidence independent where independence is being claimed?
+* Are alternative explanations materially addressed?
+
+=== Uncertainty ===
+* Are the relevant uncertainty types visible?
+* Are scope and boundary conditions stated?
+* Does a rapidly changing claim carry an appropriate date/version context?
+
+=== Provenance ===
+* Is authorship/origin known where it matters?
+* Are transformations such as agent synthesis, translation, compression, or domain adaptation visible?
+* Does the current page preserve lineage to the source material it superseded?
+
+=== Framing / perspective ===
+* Is one interpretive position presented as if no credible alternative exists?
+* Is loaded language substituting for evidence?
+* Is a declared worldview being mistaken for established empirical fact?
+
+== Audit modes ==
+
+=== Random sampling ===
+Sample across the corpus to detect systemic quality drift rather than only obvious controversial pages.
+
+=== Targeted audit ===
+Prioritize:
+* high-traffic or heavily transcluded pages;
+* high-stakes claims;
+* contested topics;
+* pages changed substantially by automation/agents;
+* pages with stale sources;
+* migration-heavy pages.
+
+=== Temporal audit ===
+Compare versions over time:
+* Did the claim strengthen or weaken?
+* Was source lineage preserved?
+* Did a revision silently remove contradiction or uncertainty?
+* Has an old status become stale?
+
+=== System audit ===
+Audit the epistemic machinery itself:
+* Are templates/properties encouraging false precision?
+* Are validators testing meaningful conditions or merely suppressing warnings?
+* Are workflow metrics being mistaken for knowledge quality?
+* Are agents able to cite nonexistent or misattributed sources without detection?
+
+== What V2 rejects from older audit machinery ==
+
+The V1 Epistemic Audit Framework contained useful quality-control structure but also universal rules such as numerical confidence bands and fixed source tiers.
+
+Later V1 revisions explicitly removed those conventions because they generated false precision and ignored context.
+
+Therefore V2 does not adopt universal rules such as:
+
+* confidence above X requires N sources;
+* source type T1 automatically outweighs T4;
+* every Established claim must satisfy one identical falsification field;
+* every page receives a single numerical quality score.
+
+A domain-specific process may use quantitative calibration where meaningful, but it must explain its semantics and evidence.
+
+== Audit output ==
+
+A useful finding states:
+
+# the exact issue;
+# the evidence for the issue;
+# why it affects interpretation or reliability;
+# the smallest useful remediation;
+# whether the issue is page-local or systemic;
+# what should trigger re-checking.
+
+Avoid vague labels like "low quality" when a specific source, scope, provenance, or uncertainty problem can be named.
+
+== Audit invariants ==
+
+* Audit the audit method.
+* Preserve evidence of disagreement.
+* Prefer corrections with traceable rationale.
+* Do not optimize solely for green dashboards or zero maintenance warnings.
+* Automation may discover anomalies; consequential epistemic judgment remains explainable and reviewable.
+* The absence of an audit flag is not proof of correctness.
+
+== Source lineage ==
+
+Primary V1 source: [[Epistemic Audit Framework]], informed by later human-reviewed [[BITwiki Claim Validation]], [[BITwiki Evidence Framework]], [[BITwiki Source Types]], and [[BITwiki Uncertainty Markers]].
+
+See [[BITwiki:Epistemics]], [[BITwiki:Claim validation]], [[BITwiki:V1 maintenance baseline]], and [[BITwiki:Editorial protocol]].
+
+[[Category:Epistemics]]
+[[Category:BITwiki architecture]]
+[[Category:Provenance]]

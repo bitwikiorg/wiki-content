@@ -28,7 +28,10 @@ V1 provenance  → archive-v1/
 | Exact V1 implementation | [`BITwiki/V1 implementation audit.mediawiki`](BITwiki/V1%20implementation%20audit.mediawiki) |
 | V1 category refactor | [`BITwiki/V1 category migration.mediawiki`](BITwiki/V1%20category%20migration.mediawiki) |
 | V1 Special-page baseline | [`BITwiki/V1 maintenance baseline.mediawiki`](BITwiki/V1%20maintenance%20baseline.mediawiki) |
-| Exhaustive V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
+| Current-live V1 fidelity audit | [`v1-fidelity-audit.json`](v1-fidelity-audit.json) |
+| Deleted-history boundary | [`v1-deleted-content-audit.json`](v1-deleted-content-audit.json) |
+| Unresolved deleted titles | [`v1-deleted-unresolved.json`](v1-deleted-unresolved.json) |
+| Exhaustive current-public V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
 | V2 structural validation | [`v2-validation.json`](v2-validation.json) |
 
 ## Repository map
@@ -41,7 +44,7 @@ wiki-content/
 ├── Template/      reusable/transcluded V2 components
 ├── Property/      Semantic MediaWiki properties
 ├── Category/      intentional human-readable indexes
-├── archive-v1/    exhaustive read-only public V1 snapshot
+├── archive-v1/    exhaustive current-public V1 snapshot
 ├── scripts/       archive + validation tooling
 └── .github/       reproducible automation
 ```
@@ -52,9 +55,29 @@ wiki-content/
 namespace ≠ entity type ≠ domain ≠ Book Matter ≠ epistemic status ≠ relationship
 ```
 
-## V1 archive — exhaustive, not sampled
+## V1 archive — independently verified current-public fidelity
 
-Latest verified snapshot: **2026-08-18T17:20:10Z**.
+Latest archive snapshot: **2026-08-18T17:20:10Z**.
+
+An independent live-vs-archive audit subsequently compared the archive back against the live anonymous-readable wiki rather than trusting the harvester's own assertions.
+
+### Verified complete scope
+
+For the **currently existing public V1 corpus**, verification is complete:
+
+- **186 / 186** live pages are archived;
+- **606 / 606** public revision bodies were independently compared;
+- page IDs and current revision IDs match;
+- complete revision-ID sets and revision SHA-1 values match;
+- current wikitext matches;
+- all revisions use only the `main` MediaWiki revision slot — no auxiliary slot content was omitted;
+- all **162** categories and every membership match;
+- all **9** Template pages and every current transclusion caller match;
+- both File-page revision records match;
+- namespace inventory matches;
+- required maintenance/Special-page reports show no drift.
+
+The independent audit reports `content_fidelity_pass: true` with no page, revision, category, template, file, namespace or maintenance mismatches.
 
 | Surface | Exact archived state |
 |---|---:|
@@ -77,19 +100,39 @@ Latest verified snapshot: **2026-08-18T17:20:10Z**.
 
 The two historical PNG upload records are preserved with timestamps, dimensions, size, SHA-1, original API URLs, and failed-resolution evidence. The files themselves now return 404 and are **not fabricated or silently omitted**.
 
+### Historical deletion boundary
+
+This is the important qualification to “all V1 content.”
+
+The public deletion log contains **165 delete actions affecting 164 unique titles**. Anonymous API access cannot return deleted revision bodies for those titles; the deleted-revision API returns permission errors.
+
+The deletion audit classifies:
+
+- **140** deleted titles with obvious surviving clean-name counterparts, largely `... final` duplicates intentionally removed;
+- **5** deleted titles that currently exist again under the exact same title;
+- **19** deleted titles without an obvious current counterpart.
+
+Those 19 include a mixture of obvious throwaway/spam/system material and potentially useful historical BITwiki artifacts such as old Main-page components/templates, `BITwiki modularization demo`, `Main page styled`, and old audit pages. Some deletion log comments preserve partial historical source snippets, but the exact full deleted bodies are not anonymously retrievable.
+
+Therefore the precise completeness statement is:
+
+> **The repository contains the complete current anonymous-readable V1 corpus and the complete public histories of every page that currently exists. It does not yet prove byte-for-byte recovery of revisions/pages deleted before the archive snapshot.**
+
+Proving complete historical V1 recovery beyond this boundary requires a privileged MediaWiki deleted-revision export, database/backup source, or another preserved copy of the deleted bodies.
+
 Open the evidence directly:
 
-- [`archive-v1/audit.json`](archive-v1/audit.json) — machine completeness assertions and exact counts
-- [`archive-v1/index.json`](archive-v1/index.json) — every public page
+- [`archive-v1/audit.json`](archive-v1/audit.json) — archive assertions and exact counts
+- [`v1-fidelity-audit.json`](v1-fidelity-audit.json) — independent live-vs-archive comparison
+- [`v1-deleted-content-audit.json`](v1-deleted-content-audit.json) — all public deletion-log events and deleted-revision recoverability
+- [`v1-deleted-unresolved.json`](v1-deleted-unresolved.json) — the 19 unresolved deleted titles
+- [`archive-v1/index.json`](archive-v1/index.json) — every current public page
 - [`archive-v1/pages/`](archive-v1/pages/) — exact current wikitext
-- [`archive-v1/history/`](archive-v1/history/) — complete captured public revision bodies
+- [`archive-v1/history/`](archive-v1/history/) — complete public histories for current pages
 - [`archive-v1/templates/index.json`](archive-v1/templates/index.json) — all 9 implemented templates
 - [`archive-v1/categories/index.json`](archive-v1/categories/index.json) — all 162 categories + membership graph
-- [`archive-v1/special/`](archive-v1/special/) — complete maintenance-report snapshots
+- [`archive-v1/special/`](archive-v1/special/) — maintenance-report snapshots
 - [`archive-v1/files/index.json`](archive-v1/files/index.json) — file revision/binary availability records
-- [`archive-v1-run-status.json`](archive-v1-run-status.json) — last archive run outcome
-
-The archive is generated by [`scripts/archive_v1.py`](scripts/archive_v1.py) through [`.github/workflows/archive-v1.yml`](.github/workflows/archive-v1.yml). MediaWiki continuation is followed until exhaustion. The latest machine run reports **harvest: success / verify: success**.
 
 ### Design intent ≠ deployed implementation
 

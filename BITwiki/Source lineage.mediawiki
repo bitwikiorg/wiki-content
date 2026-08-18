@@ -1,26 +1,94 @@
 = Source lineage =
 
-This page records the authority and editorial lineage used to reconstruct BITwiki V2.
+This page defines the authority and editorial lineage used to build BITwiki V2.
 
-== Authority for inherited public content ==
-# Live public BITwiki page and revision history.
-# Current first-party public BIThub and current public GitHub material.
-# Earlier public writings / captured historical public versions.
-# Historical design material used as provenance and archaeology, not automatic current-state truth.
+== Source authority ==
+
+For inherited BITwiki material:
+
+# '''Exact public V1 page/revision source''' preserved in <code>archive-v1/</code>.
+# '''Current first-party public BITwiki / BIThub / BITCORE / GitHub material''' where it clarifies later doctrine or current operation.
+# '''Earlier public writings and historical design artifacts''' used to recover intellectual lineage.
+# '''Historical Notion/design material''' used as archaeology and provenance, not automatic current-state truth.
+# '''New V2 editorial connective text''' only where the source corpus does not already provide a better formulation.
+
+== Current V1 completeness boundary ==
+
+The current anonymous-readable V1 corpus has been independently verified against the live wiki:
+
+* 186 / 186 public pages;
+* 606 / 606 public revision bodies;
+* all current page IDs and revision IDs;
+* all 162 used categories and complete memberships;
+* all 9 implemented templates and callers;
+* File revision metadata;
+* namespace and maintenance-report state.
+
+The fidelity audit reports no current-source mismatch.
+
+This does '''not''' mean every body of every page ever deleted from V1 is publicly recoverable. The deletion log contains historical deletions whose bodies require privileged deleted-revision access or older backups. See <code>v1-fidelity-audit.json</code>, <code>v1-deleted-content-audit.json</code>, and <code>v1-deleted-unresolved.json</code>.
 
 == Editorial rule ==
-Canonicalization is not paraphrasing. For foundational, constitutional, philosophical, and other authored material, preserve strong original language and compare revisions before deciding what is superseded.
+
+'''Canonicalization is not paraphrasing.'''
+
+For foundational, constitutional, philosophical, scientific, and other authored material:
+
+# recover the exact source first;
+# compare its public revisions and parallel versions;
+# identify strong language, unique distinctions, citations, metaphors, and implementation assumptions;
+# distinguish current canon from historical branch;
+# preserve provenance for merges, rewrites, redirects, and retirement;
+# write new connective prose only where needed.
+
+A cleaner sentence is not automatically a better sentence. An unusual sentence is not automatically noise.
+
+== Design intent versus implementation ==
+
+V1 contains sophisticated documentation for templates, properties, categories, concepts, modules, validation systems, and epistemic machinery that was not always instantiated as a live MediaWiki object.
+
+Therefore:
+
+<pre>
+design writing ≠ implemented namespace object
+wanted object ≠ implemented object
+category membership ≠ authored Category page
+semantic annotation ≠ authored Property page
+specification ≠ deployed capability
+</pre>
+
+Both layers remain evidence.
 
 == Historical material ==
+
 Older material can be obsolete in implementation while remaining important in thought. Newer is not automatically better. Older is not automatically canonical.
 
+Foundational writings may have genuine branches. For example, the Charter lineage includes an epistemic/field Charter, a research-space Charter, and a performative holographic Charter. V2 should make that lineage intelligible rather than pretending the three documents always said the same thing.
+
+See [[BITwiki:Foundations]].
+
 == Assistant-authored August 2026 draft ==
-The Git history between the original repository baseline and this source-grounded reset records an assistant-authored experimental V2 draft. It remains useful as an audit trail and source of proposed structure, but its prose is not treated as inherited project canon.
 
-No history is erased; the repository tree is corrected while previous commits remain recoverable.
+The Git history between the original repository baseline and the source-grounded rebuild records an assistant-authored experimental V2 draft. It remains useful as an audit trail and source of proposed structure, but its prose is not inherited project canon merely because it appeared in Git.
 
-== Unreconciled sources ==
-[[BITwiki:V1 public corpus inventory]] lists known public V1 titles. A title marked unreconciled requires complete source/body comparison before merge, redirect, or textual supersession.
+No Git history is erased; current canonical source is corrected while previous commits remain recoverable.
+
+== Canonicalization loop ==
+
+<pre>
+raw source
+→ context and lineage
+→ compare revisions / competing formulations
+→ research and cross-check
+→ preserve signal
+→ remove accidental duplication / obsolete machinery
+→ revise
+→ verify
+→ canonicalize
+→ transclude / relate / redirect deliberately
+→ publish
+</pre>
 
 [[Category:BITwiki meta]]
 [[Category:Provenance]]
+[[Category:BITwiki architecture]]

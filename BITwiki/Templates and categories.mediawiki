@@ -1,0 +1,96 @@
+{{Source status|status=source-grounded operational guide|note=Uses native MediaWiki template/category behavior and preserves V1 template/category surfaces as migration inputs rather than silently replacing them.}}
+
+= Templates and categories =
+
+Templates and categories solve different problems.
+
+* '''Template''' = reusable/transcluded content, structure, or interface.
+* '''Category''' = human-readable grouping and automatic index.
+* '''Property''' = Semantic MediaWiki attribute or relationship.
+
+Do not use one merely because another would require more thought.
+
+== Template rules ==
+
+A canonical V2 template should have:
+
+# a clear purpose;
+# documented parameters;
+# one minimal usage example;
+# explicit dependencies where relevant;
+# source/provenance notes when inherited from V1;
+# its own template category inside <code>&lt;noinclude&gt;</code>.
+
+Use <code>&lt;includeonly&gt;</code> only for behavior/content intended to affect transcluding pages. Use <code>&lt;noinclude&gt;</code> for template documentation and categories that belong to the template itself.
+
+Do not delete an unused V1 template merely because [[Special:UnusedTemplates]] lists it. It may be a compatibility surface, an abandoned experiment worth archiving, or a component whose callers were removed. Recover the body and usage history first.
+
+== Category rules ==
+
+A V2 category page should state, when useful:
+
+* what the category groups;
+* inclusion/exclusion criteria;
+* parent category/categories;
+* whether it is a domain, navigation group, operational/meta grouping, or another intentional class.
+
+Category pages are indexes, not directories. A page may belong to multiple categories. Category hierarchy is a navigation graph, not the ontology.
+
+Do not create a category solely to mirror every semantic property value.
+
+== V2 top-level category surfaces ==
+
+* [[:Category:Knowledge domains]] — the twelve current domain entry surfaces.
+* [[:Category:Portals]] — portal pages.
+* [[:Category:Domain exemplars]] — the current cross-domain format tests.
+* [[:Category:BITwiki meta]] — project/meta documentation.
+* [[:Category:BITwiki architecture]] — architecture and knowledge-system design.
+* [[:Category:BITwiki foundations]] — manifesto/constitutional foundations.
+* [[:Category:BITwiki governance]] — governance/stewardship.
+* [[:Category:BITwiki templates]] — canonical V2 templates.
+* [[:Category:Epistemics]] — epistemic framework material.
+* [[:Category:Provenance]] — source/migration provenance.
+* [[:Category:Navigation]] — navigation-system documentation.
+
+== Maintenance surfaces ==
+
+These are software-generated operational reports, not ordinary content pages:
+
+* [[Special:AllPages]] — enumerate pages by namespace;
+* [[Special:Categories]] — categories with members;
+* [[Special:UncategorizedPages]] — pages without category tags;
+* [[Special:UncategorizedTemplates]] — templates without category tags;
+* [[Special:UnusedTemplates]] — templates not currently transcluded;
+* [[Special:WantedCategories]] — categories with members but no created category page;
+* [[Special:UnusedCategories]] — created categories with no members;
+* [[Special:BrokenRedirects]] and [[Special:DoubleRedirects]] — migration/redirect hygiene.
+
+== V1 → V2 template/category migration ==
+
+<pre>
+archive title + raw source + revision/history
+→ identify transclusions/category membership
+→ compare duplicate/variant implementations
+→ preserve unique writing and behavior
+→ decide KEEP / REWRITE / MERGE / REDIRECT / RETIRE
+→ implement V2
+→ run Special-page maintenance checks
+</pre>
+
+A missing category page does not mean the category is unused: MediaWiki can have members in a category whose editable Category: page has never been created. Likewise, an unused template is not automatically disposable.
+
+== Release checks ==
+
+Before a V2 deployment is considered clean:
+
+# review all Template namespace pages against the V1 template archive;
+# review [[Special:UncategorizedTemplates]];
+# review [[Special:UnusedTemplates]] deliberately, not destructively;
+# review [[Special:Categories]] and [[Special:WantedCategories]];
+# review [[Special:UncategorizedPages]];
+# verify that every V2 category/template has documentation or an explicit reason not to;
+# verify redirects and transclusions after renames.
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]
+[[Category:Navigation]]

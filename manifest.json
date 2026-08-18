@@ -4,8 +4,17 @@
   "repository": "bitwikiorg/wiki-content",
   "format": "MediaWiki wikitext",
   "visibility": "public-only",
-  "source_policy": "source-first; preserve authored language and provenance; unresolved V1 bodies remain inventory targets rather than guessed rewrites",
-  "namespace_paths": {"Main":"Main/","BITwiki":"BITwiki/","Portal":"Portal/","Template":"Template/","Property":"Property/","Category":"Category/"},
-  "canonicalization_loop": ["recover source","preserve raw signal","compare revisions","research and cross-check","distill redundancy","revise","verify","canonicalize","transclude and relate","publish"],
+  "source_policy": "source-first; preserve authored language and provenance; unresolved V1 bodies remain archive/reconciliation targets rather than guessed rewrites",
+  "namespace_paths": {
+    "Main": "Main/",
+    "BITwiki": "BITwiki/",
+    "Portal": "Portal/",
+    "Template": "Template/",
+    "Property": "Property/",
+    "Category": "Category/"
+  },
+  "archive_path": "archive-v1/",
+  "archive_states": ["accounted", "archived", "reconciled", "refactored"],
+  "canonicalization_loop": ["recover source", "preserve raw signal", "compare revisions", "research and cross-check", "distill redundancy", "revise", "verify", "canonicalize", "transclude and relate", "publish"],
   "status": "source-grounded V2 reconstruction"
 }

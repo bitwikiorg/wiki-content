@@ -13,6 +13,7 @@ on:
       - 'archive-v1/**'
       - 'scripts/validate_v2.py'
       - 'scripts/inventory_corpus.py'
+      - 'scripts/classify_v1_page_roles.py'
       - '.github/workflows/validate-v2-pr.yml'
 
 permissions:
@@ -38,6 +39,9 @@ jobs:
       - name: Build V2 corpus and V1 classification inventories
         run: python scripts/inventory_corpus.py
 
+      - name: Classify V1 page roles before ontology
+        run: python scripts/classify_v1_page_roles.py
+
       - name: Show validation report
         if: always()
         run: cat v2-validation.json
@@ -51,4 +55,5 @@ jobs:
             v2-validation.json
             v2-corpus-inventory.json
             v1-classification-usage.json
+            v1-page-role-matrix.json
           if-no-files-found: error

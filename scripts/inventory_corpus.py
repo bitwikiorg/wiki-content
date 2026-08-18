@@ -43,6 +43,23 @@ V1_CLASSIFICATION_PROPERTIES = {
     "has epistemic tier",
 }
 
+# These are API-recorded V1 category memberships that clearly carried an identity/type job.
+V1_IDENTITY_CATEGORIES = {
+    "Topics",
+    "Ideas",
+    "Implementations",
+    "Projects",
+    "Protocols",
+    "Datasets",
+    "People",
+    "Organizations",
+    "Events",
+    "Publications",
+    "Locations",
+    "Technologies",
+    "Concepts",
+}
+
 
 def normalized(value: str) -> str:
     return re.sub(r"\s+", " ", value.replace("_", " ").strip())
@@ -73,7 +90,7 @@ def mediawiki_title(path: Path) -> str:
 
 
 def template_params(text: str, name: str) -> dict[str, str]:
-    """Parse the simple, line-oriented parameter style used by V2 identity templates."""
+    """Parse the simple, line-oriented parameter style used by current V2 templates."""
     match = re.search(r"{{\s*" + re.escape(name) + r"\b(.*?)}}", text, re.I | re.S)
     if not match:
         return {}
@@ -91,6 +108,7 @@ def template_params(text: str, name: str) -> dict[str, str]:
 
 
 def semantic_annotations(text: str) -> list[dict[str, str]]:
+    """Recover source-syntax annotations; this is not an exported SMW semantic store."""
     annotations = []
     for raw_property, raw_value in SEMANTIC_RE.findall(executable_text(text)):
         prop = normalized(raw_property)
@@ -108,12 +126,14 @@ def sorted_counter(counter: Counter) -> dict[str, int]:
 def build_v2_inventory() -> tuple[dict, dict]:
     records = []
     namespace_counts = Counter()
+    nonredirect_namespace_counts = Counter()
     category_counts = Counter()
     semantic_property_counts = Counter()
     semantic_value_counts: dict[str, Counter] = defaultdict(Counter)
     entity_types = Counter()
     domains = Counter()
     statuses = Counter()
+    main_roles = Counter()
     main_canonical_without_knowledge_object = []
     incomplete_knowledge_objects = []
     v1_term_reuse = []
@@ -132,9 +152,12 @@ def build_v2_inventory() -> tuple[dict, dict]:
 
             for category in categories:
                 category_counts[category] += 1
-            for ann in annotations:
-                semantic_property_counts[ann["property"]] += 1
-                semantic_value_counts[ann["property"]][ann["value"]] += 1
+            # Source syntax is useful evidence, but template/property implementation markup is
+            # not counted as instantiated page-level semantic data.
+            if root not in {"Template", "Property"}:
+                for ann in annotations:
+                    semantic_property_counts[ann["property"]] += 1
+                    semantic_value_counts[ann["property"]][ann["value"]] += 1
 
             entity_type = knowledge.get("entity_type")
             domain = knowledge.get("domain")
@@ -162,8 +185,16 @@ def build_v2_inventory() -> tuple[dict, dict]:
                 if missing:
                     incomplete_knowledge_objects.append({"path": str(path), "title": title, "missing": missing})
 
-            if root == "Main" and not redirect_target and not knowledge and title != "Main Page":
-                main_canonical_without_knowledge_object.append(str(path))
+            if root == "Main":
+                if redirect_target:
+                    main_roles["compatibility_or_other_redirect"] += 1
+                elif title == "Main Page":
+                    main_roles["main_page"] += 1
+                elif knowledge:
+                    main_roles["explicit_knowledge_object"] += 1
+                else:
+                    main_roles["other_nonredirect"] += 1
+                    main_canonical_without_knowledge_object.append(str(path))
 
             classification_values = []
             if entity_type:
@@ -180,6 +211,8 @@ def build_v2_inventory() -> tuple[dict, dict]:
                 v1_term_reuse.append({"path": str(path), "title": title, "uses": historical_hits})
 
             namespace_counts[root] += 1
+            if not redirect_target:
+                nonredirect_namespace_counts[root] += 1
             records.append(
                 {
                     "path": str(path),
@@ -190,22 +223,24 @@ def build_v2_inventory() -> tuple[dict, dict]:
                     "categories": categories,
                     "knowledge_object": knowledge or None,
                     "source_status": source_status or None,
-                    "semantic_annotations": annotations,
+                    "semantic_annotation_source_syntax": annotations,
                 }
             )
 
     summary = {
         "deployable_pages": len(records),
         "namespace_counts": sorted_counter(namespace_counts),
+        "nonredirect_namespace_counts": sorted_counter(nonredirect_namespace_counts),
         "redirect_pages": sum(1 for r in records if r["redirect"]),
         "nonredirect_pages": sum(1 for r in records if not r["redirect"]),
+        "main_page_roles": sorted_counter(main_roles),
         "knowledge_object_pages": sum(1 for r in records if r["knowledge_object"]),
         "entity_type_distribution_explicit": sorted_counter(entity_types),
         "domain_distribution_explicit": sorted_counter(domains),
         "epistemic_status_distribution_explicit": sorted_counter(statuses),
         "category_usage": sorted_counter(category_counts),
-        "semantic_property_usage": sorted_counter(semantic_property_counts),
-        "semantic_values_by_property": {
+        "semantic_annotation_source_syntax_usage": sorted_counter(semantic_property_counts),
+        "semantic_annotation_source_values": {
             prop: sorted_counter(values)
             for prop, values in sorted(semantic_value_counts.items(), key=lambda kv: kv[0].casefold())
         },
@@ -215,7 +250,11 @@ def build_v2_inventory() -> tuple[dict, dict]:
     }
     inventory = {
         "scope": ROOTS,
-        "interpretation": "Descriptive corpus evidence only; absence or frequency does not by itself authorize schema changes.",
+        "interpretation": (
+            "Descriptive repository evidence only. Explicit Knowledge object parameters are "
+            "reported separately from source-syntax semantic annotations; absence or frequency "
+            "does not by itself authorize schema changes."
+        ),
         "summary": summary,
         "pages": records,
     }
@@ -235,21 +274,31 @@ def build_v1_classification_inventory() -> dict:
     index = load_v1_index()
     property_counts = Counter()
     values_by_property: dict[str, Counter] = defaultdict(Counter)
-    category_counts = Counter()
+    api_category_counts = Counter()
+    identity_category_counts = Counter()
     infobox_type_counts = Counter()
     pages = []
     topic_function_counts = Counter()
 
     v1_root = Path("archive-v1/pages/Main")
     for path in sorted(v1_root.rglob("*.mediawiki")) if v1_root.exists() else []:
+        repo_path = path.as_posix()
+        meta = index.get(repo_path, {})
         text = path.read_text(encoding="utf-8")
         parsed = executable_text(text)
-        categories = sorted({normalized(x) for x in CATEGORY_RE.findall(parsed)})
         annotations = semantic_annotations(parsed)
         relevant = []
 
+        # API-recorded category memberships from the exhaustive archive are implementation
+        # evidence. Do not infer them again from prose/examples in the page body.
+        categories = sorted(
+            normalized(c.split(":", 1)[1] if c.casefold().startswith("category:") else c)
+            for c in meta.get("categories", [])
+        )
         for category in categories:
-            category_counts[category] += 1
+            api_category_counts[category] += 1
+            if category in V1_IDENTITY_CATEGORIES:
+                identity_category_counts[category] += 1
 
         for ann in annotations:
             key = ann["property"].casefold()
@@ -260,11 +309,11 @@ def build_v1_classification_inventory() -> dict:
             relevant.append(ann)
 
             if ann["value"].casefold() == "topic" and key in {"has entity type", "has extended type", "has page type"}:
-                topic_function_counts["entity_or_page_type"] += 1
+                topic_function_counts["entity_or_page_type_source_syntax"] += 1
             if "topic" in key:
-                topic_function_counts["hierarchy_or_topic_relation"] += 1
+                topic_function_counts["hierarchy_or_topic_relation_source_syntax"] += 1
             if key in {"has domain", "has field"}:
-                topic_function_counts["domain_or_field"] += 1
+                topic_function_counts["domain_or_field_source_syntax"] += 1
 
         infobox = template_params(parsed, "Infobox")
         infobox_type = infobox.get("type")
@@ -272,18 +321,17 @@ def build_v1_classification_inventory() -> dict:
             infobox_type_counts[infobox_type] += 1
 
         topic_literal = bool(re.search(r"\bTopic\b", parsed, re.I))
-        if relevant or infobox_type or topic_literal:
-            repo_path = path.as_posix()
-            meta = index.get(repo_path, {})
+        if relevant or infobox_type or topic_literal or any(c in V1_IDENTITY_CATEGORIES for c in categories):
             pages.append(
                 {
                     "path": repo_path,
                     "title": meta.get("title") or unquote(path.stem),
                     "pageid": meta.get("pageid"),
                     "current_revid": meta.get("current_revid"),
-                    "categories": categories,
-                    "infobox_type": infobox_type,
-                    "classification_annotations": relevant,
+                    "api_recorded_categories": categories,
+                    "api_recorded_templates": meta.get("templates", []),
+                    "infobox_type_source_parameter": infobox_type,
+                    "classification_annotation_source_syntax": relevant,
                     "contains_topic_literal": topic_literal,
                 }
             )
@@ -291,18 +339,24 @@ def build_v1_classification_inventory() -> dict:
     topic_pages = [p for p in pages if p["contains_topic_literal"]]
     return {
         "scope": "archive-v1/pages/Main",
-        "interpretation": "Recovered implementation/source usage. Design prose and actual semantic annotations are kept distinguishable in each page record.",
+        "interpretation": (
+            "Category memberships and template callers come from the exhaustive MediaWiki API "
+            "archive and are implementation evidence. Semantic/property occurrences and Infobox "
+            "parameters are recovered from source syntax and may include documentation/specification "
+            "examples; they therefore require page-context review before being called deployed schema behavior."
+        ),
         "summary": {
             "pages_with_classification_or_topic_signal": len(pages),
             "pages_containing_topic_literal": len(topic_pages),
-            "classification_property_usage": sorted_counter(property_counts),
-            "classification_values_by_property": {
+            "api_recorded_category_usage": sorted_counter(api_category_counts),
+            "api_recorded_identity_category_usage": sorted_counter(identity_category_counts),
+            "classification_annotation_source_syntax_usage": sorted_counter(property_counts),
+            "classification_annotation_source_values": {
                 prop: sorted_counter(values)
                 for prop, values in sorted(values_by_property.items(), key=lambda kv: kv[0].casefold())
             },
-            "infobox_type_usage": sorted_counter(infobox_type_counts),
-            "category_usage": sorted_counter(category_counts),
-            "topic_function_signal": sorted_counter(topic_function_counts),
+            "infobox_type_source_parameter_usage": sorted_counter(infobox_type_counts),
+            "topic_function_source_signal": sorted_counter(topic_function_counts),
         },
         "pages": pages,
     }

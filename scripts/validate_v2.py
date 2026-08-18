@@ -4,7 +4,8 @@ from pathlib import Path
 
 ROOTS=['Main','BITwiki','Portal','Template','Property','Category']
 CATEGORY_RE=re.compile(r'\[\[\s*Category:([^\]|#]+)',re.I)
-TEMPLATE_RE=re.compile(r'\{\{\s*([^{}|\n]+)')
+# Exactly two braces: do not mistake template parameters {{{name}}} for transclusions.
+TEMPLATE_RE=re.compile(r'(?<!\{)\{\{(?!\{)\s*([^{}|\n]+)')
 
 def title(s):
     return re.sub(r'\s+',' ',s.replace('_',' ').strip())
@@ -30,7 +31,6 @@ def main():
             low=t.casefold()
             if not t or t.startswith(('#',':','!')) or '{' in t or low.startswith(('subst:','safesubst:')):
                 continue
-            # Parser/magic constructs that are not Template namespace transclusions.
             if ':' in t and t.split(':',1)[0].casefold() in {'int','msg','msgnw'}:
                 continue
             temps.append(t)

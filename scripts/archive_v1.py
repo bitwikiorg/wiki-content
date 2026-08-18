@@ -130,7 +130,7 @@ def main():
     raw=si['query']['namespaces']; nss=list(raw.values()) if isinstance(raw,dict) else raw; nss=sorted([n for n in nss if int(n['id'])>=0],key=lambda n:int(n['id']))
     allp=[]; byns={}; nsum=[]
     for n in nss:
-        i=int(n['id']); name=n.get('canonical') or n.get('name') or ('Main' if i==0 else f'NS-{i}'); name='Main' if i==0 else name
+        i=int(n['id']); name=n.get('name') or n.get('canonical') or ('Main' if i==0 else f'NS-{i}'); name='Main' if i==0 else name
         ps=pages_of(a,i); byns[i]=ps; rec={'id':i,'name':n.get('name',''),'canonical':n.get('canonical',''),'archive_name':name,'count':len(ps),'pages':ps}; dump(OUT/'namespaces'/safe(name)/'index.json',rec)
         nsum.append({k:rec[k] for k in ('id','name','canonical','archive_name','count')}); print(i,name,len(ps))
         for p in ps:p['namespace_name']=name; allp.append(p)

@@ -107,13 +107,28 @@ def archive_files(a,file_pages):
         for n,info in enumerate(infos):
             url=info.get('url')
             if not url: raise RuntimeError(f'Missing binary URL for {title} revision {n}')
-            r=a.s.get(url,timeout=90); r.raise_for_status(); data=r.content
+            candidates=[url]
+            parsed=urlparse(url)
+            for bad in ('/W/images/','/w/images/'):
+                if bad in parsed.path:
+                    candidates.append(f"{parsed.scheme}://{parsed.netloc}{parsed.path.replace(bad,'/images/',1)}")
+            data=None; resolved_url=None; errors=[]
+            for candidate in dict.fromkeys(candidates):
+                try:
+                    r=a.s.get(candidate,timeout=90)
+                    if r.ok:
+                        data=r.content; resolved_url=candidate; break
+                    errors.append(f"{r.status_code} {candidate}")
+                except Exception as e:
+                    errors.append(f"{type(e).__name__}: {candidate}: {e}")
+            if data is None:
+                raise RuntimeError(f"Unable to resolve binary for {title} revision {n}: {' | '.join(errors)}")
             sha256=hashlib.sha256(data).hexdigest(); ext=Path(urlparse(url).path).suffix
             bp=OUT/'files'/'blobs'/(sha256+ext)
             bp.parent.mkdir(parents=True,exist_ok=True)
             if not bp.exists(): bp.write_bytes(data)
             blobs[str(bp)]={'sha256':sha256,'bytes':len(data),'mime':info.get('mime')}
-            rec=dict(info); rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)
+            rec=dict(info); rec['api_binary_url']=url; rec['resolved_binary_url']=resolved_url; rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)
         record={'title':title,'pageid':p.get('pageid'),'binary_revision_count':len(out),'revisions':out}
         dump(OUT/'files'/'records'/(safe(title)+'.json'),record); records.append(record)
     dump(OUT/'files'/'index.json',{'file_page_count':len(file_pages),'binary_revision_count':revision_count,'unique_blob_count':len(blobs),'records':records,'blobs':blobs})

@@ -4,8 +4,8 @@
 
 This page separates '''what V1 documented''' from '''what V1 actually instantiated in MediaWiki'''. Both matter. Design documents preserve intent; namespaces, revisions, category membership and template transclusion show implementation reality.
 
-== Snapshot ==
-The exhaustive archive completed 2026-08-18 through <code>https://bitwiki.org/w/api.php</code>, following MediaWiki continuation until no continuation token remained.
+== Verified snapshot ==
+The exhaustive archive completed at <code>2026-08-18T17:20:10Z</code> through <code>https://bitwiki.org/w/api.php</code>, following MediaWiki continuation until no continuation token remained. The archive workflow reports <code>harvest: success</code> and <code>verify: success</code> with no audit warnings.
 
 {| class="wikitable"
 ! Surface !! V1 public implementation
@@ -30,14 +30,14 @@ The exhaustive archive completed 2026-08-18 through <code>https://bitwiki.org/w/
 |-
 | MediaWiki namespace || 6 pages
 |-
-| File namespace || 2 pages
+| File namespace || 2 description pages / 2 file revision records
 |-
 | Concept namespace || 0 pages
 |-
 | Module namespace || 0 pages
 |}
 
-The exact machine-readable audit is preserved in <code>archive-v1/audit.json</code>; every current page body is in <code>archive-v1/pages/</code> and every captured historical revision body is in <code>archive-v1/history/</code>.
+Machine sources: <code>archive-v1/audit.json</code>, <code>archive-v1/index.json</code>, <code>archive-v1/pages/</code>, <code>archive-v1/history/</code>, and <code>archive-v1-run-status.json</code>.
 
 == Templates: implemented versus documented ==
 V1 documentation describes a much larger template architecture, but only nine Template namespace pages actually exist.
@@ -67,39 +67,34 @@ V1 documentation describes a much larger template architecture, but only nine Te
 Eight of the nine are uncategorized; the only unused template is <code>Template:BITwiki</code>. <code>Template:Infobox</code> is categorized under <code>Concepts</code> and is used across constitutional, epistemic, ontology, schema, governance, migration and validation documents.
 
 === The Infobox discrepancy ===
-The live <code>Template:Infobox</code> is small: it renders title, type, status, related implementation and category. Later V1 pages pass many additional parameters such as description, author, version, epistemic status, confidence, workflow and ontology. Those parameters express important '''design intent''', but the actual live template does not consume most of them.
+The live <code>Template:Infobox</code> renders title, type, status, related implementation and category. Later V1 pages pass many additional parameters such as description, author, version, epistemic status, confidence, workflow and ontology. Those parameters express important '''design intent''', but the actual live template does not consume most of them.
 
 V2 must therefore recover the intended schema from the writings without pretending V1 already implemented it.
 
 === Wanted templates ===
-<code>Special:WantedTemplates</code> contains 59 referenced-but-uncreated templates. The largest reference is <code>Template:Documentation</code> (82 references), followed by planned document-header, epistemic-marker, schema-matter, infobox, portal, citation and validation templates.
+<code>Special:WantedTemplates</code> contains '''59 referenced-but-uncreated templates'''. <code>Template:Documentation</code> alone has 82 references; other wanted titles represent planned document-header, epistemic-marker, schema-matter, infobox, portal, citation and validation machinery.
 
-These references are evidence of intended architecture. They are '''not implemented V1 templates''' and must not be bulk-created in V2 merely to eliminate red links. Each function is evaluated against V2 primitives first.
+Wanted templates are design-intent evidence, not deployed V1 objects and not an automatic V2 implementation backlog.
 
 == Categories: membership without category pages ==
 V1 uses '''162 distinct category names''', but the Category namespace contains '''zero created category pages'''. Every V1 category is therefore a membership/index label without authored Category-page documentation.
 
-This is crucial. The categories record useful historical classification decisions, but the intended hierarchy described in [[CATEGORY ARCHITECTURE]] was never fully instantiated as a documented Category namespace.
+The archive preserves every category name, count and member in <code>archive-v1/categories/</code>. See [[BITwiki:V1 category migration]] for the functional refactor.
 
-The archive preserves:
-* all 162 names in <code>archive-v1/categories/index.json</code>;
-* complete membership for every category in <code>archive-v1/categories/members/</code>;
-* member counts and whether an editable Category page existed;
-* the generated wanted/unused/uncategorized category reports.
-
-See [[BITwiki:V1 category migration]] for the V2 refactor.
+=== Category:BITwiki Templates ===
+This category has exactly seven members, but all seven are Main-namespace template-system documentation pages rather than actual Template namespace objects. See [[BITwiki:Templates and categories]].
 
 == Semantic implementation ==
 V1 contains extensive Main-namespace documentation for properties, entity types, relationships, ontology alignment, SMW templates and Lua modules. The actual namespace implementation is much smaller.
 
 === Property namespace ===
-Only four Property pages exist, all imported vocabulary:
+Only four authored Property pages exist, all imported vocabulary:
 * <code>Property:Foaf:homepage</code>
 * <code>Property:Foaf:knows</code>
 * <code>Property:Foaf:name</code>
 * <code>Property:Owl:differentFrom</code>
 
-The many <code>[[Has ...::...]]</code> annotations in Main pages may create implicit SMW properties, but they are not equivalent to authored <code>Property:</code> definition pages.
+Semantic annotations in Main pages may create implicit SMW properties; they are not equivalent to authored <code>Property:</code> definition pages.
 
 === smw/schema ===
 Three pages exist:
@@ -108,28 +103,41 @@ Three pages exist:
 * <code>smw/schema:Profile:Facetedsearch default profile</code>
 
 === Concept / Module ===
-No Concept namespace pages and no Module namespace pages exist in the archived public V1 snapshot. Documentation describing concepts/Lua modules must therefore be read as design/specification material unless an implementation exists elsewhere.
+No Concept namespace pages and no Module namespace pages exist in the archived public V1 snapshot. Documentation describing concepts/Lua modules is therefore design/specification material unless an implementation exists elsewhere.
 
-== MediaWiki configuration surface ==
+== MediaWiki configuration ==
 Six MediaWiki pages exist:
 * <code>MediaWiki:Common.css</code>
 * <code>MediaWiki:KnowledgeGraphOptions</code>
 * four SMW imported-vocabulary configuration pages for FOAF, OWL, schema and SKOS.
 
-Two File description pages also exist and are archived with their revision text. Binary file preservation is a separate media-export concern from page-source preservation.
+== File archive ==
+V1 has two File description pages and two corresponding file revision metadata records:
+* <code>File:Binary bitwiki logo.png</code>
+* <code>File:Wikiteq.png</code>
 
-== Maintenance state ==
+Their File-page wikitext and revision histories are archived. MediaWiki still reports the original upload metadata—including timestamps, byte sizes, dimensions, SHA-1 values and upload URLs—but both historical PNG URLs now return 404 from both the API-reported <code>/w/images/</code> path and the current <code>/images/</code> fallback.
+
+Therefore:
+* file revision metadata accounted for: '''2 / 2''';
+* binary files retrievable/captured: '''0 / 2''';
+* historical binary references preserved as unavailable: '''2 / 2'''.
+
+The archive records this explicitly in <code>archive-v1/files/index.json</code>. It does not fabricate the missing binaries or call them captured.
+
+== Maintenance baseline ==
 The corrected exhaustive QueryPage snapshot reports:
 * 20 uncategorized Main pages;
 * 8 uncategorized templates;
 * 1 unused template;
 * 162 wanted categories;
 * 59 wanted templates;
+* 1 wanted file;
 * 888 wanted pages;
 * 0 broken redirects;
 * 0 double redirects.
 
-The 20 uncategorized Main pages are mostly Book Matter subpages, Component fragments and <code>Test Page</code>. V2 should classify these by function rather than mechanically adding a generic category to silence the report.
+See [[BITwiki:V1 maintenance baseline]] for interpretation and pre/post-migration use.
 
 == Governing migration rule ==
 <pre>
@@ -138,9 +146,10 @@ wanted object ≠ implemented object
 category membership ≠ documented category page
 semantic annotation ≠ authored Property page
 specification ≠ deployed capability
+file metadata record ≠ available binary
 </pre>
 
-V2 preserves all five forms of evidence and states which layer a claim refers to.
+V2 preserves these different forms of evidence and states which layer a claim refers to.
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

@@ -10,7 +10,9 @@ on:
       - 'Template/**'
       - 'Property/**'
       - 'Category/**'
+      - 'archive-v1/**'
       - 'scripts/validate_v2.py'
+      - 'scripts/inventory_corpus.py'
       - '.github/workflows/validate-v2-pr.yml'
 
 permissions:
@@ -33,6 +35,20 @@ jobs:
       - name: Validate deployable MediaWiki structure
         run: python scripts/validate_v2.py
 
+      - name: Build V2 corpus and V1 classification inventories
+        run: python scripts/inventory_corpus.py
+
       - name: Show validation report
         if: always()
         run: cat v2-validation.json
+
+      - name: Upload architecture evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitwiki-v2-architecture-evidence
+          path: |
+            v2-validation.json
+            v2-corpus-inventory.json
+            v1-classification-usage.json
+          if-no-files-found: error

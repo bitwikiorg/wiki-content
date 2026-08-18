@@ -1,0 +1,72 @@
+name: Archive BITwiki V1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/archive_v1.py
+      - .github/workflows/archive-v1.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-bitwiki-v1
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install harvester dependency
+        run: python -m pip install --disable-pip-version-check requests
+
+      - name: Harvest complete public V1
+        run: python scripts/archive_v1.py
+
+      - name: Verify completeness assertions
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('archive-v1/audit.json').read_text())
+          failed=[k for k,v in a['completeness'].items() if not v]
+          assert not failed, f'Completeness assertions failed: {failed}'
+          assert a['page_count'] > 0
+          assert a['revision_count'] >= a['page_count']
+          assert a['namespace_counts_by_name'].get('Main',0) >= 162, a['namespace_counts_by_name']
+          assert 'Template' in a['namespace_counts_by_name']
+          assert 'Category' in a['namespace_counts_by_name']
+          for q in ['Uncategorizedpages','Uncategorizedtemplates','Unusedtemplates','Wantedcategories','Unusedcategories','BrokenRedirects','DoubleRedirects']:
+              assert q in a['querypage_counts'], f'Missing required report {q}'
+          print(json.dumps(a, indent=2))
+          PY
+
+      - name: Commit exhaustive archive
+        run: |
+          git config user.name 'BITwiki Archive Bot'
+          git config user.email 'bitwikicryptopedia@gmail.com'
+          git add -A archive-v1
+          if git diff --cached --quiet; then
+            echo 'Archive already current.'
+          else
+            git commit -m 'Refresh exhaustive public V1 archive'
+            git push origin HEAD:main
+          fi
+
+      - name: Upload archive artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitwiki-v1-public-archive
+          path: archive-v1
+          if-no-files-found: error

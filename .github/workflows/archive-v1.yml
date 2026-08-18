@@ -47,6 +47,7 @@ jobs:
           assert a['namespace_counts_by_name'].get('Main',0) >= 162, a['namespace_counts_by_name']
           assert 'Template' in a['namespace_counts_by_name']
           assert 'Category' in a['namespace_counts_by_name']
+          assert a.get('file_binary_revision_count',0) >= a.get('file_page_count',0)
           for q in ['Uncategorizedpages','Uncategorizedtemplates','Unusedtemplates','Wantedcategories','Unusedcategories','BrokenRedirects','DoubleRedirects']:
               assert q in a['querypage_counts'], f'Missing required report {q}'
           print(json.dumps(a, indent=2))
@@ -61,6 +62,7 @@ jobs:
             echo 'Archive already current.'
           else
             git commit -m 'Refresh exhaustive public V1 archive'
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
 

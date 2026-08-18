@@ -1,95 +1,115 @@
-{{Source status|status=source-grounded operational guide|note=Uses native MediaWiki template/category behavior and preserves V1 template/category surfaces as migration inputs rather than silently replacing them.}}
+{{Source status|status=source-grounded operational guide|note=Revised against the exhaustive V1 API archive: 9 implemented templates, 59 wanted templates, 162 used categories, zero created Category pages, and full transclusion/membership state.}}
 
 = Templates and categories =
 
 Templates and categories solve different problems.
 
-* '''Template''' = reusable/transcluded content, structure, or interface.
+* '''Template''' = reusable/transcluded content, structure or interface.
 * '''Category''' = human-readable grouping and automatic index.
 * '''Property''' = Semantic MediaWiki attribute or relationship.
+* '''Book Matter''' = reusable content anatomy.
+* '''Special page / validation category''' = generated operational state.
 
 Do not use one merely because another would require more thought.
 
-== Template rules ==
+== What V1 actually implemented ==
+The exhaustive public V1 archive contains:
+* 9 Template namespace pages;
+* 162 used category names;
+* 0 authored Category namespace pages;
+* 59 referenced-but-uncreated templates;
+* 8 uncategorized templates;
+* 1 unused template.
 
-A canonical V2 template should have:
+This differs materially from the larger system described in `Template Catalog`, `Template List`, `Template Usage Guide` and `CATEGORY ARCHITECTURE`. Those pages preserve valuable design intent, but intended components are not described as implemented until a corresponding live object exists.
 
-# a clear purpose;
+== V1 template dispositions ==
+
+=== Schema ancestor ===
+<code>Template:Infobox</code> is transcluded by 80 pages. It is the main implemented structural template and must be treated as compatibility-critical during migration.
+
+The live template supports only a small parameter set (title, type, status, related implementation and category), while later pages pass richer metadata. V2 must recover that richer schema from the source writings deliberately rather than assuming the template already enforced it.
+
+=== Presentation family ===
+The following live templates are primarily visual/navigation components:
+* <code>Template:BITwiki complex decorative circle</code>
+* <code>Template:BITwiki constructs decorative circle</code>
+* <code>Template:BITwiki footer</code>
+* <code>Template:BITwiki header element</code>
+* <code>Template:BITwiki implementations decorative circle</code>
+* <code>Template:BITwiki projects decorative circle</code>
+* <code>Template:BITwiki simple decorative circle</code>
+
+Their source and callers are preserved. They may be retired only after their remaining callers have been migrated to V2 navigation/presentation.
+
+=== Unused historical shell ===
+<code>Template:BITwiki</code> is the only unused live template. It is a large decorative Digital Codex header shell. Preserve it in the archive; do not treat it as semantic infrastructure.
+
+=== Wanted templates ===
+V1 has 59 wanted template titles. `Template:Documentation` alone is referenced 82 times; others represent proposed document headers, epistemic markers, evidence tiers, infobox variants, portals, citations and validation helpers.
+
+A wanted template is a '''reference to a missing implementation'''. Preserve it as design-intent evidence. Do not bulk-create all wanted templates in V2.
+
+== Canonical V2 template rules ==
+A V2 template should have:
+# a clear reusable purpose;
 # documented parameters;
 # one minimal usage example;
 # explicit dependencies where relevant;
 # source/provenance notes when inherited from V1;
-# its own template category inside <code>&lt;noinclude&gt;</code>.
+# template documentation/categories inside <code>&lt;noinclude&gt;</code>;
+# transcluding behavior inside <code>&lt;includeonly&gt;</code> only when that behavior belongs on caller pages.
 
-Use <code>&lt;includeonly&gt;</code> only for behavior/content intended to affect transcluding pages. Use <code>&lt;noinclude&gt;</code> for template documentation and categories that belong to the template itself.
+Use templates as pattern languages, preserving the strong V1 principle: '''consistency without rigidity'''. A template should make repeated structure easier to understand and maintain; it should not force unrelated knowledge into one shape.
 
-Do not delete an unused V1 template merely because [[Special:UnusedTemplates]] lists it. It may be a compatibility surface, an abandoned experiment worth archiving, or a component whose callers were removed. Recover the body and usage history first.
-
-== Category rules ==
-
-A V2 category page should state, when useful:
-
-* what the category groups;
+== V2 category rules ==
+A created V2 Category page should state, when useful:
+* what it groups;
 * inclusion/exclusion criteria;
 * parent category/categories;
-* whether it is a domain, navigation group, operational/meta grouping, or another intentional class.
+* whether it is a domain, navigation group, project/meta grouping or generated operational category.
 
 Category pages are indexes, not directories. A page may belong to multiple categories. Category hierarchy is a navigation graph, not the ontology.
 
-Do not create a category solely to mirror every semantic property value.
-
-== V2 top-level category surfaces ==
-
-* [[:Category:Knowledge domains]] — the twelve current domain entry surfaces.
-* [[:Category:Portals]] — portal pages.
-* [[:Category:Domain exemplars]] — the current cross-domain format tests.
-* [[:Category:BITwiki meta]] — project/meta documentation.
-* [[:Category:BITwiki architecture]] — architecture and knowledge-system design.
-* [[:Category:BITwiki foundations]] — manifesto/constitutional foundations.
-* [[:Category:BITwiki governance]] — governance/stewardship.
-* [[:Category:BITwiki templates]] — canonical V2 templates.
-* [[:Category:Epistemics]] — epistemic framework material.
-* [[:Category:Provenance]] — source/migration provenance.
-* [[:Category:Navigation]] — navigation-system documentation.
+See [[BITwiki:V1 category migration]] for the complete functional refactor of the 162 V1 category memberships.
 
 == Maintenance surfaces ==
-
-These are software-generated operational reports, not ordinary content pages:
-
+These are generated reports, not ordinary content pages:
 * [[Special:AllPages]] — enumerate pages by namespace;
-* [[Special:Categories]] — categories with members;
-* [[Special:UncategorizedPages]] — pages without category tags;
+* [[Special:Categories]] — used categories;
+* [[Special:UncategorizedPages]] — ordinary pages without category tags;
 * [[Special:UncategorizedTemplates]] — templates without category tags;
-* [[Special:UnusedTemplates]] — templates not currently transcluded;
-* [[Special:WantedCategories]] — categories with members but no created category page;
-* [[Special:UnusedCategories]] — created categories with no members;
-* [[Special:BrokenRedirects]] and [[Special:DoubleRedirects]] — migration/redirect hygiene.
+* [[Special:UnusedTemplates]] — templates with no current transclusion caller;
+* [[Special:WantedTemplates]] — referenced templates that do not exist;
+* [[Special:WantedCategories]] — used categories without an authored Category page;
+* [[Special:UnusedCategories]] — created category pages with no members;
+* [[Special:BrokenRedirects]] / [[Special:DoubleRedirects]] — redirect hygiene.
 
-== V1 → V2 template/category migration ==
-
+== V1 → V2 migration ==
 <pre>
-archive title + raw source + revision/history
-→ identify transclusions/category membership
-→ compare duplicate/variant implementations
+archive exact source + complete revision history
+→ capture transclusion/category membership
+→ distinguish implemented object from design-only reference
+→ compare variants
 → preserve unique writing and behavior
-→ decide KEEP / REWRITE / MERGE / REDIRECT / RETIRE
-→ implement V2
-→ run Special-page maintenance checks
+→ identify the function
+→ choose correct V2 primitive
+→ KEEP / REWRITE / MERGE / REDIRECT / RETIRE
+→ implement
+→ rerun Special-page validation
 </pre>
 
-A missing category page does not mean the category is unused: MediaWiki can have members in a category whose editable Category: page has never been created. Likewise, an unused template is not automatically disposable.
-
 == Release checks ==
-
 Before a V2 deployment is considered clean:
-
-# review all Template namespace pages against the V1 template archive;
-# review [[Special:UncategorizedTemplates]];
-# review [[Special:UnusedTemplates]] deliberately, not destructively;
-# review [[Special:Categories]] and [[Special:WantedCategories]];
-# review [[Special:UncategorizedPages]];
-# verify that every V2 category/template has documentation or an explicit reason not to;
-# verify redirects and transclusions after renames.
+# compare every live Template page against <code>archive-v1/templates/index.json</code>;
+# do not delete `Template:Infobox` while legacy callers remain;
+# review all 59 V1 wanted templates as design-intent evidence, not an automatic implementation backlog;
+# review [[Special:UncategorizedTemplates]], [[Special:UnusedTemplates]] and [[Special:WantedTemplates]];
+# review all category memberships against <code>archive-v1/categories/index.json</code>;
+# review [[Special:Categories]], [[Special:WantedCategories]] and [[Special:UncategorizedPages]];
+# verify semantic properties and category membership after template migrations;
+# verify redirects/transclusions after every rename;
+# do not deploy <code>archive-v1/</code> as live V2 content.
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

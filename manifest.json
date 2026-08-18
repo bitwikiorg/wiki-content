@@ -4,7 +4,8 @@
   "repository": "bitwikiorg/wiki-content",
   "format": "MediaWiki wikitext",
   "visibility": "public-only",
-  "source_policy": "source-first; preserve authored language and provenance; unresolved V1 bodies remain archive/reconciliation targets rather than guessed rewrites",
+  "status": "source-grounded V2 with exhaustive public V1 provenance archive",
+  "source_policy": "source-first; preserve authored language, implementation reality, revision history and provenance; distinguish documented design from deployed objects",
   "namespace_paths": {
     "Main": "Main/",
     "BITwiki": "BITwiki/",
@@ -13,8 +14,36 @@
     "Property": "Property/",
     "Category": "Category/"
   },
-  "archive_path": "archive-v1/",
-  "archive_states": ["accounted", "archived", "reconciled", "refactored"],
-  "canonicalization_loop": ["recover source", "preserve raw signal", "compare revisions", "research and cross-check", "distill redundancy", "revise", "verify", "canonicalize", "transclude and relate", "publish"],
-  "status": "source-grounded V2 reconstruction"
+  "v1_archive": {
+    "path": "archive-v1/",
+    "generator": "scripts/archive_v1.py",
+    "workflow": ".github/workflows/archive-v1.yml",
+    "snapshot": "2026-08-18T16:49:44Z",
+    "public_pages": 186,
+    "revision_bodies": 606,
+    "main_pages": 162,
+    "templates": 9,
+    "used_categories": 162,
+    "created_category_pages": 0,
+    "property_pages": 4,
+    "smw_schema_pages": 3,
+    "mediawiki_pages": 6,
+    "file_description_pages": 2,
+    "concept_pages": 0,
+    "module_pages": 0,
+    "continuation_exhaustive": true
+  },
+  "canonicalization_loop": [
+    "recover source",
+    "preserve raw signal",
+    "compare revisions",
+    "distinguish design intent from implementation",
+    "research and cross-check",
+    "distill redundancy",
+    "revise",
+    "verify",
+    "canonicalize",
+    "transclude and relate",
+    "publish"
+  ]
 }

@@ -1,27 +1,60 @@
 = Deployment prerequisites =
 
-This repository is organized as MediaWiki source. Before importing it into a live wiki, verify the target site's namespaces and extensions.
+This repository is organized as MediaWiki source. Deployment must be '''non-destructive by default''' because V2 canon and the V1 provenance archive are intentionally separate.
 
 == Required / assumed capabilities ==
 * MediaWiki page/revision system
-* Semantic MediaWiki for semantic properties and `#ask` queries
-* CategoryTree where `<categorytree>` is used
+* Semantic MediaWiki for semantic properties and <code>#ask</code> queries
+* CategoryTree where <code>&lt;categorytree&gt;</code> is used
 
 == Portal namespace ==
-`Portal:` is not a default MediaWiki namespace on every installation. V2 includes `Portal/` because the historical BITwiki design explicitly uses portals as high-level knowledge entry points.
+<code>Portal:</code> is not a default MediaWiki namespace on every installation. V2 includes <code>Portal/</code> because BITwiki's historical design explicitly uses portals as high-level knowledge entry points.
 
-Before import, either register a Portal namespace in the target wiki or deliberately map portal source into another namespace while preserving public titles through redirects. Do not silently change portal titles during deployment.
+Before import, either register a Portal namespace or deliberately map portal source while preserving intended public titles. Do not silently rename portal pages.
 
-== Source fidelity ==
-The V1 corpus inventory contains unreconciled pages. Do not bulk-delete live V1 pages solely because a V2 file does not yet exist for them.
+== Do not deploy the archive ==
+<code>archive-v1/</code> is repository-only read-only provenance. It contains historical source/revision data and generated reports, not a second live wiki tree.
 
-Safe migration:
+== Exact V1 preservation boundary ==
+The exhaustive archive currently records 186 public pages / 606 revision bodies, all 9 live templates and callers, all 162 category memberships, all nonnegative namespace inventories and the maintenance reports required for migration validation.
+
+A missing V2 file is therefore '''not''' permission to delete the corresponding live V1 page.
+
+== Template safety ==
+V1 <code>Template:Infobox</code> has 80 callers. Do not delete or replace it destructively until those callers have been migrated and verified.
+
+The seven live decorative/header/footer templates still have callers. Archive status does not make them safe to remove; migrate callers first.
+
+The 59 wanted templates are references to absent implementations. Do not create them automatically during deployment.
+
+== Category safety ==
+V1 uses 162 category names but has zero authored Category pages. V2 intentionally creates documented Category pages for selected canonical browse surfaces.
+
+Do not copy all 162 labels into V2 as a flat taxonomy. Preserve the V1 membership archive and apply [[BITwiki:V1 category migration]].
+
+== Safe migration ==
 <pre>
-import / create reviewed V2 pages
-→ verify rendering and semantic data
-→ compare each V1 source family
-→ move/merge/redirect only after reconciliation
-→ preserve revision history where possible
+1. refresh archive-v1 from the live public wiki
+2. review archive-v1/audit.json
+3. import/create reviewed V2 pages additively
+4. verify rendering, transclusions, categories and semantic data
+5. migrate each V1 source family / callers deliberately
+6. move/merge/redirect only after source comparison
+7. preserve revision history where technically possible
+8. rerun maintenance reports and compare against the pre-migration snapshot
 </pre>
 
+== Required post-import checks ==
+Review at minimum:
+* [[Special:AllPages]]
+* [[Special:UncategorizedPages]]
+* [[Special:UncategorizedTemplates]]
+* [[Special:UnusedTemplates]]
+* [[Special:WantedTemplates]]
+* [[Special:Categories]] / [[Special:WantedCategories]]
+* [[Special:BrokenRedirects]] / [[Special:DoubleRedirects]]
+
+A clean migration is not one with zero warnings at any cost. It is one where every remaining warning is understood and intentional.
+
 [[Category:BITwiki meta]]
+[[Category:BITwiki architecture]]

@@ -31,11 +31,40 @@ jobs:
         run: python -m pip install --disable-pip-version-check requests
       - name: Audit deleted revision recoverability
         run: python scripts/audit_v1_deleted_content.py
+      - name: Extract unresolved deleted titles
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('v1-deleted-content-audit.json').read_text())
+          unresolved=[r for r in d['records'] if not r['currently_exists_exact'] and not r['obvious_normalized_survivor']]
+          exact=[r for r in d['records'] if r['currently_exists_exact']]
+          normalized=[r for r in d['records'] if r['obvious_normalized_survivor']]
+          source=json.loads(Path('v1-fidelity-audit.json').read_text())
+          comments={(int(e.get('ns',0)),e.get('title')):e.get('comment','') for e in source.get('public_delete_log_events',[]) if e.get('action')=='delete'}
+          def row(r):
+              return {
+                'ns':r['ns'],'title':r['title'],'delete_comment':comments.get((r['ns'],r['title']),''),
+                'deleted_revision_content_recoverable_anonymously':bool(r['deleted_revision_content_returned']),
+                'api_errors':r['api_errors']
+              }
+          out={
+            'unique_deleted_titles':d['unique_deleted_titles'],
+            'normalized_survivor_count':len(normalized),
+            'exact_recreated_count':len(exact),
+            'unresolved_deleted_title_count':len(unresolved),
+            'unresolved_deleted_titles':[row(r) for r in unresolved],
+            'exact_recreated_titles':[row(r) for r in exact],
+            'note':'Unresolved means no exact current title and no obvious counterpart after removing common FINAL/final/revised affixes. It does not prove unique semantic content; deleted bodies are inaccessible anonymously.'
+          }
+          Path('v1-deleted-unresolved.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps(out,ensure_ascii=False,indent=2))
+          PY
       - name: Commit deleted-content audit
         run: |
           git config user.name 'BITwiki Fidelity Bot'
           git config user.email 'bitwikicryptopedia@gmail.com'
-          git add v1-deleted-content-audit.json
+          git add v1-deleted-content-audit.json v1-deleted-unresolved.json
           if git diff --cached --quiet; then
             echo 'Deleted-content audit unchanged.'
           else

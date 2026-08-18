@@ -47,6 +47,7 @@ jobs:
             echo 'Validation report unchanged.'
           else
             git commit -m 'Refresh V2 structural validation report'
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
 

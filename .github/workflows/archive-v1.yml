@@ -31,6 +31,20 @@ jobs:
       - name: Install harvester dependency
         run: python -m pip install --disable-pip-version-check requests
 
+      - name: Preserve local namespace labels
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/archive_v1.py')
+          s=p.read_text()
+          old="i=int(n['id']); name=n.get('canonical') or n.get('name') or ('Main' if i==0 else f'NS-{i}'); name='Main' if i==0 else name"
+          new="i=int(n['id']); name=n.get('name') or n.get('canonical') or ('Main' if i==0 else f'NS-{i}'); name='Main' if i==0 else name"
+          if old in s:
+              s=s.replace(old,new)
+              p.write_text(s)
+          assert old not in p.read_text(), 'Archive harvester still prefers canonical namespace names'
+          PY
+
       - name: Harvest complete public V1
         run: python scripts/archive_v1.py
 
@@ -45,6 +59,7 @@ jobs:
           assert a['page_count'] > 0
           assert a['revision_count'] >= a['page_count']
           assert a['namespace_counts_by_name'].get('Main',0) >= 162, a['namespace_counts_by_name']
+          assert 'BITwiki' in a['namespace_counts_by_name'], a['namespace_counts_by_name']
           assert 'Template' in a['namespace_counts_by_name']
           assert 'Category' in a['namespace_counts_by_name']
           assert a.get('file_binary_revision_count',0) >= a.get('file_page_count',0)
@@ -57,7 +72,7 @@ jobs:
         run: |
           git config user.name 'BITwiki Archive Bot'
           git config user.email 'bitwikicryptopedia@gmail.com'
-          git add -A archive-v1
+          git add -A archive-v1 scripts/archive_v1.py
           if git diff --cached --quiet; then
             echo 'Archive already current.'
           else

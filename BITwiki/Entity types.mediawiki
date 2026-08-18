@@ -1,0 +1,184 @@
+{{Source status|status=source-reconciled evolving vocabulary|note=Reconciles V1 Entity Types, Entity Types.REVISED, Expanded Entity Types, and Page Types. V2 keeps the “types as lenses/patterns” philosophy while removing V1 conflation between Topic/domain/navigation and entity identity.}}
+
+= Entity types =
+
+Entity type answers: '''what kind of thing is this knowledge object primarily about?'''
+
+Types provide orientation, queryability, and predictable relationship patterns. They are not eternal natural kinds and should not be multiplied merely to create a more elaborate schema.
+
+== Governing principle ==
+
+The strongest V1 revisions describe types as '''paths through a forest'''—patterns stabilized because people repeatedly found them useful.
+
+V2 therefore treats the vocabulary as:
+
+* constructed rather than metaphysically final;
+* stable enough for queries;
+* extensible through demonstrated use;
+* capable of specialization, merger, and retirement;
+* non-exclusive at the conceptual level.
+
+A canonical page should normally choose one primary type for orientation. If secondary type information materially matters, model it deliberately rather than pretending the object only has one possible lens.
+
+== Current base vocabulary ==
+
+=== Concept ===
+
+An abstract idea, principle, phenomenon, theory, model, framework, or conceptual distinction.
+
+Examples: feedback, emergence, causality, system boundary.
+
+V2 <code>Concept</code> broadly normalizes the V1 <code>Idea</code> pattern. More specific types such as Theory, Model, or Framework may become canonical when repeated content demonstrates that those distinctions improve query or reasoning.
+
+=== Method ===
+
+A repeatable way of investigating, analyzing, designing, calculating, or doing something.
+
+Examples: systems analysis, empirical validation, finite-element analysis.
+
+A Method describes an approach. A Protocol is more prescriptive and usually specifies expected procedure or conformance.
+
+=== Protocol ===
+
+A prescribed procedure, rule set, or specification intended to guide repeatable action or interaction.
+
+Examples: peer-review protocol, communication protocol, validation procedure.
+
+=== Implementation ===
+
+A concrete physical, digital, institutional, or procedural realization of a concept, method, specification, or design.
+
+Examples: a thermostat as an implementation of feedback control; a specific software system implementing a protocol.
+
+=== Project ===
+
+An organized effort directed toward goals, outputs, or sustained work.
+
+Projects often have participants, resources, milestones, states, and outputs. A project may produce implementations, publications, datasets, or protocols.
+
+=== Dataset ===
+
+A structured collection of data intended for retrieval, analysis, training, validation, or reuse.
+
+Important characteristics commonly include provenance, schema/format, version, coverage, and licensing.
+
+=== Person ===
+
+An individual human actor represented for attribution, intellectual lineage, biography, participation, or responsibility.
+
+The existence of a type does not by itself define a notability policy for publishing living-person pages.
+
+=== Organization ===
+
+A structured collective such as an institution, company, research group, community, or other organized body.
+
+=== Event ===
+
+A bounded occurrence or period represented primarily for temporal/historical reasoning.
+
+Events have participants, context, outcomes, and consequences rather than merely a date.
+
+=== Publication ===
+
+A documented work made available to an audience: paper, book, report, specification publication, thesis, or similar source-bearing artifact.
+
+Publication is useful because it separates a knowledge claim from the document through which the claim was transmitted.
+
+=== Location ===
+
+A physical or virtual place represented where spatial/contextual reasoning is useful.
+
+Use only when Location is actually a first-class knowledge object rather than an incidental string attribute.
+
+=== Technology ===
+
+A tool, technique, engineered system, or technological capability.
+
+Software, hardware, instruments, and technical platforms can be modeled as Technology or as more specific specialized types if repeated use justifies them.
+
+== What happened to V1 Topic? ==
+
+V1 <code>Topic</code> was useful but overloaded. It often meant:
+
+* a subject domain;
+* a navigation anchor;
+* a portal/category node;
+* an abstract knowledge object.
+
+V2 does not use <code>Topic</code> as the default root entity type for subject organization.
+
+Use:
+
+* [[Property:Domain|Domain]] for disciplinary/subject membership;
+* Portals and Categories for human navigation;
+* Concept when the page actually describes an abstract concept;
+* a future Topic type only if a recurring content pattern demonstrates a distinct semantic role not already captured by these primitives.
+
+This preserves the function without carrying the conflation forward.
+
+== Specialized types ==
+
+Some domains need distinctions not worth making universal.
+
+Potential examples include:
+
+* Theory
+* Model
+* Framework
+* Software
+* Species
+* Material
+* Instrument
+* Standard
+* Algorithm
+* Chemical substance
+* Biological process
+
+Do not add them because they sound legitimate. Add them when real pages need consistent properties/relationships that the broader types obscure.
+
+== Overlap ==
+
+V1 correctly observed that one real-world subject can satisfy several lenses.
+
+For example, a blockchain network could be discussed as:
+
+* a Technology;
+* an Implementation of a consensus/ledger concept;
+* part of a Project/ecosystem;
+* governed by Protocols;
+* producer of Datasets/event histories.
+
+That does not mean every page should carry five entity types. Choose what the canonical page is primarily modeling, then relate it to other knowledge objects representing the other roles when that produces a cleaner graph.
+
+== New-type test ==
+
+Before introducing a canonical type, ask:
+
+# Are there multiple real pages with the same structural need?
+# Does the type have a meaning distinct from Domain, Category, Book Matter, status, or relationship?
+# Does it imply useful properties or relationship constraints?
+# Does it improve retrieval, reasoning, navigation, or validation?
+# Can its minimum criteria be stated without overfitting one example?
+# Does an existing type plus a relation already express the same information?
+
+If not, keep the vocabulary smaller.
+
+== Type evolution ==
+
+The V1 language of '''proliferation, merger, speciation, and extinction''' is retained as a useful model:
+
+* proliferation — a new recurring pattern appears;
+* speciation — one broad type develops stable subtypes;
+* merger — two types prove to encode the same useful distinction;
+* extinction — a type stops helping and is retired/migrated.
+
+Schema history and redirects should preserve those transitions.
+
+== Source lineage ==
+
+Primary V1 sources: [[BITwiki Entity Types]], [[BITwiki Entity Types.REVISED]], [[BITwiki Expanded Entity Types]], and [[BITwiki Page Types]]. Exact bodies and histories remain in <code>archive-v1/</code>.
+
+See [[BITwiki:Ontology]], [[BITwiki:Relationships]], [[BITwiki:Semantic properties]], and [[BITwiki:Organization]].
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

@@ -1,0 +1,159 @@
+{{Source status|status=source-reconciled framework|note=Reconciles V1 Source Hierarchy and Source Types. The historical title “hierarchy” is retained as lineage, but V2 explicitly uses contextual source evaluation rather than a fixed prestige ladder.}}
+
+= Sources =
+
+A source is an origin or transmission surface for information. Source type helps determine what questions to ask; it does not determine truth by itself.
+
+== No truth by source prestige ==
+
+The V1 source family repeatedly moved away from credentialist hierarchy:
+
+'''No fixed hierarchy exists—evaluation depends on context.'''
+
+Peer review, institutional prestige, credentials, community reputation, cryptographic verification, and consensus can all provide useful information. None substitutes for checking what the source actually supports.
+
+== Source types ==
+
+=== Primary ===
+Original material close to the event, research, system, or claim:
+
+* research papers and raw datasets;
+* technical specifications;
+* original code repositories;
+* experimental records;
+* first-hand accounts;
+* original correspondence or archival documents.
+
+Primary does not mean infallible. Evaluate authenticity, methodology, completeness, incentives, and context.
+
+=== Secondary ===
+Analysis or synthesis of primary material:
+
+* review articles;
+* systematic reviews / meta-analyses;
+* critical analyses;
+* surveys;
+* scholarly or technical synthesis.
+
+Evaluate search/inclusion methodology, coverage, interpretation, independence, funding, and whether contradictory sources were handled fairly.
+
+=== Tertiary ===
+Compilations and orientation surfaces:
+
+* textbooks;
+* encyclopedias;
+* handbooks;
+* reference works;
+* educational summaries;
+* glossaries and bibliographies.
+
+Tertiary sources can be excellent for orientation and terminology. For a contested or high-stakes claim, trace important assertions closer to their evidentiary origin when practical.
+
+=== Community / practitioner ===
+Knowledge produced in communities of practice:
+
+* developer discussions;
+* technical forums;
+* community documentation;
+* issue trackers;
+* operational reports;
+* crowdsourced or practitioner knowledge.
+
+These can expose tacit knowledge and current implementation reality that formal literature does not contain. Evaluate authorship, track record, reproducibility, and community verification mechanisms.
+
+=== Verified / integrity-bearing records ===
+Sources with mechanisms that strengthen authenticity or integrity:
+
+* signed documents;
+* timestamped records;
+* public ledgers;
+* cryptographic proofs;
+* audit logs;
+* multi-party attestations.
+
+Verification of integrity does not imply verification of meaning. A valid signature establishes who signed; it does not establish that the signed statement is correct.
+
+== Evaluation dimensions ==
+
+V1 used several overlapping criteria. V2 consolidates them into contextual questions:
+
+{| class="wikitable"
+! Dimension !! Question
+|-
+| '''Proximity''' || How close is the source to the original event/data/claim?
+|-
+| '''Method transparency''' || Can the process that generated the information be inspected or repeated?
+|-
+| '''Verification''' || Can the relevant claim or record be independently checked?
+|-
+| '''Replication''' || Has the result been independently reproduced where replication is meaningful?
+|-
+| '''Expertise''' || Does the source have relevant domain knowledge? Expertise is evidence, not immunity from scrutiny.
+|-
+| '''Bias / incentives''' || What funding, conflicts, ideology, institutional pressure, or commercial interest may matter?
+|-
+| '''Currency''' || Is this source current enough for the claim, or historically appropriate?
+|-
+| '''Scope''' || What can this source legitimately support, and what does it not support?
+|-
+| '''Transmission''' || Is this the original claim or a transformed summary of another source?
+|}
+
+== Provenance-based evaluation ==
+
+V1 Source Types framed the alternative to credentialism as provenance-based evaluation. That remains useful.
+
+Instead of stopping at "Where was this published?", ask:
+
+* What is the chain of transmission?
+* Can we inspect the original?
+* What transformations occurred?
+* Who funded or benefited from the work?
+* What methods generated the evidence?
+* Was contradictory evidence considered?
+* Has anyone independently checked it?
+
+== Funding and conflicts ==
+
+Funding is not a binary validity test. Disclosure enables better evaluation.
+
+Industry, government, foundation, advocacy, community, or self-funded work can each be rigorous or poor. The epistemic requirement is to surface material incentives and assess whether they plausibly affect design, selection, interpretation, or publication.
+
+== Replication state ==
+
+Useful descriptive states include:
+
+* independently replicated;
+* replication attempted / mixed;
+* failed replication;
+* not yet replicated;
+* irreproducible because methods/data are insufficiently available.
+
+The relevance of replication varies by domain. Historical events are not replicated like laboratory experiments; software behavior may be reproduced by executing code; mathematical results are checked by proof rather than repeated sampling.
+
+== AI-generated source risk ==
+
+V1 explicitly identified AI gullibility/confabulation as an epistemic concern. The durable mitigations are:
+
+* do not cite generated text as an independent source for the fact it generated;
+* verify that cited sources exist;
+* verify that the source contains/supports the attributed claim;
+* trace generated synthesis back to primary/independent evidence;
+* disclose material agent transformation when provenance matters;
+* treat fluent wording as unrelated to evidentiary strength.
+
+== Source type ≠ evidence type ==
+
+A primary source may contain empirical, documentary, or analytical evidence. A secondary source may synthesize many evidence types. A cryptographically verified source may carry very weak evidence for the substantive proposition it records.
+
+Keep the dimensions separate.
+
+== Source lineage ==
+
+Primary V1 sources: [[BITwiki Source Hierarchy]] and [[BITwiki Source Types]], with additional source-evaluation guidance in [[BITwiki Evidence Framework]], [[BITwiki Claim Validation]], and [[BITwiki Provenance Model]]. Exact bodies and histories are in <code>archive-v1/</code>.
+
+See [[BITwiki:Evidence]], [[BITwiki:Provenance]], and [[BITwiki:Claim validation]].
+
+[[Category:Epistemics]]
+[[Category:Provenance]]
+[[Category:BITwiki architecture]]

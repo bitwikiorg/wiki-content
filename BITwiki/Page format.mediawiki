@@ -2,19 +2,56 @@
 
 = V2 knowledge page format =
 
-A BITwiki page should be a coherent knowledge object first. Semantic metadata and Book Matter make it easier to retrieve, compare, transclude, and reuse without turning the article into a filesystem.
+A BITwiki page should be a coherent knowledge object first. Semantic metadata and [[BITwiki:Book Matter|Book Matter]] make it easier to retrieve, compare, transclude, and reuse without turning the article into a filesystem or a form to be completed.
 
 == Identity ==
-Use [[Template:Knowledge object]] for the small set of semantic fields currently implemented:
+
+Use [[Template:Knowledge object]] for the deliberately small common identity surface:
 
 * entity type;
 * domain;
-* epistemic status;
-* provenance.
+* page-level epistemic status when meaningful;
+* concise provenance.
 
-Additional properties should be added only when the corpus demonstrates a recurring need.
+The template is a baseline, not the complete semantic model. Optional dimensions belong only where they carry information. See [[BITwiki:Semantic properties]].
+
+== Epistemic dimensions stay separate ==
+
+V1 experimented with several tier systems that sometimes mixed evidentiary maturity, confidence, verification, lifecycle, and constitutional role. V2 keeps these jobs distinct.
+
+{| class="wikitable"
+! Dimension !! Question !! Typical representation
+|-
+| '''Epistemic status''' || What is the present evidentiary standing? || Hypothetical, Emerging, Supported, Well-supported, Established, Disputed
+|-
+| '''Confidence rationale''' || Why should the reader rely on this assessment, and what would change it? || concise evidence/limitation rationale
+|-
+| '''Review status''' || What review or verification has actually occurred? || explicit operational state
+|-
+| '''Lifecycle status''' || Is this current, superseded, deprecated, archived, etc.? || maintenance state
+|-
+| '''Provenance''' || Where did this knowledge come from and how did it reach this form? || source/lineage note or richer provenance structure
+|}
+
+Do not use <code>Archived</code> as an epistemic status, <code>Axiomatic</code> as evidence maturity, or a numerical confidence score merely because an older schema did so. Preserve those historical meanings in lineage while using the normalized V2 dimensions for current pages.
+
+=== Page-level versus claim-level standing ===
+
+A page-level status is an orientation, not a universal verdict over every sentence on the page.
+
+For example, the basic concept of [[Causality]] is established subject matter while major philosophical analyses of causation remain disputed. The page can therefore carry an established descriptive standing while its '''Epistemic notes''' explicitly preserve disagreement about theories and interpretations.
+
+When a page contains materially different claim states:
+
+* qualify the relevant claim or section directly;
+* preserve contradictory evidence or competing interpretations;
+* use [[Property:Confidence rationale|Confidence rationale]] where a rationale adds real value;
+* do not average heterogeneous claims into a fake page-wide number.
+
+See [[BITwiki:Epistemics]], [[BITwiki:Epistemic status]], [[BITwiki:Evidence]], [[BITwiki:Provenance]], and [[BITwiki:Uncertainty]].
 
 == Default concept anatomy ==
+
 A small concept page normally begins with:
 
 # '''Overview''' — a fast orientation.
@@ -23,18 +60,33 @@ A small concept page normally begins with:
 # '''Core concepts''' or '''Mechanism''' — the minimum structure required to understand it.
 # '''Examples''' — concrete cases.
 # '''Applications / implications''' — how the concept is used or what follows from it.
-# '''Epistemic notes''' — qualifications, competing definitions, scope limits, uncertainty, or measurement caveats.
+# '''Epistemic notes''' — qualifications, competing definitions, scope limits, uncertainty, measurement caveats, or evidence boundaries.
 # '''References''' — source-bearing links.
 
 This is not a mandatory list. Remove sections that do no work; add richer Book Matter when the subject requires it.
 
 == Richer Book Matter ==
+
 See [[BITwiki:Book Matter]] for history, frameworks, methods, evidence/results, case studies, controversies, timelines/chrono-literacy, primary and secondary sources, bibliography, knowledge maps, implementation, limitations, criticism, and related concepts.
 
+Book Matter describes the semantic anatomy of content. It is not another classification axis.
+
 == Transclusion ==
-Keep the parent page readable. Promote a section to an independently addressable/transcluded object only when it has a real reuse case.
+
+Keep the canonical parent page readable. Promote a section to an independently addressable/transcluded object only when it has a real reuse case—for example, when another page, query, agent, or interface needs the references, mechanism, introduction, evidence, or other section independently.
+
+Modularity should increase reuse without fragmenting comprehension.
+
+== Relationships ==
+
+Use semantic relationships when they express a stable fact about how knowledge objects connect. Prefer the strongest relation that can be justified: <code>Implements</code>, <code>Part of</code>, <code>Depends on</code>, <code>Supports</code>, <code>Contradicts</code>, <code>Refines</code>, or <code>Derived from</code> before falling back to <code>Related to</code>.
+
+See [[BITwiki:Relationships]] and [[BITwiki:Semantic properties]].
 
 == Domain exemplars ==
+
+The twelve small exemplars test whether this grammar works across different kinds of knowledge without forcing identical content:
+
 * [[System boundary]] — Systems science
 * [[Hypothesis]] — Science
 * [[Cell membrane]] — Biology
@@ -47,6 +99,20 @@ Keep the parent page readable. Promote a section to an independently addressable
 * [[pH]] — Chemistry
 * [[Momentum]] — Physics
 * [[Pulse]] — Medicine
+
+Their purpose is architectural validation as much as subject coverage. Mature articles may become substantially richer without abandoning the same distinctions.
+
+== Editorial test ==
+
+Before adding structure, ask what job it performs:
+
+* Does it improve understanding?
+* Does it preserve provenance or uncertainty?
+* Does it make knowledge retrievable, queryable, or transcludable?
+* Does it encode a stable relationship?
+* Does another real page or workflow need it?
+
+If not, leave it out.
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

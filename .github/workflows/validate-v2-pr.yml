@@ -11,9 +11,11 @@ on:
       - 'Property/**'
       - 'Category/**'
       - 'archive-v1/**'
+      - 'manifest.json'
       - 'scripts/validate_v2.py'
       - 'scripts/inventory_corpus.py'
       - 'scripts/classify_v1_page_roles.py'
+      - 'scripts/classify_v1_architecture_families.py'
       - '.github/workflows/validate-v2-pr.yml'
 
 permissions:
@@ -33,7 +35,7 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Validate deployable MediaWiki structure
+      - name: Validate deployable MediaWiki structure and identity semantics
         run: python scripts/validate_v2.py
 
       - name: Build V2 corpus and V1 classification inventories
@@ -41,6 +43,9 @@ jobs:
 
       - name: Classify V1 page roles before ontology
         run: python scripts/classify_v1_page_roles.py
+
+      - name: Classify V1 architecture sources by maturation family
+        run: python scripts/classify_v1_architecture_families.py
 
       - name: Show validation report
         if: always()
@@ -56,4 +61,5 @@ jobs:
             v2-corpus-inventory.json
             v1-classification-usage.json
             v1-page-role-matrix.json
+            v1-architecture-family-matrix.json
           if-no-files-found: error

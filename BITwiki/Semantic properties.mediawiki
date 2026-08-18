@@ -1,0 +1,136 @@
+{{Source status|status=current V2 implementation reference|note=Documents properties that actually exist in the V2 Property namespace. V1 Property Dictionary and SMW specifications remain design/source lineage, not claims about current implementation.}}
+
+= Semantic properties =
+
+This is the current V2 property dictionary.
+
+A property belongs here only when its meaning is stable enough to support repeated machine queries or relations. The list is intentionally smaller than V1's proposed property catalogs.
+
+== Classification ==
+
+{| class="wikitable"
+! Property !! Type !! Purpose
+|-
+| [[Property:Entity type|Entity type]] || Text || Primary ontological pattern of the knowledge object.
+|-
+| [[Property:Domain|Domain]] || Page/Text as implemented || Field/body of knowledge; separate from entity identity.
+|}
+
+== Epistemics / provenance ==
+
+{| class="wikitable"
+! Property !! Type !! Purpose
+|-
+| [[Property:Epistemic status|Epistemic status]] || Text || Present evidentiary standing.
+|-
+| [[Property:Confidence rationale|Confidence rationale]] || Text || Why the evidence justifies current reliance and what would change it.
+|-
+| [[Property:Review status|Review status]] || Text || Actual review/verification state.
+|-
+| [[Property:Lifecycle status|Lifecycle status]] || Text || Active/superseded/deprecated/archived maintenance state.
+|-
+| [[Property:Provenance|Provenance]] || Text || Concise origin/lineage note where a full provenance graph is unnecessary.
+|}
+
+These properties intentionally separate concepts that V1 sometimes combined into one tier or numeric score.
+
+== Relationships ==
+
+{| class="wikitable"
+! Property !! Type !! Meaning
+|-
+| [[Property:Related to|Related to]] || Page || Material but semantically weak association.
+|-
+| [[Property:Implements|Implements]] || Page || Concrete realization of a concept/method/protocol/design.
+|-
+| [[Property:Part of|Part of]] || Page || Constituent relationship to a larger whole.
+|-
+| [[Property:Depends on|Depends on]] || Page || Material directional dependency.
+|-
+| [[Property:Supports|Supports]] || Page || Epistemically relevant support for a target claim/object.
+|-
+| [[Property:Contradicts|Contradicts]] || Page || Material conflict with a target claim/result/model.
+|-
+| [[Property:Refines|Refines]] || Page || Improves/narrows/extends an earlier object with continuity.
+|-
+| [[Property:Derived from|Derived from]] || Page || Material provenance/ancestry relationship.
+|}
+
+See [[BITwiki:Relationships]] for semantic guidance and limits on inference.
+
+== Property-design rules ==
+
+=== One property, one job ===
+
+Do not overload one field with several dimensions merely because the values are text.
+
+For example:
+
+<pre>
+Epistemic status = Established
+Lifecycle status = Archived
+Review status = Reviewed
+</pre>
+
+is meaningful. <code>Epistemic status = Archived</code> collapses evidentiary maturity and lifecycle.
+
+=== Use the strongest honest semantic relation ===
+
+If A implements B, use <code>Implements</code> rather than <code>Related to</code>. If the stronger claim cannot be justified, use the weaker relation.
+
+=== Do not encode display-only data as ontology ===
+
+Word counts, UI style, section order, decorative state, and other presentation concerns should not become semantic properties unless a real machine/query workflow needs them.
+
+=== Avoid duplicated MediaWiki-native state ===
+
+MediaWiki already stores revision time, editor, page title, namespace, and history. Do not duplicate native data into SMW unless there is a concrete query/interoperability reason.
+
+=== Prefer relations over encoded strings ===
+
+When the target is a real wiki knowledge object, a Page relation is usually more useful than embedding its title in free text.
+
+=== Do not create properties from documentation alone ===
+
+The V1 Property Dictionary proposed dozens of fields. Some encoded durable distinctions; some duplicated native data; some reflected one historical workflow; many were never authored in <code>Property:</code> namespace.
+
+V2 requires a demonstrated use before promotion.
+
+== V1 property families under review ==
+
+Potential future families include:
+
+* authorship / contribution;
+* dates where MediaWiki-native revision dates are insufficient;
+* external identifiers and interoperability mappings;
+* method / evidence structure;
+* location / participation;
+* project goals and outputs;
+* dataset schema/licensing;
+* more specific temporal relationships.
+
+These are not rejected. They should be added through real content work so their cardinality, type, and meaning are validated against use.
+
+== Change process ==
+
+For a new canonical property:
+
+# show multiple real use cases;
+# define one precise semantic job;
+# choose the correct SMW type;
+# specify allowed cardinality/constraints only where actually needed;
+# test queries;
+# document interaction with existing properties;
+# migrate legacy values deliberately;
+# add validation only after semantics are stable.
+
+== Historical source ==
+
+V1's [[BITwiki Property Dictionary]], [[SMW Property Definitions]], [[SMW Property Types Complete]], [[Epistemic Properties]], [[Relationship Types]], and related schema documents remain preserved in <code>archive-v1/</code>.
+
+The exhaustive V1 implementation audit is important context: V1 documented a far larger property system than the four authored imported-vocabulary Property pages that actually existed. V2 intentionally makes implementation and documentation converge.
+
+See [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Relationships]], and [[BITwiki:V1 implementation audit]].
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

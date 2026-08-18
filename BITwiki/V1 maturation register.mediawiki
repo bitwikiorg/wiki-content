@@ -1,82 +1,67 @@
-{{Source status|status=V2 architectural working register|note=Tracks V1 design signals through evidence review and V2 maturation. Entries are research records, not declarations that every proposed capability has been accepted or implemented.}}
+{{Source status|status=V2 architectural working register|note=Tracks V1 design signals through evidence review and V2 maturation. Entries distinguish accepted architecture, implementation candidates, and areas that still require research.}}
 
 = V1 maturation register =
 
 This register operationalizes [[BITwiki:V1 to V2 maturation]]. It distinguishes historical implementation from design imagination and gives each significant V1 signal a traceable path into V2.
 
-'''A row in this register is not permission to implement a feature.''' It is a commitment to understand the lineage before deciding what V2 should become.
+'''A row in this register is not permission to implement a feature.''' It records how far the evidence currently supports maturation.
 
 == Status vocabulary ==
 
-* '''Research''' — source lineage and historical behavior are still being reconstructed.
-* '''Candidate''' — durable signal is understood and a possible V2 maturation has been identified.
+* '''Research''' — source lineage, behavior, or mature primitive is still insufficiently resolved.
+* '''Candidate''' — durable signal is understood and a plausible V2 maturation has direct evidence; final contract still needs implementation testing/review.
 * '''Accepted''' — the maturation direction has been deliberately adopted; implementation or vocabulary coverage may still be incomplete.
 * '''Implemented''' — the accepted capability exists and has been validated in V2.
 * '''Rejected''' — reviewed but intentionally not carried forward as an active V2 capability.
 * '''Historical only''' — preserved for lineage but not intended as an active V2 primitive.
 
-== Initial register ==
+== Current register ==
 
 {| class="wikitable"
 ! V1 primitive !! Historical state !! Durable signal !! Existing V2 substrate !! Evidence / questions before further maturation !! Status
 |-
-| Ontology / Topic system || Partial + proposed || Knowledge needs explicit kinds, domains, relationships, multiple lenses, facets, and polyhierarchical navigation rather than flat page lists or one overloaded Topic primitive. || [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[Property:Entity type]], [[Property:Domain]], Categories, Portals, semantic properties || [[BITwiki:V1 ontology maturation]], [[BITwiki:Corpus evidence]], and [[BITwiki:V1 page-role migration]] separate architecture from subject evidence and classify all 162 V1 Main pages by artifact role. Only two historical pages are first-class subject candidates; reusable fragments supply secondary Concept/Method/Protocol/evidence signals. Remaining work: canonicalize those subject signals and test vocabulary coverage before adding types or domains. || '''Accepted'''
+| Ontology / Topic system || Partial + proposed || Knowledge needs explicit kinds, domains, relationships, multiple lenses, facets, and polyhierarchical navigation rather than flat page lists or one overloaded Topic primitive. || [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[Property:Entity type]], [[Property:Domain]], Categories, Portals, semantic properties || [[BITwiki:V1 ontology maturation]], [[BITwiki:Corpus evidence]], [[BITwiki:V1 page-role migration]], and [[BITwiki:V1 subject and composition migration]] support the core decomposition. Vocabulary expansion remains evidence-driven. || '''Accepted'''
 |-
-| Epistemics || Partial + strongly articulated || Knowledge should expose uncertainty, disagreement, evidence, provenance, and limits instead of projecting false certainty. || [[BITwiki:Epistemics]], [[Property:Epistemic status]], confidence rationale, provenance, review/lifecycle separation || Audit exact V1 epistemic mechanisms and determine where status is insufficient without claim/evidence structure. || Research
+| Epistemics || Partial + strongly articulated || Knowledge should expose uncertainty, disagreement, evidence, provenance and limits instead of projecting false certainty. || [[BITwiki:Epistemics]], [[Property:Epistemic status]], confidence rationale, provenance, review/lifecycle separation || The architecture-family pass isolates 16 epistemics/evidence/provenance sources. Mechanism-by-mechanism reconciliation is still needed before adding claim/evidence subobjects or more properties. || Research
 |-
-| Confidence trails || Primarily conceptual / partial || Confidence should be inspectable as a path of justification, not merely stamped as a score. || Epistemic status + confidence rationale + source lineage + relationships || Recover every V1 confidence mechanism; determine whether claims/evidence/review records need first-class representation; avoid universal numeric confidence. || Research
+| Confidence trails || Primarily conceptual / partial || Confidence should be inspectable as a path of justification, not merely stamped as a score. || Epistemic status + confidence rationale + source lineage + relationships || V1 mixes tiers, categories, scores and confidence-trail ideas. Determine which justification/evidence structures recur without restoring a universal scalar. || Research
 |-
-| Templates || Implemented + extensively proposed || Reusable behaviors and presentations can make knowledge consistent and composable. || [[BITwiki:Templates and categories]], [[Template:Knowledge object]], [[Template:Domain portal]] || Audit 9 implemented V1 templates, callers, 59 wanted templates, unused templates, and compatibility needs; derive families from demonstrated behavior. || Research
+| Templates || Implemented + extensively proposed || Repeated behaviors/presentations can make knowledge consistent and composable. || [[BITwiki:Templates and categories]], [[Template:Knowledge object]], [[Template:Domain portal]] || V1 had implemented template callers plus a ten-source composition/template/transclusion architecture family. The mature direction is small behavior-driven template families, not the WantedTemplates list as backlog. Caller-level family design remains. || '''Candidate'''
 |-
-| Book Matter || Partial + directly implemented through fragments/subpages/transclusion || A knowledge object can expose reusable meaningful parts without losing the coherence of the whole. || [[BITwiki:Book Matter]], [[BITwiki:Page format]], headings/subpages/transclusion capabilities || [[BITwiki:V1 page-role migration]] identifies 52 reusable composition artifacts, including 14 subpages, 9 generic Topic/transcludable sections, concept definitions, method/protocol fragments, and evidence summaries. The two first-class V1 subject pages themselves compose subpages. Remaining work: decide mature section/subpage/template/subobject patterns without recreating fragmentation. || '''Candidate'''
+| Book Matter || Partial + directly implemented through fragments/subpages/transclusion || A knowledge object can expose reusable meaningful parts without losing the coherence of the whole. || [[BITwiki:Book Matter]], [[BITwiki:Page format]], headings/subpages/transclusion capabilities || [[BITwiki:V1 page-role migration]] identifies 52 reusable composition artifacts. [[BITwiki:V1 subject and composition migration]] defines the mature selection rule across headings, subpages, templates, subobjects and top-level objects. || '''Candidate'''
 |-
-| Transclusion || Partial but demonstrably used in composed subject pages || Reuse the same canonical signal across contexts rather than copy and drift. || [[BITwiki:Transclusion]], native MediaWiki transclusion + V2 page grammar || Bioluminescent Organisms and Fluorescent Coral Reefs directly transclude their historical subpages, while generic Topic Sections were also marked Transcludable Content. Complete caller-level audit and validate canonical-source/partial-transclusion rules before accepting the final V2 composition contract. || '''Candidate'''
+| Transclusion || Partial but demonstrably used in composed subject pages || Reuse one canonical signal across contexts rather than copy and drift. || [[BITwiki:Transclusion]], native MediaWiki transclusion + V2 page grammar || Both first-class V1 subject candidates directly compose subpages. Final caller/cycle/canonical-source tests remain before treating the composition contract as Implemented. || '''Candidate'''
 |-
-| Semantic properties || Partial || Knowledge should be queryable through explicit semantic attributes and relations. || [[BITwiki:Semantic properties]] and Property namespace || Compare every V1 annotation/property with current V2 properties; establish value vocabularies, targets, constraints, and validation before expansion. || Research
+| Semantic properties || Partial || Knowledge should be queryable through explicit semantic attributes and relations. || [[BITwiki:Semantic properties]] and Property namespace || Identity semantics are now explicitly validated. Further properties still require recurring jobs, controlled values/targets and validation rather than promotion from historical catalogs. || Research
 |-
-| Relationships / graph semantics || Partial + proposed || Knowledge becomes more useful when meaningful connections are explicit and traversable. || [[BITwiki:Relationships]]; Related to, Implements, Part of, Depends on, Supports, Contradicts, Refines, Derived from || Recover relation vocabulary and actual usage; identify repeated missing relations; define inference limits and graph-view semantics. || Research
+| Relationships / graph semantics || Partial + proposed || Knowledge becomes more useful when meaningful connections are explicit and traversable. || [[BITwiki:Relationships]]; Related to, Implements, Part of, Depends on, Supports, Contradicts, Refines, Derived from || Recover actual V1 relation use, identify repeated missing relations, validate targets and define inference limits before graph semantics expand. || Research
 |-
-| Portals || Partial / experimental || Readers and agents need domain-oriented entry points into a large semantic corpus. || Twelve V2 domain portals + [[BITwiki:Navigation]] || Compare V1 portal ambitions and content with current portals; determine cross-domain, project, research, and dynamic-query portal needs. || Candidate
+| Portals || Partial / experimental || Readers and agents need domain-oriented entry points into a large semantic corpus. || Twelve V2 domain portals + [[BITwiki:Navigation]] || V1 portal/category/visualization architecture and 19 navigation/interface artifacts support plural views over one substrate. Dynamic/query portal behavior still needs use-driven design. || '''Candidate'''
 |-
-| Categories || Implemented but overloaded || Human browsing benefits from curated grouping and polyhierarchical navigation. || V2 domain and system categories; [[BITwiki:V1 category migration]] || Complete functional classification of all 162 V1 category names; recover useful browse structures without re-encoding ontology/status/type into categories. || Research
+| Categories || Implemented but overloaded || Human browsing benefits from curated grouping and polyhierarchical navigation. || V2 domain/system categories; [[BITwiki:V1 category migration]] || Page-role and architecture-family passes prove Category carried multiple jobs. A complete functional disposition of the 162 V1 category names remains before broader category reconstruction. || Research
 |-
-| Knowledge graphs || Partial / conceptual || Relationships and semantic properties should support visual and machine-traversable views. || Semantic MediaWiki queries + explicit relationship properties || Identify what V1 actually rendered or queried; choose graph generation only after relation semantics are sound; distinguish visualization from inference. || Research
+| Knowledge graphs || Partial / conceptual || Explicit relationships/properties should support visual and machine-traversable views. || Semantic MediaWiki queries + explicit relationship properties || Graph views are justified conceptually, but relation semantics and actual rendering/query behavior must mature first. Visualization must not imply inference. || Research
 |-
-| Modules / schema machinery || Mostly proposed / unclear || Recurrent computational behavior deserves reusable code or schemas rather than copied markup. || MediaWiki modules/extensions and external tooling are available but intentionally sparse in V2 || Recover exact V1 modules/schema proposals and implementation evidence; implement only repeated executable needs. || Research
+| Modules / schema machinery || Mostly proposed / partial || Recurrent executable behavior deserves reusable code/schema rather than copied markup. || MediaWiki modules/extensions + current V2 validation/tooling || Thirteen V1 semantic-schema/SMW/query/module architecture sources are now isolated. Implement only repeated executable needs with tests; zero V1 public Module pages remain important implementation evidence. || Research
 |-
-| Research objects || Partial / conceptual || BITwiki can structure active research, not merely summarize established subjects. || Entity types, provenance, publications/datasets/projects, [[BITwiki:Claim validation]] || Audit V1 treatment of patents, papers, hypotheses, experiments, methods, datasets, labs, claims, and evidence; derive minimal research-object model from real corpora. || Research
+| Research objects || Partial / conceptual || BITwiki can structure active research, not merely summarize established subjects. || Entity types, provenance, publications/datasets/projects, [[BITwiki:Claim validation]] || Claims, patents, experiments, labs and related objects remain plausible but need an actual research corpus/workflow before a minimum schema is accepted. || Research
 |-
-| Human–AI knowledge production || Implemented across changing external systems + conceptual lineage || Useful work should move from discussion and cognition into reviewed reusable memory while preserving provenance. || [[BITwiki:Knowledge lifecycle]], BIThub/BITCORE/BITwiki knowledge continuum || Formalize artifact classes and handoff criteria without binding durable knowledge to one runtime, model, or agent framework. || Candidate
+| Human–AI knowledge production || Implemented across changing external systems + conceptual lineage || Useful work should move from discussion/cognition into reviewed reusable memory while preserving provenance. || [[BITwiki:Knowledge lifecycle]], BIThub/BITCORE/BITwiki knowledge continuum || Durable lifecycle direction is clear; artifact-class/handoff detail should remain runtime-independent and evidence-driven. || '''Candidate'''
 |}
 
-== Evidence standard ==
+== Evidence surfaces ==
 
-Each row should eventually link to an evidence note containing:
+The current review layer is grounded in:
 
-# exact V1 archive page and revision identifiers;
-# implemented MediaWiki objects and callers/usages where applicable;
-# related historical design writings;
-# conflicts or changes across revisions;
-# current V2 objects addressing the same function;
-# explicit rationale for acceptance, rejection, or transformation;
-# validation evidence when implemented.
+* [[BITwiki:V1 implementation audit]] — what V1 actually implemented;
+* [[BITwiki:Corpus evidence]] — complete V1/V2 corpus inventory;
+* [[BITwiki:V1 page-role migration]] — all 162 V1 Main artifacts classified before ontology;
+* [[BITwiki:V1 architecture-family migration]] — all 83 architecture sources grouped by design problem;
+* [[BITwiki:V1 subject and composition migration]] — subject/composition disposition;
+* [[BITwiki:V1 ontology maturation]] — source-grounded ontology reconciliation;
+* [[BITwiki:V2 architecture evaluation checkpoint]] — consolidated review state.
 
 A wanted template, design paragraph, category label, or proposed schema is evidence that an idea existed. It is not evidence that the capability was deployed.
-
-The reusable machine evidence for corpus-level decisions is documented in [[BITwiki:Corpus evidence]] and [[BITwiki:V1 page-role migration]].
-
-== First research passes ==
-
-The register should be matured in an order that reduces downstream ambiguity:
-
-# '''Ontology and classification''' — core primitive separation accepted; corpus inventory and page-role migration complete; subject canonicalization and vocabulary coverage are next.
-# '''Epistemics and confidence''' — status, provenance, evidence, uncertainty, review, confidence trails.
-# '''Composition''' — Book Matter/transclusion are now Candidates from direct V1 evidence; templates, modules, page anatomy, and caller behavior still require full maturation.
-# '''Graph semantics''' — properties, relationships, query behavior, visualization.
-# '''Research substrate''' — claims, publications, patents, datasets, methods, experiments, projects, labs, implementations.
-# '''Knowledge lifecycle''' — BIThub/BITCORE/artifact/review/canonicalization and reuse.
-
-This ordering is methodological rather than hierarchical. Findings may cross-cut several families.
 
 == Design guardrail ==
 

@@ -72,6 +72,23 @@ Methods; mechanism; evidence/results; implementation; limitations/challenges; cr
 == Book Matter is not taxonomy ==
 A page section called ''Applications'' is not automatically a Category:Applications. A domain such as Biology is not Book Matter. An entity type such as Project is not Book Matter. An epistemic state such as Hypothetical is not Book Matter. A MediaWiki namespace is not Book Matter.
 
+== When matter becomes independently addressable ==
+
+A heading does not need its own page merely because it has a recognizable Book Matter role.
+
+Promote a portion to a stable subpage/transclusion unit when doing so enables actual reuse, retrieval, provenance, maintenance, or composition. Typical cases include:
+
+* another page needs only that portion;
+* an agent needs a stable semantic retrieval target;
+* the portion has substantial independent evidence or references;
+* multiple parent views legitimately compose the same canonical material;
+* the portion changes on a meaningfully different cadence;
+* independent identity prevents duplicated copies from drifting.
+
+Otherwise keep the matter inline in its canonical parent.
+
+'''Modularity does not mean fragmentation.'''
+
 == Transclusion ==
 Historical designs often represented matter as article subpages:
 <pre>
@@ -84,11 +101,28 @@ Historical designs often represented matter as article subpages:
 
 That pattern remains valid where an independently addressable portion is genuinely reusable. V2 does not require every heading to become a subpage.
 
+[[BITwiki:Transclusion]] is the canonical implementation standard. It distinguishes core MediaWiki whole-page/subpage and inclusion-tag behavior from extension-specific named-section transclusion, and it defines provenance, epistemic-context, contradiction, and dependency rules.
+
+The practical hierarchy is:
+
+# keep coherent material inline when it has one use;
+# use a Main subpage when subject content has independent semantic/reuse value;
+# use a Template when the repeated object is primarily rendering/interface behavior;
+# use selective-section machinery only when the deployment supports it and it is clearer than a subpage.
+
+== Parent coherence ==
+
+The parent page remains the canonical human-readable knowledge object even when much of its body is assembled from Book Matter.
+
+A transclusion architecture that makes the parent impossible to understand, edit, audit, or trace has failed even if every fragment is technically reusable.
+
 == Portals, indices, outlines, contents ==
 The broader Book Matter research also treated the reading interface as part of knowledge architecture: portals, indices, outlines, contents, and disambiguation. These are navigational forms, not substitutes for ontology.
 
 == Source lineage ==
 Historical sources include the BITwiki Book Matter research project, ''book matter prompt'', ''BITWIKI WIKI-Philosophy'', V1 transclusion/template pages, and the live Main Page's explicit contrast between static monolith articles and '''fluid modularized content'''.
+
+See [[BITwiki:Transclusion]], [[BITwiki:Page format]], [[BITwiki:Organization]], and [[BITwiki:Navigation]].
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

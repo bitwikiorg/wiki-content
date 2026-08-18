@@ -21,6 +21,7 @@ V1 provenance  → archive-v1/
 | Durable invariants | [`BITwiki/Constitution.mediawiki`](BITwiki/Constitution.mediawiki) |
 | Ontology / Epistemology / Axiology | [`BITwiki/Foundational triad.mediawiki`](BITwiki/Foundational%20triad.mediawiki) |
 | How the wiki is organized | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
+| V1 → V2 maturation framework | [`BITwiki/V1 to V2 maturation.mediawiki`](BITwiki/V1%20to%20V2%20maturation.mediawiki) |
 | Default knowledge-page grammar | [`BITwiki/Page format.mediawiki`](BITwiki/Page%20format.mediawiki) |
 | Reusable content anatomy | [`BITwiki/Book Matter.mediawiki`](BITwiki/Book%20Matter.mediawiki) |
 | Composition / reuse rules | [`BITwiki/Transclusion.mediawiki`](BITwiki/Transclusion.mediawiki) |
@@ -204,18 +205,22 @@ Detailed evidence belongs in the audit files, not in this navigation page:
 ## V1 → V2 editorial rule
 
 ```text
-exact V1 source + revisions + usage
-→ identify the intellectual / operational job
-→ compare variants and historical intent
-→ preserve unique writing, behavior, and provenance
-→ choose the correct V2 primitive
-→ enhance without flattening
-→ validate
+V1
+→ preserve
+→ understand
+→ identify signal
+→ mature primitive
+→ enhance
+→ integrate into V2
 ```
 
-Canonicalization is **not** permission to replace authored work with generic summaries.
+**V1 gave us the imagination. V2 gives that imagination a coherent substrate.**
 
-Historical implementation mistakes may be refactored. Historical thinking remains evidence and lineage.
+This is a maturation process, not a rewrite. Design writing and implementation evidence are both authoritative for different questions: one records what BITwiki was trying to become; the other records what actually existed and ran.
+
+Canonicalization is **not** permission to replace authored work with generic summaries. Historical implementation mistakes may be refactored. Historical thinking, unusual language, worldview, experiments, and provenance remain evidence and lineage.
+
+The detailed framework lives in [`BITwiki/V1 to V2 maturation.mediawiki`](BITwiki/V1%20to%20V2%20maturation.mediawiki).
 
 ## Where new material belongs
 

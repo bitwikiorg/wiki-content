@@ -1,0 +1,149 @@
+{{Source status|status=source-reconciled architecture|note=Preserves V1 Ontology Alignment Matrix principles while treating specific external IDs, mappings, default confidence/status assignments, and import/export examples as historical claims requiring revalidation before production use.}}
+
+= Interoperability =
+
+BITwiki should exchange knowledge with external systems without pretending that differently designed ontologies mean the same thing merely because labels look similar.
+
+V1 framed this as an '''Ontology Alignment Matrix'''. V2 preserves the core alignment discipline while separating it from unverified historical mappings.
+
+== Why align ==
+
+Interoperability can enable:
+
+* import and enrichment from external knowledge graphs;
+* export to common structured vocabularies;
+* cross-system identifiers;
+* query translation;
+* source/provenance linking;
+* comparison and verification across independent knowledge systems.
+
+Alignment is useful only when semantic loss is understood.
+
+== Mapping relations ==
+
+A mapping should state how meanings relate.
+
+=== Exact match ===
+The two terms have materially the same intended meaning and scope for the current use.
+
+Exact match should be rare and justified rather than assumed from identical labels.
+
+=== Narrower match ===
+The BITwiki concept is more specific than the external concept, or vice versa. Direction must be explicit.
+
+=== Broader match ===
+One concept covers a wider semantic range.
+
+=== Close match ===
+The concepts are substantially similar but differ enough that substitution may lose meaning.
+
+=== Related match ===
+The concepts are connected but are not equivalent enough for type/property substitution.
+
+== Preserve context ==
+
+When exporting/importing, do not silently discard:
+
+* epistemic standing;
+* provenance;
+* uncertainty;
+* source lineage;
+* entity-type distinctions;
+* relationship semantics;
+* lifecycle state;
+* V2-specific governance/Book Matter meaning where relevant.
+
+If the target system has no equivalent field, explicitly identify the loss or use a documented extension mechanism.
+
+== Bidirectional mapping is not guaranteed ==
+
+A clean BITwiki→external mapping does not imply a lossless external→BITwiki mapping.
+
+Example:
+
+<pre>
+BITwiki: specific evidentiary relationship
+        ↓
+external: generic relatedTo
+</pre>
+
+Once exported only as <code>relatedTo</code>, the original semantic strength cannot be reconstructed unless additional metadata travels with it.
+
+== External systems ==
+
+V1 explored alignments with:
+
+* Wikidata;
+* Schema.org;
+* Dublin Core;
+* FOAF;
+* RDF/RDFS/OWL-style vocabularies.
+
+These remain natural interoperability targets.
+
+Specific mappings must be checked against the current external vocabulary at implementation time. Do not copy historical Q-IDs/property assumptions simply because they appear in V1 documentation.
+
+== BITwiki-specific semantics ==
+
+Some BITwiki dimensions may have no direct external equivalent:
+
+* epistemic standing;
+* confidence rationale;
+* provenance transformations;
+* Book Matter anatomy;
+* specialized relationship semantics.
+
+The correct response is not to pretend equivalence. Preserve them as extensions, sidecar metadata, or explicitly documented unmapped fields.
+
+== Import protocol ==
+
+A safe import is not "copy external facts into BITwiki."
+
+<pre>
+identify source object + license/provenance
+→ map external type/relations by meaning
+→ preserve external identifier
+→ import only supported fields
+→ mark mapping relation + semantic losses
+→ assign BITwiki epistemic metadata from evidence, not from source prestige
+→ review surprising/high-impact claims
+</pre>
+
+Never assign <code>Established</code>, a numeric confidence, or any other epistemic standing solely because the source is Wikidata, Schema.org, Wikipedia, a journal, or another respected system.
+
+== Export protocol ==
+
+<pre>
+select exportable knowledge
+→ map V2 entity/property semantics
+→ identify unmapped V2 dimensions
+→ serialize into target vocabulary
+→ retain provenance + identifiers
+→ validate round-trip where practical
+→ document lossy mappings
+</pre>
+
+== Mapping provenance ==
+
+Mappings themselves are claims and should carry:
+
+* source/target vocabulary version;
+* mapping author/process;
+* mapping type;
+* rationale;
+* date reviewed;
+* known semantic loss;
+* external identifiers.
+
+A stale mapping can be worse than no mapping because it appears machine-authoritative.
+
+== V1 lineage ==
+
+Primary V1 source: [[BITwiki Ontology Alignment Matrix]], plus [[Ontology Alignment Matrix.REVISED]] and [[Ontology Alignment Specification]].
+
+V1's broad principles—semantic equivalence by meaning, context preservation, bidirectionality, documented loss—are retained. Specific historical mappings/default import rules remain in <code>archive-v1/</code> until individually verified.
+
+See [[BITwiki:Ontology]], [[BITwiki:Semantic properties]], and [[BITwiki:Provenance]].
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

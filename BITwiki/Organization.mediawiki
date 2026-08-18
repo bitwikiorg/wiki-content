@@ -1,41 +1,50 @@
-= Organization =
+{{Source status|status=source-grounded architecture reconstruction|note=Preserves the functional goals of V1 Wiki Organization Guidelines and historical WIKI-Philosophy while correcting category-as-filesystem and page-role conflation.}}
 
-BITwiki V2 separates independent dimensions of knowledge instead of forcing them into one hierarchy.
+= BITwiki organization =
 
-== Structural dimensions ==
-* '''Namespace''' — system role or page class.
-* '''Entity type''' — what kind of thing the page describes.
-* '''Domain''' — field or fields of knowledge.
-* '''Scope''' — optional contextual boundary when one is real and useful.
-* '''Book Matter''' — reusable semantic sections of the content.
-* '''Epistemics''' — source, evidence, provenance, status, confidence, uncertainty, and verification.
-* '''Relationships''' — semantic links between knowledge objects.
+BITwiki is organized so knowledge can be read as coherent pages, queried as semantic data, navigated as a graph, and reused as modular content.
 
-These dimensions are orthogonal. Namespace is not domain; domain is not Book Matter; epistemic status is not a category family.
+== MediaWiki primitives first ==
+; Page
+: durable knowledge object or documentation unit.
+; Namespace
+: broad system/page-class boundary with distinct MediaWiki behavior.
+; Category
+: human-readable grouping and navigation mechanism.
+; Template
+: reusable transcluded content or interface.
+; Property
+: Semantic MediaWiki attribute or relation.
+; Concept
+: stored semantic query / computed collection where appropriate.
+; Module
+: reusable executable wiki logic where templates are insufficient.
+; Redirect
+: title continuity and migration mechanism.
+; Revision / history / diff
+: provenance and correction trail.
 
-== Namespace policy ==
-Use native MediaWiki namespaces for their real purposes:
-* Main — primary public knowledge.
-* User / User talk — users and user discussion.
-* BITwiki / BITwiki talk — project policy, architecture, governance, standards, and meta documentation.
-* Help — editing and usage guidance.
-* Template — reusable transclusion and presentation interfaces.
-* Module — reusable Lua logic.
-* Property — Semantic MediaWiki property definitions.
-* Concept — stored semantic queries and computed collections.
-* Category — human classification and navigation.
-* File — media and file metadata.
-* MediaWiki — site interface and system-message content.
+== Independent dimensions ==
+<pre>
+namespace ≠ entity type ≠ domain ≠ Book Matter ≠ epistemic status ≠ relationship
+</pre>
 
-Create custom namespaces only when a genuine operational boundary justifies them, such as materially different permissions or behavior.
+== Entity type ==
+Entity type answers: '''what kind of thing is this knowledge object about?''' V1 contains multiple entity/page-type vocabularies that remain to be reconciled. Do not invent a final controlled vocabulary until those source pages have been compared.
 
-== Categories ==
-Categories should group pages that share meaningful characteristics, especially knowledge domains and useful navigational classes. They should not imitate folders and should not duplicate every semantic property.
+== Domain ==
+Domain answers: '''what field or body of knowledge does this belong to?''' Systems science is a foundational orientation. Historical portal priorities also include Science, Biology, Mathematics, Philosophy, Technology, Electronics, Energy, Engineering, Chemistry, Physics, and Medicine.
 
-== Portals and indexes ==
-Portals, indexes, outlines, graphs, and dashboards are generated or curated views over the underlying model. Their purpose is orientation and discovery.
+== Relationships ==
+Semantic relationships express how knowledge objects connect. Relationship vocabulary should be recovered from [[BITwiki Relationship Types]], [[BITwiki Relationship Pattern Catalog]], and actual content before being finalized.
 
-== Historical lesson ==
-V1 mixed domains, page types, Book Matter, epistemics, governance, implementation details, and navigation into overlapping category and Main-namespace families. V2 preserves the useful concepts while removing that coupling.
+== Navigation as a view ==
+Portals, indices, outlines, contents pages, category trees, semantic queries, and knowledge graphs are views over the underlying knowledge model. Navigation should help a reader traverse the map; it should not become the ontology merely because it is visible.
 
-[[Category:BITwiki]]
+== V1 architecture sources to reconcile ==
+[[Wiki Organization Guidelines]], [[BITwiki Architecture Overview]], [[System Architecture]], [[BITwiki Taxonomy Architecture]], [[CATEGORY ARCHITECTURE]], [[BITwiki Entity Types]], [[BITwiki Entity Types.REVISED]], [[BITwiki Expanded Entity Types]], [[BITwiki Page Types]], [[BITwiki Ontology Alignment Matrix]], [[BITwiki Property Dictionary]], [[BITwiki Relationship Types]], [[BITwiki Semantic Patterns]], [[Portal Architecture Specification]], [[BITwiki Transclusion Rules]].
+
+No one title is presumed to supersede another until its body is compared.
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

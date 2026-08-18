@@ -1,0 +1,27 @@
+= Deployment prerequisites =
+
+This repository is organized as MediaWiki source. Before importing it into a live wiki, verify the target site's namespaces and extensions.
+
+== Required / assumed capabilities ==
+* MediaWiki page/revision system
+* Semantic MediaWiki for semantic properties and `#ask` queries
+* CategoryTree where `<categorytree>` is used
+
+== Portal namespace ==
+`Portal:` is not a default MediaWiki namespace on every installation. V2 includes `Portal/` because the historical BITwiki design explicitly uses portals as high-level knowledge entry points.
+
+Before import, either register a Portal namespace in the target wiki or deliberately map portal source into another namespace while preserving public titles through redirects. Do not silently change portal titles during deployment.
+
+== Source fidelity ==
+The V1 corpus inventory contains unreconciled pages. Do not bulk-delete live V1 pages solely because a V2 file does not yet exist for them.
+
+Safe migration:
+<pre>
+import / create reviewed V2 pages
+→ verify rendering and semantic data
+→ compare each V1 source family
+→ move/merge/redirect only after reconciliation
+→ preserve revision history where possible
+</pre>
+
+[[Category:BITwiki meta]]

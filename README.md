@@ -1,169 +1,114 @@
-# BITwiki V2 — Content Map
+# BITwiki V2 — Canon Map
 
-This README is the **navigation substrate for the public BITwiki corpus**. It explains what exists, where it belongs, and how repository paths map to MediaWiki pages.
+This file is the navigation substrate for the public BITwiki corpus. It is not a conventional repository README.
 
-**Live `bitwiki.org` remains the authority for inherited V1 public content. This repository is the canonical V2 working corpus.** V2 preserves useful public substance and continuity while refactoring organization, semantics, transclusion, and presentation.
+BITwiki is the durable MediaWiki / Semantic MediaWiki knowledge layer of the wider BITwiki–BIThub–BITCORE ecosystem. This repository mirrors public wiki source in a form that can be reviewed, versioned, transcluded, and deployed.
 
-## Start here
+## Read the corpus in this order
 
-| Need | Go to |
-|---|---|
-| Public wiki entry | [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki) |
-| What BITwiki is | [`BITwiki/Manifesto.mediawiki`](BITwiki/Manifesto.mediawiki) |
-| Full V2 map | [`BITwiki/Index.mediawiki`](BITwiki/Index.mediawiki) |
-| How knowledge is organized | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
-| How a knowledge page is built | [`BITwiki/Content model.mediawiki`](BITwiki/Content%20model.mediawiki) |
-| Book Matter / reusable sections | [`BITwiki/Book matter.mediawiki`](BITwiki/Book%20matter.mediawiki) |
-| Semantic schema | [`BITwiki/Schema.mediawiki`](BITwiki/Schema.mediawiki) |
-| Evidence and knowledge status | [`BITwiki/Epistemics.mediawiki`](BITwiki/Epistemics.mediawiki) |
-| Navigation / portals | [`BITwiki/Navigation.mediawiki`](BITwiki/Navigation.mediawiki) |
-| V1 → V2 continuity | [`BITwiki/V1 public title ledger.mediawiki`](BITwiki/V1%20public%20title%20ledger.mediawiki) |
-| What historical material was consolidated | [`BITwiki/Source consolidation.mediawiki`](BITwiki/Source%20consolidation.mediawiki) |
+### 1. Foundations — why the system exists
 
-## Corpus structure
+- [`BITwiki/Manifesto.mediawiki`](BITwiki/Manifesto.mediawiki)
+- [`BITwiki/Charter.mediawiki`](BITwiki/Charter.mediawiki)
+- [`BITwiki/Constitution.mediawiki`](BITwiki/Constitution.mediawiki)
+- [`BITwiki/Foundational triad.mediawiki`](BITwiki/Foundational%20triad.mediawiki)
 
-Repository directories represent **MediaWiki namespaces**, not topical folders.
+These are authored foundations. They are not generic documentation. Their wording is preserved from the strongest recoverable public/historical formulations, with source lineage stated on-page.
 
-```text
-wiki-content/
-├── Main/       ordinary public knowledge + Main Page + Book Matter subpages
-├── BITwiki/    public documentation about BITwiki itself
-├── Portal/     reader-facing navigation and query surfaces
-├── Template/   reusable/transcluded wikicode and presentation components
-├── Property/   Semantic MediaWiki properties and relationships
-├── Category/   human classification and navigation groups
-├── README.md   this corpus map
-└── manifest.json  machine-readable repository declaration
-```
+### 2. Knowledge architecture — what a BITwiki page is made of
 
-### Namespace map
+- [`BITwiki/Book Matter.mediawiki`](BITwiki/Book%20Matter.mediawiki)
+- [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki)
+- [`BITwiki/Epistemics.mediawiki`](BITwiki/Epistemics.mediawiki)
+- [`BITwiki/Navigation.mediawiki`](BITwiki/Navigation.mediawiki)
 
-| Repository path | MediaWiki title | Purpose |
+### 3. Knowledge process — how signal becomes durable memory
+
+- [`BITwiki/Knowledge lifecycle.mediawiki`](BITwiki/Knowledge%20lifecycle.mediawiki)
+- [`BITwiki/Ecosystem.mediawiki`](BITwiki/Ecosystem.mediawiki)
+
+### 4. Public reading surface
+
+- [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki)
+- [`Portal/Systems science.mediawiki`](Portal/Systems%20science.mediawiki)
+- `Portal/` — major knowledge entry points
+
+### 5. Provenance and migration
+
+- [`BITwiki/Source lineage.mediawiki`](BITwiki/Source%20lineage.mediawiki)
+- [`BITwiki/V1 public corpus inventory.mediawiki`](BITwiki/V1%20public%20corpus%20inventory.mediawiki)
+
+The inventory preserves visible V1 titles without pretending that unrecovered bodies have already been merged or redirected correctly.
+
+---
+
+## Repository path → MediaWiki title
+
+| Repository path | MediaWiki title | Role |
 |---|---|---|
-| `Main/Foo.mediawiki` | `Foo` | Ordinary knowledge |
-| `Main/Foo/Overview.mediawiki` | `Foo/Overview` | Reusable Book Matter / subpage |
-| `BITwiki/Foo.mediawiki` | `BITwiki:Foo` | Public meta, policy, architecture, documentation |
-| `Portal/Foo.mediawiki` | `Portal:Foo` | Curated/dynamic navigation surface |
-| `Template/Foo.mediawiki` | `Template:Foo` | Transcluded reusable content or interface |
-| `Property/Foo.mediawiki` | `Property:Foo` | Typed semantic field or relationship |
-| `Category/Foo.mediawiki` | `Category:Foo` | Classification/navigation category |
+| `Main/Foo.mediawiki` | `Foo` | ordinary knowledge object |
+| `Main/Foo/Overview.mediawiki` | `Foo/Overview` | independently addressable Book Matter when justified |
+| `BITwiki/Foo.mediawiki` | `BITwiki:Foo` | public project/meta/foundational documentation |
+| `Portal/Foo.mediawiki` | `Portal:Foo` | reader-facing knowledge entry point |
+| `Template/Foo.mediawiki` | `Template:Foo` | reusable/transcluded wiki component |
+| `Property/Foo.mediawiki` | `Property:Foo` | Semantic MediaWiki property |
+| `Category/Foo.mediawiki` | `Category:Foo` | human-readable classification/navigation |
 
-**Directories are transport structure for MediaWiki namespaces. They are not the knowledge taxonomy.** Domain, entity type, scope, Book Matter, epistemic status, and relationships remain separate dimensions.
+**The repository directories mirror MediaWiki namespaces. They are transport structure, not the ontology.**
 
-## The public reading surface
-
-The intended navigation flow is:
+## Core distinction
 
 ```text
-Main Page
-  ↓
-Start Here / Portals / Categories
-  ↓
-Canonical knowledge pages
-  ├── semantic relationships → other knowledge
-  └── Book Matter → reusable sections
+Namespace ≠ entity type ≠ domain ≠ Book Matter ≠ epistemic status ≠ relationship
 ```
 
-### Foundations
+A page can simultaneously have a MediaWiki identity, an entity type, one or more knowledge domains, semantic relationships, reusable Book Matter, and sources/evidence/provenance.
 
-- [`BITwiki:Manifesto`](BITwiki/Manifesto.mediawiki) — why BITwiki exists.
-- [`BITwiki:Charter`](BITwiki/Charter.mediawiki) — editorial commitments and operating principles.
-- [`BITwiki:Constitution`](BITwiki/Constitution.mediawiki) — durable system-level invariants.
-- [`BITwiki:Foundational triad`](BITwiki/Foundational%20triad.mediawiki) — ontology, epistemology, axiology.
-- [`BITwiki:Glossary`](BITwiki/Glossary.mediawiki) — canonical ecosystem terminology.
+Do not collapse those dimensions into one category tree.
 
-### Knowledge architecture
+## Book Matter
 
-Read this sequence when changing structure:
+BITwiki was designed around *fluid modularized content*. A coherent page may expose useful semantic parts—overview, concepts, frameworks, applications, timelines, references, and other matter—so humans and agents can retrieve or transclude exactly the required depth.
 
-1. [`MediaWiki primitives`](BITwiki/MediaWiki%20primitives.mediawiki)
-2. [`Architecture`](BITwiki/Architecture.mediawiki)
-3. [`Organization`](BITwiki/Organization.mediawiki)
-4. [`Content model`](BITwiki/Content%20model.mediawiki)
-5. [`Book Matter`](BITwiki/Book%20matter.mediawiki)
-6. [`Transclusion`](BITwiki/Transclusion.mediawiki)
-7. [`Classification`](BITwiki/Classification.mediawiki)
-8. [`Schema`](BITwiki/Schema.mediawiki)
-
-### Knowledge quality
-
-- [`Epistemics`](BITwiki/Epistemics.mediawiki) — evidence, confidence, uncertainty, verification.
-- [`Provenance`](BITwiki/Provenance.mediawiki) — where content came from and how it changed.
-- [`Quality standards`](BITwiki/Quality%20standards.mediawiki) — minimum quality expectations.
-- [`Governance`](BITwiki/Governance.mediawiki) — stewardship and policy.
-
-### Navigation
-
-- [`BITwiki:Start here`](BITwiki/Start%20here.mediawiki)
-- [`BITwiki:Index`](BITwiki/Index.mediawiki)
-- [`Portal:Systems science`](Portal/Systems%20science.mediawiki)
-- [`Portal:Biology`](Portal/Biology.mediawiki)
-- [`Portal:Technology`](Portal/Technology.mediawiki)
-- [`Portal:Philosophy`](Portal/Philosophy.mediawiki)
-
-Portals and indexes are **views over the knowledge model**. They do not define the ontology.
-
-## Book Matter and transclusion
-
-A canonical knowledge page may be composed from reusable semantic parts.
-
-Example:
+Progressive disclosure is intentional:
 
 ```text
-Bioluminescent Organisms
-├── Overview
-├── Biochemical Mechanism
-├── Examples
-├── Applications
-├── Related Theories
-└── References
+orientation
+→ intermediate structure
+→ advanced depth
+→ source / evidence layer
 ```
 
-The parent remains the canonical knowledge object. Its subpages can be transcluded independently when a reader, portal, agent, or another page needs only that portion.
+Transclusion is an implementation of modularity, not permission to fragment every paragraph into a page.
 
-Main Page presentation follows the same principle through real templates such as `Template:Main page/Notice`, `Template:Main page/Live stats`, and `Template:Main page/Featured knowledge`.
+## Canon rule
 
-## How to interpret a file
+```text
+source
+→ preserve exact signal
+→ compare revisions
+→ research and cross-check
+→ distill redundancy
+→ revise
+→ verify
+→ canonicalize
+→ transclude / relate
+→ publish
+```
 
-V2 uses four important states:
+A cleaner sentence is not automatically a better sentence. Authored voice, unique distinctions, historical development, citations, and provenance are part of the knowledge.
 
-**Canonical page** — the current V2 page for that subject or system concept.
+## Source authority
 
-**Meta page** — public documentation *about BITwiki*. These belong in `BITwiki:` and use `{{BITwiki meta}}` where applicable.
+For inherited public BITwiki material:
 
-**Reusable/transcluded page** — Book Matter or a Template intended to be composed into another page.
+1. live `bitwiki.org` page + revision history;
+2. current first-party public BIThub / GitHub material;
+3. older public writings and captured historical versions;
+4. historical design material used as provenance, not as automatic current state.
 
-**Redirect** — a V1 title, alias, revision-era name, or superseded structural page retained for continuity but pointing to its canonical V2 destination.
+If a V1 title is known but its complete body has not been recovered, it remains **unreconciled** in the inventory. It must not be silently rewritten, merged, or redirected.
 
-Some pages were reconstructed from accessible public V1 material rather than exact exported raw wikitext. Those use `{{Source status|...}}`. **A preserved title or redirect does not imply that every historical sentence has been recovered.**
+## Public boundary
 
-## V1 continuity and provenance
-
-V2 does not reproduce V1's duplicate architecture merely to preserve old names.
-
-- The [`V1 public title ledger`](BITwiki/V1%20public%20title%20ledger.mediawiki) accounts for the 162 visible V1 Main-namespace titles used in the reconstruction.
-- [`Source consolidation`](BITwiki/Source%20consolidation.mediawiki) records how major V1 and historical Notion families were distilled into the smaller canonical V2 set.
-- MediaWiki redirects preserve old public links where a title was renamed, merged, or moved.
-- Exact historical prose/history still belongs to MediaWiki revision/export reconciliation when raw source was not available during reconstruction.
-
-Historical Notion material is **design archaeology**, not current authority.
-
-## Where new material belongs
-
-Use the narrowest native MediaWiki primitive:
-
-- Durable subject knowledge → `Main/`
-- Documentation about BITwiki → `BITwiki/`
-- Navigation over knowledge → `Portal/`
-- Reusable rendering/content → `Template/`
-- Semantic attribute/relationship → `Property/`
-- Human grouping/classification → `Category/`
-- Reusable semantic portion of an article → usually a Main subpage / Book Matter
-
-Do not create a category when a property is the real requirement. Do not create a namespace when an entity type is the real requirement. Do not create a separate page when a section or template is sufficient.
-
-## Boundary
-
-This repository contains **public BITwiki content only**. Protected/private memory, credentials, private identity data, queues, access-control internals, and non-public operational material do not belong here.
-
-`manifest.json` is the machine-readable companion to this map.
+Only public material belongs here. Private memory, credentials, access-control internals, private identity data, non-public operations, and unpublished sensitive material stay outside the repository.

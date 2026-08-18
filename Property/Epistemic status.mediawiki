@@ -2,4 +2,24 @@
 
 [[Has type::Text]]
 
-The current epistemic/knowledge status of a page, section, or claim when such metadata is appropriate. V1 status vocabulary remains under reconciliation.
+The present '''evidentiary standing''' of a page, section, or claim when such metadata is useful.
+
+Canonical V2 values:
+
+* <code>Hypothetical</code>
+* <code>Emerging</code>
+* <code>Supported</code>
+* <code>Well-supported</code>
+* <code>Established</code>
+* <code>Disputed</code>
+
+The first five describe broad regions of evidentiary maturity. <code>Disputed</code> marks credible unresolved conflict and is not simply another rung on the same ladder.
+
+Do not use this property for:
+
+* lifecycle (<code>Archived</code>, <code>Deprecated</code>, <code>Superseded</code>);
+* review state (<code>Reviewed</code>, <code>Verified</code> without explaining what was verified);
+* constitutional/foundational role (<code>Axiomatic</code>);
+* numerical confidence.
+
+See [[BITwiki:Epistemic status]] and [[BITwiki:Epistemics]].

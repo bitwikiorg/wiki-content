@@ -1,189 +1,143 @@
-# BITwiki V2
+# BITwiki V2 — Content Map
 
-**Public MediaWiki source. Start here.**
-
-BITwiki is the durable knowledge layer of the **BITwiki / BIThub / BITCORE** ecosystem.
+This README is the **navigation substrate for the public BITwiki corpus**. It is not a conventional repository README.
 
 ```text
-V2 canon       → Main/ BITwiki/ Portal/ Template/ Property/ Category/
+V2 canon       → Main/ · BITwiki/ · Portal/ · Template/ · Property/ · Category/
 V1 provenance  → archive-v1/
 ```
 
-`archive-v1/` is read-only evidence. **Do not deploy it as V2.**
+`archive-v1/` is read-only source evidence. **Do not deploy it as V2.**
 
 ## Start here
 
-| Need | Open |
+| Need | Canonical page |
 |---|---|
-| Public entry | [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki) |
-| Foundational map | [`BITwiki/Foundations.mediawiki`](BITwiki/Foundations.mediawiki) |
+| Public wiki entry | [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki) |
+| Foundation map | [`BITwiki/Foundations.mediawiki`](BITwiki/Foundations.mediawiki) |
 | Why BITwiki exists | [`BITwiki/Manifesto.mediawiki`](BITwiki/Manifesto.mediawiki) |
-| Original BITCORE manifesto | [`BITwiki/BITCORE Manifesto.mediawiki`](BITwiki/BITCORE%20Manifesto.mediawiki) |
-| Charter | [`BITwiki/Charter.mediawiki`](BITwiki/Charter.mediawiki) |
-| Constitution | [`BITwiki/Constitution.mediawiki`](BITwiki/Constitution.mediawiki) |
+| BITCORE worldview | [`BITwiki/BITCORE Manifesto.mediawiki`](BITwiki/BITCORE%20Manifesto.mediawiki) |
+| Operating covenant | [`BITwiki/Charter.mediawiki`](BITwiki/Charter.mediawiki) |
+| Durable invariants | [`BITwiki/Constitution.mediawiki`](BITwiki/Constitution.mediawiki) |
 | Ontology / Epistemology / Axiology | [`BITwiki/Foundational triad.mediawiki`](BITwiki/Foundational%20triad.mediawiki) |
-| Book Matter / transclusion | [`BITwiki/Book Matter.mediawiki`](BITwiki/Book%20Matter.mediawiki) |
-| Default page format | [`BITwiki/Page format.mediawiki`](BITwiki/Page%20format.mediawiki) |
+| How the wiki is organized | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
+| Default knowledge-page grammar | [`BITwiki/Page format.mediawiki`](BITwiki/Page%20format.mediawiki) |
+| Reusable content anatomy | [`BITwiki/Book Matter.mediawiki`](BITwiki/Book%20Matter.mediawiki) |
+| Composition / reuse rules | [`BITwiki/Transclusion.mediawiki`](BITwiki/Transclusion.mediawiki) |
+| Ontological model | [`BITwiki/Ontology.mediawiki`](BITwiki/Ontology.mediawiki) |
+| Entity vocabulary | [`BITwiki/Entity types.mediawiki`](BITwiki/Entity%20types.mediawiki) |
+| Relationship model | [`BITwiki/Relationships.mediawiki`](BITwiki/Relationships.mediawiki) |
+| Implemented SMW properties | [`BITwiki/Semantic properties.mediawiki`](BITwiki/Semantic%20properties.mediawiki) |
+| Epistemic model | [`BITwiki/Epistemics.mediawiki`](BITwiki/Epistemics.mediawiki) |
+| Evidence evaluation | [`BITwiki/Evidence.mediawiki`](BITwiki/Evidence.mediawiki) |
+| Provenance | [`BITwiki/Provenance.mediawiki`](BITwiki/Provenance.mediawiki) |
+| Uncertainty | [`BITwiki/Uncertainty.mediawiki`](BITwiki/Uncertainty.mediawiki) |
+| Navigation / portals | [`BITwiki/Navigation.mediawiki`](BITwiki/Navigation.mediawiki) |
 | Knowledge lifecycle | [`BITwiki/Knowledge lifecycle.mediawiki`](BITwiki/Knowledge%20lifecycle.mediawiki) |
-| Organization | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
-| Templates + categories | [`BITwiki/Templates and categories.mediawiki`](BITwiki/Templates%20and%20categories.mediawiki) |
 | Source authority / lineage | [`BITwiki/Source lineage.mediawiki`](BITwiki/Source%20lineage.mediawiki) |
-| Exact V1 implementation | [`BITwiki/V1 implementation audit.mediawiki`](BITwiki/V1%20implementation%20audit.mediawiki) |
-| V1 category refactor | [`BITwiki/V1 category migration.mediawiki`](BITwiki/V1%20category%20migration.mediawiki) |
-| V1 Special-page baseline | [`BITwiki/V1 maintenance baseline.mediawiki`](BITwiki/V1%20maintenance%20baseline.mediawiki) |
-| Current-live V1 fidelity audit | [`v1-fidelity-audit.json`](v1-fidelity-audit.json) |
-| Deleted-history boundary | [`v1-deleted-content-audit.json`](v1-deleted-content-audit.json) |
-| Unresolved deleted titles | [`v1-deleted-unresolved.json`](v1-deleted-unresolved.json) |
-| Exhaustive current-public V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
+| Exact current-public V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
+| Independent V1 fidelity audit | [`v1-fidelity-audit.json`](v1-fidelity-audit.json) |
 | V2 structural validation | [`v2-validation.json`](v2-validation.json) |
 
-## How to read the foundation layer
-
-The foundational writings have different jobs and should not be collapsed into one generic philosophy page:
-
-```text
-Manifestos          → direction / worldview / thesis
-Charter             → operating covenant
-Constitution        → durable invariants
-Foundational triad  → being / knowing / valuing
-```
-
-`BITwiki:Foundations` maps the current canon to the distinct V1 lineages. Historical branches remain source material even when V2 chooses a different current formulation.
-
-## Repository map
+## Corpus structure
 
 ```text
 wiki-content/
-├── Main/          ordinary public knowledge pages
-├── BITwiki/       foundations, architecture, governance, guides
-├── Portal/        high-level knowledge entry points
-├── Template/      reusable/transcluded V2 components
-├── Property/      Semantic MediaWiki properties
-├── Category/      intentional human-readable indexes
-├── archive-v1/    exhaustive current-public V1 snapshot
-├── scripts/       archive + validation tooling
+├── Main/          ordinary public knowledge + V1 compatibility redirects
+├── BITwiki/       foundations, architecture, epistemics, governance, guides
+├── Portal/        reader-facing domain entry points
+├── Template/      reusable content/interface behavior
+├── Property/      Semantic MediaWiki properties and relations
+├── Category/      intentional human browse/index surfaces
+├── archive-v1/    exhaustive snapshot of the current public V1 corpus
+├── scripts/       archive, fidelity, and validation tooling
 └── .github/       reproducible automation
 ```
 
-**Repository paths are organization surfaces, not the ontology.**
+### Repository path → MediaWiki title
 
-```text
-namespace ≠ entity type ≠ domain ≠ Book Matter ≠ epistemic status ≠ relationship
-```
-
-## V1 archive — independently verified current-public fidelity
-
-Latest archive snapshot: **2026-08-18T17:20:10Z**.
-
-An independent live-vs-archive audit subsequently compared the archive back against the live anonymous-readable wiki rather than trusting the harvester's own assertions.
-
-### Verified complete scope
-
-For the **currently existing public V1 corpus**, verification is complete:
-
-- **186 / 186** live pages are archived;
-- **606 / 606** public revision bodies were independently compared;
-- page IDs and current revision IDs match;
-- complete revision-ID sets and revision SHA-1 values match;
-- current wikitext matches;
-- all revisions use only the `main` MediaWiki revision slot — no auxiliary slot content was omitted;
-- all **162** categories and every membership match;
-- all **9** Template pages and every current transclusion caller match;
-- both File-page revision records match;
-- namespace inventory matches;
-- required maintenance/Special-page reports show no drift.
-
-The independent audit reports `content_fidelity_pass: true` with no page, revision, category, template, file, namespace or maintenance mismatches.
-
-| Surface | Exact archived state |
-|---|---:|
-| Nonnegative namespaces | 24 |
-| Public pages | 186 |
-| Revision bodies | 606 |
-| Main pages | 162 |
-| Actual Template pages | 9 |
-| Used category names | 162 |
-| Created `Category:` pages | 0 |
-| Property pages | 4 |
-| `smw/schema` pages | 3 |
-| MediaWiki pages | 6 |
-| File description pages | 2 |
-| File binary revision records | 2 |
-| Retrievable file binaries | 0 |
-| Historical binary references now unavailable | 2 |
-| Concept pages | 0 |
-| Module pages | 0 |
-
-The two historical PNG upload records are preserved with timestamps, dimensions, size, SHA-1, original API URLs, and failed-resolution evidence. The files themselves now return 404 and are **not fabricated or silently omitted**.
-
-### Historical deletion boundary
-
-This is the important qualification to “all V1 content.”
-
-The public deletion log contains **165 delete actions affecting 164 unique titles**. Anonymous API access cannot return deleted revision bodies for those titles; the deleted-revision API returns permission errors.
-
-The deletion audit classifies:
-
-- **140** deleted titles with obvious surviving clean-name counterparts, largely `... final` duplicates intentionally removed;
-- **5** deleted titles that currently exist again under the exact same title;
-- **19** deleted titles without an obvious current counterpart.
-
-Those 19 include a mixture of obvious throwaway/spam/system material and potentially useful historical BITwiki artifacts such as old Main-page components/templates, `BITwiki modularization demo`, `Main page styled`, and old audit pages. Some deletion log comments preserve partial historical source snippets, but the exact full deleted bodies are not anonymously retrievable.
-
-Therefore the precise completeness statement is:
-
-> **The repository contains the complete current anonymous-readable V1 corpus and the complete public histories of every page that currently exists. It does not yet prove byte-for-byte recovery of revisions/pages deleted before the archive snapshot.**
-
-Proving complete historical V1 recovery beyond this boundary requires a privileged MediaWiki deleted-revision export, database/backup source, or another preserved copy of the deleted bodies.
-
-Open the evidence directly:
-
-- [`archive-v1/audit.json`](archive-v1/audit.json) — archive assertions and exact counts
-- [`v1-fidelity-audit.json`](v1-fidelity-audit.json) — independent live-vs-archive comparison
-- [`v1-deleted-content-audit.json`](v1-deleted-content-audit.json) — all public deletion-log events and deleted-revision recoverability
-- [`v1-deleted-unresolved.json`](v1-deleted-unresolved.json) — the 19 unresolved deleted titles
-- [`archive-v1/index.json`](archive-v1/index.json) — every current public page
-- [`archive-v1/pages/`](archive-v1/pages/) — exact current wikitext
-- [`archive-v1/history/`](archive-v1/history/) — complete public histories for current pages
-- [`archive-v1/templates/index.json`](archive-v1/templates/index.json) — all 9 implemented templates
-- [`archive-v1/categories/index.json`](archive-v1/categories/index.json) — all 162 categories + membership graph
-- [`archive-v1/special/`](archive-v1/special/) — maintenance-report snapshots
-- [`archive-v1/files/index.json`](archive-v1/files/index.json) — file revision/binary availability records
-
-### Design intent ≠ deployed implementation
-
-V1 contains sophisticated architecture documents describing templates, categories, properties, concepts, modules and validation systems that were not all instantiated as namespace objects.
-
-```text
-design intent       → archived writings and references
-live implementation → archived namespaces, revisions, memberships, transclusions
-```
-
-Both are preserved. Neither is allowed to masquerade as the other.
-
-Examples:
-
-- `Template:Infobox` is real and has **80 callers**.
-- V1 has **59 wanted templates** that were referenced but never created.
-- `Category:BITwiki Templates` had **7 Main-namespace documentation members**; it was not the inventory of the 9 actual Template pages.
-- V1 had **162 used category names but zero authored Category pages**.
-
-## 12 domain exemplars
-
-| Domain | Portal | Example |
+| Repository path | MediaWiki title | Job |
 |---|---|---|
-| Systems science | [`Portal:Systems science`](Portal/Systems%20science.mediawiki) | [`System boundary`](Main/System%20boundary.mediawiki) |
-| Science | [`Portal:Science`](Portal/Science.mediawiki) | [`Hypothesis`](Main/Hypothesis.mediawiki) |
-| Biology | [`Portal:Biology`](Portal/Biology.mediawiki) | [`Cell membrane`](Main/Cell%20membrane.mediawiki) |
-| Mathematics | [`Portal:Mathematics`](Portal/Mathematics.mediawiki) | [`Prime number`](Main/Prime%20number.mediawiki) |
-| Philosophy | [`Portal:Philosophy`](Portal/Philosophy.mediawiki) | [`Causality`](Main/Causality.mediawiki) |
-| Technology | [`Portal:Technology`](Portal/Technology.mediawiki) | [`Version control`](Main/Version%20control.mediawiki) |
-| Electronics | [`Portal:Electronics`](Portal/Electronics.mediawiki) | [`Resistor`](Main/Resistor.mediawiki) |
-| Energy | [`Portal:Energy`](Portal/Energy.mediawiki) | [`Energy efficiency`](Main/Energy%20efficiency.mediawiki) |
-| Engineering | [`Portal:Engineering`](Portal/Engineering.mediawiki) | [`Safety factor`](Main/Safety%20factor.mediawiki) |
-| Chemistry | [`Portal:Chemistry`](Portal/Chemistry.mediawiki) | [`pH`](Main/pH.mediawiki) |
-| Physics | [`Portal:Physics`](Portal/Physics.mediawiki) | [`Momentum`](Main/Momentum.mediawiki) |
-| Medicine | [`Portal:Medicine`](Portal/Medicine.mediawiki) | [`Pulse`](Main/Pulse.mediawiki) |
+| `Main/Foo.mediawiki` | `Foo` | ordinary knowledge |
+| `Main/Foo/Overview.mediawiki` | `Foo/Overview` | reusable Book Matter / subpage |
+| `BITwiki/Foo.mediawiki` | `BITwiki:Foo` | public project/meta architecture |
+| `Portal/Foo.mediawiki` | `Portal:Foo` | reader-facing navigation |
+| `Template/Foo.mediawiki` | `Template:Foo` | reusable rendering/content behavior |
+| `Property/Foo.mediawiki` | `Property:Foo` | semantic attribute/relation |
+| `Category/Foo.mediawiki` | `Category:Foo` | human browse/index surface |
+
+**Directories are transport structure for MediaWiki namespaces. They are not the knowledge taxonomy.**
+
+```text
+namespace
+≠ entity type
+≠ domain
+≠ Book Matter
+≠ epistemic standing
+≠ lifecycle
+≠ relationship
+≠ navigation view
+```
+
+## The V2 knowledge object
+
+```text
+                         KNOWLEDGE OBJECT
+                               │
+       ┌───────────────────────┼────────────────────────┐
+       │                       │                        │
+    IDENTITY                CONTENT                 EPISTEMICS
+       │                       │                        │
+ Entity type               Book Matter              Evidence
+ Domain(s)                 Overview                 Sources
+ Relationships             Theory / model           Provenance
+ Scope                     Mechanism                Standing
+                            Methods                  Uncertainty
+                            Applications             Review
+                            References               Lifecycle
+       │                       │                        │
+       └───────────────────────┼────────────────────────┘
+                               │
+                         NAVIGATION / VIEWS
+                  Portal · Category · Index · Query
+```
+
+No branch is the whole knowledge model.
+
+## Public reading path
+
+```text
+Main Page
+   ↓
+Portals / Categories / Search
+   ↓
+Canonical knowledge objects
+   ├── semantic relationships → other knowledge
+   ├── Book Matter → reusable portions
+   ├── evidence / provenance → why it should be trusted
+   └── revision history → how it changed
+```
+
+The 12 domain portals now use `Template:Domain portal`: each preserves its domain-specific orientation while the template provides a common semantic browse/query surface.
+
+## Current domain surfaces
+
+| Domain | Portal | Exemplar |
+|---|---|---|
+| Systems science | `Portal:Systems science` | `System boundary` |
+| Science | `Portal:Science` | `Hypothesis` |
+| Biology | `Portal:Biology` | `Cell membrane` |
+| Mathematics | `Portal:Mathematics` | `Prime number` |
+| Philosophy | `Portal:Philosophy` | `Causality` |
+| Technology | `Portal:Technology` | `Version control` |
+| Electronics | `Portal:Electronics` | `Resistor` |
+| Energy | `Portal:Energy` | `Energy efficiency` |
+| Engineering | `Portal:Engineering` | `Safety factor` |
+| Chemistry | `Portal:Chemistry` | `pH` |
+| Physics | `Portal:Physics` | `Momentum` |
+| Medicine | `Portal:Medicine` | `Pulse` |
+
+These are initial high-level views, not exclusive ontological branches.
 
 ## Default page grammar
 
@@ -201,36 +155,89 @@ Epistemic notes
 References
 ```
 
-Mature pages may expand into history, frameworks, methods, evidence, case studies, controversies, timelines, bibliography, knowledge maps, implementation and limitations.
+Mature pages can expand into history, frameworks, methods, evidence/results, case studies, controversy, timelines, implementation, limitations, bibliography, knowledge maps, and other Book Matter.
 
-**Modularity does not mean fragmentation.** Keep the canonical parent coherent; split/transclude only when a portion is independently useful.
+**Modularity does not mean fragmentation.** Keep the canonical parent coherent. Split or transclude only when the portion has an actual independent reuse/retrieval/provenance job.
 
-## V1 → V2 rule
+## Semantic rules
+
+The V2 semantic substrate is deliberately smaller than the V1 proposed schema.
+
+Use:
+
+- `Entity type` for what kind of knowledge object this is;
+- `Domain` for fields/bodies of knowledge;
+- `Epistemic status` for present evidentiary standing;
+- `Confidence rationale` for why the present evidence justifies reliance;
+- `Review status` for actual review/verification state;
+- `Lifecycle status` for active/superseded/deprecated/archived state;
+- `Provenance` for origin/lineage;
+- specific Page relations such as `Implements`, `Part of`, `Depends on`, `Supports`, `Contradicts`, `Refines`, and `Derived from` when justified.
+
+Do not compress these jobs into one category, one status field, or a decorative numeric confidence score.
+
+## V1 source integrity
+
+The current public V1 archive is independently verified against live BITwiki:
+
+- **186 / 186** current public pages archived;
+- **606 / 606** public revision bodies compared;
+- all current page/revision IDs and SHA-1s match;
+- all **162** category names and memberships match;
+- all **9** implemented templates and callers match;
+- both File-page revision records match;
+- namespace and required maintenance-report state match;
+- independent audit: `content_fidelity_pass: true`.
+
+Historical boundary: the public deletion log contains deleted titles whose deleted bodies are not anonymously retrievable. Therefore the archive is complete for the **current anonymous-readable V1 corpus and public histories of pages that currently exist**, not a claim of byte-for-byte recovery of every deleted revision ever created.
+
+Detailed evidence belongs in the audit files, not in this navigation page:
+
+- [`archive-v1/audit.json`](archive-v1/audit.json)
+- [`v1-fidelity-audit.json`](v1-fidelity-audit.json)
+- [`v1-deleted-content-audit.json`](v1-deleted-content-audit.json)
+- [`v1-deleted-unresolved.json`](v1-deleted-unresolved.json)
+- [`BITwiki/V1 implementation audit.mediawiki`](BITwiki/V1%20implementation%20audit.mediawiki)
+- [`BITwiki/V1 category migration.mediawiki`](BITwiki/V1%20category%20migration.mediawiki)
+- [`BITwiki/V1 maintenance baseline.mediawiki`](BITwiki/V1%20maintenance%20baseline.mediawiki)
+
+## V1 → V2 editorial rule
 
 ```text
 exact V1 source + revisions + usage
-→ determine what job the object was doing
-→ compare variants + intended architecture
-→ preserve unique writing / behavior / provenance
+→ identify the intellectual / operational job
+→ compare variants and historical intent
+→ preserve unique writing, behavior, and provenance
 → choose the correct V2 primitive
-→ implement
-→ validate against Special pages
+→ enhance without flattening
+→ validate
 ```
 
-Typical refactors:
+Canonicalization is **not** permission to replace authored work with generic summaries.
 
-- domain category → `Domain` property + curated category/portal;
-- entity-type category → `Entity type` property;
-- epistemic category → epistemic/evidence model;
-- section/fragment category → Book Matter/transclusion;
-- temporary workflow/provenance category → provenance/revision metadata;
-- error category → generated validation/maintenance surface;
-- referenced-but-never-created template → design-intent evidence, not automatic V2 code.
+Historical implementation mistakes may be refactored. Historical thinking remains evidence and lineage.
+
+## Where new material belongs
+
+| Need | Put it here |
+|---|---|
+| durable subject knowledge | `Main/` |
+| BITwiki foundations/architecture/governance | `BITwiki/` |
+| high-level reader navigation | `Portal/` |
+| repeated rendering or reusable interface/content behavior | `Template/` |
+| stable semantic attribute/relation | `Property/` |
+| useful human browse collection | `Category/` |
+| reusable subject portion | Main subpage / Book Matter |
+| historical V1 evidence | `archive-v1/` only |
+
+Before creating a new object, ask whether an existing page section, property, relation, template, query, or Book Matter unit already performs the job.
 
 ## Validation
 
-Current V2 validation is **green**: all category references resolve to documented `Category/` pages, all template transclusions resolve, no deployable Main/BITwiki/Portal/Template pages are uncategorized, all 12 domain portals/categories exist, and exactly 12 domain exemplars are present.
+`v2-validation.json` is the structural gate for the deployable V2 corpus. It checks category/template resolution, intentional categorization, all 12 domain portals/categories, and the exemplar set.
+
+Source fidelity is a separate question from structural validity; both matter.
 
 ## Public boundary
 
-This repository contains public material only. Private memory, credentials, access-control internals, private identity data and unpublished sensitive operational material do not belong here.
+This repository contains public material only. Private memory, credentials, access-control internals, identity-bound private state, and unpublished sensitive operational material do not belong here.

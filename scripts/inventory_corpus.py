@@ -43,7 +43,7 @@ V1_CLASSIFICATION_PROPERTIES = {
     "has epistemic tier",
 }
 
-# These are API-recorded V1 category memberships that clearly carried an identity/type job.
+# API-recorded V1 categories whose labels clearly carried an identity/type job.
 V1_IDENTITY_CATEGORIES = {
     "Topics",
     "Ideas",
@@ -279,11 +279,17 @@ def build_v1_classification_inventory() -> dict:
     infobox_type_counts = Counter()
     pages = []
     topic_function_counts = Counter()
+    pages_with_signal = 0
+    pages_with_classification_syntax = 0
+    pages_with_identity_category = 0
+    pages_with_infobox = 0
+    subpages = 0
 
     v1_root = Path("archive-v1/pages/Main")
     for path in sorted(v1_root.rglob("*.mediawiki")) if v1_root.exists() else []:
         repo_path = path.as_posix()
         meta = index.get(repo_path, {})
+        title = meta.get("title") or unquote(path.stem)
         text = path.read_text(encoding="utf-8")
         parsed = executable_text(text)
         annotations = semantic_annotations(parsed)
@@ -295,6 +301,7 @@ def build_v1_classification_inventory() -> dict:
             normalized(c.split(":", 1)[1] if c.casefold().startswith("category:") else c)
             for c in meta.get("categories", [])
         )
+        identity_categories = sorted(c for c in categories if c in V1_IDENTITY_CATEGORIES)
         for category in categories:
             api_category_counts[category] += 1
             if category in V1_IDENTITY_CATEGORIES:
@@ -319,34 +326,55 @@ def build_v1_classification_inventory() -> dict:
         infobox_type = infobox.get("type")
         if infobox_type:
             infobox_type_counts[infobox_type] += 1
+            pages_with_infobox += 1
 
         topic_literal = bool(re.search(r"\bTopic\b", parsed, re.I))
-        if relevant or infobox_type or topic_literal or any(c in V1_IDENTITY_CATEGORIES for c in categories):
-            pages.append(
-                {
-                    "path": repo_path,
-                    "title": meta.get("title") or unquote(path.stem),
-                    "pageid": meta.get("pageid"),
-                    "current_revid": meta.get("current_revid"),
-                    "api_recorded_categories": categories,
-                    "api_recorded_templates": meta.get("templates", []),
-                    "infobox_type_source_parameter": infobox_type,
-                    "classification_annotation_source_syntax": relevant,
-                    "contains_topic_literal": topic_literal,
-                }
-            )
+        if "/" in title:
+            subpages += 1
+        if relevant:
+            pages_with_classification_syntax += 1
+        if identity_categories:
+            pages_with_identity_category += 1
+        if relevant or infobox_type or topic_literal or identity_categories:
+            pages_with_signal += 1
+
+        # Every V1 Main page is retained in the matrix, including pages with no signal.
+        pages.append(
+            {
+                "path": repo_path,
+                "title": title,
+                "pageid": meta.get("pageid"),
+                "current_revid": meta.get("current_revid"),
+                "revision_count": meta.get("revision_count"),
+                "is_subpage": "/" in title,
+                "api_recorded_categories": categories,
+                "api_recorded_identity_categories": identity_categories,
+                "api_recorded_templates": meta.get("templates", []),
+                "infobox_type_source_parameter": infobox_type,
+                "classification_annotation_source_syntax": relevant,
+                "contains_topic_literal": topic_literal,
+                "has_classification_or_topic_signal": bool(relevant or infobox_type or topic_literal or identity_categories),
+            }
+        )
 
     topic_pages = [p for p in pages if p["contains_topic_literal"]]
     return {
         "scope": "archive-v1/pages/Main",
         "interpretation": (
-            "Category memberships and template callers come from the exhaustive MediaWiki API "
-            "archive and are implementation evidence. Semantic/property occurrences and Infobox "
-            "parameters are recovered from source syntax and may include documentation/specification "
-            "examples; they therefore require page-context review before being called deployed schema behavior."
+            "Every archived V1 Main page is represented. Category memberships and template callers "
+            "come from the exhaustive MediaWiki API archive and are implementation evidence. "
+            "Semantic/property occurrences and Infobox parameters are recovered from source syntax "
+            "and may include documentation/specification examples; they require page-context review "
+            "before being called deployed schema behavior."
         ),
         "summary": {
-            "pages_with_classification_or_topic_signal": len(pages),
+            "main_pages_inventoried": len(pages),
+            "subpages": subpages,
+            "pages_with_classification_or_topic_signal": pages_with_signal,
+            "pages_without_classification_or_topic_signal": len(pages) - pages_with_signal,
+            "pages_with_classification_annotation_source_syntax": pages_with_classification_syntax,
+            "pages_with_api_recorded_identity_category": pages_with_identity_category,
+            "pages_with_infobox_type_source_parameter": pages_with_infobox,
             "pages_containing_topic_literal": len(topic_pages),
             "api_recorded_category_usage": sorted_counter(api_category_counts),
             "api_recorded_identity_category_usage": sorted_counter(identity_category_counts),

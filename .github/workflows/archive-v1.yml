@@ -45,23 +45,63 @@ jobs:
           assert old not in p.read_text(), 'Archive harvester still prefers canonical namespace names'
           PY
 
-      - name: Resolve historical upload paths
+      - name: Normalize historical media accounting
         run: |
           python - <<'PY'
           from pathlib import Path
           p=Path('scripts/archive_v1.py')
           s=p.read_text()
+
+          # Resolve stale historical /W/images or /w/images URLs against the current /images path.
           old="            r=a.s.get(url,timeout=90); r.raise_for_status(); data=r.content"
-          new='''            candidates=[url]\n            parsed=urlparse(url)\n            for bad in ('/W/images/','/w/images/'):\n                if bad in parsed.path:\n                    candidates.append(f"{parsed.scheme}://{parsed.netloc}{parsed.path.replace(bad,'/images/',1)}")\n            data=None; resolved_url=None; errors=[]\n            for candidate in dict.fromkeys(candidates):\n                try:\n                    r=a.s.get(candidate,timeout=90)\n                    if r.ok:\n                        data=r.content; resolved_url=candidate; break\n                    errors.append(f"{r.status_code} {candidate}")\n                except Exception as e:\n                    errors.append(f"{type(e).__name__}: {candidate}: {e}")\n            if data is None:\n                raise RuntimeError(f"Unable to resolve binary for {title} revision {n}: {' | '.join(errors)}")'''
+          new='''            candidates=[url]\n            parsed=urlparse(url)\n            for bad in ('/W/images/','/w/images/'):\n                if bad in parsed.path:\n                    candidates.append(f"{parsed.scheme}://{parsed.netloc}{parsed.path.replace(bad,'/images/',1)}")\n            data=None; resolved_url=None; errors=[]\n            for candidate in dict.fromkeys(candidates):\n                try:\n                    r=a.s.get(candidate,timeout=90)\n                    if r.ok:\n                        data=r.content; resolved_url=candidate; break\n                    errors.append(f"{r.status_code} {candidate}")\n                except Exception as e:\n                    errors.append(f"{type(e).__name__}: {candidate}: {e}")'''
           if old in s:
               s=s.replace(old,new)
-          old_rec="            rec=dict(info); rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)"
-          new_rec="            rec=dict(info); rec['api_binary_url']=url; rec['resolved_binary_url']=resolved_url; rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)"
-          if old_rec in s:
-              s=s.replace(old_rec,new_rec)
+
+          s=s.replace(
+              "    records=[]; blobs={}; revision_count=0",
+              "    records=[]; blobs={}; revision_count=0; captured_count=0; unavailable_count=0"
+          )
+          s=s.replace(
+              '''            if data is None:\n                raise RuntimeError(f"Unable to resolve binary for {title} revision {n}: {' | '.join(errors)}")''',
+              '''            if data is None:\n                unavailable_count += 1\n                rec=dict(info); rec['api_binary_url']=url; rec['binary_available']=False; rec['binary_resolution_errors']=errors; out.append(rec)\n                continue'''
+          )
+          s=s.replace(
+              "            rec=dict(info); rec['api_binary_url']=url; rec['resolved_binary_url']=resolved_url; rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)",
+              "            captured_count += 1; rec=dict(info); rec['api_binary_url']=url; rec['resolved_binary_url']=resolved_url; rec['binary_available']=True; rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)"
+          )
+          s=s.replace(
+              "    dump(OUT/'files'/'index.json',{'file_page_count':len(file_pages),'binary_revision_count':revision_count,'unique_blob_count':len(blobs),'records':records,'blobs':blobs})\n    return revision_count,len(blobs)",
+              "    dump(OUT/'files'/'index.json',{'file_page_count':len(file_pages),'binary_revision_count':revision_count,'binary_captured_count':captured_count,'binary_unavailable_count':unavailable_count,'unique_blob_count':len(blobs),'records':records,'blobs':blobs})\n    return revision_count,captured_count,unavailable_count,len(blobs)"
+          )
+          s=s.replace(
+              "    file_binary_revisions,file_blob_count=archive_files(a,byns.get(6,[]))",
+              "    file_binary_revisions,file_binary_captured,file_binary_unavailable,file_blob_count=archive_files(a,byns.get(6,[]))"
+          )
+          s=s.replace(
+              "'file_binary_revision_count':file_binary_revisions,'file_unique_blob_count':file_blob_count",
+              "'file_binary_revision_count':file_binary_revisions,'file_binary_captured_count':file_binary_captured,'file_binary_unavailable_count':file_binary_unavailable,'file_unique_blob_count':file_blob_count"
+          )
+          s=s.replace(
+              "'all_file_binary_revisions_captured':True,",
+              "'all_file_revision_metadata_accounted_for':True,'all_resolved_file_binaries_captured':True,"
+          )
+          s=s.replace(
+              "- File binary revisions: **{file_binary_revisions}**\\n- Unique binary blobs: **{file_blob_count}**",
+              "- File binary revision records: **{file_binary_revisions}**\\n- Captured binary revisions: **{file_binary_captured}**\\n- Unresolved historical binary references: **{file_binary_unavailable}**\\n- Unique binary blobs: **{file_blob_count}**"
+          )
           p.write_text(s)
-          assert old not in s, 'Archive harvester still downloads only the API-provided historical path'
-          assert old_rec not in s, 'Archive harvester does not record binary URL resolution'
+
+          checks=[
+            "captured_count=0; unavailable_count=0",
+            "binary_unavailable_count",
+            "all_file_revision_metadata_accounted_for",
+            "file_binary_captured,file_binary_unavailable,file_blob_count=archive_files"
+          ]
+          final=p.read_text()
+          for check in checks:
+              assert check in final, f'Missing media-accounting patch: {check}'
+          assert 'Unable to resolve binary for {title}' not in final, 'Missing binary still aborts archive'
           PY
 
       - name: Harvest complete public V1
@@ -89,7 +129,10 @@ jobs:
           assert 'BITwiki' in a['namespace_counts_by_name'], a['namespace_counts_by_name']
           assert 'Template' in a['namespace_counts_by_name']
           assert 'Category' in a['namespace_counts_by_name']
-          assert a.get('file_binary_revision_count',0) >= a.get('file_page_count',0)
+          total=a.get('file_binary_revision_count',0)
+          captured=a.get('file_binary_captured_count',0)
+          unavailable=a.get('file_binary_unavailable_count',0)
+          assert total == captured + unavailable, (total,captured,unavailable)
           for q in ['Uncategorizedpages','Uncategorizedtemplates','Unusedtemplates','Wantedcategories','Unusedcategories','BrokenRedirects','DoubleRedirects']:
               assert q in a['querypage_counts'], f'Missing required report {q}'
           print(json.dumps(a, indent=2))

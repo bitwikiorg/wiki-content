@@ -1,0 +1,70 @@
+{{Source status|status=direct implementation audit|note=Generated-report baseline derived from the exhaustive V1 Action API snapshot. Special pages are operational views, not deployable content pages.}}
+
+= V1 maintenance baseline =
+
+MediaWiki Special pages expose operational state that ordinary page inventories do not. V2 preserves their V1 results in <code>archive-v1/special/</code> and treats them as migration baselines.
+
+== Baseline ==
+
+{| class="wikitable"
+! Surface !! V1 result !! Interpretation
+|-
+| [[Special:AllPages]] || 186 public pages across 24 nonnegative namespaces; 162 in Main || Archived exhaustively by namespace in <code>archive-v1/namespaces/</code>.
+|-
+| [[Special:Categories]] || 162 used category names || Every category and complete membership is archived in <code>archive-v1/categories/</code>.
+|-
+| [[Special:WantedCategories]] || 162 || V1 had zero authored <code>Category:</code> pages: every used category was a membership label without an editable category description page.
+|-
+| [[Special:UncategorizedPages]] || 20 Main pages || Primarily Book Matter subpages, Component fragments and <code>Test Page</code>. Classification should follow function, not warning suppression.
+|-
+| [[Special:UncategorizedTemplates]] || 8 || The eight <code>BITwiki*</code> presentation templates lacked category tags.
+|-
+| [[Special:UnusedTemplates]] || 1 || <code>Template:BITwiki</code>, the historical decorative Digital Codex shell.
+|-
+| [[Special:WantedTemplates]] || 59 || Referenced but uncreated template designs. Preserve as design-intent evidence; do not auto-create them.
+|-
+| [[Special:UnusedCategories]] || 0 || Expected because V1 had no created Category pages.
+|-
+| [[Special:BrokenRedirects]] || 0 || No broken redirects at snapshot time.
+|-
+| [[Special:DoubleRedirects]] || 0 || No double redirects at snapshot time.
+|}
+
+The machine-readable source for these results is <code>archive-v1/audit.json</code> and the complete row-level outputs are in <code>archive-v1/special/</code>.
+
+== Category:BITwiki Templates ==
+The generated category view reported seven members. The exact seven-member list is preserved in <code>archive-v1/categories/members/Category%3ABITwiki Templates.json</code>.
+
+Those seven members are Main-namespace template-system documentation pages, not the nine implemented Template namespace pages. See [[BITwiki:Templates and categories]].
+
+== Category List ==
+[[Category List]] is an authored Main-namespace V1 page, not a generated Special page and not a <code>Category:</code> page. Its current exact wikitext and full public revision history are preserved in the exhaustive archive.
+
+Its historical value is architectural: it explicitly separates domain categories, entity-type categories, BITwiki system categories and epistemic categories. V2 preserves those dimensions while assigning them to more appropriate primitives. See [[BITwiki:V1 category migration]].
+
+== Pre/post migration use ==
+Do not optimize for making every warning count equal zero. Use the reports to prove that every change is understood.
+
+<pre>
+refresh V1 archive
+→ record baseline
+→ import/migrate reviewed V2 material
+→ rerun maintenance reports
+→ diff counts + exact affected pages
+→ explain intentional changes
+→ correct accidental regressions
+</pre>
+
+Examples:
+* a decrease in wanted categories should correspond to intentionally created V2 Category pages or migrated category membership;
+* a decrease in unused templates should be caused by a deliberate caller migration, not arbitrary transclusion;
+* a new broken redirect is a regression unless explicitly justified;
+* an uncategorized Book Matter subpage may be acceptable when its parent/transclusion structure makes an additional category redundant.
+
+== Source of truth ==
+The live wiki generates the current Special-page views. The archive captures a reproducible historical baseline. Neither replaces the other.
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]
+[[Category:Provenance]]
+[[Category:Navigation]]

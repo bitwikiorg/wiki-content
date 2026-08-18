@@ -46,9 +46,32 @@ Their source and callers are preserved. They may be retired only after their rem
 <code>Template:BITwiki</code> is the only unused live template. It is a large decorative Digital Codex header shell. Preserve it in the archive; do not treat it as semantic infrastructure.
 
 === Wanted templates ===
-V1 has 59 wanted template titles. `Template:Documentation` alone is referenced 82 times; others represent proposed document headers, epistemic markers, evidence tiers, infobox variants, portals, citations and validation helpers.
+V1 has 59 wanted template titles. <code>Template:Documentation</code> alone is referenced 82 times; others represent proposed document headers, epistemic markers, evidence tiers, infobox variants, portals, citations and validation helpers.
 
 A wanted template is a '''reference to a missing implementation'''. Preserve it as design-intent evidence. Do not bulk-create all wanted templates in V2.
+
+== V1 Category:BITwiki Templates ==
+The V1 category named <code>BITwiki Templates</code> had seven members, but none of those seven was one of the nine live Template namespace pages. Its members were Main-namespace architecture/index documents:
+
+# [[Category List]]
+# [[Infobox Concept]]
+# [[Infobox Idea]]
+# [[Infobox Implementation]]
+# [[Infobox Project]]
+# [[SMW Template System]]
+# [[Template System Validation Framework]]
+
+This category is therefore evidence of a '''template-system documentation family''', not an inventory of implemented templates.
+
+V2 separates those functions:
+* the exact seven-member V1 category membership remains preserved in <code>archive-v1/categories/members/Category%3ABITwiki Templates.json</code>;
+* actual V1 Template namespace implementation is preserved in <code>archive-v1/templates/index.json</code>;
+* the four Main-namespace Infobox pages remain source/design artifacts until reconciled against <code>Template:Infobox</code> and the V2 semantic model;
+* <code>SMW Template System</code> informs semantic/template architecture;
+* <code>Template System Validation Framework</code> informs validation and release checks;
+* [[Category List]] informs the historical classification model and is addressed by [[BITwiki:V1 category migration]].
+
+Do not infer Template namespace membership from a page being categorized <code>BITwiki Templates</code>.
 
 == Canonical V2 template rules ==
 A V2 template should have:
@@ -102,7 +125,7 @@ archive exact source + complete revision history
 == Release checks ==
 Before a V2 deployment is considered clean:
 # compare every live Template page against <code>archive-v1/templates/index.json</code>;
-# do not delete `Template:Infobox` while legacy callers remain;
+# do not delete <code>Template:Infobox</code> while legacy callers remain;
 # review all 59 V1 wanted templates as design-intent evidence, not an automatic implementation backlog;
 # review [[Special:UncategorizedTemplates]], [[Special:UnusedTemplates]] and [[Special:WantedTemplates]];
 # review all category memberships against <code>archive-v1/categories/index.json</code>;

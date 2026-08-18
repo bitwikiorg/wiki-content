@@ -1,0 +1,97 @@
+{{Source status|status=source-reconciled semantic model|note=Reconciles the V1 Epistemic Tiers, Epistemic Framework, Status Taxonomy, Evidence and Epistemics, and Evidence Tiers families.}}
+
+= Epistemic status =
+
+Epistemic status communicates the '''present evidentiary standing''' of a claim or knowledge object. It is a guidance surface for calibration, not a declaration of final truth.
+
+== Canonical V2 standing vocabulary ==
+
+{| class="wikitable"
+! Standing !! Meaning !! Typical question
+|-
+| '''Hypothetical''' || Coherent conjecture, possibility, interpretation, or model with limited/no direct support. || What would begin to test or support this?
+|-
+| '''Emerging''' || Preliminary evidence exists, but support is early, fragile, weakly replicated, narrow, or otherwise incomplete. || What replication or additional evidence is needed?
+|-
+| '''Supported''' || Meaningful evidence supports the claim, while important gaps, limitations, or alternatives remain. || What are the strongest remaining uncertainties or contradictions?
+|-
+| '''Well-supported''' || Multiple credible and substantially independent lines of evidence converge. || How robust is this across methods, populations, contexts, or assumptions?
+|-
+| '''Established''' || Robust working knowledge in the relevant domain; suitable for ordinary reliance while remaining revisable. || What edge cases or future evidence could materially revise it?
+|-
+| '''Disputed''' || Credible evidence, methods, or interpretations materially support incompatible positions. || What exactly is disputed, and what evidence distinguishes the positions?
+|}
+
+The first five describe a broad evidentiary landscape. '''Disputed''' is not simply a rung between two of them; it marks unresolved conflict that may coexist with substantial evidence.
+
+== Why V2 changed the V1 ladders ==
+
+V1 contained several legitimate but incompatible schemes:
+
+* a four-marker system: Hypothetical / Emerging / Established / Archived;
+* a five-tier system: Hypothetical / Emerging / Established / Verified / Axiomatic;
+* later six-marker language: Hypothetical / Emerging / Supported / Well Supported / Established / Disputed;
+* additional states such as Deprecated.
+
+The writings themselves increasingly described the boundaries as porous guidance rather than rigid boxes. V2 therefore preserves the useful distinctions while moving labels that were doing other jobs onto other axes.
+
+== Labels moved to other axes ==
+
+=== Archived / Deprecated ===
+These describe '''lifecycle''', not evidentiary strength. A historically archived claim may have once been well-supported; a deprecated theory can remain intellectually important.
+
+=== Axiomatic ===
+Axiomatic describes a '''declared foundational role'''. An axiom is not "more empirically verified" than an established empirical claim. It is a premise the system has chosen to operate from and remains subject to constitutional revision.
+
+=== Verified ===
+Verified describes a '''validation history or state''': independent checking, replication, source verification, or other concrete scrutiny. Verification should say what was verified and how rather than serving as a synonym for certainty.
+
+== Confidence is separate ==
+
+Status should not carry a fake numerical probability by default.
+
+A useful confidence rationale states:
+
+* what evidence supports the claim;
+* what limitations or contradictions remain;
+* how independent the evidence is;
+* what boundary conditions apply;
+* what would materially raise or lower confidence.
+
+Quantitative confidence is appropriate only where the domain supplies a meaningful interpretation and calibration method.
+
+== Movement is bidirectional ==
+
+A claim can strengthen, weaken, split, become disputed, be superseded, or return to a more tentative standing.
+
+<pre>
+new evidence / replication / successful prediction
+                ↑
+Hypothetical → Emerging → Supported → Well-supported → Established
+                ↓                 ↘
+failed replication / contradiction   Disputed
+</pre>
+
+This diagram is orientation, not an automatic workflow.
+
+== Status assignment guidance ==
+
+When assigning a standing:
+
+# state the claim precisely;
+# identify the relevant domain and question;
+# inspect evidence quality and independence;
+# include material contradictory evidence;
+# separate the source's prestige from the evidence it actually provides;
+# identify scope and methodological limitations;
+# write a confidence rationale;
+# record review date or trigger when the topic changes rapidly.
+
+== Historical V1 value ==
+
+V1's tier systems made epistemic status visible and machine-queryable at a time when most wiki prose treated every sentence as visually equivalent. V2 keeps that innovation while reducing category conflation and false precision.
+
+See [[BITwiki:Epistemics]], [[BITwiki:Evidence]], [[BITwiki:Claim validation]], and [[BITwiki:Uncertainty]].
+
+[[Category:Epistemics]]
+[[Category:BITwiki architecture]]

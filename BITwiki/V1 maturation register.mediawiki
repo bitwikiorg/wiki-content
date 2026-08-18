@@ -20,7 +20,7 @@ This register operationalizes [[BITwiki:V1 to V2 maturation]]. It distinguishes 
 {| class="wikitable"
 ! V1 primitive !! Historical state !! Durable signal !! Existing V2 substrate !! Evidence / questions before further maturation !! Status
 |-
-| Ontology / Topic system || Partial + proposed || Knowledge needs explicit kinds, domains, relationships, multiple lenses, facets, and polyhierarchical navigation rather than flat page lists or one overloaded Topic primitive. || [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[Property:Entity type]], [[Property:Domain]], Categories, Portals, semantic properties || [[BITwiki:V1 ontology maturation]] establishes the core separation from V1 evidence. Remaining work: corpus-wide Topic/type/domain/category usage recovery and vocabulary coverage testing before adding new types or domains. || '''Accepted'''
+| Ontology / Topic system || Partial + proposed || Knowledge needs explicit kinds, domains, relationships, multiple lenses, facets, and polyhierarchical navigation rather than flat page lists or one overloaded Topic primitive. || [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[Property:Entity type]], [[Property:Domain]], Categories, Portals, semantic properties || [[BITwiki:V1 ontology maturation]] establishes the core separation. [[BITwiki:Corpus evidence]] now inventories every V2 deployable page and all 162 V1 Main pages, separating API implementation evidence from source-syntax design signal. Remaining work: page-role migration review and vocabulary coverage testing against canonical subject candidates before adding new types or domains. || '''Accepted'''
 |-
 | Epistemics || Partial + strongly articulated || Knowledge should expose uncertainty, disagreement, evidence, provenance, and limits instead of projecting false certainty. || [[BITwiki:Epistemics]], [[Property:Epistemic status]], confidence rationale, provenance, review/lifecycle separation || Audit exact V1 epistemic mechanisms and determine where status is insufficient without claim/evidence structure. || Research
 |-
@@ -63,11 +63,13 @@ Each row should eventually link to an evidence note containing:
 
 A wanted template, design paragraph, category label, or proposed schema is evidence that an idea existed. It is not evidence that the capability was deployed.
 
+The reusable machine evidence for corpus-level decisions is documented in [[BITwiki:Corpus evidence]].
+
 == First research passes ==
 
 The register should be matured in an order that reduces downstream ambiguity:
 
-# '''Ontology and classification''' — Topic, type, domain, taxonomy, categories, portals.
+# '''Ontology and classification''' — Topic, type, domain, taxonomy, categories, portals. Core primitive separation accepted; page-role migration and vocabulary coverage remain active evidence work.
 # '''Epistemics and confidence''' — status, provenance, evidence, uncertainty, review, confidence trails.
 # '''Composition''' — Book Matter, templates, transclusion, modules, page anatomy.
 # '''Graph semantics''' — properties, relationships, query behavior, visualization.

@@ -23,6 +23,12 @@ MediaWiki Special pages expose operational state that ordinary page inventories 
 |-
 | [[Special:WantedTemplates]] || 59 || Referenced but uncreated template designs. Preserve as design-intent evidence; do not auto-create them.
 |-
+| [[Special:UncategorizedFiles]] || 2 || Both V1 File pages lacked category membership.
+|-
+| [[Special:UnusedFiles]] || 2 || Both V1 File records had no current page usage at snapshot time.
+|-
+| [[Special:WantedFiles]] || 1 || <code>File:Working icon.svg</code> was referenced but no File page/upload existed.
+|-
 | [[Special:UnusedCategories]] || 0 || Expected because V1 had no created Category pages.
 |-
 | [[Special:BrokenRedirects]] || 0 || No broken redirects at snapshot time.
@@ -31,6 +37,15 @@ MediaWiki Special pages expose operational state that ordinary page inventories 
 |}
 
 The machine-readable source for these results is <code>archive-v1/audit.json</code> and the complete row-level outputs are in <code>archive-v1/special/</code>.
+
+== File preservation state ==
+Two File description pages and two file-revision metadata records exist:
+* <code>File:Binary bitwiki logo.png</code>
+* <code>File:Wikiteq.png</code>
+
+Both File-page sources and histories are archived. The original upload URLs now return 404 from both the historical <code>/w/images/</code> location and the current <code>/images/</code> fallback. The archive therefore preserves 2/2 file revision metadata records and explicitly marks 2/2 binary references unavailable; it does not fabricate missing media.
+
+The exact evidence is in <code>archive-v1/files/index.json</code>.
 
 == Category:BITwiki Templates ==
 The generated category view reported seven members. The exact seven-member list is preserved in <code>archive-v1/categories/members/Category%3ABITwiki Templates.json</code>.
@@ -59,7 +74,8 @@ Examples:
 * a decrease in wanted categories should correspond to intentionally created V2 Category pages or migrated category membership;
 * a decrease in unused templates should be caused by a deliberate caller migration, not arbitrary transclusion;
 * a new broken redirect is a regression unless explicitly justified;
-* an uncategorized Book Matter subpage may be acceptable when its parent/transclusion structure makes an additional category redundant.
+* an uncategorized Book Matter subpage may be acceptable when its parent/transclusion structure makes an additional category redundant;
+* disappearance of a historical upload from the server must be recorded as unavailable evidence, not silently treated as an archived binary.
 
 == Source of truth ==
 The live wiki generates the current Special-page views. The archive captures a reproducible historical baseline. Neither replaces the other.

@@ -18,18 +18,37 @@
 <noinclude>
 = Knowledge object =
 
-Lightweight V2 semantic infobox used by the domain exemplars.
+Lightweight V2 semantic infobox for the common identity fields used across knowledge pages.
 
 <pre>
 {{Knowledge object
  |entity_type=Concept
  |domain=Biology
  |status=Established
- |provenance=V2 domain exemplar
+ |provenance=V2 public corpus
 }}
 </pre>
 
-This template intentionally exposes only properties already implemented in V2. It does not replace unreconciled V1 infoboxes or property systems.
+== Deliberate minimalism ==
+
+This is a baseline identity surface, not the complete BITwiki schema and not a replacement for every historical V1 infobox parameter.
+
+V1's heavily used [[Template:Infobox]] and the larger proposed property catalogs are preserved in <code>archive-v1/</code> as implementation and design lineage. V2 promotes a field only when its semantic job is stable and recurring.
+
+Do not add optional dimensions merely to fill an infobox. When they materially improve the knowledge object, use the dedicated properties documented in [[BITwiki:Semantic properties]], including:
+
+* [[Property:Confidence rationale|Confidence rationale]] — why the present evidence supports the stated standing and what would change it;
+* [[Property:Review status|Review status]] — what review or verification has actually occurred;
+* [[Property:Lifecycle status|Lifecycle status]] — active, superseded, deprecated, archived, or other maintenance state;
+* semantic relationships such as [[Property:Implements|Implements]], [[Property:Part of|Part of]], [[Property:Depends on|Depends on]], [[Property:Supports|Supports]], and [[Property:Contradicts|Contradicts]].
+
+== Epistemic status is not a universal verdict ==
+
+The page-level <code>status</code> describes the evidentiary standing of the page's principal descriptive knowledge at the level where that is meaningful. It does not imply that every interpretation, application, mechanism, or theory mentioned on the page has the same standing.
+
+Use claim- or section-level qualification in the prose when a page contains mixed evidence or genuine dispute. Do not manufacture numerical confidence or review status from the page-level label.
+
+See [[BITwiki:Page format]], [[BITwiki:Epistemics]], and [[BITwiki:Epistemic status]].
 
 [[Category:BITwiki templates]]
 </noinclude>

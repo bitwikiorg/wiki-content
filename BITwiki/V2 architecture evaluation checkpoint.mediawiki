@@ -1,0 +1,276 @@
+{{Source status|status=V2 evaluation checkpoint|note=Consolidates the completed V1→V2 maturation evidence pass, accepted architecture, candidate primitives, deliberate deferrals, validation guarantees, and decisions still requiring human evaluation. It is a review surface, not a claim that BITwiki V2 is finished.}}
+
+= V2 architecture evaluation checkpoint =
+
+This page is the evaluation surface for the first complete V1 → V2 maturation pass.
+
+<blockquote>'''V1 gave us the imagination. V2 gives that imagination a coherent substrate.'''</blockquote>
+
+The work at this checkpoint does not attempt to finish every future BITwiki capability. It finishes the '''evidence decomposition required to decide what should be built next without rewriting V1 or recreating its ambiguity.'''
+
+== Governing sequence ==
+
+<pre>
+V1
+→ preserve
+→ understand
+→ identify signal
+→ mature primitive
+→ enhance
+→ integrate into V2
+→ validate
+</pre>
+
+See [[BITwiki:V1 to V2 maturation]].
+
+== What is complete at this checkpoint ==
+
+=== V1 provenance preservation ===
+
+The public V1 archive remains the historical evidence layer:
+
+* 186 public pages;
+* 606 revision bodies;
+* 162 Main pages;
+* exact source bodies, histories, category memberships, template callers and namespace evidence;
+* design intent explicitly distinguished from implemented MediaWiki objects.
+
+Nothing in this maturation pass rewrites the archive.
+
+=== V1 implementation versus imagination ===
+
+The architecture now explicitly distinguishes:
+
+* '''design imagination''' — Charter/Manifesto/architecture/schema/ontology/template/research specifications and wanted capabilities;
+* '''implementation reality''' — what MediaWiki actually contained and used.
+
+A documented idea is evidence that BITwiki imagined a capability. It is not proof that the capability was deployed.
+
+=== Complete V1 Main page-role matrix ===
+
+All '''162 / 162''' V1 Main pages are classified before ontology:
+
+{| class="wikitable"
+! Historical artifact role !! Pages
+|-
+| Architecture / system source || 83
+|-
+| Book Matter / reusable composition || 52
+|-
+| Navigation / interface || 19
+|-
+| Maintenance / validation / test || 6
+|-
+| First-class subject candidate || 2
+|-
+| Unresolved || 0
+|}
+
+This prevents system documentation, fragments, indices and validation artifacts from being mistaken for subject ontology.
+
+=== Complete V1 architecture-family matrix ===
+
+All '''83 / 83''' architecture sources are grouped into explicit maturation families:
+
+* foundational / constitutional / philosophy — 8;
+* epistemics / evidence / provenance — 16;
+* ontology / semantics / relationships — 16;
+* composition / templates / transclusion — 10;
+* semantic schema / SMW / queries / modules — 13;
+* navigation / portals / categories / visualization — 4;
+* quality / governance / stewardship — 6;
+* deployment / integration / migration / operations — 5;
+* system architecture / boundaries — 4;
+* research synthesis / knowledge systems — 1.
+
+See [[BITwiki:V1 architecture-family migration]].
+
+=== Subject/composition disposition ===
+
+The two first-class historical subject candidates are explicitly separated from reusable subject-bearing fragments.
+
+* <code>Bioluminescent Organisms</code> — Concept-oriented Biology candidate assembled from historical subpages;
+* <code>Fluorescent Coral Reefs</code> — Project/Implementation tension preserved for deliberate modeling rather than flattened.
+
+Reusable fragments provide Concept, Method, Protocol and evidence/composition signals without forcing every fragment into a top-level page.
+
+See [[BITwiki:V1 subject and composition migration]].
+
+=== Ontology decomposition ===
+
+The strongest V1 ontology signal is accepted at the architectural level:
+
+{| class="wikitable"
+! Question !! V2 primitive
+|-
+| What kind of modeled object is this? || Entity type
+|-
+| What subject/field is it in? || Domain
+|-
+| How should humans browse it? || Category / Portal / index / outline
+|-
+| What reusable role does content play? || Book Matter / composition
+|-
+| What is its evidentiary standing? || Epistemics / evidence / uncertainty
+|-
+| What is its maintenance/publication state? || Review / lifecycle
+|-
+| How does it connect to another object? || Explicit relationship
+|-
+| How does it map externally? || Interoperability/alignment layer
+|}
+
+The historical <code>Topic</code> label is not restored as one universal primitive because V1 used it for several of these jobs simultaneously.
+
+=== Explicit semantic identity ===
+
+<code>Template:Knowledge object</code> no longer invents semantic values when parameters are omitted.
+
+Missing <code>entity_type</code>, <code>domain</code>, <code>status</code>, or <code>provenance</code> now produces no semantic assertion rather than silently creating <code>Concept</code>, <code>Unspecified</code>, <code>Established</code>, or <code>V2 public corpus</code>.
+
+Repository validation requires all four fields on instantiated Knowledge objects and validates controlled values for current Entity type, Domain and Epistemic status vocabularies.
+
+=== Machine validation and evidence generation ===
+
+The pull-request gate now runs:
+
+<pre>
+python scripts/validate_v2.py
+python scripts/inventory_corpus.py
+python scripts/classify_v1_page_roles.py
+python scripts/classify_v1_architecture_families.py
+</pre>
+
+Generated review evidence includes:
+
+* <code>v2-validation.json</code>;
+* <code>v2-corpus-inventory.json</code>;
+* <code>v1-classification-usage.json</code>;
+* <code>v1-page-role-matrix.json</code>;
+* <code>v1-architecture-family-matrix.json</code>.
+
+The classifiers fail on V1 snapshot drift, unresolved page roles, unmapped architecture sources, stale architecture mappings, invalid current Knowledge-object values, or missing required identity fields.
+
+== What the evidence now says about V1 ==
+
+V1 should not be understood as a failed 162-article encyclopedia.
+
+It was predominantly an '''architecture laboratory and composition experiment''':
+
+* 83 Main pages explored the system itself;
+* 52 Main pages implemented reusable composition/Book Matter;
+* 19 were navigation/interface surfaces;
+* only two current historical artifacts behave like direct first-class subject objects under the conservative role test.
+
+This explains why the conceptual system was far more sophisticated than the deployed subject corpus without treating that gap as failure.
+
+== What is accepted ==
+
+The following are strong enough to function as present architectural invariants unless later evidence overturns them:
+
+# V2 is a maturation of V1, not a rewrite.
+# Foundational voice and intellectual lineage must survive canonicalization.
+# Namespace, Entity type, Domain, Category/navigation, Book Matter, epistemics, lifecycle and Relationships are independent jobs.
+# Ontology is not navigation.
+# Types are useful constructed/evolving lenses rather than a permanently closed metaphysical taxonomy.
+# A canonical knowledge object normally has one primary modeled identity while secondary roles are represented through relationships/composition where cleaner.
+# Schema grows from demonstrated content/query behavior rather than from historical property catalogs alone.
+# Provenance must distinguish exact historical source, current canon, generated output and new connective text.
+# Page role is not Entity type.
+# Missing semantic identity must remain missing; the system must not manufacture certainty through defaults.
+
+== What is a Candidate ==
+
+These V1 ideas have enough durable signal and implementation evidence for a mature V2 form, but their final contract remains subject to implementation testing:
+
+=== Book Matter ===
+V1 directly implemented parent/subpage composition, generic transcludable sections, definition fragments, methodology fragments, protocol fragments and evidence summaries.
+
+=== Transclusion ===
+V1's two first-class historical subject pages actually assembled child content through transclusion. V2 should retain canonical-source reuse while avoiding arbitrary fragmentation.
+
+=== Purposeful template families ===
+V1 had implemented templates plus extensive template design writing. V2 should build small behavior-driven families from recurring callers, not recreate every historical/wanted template.
+
+=== Portals and plural navigation ===
+Portals, Categories, indices, outlines, semantic queries and graph views should be different views over shared semantic knowledge rather than competing taxonomies.
+
+=== Human–AI knowledge production ===
+BIThub live work, BITCORE cognition/orchestration, reusable artifacts, review, BITwiki durable knowledge and future reuse remain a durable lifecycle pattern independent of one model/runtime.
+
+== What remains deliberately Research ==
+
+These areas should not be treated as completed simply because V1 wrote sophisticated specifications for them:
+
+=== Detailed epistemic/evidence object model ===
+Current V2 has Epistemic status, confidence rationale, provenance, review/lifecycle separation and claim-validation grammar. The 16-source V1 epistemics family still requires mechanism-by-mechanism reconciliation before adding claim/evidence subobjects or more properties.
+
+=== Universal confidence machinery ===
+V1 explored tiers, scores, categories and confidence trails. V2 should preserve inspectable justification and contextual evidence without reintroducing a universal scalar merely because older pages contain numbers.
+
+=== Property and relationship expansion ===
+Current properties are a floor. V1 dictionaries/catalogs are research evidence. New properties require a recurring job, documented meaning, target/value constraints and validation.
+
+=== Graph inference ===
+Explicit semantic relations can generate graph views. Query paths must not silently become logical/causal inference.
+
+=== Final Domain and Entity type vocabularies ===
+The current V2 corpus contains twelve Concept exemplars plus two historical first-class subject candidates and reusable fragment signals. That is not enough evidence to freeze the complete future vocabulary.
+
+=== Research/laboratory object model ===
+Claims, patents, publications, datasets, experiments, labs, methods, implementations and projects are plausible mature objects, but the minimum useful research schema must be derived from actual corpus/workflow evidence.
+
+== Intentional non-actions in this checkpoint ==
+
+The pass intentionally does '''not''':
+
+* publish reconstructed Bioluminescent Organisms or Fluorescent Coral Reefs as current factual canon before source review;
+* add AI, Computer science, Knowledge representation, Governance, Economics or other new Domains merely because they seem useful;
+* add Theory, Model, Framework, Software, Species, Algorithm or other specialized Entity types without repeated corpus pressure;
+* restore V1 <code>Topic</code> as a universal class;
+* import the full V1 Property Dictionary;
+* recreate a single root taxonomy;
+* adopt universal numeric confidence;
+* treat old active/development labels as current facts;
+* merge historical architecture branches by deletion;
+* claim graph inference semantics that are not validated.
+
+These are safeguards against premature architecture, not missing cleanup.
+
+== Known next validation layers ==
+
+The current validation gate now covers structure and explicit Knowledge-object identity. Future implementation phases should add tests when the corresponding capabilities become active, especially:
+
+* relationship target resolution and documented relation vocabularies;
+* controlled review/lifecycle values once those vocabularies are operationally fixed;
+* canonical redirect/duplicate resolution;
+* transclusion caller/cycle integrity;
+* property domain/range constraints where meaningful;
+* generated graph/query regression tests;
+* research-object schema constraints after that model is accepted.
+
+Do not build validators for semantics that have not yet been deliberately adopted.
+
+== Evaluation questions ==
+
+The human review at this checkpoint should focus on architecture rather than line editing:
+
+# Does the V1→V2 maturation doctrine preserve the original ambition and crypto-punk/intellectual character?
+# Does the role-before-ontology separation correctly explain the V1 corpus?
+# Are the ten architecture families the right lenses for mining the 83 system sources?
+# Is the Entity type / Domain / navigation / Book Matter / epistemics / lifecycle / Relationship decomposition coherent?
+# Should Book Matter/transclusion/templates now proceed from Candidate to concrete implementation design?
+# Are the two historical subject dispositions faithful without prematurely turning them into current factual canon?
+# Which architecture family should receive the next deep maturation pass: epistemics/confidence, composition/templates, graph semantics, research/lab substrate, or navigation?
+
+== Review state ==
+
+'''This checkpoint is evaluation-ready, not merge-authorized.'''
+
+The working branch should remain a draft review surface until the architecture is evaluated. Acceptance of this checkpoint can then determine which Candidate families move into executable V2 implementation.
+
+See [[BITwiki:V1 to V2 maturation]], [[BITwiki:V1 maturation register]], [[BITwiki:Corpus evidence]], [[BITwiki:V1 page-role migration]], [[BITwiki:V1 architecture-family migration]], [[BITwiki:V1 subject and composition migration]], [[BITwiki:V1 ontology maturation]], and [[BITwiki:Source lineage]].
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]
+[[Category:Provenance]]

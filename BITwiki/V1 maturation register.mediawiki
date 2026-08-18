@@ -20,7 +20,7 @@ This register operationalizes [[BITwiki:V1 to V2 maturation]]. It distinguishes 
 {| class="wikitable"
 ! V1 primitive !! Historical state !! Durable signal !! Existing V2 substrate !! Evidence / questions before further maturation !! Status
 |-
-| Ontology / Topic system || Partial + proposed || Knowledge needs explicit kinds, domains, relationships, multiple lenses, facets, and polyhierarchical navigation rather than flat page lists or one overloaded Topic primitive. || [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[Property:Entity type]], [[Property:Domain]], Categories, Portals, semantic properties || [[BITwiki:V1 ontology maturation]] establishes the core separation. [[BITwiki:Corpus evidence]] now inventories every V2 deployable page and all 162 V1 Main pages, separating API implementation evidence from source-syntax design signal. Remaining work: page-role migration review and vocabulary coverage testing against canonical subject candidates before adding new types or domains. || '''Accepted'''
+| Ontology / Topic system || Partial + proposed || Knowledge needs explicit kinds, domains, relationships, multiple lenses, facets, and polyhierarchical navigation rather than flat page lists or one overloaded Topic primitive. || [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[Property:Entity type]], [[Property:Domain]], Categories, Portals, semantic properties || [[BITwiki:V1 ontology maturation]], [[BITwiki:Corpus evidence]], and [[BITwiki:V1 page-role migration]] now separate architecture from subject evidence and classify all 162 V1 Main pages by artifact role. Only two historical pages are first-class subject candidates; reusable fragments supply secondary Concept/Method/Protocol/evidence signals. Remaining work: canonicalize those subject signals and test vocabulary coverage before adding types or domains. || '''Accepted'''
 |-
 | Epistemics || Partial + strongly articulated || Knowledge should expose uncertainty, disagreement, evidence, provenance, and limits instead of projecting false certainty. || [[BITwiki:Epistemics]], [[Property:Epistemic status]], confidence rationale, provenance, review/lifecycle separation || Audit exact V1 epistemic mechanisms and determine where status is insufficient without claim/evidence structure. || Research
 |-
@@ -28,9 +28,9 @@ This register operationalizes [[BITwiki:V1 to V2 maturation]]. It distinguishes 
 |-
 | Templates || Implemented + extensively proposed || Reusable behaviors and presentations can make knowledge consistent and composable. || [[BITwiki:Templates and categories]], [[Template:Knowledge object]], [[Template:Domain portal]] || Audit 9 implemented V1 templates, callers, 59 wanted templates, unused templates, and compatibility needs; derive families from demonstrated behavior. || Research
 |-
-| Book Matter || Partial + conceptual || A knowledge object can expose reusable meaningful parts without losing the coherence of the whole. || [[BITwiki:Book Matter]], [[BITwiki:Page format]], headings/subpages/transclusion capabilities || Recover actual V1 Book Matter corpus and usage; test when sections, subpages, templates, or semantic subobjects are appropriate; prevent fragmentation. || Research
+| Book Matter || Partial + directly implemented through fragments/subpages/transclusion || A knowledge object can expose reusable meaningful parts without losing the coherence of the whole. || [[BITwiki:Book Matter]], [[BITwiki:Page format]], headings/subpages/transclusion capabilities || [[BITwiki:V1 page-role migration]] identifies 52 reusable composition artifacts, including 14 subpages, 9 generic Topic/transcludable sections, concept definitions, method/protocol fragments, and evidence summaries. The two first-class V1 subject pages themselves compose subpages. Remaining work: decide mature section/subpage/template/subobject patterns without recreating fragmentation. || '''Candidate'''
 |-
-| Transclusion || Partial || Reuse the same canonical signal across contexts rather than copy and drift. || [[BITwiki:Transclusion]], native MediaWiki transclusion + V2 page grammar || Inventory real V1 transclusion patterns; validate canonical-source and partial-transclusion rules; test progressive disclosure for humans and agents. || Research
+| Transclusion || Partial but demonstrably used in composed subject pages || Reuse the same canonical signal across contexts rather than copy and drift. || [[BITwiki:Transclusion]], native MediaWiki transclusion + V2 page grammar || Bioluminescent Organisms and Fluorescent Coral Reefs directly transclude their historical subpages, while generic Topic Sections were also marked Transcludable Content. Complete caller-level audit and validate canonical-source/partial-transclusion rules before accepting the final V2 composition contract. || '''Candidate'''
 |-
 | Semantic properties || Partial || Knowledge should be queryable through explicit semantic attributes and relations. || [[BITwiki:Semantic properties]] and Property namespace || Compare every V1 annotation/property with current V2 properties; establish value vocabularies, targets, constraints, and validation before expansion. || Research
 |-
@@ -63,15 +63,15 @@ Each row should eventually link to an evidence note containing:
 
 A wanted template, design paragraph, category label, or proposed schema is evidence that an idea existed. It is not evidence that the capability was deployed.
 
-The reusable machine evidence for corpus-level decisions is documented in [[BITwiki:Corpus evidence]].
+The reusable machine evidence for corpus-level decisions is documented in [[BITwiki:Corpus evidence]] and [[BITwiki:V1 page-role migration]].
 
 == First research passes ==
 
 The register should be matured in an order that reduces downstream ambiguity:
 
-# '''Ontology and classification''' — Topic, type, domain, taxonomy, categories, portals. Core primitive separation accepted; page-role migration and vocabulary coverage remain active evidence work.
+# '''Ontology and classification''' — core primitive separation accepted; corpus inventory and page-role migration complete; subject canonicalization and vocabulary coverage are next.
 # '''Epistemics and confidence''' — status, provenance, evidence, uncertainty, review, confidence trails.
-# '''Composition''' — Book Matter, templates, transclusion, modules, page anatomy.
+# '''Composition''' — Book Matter/transclusion are now Candidates from direct V1 evidence; templates, modules, page anatomy, and caller behavior still require full maturation.
 # '''Graph semantics''' — properties, relationships, query behavior, visualization.
 # '''Research substrate''' — claims, publications, patents, datasets, methods, experiments, projects, labs, implementations.
 # '''Knowledge lifecycle''' — BIThub/BITCORE/artifact/review/canonicalization and reuse.

@@ -46,9 +46,17 @@ jobs:
           PY
 
       - name: Harvest complete public V1
-        run: python scripts/archive_v1.py
+        id: harvest
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/archive_v1.py 2>&1 | tee /tmp/archive-v1-run.log
 
       - name: Verify completeness assertions
+        id: verify
+        if: steps.harvest.outcome == 'success'
+        continue-on-error: true
         run: |
           python - <<'PY'
           import json
@@ -68,22 +76,65 @@ jobs:
           print(json.dumps(a, indent=2))
           PY
 
-      - name: Commit exhaustive archive
+      - name: Restore last good archive on failure
+        if: steps.harvest.outcome != 'success' || steps.verify.outcome != 'success'
+        run: |
+          git checkout -- archive-v1
+          git clean -fd archive-v1
+
+      - name: Write run status
+        if: always()
+        env:
+          HARVEST_OUTCOME: ${{ steps.harvest.outcome }}
+          VERIFY_OUTCOME: ${{ steps.verify.outcome }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          log=Path('/tmp/archive-v1-run.log')
+          data={
+            'completed_at': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z'),
+            'harvest': os.environ.get('HARVEST_OUTCOME','unknown'),
+            'verify': os.environ.get('VERIFY_OUTCOME','skipped'),
+            'last_log_lines': log.read_text(errors='replace').splitlines()[-120:] if log.exists() else []
+          }
+          Path('archive-v1-run-status.json').write_text(json.dumps(data,indent=2)+'\n')
+          PY
+
+      - name: Commit archive or diagnostic status
+        if: always()
         run: |
           git config user.name 'BITwiki Archive Bot'
           git config user.email 'bitwikicryptopedia@gmail.com'
-          git add -A archive-v1 scripts/archive_v1.py
+          git add archive-v1-run-status.json scripts/archive_v1.py
+          if [ "${{ steps.harvest.outcome }}" = "success" ] && [ "${{ steps.verify.outcome }}" = "success" ]; then
+            git add -A archive-v1
+          fi
           if git diff --cached --quiet; then
-            echo 'Archive already current.'
+            echo 'Archive and status already current.'
           else
-            git commit -m 'Refresh exhaustive public V1 archive'
+            if [ "${{ steps.harvest.outcome }}" = "success" ] && [ "${{ steps.verify.outcome }}" = "success" ]; then
+              git commit -m 'Refresh exhaustive public V1 archive'
+            else
+              git commit -m 'Record failed V1 archive refresh'
+            fi
             git pull --rebase origin main
             git push origin HEAD:main
           fi
 
       - name: Upload archive artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: bitwiki-v1-public-archive
-          path: archive-v1
+          path: |
+            archive-v1
+            archive-v1-run-status.json
           if-no-files-found: error
+
+      - name: Enforce successful archive
+        if: steps.harvest.outcome != 'success' || steps.verify.outcome != 'success'
+        run: |
+          cat archive-v1-run-status.json
+          exit 1

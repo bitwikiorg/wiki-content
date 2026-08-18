@@ -1,0 +1,166 @@
+{{Source status|status=source-reconciled semantic model|note=Draws from V1 Relationship Types, Relationship Pattern Catalog, Entity Types, Provenance Model, and actual V2 needs. V2 deliberately does not inherit unsafe universal transitivity/domain assumptions from historical tables.}}
+
+= Relationships =
+
+Relationships state how knowledge objects connect. Their value is semantic precision: a graph becomes useful when an edge says more than "these pages are somehow associated."
+
+At the same time, an overly ambitious relationship vocabulary creates false meaning. V2 therefore starts with a small set of durable relations and expands from demonstrated use.
+
+== Governing rules ==
+
+# Prefer a specific relation when the meaning is clear.
+# Use [[Property:Related to|Related to]] when the connection matters but a stronger semantic claim is not justified.
+# Do not infer causality, transitivity, symmetry, or inverse relations unless the property's documented semantics support it.
+# A relation is not evidence merely because it is encoded semantically.
+# Relationship vocabulary evolves from real content and query needs.
+
+== Core V2 relations ==
+
+=== Related to ===
+
+A deliberately weak association.
+
+Use when two knowledge objects are materially connected but a stronger relation would overstate what is known.
+
+Do not use as a substitute for every missing property; if the same specific pattern recurs, define the pattern.
+
+=== Implements ===
+
+A concrete realization implements an abstract concept, method, protocol, design, or specification.
+
+Examples:
+
+* thermostat → implements → feedback control;
+* software client → implements → protocol;
+* deployed workflow → implements → method.
+
+The inverse phrase is '''implemented by'''; V2 does not require storing both directions when queries/inference can derive the display relationship.
+
+=== Part of ===
+
+A component, phase, subsystem, or member structure belongs within a larger whole.
+
+Part–whole semantics vary across domains. Do not assume all <code>Part of</code> chains are automatically transitive in every context simply because classical mereology can define transitive parthood.
+
+=== Depends on ===
+
+A materially necessary dependency: the source object's operation, interpretation, construction, or validity relies on the target.
+
+Dependency is directional. Avoid using it for mere chronological influence or loose conceptual relevance.
+
+=== Supports ===
+
+A knowledge object provides evidence, argument, data, or other epistemically relevant support for another claim/object.
+
+Support should remain inspectable through [[BITwiki:Evidence]] and [[BITwiki:Provenance]]. A <code>Supports</code> edge does not by itself establish that the support is strong.
+
+=== Contradicts ===
+
+A knowledge object materially conflicts with another claim, prediction, interpretation, or result.
+
+Do not make contradiction transitive. If A contradicts B and B contradicts C, nothing follows automatically about A and C.
+
+=== Refines ===
+
+A later or more specific object improves, narrows, extends, or qualifies an earlier model/concept while retaining significant continuity.
+
+Refinement is not necessarily replacement. A refinement may operate only in a particular scope.
+
+=== Derived from ===
+
+A provenance relationship indicating that an artifact, claim, model, dataset, or representation materially descends from another.
+
+Use when lineage is stronger than mere citation. Document transformations when they affect meaning.
+
+== Relations not yet made universal V2 primitives ==
+
+V1 documented many additional relations, including:
+
+* Subtopic of / Has subtopic;
+* Instance of;
+* Causes / Caused by;
+* Enables / Enabled by;
+* Prevents / Prevented by;
+* Precedes / Follows;
+* Concurrent with;
+* During / Contains;
+* Located in;
+* Adjacent to;
+* Originates / Originated by;
+* Contributes to;
+* Collaborates with.
+
+Many are valuable. They are not rejected.
+
+They are held to the same test as entity types: repeated use, clear semantics, useful query/reasoning behavior, and appropriate domain/range constraints before becoming universal V2 properties.
+
+== Why V2 is conservative about inference ==
+
+The V1 Relationship Types table sometimes described broad relations such as <code>Causes</code> and <code>Enables</code> as transitive.
+
+That is unsafe as a universal knowledge-graph rule.
+
+If A causes B and B causes C, A's contribution to C may be conditional, mediated, blocked, probabilistic, or irrelevant under changed context. Similar problems arise with generic enablement and containment.
+
+V2 therefore distinguishes:
+
+* '''edge meaning''' — what the direct relation asserts;
+* '''inference rule''' — what additional edges may legitimately follow.
+
+Inference rules should be documented separately and only enabled when their semantics have been validated.
+
+== Domain and range ==
+
+Domain/range constraints can improve validation but should not be invented too early.
+
+Examples of useful tendencies:
+
+{| class="wikitable"
+! Relation !! Typical source !! Typical target
+|-
+| Implements || Implementation / Technology || Concept / Method / Protocol
+|-
+| Supports || Publication / Dataset / Evidence-bearing object || Claim / Concept / model
+|-
+| Contradicts || Evidence-bearing object / claim || Claim / prediction / model
+|-
+| Derived from || Any knowledge artifact || Source / ancestor artifact
+|-
+| Part of || component / phase / subsystem || larger object
+|}
+
+These are modeling guidance, not metaphysical laws. If real content requires broader use, refine the property definition rather than silently violating it.
+
+== Relationship quality ==
+
+For consequential edges, ask:
+
+* Is the relationship explicit in a source or inferred by BITwiki?
+* What evidence supports the edge?
+* Is direction correct?
+* Is the target at the right level of abstraction?
+* Is a weaker relation more honest?
+* Has the relation become stale after a page/schema revision?
+
+== Composition ==
+
+Multi-hop paths are powerful:
+
+<pre>
+Person → authored → Publication → supports → Concept
+Technology → implements → Protocol → depends on → Concept
+Project → produces → Dataset → supports → Claim
+</pre>
+
+But a query path is not automatically a valid logical deduction. The semantics of each edge determine what can be inferred from the path.
+
+== Source lineage ==
+
+Primary V1 source: [[BITwiki Relationship Types]], supplemented by [[BITwiki Relationship Pattern Catalog]], [[BITwiki Entity Types]], [[BITwiki Expanded Entity Types]], and [[BITwiki Provenance Model]].
+
+Exact V1 source and history are preserved under <code>archive-v1/</code>.
+
+See [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Semantic properties]], and [[BITwiki:Provenance]].
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

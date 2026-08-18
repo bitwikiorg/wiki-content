@@ -1,0 +1,193 @@
+{{Source status|status=source-reconciled V2 technical standard|note=Preserves the strongest V1 Transclusion Rules and Book Matter principles while correcting implementation assumptions against current MediaWiki transclusion behavior.}}
+
+= Transclusion =
+
+'''Transclusion is not copying.'''
+
+A knowledge object or reusable fragment should have one canonical source and may appear in multiple contexts by reference. Copying creates independent bodies that drift; transclusion preserves a shared source while allowing different reading surfaces to compose it.
+
+This is one of the central mechanisms behind BITwiki's goal of '''transposable, modular, composable knowledge without loss of depth or provenance.'''
+
+== Core principle ==
+
+<pre>
+canonical source
+     │
+     ├── transcluded into parent article
+     ├── transcluded into comparison / synthesis
+     ├── retrieved by an agent
+     └── exposed through another navigation surface
+</pre>
+
+The appearance may change by context. The source lineage must not become ambiguous.
+
+== Core MediaWiki patterns ==
+
+=== Whole page ===
+
+For a Main-namespace page:
+
+<pre>
+{{:Page name}}
+</pre>
+
+For a template:
+
+<pre>
+{{Template name}}
+</pre>
+
+=== Subpage as Book Matter ===
+
+BITwiki often prefers explicit semantic subpages when a portion has independent reuse value:
+
+<pre>
+{{:Bioluminescent Organisms/Overview}}
+{{:Bioluminescent Organisms/Biochemical Mechanism}}
+{{:Bioluminescent Organisms/Examples}}
+{{:Bioluminescent Organisms/Applications}}
+{{:Bioluminescent Organisms/References}}
+</pre>
+
+The parent remains the coherent canonical knowledge object. The subpages expose reusable Book Matter.
+
+=== Partial transclusion with core tags ===
+
+MediaWiki provides three native inclusion controls:
+
+* <code>&lt;noinclude&gt;...&lt;/noinclude&gt;</code> — visible on the source, omitted when transcluded;
+* <code>&lt;includeonly&gt;...&lt;/includeonly&gt;</code> — emitted when transcluded, hidden on the source;
+* <code>&lt;onlyinclude&gt;...&lt;/onlyinclude&gt;</code> — when present, only marked material is emitted by the transclusion.
+
+These are appropriate for carefully bounded reusable regions and template documentation/behavior.
+
+=== Named or heading-based section transclusion ===
+
+Do not document <code>{{:Page#Section}}</code> as universal core MediaWiki syntax.
+
+When the Labeled Section Transclusion extension is installed, named sections can be marked and selectively transcluded. Its heading-oriented function can transclude the body of a heading:
+
+<pre>
+{{#lsth:Page name|Section heading}}
+</pre>
+
+Use extension-specific syntax only when [[BITwiki:Deployment prerequisites|deployment]] confirms the extension is available. Otherwise use a subpage or core inclusion tags.
+
+== Book Matter selection rule ==
+
+A heading does not become a subpage merely because it exists.
+
+Promote content to independently addressable Book Matter when at least one real reuse case exists:
+
+* another page needs that portion without the rest of the article;
+* an agent or query should retrieve it as a stable semantic unit;
+* the section has substantial independent sources or evidence;
+* multiple parent views legitimately compose the same canonical material;
+* the section changes on a different cadence from its surrounding article;
+* preserving it separately materially improves provenance or maintenance.
+
+Otherwise keep the material inline.
+
+'''Modularity does not mean fragmentation.'''
+
+== Epistemic integrity ==
+
+=== Standing belongs to the claim, not the host ===
+
+Moving or transcluding a Hypothetical, Emerging, Disputed, or otherwise qualified claim into a page with stronger overall standing does not upgrade the claim.
+
+The host page must preserve any qualification necessary to understand what the transcluded material actually establishes.
+
+=== Preserve provenance ===
+
+A reader or agent should be able to determine the canonical source of reusable content and, where consequential, its evidence/source lineage.
+
+Transclusion is reference, not erasure of authorship or origin.
+
+=== Context can change interpretation ===
+
+The same definition, observation, model, or quotation can behave differently in another disciplinary or argumentative context. Add host-page framing when the new context changes scope, terminology, assumptions, or likely interpretation.
+
+=== Contradictions remain visible ===
+
+If transcluded material materially conflicts with the host page or another transcluded object, preserve and explain the conflict. Do not silently reconcile disagreement through placement.
+
+Use [[Property:Contradicts|Contradicts]] where the relation is stable and semantically justified.
+
+== Dependency hygiene ==
+
+Transclusion creates dependencies. Treat them deliberately.
+
+* Avoid circular transclusion.
+* Prefer shallow, comprehensible dependency chains.
+* Keep reusable objects stable in purpose even as their content evolves.
+* Avoid version numbers such as <code>/v2</code> or <code>/final</code> in canonical fragment titles; use revision history and explicit source lineage.
+* When changing a heavily reused source, inspect where it is transcluded and consider downstream meaning.
+* Use templates for repeated rendering/interface behavior and Main subpages for reusable subject content.
+
+== Live versus historical reproducibility ==
+
+Ordinary MediaWiki transclusion follows the live source. A change to the canonical source therefore changes the rendered transclusions that depend on it.
+
+When a workflow requires an immutable historical state, preserve that state through revision history, archive/export, citation to a specific revision, or another explicit snapshot mechanism rather than pretending the live transclusion is version-pinned.
+
+== Semantic annotations ==
+
+Do not assume that moving semantic markup through transclusion preserves the conceptual identity you intend.
+
+For each reusable object, decide explicitly whether a semantic statement describes:
+
+* the canonical source object;
+* the host object displaying it;
+* a claim/subobject represented inside it;
+* or a relationship between source and host.
+
+Test actual Semantic MediaWiki behavior before relying on template/transclusion side effects for important graph semantics. Prefer explicit provenance and relationships over accidental annotation inheritance.
+
+== Canonical V2 patterns ==
+
+=== Pattern A — coherent parent + reusable Book Matter ===
+
+<pre>
+Bioluminescent Organisms
+├── Overview
+├── Biochemical Mechanism
+├── Examples
+├── Applications
+├── Related Theories
+└── References
+</pre>
+
+The parent composes the parts and remains readable as a complete article.
+
+=== Pattern B — reusable interface template ===
+
+[[Template:Knowledge object]] and [[Template:Domain portal]] centralize repeated presentation/query mechanics while pages retain their subject-specific content.
+
+=== Pattern C — dynamic semantic view ===
+
+A portal can query the corpus rather than copy a hand-maintained list. [[Template:Domain portal]] uses the [[Property:Domain|Domain]] property for the semantic view while retaining Category as a separate human browse surface.
+
+== Anti-patterns ==
+
+Avoid:
+
+* copying the same paragraph into several canonical pages;
+* turning every heading into a page;
+* free-floating fragments with no clear parent/source identity;
+* transcluding an entire large article merely to reuse a small portion;
+* circular dependency chains;
+* hiding epistemic disagreement by embedding one claim inside a stronger-looking host;
+* using Category as a substitute for reusable content anatomy;
+* treating extension-specific syntax as guaranteed core MediaWiki behavior.
+
+== Historical lineage ==
+
+V1's [[BITwiki Transclusion Rules]] correctly identified transclusion as foundational rather than cosmetic. It emphasized single-source knowledge, self-standing reusable material, source attribution, epistemic integrity, contextualization, contradiction handling, dependency hygiene, and precise extraction.
+
+V1 also accumulated implementation claims and proposed conventions that were broader than what was actually deployed. V2 preserves the architectural intent while making extension dependencies and implementation assumptions explicit.
+
+See [[BITwiki:Book Matter]], [[BITwiki:Page format]], [[BITwiki:Organization]], [[BITwiki:Epistemics]], [[BITwiki:Provenance]], and [[BITwiki:Deployment prerequisites]].
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

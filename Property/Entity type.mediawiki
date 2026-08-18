@@ -2,6 +2,25 @@
 
 [[Has type::Text]]
 
-What kind of entity or knowledge object a page represents. The controlled vocabulary remains corpus-derived and is not finalized merely by this property declaration.
+The primary ontological pattern a page or knowledge object represents.
 
-This minimal V2 primitive does not supersede the unreconciled V1 Entity Types / Page Types corpus.
+Current V2 base vocabulary:
+
+* <code>Concept</code>
+* <code>Method</code>
+* <code>Protocol</code>
+* <code>Implementation</code>
+* <code>Project</code>
+* <code>Dataset</code>
+* <code>Person</code>
+* <code>Organization</code>
+* <code>Event</code>
+* <code>Publication</code>
+* <code>Location</code>
+* <code>Technology</code>
+
+The vocabulary is intentionally extensible. Specialized types should be introduced from demonstrated content/query needs rather than pre-emptively.
+
+V2 <code>Concept</code> broadly normalizes V1 <code>Idea</code>. V1 <code>Topic</code> is no longer the default subject/navigation type; use [[Property:Domain|Domain]], Categories, and Portals for subject browsing unless a distinct Topic object is genuinely needed.
+
+See [[BITwiki:Entity types]] and [[BITwiki:Ontology]].

@@ -45,6 +45,25 @@ jobs:
           assert old not in p.read_text(), 'Archive harvester still prefers canonical namespace names'
           PY
 
+      - name: Resolve historical upload paths
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/archive_v1.py')
+          s=p.read_text()
+          old="            r=a.s.get(url,timeout=90); r.raise_for_status(); data=r.content"
+          new='''            candidates=[url]\n            parsed=urlparse(url)\n            for bad in ('/W/images/','/w/images/'):\n                if bad in parsed.path:\n                    candidates.append(f"{parsed.scheme}://{parsed.netloc}{parsed.path.replace(bad,'/images/',1)}")\n            data=None; resolved_url=None; errors=[]\n            for candidate in dict.fromkeys(candidates):\n                try:\n                    r=a.s.get(candidate,timeout=90)\n                    if r.ok:\n                        data=r.content; resolved_url=candidate; break\n                    errors.append(f"{r.status_code} {candidate}")\n                except Exception as e:\n                    errors.append(f"{type(e).__name__}: {candidate}: {e}")\n            if data is None:\n                raise RuntimeError(f"Unable to resolve binary for {title} revision {n}: {' | '.join(errors)}")'''
+          if old in s:
+              s=s.replace(old,new)
+          old_rec="            rec=dict(info); rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)"
+          new_rec="            rec=dict(info); rec['api_binary_url']=url; rec['resolved_binary_url']=resolved_url; rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)"
+          if old_rec in s:
+              s=s.replace(old_rec,new_rec)
+          p.write_text(s)
+          assert old not in s, 'Archive harvester still downloads only the API-provided historical path'
+          assert old_rec not in s, 'Archive harvester does not record binary URL resolution'
+          PY
+
       - name: Harvest complete public V1
         id: harvest
         continue-on-error: true

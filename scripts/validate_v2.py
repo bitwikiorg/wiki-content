@@ -125,6 +125,20 @@ def split_domains(domain_text: str) -> list[str]:
     return [title(item) for item in domain_text.split(",") if title(item)]
 
 
+def is_magic_word_or_parser_prefix(template: str) -> bool:
+    """Return True for MediaWiki magic syntax captured by the template regex.
+
+    Some magic words are argument-like and therefore appear as
+    ``{{DISPLAYTITLE:...}}`` or ``{{DEFAULTSORT:...}}``. They are not Template
+    namespace transclusions and must not be reported as missing templates.
+    """
+    if template.upper() in MAGIC_WORDS:
+        return True
+    if ":" in template and template.split(":", 1)[0].upper() in MAGIC_WORDS:
+        return True
+    return False
+
+
 def main() -> None:
     all_files = [path for root in WIKITEXT_ROOTS for path in files(root)]
 
@@ -171,7 +185,7 @@ def main() -> None:
                     or lower.startswith(("subst:", "safesubst:"))
                 ):
                     continue
-                if template.upper() in MAGIC_WORDS:
+                if is_magic_word_or_parser_prefix(template):
                     continue
                 if ":" in template and template.split(":", 1)[0].casefold() in {
                     "int", "msg", "msgnw"

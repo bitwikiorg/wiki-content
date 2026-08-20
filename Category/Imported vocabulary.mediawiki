@@ -1,0 +1,29 @@
+= Imported vocabulary =
+
+This administrative semantic category groups pages that expose vocabulary imported from external ontologies or namespace mappings rather than predicates designed natively by BITwiki.
+
+== Purpose ==
+
+Imported vocabulary exists for interoperability. Membership here signals that a Property or related semantic surface inherits meaning from an external vocabulary and should be interpreted with that vocabulary's definitions and import mapping in view.
+
+Current examples include FOAF and OWL properties recovered from the live BITwiki Semantic MediaWiki configuration.
+
+== Boundary ==
+
+This category is '''not''' a knowledge Domain and does not imply that imported terms become part of BITwiki's native ontology merely because they are available to SMW.
+
+Before using an imported predicate in canonical V2 content:
+
+* verify the corresponding <code>MediaWiki:Smw import ...</code> mapping;
+* preserve the external predicate's intended semantics;
+* prefer a V2-native Property when BITwiki needs materially different semantics;
+* document any deliberate alignment or translation rather than silently treating similarly named predicates as equivalent.
+
+== Related runtime surfaces ==
+
+* [[BITwiki:MediaWiki substrate]]
+* [[BITwiki:Semantic properties]]
+* [[Special:Properties]]
+* [[Special:Browse]]
+
+[[Category:BITwiki architecture]]

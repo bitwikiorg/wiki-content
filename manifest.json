@@ -46,8 +46,8 @@
     "path": "v2-validation.json",
     "generator": "scripts/validate_v2.py",
     "valid": true,
-    "category_pages": 26,
-    "template_pages": 3,
+    "category_pages": 30,
+    "template_pages": 4,
     "domain_exemplars": 12,
     "semantic_identity_validation": true,
     "knowledge_object_fields_required": [
@@ -56,6 +56,14 @@
       "status",
       "provenance"
     ]
+  },
+  "navigation": {
+    "recursive_portals": true,
+    "subportal_examples": [
+      "Portal:Biology/Bioinformatics",
+      "Portal:Computer science/Python"
+    ],
+    "portal_hierarchy_is_ontology": false
   },
   "migration_evidence": {
     "corpus_inventory": "scripts/inventory_corpus.py",

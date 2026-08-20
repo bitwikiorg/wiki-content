@@ -55,9 +55,9 @@ jobs:
         if: always()
         run: cat v2-validation.json
 
-      - name: Show Main namespace audit summary
+      - name: Show Main namespace audit
         if: always()
-        run: python scripts/audit_mainspace.py
+        run: cat v2-mainspace-audit.json
 
       - name: Upload architecture evidence
         if: always()

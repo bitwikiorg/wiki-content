@@ -1,0 +1,233 @@
+= Sensitive topic scope research =
+
+'''Status: Research.''' This page records a proposed BITwiki editorial/security approach for politically and religiously sensitive material. It is not yet binding policy.
+
+== Problem ==
+
+Some bodies of knowledge are simultaneously:
+
+* intellectually important;
+* historically and scientifically relevant;
+* unusually vulnerable to current-event volatility, propaganda, brigading, harassment, reputation capture, legal pressure, and ideological conflict.
+
+Politics and religion are obvious examples, but the same pattern can appear in war, ethnicity, nationalism, sexuality, public health, conspiracy movements, active legal disputes, living-person controversies, and other high-conflict subjects.
+
+A binary choice between "cover everything like a news encyclopedia" and "ban these subjects" is unnecessary.
+
+== Proposed principle ==
+
+'''Study the system; do not become the conflict feed.'''
+
+BITwiki can preserve durable knowledge about sensitive subjects while declining to optimize for real-time partisan conflict, breaking-news churn, devotional advocacy, or reputation warfare.
+
+A concise editorial distinction:
+
+<blockquote>
+Politics and religion are legitimate objects of knowledge. Current partisan campaigning, breaking political news, and devotional advocacy are not BITwiki editorial products.
+</blockquote>
+
+This is a scope and security choice, not a claim that those subjects are unimportant.
+
+== Why topic scope is a security issue ==
+
+Knowledge architecture determines what kinds of adversarial attention a system attracts.
+
+Potential risks include:
+
+* coordinated brigading and edit wars;
+* propaganda and influence operations;
+* harassment or doxxing of contributors;
+* state or legal pressure;
+* censorship and blocking;
+* search/reputation manipulation;
+* conflict-of-interest editing;
+* false balance around well-established evidence;
+* volatile claims becoming obsolete faster than review can follow;
+* identity or factional capture of governance surfaces;
+* agents amplifying contested claims faster than humans can audit them.
+
+These risks should influence review, sourcing, prominence, update cadence, and contributor exposure—not automatically erase legitimate knowledge.
+
+== External evidence ==
+
+Wikipedia provides useful evidence about the risk surface without being a specification for BITwiki.
+
+Academic studies of Wikipedia have repeatedly used controversial topics, edit wars, policy formation, bias, and editor behavior as research objects. A well-known comparative controversy study found that politically and religiously charged subjects were among the most disputed pages in several language editions.
+
+Contributor risk is also concrete. The documented list of people imprisoned for editing Wikipedia includes cases in Belarus, Saudi Arabia, and Syria, including Bassel Khartabil, who was executed in 2015. Several cases involved politically sensitive edits or broader state repression.
+
+Wikipedia has also faced country-level blocking and censorship. These cases demonstrate that content policy and contributor safety cannot always be separated.
+
+The conclusion is not "politics is forbidden." The conclusion is that volatile/high-conflict knowledge requires a different operational posture from stable technical knowledge.
+
+== Proposed durability and lens gate ==
+
+Before BITwiki promotes a sensitive-topic page or section into ordinary canonical navigation, ask:
+
+{| class="wikitable"
+! Test !! Question
+|-
+| Durability || Will this still be useful after the current news cycle?
+|-
+| Knowledge lens || Is the treatment primarily scientific, historical, philosophical, legal, economic, sociological, systems-oriented, or otherwise analytical?
+|-
+| Evidence quality || Are claims supported by strong, traceable sources with clear provenance?
+|-
+| Currentness burden || Does the page require continuous real-time updating to remain accurate?
+|-
+| Advocacy risk || Is the page explaining a phenomenon, or implicitly campaigning for/against a live faction, candidate, movement, or creed?
+|-
+| Contributor risk || Could editing or attribution materially expose contributors to harassment, legal pressure, or state targeting?
+|-
+| Harm from prominence || Would creating a prominent portal/category become an attack magnet disproportionate to its durable knowledge value?
+|-
+| Historical framing || Can a volatile event be represented as a dated case study rather than an always-current feed?
+|}
+
+The gate should affect editorial treatment and review burden rather than act as a simplistic forbidden-topic list.
+
+== Politics ==
+
+=== In scope ===
+
+Examples of durable analytical coverage:
+
+* political science;
+* governance systems;
+* constitutional design;
+* public administration;
+* voting and collective-choice theory;
+* game theory applied to institutions;
+* political economy;
+* law and regulatory systems;
+* international relations as a scholarly field;
+* historical political movements and institutions;
+* propaganda, censorship, information warfare, and media systems as research subjects;
+* comparative government;
+* durable case studies of institutional failure or reform;
+* systems analysis of states, organizations, incentives, power, and coordination.
+
+=== High-friction / normally not a product focus ===
+
+* breaking election coverage;
+* daily politician/candidate tracking;
+* partisan scorekeeping;
+* campaign messaging;
+* rapid-response controversies involving living political figures;
+* unsourced allegations;
+* pages whose value depends primarily on staying current with a news cycle.
+
+A current political event may still be cited as evidence or preserved as a dated case study when necessary to understand a durable phenomenon.
+
+== Religion ==
+
+=== In scope ===
+
+* religious studies;
+* anthropology and sociology of religion;
+* psychology/neuroscience of belief and ritual;
+* philosophy of religion;
+* comparative religion;
+* history of religions;
+* archaeology, textual history, and manuscript traditions;
+* religious institutions as social systems;
+* mythology and cosmology as cultural/intellectual objects;
+* scientifically testable claims where evidence can be evaluated explicitly;
+* influence of religious traditions on art, law, philosophy, politics, science, and culture.
+
+=== High-friction / normally not a product focus ===
+
+* devotional instruction presented as canonical fact;
+* apologetics or anti-religious polemic presented as neutral knowledge;
+* sectarian recruitment;
+* live inter-sectarian conflict framed as advocacy;
+* unsupported supernatural claims represented as established empirical fact.
+
+BITwiki's epistemic machinery should allow a religious or metaphysical claim to be documented faithfully as a claim, tradition, text, interpretation, or philosophical position without falsely asserting empirical verification.
+
+== Recent events and news ==
+
+BITwiki should not reproduce a continuous news mission.
+
+Wikimedia historically separated this function into Wikinews. The Wikimedia Foundation later closed the hosted Wikinews editions and placed them in read-only mode in May 2026. That history should not be interpreted as evidence that political/news coverage was censored; it instead demonstrates that real-time news production is a distinct and costly mission from maintaining an encyclopedia or durable research corpus.
+
+BITwiki can still record recent events when they:
+
+* materially change a durable knowledge object;
+* are primary evidence for an ongoing research question;
+* become important historical case studies;
+* affect the operation, governance, or security of BITwiki itself.
+
+Prefer dated event records and sourced updates over turning a Domain portal into a news feed.
+
+== Sensitive-topic status should not become ontology ==
+
+"Sensitive" is not an Entity type or Domain.
+
+If later implemented, the concept belongs closer to governance/review/risk metadata, for example:
+
+* heightened review required;
+* living-person sensitivity;
+* current-event volatility;
+* contributor-safety concern;
+* legal/censorship exposure;
+* conflict-of-interest risk.
+
+Do not create these properties until repeated workflows demonstrate their concrete jobs.
+
+== Navigation implications ==
+
+BITwiki does not need a prominent top-level "Politics" or "Religion" portal merely because general encyclopedias have them.
+
+Possible mature choices include:
+
+* Political science under Social sciences / Governance / Systems science;
+* Religion under Humanities / Philosophy / Anthropology / History, with a dedicated field portal only if corpus mass warrants it;
+* History and Law/Governance as durable high-level surfaces without turning them into current-affairs feeds;
+* Censorship, propaganda, conflict, institutions, and governance treated through explicit analytical lenses.
+
+Portal prominence is an editorial/security decision as well as a navigation decision.
+
+== Human and agent workflow implications ==
+
+Sensitive material should eventually support stronger review paths than ordinary low-risk technical pages.
+
+Research candidates:
+
+# Require stronger provenance before canonicalization.
+# Distinguish claims, sourced facts, interpretations, and advocacy.
+# Surface datedness/currentness clearly.
+# Require human review before autonomous agents publish or substantially rewrite highly sensitive current material.
+# Keep contributor identity/privacy exposure minimal where possible.
+# Maintain audit trails and reversible changes.
+# Watch for coordinated edit/traffic anomalies if BITwiki becomes openly editable.
+
+These are research directions, not accepted implementation requirements yet.
+
+== Policy shape currently favored ==
+
+'''Do not ban the fields. Constrain the mission.'''
+
+BITwiki should be able to deeply study political and religious systems while remaining structurally uninterested in becoming a daily partisan battleground or devotional platform.
+
+That preserves important knowledge while reducing incentives for the most adversarial forms of participation.
+
+== Open questions ==
+
+* Should Political science become a subportal of Social sciences, Systems science, or both?
+* Should Governance/Law be a separate durable high-level surface?
+* Should Religious studies have its own portal or remain cross-linked through Philosophy, History, Anthropology, Psychology, and Humanities?
+* What exact metadata should trigger heightened review, if any?
+* Which current-event changes are important enough to update canonical objects?
+* How should agent autonomy be bounded around sensitive current material?
+* What contributor-safety protections are appropriate for a public human+agent wiki?
+
+== Comparative research ==
+
+See [[BITwiki:Comparative wiki research register]] for Wikipedia/Wikimedia, multilingual, specialist-wiki, online-encyclopedia, censorship, controversy, and governance sources.
+
+See [[BITwiki:Navigation and coverage research]] for the separate question of Domains, subportals, categories, lists, outlines, and Core/Vital knowledge coverage.
+
+[[Category:BITwiki governance]]
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

@@ -27,22 +27,103 @@
     "namespace_info": "https://bitwiki.org/Special:NamespaceInfo",
     "version_info": "https://bitwiki.org/Special:Version",
     "source_control_mappings": {
-      "Main": {"path": "Main/", "kind": "namespace", "content_model": "wikitext"},
-      "BITwiki": {"path": "BITwiki/", "kind": "namespace", "content_model": "wikitext", "canonical_name": "Project"},
-      "Template": {"path": "Template/", "kind": "namespace", "content_model": "wikitext"},
-      "Property": {"path": "Property/", "kind": "namespace", "content_model": "wikitext", "extension": "SemanticMediaWiki"},
-      "Category": {"path": "Category/", "kind": "namespace", "content_model": "wikitext"},
-      "Concept": {"path": "Concept/", "kind": "namespace", "content_model": "wikitext", "extension": "SemanticMediaWiki"},
-      "smw/schema": {"path": "SMWSchema/", "kind": "namespace", "content_model": "smw/schema", "extension": "SemanticMediaWiki", "filename_encoding": "URL-encode colon in namespace-local title"},
-      "Module": {"path": "Module/", "kind": "namespace", "content_model": "Scribunto/Lua", "extension": "Scribunto"},
-      "MediaWiki": {"path": "MediaWiki/", "kind": "namespace", "content_model": "page-specific (wikitext/CSS/JS)"},
-      "Help": {"path": "Help/", "kind": "namespace", "content_model": "wikitext"},
-      "Portal": {"path": "Portal/", "kind": "title projection", "content_model": "wikitext", "namespace_configured_in_snapshot": false}
+      "Main": {
+        "path": "Main/",
+        "kind": "namespace",
+        "content_model": "wikitext"
+      },
+      "BITwiki": {
+        "path": "BITwiki/",
+        "kind": "namespace",
+        "content_model": "wikitext",
+        "canonical_name": "Project"
+      },
+      "Template": {
+        "path": "Template/",
+        "kind": "namespace",
+        "content_model": "wikitext"
+      },
+      "Property": {
+        "path": "Property/",
+        "kind": "namespace",
+        "content_model": "wikitext",
+        "extension": "SemanticMediaWiki"
+      },
+      "Category": {
+        "path": "Category/",
+        "kind": "namespace",
+        "content_model": "wikitext"
+      },
+      "Concept": {
+        "path": "Concept/",
+        "kind": "namespace",
+        "content_model": "wikitext",
+        "extension": "SemanticMediaWiki"
+      },
+      "smw/schema": {
+        "path": "SMWSchema/",
+        "kind": "namespace",
+        "content_model": "smw/schema",
+        "extension": "SemanticMediaWiki",
+        "filename_encoding": "URL-encode colon in namespace-local title"
+      },
+      "Module": {
+        "path": "Module/",
+        "kind": "namespace",
+        "content_model": "Scribunto/Lua",
+        "extension": "Scribunto"
+      },
+      "MediaWiki": {
+        "path": "MediaWiki/",
+        "kind": "namespace",
+        "content_model": "page-specific (wikitext/CSS/JS)"
+      },
+      "Help": {
+        "path": "Help/",
+        "kind": "namespace",
+        "content_model": "wikitext"
+      },
+      "Portal": {
+        "path": "Portal/",
+        "kind": "title projection",
+        "content_model": "wikitext",
+        "namespace_configured_in_snapshot": false
+      }
     },
-    "runtime_namespaces_not_deployed_from_this_corpus": ["Talk","User","User talk","BITwiki talk","File","File talk","MediaWiki talk","Template talk","Help talk","Category talk","Property talk","Concept talk","smw/schema talk","Module talk"],
-    "capabilities_in_active_use": ["Semantic MediaWiki properties","Semantic MediaWiki #ask","MediaWiki templates/transclusion","Scribunto runtime validation"],
-    "capabilities_installed_but_use_case_gated": ["Cargo structured tables","SMW subobjects","additional SMW Concepts","Network graph views","FacetedSearch/Drilldown"],
-    "substrate_audit": {"generator": "scripts/audit_substrate.py", "output": "v2-substrate-audit.json"}
+    "runtime_namespaces_not_deployed_from_this_corpus": [
+      "Talk",
+      "User",
+      "User talk",
+      "BITwiki talk",
+      "File",
+      "File talk",
+      "MediaWiki talk",
+      "Template talk",
+      "Help talk",
+      "Category talk",
+      "Property talk",
+      "Concept talk",
+      "smw/schema talk",
+      "Module talk"
+    ],
+    "capabilities_in_active_use": [
+      "Semantic MediaWiki properties",
+      "Semantic MediaWiki #ask",
+      "MediaWiki templates/transclusion",
+      "Scribunto runtime validation",
+      "Cargo structured table: Knowledge_requests"
+    ],
+    "capabilities_installed_but_use_case_gated": [
+      "SMW subobjects",
+      "additional SMW Concepts",
+      "Network graph views",
+      "FacetedSearch/Drilldown"
+    ],
+    "substrate_audit": {
+      "generator": "scripts/audit_substrate.py",
+      "output": "v2-substrate-audit.json",
+      "distribution": "CI artifact; untracked"
+    }
   },
   "v1_archive": {
     "path": "archive-v1/",
@@ -73,20 +154,103 @@
     "warnings": []
   },
   "v2_validation": {
-    "path": "v2-validation.json",
     "generator": "scripts/validate_v2.py",
-    "valid": true,
-    "controlled_domains": 13,
-    "category_pages": 32,
-    "template_pages": 14,
-    "domain_exemplars": 13,
+    "output": "v2-validation.json",
+    "distribution": "CI artifact; untracked",
+    "controlled_domains_required": 13,
     "domain_exemplar_coverage_required": true,
     "semantic_identity_validation": true,
-    "knowledge_object_fields_required": ["entity_type","domain","status","provenance"]
+    "knowledge_object_fields_required": [
+      "entity_type",
+      "domain",
+      "status",
+      "provenance"
+    ]
   },
-  "mainspace_audit": {"path": "v2-mainspace-audit.json", "generator": "scripts/audit_mainspace.py", "purpose": "separate redirects, exemplars, knowledge objects, subpages and short-content review candidates without treating size as quality"},
-  "navigation": {"recursive_portal_title_projections": true,"polyhierarchical_portal_navigation": true,"canonical_focused_portal_titles": ["Portal:Bioinformatics","Portal:Python"],"legacy_slash_paths_are_redirects": true,"portal_hierarchy_is_ontology": false,"portal_namespace_configured_in_snapshot": false,"depth_localization": ["Simple orientation","Core understanding","Technical depth","Frontier / research"]},
-  "research_surfaces": {"references": "BITwiki/Research references.mediawiki","comparative_wikis": "BITwiki/Comparative wiki research register.mediawiki","navigation_coverage": "BITwiki/Navigation and coverage research.mediawiki","sensitive_topics": "BITwiki/Sensitive topic scope research.mediawiki","requested_knowledge": "BITwiki/Requested knowledge.mediawiki"},
-  "migration_evidence": {"corpus_inventory": "scripts/inventory_corpus.py","page_role_classifier": "scripts/classify_v1_page_roles.py","architecture_family_classifier": "scripts/classify_v1_architecture_families.py","v1_main_pages_classified": 162,"v1_architecture_sources_classified": 83},
-  "canonicalization_loop": ["recover source","preserve raw signal","compare revisions","distinguish design intent from implementation","research and cross-check","distill redundancy","revise","verify","canonicalize","transclude and relate","publish"]
+  "mainspace_audit": {
+    "generator": "scripts/audit_mainspace.py",
+    "output": "v2-mainspace-audit.json",
+    "distribution": "CI artifact; untracked",
+    "purpose": "separate redirects, exemplars, knowledge objects, subpages and short-content review candidates without treating size as quality"
+  },
+  "navigation": {
+    "recursive_portal_title_projections": true,
+    "polyhierarchical_portal_navigation": true,
+    "canonical_focused_portal_titles": [
+      "Portal:Bioinformatics",
+      "Portal:Python"
+    ],
+    "legacy_slash_paths_are_redirects": true,
+    "portal_hierarchy_is_ontology": false,
+    "portal_namespace_configured_in_snapshot": false,
+    "depth_localization": [
+      "Simple orientation",
+      "Core understanding",
+      "Technical depth",
+      "Frontier / research"
+    ]
+  },
+  "research_surfaces": {
+    "references": "BITwiki/Research references.mediawiki",
+    "comparative_wikis": "BITwiki/Comparative wiki research register.mediawiki",
+    "navigation_coverage": "BITwiki/Navigation and coverage research.mediawiki",
+    "sensitive_topics": "BITwiki/Sensitive topic scope research.mediawiki",
+    "requested_knowledge": "BITwiki/Requested knowledge.mediawiki"
+  },
+  "migration_evidence": {
+    "corpus_inventory": "scripts/inventory_corpus.py",
+    "page_role_classifier": "scripts/classify_v1_page_roles.py",
+    "architecture_family_classifier": "scripts/classify_v1_architecture_families.py",
+    "v1_main_pages_classified": 162,
+    "v1_architecture_sources_classified": 83
+  },
+  "operational_workflows": {
+    "knowledge_requests": {
+      "page": "BITwiki/Requested knowledge.mediawiki",
+      "template": "Template/Knowledge request.mediawiki",
+      "cargo_table": "Knowledge_requests",
+      "audit": "scripts/audit_workflow.py",
+      "audit_output": "v2-workflow-audit.json",
+      "audit_distribution": "CI artifact; untracked",
+      "active_statuses": [
+        "requested",
+        "researching",
+        "drafting",
+        "review"
+      ],
+      "terminal_statuses": [
+        "satisfied",
+        "declined"
+      ],
+      "invariant": "an active request must not already exist as a canonical Main page"
+    }
+  },
+  "evidence_policy": {
+    "generated_reports_tracked": false,
+    "distribution": "GitHub Actions artifact",
+    "reason": "generated validation state is commit-specific evidence, not canonical mutable repository source",
+    "reports": [
+      "v2-validation.json",
+      "v2-substrate-audit.json",
+      "v2-workflow-audit.json",
+      "v2-mainspace-audit.json",
+      "v2-corpus-inventory.json",
+      "v1-classification-usage.json",
+      "v1-page-role-matrix.json",
+      "v1-architecture-family-matrix.json"
+    ]
+  },
+  "canonicalization_loop": [
+    "recover source",
+    "preserve raw signal",
+    "compare revisions",
+    "distinguish design intent from implementation",
+    "research and cross-check",
+    "distill redundancy",
+    "revise",
+    "verify",
+    "canonicalize",
+    "transclude and relate",
+    "publish"
+  ]
 }

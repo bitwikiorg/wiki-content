@@ -23,7 +23,7 @@ Choose the smallest useful contribution:
 |-
 | connect knowledge || add justified relationships, categories, portal links, outlines, or cross-domain context
 |-
-| cover a missing topic || add it to [[BITwiki:Requested knowledge]] first unless you can create a coherent sourced page now
+| cover a missing topic || add or advance a structured record in [[BITwiki:Requested knowledge]] unless you can create a coherent sourced page now
 |-
 | create a new page || research, source, model, write, verify, then publish a minimum coherent knowledge object
 |-
@@ -32,7 +32,7 @@ Choose the smallest useful contribution:
 
 == Before creating a new subject page ==
 
-# Search for an existing canonical page, redirect, Book Matter fragment, or related page that already performs the job.
+# Search for an existing canonical page, redirect, Book Matter fragment, related page, or active [[BITwiki:Requested knowledge|knowledge request]] that already performs or tracks the job.
 # Decide whether the material is a durable knowledge object, a navigation surface, project documentation, or a request/backlog item.
 # Gather strong sources before writing factual claims.
 # Choose semantic identity deliberately: Entity type, Domain(s), epistemic status, and provenance must not be guessed by a template default.
@@ -104,9 +104,20 @@ Before creating one, ask whether a current Portal, Category, outline, list, quer
 
 For categories, explain scope, includes, excludes/boundary, category role, parents/subcategories, important pages, and related navigation.
 
-== Missing knowledge ==
+== Missing knowledge workflow ==
 
-Use [[BITwiki:Requested knowledge]] to record missing coverage when the research/write-up is not ready. A request is not a canonical article and should not be represented as one.
+Use [[BITwiki:Requested knowledge]] to record missing coverage when the research/write-up is not ready. The queue is structured through [[Template:Knowledge request]] and Cargo so lifecycle state is explicit and queryable.
+
+The progression is:
+
+<pre>
+requested → researching → drafting → review → satisfied
+                                      ↘ declined
+</pre>
+
+An active request is '''not''' a canonical article. Repository validation rejects an active request whose proposed title already exists as a Main-namespace page. When a coherent page is actually canonicalized, change the request to <code>satisfied</code> and record its canonical page rather than leaving the queue ambiguous.
+
+Do not change request status merely to make validation pass; status describes the actual workflow state.
 
 == BITwiki administration ==
 

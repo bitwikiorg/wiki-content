@@ -17,12 +17,8 @@ on:
       - 'Help/**'
       - 'archive-v1/**'
       - 'manifest.json'
-      - 'scripts/validate_v2.py'
-      - 'scripts/audit_substrate.py'
-      - 'scripts/inventory_corpus.py'
-      - 'scripts/audit_mainspace.py'
-      - 'scripts/classify_v1_page_roles.py'
-      - 'scripts/classify_v1_architecture_families.py'
+      - '.gitignore'
+      - 'scripts/**'
       - '.github/workflows/validate-v2-pr.yml'
 
 permissions:
@@ -45,9 +41,13 @@ jobs:
       - name: Validate deployable MediaWiki structure and identity semantics
         run: python scripts/validate_v2.py
 
-      - name: Audit MediaWiki / SMW / Lua substrate use
+      - name: Audit MediaWiki / SMW / Lua / Cargo substrate use
         if: always()
         run: python scripts/audit_substrate.py
+
+      - name: Audit structured knowledge-request workflow
+        if: always()
+        run: python scripts/audit_workflow.py
 
       - name: Audit deployable Main namespace roles
         if: always()
@@ -73,6 +73,10 @@ jobs:
         if: always()
         run: test ! -f v2-substrate-audit.json || cat v2-substrate-audit.json
 
+      - name: Show workflow audit
+        if: always()
+        run: test ! -f v2-workflow-audit.json || cat v2-workflow-audit.json
+
       - name: Show Main namespace audit
         if: always()
         run: test ! -f v2-mainspace-audit.json || cat v2-mainspace-audit.json
@@ -85,6 +89,7 @@ jobs:
           path: |
             v2-validation.json
             v2-substrate-audit.json
+            v2-workflow-audit.json
             v2-mainspace-audit.json
             v2-corpus-inventory.json
             v1-classification-usage.json

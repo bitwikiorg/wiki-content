@@ -1,0 +1,204 @@
+= Navigation and coverage research =
+
+'''Status: Research.''' This page records comparative evidence and design hypotheses for BITwiki V2. It does not by itself authorize mass portal/category creation.
+
+== Research question ==
+
+How should BITwiki provide broad, recursive, understandable navigation from simple orientation to technical depth without turning navigation into ontology or reproducing Wikipedia's portal-maintenance failure modes?
+
+== Current BITwiki gap ==
+
+The initial V2 implementation began with twelve top-level Domain portals. That was a useful seed, not adequate coverage of the knowledge space. The portal layer is now being extended with Computer science and recursive subportals, but the broader coverage model remains under research.
+
+Reader-facing paths include:
+
+<pre>
+Biology → Bioinformatics
+Computer science → Programming languages → Python
+Systems science → Cybernetics → Control theory
+Biology → Genetics → Genomics
+</pre>
+
+Current category descriptions are generally too thin to explain scope, inclusion, exclusion, parentage, or how a category should be used.
+
+== Main comparative finding ==
+
+Wikipedia's strongest navigation pattern is not any single taxonomy. It is the coexistence of several navigation systems with different jobs:
+
+* broad Contents pages;
+* portals;
+* category trees;
+* outlines;
+* lists;
+* glossaries;
+* indices;
+* curated Vital article sets;
+* search;
+* project/maintenance surfaces;
+* links and graph traversal.
+
+The same subject may appear in several of these views without those views being treated as the ontology.
+
+This strongly confirms the V2 separation:
+
+<pre>
+Domain ≠ Portal ≠ Category ≠ Outline ≠ List ≠ Index ≠ Entity type ≠ ontology
+</pre>
+
+== Proposed BITwiki navigation stack ==
+
+=== 1. Contents / root orientation ===
+
+A compact map of the whole public corpus. It should answer: ''Where can I begin?''
+
+Systems science remains BITwiki's distinctive integrative orientation: a way to understand interacting systems across fields, not a filesystem parent that every topic must literally descend from.
+
+=== 2. Broad Domain portals ===
+
+Large stable knowledge surfaces such as Biology, Mathematics, Computer science, Philosophy, Earth science, and Engineering.
+
+A Domain portal should provide:
+
+* a short plain-language orientation;
+* a simple → intermediate → technical learning path;
+* major subfields;
+* foundational/core objects;
+* semantic query results;
+* category browse tree;
+* related portals and cross-domain bridges;
+* relevant outlines, glossaries, lists, and indices when they exist.
+
+=== 3. Field and subfield portals ===
+
+BITwiki should support narrower portals when a body of material has enough internal structure to deserve an entry surface.
+
+Examples:
+
+* Biology → Bioinformatics
+* Biology → Genetics
+* Computer science → Artificial intelligence
+* Computer science → Programming languages
+* Programming languages → Python
+* Systems science → Cybernetics
+* Systems science → Complex systems
+
+A portal may have multiple parents. Bioinformatics is simultaneously meaningful from Biology, Computer science, Data science/statistics, and information-oriented perspectives.
+
+Therefore the recommended model is '''polyhierarchical portal relationships''', not filesystem semantics.
+
+Prefer canonical pages such as <code>Portal:Bioinformatics</code> and <code>Portal:Python</code> with explicit parent/related navigation. Slash paths may be retained as convenience redirects, but must not define ontology.
+
+=== 4. Categories and subcategories ===
+
+Categories should remain human browse collections, with multiple parents where useful. They should not silently define Entity type or Domain.
+
+Every substantive category should explain itself.
+
+'''Proposed category-description contract:'''
+
+{| class="wikitable"
+! Field !! Purpose
+|-
+| Scope || What the category is about
+|-
+| Includes || What belongs here
+|-
+| Excludes || Commonly confused material that belongs elsewhere
+|-
+| Category role || Topic, set/class, administration, maintenance, or other explicit role
+|-
+| Parent categories || Broader browse contexts; may be plural
+|-
+| Subcategories || Important narrower browse surfaces
+|-
+| Main/overview pages || Best conceptual entry points
+|-
+| Related portals || Reader-facing orientation surfaces
+|-
+| Related lists/outlines/glossaries || Richer curated navigation where categories are insufficient
+|}
+
+=== 5. Outlines ===
+
+Hierarchical study maps. Outlines are particularly suitable for progressive disclosure and for showing how a field decomposes without declaring that decomposition to be the ontology.
+
+=== 6. Lists and registries ===
+
+Use lists when each member needs annotations, references, comparison fields, dates, status, or context. Categories alone cannot provide those per-item explanations.
+
+High-value BITwiki examples include lists of online encyclopedias, wiki communities, knowledge-system architectures, standards, datasets, protocols, instruments, software, and organizations.
+
+=== 7. Glossaries and indices ===
+
+Glossaries support vocabulary learning. Indices optimize lookup. Neither should be forced into category or portal semantics.
+
+=== 8. Core / vital knowledge sets ===
+
+Wikipedia's nested Vital articles system provides a useful model distinct from categorization: a curated set of important coverage targets used to prioritize improvement and measure corpus quality.
+
+BITwiki should research an analogous '''Core knowledge''' or '''Vital knowledge''' mechanism. It should be a curated coverage/quality view, not a Domain or Entity type.
+
+=== 9. Semantic queries and graphs ===
+
+BITwiki can improve on manual portal duplication by generating sections from explicit semantic properties and relationships. Portal pages should primarily orient, curate, and explain; dynamic tables/graphs should retrieve current corpus state.
+
+=== 10. Self-administration plane ===
+
+Wikipedia separates public encyclopedia content from the project machinery that builds and maintains it. BITwiki already has a BITwiki namespace, but its administration surfaces should become easier to navigate.
+
+Candidate administration families include architecture, governance/policy, maintenance, validation/quality, research queues, requested knowledge, drafts/canonicalization, portal/category administration, templates/modules/properties, migrations/archive reconciliation, agents/bots/workflows, security, and proposals/decisions.
+
+'''Self-administration is not a knowledge Domain.'''
+
+== Portal failure lesson ==
+
+Wikipedia's portal history is a warning against equating coverage with portal count. BITwiki should therefore prefer fewer meaningful portals, query-driven current data, one canonical portal page where possible, no giant hidden forest of portal subpages, creation only when a field has enough corpus mass and internal structure, explicit validation for broken/empty portal sections, and progressive disclosure rather than decorative mini-homepages.
+
+== Domain coverage gap ==
+
+Strong candidates beyond the initial seed include Computer science, Information/knowledge science, Earth and environmental science, Astronomy/space science, Psychology/cognitive science, Social sciences, Economics, History, Geography, Language/linguistics, Law/governance, Education, Agriculture/food systems, and Materials science.
+
+Some fashionable or narrow areas should begin as subdomain/field portals rather than immediately becoming top-level Domains. Examples include Artificial intelligence, Data science, Robotics, Blockchain, Bioinformatics, and Python.
+
+== Simple → technical progression ==
+
+Each mature portal should support multiple reader depths without cloning the corpus into separate encyclopedias.
+
+{| class="wikitable"
+! Layer !! Reader question
+|-
+| Simple orientation || What is this, in plain language, and why does it matter?
+|-
+| Foundations || Which concepts are prerequisites?
+|-
+| Core map || What are the major subfields and relationships?
+|-
+| Methods and tools || How is work done in this field?
+|-
+| Technical depth || Which advanced theories, implementations, standards, datasets, and research objects matter?
+|-
+| Frontier / research || What remains disputed, emerging, experimental, or under active investigation?
+|}
+
+The focus is depth/readability localization rather than creating separate language-edition silos. Language translation may exist later, but the primary V2 localization problem is explaining the same knowledge at appropriate levels of abstraction and technicality while preserving one canonical knowledge graph.
+
+== Research decisions currently favored ==
+
+* '''Favor:''' recursive/polyhierarchical portals.
+* '''Favor:''' Computer science as an urgent missing high-level Domain.
+* '''Favor:''' Bioinformatics and Python as test cases for subportal mechanics.
+* '''Favor:''' richer category descriptions and explicit category roles.
+* '''Favor:''' a separate BITwiki administration/maintenance navigation plane.
+* '''Favor:''' a curated Vital/Core knowledge mechanism distinct from ontology.
+* '''Favor:''' lists/registries for annotated comparative knowledge.
+* '''Reject:''' portal count as a coverage metric.
+* '''Reject:''' portal subpage forests copied from Wikipedia's historical design.
+* '''Reject:''' treating category or portal hierarchy as the semantic ontology.
+
+== Comparative sources ==
+
+See [[BITwiki:Comparative wiki research register]], [[BITwiki:Research references]], [[BITwiki:Readable depth and localization]], and [[BITwiki:Sensitive topic scope research]].
+
+[[Category:Navigation]]
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

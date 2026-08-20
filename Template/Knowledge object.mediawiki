@@ -1,4 +1,10 @@
 <includeonly>
+{{#invoke:Structure|validateKnowledgeObject
+ |entity_type={{{entity_type|}}}
+ |domain={{{domain|}}}
+ |status={{{status|}}}
+ |provenance={{{provenance|}}}
+}}
 {| class="wikitable" style="float:right; clear:right; width:280px; margin:0 0 1em 1em;"
 ! colspan="2" | {{{title|{{PAGENAME}}}}}
 |-
@@ -37,9 +43,11 @@ This prevents missing information from silently becoming claims such as <code>Co
 
 Repository validation requires instantiated <code>Knowledge object</code> calls to provide explicit <code>entity_type</code>, <code>domain</code>, <code>status</code>, and <code>provenance</code>, and checks controlled values for Entity type, Domain, and Epistemic status.
 
+<code>Module:Structure</code> now performs the same bounded validation at MediaWiki render time. This is a runtime backstop for direct wiki edits, not a second metadata system: valid calls emit nothing extra, while malformed calls produce an explicit validation error and maintenance category.
+
 This template is a baseline identity surface, not the complete BITwiki schema and not a replacement for every historical V1 infobox parameter.
 
-V1's heavily used [[Template:Infobox]] and larger proposed property catalogs are preserved in <code>archive-v1/</code> as implementation and design lineage. V2 promotes a field only when its semantic job is stable and recurring.
+V1's heavily used [[Template:Infobox]] and larger proposed property catalogs are preserved as implementation and design lineage. The live compatibility template is source-controlled beside V2 templates; new V2 knowledge objects should use this template unless a richer stable surface is justified.
 
 Do not add optional dimensions merely to fill an infobox. When they materially improve the knowledge object, use the dedicated properties documented in [[BITwiki:Semantic properties]], including:
 
@@ -54,7 +62,7 @@ The page-level <code>status</code> describes the evidentiary standing of the pag
 
 Use claim- or section-level qualification in the prose when a page contains mixed evidence or genuine dispute. Do not manufacture numerical confidence or review status from the page-level label.
 
-See [[BITwiki:Page format]], [[BITwiki:Epistemics]], [[BITwiki:Epistemic status]], and [[BITwiki:V1 subject and composition migration]].
+See [[BITwiki:Page format]], [[BITwiki:Epistemics]], [[BITwiki:Epistemic status]], [[BITwiki:MediaWiki substrate]], and [[BITwiki:V1 subject and composition migration]].
 
 [[Category:BITwiki templates]]
 </noinclude>

@@ -1,0 +1,70 @@
+<includeonly>
+= {{{domain}}} =
+
+== Scope ==
+{{{scope}}}
+
+== Includes ==
+{{{includes}}}
+
+== Excludes / boundary ==
+{{{boundary}}}
+
+== Category role ==
+'''Controlled knowledge Domain + human browse category.'''
+
+Category membership supports reader navigation. Canonical Domain identity remains explicit through [[Property:Domain|Domain]] on knowledge objects and is not inferred solely from this category.
+
+== Semantic knowledge objects ==
+The table below is generated from explicit Semantic MediaWiki annotations rather than maintained by hand.
+
+{{#ask:
+ [[Domain::{{{domain}}}]]
+ |?Entity type
+ |?Epistemic status
+ |format=table
+ |mainlabel=Knowledge object
+ |headers=show
+ |limit=100
+ |default=''No semantic knowledge objects are currently assigned to this Domain.''
+}}
+
+== Navigation ==
+* '''Portal/title projection:''' [[Portal:{{{domain}}}]]
+* '''Domain exemplar:''' [[{{{exemplar}}}]]
+{{#if:{{{concept|}}}|* '''Semantic Concept:''' [[Concept:{{{concept}}}]]|}}
+{{{related|}}}
+
+[[Category:Knowledge domains]]
+</includeonly>
+<noinclude>
+= Knowledge domain category =
+
+Shared composition surface for substantive top-level Domain categories.
+
+The template centralizes the stable parts of Domain-category behavior:
+
+* the distinction between category membership and semantic Domain identity;
+* a live <code>#ask</code> table over <code>Property:Domain</code>;
+* navigation to the corresponding portal-title projection and exemplar;
+* optional linkage to a reusable SMW Concept.
+
+Each category remains responsible for its own domain-specific scope, inclusion and exclusion/boundary language. This keeps rendered categories rich without copy-pasting structural boilerplate.
+
+<pre>
+{{Knowledge domain category
+ |domain=Physics
+ |scope=...
+ |includes=...
+ |boundary=...
+ |exemplar=Momentum
+ |related=* Related: [[:Category:Mathematics]]
+}}
+</pre>
+
+Do not use this template for administrative categories or focused subject categories merely for visual consistency.
+
+See [[BITwiki:Templates and categories]] and [[BITwiki:MediaWiki substrate]].
+
+[[Category:BITwiki templates]]
+</noinclude>

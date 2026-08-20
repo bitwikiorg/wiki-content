@@ -2,50 +2,135 @@
 
 This repository is organized as MediaWiki source. Deployment must be '''non-destructive by default''' because V2 canon and the V1 provenance archive are intentionally separate.
 
+== Runtime authority ==
+
+Before deployment, reconcile the target installation against:
+
+* [[Special:NamespaceInfo]]
+* [[Special:Version]]
+* <code>archive-v1/siteinfo.json</code>
+* <code>v1-fidelity-audit.json</code>
+* [[BITwiki:MediaWiki substrate]]
+
+Filesystem folders are source-control projections. They do not create MediaWiki namespaces by existing in Git.
+
 == Required / assumed capabilities ==
-* MediaWiki page/revision system
-* Semantic MediaWiki for semantic properties and <code>#ask</code> queries
+
+The captured BITwiki runtime currently provides the capabilities V2 actively depends on:
+
+* MediaWiki page/revision and template/transclusion system
+* Semantic MediaWiki for Properties, Concepts and <code>#ask</code>
+* Scribunto for <code>Module:</code> Lua and <code>#invoke</code>
+* ParserFunctions
 * CategoryTree where <code>&lt;categorytree&gt;</code> is used
 
-== Portal namespace ==
-<code>Portal:</code> is not a default MediaWiki namespace on every installation. V2 includes <code>Portal/</code> because BITwiki's historical design explicitly uses portals as high-level knowledge entry points.
+Other installed capabilities such as Cargo, Network, faceted search, PubMed parsing and NCBI taxonomy lookup are available but are not deployment requirements for every page merely because the extensions exist.
 
-Before import, either register a Portal namespace or deliberately map portal source while preserving intended public titles. Do not silently rename portal pages.
+== Namespace/source mapping ==
+
+The deployable source-control mappings are recorded in <code>manifest.json</code>.
+
+Important configured extension namespaces include:
+
+* <code>Property:</code> → <code>Property/</code>
+* <code>Concept:</code> → <code>Concept/</code>
+* <code>Module:</code> → <code>Module/</code>
+* <code>smw/schema:</code> → <code>SMWSchema/</code>
+* <code>MediaWiki:</code> → <code>MediaWiki/</code>
+
+<code>SMWSchema/</code> uses URL-encoded namespace-local colons in filenames so the repository remains cross-platform.
+
+== Portal titles are not a confirmed namespace ==
+
+The captured namespace configuration does '''not''' contain a dedicated <code>Portal:</code> namespace.
+
+<code>Portal/</code> is therefore a source-control/title projection for pages whose public titles are of the form <code>Portal:Physics</code>, <code>Portal:Computer science</code>, and so on. Do not infer namespace semantics from the folder.
+
+If a future installation registers a real Portal namespace, that is a deliberate migration/configuration change and must be reflected in [[Special:NamespaceInfo]], the manifest, deployment tooling and navigation tests.
 
 == Do not deploy the archive ==
+
 <code>archive-v1/</code> is repository-only read-only provenance. It contains historical source/revision data and generated reports, not a second live wiki tree.
 
 == Exact V1 preservation boundary ==
-The exhaustive archive currently records 186 public pages / 606 revision bodies, all 9 live templates and callers, all 162 category memberships, all nonnegative namespace inventories and the maintenance reports required for migration validation.
+
+The exhaustive archive records 186 public pages / 606 revision bodies, all 9 live templates and callers, all 162 category memberships, all nonnegative namespace inventories and the maintenance reports required for migration validation.
 
 A missing V2 file is therefore '''not''' permission to delete the corresponding live V1 page.
 
 == Template safety ==
+
+The nine live V1 templates are now source-controlled directly in <code>Template/</code> for dependency visibility.
+
 V1 <code>Template:Infobox</code> has 80 callers. Do not delete or replace it destructively until those callers have been migrated and verified.
 
-The seven live decorative/header/footer templates still have callers. Archive status does not make them safe to remove; migrate callers first.
+The seven live decorative/header/footer templates still have callers. Their V2 disposition is compatibility/legacy presentation; source control does not make them the new visual standard.
 
-The 59 wanted templates are references to absent implementations. Do not create them automatically during deployment.
+The wanted-template archive contains references to absent implementations. Do not create them automatically during deployment.
+
+== Module safety ==
+
+The captured live Module namespace was empty. <code>Module:Structure</code> is therefore a new V2 runtime dependency, not a recovered V1 module.
+
+Deploy Module pages before templates that invoke them. In particular:
+
+<pre>
+Module:Structure
+→ Template:Knowledge object
+→ knowledge-object consumers
+</pre>
+
+After import, test a valid and deliberately invalid sandbox invocation before broad deployment. Valid V2 knowledge objects should render without validation output; malformed identity should surface an explicit error and maintenance category.
+
+== Semantic MediaWiki safety ==
+
+Deploy Property definitions and required SMW schema/import configuration before pages that assert or query those properties.
+
+After semantic changes, rebuild or refresh Semantic MediaWiki data as required by the installation and verify:
+
+* [[Special:Browse]]
+* [[Special:Ask]]
+* [[Special:Properties]]
+* [[Special:WantedProperties]]
+* [[Special:UnusedProperties]]
+* [[Special:Concepts]]
+* processing / constraint error surfaces
+
+A successful page import with stale semantic data is not a completed semantic deployment.
 
 == Category safety ==
-V1 uses 162 category names but has zero authored Category pages. V2 intentionally creates documented Category pages for selected canonical browse surfaces.
+
+V1 uses 162 category names but had zero authored Category pages at the archived boundary. V2 intentionally creates documented Category pages for selected canonical browse surfaces.
 
 Do not copy all 162 labels into V2 as a flat taxonomy. Preserve the V1 membership archive and apply [[BITwiki:V1 category migration]].
 
+Substantive controlled-Domain categories use [[Template:Knowledge domain category]] to compose stable scope/navigation behavior and derive their knowledge-object table from explicit <code>Domain</code> annotations. Administrative categories remain concise.
+
+== Cargo and other installed capabilities ==
+
+Do not create Cargo tables, subobjects, Network views, or faceted/drilldown structures solely to increase extension usage.
+
+Introduce them when the data model has a real repeated-record, qualified-fact, or exploration requirement and document the migration/dependency consequences first.
+
 == Safe migration ==
+
 <pre>
 1. refresh archive-v1 from the live public wiki
-2. review archive-v1/audit.json
-3. import/create reviewed V2 pages additively
-4. verify rendering, transclusions, categories and semantic data
-5. migrate each V1 source family / callers deliberately
-6. move/merge/redirect only after source comparison
-7. preserve revision history where technically possible
-8. rerun maintenance reports and compare against the pre-migration snapshot
+2. review archive-v1/audit.json and v1-fidelity-audit.json
+3. run scripts/validate_v2.py and scripts/audit_substrate.py
+4. deploy runtime/schema/property/module/template dependencies first
+5. import/create reviewed V2 pages additively
+6. verify rendering, transclusions, categories and semantic data
+7. migrate each V1 source family / callers deliberately
+8. move/merge/redirect only after source comparison
+9. preserve revision history where technically possible
+10. rerun maintenance reports and compare against the pre-migration snapshot
 </pre>
 
 == Required post-import checks ==
+
 Review at minimum:
+
 * [[Special:AllPages]]
 * [[Special:UncategorizedPages]]
 * [[Special:UncategorizedTemplates]]
@@ -53,6 +138,9 @@ Review at minimum:
 * [[Special:WantedTemplates]]
 * [[Special:Categories]] / [[Special:WantedCategories]]
 * [[Special:BrokenRedirects]] / [[Special:DoubleRedirects]]
+* [[Special:Browse]] / [[Special:Ask]]
+* [[Special:Properties]] / [[Special:WantedProperties]]
+* [[Special:Concepts]]
 
 A clean migration is not one with zero warnings at any cost. It is one where every remaining warning is understood and intentional.
 

@@ -1,0 +1,136 @@
+= Readable depth and localization =
+
+'''Status: Accepted editorial/navigation direction; implementation remains incremental.'''
+
+BITwiki should localize knowledge primarily by '''reader depth and technicality''', not by cloning the corpus into separate simplified and expert encyclopedias.
+
+== Principle ==
+
+'''One knowledge object, multiple depths of entry.'''
+
+A reader should be able to enter the same canonical subject from plain-language orientation and continue toward formal, implementation-level, or research-level detail without losing provenance or switching to an unrelated duplicate article.
+
+<pre>
+Simple orientation
+      ↓
+Core understanding
+      ↓
+Technical depth
+      ↓
+Frontier / research
+</pre>
+
+This is progressive disclosure, not content dilution.
+
+== External lessons ==
+
+Simple English Wikipedia demonstrates systematic simplification through common vocabulary, simpler syntax, shorter explanations, and an interface designed for learners and readers with different accessibility needs.
+
+English Wikipedia's guideline on technical understandability adds a complementary principle: preserve serious technical content, but make the lead accessible, explain jargon, place easier material before specialized detail, use examples, and write roughly one educational level below the level at which the topic is normally studied. It also warns against oversimplifying into false understanding.
+
+BITwiki should combine these lessons without maintaining two disconnected knowledge graphs.
+
+== Four presentation depths ==
+
+{| class="wikitable"
+! Depth !! Function !! Typical content
+|-
+| '''Simple''' || Immediate orientation for a motivated general reader || plain-language definition; why it matters; familiar example; minimal prerequisites; essential vocabulary explained on first use
+|-
+| '''Core''' || Durable working understanding || mechanisms; major concepts; relationships; representative examples; common methods; principal limitations
+|-
+| '''Technical''' || Practitioner / advanced-study depth || formal definitions; algorithms; equations; implementation details; standards; protocols; datasets; tooling; edge cases; performance or design trade-offs
+|-
+| '''Frontier''' || Research and unresolved knowledge || emerging evidence; open problems; competing models; disputed claims; experimental methods; active research directions
+|}
+
+These are editorial/navigation layers, not Entity types or epistemic statuses.
+
+== Default page behavior ==
+
+A mature canonical page should usually:
+
+# begin with an understandable lead that tells a general reader what the subject is, where it fits, and why it matters;
+# define unfamiliar terms before relying on them;
+# put easier/high-level material before specialized detail;
+# expose prerequisites rather than assume them silently;
+# use concrete examples where abstraction blocks comprehension;
+# retain technical detail when it is important instead of deleting it for readability;
+# separate implementation-specific detail from general concepts where useful;
+# make uncertainty and disputed/frontier material explicit;
+# avoid duplicating the same facts into a second “simple” article unless the subject genuinely requires a separate pedagogical artifact.
+
+== Portal behavior ==
+
+Portals should expose the same depth progression across a field:
+
+* '''Start simply''' — what the field studies and why it exists;
+* '''Foundations''' — prerequisite concepts;
+* '''Core map''' — major subfields and relationships;
+* '''Methods / tools''' — how work is done;
+* '''Technical''' — advanced theory, implementations, standards, tooling, datasets;
+* '''Frontier''' — emerging or disputed research.
+
+`Portal:Computer science`, `Portal:Python`, and `Portal:Bioinformatics` are the first prototypes.
+
+== Localization versus translation ==
+
+Language translation remains valuable, but it is a separate dimension.
+
+<pre>
+language / locale
+≠ reading depth
+≠ technical depth
+≠ epistemic status
+≠ Domain
+</pre>
+
+A Spanish translation of a technical page is still technical. A Simple English explanation can still be scientifically rigorous. These dimensions should not be conflated.
+
+BITwiki's immediate priority is depth localization because it reduces the barrier between a new reader and the deeper technical/research corpus while keeping one semantic identity and provenance trail.
+
+== Avoiding content forks ==
+
+Prefer section-level progressive disclosure, summaries, prerequisite links, diagrams, glossaries, and portal learning paths before creating parallel introductory articles.
+
+A separate introduction/tutorial may be justified when:
+
+* the canonical subject is intrinsically technical;
+* a substantial reader population needs a different pedagogical sequence;
+* the introductory artifact has independent reuse value;
+* maintaining it will not create contradictory duplicate facts;
+* its relationship to the canonical object is explicit.
+
+== Future implementation research ==
+
+Possible mechanisms include:
+
+* standard page-section conventions;
+* optional Book Matter fragments for Simple/Core/Technical summaries where independently reusable;
+* readability linting for leads;
+* prerequisite relationships;
+* portal learning paths;
+* generated “start here” views;
+* user-selected reading-depth presentation;
+* agent-assisted simplification that never silently changes factual/epistemic content;
+* validation that advanced material is not exposed before its prerequisites without orientation.
+
+Do not create a mandatory `Reading level` semantic property until recurring workflows show it is necessary.
+
+== Editorial test ==
+
+For each page ask:
+
+# Can a curious non-specialist understand the first paragraph?
+# Can an informed reader find the core mechanism quickly?
+# Can a practitioner reach the technical details without leaving the canonical knowledge object unnecessarily?
+# Can a researcher see what is uncertain, emerging, or unresolved?
+# Did simplification preserve accuracy rather than manufacture certainty?
+
+== References ==
+
+See [[BITwiki:Research references]] for Simple English Wikipedia, technical-understandability guidance, Plain English, Basic English, and controlled-language references.
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]
+[[Category:Navigation]]

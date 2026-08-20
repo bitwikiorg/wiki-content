@@ -1,16 +1,8 @@
-{{Source status|status=source-reconciled architecture|note=Revised after exhaustive V1 recovery. Preserves V1 organization goals—portals, semantic organization, transclusion, graph navigation, progressive disclosure—while separating MediaWiki primitives, ontology, epistemics, Book Matter, and navigation.}}
+{{Source status|status=source-reconciled architecture|note=Revised after exhaustive V1 recovery and the recursive-navigation pass. Preserves V1 organization goals while separating MediaWiki primitives, ontology, epistemics, Book Matter, reader depth, and navigation.}}
 
 = BITwiki organization =
 
-BITwiki is organized so knowledge can be:
-
-* read as coherent pages;
-* decomposed into reusable Book Matter where useful;
-* queried as semantic data;
-* traversed through explicit relationships;
-* entered through portals, categories, indices, outlines, and search;
-* audited through sources, provenance, uncertainty, and revision history;
-* preserved without confusing the current filesystem/navigation surface with the ontology.
+BITwiki is organized so knowledge can be read coherently, decomposed where reuse is useful, queried semantically, traversed through explicit relationships, entered through multiple navigation views, and audited through sources/provenance/revision history.
 
 == The architecture in one view ==
 
@@ -26,14 +18,16 @@ BITwiki is organized so knowledge can be:
  Relationships             Theory / model           Provenance
  Scope                     Mechanism                Standing
                             Methods                  Uncertainty
-                            Evidence                 Review
-                            Applications             Lifecycle
-                            References
+                            Applications             Review
+                            References               Lifecycle
        │                       │                        │
        └───────────────────────┼────────────────────────┘
                                │
                          NAVIGATION / VIEWS
-                  Portal · Category · Index · Query
+       Portal · Category · Outline · List · Index · Query · Graph
+                               │
+                         READER DEPTH
+                  Simple · Core · Technical · Frontier
 </pre>
 
 No branch in this diagram is the whole system.
@@ -78,6 +72,7 @@ namespace
 ≠ lifecycle
 ≠ relationship
 ≠ navigation view
+≠ reader depth
 </pre>
 
 This separation is the central V2 organizational correction.
@@ -88,7 +83,7 @@ This separation is the central V2 organizational correction.
 
 [[BITwiki:Entity types]] contains the current evolving base vocabulary. Types are stable recognition patterns, not rigid bins.
 
-[[BITwiki:Relationships]] defines semantic edges conservatively. Specific relation semantics should not be inferred from mere proximity or category membership.
+[[BITwiki:Relationships]] defines semantic edges conservatively. Specific relation semantics should not be inferred from proximity, portal ancestry, or category membership.
 
 [[BITwiki:Semantic properties]] documents what V2 actually implements in the Property namespace.
 
@@ -96,11 +91,12 @@ This separation is the central V2 organizational correction.
 
 Domain answers: '''what field/body of knowledge does this belong to?'''
 
-The current top-level browse surface includes:
+Current controlled Domains:
 
 * Systems science
 * Science
 * Biology
+* Computer science
 * Mathematics
 * Philosophy
 * Technology
@@ -111,83 +107,75 @@ The current top-level browse surface includes:
 * Physics
 * Medicine
 
-These are initial high-level knowledge surfaces, not a claim that all knowledge fits into twelve exclusive branches.
-
-A page may span domains. Domain membership is semantic/browse context, not entity identity.
+These thirteen working Domains are not a claim that all knowledge fits into thirteen exclusive branches. A page may span Domains. Expansion should come from recurring corpus/coverage need; see [[BITwiki:Requested knowledge]] and [[BITwiki:Navigation and coverage research]].
 
 == Book Matter ==
 
-[[BITwiki:Book Matter]] is the reusable anatomy of knowledge.
+[[BITwiki:Book Matter]] is the reusable anatomy of knowledge. A coherent parent page may expose meaningful portions such as Overview/Definition, Concepts/Frameworks, Mechanism/Methods, Evidence, Applications/Case studies, Debate/controversy, Timeline, References/bibliography, or specialized maps.
 
-It allows a coherent parent page to expose meaningful portions such as:
-
-* Overview / Definition;
-* Concepts / Frameworks;
-* Mechanism / Methods;
-* Evidence;
-* Applications / Case studies;
-* Debate / controversy;
-* Timeline / historical development;
-* References / bibliography;
-* specialized knowledge maps.
-
-Split content only when the part has independent reuse/retrieval value.
+Split content only when the part has independent reuse/retrieval/provenance value.
 
 '''Modularity does not mean fragmentation.'''
 
 == Epistemics ==
 
-[[BITwiki:Epistemics]] separates:
-
-* epistemic standing;
-* evidence;
-* source type/evaluation;
-* provenance;
-* confidence rationale;
-* uncertainty;
-* review/verification;
-* lifecycle;
-* perspective.
-
-This prevents a single status field or numerical score from standing in for the full question of how something is known.
+[[BITwiki:Epistemics]] separates epistemic standing, evidence, source type/evaluation, provenance, confidence rationale, uncertainty, review/verification, lifecycle, and perspective. A single status field or numeric score must not stand in for the full question of how something is known.
 
 == Navigation ==
 
-Navigation is a set of views over the knowledge substrate.
+Navigation is a plural set of views over the knowledge substrate.
 
-=== Portals ===
-Portals are entry points into domains or other coherent knowledge surfaces. They may recurse into focused subportals such as [[Portal:Biology/Bioinformatics|Biology → Bioinformatics]] or [[Portal:Computer science/Python|Computer science → Python]]. A portal should help a reader enter and traverse a field; it is not an entity superclass.
+=== Domain portals ===
+Broad reader-facing entry points tied to accepted Domains, with semantic queries plus curated orientation.
 
-Portal hierarchy is navigation, not ontology inheritance. A subportal may represent a subfield, method, programming language, technology, interdisciplinary surface, or other useful focus without requiring a new Domain or Entity type. Portal content should favor progressive disclosure: simple orientation first, core concepts next, and technical depth after that.
+=== Focused / recursive portals ===
+Focused portals represent coherent routes into the corpus without automatically becoming Domains.
+
+Examples:
+
+* [[Portal:Bioinformatics]] — navigational parents Biology + Computer science
+* [[Portal:Python]] — navigational parent Computer science
+
+Older slash paths may redirect for continuity, but portal filesystem nesting is not ontology inheritance.
 
 === Categories ===
-Browse/index groupings. Use when a collection has human navigational value.
-
-=== Indices ===
-Explicit curated or generated lists organized for lookup.
+Browse/index groupings. Subcategories may have multiple parents. Substantive Category pages should explain Scope, Includes, Excludes/boundary, role, and related navigation.
 
 === Outlines ===
-Hierarchical views of a body of knowledge useful for orientation and progressive study.
+Hierarchical study maps useful for orientation without claiming the outline is ontology.
 
-=== Contents pages ===
-Reader-oriented maps into a body of material, especially where ordering matters.
+=== Lists / registries ===
+Useful when individual members need annotation, references, comparison fields, dates, ordering, or status.
 
-=== Semantic queries ===
-Dynamic views derived from properties/relations.
+=== Contents / indices / glossaries ===
+Complementary large-scale orientation, lookup, and vocabulary surfaces.
 
-=== Knowledge graphs ===
-Relationship-oriented views. A graph visualizes ontology; it does not define ontology simply by drawing edges.
+=== Semantic queries and knowledge graphs ===
+Dynamic computed views over properties/relationships. A graph visualizes knowledge; drawing an edge does not make the edge true.
 
-== Progressive disclosure ==
+=== Core / Vital coverage ===
+A future curated priority layer can identify important missing/weak knowledge without turning importance into semantic identity.
 
-V1 Book Matter research correctly treated progressive disclosure as a core capability:
+See [[BITwiki:Navigation]].
 
-* simple orientation first;
-* intermediate structure when needed;
-* advanced technical detail available without overwhelming entry-level reading;
-* agents retrieve the smallest useful semantic unit for the task.
+== Reader depth / localization ==
 
-This principle should shape pages, portals, transclusion, and query output.
+Progressive disclosure now has an explicit editorial model:
+
+<pre>
+Simple orientation
+→ Core understanding
+→ Technical depth
+→ Frontier / research
+</pre>
+
+This is primarily depth/readability localization within one canonical knowledge graph. Language translation is a separate dimension. See [[BITwiki:Readable depth and localization]].
+
+== Contribution and administration ==
+
+Missing knowledge should not be represented by generic empty shells. Use [[BITwiki:Requested knowledge]] until a coherent sourced object can be created.
+
+[[BITwiki:Contributing]] defines the contribution path. Architecture, governance, maintenance, validation, research queues, requests, portal/category administration, templates/properties, migrations, automation, and security belong to project-operational surfaces rather than subject Domains.
 
 == V1 lessons carried forward ==
 
@@ -207,22 +195,23 @@ This principle should shape pages, portals, transclusion, and query output.
 
 * category-as-filesystem;
 * Topic/domain/entity-type conflation;
+* portal hierarchy as ontology;
 * one giant taxonomy carrying subject + type + epistemics + workflow;
 * numeric confidence as mandatory decoration;
-* documentation that describes unimplemented namespace objects as live capability;
+* unimplemented documentation presented as live capability;
 * duplicate <code>.REVISED</code>/<code>final</code> publication surfaces;
-* arbitrary fragment pages with no independent reuse value.
+* arbitrary fragments or stubs with no independent knowledge value.
 
 == Placement test ==
-
-When adding material, ask:
 
 {| class="wikitable"
 ! Need !! Place / primitive
 |-
-| ordinary knowledge about a subject || Main page
+| durable knowledge about a subject || Main page
 |-
-| project/about-wiki architecture or governance || BITwiki namespace
+| missing subject not ready to write || [[BITwiki:Requested knowledge]]
+|-
+| project/about-wiki architecture, research, governance, help || BITwiki namespace
 |-
 | reusable content anatomy || Book Matter / transclusion
 |-
@@ -232,7 +221,7 @@ When adding material, ask:
 |-
 | human browse collection || Category
 |-
-| reader-facing knowledge entry point || Portal or subportal
+| reader-facing field/topic entry point || Portal
 |-
 | historical V1 source evidence || archive-v1, not deployed V2
 |}
@@ -241,11 +230,11 @@ When adding material, ask:
 
 Primary V1 sources include [[Wiki Organization Guidelines]], [[BITwiki Architecture Overview]], [[System Architecture]], [[BITwiki Taxonomy Architecture]], [[CATEGORY ARCHITECTURE]], [[BITwiki Entity Types]], [[BITwiki Page Types]], [[BITwiki Ontology Alignment Matrix]], [[BITwiki Property Dictionary]], [[BITwiki Relationship Types]], [[BITwiki Semantic Patterns]], [[Portal Architecture Specification]], and [[BITwiki Transclusion Rules]].
 
-Historical Notion WIKI-Philosophy and Book Matter research remain useful design archaeology, especially for recursive/modular structure and progressive disclosure.
+Historical Notion WIKI-Philosophy and Book Matter research remain useful design archaeology, especially for recursive/modular structure and progressive disclosure. Exact V1 source/public history remains in <code>archive-v1/</code>.
 
-Exact V1 source and public history are preserved in <code>archive-v1/</code>.
+External comparative research is tracked in [[BITwiki:Research references]] and [[BITwiki:Comparative wiki research register]].
 
-See [[BITwiki:Ontology]], [[BITwiki:Epistemics]], [[BITwiki:Book Matter]], [[BITwiki:Navigation]], and [[BITwiki:Templates and categories]].
+See [[BITwiki:Ontology]], [[BITwiki:Epistemics]], [[BITwiki:Book Matter]], [[BITwiki:Navigation]], [[BITwiki:Readable depth and localization]], and [[BITwiki:Templates and categories]].
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

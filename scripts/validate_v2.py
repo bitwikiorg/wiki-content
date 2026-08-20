@@ -32,8 +32,8 @@ ALLOWED_ENTITY_TYPES={
 'Event','Publication','Location','Technology'
 }
 ALLOWED_DOMAINS={
-'Systems science','Science','Biology','Mathematics','Philosophy','Technology','Electronics',
-'Energy','Engineering','Chemistry','Physics','Medicine'
+'Systems science','Science','Biology','Computer science','Mathematics','Philosophy','Technology',
+'Electronics','Energy','Engineering','Chemistry','Physics','Medicine'
 }
 ALLOWED_EPISTEMIC_STATUSES={
 'Hypothetical','Emerging','Supported','Well-supported','Established','Disputed'
@@ -71,6 +71,10 @@ def template_params(text,name):
     return params
 
 
+def split_domains(domain_text):
+    return [title(x) for x in domain_text.split(',') if title(x)]
+
+
 def main():
     all_files=[p for r in ROOTS for p in files(r)]
     category_pages={title(p.relative_to('Category').as_posix()[:-10]) for p in files('Category')}
@@ -83,6 +87,7 @@ def main():
     invalid_entity_types=[]
     invalid_domains=[]
     invalid_epistemic_statuses=[]
+    exemplar_domains=set()
 
     for p in all_files:
         text=p.read_text(encoding='utf-8')
@@ -119,9 +124,12 @@ def main():
                     invalid_entity_types.append({'path':str(p),'value':entity_type})
                 domain_text=ko.get('domain')
                 if domain_text:
-                    for domain in [title(x) for x in domain_text.split(',') if title(x)]:
+                    domains=split_domains(domain_text)
+                    for domain in domains:
                         if domain not in ALLOWED_DOMAINS:
                             invalid_domains.append({'path':str(p),'value':domain})
+                    if 'Domain exemplars' in cats:
+                        exemplar_domains.update(domains)
                 status=ko.get('status')
                 if status and status not in ALLOWED_EPISTEMIC_STATUSES:
                     invalid_epistemic_statuses.append({'path':str(p),'value':status})
@@ -132,6 +140,7 @@ def main():
     missing_domain_categories=[x for x in required_domains if x not in category_pages]
     missing_domain_portals=[x for x in required_domains if not Path('Portal',x+'.mediawiki').exists()]
     exemplars=[p for p in files('Main') if '[[Category:Domain exemplars]]' in p.read_text(encoding='utf-8')]
+    missing_domain_exemplar_domains=[x for x in required_domains if x not in exemplar_domains]
 
     report={
       'deployable_mediawiki_files':len(all_files),
@@ -142,9 +151,12 @@ def main():
       'missing_category_pages':missing_categories,
       'missing_template_pages':missing_templates,
       'uncategorized_deployable_pages':uncategorized,
+      'required_domain_count':len(required_domains),
       'required_domain_categories_missing':missing_domain_categories,
       'required_domain_portals_missing':missing_domain_portals,
       'domain_exemplar_count':len(exemplars),
+      'domain_exemplar_domains':sorted(exemplar_domains),
+      'domain_exemplar_domains_missing':missing_domain_exemplar_domains,
       'domain_exemplars':[str(p) for p in exemplars],
       'knowledge_object_count':len(knowledge_objects),
       'knowledge_object_pages':knowledge_objects,
@@ -160,8 +172,8 @@ def main():
     }
     report['valid']=not any([
       missing_categories,missing_templates,uncategorized,missing_domain_categories,
-      missing_domain_portals,len(exemplars)!=12,missing_knowledge_fields,invalid_entity_types,
-      invalid_domains,invalid_epistemic_statuses
+      missing_domain_portals,missing_domain_exemplar_domains,missing_knowledge_fields,
+      invalid_entity_types,invalid_domains,invalid_epistemic_statuses
     ])
     Path('v2-validation.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     print(json.dumps(report,indent=2,ensure_ascii=False))

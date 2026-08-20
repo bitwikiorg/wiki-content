@@ -1,0 +1,62 @@
+{{Source status|status=source-grounded domain exemplar|note=Computer science exemplar grounded in NIST algorithm/data-structure references.}}
+{{Knowledge object
+ |title=Algorithm
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 domain exemplar
+}}
+
+= Algorithm =
+
+== Overview ==
+An '''algorithm''' is a clearly specified procedure for transforming inputs into a result or carrying out a computation. In plain language, it is a method precise enough that its steps can be followed consistently rather than improvised each time.
+
+Algorithms are central to computer science because software ultimately depends on procedures for searching, sorting, comparing, scheduling, encoding, optimizing, learning, communicating, or otherwise processing information.
+
+== Definition ==
+NIST describes an algorithm as a clearly specified mathematical process or set of rules for computation that produces a prescribed result. In practical computing, an algorithm is usually understood independently of any one programming language: the same algorithm can often be implemented in Python, C, hardware, pseudocode, or another computational medium.
+
+== Scope & importance ==
+An algorithm is not the same thing as a program. A program is an implementation expressed in a particular language and execution environment; an algorithm is the underlying method or procedure being implemented.
+
+This distinction lets computer scientists reason about correctness, efficiency, data requirements, trade-offs, and limits before committing to one implementation.
+
+== Core concepts ==
+Useful questions about an algorithm include:
+
+* '''Inputs and outputs''' — what information enters the procedure, and what result should it produce?
+* '''Correctness''' — does it produce the required result for the cases it claims to handle?
+* '''Termination / progress''' — does the procedure finish when a finite result is expected, or does it intentionally continue as an ongoing process?
+* '''Complexity''' — how do time, memory, communication, or other resource requirements grow as the problem grows?
+* '''Data structures''' — how is information represented so the procedure can operate efficiently?
+* '''Determinism''' — do the same inputs necessarily produce the same sequence of operations, or can randomness/concurrency change the path?
+* '''Approximation''' — is an exact answer required, or is a bounded/heuristic result useful when exact computation is too expensive?
+
+== Examples ==
+'''Binary search''' repeatedly narrows a sorted search space instead of checking every item sequentially.
+
+'''Sorting algorithms''' arrange items according to an order, but different algorithms make different trade-offs in memory use, speed, stability, and implementation complexity.
+
+'''Shortest-path algorithms''' find low-cost routes through graphs and support applications such as routing, logistics, network analysis, and planning.
+
+== Applications / implications ==
+Algorithms appear throughout computation: databases, cryptography, networking, compilers, operating systems, artificial intelligence, scientific computing, graphics, bioinformatics, finance, robotics, and everyday application software.
+
+The choice of algorithm can matter as much as the choice of hardware or programming language. A better method can reduce a computation from impractical to routine without changing the underlying machine.
+
+== Technical depth ==
+Algorithm analysis commonly studies asymptotic resource use, often expressed with notation such as Big O. More advanced work includes randomized algorithms, parallel and distributed algorithms, online algorithms, approximation algorithms, numerical methods, cryptographic algorithms, learning algorithms, and questions of computability and complexity.
+
+NIST's Dictionary of Algorithms and Data Structures provides a broad index of algorithmic techniques, data structures, archetypal problems, and related definitions.
+
+== Epistemic notes ==
+"Algorithm" has overlapping formal and practical uses. Some definitions emphasize a finite sequence of effective steps; modern computing also includes interactive, probabilistic, distributed, or continuously running procedures. When precision matters, state the computational model and the properties being claimed rather than relying on the label alone.
+
+== References ==
+* [https://csrc.nist.gov/glossary/term/algorithm NIST CSRC — Algorithm]
+* [https://www.nist.gov/publications/dictionary-algorithms-and-data-structures NIST — Dictionary of Algorithms and Data Structures]
+* [https://www.nist.gov/publications/dads-line-dictionary-algorithms-and-data-structures NIST — DADS: The On-Line Dictionary of Algorithms and Data Structures]
+
+[[Category:Computer science]]
+[[Category:Domain exemplars]]

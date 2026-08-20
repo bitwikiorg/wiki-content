@@ -1,4 +1,4 @@
-name: Archive BITwiki V1
+name: Build BITwiki V1 Archive Candidate
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ on:
       - .github/workflows/archive-v1.yml
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: archive-bitwiki-v1
@@ -21,8 +21,6 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -31,80 +29,7 @@ jobs:
       - name: Install harvester dependency
         run: python -m pip install --disable-pip-version-check requests
 
-      - name: Preserve local namespace labels
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('scripts/archive_v1.py')
-          s=p.read_text()
-          old="i=int(n['id']); name=n.get('canonical') or n.get('name') or ('Main' if i==0 else f'NS-{i}'); name='Main' if i==0 else name"
-          new="i=int(n['id']); name=n.get('name') or n.get('canonical') or ('Main' if i==0 else f'NS-{i}'); name='Main' if i==0 else name"
-          if old in s:
-              s=s.replace(old,new)
-              p.write_text(s)
-          assert old not in p.read_text(), 'Archive harvester still prefers canonical namespace names'
-          PY
-
-      - name: Normalize historical media accounting
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p=Path('scripts/archive_v1.py')
-          s=p.read_text()
-
-          # Resolve stale historical /W/images or /w/images URLs against the current /images path.
-          old="            r=a.s.get(url,timeout=90); r.raise_for_status(); data=r.content"
-          new='''            candidates=[url]\n            parsed=urlparse(url)\n            for bad in ('/W/images/','/w/images/'):\n                if bad in parsed.path:\n                    candidates.append(f"{parsed.scheme}://{parsed.netloc}{parsed.path.replace(bad,'/images/',1)}")\n            data=None; resolved_url=None; errors=[]\n            for candidate in dict.fromkeys(candidates):\n                try:\n                    r=a.s.get(candidate,timeout=90)\n                    if r.ok:\n                        data=r.content; resolved_url=candidate; break\n                    errors.append(f"{r.status_code} {candidate}")\n                except Exception as e:\n                    errors.append(f"{type(e).__name__}: {candidate}: {e}")'''
-          if old in s:
-              s=s.replace(old,new)
-
-          s=s.replace(
-              "    records=[]; blobs={}; revision_count=0",
-              "    records=[]; blobs={}; revision_count=0; captured_count=0; unavailable_count=0"
-          )
-          s=s.replace(
-              '''            if data is None:\n                raise RuntimeError(f"Unable to resolve binary for {title} revision {n}: {' | '.join(errors)}")''',
-              '''            if data is None:\n                unavailable_count += 1\n                rec=dict(info); rec['api_binary_url']=url; rec['binary_available']=False; rec['binary_resolution_errors']=errors; out.append(rec)\n                continue'''
-          )
-          s=s.replace(
-              "            rec=dict(info); rec['api_binary_url']=url; rec['resolved_binary_url']=resolved_url; rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)",
-              "            captured_count += 1; rec=dict(info); rec['api_binary_url']=url; rec['resolved_binary_url']=resolved_url; rec['binary_available']=True; rec['binary_sha256']=sha256; rec['binary_bytes']=len(data); rec['binary_path']=str(bp); out.append(rec)"
-          )
-          s=s.replace(
-              "    dump(OUT/'files'/'index.json',{'file_page_count':len(file_pages),'binary_revision_count':revision_count,'unique_blob_count':len(blobs),'records':records,'blobs':blobs})\n    return revision_count,len(blobs)",
-              "    dump(OUT/'files'/'index.json',{'file_page_count':len(file_pages),'binary_revision_count':revision_count,'binary_captured_count':captured_count,'binary_unavailable_count':unavailable_count,'unique_blob_count':len(blobs),'records':records,'blobs':blobs})\n    return revision_count,captured_count,unavailable_count,len(blobs)"
-          )
-          s=s.replace(
-              "    file_binary_revisions,file_blob_count=archive_files(a,byns.get(6,[]))",
-              "    file_binary_revisions,file_binary_captured,file_binary_unavailable,file_blob_count=archive_files(a,byns.get(6,[]))"
-          )
-          s=s.replace(
-              "'file_binary_revision_count':file_binary_revisions,'file_unique_blob_count':file_blob_count",
-              "'file_binary_revision_count':file_binary_revisions,'file_binary_captured_count':file_binary_captured,'file_binary_unavailable_count':file_binary_unavailable,'file_unique_blob_count':file_blob_count"
-          )
-          s=s.replace(
-              "'all_file_binary_revisions_captured':True,",
-              "'all_file_revision_metadata_accounted_for':True,'all_resolved_file_binaries_captured':True,"
-          )
-          s=s.replace(
-              "- File binary revisions: **{file_binary_revisions}**\\n- Unique binary blobs: **{file_blob_count}**",
-              "- File binary revision records: **{file_binary_revisions}**\\n- Captured binary revisions: **{file_binary_captured}**\\n- Unresolved historical binary references: **{file_binary_unavailable}**\\n- Unique binary blobs: **{file_blob_count}**"
-          )
-          p.write_text(s)
-
-          checks=[
-            "captured_count=0; unavailable_count=0",
-            "binary_unavailable_count",
-            "all_file_revision_metadata_accounted_for",
-            "file_binary_captured,file_binary_unavailable,file_blob_count=archive_files"
-          ]
-          final=p.read_text()
-          for check in checks:
-              assert check in final, f'Missing media-accounting patch: {check}'
-          assert 'Unable to resolve binary for {title}' not in final, 'Missing binary still aborts archive'
-          PY
-
-      - name: Harvest complete public V1
+      - name: Harvest complete public V1 candidate
         id: harvest
         continue-on-error: true
         shell: bash
@@ -138,13 +63,7 @@ jobs:
           print(json.dumps(a, indent=2))
           PY
 
-      - name: Restore last good archive on failure
-        if: steps.harvest.outcome != 'success' || steps.verify.outcome != 'success'
-        run: |
-          git checkout -- archive-v1
-          git clean -fd archive-v1
-
-      - name: Write run status
+      - name: Write candidate run status
         if: always()
         env:
           HARVEST_OUTCOME: ${{ steps.harvest.outcome }}
@@ -159,43 +78,23 @@ jobs:
             'completed_at': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00','Z'),
             'harvest': os.environ.get('HARVEST_OUTCOME','unknown'),
             'verify': os.environ.get('VERIFY_OUTCOME','skipped'),
+            'integration_status': 'candidate_only_not_committed',
             'last_log_lines': log.read_text(errors='replace').splitlines()[-120:] if log.exists() else []
           }
           Path('archive-v1-run-status.json').write_text(json.dumps(data,indent=2)+'\n')
           PY
 
-      - name: Commit archive or diagnostic status
-        if: always()
-        run: |
-          git config user.name 'BITwiki Archive Bot'
-          git config user.email 'bitwikicryptopedia@gmail.com'
-          git add archive-v1-run-status.json scripts/archive_v1.py
-          if [ "${{ steps.harvest.outcome }}" = "success" ] && [ "${{ steps.verify.outcome }}" = "success" ]; then
-            git add -A archive-v1
-          fi
-          if git diff --cached --quiet; then
-            echo 'Archive and status already current.'
-          else
-            if [ "${{ steps.harvest.outcome }}" = "success" ] && [ "${{ steps.verify.outcome }}" = "success" ]; then
-              git commit -m 'Refresh exhaustive public V1 archive'
-            else
-              git commit -m 'Record failed V1 archive refresh'
-            fi
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
-
-      - name: Upload archive artifact
+      - name: Upload archive candidate
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bitwiki-v1-public-archive
+          name: bitwiki-v1-public-archive-candidate
           path: |
             archive-v1
             archive-v1-run-status.json
           if-no-files-found: error
 
-      - name: Enforce successful archive
+      - name: Enforce successful candidate
         if: steps.harvest.outcome != 'success' || steps.verify.outcome != 'success'
         run: |
           cat archive-v1-run-status.json

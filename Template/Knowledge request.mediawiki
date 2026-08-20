@@ -1,0 +1,72 @@
+<includeonly>
+{{#cargo_store:
+ _table=Knowledge_requests
+ |Request={{{request|}}}
+ |Reason={{{reason|}}}
+ |Candidate_domains={{{candidate_domains|}}}
+ |Source_leads={{{source_leads|}}}
+ |Needed_depth={{{needed_depth|}}}
+ |Status={{{status|}}}
+ |Canonical_page={{{canonical_page|}}}
+ |Notes={{{notes|}}}
+}}
+|-
+| '''{{{request|Unnamed request}}}'''
+| {{{reason|}}}
+| {{{candidate_domains|}}}
+| {{{source_leads|}}}
+| {{{needed_depth|}}}
+| {{{status|}}}
+| {{#if:{{{canonical_page|}}}|[[{{{canonical_page}}}]]|}}
+| {{{notes|}}}
+</includeonly>
+<noinclude>
+{{#cargo_declare:
+ _table=Knowledge_requests
+ |Request=String (mandatory;unique)
+ |Reason=Wikitext (mandatory)
+ |Candidate_domains=List (,) of String
+ |Source_leads=Wikitext
+ |Needed_depth=String (mandatory)
+ |Status=String (mandatory;allowed values=requested,researching,drafting,review,satisfied,declined)
+ |Canonical_page=Page
+ |Notes=Wikitext
+}}
+= Knowledge request =
+
+Structured operational record for [[BITwiki:Requested knowledge]]. It preserves the distinction between a missing-knowledge signal and a canonical knowledge object while giving the request lifecycle a real queryable substrate.
+
+== Usage ==
+
+<pre>
+{{Knowledge request
+ |request=Sequence alignment
+ |reason=Foundational Bioinformatics coverage gap
+ |candidate_domains=Biology,Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=
+}}
+</pre>
+
+The template stores one row in Cargo table <code>Knowledge_requests</code> and renders that record as a row in the public request table.
+
+== Contract ==
+
+* <code>request</code>, <code>reason</code>, <code>needed_depth</code>, and <code>status</code> are required by repository workflow validation.
+* <code>status</code> is one of: <code>requested</code>, <code>researching</code>, <code>drafting</code>, <code>review</code>, <code>satisfied</code>, <code>declined</code>.
+* Candidate Domains, when supplied, must already exist in the controlled Domain vocabulary. A request is not permission to invent a Domain.
+* Active requests must not already exist as canonical Main-namespace pages.
+* <code>satisfied</code> requires <code>canonical_page</code> to point to source-controlled canonical content.
+* Request titles are unique within the Cargo table and within the source-controlled queue.
+
+== Cargo lifecycle ==
+
+Saving this template does '''not''' create the database table. After deployment, an authorized operator must create or recreate <code>Knowledge_requests</code> from this template using Cargo's Create/Recreate data action or the Cargo maintenance command documented in [[BITwiki:Deployment prerequisites]].
+
+Cargo is used here for repeated operational records. It does not replace Semantic MediaWiki for knowledge-graph assertions.
+
+[[Category:BITwiki templates]]
+</noinclude>

@@ -21,10 +21,11 @@ The captured BITwiki runtime currently provides the capabilities V2 actively dep
 * MediaWiki page/revision and template/transclusion system
 * Semantic MediaWiki for Properties, Concepts and <code>#ask</code>
 * Scribunto for <code>Module:</code> Lua and <code>#invoke</code>
+* Cargo for the structured [[BITwiki:Requested knowledge]] operational queue
 * ParserFunctions
 * CategoryTree where <code>&lt;categorytree&gt;</code> is used
 
-Other installed capabilities such as Cargo, Network, faceted search, PubMed parsing and NCBI taxonomy lookup are available but are not deployment requirements for every page merely because the extensions exist.
+Other installed capabilities such as Network, faceted search, PubMed parsing and NCBI taxonomy lookup are available but are not deployment requirements for every page merely because the extensions exist.
 
 == Namespace/source mapping ==
 
@@ -60,7 +61,7 @@ A missing V2 file is therefore '''not''' permission to delete the corresponding 
 
 == Template safety ==
 
-The nine live V1 templates are now source-controlled directly in <code>Template/</code> for dependency visibility.
+The nine live V1 templates are source-controlled directly in <code>Template/</code> for dependency visibility.
 
 V1 <code>Template:Infobox</code> has 80 callers. Do not delete or replace it destructively until those callers have been migrated and verified.
 
@@ -106,25 +107,63 @@ Do not copy all 162 labels into V2 as a flat taxonomy. Preserve the V1 membershi
 
 Substantive controlled-Domain categories use [[Template:Knowledge domain category]] to compose stable scope/navigation behavior and derive their knowledge-object table from explicit <code>Domain</code> annotations. Administrative categories remain concise.
 
-== Cargo and other installed capabilities ==
+== Cargo request workflow ==
 
-Do not create Cargo tables, subobjects, Network views, or faceted/drilldown structures solely to increase extension usage.
+Cargo is now used for one bounded repeated-record workflow: [[BITwiki:Requested knowledge]]. It does '''not''' replace Semantic MediaWiki as the knowledge graph.
 
-Introduce them when the data model has a real repeated-record, qualified-fact, or exploration requirement and document the migration/dependency consequences first.
+Deployment order matters:
+
+<pre>
+Template:Knowledge request
+→ create/recreate Cargo table Knowledge_requests
+→ BITwiki:Requested knowledge
+→ verify Cargo query / drilldown surfaces
+</pre>
+
+The <code>#cargo_declare</code> call in [[Template:Knowledge request]] defines the schema and <code>#cargo_store</code> stores each request record. Saving the template alone does '''not''' create or rebuild the database table.
+
+After deploying or changing the template schema, create/recreate <code>Knowledge_requests</code> using either:
+
+* the Cargo '''Create data''' / '''Recreate data''' action from the template page (the <code>?action=recreatedata</code> interface); or
+* from the MediaWiki root on modern MediaWiki:
+
+<pre>
+php maintenance/run.php Cargo:cargoRecreateData --table Knowledge_requests
+</pre>
+
+For a live schema change, prefer Cargo's replacement-table option when continuity of existing queries matters, then switch the replacement in [[Special:CargoTables]]. Depending on server job configuration, the web recreation path may require MediaWiki jobs to run before population completes.
+
+Verify at minimum:
+
+* [[Special:CargoTables]] — <code>Knowledge_requests</code> exists with the declared fields;
+* [[Special:Drilldown]] — request lifecycle data is browsable;
+* [[BITwiki:Requested knowledge]] — authored tables render and the computed Cargo workflow view returns the same records;
+* active requests do not also exist as canonical Main pages.
+
+Repository CI validates the source contract, but it cannot prove that a remote Cargo database table was actually created or populated. That is a deployment verification step.
+
+Do not create additional Cargo tables, subobjects, Network views, or faceted structures solely to increase extension usage. Introduce them only when the data model has a real repeated-record, qualified-fact, or exploration requirement and document migration/dependency consequences first.
+
+== CI evidence is not canonical source ==
+
+Validation and audit scripts generate JSON reports during CI. Those files are intentionally untracked and retained as workflow artifacts. The canonical inputs are the reviewed repository source, the generators, and preserved evidence—not a mutable bot-authored report committed after merge.
+
+Neither PR validation nor <code>main</code> validation is authorized to rewrite repository source.
 
 == Safe migration ==
 
 <pre>
 1. refresh archive-v1 from the live public wiki
 2. review archive-v1/audit.json and v1-fidelity-audit.json
-3. run scripts/validate_v2.py and scripts/audit_substrate.py
+3. run scripts/validate_v2.py, scripts/audit_substrate.py, and scripts/audit_workflow.py
 4. deploy runtime/schema/property/module/template dependencies first
-5. import/create reviewed V2 pages additively
-6. verify rendering, transclusions, categories and semantic data
-7. migrate each V1 source family / callers deliberately
-8. move/merge/redirect only after source comparison
-9. preserve revision history where technically possible
-10. rerun maintenance reports and compare against the pre-migration snapshot
+5. create/recreate required Cargo tables before importing their query consumers
+6. import/create reviewed V2 pages additively
+7. verify rendering, transclusions, categories, SMW data, and Cargo data
+8. migrate each V1 source family / callers deliberately
+9. move/merge/redirect only after source comparison
+10. preserve revision history where technically possible
+11. rerun maintenance reports and compare against the pre-migration snapshot
 </pre>
 
 == Required post-import checks ==
@@ -141,6 +180,7 @@ Review at minimum:
 * [[Special:Browse]] / [[Special:Ask]]
 * [[Special:Properties]] / [[Special:WantedProperties]]
 * [[Special:Concepts]]
+* [[Special:CargoTables]] / [[Special:Drilldown]]
 
 A clean migration is not one with zero warnings at any cost. It is one where every remaining warning is understood and intentional.
 

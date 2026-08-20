@@ -128,7 +128,7 @@ This division is a default, not a prohibition against combination. A template ma
 
 == Compatibility template recovery ==
 
-The live V1 fidelity inventory contains nine templates. They are now represented directly in <code>Template/</code> so a reader does not have to excavate the provenance archive to discover runtime dependencies.
+The live V1 fidelity inventory contains nine templates. They are represented directly in <code>Template/</code> so a reader does not have to excavate the provenance archive to discover runtime dependencies.
 
 This recovery does '''not''' declare every V1 visual template part of the V2 design language.
 
@@ -174,13 +174,32 @@ A short category source file is therefore not automatically a stub. The relevant
 
 Administrative categories remain intentionally concise.
 
-== Cargo and subobjects: evidence-gated ==
+== Cargo: one bounded operational proof ==
 
-Cargo, SMW subobjects, Network and faceted/drilldown surfaces are installed capabilities, but architecture quality is not measured by turning every extension on everywhere.
+Cargo now has one real consumer: the repeated records in [[BITwiki:Requested knowledge]]. [[Template:Knowledge request]] declares and stores the <code>Knowledge_requests</code> table, while the queue page uses <code>#cargo_query</code> for a computed lifecycle view.
 
-Cargo should be introduced when BITwiki has repeated records whose lifecycle benefits from tabular storage, querying, export or drilldown — for example a mature request/review workflow, reference registry, or another dataset-like surface. It should not duplicate ordinary page identity already represented by SMW.
+This is deliberately not page-identity duplication. Request records are project-operational objects with repeated fields and mutable workflow state; canonical knowledge remains modeled through pages, SMW properties, relationships, and provenance.
 
-Likewise, subobjects should appear when a fact needs its own attributes, provenance or qualification. Until such a case exists, a count of zero is an honest result rather than an implementation failure.
+The request workflow also demonstrates why implementation should follow a use case rather than an extension checklist:
+
+<pre>
+missing coverage signal
+→ authored Knowledge request record
+→ Cargo storage/query
+→ research lifecycle
+→ canonical page only when ready
+→ satisfied request links canonical result
+</pre>
+
+<code>scripts/audit_workflow.py</code> validates the Cargo declaration/store contract and enforces the critical governance invariant that an active request cannot simultaneously exist as a canonical Main page.
+
+The Cargo database table itself is runtime state and must be explicitly created/recreated after deploying the template; Git source alone cannot prove that remote database step. See [[BITwiki:Deployment prerequisites]].
+
+== Subobjects and additional exploration remain evidence-gated ==
+
+SMW subobjects, additional Concepts, Network and faceted/drilldown surfaces remain available capabilities, but architecture quality is not measured by turning every extension on everywhere.
+
+Subobjects should appear when a fact needs its own attributes, provenance or qualification. Additional Concepts should appear when repeated query logic has more than one useful consumer. Network/faceted surfaces should appear when they improve an actual exploration workflow. Until those cases exist, a count of zero is an honest result rather than an implementation failure.
 
 == Measurable substrate use ==
 
@@ -188,18 +207,23 @@ Run:
 
 <pre>
 python scripts/audit_substrate.py
+python scripts/audit_workflow.py
 </pre>
 
-The audit reports:
+The audits report:
 
 * configured namespaces and source-control mappings;
 * current live templates missing from deployable <code>Template/</code>;
 * <code>#ask</code>, <code>#concept</code>, <code>#invoke</code>, <code>#subobject</code> and Cargo primitive counts;
 * semantic property assertion counts;
 * transclusion markup use;
-* mapped roots or directories missing README orientation.
+* mapped roots or directories missing README orientation;
+* Cargo request schema/storage/query agreement;
+* request lifecycle integrity and active-request/canonical-page conflicts.
 
-The goal is to make architectural claims falsifiable. A page saying “BITwiki uses Lua” is weak evidence; source-controlled modules plus real <code>#invoke</code> consumers are stronger evidence.
+The goal is to make architectural claims falsifiable. A page saying “BITwiki uses Lua” is weak evidence; source-controlled modules plus real <code>#invoke</code> consumers are stronger evidence. Likewise, “Cargo is installed” is not a workflow; a declared table, stored records, queries, deployment procedure and invariant tests are.
+
+Generated audit JSON is commit-specific evidence. CI uploads it as an artifact; it is intentionally not committed back to <code>main</code>.
 
 == Deployment order ==
 
@@ -211,10 +235,11 @@ MediaWiki / SMW schema prerequisites
 → Module logic
 → foundational Templates
 → compatibility Templates
+→ create/recreate required Cargo tables
 → Concepts
 → Categories / navigation views
-→ knowledge objects and other consumers
-→ semantic-data rebuild / verification
+→ knowledge objects and operational consumers
+→ semantic/Cargo data verification
 </pre>
 
 Exact deployment remains additive and non-destructive. See [[BITwiki:Deployment prerequisites]].
@@ -229,6 +254,7 @@ Exact deployment remains additive and non-destructive. See [[BITwiki:Deployment 
 * <code>archive-v1/pages/Main/Lua Module Specifications.mediawiki</code> — V1 Lua architecture design lineage.
 * <code>archive-v1/pages/Main/Template Validation Lua Module.mediawiki</code> — V1 validation-module design lineage.
 * [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
+* [https://www.mediawiki.org/wiki/Extension:Cargo MediaWiki — Cargo]
 * [https://www.semantic-mediawiki.org/wiki/Help:Concepts Semantic MediaWiki — Concepts]
 
 [[Category:BITwiki architecture]]

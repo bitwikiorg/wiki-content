@@ -1,0 +1,247 @@
+= Comparative wiki research register =
+
+'''Status: Active research register.''' Reviewed 2026-08-20. This page tracks external knowledge-system research relevant to BITwiki architecture, navigation, governance, coverage, community, and security. A reviewed source is evidence, not automatic design authority.
+
+== Why this exists ==
+
+Wikipedia is not one system. It is simultaneously an encyclopedia, category graph, link graph, portal system, set of editorial processes, governance community, maintenance machine, multilingual federation, software ecosystem, and object of academic study.
+
+The wider wiki/encyclopedia ecosystem is even more varied. BITwiki should learn comparatively rather than cargo-cult one English Wikipedia convention.
+
+The research program is therefore intentionally fractal:
+
+<pre>
+Wikipedia
+  → English Wikipedia
+  → 348 active language editions
+  → sister Wikimedia projects
+  → Wikimedia governance / Meta-Wiki
+  → wiki communities outside Wikimedia
+  → online encyclopedias outside wiki culture
+  → specialist knowledge systems
+  → academic studies of all of the above
+</pre>
+
+== Research dimensions ==
+
+Each knowledge system or wiki edition can eventually be compared across a common schema:
+
+* mission and scope;
+* audience;
+* editorial model;
+* governance model;
+* contributor identity and permissions;
+* review / approval / deletion workflow;
+* namespaces and content/admin separation;
+* categories and taxonomy;
+* portals / contents / outlines / lists / indices;
+* semantic structure and metadata;
+* quality assessment;
+* automation / bots / AI;
+* revision and provenance model;
+* source/reliability policy;
+* contentious-topic handling;
+* abuse, censorship, legal, and contributor-safety exposure;
+* language/localization model;
+* scale, activity, and maintenance burden;
+* software / extensions;
+* licensing and reuse;
+* distinctive strengths;
+* known failure modes.
+
+This should become structured comparative data rather than an indefinitely growing prose notebook.
+
+== Navigation and coverage sources ==
+
+{| class="wikitable"
+! Source !! Authority / role !! First-pass signal for BITwiki
+|-
+| [https://en.wikipedia.org/wiki/Portal:Systems_science Portal:Systems science] || Live portal || Strong transdisciplinary orientation; useful conceptual analogue for BITwiki's systems-first worldview, but also shows legacy selected-content/subpage maintenance patterns.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Contents Wikipedia:Contents] || Live project navigation page || Multiple subject and format entry points coexist: subjects, outlines, lists, portals, glossaries, categories, vital content, indices.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Contents/Portals Wikipedia:Contents/Portals] || Live portal directory || Portals are complementary navigation surfaces, not the sole hierarchy. Current English Wikipedia has hundreds, grouped under broad subject families.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Vital_articles Wikipedia:Vital articles] || Active curation project || Nested priority sets (10/100/1k/10k/50k) separate coverage importance from category membership and support quality measurement.
+|-
+| [https://meta.wikimedia.org/wiki/List_of_articles_every_Wikipedia_should_have List of articles every Wikipedia should have] || Meta-Wiki cross-language coverage project || 1,000-item core intended as a growth baseline; exposes major subject families missing from BITwiki's current 12 Domains.
+|-
+| [https://meta.wikimedia.org/wiki/List_of_articles_every_Wikipedia_should_have/Expanded Expanded list] || Meta-Wiki cross-language coverage project || 10,000-item hierarchical coverage map useful for gap analysis, not for blind taxonomy import.
+|-
+| [https://en.wikipedia.org/wiki/Category:Main_topic_classifications Category:Main topic classifications] || Live category meta-structure || Broad classifications intentionally are not a strict hierarchy and feed many navigation systems.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Contents/Categories Wikipedia:Contents/Categories] || Hand-curated category directory || Demonstrates an editorial layer over the raw category graph.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Categorization Wikipedia:Categorization] || Current English Wikipedia guideline || Category trees are navigational; categories should use defining characteristics, specific placement, explicit descriptions, and can have multiple parents.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Categories,_lists,_and_navigation_templates Categories, lists, and navigation templates] || Project guidance || Lists can carry annotation/references/order that categories cannot; use both where their different affordances matter.
+|}
+
+== Portal design and failure-mode sources ==
+
+{| class="wikitable"
+! Source !! Authority / role !! First-pass signal for BITwiki
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Portals WikiProject Portals] || Active WikiProject || Portal coverage requires inspection, repair, administration, and maintenance; portal creation should require enough subject coverage.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Portal/Guidelines Portal/Guidelines] || Failed proposal / historical guidance, not current policy || Useful design ideas but must not be cited as official consensus.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Portals Manual of Style/Portals] || Inactive historical draft || Reader-facing clarity/accessibility ideas remain useful; authority is historical, not current guideline status.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:The_Problems_with_Portals The Problems with Portals] || Essay / criticism || Key warning: miniature main pages, stale copied excerpts, missing maintainers, redundancy, and portal proliferation.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Portals/Statistics WikiProject Portals/Statistics] || Historical statistics || In 2018 portal space exceeded 146k pages largely because of subpages; strong evidence against recreating giant subpage forests.
+|-
+| [https://en.wikipedia.org/wiki/Category:Wikipedia_portal_administration Category:Wikipedia portal administration] || Maintenance category || Portal machinery itself requires a distinct administration surface.
+|}
+
+== Self-administration and content-production sources ==
+
+{| class="wikitable"
+! Source !! Authority / role !! First-pass signal for BITwiki
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Administration Wikipedia:Administration] || Information page || Strong content/admin separation through namespaces; administration supports the corpus but is not itself ordinary encyclopedia content.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Maintenance Wikipedia:Maintenance] || Active maintenance surface || Dashboards/backlogs make corpus quality actionable rather than merely documented.
+|-
+| [https://en.wikipedia.org/wiki/Category:Wikipedia_village_pump Category:Wikipedia village pump] || Maintenance category || Explicitly separates project discussion categories from content categories; discussion is split into policy, proposals, technical, idea-lab, etc.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Dashboard Wikipedia:Dashboard] || Active project dashboard || Centralizes discussions, requests, notices, and contribution routes.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Articles_for_creation Articles for creation] || Active workflow || Draft → review → accept/decline/reject provides a mature separation between proposed and canonical content.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Requested_articles Requested articles] || Active request system || Missing knowledge can be represented as an explicit queue rather than premature empty pages.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia:Stub Wikipedia:Stub] || Current guideline || Incompleteness can be represented explicitly and routed to improvement; maturity is not reducible to word count alone.
+|}
+
+== Wikipedia as a research object ==
+
+{| class="wikitable"
+! Source !! Why track it
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia Wikipedia] || Baseline history, architecture, scale, criticism, governance, and project description.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia_community Wikipedia community] || Community structure, participation, identity, norms, governance and social dynamics.
+|-
+| [https://en.wikipedia.org/wiki/Academic_studies_about_Wikipedia Academic studies about Wikipedia] || Research on quality, reliability, bias, conflict, power, demographics, collaboration, readership, and computational analysis.
+|-
+| [https://en.wikipedia.org/wiki/Bibliography_of_Wikipedia Bibliography of Wikipedia] || Literature map for deeper primary/secondary research.
+|-
+| [https://en.wikipedia.org/wiki/Category:Books_about_Wikipedia Category:Books about Wikipedia] || Book-length external analysis and historical perspectives.
+|-
+| [https://en.wikipedia.org/wiki/Category:History_of_Wikipedia Category:History of Wikipedia] || Evolution, incidents, governance changes and system history.
+|-
+| [https://en.wikipedia.org/wiki/Category:Lists_about_Wikipedia Category:Lists about Wikipedia] || Structured entry points into meta-level datasets and enumerations.
+|-
+| [https://en.wikipedia.org/wiki/Category:Wikipedia Category:Wikipedia] || Broad self-referential category graph showing how the project models itself.
+|-
+| [https://en.wikipedia.org/wiki/Wikipedia_philosophy_phenomenon Wikipedia philosophy phenomenon] || Example of emergent link-graph structure and research into navigability/centrality.
+|-
+| [https://en.wikipedia.org/wiki/Wikipediocracy Wikipediocracy] || External critical community; useful as evidence about adversarial critique and institutional blind spots, not as neutral authority by default.
+|}
+
+== Multilingual / federated Wikipedia research ==
+
+{| class="wikitable"
+! Source !! First-pass signal
+|-
+| [https://en.wikipedia.org/wiki/List_of_Wikipedias List of Wikipedias] || As of August 2026, 364 editions have been created: 348 active and 16 closed. Editions differ in scale, language, policy, automation, community and navigation.
+|-
+| [https://meta.wikimedia.org/wiki/List_of_Wikipedias Meta-Wiki List of Wikipedias] || Provides operational statistics and alternate comparison lenses including article count, edits/article, depth, language family, country, speakers/article, quality, creation date and sample coverage.
+|}
+
+'''Research method:''' do not manually read 348 editions in sequence. Build a comparative sample first, then expand based on variance.
+
+Suggested first sample archetypes:
+
+* English Wikipedia — scale and policy complexity;
+* Simple English Wikipedia — accessibility / simplified language;
+* German Wikipedia — stricter editorial culture and review patterns;
+* French Wikipedia — large independent community practices;
+* Spanish Wikipedia — major global-language edition;
+* Japanese Wikipedia — non-Western large edition;
+* Chinese Wikipedia — multilingual/script and censorship environment;
+* Arabic Wikipedia — regional/language governance and contributor-risk context;
+* Cebuano Wikipedia — automation/bot-scale case;
+* one small healthy edition;
+* one closed edition;
+* one Incubator project.
+
+The sample should be selected and documented before conclusions are generalized.
+
+== Wider wiki and encyclopedia ecosystem ==
+
+{| class="wikitable"
+! Source !! First-pass signal
+|-
+| [https://en.wikipedia.org/wiki/Category:Wiki_communities Category:Wiki communities] || Wiki communities include general, specialist, fan, travel, educational, political, technical and knowledge-oriented projects; community model and purpose vary widely.
+|-
+| [https://en.wikipedia.org/wiki/List_of_online_encyclopedias List of online encyclopedias] || Online encyclopedias vary across expert-written, peer-reviewed, community-written, commercial, state-sponsored, AI-powered, specialist, and forked models.
+|-
+| [https://en.wikipedia.org/wiki/Wikisource Wikisource] || Sister-project example: primary-source library function is separated from encyclopedia synthesis.
+|-
+| [https://en.wikipedia.org/wiki/Wikinews Wikinews] || Sister-project example: news was separated as a distinct mission; Wikinews became read-only in May 2026. This is evidence for mission separation, not evidence that Wikipedia censored political/news topics.
+|}
+
+High-priority systems for later direct comparison include Wikipedia, Simple English Wikipedia, Wikidata, Wikisource, Meta-Wiki, Scholarpedia, Citizendium, PlanetMath, Britannica, Baidu Baike, RationalWiki, Fandom-style communities, specialist technical wikis, and emerging AI-first encyclopedic systems.
+
+== Controversy, censorship, and contributor-risk sources ==
+
+{| class="wikitable"
+! Source !! First-pass signal
+|-
+| [https://en.wikipedia.org/wiki/List_of_people_imprisoned_for_editing_Wikipedia List of people imprisoned for editing Wikipedia] || Contributor safety is not theoretical. Known cases include imprisonment and one execution; politically sensitive edits feature prominently in several cases.
+|-
+| [https://en.wikipedia.org/wiki/Category:Censorship_of_Wikipedia Category:Censorship of Wikipedia] || State/platform/legal blocking and censorship are recurring system-level risks.
+|-
+| [https://en.wikipedia.org/wiki/Hillsborough_disaster_Wikipedia_posts Hillsborough disaster Wikipedia posts] || Case study in abuse/vandalism, institutional trust, attribution and governance risk.
+|-
+| [https://en.wikipedia.org/wiki/List_of_Wikipedia_controversies List of Wikipedia controversies] || Longitudinal incident map useful for extracting failure classes rather than memorizing scandals.
+|-
+| [https://en.wikipedia.org/wiki/Academic_studies_about_Wikipedia Academic studies about Wikipedia] || Academic work documents concentrated controversy, policy conflict, bias and governance dynamics across topics and languages.
+|}
+
+These sources motivate [[BITwiki:Sensitive topic scope research]].
+
+== Research backlog ==
+
+=== A. Navigation architecture ===
+* Compare category/portal/outlines behavior across selected Wikipedia editions.
+* Compare how specialist wikis handle subdomains and deep technical navigation.
+* Identify when portals outperform a well-designed category + overview + outline combination.
+* Test semantic/query-driven portal generation in BITwiki.
+
+=== B. Coverage architecture ===
+* Convert the 1,000/10,000 cross-language core lists into a coverage-gap dataset.
+* Compare against Wikipedia Vital levels without inheriting English-Wikipedia recentism/bias.
+* Compare against BITwiki's existing V1 corpus and current V2 domains.
+* Derive candidate Domain additions from repeated coverage gaps.
+
+=== C. Self-administration ===
+* Study dashboards, maintenance queues, requested articles, drafts, deletion/discussion systems, portal administration, category discussion, and governance surfaces.
+* Design the smallest BITwiki equivalents appropriate to a human+agent knowledge system.
+
+=== D. Comparative wiki dataset ===
+* Define a machine-readable schema for wiki/encyclopedia comparisons.
+* Populate the first archetype sample.
+* Expand only when a new system adds a meaningful architectural pattern.
+
+=== E. Governance and security ===
+* Classify controversy patterns: vandalism, capture, brigading, state pressure, legal risk, privacy, conflict-of-interest, misinformation, governance abuse, automation failures.
+* Separate content risk from contributor risk and infrastructure risk.
+* Feed mature findings into governance only after review.
+
+== Research discipline ==
+
+* Distinguish policy/guideline from essay, proposal, historical page, article, or external criticism.
+* Prefer primary project documentation and academic literature for architectural claims.
+* Treat Wikipedia as evidence, not as specification.
+* Track failures as carefully as successful patterns.
+* Do not equate scale with quality.
+* Do not assume English Wikipedia conventions generalize to all language editions.
+* Do not turn every discovered distinction into a BITwiki namespace, Domain, Entity type, or Property.
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]
+[[Category:Navigation]]

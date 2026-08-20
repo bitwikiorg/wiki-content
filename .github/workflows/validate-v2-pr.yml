@@ -14,6 +14,7 @@ on:
       - 'manifest.json'
       - 'scripts/validate_v2.py'
       - 'scripts/inventory_corpus.py'
+      - 'scripts/audit_mainspace.py'
       - 'scripts/classify_v1_page_roles.py'
       - 'scripts/classify_v1_architecture_families.py'
       - '.github/workflows/validate-v2-pr.yml'
@@ -38,6 +39,9 @@ jobs:
       - name: Validate deployable MediaWiki structure and identity semantics
         run: python scripts/validate_v2.py
 
+      - name: Audit deployable Main namespace roles
+        run: python scripts/audit_mainspace.py
+
       - name: Build V2 corpus and V1 classification inventories
         run: python scripts/inventory_corpus.py
 
@@ -51,6 +55,10 @@ jobs:
         if: always()
         run: cat v2-validation.json
 
+      - name: Show Main namespace audit summary
+        if: always()
+        run: python scripts/audit_mainspace.py
+
       - name: Upload architecture evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -58,6 +66,7 @@ jobs:
           name: bitwiki-v2-architecture-evidence
           path: |
             v2-validation.json
+            v2-mainspace-audit.json
             v2-corpus-inventory.json
             v1-classification-usage.json
             v1-page-role-matrix.json

@@ -1,0 +1,81 @@
+{{Source status|status=source-grounded corpus expansion|note=Computer science foundation grounded in NIST DADS and ACM CS2023.}}
+{{Knowledge object
+ |title=Data structure
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 corpus expansion; NIST DADS and ACM CS2023 grounding
+}}
+
+= Data structure =
+
+== Overview ==
+A '''data structure''' is a way of organizing information so that a computer can store, access, update, and process it effectively. Arrays, linked lists, stacks, queues, hash tables, trees, heaps, and graphs are familiar examples.
+
+Data structures matter because the organization of data changes what operations are easy or expensive. The same information can often be represented in several ways, and the best representation depends on the operations a program needs to perform.
+
+== Definition ==
+NIST's Dictionary of Algorithms and Data Structures defines a data structure as an organization of information, usually in memory, intended to improve algorithmic efficiency or provide conceptual unity. Most data structures are paired with operations that preserve the structure's intended properties.
+
+A data structure is therefore not merely a pile of values. It combines a representation with expectations about how those values are arranged and manipulated.
+
+== Scope & importance ==
+Data structures sit between abstract information and concrete computation. [[Algorithm|Algorithms]] operate on data, but their performance often depends on how that data is represented.
+
+For example, searching an unsorted list may require examining many elements, while a suitable hash table or balanced search tree can support much faster lookup under appropriate assumptions. Conversely, a representation optimized for one operation may make another operation slower or consume more memory.
+
+== Core concepts ==
+Important dimensions include:
+
+* '''Organization''' — sequential, hierarchical, associative, graph-like, spatial, or another arrangement.
+* '''Operations''' — insertion, deletion, lookup, traversal, update, sorting, merging, or aggregation.
+* '''Invariants''' — properties that must remain true, such as heap order or binary-search-tree ordering.
+* '''Access pattern''' — sequential access, random access, key-based lookup, priority access, or traversal by relationships.
+* '''Mutability''' — whether the structure changes in place or produces new versions.
+* '''Memory model''' — contiguous storage, linked storage, external storage, distributed storage, or compact/succinct representation.
+* '''Complexity''' — the time and space cost of common operations.
+
+== Common examples ==
+'''Array''' — stores elements in an indexed sequence, typically supporting efficient direct access by position.
+
+'''Linked list''' — stores elements as nodes connected by references, making some insertions and deletions convenient while sacrificing constant-time arbitrary indexing.
+
+'''Stack''' — supports last-in, first-out access.
+
+'''Queue''' — supports first-in, first-out access.
+
+'''Hash table''' — maps keys to values using a hash function and typically offers fast average-case lookup when designed well.
+
+'''Tree''' — represents hierarchical relationships. Search trees, heaps, tries, and syntax trees are specialized forms.
+
+'''Graph''' — represents entities connected by relationships and supports modeling networks, routes, dependencies, social connections, and many other relational structures.
+
+== Data structure vs. abstract data type ==
+An '''abstract data type''' describes behavior in terms of values and permitted operations without requiring one physical representation. A stack, for example, can be specified by operations such as push and pop. It may then be implemented using an array, linked list, or another representation.
+
+This separation lets software reason about an interface independently of one implementation. In practice, the phrases sometimes overlap, so precise discussion should distinguish the behavioral abstraction from its concrete representation when the difference matters.
+
+== Relationship to algorithms ==
+Algorithms and data structures are tightly coupled. NIST notes that data structures commonly have associated algorithms for operations such as search, insertion, or balancing.
+
+Choosing a data structure therefore changes algorithmic trade-offs. A graph algorithm depends on whether the graph is represented by adjacency lists, matrices, edge lists, compressed structures, or distributed partitions. Database indexes similarly use specialized data structures to reduce the cost of locating records.
+
+== Applications / implications ==
+Data structures appear throughout software systems: compiler syntax trees, operating-system queues, database indexes, filesystem trees, network routing tables, caches, machine-learning tensors, geographic indexes, search engines, and cryptographic protocols.
+
+They are also a core abstraction boundary. A well-chosen structure can make an algorithm simpler, safer, and faster; a poorly chosen one can dominate the cost of an otherwise good design.
+
+== Technical depth ==
+Analysis typically studies worst-case, average-case, amortized, or expected costs for operations. More advanced topics include persistent and immutable structures, concurrent structures, external-memory structures, succinct structures, probabilistic structures, cache-aware/cache-oblivious layouts, and distributed data structures.
+
+The relevant cost model matters. A structure that minimizes comparison count may not minimize memory traffic, synchronization, disk access, network communication, or energy use.
+
+== Epistemic notes ==
+The concept is established, but terminology varies between theory, programming-language practice, databases, and systems engineering. Performance claims should state the operation, input assumptions, implementation, and computational or storage model rather than treating a structure as universally "fast."
+
+== References ==
+* [https://www.nist.gov/dads/HTML/dataStructure.html NIST DADS — Data structure]
+* [https://www.nist.gov/publications/dictionary-algorithms-and-data-structures NIST — Dictionary of Algorithms and Data Structures]
+* [https://csed.acm.org/knowledge-areas/ ACM/IEEE-CS CS2023 — Knowledge Areas]
+
+[[Category:Computer science]]

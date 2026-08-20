@@ -1,10 +1,12 @@
-{{Source status|status=V2 operational index|note=Public queue for missing or weak knowledge coverage. Requests are project-operational signals, not canonical knowledge objects.}}
+{{Source status|status=V2 operational index|note=Public structured queue for missing or weak knowledge coverage. Requests are project-operational signals, not canonical knowledge objects.}}
 
 = Requested knowledge =
 
 This page records important knowledge BITwiki should cover or strengthen without creating empty Main-namespace shells first.
 
 '''Requested ≠ canonical.''' A request identifies a coverage need. It becomes durable knowledge only after research, sourcing, modeling, writing, and review.
+
+The queue is now composed from [[Template:Knowledge request]]. Each visible record is also stored in Cargo table <code>Knowledge_requests</code>, making lifecycle state queryable without duplicating a second hidden backlog.
 
 == Why use a request queue? ==
 
@@ -33,9 +35,11 @@ For each request, record only what is known:
 |-
 | Source leads || Strong starting sources, when known
 |-
-| Needed depth || Simple / Core / Technical / Frontier / full page
+| Needed depth || Simple / Core / Technical / Frontier / full page, or scope research when the request itself needs modeling
 |-
 | Status || requested / researching / drafting / review / satisfied / declined
+|-
+| Canonical page || Required when a request becomes satisfied
 |-
 | Notes || Ambiguity, overlap, duplicate risk, sensitive-topic considerations
 |}
@@ -45,68 +49,398 @@ For each request, record only what is known:
 These are research priorities derived from navigation/core-coverage comparison, not automatic Domain approvals:
 
 {| class="wikitable"
-! Surface !! Current interpretation !! Status
-|-
-| Earth and environmental science || Major durable gap spanning geology, climate, oceans, Earth systems, environmental processes || requested
-|-
-| Information / knowledge science || Strong fit with BITwiki itself: information, libraries, knowledge representation, semantic systems || requested
-|-
-| Psychology / cognitive science || Mind, cognition, behavior, neuroscience and AI bridges || requested
-|-
-| Social sciences || Sociology, anthropology, institutions and collective behavior; likely broad family || requested
-|-
-| History || Durable historical processes/context; needs scope design that avoids recent-event churn || requested
-|-
-| Geography || Physical/human/spatial systems and location-oriented knowledge || requested
-|-
-| Linguistics / language || Language systems, communication, writing, computational bridges || requested
-|-
-| Law / governance || Legal and institutional systems through analytical rather than partisan framing || requested
-|-
-| Education || Learning, pedagogy, knowledge transmission and institutional systems || requested
-|-
-| Agriculture / food systems || Soil, crops, cultivation, production, ecology, economics and applied systems || requested
-|-
-| Astronomy / space science || Observational astronomy, planetary science, cosmology and space systems || requested
-|-
-| Materials science || Structure/property/processing/performance bridge across science and engineering || requested
+! Proposed title !! Why it matters !! Candidate Domain(s) !! Source leads !! Needed depth !! Status !! Canonical page !! Notes
+{{Knowledge request
+ |request=Earth and environmental science
+ |reason=Major durable gap spanning geology, climate, oceans, Earth systems, and environmental processes.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Research priority; not an automatic Domain approval.
+}}
+{{Knowledge request
+ |request=Information / knowledge science
+ |reason=Strong fit with BITwiki itself: information, libraries, knowledge representation, and semantic systems.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Research priority; determine boundaries before schema changes.
+}}
+{{Knowledge request
+ |request=Psychology / cognitive science
+ |reason=Mind, cognition, behavior, neuroscience, and AI bridges are underrepresented.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Research priority; determine whether one or several durable surfaces are justified.
+}}
+{{Knowledge request
+ |request=Social sciences
+ |reason=Sociology, anthropology, institutions, and collective behavior form a major broad coverage family.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Likely broad family; scope before Domain decisions.
+}}
+{{Knowledge request
+ |request=History
+ |reason=Durable historical processes and context are a major coverage gap.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Needs scope design that avoids recent-event churn.
+}}
+{{Knowledge request
+ |request=Geography
+ |reason=Physical, human, and spatial systems plus location-oriented knowledge are underrepresented.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Research priority; determine relation to Location entity type and domain structure.
+}}
+{{Knowledge request
+ |request=Linguistics / language
+ |reason=Language systems, communication, writing, and computational bridges are underrepresented.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Research priority; scope before taxonomy changes.
+}}
+{{Knowledge request
+ |request=Law / governance
+ |reason=Legal and institutional systems need durable analytical coverage.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Use analytical rather than partisan framing and apply sensitive-topic safeguards where relevant.
+}}
+{{Knowledge request
+ |request=Education
+ |reason=Learning, pedagogy, knowledge transmission, and institutional systems are underrepresented.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Research priority; scope before taxonomy changes.
+}}
+{{Knowledge request
+ |request=Agriculture / food systems
+ |reason=Soil, crops, cultivation, production, ecology, economics, and applied systems form a durable coverage gap.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Cross-domain surface; research boundaries before schema changes.
+}}
+{{Knowledge request
+ |request=Astronomy / space science
+ |reason=Observational astronomy, planetary science, cosmology, and space systems are underrepresented.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Research priority; scope before Domain approval.
+}}
+{{Knowledge request
+ |request=Materials science
+ |reason=Structure, property, processing, and performance provide an important bridge across science and engineering.
+ |candidate_domains=
+ |source_leads=
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Research priority; determine whether existing Domains are sufficient.
+}}
 |}
 
-Computer science moved out of this gap class after repeated navigational/coverage evidence justified a controlled Domain, a portal, category, and substantive [[Algorithm]] exemplar.
+Computer science moved out of this high-level gap class after repeated navigational/coverage evidence justified a controlled Domain, portal, category, and substantive [[Algorithm]] exemplar.
 
 == Near-term subject requests for Computer science ==
 
-The new Computer science portal currently has much more navigation than article depth. Priority knowledge objects include:
+The Computer science portal currently has much more navigation than article depth. These are requests, not permission to generate shells:
 
-* Computation
-* Data structure
-* Program (computing)
-* Programming language
-* Software
-* Computer architecture
-* Operating system
-* Computer network
-* Database
-* Computational complexity
-* Compiler
-* Distributed system
-* Computer security
-* Cryptography
-* Human-computer interaction
-* Artificial intelligence
-* Machine learning
-
-These should not be generated as one-sentence stubs. Create them progressively from strong sources and the [[BITwiki:Page format]] / [[BITwiki:Readable depth and localization]] model.
+{| class="wikitable"
+! Proposed title !! Why it matters !! Candidate Domain(s) !! Source leads !! Needed depth !! Status !! Canonical page !! Notes
+{{Knowledge request
+ |request=Computation
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Data structure
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Program (computing)
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Programming language
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Software
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Computer architecture
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Operating system
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Computer network
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Database
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Computational complexity
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Compiler
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Distributed system
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Computer security
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Cryptography
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Human-computer interaction
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Artificial intelligence
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Machine learning
+ |reason=Foundational Computer science coverage identified by portal and coverage review.
+ |candidate_domains=Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+|}
 
 == Near-term Bioinformatics requests ==
 
-* Biological sequence
-* Sequence alignment
-* Biological database
-* Sequence annotation
-* Genomics
-* Phylogenetics
-* Reproducible bioinformatics workflow
+{| class="wikitable"
+! Proposed title !! Why it matters !! Candidate Domain(s) !! Source leads !! Needed depth !! Status !! Canonical page !! Notes
+{{Knowledge request
+ |request=Biological sequence
+ |reason=Foundational Bioinformatics coverage needed to connect biological data, sequence analysis, and computational methods.
+ |candidate_domains=Biology,Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Sequence alignment
+ |reason=Foundational Bioinformatics coverage needed to connect biological data, sequence analysis, and computational methods.
+ |candidate_domains=Biology,Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Biological database
+ |reason=Foundational Bioinformatics coverage needed to connect biological data, sequence analysis, and computational methods.
+ |candidate_domains=Biology,Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Sequence annotation
+ |reason=Foundational Bioinformatics coverage needed to connect biological data, sequence analysis, and computational methods.
+ |candidate_domains=Biology,Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Genomics
+ |reason=Foundational Bioinformatics coverage needed to connect biological data, sequence analysis, and computational methods.
+ |candidate_domains=Biology,Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Phylogenetics
+ |reason=Foundational Bioinformatics coverage needed to connect biological data, sequence analysis, and computational methods.
+ |candidate_domains=Biology,Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+{{Knowledge request
+ |request=Reproducible bioinformatics workflow
+ |reason=Foundational Bioinformatics coverage needed to connect biological data, sequence analysis, and computational methods.
+ |candidate_domains=Biology,Computer science
+ |source_leads=
+ |needed_depth=full page
+ |status=requested
+ |canonical_page=
+ |notes=Research, source, and model before canonicalization; do not create a stub.
+}}
+|}
+
+== Live workflow view ==
+
+The table above remains the authored source. Cargo provides a computed operational view over the same records:
+
+{{#cargo_query:
+ tables=Knowledge_requests
+ |fields=Request,Status,Candidate_domains,Needed_depth,Canonical_page
+ |order by=Status,Request
+ |format=table
+ |limit=200
+}}
+
+Use [[Special:CargoTables]] / [[Special:Drilldown]] for deeper operational inspection after the table has been created on the deployed wiki.
 
 == Request lifecycle ==
 
@@ -118,10 +452,13 @@ missing signal
 → draft coherent page
 → verify identity + provenance + claims
 → canonicalize
+→ satisfy request + link canonical page
 → update portal/category/core-coverage views
 </pre>
 
-A satisfied request should link to the resulting canonical page rather than remain an ambiguous to-do.
+A request in <code>requested</code>, <code>researching</code>, <code>drafting</code>, or <code>review</code> remains non-canonical. Repository workflow validation rejects an active request whose proposed title already exists as a Main-namespace page. This makes the request/canon boundary executable rather than advisory.
+
+A <code>satisfied</code> request must link to the resulting canonical page. A declined request remains evidence that the gap was considered rather than disappearing from history.
 
 == Sensitive topics ==
 
@@ -129,10 +466,12 @@ A missing current-political or religious page is not automatically a coverage de
 
 == Related ==
 
+* [[Template:Knowledge request]]
 * [[BITwiki:Contributing]]
 * [[BITwiki:Navigation and coverage research]]
 * [[BITwiki:Readable depth and localization]]
 * [[BITwiki:Research references]]
+* [[BITwiki:Deployment prerequisites]]
 
 [[Category:BITwiki meta]]
 [[Category:Navigation]]

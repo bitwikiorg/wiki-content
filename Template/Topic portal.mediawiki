@@ -1,0 +1,59 @@
+<includeonly>
+= {{{title|{{PAGENAME}}}}} =
+
+{{#if: {{{parent|}}} |'''Parent portal:''' {{{parent}}}
+
+}}
+{{{description}}}
+
+== Start here ==
+{{{start}}}
+
+{{#if: {{{learning_path|}}} |== Learn progressively ==
+{{{learning_path}}}
+
+}}
+== Browse this topic ==
+[[:Category:{{{category}}}|Browse the {{{category}}} category]]
+
+{{{tree|}}}
+
+{{#if: {{{subportals|}}} |== Subportals ==
+{{{subportals}}}
+
+}}
+== Related portals ==
+{{{related|}}}
+
+== About this portal ==
+This portal is a reader-facing navigation view over a coherent knowledge surface. It does not create an ontology class, Entity type, or Domain merely by existing.
+
+Parent/child portal relationships are navigational. A subportal may cross multiple domains when that is the clearest way to traverse the corpus.
+
+See [[BITwiki:Navigation]], [[BITwiki:Organization]], and [[BITwiki:Semantic properties]].
+
+[[Category:Portals]]
+</includeonly>
+<noinclude>
+= Topic portal =
+
+Reusable navigation shell for portals and subportals that should not be forced to correspond one-to-one with a semantic Domain.
+
+<pre>
+{{Topic portal
+ |title=Python
+ |parent=[[Portal:Computer science|Computer science]]
+ |category=Python
+ |description=Focused entry point...
+ |start=Begin with syntax and data...
+ |learning_path='''Foundations''' → '''Core''' → '''Technical'''
+ |subportals=
+ |tree=<categorytree mode="pages" depth="2">Python</categorytree>
+ |related=[[Portal:Computer science|Computer science]]
+}}
+</pre>
+
+Use <code>parent</code> to expose a navigational breadcrumb and <code>subportals</code> to make recursive portal structures explicit. Neither field asserts ontology inheritance.
+
+[[Category:BITwiki templates]]
+</noinclude>

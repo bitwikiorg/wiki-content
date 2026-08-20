@@ -156,7 +156,9 @@ This prevents a single status field or numerical score from standing in for the 
 Navigation is a set of views over the knowledge substrate.
 
 === Portals ===
-High-level entry points into domains or coherent knowledge surfaces. A portal should help a reader enter and traverse a field; it is not an entity superclass.
+Portals are entry points into domains or other coherent knowledge surfaces. They may recurse into focused subportals such as [[Portal:Biology/Bioinformatics|Biology → Bioinformatics]] or [[Portal:Computer science/Python|Computer science → Python]]. A portal should help a reader enter and traverse a field; it is not an entity superclass.
+
+Portal hierarchy is navigation, not ontology inheritance. A subportal may represent a subfield, method, programming language, technology, interdisciplinary surface, or other useful focus without requiring a new Domain or Entity type. Portal content should favor progressive disclosure: simple orientation first, core concepts next, and technical depth after that.
 
 === Categories ===
 Browse/index groupings. Use when a collection has human navigational value.
@@ -230,7 +232,7 @@ When adding material, ask:
 |-
 | human browse collection || Category
 |-
-| high-level knowledge entry point || Portal
+| reader-facing knowledge entry point || Portal or subportal
 |-
 | historical V1 source evidence || archive-v1, not deployed V2
 |}

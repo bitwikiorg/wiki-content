@@ -16,13 +16,14 @@ on:
       - 'SMWSchema/**'
       - 'MediaWiki/**'
       - 'Help/**'
+      - 'archive-v1/**'
       - 'manifest.json'
-      - 'scripts/validate_v2.py'
-      - 'scripts/audit_substrate.py'
+      - '.gitignore'
+      - 'scripts/**'
       - '.github/workflows/validate-v2.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: validate-bitwiki-v2
@@ -33,34 +34,66 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - name: Validate deployable MediaWiki structure
-        id: validate
-        continue-on-error: true
+
+      - name: Validate deployable MediaWiki structure and identity semantics
         run: python scripts/validate_v2.py
-      - name: Audit MediaWiki / SMW / Lua substrate use
-        id: substrate
-        continue-on-error: true
+
+      - name: Audit MediaWiki / SMW / Lua / Cargo substrate use
+        if: always()
         run: python scripts/audit_substrate.py
-      - name: Commit generated validation reports
-        run: |
-          git config user.name 'BITwiki Validation Bot'
-          git config user.email 'bitwikicryptopedia@gmail.com'
-          git add v2-validation.json v2-substrate-audit.json
-          if git diff --cached --quiet; then
-            echo 'Validation reports unchanged.'
-          else
-            git commit -m 'Refresh V2 validation reports'
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
-      - name: Enforce validation
-        if: steps.validate.outcome != 'success' || steps.substrate.outcome != 'success'
-        run: |
-          cat v2-validation.json
-          cat v2-substrate-audit.json
-          exit 1
+
+      - name: Audit structured knowledge-request workflow
+        if: always()
+        run: python scripts/audit_workflow.py
+
+      - name: Audit deployable Main namespace roles
+        if: always()
+        run: python scripts/audit_mainspace.py
+
+      - name: Build V2 corpus and V1 classification inventories
+        if: always()
+        run: python scripts/inventory_corpus.py
+
+      - name: Classify V1 page roles before ontology
+        if: always()
+        run: python scripts/classify_v1_page_roles.py
+
+      - name: Classify V1 architecture sources by maturation family
+        if: always()
+        run: python scripts/classify_v1_architecture_families.py
+
+      - name: Show validation report
+        if: always()
+        run: test ! -f v2-validation.json || cat v2-validation.json
+
+      - name: Show substrate audit
+        if: always()
+        run: test ! -f v2-substrate-audit.json || cat v2-substrate-audit.json
+
+      - name: Show workflow audit
+        if: always()
+        run: test ! -f v2-workflow-audit.json || cat v2-workflow-audit.json
+
+      - name: Show Main namespace audit
+        if: always()
+        run: test ! -f v2-mainspace-audit.json || cat v2-mainspace-audit.json
+
+      - name: Upload architecture evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitwiki-v2-architecture-evidence
+          path: |
+            v2-validation.json
+            v2-substrate-audit.json
+            v2-workflow-audit.json
+            v2-mainspace-audit.json
+            v2-corpus-inventory.json
+            v1-classification-usage.json
+            v1-page-role-matrix.json
+            v1-architecture-family-matrix.json
+          if-no-files-found: warn

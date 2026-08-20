@@ -10,7 +10,7 @@ on:
       - '.github/workflows/verify-v1-fidelity.yml'
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: verify-bitwiki-v1-fidelity
@@ -22,8 +22,6 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -37,22 +35,16 @@ jobs:
         continue-on-error: true
         run: python scripts/verify_v1_fidelity.py
 
-      - name: Commit fidelity audit
+      - name: Upload fidelity evidence
         if: always()
-        run: |
-          git config user.name 'BITwiki Fidelity Bot'
-          git config user.email 'bitwikicryptopedia@gmail.com'
-          git add v1-fidelity-audit.json
-          if git diff --cached --quiet; then
-            echo 'Fidelity report unchanged.'
-          else
-            git commit -m 'Refresh live V1 fidelity audit'
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitwiki-v1-fidelity-evidence
+          path: v1-fidelity-audit.json
+          if-no-files-found: error
 
       - name: Enforce content fidelity
         if: steps.verify.outcome != 'success'
         run: |
-          cat v1-fidelity-audit.json
+          test ! -f v1-fidelity-audit.json || cat v1-fidelity-audit.json
           exit 1

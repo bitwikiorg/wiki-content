@@ -1,0 +1,237 @@
+{
+  "status": "ok",
+  "purpose": "Measure actual use of MediaWiki, Semantic MediaWiki, Scribunto, Cargo and transclusion primitives instead of inferring architecture from prose.",
+  "siteinfo_snapshot": "archive-v1/siteinfo.json",
+  "configured_namespaces": [
+    "BITwiki",
+    "BITwiki talk",
+    "Category",
+    "Category talk",
+    "Concept",
+    "Concept talk",
+    "File",
+    "File talk",
+    "Help",
+    "Help talk",
+    "Main",
+    "MediaWiki",
+    "MediaWiki talk",
+    "Module",
+    "Module talk",
+    "Property",
+    "Property talk",
+    "smw/schema",
+    "smw/schema talk",
+    "Talk",
+    "Template",
+    "Template talk",
+    "User",
+    "User talk"
+  ],
+  "installed_extensions": [
+    "3DAlloy",
+    "AIEditingAssistant",
+    "Cargo",
+    "CodeEditor",
+    "Discourse",
+    "Math",
+    "NCBITaxonomyLookup",
+    "Network",
+    "PageImages",
+    "ParserFunctions",
+    "PubmedParser",
+    "Scribunto",
+    "SemanticMediaWiki",
+    "Vector",
+    "VisualEditor",
+    "VisualEditorPlus",
+    "Wanda",
+    "WandaScore",
+    "WandaScribe",
+    "WikiEditor"
+  ],
+  "source_control_mappings": {
+    "Main": {
+      "path": "Main/",
+      "kind": "namespace",
+      "content_model": "wikitext"
+    },
+    "BITwiki": {
+      "path": "BITwiki/",
+      "kind": "namespace",
+      "content_model": "wikitext",
+      "canonical_name": "Project"
+    },
+    "Template": {
+      "path": "Template/",
+      "kind": "namespace",
+      "content_model": "wikitext"
+    },
+    "Property": {
+      "path": "Property/",
+      "kind": "namespace",
+      "content_model": "wikitext",
+      "extension": "SemanticMediaWiki"
+    },
+    "Category": {
+      "path": "Category/",
+      "kind": "namespace",
+      "content_model": "wikitext"
+    },
+    "Concept": {
+      "path": "Concept/",
+      "kind": "namespace",
+      "content_model": "wikitext",
+      "extension": "SemanticMediaWiki"
+    },
+    "smw/schema": {
+      "path": "SMWSchema/",
+      "kind": "namespace",
+      "content_model": "smw/schema",
+      "extension": "SemanticMediaWiki",
+      "filename_encoding": "URL-encode colon in namespace-local title"
+    },
+    "Module": {
+      "path": "Module/",
+      "kind": "namespace",
+      "content_model": "Scribunto/Lua",
+      "extension": "Scribunto"
+    },
+    "MediaWiki": {
+      "path": "MediaWiki/",
+      "kind": "namespace",
+      "content_model": "page-specific (wikitext/CSS/JS)"
+    },
+    "Help": {
+      "path": "Help/",
+      "kind": "namespace",
+      "content_model": "wikitext"
+    },
+    "Portal": {
+      "path": "Portal/",
+      "kind": "title projection",
+      "content_model": "wikitext",
+      "namespace_configured_in_snapshot": false
+    }
+  },
+  "configured_but_unmapped": [],
+  "title_projections": [
+    "Portal"
+  ],
+  "title_projections_also_configured_as_namespaces": [],
+  "source_files_scanned": 195,
+  "source_surface_file_counts": {
+    "BITwiki": 52,
+    "Category": 32,
+    "Concept": 1,
+    "Main": 50,
+    "MediaWiki": 6,
+    "Module": 1,
+    "Portal": 17,
+    "Property": 19,
+    "SMWSchema": 3,
+    "Template": 14
+  },
+  "primitive_counts": {
+    "smw_ask": 2,
+    "smw_concept": 1,
+    "smw_subobject": 0,
+    "scribunto_invoke": 1,
+    "cargo_declare": 0,
+    "cargo_store": 0,
+    "cargo_query": 0,
+    "includeonly": 5,
+    "onlyinclude": 0,
+    "noinclude": 6,
+    "main_namespace_transclusion": 12
+  },
+  "primitive_files": {
+    "smw_ask": [
+      "Template/Domain portal.mediawiki",
+      "Template/Knowledge domain category.mediawiki"
+    ],
+    "smw_concept": [
+      "Concept/Computer science.mediawiki"
+    ],
+    "scribunto_invoke": [
+      "Template/Knowledge object.mediawiki"
+    ],
+    "includeonly": [
+      "Template/Domain portal.mediawiki",
+      "Template/Knowledge domain category.mediawiki",
+      "Template/Knowledge object.mediawiki",
+      "Template/Source status.mediawiki",
+      "Template/Topic portal.mediawiki"
+    ],
+    "noinclude": [
+      "Category/BITwiki templates.mediawiki",
+      "Template/Domain portal.mediawiki",
+      "Template/Knowledge domain category.mediawiki",
+      "Template/Knowledge object.mediawiki",
+      "Template/Source status.mediawiki",
+      "Template/Topic portal.mediawiki"
+    ],
+    "main_namespace_transclusion": [
+      "BITwiki/Book Matter.mediawiki",
+      "BITwiki/Transclusion.mediawiki"
+    ]
+  },
+  "semantic_property_source_syntax_counts": {
+    "Has type": 15,
+    "Domain": 5,
+    "Imported from": 4,
+    "Property description": 4,
+    "Entity type": 1,
+    "Epistemic status": 1,
+    "Provenance": 1
+  },
+  "live_template_inventory_declared_count": 9,
+  "live_template_records_count": 9,
+  "live_template_titles": [
+    "Template:BITwiki",
+    "Template:BITwiki complex decorative circle",
+    "Template:BITwiki constructs decorative circle",
+    "Template:BITwiki footer",
+    "Template:BITwiki header element",
+    "Template:BITwiki implementations decorative circle",
+    "Template:BITwiki projects decorative circle",
+    "Template:BITwiki simple decorative circle",
+    "Template:Infobox"
+  ],
+  "live_template_transclusion_counts": {
+    "Template:BITwiki": 0,
+    "Template:BITwiki complex decorative circle": 3,
+    "Template:BITwiki constructs decorative circle": 2,
+    "Template:BITwiki footer": 2,
+    "Template:BITwiki header element": 2,
+    "Template:BITwiki implementations decorative circle": 2,
+    "Template:BITwiki projects decorative circle": 2,
+    "Template:BITwiki simple decorative circle": 2,
+    "Template:Infobox": 80
+  },
+  "source_controlled_template_titles": [
+    "Template:BITwiki",
+    "Template:BITwiki complex decorative circle",
+    "Template:BITwiki constructs decorative circle",
+    "Template:BITwiki footer",
+    "Template:BITwiki header element",
+    "Template:BITwiki implementations decorative circle",
+    "Template:BITwiki projects decorative circle",
+    "Template:BITwiki simple decorative circle",
+    "Template:Domain portal",
+    "Template:Infobox",
+    "Template:Knowledge domain category",
+    "Template:Knowledge object",
+    "Template:Source status",
+    "Template:Topic portal"
+  ],
+  "missing_live_templates": [],
+  "missing_mapped_roots": [],
+  "missing_readmes": [],
+  "warnings": [
+    "Cargo is installed but no source-controlled Cargo table declaration was found; keep this at zero until a repeated-data workflow justifies a table.",
+    "No source-controlled Cargo storage call was found.",
+    "No SMW subobject usage was found; introduce subobjects only for qualified/nested facts."
+  ],
+  "critical": []
+}

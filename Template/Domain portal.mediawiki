@@ -6,6 +6,10 @@
 == Start here ==
 {{{start}}}
 
+{{#if: {{{learning_path|}}} |== Learn progressively ==
+{{{learning_path}}}
+
+}}
 == Browse this domain ==
 {{#ask:
  [[Domain::{{{domain}}}]]
@@ -21,11 +25,17 @@
 
 {{{tree|}}}
 
+{{#if: {{{subportals|}}} |== Subportals ==
+{{{subportals}}}
+
+}}
 == Related portals ==
 {{{related}}}
 
 == About this portal ==
 This portal is a reader-facing view over the knowledge corpus. It does not define the ontology and does not imply that the domain is exclusive. A knowledge object may belong to multiple domains.
+
+Subportals are recursive navigation views. A child portal may focus a field, method, language, technology, or interdisciplinary surface without becoming a Domain or Entity type merely because it appears beneath this portal.
 
 See [[BITwiki:Navigation]], [[BITwiki:Organization]], and [[BITwiki:Semantic properties]].
 
@@ -43,6 +53,8 @@ Reusable navigation shell for V2 domain portals.
  |category=Biology
  |description=Entry point for living systems...
  |start=[[Cell membrane]] — compact domain exemplar
+ |learning_path='''Foundations''' → '''Core''' → '''Technical'''
+ |subportals=* [[Portal:Biology/Bioinformatics|Bioinformatics]]
  |tree=<categorytree mode="pages" depth="2">Biology</categorytree>
  |related=[[Portal:Science|Science]] · [[Portal:Medicine|Medicine]]
 }}
@@ -51,6 +63,8 @@ Reusable navigation shell for V2 domain portals.
 The template supplies navigation mechanics only. Domain-specific orientation and cross-domain relationships remain explicit on each portal.
 
 The semantic table queries the [[Property:Domain|Domain]] property rather than treating category membership as ontology. The category remains a complementary human browse surface.
+
+<code>learning_path</code> and <code>subportals</code> are optional reader-navigation fields. They do not add semantic identity to the underlying knowledge objects.
 
 [[Category:BITwiki templates]]
 </noinclude>

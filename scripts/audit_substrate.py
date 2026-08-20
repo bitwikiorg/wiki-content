@@ -164,9 +164,13 @@ def main() -> int:
         set(title_projections) & set(configured_namespaces)
     )
 
-    live_template_titles = sorted(
-        item["title"] for item in template_index.get("templates", [])
-    )
+    live_template_records = template_index.get("records", [])
+    declared_live_template_count = template_index.get("count")
+    live_template_titles = sorted(item["title"] for item in live_template_records)
+    live_template_usage = {
+        item["title"]: item.get("transclusion_count", 0)
+        for item in live_template_records
+    }
     source_controlled_template_titles = sorted(
         f"Template:{path.stem}"
         for path in (ROOT / "Template").glob("*.mediawiki")
@@ -204,6 +208,15 @@ def main() -> int:
     critical = []
     if missing_mapped_roots:
         critical.append("Mapped source roots missing: " + ", ".join(missing_mapped_roots))
+    if declared_live_template_count != len(live_template_records):
+        critical.append(
+            "Live template inventory count mismatch: index declares "
+            f"{declared_live_template_count}, records contain {len(live_template_records)}."
+        )
+    if declared_live_template_count and not live_template_titles:
+        critical.append(
+            "Live template inventory declares templates but no template titles were parsed."
+        )
     if missing_live_templates:
         critical.append(
             "Current live templates absent from Template/: "
@@ -238,13 +251,18 @@ def main() -> int:
             for name, paths in primitive_files.items()
             if paths
         },
-        "semantic_property_assertion_counts": dict(
+        "semantic_property_source_syntax_counts": dict(
             sorted(
                 property_counts.items(),
                 key=lambda item: (-item[1], item[0].casefold()),
             )
         ),
+        "live_template_inventory_declared_count": declared_live_template_count,
+        "live_template_records_count": len(live_template_records),
         "live_template_titles": live_template_titles,
+        "live_template_transclusion_counts": dict(
+            sorted(live_template_usage.items(), key=lambda item: item[0].casefold())
+        ),
         "source_controlled_template_titles": source_controlled_template_titles,
         "missing_live_templates": missing_live_templates,
         "missing_mapped_roots": missing_mapped_roots,

@@ -46,9 +46,11 @@
     "path": "v2-validation.json",
     "generator": "scripts/validate_v2.py",
     "valid": true,
+    "controlled_domains": 13,
     "category_pages": 30,
     "template_pages": 4,
-    "domain_exemplars": 12,
+    "domain_exemplars": 13,
+    "domain_exemplar_coverage_required": true,
     "semantic_identity_validation": true,
     "knowledge_object_fields_required": [
       "entity_type",
@@ -57,13 +59,33 @@
       "provenance"
     ]
   },
+  "mainspace_audit": {
+    "path": "v2-mainspace-audit.json",
+    "generator": "scripts/audit_mainspace.py",
+    "purpose": "separate redirects, exemplars, knowledge objects, subpages and short-content review candidates without treating size as quality"
+  },
   "navigation": {
     "recursive_portals": true,
-    "subportal_examples": [
-      "Portal:Biology/Bioinformatics",
-      "Portal:Computer science/Python"
+    "polyhierarchical_portals": true,
+    "canonical_subportal_examples": [
+      "Portal:Bioinformatics",
+      "Portal:Python"
     ],
-    "portal_hierarchy_is_ontology": false
+    "legacy_slash_paths_are_redirects": true,
+    "portal_hierarchy_is_ontology": false,
+    "depth_localization": [
+      "Simple orientation",
+      "Core understanding",
+      "Technical depth",
+      "Frontier / research"
+    ]
+  },
+  "research_surfaces": {
+    "references": "BITwiki/Research references.mediawiki",
+    "comparative_wikis": "BITwiki/Comparative wiki research register.mediawiki",
+    "navigation_coverage": "BITwiki/Navigation and coverage research.mediawiki",
+    "sensitive_topics": "BITwiki/Sensitive topic scope research.mediawiki",
+    "requested_knowledge": "BITwiki/Requested knowledge.mediawiki"
   },
   "migration_evidence": {
     "corpus_inventory": "scripts/inventory_corpus.py",

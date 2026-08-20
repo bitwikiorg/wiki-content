@@ -50,13 +50,44 @@ ALLOWED_DOMAINS = {
 }
 
 REQUEST_CALL_RE = re.compile(r"{{\s*Knowledge request\b(.*?)}}", re.I | re.S)
-DECLARE_RE = re.compile(r"{{\s*#cargo_declare\s*:(.*?)}}", re.I | re.S)
-STORE_RE = re.compile(r"{{\s*#cargo_store\s*:(.*?)}}", re.I | re.S)
-QUERY_RE = re.compile(r"{{\s*#cargo_query\s*:(.*?)}}", re.I | re.S)
 
 
 def normalize(value: str) -> str:
     return re.sub(r"\s+", " ", value.strip())
+
+
+def parser_function_calls(text: str, name: str) -> list[str]:
+    """Extract deliberately line-oriented MediaWiki parser-function calls.
+
+    A non-greedy ``{{...}}`` regex is unsafe for Cargo storage calls because
+    their values contain nested template parameters such as ``{{{request|}}}``.
+    The workflow contract keeps parser-function calls line-oriented, so consume
+    from the opening ``{{#name:`` line through a closing line containing only
+    ``}}``. This preserves nested braces inside values without pretending to be
+    a general MediaWiki parser.
+    """
+    start = re.compile(
+        r"^\s*\{\{\s*#" + re.escape(name) + r"\s*:\s*(.*)$",
+        re.I,
+    )
+    end = re.compile(r"^\s*\}\}\s*$")
+    calls: list[str] = []
+    current: list[str] | None = None
+
+    for line in text.splitlines():
+        if current is None:
+            match = start.match(line)
+            if match:
+                current = [match.group(1)]
+            continue
+
+        if end.match(line):
+            calls.append("\n".join(current))
+            current = None
+        else:
+            current.append(line)
+
+    return calls
 
 
 def parse_call(body: str) -> dict[str, str]:
@@ -114,8 +145,8 @@ def main() -> int:
     else:
         request_text = REQUESTS.read_text(encoding="utf-8")
 
-    declares = DECLARE_RE.findall(template_text)
-    stores = STORE_RE.findall(template_text)
+    declares = parser_function_calls(template_text, "cargo_declare")
+    stores = parser_function_calls(template_text, "cargo_store")
     if len(declares) != 1:
         errors.append(f"Expected exactly one #cargo_declare call; found {len(declares)}.")
     if len(stores) != 1:
@@ -257,7 +288,10 @@ def main() -> int:
             }
         )
 
-    queries = [parse_call(body) for body in QUERY_RE.findall(request_text)]
+    queries = [
+        parse_call(body)
+        for body in parser_function_calls(request_text, "cargo_query")
+    ]
     workflow_queries = [
         query for query in queries if normalize(query.get("tables", "")) == TABLE
     ]

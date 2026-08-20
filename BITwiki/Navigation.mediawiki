@@ -1,8 +1,18 @@
-{{Source status|status=source-grounded|note=Restores the broader portal/index/outline design intent while keeping navigation separate from ontology.}}
+{{Source status|status=source-grounded|note=Restores the broader portal/index/outline design intent while keeping navigation separate from ontology; extended with recursive portals, depth localization, contribution and coverage surfaces.}}
 
 = Navigation =
 
-BITwiki navigation should support both deliberate study and exploratory traversal across a semantic knowledge graph.
+BITwiki navigation should support deliberate study, exploratory traversal, contribution, and maintenance across a semantic knowledge graph.
+
+== Navigation is plural ==
+
+No single tree should carry every job.
+
+<pre>
+Domain ≠ Portal ≠ Category ≠ Outline ≠ List ≠ Index ≠ Core/Vital set ≠ ontology
+</pre>
+
+The same subject can appear in several views because each answers a different question.
 
 == Navigation surfaces ==
 
@@ -10,9 +20,11 @@ BITwiki navigation should support both deliberate study and exploratory traversa
 The public entry point and concise orientation surface.
 
 === Portals ===
-High-level entry points into major knowledge fields and coherent knowledge surfaces. Historical Book Matter work described portals as '''intelligent entry points to recursive knowledge networks'''.
+Reader-facing entry points into major fields or coherent knowledge surfaces.
 
-* [[Portal:Systems science]] — foundational/root orientation
+Controlled Domain portals currently include:
+
+* [[Portal:Systems science]] — foundational/integrative orientation
 * [[Portal:Science]]
 * [[Portal:Biology]]
 * [[Portal:Computer science]]
@@ -26,34 +38,64 @@ High-level entry points into major knowledge fields and coherent knowledge surfa
 * [[Portal:Physics]]
 * [[Portal:Medicine]]
 
-==== Subportals ====
-Portals may recurse into narrower reader-facing surfaces when a field becomes too broad for one useful entry point.
+=== Focused / recursive portals ===
+A focused portal can exist below or across broad fields when it adds meaningful orientation.
 
 Examples:
-* [[Portal:Biology]] → [[Portal:Biology/Bioinformatics|Bioinformatics]]
-* [[Portal:Computer science]] → [[Portal:Computer science/Python|Python]]
 
-A subportal is a '''navigation relationship''', not ontology inheritance. A child portal may represent a subfield, method, language, technology, interdisciplinary surface, or other coherent way into the corpus. It does not become an Entity type or Domain merely because it is nested beneath another portal.
+* [[Portal:Bioinformatics]] — parent contexts: Biology + Computer science
+* [[Portal:Python]] — parent context: Computer science
 
-Portal paths should favor progressive disclosure: simple orientation first, then core concepts, then technical depth. This lets a novice and an expert enter the same knowledge surface at different levels without creating separate competing taxonomies.
+Canonical portal identity should not depend on a filesystem-like path. Historical/convenience paths such as <code>Portal:Biology/Bioinformatics</code> may redirect to the canonical focused portal.
 
-=== Indices ===
-Large-scale maps and registries organized for lookup.
+A portal relationship is navigation, not ontology inheritance. A child may represent a subfield, method, language, technology, interdisciplinary surface, or another coherent route into the corpus.
 
-=== Outlines ===
-Hierarchical decompositions used to understand the internal structure of a field without claiming the outline is the ontology itself.
+=== Reader depth ===
+Portals and pages should support progressive entry:
 
-=== Contents pages ===
-Broad human-readable directories across major knowledge surfaces.
+'''Simple orientation → Core understanding → Technical depth → Frontier / research'''
+
+See [[BITwiki:Readable depth and localization]]. This is primarily depth/readability localization; language translation is a separate dimension.
 
 === Categories ===
-Human-readable classification and browsing groups.
+Human-readable browse/index groups. Subcategories may have multiple parents. A substantive category should explain Scope, Includes, Excludes/boundary, Category role, Parent/subcategories, important pages, and related navigation.
+
+Category membership does not silently assign Entity type or Domain.
+
+=== Outlines ===
+Hierarchical study maps that expose the internal shape of a field without declaring that shape to be ontology.
+
+=== Lists and registries ===
+Use when members need annotation, comparison fields, dates, references, ordering, or context that a bare category cannot carry.
+
+=== Glossaries and indices ===
+Glossaries support vocabulary learning; indices optimize lookup.
+
+=== Contents / broad directories ===
+Human-readable maps across major knowledge and project surfaces.
+
+=== Core / Vital coverage ===
+A future curated coverage-priority layer can identify important missing or weak knowledge without turning importance into a Domain or Entity type. See [[BITwiki:Navigation and coverage research]].
 
 === Semantic queries and knowledge graphs ===
 Computed/visual views over structured properties and relationships. Graphs are views over knowledge, not independent truth.
 
+== Contribution and administration ==
+
+Reader navigation and project-operation navigation should both be obvious without being conflated.
+
+* [[BITwiki:Contributing]] — contribution pathway
+* [[BITwiki:Requested knowledge]] — explicit missing/weak coverage queue
+* [[BITwiki:Research references]] — external research source index
+* [[BITwiki:Comparative wiki research register]] — knowledge-system research
+
+Administration, maintenance, validation, governance, requests, drafts, portal/category administration, templates/properties, automation, and security belong in project-operational surfaces rather than subject Domains.
+
 == Systems science orientation ==
-Historical design placed Systems Science / Systems Theory as the top or root priority: individual knowledge domains are interpreted as interacting systems rather than isolated silos. This is an intellectual orientation, not a demand that every page literally be nested beneath one category.
+Historical design placed Systems Science / Systems Theory as the top intellectual priority: individual knowledge domains are interpreted as interacting systems rather than isolated silos. This is an integrative worldview, not a demand that every page literally nest beneath one category.
+
+== Design research ==
+See [[BITwiki:Navigation and coverage research]] for comparative evidence, domain gaps, portal failure modes, category contracts, and future Core/Vital coverage research.
 
 [[Category:Navigation]]
 [[Category:BITwiki architecture]]

@@ -11,7 +11,14 @@ on:
       - 'Template/**'
       - 'Property/**'
       - 'Category/**'
+      - 'Concept/**'
+      - 'Module/**'
+      - 'SMWSchema/**'
+      - 'MediaWiki/**'
+      - 'Help/**'
+      - 'manifest.json'
       - 'scripts/validate_v2.py'
+      - 'scripts/audit_substrate.py'
       - '.github/workflows/validate-v2.yml'
 
 permissions:
@@ -28,31 +35,32 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-
       - name: Validate deployable MediaWiki structure
         id: validate
         continue-on-error: true
         run: python scripts/validate_v2.py
-
-      - name: Commit validation report
+      - name: Audit MediaWiki / SMW / Lua substrate use
+        id: substrate
+        continue-on-error: true
+        run: python scripts/audit_substrate.py
+      - name: Commit generated validation reports
         run: |
           git config user.name 'BITwiki Validation Bot'
           git config user.email 'bitwikicryptopedia@gmail.com'
-          git add v2-validation.json
+          git add v2-validation.json v2-substrate-audit.json
           if git diff --cached --quiet; then
-            echo 'Validation report unchanged.'
+            echo 'Validation reports unchanged.'
           else
-            git commit -m 'Refresh V2 structural validation report'
+            git commit -m 'Refresh V2 validation reports'
             git pull --rebase origin main
             git push origin HEAD:main
           fi
-
       - name: Enforce validation
-        if: steps.validate.outcome != 'success'
+        if: steps.validate.outcome != 'success' || steps.substrate.outcome != 'success'
         run: |
           cat v2-validation.json
+          cat v2-substrate-audit.json
           exit 1

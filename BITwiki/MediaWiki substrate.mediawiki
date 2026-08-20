@@ -1,0 +1,235 @@
+{{Source status|status=source-grounded architecture|note=Reconciles the V2 repository with the MediaWiki namespaces and extension surfaces captured from the live BITwiki installation.}}
+
+= MediaWiki substrate =
+
+BITwiki V2 is implemented on MediaWiki. The repository must therefore model the wiki that actually exists rather than allowing convenient filesystem folders to become an invented architecture.
+
+The authoritative runtime signals are [[Special:NamespaceInfo]], [[Special:Version]], the MediaWiki API site information captured in <code>archive-v1/siteinfo.json</code>, and live fidelity checks. Repository structure is a source-control projection of those surfaces; it is not itself the ontology.
+
+== Current reconciliation ==
+
+The captured installation exposes the standard MediaWiki namespaces together with extension namespaces used by Semantic MediaWiki and Scribunto.
+
+{| class="wikitable"
+! Runtime surface
+! Repository surface
+! Role
+! Current disposition
+|-
+| Main
+| <code>Main/</code>
+| Canonical public knowledge and compatibility titles
+| Source controlled
+|-
+| BITwiki / Project
+| <code>BITwiki/</code>
+| Governance, standards, architecture, research and administration
+| Source controlled
+|-
+| Template
+| <code>Template/</code>
+| Reusable declarative composition and presentation
+| Source controlled; live V1 templates recovered for compatibility
+|-
+| Property
+| <code>Property/</code>
+| Semantic MediaWiki predicates
+| Source controlled
+|-
+| Category
+| <code>Category/</code>
+| Human browse and intentionally maintained classification
+| Source controlled
+|-
+| Concept
+| <code>Concept/</code>
+| Saved semantic query sets / dynamic collections
+| Source controlled; introduced only when a reusable set has a real consumer
+|-
+| Module
+| <code>Module/</code>
+| Scribunto/Lua reusable logic
+| Source controlled as Lua
+|-
+| <code>smw/schema</code>
+| <code>SMWSchema/</code>
+| Semantic MediaWiki schema/profile content model
+| Current live schema pages recovered; colon in namespace-local titles is filename-encoded
+|-
+| MediaWiki
+| <code>MediaWiki/</code>
+| Runtime-affecting interface/configuration pages
+| Current public pages recovered; changes require deployment care
+|-
+| Help
+| <code>Help/</code>
+| User-facing help when BITwiki authors it
+| Namespace mapped; no V2 help pages manufactured merely to populate it
+|-
+| <code>Portal:*</code>
+| <code>Portal/</code>
+| Reader-facing navigation title projection
+| '''Not a configured namespace in the captured installation'''; do not treat this folder as namespace evidence
+|}
+
+Talk, User, File and corresponding talk namespaces remain runtime MediaWiki surfaces but are not automatically deployed from this public corpus. Their omission from a deployable source tree is deliberate and different from pretending they do not exist.
+
+== Primitive responsibilities ==
+
+Use the smallest native primitive whose semantics match the job.
+
+{| class="wikitable"
+! Need
+! Preferred primitive
+! Do not substitute
+|-
+| Independent canonical knowledge
+| Page / knowledge object
+| Tiny fragments created solely for architectural symmetry
+|-
+| Repeated declarative rendering or metadata emission
+| Template
+| Copy-pasted wikitext
+|-
+| Non-trivial reusable logic or validation
+| Scribunto/Lua Module
+| Deep nests of ParserFunctions
+|-
+| Graph assertion
+| SMW Property
+| Category membership or prose when a stable relationship is intended
+|-
+| Reusable computed semantic set
+| SMW Concept
+| Hand-maintained list that is supposed to update from metadata
+|-
+| Qualified/nested semantic fact
+| SMW subobject when the fact genuinely has its own attributes
+| Flattening a relationship until meaning is lost
+|-
+| Repeated structured records with table/query/drilldown needs
+| Cargo
+| Cargo tables invented for one-off page metadata
+|-
+| Human browse hierarchy
+| Category
+| Ontology claims inferred from navigation alone
+|-
+| Reuse of exact authored material
+| MediaWiki transclusion
+| Duplicate prose
+|-
+| Relationship-driven exploration
+| SMW queries / Network / faceted views
+| Static lists that silently drift
+|}
+
+This division is a default, not a prohibition against combination. A template may emit semantic properties; a Lua module may support a template; a category may contain an SMW query; a Concept may feed another query. Composition is valuable when each layer retains a clear job.
+
+== Compatibility template recovery ==
+
+The live V1 fidelity inventory contains nine templates. They are now represented directly in <code>Template/</code> so a reader does not have to excavate the provenance archive to discover runtime dependencies.
+
+This recovery does '''not''' declare every V1 visual template part of the V2 design language.
+
+* <code>Template:Infobox</code> is a high-impact compatibility dependency with 80 recorded callers.
+* The BITwiki decorative/header/footer templates have live callers and remain compatibility surfaces until those callers are deliberately migrated.
+* New V2 templates such as <code>Template:Knowledge object</code> are the canonical path for new V2 knowledge objects.
+* A live compatibility template may be retired only after its callers and rendered behavior have been verified.
+
+See <code>Template/README.md</code> and <code>archive-v1/templates/</code>.
+
+== Lua: mature the primitive, not the old vocabulary ==
+
+V1 specified a larger Lua validation architecture, but the live Module namespace was empty in the captured corpus. The specification is therefore design evidence, not proof that five production modules existed.
+
+V2 begins with one bounded module: <code>Module:Structure</code>. Its first responsibility is runtime validation of the explicit identity supplied to <code>Template:Knowledge object</code>. This preserves a useful V1 idea — reusable validation — while using the current V2 controlled vocabularies and avoiding the obsolete numeric-confidence model.
+
+The module does not manufacture metadata. Valid calls produce no extra visible content; malformed direct wiki edits produce a validation message and maintenance category. Repository CI remains the pre-deployment validator, while Lua provides a runtime backstop for edits made through MediaWiki.
+
+== Semantic MediaWiki ==
+
+SMW is a substrate, not an infobox decoration.
+
+Current V2 use should progressively exercise four distinct layers:
+
+# '''Assertions''' — stable properties emitted by knowledge objects and deliberate relationship annotations.
+# '''Queries''' — <code>#ask</code> views that derive navigation from those assertions.
+# '''Concepts''' — named reusable semantic sets when more than one consumer benefits from the same query.
+# '''Integrity''' — WantedProperties, UnusedProperties, processing/constraint errors and Browse/Ask diagnostics used as maintenance surfaces.
+
+<code>Concept:Computer science</code> is the first V2 proof of the third layer: a dynamic set defined by <code>[[Domain::Computer science]]</code>. It is not a new taxonomy branch.
+
+== Categories as composed navigation objects ==
+
+A substantive Domain category is not required to duplicate a large block of wikitext in every source file. <code>Template:Knowledge domain category</code> provides shared structure and a live SMW query while each Category page supplies domain-specific scope and boundary text.
+
+A short category source file is therefore not automatically a stub. The relevant test is the rendered and semantic function:
+
+* Does it explain scope?
+* Does it state meaningful boundaries?
+* Does it expose actual knowledge objects dynamically?
+* Does it connect to relevant navigation?
+* Does it avoid claiming ontology from category placement alone?
+
+Administrative categories remain intentionally concise.
+
+== Cargo and subobjects: evidence-gated ==
+
+Cargo, SMW subobjects, Network and faceted/drilldown surfaces are installed capabilities, but architecture quality is not measured by turning every extension on everywhere.
+
+Cargo should be introduced when BITwiki has repeated records whose lifecycle benefits from tabular storage, querying, export or drilldown — for example a mature request/review workflow, reference registry, or another dataset-like surface. It should not duplicate ordinary page identity already represented by SMW.
+
+Likewise, subobjects should appear when a fact needs its own attributes, provenance or qualification. Until such a case exists, a count of zero is an honest result rather than an implementation failure.
+
+== Measurable substrate use ==
+
+Run:
+
+<pre>
+python scripts/audit_substrate.py
+</pre>
+
+The audit reports:
+
+* configured namespaces and source-control mappings;
+* current live templates missing from deployable <code>Template/</code>;
+* <code>#ask</code>, <code>#concept</code>, <code>#invoke</code>, <code>#subobject</code> and Cargo primitive counts;
+* semantic property assertion counts;
+* transclusion markup use;
+* mapped roots or directories missing README orientation.
+
+The goal is to make architectural claims falsifiable. A page saying “BITwiki uses Lua” is weak evidence; source-controlled modules plus real <code>#invoke</code> consumers are stronger evidence.
+
+== Deployment order ==
+
+When the substrate is imported into MediaWiki, dependencies should be satisfied before consumers:
+
+<pre>
+MediaWiki / SMW schema prerequisites
+→ Property definitions
+→ Module logic
+→ foundational Templates
+→ compatibility Templates
+→ Concepts
+→ Categories / navigation views
+→ knowledge objects and other consumers
+→ semantic-data rebuild / verification
+</pre>
+
+Exact deployment remains additive and non-destructive. See [[BITwiki:Deployment prerequisites]].
+
+== Sources and evidence ==
+
+* [[Special:NamespaceInfo]] — live namespace configuration.
+* [[Special:Version]] — installed extension/runtime surface.
+* <code>archive-v1/siteinfo.json</code> — captured MediaWiki API site information.
+* <code>v1-fidelity-audit.json</code> — live-versus-archive public fidelity audit.
+* <code>archive-v1/templates/index.json</code> — live template inventory and usage counts.
+* <code>archive-v1/pages/Main/Lua Module Specifications.mediawiki</code> — V1 Lua architecture design lineage.
+* <code>archive-v1/pages/Main/Template Validation Lua Module.mediawiki</code> — V1 validation-module design lineage.
+* [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
+* [https://www.semantic-mediawiki.org/wiki/Help:Concepts Semantic MediaWiki — Concepts]
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

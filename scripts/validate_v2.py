@@ -13,6 +13,10 @@ import re
 from pathlib import Path
 
 
+ROOT = Path(__file__).resolve().parents[1]
+RUNTIME_SCHEMA_PATH = ROOT / "bitwiki-runtime-schema.json"
+RUNTIME_SCHEMA = json.loads(RUNTIME_SCHEMA_PATH.read_text(encoding="utf-8"))
+
 WIKITEXT_ROOTS = [
     "Main",
     "BITwiki",
@@ -74,19 +78,9 @@ MAGIC_WORDS = {
     "PROTECTIONEXPIRY", "DISPLAYTITLE", "DEFAULTSORT",
 }
 
-ALLOWED_ENTITY_TYPES = {
-    "Concept", "Method", "Protocol", "Implementation", "Project", "Dataset",
-    "Person", "Organization", "Event", "Publication", "Location", "Technology",
-}
-ALLOWED_DOMAINS = {
-    "Systems science", "Science", "Biology", "Computer science", "Mathematics",
-    "Philosophy", "Technology", "Electronics", "Energy", "Engineering",
-    "Chemistry", "Physics", "Medicine",
-}
-ALLOWED_EPISTEMIC_STATUSES = {
-    "Hypothetical", "Emerging", "Supported", "Well-supported", "Established",
-    "Disputed",
-}
+ALLOWED_ENTITY_TYPES = set(RUNTIME_SCHEMA["entity_types"])
+ALLOWED_DOMAINS = set(RUNTIME_SCHEMA["domains"])
+ALLOWED_EPISTEMIC_STATUSES = set(RUNTIME_SCHEMA["epistemic_statuses"])
 REQUIRED_KNOWLEDGE_FIELDS = ("entity_type", "domain", "status", "provenance")
 
 
@@ -273,6 +267,8 @@ def main() -> None:
         "invalid_domain_values": invalid_domains,
         "invalid_epistemic_status_values": invalid_epistemic_statuses,
         "controlled_vocabularies": {
+            "authority": str(RUNTIME_SCHEMA_PATH.relative_to(ROOT)),
+            "schema_version": RUNTIME_SCHEMA.get("schema_version"),
             "entity_types": sorted(ALLOWED_ENTITY_TYPES),
             "domains": sorted(ALLOWED_DOMAINS),
             "epistemic_statuses": sorted(ALLOWED_EPISTEMIC_STATUSES),
@@ -282,6 +278,7 @@ def main() -> None:
             "Compatibility/runtime Template pages are not required to join a category merely to satisfy CI.",
             "SMWSchema/ and MediaWiki/ payloads are counted but not parsed as ordinary wikitext references.",
             "Module/Lua is audited by scripts/audit_substrate.py rather than parsed as wikitext.",
+            "Compiler-facing controlled vocabularies are loaded from bitwiki-runtime-schema.json.",
         ],
     }
 

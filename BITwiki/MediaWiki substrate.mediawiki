@@ -1,10 +1,12 @@
-{{Source status|status=source-grounded architecture|note=Reconciles the V2 repository with the MediaWiki namespaces and extension surfaces captured from the live BITwiki installation.}}
+{{Source status|status=source-grounded architecture|note=Reconciles the V2 repository with the MediaWiki namespaces and extension surfaces captured from the live BITwiki installation, and defines the programmable substrate boundary with BIThub/Discourse.}}
 
 = MediaWiki substrate =
 
 BITwiki V2 is implemented on MediaWiki. The repository must therefore model the wiki that actually exists rather than allowing convenient filesystem folders to become an invented architecture.
 
 The authoritative runtime signals are [[Special:NamespaceInfo]], [[Special:Version]], the MediaWiki API site information captured in <code>archive-v1/siteinfo.json</code>, and live fidelity checks. Repository structure is a source-control projection of those surfaces; it is not itself the ontology.
+
+MediaWiki is also BITwiki's programmable knowledge execution substrate. Authored wikitext, Semantic MediaWiki graph state, Cargo operational state, and Scribunto/Lua computation compose into page, graph, diagnostic, machine-facing, and BIThub-consumable projections. See [[BITwiki:Programmable knowledge substrate]].
 
 == Current reconciliation ==
 
@@ -28,7 +30,7 @@ The captured installation exposes the standard MediaWiki namespaces together wit
 |-
 | Template
 | <code>Template/</code>
-| Reusable declarative composition and presentation
+| Reusable declarative composition and public invocation/presentation surfaces
 | Source controlled; live V1 templates recovered for compatibility
 |-
 | Property
@@ -48,7 +50,7 @@ The captured installation exposes the standard MediaWiki namespaces together wit
 |-
 | Module
 | <code>Module/</code>
-| Scribunto/Lua reusable logic
+| Scribunto/Lua compiler, validation, transformation, bounded inference and semantic presentation logic
 | Source controlled as Lua
 |-
 | <code>smw/schema</code>
@@ -87,13 +89,13 @@ Use the smallest native primitive whose semantics match the job.
 | Page / knowledge object
 | Tiny fragments created solely for architectural symmetry
 |-
-| Repeated declarative rendering or metadata emission
+| Repeated declarative rendering, semantic emission or stable public invocation
 | Template
 | Copy-pasted wikitext
 |-
-| Non-trivial reusable logic or validation
+| Non-trivial reusable normalization, type checking, bounded inference, computation or semantic presentation
 | Scribunto/Lua Module
-| Deep nests of ParserFunctions
+| Deep nests of ParserFunctions or duplicated template logic
 |-
 | Graph assertion
 | SMW Property
@@ -120,11 +122,41 @@ Use the smallest native primitive whose semantics match the job.
 | Duplicate prose
 |-
 | Relationship-driven exploration
-| SMW queries / Network / faceted views
+| SMW queries / Network / faceted views / Lua projections where transformation is required
 | Static lists that silently drift
+|-
+| Cross-service interaction with BIThub / Discourse
+| Authenticated API, plugin, service or agent integration
+| Scribunto as HTTP client/daemon
 |}
 
-This division is a default, not a prohibition against combination. A template may emit semantic properties; a Lua module may support a template; a category may contain an SMW query; a Concept may feed another query. Composition is valuable when each layer retains a clear job.
+This division is a default, not a prohibition against combination. A template may emit semantic properties; a Lua module may support a template; a category may contain an SMW query; a Concept may feed another query; BIThub may render a canonical BITwiki entity through an integration layer. Composition is valuable when each layer retains a clear job.
+
+== Programmable substrate and interaction plane ==
+
+The V2 execution model is:
+
+<pre>
+authored wikitext / templates
+          +
+SMW graph state
+          +
+Cargo operational state
+          ↓
+MediaWiki parser + Scribunto/Lua
+          ↓
+normalize → type-check → bounded rule derivation → project → diagnose
+          ↓
+MediaWiki views / graph data / maintenance / machine-facing projections
+          ↕
+API / plugin / service / agent integration
+          ↕
+BIThub / Discourse
+</pre>
+
+BIThub is the user/agent interaction and workflow plane around the durable wiki. It may initiate queries, research, comparisons, contributions or proposed writes and may render computed BITwiki views. It does not become a second semantic authority merely because it provides the richer interaction interface.
+
+Scribunto/Lua is not the transport layer. Cross-service authentication, networking, retries, secrets and event processing belong outside parse-time module code.
 
 == Compatibility template recovery ==
 
@@ -139,13 +171,37 @@ This recovery does '''not''' declare every V1 visual template part of the V2 des
 
 See <code>Template/README.md</code> and <code>archive-v1/templates/</code>.
 
-== Lua: mature the primitive, not the old vocabulary ==
+== Lua: compiler/type-system/inference-and-projection layer ==
 
 V1 specified a larger Lua validation architecture, but the live Module namespace was empty in the captured corpus. The specification is therefore design evidence, not proof that five production modules existed.
 
-V2 begins with one bounded module: <code>Module:Structure</code>. Its first responsibility is runtime validation of the explicit identity supplied to <code>Template:Knowledge object</code>. This preserves a useful V1 idea — reusable validation — while using the current V2 controlled vocabularies and avoiding the obsolete numeric-confidence model.
+V2 began with one bounded module: <code>Module:Structure</code>, initially performing runtime validation of explicit identity supplied to <code>Template:Knowledge object</code>. That proof is now matured into the first <code>Module:BITwiki/*</code> compiler family.
 
-The module does not manufacture metadata. Valid calls produce no extra visible content; malformed direct wiki edits produce a validation message and maintenance category. Repository CI remains the pre-deployment validator, while Lua provides a runtime backstop for edits made through MediaWiki.
+Current chain:
+
+<pre>
+bitwiki-runtime-schema.json
+        ↓ repository authority
+Module:BITwiki/Data/Schema
+        ↓ mw.loadData()
+Module:BITwiki/Core
+        ↓
+Module:BITwiki/Compiler
+        ↓
+Module:Structure
+        ↓
+Template:Knowledge object
+</pre>
+
+<code>Module:Structure</code> remains the public/runtime wrapper; normalization and type checking are delegated to <code>Module:BITwiki/Compiler</code>. This removes the earlier private vocabulary table from Structure and establishes a reusable compiler contract for future semantic views.
+
+The runtime schema is deliberately not the whole ontology. It contains only governed vocabulary/metadata required by compiler behavior. <code>scripts/audit_runtime_schema.py</code> ensures the JSON authority, Lua projection and Python validation vocabularies do not drift silently.
+
+Future Lua should mature from demonstrated needs: Cargo/SMW query normalization, relationship panels, inverse displays, contextual navigation, entity cards, Book Matter composition, comparisons, epistemic/provenance diagnostics, knowledge health, coverage quests, dependency views, graph projections and explicit bounded rules.
+
+Lua derivation does not automatically create a new canonical assertion. Stored assertion, derived display, derived diagnostic and proposed persistent assertion are distinct states.
+
+See [[BITwiki:Lua architecture]].
 
 == Semantic MediaWiki ==
 
@@ -159,6 +215,8 @@ Current V2 use should progressively exercise four distinct layers:
 # '''Integrity''' — WantedProperties, UnusedProperties, processing/constraint errors and Browse/Ask diagnostics used as maintenance surfaces.
 
 <code>Concept:Computer science</code> is the first V2 proof of the third layer: a dynamic set defined by <code>[[Domain::Computer science]]</code>. It is not a new taxonomy branch.
+
+Native structured Lua access through <code>mw.smw</code> is supplied by SemanticScribunto and must be capability/compatibility-verified before BITwiki modules depend on it. Until then, do not document <code>mw.smw</code> as a guaranteed property of the live runtime.
 
 == Categories as composed navigation objects ==
 
@@ -174,7 +232,7 @@ A short category source file is therefore not automatically a stub. The relevant
 
 Administrative categories remain intentionally concise.
 
-== Cargo: one bounded operational proof ==
+== Cargo: bounded operational state ==
 
 Cargo now has one real consumer: the repeated records in [[BITwiki:Requested knowledge]]. [[Template:Knowledge request]] declares and stores the <code>Knowledge_requests</code> table, while the queue page uses <code>#cargo_query</code> for a computed lifecycle view.
 
@@ -193,6 +251,8 @@ missing coverage signal
 
 <code>scripts/audit_workflow.py</code> validates the Cargo declaration/store contract and enforces the critical governance invariant that an active request cannot simultaneously exist as a canonical Main page.
 
+Cargo exposes native Lua access through <code>mw.ext.cargo</code>. Future modules may normalize a query result once and project the same operational state into multiple interfaces, including wiki views and BIThub-facing workflows, while Cargo remains the state owner.
+
 The Cargo database table itself is runtime state and must be explicitly created/recreated after deploying the template; Git source alone cannot prove that remote database step. See [[BITwiki:Deployment prerequisites]].
 
 == Subobjects and additional exploration remain evidence-gated ==
@@ -201,16 +261,26 @@ SMW subobjects, additional Concepts, Network and faceted/drilldown surfaces rema
 
 Subobjects should appear when a fact needs its own attributes, provenance or qualification. Additional Concepts should appear when repeated query logic has more than one useful consumer. Network/faceted surfaces should appear when they improve an actual exploration workflow. Until those cases exist, a count of zero is an honest result rather than an implementation failure.
 
+== Self-modeling substrate ==
+
+BITwiki should describe consequential technologies that participate in its own operation. V2 therefore distinguishes canonical Main-space technology/project knowledge from BITwiki-namespace implementation standards.
+
+Current self-model slice includes [[BITwiki]], [[BIThub]], [[MediaWiki]], [[Discourse]], [[Semantic MediaWiki]], [[Cargo (MediaWiki extension)]], [[Scribunto]], and [[Lua]].
+
+This dogfooding rule should expand when a language, extension, database, service, script, daemon, kernel, protocol, API, agent or other component materially improves understanding of BITwiki's operation or architecture. Do not create pages for every transitive dependency merely to make the stack inventory look exhaustive.
+
 == Measurable substrate use ==
 
 Run:
 
 <pre>
+python scripts/validate_v2.py
+python scripts/audit_runtime_schema.py
 python scripts/audit_substrate.py
 python scripts/audit_workflow.py
 </pre>
 
-The audits report:
+The audits report/check:
 
 * configured namespaces and source-control mappings;
 * current live templates missing from deployable <code>Template/</code>;
@@ -218,10 +288,11 @@ The audits report:
 * semantic property assertion counts;
 * transclusion markup use;
 * mapped roots or directories missing README orientation;
+* compiler-runtime schema agreement;
 * Cargo request schema/storage/query agreement;
 * request lifecycle integrity and active-request/canonical-page conflicts.
 
-The goal is to make architectural claims falsifiable. A page saying “BITwiki uses Lua” is weak evidence; source-controlled modules plus real <code>#invoke</code> consumers are stronger evidence. Likewise, “Cargo is installed” is not a workflow; a declared table, stored records, queries, deployment procedure and invariant tests are.
+The goal is to make architectural claims falsifiable. A page saying “BITwiki uses Lua” is weak evidence; source-controlled modules plus real <code>#invoke</code> consumers and schema invariants are stronger evidence. Likewise, “Cargo is installed” is not a workflow; a declared table, stored records, queries, deployment procedure and invariant tests are.
 
 Generated audit JSON is commit-specific evidence. CI uploads it as an artifact; it is intentionally not committed back to <code>main</code>.
 
@@ -232,17 +303,20 @@ When the substrate is imported into MediaWiki, dependencies should be satisfied 
 <pre>
 MediaWiki / SMW schema prerequisites
 → Property definitions
-→ Module logic
+→ Module:BITwiki/Data/Schema
+→ Module:BITwiki/Core
+→ Module:BITwiki/Compiler
+→ Module:Structure and later view modules
 → foundational Templates
 → compatibility Templates
 → create/recreate required Cargo tables
 → Concepts
 → Categories / navigation views
 → knowledge objects and operational consumers
-→ semantic/Cargo data verification
+→ semantic/Cargo/Lua verification
 </pre>
 
-Exact deployment remains additive and non-destructive. See [[BITwiki:Deployment prerequisites]].
+Exact deployment remains additive and non-destructive. Cross-service BIThub/Discourse integrations have separate authentication/provenance/deployment requirements and should not be inferred from importing this content corpus. See [[BITwiki:Deployment prerequisites]].
 
 == Sources and evidence ==
 
@@ -256,6 +330,8 @@ Exact deployment remains additive and non-destructive. See [[BITwiki:Deployment 
 * [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
 * [https://www.mediawiki.org/wiki/Extension:Cargo MediaWiki — Cargo]
 * [https://www.semantic-mediawiki.org/wiki/Help:Concepts Semantic MediaWiki — Concepts]
+* [[BITwiki:Programmable knowledge substrate]]
+* [[BITwiki:Lua architecture]]
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

@@ -1,0 +1,286 @@
+{{Source status|status=source-grounded technical standard|note=Defines the current V2 role, module boundaries, data ownership, security constraints, and BIThub/Discourse integration boundary for Scribunto/Lua.}}
+
+= Lua architecture =
+
+BITwiki uses Lua through MediaWiki's Scribunto extension as the wiki's deterministic semantic transformation runtime.
+
+Lua is not merely a convenience for replacing complicated templates. Its architectural role is to provide a reusable compiler/type-system/inference-and-projection layer over authored wikitext and wiki-resident structured state.
+
+See [[BITwiki:Programmable knowledge substrate]] for the system-level model.
+
+== Runtime position ==
+
+<pre>
+wikitext / templates
+       ↓ MediaWiki parser
+#invoke / Module namespace
+       ↓
+BITwiki Lua modules
+       ↕
+MediaWiki runtime libraries
+Cargo via mw.ext.cargo
+SMW via supported integration surface
+       ↓
+normalized view model + diagnostics
+       ↓
+HTML / wikitext / page views / machine-facing projections
+</pre>
+
+BIThub/Discourse sits outside this sandbox as an interaction and workflow layer. It may initiate MediaWiki reads/writes through an authenticated bridge and consume Lua-produced views, but Lua itself is not the transport between the two systems.
+
+== Module family ==
+
+V2 reserves `Module:BITwiki/*` for the coherent BITwiki runtime family.
+
+Current foundation:
+
+{| class="wikitable"
+! Module !! Responsibility
+|-
+| `Module:BITwiki/Core` || shared deterministic normalization and diagnostic utilities
+|-
+| `Module:BITwiki/Data/Schema` || immutable `mw.loadData()` projection of compiler-facing controlled vocabularies
+|-
+| `Module:BITwiki/Compiler` || normalization/type checking of knowledge-object inputs and structured diagnostics
+|-
+| `Module:Structure` || public compatibility wrapper currently invoked by `Template:Knowledge object`
+|}
+
+Likely module families should emerge from demonstrated consumers rather than from an architecture checklist. Natural candidates include semantic query normalization, relationships, navigation, entity view models, Book Matter composition, epistemic/provenance diagnostics, comparisons, knowledge health, graph projections, and explicit rule evaluation.
+
+== Naming rule ==
+
+Use `Module:BITwiki/*` for BITwiki-owned reusable runtime logic. Avoid a flat namespace of unrelated generic names once the module family grows.
+
+Data-only tables belong under `Module:BITwiki/Data/*` and should normally be loaded with `mw.loadData()`. Executable code should use `require()` to compose modules.
+
+A module must not exist solely to make the architecture look complete. It should have a real consumer, provide a stable shared primitive, or be required to remove duplicated logic from existing consumers.
+
+== Runtime schema ==
+
+Compiler-facing controlled vocabulary is repository-authoritative in:
+
+<pre>
+bitwiki-runtime-schema.json
+</pre>
+
+and projected into:
+
+<pre>
+Module:BITwiki/Data/Schema
+</pre>
+
+The Lua data module is a runtime artifact required because Scribunto cannot read arbitrary repository files. Repository validation should fail when the JSON authority and Lua projection drift.
+
+This architecture replaces the earlier pattern in which `Module:Structure` privately embedded its own copy of entity types, Domains, and epistemic states.
+
+The schema is not the entire ontology. It contains only vocabulary or deterministic metadata that compiler/runtime behavior actually needs.
+
+== Structured data access ==
+
+=== Cargo ===
+
+Cargo exposes native Lua support through `mw.ext.cargo`. Query results can therefore be normalized into reusable Lua objects before rendering.
+
+This is preferred when the same Cargo state must feed multiple interfaces, for example:
+
+<pre>
+Knowledge_requests
+       ↓
+Lua normalization
+       ├── wiki queue
+       ├── coverage diagnostic
+       ├── contribution quest
+       └── BIThub workflow/card projection
+</pre>
+
+Cargo remains the state owner. Lua should not duplicate Cargo records internally.
+
+Lua-side `declare`/`store` functions exist, but persistence from a rendering module should be exceptional. Parse-time rendering should not acquire surprising write side effects.
+
+=== Semantic MediaWiki ===
+
+Semantic MediaWiki remains BITwiki's canonical graph/property layer.
+
+Native Lua access through `mw.smw` is supplied by SemanticScribunto, not by core Scribunto. BITwiki must verify deployed extension compatibility before modules depend on that interface.
+
+Until native structured SMW access is deliberately deployed, modules may use bounded parser-function bridging only where necessary and documented. Returned formatted wikitext is less useful than a structured result object, so this should not become a permanent abstraction leak.
+
+A future `Module:BITwiki/Semantic` should hide the query mechanism from higher-level view modules once a stable runtime contract exists.
+
+== Compiler contract ==
+
+A BITwiki compiler function should prefer structured return values internally rather than directly concatenating presentation strings.
+
+Conceptual shape:
+
+<pre>
+{
+  ok = true/false,
+  schema_version = "...",
+  record = normalized_state,
+  diagnostics = {...},
+  derived = {...}
+}
+</pre>
+
+Presentation adapters can then decide whether the output becomes an error banner, infobox row, relationship panel, BIThub card, JSON-like machine projection, or maintenance table.
+
+This separates semantic transformation from display.
+
+== Type system ==
+
+The Lua type-system role is domain-specific rather than a replacement for Lua's own dynamic type system.
+
+BITwiki types include contracts such as:
+
+* supported entity-type values;
+* controlled Domains where currently governed;
+* epistemic-status vocabulary;
+* relationship names/directions;
+* required fields by object/view type;
+* accepted representations of dates, units, identifiers, and other values;
+* valid composition/dependency rules;
+* rule applicability conditions.
+
+A type error should become an explicit diagnostic rather than being silently normalized into an assertion the author did not make.
+
+== Inference rules ==
+
+Rules must distinguish:
+
+<pre>
+stored assertion
+≠ derived display
+≠ derived diagnostic
+≠ proposed persistent assertion
+</pre>
+
+For example, an `Implements` edge may safely produce the inverse display phrase `Implemented by` without storing a second inverse edge. This is presentation inference.
+
+A rule that creates a new canonical relationship requires a stronger contract: provenance, scope, semantic justification, review behavior, and a persistence mechanism outside incidental rendering.
+
+Inference metadata should eventually be represented in explicit data/rule dictionaries rather than buried in rendering functions.
+
+== Semantic presentation ==
+
+Lua is appropriate for presentation when display depends on structured semantics rather than only static layout.
+
+Examples include:
+
+* context-sensitive infobox/entity cards;
+* relationship panels and inverse display;
+* breadcrumbs derived from explicit navigation/relationship state;
+* adjacency lists;
+* deterministic graph payloads;
+* procedural comparisons;
+* Book Matter selection/composition;
+* provenance and epistemic warnings;
+* coverage/completeness diagnostics;
+* dependency and blast-radius views;
+* contribution quests generated from explicit gaps;
+* agent-readable summaries of structured page state.
+
+Use `mw.html` where structured HTML construction is clearer/safer than concatenated markup. Keep ordinary declarative wikitext in templates when Lua adds no semantic value.
+
+== BIThub / Discourse consumption ==
+
+Lua modules should produce interface-neutral normalized state when a result has more than one consumer.
+
+A BIThub integration should be able to ask the MediaWiki side for the same underlying entity/relationship/health information used by a wiki page, rather than maintaining a second semantic model inside Discourse.
+
+Possible interaction pattern:
+
+<pre>
+BIThub user/agent asks about entity
+→ integration resolves canonical BITwiki page
+→ MediaWiki/API exposes canonical and structured state
+→ BITwiki projection logic determines normalized relationship/diagnostic model
+→ integration renders a Discourse-native card/workflow
+</pre>
+
+The exact transport is an integration concern. Do not insert API keys, user secrets, or cross-service network behavior into Scribunto modules.
+
+Because MediaWiki parsing is cache-oriented, user-specific/private personalization should generally occur in BIThub or another interface layer, not in widely transcluded Lua output.
+
+== Security model ==
+
+Scribunto intentionally removes or constrains standard Lua capabilities that would make arbitrary wiki-authored code unsafe.
+
+BITwiki modules must assume:
+
+* no arbitrary filesystem access;
+* no arbitrary process execution;
+* no general outbound HTTP client;
+* bounded CPU/memory execution;
+* parser/cache semantics;
+* output returned to MediaWiki rather than ordinary terminal-style `print()` rendering;
+* module composition through wiki-resident `require()` and data loading through `mw.loadData()`.
+
+Debugging should use Scribunto-supported facilities such as `mw.log`, preview, sandbox/test pages, and parser-limit inspection.
+
+== Performance ==
+
+Prefer:
+
+* `mw.loadData()` for shared immutable tables;
+* one normalized query feeding several rendering decisions;
+* shallow module composition;
+* bounded result sets;
+* deterministic functions without repeated parser expansion;
+* explicit limits for graph traversal/recursive views.
+
+Avoid:
+
+* repeated equivalent Cargo/SMW queries in one parse;
+* unbounded graph traversal;
+* deep recursive transclusion combined with expensive Lua;
+* converting every simple template into Lua;
+* giant monolithic modules that mix state access, inference, rendering, and unrelated utilities.
+
+== Testing and deployment ==
+
+Module dependencies must deploy before their consumers.
+
+Current order:
+
+<pre>
+Module:BITwiki/Data/Schema
+→ Module:BITwiki/Core
+→ Module:BITwiki/Compiler
+→ Module:Structure
+→ Template:Knowledge object
+→ knowledge-object consumers
+</pre>
+
+Repository validation checks source contracts. Deployment must additionally verify the actual Scribunto runtime using sandbox invocations against valid and invalid data.
+
+For future high-impact modules, tests should include at minimum:
+
+* normalization cases;
+* valid and invalid type cases;
+* escaping/output safety;
+* empty/missing query results;
+* bounded large result sets;
+* rule applicability and non-applicability;
+* compatibility with BIThub-facing projections where relevant.
+
+== V1 lineage ==
+
+V1 proposed ValidatorBase, epistemic/property/template validators, and query helpers. That specification demonstrated the correct instinct—centralized reusable validation—but encoded obsolete numeric-confidence/status assumptions and was never evidenced as deployed Module-namespace code.
+
+V2 preserves the reusable-runtime principle while replacing the old vocabulary with the current schema and a narrower, falsifiable implementation path.
+
+== References ==
+
+* [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
+* [https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual MediaWiki — Scribunto/Lua reference]
+* [https://www.mediawiki.org/wiki/Extension:Cargo/Other_features#Lua_support MediaWiki — Cargo Lua support]
+* [[Lua]]
+* [[Scribunto]]
+* [[BITwiki:Programmable knowledge substrate]]
+* [[BITwiki:MediaWiki substrate]]
+* [[BITwiki:Relationships]]
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

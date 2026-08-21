@@ -1,8 +1,8 @@
 # MediaWiki namespace
 
-Source-controlled public `MediaWiki:*` runtime/interface configuration recovered from the live V1 snapshot.
+Source-controlled public `MediaWiki:*` runtime/interface configuration.
 
-These files can affect rendering, Semantic MediaWiki imports, or extension behavior. They are **infrastructure**, not knowledge articles, and should be deployed conservatively.
+These pages are **site infrastructure**, not subject knowledge. They can affect rendering, Semantic MediaWiki imports, extension behavior, and interface configuration, so deployment must preserve exact page titles/content models and should remain conservative.
 
 Current recovered surfaces include:
 
@@ -10,6 +10,32 @@ Current recovered surfaces include:
 - `MediaWiki:KnowledgeGraphOptions`
 - SMW import definitions for FOAF, OWL, Schema.org, and SKOS.
 
-File extensions here reflect the source/content shape for GitHub readability; deployment must preserve the exact MediaWiki page title/content model.
+## Position in the programmable substrate
 
-Evidence lives under `archive-v1/pages/MediaWiki/` and `archive-v1/history/MediaWiki/`.
+`MediaWiki:*` configuration participates below and beside authored knowledge:
+
+```text
+MediaWiki configuration + installed extensions
+                 ↓
+       parser / runtime capabilities
+                 ↓
+wikitext + Templates + SMW + Cargo + Scribunto
+                 ↓
+       rendered/computed BITwiki views
+```
+
+This directory does **not** become BITwiki's application backend merely because `MediaWiki:*` pages can affect runtime behavior.
+
+Cross-service BIThub/Discourse authentication, HTTP transport, retries, secrets, queues, and background processing belong to explicit plugins, APIs, services, or agents. Scribunto/Lua remains sandboxed parse-time computation; `MediaWiki:*` pages should not be used to smuggle secret-bearing integration state into public wiki source.
+
+## Relationship to semantic imports
+
+SMW import pages define mappings to external vocabularies. Imported labels are not automatically equivalent to V2-native semantics. Mapping meaning and semantic loss are governed by `BITwiki:Interoperability` and the relevant Property contracts.
+
+## Evidence and deployment
+
+Some files originate from the verified V1 snapshot; evidence lives under `archive-v1/pages/MediaWiki/` and `archive-v1/history/MediaWiki/`. File extensions here reflect repository/source shape for readability; deployment must preserve the actual MediaWiki title and content model.
+
+Repository source cannot by itself prove the target installation has the required extension/version/configuration. Reconcile against `Special:Version`, `Special:NamespaceInfo`, captured siteinfo, and `BITwiki/Deployment prerequisites.mediawiki` before deployment.
+
+See `BITwiki/MediaWiki substrate.mediawiki`, `BITwiki/Programmable knowledge substrate.mediawiki`, `BITwiki/Interoperability.mediawiki`, and `BITwiki/Deployment prerequisites.mediawiki`.

@@ -6,6 +6,8 @@ BITwiki should exchange knowledge with external systems without pretending that 
 
 V1 framed this as an '''Ontology Alignment Matrix'''. V2 preserves the core alignment discipline while separating it from unverified historical mappings.
 
+Interoperability also applies inside the BITwiki ecosystem: [[BIThub]]/Discourse should consume canonical BITwiki state without becoming a second semantic authority.
+
 == Why align ==
 
 Interoperability can enable:
@@ -15,7 +17,9 @@ Interoperability can enable:
 * cross-system identifiers;
 * query translation;
 * source/provenance linking;
-* comparison and verification across independent knowledge systems.
+* comparison and verification across independent knowledge systems;
+* BIThub/agent interfaces over canonical BITwiki entities and relationships;
+* workflow round-trips from discussion/research into durable reviewed knowledge.
 
 Alignment is useful only when semantic loss is understood.
 
@@ -69,6 +73,46 @@ external: generic relatedTo
 
 Once exported only as <code>relatedTo</code>, the original semantic strength cannot be reconstructed unless additional metadata travels with it.
 
+== BIThub / Discourse interoperability ==
+
+BIThub is not an external ontology in the ordinary sense, but it is a distinct application/runtime and therefore needs an explicit interface contract with MediaWiki.
+
+The authority model is:
+
+<pre>
+BIThub / Discourse
+interaction · discussion · workflow · user/agent context
+        ↕
+authenticated API / plugin / service / agent bridge
+        ↕
+BITwiki / MediaWiki
+canonical pages · SMW graph · Cargo records · revisions
+        ↓
+Scribunto/Lua deterministic projections
+</pre>
+
+A BIThub integration may render a BITwiki entity card, relationship panel, graph neighborhood, comparison, knowledge-health diagnostic, or contribution task. The projection should be derived from canonical wiki state rather than copied into an independent Discourse-side semantic database unless a cache/index has an explicit synchronization contract.
+
+Likewise, a BIThub conversation, agent result, or workflow transition should not silently mutate canonical BITwiki state. Writes require an authenticated integration path and must preserve author/process identity, provenance, review state, and the relevant page/Cargo/SMW contract.
+
+Lua is not the network bridge. Scribunto executes inside MediaWiki and should produce deterministic wiki-resident transformations; cross-service transport belongs to explicit integration infrastructure.
+
+== Interface-neutral projections ==
+
+The Lua/compiler layer should prefer normalized view models when the same knowledge needs multiple presentations.
+
+<pre>
+SMW/Cargo/page state
+        ↓
+normalized BITwiki view model
+        ├── MediaWiki HTML/wikitext
+        ├── BIThub-native card/workflow
+        ├── graph visualization
+        └── agent/machine context
+</pre>
+
+This is interoperability without duplicating truth: presentation changes by consumer while canonical semantic state remains shared.
+
 == External systems ==
 
 V1 explored alignments with:
@@ -91,7 +135,8 @@ Some BITwiki dimensions may have no direct external equivalent:
 * confidence rationale;
 * provenance transformations;
 * Book Matter anatomy;
-* specialized relationship semantics.
+* specialized relationship semantics;
+* compiler diagnostics and derived display state.
 
 The correct response is not to pretend equivalence. Preserve them as extensions, sidecar metadata, or explicitly documented unmapped fields.
 
@@ -109,7 +154,7 @@ identify source object + license/provenance
 → review surprising/high-impact claims
 </pre>
 
-Never assign <code>Established</code>, a numeric confidence, or any other epistemic standing solely because the source is Wikidata, Schema.org, Wikipedia, a journal, or another respected system.
+Never assign <code>Established</code>, a numeric confidence, or any other epistemic standing solely because the source is Wikidata, Schema.org, Wikipedia, a journal, BIThub, or another respected system.
 
 == Export protocol ==
 
@@ -117,7 +162,7 @@ Never assign <code>Established</code>, a numeric confidence, or any other episte
 select exportable knowledge
 → map V2 entity/property semantics
 → identify unmapped V2 dimensions
-→ serialize into target vocabulary
+→ serialize into target vocabulary/interface
 → retain provenance + identifiers
 → validate round-trip where practical
 → document lossy mappings
@@ -127,7 +172,7 @@ select exportable knowledge
 
 Mappings themselves are claims and should carry:
 
-* source/target vocabulary version;
+* source/target vocabulary or interface version;
 * mapping author/process;
 * mapping type;
 * rationale;
@@ -143,7 +188,7 @@ Primary V1 source: [[BITwiki Ontology Alignment Matrix]], plus [[Ontology Alignm
 
 V1's broad principles—semantic equivalence by meaning, context preservation, bidirectionality, documented loss—are retained. Specific historical mappings/default import rules remain in <code>archive-v1/</code> until individually verified.
 
-See [[BITwiki:Ontology]], [[BITwiki:Semantic properties]], and [[BITwiki:Provenance]].
+See [[BITwiki:Ontology]], [[BITwiki:Semantic properties]], [[BITwiki:Provenance]], [[BITwiki:Programmable knowledge substrate]], and [[BITwiki:Ecosystem]].
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

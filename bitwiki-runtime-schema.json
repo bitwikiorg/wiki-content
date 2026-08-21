@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1.0",
+  "purpose": "Repository authority for BITwiki compiler-facing controlled vocabularies and deterministic display metadata.",
+  "entity_types": [
+    "Concept",
+    "Method",
+    "Protocol",
+    "Implementation",
+    "Project",
+    "Dataset",
+    "Person",
+    "Organization",
+    "Event",
+    "Publication",
+    "Location",
+    "Technology"
+  ],
+  "domains": [
+    "Systems science",
+    "Science",
+    "Biology",
+    "Computer science",
+    "Mathematics",
+    "Philosophy",
+    "Technology",
+    "Electronics",
+    "Energy",
+    "Engineering",
+    "Chemistry",
+    "Physics",
+    "Medicine"
+  ],
+  "epistemic_statuses": [
+    "Hypothetical",
+    "Emerging",
+    "Supported",
+    "Well-supported",
+    "Established",
+    "Disputed"
+  ],
+  "relationships": {
+    "Related to": {
+      "inverse_display": "Related to",
+      "derive_inverse_assertion": false
+    },
+    "Implements": {
+      "inverse_display": "Implemented by",
+      "derive_inverse_assertion": false
+    },
+    "Part of": {
+      "inverse_display": "Has part",
+      "derive_inverse_assertion": false
+    },
+    "Depends on": {
+      "inverse_display": "Dependency of",
+      "derive_inverse_assertion": false
+    },
+    "Supports": {
+      "inverse_display": "Supported by",
+      "derive_inverse_assertion": false
+    },
+    "Contradicts": {
+      "inverse_display": "Contradicted by",
+      "derive_inverse_assertion": false
+    },
+    "Refines": {
+      "inverse_display": "Refined by",
+      "derive_inverse_assertion": false
+    },
+    "Derived from": {
+      "inverse_display": "Source of",
+      "derive_inverse_assertion": false
+    }
+  }
+}

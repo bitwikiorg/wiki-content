@@ -1,0 +1,36 @@
+{{Knowledge object
+ |entity_type=Technology
+ |domain=Computer science
+ |status=Established
+ |provenance=MediaWiki documentation and BITwiki runtime inventory
+}}
+
+= MediaWiki =
+
+'''MediaWiki''' is open-source wiki software designed for collaborative, revisioned hypertext publishing. It provides pages, namespaces, templates, transclusion, parser functions, revision history, permissions, APIs, content models, categories, files, and an extension architecture.
+
+Wikipedia is the best-known MediaWiki deployment, but MediaWiki is a general platform rather than a Wikipedia-specific content model.
+
+== Programmability ==
+
+MediaWiki can be extended at several layers. Templates and parser functions provide declarative/reusable wikitext behavior. Extensions add PHP-side capabilities, parser hooks, APIs, special pages, storage models, namespaces, and integrations. [[Scribunto]] embeds [[Lua]] modules for reusable procedural computation.
+
+MediaWiki's page and revision model also provides a durable substrate for systems that treat pages as more than static documents: pages can carry structured annotations, invoke computations, transclude canonical matter, and expose multiple dynamically computed views.
+
+== MediaWiki in BITwiki ==
+
+BITwiki uses MediaWiki as its durable knowledge execution substrate. The wiki provides canonical pages and revisions; [[Semantic MediaWiki]] provides graph/property semantics; [[Cargo (MediaWiki extension)|Cargo]] provides repeated operational records; Scribunto/Lua provides deterministic transformation and semantic presentation.
+
+The architecture is documented at [[BITwiki:MediaWiki substrate]] and [[BITwiki:Programmable knowledge substrate]].
+
+[[BIThub]] is the Discourse-based interaction/workflow plane around this durable layer. Humans and agents can research, discuss, coordinate, and propose changes through BIThub while stable knowledge is represented in MediaWiki. Cross-system transport belongs to explicit integration APIs/plugins/services rather than to page-level Lua code.
+
+== References ==
+
+* [https://www.mediawiki.org/ MediaWiki]
+* [https://www.mediawiki.org/wiki/Manual:What_is_MediaWiki%3F MediaWiki — What is MediaWiki?]
+* [https://www.mediawiki.org/wiki/API:Main_page MediaWiki API]
+* [[Scribunto]]
+* [[Lua]]
+
+[[Category:Computer science]]

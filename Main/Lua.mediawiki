@@ -1,0 +1,45 @@
+{{Knowledge object
+ |entity_type=Technology
+ |domain=Computer science
+ |status=Established
+ |provenance=Lua.org documentation and MediaWiki Scribunto documentation
+}}
+
+= Lua =
+
+'''Lua''' is a lightweight, dynamically typed programming language designed to be embedded in applications as well as used as a general scripting language. Its core language is deliberately compact and is extended primarily through libraries and host-provided APIs.
+
+Lua uses tables as its principal compound data structure. Tables can represent arrays, dictionaries, objects, namespaces, and other structures; metatables allow behavior such as operator handling and prototype-like patterns to be customized. Functions are first-class values and lexical closures support modular functional patterns.
+
+== Embedding ==
+
+A major design characteristic of Lua is that a host application can expose a controlled API to Lua code rather than giving the script unrestricted access to the host environment. The same language can therefore have very different capabilities depending on where it is embedded.
+
+This distinction is important in MediaWiki. Lua code executed by [[Scribunto]] runs in a restricted MediaWiki-managed environment and uses the `mw` library and approved extension libraries rather than unrestricted operating-system facilities.
+
+== Lua in MediaWiki ==
+
+Scribunto stores Lua programs in the `Module:` namespace and normally invokes exported functions from wikitext using `#invoke`.
+
+Modules can compose other wiki-resident modules with `require()`. Shared immutable data tables can be loaded with `mw.loadData()`. MediaWiki-specific libraries provide facilities for text processing, titles, HTML construction, frames, language handling, URI operations, logging, and extension-provided capabilities.
+
+Complex reusable template logic is a common use because Lua is more maintainable and expressive than deeply nested parser-function logic.
+
+== Lua in BITwiki ==
+
+BITwiki uses Lua as more than template convenience. Within the BITwiki architecture, Scribunto/Lua is the deterministic semantic transformation layer between authored wiki state and computed interfaces.
+
+Its intended responsibilities include normalization, type checking, bounded inference, relationship projection, navigation, comparisons, semantic diagnostics, knowledge-health views, and other transformations over MediaWiki, Semantic MediaWiki, and Cargo-resident state.
+
+The current V2 module family is documented at [[BITwiki:Lua architecture]] and [[BITwiki:Programmable knowledge substrate]]. `Module:Structure`, invoked by `Template:Knowledge object`, is the first production consumer and delegates type checking to `Module:BITwiki/Compiler`.
+
+Lua is not BITwiki's network bridge to [[BIThub]]. Cross-service transport belongs to MediaWiki/Discourse APIs, plugins, services, or agents; Lua remains bounded computation inside the MediaWiki runtime.
+
+== References ==
+
+* [https://www.lua.org/ Lua]
+* [https://www.lua.org/manual/5.4/ Lua 5.4 Reference Manual]
+* [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
+* [https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual MediaWiki — Scribunto/Lua reference manual]
+
+[[Category:Computer science]]

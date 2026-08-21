@@ -1,0 +1,48 @@
+{{Knowledge object
+ |entity_type=Technology
+ |domain=Computer science
+ |status=Established
+ |provenance=MediaWiki Scribunto documentation
+}}
+
+= Scribunto =
+
+'''Scribunto''' is a MediaWiki extension that embeds a scripting runtime into wiki pages. Although the framework was designed to support scripting languages generally, its production language is [[Lua]].
+
+Scribunto gives MediaWiki a `Module:` namespace for executable code and the `#invoke` parser function for calling exported module functions from wikitext.
+
+== Structured relationships ==
+
+* Depends on: [[Depends on::MediaWiki]]
+* Depends on: [[Depends on::Lua]]
+
+These relationships describe Scribunto's host/runtime dependencies at the abstraction level relevant to BITwiki.
+
+== Execution model ==
+
+A module returns a Lua table containing functions or values. Public functions can be called from a wiki page or template through `#invoke`, while modules can compose other modules using Lua `require()`.
+
+The host exposes MediaWiki-aware libraries under `mw`. These provide controlled access to parser frames, titles, text, HTML construction, language functions, URI handling, logging, and extension-specific libraries.
+
+Scribunto executes under resource and security constraints. It is not equivalent to running an unrestricted local Lua interpreter with arbitrary filesystem, process, or network access.
+
+== Why it exists ==
+
+Wikitext templates and ParserFunctions can express conditional and reusable behavior, but large procedural template systems become difficult to maintain and can be expensive to parse. Scribunto moves non-trivial reusable logic into a real programming language while preserving templates as the wikitext-facing interface.
+
+== Scribunto in BITwiki ==
+
+BITwiki treats Scribunto as part of its programmable knowledge substrate. Wikitext remains authoring syntax; Semantic MediaWiki and Cargo provide structured wiki state; Scribunto/Lua performs deterministic normalization, type checking, bounded inference, transformation, and semantic presentation.
+
+This role is specified in [[BITwiki:Lua architecture]] and [[BITwiki:Programmable knowledge substrate]].
+
+BIThub/Discourse may consume views generated from this substrate through integration surfaces, but Scribunto itself is not a cross-service transport or background agent runtime.
+
+== References ==
+
+* [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
+* [https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual MediaWiki — Scribunto/Lua reference manual]
+* [[Lua]]
+* [[MediaWiki]]
+
+[[Category:Computer science]]

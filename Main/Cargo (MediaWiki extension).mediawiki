@@ -1,0 +1,42 @@
+{{Knowledge object
+ |entity_type=Technology
+ |domain=Computer science
+ |status=Established
+ |provenance=MediaWiki Cargo documentation and BITwiki runtime inventory
+}}
+
+= Cargo (MediaWiki extension) =
+
+'''Cargo''' is a MediaWiki extension for storing and querying structured data associated with templates. Templates can declare table schemas, store repeated records, and query those records through Cargo parser functions, APIs, drilldown interfaces, or Scribunto/Lua.
+
+Cargo is useful when a wiki contains repeated operational or record-like data that benefits from explicit fields, tabular queries, filtering, grouping, or drilldown.
+
+== Structured relationships ==
+
+* Depends on: [[Depends on::MediaWiki]]
+
+The relation identifies MediaWiki as Cargo's host platform.
+
+== Relationship to Semantic MediaWiki ==
+
+Cargo and [[Semantic MediaWiki]] overlap in being queryable structured-data extensions, but they need not represent the same semantics.
+
+In BITwiki, SMW is the primary page/property/relationship knowledge-graph layer. Cargo is reserved for repeated structured operational records where a table-shaped model is clearer than page-level semantic identity.
+
+== Cargo in BITwiki ==
+
+The first V2 Cargo use is the `Knowledge_requests` table supporting `BITwiki:Requested knowledge`. Each request is an operational lifecycle record rather than a canonical knowledge object.
+
+Cargo exposes Lua support through `mw.ext.cargo`. This allows a BITwiki Lua module to query records into structured Lua tables, normalize the results once, and project the same state into multiple interfaces such as wiki queues, coverage diagnostics, contribution quests, or BIThub-facing workflow cards.
+
+State remains owned by Cargo. Rendering modules should not acquire surprising write side effects merely because Lua can technically call Cargo declaration/storage functions.
+
+== References ==
+
+* [https://www.mediawiki.org/wiki/Extension:Cargo MediaWiki — Cargo]
+* [https://www.mediawiki.org/wiki/Extension:Cargo/Other_features#Lua_support MediaWiki — Cargo Lua support]
+* [[MediaWiki]]
+* [[Semantic MediaWiki]]
+* [[Lua]]
+
+[[Category:Computer science]]

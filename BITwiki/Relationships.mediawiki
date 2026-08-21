@@ -1,4 +1,4 @@
-{{Source status|status=source-reconciled semantic model|note=Draws from V1 Relationship Types, Relationship Pattern Catalog, Entity Types, Provenance Model, and actual V2 needs. V2 deliberately does not inherit unsafe universal transitivity/domain assumptions from historical tables.}}
+{{Source status|status=source-reconciled semantic model|note=Draws from V1 Relationship Types, Relationship Pattern Catalog, Entity Types, Provenance Model, and actual V2 needs. V2 deliberately does not inherit unsafe universal transitivity/domain assumptions from historical tables; updated to distinguish stored SMW edges from Lua-derived presentation.}}
 
 = Relationships =
 
@@ -13,6 +13,7 @@ At the same time, an overly ambitious relationship vocabulary creates false mean
 # Do not infer causality, transitivity, symmetry, or inverse relations unless the property's documented semantics support it.
 # A relation is not evidence merely because it is encoded semantically.
 # Relationship vocabulary evolves from real content and query needs.
+# Distinguish a stored assertion from a derived display, diagnostic, or proposed persistent assertion.
 
 == Core V2 relations ==
 
@@ -34,7 +35,7 @@ Examples:
 * software client → implements → protocol;
 * deployed workflow → implements → method.
 
-The inverse phrase is '''implemented by'''; V2 does not require storing both directions when queries/inference can derive the display relationship.
+The inverse phrase is '''implemented by'''; V2 does not require storing both directions when queries or deterministic projection can derive the display relationship.
 
 === Part of ===
 
@@ -72,6 +73,50 @@ A provenance relationship indicating that an artifact, claim, model, dataset, or
 
 Use when lineage is stronger than mere citation. Document transformations when they affect meaning.
 
+== Stored graph state and compiler projection ==
+
+Semantic MediaWiki remains the owner of durable relationship assertions. Scribunto/Lua may validate and project that state, but it does not become a second relationship database.
+
+<pre>
+canonical page / Template
+        ↓ asserts
+SMW relationship property
+        ↓ durable graph state
+Lua / query layer
+        ↓
+normalize · validate · inverse display · adjacency/view model · diagnose
+        ↓
+MediaWiki / graph / BIThub-facing presentation
+</pre>
+
+The compiler-facing relationship dictionary in <code>bitwiki-runtime-schema.json</code> contains deterministic runtime metadata such as inverse '''display''' labels. It does not itself assert that an edge exists.
+
+For example:
+
+<pre>
+Bitcoin Core → Implements → Bitcoin protocol    stored edge
+Bitcoin protocol ← Implemented by — Bitcoin Core  derived inverse display
+</pre>
+
+The second form can be generated from the first without persisting a second edge.
+
+This distinction is an invariant:
+
+<pre>
+stored assertion
+≠ derived display
+≠ derived diagnostic
+≠ proposed persistent assertion
+</pre>
+
+A rule that proposes a new persistent relationship needs explicit semantics, provenance, review behavior, and a write path outside incidental rendering.
+
+== Self-modeling substrate ==
+
+The BITwiki/BIThub technology slice now exercises relationship semantics directly. Examples include BITwiki depending on MediaWiki, Semantic MediaWiki, Scribunto, and Cargo; BIThub depending on Discourse; and BITwiki being related to BIThub.
+
+These edges are conservative real graph state that future relationship panels, graph views, dependency diagnostics, and BIThub integrations can project. They are not demo-only relationships created merely to exercise Lua.
+
 == Relations not yet made universal V2 primitives ==
 
 V1 documented many additional relations, including:
@@ -105,9 +150,10 @@ If A causes B and B causes C, A's contribution to C may be conditional, mediated
 V2 therefore distinguishes:
 
 * '''edge meaning''' — what the direct relation asserts;
-* '''inference rule''' — what additional edges may legitimately follow.
+* '''inference rule''' — what additional information may legitimately be derived;
+* '''projection rule''' — how the same stored relation may be displayed in another context.
 
-Inference rules should be documented separately and only enabled when their semantics have been validated.
+Inference rules should be documented separately and only enabled when their semantics have been validated. Projection rules may be simpler—for example inverse labels—but still must not silently become stored facts.
 
 == Domain and range ==
 
@@ -141,6 +187,7 @@ For consequential edges, ask:
 * Is the target at the right level of abstraction?
 * Is a weaker relation more honest?
 * Has the relation become stale after a page/schema revision?
+* Is the interface showing a stored edge or only a derived presentation of one?
 
 == Composition ==
 
@@ -160,7 +207,7 @@ Primary V1 source: [[BITwiki Relationship Types]], supplemented by [[BITwiki Rel
 
 Exact V1 source and history are preserved under <code>archive-v1/</code>.
 
-See [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Semantic properties]], and [[BITwiki:Provenance]].
+See [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Semantic properties]], [[BITwiki:Provenance]], [[BITwiki:Programmable knowledge substrate]], and [[BITwiki:Lua architecture]].
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

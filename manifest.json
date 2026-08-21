@@ -40,9 +40,32 @@
       "Portal": {"path": "Portal/", "kind": "title projection", "content_model": "wikitext", "namespace_configured_in_snapshot": false}
     },
     "runtime_namespaces_not_deployed_from_this_corpus": ["Talk", "User", "User talk", "BITwiki talk", "File", "File talk", "MediaWiki talk", "Template talk", "Help talk", "Category talk", "Property talk", "Concept talk", "smw/schema talk", "Module talk"],
-    "capabilities_in_active_use": ["Semantic MediaWiki properties", "Semantic MediaWiki #ask", "MediaWiki templates/transclusion", "Scribunto runtime validation", "Cargo structured table: Knowledge_requests"],
-    "capabilities_installed_but_use_case_gated": ["SMW subobjects", "additional SMW Concepts", "Network graph views", "FacetedSearch/Drilldown"],
+    "capabilities_in_active_use": ["Semantic MediaWiki properties", "Semantic MediaWiki #ask", "MediaWiki templates/transclusion", "Scribunto compiler/type validation", "Cargo structured table: Knowledge_requests"],
+    "capabilities_installed_but_use_case_gated": ["SMW subobjects", "additional SMW Concepts", "Network graph views", "FacetedSearch/Drilldown", "native structured SMW access from Lua via SemanticScribunto"],
     "substrate_audit": {"generator": "scripts/audit_substrate.py", "output": "v2-substrate-audit.json", "distribution": "CI artifact; untracked"}
+  },
+  "programmable_knowledge_substrate": {
+    "architecture_page": "BITwiki/Programmable knowledge substrate.mediawiki",
+    "lua_standard": "BITwiki/Lua architecture.mediawiki",
+    "authoring_syntax": "MediaWiki wikitext and Templates",
+    "structured_state": ["Semantic MediaWiki", "Cargo"],
+    "compiler_runtime": "Scribunto/Lua",
+    "compiler_module_family": "Module:BITwiki/*",
+    "public_validation_wrapper": "Module:Structure",
+    "runtime_schema_authority": "bitwiki-runtime-schema.json",
+    "runtime_schema_projection": "Module/BITwiki/Data/Schema.lua",
+    "runtime_schema_audit": "scripts/audit_runtime_schema.py",
+    "compiler_passes": ["normalize", "type-check", "resolve wiki-resident state", "derive bounded explicit rules", "project", "diagnose"],
+    "inference_default": "derived display/diagnostic only; no hidden persistent assertions",
+    "transport_boundary": "Scribunto is not the network/API bridge between MediaWiki and BIThub/Discourse"
+  },
+  "ecosystem_interface": {
+    "canonical_knowledge_plane": "BITwiki / MediaWiki",
+    "interaction_workflow_plane": "BIThub / Discourse",
+    "cognition_orchestration_plane": "BITCORE / agents and workflows",
+    "integration_transport": "explicit authenticated MediaWiki/Discourse APIs, plugins, services, or agents",
+    "authority_invariant": "BIThub may project and propose against canonical BITwiki state but does not become a competing semantic source of truth",
+    "round_trip_invariant": "cross-system writes preserve actor/process identity, provenance, review state, and the target MediaWiki/SMW/Cargo contract"
   },
   "v1_archive": {
     "path": "archive-v1/",
@@ -81,7 +104,13 @@
     "controlled_domains_required": 13,
     "domain_exemplar_coverage_required": true,
     "semantic_identity_validation": true,
-    "knowledge_object_fields_required": ["entity_type", "domain", "status", "provenance"]
+    "knowledge_object_fields_required": ["entity_type", "domain", "status", "provenance"],
+    "runtime_schema_audit": {
+      "generator": "scripts/audit_runtime_schema.py",
+      "output": "v2-runtime-schema-audit.json",
+      "distribution": "CI artifact; untracked",
+      "invariant": "bitwiki-runtime-schema.json, Module:BITwiki/Data/Schema, and Python validation vocabularies must agree"
+    }
   },
   "mainspace_audit": {
     "generator": "scripts/audit_mainspace.py",
@@ -137,6 +166,7 @@
     "reason": "current-state validation and verification are commit/run-specific evidence, not canonical mutable repository source",
     "transient_reports": [
       "v2-validation.json",
+      "v2-runtime-schema-audit.json",
       "v2-substrate-audit.json",
       "v2-workflow-audit.json",
       "v2-mainspace-audit.json",

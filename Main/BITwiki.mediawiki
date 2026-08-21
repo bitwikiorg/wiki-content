@@ -1,0 +1,49 @@
+{{Knowledge object
+ |entity_type=Project
+ |domain=Computer science
+ |status=Established
+ |provenance=BITwiki V2 repository and public project documentation
+}}
+
+= BITwiki =
+
+'''BITwiki''' is a semantic knowledge project built on [[MediaWiki]]. It combines authored pages and Book Matter, revision history, semantic properties and relationships, structured operational records, transclusion, queries, and programmable views into a durable knowledge substrate for humans and agents.
+
+== Substrate ==
+
+BITwiki's current technical stack separates responsibilities:
+
+* MediaWiki provides pages, revisions, parsing, templates, transclusion, namespaces, permissions, and APIs;
+* [[Semantic MediaWiki]] provides the durable semantic property/relationship graph;
+* [[Cargo (MediaWiki extension)|Cargo]] provides repeated structured operational records where table-shaped state is appropriate;
+* [[Scribunto]]/[[Lua]] provides deterministic normalization, type checking, bounded inference, transformation, and semantic presentation;
+* [[BIThub]], built on [[Discourse]], provides the conversational and workflow interaction plane around the durable wiki.
+
+The goal is not to collapse these systems into one mechanism. Each layer keeps a clear authority boundary while sharing canonical state through explicit interfaces.
+
+== Programmable knowledge ==
+
+A BITwiki page can combine canonical authored matter with structured identity, graph relationships, provenance/epistemic state, dynamic queries, and Lua-produced projections.
+
+This allows pages to function as coherent reading surfaces while also supporting relationship panels, contextual navigation, comparisons, graph views, diagnostics, contribution tasks, and machine-facing representations without copying the underlying knowledge into separate systems.
+
+See [[BITwiki:Programmable knowledge substrate]] and [[BITwiki:Lua architecture]].
+
+== Relationship to BIThub ==
+
+BIThub is where active discussion, research, coordination, and agent workflows can occur. BITwiki is where stable knowledge can become revisioned, linked, semantically typed, and reusable.
+
+The systems connect through explicit APIs/plugins/services/workflows rather than by making Scribunto responsible for cross-service networking. BIThub should consume canonical BITwiki state; it should not need an independent competing ontology merely to provide a richer user interface.
+
+== References ==
+
+* [https://bitwiki.org/ BITwiki]
+* [https://github.com/bitwikiorg/wiki-content wiki-content repository]
+* [[BIThub]]
+* [[MediaWiki]]
+* [[Semantic MediaWiki]]
+* [[Cargo (MediaWiki extension)]]
+* [[Scribunto]]
+* [[Lua]]
+
+[[Category:Computer science]]

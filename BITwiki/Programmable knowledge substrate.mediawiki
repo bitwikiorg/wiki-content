@@ -1,0 +1,250 @@
+{{Source status|status=source-grounded architecture|note=Defines the V2 execution model that matures the existing MediaWiki, Scribunto, Semantic MediaWiki, Cargo, Book Matter, relationship, and BIThub/Discourse surfaces without treating speculative capabilities as deployed.}}
+
+= Programmable knowledge substrate =
+
+BITwiki is not only a collection of documents. It is a programmable knowledge substrate in which authored knowledge, structured state, deterministic computation, and multiple user/agent interfaces remain distinct but composable.
+
+The central execution model is:
+
+<pre>
+authored wikitext / templates
+          +
+Semantic MediaWiki graph state
+          +
+Cargo operational state
+          ↓
+MediaWiki parser + Scribunto/Lua
+          ↓
+normalize → type-check → derive bounded rules → project → diagnose
+          ↓
+page / navigation / comparison / graph / maintenance / machine-facing views
+          ↕
+BIThub / Discourse integration layer
+          ↕
+humans + agents + workflows
+</pre>
+
+'''Lua is BITwiki's deterministic compiler/type-system/inference-and-projection layer.''' MediaWiki remains the execution substrate and page/revision system. Wikitext remains the primary authoring syntax. Semantic MediaWiki and Cargo remain structured state layers. BIThub/Discourse remains the interactive collaboration and workflow surface.
+
+== Compiler is an architectural role ==
+
+The word ''compiler'' does not mean Scribunto replaces MediaWiki's wikitext parser. MediaWiki parses wikitext and invokes modules. Lua then receives bounded inputs and wiki-resident structured data and performs deterministic transformations over them.
+
+The useful compiler analogy is a sequence of passes:
+
+# '''Normalize''' — canonicalize arguments, identifiers, lists, dates, units, labels, and other representations without changing their asserted meaning.
+# '''Type-check''' — validate entity types, Domains, epistemic states, relationship shapes, required fields, and other governed contracts.
+# '''Resolve''' — obtain relevant wiki-resident state through supported MediaWiki, Cargo, or Semantic MediaWiki interfaces.
+# '''Derive''' — apply explicit bounded rules whose semantics are documented and safe for the relevant relation/data type.
+# '''Project''' — choose and compose a view: relationship panel, breadcrumb, entity card, comparison, adjacency list, graph payload, maintenance panel, learning view, contribution quest, or other interface.
+# '''Diagnose''' — expose malformed state, missing required knowledge, contradictions represented in structured state, dependency problems, stale mappings, or other actionable signals.
+
+These passes may be implemented by multiple composable modules. The architecture is more important than any particular `Module:` title.
+
+== Source of truth by layer ==
+
+{| class="wikitable"
+! Layer !! Owns !! Does not own
+|-
+| Authored pages / Book Matter || explanation, definitions, arguments, context, evidence-bearing prose, canonical reusable matter || implicit global inference
+|-
+| Semantic MediaWiki || durable typed page properties and graph relationships || arbitrary UI policy
+|-
+| Cargo || repeated structured operational records and queryable workflow state || canonical knowledge graph identity
+|-
+| Lua / Scribunto || deterministic normalization, validation, bounded inference, transformation, view models, rendering logic, diagnostics || autonomous state, external networking, hidden truth judgments
+|-
+| Templates || stable wikitext-facing invocation and declarative composition surfaces || deep duplicated procedural logic
+|-
+| MediaWiki || parsing, revisions, transclusion, namespaces, permissions, cache/execution environment, APIs || BITwiki-specific semantic policy by itself
+|-
+| BIThub / Discourse || conversation, coordination, active inference, contribution workflow, human/agent interaction || canonical durable knowledge merely because it appeared in a discussion
+|-
+| External agents / BITCORE workflows || research, synthesis, natural-language reasoning, external tools/APIs, proposed edits and structured findings || silent authority over canonical wiki state
+|}
+
+This separation prevents a view from becoming the database, a conversation from becoming canon, or a deterministic parser-time function from pretending to be an autonomous agent.
+
+== BIThub / Discourse as the interaction plane ==
+
+Many users and agents should not need to understand MediaWiki internals to interact with BITwiki's knowledge substrate.
+
+BIThub provides the conversational and workflow-facing surface around the durable wiki. A request may begin as a discussion, research task, question, comparison, proposed relationship, missing-knowledge signal, or contribution workflow. Stable results can then enter the MediaWiki layer through explicit integration and review paths.
+
+<pre>
+human / agent
+     ↓
+BIThub topic, workflow, command, assistant or interface
+     ↓
+authenticated integration bridge
+     ↓
+MediaWiki API / page-template contracts / query surfaces
+     ↓
+SMW + Cargo + canonical page state
+     ↓
+Lua compiler/projection layer
+     ↓
+contextual view or diagnostic
+     ↓
+MediaWiki and/or BIThub presentation
+</pre>
+
+The '''integration bridge is not Scribunto'''. Lua executes inside MediaWiki's sandbox and should not be treated as the HTTP client, daemon, event consumer, queue worker, or secret-bearing transport between Discourse and MediaWiki. Transport belongs to explicit server-side integrations, plugins, APIs, workflows, or agents with appropriate authentication.
+
+Lua's role is to make wiki state coherent and reusable once the request reaches the knowledge substrate, and to produce deterministic outputs that MediaWiki pages or BIThub integrations can consume.
+
+== One state, many interfaces ==
+
+A durable semantic assertion should normally be stored once and projected differently by context.
+
+Example:
+
+<pre>
+Bitcoin Core → Implements → Bitcoin protocol
+</pre>
+
+Possible projections include:
+
+* on the Bitcoin Core page: '''Implements → Bitcoin protocol''';
+* on the Bitcoin protocol page: '''Implemented by ← Bitcoin Core''';
+* in a graph: a directional edge;
+* in BIThub: a compact entity/relationship card attached to a discussion;
+* for an agent: a structured adjacency object;
+* in maintenance: a validation warning if the relation violates a documented contract.
+
+The inverse display does not require storing a second assertion. Presentation derivation is different from asserting a new fact.
+
+== Inference policy ==
+
+Lua may perform inference only when the rule is explicit, deterministic, bounded, and semantically justified.
+
+Safe examples include:
+
+* deriving an inverse '''display label''' from a stored directional edge;
+* normalizing equivalent date/unit/string representations;
+* identifying that a required field is absent;
+* calculating structural completeness from explicitly defined criteria;
+* identifying a dependency path for navigation or blast-radius inspection;
+* generating a contribution task from an explicit missing-coverage condition.
+
+Unsafe universal assumptions include:
+
+* treating generic causality as transitive;
+* manufacturing epistemic standing from page shape or source prestige;
+* turning co-occurrence into a semantic relationship;
+* silently persisting inferred facts as if they were authored assertions;
+* resolving natural-language contradiction without an evidence-bearing external process.
+
+Persistent derived assertions require an explicit provenance and governance policy. By default, Lua derivations are projections/diagnostics, not hidden writes to canonical state.
+
+== Self-assembling pages ==
+
+A rendered page can be understood as a composition rather than a monolithic document:
+
+<pre>
+canonical authored Book Matter
++ semantic identity
++ graph neighborhood
++ epistemic/provenance state
++ operational context where appropriate
++ deterministic Lua view rules
+= rendered knowledge interface
+</pre>
+
+This supports context-sensitive infoboxes, related-page navigation, recursive taxonomy views, procedural comparisons, knowledge-health panels, graph projections, research tasks, learning paths, and other interfaces without duplicating the underlying knowledge.
+
+The parent knowledge object must remain coherent and auditable. Dynamic composition must not make canonical authorship, provenance, or dependencies opaque.
+
+== Agent-readable and interface-neutral knowledge ==
+
+A Lua projection should not assume that its only consumer is the desktop article skin.
+
+Where useful, the same normalized intermediate representation should support:
+
+* human-readable MediaWiki rendering;
+* compact BIThub/Discourse cards or embeds;
+* API-oriented structured payloads generated by an integration layer;
+* agent context assembly;
+* graph visualization;
+* maintenance/audit views;
+* learning and contribution interfaces.
+
+The preferred architecture is therefore:
+
+<pre>
+wiki state
+   ↓
+normalized view model
+   ├── MediaWiki rendering
+   ├── BIThub rendering
+   ├── graph projection
+   └── agent/machine projection
+</pre>
+
+Do not maintain separate semantic truth for each interface.
+
+== Dogfooding the stack ==
+
+BITwiki should be able to describe the systems that make BITwiki possible.
+
+A material technology used by the platform should normally have two distinct forms when both are useful:
+
+# a canonical Main-namespace knowledge object explaining what the technology is;
+# a BITwiki project/architecture page explaining how BITwiki uses it, its runtime role, dependencies, constraints, and deployment consequences.
+
+This applies progressively to languages, runtimes, applications, extensions, modules, scripts, databases, services, agents, protocols, APIs, daemons, kernels, and other consequential components.
+
+The rule is not to manufacture pages for every transitive dependency. A component becomes first-class when understanding it materially improves operation, architecture, governance, contribution, debugging, provenance, or interoperability.
+
+== Current implementation ==
+
+The first deployed V2 Lua consumer remains `Template:Knowledge object` through `Module:Structure`. The implementation now treats `Module:Structure` as a public validation wrapper and delegates deterministic normalization/type checking to the `Module:BITwiki/*` compiler family.
+
+The compiler-facing controlled vocabulary is source-controlled in `bitwiki-runtime-schema.json` and projected into `Module:BITwiki/Data/Schema` for `mw.loadData()` consumption. This is intended to prevent each module from inventing a private schema.
+
+Cargo is already available to Lua through `mw.ext.cargo`. Native SMW objects through `mw.smw` require the SemanticScribunto capability and must not be assumed until the deployed extension/runtime combination supports it. Parser-function bridging can be used only where the trade-off is explicit.
+
+== Security and execution boundary ==
+
+Scribunto is intentionally sandboxed and resource-bounded. The compiler layer must therefore remain parse-time deterministic computation over permitted wiki state.
+
+It is not the place for:
+
+* filesystem access;
+* arbitrary network requests;
+* long-running/background computation;
+* secret management;
+* autonomous scheduling;
+* persistent private memory;
+* unrestricted process execution;
+* LLM inference.
+
+Those responsibilities belong to MediaWiki/Discourse extensions, APIs, backend services, BIThub workflows, BITCORE agents, or other explicitly governed infrastructure.
+
+== Design test ==
+
+Before adding Lua, ask:
+
+# Is the logic reusable and non-trivial?
+# Does it transform or validate existing state rather than invent a second source of truth?
+# Is the rule deterministic and safe at parse time?
+# Does more than one interface or consumer benefit from a normalized representation?
+# Can the behavior be tested independently of presentation?
+# Would keeping the logic in wikitext create duplication, parser-function complexity, or semantic drift?
+
+If not, a template, query, property, authored page, or external workflow may be the better primitive.
+
+== References ==
+
+* [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
+* [https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual MediaWiki — Lua reference manual]
+* [https://www.mediawiki.org/wiki/Extension:Cargo/Other_features#Lua_support MediaWiki — Cargo Lua support]
+* [[BITwiki:Lua architecture]]
+* [[BITwiki:MediaWiki substrate]]
+* [[BITwiki:Book Matter]]
+* [[BITwiki:Relationships]]
+* [[BITwiki:Interoperability]]
+* [[BITwiki:Ecosystem]]
+
+[[Category:BITwiki architecture]]
+[[Category:BITwiki meta]]

@@ -11,6 +11,7 @@ Before deployment, reconcile the target installation against:
 * <code>archive-v1/siteinfo.json</code>
 * <code>v1-fidelity-audit.json</code>
 * [[BITwiki:MediaWiki substrate]]
+* [[BITwiki:Programmable knowledge substrate]]
 
 Filesystem folders are source-control projections. They do not create MediaWiki namespaces by existing in Git.
 
@@ -27,6 +28,8 @@ The captured BITwiki runtime currently provides the capabilities V2 actively dep
 
 Other installed capabilities such as Network, faceted search, PubMed parsing and NCBI taxonomy lookup are available but are not deployment requirements for every page merely because the extensions exist.
 
+Native structured SMW access from Lua through <code>mw.smw</code> is '''not''' assumed merely because Semantic MediaWiki and Scribunto are installed. That interface requires a compatible SemanticScribunto deployment and must be verified before modules depend on it.
+
 == Namespace/source mapping ==
 
 The deployable source-control mappings are recorded in <code>manifest.json</code>.
@@ -40,6 +43,8 @@ Important configured extension namespaces include:
 * <code>MediaWiki:</code> → <code>MediaWiki/</code>
 
 <code>SMWSchema/</code> uses URL-encoded namespace-local colons in filenames so the repository remains cross-platform.
+
+Nested paths under <code>Module/</code> represent Module subpages. For example, <code>Module/BITwiki/Compiler.lua</code> deploys as <code>Module:BITwiki/Compiler</code>.
 
 == Portal titles are not a confirmed namespace ==
 
@@ -69,19 +74,28 @@ The seven live decorative/header/footer templates still have callers. Their V2 d
 
 The wanted-template archive contains references to absent implementations. Do not create them automatically during deployment.
 
-== Module safety ==
+== Lua compiler / Module safety ==
 
-The captured live Module namespace was empty. <code>Module:Structure</code> is therefore a new V2 runtime dependency, not a recovered V1 module.
+The captured live Module namespace was empty. Every V2 module is therefore a new runtime dependency rather than a recovered V1 module.
 
-Deploy Module pages before templates that invoke them. In particular:
+V2 now treats Lua as the deterministic compiler/type-system/inference-and-projection layer described in [[BITwiki:Lua architecture]]. <code>Module:Structure</code> remains the public validation wrapper used by <code>Template:Knowledge object</code>, but it delegates normalization/type checking into the <code>Module:BITwiki/*</code> family.
+
+Deploy module dependencies before their consumers:
 
 <pre>
-Module:Structure
+Module:BITwiki/Data/Schema
+→ Module:BITwiki/Core
+→ Module:BITwiki/Compiler
+→ Module:Structure
 → Template:Knowledge object
 → knowledge-object consumers
 </pre>
 
-After import, test a valid and deliberately invalid sandbox invocation before broad deployment. Valid V2 knowledge objects should render without validation output; malformed identity should surface an explicit error and maintenance category.
+<code>bitwiki-runtime-schema.json</code> is repository-only authority for compiler-facing controlled vocabularies; MediaWiki cannot execute it directly. <code>Module:BITwiki/Data/Schema</code> is the runtime projection required by Scribunto. Run <code>python scripts/audit_runtime_schema.py</code> before deployment so the JSON authority, Lua projection and repository validator agree.
+
+After import, test valid and deliberately invalid sandbox invocations before broad deployment. Valid V2 knowledge objects should render without validation output; malformed identity should surface an explicit error and maintenance category.
+
+Do not add cross-service credentials, outbound HTTP assumptions, filesystem access, background scheduling, or daemon behavior to Scribunto modules. BIThub/Discourse transport belongs to separately authenticated APIs/plugins/services/agents.
 
 == Semantic MediaWiki safety ==
 
@@ -144,6 +158,21 @@ Repository CI validates the source contract, but it cannot prove that a remote C
 
 Do not create additional Cargo tables, subobjects, Network views, or faceted structures solely to increase extension usage. Introduce them only when the data model has a real repeated-record, qualified-fact, or exploration requirement and document migration/dependency consequences first.
 
+== BIThub / Discourse integration boundary ==
+
+The programmable substrate is designed to support BIThub as an interaction plane, but this repository does not by itself deploy the cross-service transport.
+
+Before enabling a BIThub→BITwiki write workflow, verify:
+
+* authentication/authorization identity;
+* target MediaWiki API or plugin contract;
+* edit actor/process attribution;
+* provenance and review behavior;
+* failure/retry/idempotency behavior where relevant;
+* whether the write targets canonical page content, SMW assertions, Cargo operational state, or another explicit surface.
+
+A BIThub cache, card index, or agent context may project BITwiki state, but it must not silently become a second source of semantic truth.
+
 == CI evidence is not canonical source ==
 
 Validation and audit scripts generate JSON reports during CI. Those files are intentionally untracked and retained as workflow artifacts. The canonical inputs are the reviewed repository source, the generators, and preserved evidence—not a mutable bot-authored report committed after merge.
@@ -155,11 +184,11 @@ Neither PR validation nor <code>main</code> validation is authorized to rewrite 
 <pre>
 1. refresh archive-v1 from the live public wiki
 2. review archive-v1/audit.json and v1-fidelity-audit.json
-3. run scripts/validate_v2.py, scripts/audit_substrate.py, and scripts/audit_workflow.py
+3. run scripts/validate_v2.py, scripts/audit_runtime_schema.py, scripts/audit_substrate.py, and scripts/audit_workflow.py
 4. deploy runtime/schema/property/module/template dependencies first
 5. create/recreate required Cargo tables before importing their query consumers
 6. import/create reviewed V2 pages additively
-7. verify rendering, transclusions, categories, SMW data, and Cargo data
+7. verify rendering, Lua diagnostics, transclusions, categories, SMW data, and Cargo data
 8. migrate each V1 source family / callers deliberately
 9. move/merge/redirect only after source comparison
 10. preserve revision history where technically possible

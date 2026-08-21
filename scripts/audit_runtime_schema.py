@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Verify BITwiki compiler-facing schema projections stay synchronized.
+"""Verify BITwiki compiler-facing runtime schema remains coherent.
 
-bitwiki-runtime-schema.json is the reviewed repository authority. MediaWiki needs
-an executable Lua projection and the existing Python validator consumes the same
-controlled vocabularies. This audit makes duplication falsifiable instead of
-allowing the three representations to drift silently.
+bitwiki-runtime-schema.json is the reviewed repository authority. The Python V2
+validator consumes that authority directly. Scribunto cannot read arbitrary
+repository JSON, so MediaWiki requires a Lua data projection; this audit makes
+that necessary projection explicit and detects drift.
 """
 
 from __future__ import annotations
@@ -88,10 +88,19 @@ def main() -> int:
 
     critical: list[str] = []
 
+    validator_schema_path = Path(validator.RUNTIME_SCHEMA_PATH).resolve()
+    if validator_schema_path != SCHEMA_PATH.resolve():
+        critical.append(
+            "Python validator is not consuming the canonical runtime schema: "
+            f"expected={SCHEMA_PATH.resolve()}; actual={validator_schema_path}"
+        )
+
     compare_set("Lua entity types", expected_entity_types, lua_entity_types, critical)
     compare_set("Lua domains", expected_domains, lua_domains, critical)
     compare_set("Lua epistemic statuses", expected_statuses, lua_statuses, critical)
 
+    # These are direct-consumption sanity checks: validate_v2.py should expose
+    # the same values it loaded from the canonical JSON authority.
     compare_set(
         "Python validator entity types",
         expected_entity_types,
@@ -132,6 +141,7 @@ def main() -> int:
         "authority": str(SCHEMA_PATH.relative_to(ROOT)),
         "lua_projection": str(LUA_PATH.relative_to(ROOT)),
         "python_consumer": str(VALIDATOR_PATH.relative_to(ROOT)),
+        "python_consumer_mode": "direct canonical-schema load",
         "schema_version": schema.get("schema_version"),
         "entity_type_count": len(expected_entity_types),
         "domain_count": len(expected_domains),

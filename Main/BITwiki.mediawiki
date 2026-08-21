@@ -21,6 +21,16 @@ BITwiki's current technical stack separates responsibilities:
 
 The goal is not to collapse these systems into one mechanism. Each layer keeps a clear authority boundary while sharing canonical state through explicit interfaces.
 
+== Structured relationships ==
+
+* Depends on: [[Depends on::MediaWiki]]
+* Depends on: [[Depends on::Semantic MediaWiki]]
+* Depends on: [[Depends on::Scribunto]]
+* Depends on: [[Depends on::Cargo (MediaWiki extension)]]
+* Related to: [[Related to::BIThub]]
+
+These assertions describe current V2 architectural dependencies/association. They are graph state, not a claim that every historical BITwiki revision required the same stack.
+
 == Programmable knowledge ==
 
 A BITwiki page can combine canonical authored matter with structured identity, graph relationships, provenance/epistemic state, dynamic queries, and Lua-produced projections.

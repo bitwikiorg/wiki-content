@@ -11,6 +11,13 @@
 
 Scribunto gives MediaWiki a `Module:` namespace for executable code and the `#invoke` parser function for calling exported module functions from wikitext.
 
+== Structured relationships ==
+
+* Depends on: [[Depends on::MediaWiki]]
+* Depends on: [[Depends on::Lua]]
+
+These relationships describe Scribunto's host/runtime dependencies at the abstraction level relevant to BITwiki.
+
 == Execution model ==
 
 A module returns a Lua table containing functions or values. Public functions can be called from a wiki page or template through `#invoke`, while modules can compose other modules using Lua `require()`.

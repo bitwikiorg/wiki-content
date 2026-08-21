@@ -17,6 +17,7 @@ on:
       - 'MediaWiki/**'
       - 'Help/**'
       - 'archive-v1/**'
+      - 'bitwiki-runtime-schema.json'
       - 'manifest.json'
       - '.gitignore'
       - 'scripts/**'
@@ -41,6 +42,10 @@ jobs:
 
       - name: Validate deployable MediaWiki structure and identity semantics
         run: python scripts/validate_v2.py
+
+      - name: Audit compiler runtime schema projections
+        if: always()
+        run: python scripts/audit_runtime_schema.py
 
       - name: Audit MediaWiki / SMW / Lua / Cargo substrate use
         if: always()
@@ -70,6 +75,10 @@ jobs:
         if: always()
         run: test ! -f v2-validation.json || cat v2-validation.json
 
+      - name: Show runtime schema audit
+        if: always()
+        run: test ! -f v2-runtime-schema-audit.json || cat v2-runtime-schema-audit.json
+
       - name: Show substrate audit
         if: always()
         run: test ! -f v2-substrate-audit.json || cat v2-substrate-audit.json
@@ -89,6 +98,7 @@ jobs:
           name: bitwiki-v2-architecture-evidence
           path: |
             v2-validation.json
+            v2-runtime-schema-audit.json
             v2-substrate-audit.json
             v2-workflow-audit.json
             v2-mainspace-audit.json

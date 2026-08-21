@@ -43,6 +43,13 @@ jobs:
       - name: Validate deployable MediaWiki structure and identity semantics
         run: python scripts/validate_v2.py
 
+      - name: Validate Scribunto Lua 5.1 syntax
+        if: always()
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y lua5.1
+          find Module -type f -name '*.lua' -print0 | xargs -0 -n1 luac5.1 -p
+
       - name: Audit compiler runtime schema projections
         if: always()
         run: python scripts/audit_runtime_schema.py

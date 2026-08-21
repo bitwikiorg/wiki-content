@@ -1,16 +1,36 @@
-{{Source status|status=source-grounded operational guide|note=Revised against the exhaustive V1 API archive: 9 implemented templates, 59 wanted templates, 162 used categories, zero created Category pages, and full transclusion/membership state.}}
+{{Source status|status=source-grounded operational guide|note=Revised against the exhaustive V1 API archive and the V2 programmable-substrate maturation: preserves the 9 implemented templates / 59 wanted templates / 162 used categories evidence while clarifying Template, Lua, SMW, Cargo, and Category responsibilities.}}
 
 = Templates and categories =
 
 Templates and categories solve different problems.
 
-* '''Template''' = reusable/transcluded content, structure or interface.
-* '''Category''' = human-readable grouping and automatic index.
-* '''Property''' = Semantic MediaWiki attribute or relationship.
+* '''Template''' = reusable/transcluded declarative content, structure, semantic emission, or stable invocation surface.
+* '''Module / Lua''' = reusable non-trivial normalization, validation, bounded inference, computation, semantic presentation, or diagnostics.
+* '''Category''' = human-readable grouping and automatic index/navigation surface.
+* '''Property / SMW''' = durable semantic attribute or relationship.
+* '''Cargo''' = repeated structured operational records when a table-shaped lifecycle is justified.
 * '''Book Matter''' = reusable content anatomy.
 * '''Special page / validation category''' = generated operational state.
 
 Do not use one merely because another would require more thought.
+
+== V2 composition path ==
+
+<pre>
+wikitext author
+    ↓
+Template
+    ├── declarative rendering / transclusion
+    ├── SMW property emission
+    ├── Cargo operational storage where explicitly designed
+    └── #invoke → Scribunto/Lua for reusable procedural logic
+                         ↓
+           normalized / validated / computed projection
+</pre>
+
+Templates are the public wikitext-facing contract. Lua is the deterministic compiler/projection layer when procedure becomes non-trivial. SMW and Cargo remain state owners; a Template or Lua module should not create a hidden competing schema.
+
+<code>Template:Knowledge object</code> demonstrates this split: it exposes the authoring contract, invokes <code>Module:Structure</code>, and that wrapper delegates normalization/type checking to <code>Module:BITwiki/Compiler</code> using the runtime schema projection.
 
 == What V1 actually implemented ==
 The exhaustive public V1 archive contains:
@@ -21,7 +41,7 @@ The exhaustive public V1 archive contains:
 * 8 uncategorized templates;
 * 1 unused template.
 
-This differs materially from the larger system described in `Template Catalog`, `Template List`, `Template Usage Guide` and `CATEGORY ARCHITECTURE`. Those pages preserve valuable design intent, but intended components are not described as implemented until a corresponding live object exists.
+This differs materially from the larger system described in <code>Template Catalog</code>, <code>Template List</code>, <code>Template Usage Guide</code> and <code>CATEGORY ARCHITECTURE</code>. Those pages preserve valuable design intent, but intended components are not described as implemented until a corresponding live object exists.
 
 == V1 template dispositions ==
 
@@ -85,7 +105,9 @@ A V2 template should have:
 
 Use templates as pattern languages, preserving the strong V1 principle: '''consistency without rigidity'''. A template should make repeated structure easier to understand and maintain; it should not force unrelated knowledge into one shape.
 
-== V2 category rules ==
+When logic becomes procedural or reused across several presentation contexts, prefer a small <code>Module:BITwiki/*</code> function returning structured normalized state rather than deeply nested parser functions.
+
+== Canonical V2 category rules ==
 A created V2 Category page should state, when useful:
 * what it groups;
 * inclusion/exclusion criteria;
@@ -94,7 +116,25 @@ A created V2 Category page should state, when useful:
 
 Category pages are indexes, not directories. A page may belong to multiple categories. Category hierarchy is a navigation graph, not the ontology.
 
+A category may include SMW/query/Lua-computed views, but those are projections over canonical state. Category membership does not silently create Entity type, Domain, or relationship assertions.
+
 See [[BITwiki:V1 category migration]] for the complete functional refactor of the 162 V1 category memberships.
+
+== State and rendering invariants ==
+
+<pre>
+Template invocation
+≠ independent semantic authority
+
+Lua-derived display
+≠ stored SMW assertion
+
+Category membership
+≠ ontology inheritance
+
+Cargo operational record
+≠ canonical knowledge object
+</pre>
 
 == Maintenance surfaces ==
 These are generated reports, not ordinary content pages:
@@ -119,7 +159,7 @@ archive exact source + complete revision history
 → choose correct V2 primitive
 → KEEP / REWRITE / MERGE / REDIRECT / RETIRE
 → implement
-→ rerun Special-page validation
+→ rerun repository + Special-page validation
 </pre>
 
 == Release checks ==
@@ -131,8 +171,11 @@ Before a V2 deployment is considered clean:
 # review all category memberships against <code>archive-v1/categories/index.json</code>;
 # review [[Special:Categories]], [[Special:WantedCategories]] and [[Special:UncategorizedPages]];
 # verify semantic properties and category membership after template migrations;
+# verify Lua module dependency order and actual Scribunto behavior for invoked modules;
 # verify redirects/transclusions after every rename;
 # do not deploy <code>archive-v1/</code> as live V2 content.
+
+See [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], [[BITwiki:MediaWiki substrate]], [[BITwiki:Transclusion]], and [[BITwiki:Requested knowledge]].
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

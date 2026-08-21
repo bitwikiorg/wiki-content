@@ -1,8 +1,8 @@
-{{Source status|status=source-reconciled architecture|note=Revised after exhaustive V1 recovery and the recursive-navigation pass. Preserves V1 organization goals while separating MediaWiki primitives, ontology, epistemics, Book Matter, reader depth, and navigation.}}
+{{Source status|status=source-reconciled architecture|note=Revised after exhaustive V1 recovery, recursive navigation, and the programmable-substrate/Lua compiler maturation. Preserves V1 organization goals while separating MediaWiki primitives, ontology, epistemics, Book Matter, computation, interface planes, reader depth, and navigation.}}
 
 = BITwiki organization =
 
-BITwiki is organized so knowledge can be read coherently, decomposed where reuse is useful, queried semantically, traversed through explicit relationships, entered through multiple navigation views, and audited through sources/provenance/revision history.
+BITwiki is organized so knowledge can be authored coherently, decomposed where reuse is useful, stored semantically, computed deterministically, traversed through explicit relationships, entered through multiple interfaces, and audited through sources/provenance/revision history.
 
 == The architecture in one view ==
 
@@ -23,14 +23,23 @@ BITwiki is organized so knowledge can be read coherently, decomposed where reuse
        │                       │                        │
        └───────────────────────┼────────────────────────┘
                                │
+                      STRUCTURED WIKI STATE
+                     SMW graph · Cargo records
+                               │
+                    SCRIBUNTO / LUA COMPILER
+       normalize · type-check · bounded derive · project · diagnose
+                               │
                          NAVIGATION / VIEWS
        Portal · Category · Outline · List · Index · Query · Graph
+                               │
+                       INTERACTION SURFACES
+                 MediaWiki UI · BIThub / Discourse
                                │
                          READER DEPTH
                   Simple · Core · Technical · Frontier
 </pre>
 
-No branch in this diagram is the whole system.
+No branch in this diagram is the whole system. See [[BITwiki:Programmable knowledge substrate]] and [[BITwiki:Lua architecture]].
 
 == MediaWiki primitives ==
 
@@ -44,22 +53,45 @@ A broad system/page-class boundary with MediaWiki behavior. Namespace is not sub
 A human-readable browse/index surface. Category hierarchy is a navigation graph, not the ontology.
 
 === Template ===
-Reusable/transcluded structure, interface, or content pattern.
+Reusable/transcluded declarative structure, interface, semantic-emission, or stable invocation pattern. Non-trivial reusable procedural logic may delegate to Lua.
 
 === Property ===
-Semantic MediaWiki attribute or relationship with an explicitly documented meaning.
+Semantic MediaWiki attribute or relationship with explicitly documented meaning. Property assertions are durable graph state; a computed display is not automatically another assertion.
 
 === Concept ===
 A stored semantic query/computed collection when that capability provides value. It is not synonymous with V2 entity type <code>Concept</code>.
 
 === Module ===
-Reusable executable wiki logic when templates are insufficient.
+Scribunto/Lua reusable executable logic. In V2, <code>Module:BITwiki/*</code> is the deterministic compiler/type-system/bounded-inference/projection layer over authored and structured wiki state.
+
+=== Cargo table ===
+Repeated structured operational state when a table-shaped lifecycle is clearer than page-level semantic identity. Cargo does not replace SMW as the canonical graph.
 
 === Redirect ===
 Title continuity and migration mechanism. Redirects should represent deliberate equivalence/continuity decisions, not hide unresolved source differences.
 
 === Revision / history / diff ===
 Native provenance and correction trail. Do not recreate this data in semantic fields without a concrete reason.
+
+== Execution and interface layers ==
+
+<pre>
+wikitext / Templates + SMW + Cargo
+              ↓
+      MediaWiki + Scribunto/Lua
+              ↓
+normalize → type-check → resolve → bounded derive → project → diagnose
+              ↓
+MediaWiki views / graph / diagnostics / machine-facing models
+              ↕
+authenticated API / plugin / service / agent boundary
+              ↕
+BIThub / Discourse
+</pre>
+
+BITwiki/MediaWiki remains the canonical durable knowledge plane. BIThub/Discourse is the conversation, coordination, active-inference and workflow plane. BITCORE/agent systems may perform external research, synthesis and orchestration, but they do not silently acquire authority over canonical wiki state.
+
+Scribunto is not the cross-service transport. Credentials, networking, queues, retries and background execution belong to explicit integration infrastructure.
 
 == Independent dimensions ==
 
@@ -73,6 +105,8 @@ namespace
 ≠ relationship
 ≠ navigation view
 ≠ reader depth
+≠ interface
+≠ compiler-derived presentation
 </pre>
 
 This separation is the central V2 organizational correction.
@@ -83,9 +117,11 @@ This separation is the central V2 organizational correction.
 
 [[BITwiki:Entity types]] contains the current evolving base vocabulary. Types are stable recognition patterns, not rigid bins.
 
-[[BITwiki:Relationships]] defines semantic edges conservatively. Specific relation semantics should not be inferred from proximity, portal ancestry, or category membership.
+[[BITwiki:Relationships]] defines semantic edges conservatively. Specific relation semantics should not be inferred from proximity, portal ancestry, category membership, or interface co-occurrence.
 
 [[BITwiki:Semantic properties]] documents what V2 actually implements in the Property namespace.
+
+Compiler-facing controlled vocabulary and deterministic relationship-display metadata are repository-authoritative in <code>bitwiki-runtime-schema.json</code> and projected to Scribunto through <code>Module:BITwiki/Data/Schema</code>. That runtime schema is not the whole ontology and does not replace SMW Property contracts.
 
 == Domains ==
 
@@ -121,6 +157,8 @@ Split content only when the part has independent reuse/retrieval/provenance valu
 
 [[BITwiki:Epistemics]] separates epistemic standing, evidence, source type/evaluation, provenance, confidence rationale, uncertainty, review/verification, lifecycle, and perspective. A single status field or numeric score must not stand in for the full question of how something is known.
 
+Lua may validate or diagnose explicit epistemic structure but must not manufacture epistemic standing from page shape, source prestige, or interface context.
+
 == Navigation ==
 
 Navigation is a plural set of views over the knowledge substrate.
@@ -141,6 +179,9 @@ Older slash paths may redirect for continuity, but portal filesystem nesting is 
 === Categories ===
 Browse/index groupings. Subcategories may have multiple parents. Substantive Category pages should explain Scope, Includes, Excludes/boundary, role, and related navigation.
 
+=== Concepts / semantic queries ===
+Reusable computed sets and queries over canonical SMW state. Membership is projected from assertions rather than copied into a second semantic store.
+
 === Outlines ===
 Hierarchical study maps useful for orientation without claiming the outline is ontology.
 
@@ -150,17 +191,23 @@ Useful when individual members need annotation, references, comparison fields, d
 === Contents / indices / glossaries ===
 Complementary large-scale orientation, lookup, and vocabulary surfaces.
 
-=== Semantic queries and knowledge graphs ===
-Dynamic computed views over properties/relationships. A graph visualizes knowledge; drawing an edge does not make the edge true.
+=== Semantic queries, Lua projections and knowledge graphs ===
+Dynamic views over structured properties/relationships. Lua can normalize and compose reusable view models for MediaWiki or BIThub-facing integrations. A graph visualizes knowledge; drawing or deriving a display edge does not make a new stored edge true.
 
 === Core / Vital coverage ===
 A future curated priority layer can identify important missing/weak knowledge without turning importance into semantic identity.
 
 See [[BITwiki:Navigation]].
 
+== Self-modeling substrate ==
+
+BITwiki should be able to describe consequential technologies that make BITwiki possible. Main-space knowledge objects now include [[BITwiki]], [[BIThub]], [[MediaWiki]], [[Discourse]], [[Semantic MediaWiki]], [[Cargo (MediaWiki extension)]], [[Scribunto]], and [[Lua]].
+
+These pages explain the general technology/project while BITwiki-namespace pages explain local implementation policy. Conservative SMW dependency/association assertions make the operating stack queryable as graph state.
+
 == Reader depth / localization ==
 
-Progressive disclosure now has an explicit editorial model:
+Progressive disclosure has an explicit editorial model:
 
 <pre>
 Simple orientation
@@ -175,7 +222,7 @@ This is primarily depth/readability localization within one canonical knowledge 
 
 Missing knowledge should not be represented by generic empty shells. Use [[BITwiki:Requested knowledge]] until a coherent sourced object can be created.
 
-[[BITwiki:Contributing]] defines the contribution path. Architecture, governance, maintenance, validation, research queues, requests, portal/category administration, templates/properties, migrations, automation, and security belong to project-operational surfaces rather than subject Domains.
+[[BITwiki:Contributing]] defines the contribution path. Architecture, governance, maintenance, validation, research queues, requests, portal/category administration, templates/properties/modules, migrations, automation, BIThub integration, and security belong to project-operational surfaces rather than subject Domains.
 
 == V1 lessons carried forward ==
 
@@ -183,6 +230,7 @@ Missing knowledge should not be represented by generic empty shells. Use [[BITwi
 
 * portals as intelligent entry points;
 * modular/transcludable content;
+* reusable computational logic where demonstrated;
 * semantic relationships;
 * knowledge-graph navigation;
 * polyhierarchy/faceting where useful;
@@ -199,6 +247,7 @@ Missing knowledge should not be represented by generic empty shells. Use [[BITwi
 * one giant taxonomy carrying subject + type + epistemics + workflow;
 * numeric confidence as mandatory decoration;
 * unimplemented documentation presented as live capability;
+* monolithic template/parser-function logic where reusable Lua is clearer;
 * duplicate <code>.REVISED</code>/<code>final</code> publication surfaces;
 * arbitrary fragments or stubs with no independent knowledge value.
 
@@ -211,20 +260,34 @@ Missing knowledge should not be represented by generic empty shells. Use [[BITwi
 |-
 | missing subject not ready to write || [[BITwiki:Requested knowledge]]
 |-
-| project/about-wiki architecture, research, governance, help || BITwiki namespace
+| project/about-wiki architecture, research, governance || BITwiki namespace
+|-
+| stable end-user workflow guidance || Help namespace
 |-
 | reusable content anatomy || Book Matter / transclusion
 |-
-| repeated rendering/interface pattern || Template
+| repeated declarative rendering/interface pattern || Template
 |-
-| typed semantic fact/relation || Property
+| non-trivial reusable normalization/type/inference/projection || Scribunto/Lua Module
+|-
+| typed semantic fact/relation || Property / SMW assertion
+|-
+| repeated operational records || Cargo
 |-
 | human browse collection || Category
 |-
+| reusable computed semantic set || Concept
+|-
 | reader-facing field/topic entry point || Portal
+|-
+| cross-service interaction/workflow || BIThub + authenticated integration boundary
 |-
 | historical V1 source evidence || archive-v1, not deployed V2
 |}
+
+== Living architecture ==
+
+Architecture changes should update implementation, canonical BITwiki standards, nearby repository READMEs, <code>manifest.json</code> and executable validation where each is relevant. READMEs provide local repository orientation; BITwiki pages carry deeper project semantics. Historical archive evidence is preserved rather than rewritten to match the present.
 
 == Source lineage ==
 
@@ -234,7 +297,7 @@ Historical Notion WIKI-Philosophy and Book Matter research remain useful design 
 
 External comparative research is tracked in [[BITwiki:Research references]] and [[BITwiki:Comparative wiki research register]].
 
-See [[BITwiki:Ontology]], [[BITwiki:Epistemics]], [[BITwiki:Book Matter]], [[BITwiki:Navigation]], [[BITwiki:Readable depth and localization]], and [[BITwiki:Templates and categories]].
+See [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], [[BITwiki:MediaWiki substrate]], [[BITwiki:Ecosystem]], [[BITwiki:Ontology]], [[BITwiki:Epistemics]], [[BITwiki:Book Matter]], [[BITwiki:Navigation]], [[BITwiki:Readable depth and localization]], and [[BITwiki:Templates and categories]].
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

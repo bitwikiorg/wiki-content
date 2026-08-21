@@ -2,23 +2,70 @@
 
 Deployable Semantic MediaWiki `Property:*` definitions.
 
-Property pages are contracts for the semantic graph: define datatype/meaning, intended subjects and values, relationship direction, constraints or usage notes, and examples where useful. Defining a property is insufficient; canonical pages/templates must actually emit and query it consistently.
+Properties are BITwiki's **durable semantic assertion vocabulary**. A Property page defines the contract for graph state: datatype/meaning, intended subjects and values, relationship direction, constraints/usage notes, and examples where useful. Canonical pages/templates must then emit and query that property consistently.
+
+```text
+canonical page / Template
+        ↓ asserts
+SMW Property + value
+        ↓ stores durable graph state
+Lua / #ask / Concept / navigation
+        ↓ projects or diagnoses that state
+MediaWiki / BIThub-facing views
+```
+
+The projection layer does not become the graph authority. Lua may normalize a relationship, choose an inverse **display label**, or report an invalid shape without silently storing a second assertion.
+
+## Relationship to the Lua runtime schema
+
+`bitwiki-runtime-schema.json` contains compiler-facing controlled vocabulary and deterministic display metadata required by Lua. It is **not a replacement for Property pages or SMW state**.
+
+For example, relationship metadata such as an inverse display phrase can tell Lua how to render a stored `Depends on` edge from the opposite direction. The actual semantic assertion remains an SMW property/value emitted by canonical wiki state.
+
+```text
+Property:Depends on          semantic meaning + SMW datatype/contract
+bitwiki-runtime-schema.json  compiler-facing deterministic metadata
+SMW page assertion           durable fact/relationship state
+Lua                          validation/projection/diagnostic behavior
+```
+
+These layers should agree but must not be conflated.
 
 ## V2-native properties
 
-The unencoded filenames in this directory are the current V2 identity, lifecycle, epistemic, and relationship predicates such as `Domain`, `Entity type`, `Epistemic status`, `Provenance`, `Part of`, `Depends on`, `Implements`, `Supports`, and `Contradicts`.
+Current V2 properties cover identity, lifecycle, epistemics, provenance, and relationships, including `Domain`, `Entity type`, `Epistemic status`, `Provenance`, `Part of`, `Depends on`, `Implements`, `Supports`, `Contradicts`, `Refines`, `Derived from`, and `Related to`.
+
+The self-model pages for BITwiki's own stack now exercise these relationships directly, giving future Lua/query/navigation work real graph state rather than demo-only data.
 
 ## Recovered imported vocabulary
 
-The live V1 Property namespace also contains four imported-vocabulary properties. They are source-controlled here because they are part of the current public semantic substrate:
+The live V1 Property namespace also contains imported-vocabulary properties preserved because they are part of the public semantic substrate:
 
 - `Foaf%3Ahomepage.mediawiki` → `Property:Foaf:homepage`
 - `Foaf%3Aknows.mediawiki` → `Property:Foaf:knows`
 - `Foaf%3Aname.mediawiki` → `Property:Foaf:name`
 - `Owl%3AdifferentFrom.mediawiki` → `Property:Owl:differentFrom`
 
-`%3A` is used in filenames for cross-platform compatibility; it decodes to a colon in the namespace-local MediaWiki title.
+`%3A` is used in filenames for cross-platform compatibility and decodes to a colon in the namespace-local MediaWiki title.
 
-Imported vocabulary should not be mixed casually into V2-native semantics. Keep it when interoperable meaning is required and trace its mapping through the corresponding `MediaWiki:Smw import ...` pages.
+Imported vocabulary should not be mixed casually into V2-native semantics. Preserve explicit mapping meaning and trace imports through the corresponding `MediaWiki:Smw import ...` pages and `BITwiki:Interoperability` rules.
 
-See `BITwiki/Semantic properties.mediawiki` and `BITwiki/MediaWiki substrate.mediawiki`.
+## Invariants
+
+```text
+Property definition
+≠ assertion by itself
+
+Lua relationship metadata
+≠ SMW assertion
+
+inverse display
+≠ automatically persisted inverse fact
+
+BIThub projection/cache
+≠ second semantic source of truth
+```
+
+When a semantic contract changes, update the Property page, the relevant `BITwiki:*` semantic/relationship standard, compiler schema metadata when actually required by runtime behavior, and the corresponding validation.
+
+See `BITwiki/Semantic properties.mediawiki`, `BITwiki/Relationships.mediawiki`, `BITwiki/Programmable knowledge substrate.mediawiki`, `BITwiki/Lua architecture.mediawiki`, and `BITwiki/Interoperability.mediawiki`.

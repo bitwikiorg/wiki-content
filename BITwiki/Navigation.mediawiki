@@ -1,4 +1,4 @@
-{{Source status|status=source-grounded|note=Restores the broader portal/index/outline design intent while keeping navigation separate from ontology; extended with recursive portals, depth localization, contribution and coverage surfaces.}}
+{{Source status|status=source-grounded|note=Restores the broader portal/index/outline design intent while keeping navigation separate from ontology; extended with recursive portals, depth localization, contribution/coverage surfaces, and the programmable-substrate one-state/many-interface model.}}
 
 = Navigation =
 
@@ -9,10 +9,20 @@ BITwiki navigation should support deliberate study, exploratory traversal, contr
 No single tree should carry every job.
 
 <pre>
-Domain ≠ Portal ≠ Category ≠ Outline ≠ List ≠ Index ≠ Core/Vital set ≠ ontology
+Domain ≠ Portal ≠ Category ≠ Concept ≠ Outline ≠ List ≠ Index ≠ Core/Vital set ≠ ontology
 </pre>
 
 The same subject can appear in several views because each answers a different question.
+
+Navigation is a projection over canonical knowledge, not a second source of truth.
+
+<pre>
+canonical pages + SMW relationships + Cargo operational context where relevant
+                              ↓
+              authored navigation / query / Lua projection
+                              ↓
+ Portal · Category · Concept · Outline · List · Graph · BIThub interface
+</pre>
 
 == Navigation surfaces ==
 
@@ -60,7 +70,10 @@ See [[BITwiki:Readable depth and localization]]. This is primarily depth/readabi
 === Categories ===
 Human-readable browse/index groups. Subcategories may have multiple parents. A substantive category should explain Scope, Includes, Excludes/boundary, Category role, Parent/subcategories, important pages, and related navigation.
 
-Category membership does not silently assign Entity type or Domain.
+Category membership does not silently assign Entity type, Domain, or relationship semantics.
+
+=== Concepts ===
+Named Semantic MediaWiki queries / reusable computed sets. A Concept can feed multiple navigation or maintenance views without copying membership into another semantic database.
 
 === Outlines ===
 Hierarchical study maps that expose the internal shape of a field without declaring that shape to be ontology.
@@ -77,8 +90,31 @@ Human-readable maps across major knowledge and project surfaces.
 === Core / Vital coverage ===
 A future curated coverage-priority layer can identify important missing or weak knowledge without turning importance into a Domain or Entity type. See [[BITwiki:Navigation and coverage research]].
 
-=== Semantic queries and knowledge graphs ===
-Computed/visual views over structured properties and relationships. Graphs are views over knowledge, not independent truth.
+=== Semantic queries, Lua projections and knowledge graphs ===
+Computed/visual views over structured properties and relationships.
+
+Lua is useful when navigation requires deterministic transformation rather than a direct query—for example relationship inverse display, graph adjacency normalization, dependency paths, contextual breadcrumbs, knowledge-health diagnostics, or a reusable view model shared by several interfaces.
+
+The rule remains:
+
+<pre>
+derived navigation/display
+≠ new semantic assertion
+</pre>
+
+Graphs are views over knowledge; drawing an edge does not make the edge true.
+
+=== BIThub / Discourse interfaces ===
+BIThub is another navigation/interaction plane around the same durable BITwiki state. A discussion can display an entity card, graph neighborhood, related-knowledge panel, comparison, coverage gap, or contribution task without copying the canonical graph into an independent Discourse ontology.
+
+<pre>
+BITwiki canonical state
+        ↓ normalized/query projection
+        ├── MediaWiki page / Portal / Category / graph
+        └── BIThub-native card / workflow / agent context
+</pre>
+
+Cross-service transport belongs to authenticated APIs/plugins/services/agents, not Scribunto itself.
 
 == Contribution and administration ==
 
@@ -89,13 +125,15 @@ Reader navigation and project-operation navigation should both be obvious withou
 * [[BITwiki:Research references]] — external research source index
 * [[BITwiki:Comparative wiki research register]] — knowledge-system research
 
-Administration, maintenance, validation, governance, requests, drafts, portal/category administration, templates/properties, automation, and security belong in project-operational surfaces rather than subject Domains.
+Administration, maintenance, validation, governance, requests, drafts, portal/category administration, templates/properties/modules, automation, integration, and security belong in project-operational surfaces rather than subject Domains.
 
 == Systems science orientation ==
 Historical design placed Systems Science / Systems Theory as the top intellectual priority: individual knowledge domains are interpreted as interacting systems rather than isolated silos. This is an integrative worldview, not a demand that every page literally nest beneath one category.
 
 == Design research ==
 See [[BITwiki:Navigation and coverage research]] for comparative evidence, domain gaps, portal failure modes, category contracts, and future Core/Vital coverage research.
+
+See also [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], and [[BITwiki:Ecosystem]].
 
 [[Category:Navigation]]
 [[Category:BITwiki architecture]]

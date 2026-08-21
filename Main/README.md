@@ -1,101 +1,121 @@
-# `Main/` — public knowledge namespace
+# `Main/` — canonical public knowledge namespace
 
-This directory is **not a curated article list**. It is the repository transport mirror of MediaWiki's main namespace.
-
-If you are trying to understand BITwiki, do **not** browse this folder alphabetically first.
+This directory is the repository transport mirror of MediaWiki's Main namespace. It is **not** a curated alphabetical article list and the filesystem path is not the ontology.
 
 Start with:
 
 - [`Main Page.mediawiki`](Main%20Page.mediawiki)
-- [`../Portal/`](../Portal/) for subject navigation
+- [`../Portal/`](../Portal/) for subject orientation
 - [`../BITwiki/Navigation.mediawiki`](../BITwiki/Navigation.mediawiki) for the navigation model
-- [`../BITwiki/Organization.mediawiki`](../BITwiki/Organization.mediawiki) for the system architecture
+- [`../BITwiki/Programmable knowledge substrate.mediawiki`](../BITwiki/Programmable%20knowledge%20substrate.mediawiki) for the execution model
 
-## What is in this directory?
+## What Main owns
 
-`Main/` currently mixes several **different transport roles** that MediaWiki needs in the same namespace:
+Main space is the canonical home for durable subject knowledge. Files may have several transport roles:
 
 | Role | Meaning |
 |---|---|
-| canonical knowledge object | actual subject knowledge intended for reading/research |
-| domain exemplar | a substantive V2 page used to prove each controlled Domain works end-to-end |
-| V1 compatibility redirect | tiny file preserving an old public title while sending readers to the mature canonical V2 page |
-| Book Matter / subpage | reusable or compositional subject material where independent retrieval/reuse is justified |
-| Main Page | the public landing page |
-| review candidate | non-redirect content that still needs human evaluation/canonicalization |
+| canonical knowledge object | substantive subject knowledge intended for durable reading/reuse |
+| domain exemplar | substantive page proving a controlled Domain works end-to-end |
+| self-model knowledge object | general knowledge about a consequential technology/project used by BITwiki itself |
+| V1 compatibility redirect | preserves an old public title while routing to its canonical home |
+| Book Matter / subpage | reusable/compositional subject matter when independent retrieval is justified |
+| Main Page | public landing page |
+| review candidate | non-redirect content still requiring human evaluation/canonicalization |
 
-### Important: tiny files are often redirects, not stubs
+Project-specific architecture belongs in `BITwiki:*`, even when Main contains a general page about the same system. `Lua` explains the language; `BITwiki:Lua architecture` explains BITwiki's use of it.
 
-For example, files such as `BITCORE Manifesto.mediawiki` exist only to preserve old public titles:
+## Main as structured knowledge
+
+A canonical page can participate in several layers at once:
+
+```text
+authored page / Book Matter
+        +
+Knowledge object identity
+        +
+SMW properties / relationships
+        ↓
+canonical durable knowledge state
+        ↓
+Lua / queries / navigation project that state into views
+```
+
+Lua does not own the page's truth. It can normalize, type-check, derive bounded presentation, and diagnose explicit state. Semantic assertions remain in pages/SMW; repeated operational records remain in Cargo.
+
+## Self-modeling substrate
+
+BITwiki now dogfoods its own knowledge architecture with Main-space objects for:
+
+- `BITwiki`
+- `BIThub`
+- `MediaWiki`
+- `Discourse`
+- `Semantic MediaWiki`
+- `Cargo (MediaWiki extension)`
+- `Scribunto`
+- `Lua`
+
+These are real knowledge objects, not hidden implementation notes. Conservative SMW `Depends on` / `Related to` assertions make the operating stack queryable as part of the graph. The matching `BITwiki:*` architecture pages describe local implementation policy.
+
+## Redirects are not stubs
+
+Tiny files may intentionally preserve old public titles, for example:
 
 ```mediawiki
 #REDIRECT [[BITwiki:BITCORE Manifesto]]
 ```
 
-The substantive page lives in the `BITwiki:` namespace. Do not evaluate a compatibility redirect as if it were an unfinished article.
+Do not evaluate a compatibility redirect as an unfinished article.
 
-## Current substantive exemplars
+## Do not create empty/generic shells
 
-The V2 domain exemplars are intentionally compact but real sourced knowledge pages. Examples include:
+Missing knowledge should remain an explicit coverage/request signal until there is enough evidence for coherent canonical content.
 
-- [`System boundary.mediawiki`](System%20boundary.mediawiki)
-- [`Hypothesis.mediawiki`](Hypothesis.mediawiki)
-- [`Cell membrane.mediawiki`](Cell%20membrane.mediawiki)
-- [`Prime number.mediawiki`](Prime%20number.mediawiki)
-- [`Causality.mediawiki`](Causality.mediawiki)
-- [`Version control.mediawiki`](Version%20control.mediawiki)
-- [`Resistor.mediawiki`](Resistor.mediawiki)
-- [`Energy efficiency.mediawiki`](Energy%20efficiency.mediawiki)
-- [`Safety factor.mediawiki`](Safety%20factor.mediawiki)
-- [`pH.mediawiki`](pH.mediawiki)
-- [`Momentum.mediawiki`](Momentum.mediawiki)
-- [`Pulse.mediawiki`](Pulse.mediawiki)
+Prefer:
 
-The Computer science expansion adds a thirteenth substantive exemplar once that Domain is accepted by validation.
-
-## Do not create empty/generic article shells
-
-A missing topic should not automatically become a low-information file just so the title exists.
-
-Prefer one of these instead:
-
-1. add it to a requested-knowledge / coverage queue;
+1. add or refine a requested-knowledge record;
 2. research and create a minimum coherent sourced page;
-3. add it to a portal/category/outline as a planned gap;
-4. preserve a redirect when the knowledge already has a better canonical home.
+3. expose the gap in navigation/coverage views;
+4. preserve a redirect when a better canonical home already exists.
 
-A canonical subject page should have enough signal to answer at least:
+A canonical subject page should explain what the subject is, why it matters, its core mechanisms/concepts, representative examples/applications, relevant uncertainty/context, and source lineage.
 
-- What is it?
-- Why does it matter?
-- What are its core mechanisms/concepts?
-- What are representative examples or applications?
-- What is uncertain or context-dependent?
-- Where did the information come from?
+See [`../BITwiki/Page format.mediawiki`](../BITwiki/Page%20format.mediawiki), [`../BITwiki/Readable depth and localization.mediawiki`](../BITwiki/Readable%20depth%20and%20localization.mediawiki), and [`../BITwiki/Requested knowledge.mediawiki`](../BITwiki/Requested%20knowledge.mediawiki).
 
-See [`../BITwiki/Page format.mediawiki`](../BITwiki/Page%20format.mediawiki) and [`../BITwiki/Readable depth and localization.mediawiki`](../BITwiki/Readable%20depth%20and%20localization.mediawiki).
+## Navigation is a projection
+
+The actual reading experience should be driven by links, semantic relationships, categories, portals, contents, outlines, lists, glossaries, queries, graph views, and search—not by the repository directory order.
+
+```text
+canonical Main knowledge
+        ↓
+Category / Concept / Portal / query / Lua projection
+        ↓
+contextual reading and exploration interfaces
+```
+
+Those interfaces should project canonical state rather than become competing copies of it.
 
 ## Machine audit
 
-Run:
-
 ```bash
 python scripts/audit_mainspace.py
+python scripts/validate_v2.py
 ```
 
-It generates `v2-mainspace-audit.json`, separating redirects, domain exemplars, knowledge objects, subpages, other content, and very-short non-redirect review candidates.
+`audit_mainspace.py` distinguishes redirects, exemplars, knowledge objects, subpages, other content, and short review candidates. **Length is descriptive, not a quality score.**
 
-**Length is not quality.** The audit uses size only as a review signal; it does not label short pages as bad automatically.
-
-## Design invariant
+## Invariants
 
 ```text
 filesystem path
 ≠ article quality
 ≠ entity type
-≠ domain
+≠ Domain
 ≠ navigation hierarchy
 ≠ epistemic standing
-```
 
-`Main/` is where MediaWiki main-namespace files travel through Git. The actual reading experience should be driven by portals, contents, categories, outlines, links, semantic queries, and search.
+rendered/derived view
+≠ new canonical assertion
+```

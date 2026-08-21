@@ -1,0 +1,36 @@
+{{Knowledge object
+ |entity_type=Technology
+ |domain=Computer science
+ |status=Established
+ |provenance=Discourse project documentation and BITwiki ecosystem documentation
+}}
+
+= Discourse =
+
+'''Discourse''' is open-source discussion and community-platform software organized around users, topics, posts, categories, tags, moderation, notifications, search, plugins, and APIs.
+
+It is designed for persistent asynchronous discussion rather than for representing a canonical semantic knowledge graph. Plugins and integrations can extend authentication, automation, interface behavior, and connections to external systems.
+
+== Discourse in BIThub ==
+
+[[BIThub]] uses Discourse as its collaboration and interaction substrate. In the BITwiki ecosystem, this makes Discourse the conversational/workflow-facing complement to [[MediaWiki]].
+
+A discussion may contain questions, active research, proposed claims, agent work, comparisons, workflows, drafts, or contribution coordination. Those objects do not become canonical BITwiki knowledge merely by existing in Discourse. Stable results enter BITwiki through explicit publication/integration paths.
+
+== Relationship to the programmable wiki substrate ==
+
+BITwiki's MediaWiki layer can expose canonical pages, structured semantic state, computed Lua projections, diagnostics, and query results to BIThub integrations. Discourse can then present those outputs in interaction-native forms such as cards, assistants, workflow steps, or contextual references.
+
+The cross-system bridge belongs to authenticated APIs, plugins, services, or agents. Scribunto/Lua inside MediaWiki is not itself a network transport.
+
+This separation allows BIThub to remain highly interactive while BITwiki remains durable, revisioned, semantically governed, and independently inspectable.
+
+== References ==
+
+* [https://www.discourse.org/ Discourse]
+* [https://github.com/discourse/discourse Discourse source code]
+* [[BIThub]]
+* [[MediaWiki]]
+* [[BITwiki]]
+
+[[Category:Computer science]]

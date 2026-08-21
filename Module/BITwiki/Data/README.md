@@ -11,8 +11,10 @@ bitwiki-runtime-schema.json
         │
         │ canonical repository authority
         ↓
-Module:BITwiki/Data/Schema.lua
-        │
+Module/BITwiki/Data/Schema.lua          repository file
+        │ deploys as
+        ↓
+Module:BITwiki/Data/Schema              MediaWiki runtime title
         │ mw.loadData()
         ↓
 Module:BITwiki/Compiler and other runtime consumers
@@ -46,7 +48,7 @@ Executable behavior belongs in `Module:BITwiki/*`. Durable semantic state belong
 When compiler-facing schema changes:
 
 1. change `bitwiki-runtime-schema.json` first;
-2. update the necessary `Module:BITwiki/Data/Schema.lua` projection;
+2. update the necessary `Module/BITwiki/Data/Schema.lua` repository projection;
 3. update Property/SMW contracts if the semantic assertion model itself changed;
 4. update compiler consumers and architecture text where behavior changed;
 5. run `scripts/validate_v2.py` and `scripts/audit_runtime_schema.py`.

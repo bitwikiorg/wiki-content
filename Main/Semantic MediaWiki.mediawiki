@@ -1,0 +1,38 @@
+{{Knowledge object
+ |entity_type=Technology
+ |domain=Computer science
+ |status=Established
+ |provenance=Semantic MediaWiki documentation and BITwiki runtime inventory
+}}
+
+= Semantic MediaWiki =
+
+'''Semantic MediaWiki''' (SMW) is a MediaWiki extension that allows wiki pages to store typed semantic properties and relationships and query those annotations as structured data.
+
+Instead of treating links and prose as the only machine-readable connections between pages, SMW can represent assertions such as a page's type, domain, provenance state, dependency, implementation relationship, or other explicitly defined property.
+
+== Core capabilities ==
+
+SMW provides property definitions, typed annotations, semantic queries, browsing/inspection surfaces, concepts as reusable query sets, and subobjects for structured facts that require identity below the page level.
+
+The existence of a semantic edge does not prove the claim represented by that edge. Meaning, provenance, evidence, direction, and inference rules remain modeling responsibilities.
+
+== Semantic MediaWiki in BITwiki ==
+
+BITwiki uses SMW as the durable semantic graph/property layer. Canonical knowledge remains authored in MediaWiki pages, while stable structured facts and relationships are asserted through documented properties.
+
+Scribunto/Lua is intended to operate above this state as a deterministic transformation and projection layer: normalize relationships, type-check contracts, derive safe display forms, generate contextual navigation, and expose diagnostics without replacing SMW as the state owner.
+
+Native structured Lua access to SMW is provided by the separate SemanticScribunto integration (`mw.smw`) and must be treated as a deployment capability rather than assumed from SMW+Scribunto alone.
+
+[[BIThub]] integrations can consume semantic views through explicit MediaWiki integration surfaces so the Discourse layer does not need to maintain an independent copy of BITwiki's knowledge graph.
+
+== References ==
+
+* [https://www.semantic-mediawiki.org/ Semantic MediaWiki]
+* [https://www.semantic-mediawiki.org/wiki/Help:Introduction_to_Semantic_MediaWiki Semantic MediaWiki introduction]
+* [[MediaWiki]]
+* [[Scribunto]]
+* [[BITwiki]]
+
+[[Category:Computer science]]

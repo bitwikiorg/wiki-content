@@ -1,10 +1,10 @@
-{{Source status|status=V2 operational guidance|note=BITwiki-specific contribution pathway informed by Wikipedia newcomer/help systems but adapted to a source-first human+AI knowledge corpus.}}
+{{Source status|status=V2 operational guidance|note=BITwiki-specific contribution pathway informed by Wikipedia newcomer/help systems but adapted to a source-first human+AI knowledge corpus and the programmable MediaWiki/BIThub substrate.}}
 
 = Contributing to BITwiki =
 
 BITwiki should be easier to improve than it is to misunderstand.
 
-You do not need to create a new article to contribute. In many cases, improving an existing page, adding a source, clarifying a technical explanation, recording a missing topic, or fixing navigation creates more value than adding another shallow page.
+You do not need to create a new article to contribute. In many cases, improving an existing page, adding a source, clarifying a technical explanation, recording a missing topic, fixing navigation, tightening a semantic contract, or updating living architecture text creates more value than adding another shallow page.
 
 == Start here ==
 
@@ -27,7 +27,7 @@ Choose the smallest useful contribution:
 |-
 | create a new page || research, source, model, write, verify, then publish a minimum coherent knowledge object
 |-
-| improve BITwiki itself || work in architecture, navigation, governance, validation, maintenance, or research queues
+| improve BITwiki itself || work in architecture, navigation, governance, Lua/modules, semantic contracts, validation, integration, maintenance, or research queues
 |}
 
 == Before creating a new subject page ==
@@ -96,13 +96,46 @@ Human or agent contributions must:
 
 Highly sensitive current political/religious material requires a more conservative posture; see [[BITwiki:Sensitive topic scope research]].
 
+== Programmable-substrate contributions ==
+
+BITwiki separates authoring, structured state, computation, and interaction:
+
+<pre>
+wikitext / Templates + SMW + Cargo
+              ↓
+      MediaWiki + Scribunto/Lua
+              ↓
+ deterministic views / diagnostics
+              ↕
+ authenticated integration boundary
+              ↕
+      BIThub / Discourse
+</pre>
+
+Choose the layer that owns the change:
+
+* canonical knowledge/prose → Main page / Book Matter;
+* semantic graph contract/assertion → Property + SMW/page state;
+* repeated operational record → Cargo-backed workflow;
+* declarative public invocation → Template;
+* non-trivial reusable normalization/type checking/bounded inference/projection → <code>Module:BITwiki/*</code>;
+* project architecture/governance → BITwiki namespace;
+* end-user workflow guidance → Help namespace;
+* cross-service transport → authenticated MediaWiki/Discourse plugin/API/service/agent infrastructure, not Scribunto.
+
+A Lua-derived display or diagnostic is not automatically a new canonical assertion. A BIThub post or agent result is not automatically canonical knowledge.
+
+See [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], and [[BITwiki:Ecosystem]].
+
 == Navigation contributions ==
 
 A portal or category should exist because it helps readers traverse a real body of knowledge, not merely because a topic name exists.
 
-Before creating one, ask whether a current Portal, Category, outline, list, query, or related-links section can do the job.
+Before creating one, ask whether a current Portal, Category, Concept, outline, list, query, graph view, Lua projection, or related-links section can do the job.
 
 For categories, explain scope, includes, excludes/boundary, category role, parents/subcategories, important pages, and related navigation.
+
+Navigation projections should consume canonical state rather than become independent semantic databases.
 
 == Missing knowledge workflow ==
 
@@ -119,11 +152,27 @@ An active request is '''not''' a canonical article. Repository validation reject
 
 Do not change request status merely to make validation pass; status describes the actual workflow state.
 
+== Living architecture and repository documentation ==
+
+Architecture work is incomplete when only the implementation or only one specification knows about the change.
+
+When a contribution changes a directory's responsibility, dependency, source-of-truth boundary, deployment order, or connection to another subsystem:
+
+# update the implementation/state;
+# update the authoritative [[BITwiki:Organization|BITwiki architecture]] or focused standard where semantics changed;
+# update the nearest repository <code>README.md</code> so maintainers encounter the current model locally;
+# update <code>manifest.json</code> when source/runtime mapping or architecture metadata changed;
+# update validation/audits when the invariant can be machine-checked;
+# preserve <code>archive-v1/</code> as historical evidence rather than rewriting history to match V2.
+
+READMEs are living operational orientation. They should summarize the local contract and point to deeper BITwiki standards rather than duplicate entire architecture pages.
+
 == BITwiki administration ==
 
 Project-facing work belongs in the BITwiki namespace and related administration categories rather than subject Domains. Useful areas include:
 
 * architecture and ontology;
+* programmable substrate and Lua modules;
 * navigation and categories;
 * epistemics/provenance;
 * validation/quality;
@@ -131,6 +180,7 @@ Project-facing work belongs in the BITwiki namespace and related administration 
 * comparative wiki research;
 * governance/security;
 * templates/properties/automation;
+* BIThub/Discourse interoperability;
 * archive/V1 migration and reconciliation.
 
 == External lessons ==

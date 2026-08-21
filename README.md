@@ -1,65 +1,112 @@
-# BITwiki V2 — Content Map
+# BITwiki V2
 
-This repository source-controls the **public BITwiki corpus and the MediaWiki substrate needed to render/query it**. The repository is a transport and review surface; folder structure is not the ontology.
+**BITwiki V2 is the source-controlled knowledge architecture and public corpus for BITwiki.**
+
+This repository contains the deployable MediaWiki content, semantic model, composition layer, runtime-facing configuration, migration evidence, and validation tooling used to develop V2 from the preserved V1 system.
+
+- **BITwiki:** https://bitwiki.org/
+- **BIThub:** https://hub.bitwiki.org/
+- **Canonical branch:** `main`
+- **Repository status:** V2 architecture/substrate under active development; V1 preserved as provenance evidence
+
+> `main` is the integrated source of truth. Working branches are temporary implementation surfaces and should be merged or retired once their work is resolved.
+
+---
+
+## What this repository owns
+
+BITwiki is not just a directory of articles. V2 treats the wiki as a composable knowledge system built from native MediaWiki primitives.
 
 ```text
-V2 knowledge/content   → Main/ · BITwiki/ · Category/
-V2 composition/logic  → Template/ · Module/
-V2 semantics          → Property/ · Concept/ · SMWSchema/
-Runtime configuration → MediaWiki/ · Help/
-Navigation titles     → Portal/          (title projection; not a confirmed namespace)
-V1 provenance         → archive-v1/      (read-only evidence)
+knowledge       → pages / knowledge objects
+composition     → templates / transclusion / Lua
+semantics       → SMW properties / concepts / queries
+operations      → Cargo workflows where repeated records justify tables
+navigation      → categories / portal titles / indexes / semantic views
+provenance      → preserved V1 archive + migration evidence
+validation      → structural, semantic, workflow and substrate audits
 ```
 
-`archive-v1/` is not deployable V2 content.
+The repository is the review and transport surface for those layers. **Filesystem folders are mappings to wiki/runtime surfaces; they are not themselves the ontology.**
 
-## Start here
+---
 
-| Need | Canonical surface |
-|---|---|
-| Public wiki entry | [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki) |
-| Repository/runtime mapping | [`BITwiki/MediaWiki substrate.mediawiki`](BITwiki/MediaWiki%20substrate.mediawiki) |
-| Deployment prerequisites | [`BITwiki/Deployment prerequisites.mediawiki`](BITwiki/Deployment%20prerequisites.mediawiki) |
-| How BITwiki is organized | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
-| Page/content standard | [`BITwiki/Page format.mediawiki`](BITwiki/Page%20format.mediawiki) |
-| Semantic properties | [`BITwiki/Semantic properties.mediawiki`](BITwiki/Semantic%20properties.mediawiki) |
-| Templates + categories | [`BITwiki/Templates and categories.mediawiki`](BITwiki/Templates%20and%20categories.mediawiki) |
-| Transclusion | [`BITwiki/Transclusion.mediawiki`](BITwiki/Transclusion.mediawiki) |
-| Navigation model | [`BITwiki/Navigation.mediawiki`](BITwiki/Navigation.mediawiki) |
-| Missing/requested knowledge | [`BITwiki/Requested knowledge.mediawiki`](BITwiki/Requested%20knowledge.mediawiki) |
-| V1 → V2 maturation | [`BITwiki/V1 to V2 maturation.mediawiki`](BITwiki/V1%20to%20V2%20maturation.mediawiki) |
-| Exact current-public V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
-| Validation / audit evidence | GitHub Actions artifact `bitwiki-v2-architecture-evidence` |
+## Current integrated state
 
-Generated `v2-*.json` and derived classification reports are **run evidence, not canonical source**. They are intentionally untracked; CI regenerates them from the reviewed corpus and scripts for each relevant commit.
+The current `main` branch includes:
 
-## Source-control map
+- preserved public V1 provenance in `archive-v1/`;
+- the V2 foundations, charter, ontology, epistemics and governance corpus;
+- controlled knowledge-object identity and Domain vocabulary;
+- 13 Domain exemplars plus the approved first Computer-science foundation wave;
+- all 9 templates captured from the public V1 runtime, including compatibility-critical `Template:Infobox`;
+- V2 templates for knowledge objects, Domain portals/categories and request records;
+- `Module:Structure` as a Scribunto validation primitive;
+- Semantic MediaWiki Property, Concept and `smw/schema` source surfaces;
+- composed Category and Portal-title navigation;
+- an executable Cargo-backed `Knowledge_requests` lifecycle;
+- read-only CI that regenerates validation evidence instead of writing generated reports back into canonical source.
+
+The V2 architecture is intentionally being exercised with real consumers before broad corpus expansion.
+
+---
+
+## V1 → V2
+
+V2 is an evolution of BITwiki, not a clean-room rewrite.
+
+```text
+V1
+↓ preserve
+↓ understand
+↓ identify signal
+↓ mature primitive
+↓ enhance
+↓ integrate
+V2
+```
+
+V1 supplied much of the imagination: ontology, epistemics, modularity, transclusion, semantic organization, relationships, portals, templates, schema, confidence systems, graphs and composable knowledge structures.
+
+V2 keeps that ambition while grounding it in a clearer executable substrate.
+
+`archive-v1/` is therefore **evidence**, not deployable V2 content and not a second active tree.
+
+See:
+
+- [`BITwiki/V1 to V2 maturation.mediawiki`](BITwiki/V1%20to%20V2%20maturation.mediawiki)
+- [`archive-v1/README.md`](archive-v1/README.md)
+
+---
+
+## Repository map
 
 ```text
 wiki-content/
-├── Main/          Main namespace: knowledge objects + compatibility redirects
-├── BITwiki/       Project/BITwiki namespace: standards, governance, research/admin
-├── Template/      Template namespace: V2 templates + live compatibility dependencies
-├── Module/        Scribunto Module namespace: reusable Lua logic
+├── Main/          Main namespace: canonical knowledge + compatibility redirects
+├── BITwiki/       Project namespace: architecture, governance, standards, research
+├── Template/      Template namespace: V2 composition + preserved compatibility templates
+├── Module/        Scribunto/Lua reusable logic
 ├── Property/      Semantic MediaWiki Property namespace
-├── Concept/       Semantic MediaWiki Concept namespace: reusable dynamic sets
-├── SMWSchema/     smw/schema namespace; namespace-local colons are filename-encoded
-├── Category/      Category namespace: human browse/classification surfaces
-├── MediaWiki/     MediaWiki namespace: public runtime/interface configuration
-├── Help/          Help namespace mapping; intentionally empty until useful help exists
-├── Portal/        `Portal:*` public-title projection — NOT namespace evidence
-├── archive-v1/    exhaustive current-public V1 provenance snapshot
-├── scripts/       archive, fidelity, inventory, audit, validation tooling
-└── .github/       reproducible read-only validation automation
+├── Concept/       Semantic MediaWiki Concept namespace
+├── SMWSchema/     smw/schema namespace source
+├── Category/      human browse/classification surfaces
+├── MediaWiki/     runtime/interface configuration source
+├── Help/          Help namespace source mapping
+├── Portal/        `Portal:*` title projection; not a configured namespace in captured siteinfo
+├── archive-v1/    preserved public V1 provenance snapshot
+├── scripts/       archive, inventory, audit and validation tooling
+├── .github/       read-only CI / evidence generation
+└── manifest.json  explicit runtime/source-control mapping
 ```
 
-Configured namespaces are determined from MediaWiki itself (`Special:NamespaceInfo` / API siteinfo), not inferred from this tree. `manifest.json` contains the explicit mapping.
+Every repository directory carries its own README for local orientation.
 
-## The important separation
+### Runtime mapping rule
 
 ```text
 filesystem path
-≠ MediaWiki namespace unless mapped
+≠ MediaWiki namespace unless explicitly mapped
 ≠ entity type
 ≠ knowledge Domain
 ≠ Book Matter
@@ -69,95 +116,100 @@ filesystem path
 ≠ navigation view
 ```
 
-This matters particularly for `Portal/`: the captured BITwiki installation does not expose a dedicated Portal namespace. Those files represent public titles such as `Portal:Physics`; they do not prove a namespace exists.
+The authoritative mapping is documented in [`manifest.json`](manifest.json) and [`BITwiki/MediaWiki substrate.mediawiki`](BITwiki/MediaWiki%20substrate.mediawiki).
 
-## Runtime primitives
+---
 
-Use the native layer that matches the job:
+## Architecture
 
-| Need | Primitive |
+### Knowledge objects
+
+Canonical subject pages use `Template:Knowledge object` to expose explicit identity:
+
+```text
+Knowledge object
+├── Entity type
+├── Domain
+├── Epistemic status
+├── Provenance
+└── authored content / references / relationships
+```
+
+`Module:Structure` provides a runtime validation backstop. Missing identity remains missing; templates must not manufacture certainty with defaults.
+
+### Semantic MediaWiki
+
+SMW remains the canonical semantic graph layer:
+
+- `Property/` defines graph assertions;
+- `Concept/` defines reusable semantic sets;
+- `#ask` powers dynamic semantic views;
+- `SMWSchema/` source-controls `smw/schema` surfaces.
+
+Subobjects are intentionally not used until a real qualified/nested-fact requirement justifies them.
+
+### Cargo
+
+Cargo is reserved for repeated operational records rather than canonical graph assertions.
+
+The first bounded implementation is the knowledge-request lifecycle:
+
+```text
+Template:Knowledge request
+        ↓ stores
+Knowledge_requests
+        ↓ queried by
+BITwiki:Requested knowledge
+```
+
+Requests progress through:
+
+```text
+requested → researching → drafting → review → satisfied
+                                      ↘ declined
+```
+
+The repository audit enforces:
+
+```text
+active request ≠ canonical Main page
+```
+
+A satisfied request must point to its canonical page.
+
+### Categories and portals
+
+Categories are human browse/classification surfaces and may be composed from templates and semantic queries rather than duplicated prose.
+
+`Portal/` is a filesystem projection for public titles such as `Portal:Physics`. The captured MediaWiki runtime does **not** expose a dedicated Portal namespace.
+
+---
+
+## Start here
+
+| Need | Canonical source |
 |---|---|
-| independent canonical knowledge | page / knowledge object |
-| repeated declarative rendering + metadata | Template |
-| non-trivial reusable logic/validation | Scribunto `Module:` |
-| graph assertion | SMW `Property:` |
-| reusable computed semantic set | SMW `Concept:` |
-| qualified/nested semantic fact | SMW subobject when justified |
-| repeated structured operational records | Cargo when a real table lifecycle exists |
-| human browse hierarchy | Category |
-| exact authored reuse | MediaWiki transclusion |
-| dynamic exploration | `#ask`, Browse, Network, facets/drilldown |
+| Public wiki entry | [`Main/Main Page.mediawiki`](Main/Main%20Page.mediawiki) |
+| System architecture | [`BITwiki/System architecture.mediawiki`](BITwiki/System%20architecture.mediawiki) |
+| MediaWiki/runtime substrate | [`BITwiki/MediaWiki substrate.mediawiki`](BITwiki/MediaWiki%20substrate.mediawiki) |
+| V1 → V2 maturation | [`BITwiki/V1 to V2 maturation.mediawiki`](BITwiki/V1%20to%20V2%20maturation.mediawiki) |
+| Organization | [`BITwiki/Organization.mediawiki`](BITwiki/Organization.mediawiki) |
+| Ontology | [`BITwiki/Ontology.mediawiki`](BITwiki/Ontology.mediawiki) |
+| Entity types | [`BITwiki/Entity types.mediawiki`](BITwiki/Entity%20types.mediawiki) |
+| Epistemics | [`BITwiki/Epistemics.mediawiki`](BITwiki/Epistemics.mediawiki) |
+| Semantic properties | [`BITwiki/Semantic properties.mediawiki`](BITwiki/Semantic%20properties.mediawiki) |
+| Templates/categories | [`BITwiki/Templates and categories.mediawiki`](BITwiki/Templates%20and%20categories.mediawiki) |
+| Transclusion | [`BITwiki/Transclusion.mediawiki`](BITwiki/Transclusion.mediawiki) |
+| Navigation | [`BITwiki/Navigation.mediawiki`](BITwiki/Navigation.mediawiki) |
+| Requested knowledge | [`BITwiki/Requested knowledge.mediawiki`](BITwiki/Requested%20knowledge.mediawiki) |
+| Deployment prerequisites | [`BITwiki/Deployment prerequisites.mediawiki`](BITwiki/Deployment%20prerequisites.mediawiki) |
+| V1 provenance | [`archive-v1/README.md`](archive-v1/README.md) |
 
-The architecture is considered implemented only when these primitives have real consumers. `scripts/audit_substrate.py` makes that measurable.
-
-Cargo currently has one bounded consumer: `Template:Knowledge request` stores the authored request queue in table `Knowledge_requests`, and `BITwiki:Requested knowledge` queries that table for an operational lifecycle view. Cargo does not replace SMW as the canonical knowledge-graph layer.
-
-## Templates: V2 + compatibility
-
-`Template/` contains the V2 template layer **and all nine templates confirmed by the live V1 fidelity inventory**.
-
-`Template:Infobox` remains compatibility-critical because the captured current wiki has 80 callers. The decorative/header/footer templates are discoverable and source-controlled too, but their presence does not make them the V2 design standard.
-
-See [`Template/README.md`](Template/README.md).
-
-## Categories are rendered objects, not file-size contests
-
-Substantive controlled-Domain categories use `Template:Knowledge domain category`. Their source files provide domain-specific scope/boundaries while the shared template supplies stable role text, navigation, and a live SMW query.
-
-Therefore a small `.mediawiki` category source can render as a rich, useful page through composition. Administrative categories may remain intentionally small.
-
-## Knowledge-object model
-
-```text
-                         KNOWLEDGE OBJECT
-                               │
-       ┌───────────────────────┼────────────────────────┐
-       │                       │                        │
-    IDENTITY                CONTENT                 EPISTEMICS
-       │                       │                        │
- Entity type               Book Matter              Evidence
- Domain(s)                 Overview                 Sources
- Relationships             Theory / model           Provenance
- Scope                     Mechanism                Standing
-                            Methods                  Uncertainty
-                            Applications             Review
-                            References               Lifecycle
-       │                       │                        │
-       └───────────────────────┼────────────────────────┘
-                               │
-                         NAVIGATION / VIEWS
-          Category · Portal-title · Outline · Index · Query · Graph
-```
-
-`Template:Knowledge object` emits explicit identity properties and invokes `Module:Structure` as a runtime validation backstop. Missing identity remains missing; templates must not manufacture certainty through defaults.
-
-## Request/canon boundary
-
-Missing coverage is represented as an operational request rather than a pseudo-article. `scripts/audit_workflow.py` enforces the key invariant:
-
-```text
-active request (requested / researching / drafting / review)
-≠ canonical Main page
-```
-
-When work is genuinely canonicalized, the request becomes `satisfied` and must link to the canonical source. This keeps corpus growth explicit and catches accidental publication of queued topics.
-
-## Reader depth
-
-Preferred content progression:
-
-```text
-Simple orientation
-→ Core understanding
-→ Technical depth
-→ Frontier / research
-```
-
-This is progressive disclosure inside a coherent knowledge graph, not a second disconnected encyclopedia.
+---
 
 ## Validation
 
-Run:
+Run the same core audit family used by CI:
 
 ```bash
 python scripts/validate_v2.py
@@ -169,26 +221,70 @@ python scripts/classify_v1_page_roles.py
 python scripts/classify_v1_architecture_families.py
 ```
 
-- `validate_v2.py` checks deployable wikitext structure, references, controlled vocabularies and Domain coverage.
-- `audit_substrate.py` measures actual use of SMW, Lua, Cargo and transclusion primitives against live namespace/template evidence.
-- `audit_workflow.py` validates the Cargo request schema/lifecycle and the request-versus-canon boundary.
-- `audit_mainspace.py` separates substantive pages from redirects and short review candidates.
-- inventory/classification scripts preserve empirical V1/V2 migration evidence.
+These checks cover:
 
-PR and `main` CI run the same audit family with **read-only repository permissions** and upload the generated JSON as an artifact. CI does not commit generated reports back to `main`.
+- deployable wikitext structure and references;
+- controlled entity/Domain/epistemic vocabularies;
+- knowledge-object completeness;
+- namespace/source mappings;
+- actual SMW, Lua, Cargo and transclusion usage;
+- request lifecycle integrity;
+- Main-namespace role classification;
+- empirical V1/V2 migration inventories.
 
-## V1 preservation boundary
+Generated `v2-*.json` and other run reports are **commit-specific evidence**, not canonical source. GitHub Actions regenerates and uploads them as artifacts with read-only repository permissions.
 
-The provenance archive preserves the public V1 state and revision evidence used to mature V2. It is evidence, not an alternative live tree and not permission to copy old design proposals blindly.
+---
 
-The migration rule remains:
+## Deployment
+
+Repository validity and MediaWiki runtime state are different things.
+
+Before deploying, follow [`BITwiki/Deployment prerequisites.mediawiki`](BITwiki/Deployment%20prerequisites.mediawiki).
+
+Important runtime steps include:
+
+1. verify namespace/extension reality against the target MediaWiki installation;
+2. deploy namespace-native source using the mappings in `manifest.json`;
+3. deploy Modules before templates that invoke them;
+4. rebuild/verify Semantic MediaWiki data after semantic changes;
+5. create or recreate Cargo tables when their declaration changes;
+6. verify rendered pages, semantic queries, Cargo queries and compatibility dependencies.
+
+For the current request workflow, the runtime table is `Knowledge_requests`.
+
+---
+
+## Branch policy
+
+`main` is the canonical integrated state.
+
+Branches are temporary and should exist only while a coherent change is actively being prepared or reviewed.
 
 ```text
-recover
-→ preserve
-→ understand
-→ distinguish design from implementation
-→ mature the useful primitive
-→ integrate
-→ verify
+create focused branch
+→ implement
+→ validate
+→ review / merge into main
+→ retire branch
 ```
+
+Do not maintain alternative architectural states on long-lived branches. Historical decisions belong in Git/PR history and preserved evidence—not in parallel active branches.
+
+---
+
+## Contribution principles
+
+1. **Preserve before replacing.** V1 is evidence and lineage.
+2. **Use native primitives deliberately.** Templates, Lua, SMW, Cargo, Categories and transclusion have different jobs.
+3. **Do not invent schema to satisfy aesthetics or metrics.** New structure requires a real consumer.
+4. **Prefer composition over duplication.** Small source files can render rich objects through reusable primitives.
+5. **Keep requests distinct from canonical knowledge.** Missing coverage is not a stub article.
+6. **Keep `main` coherent.** Experimental branches are temporary; integrated architecture belongs on `main`.
+7. **Validate behavior, not prose claims.** Architecture is real only when exercised and auditable.
+
+---
+
+## Project principle
+
+> **V1 gave us the imagination. V2 gives that imagination a coherent substrate.**

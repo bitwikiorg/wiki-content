@@ -46,6 +46,32 @@ Important configured extension namespaces include:
 
 Nested paths under <code>Module/</code> represent Module subpages. For example, <code>Module/BITwiki/Compiler.lua</code> deploys as <code>Module:BITwiki/Compiler</code>.
 
+== Executable deployment contract ==
+
+Deployment scope is not inferred from a hand-maintained subset of folders. <code>scripts/deployment_plan.py</code> consumes the source-control mappings in <code>manifest.json</code>, recursively discovers deployable source under every mapped surface, derives MediaWiki titles and content models, and emits <code>v2-deployment-plan.json</code> as run evidence.
+
+Run before deployment:
+
+<pre>
+python scripts/deployment_plan.py --check
+python scripts/deploy_mediawiki.py
+</pre>
+
+The second command is a '''dry run by default'''. Live API writes require explicit <code>--execute</code> plus <code>BITWIKI_BOT_USER</code> and <code>BITWIKI_BOT_PASSWORD</code>. Existing differing pages are refused unless <code>--overwrite-existing</code> is also supplied. Existing content-model mismatches are always refused rather than silently converted. New-page writes use create-only semantics and existing-page writes use the queried base revision so an intervening edit causes a conflict rather than an unnoticed overwrite.
+
+The deployment planner and CI must include nested runtime files such as:
+
+<pre>
+Module/BITwiki/Data/Schema.lua → Module:BITwiki/Data/Schema
+Module/BITwiki/Core.lua        → Module:BITwiki/Core
+Module/BITwiki/Compiler.lua    → Module:BITwiki/Compiler
+Module/Structure.lua           → Module:Structure
+</pre>
+
+<code>scripts/inventory_corpus.py</code> is semantic/content evidence, '''not''' the deployment manifest. Its scope must not be used to decide which runtime pages are imported.
+
+Some deployment requirements cannot be completed by importing pages. The deployment plan therefore supports explicit runtime checkpoints. A checkpoint must be completed and verified in the target runtime before the deployer is rerun with its exact acknowledgement ID.
+
 == Portal titles are not a confirmed namespace ==
 
 The captured namespace configuration does '''not''' contain a dedicated <code>Portal:</code> namespace.
@@ -90,6 +116,8 @@ Module:BITwiki/Data/Schema
 → Template:Knowledge object
 → knowledge-object consumers
 </pre>
+
+This chain is now machine-checked by <code>scripts/deployment_plan.py</code> and by both PR and <code>main</code> validation workflows. A deployment plan that omits the nested compiler modules or orders them after their consumers is invalid.
 
 <code>bitwiki-runtime-schema.json</code> is repository-only authority for compiler-facing controlled vocabularies; MediaWiki cannot execute it directly. <code>Module:BITwiki/Data/Schema</code> is the runtime projection required by Scribunto. Run <code>python scripts/audit_runtime_schema.py</code> before deployment so the JSON authority, Lua projection and repository validator agree.
 
@@ -136,6 +164,15 @@ Template:Knowledge request
 
 The <code>#cargo_declare</code> call in [[Template:Knowledge request]] defines the schema and <code>#cargo_store</code> stores each request record. Saving the template alone does '''not''' create or rebuild the database table.
 
+The executable deployment plan encodes this as checkpoint <code>cargo:Knowledge_requests</code>. A full <code>scripts/deploy_mediawiki.py --execute</code> run stops before <code>BITwiki:Requested knowledge</code> until that checkpoint has actually been completed. After creating/recreating and verifying the table, resume with:
+
+<pre>
+python scripts/deploy_mediawiki.py --execute \
+  --ack-checkpoint cargo:Knowledge_requests
+</pre>
+
+The acknowledgement is an operator assertion about target runtime state; it is not inferred merely from the presence of repository source.
+
 After deploying or changing the template schema, create/recreate <code>Knowledge_requests</code> using either:
 
 * the Cargo '''Create data''' / '''Recreate data''' action from the template page (the <code>?action=recreatedata</code> interface); or
@@ -177,6 +214,8 @@ A BIThub cache, card index, or agent context may project BITwiki state, but it m
 
 Validation and audit scripts generate JSON reports during CI. Those files are intentionally untracked and retained as workflow artifacts. The canonical inputs are the reviewed repository source, the generators, and preserved evidence—not a mutable bot-authored report committed after merge.
 
+<code>v2-deployment-plan.json</code> follows the same rule: it is generated run evidence. The authoritative deployment inputs are <code>manifest.json</code>, reviewed source, <code>scripts/deployment_plan.py</code>, and the deployment invariants encoded in validation.
+
 Neither PR validation nor <code>main</code> validation is authorized to rewrite repository source.
 
 == Safe migration ==
@@ -184,15 +223,16 @@ Neither PR validation nor <code>main</code> validation is authorized to rewrite 
 <pre>
 1. refresh archive-v1 from the live public wiki
 2. review archive-v1/audit.json and v1-fidelity-audit.json
-3. run scripts/validate_v2.py, scripts/audit_runtime_schema.py, scripts/audit_substrate.py, and scripts/audit_workflow.py
-4. deploy runtime/schema/property/module/template dependencies first
-5. create/recreate required Cargo tables before importing their query consumers
-6. import/create reviewed V2 pages additively
-7. verify rendering, Lua diagnostics, transclusions, categories, SMW data, and Cargo data
-8. migrate each V1 source family / callers deliberately
-9. move/merge/redirect only after source comparison
-10. preserve revision history where technically possible
-11. rerun maintenance reports and compare against the pre-migration snapshot
+3. run scripts/validate_v2.py, scripts/audit_runtime_schema.py, scripts/audit_substrate.py, scripts/audit_workflow.py, and scripts/deployment_plan.py --check
+4. inspect scripts/deploy_mediawiki.py in dry-run mode
+5. deploy runtime/schema/property/module/template dependencies first
+6. complete and verify explicit runtime checkpoints such as Cargo table creation
+7. import/create reviewed V2 pages additively
+8. verify rendering, Lua diagnostics, transclusions, categories, SMW data, and Cargo data
+9. migrate each V1 source family / callers deliberately
+10. move/merge/redirect only after source comparison
+11. preserve revision history where technically possible
+12. rerun maintenance reports and compare against the pre-migration snapshot
 </pre>
 
 == Required post-import checks ==

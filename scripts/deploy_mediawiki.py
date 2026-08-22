@@ -2,7 +2,8 @@
 """Safely deploy reviewed BITwiki repository source through the MediaWiki API.
 
 Dry-run is the default. Execution requires explicit --execute plus bot credentials.
-Existing differing pages are refused unless --overwrite-existing is also supplied.
+Before any write, the complete current deployment segment is read and preflighted.
+Existing differing pages are refused unless --overwrite-existing is supplied.
 Runtime checkpoints such as Cargo table creation must be explicitly acknowledged.
 """
 
@@ -17,8 +18,6 @@ import urllib.parse
 import urllib.request
 
 from deployment_plan import ROOT, build_plan
-
-REQUIRED_EXTENSIONS = {"Scribunto", "Cargo"}
 
 
 class MediaWikiClient:
@@ -136,20 +135,29 @@ def extension_names(siteinfo: dict) -> set[str]:
     }
 
 
-def preflight(client: MediaWikiClient, plan: dict) -> list[str]:
+def preflight_extensions(client: MediaWikiClient, pages: list[dict]) -> list[str]:
     info = client.siteinfo()
     extensions = extension_names(info)
     errors = []
 
-    for required in REQUIRED_EXTENSIONS:
-        if required not in extensions:
-            errors.append(f"Required extension not reported by target: {required}")
+    needs_scribunto = any(
+        page["surface"] == "Module" or page["title"] == "Template:Knowledge object"
+        for page in pages
+    )
+    needs_cargo = any(
+        page["title"] in {"Template:Knowledge request", "BITwiki:Requested knowledge"}
+        for page in pages
+    )
+    needs_smw = any(page["surface"] != "Module" for page in pages)
 
-    if not any(name in extensions for name in {"Semantic MediaWiki", "SemanticMediaWiki"}):
-        errors.append("Required extension not reported by target: Semantic MediaWiki")
-
-    if any(page["surface"] == "Module" for page in plan["pages"]) and "Scribunto" not in extensions:
-        errors.append("Deployment plan contains Module pages but target lacks Scribunto")
+    if needs_scribunto and "Scribunto" not in extensions:
+        errors.append("Selected deployment requires Scribunto but target does not report it")
+    if needs_cargo and "Cargo" not in extensions:
+        errors.append("Selected deployment requires Cargo but target does not report it")
+    if needs_smw and not any(
+        name in extensions for name in {"Semantic MediaWiki", "SemanticMediaWiki"}
+    ):
+        errors.append("Selected deployment requires Semantic MediaWiki but target does not report it")
 
     return errors
 
@@ -169,6 +177,53 @@ def checkpoint_is_acknowledged(page: dict, acknowledgements: set[str]) -> bool:
     return not checkpoint or checkpoint["id"] in acknowledgements
 
 
+def execution_segment(
+    pages: list[dict], acknowledgements: set[str]
+) -> tuple[list[dict], dict | None]:
+    """Return pages safe to attempt before the first unacknowledged checkpoint."""
+    segment = []
+    for page in pages:
+        checkpoint = page.get("checkpoint_before")
+        if checkpoint and not checkpoint_is_acknowledged(page, acknowledgements):
+            return segment, {"page": page, "checkpoint": checkpoint}
+        segment.append(page)
+    return segment, None
+
+
+def read_segment_states(
+    client: MediaWikiClient, pages: list[dict]
+) -> dict[str, dict]:
+    return {page["title"]: client.page_state(page["title"]) for page in pages}
+
+
+def preflight_page_states(
+    pages: list[dict], states: dict[str, dict], *, overwrite_existing: bool
+) -> list[str]:
+    errors = []
+    for page in pages:
+        state = states[page["title"]]
+        source = (ROOT / page["source_path"]).read_text(encoding="utf-8")
+
+        if state["exists"] and state["content_model"] != page["content_model"]:
+            errors.append(
+                f'{page["title"]}: content-model mismatch '
+                f'target={state["content_model"]!r} plan={page["content_model"]!r}; '
+                "change content model explicitly outside this deployer"
+            )
+            continue
+
+        if (
+            state["exists"]
+            and state["content"] != source
+            and not overwrite_existing
+        ):
+            errors.append(
+                f'{page["title"]}: existing content differs; rerun only after review with '
+                "--overwrite-existing"
+            )
+    return errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -184,7 +239,7 @@ def main() -> int:
     parser.add_argument(
         "--overwrite-existing",
         action="store_true",
-        help="Permit updating an existing page whose text differs from repository source.",
+        help="Permit updating existing pages whose text differs from repository source.",
     )
     parser.add_argument(
         "--ack-checkpoint",
@@ -218,15 +273,19 @@ def main() -> int:
 
     pages = selected_pages(plan, args)
     acknowledgements = set(args.ack_checkpoint)
+    segment, blocked = execution_segment(pages, acknowledgements)
     print(
         json.dumps(
             {
                 "mode": "execute" if args.execute else "dry-run",
                 "api": args.api,
                 "selected_pages": len(pages),
+                "current_segment_pages": len(segment),
                 "first_priority": pages[0]["priority"] if pages else None,
                 "last_priority": pages[-1]["priority"] if pages else None,
                 "acknowledged_checkpoints": sorted(acknowledgements),
+                "stops_before": blocked["page"]["title"] if blocked else None,
+                "required_checkpoint": blocked["checkpoint"]["id"] if blocked else None,
             },
             indent=2,
         )
@@ -236,7 +295,11 @@ def main() -> int:
         for page in pages:
             checkpoint = page.get("checkpoint_before")
             if checkpoint:
-                state = "ACKNOWLEDGED" if checkpoint_is_acknowledged(page, acknowledgements) else "REQUIRED"
+                state = (
+                    "ACKNOWLEDGED"
+                    if checkpoint_is_acknowledged(page, acknowledgements)
+                    else "REQUIRED"
+                )
                 print(
                     f'CHECKPOINT {state}: {checkpoint["id"]} before {page["title"]} — '
                     f'{checkpoint["reason"]}'
@@ -259,59 +322,37 @@ def main() -> int:
     client = MediaWikiClient(args.api)
     client.login(username, password)
 
-    errors = preflight(client, plan)
+    errors = preflight_extensions(client, segment)
     if errors:
         for error in errors:
             print("PRECHECK ERROR:", error, file=sys.stderr)
         return 2
 
+    # Read the entire current segment before the first write. This prevents a known
+    # differing page or content-model conflict from producing a predictable partial deploy.
+    states = read_segment_states(client, segment)
+    errors = preflight_page_states(
+        segment,
+        states,
+        overwrite_existing=args.overwrite_existing,
+    )
+    if errors:
+        for error in errors:
+            print("PRECHECK ERROR:", error, file=sys.stderr)
+        print("No writes were attempted.", file=sys.stderr)
+        return 4
+
     token = client.csrf_token()
     changed = 0
     skipped = 0
-    refused = 0
 
-    for page in pages:
-        checkpoint = page.get("checkpoint_before")
-        if checkpoint and not checkpoint_is_acknowledged(page, acknowledgements):
-            print(
-                f'STOPPED at checkpoint {checkpoint["id"]} before {page["title"]}: '
-                f'{checkpoint["reason"]}',
-                file=sys.stderr,
-            )
-            print(
-                "Complete and verify the runtime checkpoint, then rerun with "
-                f'--ack-checkpoint {checkpoint["id"]}.',
-                file=sys.stderr,
-            )
-            return 3
-
+    for page in segment:
         source = (ROOT / page["source_path"]).read_text(encoding="utf-8")
-        state = client.page_state(page["title"])
-
-        if state["exists"] and state["content_model"] != page["content_model"]:
-            print(
-                "REFUSED content-model mismatch:",
-                page["title"],
-                f'target={state["content_model"]!r}',
-                f'plan={page["content_model"]!r}',
-                "(change content model explicitly outside this deployer)",
-                file=sys.stderr,
-            )
-            refused += 1
-            continue
+        state = states[page["title"]]
 
         if state["exists"] and state["content"] == source:
             print("UNCHANGED", page["title"])
             skipped += 1
-            continue
-
-        if state["exists"] and not args.overwrite_existing:
-            print(
-                "REFUSED existing differing page (use --overwrite-existing):",
-                page["title"],
-                file=sys.stderr,
-            )
-            refused += 1
             continue
 
         result = client.edit(
@@ -325,14 +366,33 @@ def main() -> int:
         )
         if result.get("edit", {}).get("result") != "Success":
             print("EDIT ERROR", page["title"], json.dumps(result), file=sys.stderr)
-            refused += 1
-            continue
+            print(
+                "Deployment stopped immediately; earlier successful edits, if any, remain applied.",
+                file=sys.stderr,
+            )
+            return 5
 
         changed += 1
         print("DEPLOYED", page["title"])
 
-    print(json.dumps({"deployed": changed, "unchanged": skipped, "refused": refused}, indent=2))
-    return 1 if refused else 0
+    print(json.dumps({"deployed": changed, "unchanged": skipped}, indent=2))
+
+    if blocked:
+        checkpoint = blocked["checkpoint"]
+        page = blocked["page"]
+        print(
+            f'STOPPED at checkpoint {checkpoint["id"]} before {page["title"]}: '
+            f'{checkpoint["reason"]}',
+            file=sys.stderr,
+        )
+        print(
+            "Complete and verify the runtime checkpoint, then rerun with "
+            f'--ack-checkpoint {checkpoint["id"]}.',
+            file=sys.stderr,
+        )
+        return 3
+
+    return 0
 
 
 if __name__ == "__main__":

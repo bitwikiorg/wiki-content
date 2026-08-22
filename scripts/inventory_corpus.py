@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Build empirical V2 corpus and V1 classification inventories.
+"""Build empirical V2 semantic/content corpus and V1 classification inventories.
 
 This script is intentionally descriptive. It does not decide which schema values are
-canonical and it does not mutate wiki content. Its job is to expose what the corpus
-actually encodes so ontology changes can be justified from evidence rather than
-intuition.
+canonical and it does not mutate wiki content. Its job is to expose what the semantic
+and authored corpus actually encodes so ontology changes can be justified from evidence
+rather than intuition. It is not the deployment manifest; see deployment_plan.py.
 """
 
 from __future__ import annotations
@@ -228,7 +228,7 @@ def build_v2_inventory() -> tuple[dict, dict]:
             )
 
     summary = {
-        "deployable_pages": len(records),
+        "corpus_pages": len(records),
         "namespace_counts": sorted_counter(namespace_counts),
         "nonredirect_namespace_counts": sorted_counter(nonredirect_namespace_counts),
         "redirect_pages": sum(1 for r in records if r["redirect"]),
@@ -251,9 +251,10 @@ def build_v2_inventory() -> tuple[dict, dict]:
     inventory = {
         "scope": ROOTS,
         "interpretation": (
-            "Descriptive repository evidence only. Explicit Knowledge object parameters are "
-            "reported separately from source-syntax semantic annotations; absence or frequency "
-            "does not by itself authorize schema changes."
+            "Descriptive semantic/content corpus evidence only, not a deployment manifest. "
+            "Explicit Knowledge object parameters are reported separately from source-syntax "
+            "semantic annotations; absence or frequency does not by itself authorize schema changes. "
+            "Use scripts/deployment_plan.py for the complete recursive deployable-page inventory."
         ),
         "summary": summary,
         "pages": records,

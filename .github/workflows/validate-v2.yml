@@ -58,6 +58,21 @@ jobs:
         if: always()
         run: python scripts/audit_substrate.py
 
+      - name: Validate complete recursive deployment plan
+        if: always()
+        run: python scripts/deployment_plan.py --check
+
+      - name: Validate deployment importer safety contract
+        if: always()
+        run: |
+          python -m py_compile scripts/deployment_plan.py scripts/deploy_mediawiki.py
+          python scripts/deploy_mediawiki.py --title 'BITwiki:Requested knowledge' > /tmp/deploy-dry.txt
+          grep -F 'CHECKPOINT REQUIRED: cargo:Knowledge_requests' /tmp/deploy-dry.txt
+          grep -F '"current_segment_pages": 0' /tmp/deploy-dry.txt
+          python scripts/deploy_mediawiki.py --title 'BITwiki:Requested knowledge' --ack-checkpoint 'cargo:Knowledge_requests' > /tmp/deploy-ack.txt
+          grep -F 'CHECKPOINT ACKNOWLEDGED: cargo:Knowledge_requests' /tmp/deploy-ack.txt
+          grep -F '"current_segment_pages": 1' /tmp/deploy-ack.txt
+
       - name: Audit structured knowledge-request workflow
         if: always()
         run: python scripts/audit_workflow.py
@@ -90,6 +105,10 @@ jobs:
         if: always()
         run: test ! -f v2-substrate-audit.json || cat v2-substrate-audit.json
 
+      - name: Show deployment plan
+        if: always()
+        run: test ! -f v2-deployment-plan.json || cat v2-deployment-plan.json
+
       - name: Show workflow audit
         if: always()
         run: test ! -f v2-workflow-audit.json || cat v2-workflow-audit.json
@@ -107,6 +126,7 @@ jobs:
             v2-validation.json
             v2-runtime-schema-audit.json
             v2-substrate-audit.json
+            v2-deployment-plan.json
             v2-workflow-audit.json
             v2-mainspace-audit.json
             v2-corpus-inventory.json

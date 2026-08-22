@@ -43,7 +43,25 @@
     "capabilities_in_active_use": ["Semantic MediaWiki properties", "Semantic MediaWiki #ask", "MediaWiki templates/transclusion", "Scribunto compiler/type validation", "Cargo structured table: Knowledge_requests"],
     "capabilities_installed_but_use_case_gated": ["SMW subobjects", "additional SMW Concepts", "Network graph views", "FacetedSearch/Drilldown"],
     "capabilities_not_assumed_or_requires_deployment": ["native structured SMW access from Lua via SemanticScribunto"],
-    "substrate_audit": {"generator": "scripts/audit_substrate.py", "output": "v2-substrate-audit.json", "distribution": "CI artifact; untracked"}
+    "substrate_audit": {"generator": "scripts/audit_substrate.py", "output": "v2-substrate-audit.json", "distribution": "CI artifact; untracked"},
+    "deployment_contract": {
+      "scope_authority": "mediawiki_substrate.source_control_mappings",
+      "planner": "scripts/deployment_plan.py",
+      "plan_output": "v2-deployment-plan.json",
+      "plan_distribution": "CI artifact; untracked",
+      "recursive_discovery_required": true,
+      "executor": "scripts/deploy_mediawiki.py",
+      "executor_default": "dry-run; explicit --execute required",
+      "existing_page_policy": "unchanged pages skip; differing pages require --overwrite-existing; content-model mismatches are refused",
+      "concurrency_policy": "new pages use create-only semantics; existing-page writes are anchored to the queried base revision",
+      "runtime_checkpoints": {
+        "cargo:Knowledge_requests": {
+          "after": "Template:Knowledge request",
+          "before": "BITwiki:Requested knowledge",
+          "requirement": "create/recreate and verify Cargo table Knowledge_requests before acknowledgement"
+        }
+      }
+    }
   },
   "programmable_knowledge_substrate": {
     "architecture_page": "BITwiki/Programmable knowledge substrate.mediawiki",
@@ -171,6 +189,7 @@
       "v2-substrate-audit.json",
       "v2-workflow-audit.json",
       "v2-mainspace-audit.json",
+      "v2-deployment-plan.json",
       "v2-corpus-inventory.json",
       "v1-classification-usage.json",
       "v1-page-role-matrix.json",

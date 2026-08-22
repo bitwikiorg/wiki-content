@@ -3,6 +3,7 @@
 
 Dry-run is the default. Execution requires explicit --execute plus bot credentials.
 Existing differing pages are refused unless --overwrite-existing is also supplied.
+Runtime checkpoints such as Cargo table creation must be explicitly acknowledged.
 """
 
 from __future__ import annotations
@@ -102,7 +103,9 @@ class MediaWikiClient:
         text: str,
         token: str,
         summary: str,
-        content_model: str,
+        create: bool,
+        content_model: str | None = None,
+        base_revid: int | None = None,
     ) -> dict:
         params = {
             "action": "edit",
@@ -113,8 +116,15 @@ class MediaWikiClient:
             "bot": "1",
             "assert": "user",
         }
-        if content_model:
-            params["contentmodel"] = content_model
+        if create:
+            params["createonly"] = "1"
+            if content_model:
+                params["contentmodel"] = content_model
+        else:
+            params["nocreate"] = "1"
+            if base_revid is None:
+                raise ValueError("Existing-page edit requires base_revid")
+            params["baserevid"] = str(base_revid)
         return self.request(params, post=True)
 
 
@@ -154,6 +164,11 @@ def selected_pages(plan: dict, args: argparse.Namespace) -> list[dict]:
     return pages
 
 
+def checkpoint_is_acknowledged(page: dict, acknowledgements: set[str]) -> bool:
+    checkpoint = page.get("checkpoint_before")
+    return not checkpoint or checkpoint["id"] in acknowledgements
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -170,6 +185,15 @@ def main() -> int:
         "--overwrite-existing",
         action="store_true",
         help="Permit updating an existing page whose text differs from repository source.",
+    )
+    parser.add_argument(
+        "--ack-checkpoint",
+        action="append",
+        default=[],
+        help=(
+            "Acknowledge a manual deployment checkpoint by exact ID; repeat as needed. "
+            "Example: --ack-checkpoint cargo:Knowledge_requests"
+        ),
     )
     parser.add_argument(
         "--max-priority",
@@ -193,6 +217,7 @@ def main() -> int:
         return 2
 
     pages = selected_pages(plan, args)
+    acknowledgements = set(args.ack_checkpoint)
     print(
         json.dumps(
             {
@@ -201,6 +226,7 @@ def main() -> int:
                 "selected_pages": len(pages),
                 "first_priority": pages[0]["priority"] if pages else None,
                 "last_priority": pages[-1]["priority"] if pages else None,
+                "acknowledged_checkpoints": sorted(acknowledgements),
             },
             indent=2,
         )
@@ -208,6 +234,13 @@ def main() -> int:
 
     if not args.execute:
         for page in pages:
+            checkpoint = page.get("checkpoint_before")
+            if checkpoint:
+                state = "ACKNOWLEDGED" if checkpoint_is_acknowledged(page, acknowledgements) else "REQUIRED"
+                print(
+                    f'CHECKPOINT {state}: {checkpoint["id"]} before {page["title"]} — '
+                    f'{checkpoint["reason"]}'
+                )
             print(
                 f'{page["priority"]:03d} {page["content_model"]:<12} '
                 f'{page["title"]} <- {page["source_path"]}'
@@ -238,8 +271,34 @@ def main() -> int:
     refused = 0
 
     for page in pages:
+        checkpoint = page.get("checkpoint_before")
+        if checkpoint and not checkpoint_is_acknowledged(page, acknowledgements):
+            print(
+                f'STOPPED at checkpoint {checkpoint["id"]} before {page["title"]}: '
+                f'{checkpoint["reason"]}',
+                file=sys.stderr,
+            )
+            print(
+                "Complete and verify the runtime checkpoint, then rerun with "
+                f'--ack-checkpoint {checkpoint["id"]}.',
+                file=sys.stderr,
+            )
+            return 3
+
         source = (ROOT / page["source_path"]).read_text(encoding="utf-8")
         state = client.page_state(page["title"])
+
+        if state["exists"] and state["content_model"] != page["content_model"]:
+            print(
+                "REFUSED content-model mismatch:",
+                page["title"],
+                f'target={state["content_model"]!r}',
+                f'plan={page["content_model"]!r}',
+                "(change content model explicitly outside this deployer)",
+                file=sys.stderr,
+            )
+            refused += 1
+            continue
 
         if state["exists"] and state["content"] == source:
             print("UNCHANGED", page["title"])
@@ -260,7 +319,9 @@ def main() -> int:
             text=source,
             token=token,
             summary=args.summary,
-            content_model=page["content_model"],
+            create=not state["exists"],
+            content_model=page["content_model"] if not state["exists"] else None,
+            base_revid=state.get("revid") if state["exists"] else None,
         )
         if result.get("edit", {}).get("result") != "Success":
             print("EDIT ERROR", page["title"], json.dumps(result), file=sys.stderr)

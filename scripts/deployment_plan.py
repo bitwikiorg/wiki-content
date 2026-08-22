@@ -3,6 +3,8 @@
 
 The plan is derived from manifest.json source-control mappings. Discovery is recursive:
 nested Module paths are first-class deployable pages, not an optional convention.
+Manual runtime checkpoints are encoded where repository page ordering alone cannot
+complete deployment (for example Cargo table creation).
 """
 
 from __future__ import annotations
@@ -60,6 +62,16 @@ REQUIRED_RUNTIME_CHAIN = [
     "Module:Structure",
     "Template:Knowledge object",
 ]
+MANUAL_CHECKPOINTS = {
+    "BITwiki:Requested knowledge": {
+        "id": "cargo:Knowledge_requests",
+        "after": "Template:Knowledge request",
+        "reason": (
+            "Create or recreate the Cargo Knowledge_requests table after deploying "
+            "Template:Knowledge request and before deploying/querying its workflow consumer."
+        ),
+    }
+}
 
 
 def read_manifest() -> dict:
@@ -149,6 +161,7 @@ def build_plan() -> dict:
                     "content_model": model,
                     "kind": spec.get("kind"),
                     "extension": spec.get("extension"),
+                    "checkpoint_before": MANUAL_CHECKPOINTS.get(title),
                 }
             )
 
@@ -178,12 +191,32 @@ def build_plan() -> dict:
     if module_records and not nested_modules:
         critical.append("Module mapping exists but no nested Module subpages were discovered")
 
+    for title, checkpoint in MANUAL_CHECKPOINTS.items():
+        consumer = by_title.get(title)
+        producer = by_title.get(checkpoint["after"])
+        if not consumer:
+            critical.append(f"Checkpoint consumer missing from deployment plan: {title}")
+            continue
+        if not producer:
+            critical.append(
+                f'Checkpoint producer missing from deployment plan: {checkpoint["after"]}'
+            )
+            continue
+        if producer["priority"] >= consumer["priority"]:
+            critical.append(
+                f'Checkpoint {checkpoint["id"]} is not ordered after {checkpoint["after"]} '
+                f"and before {title}"
+            )
+
     summary = {
         "status": "ok" if not critical else "error",
         "deployable_pages": len(records),
         "surfaces": sorted({item["surface"] for item in records}, key=str.casefold),
         "module_pages": len(module_records),
         "nested_module_pages": len(nested_modules),
+        "manual_checkpoints": sorted(
+            checkpoint["id"] for checkpoint in MANUAL_CHECKPOINTS.values()
+        ),
         "content_models": sorted({item["content_model"] for item in records}),
         "critical": critical,
     }
@@ -195,6 +228,7 @@ def build_plan() -> dict:
         "manifest": MANIFEST.name,
         "dependency_rule": "lower priority deploys before higher priority",
         "required_runtime_chain": REQUIRED_RUNTIME_CHAIN,
+        "manual_checkpoints": MANUAL_CHECKPOINTS,
         "summary": summary,
         "pages": records,
     }

@@ -125,6 +125,7 @@ def build_plan() -> dict:
     mappings = manifest["mediawiki_substrate"]["source_control_mappings"]
     records = []
     critical = []
+    empty_mapped_surfaces = []
 
     for surface, spec in mappings.items():
         rel_root = spec.get("path")
@@ -139,7 +140,9 @@ def build_plan() -> dict:
 
         discovered = list(iter_deployable_files(source_root))
         if not discovered:
-            critical.append(f"Mapped source root contains no deployable source: {rel_root}")
+            # A mapping is a namespace/title-projection contract, not a requirement to
+            # manufacture a page. Empty mapped surfaces are legitimate future capacity.
+            empty_mapped_surfaces.append(surface)
             continue
 
         for path in discovered:
@@ -183,7 +186,10 @@ def build_plan() -> dict:
         critical.append("Required Lua compiler chain missing: " + ", ".join(missing_chain))
 
     chain_priorities = [by_title[t]["priority"] for t in REQUIRED_RUNTIME_CHAIN if t in by_title]
-    if chain_priorities != sorted(chain_priorities) or len(set(chain_priorities)) != len(chain_priorities):
+    if len(chain_priorities) == len(REQUIRED_RUNTIME_CHAIN) and (
+        chain_priorities != sorted(chain_priorities)
+        or len(set(chain_priorities)) != len(chain_priorities)
+    ):
         critical.append("Lua compiler dependency chain is not strictly ordered")
 
     module_records = [item for item in records if item["surface"] == "Module"]
@@ -208,10 +214,14 @@ def build_plan() -> dict:
                 f"and before {title}"
             )
 
+    mapped_surfaces = sorted(mappings, key=str.casefold)
+    populated_surfaces = sorted({item["surface"] for item in records}, key=str.casefold)
     summary = {
         "status": "ok" if not critical else "error",
         "deployable_pages": len(records),
-        "surfaces": sorted({item["surface"] for item in records}, key=str.casefold),
+        "mapped_surfaces": mapped_surfaces,
+        "populated_surfaces": populated_surfaces,
+        "empty_mapped_surfaces": sorted(empty_mapped_surfaces, key=str.casefold),
         "module_pages": len(module_records),
         "nested_module_pages": len(nested_modules),
         "manual_checkpoints": sorted(

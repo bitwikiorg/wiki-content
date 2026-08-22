@@ -57,6 +57,10 @@ jobs:
         if: always()
         run: python scripts/audit_substrate.py
 
+      - name: Validate complete recursive deployment plan
+        if: always()
+        run: python scripts/deployment_plan.py --check
+
       - name: Audit structured knowledge-request workflow
         if: always()
         run: python scripts/audit_workflow.py
@@ -89,6 +93,10 @@ jobs:
         if: always()
         run: test ! -f v2-substrate-audit.json || cat v2-substrate-audit.json
 
+      - name: Show deployment plan
+        if: always()
+        run: test ! -f v2-deployment-plan.json || cat v2-deployment-plan.json
+
       - name: Show workflow audit
         if: always()
         run: test ! -f v2-workflow-audit.json || cat v2-workflow-audit.json
@@ -106,6 +114,7 @@ jobs:
             v2-validation.json
             v2-runtime-schema-audit.json
             v2-substrate-audit.json
+            v2-deployment-plan.json
             v2-workflow-audit.json
             v2-mainspace-audit.json
             v2-corpus-inventory.json

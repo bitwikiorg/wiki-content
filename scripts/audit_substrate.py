@@ -34,6 +34,7 @@ SOURCE_ROOTS = (
     "Help",
 )
 SOURCE_SUFFIXES = {".mediawiki", ".lua", ".css", ".js", ".json"}
+DIRECTORY_DOC_FILES = ("README.md", "WORKFLOWS.md")
 
 PATTERNS = {
     "smw_ask": re.compile(r"\{\{\s*#ask\s*:", re.I),
@@ -186,10 +187,10 @@ def main() -> int:
         and ".git" not in path.parts
         and "__pycache__" not in path.parts
     ]
-    missing_readmes = sorted(
+    missing_directory_docs = sorted(
         relative(path)
         for path in all_dirs
-        if not (path / "README.md").exists()
+        if not any((path / filename).exists() for filename in DIRECTORY_DOC_FILES)
     )
 
     warnings = []
@@ -222,8 +223,11 @@ def main() -> int:
             "Current live templates absent from Template/: "
             + ", ".join(missing_live_templates)
         )
-    if missing_readmes:
-        critical.append("Directories without README.md: " + ", ".join(missing_readmes))
+    if missing_directory_docs:
+        critical.append(
+            "Directories without local documentation (README.md or approved equivalent): "
+            + ", ".join(missing_directory_docs)
+        )
     if configured_but_unmapped:
         critical.append(
             "Configured content/runtime namespaces without repository mapping: "
@@ -266,7 +270,8 @@ def main() -> int:
         "source_controlled_template_titles": source_controlled_template_titles,
         "missing_live_templates": missing_live_templates,
         "missing_mapped_roots": missing_mapped_roots,
-        "missing_readmes": missing_readmes,
+        "directory_documentation_files": list(DIRECTORY_DOC_FILES),
+        "missing_directory_documentation": missing_directory_docs,
         "warnings": warnings,
         "critical": critical,
     }

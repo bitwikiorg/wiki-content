@@ -62,6 +62,17 @@ jobs:
         if: always()
         run: python scripts/deployment_plan.py --check
 
+      - name: Validate deployment importer safety contract
+        if: always()
+        run: |
+          python -m py_compile scripts/deployment_plan.py scripts/deploy_mediawiki.py
+          python scripts/deploy_mediawiki.py --title 'BITwiki:Requested knowledge' > /tmp/deploy-dry.txt
+          grep -F 'CHECKPOINT REQUIRED: cargo:Knowledge_requests' /tmp/deploy-dry.txt
+          grep -F '"current_segment_pages": 0' /tmp/deploy-dry.txt
+          python scripts/deploy_mediawiki.py --title 'BITwiki:Requested knowledge' --ack-checkpoint 'cargo:Knowledge_requests' > /tmp/deploy-ack.txt
+          grep -F 'CHECKPOINT ACKNOWLEDGED: cargo:Knowledge_requests' /tmp/deploy-ack.txt
+          grep -F '"current_segment_pages": 1' /tmp/deploy-ack.txt
+
       - name: Audit structured knowledge-request workflow
         if: always()
         run: python scripts/audit_workflow.py

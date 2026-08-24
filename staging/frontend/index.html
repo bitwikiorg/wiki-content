@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>BITwiki Staging Workbench</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./mediawiki-common.css" />
+</head>
+<body>
+  <header class="mw-header">
+    <a class="brand" href="#/">
+      <span class="brand-mark">B</span>
+      <span>
+        <strong>BITwiki</strong>
+        <small>staging workbench</small>
+      </span>
+    </a>
+    <label class="search-box" aria-label="Search staged knowledge">
+      <input id="searchInput" type="search" placeholder="Search BITwiki staging" autocomplete="off" />
+      <button id="searchButton" type="button">Search</button>
+    </label>
+    <nav class="header-actions">
+      <a href="#/graph">Graph</a>
+      <a id="repoLink" href="https://github.com/bitwikiorg/wiki-content" target="_blank" rel="noreferrer">Source</a>
+    </nav>
+  </header>
+
+  <div class="workspace">
+    <aside class="mw-sidebar">
+      <nav>
+        <h2>Navigation</h2>
+        <a href="#/">Workbench home</a>
+        <a href="#/graph">Graph explorer</a>
+        <a href="https://bitwiki.org/" target="_blank" rel="noreferrer">Live BITwiki</a>
+      </nav>
+      <section>
+        <h2>Namespaces</h2>
+        <div id="namespaceList" class="namespace-list"></div>
+      </section>
+      <section class="staging-note">
+        <strong>Staging only</strong>
+        <p>This site is an inspectable projection of deployable MediaWiki source. It is not the canonical published runtime.</p>
+      </section>
+    </aside>
+
+    <main class="mw-main">
+      <div id="statusBar" class="status-bar">Loading staged corpus…</div>
+      <div id="app"></div>
+    </main>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

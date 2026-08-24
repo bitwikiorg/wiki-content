@@ -1,0 +1,117 @@
+name: Build BITwiki staging workbench
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'Main/**'
+      - 'BITwiki/**'
+      - 'Template/**'
+      - 'Property/**'
+      - 'Concept/**'
+      - 'Category/**'
+      - 'Module/**'
+      - 'MediaWiki/**'
+      - 'SMWSchema/**'
+      - 'Portal/**'
+      - 'manifest.json'
+      - 'bitwiki-runtime-schema.json'
+      - 'staging/**'
+      - '.github/workflows/staging-pages.yml'
+  pull_request:
+    paths:
+      - 'Main/**'
+      - 'BITwiki/**'
+      - 'Template/**'
+      - 'Property/**'
+      - 'Concept/**'
+      - 'Category/**'
+      - 'Module/**'
+      - 'MediaWiki/**'
+      - 'SMWSchema/**'
+      - 'Portal/**'
+      - 'manifest.json'
+      - 'bitwiki-runtime-schema.json'
+      - 'staging/**'
+      - '.github/workflows/staging-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: bitwiki-staging-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate canonical repository architecture
+        run: |
+          python scripts/validate_v2.py
+          python scripts/audit_runtime_schema.py
+          python scripts/audit_substrate.py
+          python scripts/audit_workflow.py
+          python scripts/audit_mainspace.py
+
+      - name: Build staging projection
+        run: python staging/compiler/build.py
+
+      - name: Verify generated artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('build/staging/site/data')
+          required = ['pages.json', 'ontology.json', 'graph.json', 'search.json', 'build-meta.json']
+          missing = [name for name in required if not (root / name).exists()]
+          if missing:
+              raise SystemExit(f'missing staging artifacts: {missing}')
+
+          meta = json.loads((root / 'build-meta.json').read_text())
+          graph = json.loads((root / 'graph.json').read_text())
+          if meta['page_count'] < 1 or not graph['nodes']:
+              raise SystemExit('staging projection is unexpectedly empty')
+          print(json.dumps(meta, indent=2))
+          PY
+
+      - name: Upload build evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitwiki-staging-build
+          path: build/staging/
+          if-no-files-found: error
+
+      - name: Configure Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/staging/site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

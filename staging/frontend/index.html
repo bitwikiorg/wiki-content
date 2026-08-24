@@ -69,5 +69,15 @@
   </div>
 
   <script type="module" src="./app.js"></script>
+  <script>
+    const appRoot = document.getElementById('app');
+    const clarifyExactGitHubSourceLink = () => {
+      appRoot.querySelectorAll('.page-meta-actions a[href*="github.com/bitwikiorg/wiki-content/blob/main/"]').forEach(link => {
+        link.textContent = 'View this page on GitHub ↗';
+        link.title = 'Open this exact source file in the wiki-content repository';
+      });
+    };
+    new MutationObserver(clarifyExactGitHubSourceLink).observe(appRoot, { childList: true, subtree: true });
+  </script>
 </body>
 </html>

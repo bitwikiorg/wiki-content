@@ -25,6 +25,10 @@ TEMPLATE_RE = re.compile(r"\{\{\s*([^{}|\n]+)(.*?)\}\}", re.DOTALL)
 INVOKE_RE = re.compile(r"\{\{\s*#invoke\s*:\s*([^|}\n]+)", re.IGNORECASE)
 CATEGORY_RE = re.compile(r"\[\[Category:([^\]|]+)(?:\|[^\]]*)?\]\]", re.IGNORECASE)
 COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+LITERAL_BLOCK_RE = re.compile(
+    r"<(pre|nowiki|source|syntaxhighlight)\b[^>]*>.*?</\1\s*>",
+    re.IGNORECASE | re.DOTALL,
+)
 
 
 @dataclass(frozen=True)
@@ -46,12 +50,7 @@ def stable_id(title: str) -> str:
 
 
 def namespace_specs(manifest: dict[str, Any]) -> list[NamespaceSpec]:
-    """Return each repository source surface exactly once.
-
-    `Portal/` currently appears both in source_control_mappings and
-    title_projection_paths. The staging projection deduplicates by directory so
-    repository transport metadata never becomes duplicate knowledge objects.
-    """
+    """Return each repository source surface exactly once."""
     specs: list[NamespaceSpec] = []
     seen_dirs: set[str] = set()
 
@@ -69,6 +68,9 @@ def namespace_specs(manifest: dict[str, Any]) -> list[NamespaceSpec]:
             )
         )
 
+    # Some projected title spaces (currently Portal/) are also represented in
+    # source_control_mappings. Directory identity wins so transport metadata
+    # cannot duplicate staged knowledge objects.
     for namespace, raw_directory in manifest.get("title_projection_paths", {}).items():
         directory = raw_directory.rstrip("/")
         if directory in seen_dirs:
@@ -139,8 +141,18 @@ def empty_parse() -> dict[str, Any]:
     }
 
 
-def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
+def semantic_source(source: str) -> str:
+    """Remove text MediaWiki treats as literal before semantic extraction.
+
+    Examples inside <pre>, <nowiki>, <source>, or <syntaxhighlight> are source
+    documentation, not executable template calls or semantic assertions.
+    """
     text = COMMENT_RE.sub("", source)
+    return LITERAL_BLOCK_RE.sub("", text)
+
+
+def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
+    text = semantic_source(source)
     identity = parse_knowledge_object(text)
     headings = [
         {"level": len(m.group(1)), "title": re.sub(r"''+", "", m.group(2)).strip()}
@@ -165,7 +177,13 @@ def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
             continue
         if prop:
             properties.add(f"Property:{prop}")
-            semantic.append({"property": prop, "target": target, "is_relationship": prop in relationship_names})
+            semantic.append(
+                {
+                    "property": prop,
+                    "target": target,
+                    "is_relationship": str(prop in relationship_names).lower(),
+                }
+            )
             continue
         lowered = target.casefold()
         if lowered.startswith(("category:", "file:", "image:")):
@@ -238,7 +256,8 @@ def render_preview(source: str, content_model: str) -> str:
     for raw_line in text.splitlines():
         line = raw_line.rstrip()
         if line.strip() == "<pre>":
-            flush_paragraph(); close_list()
+            flush_paragraph()
+            close_list()
             output.append('<pre class="source-code">')
             in_pre = True
             continue
@@ -252,7 +271,8 @@ def render_preview(source: str, content_model: str) -> str:
 
         heading = re.match(r"^(=+)\s*(.*?)\s*\1\s*$", line)
         if heading:
-            flush_paragraph(); close_list()
+            flush_paragraph()
+            close_list()
             level = min(max(len(heading.group(1)), 2), 6)
             output.append(f"<h{level}>{inline_markup(heading.group(2))}</h{level}>")
             continue
@@ -266,16 +286,19 @@ def render_preview(source: str, content_model: str) -> str:
             continue
 
         if line.startswith(("{|", "|-", "|}", "!", "|")):
-            flush_paragraph(); close_list()
+            flush_paragraph()
+            close_list()
             output.append(f'<div class="wikitext-raw-line">{inline_markup(line)}</div>')
             continue
 
         if not line.strip():
-            flush_paragraph(); close_list()
+            flush_paragraph()
+            close_list()
             continue
         paragraph.append(line)
 
-    flush_paragraph(); close_list()
+    flush_paragraph()
+    close_list()
     return "\n".join(output)
 
 
@@ -493,7 +516,10 @@ def build(out_dir: Path) -> dict[str, Any]:
     for name in ("index.html", "styles.css", "app.js"):
         shutil.copy2(FRONTEND_ROOT / name, site / name)
     common_css = ROOT / "MediaWiki" / "Common.css"
-    shutil.copy2(common_css, site / "mediawiki-common.css") if common_css.exists() else (site / "mediawiki-common.css").write_text("", encoding="utf-8")
+    if common_css.exists():
+        shutil.copy2(common_css, site / "mediawiki-common.css")
+    else:
+        (site / "mediawiki-common.css").write_text("", encoding="utf-8")
 
     meta = {
         "project": "BITwiki staging workbench",

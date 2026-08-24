@@ -57,6 +57,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Validate staging frontend JavaScript
+        run: node --check staging/frontend/app.js
+
       - name: Validate canonical repository architecture
         run: |
           python scripts/validate_v2.py

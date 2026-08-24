@@ -1,12 +1,16 @@
 const app = document.querySelector('#app');
 const statusBar = document.querySelector('#statusBar');
 const namespaceList = document.querySelector('#namespaceList');
+const portalList = document.querySelector('#portalList');
 const searchInput = document.querySelector('#searchInput');
 const searchButton = document.querySelector('#searchButton');
 
 const state = {
   pages: [],
   pageById: new Map(),
+  pageByTitle: new Map(),
+  pageByTitleFold: new Map(),
+  fullPageCache: new Map(),
   graph: { nodes: [], edges: [] },
   nodeById: new Map(),
   ontology: { schema: {}, objects: [] },
@@ -32,6 +36,35 @@ function repoFileUrl(path) {
   return `https://github.com/bitwikiorg/wiki-content/blob/main/${encoded}`;
 }
 
+function liveWikiUrl(title) {
+  return `https://bitwiki.org/wiki/${encodeURIComponent(String(title).replaceAll(' ', '_'))}`;
+}
+
+function normalizeTitle(title) {
+  return String(title || '').replaceAll('_', ' ').trim();
+}
+
+function specialHref(title) {
+  const normalized = normalizeTitle(title).toLocaleLowerCase();
+  if (normalized === 'special:allpages') return '#/all-pages';
+  if (normalized === 'special:categories') return '#/categories';
+  if (normalized === 'special:random') return '#/random';
+  if (normalized === 'special:recentchanges') return liveWikiUrl('Special:RecentChanges');
+  if (normalized === 'special:newpages') return liveWikiUrl('Special:NewPages');
+  return null;
+}
+
+function wikiHrefTitle(title) {
+  const normalized = normalizeTitle(title).replace(/^:/, '');
+  const special = specialHref(normalized);
+  if (special) return special;
+  return `#/wiki/${encodeURIComponent(normalized.replaceAll(' ', '_'))}`;
+}
+
+function pageHref(page) {
+  return wikiHrefTitle(page.title);
+}
+
 function parseRoute() {
   const raw = location.hash.slice(1) || '/';
   const [path, query = ''] = raw.split('?', 2);
@@ -49,6 +82,18 @@ async function loadJSON(path) {
   return response.json();
 }
 
+async function loadFullPage(id) {
+  if (state.fullPageCache.has(id)) return state.fullPageCache.get(id);
+  const page = await loadJSON(`./data/page/${encodeURIComponent(id)}.json`);
+  state.fullPageCache.set(id, page);
+  return page;
+}
+
+function findPageByTitle(title) {
+  const normalized = normalizeTitle(title);
+  return state.pageByTitle.get(normalized) || state.pageByTitleFold.get(normalized.toLocaleLowerCase());
+}
+
 async function initialize() {
   try {
     const [pages, graph, ontology, meta] = await Promise.all([
@@ -59,12 +104,16 @@ async function initialize() {
     ]);
     state.pages = pages;
     state.pageById = new Map(pages.map(page => [page.id, page]));
+    state.pageByTitle = new Map(pages.map(page => [page.title, page]));
+    state.pageByTitleFold = new Map(pages.map(page => [page.title.toLocaleLowerCase(), page]));
     state.graph = graph;
     state.nodeById = new Map(graph.nodes.map(node => [node.id, node]));
     state.ontology = ontology;
     state.meta = meta;
+
     renderNamespaces();
-    statusBar.textContent = `${meta.page_count} source objects · ${meta.ontology_object_count} knowledge objects · ${meta.graph_edge_count} graph edges · ${meta.source_sha.slice(0, 12)}`;
+    await renderSidebarPortals();
+    statusBar.innerHTML = `<strong>Staging projection</strong> · ${meta.page_count} source objects · ${meta.ontology_object_count} knowledge objects · ${meta.graph_edge_count} graph edges · <code>${esc(meta.source_sha.slice(0, 12))}</code>`;
     route();
   } catch (error) {
     statusBar.textContent = 'Staging build failed to load.';
@@ -77,48 +126,87 @@ function renderNamespaces() {
   for (const page of state.pages) counts.set(page.namespace, (counts.get(page.namespace) || 0) + 1);
   namespaceList.innerHTML = [...counts.entries()]
     .sort((a, b) => a[0].localeCompare(b[0]))
-    .map(([name, count]) => `<a href="#/search?namespace=${encodeURIComponent(name)}">${esc(name)} <span class="muted">(${count})</span></a>`)
+    .map(([name, count]) => `<a href="#/all-pages?namespace=${encodeURIComponent(name)}">${esc(name)} <span class="muted">(${count})</span></a>`)
     .join('');
 }
 
-function renderHome(filter = {}) {
-  const q = (filter.q || '').trim().toLocaleLowerCase();
-  const namespace = filter.namespace || '';
+function parsePortalTemplate(source) {
+  const match = source.match(/\{\{\s*(Domain portal|Topic portal)\b([\s\S]*?)\n\}\}/i);
+  if (!match) return null;
+  const params = {};
+  for (const line of match[2].split('\n')) {
+    const param = line.match(/^\s*\|([A-Za-z0-9_]+)\s*=\s*(.*)$/);
+    if (param) params[param[1]] = param[2].trim();
+  }
+  return { kind: match[1].toLocaleLowerCase().startsWith('domain') ? 'domain' : 'topic', params };
+}
+
+function wikiFragment(value = '') {
+  const links = [];
+  let text = String(value).replace(/\[\[([^\[\]]+)\]\]/g, (_whole, inner) => {
+    const [targetRaw, labelRaw] = inner.split('|', 2);
+    const target = normalizeTitle(targetRaw).replace(/^:/, '');
+    const label = labelRaw || target.replace(/^Portal:/, '');
+    const token = `@@BITWIKILINK${links.length}@@`;
+    links.push(`<a href="${wikiHrefTitle(target)}">${esc(label)}</a>`);
+    return token;
+  });
+  text = text.replace(/<br\s*\/?\s*>/gi, '@@BITBR@@');
+  let out = esc(text);
+  out = out.replace(/'''''(.*?)'''''/g, '<strong><em>$1</em></strong>');
+  out = out.replace(/'''(.*?)'''/g, '<strong>$1</strong>');
+  out = out.replace(/''(.*?)''/g, '<em>$1</em>');
+  out = out.replaceAll('@@BITBR@@', '<br>');
+  links.forEach((link, index) => { out = out.replace(`@@BITWIKILINK${index}@@`, link); });
+  return out;
+}
+
+async function renderSidebarPortals() {
+  const portalIndexes = state.pages.filter(page => page.namespace === 'Portal');
+  const fullPages = await Promise.all(portalIndexes.map(page => loadFullPage(page.id)));
+  const domainPortals = fullPages
+    .map(page => ({ page, portal: parsePortalTemplate(page.source) }))
+    .filter(item => item.portal?.kind === 'domain')
+    .sort((a, b) => a.page.title.localeCompare(b.page.title));
+
+  portalList.innerHTML = domainPortals
+    .map(({ page }) => `<a href="${pageHref(page)}">${esc(page.title.replace(/^Portal:/, ''))}</a>`)
+    .join('');
+}
+
+function renderDirectory({ q = '', namespace = '', heading = 'All pages' } = {}) {
+  const query = q.trim().toLocaleLowerCase();
   const pages = state.pages
     .filter(page => !namespace || page.namespace === namespace)
-    .filter(page => !q || [page.title, page.namespace, page.entity_type, page.domain, page.source_path].some(v => String(v || '').toLocaleLowerCase().includes(q)))
+    .filter(page => !query || [page.title, page.namespace, page.entity_type, page.domain, page.source_path].some(v => String(v || '').toLocaleLowerCase().includes(query)))
     .sort((a, b) => a.title.localeCompare(b.title));
 
-  const heading = q ? `Search: ${filter.q}` : namespace ? `Namespace: ${namespace}` : 'BITwiki staging workbench';
   app.innerHTML = `
-    <section class="home-intro">
-      <h1>${esc(heading)}</h1>
-      <p><strong>Inspectable micro-staging for BITwiki/MediaWiki.</strong> This projection asks what repository knowledge will become when promoted, what it connects to, and how it can be displayed without changing the deployable source.</p>
-      <div class="metric-row">
-        <div class="metric"><strong>${state.meta.page_count}</strong><span>source objects</span></div>
-        <div class="metric"><strong>${state.meta.ontology_object_count}</strong><span>typed knowledge objects</span></div>
-        <div class="metric"><strong>${state.meta.graph_node_count}</strong><span>graph nodes</span></div>
-        <div class="metric"><strong>${state.meta.graph_edge_count}</strong><span>derived edges</span></div>
+    <article class="mw-special">
+      <h1 class="page-title">${esc(heading)}</h1>
+      <p class="page-subtitle">Derived staging index over repository-backed MediaWiki titles.</p>
+      <div class="directory-toolbar">
+        <span>${pages.length} titles</span>
+        ${namespace ? `<a href="#/all-pages">Clear namespace filter</a>` : ''}
       </div>
-    </section>
-    <div class="source-toolbar"><span>${pages.length} matching objects</span><span>Generated from repository source; no staging metadata is written back.</span></div>
-    <div class="page-list">
-      ${pages.slice(0, 250).map(page => `
-        <div class="page-row">
-          <a href="#/page/${page.id}">${esc(page.title)}</a>
-          <span class="muted">${esc(page.namespace)}</span>
-          <span class="muted">${esc(page.entity_type || page.content_model)}</span>
-          <span class="${page.validation_status === 'pass' ? 'validation-pass' : 'validation-error'}">${esc(page.validation_status)}</span>
-        </div>
-      `).join('') || '<div class="empty">No staged source objects match this query.</div>'}
-    </div>
+      <div class="page-list">
+        ${pages.map(page => `
+          <div class="page-row">
+            <a href="${pageHref(page)}">${esc(page.title)}</a>
+            <span class="muted">${esc(page.namespace)}</span>
+            <span class="muted">${esc(page.entity_type || page.content_model)}</span>
+            <span class="${page.validation_status === 'pass' ? 'validation-pass' : 'validation-error'}">${esc(page.validation_status)}</span>
+          </div>
+        `).join('') || '<div class="empty">No staged source objects match this query.</div>'}
+      </div>
+    </article>
   `;
 }
 
 function pageTabs(page, active) {
   const tabs = ['read', 'source', 'structure', 'graph', 'promote'];
   return `
-    <div class="tabs" role="tablist">
+    <div class="tabs" role="tablist" aria-label="Page inspection modes">
       ${tabs.map(tab => `<button class="${tab === active ? 'active' : ''}" data-view="${tab}">${tab[0].toUpperCase() + tab.slice(1)}</button>`).join('')}
     </div>
   `;
@@ -128,7 +216,7 @@ function identityCard(page) {
   const identity = page.parsed.identity || {};
   return `
     <aside class="inspector-card">
-      <h2>${esc(page.title)}</h2>
+      <h2>Staging inspection</h2>
       <dl class="inspector-grid">
         <dt>Entity type</dt><dd>${esc(identity.entity_type || 'Not specified')}</dd>
         <dt>Domain</dt><dd>${esc(identity.domain || 'Not specified')}</dd>
@@ -137,11 +225,94 @@ function identityCard(page) {
         <dt>Namespace</dt><dd>${esc(page.namespace)}</dd>
         <dt>Validation</dt><dd class="${page.validation.status === 'pass' ? 'validation-pass' : 'validation-error'}">${esc(page.validation.status)}</dd>
       </dl>
+      <div class="inspector-actions">
+        <a href="${repoFileUrl(page.source_path)}" target="_blank" rel="noreferrer">Git source ↗</a>
+        <a href="${liveWikiUrl(page.title)}" target="_blank" rel="noreferrer">Live title ↗</a>
+      </div>
     </aside>
   `;
 }
 
+function portalMembers(page, portal) {
+  const params = portal.params;
+  if (portal.kind === 'domain' && params.domain) {
+    return state.pages
+      .filter(candidate => candidate.namespace === 'Main' && candidate.domain === params.domain)
+      .sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  if (params.category) {
+    const target = `Category:${params.category}`;
+    const ids = new Set(state.graph.edges
+      .filter(edge => edge.layer === 'structural' && edge.type === 'Category' && edge.target_title === target)
+      .map(edge => edge.source));
+    return [...ids]
+      .map(id => state.pageById.get(id))
+      .filter(candidate => candidate && candidate.namespace === 'Main')
+      .sort((a, b) => a.title.localeCompare(b.title));
+  }
+  return [];
+}
+
+function renderPortalRead(page, portal) {
+  const p = portal.params;
+  const members = portalMembers(page, portal);
+  const parent = p.parent ? `<div class="portal-parent"><strong>Parent portals:</strong> ${wikiFragment(p.parent)}</div>` : '';
+  const subportals = p.subportals ? `
+    <section>
+      <h2>Subportals</h2>
+      <div class="portal-fragment">${wikiFragment(p.subportals.replace(/^\*\s*/, ''))}</div>
+    </section>` : '';
+
+  return `
+    <div class="read-layout portal-read-layout">
+      <article class="article-body portal-body">
+        ${parent}
+        <p class="portal-description">${wikiFragment(p.description || '')}</p>
+
+        <section>
+          <h2>Start here</h2>
+          <p>${wikiFragment(p.start || '')}</p>
+        </section>
+
+        ${p.learning_path ? `
+          <section>
+            <h2>Learn progressively</h2>
+            <p>${wikiFragment(p.learning_path)}</p>
+          </section>` : ''}
+
+        <section>
+          <h2>Browse ${portal.kind === 'domain' ? 'this domain' : 'this topic'}</h2>
+          <div class="portal-query-note">Staging projection of the MediaWiki semantic/category browse surface.</div>
+          ${members.length ? `
+            <table class="portal-query-table">
+              <thead><tr><th>Page</th><th>Entity type</th><th>Epistemic status</th></tr></thead>
+              <tbody>${members.map(member => `<tr><td><a href="${pageHref(member)}">${esc(member.title)}</a></td><td>${esc(member.entity_type || '—')}</td><td>${esc(member.status || '—')}</td></tr>`).join('')}</tbody>
+            </table>` : '<div class="empty compact">No staged Main-namespace members currently resolve for this portal.</div>'}
+          ${p.category ? `<p><a href="${wikiHrefTitle(`Category:${p.category}`)}">Browse the ${esc(p.category)} category</a></p>` : ''}
+        </section>
+
+        ${subportals}
+
+        <section>
+          <h2>Related portals</h2>
+          <p>${wikiFragment(p.related || 'None specified.')}</p>
+        </section>
+
+        <section class="portal-about">
+          <h2>About this portal</h2>
+          <p>This portal is a reader-facing view over the knowledge corpus. It does not define the ontology and does not imply that its domain or topic is exclusive.</p>
+          <p>In staging, the same source-defined portal becomes inspectable through Structure, Graph, and Promote without changing its MediaWiki representation.</p>
+        </section>
+      </article>
+      ${identityCard(page)}
+    </div>
+  `;
+}
+
 function renderRead(page) {
+  const portal = page.namespace === 'Portal' ? parsePortalTemplate(page.source) : null;
+  if (portal) return renderPortalRead(page, portal);
   return `
     <div class="read-layout">
       <article class="article-body">${page.preview_html}</article>
@@ -164,22 +335,31 @@ function renderStructure(page) {
   const parsed = page.parsed;
   const identity = parsed.identity || {};
   const semanticRelations = parsed.semantic.filter(item => item.is_relationship === 'true');
+  const portal = page.namespace === 'Portal' ? parsePortalTemplate(page.source) : null;
   return `
     <div class="panel-grid">
       <section class="panel">
-        <h3>Identity</h3>
+        <h3>MediaWiki identity</h3>
+        <dl>
+          <dt>Title</dt><dd>${esc(page.title)}</dd>
+          <dt>Namespace</dt><dd>${esc(page.namespace)}</dd>
+          <dt>Content model</dt><dd>${esc(page.content_model)}</dd>
+          <dt>Projection</dt><dd>${esc(page.projection_kind)}</dd>
+          ${portal ? `<dt>Portal shell</dt><dd>${esc(portal.kind === 'domain' ? 'Template:Domain portal' : 'Template:Topic portal')}</dd>` : ''}
+        </dl>
+      </section>
+      <section class="panel">
+        <h3>Knowledge identity</h3>
         <dl>
           <dt>Entity type</dt><dd>${esc(identity.entity_type || '—')}</dd>
           <dt>Domain</dt><dd>${esc(identity.domain || '—')}</dd>
           <dt>Status</dt><dd>${esc(identity.status || '—')}</dd>
           <dt>Provenance</dt><dd>${esc(identity.provenance || '—')}</dd>
-          <dt>Content model</dt><dd>${esc(page.content_model)}</dd>
-          <dt>Projection</dt><dd>${esc(page.projection_kind)}</dd>
         </dl>
       </section>
       <section class="panel">
         <h3>Document anatomy</h3>
-        ${parsed.headings.length ? `<ol>${parsed.headings.map(h => `<li>${esc(h.title)} <span class="muted">H${h.level}</span></li>`).join('')}</ol>` : '<span class="muted">No wikitext headings extracted.</span>'}
+        ${parsed.headings.length ? `<ol>${parsed.headings.map(h => `<li>${esc(h.title)} <span class="muted">H${h.level}</span></li>`).join('')}</ol>` : '<span class="muted">No literal wikitext headings extracted; this page may be template-driven.</span>'}
       </section>
       <section class="panel">
         <h3>Classification</h3>
@@ -234,10 +414,7 @@ function renderGraphSvg(centerId, layer = 'all') {
     const key = otherId || `ghost-${index}`;
     if (!neighborMap.has(key)) {
       neighborKeys.push(key);
-      neighborMap.set(key, {
-        id: otherId,
-        title: otherId ? graphNodeLabel(otherId) : edge.target_title,
-      });
+      neighborMap.set(key, { id: otherId, title: otherId ? graphNodeLabel(otherId) : edge.target_title });
     }
   });
 
@@ -255,10 +432,7 @@ function renderGraphSvg(centerId, layer = 'all') {
     if (!b) return '';
     const mx = (a.x + b.x) / 2;
     const my = (a.y + b.y) / 2;
-    return `
-      <line class="graph-edge ${esc(edge.layer)}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"></line>
-      <text class="edge-label" x="${mx}" y="${my - 3}">${esc(edge.type)}</text>
-    `;
+    return `<line class="graph-edge ${esc(edge.layer)}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"></line><text class="edge-label" x="${mx}" y="${my - 3}">${esc(edge.type)}</text>`;
   }).join('');
 
   const nodeSvg = [
@@ -286,7 +460,7 @@ function renderGraphView(page, layer = 'all') {
       ${counts.map(([name, count]) => `<span class="tag">${name}: ${count}</span>`).join('')}
     </div>
     ${renderGraphSvg(page.id, layer)}
-    <p class="graph-legend">Local neighborhood only. Semantic, structural, and runtime edges are deliberately separate layers; unresolved targets remain visible rather than being silently discarded.</p>
+    <p class="graph-legend">Local neighborhood only. Semantic, structural, and runtime edges remain separate inspection layers.</p>
   `;
 }
 
@@ -327,13 +501,91 @@ function renderPromote(page) {
   `;
 }
 
+function hydrateRawTables(container) {
+  const rawLines = [...container.querySelectorAll('.wikitext-raw-line')];
+  const consumed = new Set();
+
+  for (const start of rawLines) {
+    if (consumed.has(start) || !start.textContent.trim().startsWith('{|')) continue;
+    const sequence = [start];
+    let cursor = start.nextElementSibling;
+    while (cursor?.classList.contains('wikitext-raw-line')) {
+      sequence.push(cursor);
+      if (cursor.textContent.trim() === '|}') break;
+      cursor = cursor.nextElementSibling;
+    }
+    if (sequence.at(-1)?.textContent.trim() !== '|}') continue;
+
+    const table = document.createElement('table');
+    table.className = 'wikitable staged-wikitable';
+    let row = null;
+    const ensureRow = () => {
+      if (!row) {
+        row = document.createElement('tr');
+        table.appendChild(row);
+      }
+      return row;
+    };
+
+    for (const line of sequence.slice(1, -1)) {
+      const text = line.textContent.trim();
+      if (!text || text === '|-') {
+        row = null;
+        continue;
+      }
+      if (text.startsWith('!')) {
+        const current = ensureRow();
+        line.innerHTML.replace(/^!\s*/, '').split(/\s*!!\s*/).forEach(value => {
+          const cell = document.createElement('th');
+          cell.innerHTML = value;
+          current.appendChild(cell);
+        });
+        continue;
+      }
+      if (text.startsWith('|')) {
+        const current = ensureRow();
+        line.innerHTML.replace(/^\|\s*/, '').split(/\s*\|\|\s*/).forEach(value => {
+          const cell = document.createElement('td');
+          cell.innerHTML = value;
+          current.appendChild(cell);
+        });
+      }
+    }
+
+    start.replaceWith(table);
+    sequence.slice(1).forEach(line => line.remove());
+    sequence.forEach(line => consumed.add(line));
+  }
+}
+
+function rewriteArticleLinks(container) {
+  const specialByLabel = new Map([
+    ['all pages', '#/all-pages'],
+    ['random page', '#/random'],
+    ['categories', '#/categories'],
+    ['recent edits', liveWikiUrl('Special:RecentChanges')],
+    ['new pages', liveWikiUrl('Special:NewPages')],
+  ]);
+
+  container.querySelectorAll('a[href^="#/page/"]').forEach(anchor => {
+    const raw = anchor.getAttribute('href').split('/').pop();
+    const page = state.pageById.get(decodeURIComponent(raw));
+    if (page) {
+      anchor.setAttribute('href', pageHref(page));
+      return;
+    }
+    const replacement = specialByLabel.get(anchor.textContent.trim().toLocaleLowerCase());
+    if (replacement) anchor.setAttribute('href', replacement);
+  });
+}
+
 async function renderPage(id, activeView = 'read', graphLayer = 'all') {
   const index = state.pageById.get(id);
   if (!index) {
     app.innerHTML = '<div class="empty">Staged page not found.</div>';
     return;
   }
-  const page = await loadJSON(`./data/page/${encodeURIComponent(id)}.json`);
+  const page = await loadFullPage(id);
   const view = ['read', 'source', 'structure', 'graph', 'promote'].includes(activeView) ? activeView : 'read';
   let body = '';
   if (view === 'read') body = renderRead(page);
@@ -342,25 +594,34 @@ async function renderPage(id, activeView = 'read', graphLayer = 'all') {
   if (view === 'graph') body = renderGraphView(page, graphLayer);
   if (view === 'promote') body = renderPromote(page);
 
+  const isMainPage = page.title === 'Main Page';
   app.innerHTML = `
-    <article>
-      <h1 class="page-title">${esc(page.title)}</h1>
-      <p class="page-subtitle">From BITwiki staging · ${esc(page.source_path)}</p>
+    <article class="${isMainPage ? 'main-page-shell' : ''}">
+      ${isMainPage && view === 'read' ? '' : `<h1 class="page-title">${esc(page.title)}</h1>`}
+      <div class="page-meta-line">
+        <span>${isMainPage ? 'BITwiki Main Page' : `From BITwiki staging · ${esc(page.source_path)}`}</span>
+        <span class="page-meta-actions"><a href="${repoFileUrl(page.source_path)}" target="_blank" rel="noreferrer">Git source ↗</a> · <a href="${liveWikiUrl(page.title)}" target="_blank" rel="noreferrer">Live BITwiki ↗</a></span>
+      </div>
       ${pageTabs(page, view)}
       <section class="view">${body}</section>
     </article>
   `;
 
   app.querySelectorAll('[data-view]').forEach(button => {
-    button.addEventListener('click', () => setRoute(`/page/${id}`, { view: button.dataset.view }));
+    button.addEventListener('click', () => setRoute(`/wiki/${encodeURIComponent(page.title.replaceAll(' ', '_'))}`, { view: button.dataset.view }));
   });
-  app.querySelector('#graphLayer')?.addEventListener('change', event => setRoute(`/page/${id}`, { view: 'graph', layer: event.target.value }));
+  app.querySelector('#graphLayer')?.addEventListener('change', event => setRoute(`/wiki/${encodeURIComponent(page.title.replaceAll(' ', '_'))}`, { view: 'graph', layer: event.target.value }));
+  hydrateRawTables(app);
+  rewriteArticleLinks(app);
   wireGraphNodeClicks();
 }
 
 function wireGraphNodeClicks() {
   app.querySelectorAll('.graph-node[data-node]').forEach(node => {
-    node.addEventListener('click', () => setRoute(`/page/${node.dataset.node}`, { view: 'graph' }));
+    node.addEventListener('click', () => {
+      const page = state.pageById.get(node.dataset.node);
+      if (page) setRoute(`/wiki/${encodeURIComponent(page.title.replaceAll(' ', '_'))}`, { view: 'graph' });
+    });
   });
 }
 
@@ -372,8 +633,8 @@ function renderGraphExplorer(params) {
   const center = state.nodeById.get(centerId);
   const layer = params.get('layer') || 'all';
   app.innerHTML = `
-    <h1 class="page-title">Graph explorer</h1>
-    <p class="page-subtitle">Derived inspection graph; not a second ontology authority.</p>
+    <h1 class="page-title">Knowledge graph</h1>
+    <p class="page-subtitle">Staging inspection surface over MediaWiki titles and semantic/runtime connections.</p>
     <section class="view">
       <div class="graph-toolbar">
         <label>Center
@@ -386,10 +647,10 @@ function renderGraphExplorer(params) {
             ${['all', 'semantic', 'structural', 'runtime'].map(name => `<option value="${name}" ${name === layer ? 'selected' : ''}>${name}</option>`).join('')}
           </select>
         </label>
-        ${center ? `<a href="#/page/${center.id}?view=structure">Inspect ${esc(center.title)}</a>` : ''}
+        ${center ? `<a href="${wikiHrefTitle(center.title)}?view=structure">Inspect ${esc(center.title)}</a>` : ''}
       </div>
       ${centerId ? renderGraphSvg(centerId, layer) : '<div class="empty">No graph nodes generated.</div>'}
-      <p class="graph-legend">The explorer intentionally starts from a local neighborhood instead of rendering an unreadable whole-corpus graph soup.</p>
+      <p class="graph-legend">The graph is a derived view. MediaWiki titles, source files, SMW properties, templates, and runtime dependencies remain the underlying concepts.</p>
     </section>
   `;
   app.querySelector('#graphCenter')?.addEventListener('change', event => setRoute('/graph', { node: event.target.value, layer }));
@@ -397,29 +658,127 @@ function renderGraphExplorer(params) {
   wireGraphNodeClicks();
 }
 
+async function renderPortals() {
+  const indexes = state.pages.filter(page => page.namespace === 'Portal');
+  const fullPages = await Promise.all(indexes.map(page => loadFullPage(page.id)));
+  const portals = fullPages
+    .map(page => ({ page, portal: parsePortalTemplate(page.source) }))
+    .filter(item => item.portal)
+    .sort((a, b) => a.page.title.localeCompare(b.page.title));
+  const domains = portals.filter(item => item.portal.kind === 'domain');
+  const topics = portals.filter(item => item.portal.kind === 'topic');
+
+  const cards = items => items.map(({ page, portal }) => `
+    <a class="portal-card" href="${pageHref(page)}">
+      <strong>${esc(portal.params.title || page.title.replace(/^Portal:/, ''))}</strong>
+      <span>${esc((portal.params.description || '').slice(0, 180))}${(portal.params.description || '').length > 180 ? '…' : ''}</span>
+    </a>`).join('');
+
+  app.innerHTML = `
+    <article class="mw-special">
+      <h1 class="page-title">Portals</h1>
+      <p class="page-subtitle">Reader-facing navigation views already defined in the MediaWiki corpus.</p>
+      <section class="portal-directory-section">
+        <h2>Knowledge domains</h2>
+        <div class="portal-grid">${cards(domains)}</div>
+      </section>
+      <section class="portal-directory-section">
+        <h2>Focused subportals</h2>
+        <div class="portal-grid">${cards(topics)}</div>
+      </section>
+      <p class="muted">Portal parentage is navigation, not ontology inheritance. The staging frontend preserves that distinction.</p>
+    </article>`;
+}
+
+function renderCategories() {
+  const categoryPages = state.pages.filter(page => page.namespace === 'Category').sort((a, b) => a.title.localeCompare(b.title));
+  const counts = new Map();
+  for (const edge of state.graph.edges) {
+    if (edge.layer !== 'structural' || edge.type !== 'Category') continue;
+    counts.set(edge.target_title, (counts.get(edge.target_title) || 0) + 1);
+  }
+  app.innerHTML = `
+    <article class="mw-special">
+      <h1 class="page-title">Categories</h1>
+      <p class="page-subtitle">MediaWiki category browse surface reconstructed from staged source relations.</p>
+      <div class="category-index">
+        ${categoryPages.map(page => `<a href="${pageHref(page)}"><span>${esc(page.title.replace(/^Category:/, ''))}</span><small>${counts.get(page.title) || 0} members</small></a>`).join('')}
+      </div>
+    </article>`;
+}
+
+function renderRandom() {
+  const candidates = state.pages.filter(page => page.namespace === 'Main' && page.entity_type);
+  if (!candidates.length) return renderDirectory({ namespace: 'Main', heading: 'Main namespace' });
+  const page = candidates[Math.floor(Math.random() * candidates.length)];
+  setRoute(`/wiki/${encodeURIComponent(page.title.replaceAll(' ', '_'))}`);
+}
+
 async function route() {
   const { path, params } = parseRoute();
   window.scrollTo({ top: 0, behavior: 'instant' });
+
   if (path === '/' || path === '') {
-    renderHome();
+    const mainPage = findPageByTitle('Main Page');
+    if (mainPage) await renderPage(mainPage.id, params.get('view') || 'read', params.get('layer') || 'all');
+    else renderDirectory({ heading: 'BITwiki' });
     return;
   }
   if (path === '/search') {
     const q = params.get('q') || '';
     const namespace = params.get('namespace') || '';
     searchInput.value = q;
-    renderHome({ q, namespace });
+    renderDirectory({ q, namespace, heading: q ? `Search results for “${q}”` : 'Search' });
+    return;
+  }
+  if (path === '/all-pages') {
+    const namespace = params.get('namespace') || '';
+    renderDirectory({ namespace, heading: namespace ? `${namespace} namespace` : 'All pages' });
+    return;
+  }
+  if (path === '/portals') {
+    await renderPortals();
+    return;
+  }
+  if (path === '/categories') {
+    renderCategories();
+    return;
+  }
+  if (path === '/random') {
+    renderRandom();
     return;
   }
   if (path === '/graph') {
     renderGraphExplorer(params);
     return;
   }
-  const pageMatch = path.match(/^\/page\/([^/]+)$/);
-  if (pageMatch) {
-    await renderPage(decodeURIComponent(pageMatch[1]), params.get('view') || 'read', params.get('layer') || 'all');
+
+  const wikiMatch = path.match(/^\/wiki\/(.+)$/);
+  if (wikiMatch) {
+    const title = normalizeTitle(decodeURIComponent(wikiMatch[1]));
+    const special = specialHref(title);
+    if (special?.startsWith('#')) {
+      location.hash = special.slice(1);
+      return;
+    }
+    const page = findPageByTitle(title);
+    if (page) {
+      await renderPage(page.id, params.get('view') || 'read', params.get('layer') || 'all');
+      return;
+    }
+    app.innerHTML = `<div class="empty"><strong>${esc(title)}</strong><br>This MediaWiki title is referenced but not present in the staged repository projection.</div>`;
     return;
   }
+
+  const legacyPageMatch = path.match(/^\/page\/([^/]+)$/);
+  if (legacyPageMatch) {
+    const page = state.pageById.get(decodeURIComponent(legacyPageMatch[1]));
+    if (page) {
+      setRoute(`/wiki/${encodeURIComponent(page.title.replaceAll(' ', '_'))}`, Object.fromEntries(params.entries()));
+      return;
+    }
+  }
+
   app.innerHTML = '<div class="empty">Unknown staging route.</div>';
 }
 

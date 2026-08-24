@@ -5,6 +5,7 @@
 This repository is the reviewed source and deployment projection for BITwiki's MediaWiki knowledge substrate: canonical knowledge, semantic graph state, operational records, programmable computation, navigation, project standards, migration evidence, and executable validation.
 
 - **BITwiki:** https://bitwiki.org/
+- **GitHub Pages staging:** https://bitwikiorg.github.io/wiki-content/
 - **BIThub:** https://hub.bitwiki.org/
 - **Canonical branch:** `main`
 - **V1 lineage:** preserved under `archive-v1/`

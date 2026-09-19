@@ -1,0 +1,189 @@
+{{Source status|status=Wave 10 Phase 3 context audit|note=Audit state for the Wave 10 decisions/incentives/collective-systems capture/compile/write cycle.}}
+= Wave 10 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Decision theory]]
+# [[Utility (decision theory)]]
+# [[Game theory]]
+# [[Mechanism design]]
+# [[Incentive]]
+# [[Coordination problem]]
+# [[Collective action]]
+# [[Public good]]
+# [[Commons]]
+# [[Principal–agent problem]]
+# [[Governance]]
+# [[Reputation system]]
+# [[Sybil attack]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 10 reader surfaces: '''39'''.
+
+== Structural audit ==
+
+All 13 Core pages use [[Template:Knowledge object]], [[Template:Reading depth]], source status, references, controlled Domain values, and Core-owned category/semantic identity.
+
+All 26 Simple/Technical derivatives use [[Template:Reading depth]], declare source status, contain sources/references, and do not duplicate Core Knowledge object/category identity.
+
+== Title / identity audit ==
+
+One provisional title is normalized:
+
+* [[Utility]] → [[Utility (decision theory)]]
+
+[[Preference]] and [[Risk]] remain future coverage signals rather than being silently defined through decision theory alone.
+
+No duplicate [[Probability]], [[Uncertainty]], [[Identity]], [[Verification]], [[Network]], [[Multi-agent system]], or [[Computer security]] identity is created.
+
+== Domain audit ==
+
+No new controlled Domain is required. Wave 10 uses Philosophy, Mathematics, Systems science, and Computer science.
+
+The wave does not invent Economics, Political science, or Social science Domains merely to fit the subject matter.
+
+== Semantic boundary audit ==
+
+<pre>
+decision theory ≠ descriptive choice psychology
+utility ≠ money / happiness by definition
+game theory ≠ zero-sum theory
+Nash equilibrium ≠ social optimum
+mechanism design ≠ generic design
+incentive ≠ reward only
+coordination problem ≠ collective-action problem
+collective action ≠ free riding only
+public good ≠ government-provided good
+public good ≠ commons
+commons ≠ open access
+commons ≠ inevitable tragedy
+principal–agent problem ≠ employment only
+moral hazard ≠ adverse selection
+governance ≠ government
+reputation ≠ identity
+reputation ≠ trust
+Sybil attack ≠ pseudonymity
+</pre>
+
+== Decision / utility audit ==
+
+[[Decision theory]] preserves normative versus descriptive scope. [[Utility (decision theory)]] is treated as a representation of preference/value under a model, not as money, pleasure, or objective social welfare by definition.
+
+== Game / mechanism audit ==
+
+[[Game theory]] is broader than zero-sum conflict and equilibrium is not presented as efficient or fair by default. [[Mechanism design]] reverses the usual analysis direction by asking what rules induce desired outcomes, while preserving feasibility and incentive tradeoffs.
+
+== Coordination / collective-action audit ==
+
+[[Coordination problem]] is separated from [[Collective action]]. Coordination can fail from equilibrium-selection or information problems without an incentive to defect; collective-action problems can arise because individually attractive behavior undermines a jointly preferred outcome.
+
+== Public-good / commons audit ==
+
+[[Public good]] uses the non-rival/non-excludable framework and explicitly rejects the government-provision alias. [[Commons]] incorporates Ostrom's institutional correction: common resources are not defined by inevitable tragedy.
+
+== Delegation / governance audit ==
+
+[[Principal–agent problem]] separates hidden action/moral hazard from hidden information/adverse selection. [[Governance]] is broader than government and includes formal/informal institutions, decision rights, implementation, monitoring, conflict resolution, accountability, and amendment.
+
+== Reputation / Sybil audit ==
+
+[[Reputation system]] treats scores as model outputs contingent on identity and aggregation assumptions. [[Sybil attack]] requires one actor to exploit multiple identities as if they were independent; pseudonymity or multiple accounts alone is not sufficient.
+
+== Cross-wave audit ==
+
+Wave 10 connects cleanly to earlier canonical concepts:
+
+* decision theory uses [[Probability]], [[Conditional probability]], [[Uncertainty]], and [[Causality]] without redefining them;
+* strategic concepts connect to [[Intelligent agent]] and [[Multi-agent system]] without making computational agents the definition of game theory;
+* institutional/collective concepts connect to [[Network]], [[Complex system]], [[Feedback]], and [[Adaptation (systems)]] without reducing governance to systems jargon;
+* reputation/Sybil concepts depend on [[Identity]], [[Verification]], [[Computer security]], and [[Distributed system]] while remaining distinct identities.
+
+No local crypto/project architecture defines a public Wave 10 concept.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| SEP Decision Theory / Expected Utility || decision and utility boundaries
+|-
+| von Neumann & Morgenstern; Osborne & Rubinstein || strategic/game foundations
+|-
+| Nobel 2007 / Hurwicz / Maskin / Myerson || mechanism design
+|-
+| Nobel 2016 / Holmström / Hart || incentives and principal–agent/contract theory
+|-
+| Olson; SEP Free Rider || collective action
+|-
+| Samuelson; Musgrave; SEP Public Goods || public goods
+|-
+| Ostrom; Nobel 2009 || commons and polycentric/institutional governance
+|-
+| World Bank governance literature || broad governance process/institution framing
+|-
+| Resnick et al. || reputation systems
+|-
+| Douceur (2002) || Sybil attack
+|}
+
+== Redlink policy ==
+
+Future descendants captured in [[BITwiki:Wave 10 context capture]] remain coverage signals, not authorization for stubs.
+
+== Acceptance criteria ==
+
+Wave 10 is ready to leave Phase 3 when:
+
+# all 39 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# Utility title normalization remains intact;
+# controlled Domains pass;
+# declared existing-concept dependencies resolve;
+# coordination/collective-action and public-good/commons distinctions remain explicit;
+# governance remains broader than government;
+# reputation/trust and Sybil/pseudonymity boundaries remain explicit;
+# all depth derivatives remain category/identity-exempt;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, deployment, workflow and Main-space audits pass;
+# staging builds the complete graph.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 10 context capture]]
+        ↓
+[[BITwiki:Wave 10 compiled context]]
+        ↓
+[[BITwiki:Wave 10 context audit]]
+</pre>
+
+== Release validation — 2026-09-19 ==
+
+PR #28 executed the established Wave release gates after all 39 reader surfaces and the Utility title normalization were present.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+No Domain expansion or workflow architecture repair was required.
+
+This completion-state bookkeeping commit must re-pass the same release gates before merge.
+
+'''Current assessment: Wave 10 is semantically and structurally audited and has passed its release gates; merge remains conditional on final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

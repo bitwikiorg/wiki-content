@@ -1,0 +1,59 @@
+{{Source status|status=Technical depth derivative|note=Advanced language-model surface.}}
+{{Reading depth|base=Large language model|current=Technical}}
+= Large language model — Technical =
+
+== Sequence model ==
+For token sequence x_1,...,x_n, an autoregressive LM factorizes:
+
+<pre>
+P(x_1:n) = Π_t P(x_t | x_<t)
+</pre>
+
+Training commonly minimizes token-level negative log-likelihood over large corpora.
+
+Masked/bidirectional language models optimize related conditional reconstruction objectives.
+
+== Scale ==
+“Large” can refer jointly to:
+
+<pre>
+parameter count
+training-token count
+compute
+model width/depth
+context length
+capability regime
+</pre>
+
+and has no invariant numerical threshold.
+
+== Adaptation ==
+A pretrained LLM can be adapted through:
+
+* supervised fine-tuning;
+* instruction tuning;
+* preference optimization;
+* reinforcement learning;
+* retrieval augmentation;
+* tool interfaces;
+* parameter-efficient tuning;
+* prompting/in-context conditioning.
+
+These are system/training procedures, not part of the minimal definition of an LLM.
+
+== Agent boundary ==
+An agent architecture adds state/action semantics around a model:
+
+<pre>
+LLM
++ controller
++ tools/actions
++ memory/state
++ environment feedback
+≠ LLM alone
+</pre>
+
+== References ==
+* Stanford HAI / CRFM.
+* Vaswani et al. (2017).
+* modern language-model and scaling literature.

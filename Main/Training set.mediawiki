@@ -1,0 +1,52 @@
+{{Source status|status=Wave 7 compiled article|note=Training-set concept grounded in statistical learning and evaluation methodology.}}
+{{Knowledge object
+ |title=Training set
+ |entity_type=Concept
+ |domain=Computer science, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Training set|current=Core}}
+
+= Training set =
+
+== Overview ==
+A '''training set''' is the data used directly to fit a model's parameters, representations, rules, or policy.
+
+Training data influence the learned system through the learning procedure itself.
+
+== Fitting ==
+Depending on the method, training can involve:
+
+* gradient updates;
+* likelihood or loss minimization;
+* rule induction;
+* tree splitting;
+* prototype construction;
+* representation learning;
+* policy optimization.
+
+The defining feature is direct influence on the fitted model.
+
+== Data roles ==
+A dataset can be partitioned into [[Training set|training]], [[Validation set|validation]], and [[Test set|test]] roles.
+
+These roles are defined by use, not by fixed percentages.
+
+Cross-validation can rotate observations through training and validation roles.
+
+== Preprocessing ==
+Preprocessing steps that estimate statistics from data—such as normalization, feature selection, imputation, or dimensionality reduction—must be treated as part of the fitting pipeline.
+
+Estimating them using held-out test data can cause [[Data leakage (machine learning)|data leakage]].
+
+== Related concepts ==
+[[Machine learning]], [[Validation set]], [[Test set]], [[Overfitting]], [[Provenance]], and [[Data leakage (machine learning)]] define the surrounding evaluation pipeline.
+
+== References ==
+* Shalev-Shwartz & Ben-David.
+* Hastie, Tibshirani & Friedman.
+* standard machine-learning evaluation methodology.
+
+[[Category:Computer science]]
+[[Category:Science]]

@@ -1,0 +1,37 @@
+{{Source status|status=Technical depth derivative|note=Advanced modern-cryptography surface.}}
+{{Reading depth|base=Cryptography|current=Technical}}
+= Cryptography — Technical =
+
+== Primitive / protocol distinction ==
+Primitives include encryption schemes, hashes, MACs, signatures, key-derivation functions and pseudorandom functions.
+
+Protocols compose primitives to achieve higher-level properties.
+
+Secure primitives do not guarantee secure composition.
+
+== Security parameter ==
+Modern cryptography indexes algorithms by security parameter λ.
+
+A typical computational-security claim bounds adversarial advantage by a negligible function:
+
+<pre>
+Adv_A(λ) ≤ negl(λ)
+</pre>
+
+under specified assumptions.
+
+== Indistinguishability ==
+Encryption security can be formalized through games such as IND-CPA or IND-CCA, depending on adversarial capabilities.
+
+The correct definition depends on the intended threat model.
+
+== Assumptions ==
+Security can depend on mathematical hardness assumptions, idealized models, trusted setup, random oracles, implementation assumptions, or combinations.
+
+== Side channels ==
+Timing, power, cache state, fault injection and metadata can leak information outside the abstract cryptographic model.
+
+== References ==
+* Katz & Lindell.
+* Boneh & Shoup.
+* NIST cryptographic standards and guidance.

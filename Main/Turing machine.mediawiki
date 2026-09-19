@@ -1,0 +1,62 @@
+{{Source status|status=Wave 6 compiled article|note=Turing-machine concept grounded in computability literature.}}
+{{Knowledge object
+ |title=Turing machine
+ |entity_type=Concept
+ |domain=Computer science, Mathematics, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Turing machine|current=Core}}
+
+= Turing machine =
+
+== Overview ==
+A '''Turing machine''' is an abstract model of computation consisting of finite control, a read/write head, a tape divided into cells, and transition rules.
+
+Alan Turing introduced the model in 1936 to analyze effective calculation and limits of computation.
+
+== Components ==
+A standard Turing machine has:
+
+* a finite set of states;
+* a finite tape alphabet;
+* an idealized unbounded tape;
+* a head that reads and writes one tape cell;
+* a transition function;
+* start, accepting, or halting states depending on formulation.
+
+== Computation ==
+At each step, the machine reads the current symbol, changes state, writes a symbol, and moves the head left or right according to its transition rule.
+
+Despite this simplicity, Turing machines can express all algorithms captured by standard equivalent models of effective computation.
+
+== Universal Turing machine ==
+A universal Turing machine can simulate other Turing machines when given an encoding of the machine and its input.
+
+This provides a formal basis for general-purpose programmable computation.
+
+== Church–Turing thesis ==
+The Church–Turing thesis states that effectively calculable functions are exactly those computable by a Turing machine or equivalent formal model.
+
+It is not a mathematical theorem derived from a prior formal definition of “effective calculability”; it connects an informal concept with formal models.
+
+== Limits ==
+Turing machines cannot solve every precisely stated problem.
+
+The halting problem is undecidable.
+
+This limitation applies to every computational model equivalent in power to Turing machines.
+
+== Physical computers ==
+A Turing machine is an idealized mathematical model, not a literal description of modern hardware.
+
+Real computers have finite resources.
+
+== References ==
+* Stanford Encyclopedia of Philosophy, “Turing Machines”, revised 2025.
+* Stanford Encyclopedia of Philosophy, “Computability and Complexity”.
+* Alan Turing (1936–1937), “On Computable Numbers”.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]
+[[Category:Philosophy]]

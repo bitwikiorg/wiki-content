@@ -1,0 +1,208 @@
+{{Source status|status=Wave 6 Phase 2 compiled context|note=Normalized shared context for writing. Derived from Wave 6 capture; all reader surfaces must remain consistent with these definitions and boundaries.}}
+= Wave 6 compiled context =
+
+'''State: Phase 2 — Context compilation + writing.'''
+
+Wave 6 builds formal-computation and computer-systems foundations over prior [[Computation]], [[Algorithm]], [[Programming language]], [[Logic]], semantics, systems, and cognition.
+
+== Dependency order ==
+
+<pre>
+Formal language
+ └→ Automaton (computation)
+      ├→ State machine
+      └→ Turing machine
+           ├→ Computability
+           ├→ Turing completeness
+           └→ Computational complexity
+
+Computer architecture
+ └→ Operating system
+      ├→ Compiler
+      ├→ Database
+      └→ Computer network
+             └→ Distributed system
+
+Computer security
+ └→ Cryptography
+
+Human-computer interaction
+
+Esoteric programming language
+ └→ Programming language / computation boundary exploration
+</pre>
+
+== Normalized definitions ==
+
+=== Formal language ===
+A formal language is a mathematically specified set of finite strings over an alphabet.
+
+=== Automaton (computation) ===
+A computational automaton is an abstract machine defined by states, inputs and transition rules, often used to recognize or transform formal languages.
+
+=== State machine ===
+A state machine models behavior as states plus transitions triggered by inputs, events or conditions.
+
+=== Turing machine ===
+A Turing machine is an abstract model of computation using finite control, a read/write head, tape and transition rules.
+
+=== Computability ===
+Computability studies which functions and problems can be solved by effective procedures under formal models of computation.
+
+=== Turing completeness ===
+A computational system is Turing complete when it can simulate a universal Turing machine under idealized unbounded resources.
+
+=== Computational complexity ===
+Computational complexity studies the resources required to solve computational problems as functions of input size.
+
+=== Computer architecture ===
+Computer architecture concerns the organization and programmer-visible structure of computer systems, including instruction sets, processors, memory and I/O.
+
+=== Operating system ===
+An operating system manages hardware resources and provides abstractions and services for programs and users.
+
+=== Computer network ===
+A computer network is a set of interconnected computing devices that exchange data using communication links and protocols.
+
+=== Database ===
+A database is an organized collection of persistent data; a DBMS is software used to manage databases.
+
+=== Compiler ===
+A compiler transforms a source representation, usually a program, into a target representation while preserving intended semantics to the required degree.
+
+=== Distributed system ===
+A distributed system coordinates computation across multiple autonomous networked components.
+
+=== Computer security ===
+Computer security protects systems and information against unauthorized access, modification, disclosure, disruption and related failures.
+
+=== Cryptography ===
+Cryptography designs mathematical mechanisms and protocols for properties such as confidentiality, integrity, authentication and verifiability.
+
+=== Human-computer interaction ===
+Human-computer interaction studies the design, use and evaluation of interactive computational systems for human use.
+
+=== Esoteric programming language ===
+An esoteric programming language is designed primarily for conceptual, experimental, artistic, playful or boundary-testing purposes rather than ordinary production utility.
+
+== Required non-equivalences ==
+
+<pre>
+formal language ≠ natural language
+formal language ≠ programming language
+automaton ≠ every machine
+automaton ≠ state machine by definition
+state machine ≠ finite-state machine by definition
+Turing machine ≠ physical computer
+Church–Turing thesis ≠ theorem
+computability ≠ feasibility
+computable ≠ efficient
+Turing completeness ≠ speed
+Turing completeness ≠ usefulness
+computational complexity ≠ benchmark runtime
+computer architecture ≠ microarchitecture
+computer architecture ≠ operating system
+operating system ≠ kernel only
+process ≠ program
+computer network ≠ distributed system
+database ≠ DBMS
+compiler ≠ interpreter
+distributed system ≠ distributed cognition
+computer security ≠ cryptography
+cryptography ≠ encryption
+authentication ≠ authorization
+HCI ≠ graphical interface design only
+esoteric programming language ≠ useless language
+esoteric programming language ≠ necessarily Turing complete
+</pre>
+
+== Theoretical-computation boundary ==
+
+The writing spine is:
+
+<pre>
+formal language ↔ recognizer / generator
+                 ↓
+        automaton model
+                 ↓
+      Turing-computability
+           ↙           ↘
+  computability       complexity
+</pre>
+
+A problem can be computable but computationally intractable.
+
+A language/system can be Turing complete while being unusable in practice.
+
+The Church–Turing thesis links effective calculability to formal models; equivalence among formal models does not itself prove the thesis.
+
+== Systems-stack boundary ==
+
+<pre>
+instruction-set / hardware organization
+              ↓
+     computer architecture
+              ↓
+        operating system
+              ↓
+ programs / compilers / DBMS / applications
+              ↓
+       networks / distributed systems
+</pre>
+
+The arrows are dependency/orientation aids, not strict layer exclusivity.
+
+== Security boundary ==
+
+Security depends on a threat model and system context.
+
+Cryptography supplies mechanisms, but a cryptographically strong primitive can be deployed insecurely.
+
+Core security concepts should preserve confidentiality, integrity, availability, authentication, authorization, accountability and resilience distinctions where relevant.
+
+== HCI boundary ==
+
+HCI spans usability, accessibility, interaction design, human factors, cognition, social context and evaluation.
+
+It must not collapse into frontend aesthetics or graphical-interface layout.
+
+== Esoteric-language boundary ==
+
+Esolangs are legitimate programming-language objects.
+
+They can test minimal instruction sets, unusual execution models, notation, computational universality, pedagogy and programming culture.
+
+Their lack of ordinary production utility is often intentional and does not invalidate them as programming languages.
+
+== Existing request lifecycle ==
+
+During Phase 2, the existing Knowledge request records for these ten canonical topics must move to <code>satisfied</code> with <code>canonical_page</code> populated after their Core pages exist:
+
+[[Computer architecture]], [[Operating system]], [[Computer network]], [[Database]], [[Computational complexity]], [[Compiler]], [[Distributed system]], [[Computer security]], [[Cryptography]], [[Human-computer interaction]].
+
+== Source roles ==
+
+* SEP Turing Machines / Computability and Complexity — theoretical computation.
+* OpenDSA — formal languages, automata, Turing machines and language hierarchy.
+* ACM CS2023 — current curricular boundaries for architecture, OS, databases, networking and human factors.
+* NIST CSRC / DADS — security, cryptography and state-machine terminology.
+* standard architecture/OS/network/database/compiler/distributed-systems texts — systems foundations.
+* HCI texts and ACM literature — interaction and human factors.
+* Singer & Draper (SPLASH 2025), Temkin and related academic work — esoteric programming languages.
+
+== Reader linking rule ==
+
+Core pages link to Core titles.
+
+Simple pages prefer Simple variants where available.
+
+Technical pages prefer Technical variants where available.
+
+Simple/Technical surfaces are presentations of one Core semantic identity and do not duplicate <code>Knowledge object</code> or category identity.
+
+== Redlink policy ==
+
+Future concepts captured in Phase 1 remain coverage signals, not automatic stub authorization.
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

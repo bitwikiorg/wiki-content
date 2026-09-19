@@ -1,0 +1,33 @@
+{{Source status|status=Technical depth derivative|note=Advanced universality/computational-power surface.}}
+{{Reading depth|base=Turing completeness|current=Technical}}
+= Turing completeness — Technical =
+
+== Simulation criterion ==
+A computational formalism F is commonly called Turing complete when there exists an effective encoding enabling F to simulate arbitrary Turing-machine computations.
+
+Schematically:
+
+<pre>
+for each Turing machine M,
+encode(M,x) in F reproduces M(x)
+</pre>
+
+under idealized resource assumptions.
+
+== Universal interpreters ==
+A language can establish universality by implementing a universal machine, lambda-calculus evaluator, register machine, tag system, or another known Turing-equivalent formalism.
+
+== Restrictions ==
+Total functional languages, finite-state languages, some query languages, proof assistants' terminating cores, and smart-contract DSLs can intentionally restrict expressiveness to obtain termination or analyzability properties.
+
+== Undecidability consequences ==
+For sufficiently general semantic properties of Turing-complete programs, Rice-style undecidability results apply.
+
+Turing completeness therefore increases expressive generality while limiting complete static analysis.
+
+== Terminology ==
+“Turing complete” for recursively enumerable sets under Turing reducibility is a distinct recursion-theory usage.
+
+== References ==
+* computability and programming-language theory texts.
+* SEP — Turing Machines.

@@ -1,0 +1,45 @@
+{{Source status|status=Technical depth derivative|note=Advanced automata-theory surface.}}
+{{Reading depth|base=Automaton (computation)|current=Technical}}
+= Automaton (computation) — Technical =
+
+== Transition systems ==
+A simple deterministic finite automaton can be represented as:
+
+<pre>
+M = (Q, Σ, δ, q₀, F)
+</pre>
+
+where Q is a finite set of states, Σ an alphabet, δ a transition function, q₀ the start state, and F the accepting states.
+
+== Recognition ==
+For input w:
+
+<pre>
+w ∈ L(M)
+</pre>
+
+iff the extended transition function sends q₀ to an accepting state after consuming w.
+
+== Nondeterminism ==
+An NFA can have multiple possible successor states.
+
+For finite automata:
+
+<pre>
+DFA power = NFA power
+</pre>
+
+for language recognition, despite different machine descriptions.
+
+== Hierarchies ==
+Changing memory structure changes expressive power:
+
+<pre>
+finite control → regular languages
+stack → context-free languages
+unbounded tape → Turing-computable languages
+</pre>
+
+== References ==
+* Hopcroft, Motwani & Ullman.
+* OpenDSA.

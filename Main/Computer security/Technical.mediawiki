@@ -1,0 +1,41 @@
+{{Source status|status=Technical depth derivative|note=Advanced security-engineering surface.}}
+{{Reading depth|base=Computer security|current=Technical}}
+= Computer security — Technical =
+
+== Security model ==
+A security analysis can be organized as:
+
+<pre>
+assets
++ adversary capabilities
++ trust assumptions
++ attack surface
+→ required security properties
+</pre>
+
+Without a threat model, claims such as “secure” are underspecified.
+
+== Reference objectives ==
+Confidentiality, integrity and availability form the classic CIA triad, but modern systems also require authentication, authorization, accountability, provenance, isolation and recoverability.
+
+== Trusted computing base ==
+The trusted computing base is the set of components whose correct behavior is necessary for enforcement of a security policy.
+
+Reducing its size can simplify assurance but does not remove external dependencies.
+
+== Vulnerability and exploit ==
+A vulnerability is a weakness that can violate a security policy under relevant conditions.
+
+An exploit is a technique or artifact that uses a vulnerability.
+
+Risk additionally depends on likelihood, exposure, impact and compensating controls.
+
+== Compositional limits ==
+Individually secure primitives do not automatically compose into a secure protocol/system.
+
+Interfaces, side channels, key lifecycle, randomness, state, concurrency and human behavior can introduce failures.
+
+== References ==
+* NIST security publications.
+* Anderson, ''Security Engineering''.
+* systems-security literature.

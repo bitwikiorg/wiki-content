@@ -1,0 +1,70 @@
+{{Source status|status=Wave 6 compiled article|note=Distributed-systems concept grounded in systems literature.}}
+{{Knowledge object
+ |title=Distributed system
+ |entity_type=Concept
+ |domain=Computer science, Systems science
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Distributed system|current=Core}}
+
+= Distributed system =
+
+== Overview ==
+A '''distributed system''' is a system in which multiple autonomous computational components communicate and coordinate over a network to provide a service or computation.
+
+The components do not share one perfectly synchronized memory or clock.
+
+== Characteristic problems ==
+Distributed systems must deal with:
+
+* communication latency;
+* partial failure;
+* concurrency;
+* message loss, duplication, or reordering;
+* independent clocks;
+* replicated or partitioned state;
+* changing membership.
+
+These problems make distributed coordination different from ordinary single-process computation.
+
+== Network and distributed system ==
+A [[Computer network]] provides communication among devices.
+
+A distributed system adds coordinated application behavior, shared protocols, state, failure handling, and system-level semantics.
+
+Therefore:
+
+<pre>
+computer network ≠ distributed system
+</pre>
+
+== Replication ==
+Replication stores or computes copies across nodes for availability, locality, throughput, or fault tolerance.
+
+Copies then need rules for synchronization and conflict resolution.
+
+== Consistency ==
+Distributed systems use several notions of consistency describing what operations can observe and in what order.
+
+These are not identical to [[Consistency (logic)|logical consistency]].
+
+Examples include linearizability, serializability, causal consistency, and eventual consistency.
+
+== Fault tolerance ==
+A fault-tolerant system continues to provide specified behavior despite some component failures.
+
+Assumptions about crash failures, Byzantine failures, network partitions, synchrony, and quorum structure determine what guarantees are possible.
+
+== Coordination ==
+Consensus protocols can let nodes agree on values or replicated state despite failures under stated assumptions.
+
+Coordination costs latency and availability, especially under partitions or wide-area delay.
+
+== References ==
+* Tanenbaum & van Steen, ''Distributed Systems''.
+* Coulouris et al., distributed-systems texts.
+* Lamport and distributed-computing literature.
+
+[[Category:Computer science]]
+[[Category:Systems science]]

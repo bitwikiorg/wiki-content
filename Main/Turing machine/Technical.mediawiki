@@ -1,0 +1,45 @@
+{{Source status|status=Technical depth derivative|note=Advanced computability-theory surface of [[Turing machine]].}}
+{{Reading depth|base=Turing machine|current=Technical}}
+= Turing machine — Technical =
+
+== Formal model ==
+A deterministic single-tape Turing machine can be represented by finite state set Q, tape alphabet Γ, input alphabet Σ, and partial transition function such as:
+
+<pre>
+δ : Q × Γ → Q × Γ × {L,R}
+</pre>
+
+with designated start and halting/acceptance conventions.
+
+== Configurations ==
+A configuration records current state, tape contents and head position.
+
+A computation is a sequence of configurations related by δ.
+
+== Equivalence ==
+Multi-tape, nondeterministic and many other Turing-machine variants have equivalent computability power, though simulation can alter complexity.
+
+Lambda calculus and general recursive functions are extensionally equivalent models of computability.
+
+== Universal simulation ==
+A universal machine U can satisfy schematically:
+
+<pre>
+U(<M>,x) = M(x)
+</pre>
+
+when M halts on x.
+
+== Undecidability ==
+The halting set:
+
+<pre>
+HALT = {(<M>,x) : M halts on x}
+</pre>
+
+is not decidable by any Turing machine.
+
+== References ==
+* SEP — Turing Machines.
+* SEP — Computability and Complexity.
+* Turing (1936–1937).

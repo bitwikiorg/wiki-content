@@ -1,0 +1,59 @@
+{{Source status|status=Wave 6 compiled article|note=Computational-complexity concept grounded in theoretical computer science.}}
+{{Knowledge object
+ |title=Computational complexity
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Computational complexity|current=Core}}
+
+= Computational complexity =
+
+== Overview ==
+'''Computational complexity''' studies how much computational resource is required to solve problems as input size grows.
+
+Common resources include time, memory, communication, randomness, parallelism, and circuit size.
+
+== Problems and algorithms ==
+Complexity theory primarily classifies computational problems, while algorithm analysis studies the resource use of particular algorithms.
+
+A problem can have many algorithms with different resource costs.
+
+== Asymptotic growth ==
+Resource use is commonly expressed as a function of input size n.
+
+Asymptotic notation such as O(n), O(n log n), O(n²), or exponential bounds describes growth while abstracting away machine-specific constants.
+
+This is not the same as measured wall-clock performance.
+
+== Complexity classes ==
+A complexity class groups problems solvable under specified resource bounds and computational models.
+
+Important examples include P, NP, PSPACE, and EXPTIME.
+
+Relations among classes can encode major open questions such as P versus NP.
+
+== Worst, average, and parameterized views ==
+Complexity can be studied under worst-case, average-case, amortized, smoothed, parameterized, or distribution-specific assumptions.
+
+A worst-case bound does not directly predict every practical input.
+
+== Computability and complexity ==
+[[Computability]] asks whether an effective solution exists at all.
+
+Complexity asks what resources solutions require.
+
+Therefore:
+
+<pre>
+computable ≠ tractable
+</pre>
+
+== References ==
+* standard computational-complexity texts.
+* Stanford Encyclopedia of Philosophy, “Computability and Complexity”.
+* ACM CS2023 foundations.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

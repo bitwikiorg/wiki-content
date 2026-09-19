@@ -1,0 +1,35 @@
+{{Source status|status=Technical depth derivative|note=Advanced computability-theory surface.}}
+{{Reading depth|base=Computability|current=Technical}}
+= Computability — Technical =
+
+== Partial computable functions ==
+A Turing machine can define a partial function:
+
+<pre>
+φ : Σ* ⇀ Σ*
+</pre>
+
+where nontermination corresponds to undefined output.
+
+A total computable function halts on every input in its domain.
+
+== Decidable and recognizable sets ==
+A language L is decidable if some machine halts on every input and decides membership.
+
+L is recognizable if some machine accepts members, while nonmembers may be rejected or loop forever.
+
+== Reductions ==
+Computability reductions compare problem difficulty.
+
+If A reduces effectively to B, a solver for B can be used to solve A.
+
+Reductions are central to undecidability proofs.
+
+== Church–Turing thesis ==
+The thesis concerns effective calculability, while equivalence proofs among Turing machines, lambda calculus and recursive functions are formal theorems.
+
+These claims should not be conflated.
+
+== References ==
+* SEP — Computability and Complexity.
+* recursion theory texts.

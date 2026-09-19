@@ -1,0 +1,63 @@
+{{Source status|status=Wave 6 compiled article|note=Turing-completeness concept scoped to computational universality.}}
+{{Knowledge object
+ |title=Turing completeness
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Turing completeness|current=Core}}
+
+= Turing completeness =
+
+== Overview ==
+'''Turing completeness''' is the property of a computational system being able, in principle, to simulate a universal Turing machine under idealized unbounded resources.
+
+A Turing-complete programming language or machine model can express any Turing-computable computation.
+
+== Expressive power ==
+Turing completeness concerns what computations can be expressed, not how conveniently or efficiently they run.
+
+Very small, strange, or impractical systems can be Turing complete.
+
+Useful restricted systems may deliberately not be Turing complete.
+
+== Resource assumptions ==
+Turing-completeness claims normally assume unbounded memory or equivalent idealized resources.
+
+A real physical computer has finite memory and is therefore not literally an unbounded Turing machine.
+
+The concept classifies the computational model rather than the finite device.
+
+== Universality and simulation ==
+A Turing-complete system can encode and simulate arbitrary Turing machines.
+
+This makes universal interpretation possible.
+
+== Turing completeness and decidability ==
+Turing completeness does not mean every question about programs is decidable.
+
+On the contrary, Turing-complete systems inherit undecidable program-analysis problems such as general halting.
+
+== Turing completeness and complexity ==
+Two systems can be Turing complete while differing dramatically in efficiency.
+
+Therefore:
+
+<pre>
+Turing complete ≠ fast
+Turing complete ≠ practical
+</pre>
+
+== Terminology note ==
+Computability theory also uses “Turing complete” for certain sets/degrees under Turing reducibility.
+
+This article concerns the common computational-system sense.
+
+== References ==
+* Stanford Encyclopedia of Philosophy, “Turing Machines”.
+* theoretical computer science texts on universality.
+* programming-language theory discussions of computational completeness.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

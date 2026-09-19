@@ -1,0 +1,57 @@
+{{Source status|status=Wave 7 compiled article|note=Machine-learning generalization concept grounded in statistical learning and modern empirical ML.}}
+{{Knowledge object
+ |title=Generalization (machine learning)
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Generalization (machine learning)|current=Core}}
+
+= Generalization (machine learning) =
+
+== Overview ==
+In machine learning, '''generalization''' is the ability of a learned system to achieve useful performance on new examples or conditions beyond the specific examples used to fit it.
+
+Classical generalization usually concerns unseen samples drawn from the same or intended target data-generating process.
+
+== Training and target performance ==
+A model can fit its [[Training set|training set]] extremely well but generalize poorly.
+
+Generalization is therefore evaluated on held-out or otherwise independent data whose outcomes were not used to fit the model.
+
+== Generalization gap ==
+A generalization gap is the difference between performance on training data and performance on new target data.
+
+The exact quantity depends on the loss, metric, and sampling assumptions.
+
+A small gap alone does not guarantee good performance: both training and test performance can be poor.
+
+== Distribution assumptions ==
+Classical statistical-learning results often assume training and test examples are independent samples from the same distribution.
+
+[[Distribution shift]] weakens or breaks that assumption.
+
+Performance under shift is often called out-of-distribution robustness or domain generalization and is a stronger/different problem than ordinary in-distribution generalization.
+
+== Memorization ==
+Memorizing training examples does not automatically imply failure to generalize.
+
+Modern high-capacity systems can memorize some examples while still learning patterns that generalize.
+
+Therefore:
+
+<pre>
+generalization ≠ absence of memorization
+</pre>
+
+== Related concepts ==
+[[Overfitting]], [[Underfitting]], [[Inductive bias]], [[Bias–variance tradeoff]], [[Test set]], [[Distribution shift]], [[Spurious correlation]], and [[Shortcut learning]] explain different limits on generalization.
+
+== References ==
+* Shalev-Shwartz & Ben-David, ''Understanding Machine Learning''.
+* Hastie, Tibshirani & Friedman.
+* contemporary generalization literature in statistical learning and deep learning.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

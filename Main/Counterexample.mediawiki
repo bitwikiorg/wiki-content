@@ -1,0 +1,139 @@
+{{Source status|status=Wave 1 compiled article|note=Public logic/mathematics concept grounded in proof methodology and philosophy-of-mathematics literature.}}
+{{Knowledge object
+ |title=Counterexample
+ |entity_type=Concept
+ |domain=Mathematics, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 1 compiled context
+}}
+{{Reading depth|base=Counterexample|current=Core}}
+
+= Counterexample =
+
+== Overview ==
+A '''counterexample''' is a case that satisfies the assumptions or conditions of a general claim while making its conclusion false.
+
+One valid counterexample is enough to refute a universal statement.
+
+Counterexamples are fundamental tools in mathematics, logic, computer science, philosophy, and scientific reasoning because they show exactly where a generalization fails.
+
+== Universal claims ==
+Consider the claim:
+
+<pre>
+All prime numbers are odd.
+</pre>
+
+The number 2 is prime and is not odd.
+
+Therefore 2 is a counterexample and the universal claim is false.
+
+The logical structure is:
+
+<pre>
+Claim:      for every x, if P(x), then Q(x)
+Counterexample: some a has P(a) and not Q(a)
+</pre>
+
+Formally:
+
+<pre>
+∀x (P(x) → Q(x))
+</pre>
+
+is refuted by:
+
+<pre>
+∃x (P(x) ∧ ¬Q(x))
+</pre>
+
+== Counterexample versus contrary example ==
+Not every case that looks different is a counterexample.
+
+The case must satisfy the original claim's assumptions.
+
+Suppose a theorem applies only to continuous functions.
+
+A discontinuous function that violates the conclusion is not a counterexample because it does not satisfy the hypothesis.
+
+This is one reason precise definitions and scope conditions matter.
+
+== Counterexample versus anecdote ==
+An anecdote can illustrate that a generalization may be too broad, but not every anecdote formally refutes a scientific or statistical claim.
+
+For example:
+
+<pre>
+Smoking increases cancer risk.
+</pre>
+
+is a probabilistic population-level causal claim.
+
+One smoker who does not develop cancer is not a counterexample because the claim does not assert that every smoker develops cancer.
+
+Understanding the logical form of the claim is therefore essential.
+
+== Counterexamples in mathematics ==
+Mathematicians use counterexamples to:
+* refute conjectures;
+* reveal missing assumptions;
+* distinguish definitions;
+* test proposed proofs;
+* map boundaries between theorem classes.
+
+A failed conjecture can often be repaired by adding the condition exposed by a counterexample.
+
+Thus counterexamples generate knowledge, not merely destruction.
+
+== Minimal counterexamples ==
+A '''minimal counterexample''' is the smallest or simplest counterexample under some ordering.
+
+Proof by minimal counterexample assumes a counterexample exists, chooses a minimal one, and then derives an even smaller counterexample or contradiction.
+
+This method is related to infinite descent and induction.
+
+== Counterexample-guided refinement ==
+In computer science and formal methods, counterexamples can be generated automatically.
+
+Model checking may return an execution trace that violates a required property.
+
+Counterexample-guided abstraction refinement (CEGAR) repeatedly:
+# checks an abstract model;
+# receives a counterexample;
+# determines whether it is real or caused by over-abstraction;
+# refines the abstraction;
+# checks again.
+
+Counterexamples therefore support iterative verification.
+
+== Counterexamples and falsifiability ==
+[[Falsifiability]] generalizes the importance of possible refutation in empirical science.
+
+But empirical "counterexamples" are usually not as logically clean as mathematical ones.
+
+An anomalous observation may depend on:
+* measurement;
+* sampling;
+* auxiliary assumptions;
+* statistical variation;
+* interpretation.
+
+One empirical observation therefore does not always play the same decisive role as a formal mathematical counterexample.
+
+== Countermodels ==
+In logic, a '''countermodel''' is an interpretation/model in which the premises of an argument are true and the conclusion is false.
+
+A countermodel proves that an argument form is invalid or that a proposed logical consequence does not hold.
+
+Counterexamples are therefore closely related to semantic methods in logic.
+
+== Epistemic notes ==
+Counterexamples are powerful because they directly test universality. Their force depends on correctly identifying the hypotheses and logical form of the claim.
+
+== References ==
+* [https://mathworld.wolfram.com/Counterexample.html Wolfram MathWorld — Counterexample]
+* Daniel J. Velleman, ''How to Prove It: A Structured Approach'', 3rd ed., Cambridge University Press (2019).
+* Imre Lakatos, ''Proofs and Refutations'', Cambridge University Press (1976).
+
+[[Category:Mathematics]]
+[[Category:Philosophy]]

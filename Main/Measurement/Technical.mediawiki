@@ -1,0 +1,75 @@
+{{Source status|status=Technical depth derivative|note=Advanced metrology and philosophy-of-measurement surface of [[Measurement]].}}
+{{Reading depth|base=Measurement|current=Technical}}
+= Measurement — Technical =
+
+== Measurement model ==
+A measurement result can be modeled through a relation:
+
+<pre>
+Y = f(X1, X2, ..., Xn)
+</pre>
+
+where <code>Y</code> is the measurand/output quantity and <code>Xi</code> are input quantities.
+
+Each input has an estimate and uncertainty distribution.
+
+Uncertainty in Y follows from the model and input uncertainties.
+
+== Traceability ==
+Metrological traceability is a property of a measurement result whereby the result can be related to a reference through a documented unbroken chain of calibrations, each contributing to uncertainty.
+
+Traceability is not simply having an instrument certificate; the full chain and uncertainty contribution matter.
+
+== Calibration ==
+Calibration establishes relations of the form:
+
+<pre>
+reference quantity value ↔ indication
+</pre>
+
+possibly with associated uncertainties.
+
+The resulting calibration function can later transform indications into measured values.
+
+Calibration should be distinguished from:
+* adjustment;
+* verification;
+* validation.
+
+== Type A and Type B evaluation ==
+Traditional GUM terminology distinguishes uncertainty evaluation by method:
+
+'''Type A''' — evaluation using statistical analysis of measured quantity values under defined conditions.
+
+'''Type B''' — evaluation using other information, such as calibration certificates, specifications, previous measurements, or scientific judgment.
+
+The distinction concerns evaluation method, not two fundamentally different ontological kinds of uncertainty.
+
+== Propagation ==
+For approximately linear models, standard uncertainties can be propagated using sensitivity coefficients.
+
+For nonlinear or non-Gaussian cases, Monte Carlo propagation can represent output distributions more faithfully.
+
+Correlations among inputs must be included.
+
+== Repeatability / reproducibility conditions ==
+The VIM defines sets of conditions under which precision is assessed.
+
+Repeatability typically holds factors such as procedure, operator, instrument, location, and short time interval constant.
+
+Reproducibility conditions deliberately change specified factors.
+
+These metrological meanings must be distinguished from computational reproducibility in [[Reproducibility/Technical|Reproducibility — Technical]].
+
+== Measurement and constructs ==
+Direct physical measurement differs from measurement of latent constructs.
+
+For constructs such as intelligence, pain, trust, or socioeconomic status, measurement relies heavily on operational definitions, psychometric models, and validation evidence.
+
+Precision of a numerical score cannot compensate for invalid construct representation.
+
+== References ==
+* JCGM VIM3.
+* JCGM 100:2008, Guide to the Expression of Uncertainty in Measurement (GUM).
+* NIST TN 1297.
+* SEP — Measurement in Science.

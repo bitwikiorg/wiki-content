@@ -1,0 +1,102 @@
+{{Source status|status=Technical depth derivative|note=Advanced logical/KR inference surface of [[Inference]].}}
+{{Reading depth|base=Inference|current=Technical}}
+= Inference — Technical =
+
+== Semantic consequence ==
+For theory Γ and formula φ:
+
+<pre>
+Γ ⊨ φ
+</pre>
+
+iff every interpretation satisfying Γ satisfies φ.
+
+This is a model-theoretic relation.
+
+== Syntactic derivation ==
+For proof calculus ⊢:
+
+<pre>
+Γ ⊢ φ
+</pre>
+
+means φ is derivable from Γ by the calculus.
+
+Soundness:
+
+<pre>
+Γ ⊢ φ → Γ ⊨ φ
+</pre>
+
+Completeness:
+
+<pre>
+Γ ⊨ φ → Γ ⊢ φ
+</pre>
+
+relative to the logic/calculus.
+
+== Forward chaining ==
+Rules:
+
+<pre>
+A1 ∧ ... ∧ An → B
+</pre>
+
+are repeatedly applied to known facts until no new consequences are produced or a query is answered.
+
+Materialized RDF/RDFS rule engines can use this style.
+
+== Backward chaining ==
+Backward chaining begins with a goal and searches for rules whose conclusions could establish it.
+
+This is common in logic programming and query systems.
+
+Termination depends on rule/program structure.
+
+== Resolution ==
+Resolution is a proof rule widely used in automated theorem proving.
+
+After conversion to clause form, complementary literals are resolved to derive new clauses.
+
+Refutation proves a goal by deriving contradiction from its negation plus premises.
+
+== Tableau ==
+Tableau procedures attempt to construct a model satisfying constraints.
+
+A clash indicates inconsistency along a branch.
+
+Description-logic reasoners commonly use optimized tableau-like methods.
+
+== Probabilistic inference ==
+Bayesian networks factor a joint distribution:
+
+<pre>
+P(X1,...,Xn) = ∏ P(Xi | Parents(Xi))
+</pre>
+
+Inference computes marginals, conditionals or most probable assignments.
+
+Exact inference can be computationally hard; approximate methods include sampling and variational approaches.
+
+== Open-world entailment ==
+RDF/OWL entailment generally does not use absence as negation.
+
+Closed-world rule engines may.
+
+Mixing assumptions without explicit boundaries can produce invalid conclusions.
+
+== Inference provenance ==
+Derived facts should be traceable to:
+* premise assertions;
+* ontology/rule version;
+* inference engine;
+* entailment regime;
+* timestamp.
+
+This enables explanation and retraction when premises change.
+
+== References ==
+* W3C RDF Semantics.
+* W3C OWL 2 Direct Semantics.
+* Brachman & Levesque.

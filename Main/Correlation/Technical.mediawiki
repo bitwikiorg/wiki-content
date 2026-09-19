@@ -1,0 +1,51 @@
+{{Source status|status=Technical depth derivative|note=Advanced statistical-dependence surface.}}
+{{Reading depth|base=Correlation|current=Technical}}
+= Correlation — Technical =
+
+== Pearson coefficient ==
+For finite nonzero variances:
+
+<pre>
+ρ_XY = E[(X-μ_X)(Y-μ_Y)] / (σ_X σ_Y)
+</pre>
+
+The sample Pearson coefficient estimates this population quantity.
+
+== Invariance ==
+Pearson correlation is invariant to positive affine rescaling and changes sign under one negative scaling.
+
+It specifically measures normalized linear dependence.
+
+== Zero correlation ==
+For jointly Gaussian variables, zero correlation implies independence.
+
+Outside special families this implication fails.
+
+Example symmetric nonlinear dependencies can have:
+
+<pre>
+ρ = 0
+</pre>
+
+while Y remains strongly determined by X.
+
+== Alternatives ==
+Other measures include:
+
+* Spearman rank correlation;
+* Kendall rank association;
+* distance correlation;
+* mutual information;
+* copula-based dependence measures.
+
+They answer different statistical questions.
+
+== Causal interpretation ==
+A causal effect concerns intervention or counterfactual structure, not association alone.
+
+Conditioning or regression cannot generally identify causality without design or assumptions.
+
+== References ==
+* NIST statistical handbook/reference.
+* multivariate statistics texts.
+* causal-inference literature.

@@ -171,7 +171,32 @@ Wave 14 is ready to leave Phase 3 when:
 [[BITwiki:Wave 14 context audit]]
 </pre>
 
-'''Current assessment: Wave 14 is semantically and structurally audited; merge remains conditional on release validation and exact-final-head CI.'''
+== Release validation — 2026-09-19 ==
+
+PR #33 executed the established Wave release gates after all 36 reader surfaces, final numbered-queue closure, and current source-state checks were present.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+The current-state audit confirms the 2021 UNESCO Recommendation on Open Science, NIH's 2023 Data Management and Sharing Policy with 2026 plan-format implementation changes, and the explicit FAIR/open distinction.
+
+No Domain expansion was required.
+
+This completion-state bookkeeping commit must re-pass the same release gates before merge.
+
+'''Current assessment: Wave 14 is semantically and structurally audited and has passed its release gates; merge remains conditional on exact-final-head CI repeat.'''
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

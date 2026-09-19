@@ -334,5 +334,24 @@ Wave 2 is ready to leave Phase 3 when:
 [[BITwiki:Wave 2 context audit]]
 </pre>
 
+== Release audit update — 2026-09-19 ==
+
+A final stacked rendering audit found three MediaWiki presentation defects in Wave 2:
+
+* [[Knowledge representation/Simple]] used Markdown blockquote syntax;
+* [[Ontology/Simple]] used Markdown blockquote syntax;
+* [[Schema]] used Markdown blockquote syntax.
+
+All three were converted to explicit <code>&lt;blockquote&gt;</code> markup without changing the underlying claims.
+
+The standards check was repeated against current W3C publications:
+
+* RDF 1.2 Concepts and Abstract Data Model remains a Candidate Recommendation Snapshot dated 7 April 2026;
+* RDF 1.2 Semantics remains a Candidate Recommendation Snapshot dated 7 April 2026;
+* RDF 1.2 Primer is a Draft Note dated 26 August 2026;
+* OWL 2 remains the W3C Recommendation family dated 11 December 2012.
+
+Wave 2 remains '''20 concepts / 60 reader surfaces'''. No semantic-definition changes were required by the release audit.
+
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

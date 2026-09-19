@@ -1,0 +1,57 @@
+{{Source status|status=Technical depth derivative|note=Advanced Bayesian modeling/inference surface.}}
+{{Reading depth|base=Bayesian inference|current=Technical}}
+= Bayesian inference — Technical =
+
+== Parameter posterior ==
+For parameter θ and observed data y:
+
+<pre>
+p(θ|y)
+= p(y|θ)p(θ) / p(y)
+</pre>
+
+with marginal likelihood:
+
+<pre>
+p(y)=∫p(y|θ)p(θ)dθ
+</pre>
+
+== Posterior predictive ==
+For future observation y*:
+
+<pre>
+p(y*|y)
+= ∫ p(y*|θ)p(θ|y)dθ
+</pre>
+
+which propagates parameter uncertainty into prediction.
+
+== Model comparison ==
+Bayes factors compare marginal likelihoods:
+
+<pre>
+BF₁₂ = p(y|M₁) / p(y|M₂)
+</pre>
+
+Results can be sensitive to prior mass over parameter space.
+
+== Computation ==
+Complex posteriors can require:
+
+* Markov chain Monte Carlo;
+* sequential Monte Carlo;
+* variational inference;
+* Laplace approximation;
+* conjugate analytic methods.
+
+Computational approximation and inferential assumptions are separate error sources.
+
+== Model criticism ==
+Posterior predictive checks, prior sensitivity analysis, calibration, and comparison to held-out data help detect mismatch.
+
+Bayesian coherence does not guarantee model adequacy.
+
+== References ==
+* Bayesian statistics texts.
+* SEP, “Bayesian Epistemology”.
+* Bayesian computation literature.

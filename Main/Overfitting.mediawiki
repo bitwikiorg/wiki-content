@@ -1,0 +1,64 @@
+{{Source status|status=Wave 7 compiled article|note=Overfitting concept grounded in statistical learning and modern overparameterized-model evidence.}}
+{{Knowledge object
+ |title=Overfitting
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Overfitting|current=Core}}
+
+= Overfitting =
+
+== Overview ==
+'''Overfitting''' occurs when a learning procedure adapts too strongly to finite-sample details, noise, artifacts, or the development process so that apparent fit is better than performance on genuinely unseen target data.
+
+Overfitting is about generalization, not model size alone.
+
+== Training and evaluation ==
+A typical overfit model has lower training error than test error.
+
+However, the size of the gap depends on the metric, data, model, regularization, and evaluation process.
+
+Repeated tuning on a validation set can overfit that validation set even when model parameters are never directly trained on it.
+
+== Model capacity ==
+High model capacity can increase the ability to fit noise, but:
+
+<pre>
+large model ≠ overfit model
+</pre>
+
+Modern overparameterized models can interpolate training data and still generalize well.
+
+This is one reason the classical single U-shaped complexity story is not universal.
+
+== Memorization ==
+Memorization can contribute to overfitting, but it is not identical to overfitting.
+
+A model can memorize rare or exceptional examples and still generalize useful structure to new data.
+
+== Prevention and diagnosis ==
+Common tools include:
+
+* held-out validation;
+* cross-validation;
+* regularization;
+* early stopping;
+* data augmentation;
+* larger or better-matched datasets;
+* leakage checks;
+* independent testing.
+
+No single method guarantees generalization.
+
+== Related concepts ==
+[[Generalization (machine learning)]], [[Validation set]], [[Test set]], [[Bias–variance tradeoff]], [[Model selection bias]], and [[Data leakage (machine learning)]] distinguish different forms of apparent performance failure.
+
+== References ==
+* Hastie, Tibshirani & Friedman.
+* Shalev-Shwartz & Ben-David.
+* Burridge & Tosh, ''Inference in Statistical Modelling and Machine Learning'' (2026).
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

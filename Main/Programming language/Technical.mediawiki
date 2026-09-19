@@ -1,0 +1,63 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[Programming language]].}}
+{{Reading depth|base=Programming language|current=Technical}}
+= Programming language — Technical =
+
+== Language definition ==
+A programming language can be characterized by a set of syntactic forms plus semantic rules assigning meaning/behavior to those forms.
+
+A complete practical language definition may also specify:
+* lexical grammar;
+* contextual/static constraints;
+* type rules;
+* runtime semantics;
+* memory model;
+* concurrency behavior;
+* foreign-function/interfaces;
+* implementation-defined or unspecified behavior.
+
+== Syntax ==
+Lexical syntax defines tokens; grammar defines how tokens form larger constructs.
+
+Context-free grammars are widely used for syntactic structure, though real languages may include contextual restrictions or macro systems that exceed a simple grammar description.
+
+== Static and dynamic semantics ==
+'''Static semantics''' describes properties checked without ordinary execution, such as name resolution or type constraints.
+
+'''Dynamic semantics''' describes runtime behavior.
+
+The boundary between them depends on language design and implementation.
+
+== Formal semantic styles ==
+'''Operational semantics''' defines execution through transition rules.
+
+'''Denotational semantics''' maps constructs to mathematical objects/functions.
+
+'''Axiomatic semantics''' uses logical assertions and proof rules to reason about program properties.
+
+These approaches can coexist and support language implementation, compiler verification, and program proof.
+
+== Type systems ==
+Type systems can support abstraction, representation discipline, optimization, and safety properties.
+
+Technical topics include:
+* type soundness;
+* polymorphism;
+* subtyping;
+* type inference;
+* dependent/refinement types;
+* effect systems;
+* ownership/lifetime systems.
+
+== Implementation ==
+A language may be implemented by ahead-of-time compilation, interpretation, bytecode/VM execution, tracing or method JIT, partial evaluation, or mixed techniques.
+
+Therefore "compiled" and "interpreted" should be treated as implementation characteristics unless a language specification requires a particular strategy.
+
+== Semantics and optimization ==
+Compiler optimizations must preserve the relevant language semantics. This becomes subtle when languages expose concurrency, weak memory, floating-point behavior, undefined behavior, reflection, exceptions, or externally observable I/O.
+
+== References ==
+* ACM/IEEE-CS CS2023, Foundations of Programming Languages.
+* Glynn Winskel (1993), DOI: 10.7551/mitpress/3054.001.0001.
+* Shriram Krishnamurthi, ''Programming Languages: Application and Interpretation''.
+* [[Program (computing)/Technical|Program — Technical]]

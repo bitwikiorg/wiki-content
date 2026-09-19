@@ -1,0 +1,335 @@
+{{Source status|status=Wave 6 Phase 3 context audit|note=Audit state for the Wave 6 formal-computation / CS-foundations capture/compile/write cycle.}}
+= Wave 6 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Formal language]]
+# [[Automaton (computation)]]
+# [[State machine]]
+# [[Turing machine]]
+# [[Computability]]
+# [[Turing completeness]]
+# [[Computational complexity]]
+# [[Computer architecture]]
+# [[Operating system]]
+# [[Computer network]]
+# [[Database]]
+# [[Compiler]]
+# [[Distributed system]]
+# [[Computer security]]
+# [[Cryptography]]
+# [[Human-computer interaction]]
+# [[Esoteric programming language]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 6 reader surfaces: '''51'''.
+
+== Structural audit ==
+
+All seventeen Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* contain references;
+* use controlled Domain values;
+* own category/semantic identity.
+
+All thirty-four Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain sources/references;
+* do not duplicate Core <code>Knowledge object</code>;
+* do not duplicate Core category identity.
+
+A complete 51-surface read found no Markdown blockquote syntax or Markdown code fences.
+
+== Title / identity audit ==
+
+Provisional [[Automaton]] was normalized to [[Automaton (computation)]] because unqualified ''automaton'' has a durable mechanical/self-operating-machine identity outside computer science.
+
+[[State machine]] remains separate.
+
+No duplicate public identity was created for any previously canonical Wave 0–5 page.
+
+== Request-lifecycle audit ==
+
+Existing structured Computer science requests were satisfied rather than duplicated for:
+
+* [[Computer architecture]]
+* [[Operating system]]
+* [[Computer network]]
+* [[Database]]
+* [[Computational complexity]]
+* [[Compiler]]
+* [[Distributed system]]
+* [[Computer security]]
+* [[Cryptography]]
+* [[Human-computer interaction]]
+
+Each now has <code>status=satisfied</code> and a populated canonical page.
+
+The structured workflow audit remains the release gate for duplicate/active-canonical conflicts.
+
+== Domain audit ==
+
+No new controlled Domain was added.
+
+Wave 6 uses existing Computer science as the primary Domain with justified cross-domain classifications in Mathematics, Philosophy, Engineering, Technology, Systems science and Cognitive science.
+
+== Semantic-kernel audit ==
+
+<pre>
+Formal language
+ └→ Automaton (computation)
+      ├→ State machine
+      └→ Turing machine
+           ├→ Computability
+           ├→ Turing completeness
+           └→ Computational complexity
+
+Computer architecture
+ └→ Operating system
+      ├→ Compiler
+      ├→ Database
+      └→ Computer network
+             └→ Distributed system
+
+Computer security
+ └→ Cryptography
+
+Human-computer interaction
+
+Esoteric programming language
+</pre>
+
+The graph is a writing/dependency aid, not an assertion of strict software layering.
+
+== Required non-equivalences preserved ==
+
+<pre>
+formal language ≠ natural language
+formal language ≠ programming language
+automaton ≠ every machine
+automaton ≠ state machine by definition
+state machine ≠ finite-state machine by definition
+Turing machine ≠ physical computer
+Church–Turing thesis ≠ theorem
+computability ≠ feasibility
+computable ≠ efficient
+Turing completeness ≠ speed
+Turing completeness ≠ usefulness
+computational complexity ≠ benchmark runtime
+computer architecture ≠ microarchitecture
+computer architecture ≠ operating system
+operating system ≠ kernel only
+process ≠ program
+computer network ≠ distributed system
+database ≠ DBMS
+compiler ≠ interpreter
+distributed system ≠ distributed cognition
+computer security ≠ cryptography
+cryptography ≠ encryption
+authentication ≠ authorization
+HCI ≠ graphical interface design only
+esoteric programming language ≠ useless language
+esoteric programming language ≠ necessarily Turing complete
+</pre>
+
+== Formal-language / automata audit ==
+
+[[Formal language]] is defined as a set of strings, not the grammar or recognizer that specifies it.
+
+[[Automaton (computation)]] is model-plural across finite automata, pushdown automata and Turing-like machines.
+
+[[State machine]] remains the broader state/transition modeling abstraction used across software, hardware, protocols and control.
+
+Finite-state machine is not treated as the definition of all state machines.
+
+== Turing-machine / computability audit ==
+
+[[Turing machine]] is an abstract mathematical model, not modern hardware.
+
+The [[Church–Turing thesis]] is referenced as a thesis relating informal effective calculability to formal models, while equivalence results among formal models are mathematical theorems.
+
+[[Computability]] separates:
+
+* computable from undecidable;
+* decidable from recognizable;
+* existence of an algorithm from its resource cost.
+
+== Turing-completeness audit ==
+
+[[Turing completeness]] is explicitly scoped to computational-system universality.
+
+The pages preserve:
+
+<pre>
+Turing complete ≠ fast
+Turing complete ≠ practical
+Turing complete ≠ all program properties decidable
+</pre>
+
+Idealized unbounded resource assumptions are explicit.
+
+Specialized recursion-theory use of “Turing complete” for sets/degrees is acknowledged but not conflated with the programming-language/system sense.
+
+== Complexity audit ==
+
+[[Computational complexity]] separates problem/resource classification from one implementation's observed runtime.
+
+Worst-case, average-case and other analysis regimes are distinguished.
+
+Complexity follows computability conceptually:
+
+<pre>
+computable? → what resources are required?
+</pre>
+
+but practical performance also depends on constants, hardware, locality and workload.
+
+== Architecture / operating-system audit ==
+
+[[Computer architecture]] separates ISA-level architectural behavior from microarchitecture.
+
+[[Operating system]] separates program from process and OS from kernel.
+
+The architecture/OS relationship is represented as mechanism plus resource-management/abstraction rather than as interchangeable layers.
+
+== Network / distributed-system audit ==
+
+[[Computer network]] provides communication substrate and protocol structure.
+
+[[Distributed system]] adds coordinated computation, application state, partial failure and distributed guarantees.
+
+The page also separates distributed-computing notions of consistency from [[Consistency (logic)|logical consistency]].
+
+No connection is made to [[Distributed cognition]] beyond an explicit non-equivalence.
+
+== Database audit ==
+
+[[Database]] explicitly separates the persistent organized data from DBMS software.
+
+Relational databases remain one data model among several.
+
+The database Technical page distinguishes ACID “consistency” from logical consistency.
+
+== Compiler audit ==
+
+[[Compiler]] is defined by translation rather than optimization.
+
+Compiler and interpreter are kept distinct but combinable.
+
+The Technical surface separates parsing, semantic analysis, intermediate representation, optimization, code generation and semantic-preservation concerns.
+
+== Security / cryptography audit ==
+
+[[Computer security]] is threat-model-relative and system-level.
+
+It is not reduced to the CIA triad, though confidentiality/integrity/availability remain central reference properties.
+
+Authentication and authorization remain distinct.
+
+[[Cryptography]] is a mechanism/protocol field inside a broader security system.
+
+It is not reduced to encryption; hashing, signatures, MACs, key exchange, commitments, secure computation and zero-knowledge are represented as distinct mechanism families.
+
+Strong primitives are not claimed to guarantee secure composition or implementation.
+
+== HCI audit ==
+
+[[Human-computer interaction]] is broader than graphical user-interface design.
+
+The wave keeps usability, accessibility, cognitive factors, evaluation, social context and automation within HCI scope.
+
+HCI uses [[Cognition]], [[Attention]], [[Memory]] and [[Cognitive load]] without redefining them.
+
+== Esoteric-programming-language audit ==
+
+[[Esoteric programming language]] survives the public-usefulness audit.
+
+Its scope is supported by academic work on language design, pedagogy, computation and programming culture rather than only community novelty.
+
+The page explicitly preserves:
+
+<pre>
+esolang ≠ useless language
+esolang ≠ necessarily Turing complete
+</pre>
+
+No specific project DSL is used to define the category.
+
+== Public concept versus BITwiki/project application ==
+
+The wave preserves:
+
+<pre>
+formal language       ≠ BITwiki page syntax
+state machine         ≠ editorial workflow
+Turing completeness   ≠ “can run our agents”
+complexity            ≠ observed server latency
+database              ≠ one Cargo table
+compiler              ≠ one repo build script
+distributed system    ≠ multi-agent system by definition
+computer security     ≠ project audit status
+cryptography          ≠ blockchain
+HCI                   ≠ one frontend
+esoteric language     ≠ project DSL
+</pre>
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| SEP Turing Machines / Computability and Complexity || Turing machines, computability, Church–Turing thesis
+|-
+| OpenDSA / automata texts || formal languages, automata and language hierarchy
+|-
+| ACM CS2023 || contemporary Computer science foundation boundaries
+|-
+| NIST CSRC / DADS || security, cryptography and state-machine terminology
+|-
+| standard systems texts || architecture, operating systems, networking, databases, compilers, distributed systems
+|-
+| HCI / ACM literature || interaction, usability, accessibility and human factors
+|-
+| Singer & Draper; Temkin || esoteric programming languages
+|}
+
+== Redlink policy ==
+
+Future descendants captured in [[BITwiki:Wave 6 context capture]] remain coverage signals, not authorization for stubs.
+
+== Acceptance criteria ==
+
+Wave 6 is ready to leave Phase 3 when:
+
+# all 51 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# all controlled Domains pass;
+# the ten satisfied Computer science requests have canonical pages and no active-canonical conflict;
+# public/project distinctions remain explicit;
+# all depth derivatives remain category/identity-exempt;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, deployment, workflow and Main-space audits pass;
+# staging builds the complete graph.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 6 context capture]]
+        ↓
+[[BITwiki:Wave 6 compiled context]]
+        ↓
+[[BITwiki:Wave 6 context audit]]
+</pre>
+
+'''Current assessment: semantic and structural audit is complete; repository/CI validation remains the final release gate.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

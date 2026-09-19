@@ -1,88 +1,102 @@
-{{Source status|status=source-grounded corpus expansion|note=Computer science foundation grounded in NIST software/code terminology and ACM CS2023.}}
+{{Source status|status=Wave 0 compiled rewrite|note=Core article normalized against ISO/IEC/IEEE 24765, NIST, Winskel, ACM/IEEE-CS, and Wave 0 shared context.}}
 {{Knowledge object
  |title=Program (computing)
  |entity_type=Concept
  |domain=Computer science
  |status=Established
- |provenance=V2 corpus expansion; NIST and ACM CS2023 grounding
+ |provenance=V2 public corpus; Wave 0 compiled context
 }}
+{{Reading depth|base=Program (computing)|current=Core}}
 
 = Program (computing) =
 
 == Overview ==
-A '''computer program''' is an organized set of instructions, definitions, and related information intended to be interpreted or executed by a computing system. Programs are the concrete artifacts through which people specify computational behavior.
+A '''computer program''' is an executable or interpretable specification of computational behavior. Programs are concrete artifacts through which people express instructions, definitions, control, and data manipulation for a computing system.
 
-A program may be written as human-readable source code, translated into another representation such as machine code or bytecode, interpreted directly, embedded in firmware, or assembled from several languages and components.
+A program is related to an [[Algorithm|algorithm]], but the two are not identical. An algorithm is a method; a program expresses behavior in a particular [[Programming language|programming language]] or machine representation and usually contains much more than a single algorithm.
 
-== Definition ==
-In practical computer science, a program is a representation of instructions that a computer can execute, usually together with the data definitions and structure needed to determine behavior. NIST describes computer code as instructions and data definitions expressed in a programming language or produced by an assembler, compiler, or other translator.
+== Program as artifact ==
+A program can exist before it is running. Source code, bytecode, machine code, stored procedures, scripts, and firmware images can all function as program representations in different environments.
 
-A program is related to, but distinct from, an [[Algorithm|algorithm]]. An algorithm is a method for solving a problem or producing a result; a program is an implementation or executable expression of computational behavior in a particular language and environment.
+When a program executes, the running instance is usually modeled as a '''process''' or runtime instance with current state, resources, inputs, and interactions. One stored program can therefore have many processes running at the same time.
 
-== Scope & importance ==
-Programs connect abstract computation to real machines. They specify what operations should occur, under which conditions, using which data, interfaces, and resources.
+== Program, computation, and software ==
+These terms describe different levels.
 
-The same algorithm can be implemented by many programs. Likewise, a single program can contain many algorithms plus user-interface logic, error handling, data models, configuration, communication, and integration code that are not well described as one algorithm.
+* A [[Algorithm|algorithm]] is a method or procedure.
+* A [[Computation|computation]] is the carrying out of computational state transitions.
+* A '''program''' is an artifact/specification that directs computational behavior.
+* [[Software]] is a broader engineered system or artifact set that may contain many programs, libraries, configuration, schemas, data, interfaces, and documentation.
 
-== Core concepts ==
-A program commonly involves:
+The distinctions become especially important in operating systems, distributed systems, reproducibility, and security.
 
-* '''Instructions''' — operations to perform.
-* '''Control flow''' — sequencing, branching, repetition, function calls, events, concurrency, or other execution structure.
-* '''Data''' — values and representations manipulated by the program.
-* '''State''' — information retained across operations.
-* '''Interfaces''' — ways the program communicates with users, files, devices, networks, libraries, or other programs.
-* '''Environment''' — the runtime, operating system, virtual machine, hardware, or service context in which execution occurs.
-* '''Errors and exceptional conditions''' — behavior when assumptions fail or external conditions change.
+== Structure ==
+Programs commonly include some combination of:
+
+* instructions or expressions;
+* [[Data structure|data structures]] and values;
+* control flow;
+* functions/procedures/modules;
+* state;
+* input/output;
+* error handling;
+* interfaces to files, networks, devices, databases, or other programs;
+* concurrency or event handling.
+
+Not every programming model exposes these concepts in the same way.
 
 == Source, translation, and execution ==
-A source program is written in a [[Programming language|programming language]]. Depending on the language and implementation, it may then be:
+A source program is written in a programming language or another executable notation. Depending on the implementation, it may then be:
 
-* compiled ahead of time into machine code;
-* translated into an intermediate representation or bytecode;
-* interpreted during execution;
+* compiled ahead of time;
+* translated to bytecode or another intermediate representation;
+* interpreted;
 * just-in-time compiled;
-* combined with libraries or other modules;
-* executed inside a runtime, virtual machine, browser, operating system, database, or specialized device.
+* linked with libraries;
+* executed within an operating system, browser, virtual machine, database, device, or specialized runtime.
 
-NIST defines '''runtime''' as the period during which a computer program is executing. This is useful because a program as an artifact is not identical to a running instance of that program.
+"Compiled" and "interpreted" are therefore often properties of an implementation strategy rather than permanent properties of a language.
 
-== Program vs. process ==
-A program is normally a stored description of behavior. A '''process''' is an executing instance with its own runtime state and resources. One program can have several processes running simultaneously, each with different inputs or state.
+== Program behavior and environment ==
+A program's observed behavior depends on more than source text. Inputs, dependencies, configuration, environment variables, operating-system behavior, hardware, network services, timing, and other concurrent components may all matter.
 
-This distinction is central to operating systems, concurrency, distributed systems, debugging, and security.
+This is why reproducing a program's behavior may require capturing its execution environment as well as its source.
 
-== Examples ==
-A command-line utility that reads a file and prints statistics is a program.
+== Correctness ==
+A program is correct only relative to some specification or expected behavior.
 
-A web application may consist of several programs: browser-side code, server processes, background workers, database procedures, and deployment tooling.
+Evidence can come from:
 
-A compiler is itself a program that translates source programs from one representation into another.
+* testing;
+* static analysis;
+* type checking;
+* model checking;
+* formal verification;
+* runtime monitoring;
+* review.
 
-An embedded controller may run a small program continuously to read sensors and control a physical device.
+No single technique proves every property of every program. Tests, for example, provide evidence for exercised cases but do not generally establish universal correctness.
 
-== Correctness and behavior ==
-Programs can be evaluated against specifications: do they produce required outputs, preserve safety properties, handle errors, respect security boundaries, and use acceptable resources?
+== Programs that do not terminate ==
+Many useful programs are intentionally long-running: operating-system services, network servers, interactive applications, controllers, and event loops.
 
-Testing provides empirical evidence about behavior for selected cases. Static analysis, type systems, model checking, and formal verification can provide other forms of evidence. NIST's glossary describes a correctness proof as a formal technique for proving mathematically that a computer program satisfies specified requirements.
+For these programs, useful correctness properties include safety, liveness, responsiveness, protocol conformance, or continued service rather than eventual termination.
 
-== Applications / implications ==
-Programs are the basic executable artifacts of software systems. They implement applications, services, operating systems, databases, games, scientific simulations, machine-learning systems, network protocols, development tools, and embedded controllers.
+== Boundary cases ==
+Scripts, notebooks, smart contracts, database procedures, build files, workflows, and declarative configuration can contain executable semantics. Whether a specific artifact is called a "program" can depend on the execution model and context.
 
-Their behavior depends not only on source code but also on inputs, dependencies, configuration, runtime environment, external systems, and hardware. Reproducibility and security therefore require attention to the complete execution context rather than source text alone.
+When classification matters, describe what interprets the artifact and what behavior it can cause.
 
-== Technical depth ==
-More advanced program analysis studies semantics, control-flow and data-flow graphs, type systems, program transformations, compilation, optimization, concurrency, memory models, program synthesis, verification, and equivalence.
-
-Programs may be deterministic or nondeterministic, terminating or long-running, sequential or concurrent, local or distributed. Some programs respond continuously to events rather than computing one final output.
+== Relationship to version control ==
+Programs are commonly managed with [[Version control]], which records revisions and supports comparison, collaboration, branching, merging, and recovery. Version history records changes to a program; it does not by itself establish that any revision is correct.
 
 == Epistemic notes ==
-"Program" is an established term, but its boundary varies by platform. Scripts, stored procedures, notebooks, smart contracts, firmware images, workflows, and configuration languages may all contain executable behavior. When classification matters, describe the execution model and artifact rather than relying on the word alone.
+"Computer program" is established terminology, but software platforms blur boundaries among programs, configuration, data, models, and generated artifacts. BITwiki should state the execution model rather than treating every executable-looking file as the same kind of object.
 
 == References ==
+* ISO/IEC/IEEE 24765:2017, ''Systems and software engineering — Vocabulary''.
 * [https://csrc.nist.gov/glossary/term/code NIST CSRC — Code]
-* [https://csrc.nist.gov/glossary/term/runtime NIST CSRC — Runtime]
-* [https://csrc.nist.gov/glossary/term/correctness_proof NIST CSRC — Correctness proof]
-* [https://csed.acm.org/knowledge-areas/ ACM/IEEE-CS CS2023 — Knowledge Areas]
+* Glynn Winskel, ''The Formal Semantics of Programming Languages'', MIT Press (1993). DOI: 10.7551/mitpress/3054.001.0001.
+* [https://csed.acm.org/programming-languages/ ACM/IEEE-CS CS2023 — Foundations of Programming Languages]
 
 [[Category:Computer science]]

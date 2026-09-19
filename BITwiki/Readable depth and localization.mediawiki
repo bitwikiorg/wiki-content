@@ -1,81 +1,130 @@
 = Readable depth and localization =
 
-'''Status: Accepted editorial/navigation direction; implementation remains incremental.'''
+'''Status: Accepted editorial/navigation direction; three-surface implementation begins with Wave 0.'''
 
-BITwiki should localize knowledge primarily by '''reader depth and technicality''', not by cloning the corpus into separate simplified and expert encyclopedias.
+BITwiki localizes knowledge primarily by '''reader depth and technicality''', while preserving one semantic identity for each concept.
 
 == Principle ==
 
-'''One knowledge object, multiple depths of entry.'''
+'''One concept, three reader surfaces.'''
 
-A reader should be able to enter the same canonical subject from plain-language orientation and continue toward formal, implementation-level, or research-level detail without losing provenance or switching to an unrelated duplicate article.
+A mature public concept should normally be addressable at three depths:
 
 <pre>
-Simple orientation
-      ↓
-Core understanding
-      ↓
-Technical depth
-      ↓
-Frontier / research
+Title/Simple
+    ↓
+Title
+    ↓
+Title/Technical
 </pre>
 
-This is progressive disclosure, not content dilution.
+* <code>Title/Simple</code> — Simple English / low-prerequisite orientation.
+* <code>Title</code> — Core article; the canonical general treatment, roughly Wikipedia/Scholarpedia depth.
+* <code>Title/Technical</code> — advanced/formal/practitioner treatment.
 
-== External lessons ==
+These are three presentations of one concept, not three competing knowledge objects.
 
-Simple English Wikipedia demonstrates systematic simplification through common vocabulary, simpler syntax, shorter explanations, and an interface designed for learners and readers with different accessibility needs.
+== Why separate surfaces? ==
 
-English Wikipedia's guideline on technical understandability adds a complementary principle: preserve serious technical content, but make the lead accessible, explain jargon, place easier material before specialized detail, use examples, and write roughly one educational level below the level at which the topic is normally studied. It also warns against oversimplifying into false understanding.
+A single long article can technically contain simple and advanced sections, but it often forces a beginner to navigate around material written for a different audience. Separately addressable depth surfaces allow:
 
-BITwiki should combine these lessons without maintaining two disconnected knowledge graphs.
+* direct links for a known reader level;
+* depth-preserving navigation between related concepts;
+* different pedagogical sequencing without changing factual identity;
+* technical depth without overwhelming the Core article;
+* Simple English treatment without deleting necessary advanced content.
 
-== Four presentation depths ==
+The trade-off is duplication risk. The capture → compile/write → audit workflow exists partly to prevent the three surfaces from drifting into contradictory truth stores.
+
+== Depth definitions ==
 
 {| class="wikitable"
 ! Depth !! Function !! Typical content
 |-
-| '''Simple''' || Immediate orientation for a motivated general reader || plain-language definition; why it matters; familiar example; minimal prerequisites; essential vocabulary explained on first use
+| '''Simple''' || Immediate orientation for a curious general reader || plain-language definition; why it matters; familiar examples; minimal prerequisites; essential vocabulary explained on first use
 |-
-| '''Core''' || Durable working understanding || mechanisms; major concepts; relationships; representative examples; common methods; principal limitations
+| '''Core''' || Durable working understanding || definitions; scope; mechanisms; history where relevant; major distinctions; representative examples; applications; evidence; limitations; references
 |-
-| '''Technical''' || Practitioner / advanced-study depth || formal definitions; algorithms; equations; implementation details; standards; protocols; datasets; tooling; edge cases; performance or design trade-offs
-|-
-| '''Frontier''' || Research and unresolved knowledge || emerging evidence; open problems; competing models; disputed claims; experimental methods; active research directions
+| '''Technical''' || Practitioner / advanced-study / research depth || formal definitions; equations; algorithms; implementation details; standards; protocols; edge cases; competing models; design trade-offs; open technical questions
 |}
 
-These are editorial/navigation layers, not Entity types or epistemic statuses.
+'''Frontier / research is not a fourth reading depth.''' Emerging evidence, open problems, disputed claims, and active research belong in explicit sections inside Core or Technical pages.
 
-== Default page behavior ==
+== Canonical title convention ==
 
-A mature canonical page should usually:
+For a concept whose canonical title is <code>Ontology</code>:
 
-# begin with an understandable lead that tells a general reader what the subject is, where it fits, and why it matters;
-# define unfamiliar terms before relying on them;
-# put easier/high-level material before specialized detail;
-# expose prerequisites rather than assume them silently;
-# use concrete examples where abstraction blocks comprehension;
-# retain technical detail when it is important instead of deleting it for readability;
-# separate implementation-specific detail from general concepts where useful;
-# make uncertainty and disputed/frontier material explicit;
-# avoid duplicating the same facts into a second “simple” article unless the subject genuinely requires a separate pedagogical artifact.
+<pre>
+Ontology             → Core
+Ontology/Simple      → Simple
+Ontology/Technical   → Technical
+</pre>
 
-== Portal behavior ==
+The unsuffixed title owns the canonical public concept name. The suffixed pages are depth-localized reader surfaces.
 
-Portals should expose the same depth progression across a field:
+The Core page owns the concept's canonical `Knowledge object` identity and domain/category membership. Simple and Technical derivatives should not duplicate those assertions merely to satisfy navigation or CI. This prevents category listings and semantic queries from treating one concept as three independent subjects.
 
-* '''Start simply''' — what the field studies and why it exists;
-* '''Foundations''' — prerequisite concepts;
-* '''Core map''' — major subfields and relationships;
-* '''Methods / tools''' — how work is done;
-* '''Technical''' — advanced theory, implementations, standards, tooling, datasets;
-* '''Frontier''' — emerging or disputed research.
+This convention uses ordinary MediaWiki titles and does not require a custom Simple or Technical namespace.
 
-`Portal:Computer science`, `Portal:Python`, and `Portal:Bioinformatics` are the first prototypes.
+== Depth-aware linking ==
+
+BITwiki should hyperlink concepts densely in normal prose.
+
+Core pages link to Core:
+
+<pre>
+[[Computation]]
+[[Programming language]]
+[[Causality]]
+</pre>
+
+Simple pages should prefer another concept's Simple surface when it exists:
+
+<pre>
+[[Computation/Simple|computation]]
+</pre>
+
+If no Simple page exists, link to Core rather than create an empty surface.
+
+Technical pages should prefer Technical where it exists and otherwise fall back to Core.
+
+Depth-preserving links are a reader-navigation rule, not an ontological relation.
+
+== Hyperlinks versus semantic relationships ==
+
+MediaWiki links and SMW relations do different jobs.
+
+<pre>
+[[Algorithm]]
+</pre>
+
+means the target concept is useful in the reader's present context.
+
+<pre>
+[[Depends on::Computation]]
+</pre>
+
+asserts a stronger machine-readable semantic relationship.
+
+Do not create SMW assertions merely because two pages link to each other.
+
+== Shared factual identity ==
+
+Depth changes explanation, not the underlying claim.
+
+A Simple page may omit equations or historical nuance, but it must not:
+
+* replace uncertainty with false certainty;
+* turn a contested interpretation into settled fact;
+* introduce a different definition merely because it is easier to explain;
+* contradict Core or Technical;
+* cite weaker evidence for a claim that has stronger canonical support.
+
+When simplification requires qualification, preserve the qualification in simple language.
 
 == Localization versus translation ==
 
-Language translation remains valuable, but it is a separate dimension.
+Language translation remains a separate dimension.
 
 <pre>
 language / locale
@@ -85,51 +134,58 @@ language / locale
 ≠ Domain
 </pre>
 
-A Spanish translation of a technical page is still technical. A Simple English explanation can still be scientifically rigorous. These dimensions should not be conflated.
+A Spanish Technical page is still Technical. A Simple English page can still be rigorous.
 
-BITwiki's immediate priority is depth localization because it reduces the barrier between a new reader and the deeper technical/research corpus while keeping one semantic identity and provenance trail.
+== Required surfaces ==
 
-== Avoiding content forks ==
+For foundational public concepts:
 
-Prefer section-level progressive disclosure, summaries, prerequisite links, diagrams, glossaries, and portal learning paths before creating parallel introductory articles.
+* '''Core''' is mandatory.
+* '''Simple''' is expected.
+* '''Technical''' is expected when meaningful technical/formal depth exists.
 
-A separate introduction/tutorial may be justified when:
+Wave-based context compilation may still conclude that a Technical surface would only duplicate Core. Such an exception should be explicit rather than silently generating filler.
 
-* the canonical subject is intrinsically technical;
-* a substantial reader population needs a different pedagogical sequence;
-* the introductory artifact has independent reuse value;
-* maintaining it will not create contradictory duplicate facts;
-* its relationship to the canonical object is explicit.
+== Workflow ==
 
-== Future implementation research ==
+Depth surfaces are produced together through a three-state wave workflow:
 
-Possible mechanisms include:
+<pre>
+Context capture
+    ↓
+Context compilation + writing
+    ↓
+Context audit
+</pre>
 
-* standard page-section conventions;
-* optional Book Matter fragments for Simple/Core/Technical summaries where independently reusable;
-* readability linting for leads;
-* prerequisite relationships;
-* portal learning paths;
-* generated “start here” views;
-* user-selected reading-depth presentation;
-* agent-assisted simplification that never silently changes factual/epistemic content;
-* validation that advanced material is not exposed before its prerequisites without orientation.
+Research is captured across the whole concept wave first. Definitions and relationships are then compiled consistently before any of the three depth surfaces are written. The final audit checks factual, citation, link, semantic, and cross-depth consistency.
 
-Do not create a mandatory `Reading level` semantic property until recurring workflows show it is necessary.
+== Portal behavior ==
 
-== Editorial test ==
+Portals should expose the same progression:
 
-For each page ask:
+* '''Start simply''' — Simple surfaces and low-prerequisite concepts;
+* '''Foundations''' — prerequisite concepts;
+* '''Core map''' — canonical Core pages;
+* '''Methods / tools''' — how work is done;
+* '''Technical''' — formal, implementation, standards, tooling, datasets;
+* '''Research''' — open or disputed material already represented inside relevant pages.
 
-# Can a curious non-specialist understand the first paragraph?
-# Can an informed reader find the core mechanism quickly?
-# Can a practitioner reach the technical details without leaving the canonical knowledge object unnecessarily?
-# Can a researcher see what is uncertain, emerging, or unresolved?
-# Did simplification preserve accuracy rather than manufacture certainty?
+== Editorial tests ==
+
+For every concept ask:
+
+# Does Simple explain the real concept without manufacturing certainty?
+# Does Core stand alone as the normal public article?
+# Does Technical add real formal/practitioner depth rather than repeat Core?
+# Do the three surfaces agree on definitions, scope, and evidentiary standing?
+# Do links preserve reader depth where useful?
+# Are prerequisites exposed instead of silently assumed?
+# Are open/disputed matters visibly qualified?
 
 == References ==
 
-See [[BITwiki:Research references]] for Simple English Wikipedia, technical-understandability guidance, Plain English, Basic English, and controlled-language references.
+See [[BITwiki:Research references]] for Simple English Wikipedia, English Wikipedia technical-understandability guidance, Plain English, Basic English, and controlled-language references.
 
 [[Category:BITwiki architecture]]
 [[Category:BITwiki meta]]

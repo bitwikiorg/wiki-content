@@ -1,0 +1,59 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[Data structure]].}}
+{{Reading depth|base=Data structure|current=Technical}}
+= Data structure — Technical =
+
+== Representation and operations ==
+A data structure can be modeled as a representation space together with operations constrained by invariants. The performance and correctness of an operation are properties of the combination of:
+
+* representation;
+* operation implementation;
+* input distribution;
+* computational/storage model;
+* maintained invariants.
+
+This is why a data structure should not be assigned a context-free label such as simply "fast."
+
+== Abstract data types ==
+An [[Abstract data type|ADT]] specifies values and observable operations without committing to an internal representation. Liskov and Zilles's work on abstract data types helped establish this separation as a major software-abstraction principle.
+
+A concrete data structure can implement an ADT, while several data structures can implement the same ADT with different cost and persistence properties.
+
+== Representation invariants ==
+A representation invariant defines conditions that valid concrete states must satisfy.
+
+Examples include:
+* ordering constraints in a binary-search tree;
+* heap-order properties;
+* structural balance conditions;
+* hash-table occupancy/collision invariants;
+* graph-representation consistency.
+
+Hoare's work on correctness of data representations formalized how abstraction functions and representation invariants can be used to reason about implementations.
+
+== Cost models ==
+Standard operation bounds may be:
+* worst-case;
+* expected;
+* average-case;
+* amortized.
+
+More realistic systems may require I/O, cache, communication, synchronization, persistence, or energy costs.
+
+External-memory structures minimize block transfers. Concurrent structures must account for interleavings and synchronization. Distributed structures add communication and failure assumptions.
+
+== Persistence and mutability ==
+A mutable structure changes an existing representation. A persistent structure preserves access to previous versions after updates.
+
+Functional programming often uses persistent immutable structures, while imperative systems commonly update structures in place. Neither choice is universally superior; performance, sharing, concurrency, and reasoning requirements determine the trade-off.
+
+== Examples of representation trade-offs ==
+An adjacency matrix offers constant-time edge-presence checks but uses quadratic space in the number of vertices. An adjacency-list representation is usually more compact for sparse graphs and supports efficient neighbor iteration.
+
+A hash table typically gives efficient expected lookup but depends on hashing assumptions and collision handling. Balanced search trees give ordered traversal and logarithmic worst-case operations under maintained balance invariants.
+
+== References ==
+* NIST DADS, "data structure".
+* Cormen et al., ''Introduction to Algorithms'', 4th ed. (2022).
+* Liskov & Zilles (1974), DOI: 10.1145/800233.807045.
+* C. A. R. Hoare (1972), "Proof of Correctness of Data Representations".
+* [[Algorithm/Technical|Algorithm — Technical]]

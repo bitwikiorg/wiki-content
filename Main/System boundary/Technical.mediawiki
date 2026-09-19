@@ -1,0 +1,61 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[System boundary]].}}
+{{Reading depth|base=System boundary|current=Technical}}
+= System boundary — Technical =
+
+== Observer and purpose dependence ==
+In soft-systems traditions, a boundary is an observer-relative distinction used to constitute a system of interest for a purpose.
+
+This does not imply that every boundary is arbitrary. Physical constraints, organizational authority, information flow, ownership, interfaces, laws, and causal mechanisms can strongly constrain useful boundaries. But the analytical act of deciding what counts as "the system" still needs justification.
+
+== System of interest and environment ==
+Systems engineering commonly distinguishes:
+* system of interest;
+* environment;
+* interfaces;
+* enabling/supporting systems;
+* stakeholders;
+* lifecycle processes.
+
+Different lifecycle questions may require different boundaries. A design boundary, operational boundary, safety boundary, security trust boundary, and accounting boundary can overlap without being identical.
+
+== Boundary judgments ==
+A boundary judgment decides which facts, values, actors, causes, consequences, and resources are treated as relevant.
+
+This creates two technical risks:
+
+# '''omission risk''' — important interactions are excluded;
+# '''scope inflation''' — the boundary becomes so broad that analysis loses useful structure.
+
+Boundary choice is therefore a modeling trade-off.
+
+== Boundary critique ==
+Critical systems heuristics treats boundary judgments as both epistemic and normative.
+
+Questions include:
+* Who benefits?
+* Who controls?
+* Whose knowledge counts?
+* Who is affected but excluded?
+* Which constraints are treated as fixed?
+* Which consequences are externalized?
+
+The purpose is not to abolish boundaries but to make consequential exclusions visible and revisable.
+
+== Causal modeling ==
+A causal model partitions variables into endogenous modeled variables, exogenous/background factors, and omitted factors.
+
+Changing the boundary can therefore change which causal pathways are represented and whether a variable is treated as a cause, mediator, confounder, context, or fixed condition.
+
+See [[Causality/Technical|Causality — Technical]].
+
+== Software and sociotechnical systems ==
+For technical software analysis, a narrow code boundary may be useful for program verification, while a wider operational boundary may be necessary for reliability, security, privacy, or safety.
+
+A production service may depend on people, network providers, identity systems, databases, deployment pipelines, vendors, and legal constraints. Failure analysis should state which of these are in scope.
+
+== References ==
+* SEBoK — System Boundary.
+* Checkland, ''Systems Thinking, Systems Practice'' (1981), ISBN 9780471279112.
+* Midgley, ''Systemic Intervention'' (2000), DOI: 10.1007/978-1-4615-4201-8.
+* Ulrich & Reynolds (2020), DOI: 10.1007/978-1-4471-7472-1_6.
+* ISO/IEC/IEEE 15288:2023.

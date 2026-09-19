@@ -119,6 +119,21 @@ def split_domains(domain_text: str) -> list[str]:
     return [title(item) for item in domain_text.split(",") if title(item)]
 
 
+def is_reading_depth_derivative(path: Path, text: str) -> bool:
+    """Return True for Simple/Technical reader surfaces derived from a Core Main page.
+
+    These pages intentionally do not duplicate the Core page's Knowledge object
+    identity or domain category membership. They remain deployable Main-space
+    titles and use Template:Reading depth for navigation.
+    """
+    if path.parts[0] != "Main" or len(path.relative_to("Main").parts) < 2:
+        return False
+    params = template_params(text, "Reading depth")
+    if not params:
+        return False
+    return params.get("current") in {"Simple", "Technical"}
+
+
 def is_magic_word_or_parser_prefix(template: str) -> bool:
     """Return True for MediaWiki magic syntax captured by the template regex.
 
@@ -190,7 +205,11 @@ def main() -> None:
             for template in sorted(set(templates)):
                 template_refs.setdefault(template, []).append(str(path))
 
-        if root in CATEGORY_REQUIRED_ROOTS and not categories:
+        if (
+            root in CATEGORY_REQUIRED_ROOTS
+            and not categories
+            and not is_reading_depth_derivative(path, parsed)
+        ):
             uncategorized.append(str(path))
 
         if root in IDENTITY_SCAN_ROOTS and not REDIRECT_RE.search(parsed):
@@ -279,6 +298,7 @@ def main() -> None:
             "SMWSchema/ and MediaWiki/ payloads are counted but not parsed as ordinary wikitext references.",
             "Module/Lua is audited by scripts/audit_substrate.py rather than parsed as wikitext.",
             "Compiler-facing controlled vocabularies are loaded from bitwiki-runtime-schema.json.",
+            "Simple/Technical Main-space reading-depth derivatives are category-exempt; their Core page owns canonical identity/category membership.",
         ],
     }
 

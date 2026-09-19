@@ -1,0 +1,21 @@
+<includeonly><div class="hatnote" style="margin-bottom:0.75em;">'''Reading depth:''' {{#ifeq:{{{current|}}}|Simple|'''Simple'''|[[{{{base}}}/Simple|Simple]]}} · {{#ifeq:{{{current|}}}|Core|'''Core'''|[[{{{base}}}|Core]]}} · {{#ifeq:{{{current|}}}|Technical|'''Technical'''|[[{{{base}}}/Technical|Technical]]}}</div></includeonly>
+<noinclude>
+= Reading depth =
+
+Navigation between the three reader-depth surfaces of one concept.
+
+<pre>
+{{Reading depth
+ |base=Algorithm
+ |current=Core
+}}
+</pre>
+
+Allowed <code>current</code> values are <code>Simple</code>, <code>Core</code>, and <code>Technical</code>.
+
+This template is presentation/navigation only. It does not emit a semantic property and does not create three ontological identities.
+
+See [[BITwiki:Readable depth and localization]].
+
+[[Category:BITwiki templates]]
+</noinclude>

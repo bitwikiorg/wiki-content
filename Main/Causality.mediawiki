@@ -1,38 +1,94 @@
-{{Source status|status=source-grounded domain exemplar|note=Source-grounded domain exemplar; uses Stanford Encyclopedia of Philosophy as the primary orientation.}}
+{{Source status|status=Wave 0 compiled rewrite|note=Core article normalized against SEP, Pearl, Rubin, Hernán/Robins, and Wave 0 shared context.}}
 {{Knowledge object
  |title=Causality
  |entity_type=Concept
  |domain=Philosophy
  |status=Established
- |provenance=V2 domain exemplar
+ |provenance=V2 public corpus; Wave 0 compiled context
 }}
+{{Reading depth|base=Causality|current=Core}}
 
 = Causality =
 
 == Overview ==
-'''Causality''' concerns relations in which one event, condition, process, or factor is understood as producing, influencing, enabling, or otherwise making a difference to another.
+'''Causality''' concerns relations in which one event, condition, process, variable, or intervention makes a difference to another. Causal claims are stronger than statements of association: they say that changing, preventing, or otherwise varying something would matter to an outcome under relevant conditions.
 
-== Definition ==
-There is no single uncontested philosophical analysis of causation. Major approaches analyze causal relations through regularities, counterfactual dependence, mechanisms, processes, probabilities, interventions, powers, or combinations of these.
+Causality is central to scientific explanation, experiment, medicine, engineering, statistics, machine learning, law, policy, and everyday reasoning. It is also a major philosophical problem because there is no single uncontested analysis of what causation ultimately is.
 
-== Scope & importance ==
-Causal claims do more than report association. They shape explanation, prediction, responsibility, scientific modeling, intervention, engineering, policy, and everyday reasoning.
+== Causation and correlation ==
+A [[Correlation|correlation]] is a statistical association. A causal relation is a claim about how one factor contributes to or changes another.
 
-== Core concepts ==
-Important distinctions include token versus type causation, correlation versus causation, cause versus background condition, direct versus mediated effects, and causal explanation versus prediction.
+Two variables can be correlated because:
+* one causes the other;
+* the second causes the first;
+* both share one or more common causes;
+* selection or measurement creates the association;
+* the relationship is partly or entirely coincidental.
 
-== Examples ==
-A particular drought may be described as contributing to a particular famine; this is a token causal claim. 'Smoking causes cancer' is a general or type-level causal claim whose interpretation involves population evidence and causal structure.
+For this reason, association alone normally does not identify a causal relation.
 
-== Applications / implications ==
-Causality is central to philosophy of science, statistics, epidemiology, law, machine learning, systems analysis, experimental design, and decision-making.
+== Token and type causation ==
+'''Token''' or '''actual causation''' concerns particular events: for example, whether a specific spark caused a specific fire.
+
+'''Type''' or population-level causation concerns more general relationships: for example, whether smoking increases the risk of lung cancer in a population.
+
+The evidence and formal tools needed for these questions can differ.
+
+== Major approaches ==
+Several major traditions analyze causation from different directions.
+
+'''Regularity accounts''' connect causes with patterns or laws of succession.
+
+'''Counterfactual accounts''' ask whether the effect would have differed had the cause been absent or different.
+
+'''Probabilistic accounts''' examine how a cause changes the probability of an effect.
+
+'''Process and mechanistic accounts''' look for physical, biological, or organized processes connecting cause and effect.
+
+'''Interventionist accounts''' characterize causal relationships partly through what would happen under suitable interventions.
+
+These approaches overlap but should not be treated as identical.
+
+== Causal inference ==
+Modern causal inference develops formal tools for estimating causal effects from experiments and observational data.
+
+Two influential families are:
+
+* '''potential-outcomes frameworks''', associated with Neyman and Rubin, which define causal effects by comparing possible outcomes under different treatments or exposures;
+* '''structural causal models''', associated especially with Judea Pearl, which represent causal assumptions using structural equations and graphs and distinguish ordinary observation from intervention.
+
+Neither framework removes the need for assumptions. Causal conclusions depend on what is measured, which variables are controlled, how treatment or exposure is assigned, and whether the assumed causal structure is adequate.
+
+== Confounding and intervention ==
+A '''confounder''' is a variable or structure that can create or distort an observed association between a putative cause and outcome.
+
+Randomized experiments can help break some confounding relationships by making treatment assignment independent of pre-treatment causes. Observational studies instead rely on design, measurement, statistical adjustment, natural experiments, instrumental variables, or other assumptions.
+
+An '''[[Intervention]]''' is conceptually different from merely observing that a variable happens to take a value. This distinction is central to interventionist and structural causal approaches.
+
+== Causal explanation and prediction ==
+A system can predict well without representing the correct causes. Conversely, a correct causal model can be useful for intervention even when prediction is difficult.
+
+This distinction matters in machine learning and policy: predictive association answers "what tends to happen?", while causal analysis asks questions such as "what would happen if we changed X?"
+
+== Boundaries and background conditions ==
+Causal claims depend partly on how a problem is framed. A [[System boundary]] determines which variables, mechanisms, actors, and background conditions are treated as part of the system being analyzed.
+
+Calling one factor "the cause" can therefore hide enabling conditions or upstream causes that were placed outside the chosen boundary.
+
+== Causality and hypothesis testing ==
+A [[Hypothesis]] may propose a causal mechanism or causal relationship. Evidence can support or undermine that hypothesis, but statistical significance by itself does not establish the causal interpretation. Study design and causal assumptions matter.
 
 == Epistemic notes ==
-Causation is a contested philosophical concept. BITwiki should represent competing theories explicitly instead of presenting one metaphysical account as settled by definition.
+Causal reasoning is well established across science and statistics, but philosophical theories of causation remain contested. BITwiki should distinguish empirical causal inference, formal causal models, and metaphysical theories rather than presenting any one of them as the definition of causation itself.
 
 == References ==
 * [https://plato.stanford.edu/entries/causation-metaphysics/ Stanford Encyclopedia of Philosophy — The Metaphysics of Causation]
+* [https://plato.stanford.edu/entries/causation-counterfactual/ Stanford Encyclopedia of Philosophy — Counterfactual Theories of Causation]
 * [https://plato.stanford.edu/entries/causation-mani/ Stanford Encyclopedia of Philosophy — Causation and Manipulability]
+* Judea Pearl, ''Causality: Models, Reasoning, and Inference'', 2nd ed., Cambridge University Press (2009). DOI: 10.1017/CBO9780511803161.
+* Donald B. Rubin, "Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies", ''Journal of Educational Psychology'' 66(5), 688–701 (1974). DOI: 10.1037/h0037350.
+* Miguel A. Hernán and James M. Robins, ''Causal Inference: What If'' (2020).
 
 [[Category:Philosophy]]
 [[Category:Domain exemplars]]

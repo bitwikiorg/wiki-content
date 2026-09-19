@@ -1,0 +1,52 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[Version control]].}}
+{{Reading depth|base=Version control|current=Technical}}
+= Version control — Technical =
+
+== Revision model ==
+A version-control system represents a set of revisions and relationships among them.
+
+Depending on the system, revisions may be modeled as:
+* deltas;
+* snapshots;
+* directed acyclic graphs of commits;
+* content-addressed objects;
+* centralized sequential revisions.
+
+The logical history model and physical storage representation should be distinguished.
+
+== Branching and merging ==
+A branch represents a line/reference of development. Merge operations attempt to combine changes from divergent histories.
+
+A merge conflict is not necessarily a semantic conflict; textual changes can merge cleanly while producing an incorrect program, and textual overlap can conflict even when the intended semantic combination is obvious.
+
+== Distributed version control ==
+Distributed systems such as Git allow repositories to contain substantial/full history locally and exchange objects/references among peers.
+
+"Distributed" describes repository architecture, not project governance. Projects can still designate canonical remotes, protected branches, review requirements, or release authorities.
+
+== Content addressing ==
+Git identifies objects by hashes over object content/metadata representation. This supports integrity checking and deduplication-like behaviors, but a version-control hash should not automatically be interpreted as a complete provenance or trust system.
+
+== Delta systems ==
+RCS stores reverse deltas for text revisions to conserve space and reconstruct earlier versions. Other systems use different delta directions, snapshots, compression, or hybrid pack formats.
+
+The historical evolution from SCCS and RCS to networked and distributed systems reflects changing collaboration and storage models.
+
+== Configuration management ==
+Version control typically manages revisions of selected configuration items. Full software configuration management may additionally govern:
+* baselines;
+* builds;
+* releases;
+* dependencies;
+* environment state;
+* approvals/change control;
+* status accounting.
+
+== Provenance limits ==
+Commit metadata provides valuable lineage, but can be rewritten, imported, squashed, mirrored, or disconnected from external build/runtime inputs. Strong reproducibility may require artifact hashes, dependency locks, signed attestations, environment capture, and external provenance records.
+
+== References ==
+* Rochkind (1975), DOI: 10.1109/TSE.1975.6312866.
+* Tichy (1985), DOI: 10.1002/spe.4380150703.
+* [https://git-scm.com/docs Git documentation]
+* [[Software/Technical|Software — Technical]]

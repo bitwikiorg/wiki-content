@@ -1,0 +1,72 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[Causality]].}}
+{{Reading depth|base=Causality|current=Technical}}
+= Causality — Technical =
+
+== Causal estimands ==
+In the potential-outcomes framework, a unit may be associated with potential outcomes such as:
+
+<pre>
+Y(1) = outcome under treatment
+Y(0) = outcome under control
+</pre>
+
+An individual treatment effect can be written:
+
+<pre>
+Y(1) - Y(0)
+</pre>
+
+but both potential outcomes for the same unit cannot generally be observed simultaneously. Causal inference therefore targets population quantities such as the average treatment effect under assumptions about assignment, consistency, interference, selection, and measurement.
+
+== Structural causal models ==
+A structural causal model represents variables through structural assignments such as:
+
+<pre>
+X_i := f_i(PA_i, U_i)
+</pre>
+
+where <code>PA_i</code> are modeled parents/causes of <code>X_i</code> and <code>U_i</code> represents exogenous background factors.
+
+A directed acyclic graph can encode qualitative causal structure. Interventions replace or modify structural assignments rather than merely condition on observed values.
+
+Pearl's <code>do(X=x)</code> notation distinguishes intervention from observation:
+
+<pre>
+P(Y | X=x)          observational
+P(Y | do(X=x))      interventional
+</pre>
+
+These quantities need not be equal.
+
+== Confounding and identification ==
+A causal effect is '''identified''' when it can be uniquely determined from the observed distribution plus stated assumptions.
+
+Confounding arises when common causes or selection structures induce associations that do not equal the desired causal effect.
+
+Graphical criteria, randomized assignment, adjustment sets, instrumental variables, front-door/back-door strategies, natural experiments, and longitudinal methods provide different identification strategies under different assumptions.
+
+== Counterfactuals ==
+Counterfactual theories analyze causation partly through dependence between actual events and relevant alternative possibilities.
+
+Simple counterfactual dependence is insufficient for all cases. Preemption, overdetermination, prevention, and causal chains create classic difficulties and motivate more sophisticated accounts.
+
+== Mechanisms and processes ==
+Mechanistic accounts seek organized entities/activities or physical processes connecting cause and effect. In biology and engineering, mechanism evidence can complement statistical effect estimates.
+
+Mechanistic evidence is not automatically superior to population evidence; the evidentiary role depends on the question and available interventions.
+
+== Prediction versus intervention ==
+A predictive model estimates patterns in observed data. A causal model additionally supports claims about interventions or counterfactual changes under stated assumptions.
+
+High predictive accuracy therefore does not by itself validate causal structure.
+
+== System boundary ==
+Any formal causal model selects variables and excludes others. The [[System boundary/Technical|system boundary]] determines which causes are endogenous, exogenous, ignored, or held fixed.
+
+Boundary choices can change both identifiability and interpretation.
+
+== References ==
+* Pearl, ''Causality'', 2nd ed. (2009), DOI: 10.1017/CBO9780511803161.
+* Rubin (1974), DOI: 10.1037/h0037350.
+* Hernán & Robins, ''Causal Inference: What If'' (2020).
+* Stanford Encyclopedia of Philosophy — Counterfactual Theories of Causation; Causation and Manipulability.

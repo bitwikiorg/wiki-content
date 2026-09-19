@@ -1,98 +1,114 @@
-{{Source status|status=source-grounded corpus expansion|note=Computer science foundation grounded in NIST software terminology and ACM CS2023.}}
+{{Source status|status=Wave 0 compiled rewrite|note=Core article normalized against ISO/IEC/IEEE terminology, SWEBOK, NIST, software-engineering literature, and Wave 0 shared context.}}
 {{Knowledge object
  |title=Software
  |entity_type=Concept
  |domain=Computer science
  |status=Established
- |provenance=V2 corpus expansion; NIST and ACM CS2023 grounding
+ |provenance=V2 public corpus; Wave 0 compiled context
 }}
+{{Reading depth|base=Software|current=Core}}
 
 = Software =
 
 == Overview ==
-'''Software''' is the non-physical computational material of a computer system: programs, associated data, and related executable or operational information that directs hardware to perform useful work.
+'''Software''' is the non-physical computational artifact layer that directs computing systems to perform useful work. It includes [[Program (computing)|programs]] and, depending on context, associated libraries, configuration, data definitions, documentation, models, interfaces, deployment artifacts, and other information required for operation or maintenance.
 
-The term can refer narrowly to program code or more broadly to applications, libraries, operating systems, services, configuration, data, and other artifacts needed for a computational system to behave as intended.
+Software is usually contrasted with '''hardware''', the physical components of a computing system. The boundary is useful but not always sharp: firmware, programmable hardware, microcode, and embedded systems combine physical and logical layers closely.
 
-== Definition ==
-NIST terminology defines software in several closely related ways, including computer programs and associated data that may be dynamically written or modified during execution, and the programs, procedures, rules, and associated documentation of an information-processing system.
+== Software and program ==
+A program is an executable or interpretable expression of behavior. Software is the broader engineered artifact or system.
 
-In practical use, software is distinguished from '''hardware''', the physical components of a system, and from '''firmware''', software-like instructions or data stored in a form more tightly coupled to a device and often less dynamically modified during normal execution.
+A small utility may consist largely of one program. A browser, operating system, cloud service, or database can contain many programs plus libraries, configuration, schemas, assets, interfaces, tests, build logic, deployment definitions, and external dependencies.
 
-== Scope & importance ==
-Software turns general-purpose or specialized hardware into systems that perform particular functions. A laptop, phone, server, vehicle controller, network router, scientific instrument, or industrial machine may use similar physical computing principles but exhibit very different behavior because of its software.
+== What belongs to software? ==
+Standards and engineering practice do not always draw the same boundary.
 
-Software is larger than a single [[Program (computing)|program]]. A software system may contain many programs plus libraries, schemas, configuration, assets, build definitions, deployment logic, interfaces, tests, documentation, and external dependencies.
+Depending on purpose, "software" may include:
 
-== Core concepts ==
-Important software dimensions include:
+* source and executable programs;
+* libraries and frameworks;
+* configuration;
+* schemas and data definitions;
+* installation/deployment artifacts;
+* tests;
+* build definitions;
+* operational scripts;
+* documentation;
+* generated artifacts.
 
-* '''Functionality''' — what behavior or service the software provides.
-* '''Architecture''' — how components and responsibilities are organized.
-* '''Interfaces''' — how components, users, devices, and external systems interact.
-* '''State and data''' — what information the system stores and how it changes.
-* '''Dependencies''' — libraries, runtimes, services, protocols, and platforms required for operation.
-* '''Quality attributes''' — reliability, security, maintainability, performance, usability, portability, safety, and other non-functional properties.
-* '''Lifecycle''' — design, implementation, testing, deployment, operation, maintenance, evolution, and retirement.
+The [[System boundary|system boundary]] should therefore be stated when a claim depends on exactly what is included.
 
-== Major kinds ==
-'''System software''' provides foundational services for other software. Operating systems, device drivers, runtimes, and some infrastructure tools fall into this class.
+== Major forms ==
+Common categories include:
 
-'''Application software''' performs tasks for users or organizations, such as browsers, editors, games, scientific tools, accounting systems, or communication applications.
+'''System software''' — foundational services for other software, such as operating systems and runtimes.
 
-'''Libraries and frameworks''' provide reusable functionality used by other software.
+'''Application software''' — software intended to perform user or organizational tasks.
 
-'''Embedded software''' operates within devices or machines whose primary purpose may not appear to be general-purpose computing.
+'''Embedded software''' — software running within a larger physical device or machine.
 
-'''Services''' run as network-accessible software and may be composed into distributed systems.
+'''Libraries and frameworks''' — reusable software components used to construct other systems.
 
-These categories overlap; they are descriptive rather than strict natural kinds.
+'''Services''' — network-accessible software components, often composed into distributed systems.
 
-== Software vs. program ==
-A program is an executable expression of computational behavior. Software is the broader engineered artifact or system in which programs participate.
+These categories overlap and should not be treated as mutually exclusive natural kinds.
 
-For a small utility, the distinction may be negligible. For a large service, operating system, browser, or database, "software" includes many programs and supporting artifacts that collectively provide the product or system behavior.
+== Software engineering ==
+Software engineering applies systematic engineering practices to software development, operation, maintenance, and evolution.
 
-== Software construction ==
-Software development commonly involves:
+Important concerns include:
 
-# understanding requirements and constraints;
-# choosing representations, algorithms, data structures, and interfaces;
-# writing or generating source code;
-# testing and analyzing behavior;
-# building and packaging artifacts;
-# deploying or distributing them;
-# observing operation and correcting defects;
-# evolving the system as requirements and environments change.
+* requirements;
+* architecture and design;
+* implementation;
+* verification and testing;
+* configuration and [[Version control|version control]];
+* security;
+* reliability and safety;
+* performance;
+* usability;
+* deployment and operations;
+* maintenance and evolution.
 
-ACM/IEEE-CS CS2023 treats software development fundamentals and software engineering as distinct but connected knowledge areas, reflecting the difference between constructing programs and engineering larger software systems over time.
+The SWEBOK Guide organizes generally accepted software-engineering knowledge into a set of knowledge areas and is useful as a field map, not as the sole definition of software.
 
-== Examples ==
-A text editor installed on a laptop is application software.
+== Software complexity ==
+Software can embody highly complex conceptual structures even when its physical storage is inexpensive to reproduce.
 
-A Linux distribution combines an operating-system kernel, system utilities, libraries, package-management components, configuration, and applications into a larger software environment.
+Brooks's "No Silver Bullet" distinguished essential complexity arising from the conceptual problem from accidental complexity introduced by particular tools or representations. The distinction remains influential even though specific technologies continue to change.
 
-A cloud application may consist of browser code, APIs, worker processes, databases, infrastructure definitions, and third-party services.
+== Dependencies and environment ==
+Modern software is layered. A program may depend on:
 
-A vehicle control unit may run embedded software that reads sensors, applies control logic, and communicates with other onboard systems.
+* libraries;
+* package ecosystems;
+* operating systems;
+* runtimes;
+* network protocols;
+* databases;
+* containers or virtual machines;
+* external services;
+* hardware capabilities.
 
-== Applications / implications ==
-Software is now embedded in infrastructure, finance, medicine, communication, science, transportation, manufacturing, entertainment, and governance. Because software can mediate access to data and physical systems, defects or compromised dependencies can have consequences far beyond a single computer.
+This reuse makes complex systems feasible but also creates supply-chain, compatibility, security, and reproducibility risks.
 
-Software quality therefore includes more than whether a program appears to work. Security, provenance, update mechanisms, reproducibility, interoperability, observability, and maintainability can all affect whether software remains dependable over its lifetime.
+== Lifecycle and evolution ==
+Software is rarely static. It is revised as requirements, environments, dependencies, threats, and users change.
 
-== Technical depth ==
-Software engineering studies requirements, architecture, design, testing, verification, configuration management, version control, deployment, maintenance, measurement, reliability, safety, and team/process concerns.
+[[Version control]] records revision history, but maintenance also requires issue tracking, testing, release management, migration, observability, documentation, and configuration management.
 
-Modern software frequently depends on layers of other software: compilers, operating systems, runtimes, package ecosystems, network services, containers, virtual machines, and cloud platforms. This layered dependency structure creates both reuse and systemic risk.
+== Software as part of a larger system ==
+A software product often participates in a sociotechnical or cyber-physical system that includes people, organizations, devices, policies, networks, and external services.
+
+Calling all of those surrounding elements "software" can hide important boundaries. Conversely, treating software as only source code can ignore the dependencies and operational information required for real behavior.
 
 == Epistemic notes ==
-"Software" is an established concept, but its boundary is contextual. Documentation, models, configuration, prompts, datasets, infrastructure definitions, and generated artifacts may be treated as part of software in some engineering contexts and as separate supporting assets in others. When scope matters, identify the concrete artifact set rather than relying on the label alone.
+"Software" is established terminology, but its exact extension is contextual. BITwiki should explicitly state the relevant artifact set when making claims about provenance, security, reproducibility, licensing, or failure.
 
 == References ==
+* ISO/IEC/IEEE 24765:2017, ''Systems and software engineering — Vocabulary''.
+* IEEE Computer Society, ''Guide to the Software Engineering Body of Knowledge (SWEBOK Guide) V4.0'' (2024).
+* Frederick P. Brooks Jr., "No Silver Bullet—Essence and Accidents of Software Engineering", ''Computer'' 20(4), 10–19 (1987). DOI: 10.1109/MC.1987.1663532.
 * [https://csrc.nist.gov/glossary/term/software NIST CSRC — Software]
-* [https://csrc.nist.gov/glossary/term/hardware NIST CSRC — Hardware]
-* [https://csed.acm.org/knowledge-areas/ ACM/IEEE-CS CS2023 — Knowledge Areas]
-* [https://csed.acm.org/cs2023-revision-report/ ACM/IEEE-CS CS2023 — Body of Knowledge / revision report]
 
 [[Category:Computer science]]

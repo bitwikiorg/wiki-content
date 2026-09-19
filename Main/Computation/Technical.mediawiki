@@ -1,0 +1,65 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[Computation]].}}
+{{Reading depth|base=Computation|current=Technical}}
+= Computation — Technical =
+
+== Abstract computation ==
+An abstract computation may be represented as a sequence or branching structure of configurations connected by a transition relation.
+
+A generic transition system can be written as:
+
+<pre>
+(S, I, O, →)
+</pre>
+
+where <code>S</code> is a state/configuration space, <code>I</code> and <code>O</code> characterize inputs and outputs where applicable, and <code>→</code> is an allowed transition relation.
+
+Different models make different primitives available and therefore support different analyses of computability and resource cost.
+
+== Classical models ==
+Important models include:
+* Turing machines;
+* lambda calculus;
+* recursive functions;
+* finite-state machines;
+* random-access machines;
+* register machines;
+* circuits.
+
+The equivalence of several classical models with respect to effectively calculable functions motivated the Church–Turing thesis.
+
+== Church–Turing thesis ==
+The Church–Turing thesis identifies the informal notion of effective calculability with Turing-computable (equivalently, classically computable) functions.
+
+It is not a theorem that follows solely from the definition of a Turing machine because one side of the equivalence is an informal pre-formal concept. Stronger claims about what can be computed by physically possible devices are variants of a physical Church–Turing thesis and require additional empirical assumptions.
+
+== Computability and complexity ==
+[[Computability]] classifies what can be computed in principle under a model.
+
+[[Computational complexity]] studies the resources required. Complexity classes therefore presuppose both a problem representation and a computational resource model.
+
+== Nondeterministic, probabilistic, and quantum models ==
+A nondeterministic transition relation permits multiple possible successor configurations. Probabilistic models associate probabilities with transitions or choices. Quantum computation replaces classical state evolution with quantum-state operations and measurement.
+
+These models must be distinguished from implementation noise or ordinary uncertainty about a deterministic system.
+
+== Interactive and distributed computation ==
+Interactive and distributed systems do not fit neatly into a single closed input-to-output function. Their observable behavior may depend on:
+* message order;
+* external events;
+* timing;
+* failures;
+* concurrency;
+* other agents.
+
+Behavioral equivalence, traces, transition systems, process calculi, and distributed-computing models are therefore often more useful than a single mathematical function.
+
+== Concrete computation ==
+A physical device implements an abstract computational description only under some mapping between physical states/processes and formal states/operations. Philosophical accounts differ on what makes such an implementation nontrivial rather than an arbitrary interpretation.
+
+This is why "can be computationally modeled" should not be treated as equivalent to "is literally computing."
+
+== References ==
+* Alan M. Turing (1937), DOI: 10.1112/plms/s2-42.1.230.
+* Stanford Encyclopedia of Philosophy, "Computation in Physical Systems".
+* NIST DADS, "Model of computation".
+* [[Algorithm/Technical|Algorithm — Technical]]

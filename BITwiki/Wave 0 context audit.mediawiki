@@ -1,0 +1,212 @@
+{{Source status|status=Wave 0 Phase 3 context audit|note=Audit state for the Wave 0 capture/compile/write cycle. Canonical content changes are evaluated against this record and PR checks.}}
+= Wave 0 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+This page audits Wave 0 after context capture and context compilation/writing. It is not a new research pass and should not introduce substantive claims unless required to correct a discovered defect.
+
+== Audited concepts ==
+
+* [[Algorithm]]
+* [[Causality]]
+* [[Computation]]
+* [[Data structure]]
+* [[Hypothesis]]
+* [[Program (computing)]]
+* [[Programming language]]
+* [[Software]]
+* [[System boundary]]
+* [[Version control]]
+
+Each concept has three reader surfaces:
+
+* Core: <code>Title</code>
+* Simple: <code>Title/Simple</code>
+* Technical: <code>Title/Technical</code>
+
+Total Wave 0 reader surfaces: '''30'''.
+
+== Structural audit ==
+
+All ten Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* retain at least one domain category;
+* contain a source/reference section;
+* link to neighboring concepts where the relation contributes to understanding.
+
+All twenty Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain a source/reference section;
+* intentionally do '''not''' duplicate the Core page's <code>Knowledge object</code> identity;
+* intentionally do '''not''' duplicate the Core page's domain category membership.
+
+This keeps one semantic identity per concept while preserving separately addressable reader-depth surfaces.
+
+== Depth consistency audit ==
+
+The following shared distinctions are preserved across Simple/Core/Technical:
+
+<pre>
+algorithm ≠ program ≠ computation
+program ≠ process
+program ≠ software
+programming language ≠ implementation/runtime
+data structure ≠ abstract data type
+hypothesis ≠ prediction ≠ scientific theory
+scientific hypothesis ≠ statistical hypothesis
+causality ≠ correlation
+system boundary ≠ interface ≠ necessarily physical edge
+version control ≠ backup ≠ full configuration management
+</pre>
+
+Simple pages reduce prerequisites and vocabulary without changing those distinctions.
+
+Technical pages add formalism, implementation constraints, standards, edge cases, or competing models rather than replacing the Core definition.
+
+== Hyperlink audit ==
+
+The Wave 0 graph uses ordinary MediaWiki links for reader navigation and reserves SMW relationships for stronger machine-readable assertions.
+
+Depth-aware convention:
+
+* Core → Core
+* Simple → Simple when available, otherwise Core
+* Technical → Technical when available, otherwise Core
+
+Redlinks to normalized future concepts are retained where they provide honest coverage signals, including subjects such as [[Evidence]], [[Scientific method]], [[Computability]], [[Computational complexity]], [[Abstract data type]], [[Correlation]], [[Intervention]], [[Counterfactual]], [[Provenance]], and [[Configuration management]].
+
+Redlinks are not treated as permission to generate stubs.
+
+== Source audit ==
+
+The rewrite improves the old institutional-source-only pattern by combining source roles:
+
+{| class="wikitable"
+! Source family !! Wave 0 use
+|-
+| NIST / standards || standardized computing/engineering terminology and implementation context
+|-
+| ACM/IEEE-CS || computer-science field structure and programming-language foundations
+|-
+| ISO/IEC/IEEE || systems/software vocabulary and lifecycle context
+|-
+| Stanford Encyclopedia of Philosophy || causation, computation, scientific method, underdetermination
+|-
+| Primary/foundational literature || Turing, Gurevich, Liskov/Zilles, Hoare, Rubin, Rochkind, Tichy, Brooks
+|-
+| Monographs/textbooks || CLRS, Pearl, Winskel, Checkland, Midgley, Hernán/Robins
+|}
+
+Wikipedia and Scholarpedia were used as orientation/discovery sources during capture rather than as substitutes for primary or authoritative evidence.
+
+Direct Scholarpedia coverage for these ten broad Wave 0 concepts was limited; irrelevant same-word matches were not counted as coverage.
+
+== Audit findings and corrections ==
+
+=== 1. Reading-depth identity versus validator ===
+
+'''Finding:''' the existing validator required every Main-space file to belong to a category. That would force <code>/Simple</code> and <code>/Technical</code> derivatives to appear as independent domain members.
+
+'''Correction:''' <code>scripts/validate_v2.py</code> now recognizes Simple/Technical pages using [[Template:Reading depth]] and exempts those derivatives from duplicate category requirements. Core retains canonical identity/category membership.
+
+=== 2. Domain exemplar roles ===
+
+'''Finding:''' the initial rewrite accidentally removed the historical <code>Domain exemplars</code> category from five Wave 0 pages.
+
+'''Correction:''' exemplar role was restored to [[Algorithm]], [[Causality]], [[Hypothesis]], [[System boundary]], and [[Version control]]. Being an exemplar is an architectural role and does not imply that the article must remain small.
+
+=== 3. Research category ===
+
+'''Finding:''' the new capture/compile state documents referenced <code>Category:BITwiki research</code> before the category existed.
+
+'''Correction:''' [[Category:BITwiki research]] was created as a project-facing category for research-state and audit artifacts.
+
+=== 4. Hypothesis technical sourcing ===
+
+'''Finding:''' the statistical-hypothesis and underdetermination sections were broader than the initial reference list.
+
+'''Correction:''' direct NIST statistical-testing and SEP Duhem/underdetermination references were added.
+
+=== 5. Redundant self-link ===
+
+'''Finding:''' <code>System boundary/Technical</code> contained a redundant depth self-link.
+
+'''Correction:''' converted to ordinary prose.
+
+=== 6. Substrate directory semantics ===
+
+'''Finding:''' the substrate audit originally treated each <code>Main/Title/</code> directory as an architectural module and required a local README. Reader-depth directories exist only because repository paths project MediaWiki slash titles; ten READMEs would add transport noise without describing a distinct architecture.
+
+'''Correction:''' <code>scripts/audit_substrate.py</code> now recognizes a depth directory only when a sibling Core page exists, its files are limited to approved Simple/Technical filenames, each derivative actually uses [[Template:Reading depth]], and no nested directory is present. Other undocumented directories remain errors.
+
+=== 7. Deployment/staging title mapping ===
+
+'''Finding:''' slash-depth titles require confirmation that filesystem paths map to the intended MediaWiki titles.
+
+'''Verified:'''
+
+<pre>
+Main/Algorithm.mediawiki            → Algorithm
+Main/Algorithm/Simple.mediawiki     → Algorithm/Simple
+Main/Algorithm/Technical.mediawiki  → Algorithm/Technical
+</pre>
+
+Both <code>scripts/deployment_plan.py</code> and <code>staging/compiler/build.py</code> preserve the slash title.
+
+== Domain exemplar preservation ==
+
+Wave 0 Core pages retain the following exemplar roles:
+
+* Computer science → [[Algorithm]]
+* Philosophy → [[Causality]]
+* Science → [[Hypothesis]]
+* Systems science → [[System boundary]]
+* Technology → [[Version control]]
+
+The existing exemplars in Biology, Chemistry, Electronics, Energy, Engineering, Mathematics, Medicine, and Physics remain outside this wave.
+
+== Audit acceptance criteria ==
+
+Wave 0 is ready to leave Phase 3 when:
+
+# all 30 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# Simple/Core/Technical definitions do not materially contradict;
+# source roles are traceable and appropriate to the claim type;
+# normalized cross-links and depth navigation resolve as designed;
+# deployment maps slash paths correctly;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, workflow, deployment-plan, and Main-space audits pass;
+# the staging compiler builds the complete projection.
+
+GitHub PR checks are the executable evidence for the final criteria. The draft review surface for this wave is PR #16.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 0 context capture]]
+        ↓
+[[BITwiki:Wave 0 compiled context]]
+        ↓
+[[BITwiki:Wave 0 context audit]]
+</pre>
+
+== Release audit update — 2026-09-19 ==
+A final pre-merge stacked audit found no Markdown/MediaWiki rendering leakage in Wave 0 reader surfaces.
+
+Two apparently resolvable redlinks were reviewed and deliberately left unresolved:
+
+* [[Model]] is broader than [[Scientific model]];
+* [[Representation]] is broader than [[Knowledge representation]].
+
+They remain future coverage signals rather than being collapsed into narrower downstream concepts.
+
+Wave 0 remains '''10 concepts / 30 reader surfaces''' with no semantic-definition changes required by the release audit.
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

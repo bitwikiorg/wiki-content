@@ -1,0 +1,124 @@
+{{Source status|status=Wave 12 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 12 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 12 creates a biology/bioinformatics bridge from genetics and genome-scale biology through sequence data, computational analysis, evolutionary inference, systems biology, and reproducible computational practice.
+
+== Normalized scope ==
+
+# [[Genetics]]
+# [[Genomics]]
+# [[Bioinformatics]]
+# [[Biological sequence]]
+# [[Sequence alignment]]
+# [[Biological database]]
+# [[Sequence annotation]]
+# [[Phylogenetics]]
+# [[Systems biology]]
+# [[Reproducible computational research]]
+
+== Title decisions ==
+
+* [[Genetics]], [[Genomics]], [[Bioinformatics]], [[Biological sequence]], [[Sequence alignment]], [[Biological database]], [[Sequence annotation]], [[Phylogenetics]], and [[Systems biology]] remain established broad public titles.
+* '''[[Reproducible bioinformatics workflow]] → [[Reproducible computational research]]'''. The narrower requested title describes one domain-specific instance. The canonical page should capture the durable cross-domain computational practice while retaining bioinformatics as a major use case.
+* [[Reproducible computational research]] remains distinct from existing [[Reproducibility]]: the former is a method/practice layer; the latter is the general scientific property/goal.
+
+== Domain decision ==
+
+No new controlled Domain is introduced.
+
+Wave 12 uses:
+
+* Biology
+* Science
+* Computer science
+* Mathematics
+* Systems science
+
+== Dependency graph ==
+
+<pre>
+Genetics
+ └→ Genomics
+      ├→ Bioinformatics
+      │    ├→ Biological sequence
+      │    │    ├→ Sequence alignment
+      │    │    └→ Sequence annotation
+      │    ├→ Biological database
+      │    └→ Reproducible computational research
+      ├→ Phylogenetics
+      └→ Systems biology
+</pre>
+
+This is an explanatory graph, not a strict subclass hierarchy.
+
+== Required non-equivalences ==
+
+<pre>
+genetics ≠ genomics
+gene influence ≠ genetic determinism
+genomics ≠ sequencing only
+bioinformatics ≠ sequence analysis only
+bioinformatics ≠ any computer use in biology
+biological sequence ≠ physical molecule
+sequence ≠ annotation
+alignment ≠ proof of homology
+sequence similarity ≠ homology
+biological database ≠ static file collection
+database record ≠ verified truth
+predicted annotation ≠ experimentally validated function
+phylogenetic tree ≠ directly observed history
+gene tree ≠ species tree
+systems biology ≠ network diagram
+reproducible computational research ≠ general reproducibility
+reproducibility ≠ replication
+open code ≠ reproducible workflow
+</pre>
+
+== Source families ==
+
+* NHGRI / NIH — genetics and genomics definitions.
+* NCBI / GenBank / Bookshelf — bioinformatics, biological sequences, alignment, databases, annotation.
+* EMBL-EBI — current bioinformatics and sequence-analysis practice/resources.
+* Yang & Rannala and statistical phylogenetics literature — phylogenetic inference and uncertainty.
+* NIH/NIGMS and systems-biology literature — dynamic integrative biological systems.
+* Sandve et al.; Piccolo & Frampton; FAIR principles; Nature Methods — reproducible computational research.
+
+== Cross-wave links ==
+
+* [[Causality]], [[Probability]], [[Uncertainty]], [[Measurement]], and [[Scientific model]] ground biological inference.
+* [[Database]], [[Metadata]], [[Provenance]], [[Algorithm]], [[Software]], and [[Version control]] ground bioinformatics.
+* [[Information]], [[Network]], [[Feedback]], [[Complex system]], [[System boundary]], and [[Adaptation (systems)]] connect to systems biology.
+* [[Reproducibility]], [[Replication]], and [[Validation]] remain distinct from the computational practices introduced here.
+
+== Future normalized redlinks ==
+
+[[Gene]], [[Genome]], [[Allele]], [[Mutation]], [[Genotype]], [[Phenotype]], [[Heritability]], [[DNA]], [[RNA]], [[Protein]], [[Nucleotide]], [[Amino acid]], [[Genome assembly]], [[Variant calling]], [[Sequence similarity]], [[Homology (biology)]], [[Pairwise sequence alignment]], [[Multiple sequence alignment]], [[BLAST]], [[GenBank]], [[UniProt]], [[Gene ontology]], [[Evidence code]], [[Phylogenetic tree]], [[Species tree]], [[Gene tree]], [[Molecular evolution]], [[Transcriptomics]], [[Proteomics]], [[Workflow management system]], [[Research software]], [[Computational environment]], [[FAIR data]].
+
+These are coverage signals, not authorization for stubs.
+
+== Request-lifecycle decision ==
+
+The seven existing near-term Bioinformatics requests are satisfied by this wave:
+
+* [[Biological sequence]]
+* [[Sequence alignment]]
+* [[Biological database]]
+* [[Sequence annotation]]
+* [[Genomics]]
+* [[Phylogenetics]]
+* “Reproducible bioinformatics workflow” → [[Reproducible computational research]]
+
+== Phase-1 decisions ==
+
+# Keep Wave 12 at 10 canonical concepts.
+# Normalize the reproducible-bioinformatics request into a broader computational-research concept.
+# Preserve genetics/genomics, sequence/annotation, similarity/homology, gene-tree/species-tree, and reproducibility/replication boundaries.
+# Satisfy the existing Bioinformatics request queue with canonical pages and provenance.
+# Do not create new Domains.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

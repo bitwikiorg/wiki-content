@@ -1,0 +1,192 @@
+{{Source status|status=Wave 12 Phase 3 context audit|note=Audit state for the Wave 12 biology/bioinformatics capture/compile/write cycle.}}
+= Wave 12 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Genetics]]
+# [[Genomics]]
+# [[Bioinformatics]]
+# [[Biological sequence]]
+# [[Sequence alignment]]
+# [[Biological database]]
+# [[Sequence annotation]]
+# [[Phylogenetics]]
+# [[Systems biology]]
+# [[Reproducible computational research]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 12 reader surfaces: '''30'''.
+
+== Structural audit ==
+
+All 10 Core pages use [[Template:Knowledge object]], [[Template:Reading depth]], source status, references, controlled Domain values, and Core-owned category/semantic identity.
+
+All 20 Simple/Technical derivatives use [[Template:Reading depth]], declare source status, contain sources/references, and do not duplicate Core Knowledge object/category identity.
+
+== Title / identity audit ==
+
+The existing request [[Reproducible bioinformatics workflow]] is normalized to [[Reproducible computational research]].
+
+This is not a duplicate of [[Reproducibility]]:
+
+<pre>
+Reproducibility
+= general property/goal that a result can be reproduced under stated conditions
+
+Reproducible computational research
+= concrete practices and artifacts for regenerating computational results
+</pre>
+
+No other Wave 12 title requires qualification.
+
+== Domain audit ==
+
+No new controlled Domain is required.
+
+== Genetics / genomics audit ==
+
+[[Genetics]] retains heredity/gene/variation scope.
+
+[[Genomics]] retains genome-scale scope and is not treated as a synonym for genetics or genome sequencing.
+
+Neither page adopts deterministic language implying that genetic influence alone fixes complex traits.
+
+== Bioinformatics / data audit ==
+
+[[Bioinformatics]] remains an interdisciplinary computational-biology field rather than “anything done with computers in biology.”
+
+[[Biological sequence]] separates symbolic sequence data from the physical molecule and from annotation.
+
+[[Biological database]] separates database infrastructure/records from factual truth and records version/provenance as scientific concerns.
+
+[[Sequence annotation]] separates predicted, curated, transferred, and experimentally supported claims.
+
+== Alignment / phylogenetics audit ==
+
+[[Sequence alignment]] explicitly preserves:
+
+<pre>
+alignment ≠ homology
+similarity ≠ homology
+best score ≠ guaranteed biological truth
+</pre>
+
+[[Phylogenetics]] treats trees as inferred models with uncertainty. Gene-tree/species-tree non-equivalence remains explicit.
+
+== Systems-biology audit ==
+
+[[Systems biology]] integrates experiment and quantitative/computational models of biological interactions and dynamics. It is not defined by network visualization alone.
+
+The page reuses [[Network]], [[Feedback]], [[Complex system]], [[System boundary]], and [[Scientific model]] without redefining them.
+
+== Reproducible-computation audit ==
+
+[[Reproducible computational research]] is deliberately broader than bioinformatics while remaining a strong bridge back to it.
+
+Required artifacts/practices include identified data, code/workflow versions, parameters/seeds, dependencies/environment, execution order, provenance, validation and documentation.
+
+The page explicitly rejects:
+
+<pre>
+open code alone = reproducible analysis
+computational reproducibility = independent replication
+bit-for-bit identity = only valid reproducibility criterion
+</pre>
+
+== Request-lifecycle audit ==
+
+The seven near-term Bioinformatics request records transition from requested to satisfied.
+
+Six map directly to same-title canonical pages.
+
+“Reproducible bioinformatics workflow” maps to [[Reproducible computational research]] with the normalization recorded rather than creating a redundant narrower identity.
+
+== Cross-wave audit ==
+
+Wave 12 connects cleanly to the prior corpus:
+
+* [[Causality]], [[Probability]], [[Measurement]], [[Uncertainty]], and [[Scientific model]] remain general inference foundations;
+* [[Algorithm]], [[Database]], [[Metadata]], [[Software]], [[Version control]], and [[Provenance]] remain computing/data foundations;
+* [[Information]], [[Network]], [[Feedback]], [[Complex system]], and [[Adaptation (systems)]] retain their general systems meanings;
+* [[Reproducibility]], [[Replication]], and [[Validation]] are reused rather than duplicated.
+
+No local personal research project or one biological subfield defines a public concept.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| NHGRI / NIH || genetics and genomics
+|-
+| NCBI / GenBank / Bookshelf || sequences, databases, annotation, alignment, bioinformatics
+|-
+| EMBL-EBI || contemporary bioinformatics/sequence-analysis practice
+|-
+| Yang & Rannala / statistical phylogenetics || phylogenetic inference and uncertainty
+|-
+| NIH/NIGMS / systems-biology literature || systems biology
+|-
+| Sandve et al.; Piccolo & Frampton || computational reproducibility practice
+|-
+| Wilkinson et al. FAIR principles || data/workflow stewardship and reusable research objects
+|-
+| Nature Methods 2021 || computational reproducibility standards in life science
+|}
+
+== Acceptance criteria ==
+
+Wave 12 is ready to leave Phase 3 when:
+
+# all 30 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# reproducible-workflow normalization remains intact;
+# seven Bioinformatics requests are satisfied with canonical links;
+# controlled Domains pass;
+# genetics/genomics, sequence/annotation, alignment/homology and gene-tree/species-tree boundaries remain explicit;
+# reproducible computation remains distinct from reproducibility/replication;
+# derivatives remain category/identity-exempt;
+# complete V2 release gates and staging pass.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 12 context capture]]
+        ↓
+[[BITwiki:Wave 12 compiled context]]
+        ↓
+[[BITwiki:Wave 12 context audit]]
+</pre>
+
+== Release validation — 2026-09-19 ==
+
+PR #30 executed the established Wave release gates after all 30 reader surfaces and the reproducible-workflow normalization were present.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+The seven Bioinformatics request records also pass the request/canonical lifecycle checks in satisfied state.
+
+No Domain expansion or workflow architecture repair was required.
+
+This completion-state bookkeeping commit must re-pass the same release gates before merge.
+
+'''Current assessment: Wave 12 is semantically and structurally audited and has passed its release gates; merge remains conditional on final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

@@ -1,0 +1,37 @@
+{{Source status|status=Wave 12 compiled article|note=Public concept compiled from the Wave 12 biology/bioinformatics bridge context.}}
+{{Knowledge object
+ |title=Reproducible computational research
+ |entity_type=Concept
+ |domain=Science, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 12 compiled context
+}}
+{{Reading depth|base=Reproducible computational research|current=Core}}
+
+= Reproducible computational research =
+
+== Overview ==
+'''Reproducible computational research''' is the practice of organizing computational analyses so that the reported results can be regenerated from identified data, code, parameters, software dependencies, and execution steps under documented conditions.
+
+The existing general concept of reproducibility describes a property or goal of scientific work. Reproducible computational research focuses on the concrete computational artifacts and workflow practices needed to support that goal.
+
+Core practices include versioning code and data references, recording parameters and random seeds, automating steps, preserving dependency/environment information, tracking provenance, testing workflows, documenting execution order, and archiving persistent research objects when possible.
+
+Exact bit-for-bit replay is not always possible or scientifically necessary. Hardware, nondeterministic algorithms, external services, restricted data, changing databases, and floating-point behavior can require a defined tolerance or a distinction between computational repeatability and independent scientific replication.
+
+== Boundaries ==
+* reproducible computational research ≠ general reproducibility by identity
+* reproducibility ≠ replication
+* open code alone ≠ reproducible workflow
+
+== Related concepts ==
+[[Reproducibility]], [[Replication]], [[Provenance]], [[Version control]], [[Software]], [[Metadata]], [[Validation]], [[Bioinformatics]], and [[Scientific method]] provide the research-workflow context.
+
+== References ==
+* Geir K. Sandve et al., “Ten Simple Rules for Reproducible Computational Research”, ''PLOS Computational Biology'' 9(10):e1003285 (2013), DOI 10.1371/journal.pcbi.1003285.
+* Stephen R. Piccolo & Michael B. Frampton, “Tools and techniques for computational reproducibility”, ''GigaScience'' 5:30 (2016), DOI 10.1186/s13742-016-0135-4.
+* Mark D. Wilkinson et al., “The FAIR Guiding Principles for scientific data management and stewardship”, ''Scientific Data'' 3:160018 (2016), DOI 10.1038/sdata.2016.18.
+* Nature Methods, “Reproducibility standards for machine learning in the life sciences” (2021).
+
+[[Category:Science]]
+[[Category:Computer science]]

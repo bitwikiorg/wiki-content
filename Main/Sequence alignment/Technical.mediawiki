@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Sequence alignment]].}}
+{{Reading depth|base=Sequence alignment|current=Technical}}
+= Sequence alignment — Technical =
+
+For pairwise alignment, dynamic programming optimizes a score over substitutions and gaps. A simple global recurrence is <pre>F(i,j)=max{F(i-1,j-1)+s(x_i,y_j), F(i-1,j)-g, F(i,j-1)-g}</pre>with boundary conditions. Local alignment modifies the recurrence to allow restart at zero. Probabilistic/HMM approaches represent related assumptions differently.
+
+== Modeling / evidence cautions ==
+* alignment ≠ proof of homology
+* sequence similarity ≠ homology by definition
+* highest score ≠ biologically correct alignment under every model
+
+== References ==
+* Stephen F. Altschul & Mihai Pop, “Sequence Alignment”, ''Handbook of Discrete and Combinatorial Mathematics'' (2017), via NCBI Bookshelf.
+* NCBI BLAST Glossary, “alignment”.
+* EMBL-EBI, ''A guide to sequence analysis tools'', reviewed February 2026.

@@ -289,7 +289,30 @@ The cross-wave audit is complete only when:
 # staging projection builds successfully;
 # this audit is merged into <code>main</code>.
 
-'''Current assessment: editorial cross-wave audit and corrections are complete; repository/CI release validation remains pending.'''
+== Release validation — 2026-09-19 ==
+
+PR #23 ran the established release gates on the corrected combined corpus.
+
+The audited head passed:
+
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 classification inventories;
+* staging frontend validation;
+* canonical repository-architecture validation;
+* staging projection build and generated-artifact verification.
+
+No concept-count change, Domain change, or duplicate semantic identity was required.
+
+This bookkeeping commit must re-pass the same gates before merge.
+
+'''Current assessment: the post-merge Waves 4–6 cross-wave audit is complete and has passed its release gates; merge remains conditional only on final-head CI repeat.'''
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

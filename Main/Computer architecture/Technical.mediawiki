@@ -1,0 +1,39 @@
+{{Source status|status=Technical depth derivative|note=Advanced ISA/microarchitecture surface.}}
+{{Reading depth|base=Computer architecture|current=Technical}}
+= Computer architecture — Technical =
+
+== ISA boundary ==
+The ISA defines an abstract machine visible to low-level software:
+
+<pre>
+machine state
++ instructions
++ memory/exception semantics
+→ architectural behavior
+</pre>
+
+Microarchitectures may implement this behavior using very different internal mechanisms.
+
+== Performance ==
+A rough decomposition is:
+
+<pre>
+execution time
+≈ instruction count × cycles/instruction × cycle time
+</pre>
+
+but modern systems complicate each factor through caches, speculation, parallelism and heterogeneous units.
+
+== Memory hierarchy ==
+Caches exploit temporal and spatial locality.
+
+Latency, bandwidth, associativity, coherence and consistency policies interact with workload behavior.
+
+== Parallel architecture ==
+Architectural models include multicore shared memory, SIMD/vector, GPUs, NUMA systems and accelerators.
+
+Performance depends on available parallelism, synchronization, locality and data movement.
+
+== References ==
+* Hennessy & Patterson.
+* computer architecture research literature.

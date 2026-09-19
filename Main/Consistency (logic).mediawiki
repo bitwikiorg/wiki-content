@@ -1,0 +1,65 @@
+{{Source status|status=Wave 5 compiled article|note=Logical consistency concept grounded in proof theory and model theory.}}
+{{Knowledge object
+ |title=Consistency (logic)
+ |entity_type=Concept
+ |domain=Mathematics, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 5 compiled context
+}}
+{{Reading depth|base=Consistency (logic)|current=Core}}
+
+= Consistency (logic) =
+
+== Overview ==
+'''Logical consistency''' is a property of a set of statements or formal system indicating that contradiction or triviality is not derivable under the relevant logic.
+
+The exact formulation depends on the logic and proof system.
+
+== Syntactic consistency ==
+In a classical setting, a theory T is syntactically consistent if there is no formula φ such that:
+
+<pre>
+T ⊢ φ
+and
+T ⊢ ¬φ
+</pre>
+
+Equivalent formulations may define consistency by requiring that not every formula be derivable.
+
+== Semantic consistency ==
+A set of statements is satisfiable when there is a model in which they are all true.
+
+Soundness guarantees that satisfiability implies syntactic consistency.
+
+For classical first-order logic, completeness also connects consistency to satisfiability.
+
+== Consistency is not truth ==
+A consistent theory can still be false about the world.
+
+Consistency only rules out a particular kind of internal logical failure.
+
+Therefore:
+
+<pre>
+consistency ≠ truth
+</pre>
+
+== Consistency and completeness ==
+Logical consistency is also distinct from completeness.
+
+A consistent formal theory may leave some statements undecided.
+
+Gödel's incompleteness theorems show strong limits on sufficiently expressive formal systems containing arithmetic.
+
+== Relative consistency ==
+A consistency proof usually relies on some background theory.
+
+Showing that theory A has a model if theory B is consistent establishes relative consistency rather than an assumption-free guarantee.
+
+== References ==
+* Encyclopedia of Mathematics, “Consistency”.
+* Open Logic Project.
+* Gödel completeness/incompleteness literature.
+
+[[Category:Mathematics]]
+[[Category:Philosophy]]

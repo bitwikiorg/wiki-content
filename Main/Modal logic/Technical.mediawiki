@@ -1,0 +1,53 @@
+{{Source status|status=Technical depth derivative|note=Advanced Kripke/modal-system surface.}}
+{{Reading depth|base=Modal logic|current=Technical}}
+= Modal logic — Technical =
+
+== Kripke frame ==
+A frame is:
+
+<pre>
+F = (W,R)
+</pre>
+
+where W is a set of worlds/states and R is an accessibility relation.
+
+A model adds a valuation V.
+
+== Semantics ==
+For model M:
+
+<pre>
+M,w ⊨ □φ
+iff for every v with wRv, M,v ⊨ φ
+</pre>
+
+and:
+
+<pre>
+M,w ⊨ ◇φ
+iff there exists v with wRv and M,v ⊨ φ
+</pre>
+
+== Frame conditions ==
+Different axiom systems correspond to properties of R.
+
+Examples:
+
+* T — reflexivity;
+* S4 — reflexivity + transitivity;
+* S5 — equivalence-like accessibility in standard presentations.
+
+Correspondence results connect syntax to frame structure.
+
+== Modal variants ==
+Epistemic, temporal, deontic, dynamic, provability, and description logics reuse modal techniques with different interpretations and axioms.
+
+== Expressive/computational tradeoffs ==
+Modal logics often balance greater expressive power against decidability and complexity.
+
+Some fragments have efficient decision procedures; richer combinations can become difficult or undecidable.
+
+== References ==
+* modal logic textbooks.
+* SEP modal/epistemic logic.
+* Open Logic Project.

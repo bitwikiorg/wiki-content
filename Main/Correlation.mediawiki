@@ -1,0 +1,77 @@
+{{Source status|status=Wave 5 compiled article|note=Correlation concept grounded in statistical association and dependence literature.}}
+{{Knowledge object
+ |title=Correlation
+ |entity_type=Concept
+ |domain=Mathematics, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 5 compiled context
+}}
+{{Reading depth|base=Correlation|current=Core}}
+
+= Correlation =
+
+== Overview ==
+'''Correlation''' describes statistical association between variables.
+
+In common usage, the term often refers to Pearson's correlation coefficient, which measures linear association.
+
+Correlation is broader than Pearson correlation.
+
+== Pearson correlation ==
+For variables X and Y, population Pearson correlation is:
+
+<pre>
+ρ = Cov(X,Y) / (σ_X σ_Y)
+</pre>
+
+when the standard deviations are finite and nonzero.
+
+It ranges from -1 to 1.
+
+Values near ±1 indicate strong linear association; values near 0 indicate weak linear association.
+
+== Nonlinear relationships ==
+A Pearson correlation near zero does not imply there is no relationship.
+
+Strong nonlinear dependence can exist with zero linear correlation.
+
+Rank correlations and other dependence measures capture different structures.
+
+== Correlation and causation ==
+Correlation alone does not establish causation.
+
+Association can arise from:
+
+* direct causal influence;
+* reverse causation;
+* common causes;
+* selection;
+* measurement structure;
+* chance;
+* mixtures of these mechanisms.
+
+Causal claims require additional assumptions, design, or evidence.
+
+== Correlation and independence ==
+Independence generally implies zero covariance/correlation when moments exist.
+
+The converse is false in general.
+
+Therefore:
+
+<pre>
+zero correlation ≠ independence
+</pre>
+
+== Data issues ==
+Correlation can be sensitive to outliers, range restriction, nonlinearity, mixtures, time trends, and measurement error.
+
+Scatter plots and domain context should accompany coefficient interpretation.
+
+== References ==
+* NIST statistical reference material on correlation and scatter plots.
+* standard statistics texts.
+* causal-inference literature for the correlation/causation distinction.
+
+[[Category:Mathematics]]
+[[Category:Science]]

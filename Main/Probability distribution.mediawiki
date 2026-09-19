@@ -1,0 +1,68 @@
+{{Source status|status=Wave 5 compiled article|note=Probability-distribution concept grounded in standard probability and NIST statistics references.}}
+{{Knowledge object
+ |title=Probability distribution
+ |entity_type=Concept
+ |domain=Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 5 compiled context
+}}
+{{Reading depth|base=Probability distribution|current=Core}}
+
+= Probability distribution =
+
+== Overview ==
+A '''probability distribution''' describes how probability is allocated across the possible values of a random variable.
+
+Distributions can be discrete, continuous, mixed, univariate, or multivariate.
+
+== Discrete distributions ==
+For a discrete random variable X, a probability mass function assigns:
+
+<pre>
+p(x) = P(X = x)
+</pre>
+
+with:
+
+<pre>
+p(x) ≥ 0
+Σ p(x) = 1
+</pre>
+
+Examples include Bernoulli, binomial, and Poisson distributions.
+
+== Continuous distributions ==
+For a continuous random variable, a probability density function f(x) can satisfy:
+
+<pre>
+P(a ≤ X ≤ b) = ∫[a,b] f(x) dx
+</pre>
+
+A density value is not itself the probability that X equals exactly that point.
+
+== Cumulative distribution ==
+The cumulative distribution function is:
+
+<pre>
+F(x) = P(X ≤ x)
+</pre>
+
+Every real-valued random variable has a CDF, including discrete and continuous cases.
+
+== Distribution and data ==
+A theoretical distribution is a model.
+
+An observed histogram or empirical distribution summarizes data.
+
+Fitting a named distribution does not prove that it is the true data-generating process.
+
+== Parameters ==
+Distribution families can have parameters controlling location, scale, shape, rate, or dependence.
+
+Statistical inference estimates or reasons about these parameters from data.
+
+== References ==
+* NIST/SEMATECH Engineering Statistics Handbook, “Probability Distributions”.
+* standard probability and statistics texts.
+
+[[Category:Mathematics]]

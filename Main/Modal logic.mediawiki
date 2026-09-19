@@ -1,0 +1,77 @@
+{{Source status|status=Wave 5 compiled article|note=Modal-logic concept grounded in philosophical and mathematical modal logic.}}
+{{Knowledge object
+ |title=Modal logic
+ |entity_type=Concept
+ |domain=Philosophy, Mathematics, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 5 compiled context
+}}
+{{Reading depth|base=Modal logic|current=Core}}
+
+= Modal logic =
+
+== Overview ==
+'''Modal logic''' extends logical languages with operators that express modes such as necessity and possibility.
+
+Related modal systems formalize knowledge, belief, time, obligation, action, and other intensional notions.
+
+== Basic operators ==
+In alethic modal logic:
+
+<pre>
+□P  — necessarily P
+◇P  — possibly P
+</pre>
+
+These operators are not probability values.
+
+“Necessarily” does not mean “very likely”.
+
+== Possible-world semantics ==
+Kripke semantics evaluates modal formulas across possible worlds or states connected by an accessibility relation.
+
+A typical interpretation is:
+
+<pre>
+□P is true at world w
+iff P is true at every world accessible from w
+</pre>
+
+and:
+
+<pre>
+◇P is true at w
+iff P is true at some accessible world
+</pre>
+
+== Modal systems ==
+Different constraints on accessibility produce different modal logics.
+
+Well-known normal systems include K, T, S4, and S5.
+
+No single modal system is the definition of modal logic as a field.
+
+== Other modalities ==
+Modal techniques support:
+
+* epistemic logic — knowledge;
+* doxastic logic — belief;
+* temporal logic — time;
+* deontic logic — obligation/permission;
+* dynamic logic — action/program change.
+
+The same formal notation can have different interpretations.
+
+== Modal logic and ordinary language ==
+Natural-language modal expressions involve context, scope, modality type, and pragmatic effects.
+
+Formal modal systems idealize these phenomena rather than reproducing every feature of ordinary modal language.
+
+== References ==
+* standard modal-logic texts.
+* Stanford Encyclopedia of Philosophy, modal and epistemic logic entries.
+* Open Logic Project modal-logic materials.
+
+[[Category:Philosophy]]
+[[Category:Mathematics]]
+[[Category:Computer science]]

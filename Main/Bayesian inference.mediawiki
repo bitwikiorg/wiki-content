@@ -1,0 +1,75 @@
+{{Source status|status=Wave 5 compiled article|note=Bayesian-inference concept grounded in probability, statistics, and Bayesian epistemology.}}
+{{Knowledge object
+ |title=Bayesian inference
+ |entity_type=Concept
+ |domain=Mathematics, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 5 compiled context
+}}
+{{Reading depth|base=Bayesian inference|current=Core}}
+
+= Bayesian inference =
+
+== Overview ==
+'''Bayesian inference''' is a framework for updating uncertainty about hypotheses, parameters, or models by combining prior information with a likelihood model to obtain a posterior distribution.
+
+== Bayes' rule ==
+For hypothesis H and evidence E:
+
+<pre>
+P(H | E)
+= P(E | H) P(H) / P(E)
+</pre>
+
+where:
+
+* P(H) is the prior probability;
+* P(E|H) is the likelihood term;
+* P(H|E) is the posterior probability.
+
+== Prior ==
+The prior represents uncertainty before the current evidence is incorporated.
+
+Priors can be based on previous data, scientific knowledge, hierarchical structure, regularization goals, symmetry, or subjective judgment.
+
+Therefore:
+
+<pre>
+prior ≠ arbitrary guess by definition
+</pre>
+
+== Likelihood ==
+The likelihood describes how compatible observed data are with parameter/model values under the assumed data-generating model.
+
+It is not the posterior probability of those values.
+
+== Posterior ==
+The posterior combines prior and likelihood information.
+
+It can be used to estimate parameters, make predictions, compare models, or support decisions.
+
+== Prediction ==
+Bayesian prediction averages over posterior uncertainty:
+
+<pre>
+P(new data | observed data)
+= ∫ P(new data | θ) P(θ | observed data) dθ
+</pre>
+
+== Bayes' theorem and Bayesian inference ==
+Bayes' theorem is a probability identity.
+
+Bayesian inference is a larger modeling framework requiring choices about model structure, likelihood, prior, computation, checking, and interpretation.
+
+== Limitations ==
+Bayesian results depend on the adequacy of the model and prior assumptions.
+
+A precise posterior from a poor model is not automatically reliable.
+
+== References ==
+* Stanford Encyclopedia of Philosophy, “Bayesian Epistemology”.
+* standard Bayesian statistics texts.
+* Stanford Encyclopedia of Philosophy, “Inductive Logic”.
+
+[[Category:Mathematics]]
+[[Category:Philosophy]]

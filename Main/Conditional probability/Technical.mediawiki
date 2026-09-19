@@ -1,0 +1,54 @@
+{{Source status|status=Technical depth derivative|note=Advanced conditional-probability surface.}}
+{{Reading depth|base=Conditional probability|current=Technical}}
+= Conditional probability — Technical =
+
+== Event conditioning ==
+For P(B)>0:
+
+<pre>
+P(A|B)=P(A∩B)/P(B)
+</pre>
+
+This defines a new probability measure over A for fixed B.
+
+== Chain rule ==
+Repeated conditioning gives:
+
+<pre>
+P(A₁,...,Aₙ)
+= Πᵢ P(Aᵢ | A₁,...,Aᵢ₋₁)
+</pre>
+
+for a compatible ordering.
+
+== Law of total probability ==
+For partition {Bᵢ}:
+
+<pre>
+P(A)=Σᵢ P(A|Bᵢ)P(Bᵢ)
+</pre>
+
+which supplies the denominator in many applications of Bayes' theorem.
+
+== Measure-zero conditioning ==
+For continuous variables, conditioning on exact values often requires regular conditional distributions rather than the elementary ratio definition.
+
+== Causal contrast ==
+Observational conditioning:
+
+<pre>
+P(Y|X=x)
+</pre>
+
+differs conceptually from interventional quantities such as:
+
+<pre>
+P(Y|do(X=x))
+</pre>
+
+in causal modeling.
+
+== References ==
+* probability theory texts.
+* Bayesian-statistical literature.
+* causal-inference literature.

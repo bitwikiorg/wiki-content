@@ -1,0 +1,72 @@
+{{Source status|status=Wave 5 compiled article|note=Belief-revision concept grounded in AGM and contemporary belief-change literature.}}
+{{Knowledge object
+ |title=Belief revision
+ |entity_type=Concept
+ |domain=Philosophy, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 5 compiled context
+}}
+{{Reading depth|base=Belief revision|current=Core}}
+
+= Belief revision =
+
+== Overview ==
+'''Belief revision''' is the formal study of how a body of beliefs should change when information is added, removed, or conflicts with existing commitments.
+
+The field is central to formal epistemology and knowledge representation.
+
+== Belief states ==
+A common formal representation treats an agent's beliefs as sentences in a logical language.
+
+The classic AGM framework represents a belief state as a logically closed belief set.
+
+Other approaches use finite or non-closed belief bases.
+
+== Expansion ==
+'''Expansion''' adds a new belief without removing old beliefs.
+
+If the new belief conflicts with the existing set, simple expansion can produce inconsistency.
+
+== Contraction ==
+'''Contraction''' removes commitment to a specified belief while changing the remaining state as little as the framework allows.
+
+== Revision ==
+'''Revision''' incorporates new information while restoring or preserving consistency when the input conflicts with existing beliefs.
+
+A central AGM construction relates revision to contraction through the Levi identity.
+
+== Minimal change ==
+Belief-revision systems try to preserve as much prior information as possible while satisfying rationality constraints.
+
+How minimal change should be defined is a major theoretical question.
+
+== Beyond AGM ==
+Contemporary belief-change research includes:
+
+* belief bases;
+* iterated revision;
+* non-prioritized revision;
+* merging multiple sources;
+* dynamic epistemic approaches;
+* connections to probabilities.
+
+AGM is foundational but is not the whole field.
+
+== Belief revision and Bayesian inference ==
+AGM-style revision primarily models full beliefs.
+
+[[Bayesian inference]] models graded probabilities or credences.
+
+The frameworks can be connected, but:
+
+<pre>
+belief revision ≠ Bayesian conditionalization
+</pre>
+
+== References ==
+* Stanford Encyclopedia of Philosophy, “Logic of Belief Revision”.
+* Alchourrón, Gärdenfors & Makinson (1985).
+* formal belief-change literature.
+
+[[Category:Philosophy]]
+[[Category:Computer science]]

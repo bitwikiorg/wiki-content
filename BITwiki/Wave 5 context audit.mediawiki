@@ -1,0 +1,396 @@
+{{Source status|status=Wave 5 Phase 3 context audit|note=Audit state for the Wave 5 logic/probability capture/compile/write cycle.}}
+= Wave 5 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Logic]]
+# [[Deductive reasoning]]
+# [[Inductive reasoning]]
+# [[Abductive reasoning]]
+# [[Argument]]
+# [[Proof]]
+# [[Conjecture]]
+# [[Contradiction]]
+# [[Consistency (logic)]]
+# [[Probability]]
+# [[Probability distribution]]
+# [[Correlation]]
+# [[Conditional probability]]
+# [[Bayesian inference]]
+# [[Belief revision]]
+# [[Propositional logic]]
+# [[First-order logic]]
+# [[Modal logic]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 5 reader surfaces: '''54'''.
+
+== Structural audit ==
+
+All eighteen Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* contain references;
+* use controlled Domain values;
+* contain internal links;
+* own category/semantic identity.
+
+All thirty-six Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain sources/references;
+* do not duplicate Core <code>Knowledge object</code>;
+* do not duplicate Core category identity.
+
+A complete 54-surface read found no Markdown blockquote syntax or Markdown code fences.
+
+== Title / identity audit ==
+
+Two provisional backlog titles were normalized during Phase 1:
+
+* [[Predicate logic]] → [[First-order logic]]
+* [[Consistency]] → [[Consistency (logic)]]
+
+The first change makes the intended formal boundary explicit: first-order quantification over individuals rather than an ambiguous “predicate logic” umbrella.
+
+The second prevents collision with durable non-logical notions of consistency in databases, distributed systems, data, behavior, and ordinary language.
+
+No duplicate [[Inference]] page was created because [[Inference]] is already canonical from Wave 2.
+
+== Domain audit ==
+
+No new controlled Domain was required.
+
+Wave 5 correctly uses existing Domains:
+
+* Philosophy;
+* Mathematics;
+* Computer science;
+* Cognitive science where reasoning is substantively psychological;
+* Science for correlation/statistical-method overlap.
+
+No “Logic” Domain was introduced.
+
+== Semantic-kernel audit ==
+
+The compiled dependency graph remains coherent:
+
+<pre>
+Logic
+ ├→ Argument
+ │    ├→ Deductive reasoning
+ │    ├→ Inductive reasoning
+ │    └→ Abductive reasoning
+ ├→ Contradiction
+ ├→ Consistency (logic)
+ ├→ Propositional logic
+ ├→ First-order logic
+ └→ Modal logic
+
+Mathematics
+ ├→ Proof
+ └→ Conjecture
+
+Probability
+ ├→ Conditional probability
+ ├→ Probability distribution
+ └→ Bayesian inference
+
+Correlation
+ └→ statistical association
+
+Belief revision
+ └→ full-belief change
+</pre>
+
+No downstream page requires redefining an upstream Wave 0–4 concept incompatibly.
+
+== Required non-equivalences preserved ==
+
+<pre>
+logic ≠ one single logic
+validity ≠ truth
+validity ≠ soundness
+argument ≠ quarrel
+argument ≠ proof
+deduction ≠ induction
+induction ≠ abduction
+abduction ≠ guaranteed truth
+proof ≠ empirical confirmation
+conjecture ≠ theorem
+conjecture ≠ scientific hypothesis by definition
+contradiction ≠ disagreement
+consistency ≠ truth
+consistency ≠ completeness
+probability ≠ frequency by definition
+probability distribution ≠ histogram
+density ≠ point probability
+correlation ≠ causation
+zero Pearson correlation ≠ independence in general
+conditional probability ≠ causal intervention
+P(A|B) ≠ P(B|A)
+Bayes' theorem ≠ Bayesian inference as a whole
+likelihood ≠ posterior probability
+belief revision ≠ Bayesian updating
+belief revision ≠ memory editing
+propositional logic ≠ first-order logic
+first-order logic ≠ second-order logic
+modal logic ≠ probability logic
+necessity ≠ high probability
+</pre>
+
+== Logic / deduction audit ==
+
+[[Logic]] is not reduced to classical logic.
+
+The page separates:
+
+* syntax;
+* proof systems;
+* semantics;
+* consequence relations.
+
+Soundness/completeness are treated as system properties, not universal givens.
+
+[[Deductive reasoning]] keeps:
+
+<pre>
+validity ≠ premise truth
+soundness = validity + true premises
+</pre>
+
+and separates formal consequence from psychological confidence.
+
+== Induction / abduction audit ==
+
+[[Inductive reasoning]] remains broader than enumerative induction and explicitly includes statistical, predictive, analogical, and probabilistic support.
+
+The problem of induction is presented as an epistemological challenge rather than “solved” by probability theory.
+
+[[Abductive reasoning]] is explicitly explanatory/ampliative.
+
+Inference to the best explanation is central but does not guarantee truth, and Bayesian connections are presented as relations rather than identity.
+
+== Argument / proof / conjecture audit ==
+
+[[Argument]] separates logical structure from rhetorical conflict and from explanation.
+
+[[Proof]] distinguishes rigorous mathematical proof from empirical confirmation and from fully formal derivation.
+
+[[Conjecture]] distinguishes current epistemic status from formal independence.
+
+A drafting error was corrected before Phase 3: Technical depth no longer uses <code>T ⊬ φ</code> as shorthand for merely “no proof is currently known”.
+
+== Contradiction / consistency audit ==
+
+[[Contradiction]] distinguishes:
+
+* contradiction from ordinary disagreement;
+* classical explosion from paraconsistent alternatives;
+* proof-by-contradiction from the definition of contradiction.
+
+[[Consistency (logic)]] distinguishes:
+
+* syntactic consistency;
+* semantic satisfiability;
+* truth;
+* completeness;
+* relative consistency.
+
+The equivalence between consistency and satisfiability is restricted to the relevant sound/complete classical first-order setting rather than asserted for every logic.
+
+== Probability audit ==
+
+[[Probability]] separates mathematical axioms from interpretations.
+
+A drafting issue was corrected before Phase 3: Simple depth explicitly states that probability 0 does not imply logical impossibility in continuous models, and probability 1 does not imply logical necessity.
+
+[[Probability distribution]] distinguishes:
+
+* mass from density;
+* density values from point probabilities;
+* theoretical distributions from empirical histograms/data summaries.
+
+== Correlation audit ==
+
+[[Correlation]] is not reduced to Pearson's coefficient.
+
+The page preserves:
+
+<pre>
+correlation ≠ causation
+zero Pearson correlation ≠ independence
+</pre>
+
+and notes nonlinear dependence, rank/dependence alternatives, outliers, range restriction, and measurement/context sensitivity.
+
+== Conditional probability audit ==
+
+[[Conditional probability]] correctly defines:
+
+<pre>
+P(A|B)=P(A∩B)/P(B)
+</pre>
+
+when P(B)>0 and explicitly preserves directionality:
+
+<pre>
+P(A|B) ≠ P(B|A)
+</pre>
+
+It also separates observational conditioning from causal intervention.
+
+== Bayesian inference audit ==
+
+[[Bayesian inference]] separates:
+
+* prior;
+* likelihood;
+* posterior;
+* posterior prediction;
+* model comparison;
+* computation;
+* model checking.
+
+Bayes' theorem is presented as a probability identity inside, but not equivalent to, the whole inference workflow.
+
+Priors are not described as arbitrary by definition.
+
+Precise posterior output is not treated as a guarantee of model adequacy.
+
+== Belief revision audit ==
+
+[[Belief revision]] uses AGM as the foundational framework while explicitly preserving broader field scope:
+
+* expansion;
+* contraction;
+* revision;
+* belief sets versus bases;
+* iterated change;
+* prioritized versus non-prioritized revision;
+* probabilistic connections.
+
+Full-belief revision is not equated with Bayesian conditionalization or human memory change.
+
+== Formal-logic audit ==
+
+[[Propositional logic]] is restricted to sentence-level variables/connectives and points outward to first-order expressiveness.
+
+[[First-order logic]] makes the first-order boundary explicit:
+
+<pre>
+quantification over individuals
+≠ quantification over predicates/properties
+</pre>
+
+Its central metalogical properties are described without implying decidability.
+
+[[Modal logic]] is presented as a field of systems rather than one axiom set.
+
+Kripke semantics is central but not treated as the only conceivable semantic framework.
+
+Necessity/possibility remain distinct from probability.
+
+== Public concept versus AI/BITwiki application ==
+
+The wave preserves:
+
+<pre>
+argument           ≠ hidden chain-of-thought
+proof              ≠ software test result by definition
+probability        ≠ model confidence score by default
+Bayesian inference ≠ any iterative update
+belief revision    ≠ agent memory mutation
+first-order logic  ≠ ontology schema
+modal logic        ≠ workflow state machine
+</pre>
+
+No local agent or BITwiki mechanism is used as the definition of a public concept.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| SEP Classical Logic / Propositional Logic / first-order history || logic foundations
+|-
+| SEP Inductive Logic / Problem of Induction || induction and probabilistic support
+|-
+| SEP Abduction || abduction / inference to best explanation
+|-
+| Open Logic Project || syntax, semantics, proof systems, soundness/completeness
+|-
+| Encyclopedia of Mathematics || proof theory, consistency, mathematical logic
+|-
+| NIST/SEMATECH || probability distributions and statistical association
+|-
+| probability/statistics texts || probability, conditional probability, Bayesian inference
+|-
+| SEP Bayesian Epistemology || graded belief and Bayesian updating
+|-
+| SEP Logic of Belief Revision + AGM || formal belief change
+|-
+| modal/epistemic logic references || modal logic and Kripke semantics
+|}
+
+Primary historical sources are used only for claims tied to their specific contributions.
+
+== Redlink policy ==
+
+The wave intentionally exposes future concepts including [[Logical consequence]], [[Validity]], [[Soundness (logic)]], [[Completeness (logic)]], [[Satisfiability]], [[Tautology]], [[Logical truth]], [[Formal system]], [[Axiom]], [[Theorem]], [[Lemma]], [[Corollary]], [[Countermodel]], [[Proof theory]], [[Model theory]], [[Natural deduction]], [[Sequent calculus]], [[Paraconsistent logic]], [[Intuitionistic logic]], [[Second-order logic]], [[Random variable]], [[Probability mass function]], [[Probability density function]], [[Cumulative distribution function]], [[Independence (probability)]], [[Expectation]], [[Variance]], [[Likelihood]], [[Prior probability]], [[Posterior probability]], [[Bayes' theorem]], [[Statistical inference]], [[Causal inference]], [[Pearson correlation coefficient]], [[Spearman rank correlation]], [[Covariance]], [[Belief base]], [[Iterated belief revision]], [[Epistemic logic]], [[Deontic logic]], [[Temporal logic]], and [[Kripke semantics]].
+
+These are coverage signals, not automatic stub requests.
+
+== Acceptance criteria ==
+
+Wave 5 is ready to leave Phase 3 when:
+
+# all 54 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# all controlled Domains pass;
+# public/project distinctions remain explicit;
+# [[Predicate logic]] is not accidentally recreated as a competing Core identity;
+# [[Consistency (logic)]] remains qualified;
+# all depth derivatives remain category/identity-exempt;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, deployment, workflow and Main-space audits pass;
+# staging builds the complete graph.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 5 context capture]]
+        ↓
+[[BITwiki:Wave 5 compiled context]]
+        ↓
+[[BITwiki:Wave 5 context audit]]
+</pre>
+
+== Release validation — 2026-09-19 ==
+
+PR #21 executed the established Wave release gates after the full 54-surface corpus was present.
+
+The release gate completed successfully:
+
+* staging workbench build passed;
+* deployable MediaWiki structure and identity validation passed;
+* Scribunto Lua 5.1 syntax passed;
+* runtime-schema projection audit passed;
+* MediaWiki / SMW / Lua / Cargo substrate audit passed;
+* recursive deployment-plan and importer-safety validation passed;
+* structured knowledge-request workflow audit passed;
+* Main-namespace role audit passed;
+* corpus/V1 inventories and architecture-evidence upload passed.
+
+This completion-state bookkeeping commit must re-pass the same PR gates before merge.
+
+'''Current assessment: Wave 5 is semantically and structurally audited and has passed the full release gate; merge remains conditional on the final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

@@ -1,0 +1,252 @@
+{{Source status|status=Wave 5 Phase 2 compiled context|note=Normalized shared context for writing. Derived from Wave 5 capture; all reader surfaces must remain consistent with these definitions and boundaries.}}
+= Wave 5 compiled context =
+
+'''State: Phase 2 — Context compilation + writing.'''
+
+Wave 5 builds a formal reasoning, logic, and probability layer over prior [[Inference]], [[Reasoning]], epistemology, semantics, and scientific-method concepts.
+
+== Dependency order ==
+
+<pre>
+Logic
+ ├→ Argument
+ │    ├→ Deductive reasoning
+ │    ├→ Inductive reasoning
+ │    └→ Abductive reasoning
+ ├→ Contradiction
+ ├→ Consistency (logic)
+ ├→ Propositional logic
+ ├→ First-order logic
+ └→ Modal logic
+
+Mathematics
+ ├→ Proof
+ └→ Conjecture
+
+Probability
+ ├→ Conditional probability
+ ├→ Probability distribution
+ └→ Bayesian inference
+
+Correlation
+ └→ statistical association
+
+Belief revision
+ └→ full-belief change under consistency/rationality constraints
+</pre>
+
+== Normalized definitions ==
+
+=== Logic ===
+Logic studies systems of consequence, validity, inference, formal language, proof, and semantics.
+
+=== Deductive reasoning ===
+Deductive reasoning aims at conclusions that are guaranteed by the premises under a specified consequence relation.
+
+=== Inductive reasoning ===
+Inductive reasoning is ampliative reasoning in which premises support but do not deductively entail a conclusion.
+
+=== Abductive reasoning ===
+Abductive reasoning generates or supports hypotheses partly because they would explain the observed facts, often under an inference-to-the-best-explanation interpretation.
+
+=== Argument ===
+An argument is a structured set of claims in which premises are offered as reasons for a conclusion.
+
+=== Proof ===
+A mathematical proof is a rigorous demonstration that a statement follows from accepted assumptions, definitions, prior results, and inference rules.
+
+=== Conjecture ===
+A conjecture is a mathematical statement proposed as true but not yet proved or disproved.
+
+=== Contradiction ===
+A contradiction is a logical conflict such as a proposition together with its negation, with exact consequences depending on the logic.
+
+=== Consistency (logic) ===
+Logical consistency is the absence of derivable contradiction or triviality under a specified formal system.
+
+=== Probability ===
+Probability is a mathematical framework for quantifying chance, uncertainty, or degrees of support under specified axioms and interpretations.
+
+=== Probability distribution ===
+A probability distribution assigns probabilities to values or events associated with a random variable.
+
+=== Correlation ===
+Correlation is statistical association between variables; Pearson correlation is one linear measure among many.
+
+=== Conditional probability ===
+Conditional probability P(A|B) is the probability assigned to A when B is taken as given.
+
+=== Bayesian inference ===
+Bayesian inference updates probabilistic beliefs or parameter/model uncertainty by combining prior distributions with likelihoods to obtain posterior distributions.
+
+=== Belief revision ===
+Belief revision studies rational changes to bodies of full beliefs when information is added, removed, or conflicts with existing commitments.
+
+=== Propositional logic ===
+Propositional logic studies formulas built from whole-sentence variables and propositional connectives.
+
+=== First-order logic ===
+First-order logic extends propositional structure with predicates, terms, variables, and quantification over individuals.
+
+=== Modal logic ===
+Modal logic extends logical languages with operators for modes such as necessity, possibility, knowledge, belief, time, or obligation.
+
+== Required non-equivalences ==
+
+<pre>
+logic ≠ one single logic
+validity ≠ truth
+validity ≠ soundness
+argument ≠ quarrel
+argument ≠ proof
+deduction ≠ induction
+induction ≠ abduction
+abduction ≠ guaranteed truth
+proof ≠ empirical confirmation
+conjecture ≠ theorem
+conjecture ≠ scientific hypothesis by definition
+contradiction ≠ disagreement
+consistency ≠ truth
+consistency ≠ completeness
+probability ≠ frequency by definition
+probability distribution ≠ histogram
+density ≠ point probability
+correlation ≠ causation
+Pearson correlation ≠ all correlation
+zero Pearson correlation ≠ independence in general
+conditional probability ≠ causal intervention
+P(A|B) ≠ P(B|A)
+Bayes' theorem ≠ Bayesian inference as a whole
+likelihood ≠ posterior probability
+belief revision ≠ Bayesian updating
+belief revision ≠ memory editing
+propositional logic ≠ first-order logic
+first-order logic ≠ second-order logic
+modal logic ≠ probability logic
+necessity ≠ high probability
+</pre>
+
+== Reasoning boundary ==
+
+Wave 4 [[Reasoning]] is the broad cognitive umbrella.
+
+Wave 5 descendants are formal/general reasoning modes:
+
+<pre>
+Reasoning
+ ├→ Deductive reasoning
+ ├→ Inductive reasoning
+ └→ Abductive reasoning
+</pre>
+
+These pages must not rewrite the cognitive-science definition of reasoning.
+
+== Logic boundary ==
+
+Classical logic is central but not exhaustive.
+
+The Core/Technical surfaces should expose the distinction:
+
+<pre>
+formal language
+   + proof system
+   + semantics
+   → consequence relation
+</pre>
+
+Soundness and completeness relate derivability and semantic validity but are properties/theorems of systems, not automatic facts for every logic.
+
+== Probability boundary ==
+
+The mathematical calculus and the philosophical interpretation of probability remain distinct.
+
+A standard axiomatic presentation may use:
+
+<pre>
+P(A) ≥ 0
+P(Ω) = 1
+P(A ∪ B) = P(A)+P(B) for disjoint A,B
+</pre>
+
+without committing the encyclopedia to one interpretation of what probabilities mean.
+
+== Bayesian boundary ==
+
+Bayesian inference uses Bayes' rule inside a broader modeling workflow:
+
+<pre>
+prior × likelihood
+        ↓
+posterior
+        ↓
+prediction / estimation / comparison / decision
+</pre>
+
+Bayes' theorem is an identity; Bayesian inference additionally requires a model, prior, likelihood, conditioning assumptions, and interpretation.
+
+== Belief-revision boundary ==
+
+AGM is the canonical historical framework but not the whole field.
+
+Core/Technical should distinguish:
+
+* expansion;
+* contraction;
+* revision;
+* belief sets versus belief bases;
+* prioritized versus non-prioritized change;
+* full beliefs versus probabilistic credences.
+
+== Formal-logic boundary ==
+
+[[Propositional logic]] handles sentence-level connectives.
+
+[[First-order logic]] adds predicates and quantification over individuals.
+
+[[Modal logic]] adds operators interpreted over modal structure such as possible worlds/states.
+
+These systems can be combined; they remain distinct canonical concepts.
+
+== Public concept versus AI/BITwiki application ==
+
+<pre>
+argument           ≠ hidden chain-of-thought
+proof              ≠ software test result by definition
+probability        ≠ model confidence score by default
+Bayesian inference ≠ any iterative update
+belief revision    ≠ agent memory mutation
+first-order logic  ≠ ontology schema
+modal logic        ≠ workflow state machine
+</pre>
+
+Applications may appear only after the public concept is established.
+
+== Source roles ==
+
+* SEP Classical Logic / Propositional Logic / first-order logic history: logic foundations.
+* SEP Inductive Logic / Problem of Induction: induction.
+* SEP Abduction: abduction and IBE.
+* Open Logic Project: formal syntax, semantics, proof systems, soundness/completeness.
+* Encyclopedia of Mathematics: proof theory and consistency.
+* NIST/SEMATECH: distributions and statistical association.
+* SEP Bayesian Epistemology: probabilistic updating/credence.
+* SEP Logic of Belief Revision + AGM primary paper: belief revision.
+* Standard probability/statistics texts: conditional probability, random variables, distributions, Bayes.
+* Modal/epistemic logic references: modal logic and Kripke semantics.
+
+== Reader linking rule ==
+
+Core pages link to Core titles.
+
+Simple pages prefer Simple variants where available.
+
+Technical pages prefer Technical variants where available.
+
+Simple/Technical surfaces are presentations of one Core semantic identity and do not duplicate <code>Knowledge object</code> or category identity.
+
+== Redlink policy ==
+
+Future concepts such as [[Logical consequence]], [[Validity]], [[Soundness (logic)]], [[Completeness (logic)]], [[Satisfiability]], [[Tautology]], [[Logical truth]], [[Formal system]], [[Axiom]], [[Theorem]], [[Lemma]], [[Corollary]], [[Countermodel]], [[Proof theory]], [[Model theory]], [[Natural deduction]], [[Sequent calculus]], [[Paraconsistent logic]], [[Intuitionistic logic]], [[Second-order logic]], [[Random variable]], [[Probability mass function]], [[Probability density function]], [[Cumulative distribution function]], [[Independence (probability)]], [[Expectation]], [[Variance]], [[Likelihood]], [[Prior probability]], [[Posterior probability]], [[Bayes' theorem]], [[Statistical inference]], [[Causal inference]], [[Pearson correlation coefficient]], [[Spearman rank correlation]], [[Covariance]], [[Belief base]], [[Iterated belief revision]], [[Epistemic logic]], [[Deontic logic]], [[Temporal logic]], and [[Kripke semantics]] remain normalized coverage signals, not automatic stub authorization.
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

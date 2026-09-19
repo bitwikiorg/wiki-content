@@ -1,0 +1,180 @@
+{{Source status|status=Wave 2 compiled article|note=Public Web-standards concept grounded in W3C RDF/OWL/SKOS and Semantic Web architecture.}}
+{{Knowledge object
+ |title=Semantic Web
+ |entity_type=Concept
+ |domain=Computer science, Technology
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Semantic Web|current=Core}}
+
+= Semantic Web =
+
+== Overview ==
+The '''Semantic Web''' is a family of Web standards and architectural ideas for publishing, linking and interpreting machine-readable data using global identifiers, shared vocabularies and explicit [[Semantics|semantics]].
+
+Its central technologies include:
+* [[Resource Description Framework|RDF]];
+* RDF Schema;
+* [[Web Ontology Language|OWL]];
+* SPARQL;
+* SKOS;
+* related Linked Data practices.
+
+The goal is not to make computers understand the Web exactly as humans do. It is to make more meaning explicit enough for interoperable software to process.
+
+== Web of data ==
+Traditional Web pages primarily link documents.
+
+Semantic Web technologies can link data about things.
+
+Example:
+
+<pre>
+resource: Mars
+type: Planet
+orbits: Sun
+</pre>
+
+If identifiers and vocabularies are shared, independently published data can connect across sources.
+
+== Global identifiers ==
+Semantic Web systems commonly use IRIs to identify:
+* entities;
+* concepts;
+* properties;
+* classes;
+* vocabularies.
+
+Global identifiers reduce name collisions.
+
+They do not automatically solve [[Identity|identity]].
+
+Two IRIs may refer to the same thing, and one poorly governed IRI may be ambiguous.
+
+== RDF ==
+[[Resource Description Framework|RDF]] provides the basic graph data model.
+
+Information is expressed as triples:
+
+<pre>
+subject — predicate — object
+</pre>
+
+Triples combine into graphs and datasets.
+
+RDF itself supplies a minimal semantic foundation.
+
+== RDF Schema ==
+RDF Schema adds basic vocabulary modeling:
+* classes;
+* subclass relationships;
+* properties;
+* subproperties;
+* domain;
+* range.
+
+It supports semantic inference beyond raw triples.
+
+== OWL ==
+[[Web Ontology Language|OWL]] adds richer ontology semantics.
+
+It can represent:
+* class expressions;
+* equivalence;
+* disjointness;
+* identity;
+* property characteristics;
+* cardinality restrictions.
+
+OWL enables stronger automated reasoning at greater complexity.
+
+== SPARQL ==
+SPARQL is a query language/protocol family for RDF data.
+
+A graph pattern can retrieve resources whose triples match a query.
+
+SPARQL queries do not necessarily imply full OWL reasoning; the active entailment regime matters.
+
+== Linked Data ==
+'''Linked Data''' is a related publishing practice emphasizing Web identifiers and links among datasets.
+
+A Linked Data system can use RDF without using rich OWL ontologies.
+
+Linked Data is therefore part of the Semantic Web ecosystem, not synonymous with the entire Semantic Web.
+
+== SKOS ==
+SKOS represents lighter-weight knowledge organization systems such as:
+* thesauri;
+* taxonomies;
+* subject headings.
+
+It deliberately avoids requiring the full formal commitments of OWL.
+
+This lets publishers represent concept schemes without converting every broader/narrower relation into logical subclasshood.
+
+== Open-world assumption ==
+Semantic Web ontology systems often operate under an open-world assumption.
+
+If a graph does not say that Alice has a phone number, the system does not normally infer that she has none.
+
+This differs from closed-world database applications where absence can sometimes be treated as false or invalid.
+
+== Decentralization ==
+The Semantic Web is designed for decentralized publication.
+
+Different organizations can define vocabularies and publish graphs independently.
+
+This creates both power and difficulty:
+* global linking;
+* vocabulary reuse;
+* conflicting claims;
+* identity alignment;
+* versioning;
+* trust/provenance.
+
+No central database resolves every disagreement.
+
+== Trust and provenance ==
+Machine-readable semantics does not guarantee trustworthy content.
+
+Semantic Web data still needs:
+* [[Provenance|provenance]];
+* source evaluation;
+* versioning;
+* signatures/attestations where appropriate;
+* conflict handling.
+
+A logically valid inference from false premises remains untrustworthy.
+
+== Semantic Web and AI ==
+Semantic Web technologies can support AI by providing explicit symbolic structure.
+
+Modern systems can combine:
+* RDF/OWL knowledge;
+* search;
+* machine learning;
+* embeddings;
+* language models.
+
+The symbolic layer provides explicit semantics; learned models provide statistical generalization.
+
+They should not be conflated.
+
+== Historical vision ==
+The term became widely known through Tim Berners-Lee, James Hendler and Ora Lassila's 2001 Scientific American article describing a Web where machine agents could combine structured information from multiple sources.
+
+The standards evolved considerably after that vision.
+
+Current explanations should focus on actual W3C technologies rather than assuming the original illustrative scenarios are the present architecture.
+
+== Epistemic notes ==
+"Semantic Web" does not mean that every Web resource has formal semantics or that software achieves human-level understanding. It is an infrastructure for making selected meanings machine-processable.
+
+== References ==
+* W3C RDF, RDF Schema and OWL specifications.
+* W3C SKOS.
+* Tim Berners-Lee, James Hendler, Ora Lassila, "The Semantic Web", ''Scientific American'' (2001).
+
+[[Category:Computer science]]
+[[Category:Technology]]

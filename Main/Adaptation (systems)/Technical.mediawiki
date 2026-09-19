@@ -1,0 +1,40 @@
+{{Source status|status=Technical depth derivative|note=Advanced adaptive-systems surface.}}
+{{Reading depth|base=Adaptation (systems)|current=Technical}}
+= Adaptation (systems) — Technical =
+
+== Adaptive update ==
+A generic adaptive system can be written as:
+
+<pre>
+state x_t
+parameters/policy θ_t
+environment e_t
+
+θ_(t+1) = F(θ_t, x_t, e_t, feedback_t)
+</pre>
+
+where F can represent learning, selection, control, reconfiguration, or other update dynamics.
+
+== Timescales ==
+Adaptation can occur across:
+
+* fast control timescales;
+* behavioral/learning timescales;
+* developmental/organizational timescales;
+* evolutionary timescales.
+
+Separating timescales can be essential for analysis.
+
+== Coevolution ==
+When adaptive components alter one another's environments, the system may exhibit coevolution:
+
+<pre>
+agent adaptation ↔ environment/other-agent change
+</pre>
+
+This can create path dependence and moving fitness/objective landscapes.
+
+== References ==
+* Holland.
+* complex-adaptive-systems literature.
+* adaptive-control and biological-systems literature.

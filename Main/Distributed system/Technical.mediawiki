@@ -1,0 +1,35 @@
+{{Source status|status=Technical depth derivative|note=Advanced distributed-systems surface.}}
+{{Reading depth|base=Distributed system|current=Technical}}
+= Distributed system — Technical =
+
+== Model dimensions ==
+Distributed-system models specify assumptions about:
+
+* process failures;
+* channel reliability;
+* timing/synchrony;
+* membership;
+* adversarial behavior;
+* stable storage.
+
+Guarantees are meaningful only relative to these assumptions.
+
+== Partial orders ==
+Without a global clock, event ordering can be represented by happens-before relations.
+
+Logical clocks and vector clocks encode causal/order information without requiring perfectly synchronized physical time.
+
+== Consensus ==
+Consensus asks nonfaulty participants to agree on a value while satisfying validity and termination conditions.
+
+Impossibility and lower-bound results depend on the failure/timing model.
+
+== Replicated state ==
+Replication protocols trade among consistency, latency, availability, throughput and fault tolerance.
+
+State-machine replication orders operations so replicas execute a common deterministic history.
+
+== References ==
+* Lamport.
+* Lynch, ''Distributed Algorithms''.
+* Tanenbaum & van Steen.

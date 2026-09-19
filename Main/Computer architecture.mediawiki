@@ -1,0 +1,63 @@
+{{Source status|status=Wave 6 compiled article|note=Computer-architecture concept grounded in systems and computer-organization literature.}}
+{{Knowledge object
+ |title=Computer architecture
+ |entity_type=Concept
+ |domain=Computer science, Engineering
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Computer architecture|current=Core}}
+
+= Computer architecture =
+
+== Overview ==
+'''Computer architecture''' concerns the organization and programmer-visible structure of computer systems.
+
+It includes instruction-set design, processors, memory systems, input/output, storage interfaces, parallelism, and system organization.
+
+== Instruction set architecture ==
+An instruction set architecture (ISA) defines the interface visible to machine-code software, such as:
+
+* instructions;
+* registers;
+* data types;
+* addressing modes;
+* memory model;
+* privilege mechanisms;
+* exception behavior.
+
+Different processors can implement the same ISA.
+
+== Architecture and microarchitecture ==
+'''Architecture''' describes externally significant structure and behavior.
+
+'''Microarchitecture''' describes an implementation of that architecture, such as pipelines, caches, execution units, branch prediction, and internal scheduling.
+
+Therefore:
+
+<pre>
+architecture ≠ microarchitecture
+</pre>
+
+== Memory hierarchy ==
+Registers, caches, main memory, and storage have different latency, bandwidth, capacity, persistence, and cost.
+
+Computer design exploits locality to bridge these gaps.
+
+== Parallelism ==
+Architectures can exploit instruction-level, data-level, thread-level, multicore, vector, GPU, or distributed forms of parallel execution.
+
+Parallel hardware does not automatically make software parallel.
+
+== Architecture and operating systems ==
+[[Operating system|Operating systems]] manage and virtualize architectural resources.
+
+The architecture provides mechanisms; the operating system establishes policies and abstractions over them.
+
+== References ==
+* Hennessy & Patterson, computer architecture texts.
+* ACM CS2023.
+* standard computer organization literature.
+
+[[Category:Computer science]]
+[[Category:Engineering]]

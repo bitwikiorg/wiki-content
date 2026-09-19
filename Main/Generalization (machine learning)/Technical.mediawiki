@@ -1,0 +1,33 @@
+{{Source status|status=Technical depth derivative|note=Advanced statistical-learning surface.}}
+{{Reading depth|base=Generalization (machine learning)|current=Technical}}
+= Generalization (machine learning) — Technical =
+
+== Expected risk ==
+For hypothesis h and target distribution P:
+
+<pre>
+R(h) = E_(x,y)~P [ℓ(h(x),y)]
+</pre>
+
+Given training sample S:
+
+<pre>
+R_S(h) = (1/n) Σ_i ℓ(h(x_i),y_i)
+</pre>
+
+Generalization analysis studies how R(h) relates to R_S(h) for h chosen using S.
+
+== Uniform and algorithm-dependent approaches ==
+Classical approaches bound generalization through complexity measures such as VC dimension, Rademacher complexity, margins, stability, or compression.
+
+Modern deep-learning theory also studies optimization bias, implicit regularization, interpolation, scale, and data structure.
+
+== Shift ==
+If training distribution P_train differs from target P_target, ordinary iid generalization bounds may no longer describe deployment risk.
+
+This motivates domain adaptation, robustness, invariant prediction, and distribution-shift analysis.
+
+== References ==
+* Vapnik.
+* Shalev-Shwartz & Ben-David.
+* modern statistical/deep-learning generalization literature.

@@ -154,7 +154,32 @@ Wave 13 is ready to leave Phase 3 when:
 [[BITwiki:Wave 13 context audit]]
 </pre>
 
-'''Current assessment: Wave 13 is semantically and structurally audited; merge remains conditional on release validation and exact-final-head CI.'''
+== Release validation — 2026-09-19 ==
+
+PR #32 executed the established Wave release gates after all 51 reader surfaces, source-state corrections, link cleanup, and ledger repair were present.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+Phase 3 also corrected DNS terminology provenance from obsolete RFC 8499 to current RFC 9499 and restored the missing Wave 12 row in the completed-wave ledger.
+
+No Domain expansion was required.
+
+This completion-state bookkeeping commit must re-pass the same release gates before merge.
+
+'''Current assessment: Wave 13 is semantically and structurally audited and has passed its release gates; merge remains conditional on exact-final-head CI repeat.'''
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

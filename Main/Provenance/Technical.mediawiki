@@ -1,0 +1,70 @@
+{{Source status|status=Technical depth derivative|note=Advanced W3C PROV and data-lineage surface of [[Provenance]].}}
+{{Reading depth|base=Provenance|current=Technical}}
+= Provenance — Technical =
+
+== PROV core model ==
+W3C PROV represents provenance through entities, activities, and agents.
+
+Conceptually:
+
+<pre>
+Entity --wasGeneratedBy--> Activity
+Activity --used--> Entity
+Entity --wasAttributedTo--> Agent
+Activity --wasAssociatedWith--> Agent
+Entity --wasDerivedFrom--> Entity
+</pre>
+
+The model supports bundles, collections, derivations, alternate/specialization relations, and time constraints.
+
+== Provenance assertions ==
+A provenance graph is not the past itself; it is a structured set of assertions about the past.
+
+Validation therefore has two levels:
+# structural validity of the provenance record;
+# truth/adequacy of the assertions encoded in it.
+
+W3C PROV-Constraints specifies consistency/inference constraints for PROV instances, not empirical truth of the recorded history.
+
+== Lineage graphs ==
+Data lineage can be modeled as a directed graph:
+
+<pre>
+source entities → transformations/activities → derived entities
+</pre>
+
+This supports:
+* impact analysis;
+* dependency tracing;
+* reproducibility;
+* audit;
+* rollback/debugging;
+* evidence-dependence analysis.
+
+Cycles, aggregation, external inputs, and mutable resources require careful semantics.
+
+== Provenance granularity ==
+A provenance system must choose what events and objects are represented.
+
+Too little granularity hides important transformations.
+
+Too much granularity creates unusable records.
+
+Useful provenance usually reflects the decisions users need to audit or reproduce.
+
+== Trust and cryptographic integrity ==
+Hashes, signatures, append-only logs, and attestations can make provenance tampering harder or establish authorship/integrity.
+
+They cannot establish that the recorded event actually happened as described unless the recording process itself is trustworthy.
+
+Cryptographic provenance therefore secures statements about lineage; it does not automatically validate their semantic truth.
+
+== Provenance of provenance ==
+Provenance records can themselves have provenance.
+
+W3C PROV supports bundles and named provenance descriptions so systems can record who asserted a lineage and how that lineage record was produced.
+
+== References ==
+* W3C PROV Overview.
+* W3C PROV Data Model / PROV-O / PROV-Constraints.
+* W3C PROV Semantics.

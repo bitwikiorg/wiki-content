@@ -11,7 +11,7 @@ Wave 3 covers natural language, linguistic structure, meaning in use, discourse 
 # [[Syntax]]
 # [[Pragmatics]]
 # [[Reference]]
-# [[Context]]
+# [[Context (linguistics)|Context]]
 # [[Ambiguity]]
 # [[Polysemy]]
 # [[Compositionality]]
@@ -237,14 +237,14 @@ Examples may include logical forms, discourse representation structures, semanti
 
 * [[Language]] ↔ [[Programming language]], [[Concept]], [[Knowledge representation]], [[Cognition]] (future Wave 4).
 * [[Syntax]] ↔ [[Semantics]], [[Programming language]], [[Formal language]] (future Wave 6).
-* [[Pragmatics]] ↔ [[Semantics]], [[Inference]], [[Context]], [[Common ground]].
+* [[Pragmatics]] ↔ [[Semantics]], [[Inference]], [[Context (linguistics)|Context]], [[Common ground]].
 * [[Reference]] ↔ [[Identity]], [[Entity]], [[Concept]], [[Semantics]].
-* [[Context]] ↔ [[System boundary]], [[Uncertainty]], [[Inference]], [[Metadata]].
+* [[Context (linguistics)|Context]] ↔ [[System boundary]], [[Uncertainty]], [[Inference]], [[Metadata]].
 * [[Ambiguity]] ↔ [[Uncertainty]], [[Interpretation]] (future), [[Syntax]], [[Semantics]].
 * [[Polysemy]] ↔ [[Lexical semantics]], [[Ambiguity]], [[Concept]], [[Category]].
 * [[Compositionality]] ↔ [[Syntax]], [[Semantics]], [[Programming language]].
 * [[Presupposition]], [[Implicature]], [[Speech act]] ↔ [[Pragmatics]], [[Inference]], [[Common ground]].
-* [[Discourse (linguistics)]] ↔ [[Context]], [[Common ground]], [[Semantics]], [[Pragmatics]].
+* [[Discourse (linguistics)]] ↔ [[Context (linguistics)|Context]], [[Common ground]], [[Semantics]], [[Pragmatics]].
 * [[Distributional semantics]] ↔ [[Machine learning]] (future Wave 7), [[Data structure]], [[Statistical inference]] (future descendant).
 * [[Semantic similarity]] ↔ [[Distributional semantics]], [[Ontology]], [[Taxonomy]], [[Knowledge graph]].
 * [[Meaning representation]] ↔ [[Knowledge representation]], [[Schema]], [[Semantic network]], [[Description logic]], [[Inference]].
@@ -287,7 +287,7 @@ benchmark agreement ≠ semantic truth
 == Title and identity risks ==
 
 * <code>Discourse</code> is unavailable for the linguistic concept because it already denotes the forum software. Use provisional [[Discourse (linguistics)]].
-* <code>Context</code> is extremely broad. Capture currently supports a general article centered on interpretive context with explicit linguistic/pragmatic senses, but Phase 2 must check whether a disambiguated <code>Context (linguistics)</code> title is safer.
+* <code>Context</code> is extremely broad and names many non-linguistic notions. Capture therefore normalizes the Wave-3 concept to [[Context (linguistics)]], preserving the unqualified title for future disambiguation/general use.
 * <code>Reference</code> is broader than language. Keep the concept general enough to cover representational reference, with linguistic reference as the principal case, rather than silently reducing the title to one theory.
 * <code>Meaning representation</code> is a computational/formal term and should not be presented as a synonym for mental representation or semantic content.
 * <code>Semantic similarity</code> must separate similarity, relatedness, association and identity.
@@ -316,7 +316,7 @@ No <code>Linguistics</code> Domain exists.
 
 The majority of Wave 3 concepts are foundational linguistics topics. Assigning every page to <code>Philosophy</code> would misrepresent empirical linguistics; assigning computational descendants to <code>Computer science</code> alone would erase their linguistic identity.
 
-'''Phase-1 architectural requirement:''' decide whether to add controlled Domain <code>Linguistics</code> before Phase 2. If added, compiler schema, runtime projection, categories/portal/navigation and validation must be updated through the existing living-text rule rather than patched locally in article metadata.
+'''Phase-1 decision:''' add controlled Domain <code>Linguistics</code> in Phase 2. The repository's Domain expansion rule requires demonstrated corpus/coverage need plus explicit semantic identity, a category, a portal, and at least one real exemplar. Wave 3 supplies the corpus need. The Phase-2 implementation must therefore be atomic: update compiler schema and runtime projection, add the Linguistics category/portal, update the Domain index, and make [[Language]] the first real exemplar before validation.
 
 == Source-family audit ==
 
@@ -342,7 +342,7 @@ These are coverage signals, not authorization for stubs.
 # Linguistic [[Discourse (linguistics)]] must be disambiguated from existing [[Discourse]] software.
 # [[Language]] must preserve competing views about the ontology/object of linguistic study rather than canonize one school.
 # [[Pragmatics]] must present the semantics–pragmatics boundary as theory-sensitive.
-# [[Context]] and [[Common ground]] remain distinct.
+# [[Context (linguistics)|Context]] and [[Common ground]] remain distinct.
 # [[Reference]] and [[Identity]] remain distinct.
 # [[Ambiguity]], [[Polysemy]] and future [[Vagueness]] remain distinct.
 # [[Presupposition]], [[Implicature]] and entailment remain distinct.
@@ -351,9 +351,10 @@ These are coverage signals, not authorization for stubs.
 # [[Distributional semantics]] is treated as a family of usage/statistics-based semantic models, not a complete theory of meaning.
 # [[Semantic similarity]] separates similarity from relatedness, synonymy and identity.
 # [[Meaning representation]] is treated as a family of formal/symbolic representations, not as meaning itself.
-# The missing controlled <code>Linguistics</code> Domain must be resolved before Phase 2 article metadata is authored.
+# Wave 3 establishes enough recurring corpus need to justify controlled Domain <code>Linguistics</code>; implement it atomically in Phase 2 with category, portal, schema projection, Domain-index update and [[Language]] exemplar.
+# The context concept is normalized to [[Context (linguistics)]] rather than occupying the global <code>Context</code> title.
 
-'''Current assessment: the semantic cluster is coherent, but Phase 1 should not be declared closed until the controlled-Domain decision and the <code>Context</code> title boundary are resolved.'''
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

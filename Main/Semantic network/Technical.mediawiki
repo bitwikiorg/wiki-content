@@ -1,0 +1,58 @@
+{{Source status|status=Technical depth derivative|note=Advanced historical KR/cognitive semantic-network surface of [[Semantic network]].}}
+{{Reading depth|base=Semantic network|current=Technical}}
+= Semantic network — Technical =
+
+== Graph representation ==
+A semantic network can be represented:
+
+<pre>
+N = (V, E, λ)
+</pre>
+
+where:
+* V = concept/entity nodes;
+* E = edges;
+* λ labels edges with semantic relation types.
+
+This graph form alone does not determine a logic.
+
+== Inheritance networks ==
+Hierarchical networks may implement inheritance:
+
+<pre>
+A isA B
+B hasProperty P
+→ A inherits P
+</pre>
+
+Default inheritance requires exception handling.
+
+Non-monotonic networks can retract inherited conclusions when a more specific node supplies an exception.
+
+== Spreading activation ==
+A network can attach activation a(v) to nodes.
+
+Activation update may depend on neighboring nodes and edge weights:
+
+<pre>
+a_t+1(v) = decay(a_t(v)) + Σ w_uv a_t(u)
+</pre>
+
+Specific models differ in normalization, thresholds and inhibition.
+
+This is associative retrieval, not logical entailment.
+
+== Semantic distance ==
+Path length or weighted connectivity can approximate conceptual similarity.
+
+But graph distance reflects modeling decisions and does not automatically correspond to psychological or lexical similarity.
+
+== Formalization ==
+Some later KR systems gave semantic networks precise logical interpretations by translating nodes and links into first-order or description-logic expressions.
+
+This improves inference guarantees but changes the original informal flexibility.
+
+== References ==
+* Quillian (1968).
+* Collins & Loftus (1975).
+* Brachman & Levesque.

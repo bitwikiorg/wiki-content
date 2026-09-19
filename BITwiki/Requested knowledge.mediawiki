@@ -44,6 +44,62 @@ For each request, record only what is known:
 | Notes || Ambiguity, overlap, duplicate risk, sensitive-topic considerations
 |}
 
+
+== Corpus wave status ==
+
+The concept-wave program uses the same three-state workflow for every interconnected cluster:
+
+<pre>
+context capture → context compilation + writing → context audit
+</pre>
+
+A completed wave means its reader surfaces exist, the shared concept boundaries were audited, and the repository validation/staging gates passed. Completion does not imply that every descendant topic or redlink has been covered.
+
+{| class="wikitable"
+! Wave !! Scope !! Canonical concepts !! Reader surfaces !! Audit state
+|-
+| '''Wave 0''' || Foundational computation / software / scientific-system primitives || [[Algorithm]], [[Causality]], [[Computation]], [[Data structure]], [[Hypothesis]], [[Program (computing)]], [[Programming language]], [[Software]], [[System boundary]], [[Version control]] || 10 concepts / 30 surfaces || [[BITwiki:Wave 0 context audit|complete and audited]]
+|-
+| '''Wave 1''' || Epistemology and scientific reasoning || [[Knowledge]], [[Belief]], [[Epistemology]], [[Evidence]], [[Empirical evidence]], [[Justification]], [[Uncertainty]], [[Epistemic status]], [[Provenance]], [[Verification]], [[Validation]], [[Falsifiability]], [[Scientific method]], [[Scientific model]], [[Measurement]], [[Accuracy and precision]], [[Reproducibility]], [[Replication]], [[Explanation]], [[Counterexample]] || 20 concepts / 60 surfaces || [[BITwiki:Wave 1 context audit|complete and audited]]
+|-
+| '''Wave 2''' || Ontology and knowledge representation || [[Semantics]], [[Ontology]], [[Entity]], [[Identity]], [[Concept]], [[Category]], [[Classification]], [[Taxonomy]], [[Relation]], [[Property]], [[Knowledge representation]], [[Knowledge graph]], [[Semantic network]], [[Schema]], [[Metadata]], [[Semantic Web]], [[Resource Description Framework]], [[Web Ontology Language]], [[Description logic]], [[Inference]] || 20 concepts / 60 surfaces || [[BITwiki:Wave 2 context audit|complete and audited]]
+|}
+
+'''Current completed total: 50 canonical concepts / 150 reader surfaces.'''
+
+== Concept-wave TODO after Wave 2 ==
+
+The following is the current research backlog. It is a sequencing aid, not permission to mass-create pages. Every wave must still pass capture → compile/write → audit, and titles can change during capture when the literature supports a better boundary.
+
+{| class="wikitable"
+! Provisional wave !! Cluster !! Current concept targets !! Status / normalization notes
+|-
+| '''Wave 3''' || Language, meaning, and discourse || [[Language]], [[Syntax]], [[Pragmatics]], [[Reference]], [[Context]], [[Ambiguity]], [[Polysemy]], [[Compositionality]], [[Presupposition]], [[Implicature]], [[Speech act]], [[Discourse]], [[Common ground]], [[Lexical semantics]], [[Distributional semantics]], [[Semantic similarity]], [[Meaning representation]] || queued; [[Semantics]] is already complete in Wave 2 and must not be regenerated
+|-
+| '''Wave 4''' || Cognition and cognitive bias || [[Cognition]], [[Perception]], [[Attention]], [[Memory]], [[Working memory]], [[Learning]], [[Reasoning]], [[Metacognition]], [[Cognitive load]], [[Cognitive bias]], [[Priming]], [[Salience]], [[Confirmation bias]], [[Anchoring effect]], [[Availability heuristic]], [[Framing effect]], [[Selection bias]], [[Anthropomorphism]], [[Theory of mind]], [[Distributed cognition]], [[Embodied cognition]], [[Thought suppression]], [[Ironic process theory]] || queued; “Pink elephant bias” should be treated as an alias/redirect candidate for the thought-suppression / ironic-process literature unless capture finds a distinct established term
+|-
+| '''Wave 5''' || Logic and probability || [[Logic]], [[Deductive reasoning]], [[Inductive reasoning]], [[Abductive reasoning]], [[Argument]], [[Proof]], [[Conjecture]], [[Contradiction]], [[Consistency]], [[Probability]], [[Probability distribution]], [[Correlation]], [[Conditional probability]], [[Bayesian inference]], [[Belief revision]], [[Propositional logic]], [[Predicate logic]], [[Modal logic]] || queued; [[Inference]] is already complete in Wave 2
+|-
+| '''Wave 6''' || Formal computation and computer-science foundations || [[Formal language]], [[Automaton]], [[State machine]], [[Turing machine]], [[Computability]], [[Turing completeness]], [[Computational complexity]], [[Computer architecture]], [[Operating system]], [[Computer network]], [[Database]], [[Compiler]], [[Distributed system]], [[Computer security]], [[Cryptography]], [[Human-computer interaction]], [[Esoteric programming language]] || queued; align with the existing Computer science request lifecycle rather than create duplicate requests
+|-
+| '''Wave 7''' || Machine learning and generalization || [[Machine learning]], [[Generalization]], [[Overfitting]], [[Underfitting]], [[Inductive bias]], [[Bias–variance tradeoff]], [[Training set]], [[Validation set]], [[Test set]], [[Distribution shift]], [[Data leakage]], [[Benchmark contamination]], [[Model selection bias]], [[Spurious correlation]], [[Shortcut learning]] || queued; normalize informal “fitting bias” language during capture rather than canonizing an unsupported umbrella term
+|-
+| '''Wave 8''' || Artificial intelligence and agents || [[Artificial intelligence]], [[Intelligent agent]], [[AI agent]], [[Planning]], [[Tool use]], [[Agent memory]], [[Multi-agent system]], [[Autonomous agent]], [[Large language model]] || queued; scope must stay public/general rather than mirror BITCORE or any one agent framework
+|-
+| '''Wave 9''' || Systems, complexity, and information || [[Information]], [[Information theory]], [[Entropy]], [[Feedback]], [[Emergence]], [[Self-organization]], [[Complex system]], [[Network]], [[Robustness]], [[Adaptation]] || queued; reconcile with existing Systems science material before writing
+|-
+| '''Wave 10''' || Decisions and incentives || [[Decision theory]], [[Utility]], [[Preference]], [[Risk]], [[Game theory]], [[Incentive]], [[Mechanism design]], [[Collective action]] || queued
+|-
+| '''Wave 11''' || Decentralized systems || [[Distributed ledger]], [[Blockchain]], [[Consensus mechanism]], [[Smart contract]], [[Decentralized autonomous organization]], [[Decentralized finance]] || queued; keep public technology concepts separate from project/token-specific material
+|-
+| '''Wave 12''' || Biology and bioinformatics || [[Biological sequence]], [[Sequence alignment]], [[Biological database]], [[Sequence annotation]], [[Genomics]], [[Phylogenetics]], [[Reproducible bioinformatics workflow]] || queued; already represented in the structured Bioinformatics request queue below
+|-
+| '''Wave 13''' || Public / platform technology || Internet- and platform-level durable concepts identified by coverage review || queued; scope research required before titles are fixed
+|-
+| '''Wave 14''' || Miscellaneous durable seeds || High-value concepts that do not yet form a coherent wave || queued; do not use this as a dumping ground—promote only when a real semantic cluster emerges
+|}
+
+
 == Current high-level coverage gaps ==
 
 These are research priorities derived from navigation/core-coverage comparison, not automatic Domain approvals:
@@ -66,9 +122,9 @@ These are research priorities derived from navigation/core-coverage comparison, 
  |candidate_domains=
  |source_leads=
  |needed_depth=scope research
- |status=requested
+ |status=researching
  |canonical_page=
- |notes=Research priority; determine boundaries before schema changes.
+ |notes=Wave 2 established substantial ontology, semantics, metadata, knowledge-representation, knowledge-graph, and Semantic Web foundations. High-level Information / knowledge science scope, portal/domain boundaries, and remaining library/information-science coverage still require dedicated scope research.
 }}
 {{Knowledge request
  |request=Psychology / cognitive science
@@ -78,7 +134,7 @@ These are research priorities derived from navigation/core-coverage comparison, 
  |needed_depth=scope research
  |status=requested
  |canonical_page=
- |notes=Research priority; determine whether one or several durable surfaces are justified.
+ |notes=Research priority. Wave 4 is queued for cognition and cognitive-bias foundations, but the broader Psychology / cognitive science Domain/portal boundary remains unresolved.
 }}
 {{Knowledge request
  |request=Social sciences

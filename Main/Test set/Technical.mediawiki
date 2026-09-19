@@ -1,0 +1,26 @@
+{{Source status|status=Technical depth derivative|note=Advanced independent-test evaluation surface.}}
+{{Reading depth|base=Test set|current=Technical}}
+= Test set — Technical =
+
+== Performance estimate ==
+After a system h is frozen, test risk is estimated as:
+
+<pre>
+R_test(h) = (1/n_test) Σ_i ℓ(h(x_i), y_i)
+</pre>
+
+Its uncertainty depends on sample size, dependence structure, metric, and sampling process.
+
+== Adaptive reuse ==
+If h is repeatedly modified after observing R_test, the final h is dependent on S_test.
+
+The nominal test estimate is then no longer a simple independent estimate for the selected system.
+
+== Benchmark setting ==
+Public leaderboards create an adaptive multi-team search process.
+
+Hidden/private tests, rolling benchmarks, fresh test data, or strict evaluation protocols can reduce but not eliminate adaptive evaluation problems.
+
+== References ==
+* statistical evaluation methodology.
+* adaptive data-analysis / benchmark literature.

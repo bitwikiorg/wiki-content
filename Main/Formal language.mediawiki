@@ -1,0 +1,70 @@
+{{Source status|status=Wave 6 compiled article|note=Formal-language concept grounded in automata theory and theoretical computer science.}}
+{{Knowledge object
+ |title=Formal language
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Formal language|current=Core}}
+
+= Formal language =
+
+== Overview ==
+A '''formal language''' is a mathematically specified set of finite strings over an alphabet.
+
+Formal languages are central to automata theory, compiler construction, logic, and the formal description of programming-language syntax.
+
+== Alphabet and strings ==
+An '''alphabet''' is a finite set of symbols.
+
+A '''string''' is a finite sequence of symbols from the alphabet.
+
+If Σ is an alphabet, Σ* denotes the set of all finite strings over Σ, including the empty string.
+
+A formal language L over Σ is then:
+
+<pre>
+L ⊆ Σ*
+</pre>
+
+== Defining languages ==
+A language can be specified by:
+
+* listing its strings when finite;
+* a grammar;
+* a regular expression;
+* an automaton that recognizes it;
+* a logical or algebraic condition;
+* an algorithm deciding membership.
+
+Different descriptions can define the same language.
+
+== Language and grammar ==
+A grammar is a system of production rules that generates strings.
+
+The language is the set of strings generated.
+
+Therefore:
+
+<pre>
+formal language ≠ grammar
+</pre>
+
+== Formal and natural language ==
+Natural languages have rich semantic, pragmatic, social, and historical structure.
+
+Formal languages are deliberately specified mathematical objects.
+
+Natural-language fragments can be modeled formally, but a formal language is not the same thing as human language.
+
+== Programming languages ==
+Programming languages have formal syntactic layers, but a programming language also includes semantics, implementation conventions, libraries, tooling, and often effects beyond a bare set of strings.
+
+== References ==
+* OpenDSA, Formal Languages and Automata.
+* Hopcroft, Motwani & Ullman, ''Introduction to Automata Theory, Languages, and Computation''.
+* standard formal-language theory texts.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

@@ -1,0 +1,77 @@
+{{Source status|status=Wave 5 compiled article|note=First-order-logic concept grounded in classical logic, model theory, and Open Logic Project references.}}
+{{Knowledge object
+ |title=First-order logic
+ |entity_type=Concept
+ |domain=Philosophy, Mathematics, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 5 compiled context
+}}
+{{Reading depth|base=First-order logic|current=Core}}
+
+= First-order logic =
+
+== Overview ==
+'''First-order logic''' extends propositional logic with terms, predicates, variables, relations, and quantifiers ranging over individuals in a domain.
+
+It is a central formal language in mathematics, philosophy, computer science, and knowledge representation.
+
+== Predicates and terms ==
+Predicates express properties or relations:
+
+<pre>
+Human(x)
+Loves(x,y)
+</pre>
+
+Terms denote or range over objects.
+
+== Quantifiers ==
+First-order logic uses quantifiers such as:
+
+<pre>
+∀x P(x)   — for every x, P(x)
+∃x P(x)   — for some x, P(x)
+</pre>
+
+Quantifiers can be nested to represent complex relational structure.
+
+== First-order restriction ==
+First-order quantifiers range over individuals in the domain.
+
+They do not directly quantify over predicates, properties, or sets of individuals.
+
+That distinguishes first-order logic from second-order and higher-order systems.
+
+== Semantics ==
+A first-order model supplies:
+
+* a domain of objects;
+* interpretations for constants;
+* functions;
+* predicates and relations.
+
+Truth is evaluated relative to a model and variable assignment.
+
+== Metalogical properties ==
+Classical first-order logic has major properties including:
+
+* soundness;
+* Gödel completeness;
+* compactness;
+* Löwenheim–Skolem theorems.
+
+Validity is not decidable in general, although it is recursively enumerable.
+
+== Naming ==
+“Predicate logic” and “predicate calculus” are common historical or informal terms.
+
+The canonical BITwiki title is '''First-order logic''' because “predicate logic” can be used more broadly and does not cleanly mark the first-order boundary.
+
+== References ==
+* Stanford Encyclopedia of Philosophy, “Classical Logic”.
+* Stanford Encyclopedia of Philosophy, “The Emergence of First-Order Logic”.
+* Open Logic Project.
+
+[[Category:Philosophy]]
+[[Category:Mathematics]]
+[[Category:Computer science]]

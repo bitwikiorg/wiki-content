@@ -33,6 +33,7 @@ return {
         ["Physics"] = true,
         ["Medicine"] = true,
         ["Linguistics"] = true,
+        ["Cognitive science"] = true,
     },
     status = {
         ["Hypothetical"] = true,

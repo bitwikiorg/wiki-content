@@ -1,0 +1,34 @@
+{{Source status|status=Technical depth derivative|note=Advanced perturbation/robustness surface.}}
+{{Reading depth|base=Robustness|current=Technical}}
+= Robustness — Technical =
+
+== Perturbation formulation ==
+Let system performance be J(s) and perturbation δ lie in admissible set Δ.
+
+A robustness property can be expressed generically as:
+
+<pre>
+J(s, δ) remains within acceptable set A
+for all / most δ ∈ Δ
+</pre>
+
+The meaning depends on Δ, A, probability model, and dynamics.
+
+== Network robustness ==
+Network robustness measures can track:
+
+* giant-component persistence;
+* connectivity;
+* flow capacity;
+* dynamical function;
+* cascading-failure tolerance;
+* recovery trajectories.
+
+Different measures can rank the same network differently.
+
+== Tradeoffs ==
+Robustness can trade off with efficiency, cost, flexibility, or robustness to other perturbation classes.
+
+== References ==
+* Artime et al. (2024).
+* network and robust-control literature.

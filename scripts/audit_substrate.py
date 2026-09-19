@@ -36,6 +36,8 @@ SOURCE_ROOTS = (
 SOURCE_SUFFIXES = {".mediawiki", ".lua", ".css", ".js", ".json"}
 DIRECTORY_DOC_FILES = ("README.md", "WORKFLOWS.md")
 
+READING_DEPTH_FILENAMES = {"Simple.mediawiki", "Technical.mediawiki"}
+
 PATTERNS = {
     "smw_ask": re.compile(r"\{\{\s*#ask\s*:", re.I),
     "smw_concept": re.compile(r"\{\{\s*#concept\s*:", re.I),
@@ -75,6 +77,39 @@ def read_json(path: Path):
 
 def relative(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
+
+
+def is_reading_depth_directory(path: Path) -> bool:
+    """Recognize Main/<Title>/ transport directories for reader-depth pages.
+
+    These directories project MediaWiki slash titles such as Title/Simple and
+    Title/Technical. They are not architectural modules and therefore do not
+    require a local README when:
+      * the sibling Core page Main/<Title>.mediawiki exists;
+      * every file is an approved depth filename;
+      * every depth file actually transcludes Template:Reading depth; and
+      * there are no nested directories.
+    """
+    main_root = ROOT / "Main"
+    try:
+        rel = path.relative_to(main_root)
+    except ValueError:
+        return False
+    if len(rel.parts) != 1:
+        return False
+    core = main_root / f"{rel.name}.mediawiki"
+    if not core.exists():
+        return False
+    entries = list(path.iterdir())
+    if not entries or any(item.is_dir() for item in entries):
+        return False
+    if any(item.name not in READING_DEPTH_FILENAMES for item in entries):
+        return False
+    for item in entries:
+        text = item.read_text(encoding="utf-8")
+        if "{{Reading depth" not in text:
+            return False
+    return True
 
 
 def source_files() -> list[Path]:
@@ -187,10 +222,14 @@ def main() -> int:
         and ".git" not in path.parts
         and "__pycache__" not in path.parts
     ]
+    reading_depth_directories = sorted(
+        relative(path) for path in all_dirs if is_reading_depth_directory(path)
+    )
     missing_directory_docs = sorted(
         relative(path)
         for path in all_dirs
         if not any((path / filename).exists() for filename in DIRECTORY_DOC_FILES)
+        and not is_reading_depth_directory(path)
     )
 
     warnings = []
@@ -271,6 +310,7 @@ def main() -> int:
         "missing_live_templates": missing_live_templates,
         "missing_mapped_roots": missing_mapped_roots,
         "directory_documentation_files": list(DIRECTORY_DOC_FILES),
+        "reading_depth_directories": reading_depth_directories,
         "missing_directory_documentation": missing_directory_docs,
         "warnings": warnings,
         "critical": critical,

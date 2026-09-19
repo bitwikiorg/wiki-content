@@ -162,9 +162,28 @@ Wave 10 is ready to leave Phase 3 when:
 
 == Release validation — 2026-09-19 ==
 
-PR validation is pending on the exact Wave 10 head.
+PR #28 executed the established Wave release gates after all 39 reader surfaces and the Utility title normalization were present.
 
-'''Current assessment: Wave 10 is semantically and structurally audited; merge remains conditional on complete staging and V2 release gates.'''
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+No Domain expansion or workflow architecture repair was required.
+
+This completion-state bookkeeping commit must re-pass the same release gates before merge.
+
+'''Current assessment: Wave 10 is semantically and structurally audited and has passed its release gates; merge remains conditional on final-head CI repeat.'''
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

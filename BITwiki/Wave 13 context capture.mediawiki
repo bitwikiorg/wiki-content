@@ -1,0 +1,127 @@
+{{Source status|status=Wave 13 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 13 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 13 establishes the public Internet/Web/platform substrate that sits above the existing [[Computer network]], [[Distributed system]], [[Computer security]], [[Identity]], and [[Governance]] corpus.
+
+== Normalized scope ==
+
+# [[Internet]]
+# [[World Wide Web]]
+# [[Protocol (computing)]]
+# [[Internet protocol suite]]
+# [[Domain Name System]]
+# [[Uniform Resource Identifier]]
+# [[Hypertext Transfer Protocol]]
+# [[Client-server model]]
+# [[Web browser]]
+# [[Web server]]
+# [[Application programming interface]]
+# [[Authentication]]
+# [[Authorization]]
+# [[Interoperability]]
+# [[Federation (information technology)]]
+# [[Online platform]]
+# [[Content moderation]]
+
+== Title decisions ==
+
+* [[Protocol (computing)]] is qualified because protocol has broad non-computing meanings.
+* [[Federation (information technology)]] is qualified because federation also has political and organizational meanings.
+* [[Uniform Resource Identifier]] is canonical rather than “URL”; URLs are an important URI use/subset but not the whole concept.
+* [[Application programming interface]] is canonical rather than the abbreviation API.
+* [[Online platform]] is used for the durable sociotechnical service layer rather than naming a specific commercial platform.
+
+== Domain decision ==
+
+No new controlled Domain is introduced. Wave 13 uses existing Computer science, Technology, Systems science, and where appropriate Engineering.
+
+== Dependency graph ==
+
+<pre>
+Internet
+ ├→ Internet protocol suite
+ │    ├→ Protocol (computing)
+ │    └→ Domain Name System
+ └→ World Wide Web
+      ├→ Uniform Resource Identifier
+      ├→ Hypertext Transfer Protocol
+      ├→ Client-server model
+      │    ├→ Web browser
+      │    └→ Web server
+      └→ Application programming interface
+
+Identity / access
+ ├→ Authentication
+ └→ Authorization
+
+Cross-system operation
+ ├→ Interoperability
+ └→ Federation (information technology)
+
+Platform layer
+ └→ Online platform
+      └→ Content moderation
+</pre>
+
+This graph is explanatory, not a strict subclass hierarchy.
+
+== Required non-equivalences ==
+
+<pre>
+Internet ≠ World Wide Web
+protocol ≠ implementation
+Internet protocol suite ≠ Internet itself
+DNS ≠ the Web
+domain name ≠ URI
+URI ≠ network location necessarily
+HTTP ≠ HTML
+HTTP ≠ the Web
+client/server role ≠ permanent machine identity
+web browser ≠ search engine
+web server ≠ physical server machine necessarily
+API ≠ network protocol necessarily
+authentication ≠ authorization
+authorization ≠ authentication
+interoperability ≠ identical implementation
+federation ≠ decentralization
+federation ≠ single sign-on
+online platform ≠ Internet
+content moderation ≠ proof that moderated content is false or harmful
+</pre>
+
+== Source families ==
+
+* IETF RFCs — Internet architecture, DNS, URI syntax, HTTP semantics, and protocol terminology.
+* W3C Web Architecture — Web identification, interaction, representation, and agent/resource model.
+* NIST SP 800-63-4 family — current authentication and federation terminology.
+* NIST access-control literature — authorization/access-control distinctions.
+* W3C ActivityPub Recommendation — concrete federated client/server and server/server architecture.
+* Platform-governance literature — online platforms and content moderation as sociotechnical systems.
+
+== Cross-wave links ==
+
+* [[Computer network]], [[Distributed system]], [[Computer security]], [[Cryptography]], and [[Public-key cryptography]] provide infrastructure/security foundations.
+* [[Identity]], [[Decentralized identity]], and [[Attestation]] remain distinct from authentication and authorization.
+* [[Governance]], [[Reputation system]], [[Sybil attack]], and [[Multi-agent system]] connect to platform operation without defining the platform layer.
+* [[Semantic Web]], [[Resource Description Framework]], and [[Web Ontology Language]] remain Web applications/standards built on the broader Web substrate.
+
+== Future normalized redlinks ==
+
+Internet Protocol, Transmission Control Protocol, User Datagram Protocol, IPv4, IPv6, routing, autonomous system, Border Gateway Protocol, URL, HTML, TLS, cookie, session, OAuth, OpenID Connect, access control, identity provider, single sign-on, social network, recommendation system, trust and safety, terms of service, platform governance.
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Keep Wave 13 at 17 canonical concepts.
+# Use the durable Internet/Web/platform layer rather than vendor-specific products.
+# Preserve Internet/Web, URI/URL, HTTP/Web, browser/search-engine, API/protocol, authentication/authorization, federation/decentralization, and moderation/truth boundaries.
+# Do not create a new Domain.
+# Treat standards by actual publication status rather than as generic “current standards.”
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

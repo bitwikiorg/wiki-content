@@ -1,0 +1,43 @@
+{{Source status|status=Technical depth derivative|note=Advanced networking surface.}}
+{{Reading depth|base=Computer network|current=Technical}}
+= Computer network — Technical =
+
+== Packet switching ==
+Many modern networks divide data into packets routed or switched independently.
+
+Packet switching multiplexes links statistically but introduces queueing, loss, reordering and variable latency.
+
+== Layered model ==
+An Internet stack can be summarized:
+
+<pre>
+application
+transport
+network
+link
+physical medium
+</pre>
+
+Encapsulation lets each layer carry the data of higher layers.
+
+== Routing and forwarding ==
+Forwarding moves packets using local tables.
+
+Routing computes or distributes information used to construct those paths.
+
+The two functions are related but distinct.
+
+== Transport ==
+Transport protocols provide end-to-end services such as reliability, ordering, multiplexing and congestion control.
+
+Different applications require different tradeoffs.
+
+== Performance ==
+Key quantities include latency, bandwidth, throughput, loss, jitter and goodput.
+
+High bandwidth does not imply low latency.
+
+== References ==
+* Kurose & Ross.
+* Tanenbaum & Wetherall.
+* Internet protocol literature.

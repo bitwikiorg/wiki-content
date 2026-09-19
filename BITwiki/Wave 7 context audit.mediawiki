@@ -1,0 +1,361 @@
+{{Source status|status=Wave 7 Phase 3 context audit|note=Audit state for the Wave 7 machine-learning/generalization capture/compile/write cycle.}}
+= Wave 7 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Machine learning]]
+# [[Generalization (machine learning)]]
+# [[Overfitting]]
+# [[Underfitting]]
+# [[Inductive bias]]
+# [[Bias–variance tradeoff]]
+# [[Training set]]
+# [[Validation set]]
+# [[Test set]]
+# [[Distribution shift]]
+# [[Data leakage (machine learning)]]
+# [[Benchmark contamination]]
+# [[Model selection bias]]
+# [[Spurious correlation]]
+# [[Shortcut learning]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 7 reader surfaces: '''45'''.
+
+== Structural audit ==
+
+All fifteen Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* contain references;
+* use controlled Domain values;
+* own category/semantic identity.
+
+All thirty Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain sources/references;
+* do not duplicate Core <code>Knowledge object</code>;
+* do not duplicate Core category identity.
+
+A complete 45-surface structural read found no Markdown blockquote syntax or Markdown code fences.
+
+== Title / identity audit ==
+
+Two queued titles were normalized during capture:
+
+* [[Generalization]] → [[Generalization (machine learning)]]
+* [[Data leakage]] → [[Data leakage (machine learning)]]
+
+The first avoids collision with durable meanings of generalization across logic, psychology, linguistics and mathematics.
+
+The second avoids collision with computer-security/privacy data leakage.
+
+[[Spurious correlation]], [[Distribution shift]], and [[Benchmark contamination]] remain unqualified because their useful public scope is broader than one model family and their intended identity is sufficiently specific.
+
+“Fitting bias” was rejected as a canonical concept.
+
+No duplicate [[Learning]], [[Correlation]], [[Selection bias]], [[Validation]], [[Probability]], or [[Cognitive bias]] identity was created.
+
+== Domain audit ==
+
+No new controlled Domain is required.
+
+Wave 7 uses existing Domains:
+
+* Computer science;
+* Mathematics;
+* Science;
+* Philosophy for [[Inductive bias]].
+
+[[Shortcut learning]] remains Computer science rather than being classified as Cognitive science merely because the literature sometimes compares shortcuts in biological and artificial learners.
+
+== Request-lifecycle audit ==
+
+The pre-existing structured request for [[Machine learning]] is satisfied by the new canonical page rather than duplicated.
+
+The final workflow validator must confirm:
+
+<pre>
+status=satisfied
+canonical_page=Machine learning
+no active canonical conflict
+</pre>
+
+== Semantic graph audit ==
+
+Every declared Wave 7 Core dependency that points to an already canonical concept is linked from the corresponding Core page.
+
+The graph now exposes:
+
+<pre>
+Machine learning
+ ├→ Inductive bias
+ ├→ Training set
+ │    ├→ Validation set
+ │    └→ Test set
+ └→ Generalization (machine learning)
+      ├→ Overfitting
+      ├→ Underfitting
+      ├→ Bias–variance tradeoff
+      ├→ Distribution shift
+      ├→ Data leakage (machine learning)
+      │    └→ Benchmark contamination
+      ├→ Model selection bias
+      ├→ Spurious correlation
+      └→ Shortcut learning
+</pre>
+
+The structure is explanatory rather than a strict subclass hierarchy.
+
+== Required non-equivalences preserved ==
+
+<pre>
+machine learning ≠ artificial intelligence as a whole
+machine learning ≠ biological learning
+generalization ≠ benchmark score
+generalization ≠ OOD robustness by definition
+overfitting ≠ model size
+overfitting ≠ memorization by definition
+underfitting ≠ small model by definition
+inductive bias ≠ cognitive bias
+inductive bias ≠ statistical estimator bias
+bias–variance tradeoff ≠ universal U-shaped complexity law
+training set ≠ all development data
+validation set ≠ final test set
+test set ≠ repeatedly consulted development data
+distribution shift ≠ overfitting
+distribution shift ≠ covariate shift only
+data leakage ≠ benchmark contamination
+data leakage ≠ security data exfiltration
+benchmark contamination ≠ every benchmark weakness
+model selection bias ≠ sample-selection bias
+spurious correlation ≠ every noncausal correlation
+spurious correlation ≠ shortcut learning
+shortcut learning ≠ theorem explaining all generalization failure
+</pre>
+
+== Machine-learning scope audit ==
+
+[[Machine learning]] is not defined as all AI.
+
+It includes multiple learning paradigms without reducing the field to supervised deep learning.
+
+It links to [[Learning]] while preserving the computational/biological distinction.
+
+== Generalization audit ==
+
+[[Generalization (machine learning)]] is defined relative to new examples/conditions beyond the fitted examples.
+
+The article distinguishes ordinary iid-style generalization from out-of-distribution robustness.
+
+A low training/test gap is not treated as sufficient evidence of good performance because both errors can be high.
+
+Memorization and generalization are allowed to coexist.
+
+== Overfitting / underfitting audit ==
+
+[[Overfitting]] is a relationship among finite data, learning procedure, and target performance rather than a synonym for a large model.
+
+The page explicitly rejects:
+
+<pre>
+large model → necessarily overfit
+interpolation → necessarily overfit
+memorization → necessarily no generalization
+</pre>
+
+[[Underfitting]] is not defined only by insufficient parameter count.
+
+Representation, optimization, excessive regularization, feature quality and objective mismatch remain possible causes.
+
+== Bias–variance audit ==
+
+The classical bias–variance decomposition is preserved under its statistical assumptions.
+
+The wave does not canonize the old single-U-curve story as a universal law.
+
+Belkin et al. (2019) provides the modern correction: interpolation-era systems can exhibit double-descent behavior.
+
+The Technical page separates the squared-error decomposition from empirical test-error-versus-capacity curves.
+
+== Dataset-role audit ==
+
+[[Training set]], [[Validation set]], and [[Test set]] are defined by function, not fixed proportions.
+
+The pages preserve:
+
+<pre>
+training → direct fitting
+validation → development/model selection
+test → independent post-selection evaluation
+</pre>
+
+Cross-validation can rotate roles.
+
+Repeated test consultation makes the test data part of an adaptive development loop even if the file is still named “test”.
+
+== Distribution-shift audit ==
+
+[[Distribution shift]] is defined as:
+
+<pre>
+P_train(X,Y) ≠ P_target(X,Y)
+</pre>
+
+in the general case.
+
+Covariate shift is correctly treated as a special case with stable <code>P(Y|X)</code>, not as the definition of all shift.
+
+The page separates shift from ordinary overfitting.
+
+== Leakage audit ==
+
+[[Data leakage (machine learning)]] covers:
+
+* target leakage;
+* temporal/future leakage;
+* preprocessing leakage;
+* duplicate/group overlap;
+* train–test contamination;
+* indirect target information.
+
+It is explicitly distinct from security data exfiltration.
+
+Learned preprocessing is treated as part of the fitting pipeline.
+
+== Benchmark-contamination audit ==
+
+[[Benchmark contamination]] is treated as an evaluation-specific contamination problem and not as an LLM-only concept.
+
+The page includes direct, near-duplicate/derivative, fine-tuning, synthetic-data and benchmark-targeted adaptation channels.
+
+The audit preserves a current empirical nuance: contamination can inflate scores, but the effect size depends on exposure, similarity, optimization and forgetting. Contamination is not asserted to make every affected score completely meaningless.
+
+[[Benchmark contamination]] is also separated from benchmark saturation, construct validity, annotation quality and metric gaming.
+
+== Model-selection-bias audit ==
+
+[[Model selection bias]] follows the Cawley & Talbot distinction:
+
+<pre>
+individual validation estimate can be unbiased
++
+selection over noisy estimates
+→ optimistic selected estimate
+</pre>
+
+It is not merged into [[Selection bias]], which concerns sample/observation selection.
+
+Nested cross-validation is represented as one mechanism for separating model-selection and performance-estimation roles.
+
+== Spurious-correlation audit ==
+
+[[Spurious correlation]] remains broader than machine learning and links to [[Correlation]], [[Causality]], and [[Selection bias]].
+
+The article avoids the inaccurate rule:
+
+<pre>
+noncausal correlation = spurious correlation
+</pre>
+
+A noncausal predictor can remain useful under a stable specified deployment distribution.
+
+The term “spurious” is instead tied to unstable/misleading task relevance under the intended environment.
+
+== Shortcut-learning audit ==
+
+[[Shortcut learning]] is assigned '''Supported''', not Established, because it is a productive research framing rather than a universal law of learning systems.
+
+The pages preserve:
+
+<pre>
+spurious correlation = relation/data property
+shortcut learning = learner's use of an easy decision rule
+</pre>
+
+They also allow models to learn robust and shortcut features simultaneously.
+
+Geirhos et al. (2020) anchors the concept; later work is used to show the active state of shortcut-mitigation research rather than to overstate consensus.
+
+== Public concept versus local/project application ==
+
+The wave preserves:
+
+<pre>
+machine learning       ≠ BITwiki agent behavior
+generalization         ≠ “works on our prompts”
+overfitting            ≠ “model too big”
+training set            ≠ local corpus by definition
+validation set          ≠ staging environment
+test set                ≠ CI test suite
+distribution shift      ≠ project version drift
+data leakage            ≠ infrastructure secret leak
+benchmark contamination ≠ benchmark disagreement
+model selection bias    ≠ governance selection
+shortcut learning       ≠ tool-use shortcut
+</pre>
+
+No local agent architecture is used to define a public concept.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| Shalev-Shwartz & Ben-David; Hastie/Tibshirani/Friedman; Bishop || machine learning, generalization, fitting, data roles
+|-
+| Belkin et al. (2019) || double descent and modern qualification of simple capacity curves
+|-
+| Cawley & Talbot (2010) || model-selection overfitting and evaluation selection bias
+|-
+| Quiñonero-Candela et al.; Sugiyama & Kawanabe || distribution / dataset / covariate shift
+|-
+| Kaufman et al. || predictive-model data leakage
+|-
+| Geirhos et al. (2020) || shortcut-learning framing
+|-
+| recent AISTATS/ICML work || spurious correlations and shortcut mitigation
+|-
+| LiveBench; ICML 2025 contamination studies || modern benchmark contamination and effect-size nuance
+|}
+
+== Redlink policy ==
+
+Future descendants captured in [[BITwiki:Wave 7 context capture]] remain coverage signals, not authorization for stubs.
+
+== Acceptance criteria ==
+
+Wave 7 is ready to leave Phase 3 when:
+
+# all 45 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# controlled Domains pass;
+# [[Machine learning]] request is satisfied with a valid canonical page;
+# all declared existing-concept dependencies remain linked;
+# public/project distinctions remain explicit;
+# all depth derivatives remain category/identity-exempt;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, deployment, workflow and Main-space audits pass;
+# staging builds the complete graph.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 7 context capture]]
+        ↓
+[[BITwiki:Wave 7 compiled context]]
+        ↓
+[[BITwiki:Wave 7 context audit]]
+</pre>
+
+'''Current assessment: semantic and structural audit is complete; repository/CI validation remains the final release gate.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

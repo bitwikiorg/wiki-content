@@ -1,99 +1,122 @@
-{{Source status|status=source-grounded corpus expansion|note=Computer science foundation grounded in ACM CS2023 and official Python language-reference evidence.}}
+{{Source status|status=Wave 0 compiled rewrite|note=Core article normalized against ACM/IEEE-CS CS2023, formal-semantics literature, language specifications, and Wave 0 shared context.}}
 {{Knowledge object
  |title=Programming language
  |entity_type=Concept
  |domain=Computer science
  |status=Established
- |provenance=V2 corpus expansion; ACM CS2023 and language-reference grounding
+ |provenance=V2 public corpus; Wave 0 compiled context
 }}
+{{Reading depth|base=Programming language|current=Core}}
 
 = Programming language =
 
 == Overview ==
-A '''programming language''' is a notation and rule system for expressing computations and computer programs. It gives programmers a vocabulary and structure for describing data, operations, control, abstraction, and interaction in a form that can be analyzed or executed by a computing system.
+A '''programming language''' is a notation and rule system for expressing [[Program (computing)|programs]] and computations. It defines which expressions are well formed and what those expressions mean.
 
-Programming languages range from low-level assembly languages closely tied to machine instructions to high-level languages such as Python, C, Java, Rust, Haskell, or JavaScript that provide richer abstractions.
+Programming languages range from machine-oriented assembly languages to high-level general-purpose languages and narrow domain-specific languages. Their design affects how programmers represent data, control, abstraction, state, concurrency, and interaction.
 
-== Definition ==
-A programming language defines forms that count as valid programs and assigns meaning to those forms. Two central dimensions are therefore:
+== Syntax and semantics ==
+Two foundational dimensions are:
 
-* '''syntax''' — how valid expressions and programs are formed;
-* '''semantics''' — what those expressions and programs mean or do.
+* '''[[Syntax]]''' — which sequences or structures count as well-formed language expressions;
+* '''[[Semantics]]''' — what well-formed expressions mean or how they behave.
 
-Official language specifications and references make this distinction explicit. For example, the Python Language Reference documents the language's syntax and core semantics while separating the language definition from implementation-specific details.
+A language can have correct syntax while still containing a type error or another semantic violation. Formal language definitions therefore often separate lexical syntax, grammar, static semantics, and dynamic semantics.
 
-== Scope & importance ==
-A language is not the same thing as one implementation of the language. A programming language can have multiple compilers, interpreters, runtimes, or virtual machines. Those implementations may differ in performance, optimization, memory behavior, platform support, and extensions while aiming to preserve the language's defined behavior.
+== Language and implementation ==
+A programming language is not identical to any one compiler, interpreter, runtime, or virtual machine.
 
-This distinction matters for portability and reasoning. Code written in a language is intended to express behavior at the language level; an implementation determines how that behavior is realized on a particular system.
+One language can have several implementations. Those implementations may differ in optimization, performance, memory management, supported platforms, extensions, and tooling while aiming to preserve the language's specified semantics.
 
-== Core concepts ==
-Programming languages commonly define:
+For this reason, labels such as "compiled language" and "interpreted language" can be misleading when treated as intrinsic classifications. Compilation and interpretation are implementation strategies.
 
-* '''Lexical structure''' — tokens, identifiers, literals, operators, comments, and whitespace rules.
-* '''Grammar / syntax''' — valid combinations of language elements.
-* '''Semantics''' — the meaning of expressions, statements, declarations, and programs.
-* '''Types''' — classifications of values and operations, when the language has a type system.
-* '''Binding and scope''' — how names refer to values, variables, functions, modules, or other entities.
-* '''Control flow''' — sequencing, conditionals, loops, function calls, exceptions, events, continuations, or concurrency.
-* '''Abstraction''' — functions, modules, objects, algebraic data types, interfaces, traits, macros, or other ways to build reusable concepts.
-* '''Memory and state''' — rules for values, mutation, allocation, lifetimes, ownership, references, or garbage collection.
+== Core language concepts ==
+Programming languages commonly provide rules for:
 
-Not every language exposes all of these in the same way.
+* names and binding;
+* scope;
+* values and [[Data structure|data structures]];
+* types;
+* expressions and statements;
+* functions/procedures;
+* modules and abstraction;
+* control flow;
+* state and mutation;
+* memory and resource management;
+* exceptions/effects;
+* concurrency or asynchronous behavior;
+* interaction with external systems.
 
-== Programming paradigms ==
-Languages are often discussed through '''paradigms''', recurring approaches to structuring computation. Examples include:
-
-* imperative and procedural programming;
-* object-oriented programming;
-* functional programming;
-* logic programming;
-* declarative programming;
-* dataflow and reactive programming;
-* concurrent and actor-oriented programming.
-
-Many modern languages are multi-paradigm rather than fitting a single category.
-
-== Translation and execution ==
-A [[Program (computing)|program]] written in a programming language must eventually be mapped to operations a runtime or machine can carry out. Common strategies include:
-
-* '''compilation''' — translate source into machine code or another lower-level representation before execution;
-* '''interpretation''' — execute or evaluate source or an intermediate representation through another program;
-* '''bytecode / virtual machines''' — translate to an intermediate instruction set executed by a runtime;
-* '''just-in-time compilation''' — translate portions of a program during execution.
-
-These strategies are implementation choices. A language should not automatically be labeled "compiled" or "interpreted" as though that were an intrinsic property when multiple implementations exist.
+Not every language exposes every concept explicitly.
 
 == Type systems ==
-A type system organizes values and the operations permitted on them. ACM/IEEE-CS CS2023 treats type systems as a core part of programming-language foundations, including static versus dynamic typing, type safety, polymorphism, and compound types.
+A type system classifies expressions or values and restricts which operations are permitted.
 
-Types can help describe interfaces, detect inconsistent operations, guide optimization, and make program properties easier to reason about. Different languages make different trade-offs between expressiveness, inference, runtime flexibility, safety, and implementation complexity.
+Important distinctions include:
 
-== Examples ==
-Python uses a grammar and documented core semantics, is dynamically typed, and has multiple implementations.
+* static versus dynamic checking;
+* explicit versus inferred types;
+* nominal versus structural typing;
+* subtyping;
+* polymorphism;
+* algebraic and compound types;
+* type safety and soundness.
 
-C exposes relatively low-level memory and machine-oriented operations while still providing portable high-level constructs.
+Type systems can improve reasoning and tooling, but they differ substantially in expressiveness, guarantees, ergonomics, and runtime behavior.
 
-Haskell emphasizes functional programming and a static type system.
+== Programming paradigms ==
+A '''programming paradigm''' is a recurring style for organizing computation. Common labels include:
 
-SQL is a domain-specific declarative language for expressing data queries and transformations rather than a general-purpose application language in the usual sense.
+* imperative;
+* procedural;
+* object-oriented;
+* functional;
+* logic;
+* declarative;
+* dataflow;
+* reactive;
+* concurrent;
+* actor-oriented.
 
-== Applications / implications ==
-Programming-language design affects software reliability, security, portability, performance, concurrency, developer productivity, tooling, and the kinds of abstractions that are easy to express.
+These categories overlap. Many modern languages intentionally support several paradigms.
 
-Languages also shape ecosystems. Package systems, standard libraries, debuggers, editors, compilers, build tools, documentation, and community conventions influence practical use even when they are not part of the language definition itself.
+== Translation and execution ==
+A program written in a language may be:
 
-== Technical depth ==
-Programming-language theory studies formal syntax and semantics, type systems, operational and denotational models, program logics, compilation, language implementation, effect systems, memory models, concurrency models, metaprogramming, and equivalence between programs.
+* compiled to native machine code;
+* translated to an intermediate representation or bytecode;
+* interpreted;
+* just-in-time compiled;
+* partially evaluated or transformed before/during execution.
 
-A language's specification may be formal, semi-formal, implementation-defined, or partly conventional. The degree of formalization affects how precisely independent implementations and program properties can be compared.
+The execution strategy belongs to the implementation stack, not necessarily to the language definition itself.
+
+== Formal semantics ==
+Programming-language semantics can be described formally.
+
+'''Operational semantics''' describes program behavior in terms of computational steps or transitions.
+
+'''Denotational semantics''' maps language constructs to mathematical meanings.
+
+'''Axiomatic semantics''' characterizes program behavior through logical assertions, such as preconditions and postconditions.
+
+These approaches support reasoning about correctness, equivalence, optimization, and language design.
+
+== Language specification and ecosystem ==
+A language may be defined by an international standard, a formal specification, a prose language reference, a reference implementation, or a combination of these.
+
+Libraries, package repositories, build systems, editors, debuggers, and community conventions may be central to practical use while remaining outside the language proper.
+
+== Relationship to computation and programs ==
+A programming language is a representational interface between abstract [[Computation|computation]] and executable [[Program (computing)|programs]]. Language constructs make particular computational patterns easier to express, but they do not change the underlying distinction among method, representation, execution, and environment.
 
 == Epistemic notes ==
-The concept is established, but language categories are often fuzzy. "Compiled," "interpreted," "scripting," "systems," "functional," and "object-oriented" can describe implementations, dominant use, or available features rather than mutually exclusive classes. Precise claims should identify which language property is actually being described.
+Programming-language categories are useful but often fuzzy. "Scripting," "systems," "functional," "object-oriented," "compiled," and similar labels can describe dominant usage, implementation choices, or available features rather than exclusive natural kinds.
 
 == References ==
-* [https://csed.acm.org/knowledge-areas/ ACM/IEEE-CS CS2023 — Knowledge Areas]
-* [https://csed.acm.org/fpl-cs-core/ ACM/IEEE-CS CS2023 — Foundations of Programming Languages core]
-* [https://docs.python.org/3/reference/ Python — Language Reference]
+* [https://csed.acm.org/programming-languages/ ACM/IEEE-CS CS2023 — Foundations of Programming Languages]
+* Glynn Winskel, ''The Formal Semantics of Programming Languages'', MIT Press (1993). DOI: 10.7551/mitpress/3054.001.0001.
+* Shriram Krishnamurthi, ''Programming Languages: Application and Interpretation''. https://www.plai.org/
+* [https://docs.python.org/3/reference/ Python Language Reference] — example of a language reference/specification surface.
 
 [[Category:Computer science]]

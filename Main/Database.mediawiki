@@ -1,0 +1,67 @@
+{{Source status|status=Wave 6 compiled article|note=Database concept grounded in database-systems literature.}}
+{{Knowledge object
+ |title=Database
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Database|current=Core}}
+
+= Database =
+
+== Overview ==
+A '''database''' is an organized collection of persistent data designed for storage, retrieval, update, and management.
+
+A '''database management system''' (DBMS) is software used to define, access, protect, query, and maintain databases.
+
+Therefore:
+
+<pre>
+database ≠ DBMS
+</pre>
+
+== Data models ==
+Databases can use models such as:
+
+* relational tables;
+* documents;
+* key–value records;
+* graphs;
+* column families;
+* arrays;
+* object-oriented structures.
+
+The relational model is highly influential but is not the definition of database.
+
+== Schema ==
+A database schema describes structure, constraints, relationships, and types.
+
+Some systems enforce explicit schemas strongly; others allow flexible or evolving structures.
+
+== Queries ==
+A query retrieves or transforms data according to a declarative or procedural specification.
+
+SQL is the dominant relational query language, but databases can expose many other languages and APIs.
+
+== Transactions ==
+Transactions group operations into units with consistency and failure semantics.
+
+Classical ACID properties describe atomicity, consistency, isolation, and durability, but systems implement different isolation and durability guarantees.
+
+== Indexes ==
+Indexes trade storage and update cost for faster access paths.
+
+Choosing indexes depends on query patterns and workload.
+
+== Distributed databases ==
+Databases can replicate or partition data across machines.
+
+Distribution introduces coordination, consistency, availability, fault-tolerance, and latency tradeoffs.
+
+== References ==
+* Ramakrishnan & Gehrke, ''Database Management Systems''.
+* Garcia-Molina, Ullman & Widom, database-systems texts.
+* ACM CS2023.
+
+[[Category:Computer science]]

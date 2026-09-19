@@ -1,0 +1,166 @@
+{{Source status|status=Wave 1 compiled article|note=Public scientific-practice concept using the National Academies 2019 convention while explicitly preserving field-specific terminology differences.}}
+{{Knowledge object
+ |title=Reproducibility
+ |entity_type=Concept
+ |domain=Science, Technology
+ |status=Established
+ |provenance=V2 public corpus; Wave 1 compiled context
+}}
+{{Reading depth|base=Reproducibility|current=Core}}
+
+= Reproducibility =
+
+== Overview ==
+'''Reproducibility''' describes the ability to obtain consistent results when a study, computation, measurement, or analytical procedure is repeated under specified conditions.
+
+The term is used differently across disciplines.
+
+For clarity, this article uses the influential National Academies of Sciences, Engineering, and Medicine (NASEM) 2019 convention for computational science as its main modern distinction:
+
+'''Reproducibility''' — obtaining consistent computational results using the same input data, computational steps, methods, code, and conditions of analysis.
+
+NASEM distinguishes this from [[Replication|replication]], which uses new data or a new study to address the same scientific question.
+
+Other fields use the words differently, so technical claims should define their convention.
+
+== Computational reproducibility ==
+A computational result is reproducible when another researcher can use the relevant materials and procedures to obtain a consistent result.
+
+This can require:
+* original input data;
+* source code;
+* software versions;
+* dependencies;
+* random seeds where relevant;
+* parameter settings;
+* preprocessing;
+* execution order;
+* hardware/runtime details when behavior depends on them.
+
+Simply publishing source code may be insufficient.
+
+== Provenance ==
+[[Provenance]] is central to reproducibility.
+
+To rerun an analysis, a researcher may need to know:
+
+<pre>
+raw data
+→ cleaning
+→ transformation
+→ analysis
+→ figures/tables
+→ reported claim
+</pre>
+
+If an intermediate transformation is undocumented, the final result may be impossible to reproduce even if the last analysis script is available.
+
+== Version control ==
+[[Version control]] helps reproduce computational work by recording exact revisions of code, configuration, and documentation.
+
+However, a repository commit does not automatically capture:
+* external datasets;
+* package versions;
+* container images;
+* cloud services;
+* generated files;
+* secrets;
+* runtime state.
+
+Reproducibility requires the complete relevant execution context.
+
+== Reproducibility and correctness ==
+A reproducible result can still be wrong.
+
+For example:
+* the code can contain a bug;
+* the data can be mislabeled;
+* the statistical model can be inappropriate;
+* the same mistaken preprocessing can be repeated exactly.
+
+Reproducibility verifies that the reported computational process can be repeated. It does not by itself [[Validation|validate]] the scientific conclusion.
+
+== Reproducibility and replication ==
+Under the NASEM convention:
+
+<pre>
+Reproducibility:
+same data + same analysis → consistent result
+
+Replication:
+new study/data + same scientific question → consistent finding
+</pre>
+
+The first tests transparency and computational traceability.
+
+The second provides stronger evidence about whether a result generalizes beyond the original dataset or execution.
+
+Both are important.
+
+== Reproducible environments ==
+Tools that support reproducible computing include:
+* dependency lock files;
+* containers;
+* virtual environments;
+* workflow systems;
+* notebooks;
+* build systems;
+* data-versioning systems;
+* package snapshots;
+* deterministic/random-seed control.
+
+These tools reduce uncontrolled environmental differences but cannot guarantee reproducibility if hidden dependencies remain.
+
+== Randomized and nondeterministic computation ==
+Some computations are intentionally stochastic or nondeterministic.
+
+A result need not be bit-for-bit identical to be scientifically reproducible.
+
+The appropriate criterion might instead be:
+* same statistical distribution;
+* same qualitative conclusion;
+* result within numerical tolerance;
+* consistent benchmark metric.
+
+The expected equivalence must be specified.
+
+== Numerical reproducibility ==
+Floating-point calculations can vary across:
+* hardware;
+* compiler;
+* operation order;
+* parallel scheduling;
+* math libraries.
+
+A rigorous reproducibility claim should therefore specify whether exact binary identity or scientifically equivalent numerical output is required.
+
+== Metrology terminology ==
+Metrology uses "reproducibility" differently.
+
+'''Measurement reproducibility''' concerns [[Accuracy and precision|precision]] under reproducibility conditions, where specified measurement conditions such as operators, laboratories, instruments, or locations differ.
+
+This established meaning should not be conflated with computational reproducibility.
+
+== Open science ==
+Reproducibility is supported by:
+* accessible data where legally/ethically possible;
+* executable code;
+* documented environments;
+* machine-readable workflows;
+* persistent identifiers;
+* provenance;
+* complete methods.
+
+Openness helps others attempt reproduction, but openness alone does not guarantee that the work is correct.
+
+== Epistemic notes ==
+"Reproducible" is incomplete unless the relevant conditions and equivalence criterion are stated. Different fields legitimately use the word differently.
+
+== References ==
+* National Academies of Sciences, Engineering, and Medicine, ''Reproducibility and Replicability in Science'' (2019). https://doi.org/10.17226/25303
+* [https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science National Academies — Reproducibility and Replicability in Science]
+* JCGM 200:2012, ''International Vocabulary of Metrology (VIM)''.
+* [https://www.w3.org/TR/prov-overview/ W3C PROV Overview]
+
+[[Category:Science]]
+[[Category:Technology]]

@@ -1,0 +1,48 @@
+{{Source status|status=Technical depth derivative|note=Advanced semantic-similarity measurement and representation surface of [[Semantic similarity]].}}
+{{Reading depth|base=Semantic similarity|current=Technical}}
+= Semantic similarity — Technical =
+
+== Metric choice ==
+A similarity function has the form:
+
+<pre>
+sim : X × X → ℝ
+</pre>
+
+but need not be a mathematical metric. Many similarity functions are not distances and may violate metric axioms.
+
+A derived distance such as 1 − cosine similarity still requires care because geometry and normalization affect interpretation.
+
+== Taxonomic measures ==
+Ontology/lexical-resource measures can use:
+
+* path length;
+* least common subsumer depth;
+* information content;
+* feature overlap.
+
+These depend on the structure and coverage of the chosen taxonomy.
+
+== Distributional measures ==
+Embedding methods commonly use cosine similarity, dot product, learned bilinear functions, or neural scoring.
+
+Given normalized vectors:
+
+<pre>
+cos(x,y) = x · y
+</pre>
+
+High geometric similarity reflects the representation and training objective, not a theory-independent semantic fact.
+
+== Text similarity ==
+Semantic textual similarity can be modeled with cross-encoders, bi-encoders, sentence embeddings, alignment models, or task-specific regressors/classifiers.
+
+Lexical overlap is insufficient for phenomena such as negation, scope, contradiction, reference, and paraphrase.
+
+== Annotation ==
+Human-rated datasets require instructions that distinguish similarity from relatedness. Inter-annotator disagreement is substantive evidence about concept/task ambiguity rather than mere noise.
+
+== References ==
+* Jurafsky & Martin, vector semantics and sentence-representation chapters.
+* WordNet/information-content similarity literature.
+* Semantic Textual Similarity shared-task literature.

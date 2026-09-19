@@ -1,0 +1,61 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[Software]].}}
+{{Reading depth|base=Software|current=Technical}}
+= Software — Technical =
+
+== Artifact boundary ==
+"Software" is not one universally fixed artifact set. Standards and engineering contexts may include programs, procedures, data, configuration, and documentation to different degrees.
+
+A technical claim should therefore name the [[System boundary/Technical|system boundary]] and configuration items in scope.
+
+== Architecture ==
+Software architecture concerns the organization of components, interfaces, responsibilities, dependencies, data flows, deployment structures, and quality constraints.
+
+Architectural choices affect:
+* modifiability;
+* reliability;
+* security;
+* performance;
+* scalability;
+* testability;
+* deployability.
+
+== Lifecycle ==
+A software lifecycle can include:
+* requirements;
+* design/architecture;
+* implementation;
+* verification/validation;
+* packaging/release;
+* deployment;
+* operation;
+* maintenance/evolution;
+* retirement.
+
+Real organizations combine these activities iteratively rather than following one universal linear sequence.
+
+== Configuration and provenance ==
+A reproducible software state can depend on:
+* source revision;
+* dependency graph;
+* build tools;
+* compiler/runtime versions;
+* configuration;
+* generated artifacts;
+* deployment environment;
+* external services.
+
+[[Version control/Technical|Version control]] records only part of this state.
+
+== Quality attributes ==
+Software quality cannot be reduced to functional correctness. Relevant attributes can include safety, security, availability, performance, usability, portability, interoperability, maintainability, and observability.
+
+Trade-offs are contextual; improving one quality can degrade another.
+
+== Essential and accidental complexity ==
+Brooks distinguished complexity inherent in the conceptual problem from accidental complexity introduced by representation or tooling. The distinction is qualitative, but it remains useful when assessing whether a technology removes incidental work or changes the underlying problem.
+
+== References ==
+* ISO/IEC/IEEE 24765:2017.
+* IEEE Computer Society, SWEBOK Guide V4.0 (2024).
+* Brooks (1987), DOI: 10.1109/MC.1987.1663532.
+* [[Program (computing)/Technical|Program — Technical]]

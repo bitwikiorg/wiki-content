@@ -1,0 +1,137 @@
+{{Source status|status=Wave 1 compiled article|note=Public metrology concept grounded in JCGM VIM and NIST measurement terminology.}}
+{{Knowledge object
+ |title=Accuracy and precision
+ |entity_type=Concept
+ |domain=Science, Engineering
+ |status=Established
+ |provenance=V2 public corpus; Wave 1 compiled context
+}}
+{{Reading depth|base=Accuracy and precision|current=Core}}
+
+= Accuracy and precision =
+
+== Overview ==
+'''Accuracy''' and '''precision''' describe different aspects of [[Measurement|measurement]] quality.
+
+'''Measurement accuracy''' concerns how close a measured quantity value is to an appropriate true or reference value.
+
+'''Measurement precision''' concerns how closely repeated measured values agree with one another under specified conditions.
+
+A measurement process can be precise without being accurate.
+
+== Accuracy ==
+In the International Vocabulary of Metrology (VIM), measurement accuracy is the closeness of agreement between a measured quantity value and a true quantity value of a measurand.
+
+Because a true value is usually not known exactly, accuracy is generally treated as a qualitative concept rather than a quantity assigned a simple numerical value.
+
+Statements such as "accuracy = ±2%" often actually refer to an error limit, tolerance, specification, or uncertainty rather than accuracy in the strict metrological sense.
+
+== Precision ==
+Measurement precision is the closeness of agreement among repeated indications or measured values obtained under specified conditions.
+
+Precision is affected mainly by random variation in repeated measurement.
+
+Precision can be quantified using statistics such as:
+* standard deviation;
+* variance;
+* coefficient of variation;
+* range;
+* repeatability or reproducibility standard deviation.
+
+The conditions under which the measurements were repeated must be stated.
+
+== Precise but inaccurate ==
+Imagine a scale that is miscalibrated so every reading is about 2 kg too high.
+
+Repeated measurements may agree closely with one another.
+
+That is high precision.
+
+But the readings are systematically displaced from the correct/reference value.
+
+That is poor accuracy.
+
+This distinction is why repeating a measurement many times cannot automatically remove systematic bias.
+
+== Accurate but imprecise ==
+A method can also produce measurements scattered broadly around the reference value.
+
+Individual measurements may be imprecise, while their average over many repetitions can be close to the reference value.
+
+Whether that is adequate depends on the intended measurement use.
+
+== Trueness and bias ==
+Metrology further distinguishes '''trueness'''.
+
+Measurement trueness concerns closeness between the average of an infinite number of replicate measured values and a reference quantity value.
+
+'''Bias''' is an estimate of systematic measurement error.
+
+This gives a useful conceptual decomposition:
+
+<pre>
+accuracy
+↳ trueness / systematic effects
+↳ precision / random variation
+</pre>
+
+The relation is conceptual rather than a simple arithmetic formula.
+
+== Repeatability and reproducibility ==
+Precision depends on the conditions under which repeated measurements are made.
+
+'''Repeatability conditions''' keep factors such as method, operator, instrument, location, and short time interval closely matched.
+
+'''Reproducibility conditions''' intentionally allow specified factors to differ.
+
+A method can therefore have different precision under repeatability and reproducibility conditions.
+
+This metrological use of reproducibility is distinct from the computational-science meaning described in [[Reproducibility]].
+
+== Accuracy and uncertainty ==
+Accuracy should not be confused with [[Uncertainty|measurement uncertainty]].
+
+Uncertainty characterizes the dispersion of quantity values that can reasonably be attributed to the measurand based on available information.
+
+Uncertainty evaluation can incorporate:
+* random effects;
+* calibration uncertainty;
+* systematic-effect corrections;
+* environmental effects;
+* reference uncertainty;
+* model uncertainty.
+
+A small reported uncertainty can support a claim of high-quality measurement, but "accuracy" itself is not simply the uncertainty number.
+
+== Instrument specifications ==
+Manufacturers often specify performance using terms such as:
+* tolerance;
+* maximum permissible error;
+* resolution;
+* repeatability;
+* linearity;
+* drift;
+* uncertainty.
+
+These should not be collapsed into one generic "accuracy" value.
+
+The relevant specification depends on how the instrument will be used.
+
+== Examples ==
+'''Target-board analogy''' — tightly clustered hits away from the center are precise but inaccurate; widely scattered hits centered on the target can be accurate on average but imprecise; tight hits at the center are both.
+
+'''Clock''' — a clock that gains exactly 30 seconds each day can be highly repeatable but systematically inaccurate.
+
+'''Laboratory assay''' — repeated results can agree closely while a calibration error shifts every result in the same direction.
+
+== Epistemic notes ==
+Everyday usage often uses "accuracy" to mean general quality. Technical writing should specify whether the concern is bias, uncertainty, repeatability, resolution, or precision.
+
+== References ==
+* [https://jcgm.bipm.org/vim/en/2.13.html JCGM VIM — Measurement accuracy]
+* [https://jcgm.bipm.org/vim/en/2.15.html JCGM VIM — Measurement precision]
+* [https://jcgm.bipm.org/vim/en/2.14.html JCGM VIM — Measurement trueness]
+* [https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-d1-terminology NIST TN 1297 — Terminology]
+
+[[Category:Science]]
+[[Category:Engineering]]

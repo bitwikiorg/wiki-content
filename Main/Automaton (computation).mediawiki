@@ -1,0 +1,58 @@
+{{Source status|status=Wave 6 compiled article|note=Computational automaton concept grounded in automata theory.}}
+{{Knowledge object
+ |title=Automaton (computation)
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Automaton (computation)|current=Core}}
+
+= Automaton (computation) =
+
+== Overview ==
+A computational '''automaton''' is an abstract machine defined by states and transition rules, often used to recognize, generate, or transform strings and formal languages.
+
+Automata provide simplified mathematical models for studying computation.
+
+== Components ==
+Depending on the model, an automaton can include:
+
+* a set of states;
+* one or more start states;
+* an input alphabet;
+* transition rules;
+* accepting states or output rules;
+* memory structures such as a stack or tape.
+
+== Finite automata ==
+Finite automata have finitely many states and no unbounded auxiliary memory.
+
+They recognize regular languages.
+
+Deterministic and nondeterministic finite automata have the same language-recognition power despite different transition structure.
+
+== Stronger automata ==
+Pushdown automata add a stack and recognize context-free languages.
+
+[[Turing machine|Turing machines]] use an unbounded tape in the idealized model and characterize Turing-computable functions/languages.
+
+== Automaton and state machine ==
+[[State machine]] is a broader modeling abstraction based on states and transitions.
+
+Automata theory focuses more specifically on mathematical machine models, language recognition, and computational power.
+
+The terms overlap heavily but are not strict synonyms in all contexts.
+
+== Automaton and physical machine ==
+An automaton is usually an abstract mathematical object.
+
+It can model physical or software systems, but it is not identical to the hardware that implements it.
+
+== References ==
+* OpenDSA, Formal Languages and Automata.
+* Hopcroft, Motwani & Ullman.
+* NIST Dictionary of Algorithms and Data Structures.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

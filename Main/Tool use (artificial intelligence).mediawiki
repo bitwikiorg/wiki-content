@@ -1,0 +1,86 @@
+{{Source status|status=Wave 8 compiled article|note=AI tool-use concept grounded in tool-learning and LLM-agent survey literature.}}
+{{Knowledge object
+ |title=Tool use (artificial intelligence)
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 8 compiled context
+}}
+{{Reading depth|base=Tool use (artificial intelligence)|current=Core}}
+
+= Tool use (artificial intelligence) =
+
+== Overview ==
+In artificial intelligence, '''tool use''' is the ability of a model or agent system to select, invoke, and incorporate external functions or resources while solving a task.
+
+Tools can extend a system beyond information or computation available directly inside the model.
+
+== Examples of tools ==
+AI tools can include:
+
+* search engines;
+* databases;
+* calculators;
+* code interpreters;
+* application programming interfaces;
+* software commands;
+* external models;
+* browsers;
+* files;
+* robotic actuators or devices.
+
+The exact meaning of “tool” depends on the system boundary.
+
+== Tool-use pipeline ==
+A tool-using system may need to:
+
+<pre>
+identify need for a tool
+→ discover or select tool
+→ construct arguments
+→ invoke tool
+→ receive execution result
+→ interpret result
+→ continue task
+</pre>
+
+Longer tasks can require multiple tools and repeated execution feedback.
+
+== Function calling ==
+Structured function calling is one common implementation mechanism.
+
+However:
+
+<pre>
+tool use ≠ function calling only
+</pre>
+
+Tools can be invoked through code, commands, language interfaces, software automation, robotics interfaces, or other action protocols.
+
+== Tool use and agents ==
+A model can make one tool call without functioning as a full agent.
+
+Agent systems often combine tool use with planning, memory/state, iterative observation, and action selection.
+
+== Reliability ==
+Tool use introduces additional failure modes:
+
+* choosing the wrong tool;
+* incorrect arguments;
+* stale or untrusted outputs;
+* permission errors;
+* cascading multi-step failures;
+* tool-side side effects;
+* unsafe actions.
+
+Correct tool invocation does not guarantee correct overall behavior.
+
+== Related concepts ==
+[[AI agent]], [[Planning (artificial intelligence)]], [[Program (computing)]], [[Computer network]], [[Human-computer interaction]], and [[Verification]] define the tool/action boundary.
+
+== References ==
+* Xu et al., “LLM-Based Agents for Tool Learning: A Survey”, ''Data Science and Engineering'' 10 (2025), 533–563.
+* Xinzhe Li, “A Review of Prominent Paradigms for LLM-Based Agents”, COLING 2025.
+* Chowa et al. (2026), autonomous-agent and tool-use review.
+
+[[Category:Computer science]]

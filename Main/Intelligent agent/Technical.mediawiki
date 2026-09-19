@@ -1,0 +1,37 @@
+{{Source status|status=Technical depth derivative|note=Advanced classical-agent surface.}}
+{{Reading depth|base=Intelligent agent|current=Technical}}
+= Intelligent agent — Technical =
+
+== Agent function ==
+A classical abstract agent maps percept history to action:
+
+<pre>
+f : P* → A
+</pre>
+
+where P* is the space of percept sequences and A is the action set.
+
+Implementations approximate or realize this mapping through rules, state estimation, planning, learning, control, or combinations.
+
+== Partial observability ==
+An agent may not directly observe the complete environment state.
+
+It can maintain internal state or beliefs inferred from observation history.
+
+== Rational action ==
+A rational-action criterion evaluates an action relative to:
+
+<pre>
+objective / performance measure
+available percepts
+prior knowledge
+available actions
+expected consequences
+</pre>
+
+Rationality does not imply perfect prediction.
+
+== References ==
+* Russell & Norvig.
+* Wooldridge.
+* agent architectures and rational-agent literature.

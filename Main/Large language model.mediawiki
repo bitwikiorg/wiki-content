@@ -1,0 +1,100 @@
+{{Source status|status=Wave 8 compiled article|note=Large-language-model concept grounded in language-model, foundation-model, and contemporary NLP literature.}}
+{{Knowledge object
+ |title=Large language model
+ |entity_type=Concept
+ |domain=Computer science, Linguistics
+ |status=Established
+ |provenance=V2 public corpus; Wave 8 compiled context
+}}
+{{Reading depth|base=Large language model|current=Core}}
+
+= Large language model =
+
+== Overview ==
+A '''large language model''' ('''LLM''') is a large-scale statistical or neural language model trained over very large corpora to model patterns in token sequences and commonly adapted to perform a wide range of language-related tasks.
+
+Most contemporary LLMs are deep neural networks trained with self-supervised objectives and later adapted through instruction tuning, preference optimization, retrieval, tools, or other methods.
+
+== Language modeling ==
+A language model assigns probabilities to sequences or predicts portions of a sequence from context.
+
+Autoregressive models commonly estimate:
+
+<pre>
+P(x_1, ..., x_n)
+= Π_t P(x_t | x_<t)
+</pre>
+
+Other language-model objectives can predict masked or corrupted tokens rather than only the next token.
+
+== What “large” means ==
+There is no universal parameter-count threshold that makes a language model “large.”
+
+The term reflects historical scale in parameters, training data, computation, and capability relative to earlier language models.
+
+== Transformers ==
+Most modern LLMs use Transformer architectures.
+
+However:
+
+<pre>
+large language model ≠ transformer by definition
+</pre>
+
+Transformer describes an architecture family; LLM describes a scale/domain/model class.
+
+== Foundation models ==
+Many LLMs are [[Artificial intelligence|AI]] foundation models because broad pretraining allows adaptation to many downstream tasks.
+
+But the concepts emphasize different properties:
+
+<pre>
+LLM              → large-scale language modeling
+foundation model → broad pretraining + downstream adaptability
+</pre>
+
+Not every foundation model is a language model.
+
+== Chatbots ==
+A chatbot is an application/interface.
+
+It may use an LLM, retrieval, safety layers, tools, memory, and orchestration.
+
+Therefore:
+
+<pre>
+LLM ≠ chatbot
+</pre>
+
+== Agents ==
+An [[AI agent]] can use an LLM for reasoning-like text generation, planning, tool selection, interpretation, or communication.
+
+The model itself is not automatically an agent because it does not by itself define persistent goals, action interfaces, environmental feedback, or task orchestration.
+
+== Capabilities and limitations ==
+LLM behavior depends on:
+
+* training data;
+* architecture;
+* scale;
+* adaptation;
+* context;
+* prompting;
+* retrieval;
+* tools;
+* decoding;
+* system-level controls.
+
+Fluent output does not guarantee factual correctness, formal reasoning validity, grounded understanding, or reliable long-horizon action.
+
+== Related concepts ==
+[[Machine learning]], [[Language]], [[Syntax]], [[Semantics]], [[Distributional semantics]], [[Artificial intelligence]], [[AI agent]], and [[Tool use (artificial intelligence)]] provide the model/system boundary.
+
+== References ==
+* Stanford HAI, “What is a Large Language Model (LLM)?”
+* Stanford CRFM, foundation-model framing and LLM distinction.
+* Vaswani et al., “Attention Is All You Need” (2017), for the Transformer architecture.
+* contemporary NLP and large-language-model literature.
+
+[[Category:Computer science]]
+[[Category:Linguistics]]

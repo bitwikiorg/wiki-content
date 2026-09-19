@@ -1,0 +1,40 @@
+{{Source status|status=Technical depth derivative|note=Advanced contemporary agent-system surface.}}
+{{Reading depth|base=AI agent|current=Technical}}
+= AI agent — Technical =
+
+== System formulation ==
+A modern AI-agent system can be modeled as a policy over internal state, observations, goals, available actions/tools, and execution history:
+
+<pre>
+a_t ~ π(a | o_≤t, s_t, g, T_t)
+</pre>
+
+with environment/tool response producing new observations and state.
+
+The policy may be implemented by an LLM, reinforcement-learning policy, planner, symbolic controller, or compound architecture.
+
+== Compound system ==
+Typical architecture can include:
+
+<pre>
+model
++ orchestration/controller
++ tool/action interfaces
++ memory/state
++ retrieval
++ monitor/evaluator
++ permission boundary
+</pre>
+
+Agent behavior therefore depends on the compound system, not only model weights.
+
+== Taxonomy caution ==
+Current literature uses “AI agent”, “LLM agent”, “autonomous agent”, and “agentic AI” inconsistently.
+
+Technical claims should specify architecture and degree of autonomy rather than infer properties from the label alone.
+
+== References ==
+* NIST Agentic AI (2026).
+* Wang et al. (2024).
+* Chowa et al. (2026).
+* contemporary agent-system surveys.

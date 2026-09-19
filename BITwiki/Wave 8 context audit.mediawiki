@@ -1,0 +1,430 @@
+{{Source status|status=Wave 8 Phase 3 context audit|note=Audit state for the Wave 8 artificial-intelligence/agents capture/compile/write cycle.}}
+= Wave 8 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Artificial intelligence]]
+# [[Intelligent agent]]
+# [[AI agent]]
+# [[Planning (artificial intelligence)]]
+# [[Tool use (artificial intelligence)]]
+# [[Agent memory (artificial intelligence)]]
+# [[Multi-agent system]]
+# [[Autonomous agent (artificial intelligence)]]
+# [[Large language model]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 8 reader surfaces: '''27'''.
+
+== Structural audit ==
+
+All nine Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* contain references;
+* use controlled Domain values;
+* own category/semantic identity.
+
+All eighteen Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain sources/references;
+* do not duplicate Core <code>Knowledge object</code>;
+* do not duplicate Core category identity.
+
+A complete 27-surface structural read found no Markdown blockquote syntax or Markdown code fences.
+
+== Title / identity audit ==
+
+Four provisional titles were normalized during capture:
+
+* [[Planning]] → [[Planning (artificial intelligence)]]
+* [[Tool use]] → [[Tool use (artificial intelligence)]]
+* [[Agent memory]] → [[Agent memory (artificial intelligence)]]
+* [[Autonomous agent]] → [[Autonomous agent (artificial intelligence)]]
+
+The qualifiers preserve durable non-AI meanings in human planning, biological/cognitive tool use, memory, and legal/organizational/human autonomy.
+
+[[Artificial intelligence]], [[Intelligent agent]], [[AI agent]], [[Multi-agent system]], and [[Large language model]] remain unqualified.
+
+== Intelligent-agent / AI-agent identity audit ==
+
+This is the principal ontology-risk boundary in Wave 8.
+
+The corpus deliberately keeps two concepts:
+
+<pre>
+Intelligent agent
+= established general computational abstraction
+
+AI agent
+= contemporary applied AI-system term
+</pre>
+
+[[Intelligent agent]] is grounded in classical Russell/Norvig/Wooldridge agent theory and can describe systems with no LLM, natural language, external tools, or modern foundation model.
+
+[[AI agent]] is grounded in current 2024–2026 usage around AI-powered multi-step systems, often with models, tools, memory/state, planning, retrieval, and execution loops.
+
+The article explicitly states that current “AI agent” / “agentic AI” taxonomy is not fully standardized.
+
+[[AI agent]] is therefore assigned '''Supported''' rather than Established.
+
+No duplicate semantic identity is created because the historical scope and implementation scope remain explicit.
+
+== Domain audit ==
+
+No new controlled Domain is required.
+
+Wave 8 uses existing Domains:
+
+* Computer science;
+* Systems science where agent/system structure is substantive;
+* Linguistics for [[Large language model]].
+
+No “Artificial intelligence” Domain was introduced.
+
+== Epistemic-status audit ==
+
+{| class="wikitable"
+! Concept !! Status !! Rationale
+|-
+| [[Artificial intelligence]] || Established || mature field
+|-
+| [[Intelligent agent]] || Established || mature classical AI abstraction
+|-
+| [[AI agent]] || Supported || real contemporary system category; terminology/taxonomy still evolving
+|-
+| [[Planning (artificial intelligence)]] || Established || mature automated-planning field
+|-
+| [[Tool use (artificial intelligence)]] || Established || durable capability across AI/robotics; current LLM implementation layer is newer
+|-
+| [[Agent memory (artificial intelligence)]] || Supported || active rapidly evolving architecture/taxonomy
+|-
+| [[Multi-agent system]] || Established || mature distributed-AI field
+|-
+| [[Autonomous agent (artificial intelligence)]] || Established || longstanding agent/autonomy concept
+|-
+| [[Large language model]] || Established || mature current model class despite fuzzy scale threshold
+|}
+
+== Request-lifecycle audit ==
+
+The pre-existing structured request for [[Artificial intelligence]] is satisfied by the new canonical page rather than duplicated.
+
+The final workflow validator must confirm:
+
+<pre>
+status=satisfied
+canonical_page=Artificial intelligence
+no active canonical conflict
+</pre>
+
+== Semantic graph audit ==
+
+Every declared Wave 8 Core dependency that points to an already canonical concept is linked from the corresponding Core page.
+
+The graph exposes:
+
+<pre>
+Artificial intelligence
+ ├→ Intelligent agent
+ │    ├→ Planning (artificial intelligence)
+ │    ├→ Multi-agent system
+ │    └→ Autonomous agent (artificial intelligence)
+ ├→ Machine learning
+ └→ Large language model
+      └→ AI agent
+           ├→ Planning (artificial intelligence)
+           ├→ Tool use (artificial intelligence)
+           ├→ Agent memory (artificial intelligence)
+           └→ Multi-agent system
+</pre>
+
+This is explanatory dependency structure rather than strict subclass logic.
+
+== Required non-equivalences preserved ==
+
+<pre>
+artificial intelligence ≠ machine learning
+artificial intelligence ≠ generative AI
+intelligent agent ≠ human-like intelligence
+intelligent agent ≠ necessarily LLM-based
+AI agent ≠ model
+AI agent ≠ chatbot
+AI agent ≠ necessarily autonomous
+planning ≠ execution
+planning ≠ chain-of-thought
+tool use ≠ function calling only
+tool use ≠ retrieval only
+agent memory ≠ context window
+agent memory ≠ vector database
+agent memory ≠ RAG
+agent memory ≠ human memory
+multi-agent system ≠ distributed system
+multi-agent system ≠ distributed cognition
+multi-agent system ≠ many model calls
+autonomous ≠ unconstrained
+autonomous ≠ unsupervised learning
+LLM ≠ chatbot
+LLM ≠ agent
+LLM ≠ foundation model by definition
+LLM ≠ transformer by definition
+</pre>
+
+== Artificial-intelligence scope audit ==
+
+[[Artificial intelligence]] remains a field-level concept rather than a synonym for machine learning or generative AI.
+
+It includes symbolic, statistical, search, planning, knowledge-representation, language, robotic, and hybrid approaches.
+
+No claim is made that task competence proves human-like cognition or consciousness.
+
+== Intelligent-agent audit ==
+
+[[Intelligent agent]] remains the general agent abstraction:
+
+<pre>
+perceive
+→ select action
+→ act
+</pre>
+
+Rationality is defined relative to objectives, available percepts/knowledge, and actions rather than as omniscience.
+
+The page explicitly allows non-LLM, non-language, non-learning agents.
+
+== AI-agent audit ==
+
+[[AI agent]] is modeled as a compound system rather than a model label.
+
+The Core/Technical pages preserve:
+
+<pre>
+model
++ controller/orchestration
++ actions/tools
++ state/memory
++ feedback
+(+ optional planning/monitoring)
+→ agent system
+</pre>
+
+No component is asserted to be universally mandatory.
+
+NIST's current Agentic AI work is used as evidence that the terminology has institutional relevance, not as the sole definition.
+
+== Planning audit ==
+
+[[Planning (artificial intelligence)]] preserves the established automated-planning field.
+
+The article distinguishes:
+
+<pre>
+planning ≠ search by definition
+planning ≠ execution
+planning ≠ textual chain-of-thought
+</pre>
+
+Ghallab/Nau/Traverso planning-and-acting literature anchors the need for monitoring, replanning, and continual deliberation during real execution.
+
+Modern LLM task decomposition is treated as one implementation/application layer rather than a redefinition of planning.
+
+== Tool-use audit ==
+
+[[Tool use (artificial intelligence)]] covers selection, argument construction, invocation, feedback, interpretation, and multi-tool orchestration.
+
+The page rejects:
+
+<pre>
+tool use = function calling
+</pre>
+
+as too narrow.
+
+A single tool call also does not establish agenthood.
+
+== Agent-memory audit ==
+
+[[Agent memory (artificial intelligence)]] is an architecture-level persistence/recall capability.
+
+The corpus explicitly separates memory from:
+
+* current context;
+* vector-database storage;
+* RAG;
+* biological memory.
+
+Human-memory labels such as episodic/semantic/working memory are treated as analogies/taxonomies, not proof of biological equivalence.
+
+Because current 2025–2026 literature still contains competing taxonomies, the concept is assigned '''Supported'''.
+
+== Multi-agent-system audit ==
+
+[[Multi-agent system]] is anchored in the pre-LLM distributed-AI literature.
+
+The page preserves:
+
+<pre>
+multiple model calls ≠ multi-agent system by definition
+multi-agent system ≠ distributed system
+multi-agent system ≠ distributed cognition
+</pre>
+
+Modern LLM-agent teams are treated as an application of a much older field.
+
+== Autonomous-agent audit ==
+
+[[Autonomous agent (artificial intelligence)]] treats autonomy as graded operational control.
+
+An agent can be autonomous within fixed:
+
+* goals;
+* permissions;
+* tools;
+* budgets;
+* sandboxes;
+* approval boundaries.
+
+The page explicitly rejects equating autonomy with absence of constraints or with unsupervised learning.
+
+== Large-language-model audit ==
+
+[[Large language model]] is kept at the model layer.
+
+It is not equated with a chatbot or an agent.
+
+The page preserves:
+
+<pre>
+LLM              → large-scale language model
+foundation model → broad pretrained adaptable model
+Transformer      → architecture family
+chatbot          → application/interface
+AI agent         → compound action system
+</pre>
+
+No universal parameter-count threshold for “large” is asserted.
+
+Transformer architecture is described as dominant in contemporary LLMs rather than definitional.
+
+== Cross-wave audit ==
+
+Wave 8 connects cleanly to earlier waves:
+
+* [[Machine learning]] remains a technique/field inside broader AI.
+* [[Reasoning]] remains broader than formal logic and is not replaced by LLM generation.
+* [[Memory]] / [[Working memory]] remain cognitive concepts, not agent-storage components.
+* [[Distributed system]] remains distinct from [[Multi-agent system]].
+* [[Distributed cognition]] remains distinct from computational multi-agent architecture.
+* [[Human-computer interaction]] remains a human/system field rather than an agent interface implementation.
+* [[Language]], [[Syntax]], [[Semantics]], and [[Distributional semantics]] remain linguistic/representational concepts rather than LLM-specific constructs.
+* [[Computer network]] and [[Program (computing)]] provide infrastructure/tool context without being redefined as agent components.
+
+No downstream Wave 8 page requires changing an earlier canonical definition.
+
+== Public concept versus local/project application ==
+
+The wave preserves:
+
+<pre>
+AI                    ≠ BITCORE
+intelligent agent     ≠ one persona framework
+AI agent              ≠ one orchestration stack
+planning              ≠ hidden chain-of-thought
+tool use              ≠ one MCP/plugin protocol
+agent memory           ≠ one vector database
+multi-agent system    ≠ local agent roster
+autonomous agent      ≠ “runs unattended”
+large language model  ≠ one provider/API
+</pre>
+
+No local architecture is used as the definition of a public concept.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| Russell & Norvig; Nilsson || artificial intelligence and classical agents
+|-
+| Wooldridge; Shoham/Leyton-Brown || intelligent agents and multi-agent systems
+|-
+| Ghallab, Nau & Traverso || automated planning and acting
+|-
+| NIST Agentic AI (2026) || current institutional agentic-AI terminology / standards context
+|-
+| Wang et al. (2024); Chowa et al. (2026) || modern LLM-based/autonomous AI agents
+|-
+| Xu et al. (2025); COLING 2025 tool survey || tool learning and tool-use pipeline
+|-
+| Hu et al. (2025); Du (2026); Cherepanov et al. (2024) || agent-memory architecture/taxonomy
+|-
+| Stanford HAI / CRFM; transformer/NLP literature || LLM and foundation-model boundaries
+|}
+
+== Redlink policy ==
+
+Future descendants captured in [[BITwiki:Wave 8 context capture]] remain coverage signals, not authorization for stubs.
+
+== Acceptance criteria ==
+
+Wave 8 is ready to leave Phase 3 when:
+
+# all 27 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# title qualifiers remain intact;
+# controlled Domains pass;
+# [[Artificial intelligence]] request is satisfied with a valid canonical page;
+# all declared existing-concept dependencies remain linked;
+# AI agent and intelligent agent remain distinct;
+# agent memory remains distinct from cognitive memory/context/RAG;
+# multi-agent system remains historically broader than LLM-agent teams;
+# public/project distinctions remain explicit;
+# all depth derivatives remain category/identity-exempt;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, deployment, workflow and Main-space audits pass;
+# staging builds the complete graph.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 8 context capture]]
+        ↓
+[[BITwiki:Wave 8 compiled context]]
+        ↓
+[[BITwiki:Wave 8 context audit]]
+</pre>
+
+== Release validation — 2026-09-19 ==
+
+PR #25 executed the established Wave release gates after all 27 reader surfaces, title normalizations, and the Artificial intelligence request transition were present.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+No Domain expansion or workflow architecture repair was required.
+
+This completion-state bookkeeping commit must re-pass the same release gates before merge.
+
+'''Current assessment: Wave 8 is semantically and structurally audited and has passed its release gates; merge remains conditional on final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

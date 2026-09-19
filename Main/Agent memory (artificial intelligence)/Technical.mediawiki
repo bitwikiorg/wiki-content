@@ -1,0 +1,47 @@
+{{Source status|status=Technical depth derivative|note=Advanced agent-memory architecture surface.}}
+{{Reading depth|base=Agent memory (artificial intelligence)|current=Technical}}
+= Agent memory (artificial intelligence) — Technical =
+
+== Memory loop ==
+An agent-memory subsystem can be modeled as:
+
+<pre>
+observation / event
+→ write decision
+→ storage/update
+→ indexing/organization
+→ retrieval decision
+→ read/recall
+→ policy/action
+</pre>
+
+The write and read policies can be learned or rule-based.
+
+== Dimensions ==
+Current literature classifies memory along overlapping dimensions such as:
+
+* temporal scope;
+* factual versus experiential function;
+* working-state versus persistent memory;
+* token/external/parametric/latent representation;
+* passive versus actively managed memory;
+* individual versus shared multi-agent memory.
+
+No single taxonomy is canonical.
+
+== Failure modes ==
+Memory systems can suffer from:
+
+* stale facts;
+* retrieval omission;
+* irrelevant recall;
+* contradictory records;
+* privacy leakage;
+* unbounded growth;
+* self-reinforcing false summaries;
+* incorrect consolidation or forgetting.
+
+== References ==
+* Hu et al. (2025).
+* Du (2026).
+* Cherepanov et al. (2024).

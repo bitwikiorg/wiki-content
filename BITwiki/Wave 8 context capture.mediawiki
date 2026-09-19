@@ -1,0 +1,313 @@
+{{Source status|status=Wave 8 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 8 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 8 covers artificial intelligence, intelligent/AI agents, automated planning, tool use, agent memory, multi-agent systems, autonomous agents, and large language models.
+
+== Normalized scope ==
+
+# [[Artificial intelligence]]
+# [[Intelligent agent]]
+# [[AI agent]]
+# [[Planning (artificial intelligence)]]
+# [[Tool use (artificial intelligence)]]
+# [[Agent memory (artificial intelligence)]]
+# [[Multi-agent system]]
+# [[Autonomous agent (artificial intelligence)]]
+# [[Large language model]]
+
+== Title decisions ==
+
+* '''[[Planning]] → [[Planning (artificial intelligence)]]''' because planning is also a durable human, organizational, military, and project-management concept.
+* '''[[Tool use]] → [[Tool use (artificial intelligence)]]''' because tool use is also a major concept in human cognition, animal behavior, anthropology, and robotics.
+* '''[[Agent memory]] → [[Agent memory (artificial intelligence)]]''' because memory has established biological/cognitive meanings and “agent memory” is now used for multiple computational architectures.
+* '''[[Autonomous agent]] → [[Autonomous agent (artificial intelligence)]]''' to distinguish computational autonomy from ordinary legal, organizational, or human agency.
+* [[Artificial intelligence]], [[Intelligent agent]], [[AI agent]], [[Multi-agent system]], and [[Large language model]] remain unqualified.
+* [[AI agent]] is retained separately from [[Intelligent agent]], but only as a modern applied AI-system concept rather than a duplicate name for the classical abstraction.
+
+== Domain decision ==
+
+No new controlled Domain is required.
+
+Primary Domains are existing '''Computer science''', with Systems science, Mathematics, Cognitive science, Linguistics, and Philosophy used only where substantively justified.
+
+No “Artificial intelligence” Domain is introduced.
+
+== Core distinction: intelligent agent versus AI agent ==
+
+[[Intelligent agent]] is the established general AI abstraction:
+
+<pre>
+perceive environment
+→ select action
+→ act toward objective
+</pre>
+
+Its classical treatment includes software agents, robots, game agents, control systems, and other computational actors.
+
+[[AI agent]] is retained as the contemporary applied system term for AI-powered systems that operate over multi-step tasks, often using foundation models, planning, tools, external state, and feedback loops.
+
+The relationship is:
+
+<pre>
+AI agent ⊆ intelligent-agent style systems (practical contemporary usage)
+intelligent agent ≠ necessarily LLM-based
+AI agent ≠ necessarily fully autonomous
+AI agent ≠ chatbot by definition
+</pre>
+
+Terminology around “AI agent”, “agentic AI”, and “autonomous agent” is still evolving. NIST's 2026 agentic-AI work and current academic surveys support the reality of the field while also showing taxonomy fragmentation.
+
+== Dependency graph ==
+
+<pre>
+Artificial intelligence
+ ├→ Intelligent agent
+ │    ├→ Planning (artificial intelligence)
+ │    ├→ Multi-agent system
+ │    └→ Autonomous agent (artificial intelligence)
+ ├→ Machine learning
+ └→ Large language model
+      └→ AI agent
+           ├→ Planning (artificial intelligence)
+           ├→ Tool use (artificial intelligence)
+           ├→ Agent memory (artificial intelligence)
+           └→ Multi-agent system
+</pre>
+
+This is a writing dependency graph, not a strict ontology asserting that every AI agent must use an LLM.
+
+== Foundational separations ==
+
+<pre>
+artificial intelligence ≠ machine learning
+artificial intelligence ≠ large language model
+artificial intelligence ≠ human intelligence by definition
+intelligent agent ≠ human-like intelligence
+intelligent agent ≠ AI agent in current software usage
+agent ≠ model
+AI agent ≠ chatbot
+AI agent ≠ workflow by definition
+AI agent ≠ necessarily autonomous
+agentic AI ≠ one standardized architecture
+planning ≠ search by definition
+planning ≠ execution
+planning ≠ chain-of-thought
+tool use ≠ function calling only
+tool use ≠ retrieval only
+tool use ≠ agenthood by itself
+agent memory ≠ LLM context window
+agent memory ≠ vector database
+agent memory ≠ retrieval-augmented generation
+agent memory ≠ human memory
+multi-agent system ≠ distributed system
+multi-agent system ≠ distributed cognition
+multi-agent system ≠ many model calls
+autonomous agent ≠ unsupervised agent
+autonomy ≠ absence of constraints
+large language model ≠ chatbot
+large language model ≠ agent
+large language model ≠ foundation model by definition
+large language model ≠ transformer by definition
+large language model ≠ guaranteed reasoning system
+</pre>
+
+== Normalized concept dossiers ==
+
+=== Artificial intelligence ===
+Artificial intelligence is the field concerned with computational systems that perform tasks involving perception, reasoning, learning, planning, language, decision-making, action, or other capabilities associated with intelligent behavior.
+
+The field includes symbolic, statistical, machine-learning, search, planning, optimization, knowledge-representation, robotics, and hybrid approaches.
+
+'''Do not conflate:''' AI ≠ machine learning; AI ≠ generative AI; AI ≠ human-level intelligence.
+
+=== Intelligent agent ===
+An intelligent agent is a computational entity modeled as perceiving an environment and selecting actions to pursue objectives.
+
+Classical agent theory emphasizes environment, percepts, actions, goals/utility, rationality, autonomy, and interaction.
+
+'''Do not conflate:''' an intelligent agent need not use an LLM, natural language, tools, or human-like cognition.
+
+=== AI agent ===
+An AI agent is a contemporary AI-powered software/system entity designed to carry out goal-directed multi-step tasks by selecting and executing actions, often with environmental feedback.
+
+Modern AI agents frequently integrate foundation models or LLMs with planning, tools, memory/state, retrieval, and execution systems.
+
+The exact architecture is not standardized.
+
+'''Do not conflate:''' model ≠ agent; chatbot ≠ agent; tool-calling model ≠ automatically a full agent.
+
+=== Planning (artificial intelligence) ===
+AI planning is the computational problem of selecting or synthesizing actions that can move an agent/system from an initial situation toward a goal under an action/environment model.
+
+Classical automated planning is model-based and distinct from execution; planning-and-acting literature studies integration with ongoing action and feedback.
+
+'''Do not conflate:''' planning ≠ pathfinding only; planning ≠ chain-of-thought text.
+
+=== Tool use (artificial intelligence) ===
+AI tool use is the ability of a model or agent system to select, invoke, and incorporate external functions/resources such as APIs, calculators, databases, search systems, code execution, software interfaces, or devices.
+
+Tool-learning research distinguishes tool selection, argument generation, invocation, result interpretation, and multi-tool orchestration.
+
+'''Do not conflate:''' tool use ≠ one function-call API; tool use does not itself establish autonomous agency.
+
+=== Agent memory (artificial intelligence) ===
+Agent memory is persistent or selectively retained computational state that enables an artificial agent to use information from prior observations, interactions, actions, or learned experience in future decision-making.
+
+Modern memory can be token/context resident, external/retrieved, parametric, latent, episodic-like, factual, experiential, or working-state-like depending on architecture.
+
+'''Do not conflate:''' agent memory ≠ context window; ≠ vector database; ≠ RAG; ≠ biological memory.
+
+=== Multi-agent system ===
+A multi-agent system is a computational system containing multiple interacting agents whose behaviors can be cooperative, competitive, mixed-motive, coordinated, decentralized, or partially independent.
+
+The field predates LLMs and draws on distributed AI, game theory, economics, control, robotics, and distributed systems.
+
+'''Do not conflate:''' multiple LLM calls ≠ multi-agent system by definition; multi-agent system ≠ distributed system generally.
+
+=== Autonomous agent (artificial intelligence) ===
+An autonomous AI agent is an artificial agent that can select and execute actions over time with limited immediate external control, using its own policy/deliberation and environmental feedback within defined objectives and constraints.
+
+Autonomy is a degree, not an all-or-nothing property.
+
+'''Do not conflate:''' autonomous ≠ unconstrained; autonomous ≠ unsupervised; autonomous ≠ safe/reliable.
+
+=== Large language model ===
+A large language model is a large-scale statistical/neural model trained to model and generate language or token sequences, usually through self-supervised learning over very large corpora and often adapted for downstream tasks.
+
+Modern LLMs are commonly transformer-based, but “LLM” describes the language-model class/scale/use rather than a theorem requiring one exact architecture.
+
+'''Do not conflate:''' LLM ≠ chatbot; LLM ≠ agent; LLM ≠ foundation model as a strict synonym.
+
+== Modern evidence corrections ==
+
+=== Agent taxonomy fragmentation ===
+Current 2025–2026 surveys repeatedly note inconsistent terminology around AI agents, autonomous agents, agentic AI, planning, tools, and memory.
+
+The Core pages must therefore distinguish:
+
+<pre>
+classical intelligent-agent abstraction
+modern AI-agent implementation pattern
+agentic AI as broader architectural/research framing
+autonomy as a property/degree
+</pre>
+
+rather than retrofitting all classical agent theory into an LLM-agent taxonomy.
+
+=== NIST 2026 agentic AI ===
+NIST now treats agentic AI as a distinct standards/evaluation/risk-management area and describes such systems as autonomous agents capable of decision-making, learning/adaptation, goal-directed behavior, and interaction with users/systems/environments.
+
+Use this as evidence of current institutional terminology, not as the sole definition of all AI agents.
+
+=== Planning ===
+Ghallab, Nau & Traverso distinguish planning from acting.
+
+A plan can be synthesized before execution, but real actors may need continual planning, monitoring, replanning, and other deliberation during execution.
+
+LLM-agent “planning” must not silently replace the older automated-planning concept.
+
+=== Tool use ===
+Current tool-learning surveys describe a pipeline including tool retrieval/selection, planning, invocation/execution, and response/result integration.
+
+Function calling is one implementation mechanism, not the entire concept.
+
+Recent 2026 work emphasizes long-horizon multi-tool orchestration, state, feedback, safety, cost, and verifiability beyond one-shot tool calls.
+
+=== Agent memory ===
+Current 2025–2026 agent-memory surveys explicitly distinguish agent memory from:
+
+* LLM internal/parametric memory;
+* context engineering;
+* retrieval-augmented generation;
+* simple vector stores;
+* human memory taxonomies.
+
+The page should treat “short-term / long-term” analogies as optional descriptive metaphors, not universal architecture.
+
+=== Multi-agent systems ===
+Wooldridge's standard treatment predates modern LLM agents and defines MAS around multiple interacting autonomous computational agents.
+
+The new wave must preserve that historical field rather than define MAS as “a team of LLM personas”.
+
+=== Large language models ===
+LLMs are a subset of language models and often a subset of foundation models in contemporary practice, but “foundation model” and “LLM” emphasize different properties.
+
+A language model can be large without being an agent; an agent can use an LLM without being identical to it.
+
+== Cross-wave dependencies ==
+
+* [[Artificial intelligence]] ↔ [[Machine learning]], [[Reasoning]], [[Knowledge representation]], [[Planning (artificial intelligence)]], [[Large language model]].
+* [[Intelligent agent]] ↔ [[Artificial intelligence]], [[System boundary]], [[Perception]], [[Reasoning]], [[Planning (artificial intelligence)]], [[Autonomous agent (artificial intelligence)]].
+* [[AI agent]] ↔ [[Intelligent agent]], [[Large language model]], [[Tool use (artificial intelligence)]], [[Agent memory (artificial intelligence)]], [[Multi-agent system]].
+* [[Planning (artificial intelligence)]] ↔ [[Reasoning]], [[State machine]], [[Algorithm]], [[Autonomous agent (artificial intelligence)]].
+* [[Tool use (artificial intelligence)]] ↔ [[AI agent]], [[Program (computing)]], [[Computer network]], [[Human-computer interaction]] where relevant.
+* [[Agent memory (artificial intelligence)]] ↔ [[Memory]], [[Working memory]], [[Database]], [[Knowledge representation]], [[AI agent]].
+* [[Multi-agent system]] ↔ [[Distributed system]], [[Distributed cognition]], [[Game theory]] (future redlink), [[AI agent]].
+* [[Autonomous agent (artificial intelligence)]] ↔ [[Intelligent agent]], [[Planning (artificial intelligence)]], [[AI agent]], [[Distributed system]] where relevant.
+* [[Large language model]] ↔ [[Machine learning]], [[Language]], [[Semantics]], [[Distributional semantics]], [[Artificial intelligence]], [[AI agent]].
+
+== Existing request lifecycle ==
+
+Wave 8 satisfies the existing structured Computer science request for:
+
+* [[Artificial intelligence]]
+
+That record must move to <code>status=satisfied</code> with <code>canonical_page=Artificial intelligence</code> only after the Core page exists.
+
+No duplicate request should be created.
+
+== Public concept versus local/project application ==
+
+<pre>
+AI                    ≠ BITCORE
+intelligent agent     ≠ one persona framework
+AI agent              ≠ one orchestration stack
+planning              ≠ hidden chain-of-thought
+tool use              ≠ one MCP/plugin protocol
+agent memory           ≠ one vector database
+multi-agent system    ≠ our agent roster
+autonomous agent      ≠ “runs unattended on my server”
+large language model  ≠ one model provider/API
+</pre>
+
+No local architecture defines the public concept.
+
+== Source-family audit ==
+
+* '''Russell & Norvig / classical AI texts''' — artificial intelligence, rational/intelligent agents, planning.
+* '''Wooldridge''' — intelligent agents and multi-agent systems.
+* '''Ghallab, Nau & Traverso''' — automated planning and acting.
+* '''NIST 2026 Agentic AI''' — current institutional agentic-AI terminology and standards context.
+* '''2024–2026 LLM-agent surveys''' — current AI-agent architecture, autonomy, planning, tool use, memory.
+* '''ACL/COLING/Springer tool-learning surveys''' — tool selection, invocation, orchestration.
+* '''2025–2026 agent-memory surveys''' — memory forms/functions/dynamics and boundary with RAG/context.
+* '''Stanford HAI / CRFM and language-model literature''' — LLM/foundation-model distinction.
+* '''standard NLP / deep-learning literature''' — language modeling and transformer-era LLMs.
+
+== Future normalized redlinks ==
+
+[[Agent architecture]], [[Agent environment]], [[Agent policy]], [[Rational agent]], [[Utility-based agent]], [[Goal-based agent]], [[Agentic AI]], [[Function calling]], [[Tool learning]], [[Tool orchestration]], [[Action selection]], [[Plan]], [[Classical planning]], [[Hierarchical task network]], [[Planning Domain Definition Language]], [[Replanning]], [[Deliberative agent]], [[Reactive agent]], [[Embodied agent]], [[Software agent]], [[Robot agent]], [[Agent communication]], [[Coordination]], [[Negotiation]], [[Coalition formation]], [[Agent memory retrieval]], [[Episodic memory (AI)]], [[Long-term memory (AI)]], [[Context window]], [[Retrieval-augmented generation]], [[Foundation model]], [[Transformer (machine learning)]], [[Language model]], [[Tokenization]], [[Prompting]], [[Instruction tuning]], [[Reinforcement learning from human feedback]].
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Keep the wave at 9 concepts.
+# Keep [[Intelligent agent]] and [[AI agent]] separate with explicit classical-vs-contemporary scope.
+# Normalize Planning, Tool use, Agent memory, and Autonomous agent with <code>(artificial intelligence)</code> qualifiers.
+# Do not create an Artificial intelligence Domain.
+# Satisfy the existing Artificial intelligence request during Phase 2.
+# Keep planning distinct from execution and chain-of-thought.
+# Keep tool use broader than function calling.
+# Keep agent memory distinct from context window, RAG, vector stores, and human memory.
+# Keep multi-agent systems historically broader than LLM-agent teams.
+# Treat autonomy as a degree/property, not absence of constraints.
+# Keep LLM distinct from chatbot, agent, and foundation model.
+# Use contemporary agent taxonomy cautiously because terminology remains unsettled.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

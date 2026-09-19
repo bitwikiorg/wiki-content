@@ -1,0 +1,47 @@
+{{Source status|status=Technical depth derivative|note=Advanced automated-planning surface.}}
+{{Reading depth|base=Planning (artificial intelligence)|current=Technical}}
+= Planning (artificial intelligence) — Technical =
+
+== State-transition formulation ==
+A deterministic planning model can be represented by:
+
+<pre>
+S = states
+A = actions
+γ(s,a) = transition
+s_0 = initial state
+G = goal condition
+</pre>
+
+A plan is an action sequence:
+
+<pre>
+π = ⟨a_1, ..., a_n⟩
+</pre>
+
+whose induced trajectory reaches a state satisfying G.
+
+== Beyond classical planning ==
+Planning models can incorporate:
+
+* nondeterministic effects;
+* probabilistic transitions;
+* partial observability;
+* temporal actions;
+* resource constraints;
+* hierarchical task decomposition;
+* multiple agents;
+* continuous state/action spaces.
+
+== Planning and acting ==
+Execution introduces observation error, unexpected events, model mismatch, and changing objectives.
+
+Continual deliberation may alternate:
+
+<pre>
+observe → plan/refine → act → monitor → replan
+</pre>
+
+== References ==
+* Ghallab, Nau & Traverso (2016).
+* automated-planning literature.

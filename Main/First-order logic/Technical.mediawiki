@@ -1,0 +1,55 @@
+{{Source status|status=Technical depth derivative|note=Advanced syntax/model-theory surface of [[First-order logic]].}}
+{{Reading depth|base=First-order logic|current=Technical}}
+= First-order logic — Technical =
+
+== Signature ==
+A first-order signature can contain:
+
+* constant symbols;
+* function symbols with arities;
+* relation/predicate symbols with arities;
+* equality.
+
+Terms and formulas are defined recursively.
+
+== Quantification ==
+Variables range over elements of a model domain D:
+
+<pre>
+M,s ⊨ ∀x φ
+</pre>
+
+iff for every d∈D:
+
+<pre>
+M,s[x↦d] ⊨ φ
+</pre>
+
+== Completeness ==
+Gödel completeness gives:
+
+<pre>
+Γ ⊨ φ  ⇒  Γ ⊢ φ
+</pre>
+
+for standard first-order proof systems.
+
+Together with soundness, syntactic and semantic consequence align.
+
+== Compactness ==
+If every finite subset of Γ is satisfiable, then Γ is satisfiable.
+
+This has powerful model-theoretic consequences.
+
+== Löwenheim–Skolem ==
+First-order theories with infinite models often have models of multiple cardinalities, limiting categorical characterization of infinite structures.
+
+== Computability ==
+First-order validity is recursively enumerable but undecidable.
+
+This distinguishes it sharply from classical propositional logic.
+
+== References ==
+* SEP, “Classical Logic”.
+* SEP, “The Emergence of First-Order Logic”.
+* Open Logic Project.

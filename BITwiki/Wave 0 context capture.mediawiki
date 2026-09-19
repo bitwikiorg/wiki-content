@@ -1,0 +1,599 @@
+{{Source status|status=Wave 0 Phase 1 context capture|note=Research/evidence state only. No canonical article rewrites are authorized by this page.}}
+= Wave 0 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+This page freezes the research state for Wave 0 before context compilation or article rewriting. The unit of work is the interconnected concept wave rather than ten isolated articles.
+
+== Wave 0 scope ==
+
+* [[Algorithm]]
+* [[Causality]]
+* [[Computation]]
+* [[Data structure]]
+* [[Hypothesis]]
+* [[Program (computing)]]
+* [[Programming language]]
+* [[Software]]
+* [[System boundary]]
+* [[Version control]]
+
+All ten already exist in Main space. The purpose of this wave is therefore '''update and normalization''', not stub creation.
+
+== State separation ==
+
+<pre>
+Phase 1: Context capture
+  evidence
+  definitions
+  terminology
+  source dossiers
+  distinctions
+  aliases
+  unresolved questions
+  concept relations
+        ↓
+Phase 2: Context compilation + writing
+  normalized shared context
+  Simple / Core / Technical surfaces
+  MediaWiki links
+  SMW relationships
+        ↓
+Phase 3: Context auditing
+  claim/source verification
+  cross-page consistency
+  depth consistency
+  link/graph audit
+  repository validation
+</pre>
+
+This page belongs only to Phase 1. Do not resolve uncertainty by silently changing the canonical articles here.
+
+== Shared semantic graph ==
+
+The current wave is not a flat set.
+
+<pre>
+Computation
+ ├─ is expressed by → Algorithm
+ ├─ is instantiated/executed through → Program (computing)
+ └─ uses representations organized as → Data structure
+
+Programming language
+ ├─ expresses → Program (computing)
+ ├─ has → syntax
+ └─ has → semantics
+
+Program (computing)
+ ├─ may implement → Algorithm
+ ├─ executes as a process/runtime instance
+ └─ participates in → Software
+
+Software
+ ├─ contains/uses → Program (computing)
+ ├─ evolves through → Version control
+ └─ exists within chosen → System boundary
+
+Hypothesis
+ ├─ participates in → scientific method
+ ├─ generates → predictions
+ ├─ is evaluated using → evidence
+ └─ can concern → Causality
+
+Causality
+ ├─ differs from → correlation
+ ├─ connects to → intervention
+ ├─ connects to → counterfactual reasoning
+ └─ depends on explicit → model assumptions
+
+System boundary
+ ├─ separates → system / environment
+ ├─ is purpose- and observer-dependent
+ └─ conditions what counts as internal state, cause, responsibility, and evidence
+
+Version control
+ ├─ records revisions of → Software / Program / documentation
+ ├─ provides → provenance/change history
+ └─ is part of broader → configuration management
+</pre>
+
+== Cross-wave prerequisites discovered ==
+
+These concepts repeatedly appear as prerequisites or boundary terms and should be linked once canonical pages exist:
+
+* [[Information]]
+* [[Representation]]
+* [[State]]
+* [[Model]]
+* [[Formal language]]
+* [[Syntax]]
+* [[Semantics]]
+* [[Correctness]]
+* [[Computational complexity]]
+* [[Computability]]
+* [[Evidence]]
+* [[Scientific method]]
+* [[Prediction]]
+* [[Correlation]]
+* [[Counterfactual]]
+* [[Intervention]]
+* [[System]]
+* [[Environment]]
+* [[Provenance]]
+* [[Configuration management]]
+* [[Process (computing)]]
+* [[Runtime system]]
+* [[Abstract data type]]
+
+Missing prerequisite pages are not a reason to avoid links. Redlinks are useful coverage signals when the title is already normalized.
+
+== Depth targets ==
+
+{| class="wikitable"
+! Concept !! Core !! Simple !! Technical !! Notes
+|-
+| Algorithm || required || expected || required || Formal definition, correctness, termination, complexity, randomized/interactive boundary
+|-
+| Causality || required || expected || required || Philosophical theories + causal inference formalism; preserve disagreement
+|-
+| Computation || required || expected || required || Abstract vs concrete computation; models; computability boundary
+|-
+| Data structure || required || expected || required || ADT distinction; operations/invariants/complexity
+|-
+| Hypothesis || required || expected || conditional || Keep scientific hypothesis distinct from statistical hypothesis
+|-
+| Program (computing) || required || expected || required || Artifact vs process/runtime; program vs algorithm/software
+|-
+| Programming language || required || expected || required || Syntax, semantics, implementation, types, paradigms
+|-
+| Software || required || expected || required || Boundary of software is contextual; engineering/lifecycle depth
+|-
+| System boundary || required || expected || conditional || Boundary critique and observer/purpose dependence
+|-
+| Version control || required || expected || required || Revision model, branching/merging, centralized/distributed, provenance
+|}
+
+"Technical" means a separate technical surface only if the depth architecture chosen in Phase 2 supports separately addressable surfaces without creating independent truth stores.
+
+= Per-concept capture =
+
+== Algorithm ==
+
+'''Current corpus state:''' substantial seed article; currently grounded mainly in NIST.
+
+'''Canonical scope:''' a finite/well-specified effective procedure for solving a computational problem or producing a result. Literature differs on which properties are definitional versus model-specific. Classical definitions often emphasize finiteness/termination; modern literature also discusses interactive, nondeterministic, randomized, online, distributed, and ongoing computational procedures.
+
+'''Important distinctions:'''
+* algorithm ≠ program;
+* algorithm ≠ heuristic;
+* algorithm ≠ computation;
+* algorithm specification ≠ implementation;
+* correctness ≠ efficiency;
+* computability ≠ computational complexity.
+
+'''History to capture:'''
+* ancient algorithmic procedures;
+* al-Khwarizmi and the etymological lineage of "algorithm";
+* 1930s formalization of effective calculability through Church, Turing, Post, Kleene and related work;
+* later attempts to characterize algorithms themselves, not merely computable functions.
+
+'''Technical anchors:'''
+* input/output;
+* state and transition;
+* termination/progress;
+* correctness;
+* invariants;
+* complexity/resource use;
+* deterministic, randomized, nondeterministic and interactive algorithms;
+* abstract-state-machine characterization as one formal theory of sequential algorithms.
+
+'''Primary / authoritative source dossier:'''
+* Paul E. Black, "algorithm", NIST Dictionary of Algorithms and Data Structures. Definition and terminology. https://www.nist.gov/dads/HTML/algorithm.html
+* Paul E. Black, ''DADS: The On-Line Dictionary of Algorithms and Data Structures'', NISTIR 8318 (2020). DOI: 10.6028/NIST.IR.8318.
+* Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein, ''Introduction to Algorithms'', 4th ed., MIT Press (2022). ISBN 9780262046305.
+* Yuri Gurevich, "Sequential Abstract-State Machines Capture Sequential Algorithms", ''ACM Transactions on Computational Logic'' 1(1), 77–111 (2000). DOI: 10.1145/343369.343384.
+* English Wikipedia, [[wikipedia:Algorithm|Algorithm]], useful for terminology/history/navigation only, not evidentiary authority.
+
+'''Scholarpedia:''' no dedicated general "Algorithm" article was found in the current search. Adjacent Scholarpedia coverage exists for algorithmic subfields such as metaheuristics and algorithmic information theory.
+
+'''Open questions for compile phase:'''
+* whether termination is stated as part of the Core definition or treated as the classical finite-algorithm convention with modern exceptions;
+* whether "heuristic" is defined by lack of guarantee, incomplete search, or broader practical usage.
+
+== Causality ==
+
+'''Current corpus state:''' very thin seed article; currently oriented almost entirely through SEP.
+
+'''Canonical scope:''' the family of concepts and formalisms used to express that one event, condition, process, variable, or intervention makes a difference to another. No single philosophical analysis is uncontested.
+
+'''Important distinctions:'''
+* causation ≠ correlation;
+* token/actual causation ≠ type/population-level causation;
+* causal explanation ≠ prediction;
+* cause ≠ background condition;
+* direct ≠ mediated effect;
+* observational association ≠ intervention;
+* philosophical analysis of causation ≠ statistical identification of causal effects.
+
+'''Major theoretical families to represent without collapsing them:'''
+* regularity accounts;
+* counterfactual accounts;
+* probabilistic accounts;
+* process/mechanistic accounts;
+* intervention/manipulability accounts;
+* structural causal models;
+* potential-outcomes framework.
+
+'''Technical anchors:'''
+* counterfactual dependence;
+* interventions;
+* confounding;
+* causal graphs / structural equations;
+* potential outcomes;
+* identifiability;
+* randomized versus observational studies.
+
+'''Primary / authoritative source dossier:'''
+* Stanford Encyclopedia of Philosophy, "The Metaphysics of Causation".
+* Stanford Encyclopedia of Philosophy, "Counterfactual Theories of Causation", substantive revision 2024. https://plato.stanford.edu/entries/causation-counterfactual/
+* Stanford Encyclopedia of Philosophy, "Causation and Manipulability", substantive revision 2023. https://plato.stanford.edu/entries/causation-mani/
+* Judea Pearl, ''Causality: Models, Reasoning, and Inference'', 2nd ed., Cambridge University Press (2009). DOI: 10.1017/CBO9780511803161; ISBN 9780521895606.
+* Donald B. Rubin, "Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies", ''Journal of Educational Psychology'' 66(5), 688–701 (1974). DOI: 10.1037/h0037350.
+* Miguel A. Hernán and James M. Robins, ''Causal Inference: What If'' (2020), freely available author edition.
+* English Wikipedia, [[wikipedia:Causality|Causality]], orientation/navigation only.
+
+'''Scholarpedia:''' no dedicated general causality article was found in the current search. Causality appears in adjacent Scholarpedia articles, including dynamical-systems discussions, but that is not a substitute for a dedicated causality source.
+
+'''Open questions for compile phase:'''
+* whether the Core article should introduce Pearl and potential outcomes equally or defer their formalisms primarily to Technical;
+* how much metaphysics belongs in Core before the article becomes inaccessible.
+
+== Computation ==
+
+'''Current corpus state:''' substantial seed article, but still predominantly NIST/CS2023.
+
+'''Canonical scope:''' rule-governed transformation according to a computational model. The article must distinguish abstract computation from concrete physical implementation and from computational modeling of noncomputing systems.
+
+'''Important distinctions:'''
+* computation ≠ algorithm;
+* computation ≠ program;
+* abstract computation ≠ physical/concrete computation;
+* computational model ≠ physical computer;
+* computability ≠ complexity;
+* modeling a phenomenon computationally ≠ showing that the phenomenon itself computes.
+
+'''Technical anchors:'''
+* state/configuration;
+* transition relation;
+* input/output;
+* computational model;
+* Turing machine and equivalent classical models;
+* Church–Turing thesis;
+* deterministic, nondeterministic, probabilistic, parallel, distributed and quantum models;
+* physical implementation problem.
+
+'''Primary / authoritative source dossier:'''
+* Alan M. Turing, "On Computable Numbers, with an Application to the Entscheidungsproblem", ''Proceedings of the London Mathematical Society'' s2-42, 230–265 (1937). DOI: 10.1112/plms/s2-42.1.230.
+* NIST DADS, "model of computation". https://www.nist.gov/dads/HTML/modelOfComputation.html
+* NIST DADS, "Turing machine". https://www.nist.gov/dads/HTML/turingMachine.html
+* Stanford Encyclopedia of Philosophy, "Computation in Physical Systems", substantive revision 2025. https://plato.stanford.edu/entries/computation-physicalsystems/
+* ACM/IEEE-CS CS2023 knowledge areas for computing foundations.
+* English Wikipedia, [[wikipedia:Computation|Computation]], orientation/navigation only.
+
+'''Scholarpedia:''' no dedicated general computation article was found in the current search. Relevant adjacent coverage includes "Computational type theory" and several specialized computational topics.
+
+'''Open questions for compile phase:'''
+* where to draw the Core boundary between theoretical computer-science computation and philosophy of physical computation;
+* whether the Church–Turing thesis receives a full subsection or primarily links to a future dedicated page.
+
+== Data structure ==
+
+'''Current corpus state:''' substantial seed article with good practical distinctions, but literature base is narrow.
+
+'''Canonical scope:''' a structured organization/representation of data together with relevant relations and operations. Data structure must be distinguished from abstract data type while acknowledging ordinary usage sometimes blurs them.
+
+'''Important distinctions:'''
+* data structure ≠ abstract data type;
+* logical interface/behavior ≠ physical/concrete representation;
+* representation choice affects algorithmic cost;
+* worst-case, expected and amortized cost are different;
+* main-memory assumptions do not automatically generalize to cache, disk, distributed or concurrent systems.
+
+'''Technical anchors:'''
+* values, relations and operations;
+* invariants;
+* arrays, linked structures, stacks, queues, trees, heaps, hash tables and graphs;
+* persistent/immutable structures;
+* external-memory and cache-aware structures;
+* concurrent and distributed structures;
+* correctness of representations.
+
+'''Primary / authoritative source dossier:'''
+* NIST DADS, "data structure". https://www.nist.gov/dads/HTML/dataStructure.html
+* Cormen, Leiserson, Rivest, Stein, ''Introduction to Algorithms'', 4th ed., MIT Press (2022). ISBN 9780262046305.
+* Barbara H. Liskov and Stephen N. Zilles, "Programming with Abstract Data Types" (1974), SIGPLAN Symposium on Very High Level Languages, 50–59. DOI: 10.1145/800233.807045.
+* C. A. R. Hoare, "Proof of Correctness of Data Representations", ''Acta Informatica'' 1(4), 271–281 (1972).
+* English Wikipedia, [[wikipedia:Data structure|Data structure]] and [[wikipedia:Abstract data type|Abstract data type]], orientation/navigation only.
+
+'''Scholarpedia:''' no dedicated general data-structure article found in the current search.
+
+'''Open questions for compile phase:'''
+* whether abstract data type deserves a prerequisite page before this wave is promoted;
+* how much modern memory-hierarchy detail belongs in Technical versus future specialized pages.
+
+== Hypothesis ==
+
+'''Current corpus state:''' concise seed article; good basic distinction from theory/prediction but insufficient philosophy/statistics depth.
+
+'''Canonical scope:''' a proposed explanatory or testable claim used in inquiry. "Hypothesis" has importantly different uses in general scientific reasoning and statistical hypothesis testing; these must not be collapsed.
+
+'''Important distinctions:'''
+* hypothesis ≠ prediction;
+* hypothesis ≠ theory;
+* scientific hypothesis ≠ statistical hypothesis;
+* testing can disconfirm specific conjunctions of hypothesis + auxiliaries rather than isolate one statement cleanly;
+* falsifiability is important historically/philosophically but should not be presented as a complete universal recipe for science.
+
+'''Technical anchors:'''
+* hypothesis formation;
+* derivation of predictions;
+* testability;
+* falsification and confirmation;
+* auxiliary assumptions;
+* null/alternative hypotheses;
+* statistical testing as a separate narrower formal practice.
+
+'''Primary / authoritative source dossier:'''
+* Stanford Encyclopedia of Philosophy, "Scientific Method", substantive revision 2026. https://plato.stanford.edu/entries/scientific-method/
+* National Academies sources on scientific explanation/hypothesis terminology already used in the current page.
+* Karl Popper, ''The Logic of Scientific Discovery'' (English edition 1959; original German 1934/35), historically important for falsifiability.
+* OpenStax, "The Process of Science", pedagogical secondary source.
+* English Wikipedia, [[wikipedia:Hypothesis|Hypothesis]], orientation/navigation only.
+
+'''Scholarpedia:''' no dedicated general hypothesis article found in the current search.
+
+'''Open questions for compile phase:'''
+* how to explain Popper without implying all science proceeds by simple falsification;
+* whether statistical hypothesis belongs as a linked subsection or only a summary with a separate future article.
+
+== Program (computing) ==
+
+'''Current corpus state:''' substantial practical seed, but source base is mainly NIST/CS2023.
+
+'''Canonical scope:''' an executable or interpretable specification/artifact describing computational behavior in a programming language or machine representation. The page must keep program-as-artifact distinct from process/runtime execution.
+
+'''Important distinctions:'''
+* program ≠ algorithm;
+* program ≠ process;
+* program ≠ software system;
+* source program ≠ executable binary;
+* programming language ≠ implementation/runtime;
+* program correctness is relative to a specification and environment assumptions.
+
+'''Technical anchors:'''
+* source / intermediate representation / machine code;
+* compilation, interpretation, JIT;
+* runtime/process distinction;
+* control flow and data flow;
+* program semantics;
+* concurrency and interaction;
+* verification and testing.
+
+'''Primary / authoritative source dossier:'''
+* ISO/IEC/IEEE 24765:2017, ''Systems and software engineering — Vocabulary'', current published edition; confirmed in 2022 and now under revision.
+* NIST CSRC terminology for code, runtime and correctness proof.
+* Glynn Winskel, ''The Formal Semantics of Programming Languages'', MIT Press (1993). DOI: 10.7551/mitpress/3054.001.0001; ISBN 9780262731034.
+* ACM/IEEE-CS CS2023 programming-language foundations.
+* English Wikipedia, [[wikipedia:Computer program|Computer program]], orientation/history/navigation only.
+
+'''Scholarpedia:''' no dedicated general computer-program article found in the current search.
+
+'''Open questions for compile phase:'''
+* whether notebooks, declarative workflows, smart contracts and configuration with executable semantics should be treated as examples or boundary cases;
+* exact canonical relation to a future [[Process (computing)]] page.
+
+== Programming language ==
+
+'''Current corpus state:''' strong seed article, but needs deeper formal semantics/history/source breadth.
+
+'''Canonical scope:''' a formal or semi-formal system of notation and rules for expressing programs/computations. Syntax and semantics are central; language identity must be kept distinct from any compiler/interpreter/runtime implementation.
+
+'''Important distinctions:'''
+* syntax ≠ semantics;
+* static semantics ≠ dynamic semantics;
+* language ≠ implementation;
+* language ≠ ecosystem;
+* "compiled" and "interpreted" often classify implementation strategies, not immutable language kinds;
+* programming paradigm labels overlap and are rarely mutually exclusive.
+
+'''Technical anchors:'''
+* lexical syntax and grammar;
+* static and dynamic semantics;
+* type systems;
+* binding/scope;
+* control structures;
+* abstraction mechanisms;
+* operational, denotational and axiomatic semantics;
+* language implementation;
+* paradigms.
+
+'''Primary / authoritative source dossier:'''
+* ACM/IEEE-CS CS2023, "Foundations of Programming Languages". https://csed.acm.org/programming-languages/
+* Glynn Winskel, ''The Formal Semantics of Programming Languages'', MIT Press (1993). DOI: 10.7551/mitpress/3054.001.0001.
+* Shriram Krishnamurthi, ''Programming Languages: Application and Interpretation'', current open textbook lineage. https://www.plai.org/
+* official language specifications/reference manuals as examples, not general definitions.
+* English Wikipedia, [[wikipedia:Programming language|Programming language]], orientation/navigation only.
+
+'''Scholarpedia:''' no dedicated general programming-language article found in the current search; "Computational type theory" is adjacent technical coverage.
+
+'''Open questions for compile phase:'''
+* what belongs in Core versus future pages [[Syntax]], [[Semantics]], [[Type system]], [[Programming paradigm]];
+* whether language history receives a dedicated section now or later.
+
+== Software ==
+
+'''Current corpus state:''' substantial seed article; good engineering orientation but concept boundary needs stronger standards/history treatment.
+
+'''Canonical scope:''' programs plus associated information/artifacts required for operation in a defined context. Standards and ordinary usage vary in whether documentation, data, configuration and models are included; the page should present this boundary explicitly rather than force a single universal set.
+
+'''Important distinctions:'''
+* software ≠ program;
+* software ≠ hardware;
+* software ≠ firmware, while boundaries can blur;
+* software product/system ≠ source-code repository;
+* software engineering ≠ programming;
+* software artifact boundary depends on purpose/context.
+
+'''Technical anchors:'''
+* architecture and interfaces;
+* dependencies;
+* configuration;
+* lifecycle;
+* quality attributes;
+* testing/verification;
+* deployment/operations;
+* maintenance/evolution;
+* software supply chain and provenance as later links.
+
+'''Primary / authoritative source dossier:'''
+* ISO/IEC/IEEE 24765:2017, ''Systems and software engineering — Vocabulary''.
+* IEEE Computer Society, ''Guide to the Software Engineering Body of Knowledge (SWEBOK Guide) V4.0'' (2024), consensus-oriented software-engineering body of knowledge.
+* Frederick P. Brooks Jr., "No Silver Bullet—Essence and Accidents of Software Engineering", ''Computer'' 20(4), 10–19 (1987). DOI: 10.1109/MC.1987.1663532.
+* NIST CSRC software/hardware terminology.
+* English Wikipedia, [[wikipedia:Software|Software]] and [[wikipedia:Software engineering|Software engineering]], orientation/history/navigation only.
+
+'''Scholarpedia:''' no dedicated general software article found in the current search.
+
+'''Open questions for compile phase:'''
+* how broadly to define associated data/configuration/documentation without making "software" indistinguishable from an entire sociotechnical system;
+* where firmware belongs in the Simple/Core distinction.
+
+== System boundary ==
+
+'''Current corpus state:''' very thin seed article; currently relies mostly on SEBoK.
+
+'''Canonical scope:''' an observer- and purpose-dependent distinction separating a system of interest from its environment for analysis, design, explanation or intervention. The concept should not be reduced to a physical edge.
+
+'''Important distinctions:'''
+* analytical boundary ≠ necessarily physical boundary;
+* system boundary ≠ interface;
+* system-of-interest ≠ environment;
+* boundary choice ≠ objective discovery in every context;
+* boundary critique concerns the consequences of including/excluding concerns, stakeholders, variables and values.
+
+'''Technical anchors:'''
+* observer/purpose dependence;
+* system/environment distinction;
+* inputs/outputs/interfaces across a boundary;
+* boundary judgments;
+* soft systems methodology;
+* critical systems heuristics / boundary critique;
+* lifecycle/system-of-interest framing in systems engineering.
+
+'''Primary / authoritative source dossier:'''
+* SEBoK, "System Boundary (glossary)", citing Checkland: "a distinction made by an observer..." https://sebokwiki.org/wiki/System_Boundary_%28glossary%29
+* Peter Checkland, ''Systems Thinking, Systems Practice'', Wiley (1981; later 30-year retrospective edition). ISBN 9780471279112.
+* Gerald Midgley, ''Systemic Intervention: Philosophy, Methodology, and Practice'', Kluwer/Plenum (2000). DOI/book record: 10.1007/978-1-4615-4201-8.
+* Werner Ulrich and Martin Reynolds, "Critical Systems Heuristics: The Idea and Practice of Boundary Critique" (2020). DOI: 10.1007/978-1-4471-7472-1_6.
+* ISO/IEC/IEEE 15288:2023, ''Systems and software engineering — System life cycle processes'', for system-of-interest engineering context.
+* English Wikipedia/other general encyclopedic material only as orientation where available.
+
+'''Scholarpedia:''' no dedicated systems-theory "System boundary" article found in the current search. Search results for mathematical boundary-value problems are unrelated and must not be treated as coverage of this concept.
+
+'''Open questions for compile phase:'''
+* whether boundary critique belongs in the Core page or mostly Technical;
+* how to connect physical boundaries (e.g. membrane) as examples without confusing them with the general analytical concept.
+
+== Version control ==
+
+'''Current corpus state:''' concise seed article; accurate but too Git-centric and historically thin.
+
+'''Canonical scope:''' systematic recording, identification, comparison, branching/merging and retrieval of revisions of files or other versioned artifacts. It is broader than Git and is one component of software configuration management.
+
+'''Important distinctions:'''
+* version control ≠ backup;
+* version control ≠ full software configuration management;
+* repository history ≠ truth/correctness;
+* centralized ≠ distributed version control;
+* revision ≠ release;
+* branch/merge models differ across systems.
+
+'''Technical anchors:'''
+* revision identifiers;
+* snapshots versus deltas;
+* repositories;
+* branching and merging;
+* conflicts;
+* tags/releases;
+* centralized and distributed architectures;
+* provenance/attribution;
+* reproducibility and audit trail;
+* relation to configuration management.
+
+'''Primary / authoritative source dossier:'''
+* Marc J. Rochkind, "The Source Code Control System", ''IEEE Transactions on Software Engineering'' SE-1(4), 364–370 (1975). DOI: 10.1109/TSE.1975.6312866.
+* Walter F. Tichy, "RCS—A System for Version Control", ''Software: Practice and Experience'' 15(7), 637–654 (1985). DOI: 10.1002/spe.4380150703.
+* Scott Chacon and Ben Straub, ''Pro Git'', 2nd ed. (2014), especially "About Version Control"; current online edition maintained at git-scm.com.
+* Git official documentation: Git is a distributed revision-control system; useful as an implementation source, not as the definition of version control in general.
+* SWEBOK V4.0 for software configuration-management context.
+* English Wikipedia, [[wikipedia:Version control|Version control]], useful history/terminology orientation only.
+
+'''Scholarpedia:''' no dedicated general version-control article found in the current search.
+
+'''Open questions for compile phase:'''
+* whether provenance should be encoded as a cross-domain relationship rather than only discussed as an application;
+* whether non-text/binary/data versioning is Core or Technical.
+
+= Cross-concept normalization decisions captured =
+
+{| class="wikitable"
+! Term !! Decision for compilation
+|-
+| algorithm / program || keep separate; program may implement an algorithm
+|-
+| program / process || keep separate; program is artifact/specification, process is executing instance
+|-
+| program / software || software is broader and may contain many programs/supporting artifacts
+|-
+| computation / algorithm || computation is execution/transition under a computational model; algorithm is method/procedure
+|-
+| data structure / abstract data type || keep separate; ADT is behavioral/logical abstraction, data structure is representation/organization
+|-
+| language / implementation || keep separate; compiler/interpreter/runtime implements a language
+|-
+| hypothesis / prediction || keep separate; prediction is an expected consequence given hypothesis + auxiliaries
+|-
+| scientific / statistical hypothesis || explicitly distinguish; do not merge formal statistical testing into the general definition
+|-
+| causation / correlation || explicit contrast
+|-
+| system boundary / physical edge || boundary may be analytical, conceptual, organizational, temporal or physical
+|-
+| version control / configuration management || version control is a component/subpractice, not the whole discipline
+|}
+
+= Source-quality observations =
+
+* Existing Wave 0 articles are generally coherent but under-referenced for mature public articles.
+* NIST is strong for computing terminology but should not be the sole conceptual authority for broad theoretical subjects.
+* Wikipedia is useful for structure, terminology, history leads, redirects and cross-links; claims should be checked against primary/authoritative sources.
+* Scholarpedia has little direct coverage of these ten general concepts; irrelevant same-word matches must not be counted as coverage.
+* Google Scholar discovery should be resolved to publisher, DOI, institutional repository or canonical book metadata before a citation is admitted to the final article.
+* SEP is especially valuable for Causality, Computation and Scientific Method because those topics contain genuine conceptual disagreement that a glossary definition cannot capture.
+* Standards (ISO/IEC/IEEE) are especially valuable for Program/Software/System engineering vocabulary but describe standardized usage, not necessarily the only valid cross-disciplinary meaning.
+
+= Phase-1 completion criteria =
+
+Before this wave advances to context compilation:
+
+# each concept has at least one orientation source and multiple authoritative/primary sources where the literature supports them;
+# canonical title and key distinctions are identified;
+# overlaps and non-equivalences within the wave are explicit;
+# cross-wave prerequisites are recorded as links/redlinks;
+# source weaknesses in the current article are known;
+# unresolved definition choices are left visible rather than prematurely resolved.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation, but should remain open to additional sources discovered during compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

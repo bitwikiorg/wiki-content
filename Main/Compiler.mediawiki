@@ -1,0 +1,64 @@
+{{Source status|status=Wave 6 compiled article|note=Compiler concept grounded in programming-language implementation literature.}}
+{{Knowledge object
+ |title=Compiler
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Compiler|current=Core}}
+
+= Compiler =
+
+== Overview ==
+A '''compiler''' transforms a source representation, usually a program, into a target representation while preserving intended behavior to the degree required by the language and implementation.
+
+Targets can include machine code, bytecode, another programming language, an intermediate representation, hardware description, or other executable/analyzable form.
+
+== Front end ==
+A compiler front end commonly performs:
+
+* lexical analysis;
+* parsing;
+* semantic analysis;
+* type checking;
+* construction of intermediate representations.
+
+These stages map source text into structured program representations.
+
+== Middle end ==
+Compiler middle ends analyze and transform intermediate representations.
+
+Optimizations can improve runtime, code size, energy, memory traffic, or other properties.
+
+Optimization is common but not required for compilation.
+
+== Back end ==
+The back end maps intermediate representations toward a target architecture or runtime.
+
+Tasks can include instruction selection, register allocation, scheduling, and code emission.
+
+== Compiler and interpreter ==
+A compiler translates a program before or during execution.
+
+An interpreter directly executes or evaluates a representation.
+
+Modern systems can combine both, for example bytecode compilation followed by interpretation and just-in-time compilation.
+
+Therefore:
+
+<pre>
+compiler ≠ interpreter
+</pre>
+
+== Correctness ==
+Compiler correctness asks whether translation preserves source-language semantics under the intended conditions.
+
+Compiler bugs can silently change program behavior, so testing and formal verification matter.
+
+== References ==
+* Aho, Lam, Sethi & Ullman, ''Compilers: Principles, Techniques, and Tools''.
+* Appel, compiler texts.
+* programming-language implementation literature.
+
+[[Category:Computer science]]

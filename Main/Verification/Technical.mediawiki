@@ -1,0 +1,72 @@
+{{Source status|status=Technical depth derivative|note=Advanced systems, software, and formal-verification surface of [[Verification]].}}
+{{Reading depth|base=Verification|current=Technical}}
+= Verification — Technical =
+
+== Specification relation ==
+Verification can be represented schematically as:
+
+<pre>
+artifact/system S
+specification R
+verification method M
+evidence E
+--------------------------------
+E supports that S satisfies R under assumptions A
+</pre>
+
+The epistemic content of verification depends on the completeness of R, validity of M, quality of E, and truth of A.
+
+== Formal verification ==
+For a transition system <code>M</code> and property <code>φ</code>, model checking asks whether:
+
+<pre>
+M ⊨ φ
+</pre>
+
+The result is relative to the modeled state space and semantics.
+
+Theorem proving can establish properties of programs/specifications within a formal logic, often through invariants, Hoare logic, refinement, or dependent types.
+
+== Testing versus proof ==
+Testing samples executions.
+
+A test can demonstrate the presence of a defect for a particular case but cannot generally quantify over all possible executions.
+
+Formal proof can quantify over modeled cases but may abstract away implementation/environment details.
+
+Testing and formal verification are therefore complementary rather than strict substitutes.
+
+== Numerical verification ==
+Scientific computing often distinguishes:
+* code verification — equations implemented correctly;
+* solution verification — numerical error/mesh/time-step effects quantified;
+* validation — model correspondence to relevant empirical behavior.
+
+Convergence studies, manufactured solutions, benchmark problems, and independent implementations are common verification tools.
+
+== Cryptographic verification ==
+Cryptographic verification establishes formal relations under cryptographic assumptions.
+
+Examples:
+* signature verifies possession/use of a private key corresponding to a public key;
+* hash check verifies data equality/integrity relative to a digest;
+* Merkle proof verifies inclusion under a committed root.
+
+These do not establish semantic truth of the signed or hashed content.
+
+== Verification provenance ==
+A verification claim should itself have [[Provenance/Technical|provenance]]:
+* verifier/tool version;
+* artifact hash;
+* specification version;
+* assumptions;
+* logs/proofs/test vectors;
+* timestamp;
+* result.
+
+This makes verification reproducible and auditable.
+
+== References ==
+* ISO/IEC/IEEE 29148.
+* NASA Systems Engineering Handbook.
+* NIST modeling/simulation V&V literature.

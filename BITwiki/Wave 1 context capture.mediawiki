@@ -1,0 +1,571 @@
+{{Source status|status=Wave 1 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 1 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 1 covers public concepts in epistemology, evidence, scientific reasoning, measurement, reproducibility, and validation. It must remain useful to a general public corpus rather than becoming a description of BITwiki's own epistemic machinery.
+
+== Wave 1 scope ==
+
+# [[Knowledge]]
+# [[Belief]]
+# [[Epistemology]]
+# [[Evidence]]
+# [[Empirical evidence]]
+# [[Justification]]
+# [[Uncertainty]]
+# [[Epistemic status]]
+# [[Provenance]]
+# [[Verification]]
+# [[Validation]]
+# [[Falsifiability]]
+# [[Scientific method]]
+# [[Scientific model]]
+# [[Measurement]]
+# [[Accuracy and precision]]
+# [[Reproducibility]]
+# [[Replication]]
+# [[Explanation]]
+# [[Counterexample]]
+
+All twenty canonical Main-space titles are new in V2. Existing pages such as [[BITwiki:Evidence]], [[BITwiki:Uncertainty]], [[BITwiki:Epistemic status]], [[BITwiki:Provenance]], and [[BITwiki:Claim validation]] are internal project frameworks and are evidence/context for BITwiki practice, not substitutes for these public concepts.
+
+== Semantic kernel: shared concept graph ==
+
+<pre>
+Epistemology
+ ├─ studies → Knowledge
+ ├─ studies → Belief
+ ├─ studies → Justification
+ └─ studies → Evidence
+
+Knowledge
+ ├─ ordinarily entails → Belief
+ ├─ is connected to → Truth
+ └─ is analyzed through → Justification / warrant / anti-luck / reliability / other conditions
+
+Evidence
+ ├─ bears on → Belief / hypothesis / claim
+ ├─ can contribute to → Justification
+ ├─ includes → Empirical evidence
+ ├─ has lineage → Provenance
+ └─ is limited by → Uncertainty
+
+Uncertainty
+ ├─ may be epistemic, aleatory, measurement, model, semantic, or structural
+ ├─ affects → Epistemic status
+ └─ is not equivalent to → ignorance / probability / error
+
+Epistemic status
+ ├─ is a family of epistemic standings/properties
+ ├─ may include → knowledge / justification / warrant / certainty / reliability / defeat-resistance
+ └─ must not be reduced to → one universal scalar ladder
+
+Provenance
+ ├─ records → origin / activity / agent / derivation
+ ├─ supports → Verification
+ └─ supports → Reproducibility
+
+Verification
+ ├─ asks whether specified requirements, claims, calculations, or implementations are satisfied/correct
+ └─ differs by domain from → Validation
+
+Validation
+ ├─ asks whether something is adequate for its intended use / target / application
+ ├─ is especially important for → Scientific model
+ └─ has domain-specific meanings
+
+Scientific method
+ ├─ uses → Observation / Evidence / Hypothesis / Measurement / Model / Experiment / Inference
+ ├─ has no single universally sufficient fixed recipe
+ └─ connects to → Falsifiability / Replication / Reproducibility
+
+Scientific model
+ ├─ represents → target system / phenomenon / theory / data
+ ├─ supports → Explanation / Prediction / Inference
+ └─ requires contextual → Verification / Validation
+
+Measurement
+ ├─ produces → measurement result
+ ├─ carries → Measurement uncertainty
+ └─ distinguishes → Accuracy and precision
+
+Reproducibility
+ ├─ in NASEM usage = same data/code/methods → consistent computational result
+ ├─ depends on → Provenance
+ └─ differs from → Replication
+
+Replication
+ ├─ in NASEM usage = new study/data addressing same question
+ └─ bears on → Evidence / generality / robustness
+
+Falsifiability
+ ├─ is a logical/methodological property of claims or theories
+ ├─ is historically associated with → Popper
+ └─ is tested by possible → Counterexample / counterinstance / observation
+
+Counterexample
+ ├─ refutes → universal claim when hypotheses are satisfied and conclusion fails
+ └─ can reveal → missing assumptions / scope conditions
+
+Explanation
+ ├─ differs from → description / prediction
+ └─ in science may be causal / mechanistic / nomological / unificationist / pragmatic / model-based
+</pre>
+
+== Canonicalization decisions ==
+
+* '''Knowledge''' — public concept; do not equate with information or data.
+* '''Belief''' — philosophical/cognitive concept; do not equate with faith or uncertainty.
+* '''Epistemology''' — public philosophical field; BITwiki's internal epistemics is an application, not the definition.
+* '''Evidence''' — general epistemic/scientific concept; internal BITwiki evidence policy remains separate.
+* '''Empirical evidence''' — evidence grounded in observation/experiment/measurement; not synonymous with all evidence.
+* '''Justification''' — canonical title is broad; Core must specify epistemic justification to distinguish from moral/legal justification.
+* '''Uncertainty''' — broad public concept with separate epistemic, aleatory, measurement, model, semantic, and other uses.
+* '''Epistemic status''' — use cautiously as a family term for epistemically evaluative properties/standings; do not present BITwiki's six labels as universal philosophy.
+* '''Provenance''' — public lineage/origin concept spanning history, archives, data, science, and information systems.
+* '''Verification''' and '''Validation''' — separate pages because their relation is domain-dependent and routinely confused.
+* '''Falsifiability''' — property of a statement/system relative to possible counterevidence; distinguish logical falsifiability from practical falsification.
+* '''Scientific method''' — pluralistic account; reject a schoolbook universal step sequence as the definition.
+* '''Scientific model''' — representation used in scientific inquiry; distinguish model from theory, simulation, and data.
+* '''Measurement''' — public science/metrology concept; preserve philosophical and metrological perspectives.
+* '''Accuracy and precision''' — one comparison page because the public confusion is relational; use VIM/NIST distinctions.
+* '''Reproducibility''' and '''Replication''' — separate pages; explicitly note that terminology varies by field.
+* '''Explanation''' — general concept with strong scientific-explanation coverage, not only science.
+* '''Counterexample''' — logic/mathematics/philosophy concept; distinguish from anecdote and merely contrary example.
+
+== Cluster A — epistemic core ==
+
+=== Knowledge ===
+
+'''Capture definition:''' epistemic state/achievement ordinarily involving truth and belief, but no single reductive analysis is universally accepted.
+
+'''Required distinctions:'''
+* propositional knowledge ("knowing that") vs knowledge-how vs acquaintance;
+* knowledge ≠ belief;
+* knowledge ≠ justified true belief by simple definition;
+* truth condition versus justification/warrant/reliability/anti-luck conditions;
+* Gettier problem.
+
+'''High-value sources:'''
+* Stanford Encyclopedia of Philosophy, "The Analysis of Knowledge", substantive revision 2026: https://plato.stanford.edu/entries/knowledge-analysis/
+* Edmund L. Gettier, "Is Justified True Belief Knowledge?", ''Analysis'' 23(6), 121–123 (1963). DOI: 10.1093/analys/23.6.121.
+* Wikipedia/other encyclopedias for terminology/history/navigation only.
+
+=== Belief ===
+
+'''Capture definition:''' an attitude of taking a proposition/state of affairs to be true or the case. Belief can be dispositional rather than occurrent.
+
+'''Required distinctions:'''
+* belief ≠ knowledge;
+* belief ≠ credence/degree of belief, though related;
+* belief ≠ acceptance;
+* belief ≠ faith;
+* proposition/content vs psychological state;
+* representational, dispositional, interpretationist/instrumentalist approaches.
+
+'''High-value sources:'''
+* Stanford Encyclopedia of Philosophy, "Belief": https://plato.stanford.edu/entries/belief/
+* Stanford Encyclopedia of Philosophy, "Formal Representations of Belief": https://plato.stanford.edu/entries/formal-belief/
+* Stanford Encyclopedia of Philosophy, "Bayesian Epistemology": https://plato.stanford.edu/entries/epistemology-bayesian/
+
+=== Epistemology ===
+
+'''Capture definition:''' philosophical study of knowledge, belief, justification, evidence, rationality, ignorance, skepticism, and related epistemic norms/properties.
+
+'''Required distinctions:'''
+* epistemology ≠ ontology;
+* descriptive psychology of belief ≠ normative epistemology;
+* individual/social/formal epistemology;
+* internalism/externalism;
+* foundationalism/coherentism/reliabilism/evidentialism as major families, not exhaustive taxonomy.
+
+'''High-value sources:'''
+* Stanford Encyclopedia of Philosophy, "Epistemology" and specialized entries on internalism/externalism, foundationalism, coherentism, reliabilism.
+* https://plato.stanford.edu/entries/justep-intext/
+* https://plato.stanford.edu/entries/justep-foundational/
+* https://plato.stanford.edu/entries/justep-coherence/
+* https://plato.stanford.edu/entries/reliabilism/
+
+=== Evidence ===
+
+'''Capture definition:''' information, experience, observation, fact, reason, or other epistemically relevant material that bears on what is reasonable/justified to believe or on the support of a claim/hypothesis. Philosophical theories disagree about what counts as evidence and how it supports claims.
+
+'''Required distinctions:'''
+* evidence ≠ proof;
+* evidence ≠ truth;
+* evidence ≠ source prestige;
+* total evidence and defeaters;
+* evidence for a person vs public/scientific evidence;
+* likelihood/support relations versus mere data possession.
+
+'''High-value sources:'''
+* Stanford Encyclopedia of Philosophy, "Evidence": https://plato.stanford.edu/entries/evidence/
+* BITwiki internal evidence framework as local application only: [[BITwiki:Evidence]].
+* Evidence should later link to [[Empirical evidence]], [[Justification]], [[Belief]], [[Hypothesis]], [[Causality]], [[Provenance]], and [[Uncertainty]].
+
+=== Empirical evidence ===
+
+'''Capture definition:''' evidential material derived from observation, experiment, measurement, or experience of the world rather than solely from formal deduction or conceptual analysis.
+
+'''Required distinctions:'''
+* empirical evidence ≠ all evidence;
+* observation may be theory/model/instrument mediated;
+* data ≠ evidence without relevance/inference context;
+* observational evidence ≠ causal identification;
+* empirical result ≠ interpretation.
+
+'''High-value sources:'''
+* Stanford Encyclopedia of Philosophy, "Theory and Observation in Science", substantive revision 2026: https://plato.stanford.edu/entries/science-theory-observation/
+* Stanford Encyclopedia of Philosophy, "Scientific Method": https://plato.stanford.edu/entries/scientific-method/
+
+=== Justification ===
+
+'''Capture definition:''' epistemic property or relation concerning whether a belief is appropriately supported, rational, warranted, or held on adequate grounds. Competing theories disagree about what makes justification obtain.
+
+'''Required distinctions:'''
+* propositional justification vs doxastic justification;
+* justification ≠ truth;
+* justification ≠ knowledge;
+* reasons/evidence possessed vs reasons actually basing the belief;
+* internalist/externalist accounts;
+* foundationalist/coherentist/reliabilist/evidentialist approaches.
+
+'''High-value sources:'''
+* SEP, "Internalist vs. Externalist Conceptions of Epistemic Justification": https://plato.stanford.edu/entries/justep-intext/
+* SEP, "The Epistemic Basing Relation": https://plato.stanford.edu/entries/basing-epistemic/
+* SEP foundationalist/coherentist/reliabilist entries above.
+
+== Cluster B — calibration and lineage ==
+
+=== Uncertainty ===
+
+'''Capture definition:''' limited or incomplete determination about a state, value, proposition, model, outcome, or future event. Different domains distinguish epistemic uncertainty, aleatory variability, measurement uncertainty, model uncertainty, semantic/vagueness uncertainty, and other forms.
+
+'''Required distinctions:'''
+* uncertainty ≠ error;
+* uncertainty ≠ probability, though probability can represent some forms;
+* epistemic vs aleatory;
+* reducible vs irreducible as a context-sensitive distinction;
+* measurement uncertainty has a metrological definition;
+* uncertainty about a proposition vs uncertainty about a parameter/model.
+
+'''High-value sources:'''
+* NIST, "Measurement Uncertainty": https://www.nist.gov/itl/sed/topic-areas/measurement-uncertainty
+* JCGM/BIPM VIM (measurement uncertainty definitions).
+* Stanford Encyclopedia entries on Bayesian epistemology, probability interpretations, certainty, higher-order evidence.
+* [[BITwiki:Uncertainty]] only as BITwiki-specific application.
+
+=== Epistemic status ===
+
+'''Capture definition:''' a general family term for the epistemic standing/properties of a belief, claim, proposition, or cognitive state—e.g. justified, warranted, known, certain, reliable, safe, sensitive, defeated/undefeated. There is no universal single ordered scale.
+
+'''Required distinctions:'''
+* epistemic status ≠ confidence;
+* epistemic status ≠ truth value;
+* epistemic status ≠ lifecycle state;
+* epistemic status ≠ BITwiki's local controlled vocabulary;
+* outright belief statuses vs graded credence.
+
+'''High-value sources:'''
+* SEP, "Certainty": https://plato.stanford.edu/entries/certainty/
+* SEP, "Reliabilist Epistemology": https://plato.stanford.edu/entries/reliabilism/
+* SEP, "Metaepistemology" and formal/bayesian epistemology for belief/credence distinctions.
+* Contemporary philosophical literature uses "epistemic status" as an umbrella for justification, warrant, safety, sensitivity, reliability, etc.; Core must say the term is broad and theory-relative.
+* [[BITwiki:Epistemic status]] is a local implementation and should be linked only in an application section.
+
+=== Provenance ===
+
+'''Capture definition:''' information about the origin, custody, production, transformation, derivation, and responsible agents/activities associated with an object, record, data item, claim, or artifact.
+
+'''Required distinctions:'''
+* provenance ≠ citation;
+* provenance ≠ authorship alone;
+* provenance ≠ truth;
+* physical-object/archival provenance vs digital/data provenance;
+* provenance record vs actual history;
+* provenance supports trust assessment but does not guarantee correctness.
+
+'''High-value sources:'''
+* W3C PROV Overview: https://www.w3.org/TR/prov-overview/
+* W3C PROV Data Model/Ontology/Constraints/Primer: https://www.w3.org/TR/prov-primer/ ; https://www.w3.org/TR/prov-o/ ; https://www.w3.org/TR/prov-constraints/
+* [[BITwiki:Provenance]] as a local knowledge-lineage application.
+
+== Cluster C — checking and refutation ==
+
+=== Verification ===
+
+'''Capture definition:''' checking/confirming, by appropriate evidence or procedure, that specified requirements, properties, calculations, claims, implementations, or representations satisfy an applicable specification. Exact meaning varies across engineering, software, formal methods, science, and source checking.
+
+'''Required distinctions:'''
+* verification ≠ validation;
+* verification ≠ truth in every domain;
+* formal verification ≠ testing;
+* source verification ≠ empirical replication;
+* in systems engineering: "built right" shorthand is useful but not universal.
+
+'''High-value sources:'''
+* ISO/IEC/IEEE 29148 definitions of verification/validation.
+* ISO 9000 family terminology (current edition exists; definitions vary by application).
+* NASA Systems Engineering Handbook verification/validation sections.
+* NIST modeling/simulation V&V literature.
+
+=== Validation ===
+
+'''Capture definition:''' evaluation/confirmation that something is adequate, fit, or valid for an intended use, target, application, interpretation, or empirical domain. Meaning is domain-specific.
+
+'''Required distinctions:'''
+* validation ≠ verification;
+* model validation ≠ logical proof;
+* construct/content/criterion validation in measurement/social science are specialized uses;
+* data validation vs system validation vs scientific model validation;
+* validation is not metaphysical certainty.
+
+'''High-value sources:'''
+* ISO/IEC/IEEE 29148: validation as evidence that requirements for a specific intended use/application are fulfilled.
+* NASA Systems Engineering Handbook.
+* NIST model verification/validation literature, including CFAST and simulation-model papers.
+* [[BITwiki:Claim validation]] as a local knowledge-validation workflow, not the general definition.
+
+=== Falsifiability ===
+
+'''Capture definition:''' capacity of a statement/theory to conflict with some possible observation or basic statement; historically central to Popper's demarcation account. Logical falsifiability must be distinguished from the practical/methodological act of falsification.
+
+'''Required distinctions:'''
+* falsifiable ≠ false;
+* unfalsified ≠ verified;
+* logical counterinstance vs real-world observation with measurement/auxiliary assumptions;
+* Popperian demarcation is influential but not universally accepted as a complete account of science;
+* degrees/testability and auxiliary hypotheses.
+
+'''High-value sources:'''
+* SEP, "Scientific Method": https://plato.stanford.edu/entries/scientific-method/
+* SEP, "Karl Popper".
+* SEP, "Science and Pseudo-Science": https://plato.stanford.edu/entries/pseudo-science/
+* Karl Popper, ''The Logic of Scientific Discovery''.
+
+=== Counterexample ===
+
+'''Capture definition:''' a case satisfying a claim's hypotheses/conditions while making its conclusion false; one valid counterexample refutes a universal claim.
+
+'''Required distinctions:'''
+* counterexample ≠ anecdote;
+* counterexample must satisfy the hypotheses;
+* contrary instance to a probabilistic/statistical claim does not necessarily refute it;
+* counterexample can reveal an omitted condition and improve a conjecture;
+* minimal counterexample is a proof technique, not just an example.
+
+'''High-value sources:'''
+* Wolfram MathWorld, "Counterexample": https://mathworld.wolfram.com/Counterexample.html
+* OpenStax, ''Introduction to Philosophy'', logical statements/counterexamples.
+* D. J. Velleman, ''How to Prove It'', 3rd ed., Cambridge University Press (2019).
+* Imre Lakatos, ''Proofs and Refutations''.
+
+== Cluster D — scientific practice and modeling ==
+
+=== Scientific method ===
+
+'''Capture definition:''' family of systematic practices by which scientific inquiry generates, tests, revises, compares, and applies empirical/theoretical claims. There is no single fixed sequence shared by all sciences.
+
+'''Required distinctions:'''
+* scientific method ≠ one universal step list;
+* discovery vs justification/testing;
+* observation, experiment, modeling, measurement, inference, hypothesis, theory;
+* induction/deduction/abduction;
+* pluralism and domain variation;
+* methodological norms vs sociological institutions.
+
+'''High-value sources:'''
+* SEP, "Scientific Method", substantive revision 2026: https://plato.stanford.edu/entries/scientific-method/
+* National Academies / field-methodology sources as domain examples.
+* Popper is one historical approach, not the complete definition.
+
+=== Scientific model ===
+
+'''Capture definition:''' a representation used in science to describe, explain, predict, explore, simulate, infer about, or understand a target system, phenomenon, data set, or theory.
+
+'''Required distinctions:'''
+* model ≠ theory;
+* model ≠ simulation;
+* model ≠ data;
+* physical, conceptual, mathematical, computational, statistical models;
+* idealization/abstraction;
+* model-to-target relation;
+* models can be explanatory or useful without literal similarity.
+
+'''High-value sources:'''
+* SEP, "Models in Science": https://plato.stanford.edu/entries/models-science/
+* Modeling/simulation verification and validation literature from NIST.
+* Technical sections should distinguish model verification, calibration, validation, sensitivity, and uncertainty.
+
+=== Measurement ===
+
+'''Capture definition:''' process/activity of obtaining a representation/result concerning a property or quantity through interaction, comparison, modeling, calibration, and reference systems; philosophical and metrological definitions emphasize different aspects.
+
+'''Required distinctions:'''
+* indication/reading ≠ measurement result;
+* measurand ≠ instrument reading;
+* measurement ≠ observation generally;
+* calibration ≠ measurement;
+* value + unit + uncertainty/context;
+* theory/model dependence of measurement.
+
+'''High-value sources:'''
+* SEP, "Measurement in Science": https://plato.stanford.edu/entries/measurement-science/
+* JCGM VIM3 / BIPM vocabulary.
+* NIST measurement uncertainty and TN 1297.
+
+=== Accuracy and precision ===
+
+'''Capture definition:''' measurement accuracy concerns closeness between measured value and reference/true quantity value; precision concerns agreement among replicate measurements under specified conditions. They are related but distinct.
+
+'''Required distinctions:'''
+* accuracy ≠ precision;
+* precision does not imply trueness/accuracy;
+* accuracy is qualitative in VIM3 and should not casually be assigned a numerical "accuracy" value;
+* precision depends on specified repeatability/reproducibility conditions;
+* uncertainty ≠ simply "accuracy + precision".
+
+'''High-value sources:'''
+* BIPM/JCGM VIM3, measurement accuracy: https://jcgm.bipm.org/vim/en/2.13.html
+* BIPM/JCGM VIM3, measurement precision: https://jcgm.bipm.org/vim/en/2.15.html
+* NIST TN 1297 terminology: https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-d1-terminology
+* Note: VIM4 is under development; Core should cite published VIM3 definitions and mention vocabulary evolution only if necessary.
+
+=== Reproducibility ===
+
+'''Capture definition:''' term with field-dependent meanings. For Wave 1 Core, explicitly adopt the National Academies 2019 distinction as one influential modern convention: computational reproducibility means obtaining consistent computational results using the same data, code/methods, and conditions.
+
+'''Required distinctions:'''
+* reproducibility terminology varies across metrology, experimental science, computation, and journals;
+* NASEM reproducibility ≠ replication;
+* reproducibility ≠ correctness;
+* transparent artifacts/provenance enable reproducibility but do not guarantee scientific validity;
+* in metrology "reproducibility conditions" has a different established technical meaning.
+
+'''High-value sources:'''
+* National Academies, ''Reproducibility and Replicability in Science'' (2019): https://nap.nationalacademies.org/catalog/25303/reproducibility-and-replicability-in-science
+* NIST/VIM for measurement reproducibility terminology.
+* W3C PROV for provenance/reproducibility relation.
+
+=== Replication ===
+
+'''Capture definition:''' repeat investigation using new data/observations/study execution aimed at the same or closely related scientific question; exact methodology and terminology vary by field.
+
+'''Required distinctions:'''
+* replication ≠ computational reproduction;
+* direct/exact vs conceptual replication labels are field-dependent;
+* failure to replicate can have many causes and is evidence requiring interpretation, not automatic disproof;
+* replication studies test robustness/generalization under changed samples or conditions.
+
+'''High-value sources:'''
+* National Academies 2019 report: replicability = consistent results across studies addressing the same scientific question with new data.
+* Methodological literature should be added in Technical as needed.
+
+=== Explanation ===
+
+'''Capture definition:''' an account that makes something intelligible by showing why/how it occurs, holds, or follows. In science, explanations may appeal to causes, mechanisms, laws, models, unification, statistics, or pragmatic relevance.
+
+'''Required distinctions:'''
+* explanation ≠ description;
+* explanation ≠ prediction;
+* explanation ≠ understanding, though strongly related;
+* causal explanation is not the only proposed form;
+* scientific explanation literature has competing models.
+
+'''High-value sources:'''
+* SEP, "Scientific Explanation": https://plato.stanford.edu/entries/scientific-explanation/
+* Hempel & Oppenheim, "Studies in the Logic of Explanation" (1948).
+* Salmon, Kitcher, van Fraassen, mechanistic and causal explanation traditions.
+* SEP "Models in Science" for model/explanation relation.
+
+== Cross-wave links ==
+
+Wave 1 must reuse Wave 0 rather than redefine it:
+
+* [[Hypothesis]] ↔ [[Scientific method]], [[Falsifiability]], [[Evidence]], [[Empirical evidence]]
+* [[Causality]] ↔ [[Evidence]], [[Empirical evidence]], [[Explanation]], [[Scientific model]], [[Validation]]
+* [[System boundary]] ↔ [[Scientific model]], [[Measurement]], [[Uncertainty]], [[Validation]]
+* [[Version control]] ↔ [[Provenance]], [[Reproducibility]]
+* [[Computation]] / [[Program (computing)]] / [[Software]] ↔ computational [[Reproducibility]], formal/software [[Verification]]
+* [[Algorithm]] ↔ formal verification and counterexamples when proving algorithmic claims
+
+== New prerequisite/redlink candidates ==
+
+Do not generate these automatically in Wave 1, but normalize titles now:
+
+* [[Truth]]
+* [[Proposition]]
+* [[Reason]]
+* [[Rationality]]
+* [[Credence]]
+* [[Skepticism]]
+* [[Ignorance]]
+* [[Observation]]
+* [[Experiment]]
+* [[Inference]]
+* [[Induction]]
+* [[Deduction]]
+* [[Abductive reasoning]]
+* [[Theory]]
+* [[Prediction]]
+* [[Calibration]]
+* [[Measurement uncertainty]]
+* [[Random error]]
+* [[Systematic error]]
+* [[Bias (statistics)]]
+* [[Statistical hypothesis]]
+* [[Scientific theory]]
+* [[Robustness]]
+* [[Reliability]]
+* [[Validity]]
+* [[Proof]]
+* [[Simulation]]
+* [[Idealization]]
+* [[Abstraction]]
+
+== Source-family audit ==
+
+=== Wikipedia ===
+Use for title normalization, redirects, historical orientation, "see also" discovery, and public terminology. Do not use it as the principal evidentiary authority where primary/standards/SEP sources are available.
+
+=== Scholarpedia ===
+Direct general coverage of these broad epistemology/metrology concepts is sparse. Specialized Scholarpedia articles may become useful later for specific technical descendants. Do not manufacture coverage by counting unrelated same-word articles.
+
+=== Google Scholar / scholarly discovery ===
+Use as discovery for foundational papers and monographs, but resolve citations to publisher, DOI, journal, standards body, institutional report, or canonical author version before final article use.
+
+=== Standards and institutional sources ===
+* ISO/IEC/IEEE — verification/validation/system engineering vocabulary.
+* BIPM/JCGM — metrology, measurement, accuracy, precision, uncertainty.
+* NIST — measurement uncertainty, metrology, modeling/simulation V&V.
+* W3C PROV — digital provenance.
+* National Academies — reproducibility/replicability terminology.
+
+=== Philosophy sources ===
+SEP is especially valuable for Knowledge, Belief, Evidence, Justification, Epistemology, Scientific method, Models in Science, Measurement, Scientific Explanation, Popper/falsifiability, Bayesian epistemology, and certainty.
+
+== Phase-1 unresolved decisions ==
+
+# Should [[Epistemic status]] remain a public standalone concept or redirect later to a broader [[Epistemic evaluation]] / [[Epistemic properties]] page? For Wave 1, retain it provisionally because the phrase has real philosophical use, but explicitly avoid universal ladders.
+# Should [[Reproducibility]] Core adopt NASEM terminology as the primary convention? Yes, but label it as a convention and document field variation.
+# Should [[Verification]] and [[Validation]] have broad general definitions or engineering-first definitions? Broad Core, with engineering/software/modeling distinctions in dedicated sections.
+# Should [[Explanation]] be "Scientific explanation"? Keep [[Explanation]] because the concept is public and cross-domain; scientific explanation is the dominant technical literature within this wave.
+# Should [[Accuracy and precision]] remain one page? Yes for public clarity, with redirects from future [[Accuracy]] and [[Precision]] where appropriate.
+
+== Phase-1 completion criteria ==
+
+Before Wave 1 advances to compilation:
+
+# every concept has a normalized title and non-equivalence boundaries;
+# the epistemic core is defined before downstream science/method concepts;
+# standards-specific meanings are marked as domain-specific;
+# BITwiki-internal frameworks are separated from public definitions;
+# source dossiers contain authoritative or foundational material, not citation-count proxies;
+# cross-wave links are recorded;
+# unresolved terminology differences remain explicit rather than being silently collapsed.
+
+'''Current assessment: Phase 1 is materially complete enough to begin context compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

@@ -1,0 +1,84 @@
+{{Source status|status=Technical depth derivative|note=Advanced computational-reproducibility surface of [[Reproducibility]].}}
+{{Reading depth|base=Reproducibility|current=Technical}}
+= Reproducibility — Technical =
+
+== Computational state ==
+A computational result can depend on a state vector such as:
+
+<pre>
+R = F(D, C, P, E, H, S)
+</pre>
+
+where:
+* <code>D</code> = data;
+* <code>C</code> = code;
+* <code>P</code> = parameters/configuration;
+* <code>E</code> = software environment/dependencies;
+* <code>H</code> = hardware/runtime behavior;
+* <code>S</code> = stochastic state/random seeds.
+
+Reproducibility requires controlling or recording every component that materially affects R.
+
+== Exact and tolerance-based reproducibility ==
+Exact reproducibility requires identical output.
+
+Numerical/scientific reproducibility may instead define:
+
+<pre>
+distance(R1, R2) ≤ ε
+</pre>
+
+or require the same inferential conclusion under accepted numerical tolerance.
+
+The equivalence relation must be part of the specification.
+
+== Environment capture ==
+Environment capture can use:
+* containers;
+* Nix/Guix-like declarative environments;
+* lockfiles;
+* immutable package snapshots;
+* virtual machines;
+* software-bill-of-materials records.
+
+Containers do not fully capture kernel, CPU, GPU, firmware, external services, or nondeterministic scheduling.
+
+== Workflow provenance ==
+A reproducible pipeline needs dependency structure:
+
+<pre>
+input artifact hashes
+→ transformation versions
+→ parameters
+→ output artifact hashes
+</pre>
+
+Workflow DAGs plus content hashes can make omitted or stale intermediate products visible.
+
+== Randomness ==
+For stochastic algorithms, setting a seed can reproduce one pseudorandom sequence, but scientific reproducibility may require demonstrating stable conclusions across seeds rather than reusing one convenient realization.
+
+Parallel random-number generation requires explicit stream/substream control.
+
+== Floating point ==
+Floating-point addition is not associative:
+
+<pre>
+(a + b) + c ≠ a + (b + c)
+</pre>
+
+in finite precision.
+
+Parallel execution can therefore change low-order bits through different reduction order.
+
+Bitwise reproducibility may require deterministic algorithms, fixed libraries, controlled hardware, or compensated arithmetic.
+
+== Reproducibility as verification ==
+Computational reproduction verifies that a documented execution path can regenerate the reported artifact.
+
+It does not validate the underlying model, data collection, causal inference, or scientific interpretation.
+
+== References ==
+* NASEM (2019), DOI: 10.17226/25303.
+* W3C PROV.
+* JCGM VIM3 for the distinct metrological terminology.

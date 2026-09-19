@@ -1,0 +1,153 @@
+{{Source status|status=Wave 1 compiled article|note=Public science/metrology concept grounded in SEP Measurement in Science, JCGM VIM, and NIST metrology guidance.}}
+{{Knowledge object
+ |title=Measurement
+ |entity_type=Concept
+ |domain=Science, Engineering
+ |status=Established
+ |provenance=V2 public corpus; Wave 1 compiled context
+}}
+{{Reading depth|base=Measurement|current=Core}}
+
+= Measurement =
+
+== Overview ==
+'''Measurement''' is a structured process for obtaining a result concerning a property or quantity by relating a target to procedures, instruments, models, reference systems, units, and calibration.
+
+Measurement is central to science and engineering because it connects theoretical or practical quantities with empirical observations.
+
+An instrument reading is not automatically a complete measurement result.
+
+== Measurand ==
+The '''measurand''' is the quantity intended to be measured.
+
+Examples:
+* length of a rod;
+* mass of a sample;
+* voltage across a component;
+* concentration of a molecule;
+* temperature of a fluid.
+
+A measurand needs sufficient specification.
+
+"The temperature" can be ambiguous unless location, time, physical system, and measurement conditions are clear.
+
+== Measurement process ==
+A measurement chain can include:
+
+<pre>
+target property
+→ physical interaction
+→ sensor response
+→ instrument indication
+→ calibration/model
+→ processed value
+→ measurement result
+</pre>
+
+Each stage can introduce uncertainty or bias.
+
+== Measurement result ==
+A measurement result can include more than a single number.
+
+Relevant information may include:
+* measured value;
+* unit;
+* [[Uncertainty|measurement uncertainty]];
+* calibration state;
+* method;
+* environmental conditions;
+* traceability/reference information.
+
+Without context, a numerical result may be difficult to interpret or compare.
+
+== Units and reference systems ==
+Units make quantity values comparable.
+
+Modern metrology uses the International System of Units (SI), whose units are defined through fixed values of fundamental constants.
+
+Measurement traceability connects results through an unbroken documented chain of calibrations to appropriate references.
+
+Traceability supports comparability across instruments, laboratories, and time.
+
+== Calibration ==
+'''Calibration''' establishes a relation between known/reference values and the indications or outputs of a measuring system.
+
+Calibration can reveal:
+* offset;
+* scale;
+* nonlinearity;
+* drift;
+* sensitivity.
+
+Calibration is not identical to adjustment. An instrument can be calibrated without being physically changed.
+
+== Accuracy and precision ==
+[[Accuracy and precision]] describe different properties.
+
+Accuracy concerns closeness to an appropriate reference or true quantity value.
+
+Precision concerns agreement among repeated measurements under specified conditions.
+
+A measurement process can be precise but systematically biased.
+
+== Error ==
+Measurement '''error''' is conceptually the difference between a measured quantity value and a reference/true quantity value.
+
+The exact true value is often unknown.
+
+Therefore uncertainty, rather than exact error, is usually what can be quantified in a real measurement.
+
+== Measurement uncertainty ==
+Measurement uncertainty describes the dispersion of quantity values that could reasonably be attributed to the measurand given available information.
+
+Sources can include:
+* calibration;
+* repeatability;
+* environmental conditions;
+* instrument resolution;
+* sampling;
+* data processing;
+* model assumptions.
+
+Uncertainty evaluation makes limitations explicit rather than pretending the measured value is exact.
+
+== Observation and theory ==
+Measurements are model-mediated.
+
+Turning an instrument signal into a quantity value can require:
+* physical theory;
+* calibration equations;
+* signal processing;
+* background subtraction;
+* classification;
+* statistical inference.
+
+This is why [[Empirical evidence|empirical evidence]] can depend on theoretical assumptions without becoming arbitrary.
+
+== Measurement validity ==
+A precisely measured variable can still be the wrong variable for the scientific question.
+
+For example, a questionnaire may consistently measure a response pattern while failing to represent the intended psychological construct.
+
+This connects measurement to [[Validation|validation]].
+
+== Repeatability and reproducibility ==
+Metrology distinguishes measurement conditions.
+
+'''Repeatability''' concerns measurements under closely matched conditions.
+
+'''Reproducibility conditions''' involve changed conditions such as operators, instruments, laboratories, or locations.
+
+This use of "reproducibility" is older and different from the computational-science convention discussed in [[Reproducibility]].
+
+== Epistemic notes ==
+Measurement is not simply "reading a number from an instrument." A defensible measurement result depends on a defined measurand, method, model, reference system, calibration, and uncertainty.
+
+== References ==
+* [https://plato.stanford.edu/entries/measurement-science/ Stanford Encyclopedia of Philosophy — Measurement in Science]
+* JCGM 200:2012, ''International Vocabulary of Metrology (VIM)'', BIPM.
+* [https://www.nist.gov/pml/nist-technical-note-1297 NIST Technical Note 1297 — Guidelines for Evaluating and Expressing the Uncertainty of NIST Measurement Results]
+* [https://www.bipm.org/en/measurement-units BIPM — SI units and measurement]
+
+[[Category:Science]]
+[[Category:Engineering]]

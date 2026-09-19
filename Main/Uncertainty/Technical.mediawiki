@@ -1,0 +1,64 @@
+{{Source status|status=Technical depth derivative|note=Advanced metrology, probabilistic, and model-uncertainty surface of [[Uncertainty]].}}
+{{Reading depth|base=Uncertainty|current=Technical}}
+= Uncertainty — Technical =
+
+== Measurement uncertainty ==
+The VIM defines measurement uncertainty as a non-negative parameter characterizing the dispersion of quantity values attributed to a measurand, based on the information used.
+
+A result may be represented through a probability distribution or through summaries such as:
+* standard measurement uncertainty;
+* combined standard uncertainty;
+* expanded uncertainty;
+* coverage interval under specified conventions.
+
+Uncertainty propagation can use analytical approximations or Monte Carlo methods depending on the measurement model.
+
+== Epistemic and aleatory decomposition ==
+In engineering risk analysis, total predictive uncertainty is often decomposed conceptually into:
+
+<pre>
+epistemic uncertainty + aleatory variability
+</pre>
+
+Epistemic uncertainty is associated with limited knowledge; aleatory variability with stochastic variation.
+
+The decomposition is model-relative. If a latent causal structure becomes known, what was modeled as random variability may become predictable.
+
+== Bayesian representation ==
+Bayesian models represent uncertainty about parameters or hypotheses through probability distributions.
+
+Bayes' rule updates a prior distribution:
+
+<pre>
+P(H | E) ∝ P(E | H) P(H)
+</pre>
+
+This formalism requires a defined hypothesis/model space and likelihood. Model uncertainty that lies outside the chosen space is not automatically captured.
+
+== Higher-order uncertainty ==
+Let <code>Cr(p)</code> denote first-order credence in p.
+
+Higher-order evidence can concern whether the agent's own response <code>Cr(p)</code> is rational or whether the evidence-processing method is reliable.
+
+Reflection principles attempt to constrain first-order credence by higher-order judgments, but their exact formulation is contested.
+
+== Sensitivity and robustness ==
+When uncertainty depends on assumptions rather than only random parameters, sensitivity analysis can vary:
+* priors;
+* model structures;
+* parameter ranges;
+* missing-data assumptions;
+* boundary conditions.
+
+A conclusion is robust when materially relevant conclusions remain stable across a justified set of alternatives.
+
+== Unknown unknowns ==
+Formal uncertainty quantification operates within a represented possibility space.
+
+Unknown mechanisms, omitted variables, unmodeled failure modes, or category mistakes may lie outside that space. No probability distribution automatically solves uncertainty about whether the model itself is adequate.
+
+== References ==
+* JCGM VIM3.
+* NIST — Measurement Uncertainty.
+* SEP — Bayesian Epistemology.
+* SEP — Higher-Order Evidence.

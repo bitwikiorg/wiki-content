@@ -1,0 +1,107 @@
+{{Source status|status=Technical depth derivative|note=Advanced scientific-modeling surface of [[Scientific model]].}}
+{{Reading depth|base=Scientific model|current=Technical}}
+= Scientific model — Technical =
+
+== Model–target relation ==
+Let model <code>M</code> be used to represent target <code>T</code> for purpose <code>P</code>.
+
+Representation is not exhausted by structural similarity.
+
+Scientific representation can depend on:
+* interpretation;
+* intended use;
+* idealization;
+* inferential affordances;
+* user conventions;
+* mathematical mapping;
+* similarity in selected respects.
+
+A model can represent T well for P while being poor for another purpose.
+
+== Mathematical models ==
+A dynamical model may take the form:
+
+<pre>
+dx/dt = f(x, θ, u, t)
+</pre>
+
+where:
+* <code>x</code> = state;
+* <code>θ</code> = parameters;
+* <code>u</code> = inputs/controls.
+
+Inference may estimate θ from data, while validation tests whether model behavior is adequate for the target domain.
+
+== Statistical models ==
+A statistical model specifies a family of probability distributions:
+
+<pre>
+{ P_θ : θ ∈ Θ }
+</pre>
+
+Model fitting selects/estimates θ or compares model families.
+
+Good fit is not enough: misspecification, overfitting, dependence, and distribution shift can undermine inference.
+
+== Computational models ==
+A computational model is implemented through algorithms and software.
+
+Important distinctions:
+
+<pre>
+conceptual/scientific model
+≠ mathematical formulation
+≠ numerical method
+≠ program implementation
+≠ simulation output
+</pre>
+
+Each layer introduces different possible errors.
+
+== Verification, calibration, validation ==
+'''Verification''' — are equations/algorithms implemented/solved correctly?
+
+'''Calibration''' — which parameter values align model outputs with calibration data?
+
+'''Validation''' — is the model adequate for the intended real-world use?
+
+A model can pass one and fail another.
+
+== Structural discrepancy ==
+Even with optimal parameters, a model can systematically differ from the target because its structure is incomplete.
+
+A useful inferential formulation separates:
+
+<pre>
+observed data
+= model prediction
++ model discrepancy
++ measurement error
+</pre>
+
+Identifiability between these components can be difficult.
+
+== Sensitivity ==
+Local or global sensitivity analysis studies:
+
+<pre>
+∂ output / ∂ parameter
+</pre>
+
+or more general changes in output distributions under parameter/input variation.
+
+Sensitivity is not the same as uncertainty: a parameter can be highly influential but known precisely, or uncertain but have little effect.
+
+== Validation domain ==
+Validation should specify a domain:
+
+<pre>
+D = {inputs, states, environments, scales, uses}
+</pre>
+
+Evidence inside D does not automatically justify extrapolation outside D.
+
+== References ==
+* SEP — Models in Science.
+* SEP — Scientific Explanation.
+* NIST model verification/validation literature.

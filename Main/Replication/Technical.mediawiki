@@ -1,0 +1,88 @@
+{{Source status|status=Technical depth derivative|note=Advanced scientific-replication and evidence-synthesis surface of [[Replication]].}}
+{{Reading depth|base=Replication|current=Technical}}
+= Replication — Technical =
+
+== Study-level estimands ==
+A replication should clarify whether it targets the same:
+
+* estimand;
+* theoretical construct;
+* operationalization;
+* population;
+* intervention;
+* outcome;
+* causal contrast.
+
+Apparent replication failure can be uninterpretable if the target estimand changed.
+
+== Sampling model ==
+Suppose study i estimates effect θ:
+
+<pre>
+θ̂_i ~ SamplingDistribution(θ_i, SE_i)
+</pre>
+
+Exact equality of estimates is not expected.
+
+Replication evidence concerns whether estimates are compatible with a shared or related effect structure.
+
+== Heterogeneity ==
+Across replications:
+
+<pre>
+θ_i ~ Distribution(μ, τ²)
+</pre>
+
+where τ² describes between-study heterogeneity under a random-effects model.
+
+Large heterogeneity can indicate:
+* real context dependence;
+* methodological differences;
+* measurement non-equivalence;
+* bias;
+* unidentified moderators.
+
+== Significance mismatch ==
+A common error is:
+
+<pre>
+original p < 0.05
+replication p > 0.05
+therefore effects differ
+</pre>
+
+Different significance outcomes do not prove that the estimated effects differ significantly from each other.
+
+Direct comparison of effect estimates and uncertainty is needed.
+
+== Publication and selection bias ==
+Published original effects can be exaggerated because:
+* significant results are preferentially published;
+* multiple analyses were attempted;
+* small studies have high sampling variance;
+* flexible stopping/measurement decisions select extreme estimates.
+
+Replication can correct these biases, especially when protocols and analyses are pre-specified.
+
+== Multi-site designs ==
+Hierarchical models can separate:
+* participant variation;
+* site variation;
+* intervention variation;
+* measurement variation.
+
+This allows replication to estimate not only whether an effect exists, but how stable it is across environments.
+
+== Bayesian updating ==
+Replication can update a prior/posterior distribution:
+
+<pre>
+P(θ | E_original, E_replication)
+∝ P(E_replication | θ) P(θ | E_original)
+</pre>
+
+The result depends on model assumptions and independence between evidence sources.
+
+== References ==
+* NASEM (2019), DOI: 10.17226/25303.
+* Methodological replication literature summarized in the National Academies report.

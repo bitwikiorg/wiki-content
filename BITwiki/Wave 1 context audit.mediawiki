@@ -1,0 +1,286 @@
+{{Source status|status=Wave 1 Phase 3 context audit|note=Audit state for the Wave 1 epistemology/scientific-reasoning capture/compile/write cycle.}}
+= Wave 1 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+This page audits Wave 1 after context capture and context compilation/writing.
+
+== Audited concepts ==
+
+# [[Knowledge]]
+# [[Belief]]
+# [[Epistemology]]
+# [[Evidence]]
+# [[Empirical evidence]]
+# [[Justification]]
+# [[Uncertainty]]
+# [[Epistemic status]]
+# [[Provenance]]
+# [[Verification]]
+# [[Validation]]
+# [[Falsifiability]]
+# [[Scientific method]]
+# [[Scientific model]]
+# [[Measurement]]
+# [[Accuracy and precision]]
+# [[Reproducibility]]
+# [[Replication]]
+# [[Explanation]]
+# [[Counterexample]]
+
+Each concept has:
+
+* Core: <code>Title</code>
+* Simple: <code>Title/Simple</code>
+* Technical: <code>Title/Technical</code>
+
+Total Wave 1 reader surfaces: '''60'''.
+
+== Structural audit ==
+
+All twenty Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* contain a reference section;
+* retain one or more controlled Domain categories;
+* expose relevant Wave 0/Wave 1 links.
+
+All forty Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain sources/references;
+* intentionally do not duplicate <code>Knowledge object</code>;
+* intentionally do not duplicate Core category identity.
+
+This preserves one semantic identity per concept.
+
+== Semantic-kernel audit ==
+
+The wave was compiled from epistemic primitives outward rather than written as twenty unrelated articles.
+
+<pre>
+Belief ─┐
+        ├→ Knowledge
+Evidence├→ Justification
+        └→ Epistemic status
+             ↑
+        Uncertainty
+
+Evidence → Empirical evidence
+Evidence → Provenance → Verification
+Verification ↔ Validation
+
+Scientific method
+ ├→ Empirical evidence
+ ├→ Measurement → Accuracy and precision
+ ├→ Scientific model → Explanation
+ ├→ Falsifiability → Counterexample
+ ├→ Reproducibility
+ └→ Replication
+</pre>
+
+The audit confirms that downstream pages reuse upstream distinctions instead of redefining them independently.
+
+== Required non-equivalences preserved ==
+
+<pre>
+belief ≠ knowledge
+belief ≠ credence
+knowledge ≠ justified true belief by simple definition
+evidence ≠ truth
+evidence ≠ proof
+data ≠ evidence without relevance/inference context
+empirical evidence ≠ all evidence
+justification ≠ truth
+uncertainty ≠ error
+uncertainty ≠ probability
+epistemic status ≠ confidence
+epistemic status ≠ truth value
+epistemic status ≠ lifecycle state
+provenance ≠ citation
+provenance ≠ truth
+verification ≠ validation
+verification ≠ proof
+validation ≠ certainty
+falsifiable ≠ false
+unfalsified ≠ verified
+scientific method ≠ one universal recipe
+scientific model ≠ scientific theory
+scientific model ≠ simulation
+instrument reading ≠ measurement result
+accuracy ≠ precision
+reproducibility ≠ replication
+reproducibility ≠ correctness
+replication failure ≠ automatic falsification
+explanation ≠ description
+explanation ≠ prediction
+counterexample ≠ anecdote
+</pre>
+
+== Public concept versus BITwiki application audit ==
+
+Wave 1 deliberately prevents BITwiki's project vocabulary from becoming universal encyclopedia definitions.
+
+Public concepts:
+
+<pre>
+Evidence
+Uncertainty
+Epistemic status
+Provenance
+Validation
+</pre>
+
+Project applications:
+
+<pre>
+BITwiki:Evidence
+BITwiki:Uncertainty
+BITwiki:Epistemic status
+BITwiki:Provenance
+BITwiki:Claim validation
+</pre>
+
+The public pages define the broader concept first. Project-specific taxonomies appear only in explicitly labeled BITwiki application sections.
+
+This is especially important for [[Epistemic status]]: the public article describes a family of epistemically evaluative properties rather than presenting BITwiki's six-state controlled vocabulary as a universal philosophical ladder.
+
+== Terminology-variation audit ==
+
+=== Reproducibility / replication ===
+
+The Core pages use the National Academies 2019 convention as a clearly labeled convention:
+
+<pre>
+reproducibility → same data / same computational analysis
+replication     → new data / same scientific question
+</pre>
+
+The pages explicitly state that terminology differs across fields.
+
+The metrology meaning of reproducibility is separately identified under [[Measurement]] and [[Accuracy and precision]].
+
+=== Verification / validation ===
+
+The Core definitions remain broad.
+
+Engineering-specific "built right?" / "right thing built?" shorthand is presented as an application, not the universal definition.
+
+Model verification, formal/software verification, source verification, engineering validation, construct validity, predictive validation, and data validation remain distinguishable.
+
+=== Accuracy / precision / uncertainty ===
+
+The articles preserve VIM distinctions:
+
+* accuracy is not precision;
+* accuracy is qualitative under VIM3 rather than a generic numerical score;
+* trueness and bias relate to systematic effects;
+* precision concerns replicate agreement under stated conditions;
+* measurement uncertainty is not identical to measurement error or generic "accuracy".
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role in Wave 1
+|-
+| Stanford Encyclopedia of Philosophy || knowledge, belief, evidence, justification, epistemology, scientific method, models, measurement, explanation, falsifiability
+|-
+| Gettier / Popper / Hempel-Oppenheim / major monographs || foundational historical and conceptual claims
+|-
+| BIPM / JCGM / NIST || measurement, uncertainty, accuracy, precision, metrology
+|-
+| ISO/IEC/IEEE / NASA || verification and validation in engineering
+|-
+| W3C PROV || digital/data provenance
+|-
+| National Academies || reproducibility/replication convention and scientific-practice synthesis
+|-
+| proof/formal-method literature || counterexamples, countermodels, automated verification
+|}
+
+Wikipedia and Scholarpedia remain orientation/discovery sources rather than replacements for stronger direct sources where available.
+
+== Cross-wave consistency ==
+
+Wave 1 reuses Wave 0 concepts:
+
+* [[Hypothesis]] → evidence, scientific method, falsifiability;
+* [[Causality]] → empirical evidence, explanation, validation, uncertainty;
+* [[System boundary]] → models, measurement, validation, uncertainty;
+* [[Version control]] → provenance and reproducibility;
+* [[Program (computing)]], [[Software]], and [[Computation]] → verification and computational reproducibility;
+* [[Algorithm]] → verification and counterexample-based correctness reasoning.
+
+No Wave 0 definition needed to be overridden.
+
+== Redlink policy ==
+
+Wave 1 intentionally exposes future prerequisites such as:
+
+* [[Truth]]
+* [[Credence]]
+* [[Observation]]
+* [[Experiment]]
+* [[Inference]]
+* [[Induction]]
+* [[Deduction]]
+* [[Abductive reasoning]]
+* [[Theory]]
+* [[Prediction]]
+* [[Calibration]]
+* [[Measurement uncertainty]]
+* [[Reliability]]
+* [[Validity]]
+* [[Proof]]
+* [[Simulation]]
+* [[Idealization]]
+* [[Abstraction]]
+
+These are normalized coverage signals, not permission to mass-create shallow stubs.
+
+== Audit acceptance criteria ==
+
+Wave 1 is ready to leave Phase 3 when:
+
+# all 60 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# all Core domains pass the controlled runtime vocabulary;
+# Simple/Core/Technical definitions remain materially consistent;
+# the public/project distinction remains explicit;
+# reading-depth transport directories pass substrate auditing;
+# deployment maps slash titles correctly;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, deployment, workflow, and Main-space audits pass;
+# staging builds the complete projection.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 1 context capture]]
+        ↓
+[[BITwiki:Wave 1 compiled context]]
+        ↓
+[[BITwiki:Wave 1 context audit]]
+</pre>
+
+== Release audit update — 2026-09-19 ==
+
+A final stacked rendering audit found seven Simple-surface lines that used Markdown blockquote syntax (<code>&gt; ...</code>) inside MediaWiki source.
+
+They were corrected to explicit <code>&lt;blockquote&gt;</code> markup in:
+
+* [[Counterexample/Simple]];
+* [[Explanation/Simple]];
+* [[Falsifiability/Simple]];
+* [[Replication/Simple]];
+* [[Reproducibility/Simple]].
+
+This was a presentation/rendering correction only. No Wave 1 concept definition, semantic identity, category membership, or source claim changed.
+
+Wave 1 remains '''20 concepts / 60 reader surfaces'''.
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

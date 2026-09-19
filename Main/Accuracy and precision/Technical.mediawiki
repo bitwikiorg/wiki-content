@@ -1,0 +1,68 @@
+{{Source status|status=Technical depth derivative|note=Advanced metrology surface of [[Accuracy and precision]].}}
+{{Reading depth|base=Accuracy and precision|current=Technical}}
+= Accuracy and precision — Technical =
+
+== VIM distinctions ==
+VIM terminology distinguishes:
+
+'''Measurement accuracy''' — closeness of agreement between a measured value and a true quantity value.
+
+'''Measurement trueness''' — closeness between the average of an infinite number of replicate measured values and a reference quantity value.
+
+'''Measurement precision''' — closeness of agreement among replicate indications or measured quantity values under specified conditions.
+
+'''Measurement bias''' — estimate of systematic measurement error.
+
+Accuracy is not itself treated as a measurable quantity with a numerical value in VIM3.
+
+== Error model ==
+A simplified measurement model can write:
+
+<pre>
+x_measured = x_true + b + ε
+</pre>
+
+where:
+* <code>b</code> represents systematic error/bias;
+* <code>ε</code> represents random variation.
+
+Precision primarily characterizes the dispersion of ε under defined conditions.
+
+Trueness relates to b.
+
+Real measurement models are usually more complicated because correction terms and references also have uncertainty.
+
+== Estimating precision ==
+For repeated measurements <code>x_i</code>, precision can be summarized by sample standard deviation:
+
+<pre>
+s = sqrt( Σ(x_i - x̄)^2 / (n-1) )
+</pre>
+
+This estimate is conditional on the repeatability/reproducibility conditions.
+
+A low s does not reveal systematic bias.
+
+== Repeatability and reproducibility precision ==
+Repeatability precision measures dispersion under tightly controlled same-condition measurements.
+
+Reproducibility precision evaluates dispersion under intentionally changed conditions, potentially including:
+* laboratories;
+* operators;
+* instruments;
+* locations;
+* times.
+
+Interlaboratory studies can estimate variance components associated with these sources.
+
+== Uncertainty versus error ==
+Exact measurement error is generally unknown because the true value is unknown.
+
+Uncertainty quantification instead characterizes plausible values attributable to the measurand after considering available information.
+
+Corrections for known systematic effects may be applied, while residual uncertainty in the correction remains.
+
+== References ==
+* JCGM VIM 2.13–2.16.
+* JCGM 100:2008 (GUM).
+* NIST TN 1297.

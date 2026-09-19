@@ -1,0 +1,37 @@
+{{Source status|status=Technical depth derivative|note=Advanced tool-learning/orchestration surface.}}
+{{Reading depth|base=Tool use (artificial intelligence)|current=Technical}}
+= Tool use (artificial intelligence) — Technical =
+
+== Tool interface ==
+A tool can be represented by a callable interface:
+
+<pre>
+τ : input schema → execution result
+</pre>
+
+A tool-using policy chooses whether to invoke τ, which tool to choose, and how to construct valid arguments.
+
+== Stages ==
+Modern tool-learning systems often separate:
+
+<pre>
+tool retrieval
+tool selection
+argument generation
+execution
+observation parsing
+result integration
+multi-tool planning/orchestration
+</pre>
+
+Different systems learn or hand-code different stages.
+
+== Long-horizon orchestration ==
+Long trajectories introduce state dependence, error propagation, cost, latency, safety constraints, and partial observability.
+
+Multi-tool orchestration is therefore more than repeated independent function calls.
+
+== References ==
+* Xu et al. (2025).
+* Chen et al., tool-learning survey (2025).
+* 2026 multi-tool orchestration survey literature.

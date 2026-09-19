@@ -1,0 +1,70 @@
+{{Source status|status=Wave 8 compiled article|note=AI planning concept grounded in automated-planning literature and planning/acting research.}}
+{{Knowledge object
+ |title=Planning (artificial intelligence)
+ |entity_type=Concept
+ |domain=Computer science, Systems science
+ |status=Established
+ |provenance=V2 public corpus; Wave 8 compiled context
+}}
+{{Reading depth|base=Planning (artificial intelligence)|current=Core}}
+
+= Planning (artificial intelligence) =
+
+== Overview ==
+In artificial intelligence, '''planning''' is the computational problem of selecting or synthesizing actions that can move an agent or system from an initial situation toward a goal under a model of actions and environment dynamics.
+
+Automated planning is one of the classical areas of AI.
+
+== Planning problem ==
+A planning problem commonly specifies:
+
+* an initial state or belief state;
+* available actions;
+* action preconditions or applicability;
+* action effects or transition dynamics;
+* goals or objectives.
+
+A planner searches or reasons over possible action sequences, policies, or partial plans.
+
+== Planning and search ==
+Planning often uses search, but:
+
+<pre>
+planning ≠ search by definition
+</pre>
+
+Planning systems can use heuristic search, constraint solving, satisfiability, dynamic programming, hierarchical decomposition, symbolic reasoning, or other methods.
+
+== Planning and acting ==
+A plan is not the same thing as execution.
+
+Ghallab, Nau, and Traverso emphasize that acting in real environments can require monitoring, feedback, replanning, and continual deliberation.
+
+Thus:
+
+<pre>
+plan synthesis ≠ plan execution
+</pre>
+
+== Classical and nonclassical planning ==
+Classical planning often assumes a deterministic, fully observable, static environment with known actions.
+
+Other planning frameworks handle uncertainty, partial observability, time, resources, multiple agents, continuous dynamics, or changing environments.
+
+== LLM-agent planning ==
+Modern AI-agent systems often use language models to decompose tasks or produce textual action sequences.
+
+Those techniques may implement useful planning behavior, but they should not replace the broader automated-planning concept.
+
+A generated chain of text is not automatically a valid plan.
+
+== Related concepts ==
+[[Intelligent agent]], [[AI agent]], [[Reasoning]], [[State machine]], [[Algorithm]], [[Autonomous agent (artificial intelligence)]], and [[Tool use (artificial intelligence)]] provide the surrounding action-selection context.
+
+== References ==
+* Malik Ghallab, Dana Nau & Paolo Traverso, ''Automated Planning and Acting'' (2016).
+* Patrik Haslum et al., ''An Introduction to the Planning Domain Definition Language'' (2019).
+* Ghallab, Nau & Traverso, “The Actor's View of Automated Planning and Acting”, ''Artificial Intelligence'' 208 (2014), 1–17.
+
+[[Category:Computer science]]
+[[Category:Systems science]]

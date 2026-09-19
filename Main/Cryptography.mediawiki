@@ -1,0 +1,68 @@
+{{Source status|status=Wave 6 compiled article|note=Cryptography concept grounded in modern cryptographic and NIST terminology.}}
+{{Knowledge object
+ |title=Cryptography
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Cryptography|current=Core}}
+
+= Cryptography =
+
+== Overview ==
+'''Cryptography''' is the design and analysis of mathematical techniques and protocols for protecting information and establishing security properties in the presence of adversaries.
+
+Modern cryptography is broader than encryption.
+
+== Security properties ==
+Cryptographic mechanisms can support:
+
+* confidentiality;
+* integrity;
+* authentication;
+* digital signatures;
+* key establishment;
+* commitments;
+* pseudorandomness;
+* secure computation;
+* zero-knowledge proofs.
+
+Different primitives provide different properties.
+
+== Encryption ==
+Encryption transforms plaintext into ciphertext using a key.
+
+Decryption recovers plaintext for authorized key holders.
+
+Symmetric encryption uses shared secret keys.
+
+Public-key encryption uses different public and private keys.
+
+== Hash functions ==
+A cryptographic hash function maps arbitrary input to a fixed-size digest and is designed to resist attacks such as finding collisions or preimages under specified security notions.
+
+Hashing is not reversible encryption.
+
+== Digital signatures ==
+Digital signatures let a signer produce a value that others can verify using a public key.
+
+They support authenticity and integrity claims but do not automatically establish the truth of signed content.
+
+== Security definitions ==
+Modern cryptography uses explicit adversary models and security games.
+
+A primitive is secure relative to a defined goal, attacker capability, and computational assumption.
+
+== Implementation ==
+Security depends on randomness, key management, protocol composition, side-channel resistance, software correctness, and operational handling.
+
+Strong mathematics can be defeated by poor implementation.
+
+== References ==
+* NIST CSRC Glossary, “cryptography”.
+* Katz & Lindell, ''Introduction to Modern Cryptography''.
+* Boneh & Shoup, cryptography text.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

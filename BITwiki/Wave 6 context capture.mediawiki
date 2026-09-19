@@ -1,0 +1,318 @@
+{{Source status|status=Wave 6 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 6 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 6 covers formal computation and foundational computer-science systems.
+
+== Normalized scope ==
+
+# [[Formal language]]
+# [[Automaton (computation)]]
+# [[State machine]]
+# [[Turing machine]]
+# [[Computability]]
+# [[Turing completeness]]
+# [[Computational complexity]]
+# [[Computer architecture]]
+# [[Operating system]]
+# [[Computer network]]
+# [[Database]]
+# [[Compiler]]
+# [[Distributed system]]
+# [[Computer security]]
+# [[Cryptography]]
+# [[Human-computer interaction]]
+# [[Esoteric programming language]]
+
+== Title decisions ==
+
+* '''[[Automaton]] → [[Automaton (computation)]]''' because unqualified ''automaton'' also has a durable mechanical/self-operating-machine meaning.
+* [[State machine]] remains separate: it is a general state/transition model; computational automata are a major formal subclass/use.
+* [[Turing completeness]] keeps the common computing title, but its Core/Technical pages must distinguish computational universality from specialized computability-theory uses such as Turing-complete sets/degrees.
+* [[Computer security]] remains canonical rather than silently expanding into all cybersecurity/information-security policy.
+* [[Database]] must distinguish the organized data collection from a database management system (DBMS).
+
+== Domain decision ==
+
+No new controlled Domain is required.
+
+Primary Domain is '''Computer science''', with substantive cross-domain use of Mathematics, Technology, Systems science, Engineering, Philosophy, and Cognitive science where justified.
+
+== Semantic kernel ==
+
+<pre>
+Formal language
+ └→ Automaton (computation)
+      ├→ State machine
+      └→ Turing machine
+           ├→ Computability
+           ├→ Turing completeness
+           └→ Computational complexity
+
+Computer system stack
+ hardware → Computer architecture
+             ↓
+        Operating system
+             ↓
+ programs / compilers / databases / networks
+
+Compiler
+ └→ source language → intermediate/target representation
+
+Computer network
+ └→ communication among computational nodes
+
+Distributed system
+ └→ coordinated computation across multiple autonomous/networked nodes
+
+Computer security
+ └→ confidentiality / integrity / availability / authentication / resilience
+      └→ Cryptography as one mechanism family
+
+Human-computer interaction
+ └→ interaction between people and computational systems
+
+Esoteric programming language
+ └→ programming-language design outside ordinary practicality constraints
+</pre>
+
+== Foundational separations ==
+
+<pre>
+formal language ≠ natural language
+formal language ≠ programming language
+automaton ≠ every machine
+automaton ≠ state machine by definition
+state ≠ physical location
+state machine ≠ finite-state machine by definition
+Turing machine ≠ physical computer
+Church–Turing thesis ≠ theorem
+computability ≠ practical feasibility
+computable ≠ efficiently computable
+Turing completeness ≠ speed
+Turing completeness ≠ usefulness
+Turing completeness ≠ decidability of every program property
+computational complexity ≠ implementation performance alone
+complexity class ≠ measured wall-clock time
+computer architecture ≠ operating system
+architecture ≠ microarchitecture
+operating system ≠ kernel only
+process ≠ program
+computer network ≠ distributed system
+Internet ≠ computer network in general
+database ≠ DBMS
+database ≠ spreadsheet by definition
+compiler ≠ interpreter
+compilation ≠ optimization
+distributed system ≠ parallel computer by definition
+distributed system ≠ distributed cognition
+computer security ≠ cryptography
+computer security ≠ absolute safety
+cryptography ≠ encryption only
+encryption ≠ hashing
+authentication ≠ authorization
+human-computer interaction ≠ user-interface graphics only
+usability ≠ user experience as a whole
+esoteric programming language ≠ useless language
+esoteric programming language ≠ necessarily Turing complete
+</pre>
+
+== Normalized concept dossiers ==
+
+=== Formal language ===
+A formal language is a mathematically specified set of finite strings over an alphabet. Grammars, regular expressions, automata, and logical syntax can define or recognize formal languages.
+
+'''Do not conflate:''' language as a set of strings ≠ grammar that generates it; formal language ≠ natural language; formal language ≠ programming language, though programming languages have formal syntactic layers.
+
+=== Automaton (computation) ===
+A computational automaton is an abstract machine defined by states, inputs and transition rules, often used to recognize or transform formal languages.
+
+Finite automata, pushdown automata and Turing machines occupy different computational classes.
+
+'''Do not conflate:''' automaton ≠ finite automaton only; recognition power depends on the machine model and resources.
+
+=== State machine ===
+A state machine models behavior as a set of states plus transitions triggered by inputs/events/conditions.
+
+State machines can be finite or infinite and can model software, hardware, protocols, workflows, control systems and formal computation.
+
+'''Do not conflate:''' state machine ≠ finite-state machine by definition; a state is an abstract configuration, not necessarily a physical location.
+
+=== Turing machine ===
+A Turing machine is an abstract model with finite control, a read/write head, tape and transition rule. It is foundational for computability theory.
+
+The Church–Turing thesis identifies effectively calculable functions with Turing-computable functions (or equivalent formalisms); this is a thesis about effective computation, not a theorem proved from a prior formal definition.
+
+=== Computability ===
+Computability studies which functions/problems can be solved by effective procedures under formal models of computation.
+
+Some problems are undecidable even with unlimited time under the model.
+
+'''Do not conflate:''' computability ≠ efficiency; decidable ≠ tractable.
+
+=== Turing completeness ===
+A computational system is commonly called Turing complete when it can simulate a universal Turing machine, subject to idealized unbounded resources.
+
+Turing completeness says little about efficiency, ergonomics, safety, or practical usefulness.
+
+It also does not imply that every program behavior is decidable.
+
+=== Computational complexity ===
+Computational complexity studies resource requirements of computational problems, especially time and space as functions of input size.
+
+Complexity classes group problems by resource bounds and computational models.
+
+'''Do not conflate:''' asymptotic complexity ≠ benchmark runtime; worst-case ≠ average-case; problem complexity ≠ one implementation's performance.
+
+=== Computer architecture ===
+Computer architecture concerns the organization and programmer-visible structure of computer systems, including instruction sets, memory hierarchy, processors, I/O and system organization.
+
+'''Do not conflate:''' architecture ≠ microarchitecture; ISA semantics can be implemented by different microarchitectures.
+
+=== Operating system ===
+An operating system manages hardware resources and provides abstractions/services for programs and users, including processes, memory, storage, files, devices, protection and scheduling.
+
+'''Do not conflate:''' operating system ≠ kernel only; program ≠ process.
+
+=== Computer network ===
+A computer network is a collection of interconnected computing devices that exchange data using communication links and protocols.
+
+The Internet is a network of networks, not the definition of computer networking as a whole.
+
+=== Database ===
+A database is an organized collection of data designed for persistent storage, retrieval and management.
+
+A DBMS is software that defines, queries, updates, protects and manages databases.
+
+'''Do not conflate:''' database ≠ DBMS; relational database ≠ all databases.
+
+=== Compiler ===
+A compiler transforms a source representation, typically a program in one language, into an equivalent or sufficiently semantics-preserving target representation.
+
+Compilation can include parsing, semantic analysis, optimization and code generation, but optimization is not required for something to be a compiler.
+
+'''Do not conflate:''' compiler ≠ interpreter; compilation and interpretation can coexist in one implementation.
+
+=== Distributed system ===
+A distributed system consists of multiple autonomous computational components that communicate and coordinate to provide a service or computation.
+
+Failures, latency, concurrency, partial information and lack of a single global clock create characteristic design problems.
+
+'''Do not conflate:''' distributed system ≠ computer network; the network is substrate, while the distributed system includes coordinated computation/protocol/state.
+
+=== Computer security ===
+Computer security protects computational systems and information against unauthorized access, modification, disruption, disclosure and related failures.
+
+Confidentiality, integrity and availability are central but not exhaustive security objectives; authentication, authorization, accountability and resilience are also important.
+
+'''Do not conflate:''' security ≠ cryptography; security is a system property shaped by software, hardware, users, operations and threat models.
+
+=== Cryptography ===
+Cryptography designs mathematical techniques and protocols for security properties such as confidentiality, integrity, authentication and verifiability.
+
+Modern cryptography includes encryption, digital signatures, message authentication, key exchange, commitments, zero-knowledge proofs and more.
+
+'''Do not conflate:''' cryptography ≠ encryption; hashing ≠ encryption.
+
+=== Human-computer interaction ===
+Human-computer interaction (HCI) studies the design, use and evaluation of interactive computational systems for human use.
+
+It combines computer science with psychology, design, ergonomics and social/contextual analysis.
+
+'''Do not conflate:''' HCI ≠ graphical interface design only; usability is one dimension within a broader interaction field.
+
+=== Esoteric programming language ===
+An esoteric programming language (esolang) is designed primarily for experimentation, conceptual exploration, artistic/playful expression, unusual constraints, or challenging conventional programming-language assumptions rather than ordinary production utility.
+
+Esolangs can illuminate language semantics, minimal computation, notation and programming culture.
+
+'''Do not conflate:''' esolang ≠ useless by definition; esolang ≠ necessarily Turing complete.
+
+== Cross-wave dependencies ==
+
+* [[Formal language]] ↔ [[Syntax]], [[Semantics]], [[Programming language]].
+* [[Automaton (computation)]] ↔ [[State machine]], [[Formal language]], [[Computation]].
+* [[Turing machine]], [[Computability]], [[Turing completeness]] ↔ [[Computation]], [[Algorithm]], [[Formal language]].
+* [[Computational complexity]] ↔ [[Algorithm]], future complexity classes.
+* [[Computer architecture]] ↔ [[Program (computing)]], [[Software]], [[Data structure]].
+* [[Operating system]] ↔ [[Computer architecture]], [[Software]], [[Program (computing)]].
+* [[Computer network]] ↔ [[Distributed system]], future Internet/protocol concepts.
+* [[Database]] ↔ [[Data structure]], [[Schema]], [[Metadata]].
+* [[Compiler]] ↔ [[Programming language]], [[Syntax]], [[Semantics]], [[Formal language]].
+* [[Distributed system]] ↔ [[System boundary]], [[Computer network]], [[Consistency (logic)|consistency]] by analogy only.
+* [[Computer security]] ↔ [[Cryptography]], [[Verification]], [[System boundary]].
+* [[Human-computer interaction]] ↔ [[Cognition]], [[Attention]], [[Cognitive load]], [[Distributed cognition]].
+* [[Esoteric programming language]] ↔ [[Programming language]], [[Turing completeness]], [[Formal language]].
+
+== Existing request lifecycle ==
+
+Wave 6 satisfies existing structured Computer science requests for:
+
+* [[Computer architecture]]
+* [[Operating system]]
+* [[Computer network]]
+* [[Database]]
+* [[Computational complexity]]
+* [[Compiler]]
+* [[Distributed system]]
+* [[Computer security]]
+* [[Cryptography]]
+* [[Human-computer interaction]]
+
+These records must be transitioned to <code>status=satisfied</code> with their canonical page when the reader surfaces exist. No duplicate request records should be created.
+
+== Public concept versus BITwiki / project application ==
+
+<pre>
+formal language       ≠ BITwiki page syntax
+state machine         ≠ editorial workflow
+Turing completeness   ≠ “can run our agents”
+complexity            ≠ observed server latency
+database              ≠ one BITwiki Cargo table
+compiler              ≠ one repo build script
+distributed system    ≠ multi-agent system by definition
+computer security     ≠ project audit status
+cryptography          ≠ blockchain
+HCI                   ≠ one frontend
+esoteric language     ≠ project DSL
+</pre>
+
+== Source-family audit ==
+
+* '''Stanford Encyclopedia of Philosophy''' — Turing machines, computability, Church–Turing thesis and theoretical computation.
+* '''OpenDSA / formal-languages curricula''' — formal languages, automata, Turing machines and language hierarchy.
+* '''ACM CS2023 curriculum''' — contemporary Computer science foundation boundaries, including architecture, OS, databases, networking and human factors.
+* '''NIST CSRC / DADS''' — computer security, cryptography and state-machine terminology.
+* '''Standard systems texts''' — architecture, operating systems, networks, databases, compilers and distributed systems.
+* '''HCI literature / ACM''' — interaction, usability and human factors.
+* '''Singer & Draper (SPLASH 2025) and Temkin''' — serious/public treatment of esoteric programming languages.
+* Wikipedia/Esolang wiki are discovery/community sources only where stronger academic sources exist.
+
+== Future normalized redlinks ==
+
+[[Alphabet (formal language)]], [[String (computer science)]], [[Grammar (formal language)]], [[Regular language]], [[Context-free language]], [[Regular expression]], [[Finite-state machine]], [[Deterministic finite automaton]], [[Nondeterministic finite automaton]], [[Pushdown automaton]], [[Church–Turing thesis]], [[Decidability]], [[Undecidable problem]], [[Halting problem]], [[Universal Turing machine]], [[Complexity class]], [[Time complexity]], [[Space complexity]], [[Big O notation]], [[P (complexity)]], [[NP (complexity)]], [[Instruction set architecture]], [[Microarchitecture]], [[CPU]], [[Memory hierarchy]], [[Process (computing)]], [[Thread (computing)]], [[Virtual memory]], [[File system]], [[Scheduling (computing)]], [[Network protocol]], [[Internet Protocol]], [[Transport layer]], [[Routing]], [[Database management system]], [[Relational database]], [[SQL]], [[Transaction processing]], [[ACID]], [[Parsing]], [[Lexical analysis]], [[Intermediate representation]], [[Code generation]], [[Optimization (compiler)]], [[Consensus (distributed computing)]], [[Fault tolerance]], [[Replication (computing)]], [[CAP theorem]], [[Threat model]], [[Authentication]], [[Authorization]], [[Access control]], [[Encryption]], [[Hash function]], [[Digital signature]], [[Public-key cryptography]], [[Symmetric-key cryptography]], [[Usability]], [[User interface]], [[Interaction design]], [[Accessibility (computing)]].
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Keep the wave at 17 concepts.
+# Normalize [[Automaton]] to [[Automaton (computation)]].
+# Keep [[State machine]] distinct from computational automata.
+# Do not create a new Domain.
+# Satisfy the ten existing Computer science request records during Phase 2 rather than duplicate them.
+# Treat the Church–Turing thesis as a thesis connecting formal models with effective calculability, not a theorem.
+# Separate computability from complexity and practical feasibility.
+# Treat Turing completeness as computational universality under idealized resources, not speed or usefulness.
+# Separate architecture from microarchitecture and operating systems from kernels.
+# Separate databases from DBMS software.
+# Separate networking substrate from distributed-system coordination.
+# Separate security from cryptography and cryptography from encryption.
+# Treat HCI as broader than graphical interface design.
+# Retain [[Esoteric programming language]] as a legitimate public concept because current academic work treats esolangs as language-design, pedagogy and computational-culture objects, not merely jokes.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

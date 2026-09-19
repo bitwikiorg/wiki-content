@@ -1,0 +1,174 @@
+{{Source status|status=Wave 2 compiled article|note=Public data/knowledge-structure concept separating validation schemas from semantic ontology languages.}}
+{{Knowledge object
+ |title=Schema
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Schema|current=Core}}
+
+= Schema =
+
+== Overview ==
+A '''schema''' is an explicit specification of the expected or permitted structure of data, documents, messages, databases or knowledge artifacts.
+
+A schema can define:
+* fields;
+* data types;
+* required values;
+* relationships;
+* keys;
+* cardinalities;
+* nesting;
+* constraints.
+
+Schemas help systems validate, interpret and exchange structured information.
+
+== Data and schema ==
+A schema describes structure.
+
+A data instance supplies particular values.
+
+For example:
+
+<pre>
+schema:
+  Person has name:string
+  Person has birthDate:date
+
+instance:
+  Person123 name Alice
+</pre>
+
+The schema and the instance are different layers.
+
+== Database schema ==
+A relational database schema can define:
+* tables;
+* columns;
+* data types;
+* primary keys;
+* foreign keys;
+* uniqueness;
+* nullability;
+* indexes;
+* constraints.
+
+The schema organizes how data can be stored and related.
+
+It does not automatically capture all of the domain meaning.
+
+== Document schema ==
+Document formats can have schemas.
+
+Examples include:
+* XML Schema;
+* JSON Schema;
+* Protocol Buffers schemas;
+* Avro schemas.
+
+These define permitted document/message structure.
+
+They are often used for validation and code generation.
+
+== Schema and validation ==
+A validation schema can answer:
+
+> Does this data instance conform to the required structure?
+
+For example, a schema may require:
+* exactly one identifier;
+* a date field;
+* an integer in a range.
+
+A validation failure does not necessarily mean the real-world claim is false.
+
+It means the representation violates the schema.
+
+== Schema and ontology ==
+A [[Ontology|ontology]] primarily describes the meaning and conceptual relationships of a domain.
+
+A schema often focuses on representation structure and constraints.
+
+The two can overlap.
+
+A domain model can act as both a semantic ontology and an implementation schema.
+
+But they should not be treated as synonyms.
+
+== RDF Schema ==
+'''RDF Schema''' (RDFS) is a particularly important naming trap.
+
+Despite the word "Schema", RDFS provides semantic vocabulary constructs such as:
+* class;
+* subclass;
+* property;
+* subproperty;
+* domain;
+* range.
+
+Its domain/range statements support inference.
+
+They are not ordinary closed-world record-validation constraints.
+
+== SHACL and graph validation ==
+RDF graphs can be validated using shape languages such as SHACL.
+
+A shape can specify:
+* required properties;
+* counts;
+* datatypes;
+* allowed classes;
+* value constraints.
+
+This is distinct from RDFS/OWL semantic entailment.
+
+A system can use both ontology semantics and validation shapes.
+
+== Schema evolution ==
+Schemas change.
+
+Evolution issues include:
+* adding fields;
+* removing fields;
+* renaming fields;
+* changing types;
+* splitting entities;
+* changing keys.
+
+Backward/forward compatibility depends on serialization and application rules.
+
+Versioning should therefore be explicit.
+
+== Schema inference ==
+Some systems infer a schema from existing data.
+
+This can reveal common structure, but observed data may be incomplete or inconsistent.
+
+An inferred schema describes patterns in current data, not necessarily intended rules.
+
+== Schema and metadata ==
+[[Metadata]] can describe a schema itself:
+* title;
+* version;
+* creator;
+* license;
+* creation date.
+
+Metadata and schema are therefore different but complementary.
+
+== BITwiki application ==
+BITwiki's <code>bitwiki-runtime-schema.json</code> contains compiler-facing controlled vocabularies and deterministic metadata.
+
+It is one project schema, not the general definition of schema and not the whole BITwiki ontology.
+
+== Epistemic notes ==
+Structural validity is not semantic truth. Data can conform perfectly to a schema while encoding false or misleading claims.
+
+== References ==
+* W3C, ''RDF Schema 1.1''.
+* W3C, ''Shapes Constraint Language (SHACL)''.
+* Standard database/schema literature.
+
+[[Category:Computer science]]

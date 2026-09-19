@@ -266,5 +266,21 @@ Wave 1 is ready to leave Phase 3 when:
 [[BITwiki:Wave 1 context audit]]
 </pre>
 
+== Release audit update — 2026-09-19 ==
+
+A final stacked rendering audit found seven Simple-surface lines that used Markdown blockquote syntax (<code>&gt; ...</code>) inside MediaWiki source.
+
+They were corrected to explicit <code>&lt;blockquote&gt;</code> markup in:
+
+* [[Counterexample/Simple]];
+* [[Explanation/Simple]];
+* [[Falsifiability/Simple]];
+* [[Replication/Simple]];
+* [[Reproducibility/Simple]].
+
+This was a presentation/rendering correction only. No Wave 1 concept definition, semantic identity, category membership, or source claim changed.
+
+Wave 1 remains '''20 concepts / 60 reader surfaces'''.
+
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

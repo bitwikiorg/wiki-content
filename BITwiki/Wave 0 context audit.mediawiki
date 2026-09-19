@@ -196,5 +196,17 @@ GitHub PR checks are the executable evidence for the final criteria. The draft r
 [[BITwiki:Wave 0 context audit]]
 </pre>
 
+== Release audit update — 2026-09-19 ==
+A final pre-merge stacked audit found no Markdown/MediaWiki rendering leakage in Wave 0 reader surfaces.
+
+Two apparently resolvable redlinks were reviewed and deliberately left unresolved:
+
+* [[Model]] is broader than [[Scientific model]];
+* [[Representation]] is broader than [[Knowledge representation]].
+
+They remain future coverage signals rather than being collapsed into narrower downstream concepts.
+
+Wave 0 remains '''10 concepts / 30 reader surfaces''' with no semantic-definition changes required by the release audit.
+
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

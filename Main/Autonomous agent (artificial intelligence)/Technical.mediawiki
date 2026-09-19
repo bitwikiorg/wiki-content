@@ -1,0 +1,45 @@
+{{Source status|status=Technical depth derivative|note=Advanced operational-autonomy surface.}}
+{{Reading depth|base=Autonomous agent (artificial intelligence)|current=Technical}}
+= Autonomous agent (artificial intelligence) — Technical =
+
+== Autonomy as delegated control ==
+Operational autonomy can be analyzed as the fraction/range of action-selection decisions delegated to the agent policy rather than supplied directly by an external controller.
+
+Relevant dimensions include:
+
+<pre>
+decision horizon
+action-space breadth
+environment uncertainty
+ability to replan
+permission scope
+human-intervention frequency
+persistent state
+failure recovery
+</pre>
+
+No universal scalar “autonomy score” is established across all systems.
+
+== Closed-loop operation ==
+An autonomous agent typically participates in a loop:
+
+<pre>
+observe
+→ update state
+→ choose action
+→ execute
+→ receive feedback
+→ continue / stop / escalate
+</pre>
+
+The controller can be learned, planned, rule-based, or hybrid.
+
+== Governance boundary ==
+Human approval is compatible with autonomy when the agent independently controls decisions inside delegated bounds.
+
+Technical descriptions should state those bounds instead of treating autonomy as binary.
+
+== References ==
+* Wooldridge.
+* NIST Agentic AI (2026).
+* autonomous-agent/control literature.

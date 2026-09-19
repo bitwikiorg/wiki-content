@@ -1,0 +1,82 @@
+{{Source status|status=Wave 8 compiled article|note=Multi-agent-system concept grounded in established distributed-AI literature.}}
+{{Knowledge object
+ |title=Multi-agent system
+ |entity_type=Concept
+ |domain=Computer science, Systems science
+ |status=Established
+ |provenance=V2 public corpus; Wave 8 compiled context
+}}
+{{Reading depth|base=Multi-agent system|current=Core}}
+
+= Multi-agent system =
+
+== Overview ==
+A '''multi-agent system''' ('''MAS''') is a computational system composed of multiple interacting agents.
+
+The agents can cooperate, compete, negotiate, coordinate, share information, pursue separate objectives, or combine these behaviors.
+
+Multi-agent systems are an established area of artificial intelligence and predate large language models by decades.
+
+== Agents and interaction ==
+The agents in a multi-agent system can have:
+
+* local observations;
+* separate internal states;
+* individual or shared goals;
+* different capabilities;
+* communication channels;
+* incomplete knowledge of the global system.
+
+System behavior emerges from both individual agent policies and their interactions.
+
+== Coordination ==
+Multi-agent problems can involve:
+
+* task allocation;
+* communication;
+* distributed planning;
+* coordination;
+* negotiation;
+* coalition formation;
+* consensus;
+* competition;
+* mechanism design.
+
+The appropriate model depends on whether agents share goals, have conflicting incentives, or operate under mixed motives.
+
+== Multi-agent systems and distributed systems ==
+A [[Distributed system]] contains computational components distributed across multiple machines or processes.
+
+A multi-agent system specifically models multiple components as agents with action-selection or objective-directed behavior.
+
+The concepts can overlap, but:
+
+<pre>
+multi-agent system ≠ distributed system
+</pre>
+
+== Multi-agent systems and distributed cognition ==
+[[Distributed cognition]] studies cognition across people, artifacts, and environments.
+
+A multi-agent system is a computational architecture/research field.
+
+They should not be equated.
+
+== LLM-based multi-agent systems ==
+Modern systems sometimes use multiple LLM-based agents with different roles.
+
+This is one application of MAS ideas, not the definition of the field.
+
+A pipeline that merely calls the same model several times is not necessarily a multi-agent system unless the components function as interacting agents.
+
+== Related concepts ==
+[[Intelligent agent]], [[AI agent]], [[Distributed system]], [[Distributed cognition]], [[Computer network]], and [[Autonomous agent (artificial intelligence)]] provide the surrounding coordination context.
+
+== References ==
+* Michael Wooldridge, ''An Introduction to MultiAgent Systems'', 2nd ed. (2009).
+* Yoav Shoham & Kevin Leyton-Brown, ''Multiagent Systems'' (2009).
+* MIT Press, ''Multiagent Systems'', 2nd ed. (2013).
+* contemporary LLM multi-agent literature as an application layer.
+
+[[Category:Computer science]]
+[[Category:Systems science]]

@@ -390,7 +390,13 @@ The release gate completed successfully:
 
 This completion-state bookkeeping commit must re-pass the same PR gates before merge.
 
-'''Current assessment: Wave 5 is semantically and structurally audited and has passed the full release gate; merge remains conditional on the final-head CI repeat.'''
+'''Current assessment: Wave 5 passed its final-head release gates and was merged to <code>main</code> in PR #21 (merge commit <code>6cca03b997d37ef3d4165e8d7efbf5a2c8e35e7c</code>).'''
+
+== Post-merge cross-wave audit — 2026-09-19 ==
+
+Wave 5 was re-audited after merge together with Waves 4–6 as one connected corpus. See [[BITwiki:Waves 4-6 cross-wave audit]].
+
+That audit checks cross-wave graph connectivity, evidence-sensitive sources, title/identity boundaries, workflow state, and merged release bookkeeping in addition to the original per-wave validation.
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

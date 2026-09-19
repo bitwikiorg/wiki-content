@@ -1,0 +1,177 @@
+{{Source status|status=Wave 14 Phase 3 context audit|note=Audit state for the final scholarly-communication/open-research capture/compile/write cycle.}}
+= Wave 14 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Scientific literature]]
+# [[Scholarly communication]]
+# [[Peer review]]
+# [[Citation]]
+# [[Academic publishing]]
+# [[Preprint]]
+# [[Open access]]
+# [[Open science]]
+# [[Dataset]]
+# [[Research data management]]
+# [[Data repository]]
+# [[FAIR data]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 14 reader surfaces: '''36'''.
+
+== Structural audit ==
+
+All 12 Core pages use [[Template:Knowledge object]], [[Template:Reading depth]], source status, references, controlled Domain values, and Core-owned category/semantic identity.
+
+All 24 Simple/Technical derivatives use [[Template:Reading depth]], declare source status, contain sources/references, and do not duplicate Core Knowledge object/category identity.
+
+== Cluster audit ==
+
+Wave 14 does not use the prior “miscellaneous durable seeds” slot as a dumping ground. The promoted concepts form one connected public cluster around:
+
+<pre>
+research communication
+→ evaluation / citation / publishing
+→ access / openness
+→ data stewardship / reuse
+</pre>
+
+The cluster connects directly to existing epistemology, provenance, metadata, scientific-method, reproducibility, and computational-research foundations.
+
+== Publication / evaluation audit ==
+
+The corpus preserves:
+
+<pre>
+scientific literature ≠ all scientific knowledge
+peer review ≠ proof of correctness
+peer review ≠ replication
+citation ≠ endorsement
+citation count ≠ quality
+academic publishing ≠ peer review
+preprint ≠ peer-reviewed article
+publication ≠ correctness
+</pre>
+
+Publication state and review state are therefore provenance, not truth labels.
+
+== Open-research audit ==
+
+[[Open access]] remains a publication-access/reuse concept.
+
+[[Open science]] is broader and includes data, software, methods, infrastructure, participation, and research-process openness where appropriate.
+
+The corpus explicitly preserves:
+
+<pre>
+open access ≠ open science
+free-to-read ≠ unrestricted reuse necessarily
+open science ≠ compulsory disclosure of all research
+openness ≠ reproducibility automatically
+</pre>
+
+Ethical, legal, privacy, security, cultural, and technical restrictions remain legitimate constraints on openness.
+
+== Data / repository audit ==
+
+[[Dataset]] remains distinct from [[Database]].
+
+[[Research data management]] covers the lifecycle and is broader than data sharing.
+
+[[Data repository]] is a stewardship/deposit/preservation/discovery service rather than a synonym for database storage.
+
+The corpus preserves:
+
+<pre>
+dataset ≠ database
+dataset ≠ raw data necessarily
+research data management ≠ sharing only
+data repository ≠ database
+repository deposit ≠ preservation guarantee
+</pre>
+
+== FAIR audit ==
+
+[[FAIR data]] follows Wilkinson et al. (2016): Findable, Accessible, Interoperable, Reusable.
+
+Required non-equivalences are explicit:
+
+<pre>
+FAIR ≠ open
+FAIR ≠ data quality
+FAIR ≠ one implementation standard
+</pre>
+
+Controlled-access data can remain FAIR when identifiers, metadata, access procedures, and reuse conditions are machine/actionably described.
+
+== Current-source audit ==
+
+* UNESCO Recommendation on Open Science — adopted 23 November 2021.
+* NIH Data Management and Sharing Policy — effective 25 January 2023 and still the underlying policy.
+* NIH 2026 DMS change — simplified required plan format; not a replacement policy.
+* NIH/NLM preprint definition — preprints remain public scientific drafts not yet certified by peer review.
+* Wilkinson et al. FAIR Principles — 2016 foundational publication; GO FAIR clarification used for FAIR ≠ open.
+* Crossref — current reference/citation metadata practice.
+
+== Cross-wave audit ==
+
+Wave 14 reuses [[Evidence]], [[Provenance]], [[Verification]], [[Validation]], [[Reproducibility]], [[Replication]], [[Metadata]], [[Database]], [[Knowledge graph]], [[Scientific method]], [[Version control]], [[Interoperability]], and [[Governance]] without duplicating their identities.
+
+[[Reproducible computational research]] remains a concrete computational practice; [[Open science]] and [[Research data management]] are broader institutional/research-lifecycle concepts.
+
+== Domain audit ==
+
+No new controlled Domain is required. Wave 14 uses Science, Computer science, Technology, and Systems science.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| National Academies / COPE || peer review and research evaluation
+|-
+| Crossref / DataCite || citations, bibliographic metadata, research-object relationships
+|-
+| NIH / NLM || preprints, data management, sharing and repository practice
+|-
+| UNESCO Recommendation on Open Science || open-science scope and principles
+|-
+| Budapest / Berlin / UNESCO || open-access definitions and reuse/access framing
+|-
+| Wilkinson et al. / GO FAIR || FAIR principles and FAIR ≠ open clarification
+|-
+| CoreTrustSeal || trustworthy data-repository stewardship
+|}
+
+== Acceptance criteria ==
+
+Wave 14 is ready to leave Phase 3 when:
+
+# all 36 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# peer-review/correctness and citation/endorsement boundaries remain explicit;
+# open access/open science remains distinct;
+# FAIR/open remains distinct;
+# dataset/database and repository/database remain distinct;
+# current NIH 2026 implementation state is represented accurately;
+# controlled Domains pass;
+# derivatives remain category/identity-exempt;
+# complete V2 release gates and staging pass.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 14 context capture]]
+        ↓
+[[BITwiki:Wave 14 compiled context]]
+        ↓
+[[BITwiki:Wave 14 context audit]]
+</pre>
+
+'''Current assessment: Wave 14 is semantically and structurally audited; merge remains conditional on release validation and exact-final-head CI.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

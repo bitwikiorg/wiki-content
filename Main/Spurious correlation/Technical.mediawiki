@@ -1,0 +1,29 @@
+{{Source status|status=Technical depth derivative|note=Advanced spurious-feature/generalization surface.}}
+{{Reading depth|base=Spurious correlation|current=Technical}}
+= Spurious correlation — Technical =
+
+== Environment dependence ==
+Let feature Z correlate with target Y in source environment e_s:
+
+<pre>
+Corr_e_s(Z,Y) ≠ 0
+</pre>
+
+but weaken/reverse across target environments.
+
+A learner minimizing source risk can exploit Z even if Z is unstable relative to the intended task mechanism.
+
+== Sources ==
+Spurious association can arise from confounding, collider/selection bias, measurement policy, class imbalance, background context, or collection procedures.
+
+The term should therefore not be reduced to one causal graph pattern.
+
+== Robustness ==
+Methods for mitigating spurious features include group-aware objectives, environment variation, causal/invariant approaches, data augmentation, reweighting, representation constraints, and targeted evaluation.
+
+No method is universally reliable.
+
+== References ==
+* Wang & Wang (AISTATS 2024).
+* Qiu, Kuang & Goel (ICML 2024).
+* causal-inference and domain-generalization literature.

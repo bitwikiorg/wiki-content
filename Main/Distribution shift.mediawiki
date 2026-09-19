@@ -1,0 +1,70 @@
+{{Source status|status=Wave 7 compiled article|note=Distribution-shift concept grounded in dataset-shift and nonstationary-learning literature.}}
+{{Knowledge object
+ |title=Distribution shift
+ |entity_type=Concept
+ |domain=Computer science, Mathematics, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Distribution shift|current=Core}}
+
+= Distribution shift =
+
+== Overview ==
+'''Distribution shift''' occurs when the data-generating distribution relevant at evaluation or deployment differs from the distribution represented by training data.
+
+A model can generalize well within the training distribution and still fail after shift.
+
+== Joint-distribution view ==
+For inputs X and targets Y, training and target distributions can differ:
+
+<pre>
+P_train(X,Y) ≠ P_target(X,Y)
+</pre>
+
+Different assumptions about which parts change define different shift types.
+
+== Covariate shift ==
+Under covariate shift:
+
+<pre>
+P_train(X) ≠ P_target(X)
+P_train(Y|X) = P_target(Y|X)
+</pre>
+
+Covariate shift is one special case, not the definition of all distribution shift.
+
+== Other shifts ==
+Related cases include label/prior shift, conditional/concept shift, domain shift, temporal drift, subgroup composition change, and changes in measurement processes.
+
+Terminology varies across fields.
+
+== Generalization ==
+Ordinary iid test performance estimates performance under the sampled test distribution.
+
+It does not by itself establish robustness to distribution shift.
+
+== Causes ==
+Shift can arise from:
+
+* time;
+* geography;
+* policy changes;
+* population changes;
+* sensors or data pipelines;
+* strategic behavior;
+* intervention;
+* deployment feedback;
+* data-collection differences.
+
+== Related concepts ==
+[[Generalization (machine learning)]], [[Probability distribution]], [[Correlation]], [[Causality]], [[Spurious correlation]], and [[Shortcut learning]] help explain why shifted performance can fail.
+
+== References ==
+* Quiñonero-Candela et al. (eds.), ''Dataset Shift in Machine Learning''.
+* Sugiyama & Kawanabe, ''Machine Learning in Non-Stationary Environments''.
+* domain-adaptation and OOD-generalization literature.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]
+[[Category:Science]]

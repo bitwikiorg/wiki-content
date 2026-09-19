@@ -1,0 +1,34 @@
+{{Source status|status=Technical depth derivative|note=Advanced learning-theory surface of [[Inductive bias]].}}
+{{Reading depth|base=Inductive bias|current=Technical}}
+= Inductive bias — Technical =
+
+== Hypothesis selection ==
+Given finite sample S, many hypotheses may achieve similar empirical risk.
+
+A learning algorithm defines preferences among them through:
+
+<pre>
+H
+regularization
+prior
+optimization trajectory
+architecture
+data augmentation
+</pre>
+
+Those preferences constitute inductive structure.
+
+== Explicit and implicit bias ==
+Explicit bias appears in penalties, priors, or hard constraints.
+
+Implicit bias can arise from optimization algorithms or parameterization even when the explicit objective admits many equivalent solutions.
+
+== Generalization ==
+The usefulness of an inductive bias depends on alignment between the bias and the data-generating/task structure.
+
+No single bias dominates across all possible learning problems.
+
+== References ==
+* Mitchell.
+* Shalev-Shwartz & Ben-David.
+* learning-theory literature on implicit regularization and inductive bias.

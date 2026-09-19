@@ -1,38 +1,102 @@
-{{Source status|status=source-grounded domain exemplar|note=Source-grounded domain exemplar; definition aligned with the Git project's documentation.}}
+{{Source status|status=Wave 0 compiled rewrite|note=Core article normalized against Rochkind, Tichy, Git documentation, SWEBOK context, and Wave 0 shared context.}}
 {{Knowledge object
  |title=Version control
  |entity_type=Concept
  |domain=Technology
  |status=Established
- |provenance=V2 domain exemplar
+ |provenance=V2 public corpus; Wave 0 compiled context
 }}
+{{Reading depth|base=Version control|current=Core}}
 
 = Version control =
 
 == Overview ==
-'''Version control''' is a system for recording changes to files or sets of files over time so earlier states can be inspected or restored.
+'''Version control''' is the practice and tooling used to record, identify, compare, retrieve, branch, merge, and attribute revisions of files or other versioned artifacts over time.
 
-== Definition ==
-A version-control system tracks revisions rather than treating the latest file as the only state that matters. Systems may be centralized or distributed; Git is a widely used distributed version-control system.
+It is widely used for [[Program (computing)|programs]] and [[Software|software]], but it can also track documentation, configuration, research artifacts, websites, structured data, and other digital material.
 
-== Scope & importance ==
-Version control preserves change history. It enables comparison, attribution, branching, restoration, collaboration, review, and reproducible development workflows.
+== Why version control exists ==
+Without version control, changing a file often destroys easy access to the previous state. Version control preserves a history so that people can ask:
+
+* What changed?
+* When did it change?
+* Who made the change?
+* Why was it changed?
+* What did the project look like at an earlier point?
+* Which line of development contains a particular change?
+* Can two lines of work be combined?
+
+These questions support collaboration, debugging, auditing, reproducibility, and recovery.
 
 == Core concepts ==
-Common concepts include repository, commit, history, diff, branch, merge, tag, remote, working tree, and conflict resolution.
+'''Repository''' — storage for versioned history and associated metadata.
 
-== Examples ==
-A developer can compare two commits to identify when a behavior changed. A documentation team can work on a branch and review the diff before merging it into the canonical branch.
+'''Revision / commit''' — an identified recorded state or change.
 
-== Applications / implications ==
-Version control is used for software, documentation, research artifacts, configuration, websites, structured text, and other files whose history matters.
+'''Diff''' — a representation of differences between revisions.
+
+'''Branch''' — a line of development that can diverge from another.
+
+'''Merge''' — combining changes from separate lines of development.
+
+'''Tag''' — a human-meaningful label applied to a particular revision, often for releases.
+
+'''Conflict''' — a case where changes cannot be combined automatically under the tool's rules.
+
+== Centralized and distributed systems ==
+In a '''centralized''' version-control system, the authoritative repository is normally hosted centrally and clients coordinate through it.
+
+In a '''distributed''' system, each working repository can contain substantial or complete project history. Git is a prominent distributed version-control system.
+
+Distribution changes synchronization and collaboration architecture; it does not remove the need for social conventions about which branches or repositories are treated as authoritative.
+
+== Snapshots and deltas ==
+Version-control systems can represent history using snapshots, deltas, content-addressed objects, or combinations of techniques.
+
+RCS is historically important for delta-based storage of text revisions. Git's internal model is organized around content-addressed objects and snapshots of trees, while compression/packfiles may internally store deltas for efficiency.
+
+The conceptual version history should therefore be distinguished from its storage representation.
+
+== Version control and configuration management ==
+Version control is part of broader '''configuration management''', which can also include identification of configuration items, release/baseline management, build configuration, dependency control, change control, and status accounting.
+
+Treating version control as the whole of configuration management can hide important operational state outside the repository.
+
+== Version control is not backup ==
+Version control can help recover earlier revisions, but it is not automatically a complete backup strategy. A repository can itself be deleted, corrupted, compromised, or misconfigured.
+
+Similarly, a clean version history does not guarantee that the content is correct, secure, reviewed, or reproducible.
+
+== Provenance ==
+Revision history is a form of [[Provenance|provenance]]: it records lineage and change.
+
+However, repository history usually records edits to versioned artifacts rather than the complete provenance of claims, datasets, dependencies, build environments, or external inputs. Provenance systems may therefore need to combine version-control records with additional metadata.
+
+== History ==
+Early source-control systems appeared in the 1970s. Marc Rochkind's Source Code Control System (SCCS) was described in the software-engineering literature in 1975.
+
+Walter Tichy's Revision Control System (RCS), published in 1985, formalized and popularized revision management for text documents and source programs. Later systems expanded networked collaboration and distributed histories, leading to modern systems such as Git.
+
+== Applications ==
+Version control supports:
+
+* software development;
+* documentation;
+* infrastructure/configuration;
+* research code;
+* data pipelines;
+* web content;
+* collaborative writing;
+* reproducible analysis;
+* knowledge-base source control, including BITwiki's repository workflow.
 
 == Epistemic notes ==
-A version-control history records changes, not truth. A newer revision may still be wrong; review and source validation remain separate responsibilities.
+Version-control systems provide excellent evidence about recorded revisions but not automatic evidence that a revision is true, correct, safe, or approved. Revision provenance and epistemic validation are separate dimensions.
 
 == References ==
-* [https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control Git — About Version Control]
+* Marc J. Rochkind, "The Source Code Control System", ''IEEE Transactions on Software Engineering'' SE-1(4), 364–370 (1975). DOI: 10.1109/TSE.1975.6312866.
+* Walter F. Tichy, "RCS—A System for Version Control", ''Software: Practice and Experience'' 15(7), 637–654 (1985). DOI: 10.1002/spe.4380150703.
+* [https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control Chacon & Straub, Pro Git — About Version Control]
 * [https://git-scm.com/docs/git Git documentation]
 
 [[Category:Technology]]
-[[Category:Domain exemplars]]

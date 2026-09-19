@@ -1,0 +1,32 @@
+{{Source status|status=Technical depth derivative|note=Advanced benchmark-validity surface.}}
+{{Reading depth|base=Benchmark contamination|current=Technical}}
+= Benchmark contamination — Technical =
+
+== Exposure channels ==
+Benchmark information can enter through:
+
+<pre>
+pretraining corpus
+fine-tuning corpus
+synthetic derivative data
+solution/explanation text
+benchmark-targeted prompt search
+adaptive evaluation feedback
+</pre>
+
+Each channel creates a different dependence between model development and evaluation data.
+
+== Detection ==
+Detection methods include exact overlap, near-duplicate search, n-gram methods, membership-style inference, perturbation tests, temporal controls, watermarking, and training-corpus audits.
+
+No detector proves absence of all contamination.
+
+== Effect size ==
+The impact depends on exposure count, similarity, optimization, model scale, regularization, later training, and forgetting.
+
+Recent controlled studies show that contamination can inflate scores, while some exposures can also be forgotten after extensive subsequent training.
+
+== References ==
+* Bordt et al. (ICML 2025).
+* Choi et al. (ICML 2025).
+* White et al. (ICLR 2025).

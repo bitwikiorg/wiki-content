@@ -1,0 +1,89 @@
+{{Source status|status=Wave 5 compiled article|note=Conditional-probability concept grounded in standard probability theory.}}
+{{Knowledge object
+ |title=Conditional probability
+ |entity_type=Concept
+ |domain=Mathematics, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 5 compiled context
+}}
+{{Reading depth|base=Conditional probability|current=Core}}
+
+= Conditional probability =
+
+== Overview ==
+'''Conditional probability''' is the probability assigned to an event when another event or body of information is taken as given.
+
+It is written:
+
+<pre>
+P(A | B)
+</pre>
+
+read as “the probability of A given B”.
+
+== Basic definition ==
+When P(B) > 0:
+
+<pre>
+P(A | B) = P(A ∩ B) / P(B)
+</pre>
+
+Conditioning restricts attention to cases in which B occurs.
+
+== Direction matters ==
+Conditional probability is asymmetric in general:
+
+<pre>
+P(A | B) ≠ P(B | A)
+</pre>
+
+Confusing the two is a common reasoning error.
+
+== Independence ==
+Events A and B are independent when learning B does not change the probability of A:
+
+<pre>
+P(A | B) = P(A)
+</pre>
+
+when the conditional is defined.
+
+Equivalent formulations use factorization:
+
+<pre>
+P(A ∩ B) = P(A)P(B)
+</pre>
+
+== Bayes' theorem ==
+Conditional probabilities in opposite directions are related by Bayes' theorem:
+
+<pre>
+P(A | B)
+= P(B | A)P(A) / P(B)
+</pre>
+
+when the denominator is nonzero.
+
+This identity is central to [[Bayesian inference]].
+
+== Conditioning and causation ==
+Conditioning is an observational/probabilistic operation.
+
+A causal intervention asks what would happen if a variable were actively set.
+
+Therefore:
+
+<pre>
+P(Y | X=x)
+≠ causal effect of setting X=x
+</pre>
+
+without additional assumptions.
+
+== References ==
+* standard probability textbooks.
+* OpenStax probability material.
+* Bayesian/statistical inference texts.
+
+[[Category:Mathematics]]
+[[Category:Philosophy]]

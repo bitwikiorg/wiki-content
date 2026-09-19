@@ -1,0 +1,155 @@
+{{Source status|status=Wave 2 compiled article|note=Public knowledge-organization concept grounded in SKOS and ISO thesaurus/classification standards.}}
+{{Knowledge object
+ |title=Taxonomy
+ |entity_type=Concept
+ |domain=Computer science, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Taxonomy|current=Core}}
+
+= Taxonomy =
+
+== Overview ==
+A '''taxonomy''' is an organized system of categories or concepts, commonly arranged through broader–narrower or parent–child relationships.
+
+Taxonomies support:
+* classification;
+* navigation;
+* indexing;
+* search;
+* communication;
+* information architecture.
+
+The term comes historically from biological classification but is now used broadly in information systems and knowledge organization.
+
+== Hierarchical organization ==
+A simple taxonomy can be a tree:
+
+<pre>
+Vehicle
+├─ Land vehicle
+│  ├─ Car
+│  └─ Bicycle
+└─ Watercraft
+   └─ Boat
+</pre>
+
+This is easy to browse.
+
+But many real taxonomies are polyhierarchical: one concept can have several broader parents.
+
+Then the structure is a directed graph rather than a strict tree.
+
+== Broader and narrower concepts ==
+Knowledge-organization systems often use broader/narrower relations.
+
+"Dog" can be narrower than "Mammal."
+
+But broader/narrower is not always formal logical subclasshood.
+
+In subject taxonomies, a broader concept may reflect:
+* generic kind;
+* part–whole relation;
+* topic inclusion;
+* administrative grouping.
+
+Automated reasoning should therefore know which relation is intended.
+
+== Taxonomy and classification ==
+[[Classification]] assigns items to categories.
+
+A taxonomy organizes the categories/concepts available for that assignment.
+
+A library taxonomy can exist even when no new document is currently being classified.
+
+== Taxonomy and ontology ==
+An [[Ontology]] generally supports richer semantics than a taxonomy.
+
+An ontology may include:
+* many relation types;
+* formal axioms;
+* property constraints;
+* identity;
+* disjointness;
+* inference rules or logical consequences.
+
+A taxonomy is often lighter weight and optimized for organization rather than logical reasoning.
+
+== Taxonomy and thesaurus ==
+A thesaurus normally includes controlled terms plus relationships such as:
+* broader term;
+* narrower term;
+* related term;
+* preferred/non-preferred labels.
+
+A taxonomy is often more hierarchy-centered.
+
+In practice the boundary is not sharp.
+
+ISO 25964 and SKOS treat these as related families of knowledge organization systems.
+
+== Biological taxonomy ==
+Biological taxonomy classifies organisms into named groups such as species, genera and families.
+
+This scientific use has its own rules, nomenclature and evolutionary debates.
+
+It should not be treated as the model for every information-system taxonomy.
+
+== Faceted taxonomy ==
+A faceted system uses independent dimensions.
+
+For example, a product can be organized by:
+* material;
+* purpose;
+* manufacturer;
+* price range.
+
+Facets avoid forcing every distinction into one giant hierarchy.
+
+They are useful when items naturally belong to several independent classification dimensions.
+
+== Polyhierarchy ==
+Polyhierarchy allows one concept to have multiple broader concepts.
+
+Example:
+
+<pre>
+Bioinformatics
+→ Computer science
+→ Biology
+</pre>
+
+This can better reflect interdisciplinary structure.
+
+It also complicates inheritance and navigation.
+
+== Taxonomy maintenance ==
+Useful taxonomy maintenance includes:
+
+* stable concept identifiers;
+* preferred labels;
+* synonyms;
+* scope notes;
+* change history;
+* redirects/deprecations;
+* merge/split tracking;
+* mapping between schemes.
+
+Changing a label should not necessarily change concept identity.
+
+== BITwiki application ==
+BITwiki uses categories and portals for public navigation while avoiding one giant taxonomy as the ontology.
+
+This keeps domain browsing separate from entity type and semantic relations.
+
+== Epistemic notes ==
+Taxonomies are models of organization. Their structure can reflect scientific theory, practical retrieval needs or institutional convention. Hierarchy should not be mistaken automatically for metaphysical truth.
+
+== References ==
+* [https://www.w3.org/TR/skos-reference/ W3C — SKOS Reference]
+* [https://www.w3.org/TR/skos-primer/ W3C — SKOS Primer]
+* ISO 25964-1:2011.
+
+[[Category:Computer science]]
+[[Category:Science]]

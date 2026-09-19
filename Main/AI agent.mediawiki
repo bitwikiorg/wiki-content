@@ -1,0 +1,92 @@
+{{Source status|status=Wave 8 compiled article|note=Contemporary AI-agent concept grounded in current agentic-AI standards and 2024–2026 survey literature; terminology remains evolving.}}
+{{Knowledge object
+ |title=AI agent
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Supported
+ |provenance=V2 public corpus; Wave 8 compiled context
+}}
+{{Reading depth|base=AI agent|current=Core}}
+
+= AI agent =
+
+== Overview ==
+An '''AI agent''' is a contemporary AI-powered system designed to carry out goal-directed multi-step tasks by selecting and executing actions, often using environmental feedback.
+
+Modern AI agents commonly combine one or more models with software components for planning, tools, memory or state, retrieval, execution, and monitoring.
+
+The exact architecture and terminology are not standardized.
+
+== Agent versus model ==
+A model maps inputs to outputs.
+
+An agent system additionally has some mechanism for choosing and carrying out actions over a task trajectory.
+
+Thus:
+
+<pre>
+model ≠ agent
+</pre>
+
+A [[Large language model|large language model]] can be a component inside an agent without being identical to the whole agent.
+
+== Typical loop ==
+Many modern AI agents can be described approximately as:
+
+<pre>
+observe / receive goal
+→ decide or plan
+→ select action or tool
+→ execute
+→ observe result
+→ update state
+→ continue or stop
+</pre>
+
+Systems vary widely in how many of these stages are explicit.
+
+== Components ==
+Common components include:
+
+* a learned model or policy;
+* [[Planning (artificial intelligence)|planning]] or task decomposition;
+* [[Tool use (artificial intelligence)|tool use]];
+* [[Agent memory (artificial intelligence)|memory]] or persistent state;
+* retrieval;
+* permissions and action interfaces;
+* evaluation/monitoring;
+* human approval checkpoints.
+
+None is universally mandatory.
+
+== AI agent and intelligent agent ==
+[[Intelligent agent]] is the broader classical abstraction.
+
+“AI agent” in current usage usually refers to implemented AI systems, often foundation-model-based, that perform delegated work.
+
+The overlap is substantial, but the terms come from different historical layers.
+
+== Agentic AI ==
+“Agentic AI” is currently used as a broader label for architectures and systems emphasizing agency, autonomy, multi-step action, adaptation, or multi-agent orchestration.
+
+Its taxonomy is still evolving.
+
+NIST's 2026 work treats agentic AI as a distinct standards, evaluation, interoperability, governance, and risk-management area.
+
+== Autonomy ==
+An AI agent can require approval before sensitive actions and still be an agent.
+
+Full independence is not required.
+
+[[Autonomous agent (artificial intelligence)]] describes higher operational autonomy.
+
+== Related concepts ==
+[[Intelligent agent]], [[Large language model]], [[Planning (artificial intelligence)]], [[Tool use (artificial intelligence)]], [[Agent memory (artificial intelligence)]], [[Multi-agent system]], and [[Human-computer interaction]] define the contemporary system boundary.
+
+== References ==
+* NIST, “Agentic AI” (2026).
+* Lei Wang et al., “A Survey on Large Language Model Based Autonomous Agents”, ''Frontiers of Computer Science'' 18 (2024).
+* Chowa et al., “From Language to Action: A Review of Large Language Models as Autonomous Agents and Tool Users”, ''Artificial Intelligence Review'' 59 (2026).
+* current agentic-AI taxonomy literature.
+
+[[Category:Computer science]]

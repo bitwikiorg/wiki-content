@@ -1,0 +1,75 @@
+{{Source status|status=Wave 8 compiled article|note=Agent-memory concept grounded in 2024–2026 RL and foundation-model agent-memory literature; taxonomy remains active.}}
+{{Knowledge object
+ |title=Agent memory (artificial intelligence)
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Supported
+ |provenance=V2 public corpus; Wave 8 compiled context
+}}
+{{Reading depth|base=Agent memory (artificial intelligence)|current=Core}}
+
+= Agent memory (artificial intelligence) =
+
+== Overview ==
+In artificial intelligence, '''agent memory''' is persistent or selectively retained computational state that allows an artificial agent to use information from prior observations, interactions, actions, or learned experience in future decision-making.
+
+The term covers multiple architectures rather than one storage mechanism.
+
+== Why agents use memory ==
+Memory can help an agent:
+
+* maintain state across long tasks;
+* remember prior interactions;
+* avoid repeating failed actions;
+* retain user or environment facts;
+* reuse successful procedures;
+* update beliefs after observations;
+* coordinate across sessions or agents.
+
+== Implementations ==
+Agent memory can be implemented through:
+
+* context-resident summaries;
+* external databases;
+* retrieval systems;
+* key-value stores;
+* logs or event histories;
+* learned latent state;
+* parametric updates;
+* structured knowledge stores.
+
+A vector database is one possible implementation, not the definition.
+
+== Context window ==
+A model's current context window is temporary input state.
+
+Agent memory can persist beyond one context window or one model invocation.
+
+Therefore:
+
+<pre>
+agent memory ≠ context window
+</pre>
+
+== Retrieval-augmented generation ==
+Retrieval-augmented generation can retrieve stored information for a model.
+
+It can be part of agent memory, but retrieval by itself does not define memory management.
+
+Agent memory may also include writing, updating, consolidation, forgetting, conflict resolution, and policy-controlled recall.
+
+== Human-memory analogy ==
+Terms such as “working”, “episodic”, “semantic”, “short-term”, and “long-term” are often borrowed from cognitive science.
+
+These analogies can be useful, but computational systems do not automatically implement the corresponding biological mechanisms.
+
+== Related concepts ==
+[[AI agent]], [[Memory]], [[Working memory]], [[Database]], [[Knowledge representation]], [[Provenance]], and [[Large language model]] clarify the computational/biological boundary.
+
+== References ==
+* Hu et al., “Memory in the Age of AI Agents” (2025).
+* Cherepanov et al., “Unraveling the Complexity of Memory in RL Agents” (2024).
+* Du, “Memory for Autonomous LLM Agents: Mechanisms, Evaluation, and Emerging Frontiers” (2026).
+* contemporary agent-memory evaluation literature.
+
+[[Category:Computer science]]

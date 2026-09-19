@@ -1,0 +1,48 @@
+{{Source status|status=Technical depth derivative|note=Advanced dataset-shift surface.}}
+{{Reading depth|base=Distribution shift|current=Technical}}
+= Distribution shift — Technical =
+
+== Distribution factorization ==
+Using:
+
+<pre>
+P(X,Y) = P(Y|X)P(X)
+       = P(X|Y)P(Y)
+</pre>
+
+different invariance assumptions define shift models.
+
+=== Covariate shift ===
+
+<pre>
+P_s(X) ≠ P_t(X)
+P_s(Y|X) = P_t(Y|X)
+</pre>
+
+=== Label shift ===
+
+<pre>
+P_s(Y) ≠ P_t(Y)
+P_s(X|Y) = P_t(X|Y)
+</pre>
+
+Other conditional/concept shifts alter the predictive relationship itself.
+
+== Identifiability ==
+Shift correction generally requires assumptions.
+
+Without labels or structural assumptions in the target domain, multiple target distributions can be observationally compatible.
+
+== Importance weighting ==
+Under covariate shift, target risk can sometimes be expressed through source samples weighted by density ratio:
+
+<pre>
+w(x) = p_t(x) / p_s(x)
+</pre>
+
+when support/estimation assumptions hold.
+
+== References ==
+* Quiñonero-Candela et al.
+* Sugiyama & Kawanabe.
+* domain adaptation / shift literature.

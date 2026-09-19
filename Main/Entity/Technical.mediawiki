@@ -1,0 +1,55 @@
+{{Source status|status=Technical depth derivative|note=Advanced ontology and computational-entity surface of [[Entity]].}}
+{{Reading depth|base=Entity|current=Technical}}
+= Entity — Technical =
+
+== Domain of discourse ==
+In formal semantics, an interpretation normally includes a domain D of objects/entities over which variables range.
+
+A term may denote an element of D.
+
+Which objects are admitted to D reflects the modeling language and ontological commitments.
+
+== Individual / class separation ==
+Many KR systems distinguish:
+* individuals;
+* classes;
+* properties/relations.
+
+But the metalanguage may itself treat classes and properties as entities.
+
+RDF, for example, permits resources to function in several representational roles, while OWL DL places restrictions on how vocabularies can be used to preserve formal properties.
+
+== Entity resolution ==
+Given records r1 and r2, entity resolution estimates whether:
+
+<pre>
+denotes(r1) = denotes(r2)
+</pre>
+
+Evidence can include identifiers and attribute similarity.
+
+Probabilistic linkage produces uncertainty over identity; it does not by itself justify a hard equality assertion.
+
+== Persistent identity ==
+Tracking an entity through time requires criteria for persistence.
+
+The criterion can depend on entity type:
+* organism;
+* legal organization;
+* software release;
+* vessel;
+* dataset.
+
+Version changes may preserve identity for one purpose and create a new entity for another.
+
+== Referential opacity ==
+Substitution of co-referring expressions can fail in belief/intensional contexts.
+
+A person may believe that "the Morning Star is visible" without knowing that the Morning Star is Venus.
+
+Thus entity identity does not erase semantic differences among referring expressions.
+
+== References ==
+* SEP — Identity.
+* SEP — Logic and Ontology.
+* W3C RDF / OWL semantics.

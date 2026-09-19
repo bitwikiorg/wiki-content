@@ -1,0 +1,44 @@
+{{Source status|status=Technical depth derivative|note=Advanced compiler-architecture surface.}}
+{{Reading depth|base=Compiler|current=Technical}}
+= Compiler — Technical =
+
+== Pipeline ==
+A common architecture is:
+
+<pre>
+source
+→ tokens
+→ syntax tree
+→ typed/semantic IR
+→ optimized IR
+→ target code
+</pre>
+
+Actual compilers can interleave or repeat these stages.
+
+== Parsing ==
+Lexers recognize token structure; parsers recognize grammatical structure.
+
+Context-free grammars are common for syntax, while semantic constraints such as types and declarations require additional analysis.
+
+== Intermediate representations ==
+IRs make control flow, data flow, types, memory effects or machine operations explicit at different abstraction levels.
+
+SSA form is a widely used compiler IR discipline.
+
+== Optimization ==
+Optimizations require semantic assumptions.
+
+Examples include constant propagation, dead-code elimination, inlining, loop transformations, vectorization and register allocation.
+
+An optimization is correct only if it preserves permitted observable behavior.
+
+== Correctness ==
+Verified compilation can prove semantic preservation between source and target under formal language semantics.
+
+Testing remains important because full compiler stacks and toolchains exceed the scope of many proofs.
+
+== References ==
+* Aho et al.
+* Appel.
+* compiler optimization and verification literature.

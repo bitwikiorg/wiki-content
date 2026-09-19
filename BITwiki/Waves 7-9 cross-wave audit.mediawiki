@@ -1,0 +1,369 @@
+{{Source status|status=Post-merge cross-wave audit|note=Independent audit of merged Waves 7, 8, and 9. Rechecks the combined corpus rather than trusting per-wave signoff in isolation.}}
+= Waves 7–9 cross-wave audit =
+
+'''State: post-merge cross-wave audit.'''
+
+== Scope ==
+
+This audit covers the three consecutive merged corpus waves completed on 2026-09-19:
+
+* [[BITwiki:Wave 7 context audit|Wave 7 — Machine learning and generalization]]: 15 concepts / 45 reader surfaces.
+* [[BITwiki:Wave 8 context audit|Wave 8 — Artificial intelligence and agents]]: 9 concepts / 27 reader surfaces.
+* [[BITwiki:Wave 9 context audit|Wave 9 — Systems, complexity, and information]]: 10 concepts / 30 reader surfaces.
+
+Combined scope:
+
+<pre>
+34 canonical concepts
+102 reader surfaces
+Core + Simple + Technical
+</pre>
+
+The audit checks the merged <code>main</code> state, cross-wave semantic boundaries, graph connectivity after later concepts became canonical, evidence/provenance quality, and completion bookkeeping.
+
+== Audit method ==
+
+The audit re-runs four editorial layers:
+
+# '''Structural / identity''' — Core identity ownership, derivative identity exemption, controlled Domains, source/depth templates, references, category ownership.
+# '''Cross-wave semantics''' — later concepts must not silently redefine earlier ones.
+# '''Knowledge-graph recurrence''' — later canonical concepts should be linked from earlier pages when the relationship is explanatory and survives review.
+# '''Evidence / provenance''' — especially recent 2024–2026 ML/agent sources, where peer-reviewed work and preprints must not be silently conflated.
+
+The complete repository staging and V2 release gates remain the final machine validation.
+
+== Structural re-audit ==
+
+All '''102 reader surfaces''' were re-read programmatically after revision:
+
+* Wave 7: 45 / 45 surfaces clean.
+* Wave 8: 27 / 27 surfaces clean.
+* Wave 9: 30 / 30 surfaces clean.
+
+The recheck found:
+
+* every Core page retains [[Template:Knowledge object]];
+* every surface retains [[Template:Reading depth]];
+* every surface retains source status;
+* every Core page retains references and controlled categories;
+* no Simple/Technical derivative duplicates Core Knowledge object identity;
+* no Simple/Technical derivative duplicates Core category identity;
+* no Markdown blockquotes or Markdown fences were introduced.
+
+== Finding 1 — later waves were not fully back-linked ==
+
+The primary cross-wave defect was incomplete recurrence after canonicalization.
+
+Waves 7 and 8 were internally linked at release time, but Wave 9 did not yet exist when their Core graphs were finalized.
+
+The missing relationships were reviewed individually rather than mechanically adding every possible edge.
+
+Validated repairs include:
+
+<pre>
+Machine learning
+ ├→ Artificial intelligence
+ └→ Large language model
+
+Generalization (machine learning)
+ └→ Robustness
+
+Distribution shift
+ ├→ Robustness
+ └→ Adaptation (systems)
+
+Spurious correlation
+ └→ Robustness
+
+Intelligent agent
+ ├→ Feedback
+ └→ Adaptation (systems)
+
+AI agent
+ ├→ Feedback
+ └→ Adaptation (systems)
+
+Planning (artificial intelligence)
+ └→ Feedback
+
+Agent memory (artificial intelligence)
+ └→ Information
+
+Multi-agent system
+ ├→ Network
+ └→ Complex system
+
+Autonomous agent (artificial intelligence)
+ ├→ Feedback
+ └→ Adaptation (systems)
+</pre>
+
+These additions preserve non-equivalence:
+
+<pre>
+generalization ≠ robustness
+distribution shift ≠ adaptation
+agent ≠ feedback loop
+multi-agent system ≠ network
+multi-agent system ≠ complex system
+memory ≠ information
+</pre>
+
+Links were added only where they clarify neighboring concepts.
+
+Potential but weak edges — for example linking every AI concept to [[Complex system]] or every LLM concept to [[Entropy]] — were deliberately rejected as graph noise.
+
+== Finding 2 — one false semantic alias ==
+
+[[Information]] contained this reader-facing link:
+
+<pre>
+[[Data structure|Data]]
+</pre>
+
+That rendered the general concept “Data” as an alias for [[Data structure]].
+
+This was incorrect:
+
+<pre>
+data ≠ data structure
+</pre>
+
+The sentence now keeps “Data” as ordinary text and separately explains that, in computing, [[Data structure|data structures]] organize data without being identical to data itself.
+
+No new [[Data]] stub was created.
+
+== Finding 3 — provenance needed stronger publication-state labeling ==
+
+The conceptual claims in Wave 8 remained sound, but several recent references needed clearer provenance.
+
+=== AI agent ===
+
+The article now names:
+
+* NIST, “Agentic AI” (current 2026 institutional overview);
+* NIST CAISI, “Announcing the AI Agent Standards Initiative for Interoperable and Secure Innovation” (17 February 2026);
+* Lei Wang et al., 2024 autonomous-agent survey;
+* Chowa et al., ''Artificial Intelligence Review'' 59, article 71 (2026), DOI 10.1007/s10462-025-11471-9.
+
+This preserves the Wave 8 judgment:
+
+<pre>
+AI agent = Supported
+</pre>
+
+because the system category is real and institutionally recognized while taxonomy remains unsettled.
+
+=== Tool use (artificial intelligence) ===
+
+The bibliography now identifies:
+
+* Xu et al., ''Data Science and Engineering'' 10 (2025), 533–563, DOI 10.1007/s41019-025-00296-9;
+* Xinzhe Li, COLING 2025, pp. 9760–9779;
+* Chowa et al. (2026).
+
+This better supports the distinction:
+
+<pre>
+tool use ≠ function calling only
+</pre>
+
+=== Agent memory (artificial intelligence) ===
+
+The three rapidly evolving survey sources are now explicitly labeled as preprints:
+
+* Hu et al., arXiv:2512.13564 (2025 preprint);
+* Cherepanov et al., arXiv:2412.06531 (2024 preprint);
+* Du, arXiv:2603.07670 (2026 preprint).
+
+This avoids presenting active taxonomy work as more settled than it is and supports retaining:
+
+<pre>
+Agent memory (artificial intelligence) = Supported
+</pre>
+
+rather than Established.
+
+=== Large language model ===
+
+The article now names Bommasani et al., ''On the Opportunities and Risks of Foundation Models'' (Stanford CRFM / arXiv:2108.07258) to strengthen:
+
+<pre>
+LLM ≠ foundation model by identity
+</pre>
+
+while retaining Vaswani et al. only as support for the dominant Transformer architecture, not the definition of all LLMs.
+
+== Finding 4 — Wave 9 source specificity could be improved without changing semantics ==
+
+Several broad Wave 9 pages used generic source-family labels.
+
+The audit strengthened specific references while preserving article scope:
+
+* [[Entropy]] now explicitly includes SEP “Information Processing and Thermodynamic Entropy” alongside Shannon, Cover/Thomas, and statistical mechanics.
+* [[Feedback]] now names Åström & Murray, ''Feedback Systems'' (2008), rather than relying only on generic control-system literature.
+* [[Self-organization]] now names Camazine et al., ''Self-Organization in Biological Systems'' (2001).
+* [[Complex system]] now names Holland, ''Hidden Order'' (1995).
+* [[Adaptation (systems)]] now names Holland, ''Hidden Order'' (1995).
+
+No epistemic-status changes were required.
+
+== Cross-wave semantic audit ==
+
+=== Wave 7 → Wave 8 ===
+
+[[Machine learning]] remains a method family within broader [[Artificial intelligence]].
+
+[[Large language model]] remains a learned model class rather than the definition of machine learning.
+
+[[AI agent]] remains a compound system concept and does not retroactively redefine machine learning.
+
+=== Wave 7 → Wave 9 ===
+
+[[Generalization (machine learning)]] remains distinct from [[Robustness]].
+
+A model can generalize in-distribution without being robust to defined perturbations.
+
+[[Distribution shift]] identifies changed data-generating conditions.
+
+[[Adaptation (systems)]] identifies system change in response to conditions.
+
+[[Robustness]] identifies preservation of specified function under perturbation.
+
+These remain three different concepts.
+
+[[Spurious correlation]] remains a relation/data issue rather than robustness itself; robustness testing can reveal its consequences.
+
+=== Wave 8 → Wave 9 ===
+
+[[Intelligent agent]], [[AI agent]], and [[Autonomous agent (artificial intelligence)]] can operate through [[Feedback]], but feedback is not sufficient for agenthood.
+
+[[Adaptation (systems)]] can occur in agents without defining all agents.
+
+[[Multi-agent system]] can be represented as an interaction [[Network]] and can exhibit [[Complex system|complex-system]] behavior, but it is not synonymous with either concept.
+
+[[Agent memory (artificial intelligence)]] stores or reconstructs selected [[Information]], but information is broader than memory.
+
+=== Information / entropy boundary ===
+
+The Wave 9 distinction remains intact:
+
+<pre>
+Shannon entropy
+= probabilistic uncertainty measure
+
+thermodynamic/statistical entropy
+= physical/statistical-mechanical quantity over physical ensembles
+</pre>
+
+The forms are mathematically related but not declared to be one identical physical quantity.
+
+== Title / identity audit ==
+
+No title normalization from Waves 7–9 was reversed.
+
+The following remain correct:
+
+* [[Generalization (machine learning)]]
+* [[Data leakage (machine learning)]]
+* [[Planning (artificial intelligence)]]
+* [[Tool use (artificial intelligence)]]
+* [[Agent memory (artificial intelligence)]]
+* [[Autonomous agent (artificial intelligence)]]
+* [[Adaptation (systems)]]
+
+[[Intelligent agent]] and [[AI agent]] remain separate identities.
+
+No new Domain is required.
+
+No canonical concept is added or removed.
+
+== Epistemic-status audit ==
+
+No status change is required.
+
+The current exceptions to Established remain appropriate:
+
+* [[Shortcut learning]] — '''Supported'''
+* [[AI agent]] — '''Supported'''
+* [[Agent memory (artificial intelligence)]] — '''Supported'''
+
+These labels reflect active explanatory/taxonomic research rather than doubt that the terms exist.
+
+== Request/workflow audit ==
+
+The satisfied lifecycle records for:
+
+* [[Machine learning]]
+* [[Artificial intelligence]]
+
+must remain satisfied and continue pointing to their canonical pages.
+
+Wave 9 introduced no request-lifecycle transition.
+
+The final workflow validator will recheck active/canonical conflicts.
+
+== Stale per-wave merge state ==
+
+The Wave 7, Wave 8, and Wave 9 audit pages still ended with pre-merge language saying merge remained conditional after final-head CI.
+
+All three waves are already merged.
+
+This cross-wave revision updates those pages to their actual merged states and points them here for the combined post-merge review.
+
+== Corpus totals ==
+
+No concept count changes:
+
+<pre>
+Wave 7: 15 concepts / 45 surfaces
+Wave 8:  9 concepts / 27 surfaces
+Wave 9: 10 concepts / 30 surfaces
+
+Combined: 34 concepts / 102 surfaces
+Overall: 159 canonical concepts / 477 reader surfaces
+</pre>
+
+== Release criteria for this cross-audit ==
+
+The audit is complete only when:
+
+# all 102 Wave 7–9 surfaces remain structurally valid;
+# the false Data/Data-structure alias remains removed;
+# repaired cross-wave links resolve;
+# supported/established statuses remain valid;
+# satisfied request lifecycle remains valid;
+# controlled Domains pass;
+# runtime schema and substrate audits pass;
+# Main-space identity audit passes;
+# deployment/importer audits pass;
+# staging projection builds successfully;
+# this cross-audit is merged into <code>main</code>.
+
+== Release validation — 2026-09-19 ==
+
+PR #27 ran the established release gates on the revised Waves 7–9 combined corpus.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+No concept-count, Domain, title, or epistemic-status change was required.
+
+This bookkeeping commit must re-pass the same gates before merge.
+
+'''Current assessment: the post-merge Waves 7–9 cross-wave audit is complete and has passed its release gates; merge remains conditional only on final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

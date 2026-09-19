@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Constant-product market maker]].}}
+{{Reading depth|base=Constant-product market maker|current=Technical}}
+= Constant-product market maker — Technical =
+
+Ignoring fees, reserves x and y satisfy xy=k. The instantaneous reserve-curve price magnitude is |dy/dx|=y/x. For a finite input Δx, the required output moves the state from (x,y) to (x+Δx,y-Δy) on the curve; fees alter the effective input and reserve accounting.
+
+== Modeling / security cautions ==
+* constant-product market maker ≠ every AMM
+* x·y=k model ≠ zero price impact
+* invariant ≠ fixed market price
+
+== References ==
+* BIS, “Trading in the DeFi era: automated market-maker” (2021).
+* Guillermo Angeris & Tarun Chitra, “Improved Price Oracles: Constant Function Market Makers” (2020).
+* Uniswap v2 Core whitepaper (2020), as a canonical deployed constant-product design.

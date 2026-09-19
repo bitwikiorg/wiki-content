@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Hash function
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Hash function|current=Core}}
+
+= Hash function =
+
+== Overview ==
+'''Hash function''' maps input data of arbitrary or variable length to a fixed-size or bounded-size output called a hash value or digest.
+
+General-purpose hash functions are used in data structures, indexing, checksums, and partitioning. Cryptographic hash functions add security requirements such as resistance to finding preimages, second preimages, or collisions under a specified attack model.
+
+Hashes are deterministic: the same input under the same function produces the same output. A hash is not an encryption of the input and generally cannot be 'decrypted' back to the original data.
+
+In blockchain systems, cryptographic hashes are commonly used to link records, commit to data, identify content, and support integrity checks.
+
+== Boundaries ==
+* hash function ≠ encryption
+* ordinary hash function ≠ cryptographic hash function
+* collision resistance ≠ mathematical impossibility of collisions
+
+== Related concepts ==
+[[Cryptography]], [[Digital signature]], [[Blockchain]], [[Data structure]], and [[Computer security]] provide neighboring concepts.
+
+== References ==
+* NIST FIPS 180-4, ''Secure Hash Standard'' (updated 2015).
+* NIST FIPS 202, ''SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions'' (2015).
+* NIST IR 8202, ''Blockchain Technology Overview'' (2018).
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

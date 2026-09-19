@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Zero-knowledge proof
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Zero-knowledge proof|current=Core}}
+
+= Zero-knowledge proof =
+
+== Overview ==
+'''Zero-knowledge proof''' is a cryptographic proof system in which a prover convinces a verifier that a statement is true while revealing no information beyond what the protocol permits about the witness or secret used to establish that statement.
+
+Formal zero-knowledge systems are evaluated for completeness, soundness, and a zero-knowledge property. Different protocols are interactive or non-interactive and can rely on different setup, algebraic, or cryptographic assumptions.
+
+Zero knowledge is a property of a proof protocol, not a synonym for encryption, anonymity, or privacy in the surrounding application. Public metadata, timing, identifiers, and other protocol outputs can still reveal information.
+
+Modern systems use zero-knowledge proofs for privacy-preserving credentials, rollups and succinct verification, authentication, and proving properties of computations without revealing all inputs.
+
+== Boundaries ==
+* zero-knowledge proof ≠ encryption
+* zero knowledge ≠ application-level anonymity
+* proof of statement ≠ proof that surrounding data/source is trustworthy
+
+== Related concepts ==
+[[Cryptography]], [[Verification]], [[Public-key cryptography]], [[Decentralized identity]], [[Blockchain]], and [[Attestation]] provide the proof context.
+
+== References ==
+* NIST CSRC glossary, “Zero-Knowledge Proof”, sourced from NIST IR 8301.
+* Shafi Goldwasser, Silvio Micali & Charles Rackoff, “The Knowledge Complexity of Interactive Proof Systems” (1985/1989).
+* NIST IR 8301, ''Blockchain Networks: Token Design and Management Overview'' (2021).
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

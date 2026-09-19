@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Liquidity pool]].}}
+{{Reading depth|base=Liquidity pool|current=Technical}}
+= Liquidity pool — Technical =
+
+An AMM pool state can be represented by a reserve vector x. Deposits, withdrawals, swaps, fees, and protocol actions update x subject to the mechanism's admissibility rules. Effective depth and LP exposure depend on the invariant, fee schedule, range structure, asset behavior, and external arbitrage.
+
+== Modeling / security cautions ==
+* liquidity pool ≠ AMM
+* pool share ≠ guaranteed principal value
+* pooled liquidity ≠ unlimited market depth
+
+== References ==
+* BIS, “Trading in the DeFi era: automated market-maker” (2021).
+* BIS Working Paper 1227, “Decentralised dealers? Examining liquidity provision in decentralised exchanges” (2024).
+* BIS Project Mariana final report (2023).

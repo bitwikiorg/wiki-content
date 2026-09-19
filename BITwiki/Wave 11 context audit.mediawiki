@@ -1,0 +1,212 @@
+{{Source status|status=Wave 11 Phase 3 context audit|note=Audit state for the Wave 11 decentralized-systems capture/compile/write cycle.}}
+= Wave 11 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Hash function]]
+# [[Public-key cryptography]]
+# [[Digital signature]]
+# [[Blockchain]]
+# [[Consensus mechanism]]
+# [[Smart contract]]
+# [[Token (blockchain)]]
+# [[Cryptocurrency wallet]]
+# [[Decentralized identity]]
+# [[Zero-knowledge proof]]
+# [[Decentralized finance]]
+# [[Automated market maker]]
+# [[Liquidity pool]]
+# [[Liquidity provider]]
+# [[Constant-product market maker]]
+# [[Concentrated liquidity]]
+# [[Arbitrage]]
+# [[Slippage]]
+# [[Price impact]]
+# [[Oracle (blockchain)]]
+# [[Attestation]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 11 reader surfaces: '''63'''.
+
+== Structural audit ==
+
+All 21 Core pages use [[Template:Knowledge object]], [[Template:Reading depth]], source status, references, controlled Domain values, and Core-owned category/semantic identity.
+
+All 42 Simple/Technical derivatives use [[Template:Reading depth]], declare source status, contain sources/references, and do not duplicate Core Knowledge object/category identity.
+
+== Title / identity audit ==
+
+Two overloaded provisional titles are normalized:
+
+* [[Token]] → [[Token (blockchain)]]
+* [[Oracle]] → [[Oracle (blockchain)]]
+
+[[Attestation]], [[Arbitrage]], [[Slippage]], [[Price impact]], [[Hash function]], and [[Concentrated liquidity]] remain broad public identities.
+
+No protocol-specific product concept is promoted merely because it is useful to a local project.
+
+== Domain audit ==
+
+No new controlled Domain is required.
+
+== Semantic boundary audit ==
+
+<pre>
+hash ≠ encryption
+public-key cryptography ≠ blockchain
+digital signature ≠ human identity
+blockchain ≠ cryptocurrency
+consensus ≠ majority voting
+smart contract ≠ legal contract
+token ≠ cryptocurrency
+wallet ≠ coin storage
+decentralized identity ≠ DID by identity
+zero knowledge ≠ anonymity
+DeFi ≠ absence of governance
+AMM ≠ pool
+AMM ≠ constant product only
+pool ≠ market mechanism
+liquidity provision ≠ guaranteed yield
+concentrated liquidity ≠ Uniswap
+arbitrage ≠ guaranteed frictionless profit
+slippage ≠ price impact
+price impact ≠ fee
+oracle ≠ truth source
+attestation ≠ truth
+</pre>
+
+== Cryptography / ledger audit ==
+
+[[Hash function]], [[Public-key cryptography]], and [[Digital signature]] remain general cryptographic concepts rather than blockchain inventions.
+
+[[Blockchain]] is a particular distributed-ledger architecture using linked blocks and consensus; it is not declared equivalent to cryptocurrency or every distributed ledger.
+
+[[Consensus mechanism]] is defined through agreement on valid distributed state, not through simplistic majority voting.
+
+== Smart-contract / identity audit ==
+
+[[Smart contract]] is executable replicated program/state and is not treated as a legal-contract synonym.
+
+[[Cryptocurrency wallet]] manages cryptographic keys/addresses rather than literally containing ledger assets.
+
+[[Decentralized identity]] remains broader than blockchain and broader than DID. W3C DID is used as a standards-backed implementation family.
+
+[[Zero-knowledge proof]] preserves formal proof-system scope and rejects the common “zero knowledge = anonymous application” shortcut.
+
+== DeFi / market audit ==
+
+[[Decentralized finance]] is treated as an architecture family with measurable centralization dependencies, not as “finance without intermediaries” by definition.
+
+[[Automated market maker]] remains a broad family. [[Constant-product market maker]] is one mechanism; [[Concentrated liquidity]] is one liquidity-allocation design.
+
+[[Liquidity pool]] and [[Liquidity provider]] remain inventory/state and participant-role concepts respectively.
+
+[[Arbitrage]], [[Slippage]], and [[Price impact]] preserve general market meanings. In particular:
+
+<pre>
+price impact
+= execution-price movement caused by the trade itself
+
+slippage
+= difference between expected/quoted and realized execution,
+  potentially including price impact plus intervening market movement and other effects
+</pre>
+
+== Oracle / attestation audit ==
+
+[[Oracle (blockchain)]] imports external data; it is not declared a source of truth.
+
+[[Attestation]] records an assertion with provenance/integrity evidence; cryptographic validity does not establish factual truth of the claim.
+
+This distinction preserves earlier [[Evidence]], [[Provenance]], [[Verification]], and [[Identity]] semantics.
+
+== Cross-wave audit ==
+
+Wave 11 connects to Wave 10 without redefining it:
+
+* consensus mechanisms can contain incentive/game-theoretic structure but are not game theory itself;
+* decentralized governance uses [[Governance]] but blockchain voting is not the definition of governance;
+* Sybil resistance is relevant to consensus, reputation, identity and governance without making [[Sybil attack]] a blockchain-only concept;
+* DeFi mechanisms instantiate incentives and strategic interaction without defining [[Incentive]], [[Game theory]], or [[Collective action]].
+
+Wave 11 also preserves Waves 6–9 boundaries around cryptography, distributed systems, information, identity, verification, robustness, and agents.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| NIST FIPS 180 / 202 || hashing
+|-
+| NIST FIPS 186-5 / public-key terminology || public-key cryptography and signatures
+|-
+| NIST IR 8202 || blockchain, consensus, smart contracts, wallets, oracle foundations
+|-
+| NIST IR 8301 || token/wallet management, identity and privacy context
+|-
+| W3C DID / VC Recommendations || decentralized identifiers, claims, credentials
+|-
+| Goldwasser–Micali–Rackoff || zero-knowledge proofs
+|-
+| BIS DeFi / AMM reports || DeFi, pools, LPs, execution and market risks
+|-
+| Angeris/Chitra; Uniswap technical papers || AMM / constant-function / concentrated-liquidity mechanics
+|-
+| Kyle; Shleifer–Vishny || price impact and real-world arbitrage constraints
+|}
+
+== Acceptance criteria ==
+
+Wave 11 is ready to leave Phase 3 when:
+
+# all 63 reader surfaces remain present;
+# Token/Oracle title qualification remains intact;
+# one concept = one Core semantic identity;
+# controlled Domains pass;
+# cryptography remains broader than blockchain;
+# blockchain/distributed-ledger and smart-contract/legal-contract distinctions remain explicit;
+# wallet/key and identity/DID boundaries remain explicit;
+# AMM/pool, slippage/price-impact, oracle/truth, attestation/truth distinctions remain explicit;
+# derivatives remain category/identity-exempt;
+# complete V2 release gates and staging pass.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 11 context capture]]
+        ↓
+[[BITwiki:Wave 11 compiled context]]
+        ↓
+[[BITwiki:Wave 11 context audit]]
+</pre>
+
+== Release validation — 2026-09-19 ==
+
+PR #29 executed the established Wave release gates after all 63 reader surfaces and the Token/Oracle title normalizations were present.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+No Domain expansion or workflow architecture repair was required.
+
+This completion-state bookkeeping commit must re-pass the same release gates before merge.
+
+'''Current assessment: Wave 11 is semantically and structurally audited and has passed its release gates; merge remains conditional on final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

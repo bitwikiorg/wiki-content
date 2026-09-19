@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Constant-product market maker
+ |entity_type=Concept
+ |domain=Technology, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Constant-product market maker|current=Core}}
+
+= Constant-product market maker =
+
+== Overview ==
+'''Constant-product market maker''' is an automated market maker whose basic two-asset reserve rule maintains a product relation of the form x·y=k, subject to fees and implementation details.
+
+If a trader removes some amount of one reserve, the mechanism requires enough of the other reserve to move the state along the constant-product curve. This produces a continuously changing marginal price as reserve ratios change.
+
+The formula supplies liquidity over a very broad price range but causes larger trades to move farther along the curve, creating greater price impact when reserves are shallow relative to trade size.
+
+Real implementations include fees, discrete arithmetic, protocol constraints, and sometimes time-weighted or concentrated-liquidity extensions, so the simple equation is a model of the core mechanism rather than every accounting detail.
+
+== Boundaries ==
+* constant-product market maker ≠ every AMM
+* x·y=k model ≠ zero price impact
+* invariant ≠ fixed market price
+
+== Related concepts ==
+[[Automated market maker]], [[Liquidity pool]], [[Price impact]], [[Slippage]], [[Arbitrage]], and [[Concentrated liquidity]] provide the trading context.
+
+== References ==
+* BIS, “Trading in the DeFi era: automated market-maker” (2021).
+* Guillermo Angeris & Tarun Chitra, “Improved Price Oracles: Constant Function Market Makers” (2020).
+* Uniswap v2 Core whitepaper (2020), as a canonical deployed constant-product design.
+
+[[Category:Technology]]
+[[Category:Mathematics]]

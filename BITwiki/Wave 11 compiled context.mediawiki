@@ -1,0 +1,100 @@
+{{Source status|status=Wave 11 Phase 2 compiled context|note=Normalized shared context for writing. Derived from Wave 11 capture; reader surfaces must preserve these boundaries.}}
+= Wave 11 compiled context =
+
+'''State: Phase 2 — Context compilation + writing.'''
+
+Wave 11 extends prior cryptography, distributed systems, identity, verification, governance, incentives, and systems concepts into decentralized technology and market primitives.
+
+== Normalized definitions ==
+
+=== Hash function ===
+A hash function maps input data of arbitrary or variable length to a fixed-size or bounded-size output called a hash value or digest.
+
+=== Public-key cryptography ===
+Public-key cryptography uses related public and private keys to perform complementary cryptographic operations without requiring every interacting party to share the same secret key in advance.
+
+=== Digital signature ===
+A digital signature is a cryptographic value generated with a private signing key that allows a verifier with the corresponding public key to check the integrity and claimed origin of signed data.
+
+=== Blockchain ===
+A blockchain is a distributed digital ledger in which validated records are grouped into ordered blocks that are cryptographically linked and replicated across a network according to established consensus rules.
+
+=== Consensus mechanism ===
+A consensus mechanism is a protocol or rule set by which participants in a distributed system establish agreement on a valid shared state or ordered history despite failures, delay, or adversarial behavior within stated assumptions.
+
+=== Smart contract ===
+A smart contract is program code and persistent state deployed to a distributed ledger or blockchain and executed according to that system's transaction and consensus rules.
+
+=== Token (blockchain) ===
+A blockchain token is a ledger-managed representation of an asset, unit, claim, access right, or other transferable or account-associated state defined by a blockchain protocol or smart contract.
+
+=== Cryptocurrency wallet ===
+A cryptocurrency wallet is hardware, software, or a service that generates, stores, manages, or uses cryptographic keys and addresses needed to authorize interactions with cryptocurrency or blockchain systems.
+
+=== Decentralized identity ===
+Decentralized identity is an identity architecture in which subjects or controllers can establish and use identifiers and verifiable claims without depending on one central identity provider for every interaction.
+
+=== Zero-knowledge proof ===
+A zero-knowledge proof is a cryptographic proof system in which a prover convinces a verifier that a statement is true while revealing no information beyond what the protocol permits about the witness or secret used to establish that statement.
+
+=== Decentralized finance ===
+Decentralized finance (DeFi) is a family of financial applications and protocols that use distributed ledgers and smart contracts to provide functions such as trading, lending, borrowing, asset management, and settlement.
+
+=== Automated market maker ===
+An automated market maker (AMM) is a rule-based market mechanism that quotes or executes trades algorithmically against on-chain or otherwise pooled liquidity rather than requiring each trade to match a contemporaneous opposing order.
+
+=== Liquidity pool ===
+A liquidity pool is a set of assets committed under shared rules so that participants or protocols can draw on those assets for trading, lending, settlement, or other liquidity-demanding operations.
+
+=== Liquidity provider ===
+A liquidity provider is a participant that commits assets or capital to a market or protocol so that other participants can trade, borrow, settle, or otherwise transact against available liquidity.
+
+=== Constant-product market maker ===
+A constant-product market maker is an automated market maker whose basic two-asset reserve rule maintains a product relation of the form x·y=k, subject to fees and implementation details.
+
+=== Concentrated liquidity ===
+Concentrated liquidity is a market-making design in which liquidity providers allocate capital to selected price intervals rather than supplying the same liquidity across the entire possible price range.
+
+=== Arbitrage ===
+Arbitrage is a trading strategy that seeks to profit from inconsistent prices or economically equivalent payoffs across markets, instruments, or states while minimizing or hedging net exposure to the underlying price movement.
+
+=== Slippage ===
+Slippage is the difference between an expected or quoted trade price and the price at which the trade is actually executed.
+
+=== Price impact ===
+Price impact is the change in quoted or execution prices caused by a trade itself through its consumption of available liquidity or movement of market state.
+
+=== Oracle (blockchain) ===
+A blockchain oracle is a mechanism or service that supplies data or results from outside a blockchain's native state to smart contracts or other on-chain logic.
+
+=== Attestation ===
+An attestation is a statement or assertion made by an identifiable attester about a subject, event, property, or piece of data, often accompanied by evidence that allows others to verify who made the assertion and whether it was altered.
+
+== Required non-equivalences ==
+
+<pre>
+blockchain ≠ cryptocurrency
+blockchain ≠ every distributed ledger
+smart contract ≠ legal contract by definition
+token ≠ cryptocurrency by definition
+wallet ≠ on-chain asset storage
+DID ≠ person
+zero knowledge ≠ application anonymity
+DeFi ≠ total decentralization
+AMM ≠ liquidity pool
+AMM ≠ constant-product mechanism only
+slippage ≠ price impact
+oracle ≠ truth
+attestation ≠ truth
+</pre>
+
+== Reader-linking rule ==
+
+Core pages link to canonical Core titles. Simple/Technical surfaces remain derivatives of one Core identity and do not duplicate Knowledge object/category identity.
+
+== Redlink policy ==
+
+Future descendants captured in Phase 1 remain coverage signals, not automatic stub authorization.
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

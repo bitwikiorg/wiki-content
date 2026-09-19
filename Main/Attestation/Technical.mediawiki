@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Attestation]].}}
+{{Reading depth|base=Attestation|current=Technical}}
+= Attestation — Technical =
+
+A verifiable attestation can be modeled as claim payload C plus issuer/attester identifier A, context and time metadata M, and a proof σ over a canonical representation. Verification checks σ and policy; semantic validation separately assesses evidence, issuer authority, freshness, revocation/status, and whether C supports the relying party's decision.
+
+== Modeling / security cautions ==
+* attestation ≠ truth
+* attestation ≠ identity
+* valid signature ≠ validated claim content
+
+== References ==
+* W3C, ''Verifiable Credentials Data Model v2.0'', Recommendation, 15 May 2025.
+* W3C, ''Verifiable Credentials Data Model v2.1'', Working Draft, 5 September 2026, for current terminology evolution.
+* NIST remote-attestation and platform-attestation literature, for cryptographic attestation mechanisms.

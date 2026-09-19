@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Liquidity pool
+ |entity_type=Concept
+ |domain=Technology, Systems science
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Liquidity pool|current=Core}}
+
+= Liquidity pool =
+
+== Overview ==
+'''Liquidity pool''' is a set of assets committed under shared rules so that participants or protocols can draw on those assets for trading, lending, settlement, or other liquidity-demanding operations.
+
+In an AMM, the pool commonly holds reserves against which traders execute swaps. Liquidity providers contribute assets and receive some claim on fees, reserves, or protocol accounting depending on the design.
+
+A pool is not itself an automated market maker: the AMM is the pricing/execution mechanism, while the pool is the inventory or shared asset state on which that mechanism operates.
+
+Pool risk can include smart-contract failure, asset/counterparty risk, adverse selection, price divergence, oracle dependencies, liquidity concentration, and protocol/governance risk.
+
+== Boundaries ==
+* liquidity pool ≠ AMM
+* pool share ≠ guaranteed principal value
+* pooled liquidity ≠ unlimited market depth
+
+== Related concepts ==
+[[Automated market maker]], [[Liquidity provider]], [[Token (blockchain)]], [[Price impact]], [[Slippage]], and [[Decentralized finance]] provide the liquidity context.
+
+== References ==
+* BIS, “Trading in the DeFi era: automated market-maker” (2021).
+* BIS Working Paper 1227, “Decentralised dealers? Examining liquidity provision in decentralised exchanges” (2024).
+* BIS Project Mariana final report (2023).
+
+[[Category:Technology]]
+[[Category:Systems science]]

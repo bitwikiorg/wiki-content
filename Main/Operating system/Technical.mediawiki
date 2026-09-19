@@ -1,0 +1,40 @@
+{{Source status|status=Technical depth derivative|note=Advanced operating-systems surface.}}
+{{Reading depth|base=Operating system|current=Technical}}
+= Operating system — Technical =
+
+== Core abstractions ==
+Operating systems expose abstractions such as:
+
+<pre>
+process / thread
+virtual address space
+file / descriptor
+socket
+device
+user / protection domain
+</pre>
+
+These virtualize and multiplex underlying resources.
+
+== Scheduling ==
+Schedulers allocate CPU time subject to goals such as throughput, latency, fairness, deadlines or energy.
+
+Policy differs across interactive, batch and real-time systems.
+
+== Virtual memory ==
+Page tables map virtual to physical addresses.
+
+Demand paging, copy-on-write, shared mappings and replacement policies trade memory capacity, latency and isolation.
+
+== Concurrency ==
+Threads and processes interact through synchronization primitives, IPC, shared memory and message passing.
+
+Race conditions, deadlock and starvation are central correctness hazards.
+
+== Kernel structure ==
+Monolithic, microkernel, hybrid and exokernel-style designs partition privileged mechanisms differently.
+
+== References ==
+* Silberschatz et al.
+* Tanenbaum & Bos.
+* systems research literature.

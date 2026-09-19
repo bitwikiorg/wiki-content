@@ -263,7 +263,32 @@ The closing audit is complete only when:
 # staging projection builds successfully;
 # this final cross-audit is merged into <code>main</code>.
 
-'''Current assessment: the Waves 13–14 final cross-wave audit is semantically complete; merge remains conditional on release validation and exact-final-head CI repeat.'''
+== Release validation — 2026-09-19 ==
+
+PR #34 executed the established release gates on the final post-merge Waves 13–14 audit state.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+The post-merge link audit also confirms all 29 Wave 13–14 Core pages have zero unresolved canonical concept links.
+
+No concept-count, title, Domain, epistemic-status, or reader-surface changes were required.
+
+This bookkeeping commit must re-pass the same gates before merge.
+
+'''Current assessment: the Waves 13–14 final cross-wave audit is complete and has passed its release gates; merge remains conditional only on exact-final-head CI repeat.'''
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

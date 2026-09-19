@@ -1,0 +1,138 @@
+{{Source status|status=Wave 2 compiled article|note=Public historical/KR concept grounded in Quillian, semantic-memory research, and KR history.}}
+{{Knowledge object
+ |title=Semantic network
+ |entity_type=Concept
+ |domain=Computer science, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Semantic network|current=Core}}
+
+= Semantic network =
+
+== Overview ==
+A '''semantic network''' is a graph representation in which nodes denote concepts, entities or propositions and labeled links denote semantic relations among them.
+
+Semantic networks have been used in:
+* artificial intelligence;
+* cognitive science;
+* linguistics;
+* knowledge organization;
+* education;
+* expert systems.
+
+They are historically important predecessors and relatives of modern [[Knowledge graph|knowledge graphs]] and frame-based representations.
+
+== Basic structure ==
+A simple semantic network might contain:
+
+<pre>
+Canary ──isA────> Bird
+Bird ───hasPart─> Wing
+Bird ───can─────> Fly
+</pre>
+
+The graph structure makes relationships visible.
+
+Depending on the system, links can support inheritance or activation.
+
+== Historical development ==
+M. Ross Quillian's work on semantic memory in the 1960s modeled word meanings and concepts as nodes connected through semantic relationships.
+
+Later psychological work by Collins and Quillian, and Collins and Loftus, used networks to model semantic memory, category structure and spreading activation.
+
+AI research also developed semantic nets as symbolic knowledge representations.
+
+== Inheritance ==
+Some semantic networks use hierarchical inheritance.
+
+If:
+
+<pre>
+Canary isA Bird
+Bird hasProperty canFly
+</pre>
+
+a system may infer:
+
+<pre>
+Canary canFly
+</pre>
+
+But exceptions such as penguins show that default inheritance is not the same as strict logical entailment.
+
+Different semantic-network systems handled inheritance differently.
+
+== Spreading activation ==
+Cognitive semantic-network models often use '''spreading activation'''.
+
+Activating one concept increases activation of nearby concepts through weighted links.
+
+This can model:
+* priming;
+* associative retrieval;
+* semantic distance.
+
+Spreading activation is a cognitive/computational mechanism, not a logical proof procedure.
+
+== Semantic network and ontology ==
+A semantic network can represent concepts and relations without supplying a fully formal [[Ontology|ontology]].
+
+Early semantic nets often used link labels whose exact logic was implicit or system-specific.
+
+Formal ontology languages later emphasized explicit model-theoretic semantics and carefully defined relation properties.
+
+== Semantic network and knowledge graph ==
+Modern [[Knowledge graph|knowledge graphs]] share graph-based representation.
+
+The distinction is historical and practical rather than absolute.
+
+Knowledge graphs often add:
+* globally scoped identifiers;
+* schema/ontology;
+* provenance;
+* large-scale data integration;
+* graph queries;
+* deductive or learned completion.
+
+Semantic networks often emphasize conceptual/cognitive links and older KR traditions.
+
+== Semantic network and Semantic Web ==
+A semantic network is not the [[Semantic Web]].
+
+The Semantic Web is a standards-based Web architecture using technologies such as RDF, OWL and SPARQL.
+
+A semantic network is a more general representation pattern.
+
+It can exist entirely outside Web standards.
+
+== Link semantics ==
+Semantic networks can use relations such as:
+* is-a;
+* part-of;
+* causes;
+* associated-with;
+* has-property;
+* instance-of.
+
+The semantic force of these relations depends on definitions.
+
+A graph with visually labeled links does not automatically specify which inferences are valid.
+
+== Frames ==
+Frame systems developed alongside semantic networks.
+
+A frame represents a concept or situation using named slots and values.
+
+Networks and frames can be intertranslated in many cases, but frames emphasize structured records while networks emphasize relational topology.
+
+== Epistemic notes ==
+Semantic networks are useful for representing association and conceptual structure, but the word "semantic" does not guarantee formal semantics. The inference behavior must be specified separately.
+
+== References ==
+* M. Ross Quillian, "Semantic Memory", in Marvin Minsky (ed.), ''Semantic Information Processing'' (1968).
+* Allan M. Collins and Elizabeth F. Loftus, "A Spreading-Activation Theory of Semantic Processing", ''Psychological Review'' 82(6), 407–428 (1975).
+* Ronald J. Brachman and Hector J. Levesque, ''Knowledge Representation and Reasoning''.
+
+[[Category:Computer science]]
+[[Category:Philosophy]]

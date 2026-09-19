@@ -1,0 +1,181 @@
+{{Source status|status=Wave 2 compiled article|note=Public logic/ontology concept grounded in formal logic, RDF Schema, OWL, and BITwiki relation-model separation.}}
+{{Knowledge object
+ |title=Relation
+ |entity_type=Concept
+ |domain=Philosophy, Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Relation|current=Core}}
+
+= Relation =
+
+== Overview ==
+A '''relation''' is a connection that holds among two or more things.
+
+Examples:
+* "Alice is parent of Bob";
+* "Paris is located in France";
+* "5 is greater than 3";
+* "Module A depends on Module B".
+
+Relations are central to logic, mathematics, [[Ontology|ontology]], databases and [[Knowledge representation|knowledge representation]].
+
+== Arity ==
+The number of arguments a relation connects is its '''arity'''.
+
+A unary predicate concerns one thing.
+
+A binary relation connects two things.
+
+A ternary relation connects three.
+
+Examples:
+
+<pre>
+ParentOf(Alice, Bob)
+Between(A, B, C)
+</pre>
+
+Many knowledge systems emphasize binary relations because graphs represent them naturally as edges.
+
+== Relation type and relation instance ==
+A relation type such as "parent of" is different from one particular relation instance such as:
+
+<pre>
+Alice parentOf Bob
+</pre>
+
+The first gives the kind of connection.
+
+The second asserts that the connection holds between specific relata.
+
+== Mathematical relation ==
+In mathematics, an n-ary relation can be represented extensionally as a set of n-tuples.
+
+For binary relation R over sets A and B:
+
+<pre>
+R ⊆ A × B
+</pre>
+
+This extensional view specifies exactly which ordered pairs stand in the relation.
+
+Other theories also care about intensional meaning: what the relation means, not only which pairs currently satisfy it.
+
+== Relation and property ==
+A [[Property]] can be treated as a special kind of relation in some formalisms.
+
+For example, "hasColor" relates an object to a color value.
+
+Philosophically, properties and relations are sometimes distinguished by arity or metaphysical role.
+
+In RDF, a property is specifically used as the predicate of a binary subject–object relation.
+
+The terms therefore overlap without being universally identical.
+
+== Direction ==
+Many relations are directional.
+
+<pre>
+A dependsOn B
+</pre>
+
+does not mean:
+
+<pre>
+B dependsOn A
+</pre>
+
+Direction should be explicit when the inverse relation has a different meaning.
+
+== Symmetry ==
+A relation R is symmetric when:
+
+<pre>
+R(a,b) → R(b,a)
+</pre>
+
+"Is sibling of" is often modeled symmetrically.
+
+"Is parent of" is not.
+
+Symmetry is a semantic characteristic and should not be assumed from natural-language appearance.
+
+== Transitivity ==
+A relation is transitive when:
+
+<pre>
+R(a,b) ∧ R(b,c) → R(a,c)
+</pre>
+
+"Greater than" is transitive.
+
+Many real-world relations are not.
+
+Generic "causes", "related to" or "supports" should not automatically be made transitive.
+
+== Inverses ==
+A relation can have an inverse.
+
+<pre>
+parentOf ↔ childOf
+</pre>
+
+A system may store one direction and derive the other for display or query.
+
+Derived inverse presentation is not necessarily a second stored fact.
+
+== Domain and range ==
+A relation can declare intended source and target types.
+
+For example:
+
+<pre>
+bornIn:
+  domain Person
+  range Place
+</pre>
+
+In formal languages such as RDFS, domain/range statements can trigger inference rather than act as ordinary validation constraints.
+
+This distinction matters.
+
+== Part–whole relations ==
+"Part of" is not one simple relation in every domain.
+
+Physical componenthood, membership, ingredient, phase, region and organizational inclusion can obey different rules.
+
+Mereology studies part–whole structure formally.
+
+A knowledge graph should avoid pretending all forms of "part of" support identical transitive inference.
+
+== Causal relations ==
+[[Causality|Causal relations]] connect causes and effects.
+
+They are stronger than association and may be conditional, probabilistic or mediated.
+
+Encoding a "causes" edge is therefore an epistemic claim requiring evidence, not merely a graph-design choice.
+
+== Relationships in knowledge graphs ==
+In a [[Knowledge graph]], relations are often represented as labeled edges.
+
+The usefulness of the graph depends heavily on relation semantics.
+
+A graph where every edge is simply "related to" can aid navigation but supports little precise reasoning.
+
+Specific, documented edge meanings improve queries and inference.
+
+== BITwiki application ==
+BITwiki defines a small local set of relations at [[BITwiki:Relationships]] such as Implements, Part of, Depends on, Supports, Contradicts, Refines and Derived from.
+
+Those are project-specific relation types, not a universal list.
+
+== References ==
+* W3C, ''RDF Schema 1.1''.
+* W3C, ''OWL 2 Web Ontology Language''.
+* Standard first-order logic and relation-theory texts.
+
+[[Category:Philosophy]]
+[[Category:Computer science]]
+[[Category:Mathematics]]

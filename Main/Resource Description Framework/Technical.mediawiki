@@ -1,0 +1,92 @@
+{{Source status|status=Technical depth derivative|note=Advanced RDF graph/model-theoretic-semantics surface of [[Resource Description Framework]].}}
+{{Reading depth|base=Resource Description Framework|current=Technical}}
+= Resource Description Framework — Technical =
+
+== Abstract graph ==
+An RDF graph G is a set of RDF triples.
+
+For stable RDF terms:
+
+<pre>
+G ⊆ Subject × IRI × Object
+</pre>
+
+with precise allowed term categories defined by the RDF version.
+
+Set semantics means duplicate triples do not create additional graph facts.
+
+== Interpretation ==
+A simple RDF interpretation I defines:
+* a nonempty universe IR;
+* property denotations;
+* property extensions IEXT;
+* mappings for IRIs/literals.
+
+Satisfaction is defined for triples/graphs.
+
+Simple entailment:
+
+<pre>
+S ⊨ E
+</pre>
+
+iff every simple interpretation satisfying S also satisfies E.
+
+== Blank nodes ==
+Blank nodes behave existentially at graph scope.
+
+Graph isomorphism can rename blank-node identifiers without changing RDF graph meaning.
+
+Merging graphs must therefore avoid accidental blank-node collisions.
+
+== Entailment regimes ==
+Important regimes include:
+* simple entailment;
+* RDF entailment;
+* RDFS entailment;
+* datatype entailment;
+* OWL regimes defined separately.
+
+Each regime changes which conclusions follow.
+
+== RDFS rules ==
+Subclass:
+
+<pre>
+C1 rdfs:subClassOf C2
+x rdf:type C1
+→ x rdf:type C2
+</pre>
+
+Subproperty:
+
+<pre>
+p1 rdfs:subPropertyOf p2
+x p1 y
+→ x p2 y
+</pre>
+
+Domain/range infer types rather than functioning as ordinary rejection constraints.
+
+== RDF 1.2 triple terms ==
+RDF 1.2 introduces triple terms so triples can participate as terms in other triples under defined restrictions.
+
+This supports statement-level description patterns without using legacy RDF reification exactly as before.
+
+Applications must remain explicit about RDF version because RDF 1.2 is not simply an RDF 1.1 syntax extension.
+
+== Datasets ==
+A dataset D contains:
+
+<pre>
+(defaultGraph, {(name_i, graph_i)})
+</pre>
+
+The RDF specification does not by itself assign one universal provenance/truth semantics to named graph names.
+
+Applications must specify how graph names are interpreted.
+
+== References ==
+* W3C RDF 1.2 Concepts.
+* W3C RDF 1.2 Semantics.
+* W3C RDF Schema.

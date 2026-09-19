@@ -1,0 +1,146 @@
+{{Source status|status=Wave 2 compiled article|note=Public knowledge-organization/decision concept grounded in SKOS, ISO 25964, and classification practice.}}
+{{Knowledge object
+ |title=Classification
+ |entity_type=Concept
+ |domain=Computer science, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Classification|current=Core}}
+
+= Classification =
+
+== Overview ==
+'''Classification''' is the process or system of assigning items, observations, entities or concepts to categories/classes according to stated criteria, rules, models or learned patterns.
+
+Classification appears in:
+* biology;
+* libraries;
+* medicine;
+* statistics;
+* machine learning;
+* law;
+* information systems;
+* everyday reasoning.
+
+Different kinds of classification solve different problems.
+
+== Classification and categories ==
+Classification requires some target [[Category|categories]].
+
+The categories may be:
+* predefined;
+* discovered during analysis;
+* hierarchical;
+* overlapping;
+* mutually exclusive;
+* fuzzy.
+
+The quality of classification depends partly on whether the categories are meaningful for the intended use.
+
+== Classification scheme ==
+A '''classification scheme''' is an organized system for placing items into categories.
+
+Examples include:
+* library classification;
+* disease classification;
+* product categories;
+* document subject classes.
+
+A classification scheme can include notation, hierarchy, rules and indexing conventions.
+
+== Classification and taxonomy ==
+A [[Taxonomy]] organizes categories or concepts.
+
+Classification is the act/process of assigning things using such a structure.
+
+Therefore:
+
+<pre>
+taxonomy = organization of categories
+classification = assignment using categories
+</pre>
+
+In everyday usage the words are sometimes blurred.
+
+== Statistical classification ==
+In statistics and machine learning, classification predicts a discrete label from data.
+
+A classifier can be learned from labeled examples.
+
+Examples:
+* spam / not spam;
+* disease category;
+* image class.
+
+This is one specialized form of classification.
+
+A statistical classifier does not automatically define an ontology of the world.
+
+== Rule-based classification ==
+Classification can also use explicit rules.
+
+For example:
+
+<pre>
+if age < 18 → minor
+</pre>
+
+Rule-based systems make criteria inspectable, but edge cases and changing definitions can require revision.
+
+== Ontological classification ==
+Description-logic reasoners use "classification" in a more specialized sense: computing the subclass hierarchy implied by ontology axioms.
+
+This does not mean assigning statistical labels to observations.
+
+The same word therefore names different processes in different fields.
+
+== Supervised and unsupervised grouping ==
+Supervised classification learns to predict predefined labels.
+
+Clustering groups items by similarity without predefined labels.
+
+Clustering is therefore not classification in the strict supervised-learning sense, though clusters may later become categories.
+
+== Multi-label classification ==
+An item can belong to several categories.
+
+For example, a research paper can be both:
+* computer science;
+* biology;
+* statistics.
+
+Multi-label classification represents this explicitly.
+
+This differs from forcing exactly one class.
+
+== Classification errors ==
+Errors include:
+
+* false positives;
+* false negatives;
+* category ambiguity;
+* inconsistent criteria;
+* label leakage;
+* distribution shift;
+* biased category definitions.
+
+A technically accurate classifier can still be socially or scientifically poor if the categories themselves are invalid or inappropriate.
+
+== Classification and ontology ==
+An [[Ontology]] can supply formal classes and relationships used for classification.
+
+But a classifier can exist without an ontology, and an ontology can do far more than classify.
+
+The two concepts should not be collapsed.
+
+== Epistemic notes ==
+Classification creates or applies boundaries. Those boundaries can reflect nature, convention, institutional goals or modeling convenience. Their status should be made explicit when consequential.
+
+== References ==
+* [https://www.w3.org/TR/skos-reference/ W3C — SKOS Reference]
+* ISO 25964-1:2011, ''Thesauri for information retrieval''.
+* Geoffrey C. Bowker and Susan Leigh Star, ''Sorting Things Out'' (1999).
+
+[[Category:Computer science]]
+[[Category:Science]]

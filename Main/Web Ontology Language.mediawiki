@@ -1,0 +1,189 @@
+{{Source status|status=Wave 2 compiled article|note=Public W3C OWL 2 concept grounded in OWL 2 Overview, Primer, and Direct Semantics.}}
+{{Knowledge object
+ |title=Web Ontology Language
+ |entity_type=Concept
+ |domain=Computer science, Technology
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Web Ontology Language|current=Core}}
+
+= Web Ontology Language =
+
+== Overview ==
+The '''Web Ontology Language''' ('''OWL''') is a W3C family of ontology languages for representing formally defined classes, individuals, properties and axioms on the Semantic Web.
+
+OWL is designed for machine reasoning over [[Ontology|ontologies]] and structured data.
+
+OWL 2 is the modern W3C Recommendation family.
+
+== What OWL represents ==
+OWL ontologies can describe:
+
+* classes;
+* individuals;
+* object properties;
+* data properties;
+* datatypes;
+* equivalence;
+* disjointness;
+* property characteristics;
+* class restrictions;
+* identity/difference;
+* keys;
+* cardinality.
+
+These constructs have formal semantics.
+
+== Classes and individuals ==
+A class represents a set/category of individuals under an interpretation.
+
+Example:
+
+<pre>
+Class: Planet
+Individual: Mars
+Mars type Planet
+</pre>
+
+Classes are not object-oriented programming classes.
+
+OWL classes describe logical categories rather than implementation templates with methods and mutable state.
+
+== Object properties ==
+An object property relates individuals.
+
+Example:
+
+<pre>
+Mars orbits Sun
+</pre>
+
+OWL can characterize object properties as:
+* transitive;
+* symmetric;
+* asymmetric;
+* functional;
+* inverse-functional;
+* reflexive;
+* irreflexive.
+
+These characteristics create logical consequences.
+
+== Data properties ==
+Data properties connect individuals to literal values.
+
+Example:
+
+<pre>
+Mars hasName "Mars"
+</pre>
+
+Datatypes constrain how literal values are interpreted.
+
+== Class expressions ==
+OWL can define complex classes.
+
+For example, a class can contain individuals that:
+* have some property value;
+* have only values from another class;
+* have a minimum/maximum number of property values;
+* belong to intersections/unions/complements.
+
+These expressions allow definitions beyond simple named hierarchies.
+
+== Equivalence and disjointness ==
+OWL can state:
+
+'''Equivalent classes''' — classes have the same extension.
+
+'''Disjoint classes''' — no individual can belong to both.
+
+These are strong logical axioms.
+
+They should not be used merely for approximate conceptual mappings.
+
+== Identity ==
+OWL provides <code>owl:sameAs</code> for individual [[Identity|identity]].
+
+It means the two names denote the same individual.
+
+It is not a similarity relation.
+
+This makes misuse especially dangerous in integrated knowledge graphs.
+
+== Open-world assumption ==
+OWL is normally interpreted under an open-world assumption.
+
+Not knowing that Alice has a child does not imply Alice has no children.
+
+Likewise, unless a difference is asserted or entailed, two differently named individuals are not automatically known to be different.
+
+== No Unique Name Assumption ==
+OWL does not generally assume distinct identifiers denote distinct individuals.
+
+This differs from many programming/database intuitions.
+
+Explicit difference can be stated when required.
+
+== Description logics ==
+OWL 2's direct semantics is closely related to the expressive [[Description logic|description logic]] SROIQ.
+
+Description-logic foundations support reasoning tasks such as:
+* consistency;
+* satisfiability;
+* subsumption;
+* classification;
+* instance checking.
+
+OWL also defines syntaxes, profiles and Web-oriented exchange machinery beyond the abstract DL notation.
+
+== OWL profiles ==
+OWL 2 defines profiles optimized for different use cases.
+
+'''OWL 2 EL''' — designed for large ontologies with many classes/properties and polynomial-time reasoning for important tasks.
+
+'''OWL 2 QL''' — designed for query answering over large instance data using relational-style approaches.
+
+'''OWL 2 RL''' — designed for scalable rule-based reasoning.
+
+Profiles trade expressivity for computational behavior.
+
+== OWL and RDF ==
+[[Resource Description Framework|RDF]] provides the graph data model and serialization ecosystem.
+
+OWL adds richer ontology semantics.
+
+OWL ontologies can be exchanged as RDF graphs, but OWL semantics is not reducible to treating every OWL-looking triple as ordinary unconstrained RDF.
+
+Different OWL semantic regimes exist.
+
+== OWL and validation ==
+OWL is not primarily a closed-world validation language.
+
+A cardinality axiom can lead a reasoner to infer identity or existence relationships rather than simply report missing fields.
+
+Constraint checking commonly uses SHACL or other validation approaches.
+
+== Reasoning ==
+OWL reasoners can compute:
+* class hierarchy;
+* inconsistencies;
+* inferred types;
+* equivalent classes;
+* property consequences.
+
+The results are only as reliable as the ontology axioms and input assertions.
+
+Formal correctness does not guarantee the ontology matches reality.
+
+== Epistemic notes ==
+An OWL ontology is an information artifact with formal semantics. It should not be confused with philosophical ontology or treated as automatic proof that its conceptualization is correct.
+
+== References ==
+* [https://www.w3.org/TR/owl2-overview/ W3C — OWL 2 Document Overview]
+* [https://www.w3.org/TR/owl2-primer/ W3C — OWL 2 Primer]
+* [https://www.w3.org/TR/owl2-direct-semantics/ W3C — OWL 2 Direct Semantics]
+
+[[Category:Computer science]]
+[[Category:Technology]]

@@ -1,0 +1,243 @@
+{{Source status|status=Wave 2 compiled article|note=Public logic/KR concept grounded in formal logic, RDF/OWL entailment, and reasoning literature.}}
+{{Knowledge object
+ |title=Inference
+ |entity_type=Concept
+ |domain=Philosophy, Mathematics, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Inference|current=Core}}
+
+= Inference =
+
+== Overview ==
+'''Inference''' is the process or relation by which a conclusion is derived, supported or reached from premises, [[Evidence|evidence]], rules, models or representations.
+
+Inference is central to logic, science, statistics, artificial intelligence and everyday reasoning.
+
+Different kinds of inference provide different strengths of support.
+
+== Premises and conclusion ==
+A simple inference has:
+
+<pre>
+premise 1
+premise 2
+...
+therefore conclusion
+</pre>
+
+Example:
+
+<pre>
+All mammals are animals.
+Whales are mammals.
+Therefore whales are animals.
+</pre>
+
+This is a deductive inference.
+
+== Deduction ==
+'''Deductive inference''' aims to preserve truth.
+
+If the premises are true and the inference is valid, the conclusion must be true.
+
+Validity concerns structure.
+
+A valid argument can still have a false conclusion if one or more premises are false.
+
+Therefore:
+
+<pre>
+valid inference ≠ guaranteed true premises
+</pre>
+
+== Induction ==
+'''Inductive inference''' generalizes from observed cases or data.
+
+Example:
+
+<pre>
+many observed samples have property P
+→ unobserved cases probably have P
+</pre>
+
+Induction is ampliative: the conclusion goes beyond what is logically guaranteed by the premises.
+
+Statistical estimation and prediction often involve induction.
+
+== Abduction ==
+'''Abductive inference''' proposes or selects an explanation for observed evidence.
+
+Example:
+
+<pre>
+If H were true, E would be expected.
+E occurred.
+H is a plausible explanation.
+</pre>
+
+This is not deductively valid by itself.
+
+Alternative explanations must be compared.
+
+== Entailment ==
+'''Entailment''' is a semantic relation.
+
+A set of statements Γ entails φ when every relevant interpretation/model satisfying Γ also satisfies φ:
+
+<pre>
+Γ ⊨ φ
+</pre>
+
+Entailment is not an algorithm.
+
+It states what logically follows under the semantics.
+
+== Inference procedure ==
+An inference procedure is a method/algorithm for deriving conclusions.
+
+Examples:
+* resolution;
+* forward chaining;
+* backward chaining;
+* tableau reasoning;
+* theorem proving;
+* probabilistic inference.
+
+The relationship between a procedure and semantics is evaluated using soundness and completeness.
+
+== Soundness ==
+An inference procedure is '''sound''' when it derives only conclusions that are semantically entailed.
+
+Informally:
+
+<pre>
+derivable → entailed
+</pre>
+
+A sound system does not invent invalid logical consequences within its formal semantics.
+
+== Completeness ==
+An inference procedure is '''complete''' for a logic/problem when every semantically entailed conclusion in scope can be derived.
+
+Informally:
+
+<pre>
+entailed → derivable
+</pre>
+
+Soundness and completeness are different properties.
+
+A procedure can be sound but incomplete.
+
+== Monotonic inference ==
+An inference system is monotonic when adding premises cannot invalidate an existing consequence.
+
+Classical logic and standard OWL reasoning are generally monotonic.
+
+Formally:
+
+<pre>
+Γ ⊨ φ
+→
+Γ ∪ Δ ⊨ φ
+</pre>
+
+== Non-monotonic inference ==
+Human commonsense reasoning often uses defaults that can be defeated by new information.
+
+Example:
+
+<pre>
+birds normally fly
+Tweety is a bird
+→ Tweety flies
+
+new information:
+Tweety is a penguin
+</pre>
+
+The earlier conclusion can be withdrawn.
+
+Default logic and other non-monotonic systems model such behavior.
+
+== Probabilistic inference ==
+Probabilistic inference updates or computes probability distributions.
+
+For Bayesian inference:
+
+<pre>
+P(H | E) ∝ P(E | H)P(H)
+</pre>
+
+The result depends on the model, likelihood, prior and evidence.
+
+Probabilistic support is different from deductive entailment.
+
+== Causal inference ==
+[[Causality|Causal inference]] estimates causal relations/effects using interventions, assumptions and statistical models.
+
+A strong association alone does not establish causation.
+
+Causal inference therefore combines evidence with structural assumptions beyond ordinary correlation.
+
+== RDF inference ==
+[[Resource Description Framework|RDF]] semantics defines entailment regimes.
+
+For example, RDFS can infer superclass membership.
+
+An RDF processor is not required to materialize every valid inference unless its application contract says so.
+
+Validity of an inference and obligation to compute it are distinct.
+
+== OWL inference ==
+[[Web Ontology Language|OWL]] reasoners can infer:
+* subclass relations;
+* class membership;
+* equivalence;
+* inconsistency;
+* property consequences.
+
+These conclusions follow from ontology axioms under OWL semantics.
+
+They are not statistical predictions.
+
+== Knowledge graph inference ==
+[[Knowledge graph|Knowledge graphs]] can use several inference styles:
+
+* symbolic entailment;
+* rules;
+* graph algorithms;
+* probabilistic reasoning;
+* embedding-based link prediction.
+
+A system should distinguish:
+
+<pre>
+explicit assertion
+≠ logically inferred assertion
+≠ statistically predicted edge
+</pre>
+
+The provenance and epistemic status differ.
+
+== Inference and knowledge ==
+A correct inference can transmit justification only when the premises and reasoning conditions are epistemically appropriate.
+
+Formal validity alone cannot convert false or unsupported premises into [[Knowledge|knowledge]].
+
+This links inference with [[Evidence]], [[Justification]] and [[Epistemology]].
+
+== Epistemic notes ==
+"Inferred" should always invite the question: under which premises, semantics, model and procedure? Different inference systems can produce different legitimate conclusions from differently structured assumptions.
+
+== References ==
+* W3C, ''RDF Semantics'' / ''RDF 1.2 Semantics''.
+* W3C, ''OWL 2 Direct Semantics''.
+* Ronald J. Brachman and Hector J. Levesque, ''Knowledge Representation and Reasoning''.
+* Standard logic and statistical-inference texts.
+
+[[Category:Philosophy]]
+[[Category:Mathematics]]
+[[Category:Computer science]]

@@ -1,0 +1,79 @@
+{{Source status|status=Technical depth derivative|note=Advanced formal/applied-ontology surface of [[Ontology]].}}
+{{Reading depth|base=Ontology|current=Technical}}
+= Ontology — Technical =
+
+== Specification perspective ==
+A formal ontology can be modeled as vocabulary plus axioms:
+
+<pre>
+O = (V, A)
+</pre>
+
+where V contains symbols for classes, relations/properties, individuals or datatypes and A constrains their interpretation.
+
+Exact structure depends on the ontology language.
+
+== Ontological commitment ==
+A representation makes ontological commitments by choosing what kinds of entities and distinctions it allows or requires.
+
+Davis, Shrobe and Szolovits treat this as one major role of knowledge representation: a representation focuses attention on one view of the world and suppresses others.
+
+== Formal interpretation ==
+Under model-theoretic semantics, ontology axioms define conditions on interpretations.
+
+For ontology O, a model I satisfies O if:
+
+<pre>
+I ⊨ O
+</pre>
+
+Logical consequences are statements true in every model of O.
+
+This makes inference depend on explicit semantic commitments.
+
+== Top-level / domain ontology ==
+A top-level ontology provides very general distinctions such as:
+* object / process;
+* continuant / occurrent;
+* quality;
+* relation;
+* time / space.
+
+Domain ontologies specialize these concepts for a specific field.
+
+Alignment is useful only when the upper-level commitments are compatible with the domain's intended meaning.
+
+== Expressivity ==
+Ontology languages vary in expressivity.
+
+Greater expressivity permits richer axioms but can make reasoning more computationally expensive or undecidable.
+
+Description logics were developed partly to control this trade-off.
+
+== Identity ==
+Identity axioms are especially strong.
+
+Declaring two names identical means they denote one individual under the formal semantics.
+
+In OWL, <code>owl:sameAs</code> is not a fuzzy match, synonym or approximate mapping.
+
+== Ontology quality ==
+Technical evaluation can include:
+* consistency;
+* satisfiability;
+* competency-question coverage;
+* clarity of definitions;
+* reuse;
+* modularity;
+* provenance;
+* stable identifiers;
+* change management;
+* reasoning performance.
+
+Logical consistency alone does not guarantee that the ontology models the intended domain well.
+
+== References ==
+* Gruber (1993), DOI: 10.1006/knac.1993.1008.
+* Studer, Benjamins & Fensel (1998), DOI: 10.1016/S0169-023X(97)00056-6.
+* ISO/IEC 21838-1:2021.
+* [[Description logic/Technical|Description logic — Technical]]

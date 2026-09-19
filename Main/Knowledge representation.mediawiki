@@ -1,0 +1,188 @@
+{{Source status|status=Wave 2 compiled article|note=Public AI/KR concept grounded in Davis-Shrobe-Szolovits and Brachman-Levesque.}}
+{{Knowledge object
+ |title=Knowledge representation
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Knowledge representation|current=Core}}
+
+= Knowledge representation =
+
+== Overview ==
+'''Knowledge representation''' (KR) is the study and practice of encoding knowledge in explicit structures that support interpretation, communication, computation and [[Inference|reasoning]].
+
+It is a foundational area of artificial intelligence.
+
+A representation stands in for some aspect of a domain so that a system can reason about the representation instead of interacting directly with the world for every question.
+
+== Representation as surrogate ==
+A knowledge representation acts as a '''surrogate''' for the represented domain.
+
+A map represents a territory.
+
+A circuit model represents an electrical system.
+
+An ontology represents categories and relations in a domain.
+
+The representation is useful because operations on it can answer questions about the represented system.
+
+But:
+
+<pre>
+representation ≠ represented thing
+</pre>
+
+Errors in the representation can produce incorrect reasoning even if the reasoning algorithm is flawless.
+
+== Ontological commitments ==
+Davis, Shrobe and Szolovits emphasize that every representation makes '''ontological commitments'''.
+
+Choosing objects, processes, classes, time points, events or causal links determines what the system is prepared to notice and reason about.
+
+A representation is therefore not neutral.
+
+Its primitives encode a view of the world.
+
+== Theory of reasoning ==
+A representation also suggests which inferences are important and legitimate.
+
+Examples:
+
+* logic supports deduction;
+* frames support inheritance;
+* rules support forward/backward chaining;
+* probabilistic models support probabilistic inference;
+* description logics support subsumption and consistency reasoning.
+
+Representation and reasoning are designed together.
+
+== Efficient computation ==
+A representation can make some inferences easy and others difficult.
+
+This creates a trade-off among:
+* expressivity;
+* tractability;
+* storage;
+* query efficiency;
+* explainability.
+
+A language powerful enough to express arbitrary first-order theories can make general inference undecidable.
+
+Restricted representations can guarantee more predictable computation.
+
+== Human expression ==
+Knowledge representation is also a communication medium.
+
+Good representations should help humans:
+* inspect assumptions;
+* author knowledge;
+* understand conclusions;
+* debug errors;
+* reuse models.
+
+A representation that is theoretically elegant but impossible to maintain can fail as an engineering system.
+
+== Major KR traditions ==
+Knowledge representation has used:
+
+* propositional and first-order logic;
+* production rules;
+* frames;
+* [[Semantic network|semantic networks]];
+* scripts;
+* semantic triples;
+* [[Ontology|ontologies]];
+* [[Description logic|description logics]];
+* probabilistic graphical models;
+* [[Knowledge graph|knowledge graphs]].
+
+These approaches have different semantics and inference models.
+
+== Declarative representation ==
+A '''declarative''' representation states what is true or what relations hold, rather than prescribing an execution procedure.
+
+For example:
+
+<pre>
+Mars instanceOf Planet
+</pre>
+
+is declarative.
+
+A program telling a computer exactly how to search for planets is procedural.
+
+Declarative systems allow multiple reasoning engines to operate on the same facts.
+
+== Closed and open worlds ==
+Some representations assume missing facts are false or unavailable within a closed database state.
+
+Others, including typical Semantic Web ontology systems, use an open-world assumption:
+
+<pre>
+not known true ≠ false
+</pre>
+
+The assumption strongly affects inference.
+
+== Monotonicity ==
+Classical logics are often monotonic: adding facts cannot invalidate previous logical consequences.
+
+Human commonsense reasoning is often non-monotonic.
+
+Example:
+
+<pre>
+birds normally fly
+Tweety is a bird
+→ Tweety flies
+
+later:
+Tweety is a penguin
+</pre>
+
+The new information can defeat the default conclusion.
+
+KR research includes defaults, belief revision and non-monotonic logics for such cases.
+
+== Representation and uncertainty ==
+Not all knowledge is categorical.
+
+Uncertainty can be represented using:
+* probabilities;
+* fuzzy values;
+* confidence scores;
+* alternative hypotheses;
+* provenance and evidence.
+
+These are not equivalent methods.
+
+The appropriate representation depends on what uncertainty means in the domain.
+
+== Knowledge representation and databases ==
+Databases store structured information.
+
+KR additionally emphasizes explicit [[Semantics|semantics]] and inference.
+
+The boundary is not sharp: modern databases can enforce rich constraints and graph databases can support semantic reasoning.
+
+But a database schema alone is not necessarily a knowledge representation in the stronger AI sense.
+
+== Knowledge representation and machine learning ==
+Machine learning often learns numerical representations from data.
+
+Symbolic KR represents explicit entities, concepts and rules.
+
+Modern systems can combine them.
+
+A knowledge graph can use symbolic facts plus embeddings or learned completion models.
+
+These layers should remain distinguishable because their semantics and uncertainty differ.
+
+== References ==
+* Randall Davis, Howard Shrobe, Peter Szolovits, "What Is a Knowledge Representation?", ''AI Magazine'' 14(1), 17–33 (1993). DOI: 10.1609/aimag.v14i1.1029.
+* Ronald J. Brachman and Hector J. Levesque, ''Knowledge Representation and Reasoning'', Morgan Kaufmann (2004).
+* Franz Baader et al. (eds.), ''The Description Logic Handbook''.
+
+[[Category:Computer science]]

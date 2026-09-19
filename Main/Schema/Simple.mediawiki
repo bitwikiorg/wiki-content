@@ -1,0 +1,31 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Schema]].}}
+{{Reading depth|base=Schema|current=Simple}}
+= Schema — Simple =
+
+A '''schema''' is a set of rules describing how data should be structured.
+
+For example, a Person record might require:
+
+<pre>
+name: text
+birth date: date
+email: text
+</pre>
+
+A schema can say:
+* which fields exist;
+* what type of value each field uses;
+* which fields are required;
+* how records are connected.
+
+A schema is not the same as the data itself.
+
+It is also not always the same as an [[Ontology/Simple|ontology]].
+
+A schema usually focuses on structure and validation.
+
+An ontology usually focuses more on meaning and relationships in a domain.
+
+== Sources ==
+* W3C RDF Schema and SHACL.
+* [[Schema|Core article]]

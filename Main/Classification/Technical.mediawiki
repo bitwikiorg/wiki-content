@@ -1,0 +1,65 @@
+{{Source status|status=Technical depth derivative|note=Advanced formal/statistical/ontology-classification surface of [[Classification]].}}
+{{Reading depth|base=Classification|current=Technical}}
+= Classification — Technical =
+
+== Classification function ==
+A single-label classifier can be modeled:
+
+<pre>
+f : X → C
+</pre>
+
+mapping an input x to category c.
+
+Multi-label classification instead maps:
+
+<pre>
+f : X → P(C)
+</pre>
+
+where P(C) is a set of category subsets.
+
+== Confusion matrix ==
+For binary classification:
+
+<pre>
+true positive
+false positive
+true negative
+false negative
+</pre>
+
+support metrics such as precision, recall and specificity.
+
+These statistical meanings of precision should not be confused with metrological [[Accuracy and precision/Technical|precision]].
+
+== Distribution shift ==
+A classifier learned under distribution P(X,Y) may fail when deployment distribution Q(X,Y) differs.
+
+This separates:
+* model performance;
+* category validity;
+* environment stability.
+
+== Ontology classification ==
+In description logic, classification computes subsumption relations among named classes.
+
+If ontology O entails:
+
+<pre>
+A ⊑ B
+</pre>
+
+a reasoner places A below B in the inferred hierarchy.
+
+This is logical classification, not statistical prediction.
+
+== SKOS organization ==
+SKOS broader/narrower relationships form a concept organization scheme.
+
+They are intentionally weaker than strict class subsumption and should not be fed into DL classification as if they were equivalent without an explicit mapping.
+
+== References ==
+* W3C SKOS.
+* Description Logic Handbook.
+* Statistical learning literature.

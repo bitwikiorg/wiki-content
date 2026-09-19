@@ -1,0 +1,359 @@
+{{Source status|status=Wave 2 Phase 3 context audit|note=Audit state for the Wave 2 ontology/knowledge-representation capture/compile/write cycle.}}
+= Wave 2 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Semantics]]
+# [[Ontology]]
+# [[Entity]]
+# [[Identity]]
+# [[Concept]]
+# [[Category]]
+# [[Classification]]
+# [[Taxonomy]]
+# [[Relation]]
+# [[Property]]
+# [[Knowledge representation]]
+# [[Knowledge graph]]
+# [[Semantic network]]
+# [[Schema]]
+# [[Metadata]]
+# [[Semantic Web]]
+# [[Resource Description Framework]]
+# [[Web Ontology Language]]
+# [[Description logic]]
+# [[Inference]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 2 reader surfaces: '''60'''.
+
+== Structural audit ==
+
+All twenty Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* contain references;
+* use controlled Domain values;
+* contain internal links.
+
+All forty Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain sources/references;
+* do not duplicate Core <code>Knowledge object</code>;
+* do not duplicate Core category identity.
+
+== Semantic-kernel audit ==
+
+The dependency graph remains coherent:
+
+<pre>
+Semantics
+  ↓
+Ontology
+  ├→ Entity / Identity
+  ├→ Concept / Category
+  ├→ Relation / Property
+  └→ Classification / Taxonomy
+        ↓
+Knowledge representation
+  ├→ Semantic network
+  ├→ Knowledge graph
+  └→ Schema / Metadata
+        ↓
+Semantic Web
+  ├→ RDF
+  └→ OWL
+      ↓
+Description logic
+      ↓
+Inference
+</pre>
+
+No downstream article required redefining an upstream concept incompatibly.
+
+== Required non-equivalences preserved ==
+
+<pre>
+semantics ≠ syntax
+semantics ≠ pragmatics
+philosophical ontology ≠ information-science ontology
+ontology ≠ taxonomy
+ontology ≠ schema
+ontology language ≠ ontology content
+entity ≠ physical object
+entity ≠ class/category
+identifier ≠ identity
+numerical identity ≠ qualitative similarity
+concept ≠ word/label
+concept ≠ class by definition
+category ≠ taxonomy
+classification ≠ taxonomy
+classification scheme ≠ classifier algorithm
+taxonomy parenthood ≠ necessarily subclasshood
+relation ≠ property in every theory
+property ≠ database field
+knowledge representation ≠ represented world
+knowledge graph ≠ arbitrary graph database
+knowledge graph ≠ ontology
+semantic network ≠ Semantic Web
+schema ≠ ontology
+schema validation ≠ inference
+metadata ≠ only data about data
+Semantic Web ≠ one database
+RDF ≠ serialization syntax
+RDF ≠ RDFS
+RDF ≠ OWL
+OWL ontology ≠ philosophical ontology
+OWL class ≠ object-oriented class
+owl:sameAs ≠ similarity
+Description logic ≠ full first-order logic
+entailment ≠ inference procedure
+valid inference ≠ true premises
+soundness ≠ completeness
+</pre>
+
+== Public concept versus BITwiki application ==
+
+The wave keeps general knowledge distinct from repository architecture.
+
+<pre>
+Ontology        ≠ BITwiki:Ontology
+Entity          ≠ BITwiki:Entity types
+Relation        ≠ BITwiki:Relationships
+Property        ≠ BITwiki:Semantic properties
+Category        ≠ MediaWiki Category:
+Concept         ≠ MediaWiki Concept:
+Schema          ≠ bitwiki-runtime-schema.json
+Knowledge graph ≠ BITwiki staging graph
+</pre>
+
+Public pages define the general concept first. BITwiki appears only in explicitly labeled application sections.
+
+== Philosophy / information-science ontology audit ==
+
+[[Ontology]] preserves both major senses:
+
+# philosophy — what exists, ontological commitment, general kinds/relations;
+# information science — explicit/formal specification of a conceptualization/domain vocabulary.
+
+The article does not reduce philosophical ontology to OWL and does not present a formal ontology artifact as proof of metaphysical truth.
+
+== Concept / entity / category audit ==
+
+[[Concept]], [[Entity]] and [[Category]] remain distinct.
+
+* concept — unit/constituent of thought or structured meaning;
+* entity — distinct object of reference/representation;
+* category — grouping/kind.
+
+The pages explicitly distinguish a concept such as Planet from an entity such as Mars and from a formal class used to classify individuals.
+
+== Classification / taxonomy audit ==
+
+[[Classification]] is the assignment process.
+
+[[Taxonomy]] is the organized concept/category structure.
+
+The articles also preserve:
+
+<pre>
+SKOS broader/narrower ≠ automatically OWL subclass
+statistical classification ≠ ontology classification
+</pre>
+
+No reasoning rule is derived merely from visual hierarchy.
+
+== Relation / property audit ==
+
+[[Relation]] is the broad connection concept.
+
+[[Property]] covers philosophical attributes and formal predicate/property uses.
+
+RDF property is explicitly presented as a specialized binary relation role rather than the universal meaning of property.
+
+RDFS domain/range are correctly treated as inferential semantics, not ordinary closed-world validation constraints.
+
+== Knowledge-representation audit ==
+
+[[Knowledge representation]] preserves the five-role Davis/Shrobe/Szolovits framing:
+
+* surrogate;
+* ontological commitments;
+* reasoning theory;
+* efficient computation;
+* human expression.
+
+The wave does not equate databases, learned embeddings, symbolic KR or knowledge graphs.
+
+[[Knowledge graph]] distinguishes:
+
+* graph database;
+* ontology;
+* RDF graph;
+* symbolic entailment;
+* learned link prediction.
+
+Predicted edges are not described as logically entailed facts.
+
+== Schema / metadata audit ==
+
+[[Schema]] separates:
+
+* structural schemas;
+* database schemas;
+* validation shapes;
+* RDFS semantic vocabulary.
+
+[[Metadata]] remains broader than "data about data" and includes descriptive, structural, administrative, preservation and provenance functions.
+
+Schema validity and metadata presence are not treated as truth guarantees.
+
+== Semantic Web standards audit ==
+
+[[Semantic Web]] separates RDF, RDFS, OWL, SPARQL, SKOS and Linked Data.
+
+Machine-readable does not become "human-like machine understanding."
+
+Decentralized identifier use does not eliminate entity-resolution or provenance problems.
+
+== RDF current-state audit ==
+
+As of the Wave 2 audit in September 2026:
+
+* RDF 1.2 Concepts and Abstract Data Model — Candidate Recommendation Snapshot dated 7 April 2026;
+* RDF 1.2 Semantics — Candidate Recommendation Snapshot dated 7 April 2026;
+* RDF 1.2 Primer — Draft Note dated 26 August 2026;
+* several RDF 1.2 serialization/query specifications continue as drafts.
+
+Therefore [[Resource Description Framework]] correctly presents stable RDF concepts version-neutrally and labels RDF 1.2 as an active Candidate Recommendation rather than a finalized Recommendation.
+
+The article also preserves:
+
+<pre>
+RDF data model ≠ serialization
+RDF graph ≠ RDF dataset
+RDF ≠ RDFS
+RDF ≠ OWL
+open world ≠ missing-is-false
+</pre>
+
+== OWL / description logic audit ==
+
+[[Web Ontology Language]] preserves:
+
+* classes vs individuals;
+* object vs data properties;
+* open-world assumption;
+* no general Unique Name Assumption;
+* strong <code>owl:sameAs</code> identity;
+* OWL profiles;
+* relation to description logics.
+
+[[Description logic]] preserves the concepts/roles/individuals model, TBox/ABox distinction, satisfiability, subsumption, instance checking and expressivity/decidability trade-off.
+
+OWL is not presented as identical to description logic as a whole.
+
+== Inference audit ==
+
+[[Inference]] separates:
+
+* deduction;
+* induction;
+* abduction;
+* probabilistic inference;
+* causal inference;
+* semantic entailment;
+* algorithmic inference procedure.
+
+Soundness and completeness are defined separately.
+
+RDF/OWL derived assertions are separated from statistically predicted graph edges.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| Stanford Encyclopedia of Philosophy || semantics, ontology, identity, concepts, categories
+|-
+| Gruber; Studer/Benjamins/Fensel || applied ontology / knowledge engineering
+|-
+| Davis/Shrobe/Szolovits; Brachman/Levesque || knowledge representation and reasoning
+|-
+| Quillian; Collins/Loftus || semantic networks / semantic memory
+|-
+| Hogan et al. || knowledge graph synthesis
+|-
+| W3C || RDF, RDFS, OWL, SKOS, Semantic Web semantics
+|-
+| ISO/IEC 21838 || top-level ontology requirements
+|-
+| ISO 25964 || knowledge organization / thesauri
+|-
+| NISO / DCMI || metadata
+|}
+
+Wikipedia and Scholarpedia remain orientation/discovery surfaces rather than primary authority where stronger formal sources exist.
+
+== Redlink policy ==
+
+The wave intentionally exposes normalized prerequisites such as:
+
+[[Syntax]], [[Pragmatics]], [[Class]], [[Instance]], [[Type]], [[Predicate]], [[Graph]], [[Identifier]], [[Internationalized Resource Identifier]], [[RDF Schema]], [[SPARQL]], [[SHACL]], [[SKOS]], [[Linked Data]], [[Logical entailment]], [[Soundness]], [[Completeness]], [[Satisfiability]], [[Open-world assumption]], [[Closed-world assumption]], [[Entity resolution]].
+
+These are coverage signals, not automatic stub requests.
+
+== Acceptance criteria ==
+
+Wave 2 is ready to leave Phase 3 when:
+
+# all 60 surfaces remain present;
+# one concept = one Core semantic identity;
+# controlled domains pass;
+# public/project distinctions remain explicit;
+# all depth derivatives remain category/identity-exempt;
+# slash-title deployment mapping remains valid;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, deployment, workflow and Main-space audits pass;
+# staging builds the complete stacked graph.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 2 context capture]]
+        ↓
+[[BITwiki:Wave 2 compiled context]]
+        ↓
+[[BITwiki:Wave 2 context audit]]
+</pre>
+
+== Release audit update — 2026-09-19 ==
+
+A final stacked rendering audit found three MediaWiki presentation defects in Wave 2:
+
+* [[Knowledge representation/Simple]] used Markdown blockquote syntax;
+* [[Ontology/Simple]] used Markdown blockquote syntax;
+* [[Schema]] used Markdown blockquote syntax.
+
+All three were converted to explicit <code>&lt;blockquote&gt;</code> markup without changing the underlying claims.
+
+The standards check was repeated against current W3C publications:
+
+* RDF 1.2 Concepts and Abstract Data Model remains a Candidate Recommendation Snapshot dated 7 April 2026;
+* RDF 1.2 Semantics remains a Candidate Recommendation Snapshot dated 7 April 2026;
+* RDF 1.2 Primer is a Draft Note dated 26 August 2026;
+* OWL 2 remains the W3C Recommendation family dated 11 December 2012.
+
+Wave 2 remains '''20 concepts / 60 reader surfaces'''. No semantic-definition changes were required by the release audit.
+
+Common public search aliases <code>RDF</code> and <code>OWL</code> were added as Navigation-classified redirects to the canonical [[Resource Description Framework]] and [[Web Ontology Language]] pages. They do not create additional knowledge-object identities.
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

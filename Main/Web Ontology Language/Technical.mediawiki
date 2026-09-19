@@ -1,0 +1,87 @@
+{{Source status|status=Technical depth derivative|note=Advanced OWL 2 semantics/profiles surface of [[Web Ontology Language]].}}
+{{Reading depth|base=Web Ontology Language|current=Technical}}
+= Web Ontology Language — Technical =
+
+== Direct semantics ==
+OWL 2 Direct Semantics defines interpretations with:
+* object domain;
+* datatype domain;
+* class extensions;
+* object-property extensions;
+* data-property extensions;
+* individual denotations.
+
+An ontology is satisfied when all of its axioms are satisfied.
+
+== SROIQ relation ==
+OWL 2 DL corresponds closely to SROIQ with datatype/punning/specification extensions.
+
+The name reflects constructors including:
+* transitive roles;
+* role hierarchies;
+* nominals;
+* inverses;
+* qualified number restrictions.
+
+The expressive power is controlled to preserve decidability.
+
+== Class constructors ==
+Representative class expressions include:
+
+<pre>
+ObjectIntersectionOf(A B)
+ObjectUnionOf(A B)
+ObjectComplementOf(A)
+ObjectSomeValuesFrom(p C)
+ObjectAllValuesFrom(p C)
+ObjectMinCardinality(n p C)
+</pre>
+
+These have model-theoretic interpretations.
+
+== TBox / ABox ==
+Description-logic terminology often separates:
+
+'''TBox''' — terminological/schema axioms.
+
+'''ABox''' — assertions about individuals.
+
+OWL syntax is broader, but the distinction remains useful for reasoning.
+
+== Profiles ==
+OWL 2 EL emphasizes scalable classification.
+
+OWL 2 QL emphasizes query answering.
+
+OWL 2 RL supports rule-oriented implementation.
+
+An ontology outside a profile may still be valid OWL 2 DL/Full depending on constructs, but different guarantees apply.
+
+== RDF-based versus Direct Semantics ==
+OWL has multiple semantic perspectives.
+
+OWL 2 Direct Semantics targets the DL-oriented structural specification.
+
+RDF-Based Semantics applies a different semantic treatment over RDF graphs.
+
+The choice affects what ontologies/documents are in scope.
+
+== Consistency ==
+An ontology can be syntactically legal and logically inconsistent.
+
+For example:
+
+<pre>
+Cat disjointWith Dog
+Fido type Cat
+Fido type Dog
+</pre>
+
+has no model under the stated axioms.
+
+Reasoners can detect such contradictions.
+
+== References ==
+* W3C OWL 2 Direct Semantics.
+* W3C OWL 2 Structural Specification.
+* Description Logic Handbook.

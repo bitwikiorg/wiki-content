@@ -1,0 +1,137 @@
+{{Source status|status=Wave 2 compiled article|note=Public meaning/interpretation concept grounded in SEP and formal-semantics literature.}}
+{{Knowledge object
+ |title=Semantics
+ |entity_type=Concept
+ |domain=Philosophy, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Semantics|current=Core}}
+
+= Semantics =
+
+== Overview ==
+'''Semantics''' concerns meaning and interpretation.
+
+In language, semantics studies how words, phrases and sentences acquire or express meaning. In logic and computer science, formal semantics assigns mathematically explicit interpretations to expressions in a formal [[Syntax|syntax]].
+
+Semantics is therefore not one single theory. It is a family of questions about how representations connect to what they mean.
+
+== Semantics and syntax ==
+'''Syntax''' concerns the form and arrangement of expressions.
+
+'''Semantics''' concerns their interpretation.
+
+Two expressions can be syntactically different while having the same meaning, or syntactically similar while receiving different interpretations.
+
+A formal grammar can determine whether an expression is well formed without determining what it denotes or whether it is true.
+
+== Semantics and pragmatics ==
+'''Pragmatics''' concerns how context, speaker intention, social practice and use affect interpretation.
+
+The boundary between semantics and pragmatics is disputed.
+
+For example, understanding "I am here now" depends on contextual information about speaker, place and time. Some theories encode parts of this context into semantics; others treat more of it pragmatically.
+
+== Reference and truth ==
+Semantic theories often connect expressions to:
+
+* referents;
+* truth conditions;
+* semantic values;
+* propositions;
+* functions;
+* possible worlds;
+* discourse contexts.
+
+A name can refer to an entity. A predicate can apply to entities. A sentence can be true or false under an interpretation.
+
+Different theories disagree over which of these structures are fundamental.
+
+== Compositionality ==
+A central idea in semantics is '''compositionality''': the meaning of a complex expression depends systematically on the meanings of its parts and how those parts are combined.
+
+This helps explain how people can understand sentences they have never encountered before.
+
+Compositionality is influential but requires care because idioms, ambiguity, context and nonliteral language complicate simple part-by-part accounts.
+
+== Lexical and sentence meaning ==
+'''Lexical semantics''' studies the meanings of words and lexical items.
+
+Questions include:
+* synonymy;
+* antonymy;
+* polysemy;
+* ambiguity;
+* hyponymy;
+* semantic fields.
+
+'''Sentence semantics''' studies how grammatical structure and lexical meaning combine into sentence meaning.
+
+== Formal semantics ==
+In logic and computer science, formal semantics specifies how a formal language is interpreted.
+
+A common structure distinguishes:
+
+<pre>
+syntax
+→ interpretation
+→ semantic value / model / behavior
+</pre>
+
+For a logic, semantics may specify which interpretations satisfy a formula.
+
+For a programming language, semantics may specify what a program denotes or how program states change during execution.
+
+For RDF or OWL, semantics defines what graphs or axioms mean and which consequences they entail.
+
+== Model-theoretic semantics ==
+A model-theoretic semantics defines interpretations and satisfaction conditions.
+
+For a formula φ and interpretation I:
+
+<pre>
+I ⊨ φ
+</pre>
+
+means that φ is true/satisfied under I.
+
+Logical consequence can then be defined across all relevant interpretations.
+
+This separates the symbols written in a language from the structures that give those symbols meaning.
+
+== Semantics in knowledge representation ==
+[[Knowledge representation]] depends on semantics because machine-readable symbols need defined interpretation if automated reasoning is supposed to preserve meaning.
+
+A relation name such as <code>partOf</code> is only a label until its intended semantics are specified.
+
+Formal systems can additionally declare characteristics such as:
+* transitivity;
+* symmetry;
+* inverse relations;
+* subclasshood;
+* identity.
+
+These commitments affect valid inference.
+
+== Semantic interoperability ==
+Two systems are semantically interoperable when they can exchange information while preserving sufficiently shared meaning.
+
+Matching labels is not enough.
+
+For example, two systems can both use the field "status" while assigning it incompatible meanings.
+
+Ontologies, controlled vocabularies, identifiers and explicit mappings can improve semantic interoperability by making distinctions visible.
+
+== Epistemic notes ==
+Semantics does not guarantee truth. A representation can have perfectly precise semantics while describing something false.
+
+Likewise, assigning a URI or machine-readable label does not by itself produce shared human understanding.
+
+== References ==
+* [https://plato.stanford.edu/entries/meaning/ Stanford Encyclopedia of Philosophy — Theories of Meaning]
+* W3C, ''RDF Semantics'' / ''RDF 1.2 Semantics''.
+* Glynn Winskel, ''The Formal Semantics of Programming Languages'', MIT Press (1993).
+
+[[Category:Philosophy]]
+[[Category:Computer science]]

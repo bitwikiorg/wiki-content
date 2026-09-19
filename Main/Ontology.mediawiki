@@ -1,0 +1,161 @@
+{{Source status|status=Wave 2 compiled article|note=Public philosophy/information-science concept grounded in SEP, Gruber, knowledge engineering, and ISO top-level ontology standards.}}
+{{Knowledge object
+ |title=Ontology
+ |entity_type=Concept
+ |domain=Philosophy, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Ontology|current=Core}}
+
+= Ontology =
+
+== Overview ==
+'''Ontology''' has two major related meanings.
+
+In philosophy, ontology studies what exists and the most general kinds, structures and relations of what exists.
+
+In information science and artificial intelligence, an ontology is an explicit, often formal specification of a conceptualization or domain vocabulary used to represent entities, categories, properties, relations and constraints.
+
+These senses influence each other but should not be treated as identical.
+
+== Philosophical ontology ==
+Philosophical ontology asks questions such as:
+
+* What exists?
+* What kinds of things exist?
+* Are properties or relations entities?
+* What makes an object the same object over time?
+* Are events, processes, numbers or fictional objects real?
+* Which distinctions are fundamental?
+
+Ontology is usually treated as a part of metaphysics.
+
+It also studies ontological commitment: what entities a theory or language commits us to accepting.
+
+== Information-science ontology ==
+In knowledge engineering, an ontology makes a conceptual model explicit enough to share and reuse.
+
+An ontology can define:
+
+* classes or categories;
+* [[Entity|entities]] or individuals;
+* [[Relation|relations]];
+* [[Property|properties]];
+* definitions;
+* domain/range restrictions;
+* equivalence/disjointness;
+* axioms;
+* constraints or rules, depending on the formalism.
+
+Thomas Gruber's influential 1993 work described an ontology as a specification of a conceptualization for a shared domain of discourse.
+
+== Conceptualization ==
+A conceptualization is an abstract view of a domain: what kinds of things are relevant and how they can relate.
+
+The ontology is a representation/specification of that view.
+
+This gives an important separation:
+
+<pre>
+domain
+≠ conceptualization
+≠ ontology document
+≠ ontology language
+≠ serialization
+</pre>
+
+The same conceptualization can be encoded using different languages.
+
+== Domain and top-level ontologies ==
+A '''domain ontology''' models concepts and relations for a particular subject area such as medicine, finance or materials science.
+
+A '''top-level ontology''' defines highly general categories intended to support interoperability across domains.
+
+ISO/IEC 21838 specifies requirements and examples for top-level ontologies.
+
+A top-level ontology does not replace domain knowledge; it provides general organizing distinctions with which domain ontologies can align.
+
+== Ontology and taxonomy ==
+A [[Taxonomy]] usually organizes concepts or categories, often through broader–narrower or parent–child hierarchy.
+
+An ontology can include taxonomy but normally expresses richer semantics such as:
+* multiple relation types;
+* constraints;
+* identity;
+* disjointness;
+* property characteristics;
+* logical axioms.
+
+A taxonomy can therefore be part of an ontology without being equivalent to an ontology.
+
+== Ontology and schema ==
+A [[Schema]] specifies expected structure.
+
+Some schemas and ontologies overlap in practice, but their primary purposes often differ.
+
+A database schema commonly constrains how records are stored.
+
+An ontology commonly describes the meaning and relationships of represented domain concepts.
+
+RDF Schema is an important boundary case: despite its name, it provides semantic vocabulary constructs and entailments rather than ordinary closed-world record validation.
+
+== Ontology languages ==
+An '''ontology language''' supplies syntax and formal semantics for writing ontologies.
+
+Examples include:
+* Common Logic;
+* frame languages;
+* [[Web Ontology Language|OWL]];
+* description-logic-based formalisms.
+
+An ontology is the content expressed in such a language; the language itself is not the ontology.
+
+== Ontology engineering ==
+Ontology engineering includes:
+
+* scoping;
+* competency questions;
+* term/identifier selection;
+* class/relation design;
+* reuse and alignment;
+* axiom design;
+* consistency checking;
+* documentation;
+* versioning;
+* governance.
+
+Over-modeling can be as damaging as under-modeling. A distinction should justify its cost through improved meaning, interoperability, queries or reasoning.
+
+== Ontology alignment ==
+Different ontologies may model related domains using different assumptions.
+
+Alignment can state:
+* exact equivalence;
+* broader/narrower mappings;
+* related concepts;
+* class/property correspondences;
+* transformation rules.
+
+Similarity of labels is not enough to justify equivalence.
+
+== Open-world reasoning ==
+Many ontology languages such as OWL operate under an open-world assumption.
+
+Failure to assert a fact does not imply that the fact is false.
+
+This differs from many database-validation contexts where missing required data can constitute failure.
+
+== BITwiki application ==
+BITwiki has a project-specific architecture at [[BITwiki:Ontology]] describing its entity types, relationships and semantic properties.
+
+That is an information-science ontology application. It is not the definition of ontology itself and does not settle philosophical ontology.
+
+== References ==
+* [https://plato.stanford.edu/entries/logic-ontology/ Stanford Encyclopedia of Philosophy — Logic and Ontology]
+* Thomas R. Gruber, "A Translation Approach to Portable Ontology Specifications", ''Knowledge Acquisition'' 5(2), 199–220 (1993). DOI: 10.1006/knac.1993.1008.
+* Rudi Studer, V. Richard Benjamins, Dieter Fensel, "Knowledge engineering: Principles and methods", ''Data & Knowledge Engineering'' 25 (1998). DOI: 10.1016/S0169-023X(97)00056-6.
+* ISO/IEC 21838-1:2021, ''Top-level ontologies — Requirements''.
+
+[[Category:Philosophy]]
+[[Category:Computer science]]

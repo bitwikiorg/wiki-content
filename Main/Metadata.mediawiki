@@ -1,0 +1,181 @@
+{{Source status|status=Wave 2 compiled article|note=Public information-science concept grounded in NISO and Dublin Core guidance.}}
+{{Knowledge object
+ |title=Metadata
+ |entity_type=Concept
+ |domain=Computer science, Technology
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Metadata|current=Core}}
+
+= Metadata =
+
+== Overview ==
+'''Metadata''' is structured information about resources that supports description, discovery, management, preservation, interpretation, rights, provenance or use.
+
+A common shorthand is "data about data", but this is incomplete.
+
+Metadata can describe:
+* books;
+* images;
+* people;
+* physical objects;
+* datasets;
+* software;
+* services;
+* scientific samples;
+* concepts.
+
+The resource being described does not have to be "data."
+
+== Descriptive metadata ==
+'''Descriptive metadata''' helps identify and discover a resource.
+
+Examples:
+* title;
+* creator;
+* subject;
+* abstract;
+* keywords;
+* language.
+
+Library catalogs are classic metadata systems.
+
+== Structural metadata ==
+'''Structural metadata''' describes how components fit together.
+
+Examples:
+* page order in a digitized book;
+* chapters in a document;
+* files in a dataset package;
+* relationships among media tracks.
+
+It helps systems reconstruct compound objects.
+
+== Administrative metadata ==
+Administrative metadata supports management.
+
+Examples:
+* owner;
+* access permissions;
+* license;
+* file format;
+* creation date;
+* retention policy.
+
+It may include technical, rights and preservation information.
+
+== Preservation metadata ==
+Preservation metadata records information needed to keep resources usable over time.
+
+It can include:
+* file formats;
+* fixity hashes;
+* migrations;
+* preservation actions;
+* hardware/software dependencies;
+* custody history.
+
+This overlaps strongly with [[Provenance|provenance]].
+
+== Provenance metadata ==
+Provenance metadata records how a resource originated and changed.
+
+Examples:
+* source dataset;
+* processing activity;
+* responsible agent;
+* transformation;
+* version.
+
+W3C PROV is one formal model for provenance metadata.
+
+== Metadata schema ==
+A metadata schema or vocabulary defines which properties are available and what they mean.
+
+Dublin Core includes widely reused terms such as:
+* title;
+* creator;
+* subject;
+* date;
+* identifier;
+* rights.
+
+The metadata schema is different from a particular metadata record.
+
+== Embedded and external metadata ==
+Metadata can be embedded in the resource.
+
+Examples:
+* EXIF in an image;
+* document properties;
+* HTML metadata.
+
+Or it can be stored externally:
+* catalog record;
+* sidecar file;
+* database row;
+* RDF graph.
+
+Each approach has persistence and synchronization trade-offs.
+
+== Machine-readable metadata ==
+Machine-readable metadata uses structured formats and identifiers that software can process reliably.
+
+Examples include:
+* JSON;
+* XML;
+* RDF;
+* schema.org markup.
+
+Machine-readable does not mean semantically correct.
+
+The values and vocabulary still need interpretation and quality control.
+
+== Metadata quality ==
+Metadata can be:
+* missing;
+* stale;
+* inconsistent;
+* duplicated;
+* incorrectly mapped;
+* overly broad.
+
+Useful metadata quality dimensions include:
+* completeness;
+* accuracy;
+* consistency;
+* timeliness;
+* provenance;
+* vocabulary control.
+
+== Metadata and schema ==
+[[Schema]] defines structure.
+
+Metadata is information that populates/describes resources using such structures.
+
+A metadata vocabulary can itself be represented by a schema or ontology.
+
+== Metadata and knowledge graphs ==
+A [[Knowledge graph]] can treat metadata as ordinary graph assertions.
+
+For example:
+
+<pre>
+Dataset42 creator Alice
+Dataset42 license CC-BY
+Dataset42 derivedFrom Dataset10
+</pre>
+
+The difference between "metadata" and "domain data" can therefore depend on perspective.
+
+== Epistemic notes ==
+Metadata is not automatically authoritative. A metadata claim such as "created by Alice" still requires provenance and can be wrong.
+
+== References ==
+* NISO, ''Understanding Metadata''.
+* [https://www.dublincore.org/resources/metadata-basics/ Dublin Core Metadata Initiative — Metadata Basics]
+* W3C PROV specifications.
+
+[[Category:Computer science]]
+[[Category:Technology]]

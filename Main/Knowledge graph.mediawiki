@@ -1,0 +1,216 @@
+{{Source status|status=Wave 2 compiled article|note=Public graph-based KR concept grounded in Hogan et al. and Semantic Web/KR literature.}}
+{{Knowledge object
+ |title=Knowledge graph
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Knowledge graph|current=Core}}
+
+= Knowledge graph =
+
+== Overview ==
+A '''knowledge graph''' is a graph-based [[Knowledge representation|knowledge representation]] in which nodes and edges encode entities, concepts, types, relations, facts or other structured knowledge.
+
+Knowledge graphs are used for:
+* search;
+* data integration;
+* recommendation;
+* question answering;
+* scientific knowledge;
+* enterprise data;
+* artificial intelligence.
+
+There is no single universally accepted definition.
+
+== Graph structure ==
+A graph contains nodes and edges.
+
+A simple knowledge graph might represent:
+
+<pre>
+Mars ──instanceOf──> Planet
+Mars ──orbits──────> Sun
+</pre>
+
+The nodes identify represented things.
+
+The labeled edges express [[Relation|relations]].
+
+Knowledge graphs can also include literal values such as dates, names or measurements.
+
+== Data and schema layers ==
+Many knowledge graphs distinguish:
+
+'''data/instance layer''' — specific entities and facts.
+
+'''schema/ontology layer''' — classes, relation types and constraints.
+
+Example:
+
+<pre>
+Mars instanceOf Planet
+Planet subclassOf CelestialBody
+</pre>
+
+A reasoner may then infer:
+
+<pre>
+Mars instanceOf CelestialBody
+</pre>
+
+Not every knowledge graph has a formal ontology.
+
+== Knowledge graph versus graph database ==
+A graph database stores/query graph-shaped data.
+
+A knowledge graph additionally aims to encode meaningful domain knowledge, often using:
+* types;
+* shared identifiers;
+* schema;
+* provenance;
+* ontology;
+* inference;
+* entity resolution.
+
+The boundary is fuzzy.
+
+Calling a database a knowledge graph does not automatically make its edges semantically rich.
+
+== Knowledge graph versus ontology ==
+An [[Ontology]] defines concepts, relations and axioms.
+
+A knowledge graph contains/asserts data/facts and can use an ontology.
+
+Thus:
+
+<pre>
+ontology can govern a knowledge graph
+knowledge graph can instantiate an ontology
+ontology ≠ knowledge graph
+</pre>
+
+Some systems call the combined schema + data graph the knowledge graph.
+
+The scope should be stated.
+
+== RDF knowledge graphs ==
+[[Resource Description Framework|RDF]] is commonly used for knowledge graphs.
+
+RDF triples naturally form a directed labeled graph.
+
+RDFS and [[Web Ontology Language|OWL]] add richer schema/ontology semantics.
+
+However, knowledge graphs can also use:
+* property graphs;
+* custom graph models;
+* relational backends;
+* document stores.
+
+RDF is common, not mandatory.
+
+== Entity resolution ==
+Large knowledge graphs frequently combine sources.
+
+The system must decide when different records refer to the same [[Entity|entity]].
+
+Bad merges create false facts.
+
+Failure to merge duplicates fragments knowledge.
+
+Entity resolution therefore interacts directly with [[Identity|identity]] and [[Provenance|provenance]].
+
+== Provenance ==
+A graph assertion may need provenance:
+
+<pre>
+source
+time
+method
+confidence
+author
+version
+</pre>
+
+Without provenance, a graph can show a fact without showing why it should be trusted.
+
+This is especially important when facts are extracted automatically.
+
+== Deductive inference ==
+A knowledge graph can derive new facts using formal rules.
+
+Example:
+
+<pre>
+A subclassOf B
+x instanceOf A
+→ x instanceOf B
+</pre>
+
+This is symbolic inference.
+
+Its validity depends on the semantics of the graph/schema language.
+
+== Inductive completion ==
+Knowledge graph systems also use machine learning to predict missing links.
+
+An embedding model might estimate:
+
+<pre>
+score(entity1, relation, entity2)
+</pre>
+
+A high score suggests a possible edge.
+
+It is not the same as a logically entailed fact.
+
+Predicted edges should preserve their epistemic status and provenance.
+
+== Query ==
+Knowledge graphs can support graph-pattern queries.
+
+RDF graphs commonly use SPARQL.
+
+Property graphs use other graph-query languages.
+
+Queries retrieve patterns; they do not necessarily perform ontology inference unless the system's query semantics includes an entailment regime.
+
+== Knowledge graph construction ==
+Construction can involve:
+
+* manual curation;
+* structured database import;
+* entity extraction;
+* relation extraction;
+* ontology alignment;
+* entity resolution;
+* data cleaning;
+* provenance capture;
+* validation.
+
+Automatically extracted graphs can scale rapidly but require quality controls.
+
+== Dynamic knowledge ==
+Real-world facts change.
+
+A useful knowledge graph may need:
+* time;
+* versioning;
+* source history;
+* retractions;
+* temporal validity.
+
+Replacing old facts without history can destroy provenance.
+
+== BITwiki application ==
+BITwiki can be projected as a knowledge graph using pages, SMW properties and derived graph views.
+
+That graph is one application of the general concept, not its definition.
+
+== References ==
+* Aidan Hogan et al., "Knowledge Graphs", ''ACM Computing Surveys'' 54(4) (2021). DOI: 10.1145/3447772.
+* W3C RDF/RDFS/OWL specifications.
+* Ronald Brachman and Hector Levesque, ''Knowledge Representation and Reasoning''.
+
+[[Category:Computer science]]

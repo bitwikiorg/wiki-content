@@ -1,0 +1,75 @@
+{{Source status|status=Technical depth derivative|note=Advanced symbolic-KR and reasoning surface of [[Knowledge representation]].}}
+{{Reading depth|base=Knowledge representation|current=Technical}}
+= Knowledge representation — Technical =
+
+== Five roles ==
+Davis, Shrobe and Szolovits characterize KR as:
+
+# a surrogate for the world;
+# a set of ontological commitments;
+# a fragmentary theory of intelligent reasoning;
+# a medium for efficient computation;
+# a medium of human expression.
+
+These roles explain why representation-language design cannot be evaluated only by expressivity.
+
+== Declarative semantics ==
+A KR language L usually defines:
+
+<pre>
+syntax(L)
+semantics(L)
+inference(L)
+</pre>
+
+Semantics maps expressions to interpretations.
+
+Inference procedures derive consequences.
+
+Their relationship is evaluated through soundness and completeness.
+
+== Expressivity / complexity ==
+More expressive languages can represent more distinctions but make reasoning harder.
+
+Typical complexity questions include:
+* satisfiability;
+* entailment;
+* query answering;
+* classification;
+* model checking.
+
+Description logics occupy a designed region between weak frame systems and unrestricted first-order logic.
+
+== Non-monotonicity ==
+Default reasoning may use forms such as:
+
+<pre>
+Bird(x) : normally Fly(x)
+</pre>
+
+where exceptions defeat conclusions.
+
+Approaches include:
+* default logic;
+* circumscription;
+* answer-set programming;
+* defeasible logic.
+
+These differ fundamentally from monotonic OWL entailment.
+
+== Hybrid representations ==
+Modern KR systems may combine:
+* symbolic triples;
+* rules;
+* embeddings;
+* vector retrieval;
+* probabilistic models;
+* language models.
+
+The numerical layer may suggest candidates while the symbolic layer enforces explicit semantics.
+
+A hybrid system should not present learned similarity as if it were deductive entailment.
+
+== References ==
+* Davis, Shrobe & Szolovits (1993), DOI: 10.1609/aimag.v14i1.1029.
+* Brachman & Levesque (2004).

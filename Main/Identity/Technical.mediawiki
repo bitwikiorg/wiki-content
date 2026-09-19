@@ -1,0 +1,69 @@
+{{Source status|status=Technical depth derivative|note=Advanced logical and ontology-identity surface of [[Identity]].}}
+{{Reading depth|base=Identity|current=Technical}}
+= Identity — Technical =
+
+== Classical identity ==
+First-order logic with identity commonly includes:
+
+<pre>
+∀x (x = x)
+</pre>
+
+and substitution principles ensuring that identicals are indiscernible with respect to predicates expressible in the language.
+
+Identity is normally interpreted as actual equality on the domain.
+
+== Leibniz's law ==
+One formulation:
+
+<pre>
+x = y → ∀P(Px ↔ Py)
+</pre>
+
+requires care because quantification over properties depends on the logical framework.
+
+The converse identity-of-indiscernibles principle is not simply a theorem of first-order logic.
+
+== Unique Name Assumption ==
+Many databases/programming contexts behave as though different names imply different objects.
+
+OWL does not generally adopt the Unique Name Assumption.
+
+Therefore two distinct IRIs are not automatically inferred to denote distinct individuals.
+
+Difference can be explicitly asserted.
+
+== owl:sameAs ==
+Under OWL semantics, <code>owl:sameAs</code> equates individual denotations.
+
+Consequences associated with one can transfer to the other through equality reasoning.
+
+Using it as a record-linking confidence relation is therefore semantically unsafe.
+
+== Identity over versions ==
+Versioned artifacts need an explicit identity policy.
+
+Questions include:
+* Is version 2 the same dataset or a new dataset?
+* Is a fork the same project?
+* Does a renamed organization preserve identity?
+* Does replacement of all physical components preserve identity?
+
+The correct answer depends on the type and purpose of identification.
+
+== Entity resolution thresholding ==
+Probabilistic match score:
+
+<pre>
+P(sameEntity | evidence)
+</pre>
+
+is not itself identity.
+
+Thresholding converts uncertainty into an operational decision and can create false merges/splits.
+
+Systems should retain provenance and confidence where possible.
+
+== References ==
+* SEP — Identity.
+* W3C OWL 2 Direct Semantics.

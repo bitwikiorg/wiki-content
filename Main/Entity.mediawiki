@@ -1,0 +1,137 @@
+{{Source status|status=Wave 2 compiled article|note=Public ontology/representation concept; separated from BITwiki's local entity-type vocabulary.}}
+{{Knowledge object
+ |title=Entity
+ |entity_type=Concept
+ |domain=Philosophy, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Entity|current=Core}}
+
+= Entity =
+
+== Overview ==
+An '''entity''' is anything treated as a distinct object of reference, description, quantification or representation within a discourse or model.
+
+"Entity" is deliberately broad. An entity may be:
+* a physical object;
+* a person;
+* an event;
+* a process;
+* an organization;
+* a number;
+* a place;
+* a digital artifact;
+* a fictional object;
+* another modeled item.
+
+Whether all of these entities exist in the same sense is a question for [[Ontology|ontology]].
+
+== Entity and object ==
+"Object" and "entity" are often used similarly, but entity is usually broader.
+
+Some ontologies distinguish objects from:
+* events;
+* processes;
+* qualities;
+* relations;
+* abstract entities.
+
+Using "entity" as an umbrella term avoids deciding that everything represented is object-like.
+
+== Entity and concept ==
+An [[Concept|concept]] is not automatically the same as an entity represented by that concept.
+
+For example, the concept "planet" can classify many particular planetary entities.
+
+A knowledge system should distinguish:
+* the concept/kind;
+* the individual entity;
+* the word/label used to name either.
+
+Conflating these layers creates ambiguity.
+
+== Entity and class ==
+A class or category groups entities.
+
+An individual cat can be an entity that is a member/instance of the category Cat.
+
+But formal systems may also treat classes themselves as entities that can be described.
+
+This means "entity" does not imply "individual instance."
+
+== Reference ==
+A name, identifier or expression can refer to an entity.
+
+Different expressions may co-refer:
+
+<pre>
+"Morning Star"
+"Evening Star"
+→ Venus
+</pre>
+
+Co-reference does not mean the expressions have the same linguistic meaning.
+
+This distinction connects [[Entity|entity]] with [[Semantics|semantics]] and [[Identity|identity]].
+
+== Entities in databases and knowledge graphs ==
+Information systems commonly create identifiers for represented entities.
+
+A database may assign a row identifier.
+
+A [[Knowledge graph]] may use an IRI or other node identifier.
+
+The represented entity is not literally identical to the row, record or graph node unless that is what the model intentionally denotes.
+
+The representation is a surrogate for the thing.
+
+== Entity resolution ==
+'''Entity resolution''' tries to determine when records, mentions or identifiers refer to the same underlying entity.
+
+It can use:
+* identifiers;
+* names;
+* addresses;
+* attributes;
+* links;
+* timestamps;
+* probabilistic matching.
+
+Entity resolution is uncertain when identifiers are missing or reused.
+
+A similarity score should not automatically be converted into an identity assertion.
+
+== Named entities ==
+Natural-language processing uses the specialized term '''named entity''' for mentions of things such as people, organizations, locations, dates or products.
+
+This is a practical NLP category and not a complete philosophical account of entities.
+
+== Entity types ==
+Knowledge systems often define entity types such as:
+* Person;
+* Organization;
+* Event;
+* Dataset;
+* Technology.
+
+These types improve querying and validation.
+
+They are modeling decisions and need not correspond to uniquely correct natural kinds.
+
+== BITwiki application ==
+BITwiki defines a local entity-type vocabulary at [[BITwiki:Entity types]].
+
+That vocabulary answers what kind of knowledge object BITwiki is primarily representing. It is an application-specific schema, not a universal ontology of entities.
+
+== Epistemic notes ==
+Representing something as an entity does not establish that it exists independently in reality. Models can contain hypothetical, fictional, disputed or useful abstract entities.
+
+== References ==
+* [https://plato.stanford.edu/entries/logic-ontology/ Stanford Encyclopedia of Philosophy — Logic and Ontology]
+* [https://plato.stanford.edu/entries/categories/ Stanford Encyclopedia of Philosophy — Categories]
+* ISO/IEC 21838-1:2021.
+* W3C RDF and OWL specifications for resource/individual terminology.
+
+[[Category:Philosophy]]
+[[Category:Computer science]]

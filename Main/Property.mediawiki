@@ -1,0 +1,177 @@
+{{Source status|status=Wave 2 compiled article|note=Public philosophical/formal property concept grounded in ontology and RDF/OWL semantics.}}
+{{Knowledge object
+ |title=Property
+ |entity_type=Concept
+ |domain=Philosophy, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Property|current=Core}}
+
+= Property =
+
+== Overview ==
+A '''property''' is a characteristic, quality, attribute or formally represented predicate that can be attributed to something.
+
+Examples:
+* red;
+* has a mass of 2 kg;
+* was created in 2026;
+* has author Alice.
+
+The word is used differently in philosophy, logic, programming, databases and Semantic Web technology.
+
+== Philosophical properties ==
+In metaphysics, properties are often treated as repeatable features things can exemplify.
+
+Examples include:
+* redness;
+* mass;
+* shape;
+* being prime.
+
+Philosophers disagree about whether properties are universals, tropes, sets, predicates or something else.
+
+The ontology of properties is therefore contested.
+
+== Predicate and property ==
+A predicate is a linguistic or formal expression.
+
+A property is what the predicate may represent or attribute.
+
+For example, the predicate:
+
+<pre>
+isRed(x)
+</pre>
+
+can express the property of being red.
+
+But one property can be expressed by different predicates, and predicates can fail to correspond neatly to real properties.
+
+== Property and relation ==
+A one-place property can be represented as a unary predicate.
+
+A multi-place [[Relation|relation]] connects several relata.
+
+Some frameworks treat properties as relations of particular arity.
+
+Others distinguish qualities from relations.
+
+The terminology should be interpreted within the chosen formalism.
+
+== Attributes in data systems ==
+Data systems often use "attribute", "field" or "property" for named values associated with a record.
+
+Example:
+
+<pre>
+Person:
+  name = Alice
+  birthDate = ...
+</pre>
+
+This practical usage need not imply a philosophical commitment about properties.
+
+== RDF properties ==
+In RDF, a property is a resource used as the predicate of triples.
+
+Example:
+
+<pre>
+Alice  knows  Bob
+</pre>
+
+The RDF property <code>knows</code> represents a binary relation from subject to object.
+
+RDF properties are first-class resources and can themselves have labels, descriptions and hierarchy.
+
+== RDFS subproperties ==
+RDF Schema allows:
+
+<pre>
+p1 rdfs:subPropertyOf p2
+</pre>
+
+If:
+
+<pre>
+x p1 y
+</pre>
+
+then RDFS semantics entails:
+
+<pre>
+x p2 y
+</pre>
+
+Subproperty semantics is therefore stronger than merely grouping similarly named fields.
+
+== Domain and range ==
+RDFS can state:
+
+<pre>
+p rdfs:domain C
+p rdfs:range D
+</pre>
+
+These declarations imply type information when p is used.
+
+They are not conventional closed-world validation constraints.
+
+This is a common source of modeling errors.
+
+== OWL object and data properties ==
+OWL distinguishes:
+
+'''Object properties''' — relate individuals to individuals.
+
+'''Data properties''' — relate individuals to data values.
+
+OWL can add characteristics such as:
+* functionality;
+* transitivity;
+* symmetry;
+* inverse relationships.
+
+These are logical semantics, not UI metadata.
+
+== Property values ==
+A property type and a property assertion should be distinguished.
+
+<pre>
+property type: birthDate
+assertion: Alice birthDate 2000-01-01
+</pre>
+
+The first defines/references a relation.
+
+The second claims that the relation holds for a particular subject and value.
+
+== Metadata properties ==
+[[Metadata]] systems use properties such as:
+* title;
+* creator;
+* date;
+* license;
+* subject.
+
+Dublin Core provides widely reused metadata properties.
+
+Using shared property identifiers can improve interoperability.
+
+== BITwiki application ==
+BITwiki defines local semantic properties such as Domain, Entity type, Depends on and Provenance.
+
+They are dimensions of BITwiki's representation, not the universal set of properties reality possesses.
+
+== Epistemic notes ==
+Encoding a property assertion makes a claim. Its truth and evidence remain separate questions from whether the property is syntactically valid.
+
+== References ==
+* [https://www.w3.org/TR/rdf-schema/ W3C — RDF Schema 1.1]
+* [https://www.w3.org/TR/owl2-primer/ W3C — OWL 2 Primer]
+* [https://plato.stanford.edu/entries/categories/ Stanford Encyclopedia of Philosophy — Categories]
+
+[[Category:Philosophy]]
+[[Category:Computer science]]

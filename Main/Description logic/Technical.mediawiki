@@ -1,0 +1,81 @@
+{{Source status|status=Technical depth derivative|note=Advanced DL syntax/model theory/reasoning surface of [[Description logic]].}}
+{{Reading depth|base=Description logic|current=Technical}}
+= Description logic — Technical =
+
+== Interpretation ==
+A DL interpretation:
+
+<pre>
+I = (Δ^I, ·^I)
+</pre>
+
+contains nonempty domain Δ and interpretation function.
+
+Concept name A maps to:
+
+<pre>
+A^I ⊆ Δ^I
+</pre>
+
+Role name r maps to:
+
+<pre>
+r^I ⊆ Δ^I × Δ^I
+</pre>
+
+Individual a maps to:
+
+<pre>
+a^I ∈ Δ^I
+</pre>
+
+== ALC constructors ==
+For concepts C,D:
+
+<pre>
+(C ⊓ D)^I = C^I ∩ D^I
+(C ⊔ D)^I = C^I ∪ D^I
+(¬C)^I = Δ^I \ C^I
+(∃r.C)^I = {x | ∃y ((x,y)∈r^I ∧ y∈C^I)}
+(∀r.C)^I = {x | ∀y ((x,y)∈r^I → y∈C^I)}
+</pre>
+
+ALC forms a foundational expressive DL.
+
+== Reasoning problems ==
+Core tasks:
+* concept satisfiability;
+* subsumption;
+* knowledge-base consistency;
+* instance checking;
+* realization;
+* classification.
+
+Many tasks reduce to satisfiability.
+
+== Complexity ==
+Reasoning complexity depends on the DL.
+
+Expressive features such as:
+* number restrictions;
+* inverse roles;
+* nominals;
+* role chains;
+* transitivity;
+
+can increase complexity and constrain allowed role combinations.
+
+== Tableau reasoning ==
+Many DL reasoners use tableau-style algorithms.
+
+They expand constraints while checking whether a clash-free model can be constructed.
+
+Optimizations include:
+* blocking;
+* caching;
+* dependency-directed backtracking;
+* absorption.
+
+== References ==
+* Baader et al., ''The Description Logic Handbook''.
+* W3C OWL 2 Direct Semantics.

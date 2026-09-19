@@ -1,0 +1,142 @@
+{{Source status|status=Wave 2 compiled article|note=Public philosophy/representation concept grounded in SEP identity literature and ontology-language semantics.}}
+{{Knowledge object
+ |title=Identity
+ |entity_type=Concept
+ |domain=Philosophy, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Identity|current=Core}}
+
+= Identity =
+
+== Overview ==
+'''Identity''' is strict sameness: the condition under which something is one and the same thing.
+
+In formal notation:
+
+<pre>
+x = y
+</pre>
+
+states that x and y are identical.
+
+Identity should be distinguished from similarity, equivalence and having the same properties.
+
+== Numerical and qualitative identity ==
+'''Numerical identity''' means being one and the same entity.
+
+'''Qualitative identity''' means sharing relevant properties.
+
+Two mass-produced bolts can be qualitatively indistinguishable while remaining two numerically distinct bolts.
+
+Conversely, one object can change many qualities over time while still being treated as numerically the same object.
+
+== Identity and indiscernibility ==
+Leibniz's law is often expressed as the principle that identical things share all properties:
+
+<pre>
+x = y → for every property P, P(x) ↔ P(y)
+</pre>
+
+The converse—whether sharing every property guarantees identity—is connected to the principle of the identity of indiscernibles and is philosophically contested depending on how properties are understood.
+
+== Identity over time ==
+Persistence creates difficult identity questions.
+
+When is a later entity the same entity as an earlier one?
+
+Possible criteria include:
+* material continuity;
+* structural continuity;
+* causal continuity;
+* biological continuity;
+* legal continuity;
+* functional continuity.
+
+Different types of entity can use different criteria.
+
+A corporation, organism and software project need not persist in the same way.
+
+== Identity and identifiers ==
+An '''identifier''' is a symbol or token used to refer to something.
+
+Identity is the relation of sameness itself.
+
+One entity can have multiple identifiers, and one poorly governed identifier can accidentally be reused for several entities.
+
+Therefore:
+
+<pre>
+same identifier ≠ guaranteed same entity
+different identifier ≠ guaranteed different entity
+</pre>
+
+Identity systems require rules connecting identifiers to referents.
+
+== Identity and reference ==
+Two names can refer to the same entity.
+
+For example, "Hesperus" and "Phosphorus" were historically used for what is now known to be the same planet, Venus.
+
+The identity of the referent does not imply that the names have identical meaning or that every speaker knows the identity.
+
+This is a classical problem linking identity and [[Semantics|semantics]].
+
+== Identity in knowledge representation ==
+[[Knowledge representation]] systems need identity to merge descriptions and prevent duplicate entities.
+
+Identity statements can support:
+* data integration;
+* graph merging;
+* provenance linkage;
+* entity resolution.
+
+But incorrect identity merges can propagate many false inferences.
+
+Identity assertions should therefore be stronger than loose similarity or matching.
+
+== OWL sameAs ==
+In OWL:
+
+<pre>
+a owl:sameAs b
+</pre>
+
+asserts that a and b denote the same individual.
+
+This is a strong logical identity relation.
+
+It should not be used merely because:
+* labels match;
+* records seem similar;
+* two pages discuss related subjects.
+
+Approximate correspondence should use weaker mapping relations.
+
+== Identity versus equivalence ==
+Two objects can be equivalent for a purpose without being identical.
+
+Examples:
+* two files with equivalent content;
+* two mathematical expressions with equal value;
+* two implementations with equivalent observable behavior;
+* two concepts mapped as close matches.
+
+Equivalence relations specify sameness under selected criteria; identity claims strict sameness.
+
+== Personal and social identity ==
+"Identity" also appears in psychology and social science to mean self-conception, social role or group membership.
+
+Those are legitimate specialized uses but are different from the strict metaphysical/logical notion discussed here.
+
+== Epistemic notes ==
+Identity statements are often highly consequential in data systems because properties associated with one identifier may be transferred to the other. A strong identity relation should therefore be asserted only when its semantics are intended.
+
+== References ==
+* [https://plato.stanford.edu/entries/identity/ Stanford Encyclopedia of Philosophy — Identity]
+* [https://plato.stanford.edu/entries/identity-relative/ Stanford Encyclopedia of Philosophy — Relative Identity]
+* W3C, ''OWL 2 Web Ontology Language'' specifications.
+
+[[Category:Philosophy]]
+[[Category:Computer science]]

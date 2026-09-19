@@ -1,0 +1,202 @@
+{{Source status|status=Wave 2 compiled article|note=Public W3C RDF concept. Stable data-model treatment with dated RDF 1.2 Candidate Recommendation status as of 2026.}}
+{{Knowledge object
+ |title=Resource Description Framework
+ |entity_type=Concept
+ |domain=Computer science, Technology
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Resource Description Framework|current=Core}}
+
+= Resource Description Framework =
+
+== Overview ==
+The '''Resource Description Framework''' ('''RDF''') is a W3C framework and data model for representing information as graphs of statements.
+
+An RDF statement is usually expressed as a triple:
+
+<pre>
+subject — predicate — object
+</pre>
+
+Example:
+
+<pre>
+Mars — orbits — Sun
+</pre>
+
+Collections of triples form RDF graphs.
+
+RDF is a foundation of the [[Semantic Web]] and is widely used for linked data, metadata and [[Knowledge graph|knowledge graphs]].
+
+== RDF terms ==
+RDF uses several kinds of terms.
+
+'''IRI''' — globally scoped identifier for resources and properties.
+
+'''Literal''' — value such as a string, number or date.
+
+'''Blank node''' — locally scoped node without a global IRI.
+
+RDF 1.2 additionally defines triple terms for referring to triples within RDF data.
+
+== Subject, predicate, object ==
+In a triple:
+
+<pre>
+s p o
+</pre>
+
+the subject identifies/describes a resource.
+
+The predicate is an RDF [[Property|property]].
+
+The object is another resource, blank node, literal or, in RDF 1.2, permitted triple-term form under the specification.
+
+A graph is a set of such triples.
+
+== RDF graph ==
+An RDF graph is not ordered.
+
+Two serializations containing the same triples represent the same abstract graph even if line order differs.
+
+Graph semantics depends on identifiers and blank-node structure, not on presentation order.
+
+== RDF dataset ==
+An RDF dataset contains:
+
+* one default graph;
+* zero or more named graphs.
+
+Named graphs associate graph content with graph names.
+
+Applications use datasets for source separation, provenance, access control and other purposes, but the meaning of graph names depends on application/specification conventions.
+
+== Serialization ==
+RDF is a data model, not one file syntax.
+
+Common serializations include:
+* Turtle;
+* N-Triples;
+* TriG;
+* JSON-LD;
+* RDF/XML.
+
+The same graph can be serialized in several formats.
+
+Therefore:
+
+<pre>
+RDF ≠ Turtle
+RDF ≠ RDF/XML
+RDF ≠ JSON-LD
+</pre>
+
+== RDF semantics ==
+RDF has a formal [[Semantics|semantics]].
+
+An interpretation assigns denotations to RDF terms and extensions to properties.
+
+A graph G '''entails''' graph E when every relevant interpretation satisfying G also satisfies E.
+
+Different entailment regimes add different vocabulary semantics.
+
+== RDF Schema ==
+RDF Schema (RDFS) adds vocabulary for:
+
+* classes;
+* properties;
+* subclass;
+* subproperty;
+* domain;
+* range.
+
+These have inferential meaning.
+
+For example:
+
+<pre>
+Dog rdfs:subClassOf Mammal
+Fido rdf:type Dog
+</pre>
+
+can entail:
+
+<pre>
+Fido rdf:type Mammal
+</pre>
+
+under RDFS semantics.
+
+== RDF and OWL ==
+[[Web Ontology Language|OWL]] builds on the Semantic Web/RDF ecosystem to express richer ontology axioms.
+
+RDF itself does not supply all OWL semantics.
+
+An RDF graph can contain OWL vocabulary, but reasoning requires the corresponding OWL semantics/entailment regime.
+
+== Open-world behavior ==
+RDF/OWL knowledge systems are commonly interpreted under an open-world assumption.
+
+If the graph does not contain:
+
+<pre>
+Alice hasEmail ...
+</pre>
+
+that does not entail that Alice has no email.
+
+Missing information remains unknown unless explicit semantics say otherwise.
+
+== Blank nodes ==
+Blank nodes identify graph-local existential resources.
+
+A blank node should not automatically be interpreted as:
+* a secret entity;
+* an entity lacking any real identifier;
+* a stable identifier across datasets.
+
+Its formal role is local within RDF graph/dataset semantics.
+
+== RDF and validation ==
+RDF syntax/semantics does not by itself enforce every application constraint.
+
+For example, a data model may require every Person to have exactly one birth date.
+
+Constraint languages such as SHACL are commonly used to validate such requirements.
+
+This differs from ontology inference.
+
+== RDF 1.2 ==
+As of 2026, W3C RDF 1.2 Concepts and RDF 1.2 Semantics are Candidate Recommendation Snapshots.
+
+RDF 1.2 extends RDF 1.1 with features including:
+* triple terms;
+* directional language-tagged strings;
+* version-signaling mechanisms described by the specification suite.
+
+The stable RDF graph/dataset model remains recognizable across RDF 1.1 and 1.2.
+
+Because RDF 1.2 is still in the Candidate Recommendation process, version-specific deployment claims should state the implementation/specification version.
+
+== RDF and knowledge graphs ==
+RDF is commonly used for [[Knowledge graph|knowledge graphs]] because:
+* identifiers are globally scoped;
+* triples form a graph;
+* vocabularies can be shared;
+* formal semantics support inference;
+* SPARQL can query graph patterns.
+
+But not every RDF graph is usefully called a knowledge graph, and knowledge graphs can use other graph models.
+
+== Epistemic notes ==
+An RDF triple is a represented assertion. Its presence in a graph does not make the assertion true. Truth, evidence and provenance remain separate from syntactic/semantic well-formedness.
+
+== References ==
+* [https://www.w3.org/TR/rdf12-concepts/ W3C — RDF 1.2 Concepts and Abstract Data Model]
+* [https://www.w3.org/TR/rdf12-semantics/ W3C — RDF 1.2 Semantics]
+* [https://www.w3.org/TR/rdf-schema/ W3C — RDF Schema]
+* [https://www.w3.org/TR/rdf-primer/ W3C — RDF 1.1 Primer]
+
+[[Category:Computer science]]
+[[Category:Technology]]

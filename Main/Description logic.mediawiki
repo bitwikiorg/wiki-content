@@ -1,0 +1,154 @@
+{{Source status|status=Wave 2 compiled article|note=Public KR logic-family concept grounded in the Description Logic Handbook and OWL semantics.}}
+{{Knowledge object
+ |title=Description logic
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 2 compiled context
+}}
+{{Reading depth|base=Description logic|current=Core}}
+
+= Description logic =
+
+== Overview ==
+'''Description logics''' ('''DLs''') are a family of logic-based [[Knowledge representation|knowledge-representation]] formalisms used to describe concepts/classes, relations/roles and individuals while supporting well-defined automated reasoning tasks.
+
+Description logics influenced ontology languages such as [[Web Ontology Language|OWL]].
+
+Different DLs make different trade-offs between expressive power and computational complexity.
+
+== Concepts, roles and individuals ==
+A typical description logic represents:
+
+'''Concepts''' — unary classes/categories such as Person.
+
+'''Roles''' — binary relations such as hasChild.
+
+'''Individuals''' — named objects such as Alice.
+
+Example:
+
+<pre>
+Parent ≡ Person ⊓ ∃hasChild.Person
+</pre>
+
+informally defines a Parent as a Person who has at least one Person as a child.
+
+== Constructors ==
+Description logics build complex concepts from simpler ones.
+
+Common constructors include:
+* conjunction/intersection;
+* disjunction/union;
+* negation/complement;
+* existential restriction;
+* universal restriction;
+* number restrictions;
+* nominals;
+* inverse roles.
+
+Each DL supports a particular subset.
+
+The supported constructors affect both expressivity and reasoning cost.
+
+== TBox and ABox ==
+A common distinction is:
+
+'''TBox''' — terminological knowledge about concepts and roles.
+
+Example:
+
+<pre>
+Dog ⊑ Mammal
+</pre>
+
+'''ABox''' — assertions about individuals.
+
+Example:
+
+<pre>
+Dog(Fido)
+</pre>
+
+From both, a reasoner can infer:
+
+<pre>
+Mammal(Fido)
+</pre>
+
+== Subsumption ==
+Concept A is subsumed by concept B when every instance of A must also be an instance of B.
+
+Notation:
+
+<pre>
+A ⊑ B
+</pre>
+
+Reasoners can compute subclass hierarchies by testing subsumption.
+
+This process is often called classification.
+
+== Satisfiability ==
+A concept is satisfiable if it can have at least one instance in some model of the ontology.
+
+An ontology is consistent if its axioms have at least one model.
+
+A contradictory set of axioms can make a class unsatisfiable even when no individual has been asserted to belong to it.
+
+== Instance checking ==
+Instance checking asks whether:
+
+<pre>
+O ⊨ C(a)
+</pre>
+
+That is: does ontology O entail that individual a is an instance of concept C?
+
+This can involve several axioms, not only an explicit type assertion.
+
+== Open-world semantics ==
+DLs used for OWL typically use open-world semantics.
+
+Missing information is not false.
+
+This means an incomplete record does not automatically violate an ontology merely because a property is absent.
+
+Closed-world validation requires additional mechanisms.
+
+== Expressivity and decidability ==
+Unrestricted first-order logic has undecidable general reasoning problems.
+
+Description logics restrict language structure to obtain decidable reasoning for useful fragments.
+
+Adding constructors can increase worst-case complexity.
+
+Language design therefore balances:
+* modeling power;
+* decidability;
+* computational complexity.
+
+== Historical lineage ==
+DLs developed from semantic-network and frame-based systems such as KL-ONE.
+
+Early systems exposed ambiguity in informal "is-a" and slot inheritance.
+
+DL research responded by giving concept languages explicit logical semantics and reasoning procedures.
+
+== OWL connection ==
+OWL 2 DL's direct semantics is closely connected to SROIQ.
+
+OWL profiles correspond to restricted fragments designed for scalable classes of reasoning.
+
+Description logics provide much of the formal theory behind these language choices.
+
+== Epistemic notes ==
+A description-logic reasoner proves consequences relative to its axioms and semantics. It does not determine whether those axioms correctly describe the real domain.
+
+== References ==
+* Franz Baader et al. (eds.), ''The Description Logic Handbook'', Cambridge University Press.
+* W3C, ''OWL 2 Direct Semantics''.
+* Ronald J. Brachman and James G. Schmolze, "An Overview of the KL-ONE Knowledge Representation System", ''Cognitive Science'' 9(2), 171–216 (1985).
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

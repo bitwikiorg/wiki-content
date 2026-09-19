@@ -1,0 +1,286 @@
+{{Source status|status=Wave 2 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 2 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 2 covers semantics, ontology, conceptual organization, knowledge representation, Semantic Web standards, and machine inference.
+
+== Scope ==
+
+# [[Semantics]]
+# [[Ontology]]
+# [[Entity]]
+# [[Identity]]
+# [[Concept]]
+# [[Category]]
+# [[Classification]]
+# [[Taxonomy]]
+# [[Relation]]
+# [[Property]]
+# [[Knowledge representation]]
+# [[Knowledge graph]]
+# [[Semantic network]]
+# [[Schema]]
+# [[Metadata]]
+# [[Semantic Web]]
+# [[Resource Description Framework]]
+# [[Web Ontology Language]]
+# [[Description logic]]
+# [[Inference]]
+
+== Semantic kernel ==
+
+<pre>
+Semantics
+ └→ meaning / interpretation / truth conditions
+
+Ontology
+ ├→ philosophical: what exists; general kinds and relations
+ └→ information science: formal specification of a conceptualization/domain
+      ├→ Entity / Concept / Category
+      ├→ Relation / Property
+      ├→ Classification / Taxonomy
+      └→ RDF / OWL / other encodings
+
+Identity → sameness / persistence / re-identification
+Concept → unit of thought / meaning
+Category → kind / grouping
+Classification → assigns items to classes/categories
+Taxonomy → organizes concepts/categories, often hierarchically
+
+Knowledge representation
+ ├→ semantic networks
+ ├→ rules / logic / frames
+ ├→ ontologies
+ └→ knowledge graphs
+
+Schema → expected structure / types / constraints
+Metadata → structured information about resources
+
+Semantic Web
+ ├→ RDF
+ └→ OWL
+      └→ Description logic
+
+Inference → derives conclusions under a stated logic/model
+</pre>
+
+== Foundational separation ==
+
+<pre>
+world / domain
+    ↓ conceptualization
+ontology / schema / vocabulary
+    ↓ encoding
+RDF / OWL / other language
+    ↓ reasoning
+entailment / inference / classification
+</pre>
+
+These layers are related but are not identical.
+
+== Normalized concept dossiers ==
+
+=== Semantics ===
+Study/specification of meaning and interpretation. In language it concerns semantic content, reference, composition, truth conditions and context; in formal systems it assigns interpretations/models to syntax.
+
+'''Do not conflate:''' semantics ≠ syntax; semantics ≠ pragmatics; formal semantics ≠ all meaning; semantic theory ≠ metasemantics.
+
+'''Sources:''' SEP "Theories of Meaning"; W3C RDF Semantics; formal semantics literature.
+
+=== Ontology ===
+Two related public senses must remain explicit:
+
+# philosophy: study of what exists, ontological commitment, and the most general kinds/features/relations of beings;
+# information science/AI: explicit or formal specification of a conceptualization/domain vocabulary, normally including classes/categories, relations/properties, constraints or axioms.
+
+'''Do not conflate:''' philosophical ontology ≠ OWL file; ontology ≠ taxonomy; ontology ≠ schema; ontology language ≠ ontology content.
+
+'''Sources:''' SEP "Logic and Ontology"; Gruber (1993), DOI 10.1006/knac.1993.1008; Studer, Benjamins & Fensel (1998), DOI 10.1016/S0169-023X(97)00056-6; ISO/IEC 21838-1:2021; ISO/IEC 21838-2:2021.
+
+=== Entity ===
+Anything treated as a distinct object of reference, quantification, description or representation in a discourse/model.
+
+'''Do not conflate:''' entity ≠ physical object; entity ≠ database row; model entity ≠ proof of real-world existence; OWL individual and RDF resource are formal notions.
+
+'''Sources:''' SEP ontology/categories; ISO top-level ontology standards; W3C RDF/OWL terminology.
+
+=== Identity ===
+Strict sameness: being one and the same thing rather than merely similar. Identity criteria govern persistence and re-identification.
+
+'''Do not conflate:''' numerical identity ≠ qualitative similarity; identifier ≠ identity; co-reference ≠ guaranteed real-world identity; owl:sameAs is identity, not similarity.
+
+'''Sources:''' SEP "Identity"; SEP "Relative Identity"; OWL semantics.
+
+=== Concept ===
+Unit/constituent of thought or structured meaning used in categorization, inference, memory, learning, communication and knowledge organization. Its ontology is disputed.
+
+'''Do not conflate:''' concept ≠ word; concept ≠ class by definition; concept ≠ entity. SKOS Concept is intentionally flexible and does not settle the philosophy of concepts.
+
+'''Sources:''' SEP "Concepts"; W3C SKOS Reference/Primer.
+
+=== Category ===
+Grouping or kind used to distinguish objects, concepts or phenomena. In philosophy categories can mean the most general kinds of beings or concepts.
+
+'''Do not conflate:''' category ≠ class in every formalism; category ≠ taxonomy; category ≠ tag; MediaWiki Category is not automatically an ontological category.
+
+'''Sources:''' SEP "Categories"; Aristotle; SKOS/RDFS as representational comparisons.
+
+=== Classification ===
+Process/system for assigning items, instances, observations or concepts to classes/categories according to criteria, rules, models or learned patterns.
+
+'''Do not conflate:''' classification ≠ taxonomy; classification scheme ≠ classifier algorithm; statistical classification ≠ ontological classification.
+
+'''Sources:''' W3C SKOS; ISO 25964; knowledge-organization literature.
+
+=== Taxonomy ===
+Organized system of categories/concepts, commonly using broader–narrower or parent–child hierarchy for classification/navigation.
+
+'''Do not conflate:''' taxonomy ≠ ontology; taxonomy ≠ thesaurus; taxonomy ≠ nomenclature; parenthood must not silently mix is-a, part-of and topic nesting.
+
+'''Sources:''' W3C SKOS Reference/Primer; ISO 25964.
+
+=== Relation ===
+Connection holding among two or more relata. Logic may model relations extensionally as tuples; ontology/KR uses named relation types among represented objects.
+
+'''Do not conflate:''' relation ≠ property in every theory; relation instance ≠ relation type; transitivity/symmetry/inverses are semantic characteristics, not defaults.
+
+'''Sources:''' logic/ontology literature; W3C RDFS/OWL. [[BITwiki:Relationships]] is a local application.
+
+=== Property ===
+Characteristic, quality or formally represented predicate attributable to an entity/class. In RDF a property is specifically a binary relation used as predicate.
+
+'''Do not conflate:''' philosophical property ≠ RDF property; property ≠ database field; domain/range in RDFS are inferential semantics, not ordinary validation constraints.
+
+'''Sources:''' SEP categories/ontology; RDF Schema; OWL 2 Primer.
+
+=== Knowledge representation ===
+Field/practice of encoding knowledge in explicit structures that support storage, communication, interpretation and computational reasoning.
+
+Davis, Shrobe & Szolovits describe five roles: surrogate for the world; ontological commitments; fragmentary theory of intelligent reasoning; medium for efficient computation; medium of human expression.
+
+'''Do not conflate:''' representation ≠ represented world; KR ≠ database storage alone; symbolic KR ≠ all AI.
+
+'''Sources:''' Davis, Shrobe & Szolovits (1993), DOI 10.1609/aimag.v14i1.1029; Brachman & Levesque (2004).
+
+=== Knowledge graph ===
+Graph-based knowledge representation in which nodes/edges encode entities, concepts, relations, types, facts or other structured knowledge, often with schema/ontology and reasoning or learning layers. No single definition is universal.
+
+'''Do not conflate:''' knowledge graph ≠ arbitrary graph database; knowledge graph ≠ ontology; RDF graph ≠ automatically knowledge graph; graph topology ≠ semantics.
+
+'''Sources:''' Hogan et al., "Knowledge Graphs", ACM Computing Surveys 54(4), DOI 10.1145/3447772; contemporary KG surveys.
+
+=== Semantic network ===
+Graph representation whose nodes denote concepts/entities and whose links denote semantic relations. Historically important in AI/cognitive science and a precursor/relative of modern KGs and frame systems.
+
+'''Do not conflate:''' semantic network ≠ Semantic Web; semantic network ≠ any labeled graph; semantic-memory models ≠ ontology languages.
+
+'''Sources:''' Quillian (1968); Collins & Quillian / Collins & Loftus; KR history.
+
+=== Schema ===
+Explicit specification of expected/permitted structure of data, documents, databases, messages or knowledge artifacts, including fields, types, relationships and constraints.
+
+'''Do not conflate:''' schema ≠ ontology; schema ≠ data instance; schema validation ≠ inference; RDF Schema is not a closed-world validation schema despite its name.
+
+'''Sources:''' database theory; W3C XML Schema/SHACL/RDFS as contrasting examples.
+
+=== Metadata ===
+Structured information about resources supporting description, discovery, management, preservation, interpretation, rights, provenance or use.
+
+'''Do not conflate:''' metadata ≠ only "data about data"; metadata can describe non-data resources; metadata vocabulary/schema ≠ metadata instance.
+
+'''Sources:''' NISO "Understanding Metadata"; Dublin Core Metadata Initiative Metadata Basics.
+
+=== Semantic Web ===
+Web architecture/technology program for publishing and linking machine-interpretable data using global identifiers, shared vocabularies, formal semantics and standard data models/query languages.
+
+'''Do not conflate:''' Semantic Web ≠ web pages plus AI; Semantic Web ≠ one database; Linked Data ≠ entire stack; machine-readable ≠ human-like understanding.
+
+'''Sources:''' W3C RDF/OWL/SKOS specifications; Berners-Lee, Hendler & Lassila (2001).
+
+=== Resource Description Framework ===
+W3C framework/data model for representing information as graphs of subject–predicate–object triples and datasets, using IRIs, blank nodes and literals.
+
+'''Current 2026 note:''' RDF 1.2 Concepts and Semantics are W3C Candidate Recommendation Snapshots dated April 2026. Core concepts should be version-neutral; 1.2 additions/status belong in a dated standards section.
+
+'''Do not conflate:''' RDF data model ≠ Turtle/JSON-LD/RDF/XML serialization; RDF graph ≠ RDF dataset; RDF ≠ RDFS; RDF ≠ OWL; open-world semantics ≠ missing-is-false.
+
+'''Sources:''' W3C RDF 1.2 Concepts; RDF 1.2 Semantics; RDF Schema; RDF 1.1 Primer.
+
+=== Web Ontology Language ===
+W3C ontology-language family for the Semantic Web with formally defined meaning, supporting classes, individuals, object/data properties, class expressions, axioms and automated reasoning.
+
+'''Do not conflate:''' OWL ≠ RDF; OWL ontology ≠ philosophical ontology; OWL class ≠ OO class; owl:sameAs is strict identity; absence of assertion ≠ negation.
+
+'''Sources:''' W3C OWL 2 Overview, Primer and Direct Semantics.
+
+=== Description logic ===
+Family of logic-based KR formalisms for concepts/classes, roles/relations and individuals, designed around well-defined reasoning problems with known decidability/complexity properties.
+
+'''Do not conflate:''' DL ≠ one language; DL ≠ full first-order logic; expressivity trades against reasoning complexity.
+
+'''Required topics:''' TBox/ABox; satisfiability; subsumption; classification; instance checking; consistency; OWL 2 DL and SROIQ relation.
+
+'''Sources:''' Baader et al., The Description Logic Handbook; W3C OWL 2 Direct Semantics.
+
+=== Inference ===
+Process or relation of deriving/supporting conclusions from premises, evidence, rules, models or representations.
+
+'''Do not conflate:''' inference ≠ truth; valid inference with false premises need not yield knowledge; entailment is a semantic relation while an inference procedure is an algorithm; soundness ≠ completeness.
+
+'''Required distinctions:''' deduction, induction, abduction, probabilistic inference; RDF/OWL entailment regimes.
+
+'''Sources:''' logic literature; W3C RDF Semantics; OWL 2 Direct Semantics; Brachman & Levesque.
+
+== Cross-wave dependencies ==
+
+* [[Semantics]] ↔ [[Programming language]], [[Program (computing)]], [[Knowledge representation]].
+* [[Ontology]] ↔ [[System boundary]], [[Epistemology]], [[Scientific model]], [[Knowledge representation]].
+* [[Identity]] ↔ [[Entity]], [[Provenance]], [[Version control]].
+* [[Inference]] ↔ [[Evidence]], [[Justification]], [[Scientific method]], [[Algorithm]], [[Computation]].
+* [[Schema]] ↔ [[Data structure]], [[Software]], [[Validation]].
+* [[Metadata]] ↔ [[Provenance]], [[Evidence]], [[Reproducibility]].
+* [[Knowledge graph]] ↔ [[Ontology]], [[Relation]], [[Provenance]], [[Evidence]].
+
+== Public concept versus BITwiki implementation ==
+
+<pre>
+Ontology        ≠ BITwiki:Ontology
+Entity          ≠ BITwiki:Entity types
+Relation        ≠ BITwiki:Relationships
+Property        ≠ BITwiki:Semantic properties
+Category        ≠ MediaWiki Category:
+Concept         ≠ MediaWiki/SMW Concept:
+Schema          ≠ bitwiki-runtime-schema.json
+Knowledge graph ≠ BITwiki staging graph
+</pre>
+
+Project pages may appear only in an explicit application section.
+
+== Future prerequisites / normalized redlinks ==
+
+[[Syntax]], [[Pragmatics]], [[Meaning]], [[Reference]], [[Truth]], [[Predicate]], [[Class]], [[Instance]], [[Type]], [[Universal]], [[Particular]], [[Set]], [[Graph]], [[Directed graph]], [[Identifier]], [[Internationalized Resource Identifier]], [[Linked Data]], [[RDF Schema]], [[SPARQL]], [[SHACL]], [[SKOS]], [[Thesaurus]], [[Controlled vocabulary]], [[Logical entailment]], [[Deductive reasoning]], [[Inductive reasoning]], [[Abductive reasoning]], [[Soundness]], [[Completeness]], [[Satisfiability]], [[Open-world assumption]], [[Closed-world assumption]], [[Entity resolution]].
+
+These are coverage signals, not authorization for stubs.
+
+== Source-family audit ==
+
+* '''Wikipedia''' — public terminology, redirects, history and discovery; not primary support for formal claims.
+* '''Scholarpedia''' — direct broad coverage is sparse; use only specialized articles that genuinely match a descendant concept.
+* '''Primary/scholarly''' — Gruber; Studer/Benjamins/Fensel; Davis/Shrobe/Szolovits; Brachman/Levesque; Quillian; Description Logic Handbook; Hogan et al.
+* '''Standards''' — W3C RDF/RDFS/OWL/SKOS; ISO/IEC 21838; ISO 25964; NISO/DCMI metadata guidance.
+
+== Phase-1 decisions ==
+
+# [[Property]] is broad concept first, RDF/OWL application second.
+# [[Category]] is not silently normalized to formal [[Class]].
+# [[Concept]] and [[Entity]] remain distinct.
+# [[Knowledge graph]] does not universally require a formal ontology.
+# [[Semantic network]] remains a standalone historical/KR concept.
+# [[Schema]] is not modeled after RDFS alone.
+# RDF 1.2 is described as Candidate Recommendation in 2026, not as a finalized Recommendation.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

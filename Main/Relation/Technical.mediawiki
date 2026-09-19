@@ -1,0 +1,100 @@
+{{Source status|status=Technical depth derivative|note=Advanced logic/ontology relation surface of [[Relation]].}}
+{{Reading depth|base=Relation|current=Technical}}
+= Relation — Technical =
+
+== Extensional model ==
+An n-ary relation R over domains D1...Dn is:
+
+<pre>
+R ⊆ D1 × ... × Dn
+</pre>
+
+For binary R:
+
+<pre>
+R ⊆ D × D
+</pre>
+
+Relation properties can then be defined set-theoretically.
+
+== Common characteristics ==
+Reflexive:
+
+<pre>
+∀x R(x,x)
+</pre>
+
+Symmetric:
+
+<pre>
+∀x∀y(R(x,y) → R(y,x))
+</pre>
+
+Transitive:
+
+<pre>
+∀x∀y∀z((R(x,y) ∧ R(y,z)) → R(x,z))
+</pre>
+
+Functional:
+
+<pre>
+R(x,y1) ∧ R(x,y2) → y1 = y2
+</pre>
+
+Inverse-functional properties constrain the source analogously.
+
+== Reification / n-ary relations ==
+Binary graph form can be insufficient for statements with qualifiers.
+
+Example:
+
+<pre>
+Alice employedBy Org from 2020 to 2024
+</pre>
+
+Modeling options include:
+* reified relation node;
+* n-ary pattern;
+* named graph / statement annotation;
+* RDF 1.2 triple terms;
+* event entity.
+
+The correct choice depends on semantics and provenance needs.
+
+== RDFS domain/range ==
+RDFS domain and range are entailment rules.
+
+If:
+
+<pre>
+p rdfs:domain C
+x p y
+</pre>
+
+then RDFS entails:
+
+<pre>
+x rdf:type C
+</pre>
+
+They do not simply reject data outside C.
+
+Constraint languages such as SHACL serve different purposes.
+
+== OWL relation axioms ==
+OWL object properties can be declared:
+* symmetric;
+* asymmetric;
+* transitive;
+* reflexive;
+* irreflexive;
+* functional;
+* inverse-functional;
+* inverse of another property.
+
+These declarations change entailments and can interact with consistency.
+
+== References ==
+* W3C RDF Schema.
+* W3C OWL 2 Primer / Direct Semantics.

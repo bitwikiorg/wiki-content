@@ -1,0 +1,74 @@
+{{Source status|status=Technical depth derivative|note=Advanced philosophical and formal-semantics surface of [[Semantics]].}}
+{{Reading depth|base=Semantics|current=Technical}}
+= Semantics — Technical =
+
+== Interpretation ==
+For a formal language L, semantics normally specifies a class of interpretations/models and a mapping from syntactic expressions to semantic values.
+
+Model-theoretically:
+
+<pre>
+I ⊨ φ
+</pre>
+
+states that interpretation I satisfies formula φ.
+
+Logical entailment can then be defined:
+
+<pre>
+Γ ⊨ φ
+</pre>
+
+iff every interpretation satisfying Γ also satisfies φ.
+
+== Denotation and intension ==
+A semantic theory may distinguish:
+* reference/denotation;
+* sense/intension;
+* extension;
+* proposition;
+* possible-world content.
+
+Co-referring terms can differ in cognitive or semantic role, motivating distinctions beyond reference alone.
+
+== Compositional semantics ==
+Let <code>⟦e⟧</code> denote the semantic value of expression e.
+
+A compositional system gives rules such that:
+
+<pre>
+⟦complex expression⟧
+= F(⟦part1⟧, ..., ⟦partn⟧, syntactic structure)
+</pre>
+
+The function F depends on the construction.
+
+== Operational / denotational semantics ==
+Programming-language semantics commonly includes:
+
+'''Operational semantics''' — behavior defined through execution/transition rules.
+
+'''Denotational semantics''' — constructs mapped to mathematical objects.
+
+'''Axiomatic semantics''' — logical assertions characterize program behavior.
+
+These are different semantic techniques, not different syntaxes.
+
+== Semantic consequence versus procedure ==
+Entailment is defined semantically.
+
+An inference engine is an algorithm attempting to derive entailed conclusions.
+
+Soundness means derived conclusions are semantically valid.
+
+Completeness means every semantically valid consequence in scope can, in principle, be derived.
+
+== RDF semantics ==
+RDF semantics gives interpretations to RDF graphs and defines entailment regimes.
+
+The string used as an IRI does not by itself fix all social-world meaning. Formal semantics constrains model-theoretic interpretation; community usage still matters for what identifiers are intended to denote.
+
+== References ==
+* SEP — Theories of Meaning.
+* W3C RDF Semantics.
+* Winskel, ''The Formal Semantics of Programming Languages''.

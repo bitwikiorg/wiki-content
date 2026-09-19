@@ -1,0 +1,67 @@
+{{Source status|status=Technical depth derivative|note=Advanced structural-schema and graph-validation surface of [[Schema]].}}
+{{Reading depth|base=Schema|current=Technical}}
+= Schema — Technical =
+
+== Relational schema ==
+A relational schema can be modeled as relation symbols with attribute domains plus integrity constraints.
+
+Typical constraints:
+* primary keys;
+* foreign keys;
+* functional dependencies;
+* CHECK predicates;
+* uniqueness;
+* nullability.
+
+These are usually interpreted under database state/closed-world conventions.
+
+== Structural schemas ==
+Document schemas constrain syntax trees or value structures.
+
+Examples:
+* XML Schema;
+* JSON Schema;
+* Protocol Buffers.
+
+Validation asks whether an instance belongs to the language defined by the schema.
+
+== Semantic schema ==
+RDFS and ontology languages attach formal meaning to classes/properties.
+
+For example:
+
+<pre>
+p rdfs:domain C
+x p y
+→ x rdf:type C
+</pre>
+
+This is inference, not failure reporting.
+
+== Shape constraints ==
+SHACL shape:
+
+<pre>
+PersonShape
+  targetClass Person
+  path birthDate
+  minCount 1
+  datatype xsd:date
+</pre>
+
+describes graph conformance expectations.
+
+It can coexist with an open-world RDF/OWL ontology.
+
+== Evolution compatibility ==
+Schema migration can be:
+* backward compatible;
+* forward compatible;
+* breaking.
+
+Compatibility depends on producer/consumer assumptions rather than version numbers alone.
+
+== References ==
+* W3C RDF Schema.
+* W3C SHACL.
+* Database systems literature.

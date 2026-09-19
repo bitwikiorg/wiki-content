@@ -1,0 +1,61 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[Program (computing)]].}}
+{{Reading depth|base=Program (computing)|current=Technical}}
+= Program (computing) — Technical =
+
+== Program representation ==
+A program may exist as source text, an abstract syntax tree, bytecode, intermediate representation, machine code, database procedure, firmware image, or another representation accepted by an execution system.
+
+The same source program can be transformed through several representations before execution.
+
+== Artifact versus process ==
+A program is a persistent or transferable description/artifact. A process is an executing instance.
+
+Conceptually:
+
+<pre>
+program + input + environment + runtime state → execution/process behavior
+</pre>
+
+This distinction matters for concurrency, reproducibility, security, and operating-system resource management.
+
+== Semantics ==
+A program's semantics can be described operationally as transitions, denotationally by mathematical meanings, or axiomatically through logical assertions.
+
+Program equivalence depends on which observations are considered relevant. Two implementations may compute the same final function but differ in timing, I/O, exceptions, resource usage, or interaction.
+
+== Translation pipeline ==
+Common stages include:
+* lexical analysis and parsing;
+* semantic/type analysis;
+* intermediate representation;
+* optimization;
+* code generation;
+* linking/loading;
+* interpretation or execution;
+* runtime services.
+
+Not every language or system uses all stages, and JIT/runtime specialization can interleave translation with execution.
+
+== Correctness ==
+Correctness requires a specification.
+
+Formal reasoning may distinguish:
+* partial correctness;
+* termination;
+* safety;
+* liveness;
+* refinement;
+* observational equivalence.
+
+Testing is complementary rather than equivalent to proof.
+
+== Environment dependence ==
+Program behavior can depend on undefined/implementation-defined behavior, memory models, scheduling, filesystem state, network responses, locale, dependency versions, hardware, or external services.
+
+Reproducible execution therefore requires more context than source revision alone.
+
+== References ==
+* ISO/IEC/IEEE 24765:2017.
+* Glynn Winskel, ''The Formal Semantics of Programming Languages'' (1993), DOI: 10.7551/mitpress/3054.001.0001.
+* [[Programming language/Technical|Programming language — Technical]]
+* [[Computation/Technical|Computation — Technical]]

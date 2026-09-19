@@ -1,0 +1,103 @@
+{{Source status|status=Wave 0 Phase 2 compiled context|note=Normalized shared context for writing. Derived from Wave 0 capture; article prose must remain consistent with this state.}}
+= Wave 0 compiled context =
+
+'''State: Phase 2 — Context compilation + writing.'''
+
+This page normalizes the Wave 0 capture into shared definitions, boundaries, naming, depth behavior, and link targets before article prose is rewritten.
+
+== Depth surface convention ==
+
+For a canonical concept <code>Title</code>:
+
+* <code>Title</code> — '''Core''': normal BITwiki article, roughly Wikipedia/Scholarpedia depth.
+* <code>Title/Simple</code> — '''Simple''': plain-language orientation with low prerequisite load.
+* <code>Title/Technical</code> — '''Technical''': formalism, implementation, edge cases, standards, and advanced distinctions.
+
+All three surfaces describe the same concept. They are not three independent ontological objects.
+
+Frontier/research material is not a fourth reading level. It belongs in explicit sections such as <code>Open questions</code>, <code>Current research</code>, or <code>Controversies</code> on Core/Technical pages.
+
+== Linking rule ==
+
+Reader-facing links should be contextual and dense, like a well-linked MediaWiki encyclopedia.
+
+* Core pages link to canonical Core titles.
+* Simple pages should prefer Simple variants where they exist, otherwise Core.
+* Technical pages should prefer Technical variants where they exist, otherwise Core.
+* Piped links are encouraged when normal prose needs a different grammatical form.
+* SMW relationships are used only for stable machine-readable relations; ordinary contextual links do not need an SMW property.
+
+== Normalized Wave 0 definitions ==
+
+=== Algorithm ===
+A well-specified effective procedure for transforming input/state toward a result under a stated computational model. Classical definitions usually require finite description and termination for a completed result; modern usage also includes randomized, interactive, online, and long-running procedures, so claims about termination must state the intended model.
+
+=== Computation ===
+The carrying out of rule-governed state transitions under a computational model. Abstract computation studies formal models independently of physical realization; concrete computation concerns physical systems implementing such models.
+
+=== Data structure ===
+An organization and representation of data together with relations/operations relevant to storage and computation. Distinguish the concrete/representational data structure from an abstract data type, which specifies behavior independently of representation.
+
+=== Program (computing) ===
+An artifact or specification in an executable/interpretable representation that directs computational behavior. A program is not an executing process, and is not identical to either an algorithm or an entire software system.
+
+=== Programming language ===
+A notation and rule system for expressing programs/computations, characterized by syntax and semantics and typically accompanied by rules for names, types, abstraction, control, state, and interaction. A language is distinct from its implementations.
+
+=== Software ===
+Programs plus associated computational artifacts and information treated as part of an operational software system in a stated context. The exact boundary can include configuration, libraries, data, documentation, models, or deployment artifacts depending on the engineering purpose.
+
+=== Version control ===
+A system/practice for recording, identifying, comparing, retrieving, branching, merging, and attributing revisions of versioned artifacts over time. It is a component of broader configuration management, not a substitute for it.
+
+=== System boundary ===
+A purpose- and observer-dependent distinction separating a system of interest from its environment for analysis, design, explanation, or intervention. A system boundary can be physical, organizational, informational, temporal, or conceptual.
+
+=== Hypothesis ===
+A proposed explanatory or testable claim used in inquiry. A hypothesis is distinct from a prediction, and the general scientific concept must be distinguished from the narrower statistical use of null/alternative hypotheses.
+
+=== Causality ===
+The family of relations and formalisms in which one event, variable, condition, process, or intervention makes a difference to another. No single metaphysical theory is universally accepted; Core coverage must preserve regularity, counterfactual, probabilistic, mechanistic, interventionist, structural-causal, and potential-outcomes perspectives without treating them as interchangeable.
+
+== Shared non-equivalences ==
+
+<pre>
+algorithm ≠ program ≠ computation
+program ≠ process
+program ⊂/participates in software, but program ≠ software
+programming language ≠ compiler/interpreter/runtime
+data structure ≠ abstract data type
+hypothesis ≠ prediction ≠ theory
+scientific hypothesis ≠ statistical hypothesis
+causality ≠ correlation
+system boundary ≠ interface ≠ necessarily physical edge
+version control ≠ backup ≠ full configuration management
+</pre>
+
+== Required Core hyperlinks ==
+
+Wave 0 pages should link each other where the relation is explanatory rather than merely decorative.
+
+* [[Algorithm]] ↔ [[Computation]], [[Data structure]], [[Program (computing)]], [[Programming language]]
+* [[Computation]] ↔ [[Algorithm]], [[Program (computing)]], [[Programming language]], [[Data structure]]
+* [[Program (computing)]] ↔ [[Algorithm]], [[Computation]], [[Programming language]], [[Software]], [[Version control]]
+* [[Programming language]] ↔ [[Program (computing)]], [[Computation]], [[Software]]
+* [[Software]] ↔ [[Program (computing)]], [[Programming language]], [[Version control]], [[System boundary]]
+* [[Version control]] ↔ [[Software]], [[Program (computing)]]
+* [[Hypothesis]] ↔ [[Causality]]
+* [[Causality]] ↔ [[Hypothesis]], [[System boundary]]
+* [[System boundary]] ↔ [[Software]], [[Causality]]
+
+Future/redlink prerequisites should also be linked when semantically necessary: [[Evidence]], [[Scientific method]], [[Model]], [[Representation]], [[State]], [[Semantics]], [[Syntax]], [[Correctness]], [[Computability]], [[Computational complexity]], [[Process (computing)]], [[Provenance]], [[Configuration management]], [[Correlation]], [[Intervention]], and [[Counterfactual]].
+
+== Source discipline ==
+
+* Wikipedia and Scholarpedia: orientation, terminology, structure, history leads, and cross-links.
+* Primary papers: historical/formal claims.
+* Standards and institutional references: standardized terminology and implementation context.
+* SEP: contested conceptual/philosophical material.
+* Textbooks/monographs: stable synthesis.
+* No article should imply consensus where the captured source base shows competing definitions.
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

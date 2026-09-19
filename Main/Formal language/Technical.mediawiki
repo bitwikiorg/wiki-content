@@ -1,0 +1,34 @@
+{{Source status|status=Technical depth derivative|note=Advanced formal-language surface.}}
+{{Reading depth|base=Formal language|current=Technical}}
+= Formal language — Technical =
+
+== Definition ==
+For alphabet Σ:
+
+<pre>
+Σ* = set of all finite strings over Σ
+L ⊆ Σ*
+</pre>
+
+A language family is a class of such subsets.
+
+== Recognition ==
+A machine M recognizes language:
+
+<pre>
+L(M) = { w ∈ Σ* : M accepts w }
+</pre>
+
+Different machine classes induce different language classes.
+
+== Chomsky-style hierarchy ==
+Classical theory distinguishes regular, context-free, context-sensitive, and recursively enumerable languages, associated with different grammar and machine models.
+
+The hierarchy is a useful organizing framework but not the only classification of formal languages.
+
+== Closure and decision properties ==
+Language classes are studied through closure under union, intersection, complement, concatenation and other operations, as well as decision problems such as membership, emptiness and equivalence.
+
+== References ==
+* Hopcroft, Motwani & Ullman.
+* OpenDSA formal-languages material.

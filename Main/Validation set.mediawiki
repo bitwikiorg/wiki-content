@@ -1,0 +1,56 @@
+{{Source status|status=Wave 7 compiled article|note=Validation-set concept grounded in model-selection methodology.}}
+{{Knowledge object
+ |title=Validation set
+ |entity_type=Concept
+ |domain=Computer science, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Validation set|current=Core}}
+
+= Validation set =
+
+== Overview ==
+A '''validation set''' is data excluded from direct model-parameter fitting and used during development to choose models, hyperparameters, thresholds, stopping points, preprocessing decisions, or other design choices.
+
+Validation estimates guide development.
+
+== Model selection ==
+A validation set can be used to compare:
+
+* architectures;
+* regularization strengths;
+* feature sets;
+* hyperparameters;
+* early-stopping checkpoints;
+* decision thresholds.
+
+Because those choices depend on validation performance, the final selected system is indirectly adapted to the validation set.
+
+== Validation overfitting ==
+Repeated experimentation can overfit the validation criterion.
+
+If many alternatives are tried, the best observed validation score may partly reflect noise.
+
+This is one source of [[Model selection bias]].
+
+== Validation and testing ==
+A [[Test set]] should remain independent of the development choices being evaluated.
+
+If test results are repeatedly used to change the system, the test set has become another validation set in practice.
+
+== Cross-validation ==
+Cross-validation estimates development performance by rotating data through training and validation roles.
+
+Nested cross-validation can separate inner model selection from outer performance estimation.
+
+== Related concepts ==
+[[Training set]], [[Test set]], [[Overfitting]], [[Model selection bias]], [[Validation]], and [[Data leakage (machine learning)]] provide the surrounding evaluation context.
+
+== References ==
+* Hastie, Tibshirani & Friedman.
+* Cawley & Talbot (2010).
+* standard model-selection methodology.
+
+[[Category:Computer science]]
+[[Category:Science]]

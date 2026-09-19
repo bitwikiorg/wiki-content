@@ -1,0 +1,63 @@
+{{Source status|status=Wave 6 compiled article|note=State-machine concept grounded in computer science and systems modeling.}}
+{{Knowledge object
+ |title=State machine
+ |entity_type=Concept
+ |domain=Computer science, Systems science
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=State machine|current=Core}}
+
+= State machine =
+
+== Overview ==
+A '''state machine''' is a model of behavior in which a system occupies a state and changes state according to transitions triggered by inputs, events, conditions, or actions.
+
+State machines are used in software, hardware, protocols, control systems, user interfaces, formal verification, and theoretical computation.
+
+== State ==
+A state is an abstract representation of information relevant to future behavior.
+
+It is not necessarily a physical location.
+
+Two physical configurations can be treated as the same state when they have the same relevant future behavior.
+
+== Transitions ==
+A transition maps a current state and possibly an input or condition to a next state.
+
+A deterministic model has at most one specified next state for each relevant condition.
+
+Nondeterministic models can allow several.
+
+== Finite-state machines ==
+A finite-state machine has finitely many states.
+
+Finite-state machines are important in hardware control, protocol design, parsers, regular-language recognition, and workflow modeling.
+
+But:
+
+<pre>
+state machine ≠ finite-state machine by definition
+</pre>
+
+The state space can be infinite.
+
+== Outputs ==
+Moore machines associate outputs with states.
+
+Mealy machines associate outputs with transitions.
+
+Other state-machine formalisms add hierarchy, concurrency, timing, probabilities, or continuous dynamics.
+
+== Relation to automata ==
+[[Automaton (computation)|Automata]] are formal state-transition machines studied for computational behavior and language recognition.
+
+“State machine” is often used more broadly in engineering and software modeling.
+
+== References ==
+* NIST Dictionary of Algorithms and Data Structures, “state machine”.
+* automata and software-modeling texts.
+* statecharts/state-transition literature.
+
+[[Category:Computer science]]
+[[Category:Systems science]]

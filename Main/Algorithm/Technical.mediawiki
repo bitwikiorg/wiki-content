@@ -1,0 +1,71 @@
+{{Source status|status=Technical depth derivative|note=Formal/advanced surface of [[Algorithm]].}}
+{{Reading depth|base=Algorithm|current=Technical}}
+= Algorithm — Technical =
+
+== Formal perspective ==
+An '''algorithm''' can be treated as a finitely describable effective procedure operating over a state space according to rules that determine allowable next steps. Formal theories differ in exactly which requirements are primitive.
+
+Classical characterizations often require:
+# finite description;
+# effective, unambiguous steps;
+# specified inputs/initial states;
+# rule-governed transitions;
+# termination after finitely many steps for a completed result.
+
+These requirements describe classical terminating algorithms well, but interactive, online, distributed, and reactive computation motivate broader formulations in which continuing interaction or progress replaces a single terminal output.
+
+== Algorithms versus computable functions ==
+A computable function does not uniquely identify an algorithm. Distinct procedures may compute the same function while using different intermediate states, resources, data structures, or parallelization strategies.
+
+This distinction motivates formal theories of algorithms beyond computability theory. Gurevich's sequential abstract-state-machine approach postulates sequential time, abstract state, and bounded exploration, then characterizes sequential algorithms step-for-step by abstract state machines.
+
+== Correctness ==
+Correctness is relative to a specification.
+
+For a terminating deterministic algorithm, partial correctness can be expressed informally as:
+
+<pre>
+precondition ∧ execution terminates ⇒ postcondition
+</pre>
+
+Total correctness additionally establishes termination.
+
+Common proof techniques include:
+* invariants;
+* induction;
+* exchange arguments;
+* contradiction;
+* refinement;
+* simulation relations;
+* probabilistic bounds for randomized algorithms.
+
+== Complexity ==
+Algorithm analysis studies resource use as a function of input size or another problem parameter.
+
+Typical measures include:
+* time;
+* space;
+* I/O or memory transfers;
+* communication;
+* randomness;
+* parallel work and span;
+* energy.
+
+Asymptotic notation describes growth while abstracting away many machine-specific constants, but the chosen cost model must match the claim being made.
+
+== Randomization and nondeterminism ==
+A randomized algorithm receives or generates random choices. Its correctness or running time may therefore be characterized probabilistically.
+
+Nondeterministic computation is usually a formal model in which multiple transitions may be available; it should not be confused with ordinary software unpredictability.
+
+== Online and interactive algorithms ==
+An online algorithm receives input incrementally and acts before all future input is known. Interactive procedures communicate with an environment during execution. These cases weaken the simple "fixed input → finite steps → final output" picture and are important boundary cases for general definitions.
+
+== Representation and implementation ==
+An algorithm can be represented by pseudocode, mathematical definitions, state machines, flowcharts, control tables, or executable code. Implementation introduces additional details such as concrete [[Data structure/Technical|data structures]], memory layout, concurrency primitives, numerical representation, and machine architecture.
+
+== References ==
+* Paul E. Black, NIST DADS, "algorithm".
+* Cormen et al., ''Introduction to Algorithms'', 4th ed. (2022), ISBN 9780262046305.
+* Yuri Gurevich (2000), "Sequential Abstract-State Machines Capture Sequential Algorithms", DOI: 10.1145/343369.343384.
+* [[Computation/Technical|Computation — Technical]]

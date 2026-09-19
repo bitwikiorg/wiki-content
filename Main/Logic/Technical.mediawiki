@@ -1,0 +1,44 @@
+{{Source status|status=Technical depth derivative|note=Advanced formal-logic surface of [[Logic]].}}
+{{Reading depth|base=Logic|current=Technical}}
+= Logic — Technical =
+
+== Formal structure ==
+A logic can be represented by:
+
+<pre>
+L = formal language
+⊢ = syntactic derivability relation
+⊨ = semantic consequence relation
+</pre>
+
+A proof system is '''sound''' when:
+
+<pre>
+Γ ⊢ φ  ⇒  Γ ⊨ φ
+</pre>
+
+and '''complete''' when:
+
+<pre>
+Γ ⊨ φ  ⇒  Γ ⊢ φ
+</pre>
+
+These properties are system-relative.
+
+== Consequence ==
+Logical consequence can be characterized proof-theoretically, model-theoretically, algebraically, or inferentially.
+
+Different logics may validate different consequence relations.
+
+== Structural properties ==
+Consequence relations can satisfy properties such as reflexivity, monotonicity, transitivity/cut, compactness, or substitution invariance.
+
+Nonmonotonic logics deliberately reject some properties of classical consequence.
+
+== Metalogic ==
+Metalogic studies properties of logical systems themselves, including consistency, completeness, decidability, expressiveness, and model-theoretic behavior.
+
+== References ==
+* SEP, “Classical Logic”.
+* Open Logic Project.
+* standard proof-theory and model-theory texts.

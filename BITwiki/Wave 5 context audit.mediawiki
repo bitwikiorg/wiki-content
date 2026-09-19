@@ -372,7 +372,25 @@ Wave 5 is ready to leave Phase 3 when:
 [[BITwiki:Wave 5 context audit]]
 </pre>
 
-'''Current assessment: semantic and structural audit is complete; repository/CI validation remains the final release gate.'''
+== Release validation — 2026-09-19 ==
+
+PR #21 executed the established Wave release gates after the full 54-surface corpus was present.
+
+The release gate completed successfully:
+
+* staging workbench build passed;
+* deployable MediaWiki structure and identity validation passed;
+* Scribunto Lua 5.1 syntax passed;
+* runtime-schema projection audit passed;
+* MediaWiki / SMW / Lua / Cargo substrate audit passed;
+* recursive deployment-plan and importer-safety validation passed;
+* structured knowledge-request workflow audit passed;
+* Main-namespace role audit passed;
+* corpus/V1 inventories and architecture-evidence upload passed.
+
+This completion-state bookkeeping commit must re-pass the same PR gates before merge.
+
+'''Current assessment: Wave 5 is semantically and structurally audited and has passed the full release gate; merge remains conditional on the final-head CI repeat.'''
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

@@ -1,0 +1,37 @@
+{{Source status|status=Technical depth derivative|note=Advanced database-systems surface.}}
+{{Reading depth|base=Database|current=Technical}}
+= Database — Technical =
+
+== Relational model ==
+A relation is a set of tuples over attributes.
+
+Relational algebra supplies operators such as selection, projection, join, union and difference.
+
+SQL implements a practical, richer query language with bags, nulls and extensions.
+
+== Transactions ==
+ACID:
+
+<pre>
+atomicity
+consistency
+isolation
+durability
+</pre>
+
+describes transaction goals, but “consistency” here means preservation of application/database invariants, not [[Consistency (logic)|logical consistency]] in general.
+
+== Concurrency control ==
+Serializable schedules reproduce some serial execution.
+
+Systems use locking, timestamp ordering, MVCC, optimistic control, or hybrid approaches.
+
+== Storage and indexes ==
+B-trees, LSM trees, hashing, columnar formats and buffer management optimize different access/update patterns.
+
+== Distributed data ==
+Replication and partitioning introduce distributed transaction, consensus and consistency-model questions.
+
+== References ==
+* standard database-systems texts.
+* transaction-processing literature.

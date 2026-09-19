@@ -1,0 +1,35 @@
+{{Source status|status=Wave 10 compiled article|note=Public concept compiled from the Wave 10 decisions/incentives/collective-systems context.}}
+{{Knowledge object
+ |title=Sybil attack
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 10 compiled context
+}}
+{{Reading depth|base=Sybil attack|current=Core}}
+
+= Sybil attack =
+
+== Overview ==
+'''Sybil attack''' occurs when one adversarial entity creates or controls multiple identities and uses them to gain disproportionate influence in a system that treats those identities as independent participants.
+
+Sybil attacks matter when a protocol relies on the apparent number or diversity of participants for voting, reputation, routing, resource allocation, consensus, moderation, or redundancy.
+
+Pseudonymity alone is not a Sybil attack. The attack requires one controlling entity to exploit multiple identities as if they were independent.
+
+Mitigations change the cost or evidentiary basis of identity: trusted certification, scarce-resource commitments, social-graph assumptions, rate limits, deposits, proof-of-personhood schemes, hardware roots, or other admission controls. Each introduces assumptions and tradeoffs.
+
+== Boundaries ==
+* Sybil attack ≠ pseudonymity
+* multiple accounts ≠ attack unless used to exploit identity multiplicity
+* Sybil resistance ≠ proof of one-human-one-identity in every design
+
+== Related concepts ==
+[[Identity]], [[Computer security]], [[Distributed system]], [[Reputation system]], [[Governance]], [[Consensus mechanism]], and [[Network]] provide the security context.
+
+== References ==
+* John R. Douceur, “The Sybil Attack”, IPTPS (2002).
+* Microsoft Research publication record for Douceur's 2002 paper.
+* distributed-systems security literature on identity, admission control, and Sybil resistance.
+
+[[Category:Computer science]]

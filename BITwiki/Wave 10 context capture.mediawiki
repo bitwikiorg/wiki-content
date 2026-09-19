@@ -1,0 +1,140 @@
+{{Source status|status=Wave 10 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 10 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 10 covers decisions, strategic interaction, incentives, coordination, collective action, public/common resources, delegation, governance, reputation, and identity-multiplicity attacks.
+
+== Normalized scope ==
+
+# [[Decision theory]]
+# [[Utility (decision theory)]]
+# [[Game theory]]
+# [[Mechanism design]]
+# [[Incentive]]
+# [[Coordination problem]]
+# [[Collective action]]
+# [[Public good]]
+# [[Commons]]
+# [[Principal–agent problem]]
+# [[Governance]]
+# [[Reputation system]]
+# [[Sybil attack]]
+
+== Title decisions ==
+
+* '''[[Utility]] → [[Utility (decision theory)]]''' because “utility” has durable meanings in software, public services, infrastructure, economics, philosophy, and ordinary language. This page is specifically the formal preference/value representation used in decision theory and game theory.
+* [[Coordination problem]] remains distinct from [[Collective action]]: coordination can fail from incompatible expectations even when interests broadly align, while collective-action problems can involve incentives to defect or free-ride.
+* [[Public good]] remains distinct from [[Commons]]: a pure public good is classically non-rival and non-excludable, while many commons are common-pool resources that are rival/subtractable but difficult to exclude from.
+* [[Governance]] remains unqualified and public: it covers institutional decision processes across states, firms, communities, platforms, associations, and decentralized systems.
+* [[Sybil attack]] remains the established distributed-systems/security term and is not renamed to a blockchain-specific title.
+
+== Scope corrections from the provisional queue ==
+
+The earlier provisional Wave 10 queue listed [[Preference]] and [[Risk]]. They are retained as future coverage signals rather than created here because:
+
+* preference is a broader psychological/philosophical/economic concept that needs its own cross-domain capture;
+* risk spans decision theory, statistics, engineering, finance, medicine, and safety and should not be defined only through this wave.
+
+The refined wave adds [[Coordination problem]], [[Public good]], [[Commons]], [[Principal–agent problem]], [[Governance]], [[Reputation system]], and [[Sybil attack]] because they create the public conceptual bridge from individual choice to institutions and decentralized collective systems.
+
+== Domain decision ==
+
+No new controlled Domain is introduced.
+
+Wave 10 uses existing Domains:
+
+* Philosophy
+* Mathematics
+* Systems science
+* Computer science
+
+Economics, political science, and social science remain broader future Domain-scope questions rather than being invented to satisfy this wave.
+
+== Dependency graph ==
+
+<pre>
+Decision theory
+ └→ Utility (decision theory)
+
+Game theory
+ ├→ Coordination problem
+ ├→ Collective action
+ └→ Mechanism design
+       ├→ Incentive
+       └→ Principal–agent problem
+
+Collective action
+ ├→ Public good
+ ├→ Commons
+ └→ Governance
+
+Governance
+ └→ Reputation system
+       └→ Sybil attack
+</pre>
+
+This is an explanatory graph, not a strict subclass hierarchy.
+
+== Required non-equivalences ==
+
+<pre>
+decision theory ≠ psychology of choice by definition
+utility ≠ money
+game theory ≠ zero-sum games only
+mechanism design ≠ generic product design
+incentive ≠ reward only
+coordination problem ≠ collective-action problem by identity
+collective action ≠ coordination problem
+public good ≠ government-provided good
+commons ≠ public good
+principal–agent problem ≠ employer–employee relationship only
+governance ≠ government
+reputation ≠ identity
+Sybil attack ≠ pseudonymity
+coordination problem ≠ collective-action problem
+public good ≠ government-provided good
+commons ≠ open access by definition
+commons ≠ inevitable tragedy
+governance ≠ government
+reputation ≠ trust
+Sybil attack ≠ pseudonymity
+</pre>
+
+== Source families ==
+
+* Stanford Encyclopedia of Philosophy — decision theory, expected utility, game theory, public goods, and free-rider/collective-action boundaries.
+* von Neumann & Morgenstern; Savage; Osborne & Rubinstein — decision/game-theoretic foundations.
+* Hurwicz, Maskin, Myerson; Royal Swedish Academy of Sciences 2007 — mechanism design and incentive compatibility.
+* Holmström; Hart; Royal Swedish Academy of Sciences 2016 — incentives, contracts, and principal–agent problems.
+* Olson; Ostrom; Royal Swedish Academy of Sciences 2009 — collective action, commons, and institutional governance.
+* World Bank governance literature — broad institutional/process framing of governance.
+* Resnick et al. — online reputation systems.
+* Douceur (2002) — Sybil attack.
+
+== Cross-wave links ==
+
+* [[Probability]], [[Conditional probability]], [[Bayesian inference]], and [[Uncertainty]] ground decision models.
+* [[Causality]] matters where causal and evidential decision criteria diverge.
+* [[Multi-agent system]], [[Intelligent agent]], and [[AI agent]] connect strategic theory to computational agents without redefining game theory.
+* [[Information]], [[Network]], [[Feedback]], [[Complex system]], and [[Adaptation (systems)]] provide systems context for institutions and collective behavior.
+* [[Identity]], [[Verification]], [[Computer security]], and [[Distributed system]] ground reputation and Sybil boundaries.
+
+== Future normalized redlinks ==
+
+[[Preference]], [[Risk]], [[Expected utility]], [[Social choice theory]], [[Nash equilibrium]], [[Cooperative game]], [[Repeated game]], [[Bargaining]], [[Auction]], [[Incentive compatibility]], [[Revelation principle]], [[Free-rider problem]], [[Externality]], [[Common-pool resource]], [[Moral hazard]], [[Adverse selection]], [[Contract theory]], [[Institution]], [[Accountability]], [[Legitimacy]], [[Trust]], [[Collusion]], [[Whitewashing (reputation)]], [[Sybil resistance]].
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Keep the refined Wave 10 at 13 concepts.
+# Normalize Utility to [[Utility (decision theory)]].
+# Do not create Preference or Risk in this wave.
+# Do not create a new Domain.
+# Preserve coordination/collective-action, public-good/commons, governance/government, reputation/trust, and Sybil/pseudonymity boundaries.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

@@ -1,0 +1,185 @@
+{{Source status|status=Wave 13 Phase 3 context audit|note=Audit state for the Wave 13 public/platform technology capture/compile/write cycle.}}
+= Wave 13 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Internet]]
+# [[World Wide Web]]
+# [[Protocol (computing)]]
+# [[Internet protocol suite]]
+# [[Domain Name System]]
+# [[Uniform Resource Identifier]]
+# [[Hypertext Transfer Protocol]]
+# [[Client-server model]]
+# [[Web browser]]
+# [[Web server]]
+# [[Application programming interface]]
+# [[Authentication]]
+# [[Authorization]]
+# [[Interoperability]]
+# [[Federation (information technology)]]
+# [[Online platform]]
+# [[Content moderation]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 13 reader surfaces: '''51'''.
+
+== Structural audit ==
+
+All 17 Core pages use [[Template:Knowledge object]], [[Template:Reading depth]], source status, references, controlled Domain values, and Core-owned category/semantic identity.
+
+All 34 Simple/Technical derivatives use [[Template:Reading depth]], declare source status, contain sources/references, and do not duplicate Core Knowledge object/category identity.
+
+== Title / identity audit ==
+
+Qualified titles remain necessary for [[Protocol (computing)]] and [[Federation (information technology)]]. [[Uniform Resource Identifier]] remains canonical rather than using URL as a broader synonym. [[Application programming interface]] remains the full canonical title.
+
+No vendor, website, or commercial platform is promoted into the primitive layer.
+
+== Domain audit ==
+
+No new controlled Domain is required. Wave 13 uses Computer science, Technology, Engineering, and Systems science.
+
+== Internet / Web audit ==
+
+The corpus explicitly preserves:
+
+<pre>
+Internet ≠ World Wide Web
+Internet protocol suite ≠ Internet
+DNS ≠ Web
+URI ≠ location necessarily
+HTTP ≠ HTML
+HTTP ≠ Web
+</pre>
+
+The Web is treated as an information architecture using identifiers, representations, agents, and protocols over network infrastructure.
+
+== Software-role audit ==
+
+[[Client-server model]] treats client and server as interaction roles rather than permanent device identities.
+
+[[Web browser]] remains distinct from a search engine.
+
+[[Web server]] is a software/service role and is not reduced to a physical host.
+
+[[Application programming interface]] remains broader than Web APIs and distinct from protocol as a general concept.
+
+== Identity / access audit ==
+
+[[Authentication]] and [[Authorization]] remain separate:
+
+<pre>
+authentication = establish confidence in a claimant/account/credential binding
+authorization = determine allowed actions under policy
+</pre>
+
+Authentication is not treated as real-world identity proofing in every system, and authorization can exist for anonymous or capability-bearing requests.
+
+== Federation / interoperability audit ==
+
+[[Interoperability]] does not require identical implementations.
+
+[[Federation (information technology)]] requires separately administered systems plus shared exchange/trust mechanisms; it is not equated with decentralization or single sign-on.
+
+NIST SP 800-63 Revision 4 is cited as final July 2025 guidance. W3C ActivityPub is cited as a Recommendation dated 23 January 2018.
+
+== Platform / moderation audit ==
+
+[[Online platform]] is a sociotechnical service layer, not the Internet or a protocol.
+
+[[Content moderation]] is modeled as policy application and enforcement. A moderation action is not treated as proof that content is false, harmful, illegal, or otherwise invalid outside the governing policy context.
+
+== Link-resolution audit ==
+
+Two draft related-concept links were rejected during Phase 3:
+
+* <code>[[Policy]]</code> — no canonical page exists; kept as ordinary text.
+* <code>[[Network effect]]</code> — no canonical page exists; kept as ordinary text.
+
+No stubs were created merely to satisfy those links.
+
+== Cross-wave audit ==
+
+Wave 13 reuses [[Computer network]], [[Distributed system]], [[Computer security]], [[Identity]], [[Governance]], [[Semantic Web]], [[Human-computer interaction]], [[Machine learning]], and other established identities without redefining them.
+
+No blockchain-specific identity or Web-specific application is allowed to redefine the general Internet/platform substrate.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| IETF RFC 1122 / 1123 / 1958 / 8200 || Internet architecture and protocol suite
+|-
+| RFC 1034 / 1035 / 8499 || DNS
+|-
+| RFC 3986 || URI
+|-
+| RFC 9110 / 9111 / 9112 || HTTP semantics, caching, HTTP/1.1
+|-
+| W3C Web Architecture Recommendation || Web identification, interaction and representation
+|-
+| NIST SP 800-63-4 family || authentication and federation
+|-
+| NIST access-control literature || authorization
+|-
+| W3C ActivityPub Recommendation || concrete federated architecture
+|-
+| Gillespie; Roberts; van Dijck et al. || platform governance and moderation
+|}
+
+== Acceptance criteria ==
+
+Wave 13 is ready to leave Phase 3 when:
+
+# all 51 reader surfaces remain present;
+# one concept = one Core semantic identity;
+# Internet/Web and authentication/authorization boundaries remain explicit;
+# no deferred concept is represented as an existing canonical link;
+# controlled Domains pass;
+# derivatives remain category/identity-exempt;
+# complete V2 release gates and staging pass.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 13 context capture]]
+        ↓
+[[BITwiki:Wave 13 compiled context]]
+        ↓
+[[BITwiki:Wave 13 context audit]]
+</pre>
+
+== Release validation — 2026-09-19 ==
+
+PR #32 executed the established Wave release gates after all 51 reader surfaces, source-state corrections, link cleanup, and ledger repair were present.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+Phase 3 also corrected DNS terminology provenance from obsolete RFC 8499 to current RFC 9499 and restored the missing Wave 12 row in the completed-wave ledger.
+
+No Domain expansion was required.
+
+This completion-state bookkeeping commit must re-pass the same release gates before merge.
+
+'''Current assessment: Wave 13 is semantically and structurally audited and has passed its release gates; merge remains conditional on exact-final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

@@ -1,0 +1,14 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Web server]].}}
+{{Reading depth|base=Web server|current=Technical}}
+= Web server — Technical =
+
+Web-server deployments can terminate transport security, route requests by authority/path, generate dynamic representations, apply caching rules, and delegate to upstream applications. Reverse proxies and gateways can separate public HTTP handling from application execution.
+
+== Modeling / implementation cautions ==
+* web server ≠ physical machine necessarily
+* web server ≠ website
+* server response ≠ static file necessarily
+
+== References ==
+* IETF RFC 9110, ''HTTP Semantics'' (2022), origin-server terminology.
+* W3C, ''Architecture of the World Wide Web, Volume One'', server/agent interaction model.

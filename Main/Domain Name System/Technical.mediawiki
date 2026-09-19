@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Domain Name System]].}}
+{{Reading depth|base=Domain Name System|current=Technical}}
+= Domain Name System — Technical =
+
+DNS resolution traverses or queries a distributed hierarchy of authoritative and recursive components. Records are cached under time-to-live rules, so observed answers depend on delegation, caching state, resolver behavior, and record type.
+
+== Modeling / implementation cautions ==
+* DNS ≠ World Wide Web
+* domain name ≠ URI
+* DNS record ≠ guaranteed truth about a service
+
+== References ==
+* IETF RFC 1034, ''Domain Names — Concepts and Facilities'' (1987).
+* IETF RFC 1035, ''Domain Names — Implementation and Specification'' (1987).
+* IETF RFC 9499, ''DNS Terminology'' (2023).

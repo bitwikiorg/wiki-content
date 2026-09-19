@@ -1,0 +1,41 @@
+{{Source status|status=Technical depth derivative|note=Advanced transition-system surface.}}
+{{Reading depth|base=State machine|current=Technical}}
+= State machine — Technical =
+
+== Abstract model ==
+A transition system can be represented by:
+
+<pre>
+S = set of states
+I = inputs/events
+T ⊆ S × I × S
+</pre>
+
+A deterministic machine constrains T so relevant state/input pairs have at most one successor.
+
+== State abstraction ==
+Choosing state is a modeling decision.
+
+A state should preserve enough information to determine future behavior under the abstraction.
+
+Too little state merges behaviorally different configurations; too much state can make the model unusably large.
+
+== Extended models ==
+Variants include:
+
+* finite-state machines;
+* labeled transition systems;
+* statecharts;
+* timed automata;
+* probabilistic state machines;
+* Markov models;
+* hybrid automata.
+
+They differ in assumptions about time, probability, hierarchy, concurrency and continuous variables.
+
+== Verification ==
+State-space exploration supports reachability, safety and liveness analysis, but large systems can suffer state explosion.
+
+== References ==
+* NIST DADS.
+* state-transition-system and formal-verification literature.

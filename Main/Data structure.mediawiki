@@ -1,81 +1,97 @@
-{{Source status|status=source-grounded corpus expansion|note=Computer science foundation grounded in NIST DADS and ACM CS2023.}}
+{{Source status|status=Wave 0 compiled rewrite|note=Core article normalized against NIST, CLRS, Liskov/Zilles, Hoare, and Wave 0 shared context.}}
 {{Knowledge object
  |title=Data structure
  |entity_type=Concept
  |domain=Computer science
  |status=Established
- |provenance=V2 corpus expansion; NIST DADS and ACM CS2023 grounding
+ |provenance=V2 public corpus; Wave 0 compiled context
 }}
+{{Reading depth|base=Data structure|current=Core}}
 
 = Data structure =
 
 == Overview ==
-A '''data structure''' is a way of organizing information so that a computer can store, access, update, and process it effectively. Arrays, linked lists, stacks, queues, hash tables, trees, heaps, and graphs are familiar examples.
+A '''data structure''' is an organization and representation of data designed to support particular operations. Arrays, linked lists, stacks, queues, hash tables, trees, heaps, and graphs are familiar examples.
 
-Data structures matter because the organization of data changes what operations are easy or expensive. The same information can often be represented in several ways, and the best representation depends on the operations a program needs to perform.
+Data structures matter because the way information is represented changes what a [[Program (computing)|program]] or [[Algorithm|algorithm]] can do efficiently. The same logical information can often be represented in several ways, each with different trade-offs.
 
 == Definition ==
-NIST's Dictionary of Algorithms and Data Structures defines a data structure as an organization of information, usually in memory, intended to improve algorithmic efficiency or provide conceptual unity. Most data structures are paired with operations that preserve the structure's intended properties.
+NIST describes a data structure as an organization of information, usually in memory, used for algorithmic efficiency or conceptual unity. A useful data structure normally combines:
 
-A data structure is therefore not merely a pile of values. It combines a representation with expectations about how those values are arranged and manipulated.
+* stored values or records;
+* relationships among them;
+* operations that access or modify them;
+* invariants that those operations are expected to preserve.
 
-== Scope & importance ==
-Data structures sit between abstract information and concrete computation. [[Algorithm|Algorithms]] operate on data, but their performance often depends on how that data is represented.
+The representation is therefore more than a collection of values. Its organization gives operations their meaning and cost.
 
-For example, searching an unsorted list may require examining many elements, while a suitable hash table or balanced search tree can support much faster lookup under appropriate assumptions. Conversely, a representation optimized for one operation may make another operation slower or consume more memory.
+== Data structure and abstract data type ==
+A data structure should be distinguished from an '''[[Abstract data type|abstract data type]] (ADT)'''.
 
-== Core concepts ==
-Important dimensions include:
+An ADT specifies a set of values and permitted operations according to their behavior without committing to one representation. A stack, for example, can be described by operations such as push and pop together with last-in, first-out behavior.
 
-* '''Organization''' — sequential, hierarchical, associative, graph-like, spatial, or another arrangement.
-* '''Operations''' — insertion, deletion, lookup, traversal, update, sorting, merging, or aggregation.
-* '''Invariants''' — properties that must remain true, such as heap order or binary-search-tree ordering.
-* '''Access pattern''' — sequential access, random access, key-based lookup, priority access, or traversal by relationships.
-* '''Mutability''' — whether the structure changes in place or produces new versions.
-* '''Memory model''' — contiguous storage, linked storage, external storage, distributed storage, or compact/succinct representation.
-* '''Complexity''' — the time and space cost of common operations.
+The stack can then be implemented with an array, linked list, persistent structure, or another data structure. The distinction is between a behavioral abstraction and a concrete or representational organization, although informal usage sometimes blurs the terms.
 
-== Common examples ==
-'''Array''' — stores elements in an indexed sequence, typically supporting efficient direct access by position.
+== Operations and invariants ==
+Common operations include:
 
-'''Linked list''' — stores elements as nodes connected by references, making some insertions and deletions convenient while sacrificing constant-time arbitrary indexing.
+* lookup and search;
+* insertion and deletion;
+* traversal;
+* update;
+* ordering and sorting;
+* merging;
+* aggregation.
 
-'''Stack''' — supports last-in, first-out access.
+Many structures depend on invariants. A binary-search tree relies on an ordering relation; a heap maintains a heap-order property; a hash table relies on a mapping from keys into storage locations and a strategy for collisions.
 
-'''Queue''' — supports first-in, first-out access.
+Correct operations preserve the required invariants as the structure changes.
 
-'''Hash table''' — maps keys to values using a hash function and typically offers fast average-case lookup when designed well.
+== Common structures ==
+'''Array''' — indexed sequence, usually supporting efficient access by position.
 
-'''Tree''' — represents hierarchical relationships. Search trees, heaps, tries, and syntax trees are specialized forms.
+'''Linked list''' — nodes connected by references, making some local insertions/removals convenient but arbitrary indexing slower.
 
-'''Graph''' — represents entities connected by relationships and supports modeling networks, routes, dependencies, social connections, and many other relational structures.
+'''Stack''' — last-in, first-out access.
 
-== Data structure vs. abstract data type ==
-An '''abstract data type''' describes behavior in terms of values and permitted operations without requiring one physical representation. A stack, for example, can be specified by operations such as push and pop. It may then be implemented using an array, linked list, or another representation.
+'''Queue''' — first-in, first-out access.
 
-This separation lets software reason about an interface independently of one implementation. In practice, the phrases sometimes overlap, so precise discussion should distinguish the behavioral abstraction from its concrete representation when the difference matters.
+'''Hash table''' — key-based storage using a hash function, generally designed for efficient expected lookup.
+
+'''Tree''' — hierarchical structure; variants include search trees, heaps, tries, and syntax trees.
+
+'''Graph''' — entities connected by arbitrary relationships; used for networks, routes, dependencies, social relationships, knowledge graphs, and many other domains.
 
 == Relationship to algorithms ==
-Algorithms and data structures are tightly coupled. NIST notes that data structures commonly have associated algorithms for operations such as search, insertion, or balancing.
+Algorithms and data structures are often designed together. A representation determines which operations are cheap, what information is immediately available, and which invariants can be exploited.
 
-Choosing a data structure therefore changes algorithmic trade-offs. A graph algorithm depends on whether the graph is represented by adjacency lists, matrices, edge lists, compressed structures, or distributed partitions. Database indexes similarly use specialized data structures to reduce the cost of locating records.
+For example, graph traversal has different memory and access behavior depending on whether a graph is represented by adjacency lists, matrices, edge lists, compressed structures, or distributed partitions.
 
-== Applications / implications ==
-Data structures appear throughout software systems: compiler syntax trees, operating-system queues, database indexes, filesystem trees, network routing tables, caches, machine-learning tensors, geographic indexes, search engines, and cryptographic protocols.
+== Complexity and cost models ==
+The cost of operations may be analyzed as worst-case, average-case, expected, or amortized complexity.
 
-They are also a core abstraction boundary. A well-chosen structure can make an algorithm simpler, safer, and faster; a poorly chosen one can dominate the cost of an otherwise good design.
+But asymptotic operation counts are not the only relevant costs. Real systems may be dominated by cache locality, disk access, memory bandwidth, synchronization, network communication, persistence, or energy. Performance claims should identify the relevant cost model and assumptions.
 
-== Technical depth ==
-Analysis typically studies worst-case, average-case, amortized, or expected costs for operations. More advanced topics include persistent and immutable structures, concurrent structures, external-memory structures, succinct structures, probabilistic structures, cache-aware/cache-oblivious layouts, and distributed data structures.
+== Advanced forms ==
+Important families include:
 
-The relevant cost model matters. A structure that minimizes comparison count may not minimize memory traffic, synchronization, disk access, network communication, or energy use.
+* persistent and immutable structures;
+* concurrent data structures;
+* external-memory structures;
+* cache-aware and cache-oblivious structures;
+* succinct and compressed structures;
+* probabilistic structures;
+* distributed structures.
+
+These extend the same central idea: choose an organization that supports the required operations under a particular computational environment.
 
 == Epistemic notes ==
-The concept is established, but terminology varies between theory, programming-language practice, databases, and systems engineering. Performance claims should state the operation, input assumptions, implementation, and computational or storage model rather than treating a structure as universally "fast."
+"Data structure" is established terminology, but theoretical computer science, programming languages, databases, and systems engineering emphasize different aspects. Avoid declaring a structure universally "fast" without naming the operation, input assumptions, representation, and resource model.
 
 == References ==
 * [https://www.nist.gov/dads/HTML/dataStructure.html NIST DADS — Data structure]
-* [https://www.nist.gov/publications/dictionary-algorithms-and-data-structures NIST — Dictionary of Algorithms and Data Structures]
-* [https://csed.acm.org/knowledge-areas/ ACM/IEEE-CS CS2023 — Knowledge Areas]
+* Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein, ''Introduction to Algorithms'', 4th ed., MIT Press (2022). ISBN 9780262046305.
+* Barbara H. Liskov and Stephen N. Zilles, "Programming with Abstract Data Types" (1974). DOI: 10.1145/800233.807045.
+* C. A. R. Hoare, "Proof of Correctness of Data Representations", ''Acta Informatica'' 1(4), 271–281 (1972).
 
 [[Category:Computer science]]

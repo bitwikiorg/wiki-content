@@ -1,0 +1,46 @@
+{{Source status|status=Technical depth derivative|note=Advanced proof/model-theoretic consistency surface.}}
+{{Reading depth|base=Consistency (logic)|current=Technical}}
+= Consistency (logic) — Technical =
+
+== Syntactic definitions ==
+A classical theory T can be defined as consistent when:
+
+<pre>
+not exists φ such that T ⊢ φ and T ⊢ ¬φ
+</pre>
+
+or equivalently, under explosive calculi:
+
+<pre>
+not for every ψ: T ⊢ ψ
+</pre>
+
+The equivalence can fail in nonclassical systems.
+
+== Satisfiability ==
+Semantic satisfiability means:
+
+<pre>
+there exists model M such that M ⊨ T
+</pre>
+
+Soundness gives satisfiable ⇒ consistent.
+
+Completeness of classical first-order logic gives consistent ⇒ satisfiable.
+
+== Relative consistency ==
+A model construction can show:
+
+<pre>
+Con(B) ⇒ Con(A)
+</pre>
+
+rather than prove consistency in an absolute meta-theoretic sense.
+
+== Gödel limitation ==
+For sufficiently expressive, recursively axiomatized, consistent theories containing arithmetic, Gödel's second incompleteness theorem limits internal proofs of their own consistency.
+
+== References ==
+* Encyclopedia of Mathematics, “Consistency”.
+* Open Logic Project.
+* proof-theory and incompleteness literature.

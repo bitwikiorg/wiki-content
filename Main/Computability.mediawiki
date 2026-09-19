@@ -1,0 +1,58 @@
+{{Source status|status=Wave 6 compiled article|note=Computability concept grounded in recursion theory and theoretical computer science.}}
+{{Knowledge object
+ |title=Computability
+ |entity_type=Concept
+ |domain=Computer science, Mathematics, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Computability|current=Core}}
+
+= Computability =
+
+== Overview ==
+'''Computability''' studies which functions and problems can be solved by effective procedures under formal models of computation.
+
+It asks what can be computed in principle, independently of whether the computation is practical.
+
+== Computable functions ==
+A function is Turing-computable when some [[Turing machine]] produces the correct output for every valid input and halts.
+
+Equivalent models include lambda-definability and general recursive functions.
+
+== Decision problems ==
+A decision problem asks for a yes/no answer for inputs.
+
+A problem is decidable if an algorithm halts with the correct answer on every input.
+
+Some problems are undecidable.
+
+== Halting problem ==
+The halting problem asks whether an arbitrary program/machine will halt on an input.
+
+No general algorithm can decide this correctly for all program/input pairs.
+
+== Church–Turing thesis ==
+The Church–Turing thesis identifies formal Turing-computability with the informal notion of effective calculability.
+
+The thesis is supported by convergence among independent models and extensive practice, but it is not a formal theorem about an already formalized external concept.
+
+== Computability and complexity ==
+A problem can be computable yet require enormous resources.
+
+[[Computational complexity]] studies resource requirements after computability has established that a solution procedure exists.
+
+Therefore:
+
+<pre>
+computable ≠ efficiently computable
+</pre>
+
+== References ==
+* Stanford Encyclopedia of Philosophy, “Computability and Complexity”.
+* SEP, “Turing Machines”.
+* recursion/computability theory texts.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]
+[[Category:Philosophy]]

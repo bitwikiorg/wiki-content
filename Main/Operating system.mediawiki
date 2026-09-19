@@ -1,0 +1,59 @@
+{{Source status|status=Wave 6 compiled article|note=Operating-system concept grounded in systems literature.}}
+{{Knowledge object
+ |title=Operating system
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Operating system|current=Core}}
+
+= Operating system =
+
+== Overview ==
+An '''operating system''' is system software that manages hardware resources and provides abstractions and services for programs and users.
+
+Common responsibilities include processes, memory, files, storage, devices, scheduling, networking, protection, and isolation.
+
+== Processes and execution ==
+A program is stored code and data.
+
+A process is an executing instance with runtime state, address space, resources, and scheduling context.
+
+Therefore:
+
+<pre>
+program ≠ process
+</pre>
+
+== Memory management ==
+Operating systems allocate memory, isolate address spaces, support virtual memory, map files, and coordinate shared memory.
+
+Virtual memory separates a process's address view from immediate physical-memory placement.
+
+== Files and storage ==
+File systems organize persistent data into named structures with metadata, permissions, allocation, and recovery mechanisms.
+
+Different operating systems support different filesystem and storage abstractions.
+
+== Devices and I/O ==
+Drivers mediate between generic OS interfaces and device-specific hardware.
+
+Interrupts, DMA, buffering, queues, and asynchronous interfaces allow I/O to overlap computation.
+
+== Protection ==
+Operating systems enforce privilege boundaries, identities, permissions, process isolation, and resource controls.
+
+These mechanisms support [[Computer security]] but do not by themselves guarantee security.
+
+== Kernel and operating system ==
+The kernel is the privileged core that directly manages critical resources.
+
+An operating system usually includes much more: libraries, system services, utilities, boot components, management tools, and user-space infrastructure.
+
+== References ==
+* Silberschatz, Galvin & Gagne, ''Operating System Concepts''.
+* Tanenbaum & Bos, ''Modern Operating Systems''.
+* ACM CS2023.
+
+[[Category:Computer science]]

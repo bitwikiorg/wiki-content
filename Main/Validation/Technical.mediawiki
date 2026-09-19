@@ -1,0 +1,72 @@
+{{Source status|status=Technical depth derivative|note=Advanced systems, scientific-model, and measurement-validation surface of [[Validation]].}}
+{{Reading depth|base=Validation|current=Technical}}
+= Validation — Technical =
+
+== Purpose-relative adequacy ==
+Validation can be represented as an adequacy relation:
+
+<pre>
+model/system M
+target/use T
+acceptance criteria C
+evidence E
+--------------------------------
+E supports adequacy(M,T,C)
+</pre>
+
+This makes validation explicitly relative to an intended use and acceptance criteria.
+
+== Model validation ==
+Scientific model validation often compares model outputs <code>y_M</code> with experimental/observational data <code>y_D</code> while accounting for:
+
+* measurement uncertainty;
+* numerical error;
+* parameter uncertainty;
+* structural discrepancy;
+* input uncertainty.
+
+A small residual does not necessarily imply a correct model if parameters were overfit or measurement error is large.
+
+== Calibration versus validation ==
+Calibration estimates model parameters using data.
+
+Validation evaluates model adequacy against relevant evidence, preferably with data or conditions not used to fit the model.
+
+Using the same data for fitting and validation can cause optimistic bias and weak evidence of generalization.
+
+== Predictive validation ==
+Predictive-model validation can use:
+* held-out test sets;
+* cross-validation;
+* temporal validation;
+* external-site validation;
+* calibration curves;
+* discrimination metrics;
+* proper scoring rules.
+
+Metric choice must follow intended use; no single score proves general validity.
+
+== Construct validation ==
+For latent constructs, validation may seek converging and discriminating evidence:
+* does the measure correlate with theoretically related variables?
+* does it remain distinct from different constructs?
+* does the internal structure match the construct model?
+* does it behave similarly across relevant groups?
+
+Construct validity is a long-run evidential argument, not a one-time certificate.
+
+== Domain shift ==
+A validated system can lose validity under:
+* population shift;
+* sensor changes;
+* policy changes;
+* environmental changes;
+* changed incentives;
+* software updates.
+
+Validation therefore has temporal and environmental scope and may require revalidation.
+
+== References ==
+* ISO/IEC/IEEE 29148.
+* NASA Systems Engineering Handbook.
+* NIST model verification/validation publications.

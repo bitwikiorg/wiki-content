@@ -1,38 +1,82 @@
-{{Source status|status=source-grounded domain exemplar|note=Source-grounded domain exemplar; definition aligned with SEBoK/Checkland systems practice.}}
+{{Source status|status=Wave 0 compiled rewrite|note=Core article normalized against Checkland, SEBoK, Midgley, Ulrich/Reynolds, ISO/IEC/IEEE 15288, and Wave 0 shared context.}}
 {{Knowledge object
  |title=System boundary
  |entity_type=Concept
  |domain=Systems science
  |status=Established
- |provenance=V2 domain exemplar
+ |provenance=V2 public corpus; Wave 0 compiled context
 }}
+{{Reading depth|base=System boundary|current=Core}}
 
 = System boundary =
 
 == Overview ==
-A '''system boundary''' is the distinction used to separate a system of interest from its environment. The boundary determines what is treated as inside the system for a particular analysis and what is treated as external context.
+A '''system boundary''' is the distinction used to separate a system of interest from its environment for a particular purpose. It determines what an analysis treats as inside the system and what it treats as outside.
 
-== Definition ==
-In systems practice, a boundary is not merely a physical edge. It is an analytical distinction. SEBoK summarizes Checkland's formulation as a distinction made by an observer between an entity treated as a system and its environment.
+A boundary may coincide with a physical edge, but it does not have to. Boundaries can be physical, organizational, informational, temporal, functional, legal, or conceptual.
 
-== Scope & importance ==
-Changing the boundary can change the problem. Components, stakeholders, inputs, outputs, constraints, and feedback that appear external under one framing may become internal under another. Boundary choice therefore affects explanation, responsibility, measurement, and design.
+== Boundary as an analytical choice ==
+Systems thinking emphasizes that boundaries are often selected by an observer for a purpose rather than simply discovered as objective lines.
 
-== Core concepts ==
-Useful boundary questions include: What is inside? What is outside? What crosses the boundary? Which observer or purpose defines it? Is the boundary physical, organizational, informational, temporal, or conceptual?
+A boundary answers questions such as:
+
+* What counts as part of the system?
+* What belongs to the environment?
+* What crosses between them?
+* Which actors or variables are included?
+* Which time period is being considered?
+* What responsibilities or effects are considered internal?
+
+Changing those answers can change the apparent problem.
+
+== System, environment, and interface ==
+A '''system of interest''' is the system being studied or designed.
+
+Its '''environment''' contains external conditions, actors, resources, or systems that can affect it or be affected by it.
+
+An '''interface''' is a point or mechanism of interaction across a boundary. Interface and boundary are therefore related but not identical: the boundary distinguishes inside from outside, while an interface describes interaction across that distinction.
 
 == Examples ==
-A cell membrane marks a biological boundary while still permitting selective exchange. In a software service, the chosen system boundary may include only the application or may also include databases, operators, cloud infrastructure, and external APIs.
+A biological cell has a physical membrane, but a biological model may place genes, signaling molecules, neighboring cells, or environmental conditions inside or outside its chosen analytical boundary depending on the question.
 
-== Applications / implications ==
-System boundaries are used in systems analysis, engineering, ecology, organizations, software architecture, risk analysis, and any model that must state what it includes and excludes.
+A software service can be treated narrowly as application code, or more broadly to include databases, cloud infrastructure, operators, third-party APIs, users, and organizational processes.
+
+For [[Software|software]] reliability or security, changing the boundary can change which dependencies and failure modes are visible.
+
+== Boundary choice changes explanation ==
+Suppose a service fails because an external authentication provider is unavailable.
+
+If the service boundary excludes that provider, the outage may appear to be an external dependency failure.
+
+If the larger product boundary includes the provider relationship, the same event may be treated as an architectural resilience failure.
+
+Neither description is automatically wrong; they answer different questions. The boundary must therefore be made explicit.
+
+== Boundary and causality ==
+[[Causality|Causal explanations]] are sensitive to boundary choice. Factors treated as fixed background conditions in one analysis may become causal variables in another.
+
+This means that statements such as "X caused the failure" should be interpreted relative to what the model includes, what it holds constant, and what alternatives are considered.
+
+== Boundary critique ==
+Critical systems traditions extend boundary analysis beyond technical modeling.
+
+'''Boundary critique''' asks whose perspectives, interests, knowledge, and consequences are included or excluded by a system definition. Werner Ulrich's critical systems heuristics and later work by Midgley and others treat boundary judgments as both practical and normative choices.
+
+This is particularly important in policy, organizations, public systems, and sociotechnical design, where narrow technical boundaries can hide affected groups or externalized costs.
+
+== Systems engineering ==
+Systems engineering standards use related ideas such as the '''system of interest''', interfaces, enabling systems, operational environments, and lifecycle processes.
+
+Engineering boundaries help allocate requirements and responsibilities, but practical systems often interact with other systems in ways that make the boundary change across lifecycle stages or analysis purposes.
 
 == Epistemic notes ==
-Boundaries are often purpose-dependent. Treating a boundary as objectively given when it was selected for an analysis can hide assumptions.
+System boundaries are necessary abstractions, but they can become misleading if treated as naturally fixed when they were chosen for convenience or purpose. Good systems analysis records the boundary and tests whether conclusions change when important exclusions are reconsidered.
 
 == References ==
-* [https://sebokwiki.org/wiki/System_Boundary_%28glossary%29 SEBoK — System boundary]
-* [https://sebokwiki.org/wiki/Systems_Engineering_Overview SEBoK — Systems Engineering Overview]
+* [https://sebokwiki.org/wiki/System_Boundary_%28glossary%29 SEBoK — System Boundary]
+* Peter Checkland, ''Systems Thinking, Systems Practice'', Wiley (1981). ISBN 9780471279112.
+* Gerald Midgley, ''Systemic Intervention: Philosophy, Methodology, and Practice'', Kluwer/Plenum (2000). DOI: 10.1007/978-1-4615-4201-8.
+* Werner Ulrich and Martin Reynolds, "Critical Systems Heuristics: The Idea and Practice of Boundary Critique" (2020). DOI: 10.1007/978-1-4471-7472-1_6.
+* ISO/IEC/IEEE 15288:2023, ''Systems and software engineering — System life cycle processes''.
 
 [[Category:Systems science]]
-[[Category:Domain exemplars]]

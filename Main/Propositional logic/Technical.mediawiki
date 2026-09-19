@@ -1,0 +1,45 @@
+{{Source status|status=Technical depth derivative|note=Advanced formal propositional-logic surface.}}
+{{Reading depth|base=Propositional logic|current=Technical}}
+= Propositional logic — Technical =
+
+== Syntax ==
+Given propositional variables p,q,... and connectives, formulas are generated recursively.
+
+For classical logic:
+
+<pre>
+φ ::= p | ¬φ | (φ∧φ) | (φ∨φ) | (φ→φ) | ...
+</pre>
+
+== Valuations ==
+A valuation:
+
+<pre>
+v : Atoms → {0,1}
+</pre>
+
+extends recursively to compound formulas according to truth functions.
+
+== Semantic consequence ==
+For Γ and φ:
+
+<pre>
+Γ ⊨ φ
+</pre>
+
+iff every valuation satisfying all formulas in Γ also satisfies φ.
+
+== Decidability ==
+Classical propositional validity is decidable.
+
+Truth tables provide an exponential brute-force procedure; SAT algorithms solve large instances using more sophisticated search and learning.
+
+== Complexity ==
+Boolean satisfiability is NP-complete, while validity is coNP-complete.
+
+This computational fact concerns decision complexity, not the philosophical meaning of validity.
+
+== References ==
+* SEP, “Propositional Logic”.
+* Open Logic Project.
+* computational logic / SAT literature.

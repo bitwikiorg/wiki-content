@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Digital signature
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Digital signature|current=Core}}
+
+= Digital signature =
+
+== Overview ==
+'''Digital signature''' is a cryptographic value generated with a private signing key that allows a verifier with the corresponding public key to check the integrity and claimed origin of signed data.
+
+A digital-signature scheme normally includes key generation, signature generation, and signature verification algorithms. Verification establishes that the signature is valid under a particular public key and message.
+
+A valid digital signature does not by itself prove the human identity, intent, authorization, or legal meaning behind a key. Those depend on key-control, identity-binding, process, and policy assumptions.
+
+Digital signatures are widely used to authorize blockchain transactions, sign software, secure documents, and authenticate protocol messages.
+
+== Boundaries ==
+* digital signature ≠ scanned/typed signature
+* valid signature ≠ proof of human identity or intent
+* signature verification ≠ confidentiality
+
+== Related concepts ==
+[[Public-key cryptography]], [[Hash function]], [[Verification]], [[Identity]], [[Blockchain]], and [[Attestation]] are closely related.
+
+== References ==
+* NIST FIPS 186-5, ''Digital Signature Standard'' (2023).
+* NIST glossary, “digital signature” and “public key”, current terminology.
+* NIST IR 8202, ''Blockchain Technology Overview'' (2018).
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

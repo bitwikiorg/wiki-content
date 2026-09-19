@@ -1,0 +1,151 @@
+{{Source status|status=Wave 11 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 11 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 11 covers durable public primitives connecting cryptography, blockchains, identity, DeFi, automated markets, external data, and attestations.
+
+== Normalized scope ==
+
+# [[Hash function]]
+# [[Public-key cryptography]]
+# [[Digital signature]]
+# [[Blockchain]]
+# [[Consensus mechanism]]
+# [[Smart contract]]
+# [[Token (blockchain)]]
+# [[Cryptocurrency wallet]]
+# [[Decentralized identity]]
+# [[Zero-knowledge proof]]
+# [[Decentralized finance]]
+# [[Automated market maker]]
+# [[Liquidity pool]]
+# [[Liquidity provider]]
+# [[Constant-product market maker]]
+# [[Concentrated liquidity]]
+# [[Arbitrage]]
+# [[Slippage]]
+# [[Price impact]]
+# [[Oracle (blockchain)]]
+# [[Attestation]]
+
+== Title decisions ==
+
+* '''[[Token]] → [[Token (blockchain)]]''' because “token” is heavily overloaded across authentication, programming, language modeling, economics, and physical objects.
+* '''[[Oracle]] → [[Oracle (blockchain)]]''' because oracle has durable meanings in databases, logic, computation, religion, and ordinary language.
+* [[Attestation]] remains unqualified because the Core page deliberately covers the general digital/evidentiary assertion concept and then links blockchain/credential applications.
+* [[Hash function]], [[Arbitrage]], [[Slippage]], and [[Price impact]] remain broad public concepts rather than blockchain-specific aliases.
+* [[Concentrated liquidity]] remains a generic mechanism; Uniswap v3 is the historically important implementation/source, not the definition.
+* [[Decentralized identity]] is broader than W3C DID and is not defined as “identity on a blockchain.”
+
+== Scope exclusions ==
+
+The wave deliberately excludes protocol-specific routers, hooks, vault standards, token standards, fee mechanisms, and named product architectures unless they independently justify public canonical concepts.
+
+ERC-4626, reCLAMM, Uniswap routers/hooks, Balancer routers/hooks, and project-specific tokenomics remain examples or future scoped topics rather than Wave 11 primitives.
+
+== Domain decision ==
+
+No new controlled Domain is introduced. Wave 11 uses:
+
+* Computer science
+* Mathematics
+* Technology
+* Systems science
+* Philosophy
+
+== Dependency graph ==
+
+<pre>
+Hash function
+Public-key cryptography
+ └→ Digital signature
+      └→ Blockchain
+           ├→ Consensus mechanism
+           ├→ Smart contract
+           │    ├→ Token (blockchain)
+           │    ├→ Oracle (blockchain)
+           │    └→ Attestation
+           ├→ Cryptocurrency wallet
+           ├→ Decentralized identity
+           └→ Zero-knowledge proof
+
+Decentralized finance
+ └→ Automated market maker
+      ├→ Liquidity pool
+      │    └→ Liquidity provider
+      ├→ Constant-product market maker
+      ├→ Concentrated liquidity
+      ├→ Arbitrage
+      ├→ Slippage
+      └→ Price impact
+</pre>
+
+This is explanatory, not a strict subclass hierarchy.
+
+== Required non-equivalences ==
+
+<pre>
+hash function ≠ encryption
+ordinary hash ≠ cryptographic hash
+public-key cryptography ≠ blockchain
+digital signature ≠ human identity / intent
+blockchain ≠ cryptocurrency
+blockchain ≠ every distributed ledger
+consensus ≠ majority vote / unanimity
+smart contract ≠ legal contract by definition
+blockchain token ≠ cryptocurrency by definition
+wallet ≠ location where ledger assets are stored
+decentralized identity ≠ blockchain identity
+DID ≠ person
+zero-knowledge proof ≠ encryption / application anonymity
+DeFi ≠ absence of intermediaries or governance
+AMM ≠ constant-product mechanism only
+liquidity pool ≠ AMM
+liquidity provision ≠ risk-free yield
+constant product ≠ fixed price
+concentrated liquidity ≠ Uniswap by identity
+arbitrage ≠ risk-free execution in real markets
+slippage ≠ price impact
+slippage tolerance ≠ realized slippage
+price impact ≠ fee
+oracle ≠ truth source
+attestation ≠ truth
+</pre>
+
+== Source families ==
+
+* NIST FIPS 180-4 / 202 — hash functions.
+* NIST public-key terminology and FIPS 186-5 — asymmetric cryptography and signatures.
+* NIST IR 8202 — blockchain, consensus, smart contracts, wallets, oracles.
+* NIST IR 8301 — token design, wallets, blockchain identity/zero-knowledge context.
+* W3C DID Core and Verifiable Credentials — decentralized identifiers, claims, credentials and attestations.
+* Goldwasser–Micali–Rackoff — zero-knowledge foundations.
+* BIS DeFi/AMM reports and working papers — market structure, liquidity, execution and risks.
+* Angeris/Chitra and Uniswap v2/v3 technical papers — constant-function and concentrated-liquidity mechanics.
+* Kyle / Shleifer–Vishny — price impact and limits to real-world arbitrage.
+
+== Cross-wave links ==
+
+* [[Cryptography]], [[Computer security]], [[Distributed system]], [[Network]], [[Identity]], [[Verification]], and [[Provenance]] ground cryptographic and ledger claims.
+* [[Game theory]], [[Incentive]], [[Governance]], [[Reputation system]], and [[Sybil attack]] from Wave 10 connect to consensus, decentralized control, and market incentives.
+* [[Information]], [[Feedback]], [[Robustness]], and [[System boundary]] remain relevant without becoming definitions of decentralized systems.
+
+== Future normalized redlinks ==
+
+[[Distributed ledger]], [[Cryptographic hash function]], [[Merkle tree]], [[Block (blockchain)]], [[Transaction (blockchain)]], [[Proof of work]], [[Proof of stake]], [[Finality (distributed systems)]], [[Byzantine fault]], [[Layer 2 (blockchain)]], [[Rollup]], [[Bridge (blockchain)]], [[Stablecoin]], [[Decentralized exchange]], [[Lending protocol]], [[Collateral]], [[Impermanent loss]], [[Maximal extractable value]], [[Order book]], [[Constant-function market maker]], [[Verifiable credential]], [[DID document]], [[Selective disclosure]], [[Threshold signature]].
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Keep Wave 11 at 21 durable public concepts.
+# Normalize Token and Oracle with blockchain qualifiers.
+# Preserve general market concepts without blockchain-only definitions.
+# Exclude protocol/product machinery from the canonical primitive layer.
+# Do not create new Domains.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

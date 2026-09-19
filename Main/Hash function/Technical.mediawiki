@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Hash function]].}}
+{{Reading depth|base=Hash function|current=Technical}}
+= Hash function — Technical =
+
+For a hash function h:{0,1}*→{0,1}^n, security properties can include preimage resistance, second-preimage resistance, and collision resistance. Because the input space is larger than the output space, collisions must exist in principle; cryptographic security concerns the computational difficulty of finding useful collisions.
+
+== Modeling / security cautions ==
+* hash function ≠ encryption
+* ordinary hash function ≠ cryptographic hash function
+* collision resistance ≠ mathematical impossibility of collisions
+
+== References ==
+* NIST FIPS 180-4, ''Secure Hash Standard'' (updated 2015).
+* NIST FIPS 202, ''SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions'' (2015).
+* NIST IR 8202, ''Blockchain Technology Overview'' (2018).

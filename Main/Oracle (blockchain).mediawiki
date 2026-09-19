@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Oracle (blockchain)
+ |entity_type=Concept
+ |domain=Computer science, Technology
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Oracle (blockchain)|current=Core}}
+
+= Oracle (blockchain) =
+
+== Overview ==
+'''Oracle (blockchain)''' is a mechanism or service that supplies data or results from outside a blockchain's native state to smart contracts or other on-chain logic.
+
+Blockchains and smart contracts cannot independently observe arbitrary external facts. Oracles bridge that boundary by importing prices, events, sensor readings, randomness, computation results, or other data.
+
+An oracle does not magically turn external data into truth. Its security depends on sources, aggregation, incentives, signatures, update rules, latency, governance, and the ability to detect or withstand manipulation and outages.
+
+Some oracle systems are centralized; others aggregate multiple reporters, use cryptographic attestations, stake/slashing, trusted hardware, cross-validation, or optimistic dispute mechanisms.
+
+== Boundaries ==
+* oracle ≠ truth source by definition
+* decentralized oracle ≠ assumption-free oracle
+* oracle data ≠ native blockchain state
+
+== Related concepts ==
+[[Smart contract]], [[Attestation]], [[Verification]], [[Decentralized finance]], [[Price impact]], and [[Information]] provide the data-boundary context.
+
+== References ==
+* NIST CSRC glossary, “Oracle”, sourced from NIST IR 8301.
+* NIST IR 8202, ''Blockchain Technology Overview'' (2018), data-oracle discussion.
+* Shayan Eskandari et al., “SoK: Oracles from the Ground Truth to Market Manipulation” (2021 preprint / subsequent research line).
+
+[[Category:Computer science]]
+[[Category:Technology]]

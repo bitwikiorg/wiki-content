@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Price impact]].}}
+{{Reading depth|base=Price impact|current=Technical}}
+= Price impact — Technical =
+
+Price impact can be modeled from the execution curve or order-book/AMM depth. In a constant-product AMM, finite trades move the reserve ratio nonlinearly; the average execution price therefore differs from the pre-trade marginal price, with the gap increasing as trade size becomes large relative to reserves.
+
+== Modeling / security cautions ==
+* price impact ≠ slippage
+* price impact ≠ trading fee
+* same spot price ≠ same market depth
+
+== References ==
+* Albert S. Kyle, “Continuous Auctions and Insider Trading” (1985), for market-depth/price-impact foundations.
+* Uniswap Labs, “What is price impact?”, current documentation.
+* BIS Working Paper 1062, “Systemic fragility in decentralised markets” (2022), on price impact of DeFi liquidations.

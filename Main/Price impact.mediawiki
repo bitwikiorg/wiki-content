@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Price impact
+ |entity_type=Concept
+ |domain=Technology, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Price impact|current=Core}}
+
+= Price impact =
+
+== Overview ==
+'''Price impact''' is the change in quoted or execution prices caused by a trade itself through its consumption of available liquidity or movement of market state.
+
+A larger order generally has greater price impact when available liquidity near the current price is limited. In AMMs, price impact follows from moving reserves along the mechanism's pricing curve.
+
+Price impact should be distinguished from slippage. Slippage compares expected and realized execution and may include external price movement, latency, reordering, or other effects; price impact isolates the trade's own contribution.
+
+Price impact is mechanism- and state-dependent. Two markets with the same displayed price can react very differently to the same order if their depth or liquidity distribution differs.
+
+== Boundaries ==
+* price impact ≠ slippage
+* price impact ≠ trading fee
+* same spot price ≠ same market depth
+
+== Related concepts ==
+[[Slippage]], [[Liquidity pool]], [[Automated market maker]], [[Constant-product market maker]], [[Concentrated liquidity]], and [[Liquidity provider]] define the execution context.
+
+== References ==
+* Albert S. Kyle, “Continuous Auctions and Insider Trading” (1985), for market-depth/price-impact foundations.
+* Uniswap Labs, “What is price impact?”, current documentation.
+* BIS Working Paper 1062, “Systemic fragility in decentralised markets” (2022), on price impact of DeFi liquidations.
+
+[[Category:Technology]]
+[[Category:Mathematics]]

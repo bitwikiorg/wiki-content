@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Consensus mechanism
+ |entity_type=Concept
+ |domain=Computer science, Systems science
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Consensus mechanism|current=Core}}
+
+= Consensus mechanism =
+
+== Overview ==
+'''Consensus mechanism''' is a protocol or rule set by which participants in a distributed system establish agreement on a valid shared state or ordered history despite failures, delay, or adversarial behavior within stated assumptions.
+
+Blockchain consensus mechanisms determine which transactions or blocks are accepted and how conflicting histories are resolved. Proof-of-work, proof-of-stake, Byzantine-fault-tolerant protocols, and permissioned schemes use different resources and trust assumptions.
+
+Consensus is not simply majority voting. Some protocols use quorums, weighted stake, computational work, rotating proposers, certificates, or multiple phases of communication.
+
+No consensus mechanism provides unconditional agreement. Safety and liveness guarantees depend on the fault threshold, synchrony assumptions, participant set, cryptography, incentives, and implementation.
+
+== Boundaries ==
+* consensus mechanism ≠ majority vote
+* consensus ≠ unanimity
+* consensus ≠ unconditional finality
+
+== Related concepts ==
+[[Distributed system]], [[Blockchain]], [[Network]], [[Computer security]], [[Game theory]], and [[Sybil attack]] provide the surrounding context.
+
+== References ==
+* NIST IR 8202, ''Blockchain Technology Overview'' (2018).
+* NIST CSRC glossary, “Consensus model”: process to achieve agreement within a distributed system on the valid state.
+* Miguel Castro & Barbara Liskov, “Practical Byzantine Fault Tolerance” (1999), for Byzantine consensus foundations.
+
+[[Category:Computer science]]
+[[Category:Systems science]]

@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Digital signature]].}}
+{{Reading depth|base=Digital signature|current=Technical}}
+= Digital signature — Technical =
+
+A signature scheme contains KeyGen, Sign, and Verify. Correctness requires Verify(pk,m,Sign(sk,m))=accept. Security is normally defined against existential forgery under chosen-message attack or another explicit model; identity and authorization bindings sit outside the bare cryptographic primitive.
+
+== Modeling / security cautions ==
+* digital signature ≠ scanned/typed signature
+* valid signature ≠ proof of human identity or intent
+* signature verification ≠ confidentiality
+
+== References ==
+* NIST FIPS 186-5, ''Digital Signature Standard'' (2023).
+* NIST glossary, “digital signature” and “public key”, current terminology.
+* NIST IR 8202, ''Blockchain Technology Overview'' (2018).

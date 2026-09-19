@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Attestation
+ |entity_type=Concept
+ |domain=Computer science, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Attestation|current=Core}}
+
+= Attestation =
+
+== Overview ==
+'''Attestation''' is a statement or assertion made by an identifiable attester about a subject, event, property, or piece of data, often accompanied by evidence that allows others to verify who made the assertion and whether it was altered.
+
+Digital attestations can be signed, timestamped, anchored to a ledger, packaged in credentials, or linked to evidence. These mechanisms can establish provenance and integrity without establishing that the attested claim is factually true.
+
+The verifier must evaluate both the cryptographic validity of an attestation and the authority, evidence, scope, freshness, and trustworthiness of the attester. A valid signature proves key-authorized issuance under assumptions; it does not prove the content.
+
+Verifiable credentials are one structured family of signed claims, but attestation is broader and can describe signed measurements, audit statements, transaction claims, software state, or other assertions.
+
+== Boundaries ==
+* attestation ≠ truth
+* attestation ≠ identity
+* valid signature ≠ validated claim content
+
+== Related concepts ==
+[[Provenance]], [[Evidence]], [[Verification]], [[Digital signature]], [[Identity]], [[Decentralized identity]], and [[Oracle (blockchain)]] clarify the evidence boundary.
+
+== References ==
+* W3C, ''Verifiable Credentials Data Model v2.0'', Recommendation, 15 May 2025.
+* W3C, ''Verifiable Credentials Data Model v2.1'', Working Draft, 5 September 2026, for current terminology evolution.
+* NIST remote-attestation and platform-attestation literature, for cryptographic attestation mechanisms.
+
+[[Category:Computer science]]
+[[Category:Philosophy]]

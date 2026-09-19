@@ -1,0 +1,15 @@
+{{Source status|status=Technical depth derivative|note=Advanced/formal surface of [[Concentrated liquidity]].}}
+{{Reading depth|base=Concentrated liquidity|current=Technical}}
+= Concentrated liquidity — Technical =
+
+Range-based liquidity can be represented as virtual reserves within interval [p_a,p_b]. As price traverses the interval, the position transforms between the two assets; outside the interval it becomes single-sided and contributes no active swap depth until price re-enters.
+
+== Modeling / security cautions ==
+* concentrated liquidity ≠ Uniswap by identity
+* capital efficiency ≠ guaranteed LP profitability
+* out-of-range position ≠ vanished assets
+
+== References ==
+* Uniswap v3 Core whitepaper (2021), section 2, concentrated liquidity.
+* Uniswap Developers, “Concentrated Liquidity”, current v3/v4 concept documentation.
+* BIS Working Paper 1227 (2024), empirical study of concentrated liquidity provision on Uniswap v3.

@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Automated market maker
+ |entity_type=Concept
+ |domain=Technology, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Automated market maker|current=Core}}
+
+= Automated market maker =
+
+== Overview ==
+'''Automated market maker''' is a rule-based market mechanism that quotes or executes trades algorithmically against on-chain or otherwise pooled liquidity rather than requiring each trade to match a contemporaneous opposing order.
+
+In many DeFi AMMs, liquidity providers supply asset reserves to a pool and traders swap against those reserves. A pricing or invariant function determines how reserves and marginal prices change as trades occur.
+
+AMM is a broad design family. Constant-product, stable-swap, weighted, concentrated-liquidity, and other mechanisms differ in invariants, capital efficiency, risk exposure, and price behavior.
+
+Arbitrage commonly links AMM prices to external markets. This does not make the AMM itself an oracle of fundamental value; its observed price is produced by reserves, trades, fees, and arbitrage under market conditions.
+
+== Boundaries ==
+* AMM ≠ constant-product market maker only
+* AMM ≠ liquidity pool by identity
+* algorithmic quote ≠ externally correct price
+
+== Related concepts ==
+[[Liquidity pool]], [[Liquidity provider]], [[Constant-product market maker]], [[Concentrated liquidity]], [[Arbitrage]], [[Price impact]], and [[Decentralized finance]] provide the market structure.
+
+== References ==
+* Bank for International Settlements, “Trading in the DeFi era: automated market-maker” (2021).
+* Guillermo Angeris & Tarun Chitra, “Improved Price Oracles: Constant Function Market Makers” (2020).
+* BIS Working Paper 1227, “Decentralised dealers? Examining liquidity provision in decentralised exchanges” (2024).
+
+[[Category:Technology]]
+[[Category:Mathematics]]

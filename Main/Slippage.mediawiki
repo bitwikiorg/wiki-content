@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Slippage
+ |entity_type=Concept
+ |domain=Technology, Systems science
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Slippage|current=Core}}
+
+= Slippage =
+
+== Overview ==
+'''Slippage''' is the difference between an expected or quoted trade price and the price at which the trade is actually executed.
+
+Slippage can arise from market movement, limited liquidity, latency, order size, transaction ordering, or the market mechanism itself. It can be favorable or unfavorable, although the term is often used for adverse execution.
+
+In AMM interfaces, a slippage tolerance usually specifies how much execution deterioration a user is willing to accept before a transaction should fail. That tolerance is a control setting, not the same thing as observed slippage.
+
+Price impact is one cause or component of execution-price change attributable directly to the trader's own order. Slippage is broader and can include price movement caused by others between quote and execution.
+
+== Boundaries ==
+* slippage ≠ price impact
+* slippage tolerance ≠ realized slippage
+* slippage ≠ fee
+
+== Related concepts ==
+[[Price impact]], [[Liquidity pool]], [[Automated market maker]], [[Arbitrage]], [[Liquidity provider]], and [[Uncertainty]] provide the execution context.
+
+== References ==
+* BIS, “Trading in the DeFi era: automated market-maker” (2021), on AMM execution and reserve-curve pricing.
+* BIS Working Paper 1227 (2024), on DEX liquidity provision and execution.
+* Uniswap Labs support documentation distinguishing price impact and execution/slippage controls, current 2026.
+
+[[Category:Technology]]
+[[Category:Systems science]]

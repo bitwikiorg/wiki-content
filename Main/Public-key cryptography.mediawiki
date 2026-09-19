@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Public-key cryptography
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Public-key cryptography|current=Core}}
+
+= Public-key cryptography =
+
+== Overview ==
+'''Public-key cryptography''' uses related public and private keys to perform complementary cryptographic operations without requiring every interacting party to share the same secret key in advance.
+
+Depending on the scheme, a public key can be used to verify signatures, encrypt data or keys, or participate in key agreement, while the corresponding private key must remain controlled by its holder.
+
+Public-key cryptography is a broad family, not one algorithm. RSA, elliptic-curve systems, and post-quantum schemes use different mathematical assumptions and support different operations.
+
+A public key being public does not authenticate who controls the corresponding private key. Certificates, trusted directories, decentralized identifiers, or other binding mechanisms may be needed.
+
+== Boundaries ==
+* public-key cryptography ≠ encryption only
+* public key ≠ identity proof by itself
+* public-key cryptography ≠ blockchain
+
+== Related concepts ==
+[[Cryptography]], [[Digital signature]], [[Identity]], [[Verification]], [[Blockchain]], and [[Computer security]] provide the cryptographic context.
+
+== References ==
+* NIST glossary, “public key cryptography (PKC)”, current terminology.
+* NIST FIPS 186-5, ''Digital Signature Standard'' (2023).
+* NIST SP 800-56B Rev. 2, recommendation for pair-wise key establishment using integer-factorization cryptography (2019).
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

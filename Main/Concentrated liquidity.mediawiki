@@ -1,0 +1,36 @@
+{{Source status|status=Wave 11 compiled article|note=Public concept compiled from the Wave 11 decentralized-systems context.}}
+{{Knowledge object
+ |title=Concentrated liquidity
+ |entity_type=Concept
+ |domain=Technology, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 11 compiled context
+}}
+{{Reading depth|base=Concentrated liquidity|current=Core}}
+
+= Concentrated liquidity =
+
+== Overview ==
+'''Concentrated liquidity''' is a market-making design in which liquidity providers allocate capital to selected price intervals rather than supplying the same liquidity across the entire possible price range.
+
+Liquidity inside the active price range can create greater depth per unit of capital than uniformly distributed liquidity. When market price leaves a position's range, that position stops contributing active liquidity under the range-based design.
+
+Concentration increases provider choice but also makes positions more path- and range-dependent. Providers may need to select ranges, rebalance, and manage the risk of ending with more of one asset as prices move.
+
+Uniswap v3 introduced a widely used implementation of this idea for decentralized exchanges, but the general concept should not be defined as the Uniswap product itself.
+
+== Boundaries ==
+* concentrated liquidity ≠ Uniswap by identity
+* capital efficiency ≠ guaranteed LP profitability
+* out-of-range position ≠ vanished assets
+
+== Related concepts ==
+[[Automated market maker]], [[Liquidity provider]], [[Liquidity pool]], [[Price impact]], [[Arbitrage]], and [[Constant-product market maker]] provide the range-liquidity context.
+
+== References ==
+* Uniswap v3 Core whitepaper (2021), section 2, concentrated liquidity.
+* Uniswap Developers, “Concentrated Liquidity”, current v3/v4 concept documentation.
+* BIS Working Paper 1227 (2024), empirical study of concentrated liquidity provision on Uniswap v3.
+
+[[Category:Technology]]
+[[Category:Mathematics]]

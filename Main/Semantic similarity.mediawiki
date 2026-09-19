@@ -1,0 +1,102 @@
+{{Source status|status=Wave 3 compiled article|note=Semantic-similarity concept grounded in lexical semantics and computational evaluation literature.}}
+{{Knowledge object
+ |title=Semantic similarity
+ |entity_type=Concept
+ |domain=Linguistics, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 3 compiled context
+}}
+{{Reading depth|base=Semantic similarity|current=Core}}
+
+= Semantic similarity =
+
+== Overview ==
+'''Semantic similarity''' is the degree to which linguistic expressions, senses, concepts, or represented items are alike in meaning under a specified representation and measure.
+
+It is widely used in linguistics, information retrieval, natural-language processing, knowledge systems, and machine learning.
+
+Similarity is always relative to a notion of representation, comparison, and task.
+
+== Similarity and relatedness ==
+Semantic similarity should be distinguished from broader '''semantic relatedness''' or association.
+
+For example:
+
+* ''dog'' and ''cat'' are semantically similar because both are animals with many shared properties;
+* ''dog'' and ''leash'' are strongly related but are not similar in the same way.
+
+A dataset or model that mixes these notions measures a broader relation than similarity narrowly understood.
+
+== Similarity and synonymy ==
+Synonyms are words or expressions with closely overlapping meanings in some contexts.
+
+Semantic similarity is graded and much broader.
+
+Two items can be highly similar without being substitutable or synonymous.
+
+Therefore:
+
+<pre>
+semantic similarity ≠ synonymy
+similarity ≠ identity
+</pre>
+
+== Ways to measure similarity ==
+Methods include:
+
+* human ratings;
+* lexical taxonomies;
+* ontology/path measures;
+* feature overlap;
+* corpus co-occurrence;
+* [[Distributional semantics|vector representations]];
+* contextual embeddings;
+* supervised or learned similarity functions.
+
+Different methods can disagree because they operationalize different information.
+
+== Cosine similarity ==
+For nonzero vectors x and y, cosine similarity is:
+
+<pre>
+cos(x,y) = (x · y) / (||x|| ||y||)
+</pre>
+
+It measures angular proximity in a vector space.
+
+A high cosine score means that two vectors are close under that geometric measure. It does not by itself prove synonymy, reference, identity, or human conceptual equivalence.
+
+== Semantic textual similarity ==
+Sentence- or text-level tasks estimate how close two texts are in meaning.
+
+This is harder than word similarity because compositional structure, negation, quantification, reference, discourse, and pragmatic information can matter.
+
+Two sentences can share many words while making opposite claims.
+
+== Evaluation limits ==
+Human similarity judgments vary with instructions, context, population, scale design, and whether annotators interpret “similarity” as association.
+
+Benchmark scores therefore depend on task construction.
+
+== Applications ==
+Semantic similarity supports:
+
+* search and retrieval;
+* clustering;
+* duplicate detection;
+* recommendation;
+* ontology alignment;
+* lexical substitution;
+* evaluation of representations;
+* document matching.
+
+The measure should be chosen for the application rather than treated as a universal semantic distance.
+
+== References ==
+* Daniel Jurafsky & James H. Martin, ''Speech and Language Processing'', current 3rd-edition online manuscript.
+* WordNet-based lexical-similarity literature.
+* Semantic Textual Similarity shared-task literature.
+* distributional semantics and sentence-representation literature.
+
+[[Category:Linguistics]]
+[[Category:Computer science]]

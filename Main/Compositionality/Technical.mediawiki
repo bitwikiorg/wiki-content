@@ -1,0 +1,48 @@
+{{Source status|status=Technical depth derivative|note=Advanced formal-semantic surface of [[Compositionality]].}}
+{{Reading depth|base=Compositionality|current=Technical}}
+= Compositionality — Technical =
+
+== Homomorphic formulation ==
+A strong compositional architecture can be described as a homomorphism from syntactic algebra to semantic algebra.
+
+If syntactic operation R combines expressions e₁...eₙ:
+
+<pre>
+⟦R(e₁,...,eₙ)⟧ = F_R(⟦e₁⟧,...,⟦eₙ⟧)
+</pre>
+
+where F_R is the semantic operation associated with R.
+
+This is a schema, not one fixed semantic theory.
+
+== Type-driven composition ==
+Montague-style semantics commonly assigns semantic types and uses functional application, abstraction, type shifting, or related operations.
+
+For example:
+
+<pre>
+⟦VP⟧ : e → t
+⟦NP⟧ : e
+⟦S⟧  : t
+</pre>
+
+Actual type systems can be substantially richer.
+
+== Context-sensitive composition ==
+Indexicals and context-dependent constructions can be handled by making semantic values functions from contexts, worlds, assignments, or information states.
+
+Thus:
+
+<pre>
+compositionality ≠ context independence
+</pre>
+
+== Apparent counterexamples ==
+Idioms, quotation, metonymy, lexical coercion, ellipsis, anaphora, presupposition projection, and pragmatic enrichment test what counts as encoded structure and constituent meaning.
+
+A theory can preserve compositionality by enriching representations, but excessive hidden structure risks making the principle empirically weak.
+
+== References ==
+* Stanford Encyclopedia of Philosophy — Compositionality.
+* Montague, “Universal Grammar” and related papers.
+* Pagin & Westerståhl on compositionality.

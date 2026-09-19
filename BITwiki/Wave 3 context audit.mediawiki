@@ -1,0 +1,389 @@
+{{Source status|status=Wave 3 Phase 3 context audit|note=Audit state for the Wave 3 language/meaning/discourse capture/compile/write cycle.}}
+= Wave 3 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Language]]
+# [[Syntax]]
+# [[Pragmatics]]
+# [[Reference]]
+# [[Context (linguistics)]]
+# [[Ambiguity]]
+# [[Polysemy]]
+# [[Compositionality]]
+# [[Presupposition]]
+# [[Implicature]]
+# [[Speech act]]
+# [[Discourse (linguistics)]]
+# [[Common ground]]
+# [[Lexical semantics]]
+# [[Distributional semantics]]
+# [[Semantic similarity]]
+# [[Meaning representation]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 3 reader surfaces: '''51'''.
+
+== Structural audit ==
+
+All seventeen Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* contain a References section;
+* use controlled Domain values;
+* contain internal links;
+* own their concept/category identity.
+
+All thirty-four Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain sources/references;
+* do not duplicate Core <code>Knowledge object</code>;
+* do not duplicate Core category identity.
+
+A complete 51-surface repository read found no Markdown blockquote syntax or Markdown code fences in the Wave 3 corpus.
+
+== Linguistics Domain audit ==
+
+Wave 3 creates enough recurring public corpus to satisfy the Domain-expansion rule in [[Category:Knowledge domains]].
+
+The new controlled Domain is implemented across the full contract:
+
+<pre>
+bitwiki-runtime-schema.json
+        ↕
+Module:BITwiki/Data/Schema
+        +
+Category:Linguistics
+        +
+Portal:Linguistics
+        +
+Language exemplar
+</pre>
+
+[[Language]] explicitly emits <code>Domain=Linguistics</code> and joins [[Category:Domain exemplars]].
+
+The Domain is non-exclusive. Philosophy-of-language concepts can also belong to Philosophy; computational semantics concepts can also belong to Computer science.
+
+== Semantic-kernel audit ==
+
+The dependency graph remains coherent:
+
+<pre>
+Language
+ ├→ Syntax
+ └→ Semantics [Wave 2]
+      ├→ Reference
+      ├→ Lexical semantics
+      │    ├→ Ambiguity
+      │    └→ Polysemy
+      └→ Compositionality
+
+Semantics + utterance situation
+        ↓
+Pragmatics
+ ├→ Context (linguistics)
+ ├→ Presupposition
+ ├→ Implicature
+ ├→ Speech act
+ └→ Common ground
+        ↓
+Discourse (linguistics)
+
+Lexical semantics + corpus evidence
+        ↓
+Distributional semantics
+        ↓
+Semantic similarity
+
+linguistic content
+        ↓
+Meaning representation
+</pre>
+
+No downstream article required redefining [[Semantics]] or another upstream Wave 0–2 concept incompatibly.
+
+== Required non-equivalences preserved ==
+
+<pre>
+language ≠ speech
+language ≠ writing
+natural language ≠ programming language
+syntax ≠ semantics
+semantics ≠ pragmatics
+sentence meaning ≠ speaker meaning
+reference ≠ meaning
+reference ≠ identity
+context ≠ common ground
+co-text ≠ all context
+ambiguity ≠ vagueness
+polysemy ≠ homonymy
+polysemy ≠ every ambiguity
+compositionality ≠ word-by-word substitution
+compositionality ≠ context-independence
+presupposition ≠ entailment
+presupposition ≠ implicature
+implicature ≠ entailment
+implicating ≠ hearer inference
+speech act ≠ sentence form
+illocutionary act ≠ perlocutionary effect
+discourse ≠ text alone
+Discourse (linguistics) ≠ Discourse software
+lexical semantics ≠ lexicography
+distributional semantics ≠ all semantics
+distributional similarity ≠ semantic identity
+semantic similarity ≠ synonymy
+semantic similarity ≠ semantic relatedness
+meaning representation ≠ meaning
+meaning representation ≠ one universal formalism
+</pre>
+
+== Title/identity audit ==
+
+Two generic titles required normalization during capture.
+
+'''Discourse''' was already occupied by the canonical public knowledge object for the Discourse forum software. The linguistic concept is therefore [[Discourse (linguistics)]]. No second <code>Discourse</code> identity was created.
+
+'''Context''' is substantially broader than linguistic interpretation and even within pragmatics names multiple contextual notions. The wave therefore uses [[Context (linguistics)]] and leaves the unqualified title available for future general/disambiguation use.
+
+[[Reference]] remains unqualified because its Core article defines the broader representational relation while treating linguistic reference as the central Wave 3 case.
+
+== Language audit ==
+
+[[Language]]:
+
+* includes spoken and signed modalities;
+* does not equate language with speech or writing;
+* treats the ontology/object of linguistic study as theoretically contested;
+* separates natural language from deliberately specified formal/programming languages;
+* avoids canonizing one generative, usage-based, cognitive, social, or structural school as the definition of language.
+
+== Syntax audit ==
+
+[[Syntax]]:
+
+* concerns structural combination;
+* is separated from semantics and morphology;
+* presents constituency, dependency, generative, constraint-based, functional, constructional and usage-based approaches as frameworks rather than definitions;
+* separates grammaticality/acceptability from raw frequency;
+* distinguishes natural-language syntax from formal-language syntax.
+
+== Pragmatics/context audit ==
+
+[[Pragmatics]] keeps the semantics–pragmatics boundary explicitly theory-sensitive.
+
+[[Context (linguistics)]] distinguishes:
+
+* linguistic co-text;
+* utterance parameters;
+* discourse/information state;
+* perceptual/social circumstances;
+* common ground.
+
+The articles therefore do not use "context" as an unexplained catch-all.
+
+[[Common ground]] is modeled as mutually available/accepted information, commitments or related states, not as objective truth or all shared knowledge.
+
+== Reference audit ==
+
+[[Reference]] separates:
+
+<pre>
+reference ≠ meaning
+reference ≠ identity
+identifier ≠ guaranteed referent
+co-reference ≠ synonymy
+</pre>
+
+The Technical surface distinguishes model-theoretic denotation from community/world reference and preserves the strength of formal identity assertions such as <code>owl:sameAs</code> without importing Wave 2 ontology implementation into the definition.
+
+== Ambiguity/polysemy audit ==
+
+[[Ambiguity]] distinguishes lexical, structural and scope ambiguity and separates ambiguity from vagueness.
+
+[[Polysemy]] is treated as related-sense multiplicity, not as all lexical ambiguity.
+
+The polysemy/homonymy boundary remains theory- and evidence-sensitive rather than being presented as mechanically decidable.
+
+== Compositionality audit ==
+
+[[Compositionality]]:
+
+* requires structure as well as constituent meanings;
+* is not reduced to word-by-word substitution;
+* does not imply context independence;
+* treats idioms, coercion, anaphora, quotation and pragmatic enrichment as challenges to specific formulations rather than automatic refutations.
+
+== Presupposition/implicature audit ==
+
+[[Presupposition]] distinguishes backgrounded information, projection and accommodation from ordinary entailment.
+
+[[Implicature]] distinguishes speaker implicating from hearer inferring and treats conversational implicature as defeasible.
+
+The articles do not collapse presupposition, implicature and entailment into a generic category of "implied meaning."
+
+== Speech-act audit ==
+
+[[Speech act]] separates:
+
+* sentence form;
+* locutionary content;
+* illocutionary force;
+* perlocutionary effect.
+
+Felicity conditions and institutional authority are presented as part of act success rather than grammar.
+
+== Discourse audit ==
+
+[[Discourse (linguistics)]] covers connected spoken, signed, written and multimodal language use.
+
+It does not equate discourse with text, a sentence sequence, one methodology, or the [[Discourse]] software project.
+
+Formal discourse semantics, conversation analysis, interactional approaches and computational discourse are presented as distinct research traditions.
+
+== Lexical-semantics audit ==
+
+[[Lexical semantics]] distinguishes lexical meaning from dictionary glosses and lexicography.
+
+It presents sense relations and the lexical representation problem without treating a dictionary sense inventory as a ground-truth ontology.
+
+== Distributional-semantics audit ==
+
+[[Distributional semantics]] explicitly preserves:
+
+<pre>
+co-occurrence ≠ reference
+vector proximity ≠ synonymy
+embedding dimension ≠ semantic feature by default
+distributional semantics ≠ complete theory of meaning
+</pre>
+
+Static vectors, count-based spaces, learned embeddings and contextual representations are treated as related distributional model families.
+
+== Semantic-similarity audit ==
+
+[[Semantic similarity]] distinguishes:
+
+* similarity;
+* broader semantic relatedness/association;
+* synonymy;
+* identity.
+
+Cosine similarity is described as a geometric measure over a representation, not as semantics itself.
+
+Sentence/text similarity is treated as requiring more than lexical overlap.
+
+== Meaning-representation audit ==
+
+[[Meaning representation]] distinguishes linguistic-content representation from [[Knowledge representation]].
+
+Logical forms, discourse representations and graph formalisms are examples rather than universal standards.
+
+AMR is not described as “the” universal meaning representation.
+
+Dense embeddings and explicit symbolic structures are distinguished while allowing hybrid systems.
+
+== Public concept versus BITwiki application ==
+
+The wave preserves:
+
+<pre>
+Language                 ≠ prompt language / house style
+Context (linguistics)    ≠ agent context window
+Discourse (linguistics)  ≠ Discourse software
+Common ground            ≠ BIThub shared state
+Meaning representation   ≠ BITwiki schema
+Semantic similarity      ≠ BITwiki link strength
+Distributional semantics ≠ BITwiki embedding implementation
+</pre>
+
+No local agent or BITwiki architecture was used as the definition of a public concept.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| Stanford Encyclopedia of Philosophy || pragmatics, reference, ambiguity, compositionality, presupposition, implicature, speech acts, common ground, philosophy of linguistics
+|-
+| Oxford Research Encyclopedia of Linguistics || lexical semantics and polysemy
+|-
+| Cambridge linguistic references || syntax, discourse and context
+|-
+| Grice / Austin / Searle / Kaplan / Stalnaker / Montague / Heim || named foundational theories
+|-
+| Lenci; Turney & Pantel || distributional/vector semantics
+|-
+| ACL / computational-linguistics literature || meaning representations and computational semantic evaluation
+|-
+| Jurafsky & Martin || broad current computational-linguistics synthesis
+|}
+
+The Jurafsky & Martin 3rd-edition online manuscript used for computational orientation is explicitly dated '''19 August 2026''' rather than represented as an undated finalized book.
+
+Wikipedia/Scholarpedia remain discovery/orientation surfaces where stronger references exist.
+
+== Redlink policy ==
+
+The wave intentionally exposes normalized future concepts such as:
+
+[[Phonetics]], [[Phonology]], [[Morphology]], [[Grammar]], [[Utterance]], [[Sentence]], [[Word]], [[Lexeme]], [[Morpheme]], [[Denotation]], [[Sense]], [[Truth condition]], [[Indexical]], [[Deixis]], [[Anaphora]], [[Vagueness]], [[Homonymy]], [[Synonymy]], [[Antonymy]], [[Semantic relatedness]], [[Word sense]], [[Word sense disambiguation]], [[Conversation analysis]], [[Discourse analysis]], [[Discourse representation theory]], [[Logical form]], [[Semantic parsing]], [[Abstract Meaning Representation]], [[Embedding]], [[Word embedding]], [[Vector space model]], and [[Corpus linguistics]].
+
+These are coverage signals, not automatic stub requests.
+
+== Acceptance criteria ==
+
+Wave 3 is ready to leave Phase 3 when:
+
+# all 51 surfaces remain present;
+# one concept = one Core semantic identity;
+# controlled Domains pass, including the new Linguistics Domain;
+# Linguistics category, portal and [[Language]] exemplar all exist;
+# public/project distinctions remain explicit;
+# all depth derivatives remain category/identity-exempt;
+# disambiguated slash/parenthesized title deployment remains valid;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, workflow and Main-space audits pass;
+# staging builds the complete graph.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 3 context capture]]
+        ↓
+[[BITwiki:Wave 3 compiled context]]
+        ↓
+[[BITwiki:Wave 3 context audit]]
+</pre>
+
+== Release validation — 2026-09-19 ==
+
+PR #19 executed the established Wave release gates after the full 51-surface corpus and Linguistics Domain changes were present.
+
+The staging workbench completed successfully.
+
+The V2 validation workflow completed successfully across:
+
+* deployable MediaWiki structure and identity semantics;
+* Scribunto Lua 5.1 syntax;
+* compiler runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment plan;
+* deployment importer safety contract;
+* structured knowledge-request workflow;
+* Main-namespace role audit;
+* corpus and V1 classification inventories;
+* architecture-evidence upload.
+
+This completion-state bookkeeping commit must re-pass the same PR gates before merge.
+
+'''Current assessment: Wave 3 is semantically and structurally audited and has passed the full release gate; merge remains conditional on the final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

@@ -1,0 +1,107 @@
+{{Source status|status=Wave 3 compiled article|note=Formal/computational meaning-representation concept grounded in semantics and computational-linguistics literature.}}
+{{Knowledge object
+ |title=Meaning representation
+ |entity_type=Concept
+ |domain=Linguistics, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 3 compiled context
+}}
+{{Reading depth|base=Meaning representation|current=Core}}
+
+= Meaning representation =
+
+== Overview ==
+A '''meaning representation''' is a formal or structured representation intended to encode aspects of the meaning or content of linguistic expressions.
+
+Meaning representations make selected semantic information explicit so that it can be interpreted, compared, queried, reasoned over, or processed computationally.
+
+No representation is a neutral transcription of “the meaning itself.” Every formalism chooses what distinctions to encode and what to omit.
+
+== Why represent meaning? ==
+Natural-language strings can be ambiguous and structurally variable.
+
+A meaning representation can normalize selected distinctions across surface forms.
+
+For example:
+
+<blockquote>Ada wrote the program.</blockquote>
+
+and
+
+<blockquote>The program was written by Ada.</blockquote>
+
+differ syntactically but can share an underlying event relation in a semantic representation.
+
+== What can be represented? ==
+Depending on the formalism, a representation may encode:
+
+* entities and variables;
+* predicates and relations;
+* events and participants;
+* quantification;
+* negation;
+* tense and aspect;
+* modality;
+* reference;
+* semantic roles;
+* discourse relations;
+* scope;
+* presupposition or discourse state.
+
+No single system necessarily represents all of these.
+
+== Logical forms ==
+Formal semantics can translate linguistic expressions into logical representations.
+
+A simplified example:
+
+<pre>
+∃x (program(x) ∧ wrote(Ada,x))
+</pre>
+
+Logical forms support explicit inference when their semantics is defined, but they require decisions about ontology, scope, reference, and granularity.
+
+== Graph representations ==
+Some computational formalisms represent meaning as graphs.
+
+Nodes can represent entities, events, or concepts; edges can represent semantic roles or relations.
+
+Abstract Meaning Representation (AMR) is one prominent graph-based framework, but it is one representation scheme rather than a universal semantic standard.
+
+== Discourse representations ==
+Discourse Representation Theory and dynamic approaches represent discourse referents and conditions across multiple sentences, supporting phenomena such as anaphora and quantification.
+
+This differs from a sentence-level predicate graph.
+
+== Semantic parsing ==
+'''Semantic parsing''' maps language into a target meaning representation.
+
+Its evaluation therefore depends on the target formalism. A parser can score highly against annotations while the representation itself still omits pragmatic, contextual, or world knowledge.
+
+== Relation to knowledge representation ==
+[[Knowledge representation]] models knowledge about a domain or world.
+
+Meaning representation models the interpreted content of linguistic expressions.
+
+The two can connect—for example, a semantic parser can map an utterance into a knowledge-base query—but they are not the same problem.
+
+== Relation to embeddings ==
+Learned vectors can encode semantic information, but a dense embedding is not automatically a symbolic meaning representation.
+
+A symbolic formalism usually exposes named structure and relations; an embedding distributes information across numeric dimensions.
+
+Hybrid systems can use both.
+
+== Epistemic notes ==
+Meaning representations are task- and theory-dependent.
+
+Different representations can preserve different aspects of the same utterance. Inter-annotator disagreement, parser error, underspecification, and ontology mismatch are normal engineering and scientific concerns.
+
+== References ==
+* Rania Sadeddine, Juri Opitz & Fabian M. Suchanek, “A Survey of Meaning Representations – From Theory to Practical Utility”, NAACL 2024.
+* Daniel Jurafsky & James H. Martin, ''Speech and Language Processing'', semantic-representation chapters.
+* Hans Kamp & Uwe Reyle, ''From Discourse to Logic''.
+* Abstract Meaning Representation and semantic-parsing literature.
+
+[[Category:Linguistics]]
+[[Category:Computer science]]

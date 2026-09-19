@@ -1,0 +1,68 @@
+{{Source status|status=Technical depth derivative|note=Advanced formal and computational semantic-representation surface of [[Meaning representation]].}}
+{{Reading depth|base=Meaning representation|current=Technical}}
+= Meaning representation — Technical =
+
+== Design dimensions ==
+Meaning-representation formalisms differ along dimensions such as:
+
+* expressivity;
+* compositionality;
+* underspecification;
+* graph versus logical structure;
+* ontology dependence;
+* treatment of scope;
+* event semantics;
+* discourse accessibility;
+* context dependence;
+* inference regime;
+* annotation cost.
+
+Increasing expressivity can make annotation, parsing, and reasoning harder.
+
+== Logical representation ==
+A typed or first-order logical form can make truth-conditional structure explicit.
+
+For example:
+
+<pre>
+∃e∃x(
+  write(e)
+  ∧ agent(e, Ada)
+  ∧ theme(e, x)
+  ∧ program(x)
+)
+</pre>
+
+This exposes event and role structure but still omits many pragmatic and discourse commitments.
+
+== Discourse representation ==
+DRT-style formalisms use discourse representation structures containing discourse referents and conditions.
+
+Accessibility constraints provide a mechanism for anaphora and quantified expressions across sentence boundaries.
+
+== Graph formalisms ==
+AMR and semantic dependency representations encode predicate–argument or conceptual structure as labeled graphs.
+
+Graph normalization can abstract away from surface syntax, but annotation conventions define what distinctions survive.
+
+== Parsing and evaluation ==
+A semantic parser estimates:
+
+<pre>
+argmax_m P(m | utterance, context)
+</pre>
+
+for target representation m.
+
+Exact-match or graph-overlap scores measure agreement with a target annotation scheme, not universal correctness of meaning.
+
+== Symbolic and neural representations ==
+Dense embeddings can condition or generate symbolic structures; symbolic structures can constrain neural inference.
+
+Hybrid architecture does not erase the distinction between distributed numerical representation and explicit semantic structure.
+
+== References ==
+* Sadeddine, Opitz & Suchanek, NAACL 2024.
+* Kamp & Reyle, ''From Discourse to Logic''.
+* Jurafsky & Martin, semantic parsing and representation chapters.
+* AMR and semantic dependency parsing literature.

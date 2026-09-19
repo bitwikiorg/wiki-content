@@ -1,0 +1,360 @@
+{{Source status|status=Wave 3 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 3 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 3 covers natural language, linguistic structure, meaning in use, discourse context, lexical meaning, and computational representations of linguistic meaning. It extends [[Semantics]] from Wave 2 without regenerating or redefining that upstream concept.
+
+== Provisional scope ==
+
+# [[Language]]
+# [[Syntax]]
+# [[Pragmatics]]
+# [[Reference]]
+# [[Context (linguistics)|Context]]
+# [[Ambiguity]]
+# [[Polysemy]]
+# [[Compositionality]]
+# [[Presupposition]]
+# [[Implicature]]
+# [[Speech act]]
+# [[Discourse (linguistics)]]
+# [[Common ground]]
+# [[Lexical semantics]]
+# [[Distributional semantics]]
+# [[Semantic similarity]]
+# [[Meaning representation]]
+
+'''Title normalization note:''' <code>Discourse</code> is already the canonical Main-space knowledge object for the Discourse forum software used by BIThub. The linguistic concept therefore cannot reuse that identity. <code>Discourse (linguistics)</code> is the provisional normalized title.
+
+'''Domain note:''' the current compiler-facing controlled Domain vocabulary does not include <code>Linguistics</code>. This is a Phase-1 architecture issue, not permission to misclassify the wave under Philosophy, Computer science, or another existing Domain merely to satisfy validation. Domain treatment must be resolved before Phase 2 canonical writing.
+
+== Semantic kernel ==
+
+<pre>
+Language
+ ├→ Syntax
+ │    └→ structural combination of linguistic expressions
+ └→ Semantics [Wave 2]
+      ├→ Reference
+      ├→ Lexical semantics
+      │    ├→ Ambiguity
+      │    └→ Polysemy
+      └→ Compositionality
+
+Semantics + utterance situation
+        ↓
+Pragmatics
+ ├→ Context
+ ├→ Presupposition
+ ├→ Implicature
+ ├→ Speech act
+ └→ Common ground
+        ↓
+Discourse (linguistics)
+
+Lexical semantics + corpus evidence
+        ↓
+Distributional semantics
+        ↓
+Semantic similarity
+
+linguistic content
+        ↓ formal / symbolic encoding
+Meaning representation
+</pre>
+
+This is a research/writing dependency graph, not a claim that all theories of language accept one architecture or that these fields developed historically in this order.
+
+== Foundational separation ==
+
+<pre>
+language ≠ speech alone
+language ≠ writing alone
+natural language ≠ programming language
+syntax ≠ semantics
+semantics ≠ pragmatics
+sentence type ≠ utterance token
+sentence meaning ≠ speaker meaning
+reference ≠ meaning
+reference ≠ identity
+context ≠ common ground
+ambiguity ≠ vagueness
+polysemy ≠ homonymy
+polysemy ≠ every ambiguity
+compositionality ≠ context-independence
+presupposition ≠ entailment
+presupposition ≠ implicature
+implicature ≠ entailment
+implicating ≠ inferring
+speech act ≠ sentence form
+illocutionary act ≠ perlocutionary effect
+discourse ≠ sentence sequence only
+Discourse (linguistics) ≠ Discourse software
+lexical semantics ≠ dictionary definition collection
+distributional semantics ≠ all semantics
+distributional similarity ≠ semantic identity
+semantic similarity ≠ synonymy
+semantic similarity ≠ general relatedness
+meaning representation ≠ meaning itself
+meaning representation ≠ one universal formalism
+</pre>
+
+== Normalized concept dossiers ==
+
+=== Language ===
+A language is a structured system involved in human linguistic communication and cognition, but the ontology of language is theoretically contested. Linguistic research may treat language as public patterns of use, socially sustained conventions, cognitive competence, abstract structural systems, or combinations of these perspectives.
+
+The Core article must not force one disputed ontology of language as the definition of the phenomenon.
+
+'''Do not conflate:''' language ≠ speech; spoken language ≠ all language; signed languages are full natural languages; orthography ≠ language; natural language ≠ formal/programming language; an individual idiolect ≠ automatically the entire social language.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Philosophy of Linguistics" (rev. 2024); standard general linguistics textbooks; empirical linguistic literature on spoken and signed languages.
+
+=== Syntax ===
+Syntax studies the structural organization and combination of linguistic expressions, especially how words and phrases combine into larger constituents such as clauses and sentences. Competing syntactic frameworks disagree about primitives, representations, transformations, constructions, dependencies, and explanatory goals.
+
+'''Do not conflate:''' syntax ≠ grammar as a whole; syntax ≠ morphology; syntactic well-formedness ≠ meaningfulness; grammaticality ≠ frequency; natural-language syntax ≠ the purely formal notion of syntax used in logic and programming-language theory, though they are related uses.
+
+'''Sources:''' Huddleston & Pullum, ''The Cambridge Grammar of the English Language'', syntactic overview; Stanford Encyclopedia of Philosophy, "Philosophy of Linguistics"; representative generative, dependency, constructional and corpus-based syntax literature.
+
+=== Pragmatics ===
+Pragmatics studies language use and interpretation where understanding depends on features of an utterance situation, speaker/hearer intentions, discourse state, social interaction, or other contextual information beyond conventional expression meaning alone.
+
+The semantics–pragmatics boundary is theoretically disputed; the article should present the major distinction without pretending that all frameworks draw it identically.
+
+'''Do not conflate:''' pragmatics ≠ "everything outside grammar"; pragmatics ≠ context alone; pragmatic interpretation ≠ arbitrary guessing; utterance meaning ≠ sentence meaning.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Pragmatics" (rev. 2024); Grice; Stalnaker; Levinson; relevance-theoretic and interactional pragmatics literature.
+
+=== Reference ===
+Reference is a relation between representational tokens or acts and what they are used to pick out or talk about. Linguistic reference includes names, indexicals, demonstratives, descriptions and other referring expressions, but theories disagree about mechanisms and the relation between linguistic expression, speaker act, meaning and referent.
+
+'''Do not conflate:''' reference ≠ meaning; referring expression ≠ guaranteed successful reference; co-reference ≠ identity proof; reference ≠ denotation in every semantic framework; identifier ≠ referent.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Reference" (rev. 2024); Frege; Russell; Kripke; Donnellan; Kaplan; contemporary philosophy-of-language and semantics literature.
+
+=== Context ===
+Context is the information or circumstances relevant to interpreting an utterance or linguistic expression. The term covers multiple non-equivalent notions: surrounding linguistic material, speaker/time/place/world parameters, discourse state, common ground, perceptual environment, social situation, goals and background assumptions.
+
+Because "context" is broader than any one formal model, the Core article should present a family of context notions and explicitly distinguish them.
+
+'''Do not conflate:''' context ≠ common ground; linguistic co-text ≠ all context; context ≠ arbitrary external information; formal context parameter ≠ full social situation.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Pragmatics"; Stanford Encyclopedia of Philosophy, "Dynamic Semantics"; Kaplan; Stalnaker; discourse-pragmatics literature.
+
+=== Ambiguity ===
+Ambiguity occurs when a linguistic expression supports more than one distinguishable interpretation under the relevant analysis. Ambiguity can arise lexically, syntactically/structurally, semantically, or through interactions among levels of representation.
+
+'''Do not conflate:''' ambiguity ≠ vagueness; ambiguity ≠ underspecification by definition; ambiguity ≠ polysemy only; multiple analyses ≠ necessarily multiple lexical entries.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Ambiguity"; formal semantics and linguistic ambiguity literature.
+
+=== Polysemy ===
+Polysemy is the phenomenon in which one linguistic form is associated with multiple related senses or interpretations. It is commonly contrasted with homonymy, where meanings are treated as unrelated, but the boundary is not always clean in synchronic analysis.
+
+'''Do not conflate:''' polysemy ≠ homonymy; polysemy ≠ every lexical ambiguity; one word form ≠ necessarily one lexical item; related senses ≠ independent dictionary entries by definition.
+
+'''Sources:''' Vicente & Falkum, "Polysemy", Oxford Research Encyclopedia of Linguistics (2017); Ravin & Leacock (eds.), ''Polysemy'' (2000); Haber & Poesio, "Polysemy—Evidence from Linguistics, Behavioral Science, and Contextualized Language Models", ''Computational Linguistics'' 50(1), 2024.
+
+=== Compositionality ===
+The principle of compositionality, in a standard formulation, says that the meaning of a complex expression is determined by its structure and the meanings of its constituents. Precise versions differ over what counts as meaning, structure, constituency and determination, and over how context-sensitive phenomena are handled.
+
+'''Do not conflate:''' compositionality ≠ simple word-by-word substitution; compositionality ≠ context-free interpretation; compositionality ≠ claim that idioms do not exist; compositionality ≠ one specific formal-semantic theory.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Compositionality"; Montague semantics; Pagin & Westerståhl; formal-semantics literature.
+
+=== Presupposition ===
+Presupposition is a family of phenomena in which linguistic expressions or speakers treat certain information as backgrounded or taken for granted rather than as the main asserted content. Major theories include semantic, pragmatic and dynamic approaches.
+
+Required topics include triggers, projection, cancellation/cancellability, accommodation, presupposition failure, and the relation to common ground.
+
+'''Do not conflate:''' presupposition ≠ entailment; presupposition ≠ implicature; presupposition trigger ≠ proof that the presupposition is true; speaker presupposition ≠ sentence presupposition in every framework.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Presupposition" (rev. 2021); Stalnaker; Karttunen; Heim; Beaver and related dynamic-pragmatic literature.
+
+=== Implicature ===
+Implicature concerns content a speaker means or conveys beyond what is said in a narrower literal/conventional sense. Conversational implicature is strongly associated with Gricean reasoning about cooperative communication, while conventional and generalized phenomena require separate treatment.
+
+'''Do not conflate:''' implicature ≠ entailment; implicature ≠ presupposition; implicating ≠ hearer inference; conversational implicature ≠ literal sentence meaning; cancellability is an important diagnostic but not a universal magic test.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Implicature" (rev. 2024); Grice (1975/1989); Levinson; relevance-theoretic and post-Gricean literature.
+
+=== Speech act ===
+A speech act is an action performed in or by linguistic communication, such as asserting, requesting, promising, warning, apologizing or asking. Speech-act theory distinguishes what is said from the force of the act and from effects produced in an audience.
+
+'''Do not conflate:''' speech act ≠ sentence type; declarative form ≠ assertion in every use; illocutionary act ≠ perlocutionary effect; performative formula ≠ all speech acts.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Speech Acts"; Austin, ''How to Do Things with Words''; Searle; contemporary pragmatics and philosophy-of-language literature.
+
+=== Discourse (linguistics) ===
+Discourse is language in use beyond isolated expression analysis, including connected spoken, signed or written communicative activity and its organization in context. Discourse studies is multidisciplinary and does not have a single universally accepted unit, theory or method.
+
+'''Do not conflate:''' discourse ≠ text only; discourse ≠ any sequence of sentences; discourse analysis ≠ one methodology; linguistic discourse ≠ [[Discourse]] forum software.
+
+'''Sources:''' De Fina & Georgakopoulou (eds.), ''The Cambridge Handbook of Discourse Studies'' (2020); Brown & Yule, ''Discourse Analysis''; Schiffrin; Prince; conversation-analysis and computational-discourse literature.
+
+=== Common ground ===
+Common ground is information, assumptions, commitments, beliefs or other states treated as mutually available/shared among participants for purposes of interaction. Competing theories characterize it as sets of possible worlds/propositions, mental states, normative states or other structures.
+
+'''Do not conflate:''' common ground ≠ all shared information; common ground ≠ objective truth; common ground ≠ identical private belief states; common ground ≠ context as a whole.
+
+'''Sources:''' Stanford Encyclopedia of Philosophy, "Common Ground in Pragmatics" (2024); Stalnaker; Lewis; Clark; Bach & Harnish.
+
+=== Lexical semantics ===
+Lexical semantics studies word meaning and semantic structure in the lexicon, including sense relations, polysemy, synonymy, antonymy, lexical fields, frames, prototype effects and interactions between lexical meaning and larger linguistic structures.
+
+'''Do not conflate:''' lexical semantics ≠ lexicography; word meaning ≠ dictionary gloss; lexical semantic relation ≠ distributional similarity; lexical semantics ≠ all semantics.
+
+'''Sources:''' Geeraerts, "Lexical Semantics", Oxford Research Encyclopedia of Linguistics (2017); Murphy, ''Lexical Meaning''; Cruse; contemporary lexical-semantics literature.
+
+=== Distributional semantics ===
+Distributional semantics models semantic behavior from patterns in the linguistic contexts in which items occur. Classical and modern distributional models include co-occurrence/vector-space methods and learned embeddings; contextualized representations extend this family but do not erase the distinction between distributional evidence and semantic theory.
+
+'''Do not conflate:''' distributional semantics ≠ complete theory of meaning; co-occurrence ≠ reference; vector proximity ≠ synonymy; embedding dimension ≠ interpretable semantic feature by default; contextual embedding ≠ human concept identity.
+
+'''Sources:''' Lenci, "Distributional Models of Word Meaning", ''Annual Review of Linguistics'' 4 (2018); Turney & Pantel, "From Frequency to Meaning: Vector Space Models of Semantics", ''Journal of Artificial Intelligence Research'' 37 (2010); Jurafsky & Martin, ''Speech and Language Processing'', 3rd ed. online manuscript (2026).
+
+=== Semantic similarity ===
+Semantic similarity is the degree to which linguistic expressions, word senses, sentences or other represented items are alike in meaning under a specified representation and measure. Computational methods may use lexical resources, ontologies, corpora, embeddings, supervised models or combinations thereof.
+
+The article must distinguish similarity from broader semantic relatedness: dog and cat are similar; dog and leash are strongly related but not similar in the same sense.
+
+'''Do not conflate:''' semantic similarity ≠ synonymy; similarity ≠ identity; semantic similarity ≠ general association/relatedness; cosine similarity ≠ semantics itself; benchmark score ≠ universal semantic truth.
+
+'''Sources:''' Jurafsky & Martin, ''Speech and Language Processing'' (word similarity/vector semantics chapters); WordNet/lexical-similarity literature; Semantic Textual Similarity task literature.
+
+=== Meaning representation ===
+A meaning representation is a formal or structured representation intended to encode aspects of the meaning/content of linguistic expressions so that they can be interpreted, compared, reasoned over or processed computationally. Frameworks differ in granularity, ontology, compositionality, graph structure, logical commitments and intended tasks.
+
+Examples may include logical forms, discourse representation structures, semantic dependency graphs, Abstract Meaning Representation and other symbolic meaning-representation frameworks. No one representation is a neutral transcription of "the meaning itself."
+
+'''Do not conflate:''' meaning representation ≠ meaning; representation formalism ≠ semantic theory as a whole; semantic parse ≠ guaranteed correct interpretation; AMR ≠ universal meaning representation; learned embedding ≠ symbolic meaning representation by definition.
+
+'''Sources:''' Sadeddine, Opitz & Suchanek, "A Survey of Meaning Representations – From Theory to Practical Utility", NAACL 2024, DOI 10.18653/v1/2024.naacl-long.159; Jurafsky & Martin, ''Speech and Language Processing'', logical/semantic representation chapters; formal and computational semantics literature.
+
+== Cross-wave dependencies ==
+
+* [[Language]] ↔ [[Programming language]], [[Concept]], [[Knowledge representation]], [[Cognition]] (future Wave 4).
+* [[Syntax]] ↔ [[Semantics]], [[Programming language]], [[Formal language]] (future Wave 6).
+* [[Pragmatics]] ↔ [[Semantics]], [[Inference]], [[Context (linguistics)|Context]], [[Common ground]].
+* [[Reference]] ↔ [[Identity]], [[Entity]], [[Concept]], [[Semantics]].
+* [[Context (linguistics)|Context]] ↔ [[System boundary]], [[Uncertainty]], [[Inference]], [[Metadata]].
+* [[Ambiguity]] ↔ [[Uncertainty]], [[Interpretation]] (future), [[Syntax]], [[Semantics]].
+* [[Polysemy]] ↔ [[Lexical semantics]], [[Ambiguity]], [[Concept]], [[Category]].
+* [[Compositionality]] ↔ [[Syntax]], [[Semantics]], [[Programming language]].
+* [[Presupposition]], [[Implicature]], [[Speech act]] ↔ [[Pragmatics]], [[Inference]], [[Common ground]].
+* [[Discourse (linguistics)]] ↔ [[Context (linguistics)|Context]], [[Common ground]], [[Semantics]], [[Pragmatics]].
+* [[Distributional semantics]] ↔ [[Machine learning]] (future Wave 7), [[Data structure]], [[Statistical inference]] (future descendant).
+* [[Semantic similarity]] ↔ [[Distributional semantics]], [[Ontology]], [[Taxonomy]], [[Knowledge graph]].
+* [[Meaning representation]] ↔ [[Knowledge representation]], [[Schema]], [[Semantic network]], [[Description logic]], [[Inference]].
+
+== Public concept versus BITwiki implementation ==
+
+<pre>
+Language                 ≠ prompt language / house style
+Context                  ≠ one agent context window
+Discourse (linguistics)  ≠ Discourse software
+Common ground            ≠ BIThub shared state
+Meaning representation   ≠ BITwiki schema
+Semantic similarity      ≠ BITwiki link strength
+Distributional semantics ≠ BITwiki embeddings implementation
+</pre>
+
+BITwiki, BIThub, agent systems, embeddings or local semantic architecture may appear only in explicitly labeled applications after the general concept is established.
+
+== Computational-semantics boundary ==
+
+Wave 3 deliberately includes both linguistic theory and computational models. The bridge must preserve the distinction:
+
+<pre>
+observed language use
+      ↓
+corpus / annotations / lexical resources
+      ↓
+distributional or symbolic representation
+      ↓
+similarity / parsing / inference / downstream task
+
+model output ≠ automatically linguistic meaning
+statistical association ≠ reference
+embedding proximity ≠ identity
+benchmark agreement ≠ semantic truth
+</pre>
+
+[[Distributional semantics]], [[Semantic similarity]] and [[Meaning representation]] therefore need explicit epistemic/measurement limitations.
+
+== Title and identity risks ==
+
+* <code>Discourse</code> is unavailable for the linguistic concept because it already denotes the forum software. Use provisional [[Discourse (linguistics)]].
+* <code>Context</code> is extremely broad and names many non-linguistic notions. Capture therefore normalizes the Wave-3 concept to [[Context (linguistics)]], preserving the unqualified title for future disambiguation/general use.
+* <code>Reference</code> is broader than language. Keep the concept general enough to cover representational reference, with linguistic reference as the principal case, rather than silently reducing the title to one theory.
+* <code>Meaning representation</code> is a computational/formal term and should not be presented as a synonym for mental representation or semantic content.
+* <code>Semantic similarity</code> must separate similarity, relatedness, association and identity.
+
+== Controlled-Domain issue ==
+
+Current <code>bitwiki-runtime-schema.json</code> Domains are:
+
+<pre>
+Systems science
+Science
+Biology
+Computer science
+Mathematics
+Philosophy
+Technology
+Electronics
+Energy
+Engineering
+Chemistry
+Physics
+Medicine
+</pre>
+
+No <code>Linguistics</code> Domain exists.
+
+The majority of Wave 3 concepts are foundational linguistics topics. Assigning every page to <code>Philosophy</code> would misrepresent empirical linguistics; assigning computational descendants to <code>Computer science</code> alone would erase their linguistic identity.
+
+'''Phase-1 decision:''' add controlled Domain <code>Linguistics</code> in Phase 2. The repository's Domain expansion rule requires demonstrated corpus/coverage need plus explicit semantic identity, a category, a portal, and at least one real exemplar. Wave 3 supplies the corpus need. The Phase-2 implementation must therefore be atomic: update compiler schema and runtime projection, add the Linguistics category/portal, update the Domain index, and make [[Language]] the first real exemplar before validation.
+
+== Source-family audit ==
+
+* '''Stanford Encyclopedia of Philosophy''' — pragmatics, reference, ambiguity, compositionality, presupposition, implicature, speech acts, common ground, philosophy/methodology of linguistics.
+* '''Oxford Research Encyclopedia of Linguistics''' — lexical semantics and polysemy.
+* '''Cambridge linguistics references''' — syntax, discourse, discourse analysis and broader linguistic framing.
+* '''Foundational primary literature''' — Frege, Grice, Austin, Searle, Kaplan, Stalnaker, Lewis, Montague, Heim and related primary works where the article discusses their specific theories.
+* '''Computational linguistics / ACL''' — meaning representations, semantic similarity tasks, computational lexical semantics.
+* '''Annual Review / JAIR''' — distributional semantics and vector-space semantics.
+* '''Jurafsky & Martin''' — current broad computational-linguistics synthesis. The current online 3rd-edition manuscript is dated 19 August 2026 and should be cited as a dated online manuscript, not as a timeless finalized edition.
+* '''Wikipedia''' — terminology/discovery/redirect checking only where stronger sources exist.
+* '''Scholarpedia''' — use only where a specific article genuinely covers the target concept better than primary/reference literature.
+
+== Future prerequisites / normalized redlinks ==
+
+[[Phonetics]], [[Phonology]], [[Morphology]], [[Grammar]], [[Utterance]], [[Sentence]], [[Word]], [[Lexeme]], [[Morpheme]], [[Denotation]], [[Sense]], [[Truth condition]], [[Indexical]], [[Deixis]], [[Anaphora]], [[Vagueness]], [[Homonymy]], [[Synonymy]], [[Antonymy]], [[Semantic relatedness]], [[Word sense]], [[Word sense disambiguation]], [[Conversation analysis]], [[Discourse analysis]], [[Discourse representation theory]], [[Logical form]], [[Semantic parsing]], [[Abstract Meaning Representation]], [[Embedding]], [[Word embedding]], [[Vector space model]], [[Corpus linguistics]].
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# [[Semantics]] remains Wave 2 upstream canon and is not regenerated.
+# Linguistic [[Discourse (linguistics)]] must be disambiguated from existing [[Discourse]] software.
+# [[Language]] must preserve competing views about the ontology/object of linguistic study rather than canonize one school.
+# [[Pragmatics]] must present the semantics–pragmatics boundary as theory-sensitive.
+# [[Context (linguistics)|Context]] and [[Common ground]] remain distinct.
+# [[Reference]] and [[Identity]] remain distinct.
+# [[Ambiguity]], [[Polysemy]] and future [[Vagueness]] remain distinct.
+# [[Presupposition]], [[Implicature]] and entailment remain distinct.
+# [[Speech act]] separates illocutionary force from perlocutionary effects and grammatical mood.
+# [[Lexical semantics]] is not reduced to computational lexical semantics.
+# [[Distributional semantics]] is treated as a family of usage/statistics-based semantic models, not a complete theory of meaning.
+# [[Semantic similarity]] separates similarity from relatedness, synonymy and identity.
+# [[Meaning representation]] is treated as a family of formal/symbolic representations, not as meaning itself.
+# Wave 3 establishes enough recurring corpus need to justify controlled Domain <code>Linguistics</code>; implement it atomically in Phase 2 with category, portal, schema projection, Domain-index update and [[Language]] exemplar.
+# The context concept is normalized to [[Context (linguistics)]] rather than occupying the global <code>Context</code> title.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

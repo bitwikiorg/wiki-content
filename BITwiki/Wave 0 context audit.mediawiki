@@ -138,7 +138,13 @@ Direct Scholarpedia coverage for these ten broad Wave 0 concepts was limited; ir
 
 '''Correction:''' converted to ordinary prose.
 
-=== 6. Deployment/staging title mapping ===
+=== 6. Substrate directory semantics ===
+
+'''Finding:''' the substrate audit originally treated each <code>Main/Title/</code> directory as an architectural module and required a local README. Reader-depth directories exist only because repository paths project MediaWiki slash titles; ten READMEs would add transport noise without describing a distinct architecture.
+
+'''Correction:''' <code>scripts/audit_substrate.py</code> now recognizes a depth directory only when a sibling Core page exists, its files are limited to approved Simple/Technical filenames, each derivative actually uses [[Template:Reading depth]], and no nested directory is present. Other undocumented directories remain errors.
+
+=== 7. Deployment/staging title mapping ===
 
 '''Finding:''' slash-depth titles require confirmation that filesystem paths map to the intended MediaWiki titles.
 

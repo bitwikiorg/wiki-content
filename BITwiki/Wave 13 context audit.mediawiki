@@ -115,7 +115,7 @@ No blockchain-specific identity or Web-specific application is allowed to redefi
 |-
 | IETF RFC 1122 / 1123 / 1958 / 8200 || Internet architecture and protocol suite
 |-
-| RFC 1034 / 1035 / 8499 || DNS
+| RFC 1034 / 1035 / 9499 || DNS
 |-
 | RFC 3986 || URI
 |-
@@ -179,7 +179,13 @@ No Domain expansion was required.
 
 This completion-state bookkeeping commit must re-pass the same release gates before merge.
 
-'''Current assessment: Wave 13 is semantically and structurally audited and has passed its release gates; merge remains conditional on exact-final-head CI repeat.'''
+'''Current assessment: Wave 13 passed its exact-final-head release gates and was merged to <code>main</code> in PR #32 (merge commit <code>84b03aa29ab97163eb4e25de45992858514c7115</code>).'''
+
+== Final post-merge cross-wave audit — 2026-09-19 ==
+
+Wave 13 was re-audited after merge together with Wave 14 as the closing corpus pair. See [[BITwiki:Waves 13-14 final cross-wave audit]].
+
+That audit rechecks all 87 reader surfaces, all 29 Core-page concept links, source publication state, semantic boundaries, corpus totals, and numbered-wave closure. It also corrects this page's stale DNS source-role row from RFC 8499 to RFC 9499.
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

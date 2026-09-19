@@ -1,0 +1,294 @@
+{{Source status|status=Final post-merge cross-wave audit|note=Independent closing audit of merged Waves 13 and 14 and the completed Wave 0–14 concept-wave program.}}
+= Waves 13–14 final cross-wave audit =
+
+'''State: final post-merge cross-wave audit.'''
+
+== Scope ==
+
+This audit covers the two final merged corpus waves completed on 2026-09-19:
+
+* [[BITwiki:Wave 13 context audit|Wave 13 — Public / platform technology]]: 17 concepts / 51 reader surfaces.
+* [[BITwiki:Wave 14 context audit|Wave 14 — Scholarly communication and open research]]: 12 concepts / 36 reader surfaces.
+
+Combined closing scope:
+
+<pre>
+29 canonical concepts
+87 reader surfaces
+Core + Simple + Technical
+</pre>
+
+Overall numbered-wave corpus after Wave 14:
+
+<pre>
+232 canonical concepts
+696 reader surfaces
+Waves 0–14 complete
+</pre>
+
+This audit checks merged <code>main</code>, concept-link resolution, semantic boundaries, current source state, completion bookkeeping, and closure of the numbered concept-wave queue.
+
+== Audit method ==
+
+The closing audit re-runs six layers:
+
+# '''Structural / identity''' — one Core identity per concept; Simple/Technical derivatives remain identity/category-exempt.
+# '''Semantic boundaries''' — adjacent concepts remain distinct even when tightly connected.
+# '''Knowledge-graph resolution''' — every reader-facing Core concept link in Waves 13–14 must resolve to an existing canonical Main-space identity.
+# '''Evidence / provenance''' — standards, policies, Recommendations, RFCs, and current guidance retain correct publication state.
+# '''Workflow / bookkeeping''' — completed-wave rows, merge state, totals, and queue closure must agree with the merged corpus.
+# '''Program closure''' — finishing Wave 14 closes this numbered expansion sequence without implying encyclopedic completeness.
+
+== Structural re-audit ==
+
+Combined scope remains:
+
+* Wave 13: 17 concepts / 51 reader surfaces.
+* Wave 14: 12 concepts / 36 reader surfaces.
+* Combined: 29 concepts / 87 reader surfaces.
+
+No concept, title, Domain, epistemic status, or reader-surface count changes in this audit.
+
+All 29 concepts remain '''Established'''.
+
+== Finding 1 — all Core concept links resolve ==
+
+Every reader-facing internal concept link from all 29 Wave 13–14 Core pages was checked against the merged Main namespace.
+
+Result:
+
+<pre>
+29 / 29 Core pages checked
+0 unresolved canonical concept links
+</pre>
+
+Two draft Wave 13 links had already been removed before merge:
+
+* <code>[[Policy]]</code>
+* <code>[[Network effect]]</code>
+
+Neither was converted into a stub merely to make the graph look denser.
+
+Wave 14 introduced no unresolved canonical-looking links.
+
+== Finding 2 — stale Wave 13 DNS audit reference ==
+
+The Wave 13 article surfaces were already corrected from obsolete RFC 8499 to current RFC 9499 for DNS terminology before merge.
+
+The Wave 13 audit page still contained one stale source-role table entry naming RFC 8499.
+
+This closing audit corrects that bookkeeping reference to:
+
+* IETF RFC 9499, ''DNS Terminology'' (2023).
+
+No reader-surface content change is required.
+
+== Finding 3 — stale pre-merge completion text ==
+
+After PRs #32 and #33 merged, the Wave 13 and Wave 14 audit pages still ended with pre-merge conditional language.
+
+They are updated to the actual merged state:
+
+* Wave 13 — PR #32, merge commit <code>84b03aa29ab97163eb4e25de45992858514c7115</code>.
+* Wave 14 — PR #33, merge commit <code>5483d3811885cfb2e5c7fdb6569ca2cd7a26a6c1</code>.
+
+Both now link to this final post-merge audit.
+
+== Finding 4 — corpus ledger and program closure are internally consistent ==
+
+[[BITwiki:Requested knowledge]] now records:
+
+<pre>
+232 canonical concepts
+696 reader surfaces
+Waves 0–14 complete
+</pre>
+
+The completed-wave table contains explicit rows for Waves 12, 13, and 14.
+
+The old provisional Wave 14 “miscellaneous durable seeds” slot is no longer left as an open dumping ground. Wave 14 was normalized into a coherent scholarly-communication/open-research cluster.
+
+Future coverage returns to the structured request queue and dedicated scope research rather than automatically inventing Wave 15.
+
+== Cross-wave semantic audit ==
+
+=== Internet / Web / platform layer ===
+
+The merged corpus preserves:
+
+<pre>
+Internet ≠ World Wide Web
+Internet protocol suite ≠ Internet
+DNS ≠ Web
+URI ≠ network location necessarily
+HTTP ≠ HTML
+HTTP ≠ Web
+client/server role ≠ permanent machine identity
+web browser ≠ search engine
+web server ≠ physical machine necessarily
+API ≠ protocol necessarily
+authentication ≠ authorization
+interoperability ≠ identical implementation
+federation ≠ decentralization
+federation ≠ single sign-on
+online platform ≠ Internet
+moderation action ≠ proof of falsity
+</pre>
+
+[[Interoperability]] becomes a useful bridge into Wave 14 FAIR/data infrastructure without collapsing technical interoperability into semantic correctness.
+
+[[Governance]] remains broader than platform governance and content moderation.
+
+=== Scholarly communication / open research layer ===
+
+The merged corpus preserves:
+
+<pre>
+scientific literature ≠ all scientific knowledge
+scholarly communication ≠ academic publishing only
+peer review ≠ proof of correctness
+peer review ≠ replication
+citation ≠ endorsement
+citation count ≠ quality
+academic publishing ≠ peer review
+preprint ≠ peer-reviewed article
+open access ≠ open science
+free-to-read ≠ unrestricted reuse necessarily
+open science ≠ compulsory disclosure of all research
+dataset ≠ database
+research data management ≠ data sharing only
+data repository ≠ database
+repository deposit ≠ preservation guarantee
+FAIR ≠ open
+FAIR ≠ data quality
+FAIR ≠ one implementation standard
+</pre>
+
+Publication state, review state, access state, and FAIR status are therefore provenance/management properties rather than truth labels.
+
+=== Wave 13 → Wave 14 ===
+
+The final waves connect through durable general concepts rather than arbitrary adjacency:
+
+* [[Interoperability]] supports FAIR and repository/data exchange without defining data quality.
+* [[Authentication]] and [[Authorization]] provide access-control concepts for restricted research data.
+* [[Uniform Resource Identifier]] and Web infrastructure support persistent scholarly identification and discovery without becoming citation itself.
+* [[Online platform]] and [[Content moderation]] remain general platform concepts; scholarly communication systems may use platforms without being reducible to them.
+* [[Governance]], [[Metadata]], [[Provenance]], [[Database]], [[Version control]], and [[Reproducibility]] remain reusable prior-wave foundations.
+
+== Current-source audit ==
+
+The closing pair retains these source-state decisions:
+
+* IETF RFC 9499 — current DNS terminology RFC (2023).
+* IETF RFC 3986 — URI generic syntax.
+* IETF RFC 9110 / 9111 / 9112 — HTTP semantics, caching, and HTTP/1.1.
+* W3C ''Architecture of the World Wide Web, Volume One'' — Recommendation, 15 December 2004.
+* W3C ActivityPub — Recommendation, 23 January 2018.
+* NIST SP 800-63 Revision 4 family — final July 2025 digital-identity guidance.
+* UNESCO ''Recommendation on Open Science'' — adopted 23 November 2021.
+* NIH Data Management and Sharing Policy — effective 25 January 2023; 2026 changes simplify the required DMS Plan format rather than replace the policy.
+* Wilkinson et al. (2016) — FAIR Guiding Principles.
+* GO FAIR clarification — FAIR is not equivalent to open.
+* Crossref / DataCite — current scholarly metadata and research-object relationship practice.
+
+No source publication-state correction beyond the stale Wave 13 audit-row reference is required.
+
+== Title / identity audit ==
+
+The following qualified or normalized titles remain justified:
+
+* [[Protocol (computing)]]
+* [[Federation (information technology)]]
+* [[Uniform Resource Identifier]]
+* [[Application programming interface]]
+* [[Online platform]]
+* [[Research data management]]
+* [[Data repository]]
+* [[FAIR data]]
+
+No concept is renamed in this audit.
+
+== Domain audit ==
+
+No new controlled Domain is introduced.
+
+Wave 13 uses existing Computer science, Technology, Engineering, and Systems science.
+
+Wave 14 uses existing Science, Computer science, Technology, and Systems science.
+
+== Program closure ==
+
+The numbered concept-wave expansion sequence is now closed at Wave 14.
+
+That statement means:
+
+* the planned Wave 0–14 sequence has been executed and audited;
+* its reader surfaces and semantic boundaries passed the established repository gates;
+* future coverage should originate from evidence-backed requests or new scope research.
+
+It does '''not''' mean:
+
+* BITwiki is encyclopedically complete;
+* every redlink should now be filled;
+* every high-level domain gap has been resolved;
+* future research must use numbered waves.
+
+The request queue remains the canonical mechanism for unmet coverage.
+
+== Corpus totals ==
+
+<pre>
+Wave 13: 17 concepts / 51 surfaces
+Wave 14: 12 concepts / 36 surfaces
+
+Combined closing pair: 29 concepts / 87 surfaces
+Overall numbered-wave corpus: 232 canonical concepts / 696 reader surfaces
+</pre>
+
+== Release criteria for this final cross-audit ==
+
+The closing audit is complete only when:
+
+# all 87 Wave 13–14 reader surfaces remain structurally valid;
+# all 29 Core-page concept links resolve;
+# RFC 9499 is the DNS terminology reference in Wave 13 audit bookkeeping;
+# Wave 13 and Wave 14 audit pages record their actual merge commits;
+# the corpus ledger remains 232 concepts / 696 surfaces;
+# the numbered queue remains explicitly closed at Waves 0–14;
+# controlled Domains and epistemic statuses pass;
+# runtime schema and substrate audits pass;
+# Main-space identity and workflow audits pass;
+# deployment/importer audits pass;
+# staging projection builds successfully;
+# this final cross-audit is merged into <code>main</code>.
+
+== Release validation — 2026-09-19 ==
+
+PR #34 executed the established release gates on the final post-merge Waves 13–14 audit state.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+The post-merge link audit also confirms all 29 Wave 13–14 Core pages have zero unresolved canonical concept links.
+
+No concept-count, title, Domain, epistemic-status, or reader-surface changes were required.
+
+This bookkeeping commit must re-pass the same gates before merge.
+
+'''Current assessment: the Waves 13–14 final cross-wave audit is complete and has passed its release gates; merge remains conditional only on exact-final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

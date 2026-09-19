@@ -1,0 +1,125 @@
+{{Source status|status=Wave 14 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 14 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 14 resolves the final “miscellaneous durable seeds” slot by promoting a real semantic cluster rather than creating an unrelated grab bag: scholarly communication, publication, open science, and research-data stewardship.
+
+== Normalized scope ==
+
+# [[Scientific literature]]
+# [[Scholarly communication]]
+# [[Peer review]]
+# [[Citation]]
+# [[Academic publishing]]
+# [[Preprint]]
+# [[Open access]]
+# [[Open science]]
+# [[Dataset]]
+# [[Research data management]]
+# [[Data repository]]
+# [[FAIR data]]
+
+== Why this is a coherent wave ==
+
+The cluster joins four already-developed parts of BITwiki:
+
+* [[Evidence]], [[Provenance]], [[Verification]], [[Validation]], [[Reproducibility]], and [[Replication]];
+* [[Metadata]], [[Database]], [[Knowledge representation]], and [[Semantic Web]];
+* [[Scientific method]] and [[Scientific model]];
+* [[Bioinformatics]], [[Biological database]], and [[Reproducible computational research]].
+
+The missing layer is how research outputs are communicated, evaluated, cited, published, opened, preserved, and made reusable.
+
+== Title decisions ==
+
+* [[Scientific literature]] refers to the body of scientific research communication, not literature as fiction or the humanities generally.
+* [[Scholarly communication]] is broader than publication: it includes creation, evaluation, dissemination, discovery, preservation, and reuse.
+* [[Academic publishing]] is retained as a process/institutional layer inside scholarly communication.
+* [[Preprint]] is a public manuscript version not yet certified by journal/conference peer review; later versions may exist.
+* [[Dataset]] is broader than a database and may be static or versioned.
+* [[FAIR data]] uses the established acronym because the FAIR Guiding Principles are a named research-data framework.
+* [[Data repository]] is distinct from [[Database]]: a repository emphasizes deposit, preservation, discovery, access, and stewardship of research objects.
+
+== Domain decision ==
+
+No new controlled Domain is introduced. Wave 14 uses Science, Computer science, Technology, and Systems science where appropriate.
+
+== Dependency graph ==
+
+<pre>
+Scholarly communication
+ ├→ Scientific literature
+ │    ├→ Citation
+ │    └→ Peer review
+ ├→ Academic publishing
+ │    └→ Preprint
+ └→ Open access
+      └→ Open science
+
+Research-data layer
+ Dataset
+ ├→ Research data management
+ │    └→ Data repository
+ └→ FAIR data
+</pre>
+
+This graph is explanatory, not a strict subclass hierarchy.
+
+== Required non-equivalences ==
+
+<pre>
+scientific literature ≠ all scientific knowledge
+scholarly communication ≠ academic publishing only
+peer review ≠ proof of correctness
+citation ≠ endorsement
+citation count ≠ quality
+academic publishing ≠ peer review
+preprint ≠ peer-reviewed article
+open access ≠ open science
+free-to-read ≠ unrestricted reuse necessarily
+open science ≠ all research must be public without ethical/legal limits
+dataset ≠ database
+dataset ≠ raw data necessarily
+research data management ≠ data sharing only
+data repository ≠ database
+repository deposit ≠ preservation guarantee
+FAIR ≠ open
+FAIR ≠ data quality
+FAIR ≠ one implementation standard
+</pre>
+
+== Source families ==
+
+* National Academies / publication-ethics literature — peer review and research evaluation.
+* Crossref / DataCite / scholarly metadata practice — citations, identifiers, scholarly record relationships.
+* NIH/NLM — preprints and current data-management/sharing practice.
+* UNESCO Recommendation on Open Science (2021) — open-science scope and open-access context.
+* Budapest/Berlin open-access declarations and UNESCO guidance — open-access definitions.
+* Wilkinson et al. (2016) FAIR Guiding Principles — findability, accessibility, interoperability, reusability.
+* NIH Data Management and Sharing Policy plus 2026 plan-format updates — current research-data management and repository practice.
+
+== Critical current-state notes ==
+
+* NIH's 2023 Data Management and Sharing Policy remains in force; NIH introduced a simplified required DMS Plan format for 2026 rather than replacing the underlying policy.
+* FAIR is explicitly not equivalent to open: controlled-access data can be FAIR when access conditions and metadata are properly described.
+* UNESCO's Recommendation on Open Science was adopted 23 November 2021 and treats open science as broader than open access.
+
+== Future normalized redlinks ==
+
+Journal, conference proceeding, monograph, bibliographic database, reference list, persistent identifier, Digital Object Identifier, data citation, data paper, supplementary material, editorial review, registered report, postprint, institutional repository, subject repository, data stewardship, data curation, research object, research software citation, open peer review.
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Keep Wave 14 at 12 canonical concepts.
+# Treat the wave as one scholarly-communication/open-research cluster, not a miscellaneous dump.
+# Preserve peer-review/correctness, citation/endorsement, preprint/peer-reviewed-publication, open-access/open-science, dataset/database, repository/database, and FAIR/open boundaries.
+# Use current 2026 NIH DMS implementation state where referenced.
+# Do not create a new Domain.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

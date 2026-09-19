@@ -1,0 +1,69 @@
+{{Source status|status=Technical depth derivative|note=Advanced metadata modeling/interoperability surface of [[Metadata]].}}
+{{Reading depth|base=Metadata|current=Technical}}
+= Metadata — Technical =
+
+== Metadata element sets ==
+A metadata vocabulary defines properties such as:
+
+<pre>
+dc:title
+dct:creator
+dct:subject
+dct:license
+</pre>
+
+Terms need identifiers, definitions and usage rules.
+
+== Application profiles ==
+An application profile can combine terms from multiple vocabularies and specify local constraints.
+
+This separates:
+* globally reusable vocabulary meaning;
+* local requirements.
+
+== Encoding ==
+Metadata may be encoded in:
+* RDF;
+* XML;
+* JSON;
+* relational tables;
+* embedded binary fields;
+* specialized catalog formats.
+
+Encoding does not determine semantics by itself.
+
+== Controlled values ==
+Metadata properties can use:
+* free text;
+* controlled vocabularies;
+* authority files;
+* URIs;
+* datatypes.
+
+Controlled values improve interoperability but can reduce expressive flexibility.
+
+== Metadata crosswalks ==
+A crosswalk maps terms between metadata schemas.
+
+Mappings can be:
+* exact;
+* lossy;
+* broader/narrower;
+* conditional.
+
+A one-to-one field mapping can hide different semantics.
+
+== Provenance ==
+Metadata transformations should themselves be recorded where important.
+
+Otherwise, aggregation can lose:
+* original source;
+* timestamps;
+* field meaning;
+* confidence;
+* transformations.
+
+== References ==
+* NISO — Understanding Metadata.
+* DCMI Metadata Basics and Terms.
+* W3C RDF/PROV.

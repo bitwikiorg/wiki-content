@@ -1,0 +1,97 @@
+{{Source status|status=Technical depth derivative|note=Advanced symbolic/inductive knowledge-graph surface of [[Knowledge graph]].}}
+{{Reading depth|base=Knowledge graph|current=Technical}}
+= Knowledge graph — Technical =
+
+== Graph model ==
+A labeled knowledge graph can be represented as triples:
+
+<pre>
+G ⊆ E × R × (E ∪ L)
+</pre>
+
+where:
+* E = entities/resources;
+* R = relation/property types;
+* L = literals.
+
+More elaborate definitions add schema, qualifiers, provenance or temporal dimensions.
+
+== Schema ==
+A schema may define:
+
+<pre>
+class hierarchy
+property hierarchy
+domain/range
+constraints
+identity rules
+</pre>
+
+Schema semantics determine which derived edges are valid.
+
+== Deductive closure ==
+Given graph G and rule/ontology O:
+
+<pre>
+closure_O(G)
+</pre>
+
+contains facts entailed by G under O.
+
+Materializing closure trades storage for query speed.
+
+Query-time reasoning trades latency for less duplication.
+
+== Inductive models ==
+Embedding approaches map graph elements to vectors:
+
+<pre>
+e(entity) ∈ R^d
+r(relation) ∈ R^k
+</pre>
+
+and learn scoring functions over triples.
+
+They support completion and ranking but do not provide classical entailment guarantees.
+
+== Property graph versus RDF ==
+Property graphs typically allow properties on nodes/edges directly.
+
+RDF uses triples and graph/dataset semantics.
+
+Both can represent similar applications, but identity, typing, reification and query semantics differ.
+
+== Qualifiers ==
+Facts such as:
+
+<pre>
+Alice worksAt Company from 2020 to 2024
+</pre>
+
+need qualifiers.
+
+Patterns include:
+* statement nodes;
+* RDF 1.2 triple terms;
+* named graphs;
+* n-ary relations;
+* edge properties.
+
+Model choice affects provenance and reasoning.
+
+== Quality dimensions ==
+Knowledge-graph quality can include:
+* accuracy;
+* completeness;
+* consistency;
+* timeliness;
+* provenance;
+* entity resolution;
+* schema conformance;
+* logical satisfiability.
+
+These are distinct axes.
+
+== References ==
+* Hogan et al. (2021), DOI: 10.1145/3447772.
+* W3C RDF/RDFS/OWL.

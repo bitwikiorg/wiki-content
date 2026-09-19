@@ -1,0 +1,63 @@
+{{Source status|status=Wave 7 compiled article|note=Shortcut-learning concept grounded in Geirhos et al. and subsequent generalization literature.}}
+{{Knowledge object
+ |title=Shortcut learning
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Supported
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Shortcut learning|current=Core}}
+
+= Shortcut learning =
+
+== Overview ==
+'''Shortcut learning''' is a research framing for cases in which a learning system relies on comparatively easy predictive cues or decision rules that perform well on the training or standard benchmark distribution but fail to capture the intended robust task strategy.
+
+The term became prominent in deep-learning analysis through Geirhos and colleagues.
+
+== Shortcuts ==
+Possible shortcuts include:
+
+* image backgrounds;
+* watermarks;
+* acquisition-device signatures;
+* text style or lexical cues;
+* dataset-specific artifacts;
+* demographic/site proxies;
+* answer-format regularities.
+
+A cue is a shortcut relative to the intended task and evaluation context.
+
+== Generalization failure ==
+Shortcut rules can achieve excellent in-distribution accuracy.
+
+They become visible when conditions change, confounding cues are removed, counterfactual examples are introduced, or evaluation targets a more robust notion of the task.
+
+== Spurious correlations ==
+Shortcuts often exploit [[Spurious correlation|spurious correlations]].
+
+However:
+
+<pre>
+spurious correlation = relation/data property
+shortcut learning = learner's use of an easy decision rule
+</pre>
+
+The concepts overlap but are not identical.
+
+== Scope ==
+Shortcut learning is a useful explanatory framework, not a theorem that explains every failure of deep learning.
+
+Models can use both robust and shortcut features simultaneously.
+
+Whether a feature is an undesirable shortcut depends partly on task intent and deployment conditions.
+
+== Related concepts ==
+[[Spurious correlation]], [[Distribution shift]], [[Generalization (machine learning)]], [[Overfitting]], and [[Inductive bias]] provide the generalization context.
+
+== References ==
+* Geirhos et al., “Shortcut Learning in Deep Neural Networks”, ''Nature Machine Intelligence'' 2 (2020), 665–673.
+* Schramowski et al., “Making Deep Neural Networks Right for the Right Scientific Reasons”, ''Nature Machine Intelligence'' 2 (2020), 476–486.
+* recent PMLR literature on shortcut mitigation and spurious features.
+
+[[Category:Computer science]]

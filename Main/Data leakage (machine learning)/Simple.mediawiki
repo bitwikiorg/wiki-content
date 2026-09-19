@@ -1,0 +1,20 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Data leakage (machine learning)]].}}
+{{Reading depth|base=Data leakage (machine learning)|current=Simple}}
+= Data leakage — Simple =
+
+'''Data leakage''' happens when a machine-learning system accidentally gets information it should not have during training or evaluation.
+
+For example:
+
+* a feature includes information created after the answer is already known;
+* test examples are mixed into training data;
+* preprocessing is calculated using the whole dataset before the split;
+* the same person appears in both training and test sets in a way that reveals the answer.
+
+Leakage can make a model look much better than it really is.
+
+This is different from security data leaks or stolen files.
+
+== Sources ==
+* Kaufman et al. (2012).
+* [[Data leakage (machine learning)|Core article]]

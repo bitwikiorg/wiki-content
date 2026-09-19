@@ -1,0 +1,47 @@
+{{Source status|status=Wave 7 compiled article|note=Test-set concept grounded in independent evaluation methodology.}}
+{{Knowledge object
+ |title=Test set
+ |entity_type=Concept
+ |domain=Computer science, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Test set|current=Core}}
+
+= Test set =
+
+== Overview ==
+A '''test set''' is held-out data used to estimate a system's performance after training and development choices have been fixed.
+
+Its purpose is independent evaluation.
+
+== Independence ==
+A test set provides a cleaner performance estimate when its examples, labels, and aggregate results do not influence model fitting or design.
+
+Direct or indirect influence can turn testing into development.
+
+== Repeated use ==
+Repeatedly checking a public or private test score and changing the system in response can overfit the test set.
+
+The dataset may still be called “test”, but functionally it is participating in model selection.
+
+== Benchmarking ==
+Shared benchmarks often serve as public test sets.
+
+Long-term repeated community optimization can cause benchmark saturation, contamination, or selection effects even when individual model training follows nominal splits.
+
+== Final test is not deployment ==
+A held-out test set estimates performance only under its sampling and task assumptions.
+
+Real deployment may involve [[Distribution shift]], new subgroups, changed incentives, or different data quality.
+
+== Related concepts ==
+[[Training set]], [[Validation set]], [[Generalization (machine learning)]], [[Benchmark contamination]], [[Data leakage (machine learning)]], and [[Evidence]] define the evaluation boundary.
+
+== References ==
+* standard machine-learning evaluation texts.
+* Cawley & Talbot (2010).
+* CMU machine-learning model-selection material emphasizing independent test data.
+
+[[Category:Computer science]]
+[[Category:Science]]

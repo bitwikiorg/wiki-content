@@ -1,0 +1,81 @@
+{{Source status|status=Wave 6 compiled article|note=Computer-security concept grounded in NIST and security-engineering literature.}}
+{{Knowledge object
+ |title=Computer security
+ |entity_type=Concept
+ |domain=Computer science, Technology
+ |status=Established
+ |provenance=V2 public corpus; Wave 6 compiled context
+}}
+{{Reading depth|base=Computer security|current=Core}}
+
+= Computer security =
+
+== Overview ==
+'''Computer security''' is the protection of computational systems, communications, services, and information against unauthorized access, disclosure, modification, destruction, disruption, or other harmful failure.
+
+Security is defined relative to assets, threats, assumptions, and desired properties.
+
+== Security objectives ==
+Common objectives include:
+
+* confidentiality;
+* integrity;
+* availability;
+* authentication;
+* authorization;
+* accountability;
+* non-repudiation where relevant;
+* resilience and recovery.
+
+No single list captures every security goal.
+
+== Threat model ==
+A threat model states what attackers can do, what assets matter, what trust assumptions exist, and which failures are in scope.
+
+A mechanism can be secure under one threat model and inadequate under another.
+
+== Authentication and authorization ==
+'''Authentication''' establishes or verifies an identity or credential.
+
+'''Authorization''' determines what an authenticated or otherwise identified principal may do.
+
+Therefore:
+
+<pre>
+authentication ≠ authorization
+</pre>
+
+== Defense in depth ==
+Security typically uses multiple layers:
+
+* secure design;
+* access controls;
+* isolation;
+* patching;
+* monitoring;
+* backups;
+* cryptographic mechanisms;
+* operational procedures;
+* human processes.
+
+A failure in one layer should not automatically compromise the whole system.
+
+== Cryptography ==
+[[Cryptography]] can protect confidentiality, integrity, authenticity, and other properties.
+
+But secure cryptography does not guarantee a secure system.
+
+Key management, implementation bugs, endpoint compromise, permissions, social engineering, and operational failures can bypass cryptographic protections.
+
+== Security is not absolute ==
+Security claims require scope and assumptions.
+
+A system can reduce risk without being secure against every attacker or failure.
+
+== References ==
+* NIST CSRC Glossary and NIST security publications.
+* Ross Anderson, ''Security Engineering''.
+* standard computer-security texts.
+
+[[Category:Computer science]]
+[[Category:Technology]]

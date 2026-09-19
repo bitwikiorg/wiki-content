@@ -1,0 +1,232 @@
+{{Source status|status=Wave 1 Phase 2 compiled context|note=Normalized shared context for writing. Derived from Wave 1 capture; all reader surfaces must remain consistent with these definitions and boundaries.}}
+= Wave 1 compiled context =
+
+'''State: Phase 2 — Context compilation + writing.'''
+
+This page normalizes the Wave 1 research state into one semantic vocabulary before article prose is written.
+
+== Dependency order ==
+
+Wave 1 is compiled from epistemic primitives outward:
+
+<pre>
+Belief ─┐
+        ├→ Knowledge
+Evidence├→ Justification
+        └→ Epistemic status
+             ↑
+        Uncertainty
+
+Evidence → Empirical evidence
+Evidence → Provenance → Verification
+Verification ↔ Validation
+
+Scientific method
+ ├→ Empirical evidence
+ ├→ Measurement → Accuracy and precision
+ ├→ Scientific model → Explanation
+ ├→ Falsifiability → Counterexample
+ ├→ Reproducibility
+ └→ Replication
+</pre>
+
+This ordering is editorial, not ontological.
+
+== Normalized definitions ==
+
+=== Belief ===
+A mental/propositional attitude of taking something to be the case or true. Belief may be dispositional or occurrent and can be modeled categorically or by graded credence.
+
+=== Knowledge ===
+An epistemic achievement/state in which a subject gets at truth in the relevant way. Propositional knowledge normally involves truth and belief, but justified true belief is not sufficient by simple definition and no reductive analysis is universally accepted.
+
+=== Epistemology ===
+The philosophical study of knowledge and related epistemic phenomena: belief, justification, evidence, rationality, ignorance, skepticism, inquiry, credence, testimony, and epistemic norms.
+
+=== Evidence ===
+Material that bears epistemically on a claim, proposition, hypothesis, or belief—affecting support, justification, confirmation, or rational credence. What counts as evidence and how evidence supports claims is theory- and domain-sensitive.
+
+=== Empirical evidence ===
+Evidence grounded in observation, experiment, measurement, or experience of the world. Empirical evidence is one kind of evidence and is not equivalent to raw data, causal proof, or all scientific evidence.
+
+=== Justification ===
+The epistemic standing of a belief as appropriately supported, rational, warranted, or held on good grounds. Competing theories disagree about whether justification depends on accessible reasons/evidence, reliable processes, coherence, foundations, or other conditions.
+
+=== Uncertainty ===
+Incomplete determination concerning a proposition, state, parameter, model, measurement, outcome, or future event. The term covers several distinct forms, including epistemic uncertainty, aleatory variability, model uncertainty, semantic/vagueness uncertainty, and metrological measurement uncertainty.
+
+=== Epistemic status ===
+A family term for epistemically evaluative properties or standings of beliefs/claims, such as justification, knowledge, warrant, certainty, reliability, safety, sensitivity, defeat-resistance, or degrees of support. It is not one universal ordered scale.
+
+=== Provenance ===
+Information about origin, custody, production, transformation, derivation, and responsible agents/activities associated with an object, data item, record, claim, or artifact.
+
+=== Verification ===
+Checking or confirming, using appropriate evidence or formal procedure, that specified requirements, properties, calculations, implementations, or claims are satisfied. The precise object and criterion of verification are domain-specific.
+
+=== Validation ===
+Evaluation or confirmation that something is adequate, valid, or fit for an intended use, target, application, interpretation, or empirical domain. Validation is domain-specific and is not equivalent to verification or proof.
+
+=== Falsifiability ===
+A property of a claim/theory under which some possible observation, counterinstance, or basic statement would conflict with it. Logical falsifiability must be distinguished from the methodological decision that an actual observation has falsified a theory.
+
+=== Scientific method ===
+The family of systematic practices used in science to observe, measure, model, hypothesize, experiment, infer, test, compare, revise, and communicate claims. There is no single universal step sequence sufficient for all sciences.
+
+=== Scientific model ===
+A representation used in scientific inquiry to describe, explain, predict, explore, simulate, infer about, or understand a target system, phenomenon, data set, or theory.
+
+=== Measurement ===
+A structured process for obtaining a result/representation concerning a property or quantity through interaction, comparison, modeling, calibration, reference systems, and inference. A measurement result is not merely an instrument reading.
+
+=== Accuracy and precision ===
+Measurement accuracy concerns closeness to an appropriate reference/true value; measurement precision concerns closeness of agreement among replicate measurements under specified conditions. High precision does not imply high accuracy.
+
+=== Reproducibility ===
+A field-dependent term for the ability to obtain consistent results under specified repeat conditions. In the National Academies 2019 convention used as Wave 1's main science distinction, reproducibility means obtaining consistent computational results using the same data, code/methods, and analysis conditions.
+
+=== Replication ===
+A new investigation/study aimed at the same or a closely related scientific question using newly obtained data or observations. In the National Academies convention, replicability concerns consistency across such studies.
+
+=== Explanation ===
+An account that makes a phenomenon, fact, event, result, or pattern intelligible by showing why or how it obtains. Explanations may be causal, mechanistic, nomological, statistical, unificationist, model-based, mathematical, pragmatic, or other context-specific forms.
+
+=== Counterexample ===
+A case that satisfies a general claim's hypotheses/conditions while making its conclusion false. A valid counterexample refutes a universal claim, but isolated contrary observations do not automatically refute probabilistic/statistical claims.
+
+== Required non-equivalences ==
+
+<pre>
+belief ≠ knowledge
+belief ≠ credence
+knowledge ≠ justified true belief by simple definition
+evidence ≠ truth
+evidence ≠ proof
+data ≠ evidence without relevance/inference context
+empirical evidence ≠ all evidence
+justification ≠ truth
+uncertainty ≠ error
+uncertainty ≠ probability
+epistemic status ≠ confidence
+epistemic status ≠ truth value
+epistemic status ≠ lifecycle state
+provenance ≠ citation
+provenance ≠ truth
+verification ≠ validation
+verification ≠ proof
+validation ≠ certainty
+falsifiable ≠ false
+unfalsified ≠ verified
+scientific method ≠ one universal recipe
+scientific model ≠ scientific theory
+scientific model ≠ simulation
+instrument reading ≠ measurement result
+accuracy ≠ precision
+reproducibility ≠ replication
+reproducibility ≠ correctness
+replication failure ≠ automatic falsification
+explanation ≠ description
+explanation ≠ prediction
+counterexample ≠ anecdote
+</pre>
+
+== Cross-wave relations ==
+
+* [[Hypothesis]] uses [[Evidence]], [[Empirical evidence]], [[Falsifiability]], and [[Scientific method]].
+* [[Causality]] uses [[Evidence]], [[Empirical evidence]], [[Scientific model]], [[Explanation]], [[Validation]], and [[Uncertainty]].
+* [[System boundary]] constrains [[Scientific model]], [[Measurement]], [[Validation]], and [[Uncertainty]].
+* [[Version control]] contributes to [[Provenance]] and computational [[Reproducibility]].
+* [[Program (computing)]], [[Software]], and [[Computation]] connect to formal/software [[Verification]].
+* [[Algorithm]] connects to [[Verification]] and [[Counterexample]] in correctness reasoning.
+
+== Canonical public versus BITwiki-internal separation ==
+
+Public pages use unsuffixed Main titles:
+
+<pre>
+Evidence
+Uncertainty
+Epistemic status
+Provenance
+Validation
+</pre>
+
+BITwiki project machinery remains explicitly namespaced:
+
+<pre>
+BITwiki:Evidence
+BITwiki:Uncertainty
+BITwiki:Epistemic status
+BITwiki:Provenance
+BITwiki:Claim validation
+</pre>
+
+The public page may link to the project page only in an "Application in BITwiki" subsection when useful. Project policy must never be presented as the universal definition.
+
+== Depth targets ==
+
+{| class="wikitable"
+! Concept !! Core !! Simple !! Technical
+|-
+| Knowledge || required || required || required
+|-
+| Belief || required || required || required
+|-
+| Epistemology || required || required || required
+|-
+| Evidence || required || required || required
+|-
+| Empirical evidence || required || required || conditional/required
+|-
+| Justification || required || required || required
+|-
+| Uncertainty || required || required || required
+|-
+| Epistemic status || required || required || required
+|-
+| Provenance || required || required || required
+|-
+| Verification || required || required || required
+|-
+| Validation || required || required || required
+|-
+| Falsifiability || required || required || required
+|-
+| Scientific method || required || required || required
+|-
+| Scientific model || required || required || required
+|-
+| Measurement || required || required || required
+|-
+| Accuracy and precision || required || required || required
+|-
+| Reproducibility || required || required || required
+|-
+| Replication || required || required || required
+|-
+| Explanation || required || required || required
+|-
+| Counterexample || required || required || required
+|}
+
+== Source-role policy ==
+
+* SEP and specialist philosophy literature: conceptual disputes and history of epistemic/scientific-method concepts.
+* Primary/foundational papers: Gettier, Popper, Hempel/Oppenheim, etc.
+* ISO/IEC/IEEE, NASA: engineering verification/validation.
+* BIPM/JCGM and NIST: metrology, measurement uncertainty, accuracy/precision.
+* W3C PROV: digital provenance.
+* National Academies: reproducibility/replication convention.
+* Wikipedia: title normalization, historical orientation, cross-link discovery.
+* Scholarpedia: specialized technical descendants when directly relevant; no forced citations where direct coverage is absent.
+
+== Reader linking rule ==
+
+Core pages link to canonical Core titles.
+Simple pages prefer <code>/Simple</code> where Wave 0 or Wave 1 provides it.
+Technical pages prefer <code>/Technical</code> where available.
+
+Redlinks are retained when the normalized prerequisite is useful; they are coverage signals, not automatic content-generation instructions.
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

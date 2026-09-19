@@ -1,0 +1,36 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Web Ontology Language]].}}
+{{Reading depth|base=Web Ontology Language|current=Simple}}
+= Web Ontology Language — Simple =
+
+'''OWL''' is a language for writing formal ontologies for the Web.
+
+It lets you describe:
+
+* classes of things;
+* individual things;
+* relationships;
+* rules about those relationships.
+
+For example, you could say:
+
+<pre>
+Dog is a kind of Mammal
+Fido is a Dog
+</pre>
+
+A reasoner can then infer:
+
+<pre>
+Fido is a Mammal
+</pre>
+
+OWL can also describe stronger rules such as:
+* two classes cannot overlap;
+* one relation is transitive;
+* two names refer to the same individual.
+
+OWL is related to [[Resource Description Framework/Simple|RDF]], but RDF and OWL are not the same thing.
+
+== Sources ==
+* W3C OWL 2 Primer.
+* [[Web Ontology Language|Core article]]

@@ -1,0 +1,77 @@
+{{Source status|status=Wave 9 compiled article|note=Broad entropy concept distinguishing statistical/thermodynamic and Shannon entropy.}}
+{{Knowledge object
+ |title=Entropy
+ |entity_type=Concept
+ |domain=Mathematics, Physics, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 9 compiled context
+}}
+{{Reading depth|base=Entropy|current=Core}}
+
+= Entropy =
+
+== Overview ==
+'''Entropy''' is a family of quantitative concepts used to measure multiplicity, uncertainty, or dispersal under specific mathematical or physical formalisms.
+
+Two major uses are thermodynamic/statistical-mechanical entropy and Shannon entropy in [[Information theory]].
+
+They are mathematically related but should not be treated as one identical physical quantity.
+
+== Statistical and thermodynamic entropy ==
+In statistical mechanics, entropy is related to the number or probability distribution of microscopic states compatible with macroscopic conditions.
+
+A Boltzmann form is:
+
+<pre>
+S = k_B ln W
+</pre>
+
+A Gibbs form is:
+
+<pre>
+S = -k_B Σ_i p_i ln p_i
+</pre>
+
+== Shannon entropy ==
+For a discrete random variable X:
+
+<pre>
+H(X) = -Σ_x p(x) log p(x)
+</pre>
+
+It measures average uncertainty or average self-information.
+
+The log base determines units such as bits or nats.
+
+== Entropy and disorder ==
+“Disorder” is a common intuition but not a universal definition.
+
+Entropy can increase or decrease in situations where informal visual “disorder” is misleading.
+
+Precise interpretation depends on the formalism and state space.
+
+== Relationship between physical and informational entropy ==
+Shannon and Gibbs entropies share the same logarithmic probability structure.
+
+Their relationship is deep and useful.
+
+However:
+
+<pre>
+Shannon entropy ≠ thermodynamic entropy by identity
+</pre>
+
+Physical entropy includes physical state definitions and units such as Boltzmann's constant.
+
+== Related concepts ==
+[[Information]], [[Information theory]], [[Probability distribution]], [[Uncertainty]], and [[Feedback]] provide neighboring mathematical/system concepts.
+
+== References ==
+* Claude Shannon (1948).
+* Cover & Thomas.
+* standard statistical-mechanics texts on Boltzmann/Gibbs entropy.
+* Stanford Encyclopedia of Philosophy, “Information”.
+
+[[Category:Mathematics]]
+[[Category:Physics]]
+[[Category:Computer science]]

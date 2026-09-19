@@ -1,0 +1,31 @@
+{{Source status|status=Technical depth derivative|note=Advanced entropy surface.}}
+{{Reading depth|base=Entropy|current=Technical}}
+= Entropy — Technical =
+
+== Shannon entropy ==
+<pre>
+H(X) = -Σ_x p(x) log_b p(x)
+</pre>
+
+For base 2, H is measured in bits.
+
+== Gibbs entropy ==
+<pre>
+S = -k_B Σ_i p_i ln p_i
+</pre>
+
+For a microcanonical ensemble with W equiprobable microstates:
+
+<pre>
+S = k_B ln W
+</pre>
+
+== Formal similarity and scope ==
+Shannon and Gibbs forms differ by units/constants and, more importantly, by the objects being modeled.
+
+The probabilistic mathematics is shared; the physical interpretation requires a physical ensemble and thermodynamic context.
+
+== References ==
+* Shannon.
+* Cover & Thomas.
+* standard equilibrium statistical mechanics.

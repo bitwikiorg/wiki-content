@@ -1,0 +1,35 @@
+{{Source status|status=Technical depth derivative|note=Advanced information-theory surface.}}
+{{Reading depth|base=Information theory|current=Technical}}
+= Information theory — Technical =
+
+== Entropy ==
+For discrete X:
+
+<pre>
+H(X) = -Σ_x p(x) log p(x)
+</pre>
+
+== Conditional entropy ==
+<pre>
+H(X|Y) = H(X,Y) - H(Y)
+</pre>
+
+== Mutual information ==
+<pre>
+I(X;Y) = H(X) + H(Y) - H(X,Y)
+       = D_KL(P_XY || P_X P_Y)
+</pre>
+
+Mutual information is zero exactly when X and Y are independent under the usual discrete/continuous measure assumptions.
+
+== Coding limits ==
+Source coding relates expected code length to entropy.
+
+Channel coding relates reliable transmission rate to channel capacity.
+
+Rate–distortion theory studies lossy compression when controlled distortion is permitted.
+
+== References ==
+* Shannon (1948).
+* Cover & Thomas.
+* MacKay.

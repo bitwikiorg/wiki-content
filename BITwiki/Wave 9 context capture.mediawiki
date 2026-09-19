@@ -1,0 +1,339 @@
+{{Source status|status=Wave 9 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 9 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 9 covers information, information theory, entropy, feedback, emergence, self-organization, complex systems, networks, robustness, and adaptation in systems.
+
+== Normalized scope ==
+
+# [[Information]]
+# [[Information theory]]
+# [[Entropy]]
+# [[Feedback]]
+# [[Emergence]]
+# [[Self-organization]]
+# [[Complex system]]
+# [[Network]]
+# [[Robustness]]
+# [[Adaptation (systems)]]
+
+== Title decisions ==
+
+* '''[[Adaptation]] → [[Adaptation (systems)]]''' because unqualified adaptation has durable meanings in evolutionary biology, physiology, cognition, media adaptation, and ordinary language.
+* [[Information]] remains unqualified because the page can legitimately serve as a broad umbrella distinguishing semantic, probabilistic, physical, and computational senses.
+* [[Entropy]] remains unqualified because the article will explicitly distinguish thermodynamic/statistical entropy from Shannon entropy while explaining their mathematical relationship.
+* [[Feedback]], [[Emergence]], [[Self-organization]], [[Complex system]], [[Network]], and [[Robustness]] remain unqualified because their intended public scope is broader than one discipline and can support cross-domain articles.
+* [[Network]] must not collapse into [[Computer network]]; the Core page will treat network as a general relational structure.
+
+== Domain decision ==
+
+No new controlled Domain is required.
+
+Wave 9 uses existing Domains:
+
+* Systems science
+* Mathematics
+* Physics
+* Computer science
+* Science
+* Biology
+* Philosophy
+* Engineering
+
+No “Complexity science” or “Information theory” Domain is introduced.
+
+== Dependency graph ==
+
+<pre>
+Information
+ └→ Information theory
+      └→ Entropy
+
+Complex system
+ ├→ Emergence
+ ├→ Self-organization
+ ├→ Feedback
+ ├→ Network
+ ├→ Robustness
+ └→ Adaptation (systems)
+
+Network
+ └→ Robustness
+
+Feedback
+ └→ Adaptation (systems)
+</pre>
+
+This graph is explanatory rather than a strict subclass hierarchy.
+
+== Foundational separations ==
+
+<pre>
+information ≠ data
+information ≠ meaning by definition
+information ≠ Shannon entropy
+information theory ≠ semantics
+information theory ≠ communication technology only
+entropy ≠ disorder by definition
+Shannon entropy ≠ thermodynamic entropy by identity
+entropy ≠ information content of one outcome
+feedback ≠ response in ordinary language
+negative feedback ≠ harmful feedback
+positive feedback ≠ beneficial feedback
+emergence ≠ mystery
+emergence ≠ self-organization
+emergence ≠ unpredictability by definition
+self-organization ≠ absence of constraints
+self-organization ≠ no external influence
+complex system ≠ merely complicated system
+complexity ≠ component count alone
+network ≠ computer network
+network ≠ graph representation by identity
+robustness ≠ resilience
+robustness ≠ reliability
+robustness ≠ invulnerability
+adaptation ≠ robustness
+adaptation ≠ evolution by definition
+adaptation ≠ optimization by definition
+</pre>
+
+== Normalized concept dossiers ==
+
+=== Information ===
+Information is a broad concept concerning distinction, uncertainty reduction, representation, communication, or content, depending on discipline.
+
+In information theory, information is quantified without requiring semantic meaning.
+
+In philosophy, biology, computing, and communication, “information” can have different but related uses.
+
+'''Do not conflate:''' information ≠ data; information ≠ meaning; Shannon information ≠ every use of the word information.
+
+=== Information theory ===
+Information theory is the mathematical study of quantifying, coding, transmitting, and processing information under uncertainty and noise.
+
+Core concepts include entropy, conditional entropy, mutual information, source coding, channel capacity, and rate–distortion tradeoffs.
+
+'''Do not conflate:''' information theory does not measure semantic truth or meaning in Shannon's original formalism.
+
+=== Entropy ===
+Entropy is a family of quantitative concepts measuring multiplicity, uncertainty, or dispersal under specific mathematical/physical formalisms.
+
+Thermodynamic/statistical-mechanical entropy and Shannon entropy share logarithmic/probabilistic structure but apply to different objects and should not be declared literally identical.
+
+'''Do not conflate:''' entropy ≠ “disorder” as a universal definition.
+
+=== Feedback ===
+Feedback occurs when information about a system's output or state is returned into the system and influences subsequent behavior.
+
+Negative feedback counteracts deviation; positive feedback amplifies change.
+
+The signs describe loop effect, not desirability.
+
+'''Do not conflate:''' feedback ≠ generic reaction.
+
+=== Emergence ===
+Emergence describes higher-level patterns, properties, or behaviors that arise from interactions among lower-level components and are not simply properties of isolated components.
+
+Different sciences and philosophies use stronger and weaker senses of emergence.
+
+'''Do not conflate:''' emergence ≠ inexplicability or supernatural novelty.
+
+=== Self-organization ===
+Self-organization is the formation or maintenance of macroscopic order/pattern through local interactions and internal dynamics without a central controller specifying the global pattern.
+
+External energy, boundary conditions, and environmental constraints can still be essential.
+
+'''Do not conflate:''' self-organization ≠ closed system or absence of outside influence.
+
+=== Complex system ===
+A complex system is a system whose collective behavior depends strongly on interactions among components, often producing nonlinear, multiscale, adaptive, or emergent dynamics that cannot be understood adequately by treating components independently.
+
+No single universally accepted definition exists.
+
+'''Do not conflate:''' complex ≠ merely large or complicated.
+
+=== Network ===
+A network is a set of entities linked by relationships or interactions.
+
+Mathematically, networks are often represented as graphs, but empirical networks also carry semantics, dynamics, weights, directions, layers, time dependence, and uncertainty.
+
+'''Do not conflate:''' network ≠ computer network; network ≠ graph as a strict synonym in every scientific context.
+
+=== Robustness ===
+Robustness is the ability of a system, model, network, or process to maintain specified structure or function under perturbations, uncertainty, faults, or variation.
+
+The perturbation and preserved function must be stated.
+
+'''Do not conflate:''' robustness ≠ resilience, reliability, or invulnerability.
+
+=== Adaptation (systems) ===
+Adaptation in systems is change in state, structure, policy, organization, or behavior in response to environmental conditions or feedback such that performance, persistence, or fit is maintained or improved relative to some criterion.
+
+Adaptation can occur in biological, computational, social, and engineered systems.
+
+'''Do not conflate:''' systems adaptation ≠ biological evolution by definition and ≠ optimization in every case.
+
+== Information / entropy correction ==
+
+The wave must preserve three levels:
+
+<pre>
+self-information of outcome x:
+I(x) = -log p(x)
+
+Shannon entropy of random variable X:
+H(X) = E[I(X)] = -Σ p(x) log p(x)
+
+thermodynamic/statistical entropy:
+defined over physical microstate ensembles with units set by k_B
+</pre>
+
+Shannon entropy is mathematically analogous to Gibbs entropy after normalization/convention choices.
+
+That does not license the statement “information entropy and thermodynamic entropy are the same physical quantity.”
+
+== Feedback correction ==
+
+In control/cybernetic usage, feedback is a closed-loop causal structure.
+
+Negative feedback tends to reduce deviation from a reference/operating condition.
+
+Positive feedback reinforces deviations or changes.
+
+Neither sign is inherently good or bad.
+
+Stability depends on loop dynamics, gain, delay, nonlinearities, and system structure.
+
+== Emergence / self-organization correction ==
+
+The terms overlap but are not synonyms.
+
+<pre>
+emergence
+= higher-level property/pattern relative to lower-level description
+
+self-organization
+= process by which organized pattern arises/maintains through decentralized interactions
+</pre>
+
+A system can exhibit emergent behavior without satisfying a strong self-organization criterion, and self-organized structure is often described as emergent.
+
+== Complexity correction ==
+
+The Core article must avoid defining complex systems by a checklist of fashionable traits.
+
+Common characteristics include:
+
+* many interacting components;
+* nonlinear interactions;
+* feedback;
+* heterogeneity;
+* multiscale structure;
+* adaptation;
+* emergent collective behavior;
+* path dependence.
+
+But no one item is necessary/sufficient across all fields.
+
+== Network correction ==
+
+A graph is an abstract node–edge mathematical structure.
+
+A network is a modeled or empirical relational system often represented by a graph.
+
+In many contexts the words are used interchangeably, but the article should preserve the modeling distinction.
+
+[[Computer network]] remains a specific technological network.
+
+== Robustness / resilience correction ==
+
+Robustness asks whether specified function/performance is maintained under perturbation.
+
+Resilience often emphasizes recovery, adaptation, or return to function after disturbance.
+
+They overlap but are not identical.
+
+A system can be robust to one perturbation and fragile to another.
+
+== Adaptation correction ==
+
+Systems adaptation is response/change under environmental or internal conditions.
+
+It can occur through:
+
+* feedback control;
+* learning;
+* structural reconfiguration;
+* evolutionary change;
+* policy update;
+* parameter adjustment;
+* behavioral change.
+
+The page must not collapse all adaptation into Darwinian evolution or machine learning.
+
+== Cross-wave dependencies ==
+
+* [[Information]] ↔ [[Data structure]], [[Knowledge representation]], [[Semantics]], [[Uncertainty]], [[Probability]].
+* [[Information theory]] ↔ [[Probability]], [[Probability distribution]], [[Conditional probability]], [[Correlation]].
+* [[Entropy]] ↔ [[Probability distribution]], [[Uncertainty]], [[Information theory]].
+* [[Feedback]] ↔ [[State machine]], [[System boundary]], [[Autonomous agent (artificial intelligence)]], [[Distributed system]] where relevant.
+* [[Emergence]] ↔ [[Complex system]], [[Self-organization]], [[Distributed cognition]] where comparison helps.
+* [[Self-organization]] ↔ [[Emergence]], [[Complex system]], [[Feedback]], [[Network]].
+* [[Complex system]] ↔ [[System boundary]], [[Network]], [[Feedback]], [[Emergence]], [[Self-organization]], [[Robustness]], [[Adaptation (systems)]].
+* [[Network]] ↔ [[Computer network]], [[Distributed system]], [[Knowledge graph]], [[Semantic network]].
+* [[Robustness]] ↔ [[Distribution shift]], [[Verification]], [[Validation]], [[Complex system]], [[Network]].
+* [[Adaptation (systems)]] ↔ [[Learning]], [[Feedback]], [[Generalization (machine learning)]], [[Autonomous agent (artificial intelligence)]], [[Complex system]].
+
+== Public concept versus local/project application ==
+
+<pre>
+information       ≠ repository metadata
+information theory ≠ token counting
+entropy           ≠ randomness score in one dashboard
+feedback          ≠ user feedback form
+emergence         ≠ unexpected agent behavior
+self-organization ≠ unmanaged process
+complex system    ≠ complicated codebase
+network           ≠ one blockchain/network
+robustness        ≠ “passed our tests”
+adaptation        ≠ model fine-tuning only
+</pre>
+
+No local architecture defines a public concept.
+
+== Source-family audit ==
+
+* '''Shannon (1948); Cover & Thomas; MacKay''' — information theory, entropy, mutual information, coding.
+* '''Stanford Encyclopedia of Philosophy, Information''' — multiple senses of information and Shannon/thermodynamic distinction.
+* '''Boltzmann/Gibbs/statistical mechanics texts''' — thermodynamic/statistical entropy.
+* '''Wiener; control-systems literature; MIT feedback material''' — feedback and cybernetic control.
+* '''Mitchell; Holland; Santa Fe Institute literature''' — complex/adaptive systems, emergence, self-organization.
+* '''Newman; Barabási; network-science literature''' — networks and complex networks.
+* '''Nature Reviews Physics 2024 robustness review''' — robustness/resilience in complex networks.
+* '''complex adaptive systems literature''' — adaptation, feedback, robustness and coevolution.
+
+== Future normalized redlinks ==
+
+[[Self-information]], [[Mutual information]], [[Conditional entropy]], [[Channel capacity]], [[Source coding]], [[Rate–distortion theory]], [[Thermodynamic entropy]], [[Statistical mechanics]], [[Cybernetics]], [[Control theory]], [[Negative feedback]], [[Positive feedback]], [[Stability (systems)]], [[Dynamical system]], [[Nonlinearity]], [[Attractor]], [[Phase transition]], [[Criticality]], [[Complex adaptive system]], [[Resilience]], [[Fragility]], [[Fault tolerance]], [[Graph theory]], [[Node (network)]], [[Edge (network)]], [[Degree (network)]], [[Centrality]], [[Community structure]], [[Multilayer network]], [[Temporal network]], [[Adaptive network]], [[Coevolution]], [[Homeostasis]].
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Keep the wave at 10 concepts.
+# Normalize [[Adaptation]] to [[Adaptation (systems)]].
+# Do not create new Domains.
+# Keep [[Information]] broad and explicitly multi-sense.
+# Keep [[Entropy]] broad but distinguish Shannon from thermodynamic/statistical entropy.
+# Keep [[Feedback]] causal/closed-loop rather than ordinary-language response.
+# Keep [[Emergence]] distinct from [[Self-organization]].
+# Avoid a checklist definition of [[Complex system]].
+# Keep [[Network]] distinct from [[Computer network]] and only partially synonymous with graph.
+# Keep [[Robustness]] distinct from resilience/reliability.
+# Keep systems adaptation broader than evolution, learning, or optimization.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

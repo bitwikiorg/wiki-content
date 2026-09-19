@@ -1,0 +1,17 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Test set]].}}
+{{Reading depth|base=Test set|current=Simple}}
+= Test set — Simple =
+
+A '''test set''' is data saved for evaluating a machine-learning system after its main design choices are finished.
+
+The model should not train on the test examples.
+
+Developers also should not keep changing the model every time they see the test score.
+
+If they do, the test set becomes part of development and the score can become too optimistic.
+
+A test score also does not guarantee the model will work if real-world data later change.
+
+== Sources ==
+* machine-learning evaluation texts.
+* [[Test set|Core article]]

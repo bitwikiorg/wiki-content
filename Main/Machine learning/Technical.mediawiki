@@ -1,0 +1,45 @@
+{{Source status|status=Technical depth derivative|note=Advanced machine-learning foundations surface.}}
+{{Reading depth|base=Machine learning|current=Technical}}
+= Machine learning — Technical =
+
+== Learning problem ==
+A supervised learning problem can be represented by:
+
+<pre>
+data D = {(x_i, y_i)}
+hypothesis/model family H
+loss function ℓ
+learning algorithm A
+</pre>
+
+The algorithm produces:
+
+<pre>
+h = A(D)
+</pre>
+
+with the goal of minimizing expected loss on a target distribution, not merely empirical loss on D.
+
+== Empirical and expected risk ==
+For empirical risk:
+
+<pre>
+R_emp(h) = (1/n) Σ_i ℓ(h(x_i), y_i)
+</pre>
+
+Generalization concerns the relationship between empirical risk and expected target risk.
+
+== Paradigms ==
+Machine learning includes supervised, unsupervised, semi-supervised, self-supervised, reinforcement, online, active, transfer, and generative learning.
+
+These paradigms differ in what feedback/data are available and what objective is optimized.
+
+== Inductive structure ==
+Generalization requires assumptions beyond finite observations.
+
+Those assumptions appear through hypothesis classes, priors, regularization, architecture, optimization dynamics, augmentations, invariances, and data construction.
+
+== References ==
+* Shalev-Shwartz & Ben-David.
+* Vapnik, statistical learning theory.
+* Bishop.

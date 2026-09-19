@@ -1,0 +1,44 @@
+{{Source status|status=Technical depth derivative|note=Advanced bias–variance/error-decomposition surface.}}
+{{Reading depth|base=Bias–variance tradeoff|current=Technical}}
+= Bias–variance tradeoff — Technical =
+
+== Squared-error decomposition ==
+For response:
+
+<pre>
+Y = f(X) + ε
+E[ε|X] = 0
+Var(ε|X) = σ²
+</pre>
+
+and estimator f_hat trained on random sample S, pointwise expected squared error can be decomposed as:
+
+<pre>
+E_S,ε[(Y - f_hat(X))²]
+= bias² + variance + σ²
+</pre>
+
+under the usual setup.
+
+== Scope ==
+The exact decomposition depends on loss and statistical assumptions.
+
+Classification, non-squared losses, adaptive pipelines, and structured prediction require related but different analyses.
+
+== Double descent ==
+Interpolation-era models can show:
+
+<pre>
+classical descent
+→ interpolation peak
+→ second descent
+</pre>
+
+as capacity increases.
+
+This does not invalidate bias/variance concepts; it invalidates treating one monotonic capacity-to-variance story as universal.
+
+== References ==
+* Hastie et al.
+* Belkin et al. (2019).
+* statistical-learning theory texts.

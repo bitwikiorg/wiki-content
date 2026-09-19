@@ -1,0 +1,15 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Model selection bias]].}}
+{{Reading depth|base=Model selection bias|current=Simple}}
+= Model selection bias — Simple =
+
+'''Model selection bias''' happens when we try many models and pick the one with the best validation score partly because it got lucky on that particular validation data.
+
+The more choices we try, the easier it is to accidentally optimize noise.
+
+The winning validation score can then look better than the model's real future performance.
+
+A separate final test set or nested cross-validation can help reduce this problem.
+
+== Sources ==
+* Cawley & Talbot (2010).
+* [[Model selection bias|Core article]]

@@ -1,0 +1,31 @@
+{{Source status|status=Technical depth derivative|note=Advanced model-selection/evaluation surface.}}
+{{Reading depth|base=Validation set|current=Technical}}
+= Validation set — Technical =
+
+== Selection role ==
+For candidate systems h_1,...,h_k and validation criterion C:
+
+<pre>
+h* = argmin_h C(h, S_val)
+</pre>
+
+The selected h* is statistically dependent on S_val even if its fitted parameters were learned only from S_train.
+
+== Selection bias ==
+When C is noisy and many candidates are searched, the extremal selected estimate is optimistically biased.
+
+This is model-selection overfitting.
+
+== Nested evaluation ==
+Nested cross-validation separates:
+
+<pre>
+inner folds → model/hyperparameter selection
+outer folds → performance estimation
+</pre>
+
+to reduce leakage between selection and evaluation roles.
+
+== References ==
+* Cawley & Talbot (2010).
+* statistical model-selection texts.

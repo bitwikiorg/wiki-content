@@ -1,0 +1,63 @@
+{{Source status|status=Wave 7 compiled article|note=Spurious-correlation concept grounded in statistics, causal inference, and machine-learning generalization literature.}}
+{{Knowledge object
+ |title=Spurious correlation
+ |entity_type=Concept
+ |domain=Mathematics, Science, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Spurious correlation|current=Core}}
+
+= Spurious correlation =
+
+== Overview ==
+A '''spurious correlation''' is an observed association that does not represent the stable task-relevant relationship one intends to learn and can disappear, reverse, or become misleading under intervention, environmental change, subgroup change, or new sampling.
+
+In machine learning, spurious correlations can support high benchmark accuracy while harming robustness or transfer.
+
+== Causes ==
+Spurious associations can arise from:
+
+* confounding;
+* selection effects;
+* measurement artifacts;
+* sampling imbalance;
+* background/context features;
+* acquisition pipelines;
+* temporal coincidence;
+* label leakage.
+
+Different mechanisms require different analysis.
+
+== Noncausal does not always mean useless ==
+A predictor can be noncausal yet remain reliably predictive under a fixed deployment distribution.
+
+Therefore:
+
+<pre>
+spurious correlation ≠ every noncausal correlation
+</pre>
+
+“Spurious” is a claim about relevance/stability relative to the task and intended environment, not simply about causality in the abstract.
+
+== Machine learning ==
+If a model relies on a spurious feature that is strongly correlated with the target during training, performance can collapse when that correlation changes.
+
+This is a major source of out-of-distribution failure.
+
+== Shortcut learning ==
+[[Shortcut learning]] describes the learner's tendency to exploit easy predictive cues.
+
+A spurious correlation is a property of the data/relation; shortcut learning is a pattern of learned behavior.
+
+== Related concepts ==
+[[Correlation]], [[Causality]], [[Selection bias]], [[Distribution shift]], [[Shortcut learning]], and [[Generalization (machine learning)]] provide the statistical and learning context.
+
+== References ==
+* causal-inference literature on confounding and selection.
+* Wang & Wang, “On the Effect of Key Factors in Spurious Correlation”, AISTATS 2024.
+* Qiu, Kuang & Goel, “Complexity Matters: Feature Learning in the Presence of Spurious Correlations”, ICML 2024.
+
+[[Category:Mathematics]]
+[[Category:Science]]
+[[Category:Computer science]]

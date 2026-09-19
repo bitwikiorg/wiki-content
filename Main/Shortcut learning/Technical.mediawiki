@@ -1,0 +1,31 @@
+{{Source status|status=Technical depth derivative|note=Advanced shortcut/generalization surface.}}
+{{Reading depth|base=Shortcut learning|current=Technical}}
+= Shortcut learning — Technical =
+
+== Decision-rule framing ==
+A shortcut is a decision rule that minimizes source-distribution risk using cues that do not support the intended invariance or transfer behavior.
+
+A model can implement multiple rules simultaneously, so shortcut use need not imply absence of core-feature learning.
+
+== Detection ==
+Approaches include:
+
+* counterfactual interventions;
+* background/context swaps;
+* subgroup evaluation;
+* attribution/explanation analysis;
+* environment-specific testing;
+* feature ablation;
+* causal probes.
+
+Each method has assumptions and can produce false reassurance.
+
+== Mitigation ==
+Data balancing, augmentation, regularization, invariant objectives, representation constraints, and explicit environment variation can reduce shortcut use.
+
+Recent work shows that mitigation methods can also suppress useful features, so success should be evaluated behaviorally rather than assumed from the method.
+
+== References ==
+* Geirhos et al. (2020).
+* Hong, Papanikolaou & Parbhoo, AISTATS 2025.
+* shortcut-learning and domain-generalization literature.

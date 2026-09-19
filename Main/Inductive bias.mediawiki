@@ -1,0 +1,55 @@
+{{Source status|status=Wave 7 compiled article|note=Inductive-bias concept grounded in learning theory and machine-learning methodology.}}
+{{Knowledge object
+ |title=Inductive bias
+ |entity_type=Concept
+ |domain=Computer science, Mathematics, Philosophy
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Inductive bias|current=Core}}
+
+= Inductive bias =
+
+== Overview ==
+An '''inductive bias''' is the set of assumptions, preferences, constraints, or prior structure that enables a learning system to choose among hypotheses compatible with observed data and make predictions beyond those observations.
+
+Generalization requires some form of inductive bias because finite data usually support many possible hypotheses.
+
+== Forms ==
+Inductive bias can enter through:
+
+* hypothesis-class restrictions;
+* architecture;
+* priors;
+* regularization;
+* invariances;
+* locality or smoothness assumptions;
+* data augmentation;
+* optimization dynamics;
+* simplicity preferences.
+
+Bias can be explicit or implicit.
+
+== Bias is not necessarily error ==
+“Bias” here does not mean cognitive distortion or unfairness.
+
+A useful inductive bias can greatly improve generalization when it matches the task structure.
+
+A mismatched bias can hurt performance.
+
+== No-free-lunch perspective ==
+Without assumptions relating observed and future data, no learner can prefer one generalization over every alternative.
+
+Inductive bias makes learning possible by constraining that space.
+
+== Related concepts ==
+[[Generalization (machine learning)]], [[Machine learning]], [[Hypothesis]], [[Inference]], [[Cognitive bias]], and [[Model selection bias]] distinguish inductive assumptions from other senses of bias.
+
+== References ==
+* Tom Mitchell, machine-learning literature on inductive bias.
+* Shalev-Shwartz & Ben-David.
+* statistical-learning and Bayesian-learning texts.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]
+[[Category:Philosophy]]

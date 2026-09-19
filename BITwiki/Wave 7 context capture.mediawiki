@@ -1,0 +1,322 @@
+{{Source status|status=Wave 7 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 7 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 7 covers machine learning, generalization, dataset roles, distribution mismatch, evaluation contamination, and failure modes that make apparent performance diverge from real predictive generalization.
+
+== Normalized scope ==
+
+# [[Machine learning]]
+# [[Generalization (machine learning)]]
+# [[Overfitting]]
+# [[Underfitting]]
+# [[Inductive bias]]
+# [[Bias–variance tradeoff]]
+# [[Training set]]
+# [[Validation set]]
+# [[Test set]]
+# [[Distribution shift]]
+# [[Data leakage (machine learning)]]
+# [[Benchmark contamination]]
+# [[Model selection bias]]
+# [[Spurious correlation]]
+# [[Shortcut learning]]
+
+== Title decisions ==
+
+* '''[[Generalization]] → [[Generalization (machine learning)]]''' because unqualified generalization has durable meanings in logic, psychology, linguistics, mathematics, and ordinary reasoning.
+* '''[[Data leakage]] → [[Data leakage (machine learning)]]''' because unqualified data leakage also names information-security/privacy disclosure and exfiltration.
+* [[Spurious correlation]] remains unqualified because the statistical concept is broader than machine learning and is useful across science, causal inference, and prediction.
+* [[Distribution shift]] remains unqualified because it already denotes the statistical mismatch between source/training and target/deployment distributions and is not specific to one model family.
+* [[Benchmark contamination]] remains unqualified; its Core scope must cover evaluation contamination generally, while noting its recent prominence in large-model benchmarks.
+* Informal '''“fitting bias”''' is rejected as a canonical umbrella. Existing established concepts already separate underfitting, overfitting, inductive bias, estimator bias, and model-selection bias.
+
+== Domain decision ==
+
+No new controlled Domain is required.
+
+Primary Domain is '''Computer science''', with substantive cross-domain use of Mathematics, Science, and Cognitive science only where justified.
+
+No “Machine learning” Domain is introduced.
+
+== Dependency graph ==
+
+<pre>
+Machine learning
+ ├→ Inductive bias
+ ├→ Training set
+ │    ├→ Validation set
+ │    └→ Test set
+ └→ Generalization (machine learning)
+      ├→ Overfitting
+      ├→ Underfitting
+      ├→ Bias–variance tradeoff
+      ├→ Distribution shift
+      ├→ Data leakage (machine learning)
+      │    └→ Benchmark contamination
+      ├→ Model selection bias
+      ├→ Spurious correlation
+      └→ Shortcut learning
+</pre>
+
+This is a writing dependency graph, not a claim that all failure modes are subclasses of generalization.
+
+== Foundational separations ==
+
+<pre>
+machine learning ≠ artificial intelligence
+machine learning ≠ biological learning
+machine learning ≠ statistical inference as a whole
+generalization ≠ memorization
+generalization ≠ out-of-distribution robustness by definition
+generalization ≠ benchmark score
+overfitting ≠ model size
+overfitting ≠ memorization by definition
+overfitting ≠ low training error alone
+underfitting ≠ merely “small model”
+inductive bias ≠ cognitive bias
+inductive bias ≠ statistical estimator bias
+bias–variance tradeoff ≠ universal U-shaped law for all modern models
+training set ≠ all available data
+validation set ≠ test set
+test set ≠ data used repeatedly for model selection
+fixed train/validation/test percentages ≠ definition of the roles
+distribution shift ≠ overfitting
+distribution shift ≠ data leakage
+covariate shift ≠ every distribution shift
+data leakage ≠ benchmark contamination
+data leakage ≠ information-security exfiltration
+benchmark contamination ≠ every benchmark weakness
+model selection bias ≠ selection bias in sampling
+model selection bias ≠ overfitting model parameters only
+spurious correlation ≠ every noncausal correlation
+spurious correlation ≠ shortcut learning
+shortcut learning ≠ underfitting
+shortcut learning ≠ proof that the model learned no useful feature
+</pre>
+
+== Normalized concept dossiers ==
+
+=== Machine learning ===
+Machine learning studies computational methods that improve or adapt task performance using data or experience rather than relying only on explicitly hand-written task rules.
+
+The field includes supervised, unsupervised, self-supervised, reinforcement, online, generative, representation, and other learning paradigms.
+
+'''Do not conflate:''' machine learning ≠ AI as a whole; machine learning ≠ biological learning; fitting a statistical model can be machine learning, but statistical inference is broader.
+
+=== Generalization (machine learning) ===
+Generalization is a learned system's ability to achieve useful performance on new examples or conditions beyond the specific examples used to fit it.
+
+Classical generalization normally concerns unseen samples from the same or intended target data-generating process.
+
+Out-of-distribution performance is a stronger/different question and should not be silently folded into the base definition.
+
+'''Do not conflate:''' generalization ≠ benchmark score; low training error is not sufficient evidence of generalization.
+
+=== Overfitting ===
+Overfitting occurs when a learning procedure adapts to idiosyncrasies, noise, or finite-sample details such that predictive performance on unseen target data is worse than the fitted/training performance would suggest.
+
+Overfitting is a relationship among learner, data, objective, and evaluation regime.
+
+Modern overparameterized models complicate the old rule “more parameters → more overfitting”; highly parameterized interpolating models can still generalize well.
+
+'''Do not conflate:''' overfitting ≠ memorization by definition; memorization and generalization can coexist.
+
+=== Underfitting ===
+Underfitting occurs when the learned predictor fails to capture relevant structure needed for good performance, often yielding poor fit even on training data and weak generalization.
+
+Causes can include insufficient representational capacity, excessive regularization, inadequate optimization, poor features, or an inappropriate hypothesis class.
+
+'''Do not conflate:''' underfitting ≠ simply “small model”.
+
+=== Inductive bias ===
+Inductive bias is the set of assumptions, preferences, constraints, or prior structure that allows a learner to choose among hypotheses that fit observed data and to make predictions about unseen data.
+
+Examples include architectural structure, regularization, priors, invariances, simplicity preferences, locality, smoothness, and optimization-induced preferences.
+
+'''Do not conflate:''' inductive bias ≠ cognitive bias; it is not necessarily an error.
+
+=== Bias–variance tradeoff ===
+Bias–variance analysis decomposes expected prediction error under specified settings into components associated with systematic error, sensitivity to training-sample variation, and irreducible noise.
+
+The classical tradeoff is useful, but the simple monotonic story “more complexity → lower bias/higher variance → one U-shaped optimum” is not universal in modern overparameterized regimes.
+
+Double-descent results show that test error can decrease again beyond interpolation in some model/data regimes.
+
+'''Do not conflate:''' estimator bias here ≠ cognitive bias or unfairness.
+
+=== Training set ===
+A training set is the data used directly to fit model parameters or representations.
+
+Training data can influence learned parameters through gradient updates, likelihood optimization, rule induction, retrieval construction, or other fitting procedures.
+
+'''Do not conflate:''' training set ≠ every datum available during development.
+
+=== Validation set ===
+A validation set is held out from parameter fitting and used during development to select models, hyperparameters, stopping points, preprocessing choices, thresholds, or other design decisions.
+
+Repeated validation use can itself be overfit.
+
+'''Do not conflate:''' validation set ≠ final unbiased test set.
+
+=== Test set ===
+A test set is held out from model development and used to estimate performance after choices have been fixed.
+
+If test results repeatedly influence model design, the test set effectively becomes part of the development loop and its estimate becomes optimistic.
+
+'''Do not conflate:''' “test” is a role, not a permanently special dataset independent of how it is used.
+
+=== Distribution shift ===
+Distribution shift occurs when the data-generating distribution relevant at evaluation/deployment differs from the training distribution.
+
+Dataset shift can involve changes in input distribution, label distribution, conditional relationships, environments, or combinations.
+
+Covariate shift is one special case in which the input distribution changes while the conditional target relationship is assumed stable.
+
+'''Do not conflate:''' distribution shift ≠ overfitting; a perfectly fit in-distribution model can fail after the environment changes.
+
+=== Data leakage (machine learning) ===
+Machine-learning data leakage occurs when information unavailable under the intended prediction/evaluation conditions enters training, feature construction, preprocessing, validation, or model selection in a way that yields misleading performance.
+
+Examples include target leakage, future/temporal information, preprocessing before splitting, duplicate/group overlap, train–test contamination, and indirect identifiers.
+
+'''Do not conflate:''' this is not the same concept as security data exfiltration.
+
+=== Benchmark contamination ===
+Benchmark contamination occurs when benchmark evaluation items, answers, close derivatives, or benchmark-specific information influence training or tuning so that benchmark performance no longer provides clean evidence of independent generalization.
+
+It is a special evaluation-contamination problem and can arise through pretraining data, supervised tuning, synthetic-data pipelines, benchmark-specific optimization, repeated exposure, or indirect derivative data.
+
+'''Do not conflate:''' benchmark contamination ≠ every benchmark flaw; poor construct validity or saturation can occur without contamination.
+
+=== Model selection bias ===
+Model selection bias occurs when a model/hyperparameter/configuration is selected because it performs best on a noisy finite-sample selection criterion, causing the selected score to overestimate future performance.
+
+Repeated search over many alternatives increases opportunities to overfit the selection criterion.
+
+'''Do not conflate:''' model-selection bias ≠ sampling selection bias and ≠ parameter overfitting only.
+
+=== Spurious correlation ===
+A spurious correlation is an observed association that does not reflect the stable task-relevant relationship one intends to learn and can break under intervention, environmental change, subgroup shift, or new data.
+
+In machine learning, spurious feature–label correlations can support high in-distribution accuracy while damaging robustness/generalization.
+
+'''Do not conflate:''' not every noncausal correlation is useless; a noncausal predictor can remain stable and useful under a specified deployment distribution.
+
+=== Shortcut learning ===
+Shortcut learning occurs when a learner relies on comparatively easy predictive cues or decision rules that succeed on the training/benchmark distribution but fail to capture the intended task-relevant strategy and therefore break under challenging conditions.
+
+Shortcuts often exploit spurious correlations, artifacts, backgrounds, acquisition signatures, lexical cues, or benchmark regularities.
+
+'''Do not conflate:''' spurious correlation describes a data/relation property; shortcut learning describes learner behavior that exploits such cues.
+
+== Modern evidence corrections ==
+
+=== Bias–variance and double descent ===
+Classical bias–variance analysis remains valid under its assumptions, but modern overparameterized learning invalidates a simplistic universal complexity curve.
+
+Belkin et al. (2019) showed a double-descent risk curve in which increasing capacity can first worsen and then improve test performance beyond the interpolation threshold.
+
+The Core page must preserve both the classical decomposition and this limitation.
+
+=== Model-selection overfitting ===
+Cawley & Talbot (2010) show that model-selection criteria such as cross-validation estimates can themselves be overfit; selection bias can be comparable in magnitude to differences between algorithms.
+
+This supports treating [[Model selection bias]] as distinct from ordinary model-parameter overfitting.
+
+=== Distribution shift ===
+The Dataset Shift literature distinguishes general joint-distribution shift from special cases such as covariate shift.
+
+The Core page must not define all distribution shift as covariate shift.
+
+=== Shortcut learning ===
+Geirhos et al. (2020) define shortcut learning around decision rules that work on standard benchmarks but fail under more challenging conditions.
+
+Recent work continues to study spurious-feature and shortcut dependence, so the page should treat shortcut learning as an active research framing, not as a theorem explaining every generalization failure.
+
+=== Benchmark contamination ===
+Benchmark contamination has become especially visible in large-model evaluation, but the concept is broader than LLMs.
+
+Current contamination-free/live-benchmark work illustrates the evaluation problem without making LLM benchmarking the definition.
+
+== Cross-wave dependencies ==
+
+* [[Machine learning]] ↔ [[Learning]] with explicit biological/computational non-equivalence.
+* [[Generalization (machine learning)]] ↔ [[Inductive reasoning]], [[Inference]], [[Probability]], [[Uncertainty]] only where explanatory, not as synonyms.
+* [[Overfitting]], [[Underfitting]], and [[Bias–variance tradeoff]] ↔ [[Probability]], [[Validation]], and future model-complexity concepts.
+* [[Inductive bias]] ↔ [[Inference]], [[Hypothesis]], [[Model selection bias]].
+* [[Training set]], [[Validation set]], [[Test set]] ↔ [[Evidence]], [[Validation]], [[Verification]].
+* [[Distribution shift]] ↔ [[Probability distribution]], [[Correlation]], [[Causality]].
+* [[Data leakage (machine learning)]] ↔ [[Provenance]], [[Validation]], [[Test set]].
+* [[Benchmark contamination]] ↔ [[Data leakage (machine learning)]], [[Test set]], [[Verification]].
+* [[Model selection bias]] ↔ [[Selection bias]] only to preserve their distinction.
+* [[Spurious correlation]] ↔ [[Correlation]], [[Causality]], [[Selection bias]].
+* [[Shortcut learning]] ↔ [[Spurious correlation]], [[Generalization (machine learning)]], [[Cognitive bias]] only where comparison is useful; shortcut learning is not a cognitive-bias subtype.
+
+== Existing request lifecycle ==
+
+Wave 7 satisfies the existing structured Computer science request for:
+
+* [[Machine learning]]
+
+That record must be transitioned to <code>status=satisfied</code> with its canonical page when the reader surfaces exist.
+
+No duplicate request record should be created.
+
+== Public concept versus local/project application ==
+
+<pre>
+machine learning       ≠ BITwiki agent behavior
+generalization         ≠ “works on our prompts”
+overfitting            ≠ “model too big”
+training set            ≠ one local corpus by definition
+validation set          ≠ staging environment
+test set                ≠ CI test suite
+distribution shift      ≠ project version drift
+data leakage            ≠ secrets leaking from infrastructure
+benchmark contamination ≠ one benchmark disagreement
+model selection bias    ≠ governance selection
+shortcut learning       ≠ tool-use shortcut
+</pre>
+
+== Source-family audit ==
+
+* '''statistical learning texts''' — generalization, overfitting, underfitting, inductive bias, dataset roles.
+* '''Belkin et al. (2019)''' — double descent and limits of simplistic classical complexity curves.
+* '''Cawley & Talbot (2010), JMLR''' — overfitting in model selection and selection bias in performance evaluation.
+* '''Quiñonero-Candela et al., Dataset Shift in Machine Learning''' — distribution/dataset/covariate shift.
+* '''Kaufman et al. (2012)''' — leakage in data mining / predictive modeling.
+* '''Geirhos et al. (2020), Nature Machine Intelligence''' — shortcut learning.
+* '''PMLR/AISTATS/ICML recent spurious-correlation work''' — modern treatment of spurious features and OOD generalization.
+* '''contamination-detection / live-benchmark literature''' — benchmark contamination, used as current examples rather than the full definition.
+* '''current 2026 machine-learning texts''' — overfitting/underfitting and model-selection framing.
+
+== Future normalized redlinks ==
+
+[[Supervised learning]], [[Unsupervised learning]], [[Self-supervised learning]], [[Reinforcement learning]], [[Online learning]], [[Representation learning]], [[Empirical risk minimization]], [[Regularization]], [[Cross-validation]], [[Hyperparameter]], [[Model selection]], [[Early stopping]], [[Interpolation threshold]], [[Double descent]], [[Covariate shift]], [[Label shift]], [[Concept drift]], [[Domain adaptation]], [[Out-of-distribution generalization]], [[Robustness (machine learning)]], [[Target leakage]], [[Temporal leakage]], [[Data preprocessing]], [[Dataset]], [[Benchmark (machine learning)]], [[Memorization (machine learning)]], [[Calibration (machine learning)]], [[Confounding]], [[Invariant prediction]], [[Domain generalization]].
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Keep the wave at 15 concepts.
+# Normalize [[Generalization]] to [[Generalization (machine learning)]].
+# Normalize [[Data leakage]] to [[Data leakage (machine learning)]].
+# Reject “fitting bias” as a canonical concept.
+# Do not create a new Domain.
+# Satisfy the existing [[Machine learning]] request during Phase 2 rather than duplicate it.
+# Define training/validation/test by role, not fixed percentage.
+# Keep generalization distinct from OOD robustness.
+# Keep overfitting distinct from model size and memorization.
+# Treat bias–variance analysis as useful but not a universal single U-shaped complexity law.
+# Keep distribution shift broader than covariate shift.
+# Keep data leakage broader than benchmark contamination.
+# Keep model-selection bias distinct from sample-selection bias.
+# Keep spurious correlation distinct from shortcut-learning behavior.
+# Keep benchmark contamination general rather than LLM-specific.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

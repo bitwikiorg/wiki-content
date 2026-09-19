@@ -1,0 +1,57 @@
+{{Source status|status=Wave 7 compiled article|note=Benchmark-contamination concept grounded in evaluation and contamination literature.}}
+{{Knowledge object
+ |title=Benchmark contamination
+ |entity_type=Concept
+ |domain=Computer science, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Benchmark contamination|current=Core}}
+
+= Benchmark contamination =
+
+== Overview ==
+'''Benchmark contamination''' occurs when benchmark evaluation items, answers, close derivatives, or benchmark-specific information influence a model's training or tuning so that the resulting benchmark score no longer cleanly measures independent generalization.
+
+The problem is especially visible in large-scale pretrained models, but it applies more broadly to machine-learning evaluation.
+
+== Direct contamination ==
+Direct contamination occurs when benchmark examples or answers appear in training data.
+
+This can happen accidentally when public benchmarks are included in large scraped corpora.
+
+== Derivative and indirect contamination ==
+Contamination can also arise through:
+
+* paraphrases or near-duplicates;
+* solution write-ups;
+* benchmark-specific synthetic data;
+* supervised fine-tuning on benchmark-derived examples;
+* repeated prompt or system tuning against a known benchmark;
+* evaluation-time adaptation that uses benchmark feedback.
+
+Exact string overlap is therefore only one contamination mechanism.
+
+== Effect on scores ==
+Contamination can inflate benchmark performance by turning an intended test of generalization into partial recognition, memorization, or benchmark-specific adaptation.
+
+The size of the effect depends on model, training regime, exposure frequency, similarity, and forgetting.
+
+Contamination does not imply that every affected score is completely meaningless.
+
+== Other benchmark failures ==
+A benchmark can be poor without being contaminated.
+
+Problems such as construct mismatch, annotation errors, narrow coverage, saturation, or metric gaming are separate validity threats.
+
+== Related concepts ==
+[[Data leakage (machine learning)]], [[Test set]], [[Model selection bias]], [[Overfitting]], [[Generalization (machine learning)]], and [[Verification]] define the evaluation context.
+
+== References ==
+* White et al., “LiveBench: A Challenging, Contamination-Limited LLM Benchmark”, ICLR 2025.
+* Bordt et al., “How Much Can We Forget about Data Contamination?”, ICML 2025.
+* Choi et al., “How Contaminated Is Your Benchmark?”, ICML 2025.
+* benchmark-contamination and adaptive-evaluation literature.
+
+[[Category:Computer science]]
+[[Category:Science]]

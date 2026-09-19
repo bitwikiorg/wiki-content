@@ -1,0 +1,26 @@
+{{Source status|status=Technical depth derivative|note=Advanced underfitting/model-misspecification surface.}}
+{{Reading depth|base=Underfitting|current=Technical}}
+= Underfitting — Technical =
+
+== Approximation and optimization ==
+Poor training performance can reflect:
+
+<pre>
+approximation error
++ optimization error
++ representation/objective mismatch
+</pre>
+
+These causes should not be collapsed into one capacity explanation.
+
+== Regularization ==
+Regularization can improve generalization by constraining effective complexity.
+
+Excessive regularization can instead increase systematic error and produce underfitting.
+
+== Diagnostics ==
+Learning curves can help distinguish data-limited, capacity-limited, and optimization-limited regimes, but interpretation depends on the task and metric.
+
+== References ==
+* statistical-learning texts.
+* optimization and model-selection literature.

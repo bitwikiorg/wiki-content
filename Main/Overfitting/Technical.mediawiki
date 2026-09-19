@@ -1,0 +1,34 @@
+{{Source status|status=Technical depth derivative|note=Advanced fitting/generalization surface.}}
+{{Reading depth|base=Overfitting|current=Technical}}
+= Overfitting — Technical =
+
+== Finite-sample adaptation ==
+Overfitting can arise because the learner optimizes:
+
+<pre>
+training objective
+validation criterion
+model-search procedure
+feature/preprocessing pipeline
+</pre>
+
+against finite noisy samples.
+
+Thus overfitting can occur at multiple levels, not only model-parameter fitting.
+
+== Interpolation ==
+An interpolating predictor achieves zero or near-zero training error.
+
+Interpolation is not equivalent to overfitting.
+
+In some overparameterized regimes, interpolation can coexist with low test error and double-descent behavior.
+
+== Selection ==
+If many candidate systems are compared on one validation set, the selected maximum can exploit noise in the selection estimate.
+
+That phenomenon is developed separately as [[Model selection bias]].
+
+== References ==
+* Hastie et al.
+* Belkin et al., double-descent literature.
+* Cawley & Talbot (2010).

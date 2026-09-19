@@ -1,0 +1,32 @@
+{{Source status|status=Technical depth derivative|note=Advanced selection-overfitting surface.}}
+{{Reading depth|base=Model selection bias|current=Technical}}
+= Model selection bias — Technical =
+
+== Extremal selection ==
+Let validation estimates be:
+
+<pre>
+C_i = μ_i + ε_i
+</pre>
+
+for candidates i.
+
+Selecting:
+
+<pre>
+i* = argmin_i C_i
+</pre>
+
+creates dependence between i* and the noise ε_i.
+
+Even if individual C_i are approximately unbiased for μ_i, the selected minimum can be optimistically biased.
+
+== Adaptive search ==
+Sequential hyperparameter tuning, architecture search, feature engineering, and leaderboard feedback create adaptive dependence that can exceed simple fixed-k multiple comparison.
+
+== Nested estimation ==
+Nested cross-validation uses an inner selection loop and outer evaluation loop to estimate the performance of the full model-selection procedure.
+
+== References ==
+* Cawley & Talbot (2010).
+* adaptive data-analysis and model-selection literature.

@@ -1,0 +1,31 @@
+{{Source status|status=Technical depth derivative|note=Advanced leakage/evaluation surface.}}
+{{Reading depth|base=Data leakage (machine learning)|current=Technical}}
+= Data leakage (machine learning) — Technical =
+
+== Availability condition ==
+Let I_pred denote information legitimately available at prediction time.
+
+A feature/pipeline is leaky when fitting or evaluation uses information outside I_pred in a way that affects the learned predictor or score.
+
+== Common leakage channels ==
+<pre>
+target-derived feature
+future event → past prediction
+global preprocessing before split
+subject/group overlap
+duplicate / near-duplicate overlap
+feature selection on test labels
+benchmark examples in training
+</pre>
+
+== Grouped and temporal data ==
+Random row splitting can leak information when rows from the same entity, session, household, device, patient, document, or time series are highly dependent.
+
+Group-aware and temporal splitting can be required.
+
+== Pipeline rule ==
+Transformers with fitted state should be trained on the training partition only and then applied to held-out data.
+
+== References ==
+* Kaufman et al. (2012).
+* predictive-model evaluation literature.

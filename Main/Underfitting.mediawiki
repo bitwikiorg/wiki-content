@@ -1,0 +1,52 @@
+{{Source status|status=Wave 7 compiled article|note=Underfitting concept grounded in statistical learning and model-selection literature.}}
+{{Knowledge object
+ |title=Underfitting
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Underfitting|current=Core}}
+
+= Underfitting =
+
+== Overview ==
+'''Underfitting''' occurs when a learned model fails to capture relevant structure needed for good task performance.
+
+An underfit system often performs poorly even on training data and also performs poorly on new data.
+
+== Causes ==
+Underfitting can result from:
+
+* an inadequate hypothesis class;
+* excessive regularization;
+* insufficient optimization;
+* poor features or representation;
+* missing variables;
+* too little training;
+* an objective that does not match the task.
+
+== Capacity ==
+A model can underfit because it is too restricted, but:
+
+<pre>
+underfitting ≠ small model by definition
+</pre>
+
+A large model can underfit when optimization fails or the representation/objective prevents learning relevant structure.
+
+== Bias ==
+In classical bias–variance analysis, strong systematic approximation error is often associated with high bias.
+
+That is a useful model-specific analysis, not the definition of all underfitting.
+
+== Related concepts ==
+[[Overfitting]], [[Generalization (machine learning)]], [[Bias–variance tradeoff]], [[Inductive bias]], and [[Training set]] provide the surrounding fitting context.
+
+== References ==
+* Hastie, Tibshirani & Friedman.
+* Bishop.
+* Burridge & Tosh (2026).
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

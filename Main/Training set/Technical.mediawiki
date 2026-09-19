@@ -1,0 +1,33 @@
+{{Source status|status=Technical depth derivative|note=Advanced dataset-role surface.}}
+{{Reading depth|base=Training set|current=Technical}}
+= Training set — Technical =
+
+== Functional definition ==
+For learning algorithm A and training sample S_train:
+
+<pre>
+h = A(S_train)
+</pre>
+
+Any datum that directly influences fitted parameters/representations through A is functioning as training information.
+
+== Pipeline fitting ==
+A pipeline includes learned preprocessing:
+
+<pre>
+split
+→ fit preprocessing on train
+→ transform train/validation/test
+→ fit model on train
+</pre>
+
+Fitting preprocessing before the split can leak held-out information.
+
+== Reuse ==
+In cross-validation, the same observation can be training data in one fold and validation data in another.
+
+Thus “training set” is a role in an evaluation design, not an intrinsic property of a file.
+
+== References ==
+* statistical-learning/evaluation texts.
+* scikit-learn and academic methodology on leakage-safe pipelines.

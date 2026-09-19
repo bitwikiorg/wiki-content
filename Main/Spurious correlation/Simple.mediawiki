@@ -1,0 +1,18 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Spurious correlation]].}}
+{{Reading depth|base=Spurious correlation|current=Simple}}
+= Spurious correlation — Simple =
+
+A '''spurious correlation''' is a relationship in data that looks useful but does not represent the stable pattern we actually care about.
+
+For example, a model might learn that a certain background appears with one class during training.
+
+If the background changes later, the prediction can fail.
+
+Spurious correlations can come from confounding, sampling, measurement, or accidental dataset structure.
+
+Not every noncausal predictor is automatically spurious. The important question is whether the relationship stays valid for the intended task and environment.
+
+== Sources ==
+* causal-inference literature.
+* recent machine-learning work on spurious features.
+* [[Spurious correlation|Core article]]

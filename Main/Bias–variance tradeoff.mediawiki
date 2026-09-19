@@ -1,0 +1,57 @@
+{{Source status|status=Wave 7 compiled article|note=Bias–variance concept grounded in statistical learning with modern double-descent caveat.}}
+{{Knowledge object
+ |title=Bias–variance tradeoff
+ |entity_type=Concept
+ |domain=Computer science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Bias–variance tradeoff|current=Core}}
+
+= Bias–variance tradeoff =
+
+== Overview ==
+The '''bias–variance tradeoff''' is a framework for analyzing prediction error by separating systematic error from sensitivity to variation in the training sample.
+
+Under squared-error regression and standard assumptions, expected prediction error can be decomposed into bias, variance, and irreducible noise.
+
+== Bias ==
+Bias measures systematic deviation between the learner's average prediction and the target relationship.
+
+High bias can arise when the model class, features, regularization, or fitting assumptions cannot represent relevant structure.
+
+== Variance ==
+Variance measures how much the learned prediction changes across different training samples from the same data-generating process.
+
+High variance indicates sensitivity to finite-sample variation.
+
+== Classical tradeoff ==
+In many classical settings, increasing flexibility can reduce bias while increasing variance.
+
+This yields the familiar picture of an intermediate complexity with best expected test error.
+
+That picture is useful but not universal.
+
+== Modern qualification ==
+Overparameterized models can interpolate training data and still generalize well.
+
+Belkin et al. described '''double descent''', in which test error can rise near an interpolation threshold and then fall again as model capacity increases.
+
+Therefore:
+
+<pre>
+bias–variance analysis ≠ universal single U-shaped complexity curve
+</pre>
+
+The decomposition and the empirical complexity curve are related but not identical claims.
+
+== Related concepts ==
+[[Overfitting]], [[Underfitting]], [[Generalization (machine learning)]], [[Inductive bias]], [[Probability]], and [[Model selection bias]] provide the surrounding learning-theory context.
+
+== References ==
+* Hastie, Tibshirani & Friedman, ''The Elements of Statistical Learning''.
+* Belkin et al., “Reconciling Modern Machine-Learning Practice and the Classical Bias–Variance Trade-Off”, ''PNAS'' (2019).
+* Shalev-Shwartz & Ben-David.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]

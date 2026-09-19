@@ -1,0 +1,384 @@
+{{Source status|status=Wave 4 Phase 3 context audit|note=Audit state for the Wave 4 cognition/cognitive-bias capture/compile/write cycle.}}
+= Wave 4 context audit =
+
+'''State: Phase 3 — Context audit.'''
+
+== Audited concepts ==
+
+# [[Cognition]]
+# [[Perception]]
+# [[Attention]]
+# [[Memory]]
+# [[Working memory]]
+# [[Learning]]
+# [[Reasoning]]
+# [[Metacognition]]
+# [[Cognitive load]]
+# [[Cognitive bias]]
+# [[Priming]]
+# [[Salience]]
+# [[Confirmation bias]]
+# [[Anchoring effect]]
+# [[Availability heuristic]]
+# [[Framing effect]]
+# [[Selection bias]]
+# [[Anthropomorphism]]
+# [[Theory of mind]]
+# [[Distributed cognition]]
+# [[Embodied cognition]]
+# [[Thought suppression]]
+# [[Ironic process theory]]
+
+Each concept has Core, Simple and Technical reader surfaces.
+
+Total Wave 4 reader surfaces: '''69'''.
+
+== Structural audit ==
+
+All twenty-three Core pages:
+
+* use [[Template:Knowledge object]];
+* use [[Template:Reading depth]];
+* declare source status;
+* contain references;
+* use controlled Domain values;
+* contain internal links;
+* own category/semantic identity.
+
+All forty-six Simple/Technical derivatives:
+
+* use [[Template:Reading depth]];
+* declare source status;
+* contain sources/references;
+* do not duplicate Core <code>Knowledge object</code>;
+* do not duplicate Core category identity.
+
+A complete 69-surface read found no Markdown blockquote syntax or Markdown code fences.
+
+== Cognitive science Domain audit ==
+
+Wave 4 creates enough recurring interdisciplinary corpus to satisfy the Domain-expansion rule in [[Category:Knowledge domains]].
+
+The controlled Domain is implemented across:
+
+<pre>
+bitwiki-runtime-schema.json
+        ↕
+Module:BITwiki/Data/Schema
+        +
+Category:Cognitive science
+        +
+Portal:Cognitive science
+        +
+Cognition exemplar
+</pre>
+
+[[Cognition]] emits <code>Domain=Cognitive science</code> and is the Domain exemplar.
+
+Psychology remains an unresolved future Domain rather than being silently equated with Cognitive science.
+
+== Semantic-kernel audit ==
+
+The compiled dependency graph remains coherent:
+
+<pre>
+Cognition
+ ├→ Perception
+ │    └→ Salience
+ ├→ Attention
+ ├→ Memory
+ │    └→ Working memory
+ ├→ Learning
+ ├→ Reasoning
+ └→ Metacognition
+      └→ Cognitive load
+
+Cognitive bias
+ ├→ Confirmation bias
+ ├→ Anchoring effect
+ ├→ Availability heuristic
+ └→ Framing effect
+
+Social cognition
+ ├→ Theory of mind
+ └→ Anthropomorphism
+
+Boundary-expanding approaches
+ ├→ Distributed cognition
+ └→ Embodied cognition
+
+Mental control
+ ├→ Thought suppression
+ └→ Ironic process theory
+
+Selection bias
+ └→ methodological/statistical contrast
+</pre>
+
+No downstream page required redefining an upstream Wave 0–3 concept incompatibly.
+
+== Required non-equivalences preserved ==
+
+<pre>
+cognition ≠ intelligence
+perception ≠ sensation
+attention ≠ awareness
+attention ≠ salience
+memory ≠ archive
+working memory ≠ short-term memory by definition
+learning ≠ memory
+learning ≠ machine learning
+reasoning ≠ formal entailment
+metacognition ≠ introspection alone
+cognitive load ≠ task difficulty
+cognitive bias ≠ any mistake
+cognitive bias ≠ heuristic
+cognitive bias ≠ statistical bias
+priming ≠ persuasion
+priming ≠ proof of unconscious control
+salience ≠ importance
+confirmation bias ≠ dishonesty
+anchoring ≠ one mechanism
+availability heuristic ≠ recency
+framing effect ≠ any wording difference
+selection bias ≠ cognitive bias
+anthropomorphism ≠ necessarily false attribution
+theory of mind ≠ literal explicit theory
+false-belief task ≠ theory of mind as a whole
+distributed cognition ≠ distributed computing
+distributed cognition ≠ group mind
+embodied cognition ≠ one theory
+thought suppression ≠ memory suppression
+thought suppression ≠ guaranteed rebound
+ironic process theory ≠ all mental control
+</pre>
+
+== Cognition / process audit ==
+
+[[Cognition]] remains a broad family of processes rather than a synonym for consciousness, intelligence, or neural activity.
+
+[[Perception]] separates sensory input from perceptual organization while acknowledging that the biological boundary is not a clean serial stage division.
+
+[[Attention]] separates selection from awareness and from [[Salience]].
+
+[[Salience]] distinguishes perceptual prominence, motivational significance, and broader priority without reducing any of them to attention itself.
+
+== Memory / working-memory audit ==
+
+[[Memory]] is explicitly reconstructive and multi-system; retrieval is not described as literal playback.
+
+[[Working memory]] is model-plural:
+
+* Baddeley's multicomponent framework is presented as influential rather than definitive;
+* Cowan/embedded-processes and other attention/interference/resource approaches remain visible;
+* no fixed universal item count is canonized;
+* working memory is not equated with short-term memory.
+
+== Learning / reasoning / metacognition audit ==
+
+[[Learning]] stays biological/cognitive and explicitly distinguishes [[Machine learning]].
+
+[[Reasoning]] stays broader than formal logic and interfaces cleanly with future Wave 5 deductive/inductive/abductive descendants.
+
+[[Metacognition]] separates monitoring from control and separates confidence from accuracy.
+
+[[Cognitive load]] distinguishes working-memory demands from task difficulty and treats intrinsic/extraneous/germane terminology as theory/history-sensitive rather than timeless taxonomy.
+
+== Cognitive-bias audit ==
+
+[[Cognitive bias]] requires an explicit normative/statistical/task benchmark.
+
+The wave does not equate heuristic use with irrationality.
+
+[[Confirmation bias]] is treated as a family of search, testing, interpretation, weighting, and memory effects rather than a synonym for deliberate cherry-picking.
+
+[[Anchoring effect]] is not reduced to insufficient adjustment; multiple mechanisms remain explicit.
+
+[[Availability heuristic]] concerns retrieval/generation accessibility and is not reduced to recency or salience.
+
+[[Framing effect]] distinguishes risky-choice, attribute, and goal framing and acknowledges pragmatic meaning differences.
+
+[[Selection bias]] is explicitly excluded from the cognitive-bias ontology and uses Science/Mathematics Domains.
+
+== Priming audit ==
+
+[[Priming]] distinguishes:
+
+* repetition priming;
+* perceptual priming;
+* semantic priming;
+* broader social/behavioral priming claims.
+
+The robust existence of classic cognitive priming effects is not used as evidence for behaviorally distant priming claims.
+
+The pages do not imply that priming establishes arbitrary subliminal control or persuasion.
+
+== Social-cognition audit ==
+
+[[Anthropomorphism]] does not define every humanlike attribution as false. Comparative evidence determines whether a specific attribution is justified.
+
+[[Theory of mind]]:
+
+* is not a literal explicit theory requirement;
+* is not reduced to false-belief tasks;
+* acknowledges language, attention, memory, inhibition, and response-selection demands;
+* treats infant implicit-task interpretations as contested;
+* treats AI/LLM task success as behavioral evidence rather than proof of humanlike mechanism.
+
+== Distributed / embodied cognition audit ==
+
+[[Distributed cognition]] uses a functional system boundary across people/artifacts/representations and explicitly rejects equivalence with distributed computing or a mystical group mind.
+
+[[Embodied cognition]] is presented as a family of approaches.
+
+Grounded cognition, enactivism, situated cognition, extended cognition, and embodied cognition are not collapsed into synonyms.
+
+The two concepts can overlap but remain distinct:
+
+<pre>
+distributed cognition → unit-of-analysis distribution
+embodied cognition    → bodily/sensorimotor constitution
+</pre>
+
+== Thought-suppression / ironic-process audit ==
+
+This is the principal evidence-sensitive correction in Wave 4.
+
+[[Thought suppression]] does '''not''' claim:
+
+<pre>
+attempt suppression → inevitable rebound
+</pre>
+
+It distinguishes:
+
+* immediate suppression effectiveness;
+* post-suppression rebound;
+* cognitive-load effects;
+* white-bear paradigms;
+* think/no-think memory-suppression paradigms;
+* adaptiveness from effectiveness.
+
+Contemporary review evidence questioning universal paradoxical effects is preserved alongside the classic Wegner literature.
+
+[[Ironic process theory]] is assigned '''Supported''' rather than Established and is described as a specific theory of mental control, not as the definition of thought suppression or a universal cognitive law.
+
+Its strongest scientific use is where it generates discriminating predictions such as increased target accessibility under cognitive load.
+
+== "Pink elephant bias" audit ==
+
+No canonical page was created.
+
+The phrase is treated as an informal/popular description of thought-suppression difficulty rather than an established scientific construct.
+
+Future aliasing, if useful for search, should point to [[Thought suppression]] rather than create a separate semantic identity.
+
+== Public concept versus AI/BITwiki application ==
+
+The wave preserves:
+
+<pre>
+working memory        ≠ LLM context window
+attention             ≠ Transformer attention
+memory                ≠ vector database
+learning              ≠ machine learning
+metacognition         ≠ chain-of-thought
+cognitive load        ≠ token count
+theory of mind        ≠ one LLM benchmark
+distributed cognition ≠ multi-agent system
+</pre>
+
+No local agent architecture is used as the definition of a public concept.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| Cognitive psychology / cognitive neuroscience texts and reviews || cognition, perception, attention, memory, learning, reasoning
+|-
+| Baddeley; Cowan; working-memory literature || working memory
+|-
+| Flavell; Nelson & Narens || metacognition
+|-
+| Sweller and instructional-psychology literature || cognitive load
+|-
+| Tversky & Kahneman; Nickerson; Gigerenzer || heuristics, biases, framing, anchoring, availability
+|-
+| Cognitive priming literature || repetition, perceptual and semantic priming
+|-
+| Epley / Waytz / Cacioppo; comparative cognition || anthropomorphism
+|-
+| Developmental/social-cognition literature || theory of mind
+|-
+| Hutchins; Hollan/Hutchins/Kirsh || distributed cognition
+|-
+| Barsalou; 4E literature || embodied/grounded cognition
+|-
+| Wegner historical literature + contemporary reviews || thought suppression / ironic processes
+|-
+| Epidemiology / statistics / causal inference || selection bias
+|}
+
+Wikipedia/Scholarpedia remain orientation/discovery surfaces rather than primary authority where stronger sources exist.
+
+== Redlink policy ==
+
+The wave intentionally exposes future concepts including [[Sensation]], [[Consciousness]], [[Executive function]], [[Episodic memory]], [[Semantic memory]], [[Procedural memory]], [[Long-term memory]], [[Short-term memory]], [[Encoding (memory)]], [[Memory consolidation]], [[Memory retrieval]], [[Forgetting]], [[Associative learning]], [[Classical conditioning]], [[Operant conditioning]], [[Decision making]], [[Heuristic]], [[Representativeness heuristic]], [[Base-rate neglect]], [[Prospect theory]], [[Mental model]], [[Cognitive control]], [[Executive attention]], [[Inhibitory control]], [[Social cognition]], [[Mindreading]], [[Extended cognition]], [[Enactivism]], [[Situated cognition]], [[Cognitive offloading]], [[Memory suppression]], and [[Intrusive thought]].
+
+These are coverage signals, not automatic stub requests.
+
+== Acceptance criteria ==
+
+Wave 4 is ready to leave Phase 3 when:
+
+# all 69 surfaces remain present;
+# one concept = one Core semantic identity;
+# controlled Domains pass, including Cognitive science;
+# Cognitive science category, portal and [[Cognition]] exemplar all exist;
+# [[Selection bias]] remains outside Cognitive science unless a future justified cross-domain use is added;
+# public/project distinctions remain explicit;
+# all depth derivatives remain category/identity-exempt;
+# <code>validate_v2.py</code> passes;
+# runtime-schema, substrate, deployment, workflow and Main-space audits pass;
+# staging builds the complete graph.
+
+== State lineage ==
+
+<pre>
+[[BITwiki:Wave 4 context capture]]
+        ↓
+[[BITwiki:Wave 4 compiled context]]
+        ↓
+[[BITwiki:Wave 4 context audit]]
+</pre>
+
+== Release validation — 2026-09-19 ==
+
+PR #20 executed the established Wave release gates after the full 69-surface corpus and Cognitive science Domain changes were present.
+
+The first staging pass exposed two workflow-metadata architecture defects rather than article defects:
+
+* the Psychology / cognitive science request supplied an uncontrolled candidate-Domain value;
+* <code>scripts/audit_workflow.py</code> still duplicated the pre-Wave-3 Domain list instead of consuming the canonical runtime schema.
+
+The request metadata was normalized to controlled Domain <code>Cognitive science</code>. The workflow audit was repaired to load Domains from <code>bitwiki-runtime-schema.json</code>, eliminating the stale duplicated vocabulary and bringing workflow validation under the same canonical schema authority as the rest of V2.
+
+After those repairs:
+
+* the staging workbench completed successfully;
+* deployable MediaWiki structure and identity validation passed;
+* Scribunto Lua 5.1 syntax passed;
+* runtime-schema projection audit passed;
+* substrate audit passed;
+* recursive deployment-plan and importer-safety checks passed;
+* structured knowledge-request workflow audit passed;
+* Main-namespace role audit passed;
+* corpus/V1 inventories and architecture-evidence upload passed.
+
+This completion-state bookkeeping commit must re-pass the same PR gates before merge.
+
+'''Current assessment: Wave 4 is semantically and structurally audited and has passed the full release gate; merge remains conditional on the final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

@@ -1,0 +1,62 @@
+{{Source status|status=Wave 4 compiled article|note=Methodological/statistical selection-bias concept included as contrast with cognitive bias.}}
+{{Knowledge object
+ |title=Selection bias
+ |entity_type=Concept
+ |domain=Science, Mathematics
+ |status=Established
+ |provenance=V2 public corpus; Wave 4 compiled context
+}}
+{{Reading depth|base=Selection bias|current=Core}}
+
+= Selection bias =
+
+== Overview ==
+'''Selection bias''' is systematic distortion caused by how units, participants, observations, or data enter, remain in, or are excluded from a sample or analysis.
+
+Selection bias is a methodological/statistical problem. It is not a cognitive bias merely because both use the word ''bias''.
+
+== Sampling ==
+A sample can misrepresent a target population when inclusion probability is related to variables relevant to the outcome.
+
+Examples include volunteer samples, nonresponse, loss to follow-up, and convenience sampling.
+
+== Conditioning and colliders ==
+In causal inference, selection can create associations that were not present in the target population.
+
+If selection depends on a variable influenced by two causes, conditioning on that selection variable can induce collider bias.
+
+== Survivorship ==
+Analyzing only units that survive a filtering process can hide failures.
+
+This can make successful cases appear more representative than they are.
+
+== Selection bias and random error ==
+A small sample can produce random sampling variability without systematic selection bias.
+
+Conversely, a very large biased sample can estimate the wrong target very precisely.
+
+Therefore:
+
+<pre>
+selection bias ≠ sampling variability
+</pre>
+
+== Selection bias and confirmation bias ==
+[[Confirmation bias]] concerns cognitive search or interpretation favoring a belief.
+
+Selection bias concerns which observations are present in the dataset or analysis.
+
+A research process can contain both, but they are different mechanisms.
+
+== Mitigation ==
+Strategies include probability sampling, careful eligibility definitions, tracking attrition, weighting, sensitivity analysis, causal diagrams, and explicit specification of the target population.
+
+No statistical correction can recover information that is absent without assumptions.
+
+== References ==
+* epidemiology and causal-inference texts on selection bias.
+* Hernán & Robins, ''Causal Inference: What If''.
+* survey sampling and missing-data literature.
+
+[[Category:Science]]
+[[Category:Mathematics]]

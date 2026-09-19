@@ -1,0 +1,38 @@
+{{Source status|status=Technical depth derivative|note=Advanced causal/statistical selection-bias surface.}}
+{{Reading depth|base=Selection bias|current=Technical}}
+= Selection bias — Technical =
+
+== Selection mechanism ==
+Let S indicate inclusion in the analyzed sample.
+
+Inference from:
+
+<pre>
+P(Y | X, S=1)
+</pre>
+
+to a target population can fail when S depends on variables related to X, Y, or their causes.
+
+== Collider selection ==
+If:
+
+<pre>
+X → S ← Y
+</pre>
+
+conditioning on S can induce dependence between X and Y even when they are otherwise independent.
+
+More complex causal graphs produce analogous selection pathways.
+
+== Forms ==
+Selection mechanisms include sampling-frame bias, volunteer/self-selection, nonresponse, informative censoring, attrition, case-control selection, and conditioning on survival.
+
+== Transportability ==
+Correcting selection requires assumptions about how sampled and target populations differ.
+
+Weighting or standardization can adjust observed covariates but cannot automatically fix unmeasured selection.
+
+== References ==
+* Hernán & Robins, ''Causal Inference: What If''.
+* epidemiologic selection-bias literature.
+* survey-sampling and missing-data theory.

@@ -33,21 +33,9 @@ EXPECTED_FIELDS = [
 REQUIRED_PARAMS = ("request", "reason", "needed_depth", "status")
 ACTIVE_STATUSES = {"requested", "researching", "drafting", "review"}
 ALLOWED_STATUSES = ACTIVE_STATUSES | {"satisfied", "declined"}
-ALLOWED_DOMAINS = {
-    "Systems science",
-    "Science",
-    "Biology",
-    "Computer science",
-    "Mathematics",
-    "Philosophy",
-    "Technology",
-    "Electronics",
-    "Energy",
-    "Engineering",
-    "Chemistry",
-    "Physics",
-    "Medicine",
-}
+RUNTIME_SCHEMA_PATH = ROOT / "bitwiki-runtime-schema.json"
+RUNTIME_SCHEMA = json.loads(RUNTIME_SCHEMA_PATH.read_text(encoding="utf-8"))
+ALLOWED_DOMAINS = set(RUNTIME_SCHEMA["domains"])
 
 REQUEST_CALL_RE = re.compile(r"{{\s*Knowledge request\b(.*?)}}", re.I | re.S)
 

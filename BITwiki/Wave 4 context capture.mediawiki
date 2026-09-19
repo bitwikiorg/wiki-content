@@ -1,0 +1,377 @@
+{{Source status|status=Wave 4 Phase 1 context capture|note=Research/evidence state only. No canonical Main-space article is authorized by this page.}}
+= Wave 4 context capture =
+
+'''State: Phase 1 — Context capture.'''
+
+Wave 4 covers cognition, core cognitive processes, metacognition, cognitive load, judgment biases, social cognition, distributed/embodied approaches, and mental-control phenomena.
+
+== Provisional scope ==
+
+# [[Cognition]]
+# [[Perception]]
+# [[Attention]]
+# [[Memory]]
+# [[Working memory]]
+# [[Learning]]
+# [[Reasoning]]
+# [[Metacognition]]
+# [[Cognitive load]]
+# [[Cognitive bias]]
+# [[Priming]]
+# [[Salience]]
+# [[Confirmation bias]]
+# [[Anchoring effect]]
+# [[Availability heuristic]]
+# [[Framing effect]]
+# [[Selection bias]]
+# [[Anthropomorphism]]
+# [[Theory of mind]]
+# [[Distributed cognition]]
+# [[Embodied cognition]]
+# [[Thought suppression]]
+# [[Ironic process theory]]
+
+== Domain decision ==
+
+The current controlled Domain vocabulary does not contain Psychology or Cognitive science.
+
+Wave 4 demonstrates sustained corpus need for a top-level '''Cognitive science''' Domain. This is narrower and better aligned with the actual wave than adding Psychology prematurely: the corpus spans experimental psychology, philosophy of mind, neuroscience-adjacent cognition, linguistics, decision research, and distributed/embodied approaches.
+
+'''Phase-1 decision:''' add controlled Domain <code>Cognitive science</code> in Phase 2 with the full Domain contract:
+
+<pre>
+bitwiki-runtime-schema.json
+        ↕
+Module:BITwiki/Data/Schema
+        +
+Category:Cognitive science
+        +
+Portal:Cognitive science
+        +
+Cognition as Domain exemplar
+</pre>
+
+Psychology remains a separate unresolved future Domain decision rather than being silently created by this wave.
+
+== Semantic kernel ==
+
+<pre>
+Cognition
+ ├→ Perception
+ ├→ Attention
+ ├→ Memory
+ │    └→ Working memory
+ ├→ Learning
+ ├→ Reasoning
+ └→ Metacognition
+       └→ Cognitive load / strategy monitoring
+
+Judgment under uncertainty
+ └→ Cognitive bias
+      ├→ Confirmation bias
+      ├→ Anchoring effect
+      ├→ Availability heuristic
+      └→ Framing effect
+
+Priming / Salience
+ └→ altered accessibility / priority in processing
+
+Social cognition
+ ├→ Theory of mind
+ └→ Anthropomorphism
+
+Cognition beyond individual-brain-only framing
+ ├→ Distributed cognition
+ └→ Embodied cognition
+
+Mental control
+ ├→ Thought suppression
+ └→ Ironic process theory
+
+Selection bias
+ └→ methodological/statistical distortion
+    (included as a contrast; not a cognitive bias)
+</pre>
+
+This is a writing dependency graph, not a claim that cognition is universally decomposed this way.
+
+== Foundational separations ==
+
+<pre>
+cognition ≠ intelligence
+perception ≠ sensation
+attention ≠ awareness
+attention ≠ salience
+memory ≠ storage medium
+working memory ≠ short-term memory by definition
+learning ≠ memory
+learning ≠ machine learning
+reasoning ≠ inference as a formal relation
+metacognition ≠ introspection alone
+cognitive load ≠ task difficulty
+cognitive load ≠ information quantity alone
+cognitive bias ≠ any mistake
+cognitive bias ≠ heuristic
+cognitive bias ≠ statistical bias
+priming ≠ persuasion
+priming ≠ proof of unconscious control
+salience ≠ importance
+salience ≠ attention
+confirmation bias ≠ deliberate dishonesty
+anchoring effect ≠ one single mechanism
+availability heuristic ≠ recency alone
+framing effect ≠ any wording difference
+selection bias ≠ cognitive bias
+anthropomorphism ≠ necessarily false attribution
+theory of mind ≠ a literal explicit theory
+false-belief task ≠ theory of mind as a whole
+distributed cognition ≠ distributed computing
+distributed cognition ≠ group mind
+embodied cognition ≠ one theory
+embodied cognition ≠ claim that brains are irrelevant
+thought suppression ≠ memory suppression
+thought suppression ≠ always counterproductive
+ironic process theory ≠ all mental control
+"pink elephant bias" ≠ established scientific construct
+</pre>
+
+== Normalized concept dossiers ==
+
+=== Cognition ===
+Cognition is the collection of processes and capacities involved in acquiring, representing, transforming, using, and regulating information or knowledge. Typical subjects include perception, attention, memory, learning, reasoning, language, decision making, and metacognition.
+
+'''Do not conflate:''' cognition ≠ consciousness; cognition ≠ intelligence; cognition ≠ brain activity as such; cognitive science ≠ psychology alone.
+
+'''Sources:''' standard cognitive psychology/cognitive science texts; Annual Review of Psychology; cognitive neuroscience reference literature.
+
+=== Perception ===
+Perception concerns the processes by which organisms organize and interpret sensory information to represent or guide interaction with their environment. Perception is shaped by sensory input, prior knowledge, task, context, and action.
+
+'''Do not conflate:''' sensation ≠ perception; perception ≠ infallible copy of reality; perceptual inference ≠ conscious reasoning.
+
+=== Attention ===
+Attention is selective prioritization of information, locations, features, objects, tasks, or internal representations for enhanced processing or control.
+
+'''Do not conflate:''' attention ≠ awareness; attention ≠ gaze; attention ≠ salience; selective attention ≠ one neural mechanism.
+
+=== Memory ===
+Memory is the capacity/process by which information from past experience affects later cognition or behavior. Multiple systems and processes are distinguished, including encoding, consolidation, storage, retrieval, working memory, episodic memory, semantic memory, and procedural learning.
+
+'''Do not conflate:''' memory ≠ literal archive; retrieval ≠ playback; forgetting ≠ erasure only; memory accuracy ≠ confidence.
+
+=== Working memory ===
+Working memory refers to limited-capacity systems/processes that temporarily maintain and manipulate information for ongoing cognition. Baddeley's multicomponent model is influential but not synonymous with the concept.
+
+'''Do not conflate:''' working memory ≠ short-term memory by definition; central executive ≠ a homunculus; working-memory capacity ≠ fixed universal item count.
+
+'''Sources:''' Baddeley, "Working Memory: Theories, Models, and Controversies", Annual Review of Psychology 63 (2012).
+
+=== Learning ===
+Learning is a relatively durable change in knowledge, skill, representation, expectation, or behavior resulting from experience, practice, instruction, or adaptation.
+
+'''Do not conflate:''' learning ≠ performance change at one moment; learning ≠ memory alone; human/animal learning ≠ machine learning.
+
+=== Reasoning ===
+Reasoning is the use of information, representations, or premises to form conclusions, judgments, explanations, plans, or decisions.
+
+'''Do not conflate:''' psychological reasoning ≠ formal entailment; reasoning ≠ deduction only; reasoning quality depends on task, knowledge, goals, and normative standard.
+
+Wave 5 will separately treat deductive, inductive, and abductive reasoning.
+
+=== Metacognition ===
+Metacognition concerns knowledge, monitoring, and regulation of one's own cognitive processes. Common frameworks distinguish metacognitive monitoring from metacognitive control.
+
+'''Do not conflate:''' metacognition ≠ introspection only; confidence ≠ accuracy; monitoring ≠ control.
+
+'''Sources:''' Flavell; Nelson & Narens; contemporary metacognition research.
+
+=== Cognitive load ===
+Cognitive load concerns demands placed on limited cognitive processing resources, especially working memory, during task performance or learning.
+
+'''Do not conflate:''' cognitive load ≠ task difficulty; cognitive load ≠ all mental effort; intrinsic/extraneous/germane terminology has evolved and should be treated as theory-specific.
+
+'''Sources:''' Sweller and cognitive load theory literature; recent reviews of instructional applications.
+
+=== Cognitive bias ===
+Cognitive bias is a systematic tendency in judgment, memory, perception, or decision making that produces patterned deviation relative to a specified normative, statistical, or task standard.
+
+Bias does not automatically mean stupidity, irrationality, or maladaptation. Heuristics can be efficient and context-sensitive.
+
+'''Do not conflate:''' cognitive bias ≠ any error; cognitive bias ≠ heuristic; cognitive bias ≠ statistical/model bias.
+
+'''Sources:''' Tversky & Kahneman; Gigerenzer & Gaissmaier; bias-review literature.
+
+=== Priming ===
+Priming is a change in subsequent processing, response, or accessibility caused by prior exposure to a stimulus or related information.
+
+Robust families include repetition, perceptual, and semantic priming. Broad claims that subtle primes produce large downstream social behaviors require more cautious treatment because replication evidence varies.
+
+'''Do not conflate:''' priming ≠ persuasion; priming ≠ conscious cueing by definition; semantic priming ≠ behavioral "social priming."
+
+=== Salience ===
+Salience is the prominence or processing priority of a stimulus, representation, event, or feature relative to alternatives. Salience can arise from physical contrast, novelty, relevance, value, goals, emotion, or learned significance.
+
+'''Do not conflate:''' salience ≠ objective importance; salience ≠ attention; salience ≠ availability heuristic.
+
+=== Confirmation bias ===
+Confirmation bias is a family of tendencies to seek, interpret, test, weight, remember, or generate information in ways that favor an existing hypothesis or belief.
+
+'''Do not conflate:''' confirmation bias ≠ deliberate deception; confirmation bias ≠ any agreement with prior belief; positive test strategy ≠ always irrational.
+
+'''Sources:''' Raymond Nickerson's 1998 review and subsequent hypothesis-testing literature.
+
+=== Anchoring effect ===
+Anchoring is the influence of an initial value or reference point on later numerical or comparative judgments, often even when the anchor is weakly informative or arbitrary.
+
+'''Do not conflate:''' anchoring ≠ one proven mechanism; anchoring ≠ priming; anchoring-and-adjustment is one account, not the definition of all anchoring effects.
+
+'''Sources:''' Tversky & Kahneman (1974); modern anchoring research.
+
+=== Availability heuristic ===
+The availability heuristic is the use of ease of retrieval, generation, or mental accessibility as a cue when judging frequency, probability, or related properties.
+
+'''Do not conflate:''' availability ≠ recency alone; memorable event ≠ objectively frequent event; availability heuristic ≠ salience in general.
+
+'''Sources:''' Tversky & Kahneman (1973, 1974).
+
+=== Framing effect ===
+A framing effect occurs when judgments or choices change because equivalent or closely related information is presented in different frames.
+
+Distinct families include risky-choice framing, attribute framing, and goal framing.
+
+'''Do not conflate:''' framing effect ≠ any wording effect; different frames can alter construed problem structure rather than merely "trick" participants.
+
+'''Sources:''' Tversky & Kahneman (1981); prospect-theory and framing literature.
+
+=== Selection bias ===
+Selection bias is systematic distortion caused by how units, observations, participants, or data enter or remain in a sample/analysis.
+
+It is a methodological/statistical concept, not a cognitive bias.
+
+'''Do not conflate:''' selection bias ≠ confirmation bias; selection bias ≠ sampling variability; conditioning on a collider can induce selection bias in causal inference.
+
+'''Sources:''' epidemiology, statistics, causal-inference literature.
+
+=== Anthropomorphism ===
+Anthropomorphism is attribution of humanlike traits, intentions, emotions, motives, agency, or mental states to nonhuman entities.
+
+Such attribution can be mistaken, approximately correct, or scientifically useful depending on the target and evidence.
+
+'''Do not conflate:''' anthropomorphism ≠ anthropocentrism; anthropomorphism ≠ theory of mind; attribution of a mental state to an animal ≠ automatically false.
+
+'''Sources:''' Epley, Waytz & Cacioppo (2007); comparative-cognition literature.
+
+=== Theory of mind ===
+Theory of mind is the capacity or set of processes used to represent, attribute, and reason about mental states such as beliefs, desires, intentions, knowledge, and emotions in oneself or others.
+
+'''Do not conflate:''' theory of mind ≠ a literal explicit theory; false-belief tasks ≠ the whole construct; task performance ≠ pure measure of one mechanism.
+
+The infant false-belief literature and LLM "ToM" tests are methodologically contested and should be presented cautiously.
+
+=== Distributed cognition ===
+Distributed cognition studies cognitive processes at the level of systems that include interactions among people, artifacts, representations, and environments.
+
+'''Do not conflate:''' distributed cognition ≠ distributed computing; distributed cognition ≠ a mystical group mind; use of an external tool ≠ automatically a distributed-cognition explanation.
+
+'''Sources:''' Edwin Hutchins, ''Cognition in the Wild''; Hollan, Hutchins & Kirsh.
+
+=== Embodied cognition ===
+Embodied cognition is a family of approaches emphasizing that cognitive processes are shaped by bodily form, sensorimotor systems, action, and environment.
+
+'''Do not conflate:''' embodied cognition ≠ one unified theory; embodied cognition ≠ rejection of neural processing; grounded cognition, enactivism, situated cognition, and extended cognition overlap but are not synonyms.
+
+'''Sources:''' Barsalou, "Grounded Cognition" (2008); 4E-cognition literature.
+
+=== Thought suppression ===
+Thought suppression is the deliberate attempt to prevent a target thought from entering or remaining in conscious awareness.
+
+The classic white-bear literature reported rebound and hyperaccessibility effects, especially under some conditions, but contemporary reviews find the effectiveness and adaptiveness of suppression to be more conditional than the popular "it always backfires" summary suggests.
+
+'''Do not conflate:''' thought suppression ≠ memory suppression; thought suppression ≠ emotion suppression; suppression ≠ guaranteed rebound.
+
+=== Ironic process theory ===
+Ironic process theory is Wegner's theory that deliberate mental control can involve an effortful operating process and a monitoring process that searches for signs of failure, producing paradoxical accessibility under some conditions such as cognitive load.
+
+It is a specific theory, not a synonym for thought suppression or a universal law of cognition.
+
+'''Do not conflate:''' ironic process theory ≠ all dual-process theory; monitoring process ≠ conscious search by definition; theory prediction ≠ established universal effect.
+
+'''Source note:''' newer reviews question overly strong claims about ubiquitous rebound; Core/Technical must distinguish the historical theory from current evidence.
+
+== Cross-wave dependencies ==
+
+* [[Cognition]] ↔ [[Knowledge]], [[Concept]], [[Language]], [[Inference]].
+* [[Perception]] ↔ [[Attention]], [[Salience]], [[Context (linguistics)|Context]].
+* [[Memory]] ↔ [[Knowledge]], [[Learning]], [[Working memory]], [[Provenance]].
+* [[Reasoning]] ↔ [[Inference]] and future Wave 5 reasoning modes.
+* [[Metacognition]] ↔ [[Epistemic status]], [[Uncertainty]], [[Confidence rationale]] concepts.
+* [[Cognitive bias]] ↔ [[Reasoning]], [[Uncertainty]], future [[Probability]] and [[Decision theory]].
+* [[Priming]] ↔ [[Memory]], [[Attention]], [[Salience]], [[Semantic similarity]].
+* [[Theory of mind]] ↔ [[Pragmatics]], [[Common ground]], [[Anthropomorphism]].
+* [[Distributed cognition]] ↔ [[System boundary]], [[Knowledge representation]], [[Human-computer interaction]] (future Wave 6).
+* [[Embodied cognition]] ↔ [[Perception]], [[Action]] (future), [[Concept]], [[Language]].
+* [[Thought suppression]] ↔ [[Attention]], [[Working memory]], [[Cognitive load]], [[Ironic process theory]].
+* [[Selection bias]] ↔ [[Scientific method]], [[Evidence]], [[Measurement]], future statistics/probability concepts.
+
+== Public concept versus BITwiki / AI application ==
+
+<pre>
+cognition            ≠ agent inference loop
+working memory       ≠ LLM context window
+memory               ≠ vector database
+attention            ≠ Transformer attention
+learning             ≠ machine learning
+metacognition        ≠ chain-of-thought
+cognitive load       ≠ token count
+theory of mind       ≠ passing one LLM benchmark
+distributed cognition ≠ multi-agent system
+</pre>
+
+AI or BITwiki applications may appear only after the public concept is established and must not be used as definitions.
+
+== Source-family audit ==
+
+* '''Annual Review of Psychology''' — working memory, grounded/embodied cognition, executive/cognitive-process reviews.
+* '''Foundational cognitive psychology''' — Baddeley & Hitch; Atkinson/Shiffrin; Tulving; Posner; Kahneman; Flavell; Nelson & Narens.
+* '''Judgment and decision research''' — Tversky & Kahneman; Gigerenzer; Nickerson; framing/anchoring literature.
+* '''Cognitive load theory''' — Sweller and later educational-psychology reviews.
+* '''Social cognition''' — Epley/Waytz/Cacioppo on anthropomorphism; developmental and comparative theory-of-mind literature.
+* '''Distributed cognition''' — Hutchins; Hollan/Hutchins/Kirsh.
+* '''Embodied/grounded cognition''' — Barsalou and 4E-cognition literature.
+* '''Thought suppression''' — Wegner and Wenzlaff historical work plus contemporary review evidence evaluating effectiveness/rebound.
+* '''Statistics/epidemiology/causal inference''' — selection bias.
+* Wikipedia/Scholarpedia are orientation/discovery surfaces only where stronger sources exist.
+
+== Title and scope risks ==
+
+* [[Learning]] must remain biological/cognitive learning, not absorb [[Machine learning]].
+* [[Memory]] and [[Working memory]] must remain separate.
+* [[Reasoning]] remains broad psychological reasoning; formal deductive/inductive/abductive modes remain Wave 5 descendants.
+* [[Attention]] must not inherit Transformer-specific meaning.
+* [[Salience]] must remain broad enough to cover perceptual and motivational prominence without becoming a synonym for attention.
+* [[Selection bias]] remains in the wave only as a high-value adjacent contrast and will use Science/Mathematics rather than Cognitive science as its Core Domain.
+* "Pink elephant bias" is not promoted to a canonical concept. If a public alias is later useful, it should redirect to [[Thought suppression]] or an explanatory section rather than create a new knowledge identity.
+
+== Future prerequisites / normalized redlinks ==
+
+[[Sensation]], [[Consciousness]], [[Executive function]], [[Episodic memory]], [[Semantic memory]], [[Procedural memory]], [[Long-term memory]], [[Short-term memory]], [[Encoding (memory)]], [[Memory consolidation]], [[Memory retrieval]], [[Forgetting]], [[Associative learning]], [[Classical conditioning]], [[Operant conditioning]], [[Reinforcement learning]], [[Decision making]], [[Heuristic]], [[Representativeness heuristic]], [[Bias blind spot]], [[Overconfidence]], [[Base-rate neglect]], [[Prospect theory]], [[Mental model]], [[Cognitive control]], [[Executive attention]], [[Inhibitory control]], [[Social cognition]], [[Mindreading]], [[Extended cognition]], [[Enactivism]], [[Situated cognition]], [[Cognitive offloading]], [[Memory suppression]], [[Intrusive thought]].
+
+These are coverage signals, not authorization for stubs.
+
+== Phase-1 decisions ==
+
+# Add controlled Domain [[Category:Cognitive science|Cognitive science]] in Phase 2; do not create Psychology yet.
+# Keep all 23 queued concepts, but treat [[Selection bias]] explicitly as methodological/statistical rather than cognitive.
+# [[Working memory]] is model-plural; Baddeley's multicomponent framework is not the definition.
+# [[Priming]] separates robust cognitive priming paradigms from broader contested social/behavioral priming claims.
+# [[Cognitive bias]] requires an explicit comparison standard and is not synonymous with heuristic or irrationality.
+# [[Anchoring effect]] is not reduced to insufficient adjustment.
+# [[Theory of mind]] is not equated with false-belief task performance.
+# [[Embodied cognition]] and [[Distributed cognition]] remain distinct research programs.
+# [[Thought suppression]] must reflect contemporary uncertainty about rebound; [[Ironic process theory]] is a historically influential theory, not settled universal law.
+# "Pink elephant bias" is rejected as a canonical title.
+
+'''Current assessment: Phase 1 is materially complete enough to begin compilation.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

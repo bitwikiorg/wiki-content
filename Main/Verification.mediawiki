@@ -1,0 +1,152 @@
+{{Source status|status=Wave 1 compiled article|note=Public cross-domain concept grounded in ISO/IEC/IEEE, NASA systems engineering, formal methods, and source-checking practice.}}
+{{Knowledge object
+ |title=Verification
+ |entity_type=Concept
+ |domain=Engineering, Technology, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 1 compiled context
+}}
+{{Reading depth|base=Verification|current=Core}}
+
+= Verification =
+
+== Overview ==
+'''Verification''' is the process of checking or confirming, using appropriate evidence or formal procedure, that specified requirements, properties, calculations, implementations, records, or claims are satisfied.
+
+The exact meaning of verification depends on the domain. In systems engineering it usually concerns conformity with specified requirements. In formal methods it can mean mathematically proving that a system satisfies a formal specification. In source checking it can mean confirming that a source exists and actually supports an attributed claim.
+
+Verification is therefore not a universal synonym for "true."
+
+== Engineering verification ==
+In systems and software engineering, verification asks whether a product, component, or work product satisfies specified requirements or design characteristics.
+
+The common shorthand is:
+
+<pre>
+verification → "Was it built right?"
+validation   → "Was the right thing built?"
+</pre>
+
+This shorthand is useful but simplified. Real engineering verification can involve:
+* inspection;
+* analysis;
+* demonstration;
+* test;
+* formal proof;
+* review.
+
+The applicable method depends on what requirement is being verified.
+
+== Verification and validation ==
+[[Validation]] is closely related but distinct.
+
+Verification typically compares something against an explicit specification.
+
+Validation evaluates whether it is suitable or effective for an intended use, target, or application.
+
+A system can be verified against its written requirements and still fail validation if the requirements did not capture the real need.
+
+Conversely, a prototype may appear useful in practice while still failing formal verification against a complete specification.
+
+== Software verification ==
+Software verification asks whether software satisfies relevant specifications or properties.
+
+Methods include:
+* code review;
+* unit and integration testing;
+* static analysis;
+* model checking;
+* theorem proving;
+* type checking;
+* symbolic execution;
+* runtime assertions.
+
+Testing can reveal defects but normally cannot prove the absence of all possible defects.
+
+Formal methods can prove particular properties relative to a formal model and assumptions.
+
+== Formal verification ==
+'''Formal verification''' uses mathematical methods to establish that a formal model or implementation satisfies a formal specification.
+
+Examples include:
+* model checking finite-state systems;
+* theorem proving;
+* proof assistants;
+* verified compilation;
+* refinement proofs.
+
+A formal proof can still fail to guarantee real-world correctness if:
+* the specification is wrong;
+* the model omits important behavior;
+* assumptions about hardware or environment are false;
+* the implementation differs from the verified artifact.
+
+Formal verification therefore shifts, rather than eliminates, questions about [[Validation|validation]] and [[System boundary|system boundary]].
+
+== Scientific-model verification ==
+In modeling and simulation, verification commonly asks whether the computational model correctly solves or implements the intended mathematical model.
+
+For example, a fire simulation can be verified for:
+* numerical implementation;
+* conservation equations;
+* convergence;
+* code correctness.
+
+That does not establish that the mathematical model accurately represents real fires. That question belongs to model validation.
+
+== Source verification ==
+Verification can also apply to sources and records.
+
+A source-verification check may ask:
+* Does the cited source exist?
+* Is it authentic?
+* Does it contain the attributed claim?
+* Is the quoted passage accurate?
+* Is the cited version the relevant one?
+
+This verifies the citation/source relation, not the truth of every claim inside the source.
+
+== Identity and integrity verification ==
+Digital systems may verify:
+* hashes;
+* signatures;
+* certificates;
+* credentials;
+* transaction inclusion;
+* file integrity.
+
+Cryptographic verification can establish mathematical relations such as possession of a key or integrity of signed data.
+
+It cannot automatically establish that a human statement or external-world event encoded in the data is true.
+
+== Verification and reproducibility ==
+[[Reproducibility]] can act as a form of verification for computational work.
+
+Re-running the same code and data can verify that the reported output is reproducible under the stated environment.
+
+It does not by itself validate the scientific interpretation or prove the original inputs were correct.
+
+== Verification evidence ==
+A strong verification record states:
+* what was verified;
+* against which requirement/specification;
+* by which method;
+* on which artifact/version;
+* under which assumptions;
+* with what result.
+
+The label "verified" without this context is weak information.
+
+== BITwiki application ==
+BITwiki uses verification within [[BITwiki:Claim validation]] and [[BITwiki:Provenance]] to check source existence, attribution, transformations, and review history.
+
+That application is one use of the broader concept.
+
+== References ==
+* [https://www.iso.org/obp/ui?_escaped_fragment_=iso%3Astd%3Aiso-iec-ieee%3A29148%3Aed-2%3Av1%3Aen ISO/IEC/IEEE 29148:2018 — verification/validation terminology]
+* [https://www.nasa.gov/reference/system-engineering-handbook-appendix/ NASA Systems Engineering Handbook — Verification and Validation]
+* [https://www.nist.gov/publications/metamorphic-testing-continuum-verification-and-validation-simulation-models NIST — Verification and Validation of Simulation Models]
+
+[[Category:Engineering]]
+[[Category:Technology]]
+[[Category:Science]]

@@ -1,0 +1,61 @@
+{{Source status|status=Technical depth derivative|note=Advanced KOS/taxonomy surface of [[Taxonomy]].}}
+{{Reading depth|base=Taxonomy|current=Technical}}
+= Taxonomy — Technical =
+
+== Graph structure ==
+A taxonomy can be modeled as directed graph:
+
+<pre>
+T = (C, B)
+</pre>
+
+where C is a set of concepts/categories and B a broader-than relation.
+
+A tree requires each non-root concept to have one parent.
+
+A polyhierarchy relaxes this to allow several parents.
+
+== Transitivity ==
+A broader relation may support a transitive closure:
+
+<pre>
+A narrowerThan B
+B narrowerThan C
+→ A narrowerTransitive C
+</pre>
+
+But only if the hierarchy uses a semantically coherent broader relation.
+
+Mixed part-of/topic/subclass edges can invalidate ordinary inheritance.
+
+== SKOS ==
+SKOS distinguishes direct semantic relations and transitive superproperties.
+
+Concept organization remains intentionally weaker than formal OWL class semantics.
+
+This makes SKOS suitable for thesauri/taxonomies without requiring strong ontological commitment.
+
+== Mapping ==
+Taxonomy alignment can use:
+* exact match;
+* close match;
+* broad match;
+* narrow match;
+* related match.
+
+Mappings should preserve uncertainty instead of promoting all lexical similarity to equivalence.
+
+== Evolution ==
+Taxonomy versioning needs to handle:
+* renames;
+* merges;
+* splits;
+* moves;
+* new broader/narrower relations;
+* retired concepts.
+
+Stable identifiers help preserve reference through label changes.
+
+== References ==
+* W3C SKOS Reference.
+* ISO 25964-1.

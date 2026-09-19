@@ -1,0 +1,71 @@
+{{Source status|status=Technical depth derivative|note=Advanced RDF/OWL property-semantics surface of [[Property]].}}
+{{Reading depth|base=Property|current=Technical}}
+= Property — Technical =
+
+== RDF property extension ==
+Under RDF semantics, a property denotes a binary relation whose extension is a set of ordered pairs.
+
+If p denotes property P:
+
+<pre>
+IEXT(P) ⊆ IR × IR
+</pre>
+
+with datatype/literal details governed by the interpretation.
+
+== Subproperty ==
+RDFS semantics for:
+
+<pre>
+p1 rdfs:subPropertyOf p2
+</pre>
+
+requires:
+
+<pre>
+IEXT(p1) ⊆ IEXT(p2)
+</pre>
+
+This licenses entailment from a p1 assertion to a p2 assertion.
+
+== Domain / range ==
+RDFS domain:
+
+<pre>
+IEXT(p) subject → instance of C
+</pre>
+
+Range similarly types objects.
+
+Multiple domain declarations are conjunctive under RDFS semantics, not alternatives.
+
+== OWL object properties ==
+OWL object property expressions support:
+* inverses;
+* property chains;
+* functionality;
+* inverse functionality;
+* symmetry;
+* asymmetry;
+* transitivity;
+* reflexivity;
+* irreflexivity;
+* disjointness.
+
+These axioms can create non-obvious consequences.
+
+== Data properties ==
+OWL data properties map individuals to datatype values.
+
+Datatype semantics differ from object-property semantics because literals denote values in datatype value spaces.
+
+== Constraint versus inference ==
+RDFS/OWL statements describe semantics.
+
+SHACL-like shapes describe conformance constraints.
+
+Using ontology axioms as if they were validation-only rules can infer types rather than report errors.
+
+== References ==
+* W3C RDF Schema.
+* W3C OWL 2 Direct Semantics.

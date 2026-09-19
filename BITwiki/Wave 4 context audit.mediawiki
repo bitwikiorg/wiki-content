@@ -353,7 +353,32 @@ Wave 4 is ready to leave Phase 3 when:
 [[BITwiki:Wave 4 context audit]]
 </pre>
 
-'''Current assessment: semantic and structural audit is complete; repository/CI validation remains the final release gate.'''
+== Release validation — 2026-09-19 ==
+
+PR #20 executed the established Wave release gates after the full 69-surface corpus and Cognitive science Domain changes were present.
+
+The first staging pass exposed two workflow-metadata architecture defects rather than article defects:
+
+* the Psychology / cognitive science request supplied an uncontrolled candidate-Domain value;
+* <code>scripts/audit_workflow.py</code> still duplicated the pre-Wave-3 Domain list instead of consuming the canonical runtime schema.
+
+The request metadata was normalized to controlled Domain <code>Cognitive science</code>. The workflow audit was repaired to load Domains from <code>bitwiki-runtime-schema.json</code>, eliminating the stale duplicated vocabulary and bringing workflow validation under the same canonical schema authority as the rest of V2.
+
+After those repairs:
+
+* the staging workbench completed successfully;
+* deployable MediaWiki structure and identity validation passed;
+* Scribunto Lua 5.1 syntax passed;
+* runtime-schema projection audit passed;
+* substrate audit passed;
+* recursive deployment-plan and importer-safety checks passed;
+* structured knowledge-request workflow audit passed;
+* Main-namespace role audit passed;
+* corpus/V1 inventories and architecture-evidence upload passed.
+
+This completion-state bookkeeping commit must re-pass the same PR gates before merge.
+
+'''Current assessment: Wave 4 is semantically and structurally audited and has passed the full release gate; merge remains conditional on the final-head CI repeat.'''
 
 [[Category:BITwiki research]]
 [[Category:BITwiki meta]]

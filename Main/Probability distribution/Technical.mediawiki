@@ -1,0 +1,45 @@
+{{Source status|status=Technical depth derivative|note=Advanced distribution-theory surface.}}
+{{Reading depth|base=Probability distribution|current=Technical}}
+= Probability distribution — Technical =
+
+== Induced measure ==
+If X is a random variable on probability space (Ω,F,P), the distribution of X is the pushforward measure:
+
+<pre>
+P_X(B) = P(X ∈ B)
+</pre>
+
+for measurable sets B.
+
+== Discrete case ==
+A probability mass function satisfies:
+
+<pre>
+p_X(x) = P(X=x)
+Σ_x p_X(x) = 1
+</pre>
+
+== Continuous case ==
+If absolutely continuous with respect to Lebesgue measure:
+
+<pre>
+P_X(B) = ∫_B f_X(x) dx
+</pre>
+
+The density f_X is a Radon–Nikodym derivative, not a point probability.
+
+== CDF ==
+For real-valued X:
+
+<pre>
+F_X(x)=P(X≤x)
+</pre>
+
+The CDF is nondecreasing, right-continuous, and approaches 0/1 at the tails.
+
+== Model families ==
+Parametric families index distributions by finite-dimensional parameters; nonparametric methods relax that structure.
+
+== References ==
+* NIST/SEMATECH statistics handbook.
+* probability theory texts.

@@ -1,0 +1,101 @@
+{{Source status|status=Technical depth derivative|note=Advanced logic, proof, and formal-verification surface of [[Counterexample]].}}
+{{Reading depth|base=Counterexample|current=Technical}}
+= Counterexample — Technical =
+
+== Predicate logic ==
+For universal claim:
+
+<pre>
+∀x (P(x) → Q(x))
+</pre>
+
+a counterexample is a witness <code>a</code> satisfying:
+
+<pre>
+P(a) ∧ ¬Q(a)
+</pre>
+
+Existence of one witness proves the universal formula false in the domain.
+
+== Countermodels ==
+For argument:
+
+<pre>
+Γ ⊨ φ
+</pre>
+
+a countermodel is model <code>M</code> such that:
+
+<pre>
+M ⊨ Γ
+M ⊭ φ
+</pre>
+
+A countermodel establishes failure of semantic entailment.
+
+== Minimal counterexample proof ==
+Assume the set of counterexamples is nonempty and well-ordered.
+
+Choose minimal counterexample <code>m</code>.
+
+Use the structure of m to construct smaller counterexample <code>m'</code>:
+
+<pre>
+m' < m
+</pre>
+
+contradicting minimality.
+
+This technique underlies infinite descent and many induction-style arguments.
+
+== Property-based testing ==
+In software testing, property-based systems generate inputs searching for a violation of a universal property.
+
+A failing input is a computational counterexample.
+
+Shrinking algorithms then search for a simpler failing input that exposes the essential defect.
+
+Testing cannot establish a universal property over unbounded inputs, but found counterexamples decisively refute the tested claim.
+
+== Model checking ==
+For temporal/property formula φ:
+
+<pre>
+M ⊭ φ
+</pre>
+
+a model checker can often produce a path/trace demonstrating violation.
+
+That trace is a counterexample relative to the model.
+
+If the model is an abstraction, the trace can be spurious and must be checked against the concrete system.
+
+== Counterexample-guided abstraction refinement ==
+CEGAR loop:
+
+<pre>
+abstract
+→ verify
+→ counterexample
+→ check spurious?
+→ refine abstraction
+→ repeat
+</pre>
+
+The process terminates when the property is proved at the abstraction level or a genuine counterexample is found, subject to tool/model limits.
+
+== Statistical non-counterexamples ==
+For probabilistic hypothesis H:
+
+<pre>
+P(E | H) > 0
+</pre>
+
+observing E is logically compatible with H.
+
+Evidence against H must be assessed using likelihood, probability, model comparison, or another inferential framework rather than treating one low-probability event as a formal counterexample.
+
+== References ==
+* Velleman, ''How to Prove It'', 3rd ed.
+* Lakatos, ''Proofs and Refutations''.
+* Formal-methods literature on model checking and CEGAR.

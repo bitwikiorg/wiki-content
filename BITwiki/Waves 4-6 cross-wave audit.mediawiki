@@ -1,0 +1,295 @@
+{{Source status|status=Post-merge cross-wave audit|note=Independent audit of merged Waves 4, 5, and 6. This audit rechecks the combined corpus rather than trusting per-wave release signoff in isolation.}}
+= Waves 4–6 cross-wave audit =
+
+'''State: post-merge cross-wave audit.'''
+
+== Scope ==
+
+This audit covers the three consecutive merged corpus waves completed in the 2026-09-19 session:
+
+* [[BITwiki:Wave 4 context audit|Wave 4 — Cognition and cognitive bias]]: 23 concepts / 69 reader surfaces.
+* [[BITwiki:Wave 5 context audit|Wave 5 — Logic and probability]]: 18 concepts / 54 reader surfaces.
+* [[BITwiki:Wave 6 context audit|Wave 6 — Formal computation and computer-science foundations]]: 17 concepts / 51 reader surfaces.
+
+Combined scope:
+
+<pre>
+58 canonical concepts
+174 reader surfaces
+Core + Simple + Technical
+</pre>
+
+The audit examines the merged <code>main</code> state, cross-wave semantics, graph connectivity, evidence quality, request/workflow state, and release bookkeeping.
+
+== Audit method ==
+
+The audit deliberately does not treat prior CI success as proof of editorial quality.
+
+It rechecks four layers:
+
+# '''Structural / identity''' — one Core semantic identity, derivative identity exemption, controlled Domains, source/depth templates.
+# '''Cross-wave semantics''' — later concepts must not contradict or silently redefine earlier concepts.
+# '''Knowledge graph connectivity''' — resolved concepts should be linked from the earlier pages that introduced or depended on them.
+# '''Evidence / provenance''' — source-sensitive and contested claims require identifiable sources rather than only generic source-family labels.
+
+The repository release gates remain the final machine validation after editorial corrections.
+
+== Finding 1 — isolated waves passed, but the combined graph was underlinked ==
+
+The largest defect was not a false definition. It was '''failure to recur after canonicalization'''.
+
+Earlier wave capture files explicitly identified dependencies on concepts that were created in later waves, but many Core pages were never revisited once those targets became canonical.
+
+Examples found on merged <code>main</code>:
+
+* [[Reasoning]] did not link the now-canonical [[Deductive reasoning]], [[Inductive reasoning]], or [[Abductive reasoning]].
+* [[Logic]] did not link the now-canonical [[Formal language]].
+* [[Consistency (logic)]] did not connect to the later, distinct consistency usages in [[Database]] and [[Distributed system]].
+* [[Distributed cognition]] and [[Distributed system]] were intentionally distinguished in audit prose but not mutually connected in the reader graph.
+* [[Human-computer interaction]] used cognitive concepts but lacked the full intended cross-wave relationship to [[Cognition]] and [[Distributed cognition]].
+* theoretical-computation pages did not consistently back-link to [[Algorithm]], [[Computation]], [[Programming language]], [[Syntax]], or [[Semantics]] despite those dependencies being captured earlier.
+
+This is an editorial-loop failure:
+
+<pre>
+CANONICALIZE
+→ TRANSCLUDE / RELATE
+→ RECUR
+</pre>
+
+The canonicalization step occurred, but the relation/backfill step was incomplete.
+
+== Graph repair ==
+
+Forty-one Core pages across Waves 4–6 were updated with explicit, contextual cross-links to already canonical neighboring concepts.
+
+High-value repaired paths include:
+
+<pre>
+Reasoning
+ ├→ Deductive reasoning
+ ├→ Inductive reasoning
+ └→ Abductive reasoning
+
+Cognitive bias
+ └→ Probability / Uncertainty / Reasoning
+
+Selection bias
+ └→ Probability / Correlation / Conditional probability / Causality
+
+Logic
+ └→ Formal language / Syntax / Semantics / Inference
+
+Probability
+ └→ Probability distribution / Conditional probability / Evidence / Uncertainty
+
+Consistency (logic)
+ └→ Database / Distributed system
+    (explicit non-equivalence)
+
+Formal language
+ └→ Syntax / Semantics / Programming language / Logic
+
+Turing machine
+ └→ Algorithm / Computation / Formal language / Computability
+
+Computability
+ └→ Computational complexity
+    (existence of procedure ≠ resource feasibility)
+
+Distributed cognition
+ ↔ Distributed system
+    (linked specifically to preserve the non-equivalence)
+
+Human-computer interaction
+ └→ Cognition / Attention / Cognitive load / Distributed cognition
+</pre>
+
+The repair adds relationships; it does not create new Knowledge objects or duplicate semantic identity.
+
+== Finding 2 — source specificity was uneven ==
+
+The conceptual content was generally source-oriented, but citation quality varied.
+
+Broad orientation pages sometimes used acceptable source-family references such as “standard texts”. That is not automatically a defect.
+
+However, source-sensitive claims should not depend only on phrases such as:
+
+* “contemporary reviews”;
+* “replication-sensitive literature”;
+* “later research”;
+* “standard texts”.
+
+The most important cases were corrected.
+
+== Evidence-sensitive source repair ==
+
+=== Cognitive load ===
+The page now names:
+
+* Sweller (1988), “Cognitive Load During Problem Solving: Effects on Learning”.
+* Sweller, van Merriënboer & Paas (2019), “Cognitive Architecture and Instructional Design: 20 Years Later”.
+
+This supports the article's history-sensitive treatment of intrinsic/extraneous load and the later reconceptualization of germane processing.
+
+=== Priming ===
+The page now separates classic cognitive priming from disputed behaviorally distant social-priming claims using identifiable sources:
+
+* Meyer & Schvaneveldt (1971), semantic priming.
+* Tulving & Schacter (1990), priming and memory systems.
+* Doyen et al. (2012), direct replication / experimenter-expectancy issue.
+* Pashler, Coburn & Harris (2012), failed social-distance priming replications.
+
+The correction preserves:
+
+<pre>
+robust cognitive priming
+≠ blanket validation of broad behavioral/social priming claims
+</pre>
+
+=== Theory of mind ===
+The bibliography now anchors:
+
+* Premack & Woodruff (1978);
+* Baron-Cohen, Leslie & Frith (1985);
+* Wellman, Cross & Watson (2001) meta-analysis;
+* Heyes (2014) critical review of infant false-belief evidence.
+
+This matches the article's explicit warning that false-belief tasks and infant implicit paradigms do not exhaust theory of mind.
+
+=== Thought suppression / ironic-process theory ===
+The pages now identify:
+
+* Wegner et al. (1987), classic white-bear experiments;
+* Wenzlaff & Wegner (2000), historical review;
+* Niczyporuk (2025 online / 2026 volume), contemporary review of effectiveness and adaptiveness.
+
+The modern review supports the Wave-4 correction that suppression can be effective and that paradoxical rebound is not established as a universal law.
+
+[[Ironic process theory]] remains <code>Supported</code>, not <code>Established</code>.
+
+=== Belief revision ===
+The page now identifies the current 2026 substantive revision of the Stanford Encyclopedia of Philosophy entry and the AGM primary paper.
+
+This verifies that the page correctly treats AGM as foundational but not exhaustive, including belief bases, iterated revision, and non-prioritized change.
+
+=== Turing completeness ===
+The page now anchors the distinction between computational equivalence and the Church–Turing thesis to current SEP entries:
+
+* “Turing Machines”, substantive revision 21 May 2025.
+* “The Church–Turing Thesis”, substantive revision 18 December 2023.
+
+The wave continues to preserve:
+
+<pre>
+formal equivalence theorem
+≠ Church–Turing thesis
+</pre>
+
+=== Esoteric programming language ===
+The article now gives the full Singer & Draper SPLASH 2025 citation and DOI.
+
+This supports retaining esolangs as a public Computer science concept rather than treating them as mere novelty.
+
+== Finding 3 — per-wave audit state was stale after merge ==
+
+The Wave 4, Wave 5, and Wave 6 audit pages still ended with pre-merge language saying merge remained conditional.
+
+That statement was historically correct before each merge but stale on current <code>main</code>.
+
+Each audit page is updated by this cross-wave audit to record its actual merge state and point here for the post-merge combined review.
+
+== Cross-wave semantic audit ==
+
+=== Wave 4 → Wave 5 ===
+
+[[Reasoning]] remains the cognitive umbrella.
+
+Wave 5's deductive, inductive and abductive pages are descendants, not replacements.
+
+[[Cognitive bias]] retains benchmark dependence and does not turn probability theory into a definition of rationality.
+
+[[Selection bias]] remains methodological/statistical rather than cognitive.
+
+=== Wave 5 → Wave 6 ===
+
+[[Logic]] and [[Formal language]] are connected without equating them:
+
+<pre>
+formal language → structured strings/syntax
+logic           → consequence/proof/semantics over formal expressions
+</pre>
+
+[[Consistency (logic)]] remains distinct from database and distributed-system consistency.
+
+[[Propositional logic]], [[First-order logic]], and [[Modal logic]] remain formal logical systems rather than programming-language or workflow mechanisms.
+
+=== Wave 4 → Wave 6 ===
+
+[[Distributed cognition]] and [[Distributed system]] remain different units of analysis:
+
+<pre>
+distributed cognition → cognitive process across people/artifacts/environment
+distributed system    → coordinated computation across networked components
+</pre>
+
+[[Human-computer interaction]] correctly depends on cognitive concepts without reducing HCI to cognitive psychology.
+
+[[Working memory]] remains distinct from machine memory, context windows, and storage systems.
+
+== Title and identity audit ==
+
+No regression was found in the canonical title decisions:
+
+* [[Context (linguistics)]] remains separate from generic context.
+* [[Discourse (linguistics)]] remains separate from Discourse software.
+* [[Consistency (logic)]] remains qualified.
+* [[First-order logic]] remains canonical instead of ambiguous “Predicate logic”.
+* [[Automaton (computation)]] remains qualified.
+* “Pink elephant bias” remains noncanonical.
+
+No duplicate semantic identity is introduced by this audit.
+
+== Request/workflow audit ==
+
+Wave 6's ten pre-existing Computer science requests remain intended as <code>satisfied</code> records pointing to canonical pages rather than active duplicate requests.
+
+The workflow validator will be rerun after this cross-wave audit branch is complete.
+
+== Surface-depth audit ==
+
+This cross-wave repair targets Core graph connectivity.
+
+Simple and Technical pages remain reading-depth derivatives of the same Core identity.
+
+They are not required to duplicate every Core “Related concepts” edge; depth-aware links should continue to be used organically where those relationships are part of the explanation.
+
+No derivative receives a duplicate <code>Knowledge object</code> or category identity.
+
+== Remaining editorial debt ==
+
+The source system still mixes full citations with source-family shorthand on broad, noncontroversial orientation pages.
+
+That is acceptable under the present corpus style, but a future bibliography-normalization pass could standardize editions, years, DOI/ISBN metadata, and external-link formatting across the entire encyclopedia.
+
+This is a formatting/provenance-improvement opportunity, not a blocker for Waves 4–6 correctness.
+
+== Release criteria for this audit ==
+
+The cross-wave audit is complete only when:
+
+# the graph repairs remain valid MediaWiki;
+# all three prior wave counts remain 23/69, 18/54, and 17/51;
+# overall corpus remains 125 canonical concepts / 375 reader surfaces;
+# no new duplicate Knowledge object is introduced;
+# controlled Domain validation passes;
+# request-workflow audit passes;
+# Main-space identity audit passes;
+# runtime-schema/substrate/deployment audits pass;
+# staging projection builds successfully;
+# this audit is merged into <code>main</code>.
+
+'''Current assessment: editorial cross-wave audit and corrections are complete; repository/CI release validation remains pending.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

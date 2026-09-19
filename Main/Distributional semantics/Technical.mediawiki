@@ -1,0 +1,45 @@
+{{Source status|status=Technical depth derivative|note=Advanced vector-space and representation-learning surface of [[Distributional semantics]].}}
+{{Reading depth|base=Distributional semantics|current=Technical}}
+= Distributional semantics — Technical =
+
+== Distributional matrix ==
+Let X be a term–context matrix.
+
+A weighting such as positive pointwise mutual information can emphasize unexpectedly strong associations:
+
+<pre>
+PMI(w,c) = log P(w,c) / (P(w)P(c))
+PPMI(w,c) = max(PMI(w,c), 0)
+</pre>
+
+Singular-value decomposition or related factorization can produce dense latent vectors.
+
+== Predictive embeddings ==
+Predictive objectives learn representations by estimating a target from context or context from a target.
+
+The learned representation geometry is objective-dependent. Cosine proximity is useful because it suppresses vector magnitude, not because cosine is a universal semantic metric.
+
+== Contextual language models ==
+Transformers produce token representations conditioned on an input sequence.
+
+For token i at layer ℓ:
+
+<pre>
+hᵢ^(ℓ) = TransformerLayerℓ(h₁^(ℓ-1), ..., hₙ^(ℓ-1))
+</pre>
+
+Different layers and pooling procedures encode different mixtures of lexical, syntactic, contextual, and task-relevant information.
+
+== Evaluation ==
+Evaluation includes intrinsic word similarity, analogy, probing, lexical substitution, word-sense tasks, semantic textual similarity, retrieval, and downstream prediction.
+
+Intrinsic benchmark correlation can be informative but is not equivalent to semantic validity across domains.
+
+== Bias and identifiability ==
+Representations inherit properties of corpora and optimization objectives. Rotation-equivalent or otherwise transformed embedding spaces can preserve predictive behavior while changing individual coordinates, so dimensions should not be interpreted as semantic features without evidence.
+
+== References ==
+* Lenci (2018).
+* Turney & Pantel (2010).
+* Jurafsky & Martin, current 3rd-edition online manuscript.
+* foundational neural-embedding and transformer-representation literature.

@@ -1,0 +1,71 @@
+{{Source status|status=Technical depth derivative|note=Advanced Semantic Web architecture/interoperability surface of [[Semantic Web]].}}
+{{Reading depth|base=Semantic Web|current=Technical}}
+= Semantic Web — Technical =
+
+== Layered architecture ==
+A practical Semantic Web stack can be viewed as:
+
+<pre>
+IRI / Web identifiers
+↓
+RDF graph data model
+↓
+RDFS / SKOS / vocabularies
+↓
+OWL / rules / richer semantics
+↓
+SPARQL querying
+↓
+application logic / provenance / trust
+</pre>
+
+This is an explanatory stack rather than one mandatory deployment architecture.
+
+== Decentralized semantics ==
+Independent publishers can mint IRIs and vocabularies.
+
+Interoperability depends on:
+* vocabulary reuse;
+* mappings;
+* stable identifiers;
+* explicit semantics;
+* provenance.
+
+Global naming alone does not create conceptual agreement.
+
+== Entailment ==
+RDF/RDFS/OWL define entailment regimes.
+
+A query engine can:
+* query explicit triples only;
+* query a materialized closure;
+* apply entailment during query.
+
+Results depend on which regime is active.
+
+== Open-world / monotonic reasoning ==
+OWL/RDF reasoning is generally open-world and monotonic.
+
+Adding knowledge can add consequences but does not usually retract previous logical consequences.
+
+Validation and default reasoning therefore require separate mechanisms.
+
+== Identity ==
+IRI equality is syntactic identity of identifiers, not necessarily real-world identity of referents.
+
+OWL identity assertions can link individuals but are strong semantic claims.
+
+Entity resolution remains an application-level problem.
+
+== Linked Data ==
+Linked Data typically follows principles of:
+* using Web identifiers;
+* dereferenceable descriptions;
+* RDF-compatible structured data;
+* links to other identifiers.
+
+Rich ontology reasoning is optional.
+
+== References ==
+* W3C RDF / RDFS / OWL / SPARQL specifications.
+* W3C SKOS.

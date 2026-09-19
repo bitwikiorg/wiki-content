@@ -1,0 +1,60 @@
+{{Source status|status=Wave 7 compiled article|note=Model-selection-bias concept grounded in cross-validation and evaluation methodology.}}
+{{Knowledge object
+ |title=Model selection bias
+ |entity_type=Concept
+ |domain=Computer science, Mathematics, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Model selection bias|current=Core}}
+
+= Model selection bias =
+
+== Overview ==
+'''Model selection bias''' occurs when a model, hyperparameter setting, feature set, or other configuration is chosen because it performs best on a noisy finite-sample selection criterion, causing the selected score to overestimate future performance.
+
+It is a form of adaptive overfitting to the model-selection process.
+
+== Selection over many candidates ==
+Suppose many candidate systems have similar true performance but noisy validation estimates.
+
+Selecting the highest observed score tends to select both genuine quality and favorable noise.
+
+The selected validation score is therefore optimistic on average.
+
+== Validation overfitting ==
+The effect becomes stronger when:
+
+* many configurations are tried;
+* validation data are small or noisy;
+* researchers repeatedly inspect results;
+* the search process adapts to prior validation outcomes;
+* benchmark leaderboards are used as development feedback.
+
+== Avoidance ==
+Approaches include:
+
+* independent final testing;
+* nested cross-validation;
+* fresh validation data;
+* correction for multiple/adaptive comparisons;
+* prespecified model-selection procedures;
+* reporting uncertainty and search scope.
+
+== Relation to selection bias ==
+[[Selection bias]] in statistics concerns how observations enter a sample or analysis.
+
+Model selection bias concerns choosing among candidate models/configurations based on noisy performance estimates.
+
+The terms are related only at a broad statistical level.
+
+== Related concepts ==
+[[Validation set]], [[Test set]], [[Overfitting]], [[Selection bias]], [[Benchmark contamination]], and [[Generalization (machine learning)]] distinguish the main evaluation failures.
+
+== References ==
+* Cawley & Talbot, “On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation”, ''JMLR'' 11 (2010), 2079–2107.
+* model-selection and nested-cross-validation literature.
+
+[[Category:Computer science]]
+[[Category:Mathematics]]
+[[Category:Science]]

@@ -1,0 +1,37 @@
+{{Source status|status=Technical depth derivative|note=Advanced complexity-theory surface.}}
+{{Reading depth|base=Computational complexity|current=Technical}}
+= Computational complexity — Technical =
+
+== Resource bounds ==
+For machine M and input length n, complexity functions can bound:
+
+<pre>
+T_M(n) = time
+S_M(n) = space
+</pre>
+
+under a specified computational model.
+
+== Classes ==
+Examples include:
+
+<pre>
+P      = deterministic polynomial time
+NP     = nondeterministic polynomial time / polynomial-time verifiability
+PSPACE = polynomial space
+EXP    = exponential time
+</pre>
+
+Precise definitions depend on encoding and machine model but are robust under standard polynomially related models.
+
+== Reductions ==
+Polynomial-time reductions compare problem difficulty and define hardness/completeness.
+
+If A reduces to B efficiently, an efficient solver for B yields one for A.
+
+== Beyond worst case ==
+Average-case, randomized, parameterized, fine-grained, communication, circuit, streaming and distributed complexity expose resource dimensions hidden by classical worst-case time.
+
+== References ==
+* standard complexity theory texts.
+* SEP — Computability and Complexity.

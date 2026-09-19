@@ -1,0 +1,65 @@
+{{Source status|status=Wave 9 compiled article|note=Information-theory concept grounded in Shannon and standard mathematical texts.}}
+{{Knowledge object
+ |title=Information theory
+ |entity_type=Concept
+ |domain=Mathematics, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 9 compiled context
+}}
+{{Reading depth|base=Information theory|current=Core}}
+
+= Information theory =
+
+== Overview ==
+'''Information theory''' is the mathematical study of quantifying, coding, transmitting, and processing information under uncertainty and noise.
+
+It was formalized by Claude Shannon in the context of communication systems.
+
+== Core quantities ==
+Major concepts include:
+
+* [[Entropy]];
+* conditional entropy;
+* mutual information;
+* relative entropy;
+* source coding;
+* channel capacity;
+* rate–distortion tradeoffs.
+
+== Communication model ==
+A communication system can be idealized as:
+
+<pre>
+source → encoder → channel → decoder → destination
+</pre>
+
+Noise in the channel can corrupt transmitted symbols.
+
+Information theory studies the limits of reliable representation and communication.
+
+== Semantics ==
+Shannon's formalism intentionally abstracts away from message meaning.
+
+Two messages with different semantic importance can have the same Shannon information statistics.
+
+Thus:
+
+<pre>
+information theory ≠ theory of semantics
+</pre>
+
+== Coding theorems ==
+Shannon's source-coding theorem relates entropy to the minimum average lossless description length.
+
+The channel-coding theorem identifies communication rates below channel capacity for which arbitrarily low error can be approached under suitable coding assumptions.
+
+== Related concepts ==
+[[Information]], [[Entropy]], [[Probability]], [[Probability distribution]], [[Conditional probability]], [[Correlation]], and [[Uncertainty]] provide the mathematical context.
+
+== References ==
+* Claude E. Shannon, “A Mathematical Theory of Communication” (1948).
+* Cover & Thomas, ''Elements of Information Theory''.
+* David MacKay, ''Information Theory, Inference, and Learning Algorithms''.
+
+[[Category:Mathematics]]
+[[Category:Computer science]]

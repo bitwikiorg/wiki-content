@@ -1,0 +1,92 @@
+{{Source status|status=Wave 8 compiled article|note=Autonomous-agent concept grounded in classical agent theory and modern autonomous-agent literature.}}
+{{Knowledge object
+ |title=Autonomous agent (artificial intelligence)
+ |entity_type=Concept
+ |domain=Computer science, Systems science
+ |status=Established
+ |provenance=V2 public corpus; Wave 8 compiled context
+}}
+{{Reading depth|base=Autonomous agent (artificial intelligence)|current=Core}}
+
+= Autonomous agent (artificial intelligence) =
+
+== Overview ==
+An '''autonomous agent''' in artificial intelligence is an agent that can select and execute actions over time with limited immediate external control, using its own policy or deliberation and environmental feedback within defined objectives and constraints.
+
+Autonomy is a degree rather than an all-or-nothing property.
+
+== Operational autonomy ==
+An autonomous agent can perform some sequence of decisions without a person specifying each next action.
+
+Autonomy can include:
+
+* choosing among actions;
+* adapting to observations;
+* planning or replanning;
+* deciding when to use tools;
+* maintaining state;
+* recovering from some failures;
+* deciding when to stop or request help.
+
+== Boundaries ==
+An autonomous agent can still operate under:
+
+* explicit goals;
+* permission limits;
+* safety policies;
+* budgets;
+* sandbox constraints;
+* allowed tool sets;
+* approval checkpoints.
+
+Therefore:
+
+<pre>
+autonomous ≠ unconstrained
+</pre>
+
+== Autonomy and learning ==
+An agent can be autonomous without learning.
+
+It can follow a fixed policy or planner.
+
+Likewise, a learning system is not automatically autonomous.
+
+Thus:
+
+<pre>
+autonomous agent ≠ unsupervised-learning system
+</pre>
+
+== Autonomy and AI agents ==
+[[AI agent]] is a contemporary implementation term.
+
+Some AI agents are highly autonomous; others require frequent human approval or operate only within narrow workflows.
+
+The label “agent” alone should not be used to infer autonomy level.
+
+== Risks and evaluation ==
+Greater operational autonomy can increase the importance of:
+
+* monitoring;
+* permission control;
+* safe action spaces;
+* rollback;
+* error recovery;
+* audit logs;
+* intervention mechanisms;
+* evaluation over long trajectories.
+
+Reliability depends on the whole system, not only the decision model.
+
+== Related concepts ==
+[[Intelligent agent]], [[AI agent]], [[Planning (artificial intelligence)]], [[Tool use (artificial intelligence)]], [[Multi-agent system]], [[System boundary]], and [[Verification]] define the autonomy boundary.
+
+== References ==
+* Michael Wooldridge, ''An Introduction to MultiAgent Systems''.
+* Lei Wang et al., LLM-based autonomous-agent survey (2024).
+* NIST, Agentic AI (2026).
+* Chowa et al., autonomous-agent review (2026).
+
+[[Category:Computer science]]
+[[Category:Systems science]]

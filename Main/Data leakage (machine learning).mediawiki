@@ -1,0 +1,58 @@
+{{Source status|status=Wave 7 compiled article|note=Machine-learning data-leakage concept grounded in predictive-modeling methodology.}}
+{{Knowledge object
+ |title=Data leakage (machine learning)
+ |entity_type=Concept
+ |domain=Computer science, Science
+ |status=Established
+ |provenance=V2 public corpus; Wave 7 compiled context
+}}
+{{Reading depth|base=Data leakage (machine learning)|current=Core}}
+
+= Data leakage (machine learning) =
+
+== Overview ==
+In machine learning, '''data leakage''' occurs when information that would not be legitimately available under the intended prediction or evaluation conditions improperly influences training, preprocessing, validation, model selection, or performance estimation.
+
+Leakage can make a system appear more accurate than it will be in real use.
+
+== Target leakage ==
+Target leakage occurs when features contain information derived from or only known after the target outcome.
+
+A model may then appear highly predictive while depending on information unavailable at prediction time.
+
+== Train–test leakage ==
+Leakage can occur when test information influences training through:
+
+* duplicate or near-duplicate records;
+* preprocessing fit before splitting;
+* feature selection using all labels;
+* shared individuals or groups across splits;
+* temporal overlap;
+* target-derived metadata;
+* contamination of training data with test examples.
+
+== Pipeline leakage ==
+Any learned preprocessing step belongs inside the training pipeline.
+
+For example, normalization statistics, imputation values, feature-selection criteria, or dimensionality-reduction components should normally be estimated using training data only.
+
+== Security meaning ==
+This article concerns predictive-model evaluation.
+
+It is distinct from data leakage in computer security, where the issue is unauthorized disclosure or exfiltration.
+
+== Benchmark contamination ==
+[[Benchmark contamination]] is an evaluation-specific leakage problem in which benchmark information influences training or tuning.
+
+It is important but narrower than machine-learning data leakage as a whole.
+
+== Related concepts ==
+[[Training set]], [[Validation set]], [[Test set]], [[Benchmark contamination]], [[Provenance]], [[Validation]], and [[Generalization (machine learning)]] define the relevant evaluation boundary.
+
+== References ==
+* Kaufman, Rosset, Perlich & Stitelman, “Leakage in Data Mining: Formulation, Detection, and Avoidance”, ''ACM TKDD'' 6(4) (2012).
+* Kaufman, Rosset & Perlich, KDD 2011 precursor on leakage in data mining.
+* standard machine-learning evaluation methodology.
+
+[[Category:Computer science]]
+[[Category:Science]]

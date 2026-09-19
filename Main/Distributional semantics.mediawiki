@@ -1,0 +1,103 @@
+{{Source status|status=Wave 3 compiled article|note=Computational/linguistic concept grounded in distributional and vector-space semantics literature.}}
+{{Knowledge object
+ |title=Distributional semantics
+ |entity_type=Concept
+ |domain=Linguistics, Computer science
+ |status=Established
+ |provenance=V2 public corpus; Wave 3 compiled context
+}}
+{{Reading depth|base=Distributional semantics|current=Core}}
+
+= Distributional semantics =
+
+== Overview ==
+'''Distributional semantics''' is a family of approaches that model semantic behavior from patterns in the linguistic contexts in which words, phrases, sentences, or other units occur.
+
+The basic intuition is distributional: expressions that occur in similar contexts often have related semantic behavior.
+
+Distributional methods are central to computational linguistics, information retrieval, and modern language modeling, but distributional evidence is not identical to a complete theory of meaning.
+
+== Distributional hypothesis ==
+A classic distributional idea is that linguistic items can be characterized partly by the environments in which they occur.
+
+If two words repeatedly appear in similar contexts, a model can represent them as close in a derived semantic space.
+
+This supports useful generalization without requiring every semantic feature to be hand-coded.
+
+== Count-based models ==
+Early and classical models build high-dimensional vectors from co-occurrence statistics.
+
+A simplified term–context matrix can be written:
+
+<pre>
+Xᵢⱼ = association(termᵢ, contextⱼ)
+</pre>
+
+Association may be raw frequency, pointwise mutual information, TF–IDF-like weighting, or another statistic.
+
+Dimensionality reduction can compress the matrix into a lower-dimensional space.
+
+== Learned embeddings ==
+Neural methods learn dense vectors that predict words or contexts.
+
+A word embedding assigns a vector:
+
+<pre>
+w → v_w ∈ ℝᵈ
+</pre>
+
+Geometric relations among vectors can support [[Semantic similarity|similarity]] search, analogy-like behavior, clustering, and downstream prediction.
+
+== Contextual representations ==
+Static embeddings assign one main vector to a word type.
+
+Contextualized language models instead compute token representations conditioned on surrounding text, so the representation of a polysemous word can change across uses.
+
+This improves many tasks but does not imply that every contextual vector corresponds to one discrete human-interpretable sense.
+
+== What distributional models capture ==
+Distributional models can encode useful information about:
+
+* topical association;
+* syntactic behavior;
+* lexical similarity;
+* selectional preferences;
+* semantic fields;
+* contextual word usage;
+* sentence or document similarity.
+
+The exact information depends on training data, objective, architecture, tokenization, and representation layer.
+
+== Limits ==
+Distributional co-occurrence does not by itself establish:
+
+* real-world [[Reference|reference]];
+* truth conditions;
+* causal knowledge;
+* logical entailment;
+* conceptual identity;
+* human-like understanding.
+
+Words can occur in similar contexts for reasons that reflect association rather than semantic similarity.
+
+Models can also reproduce corpus bias, historical contingencies, and annotation artifacts.
+
+== Relation to lexical semantics ==
+[[Lexical semantics]] studies word meaning using linguistic and theoretical distinctions.
+
+Distributional semantics provides empirical/computational representations based on usage patterns.
+
+The two can inform each other, but:
+
+<pre>
+distributional similarity ≠ lexical-semantic identity
+</pre>
+
+== References ==
+* Alessandro Lenci, “Distributional Models of Word Meaning”, ''Annual Review of Linguistics'' 4 (2018).
+* Peter D. Turney & Patrick Pantel, “From Frequency to Meaning: Vector Space Models of Semantics”, ''Journal of Artificial Intelligence Research'' 37 (2010).
+* Daniel Jurafsky & James H. Martin, ''Speech and Language Processing'', 3rd-edition online manuscript, 19 August 2026.
+* foundational word-embedding and contextual-representation literature.
+
+[[Category:Linguistics]]
+[[Category:Computer science]]

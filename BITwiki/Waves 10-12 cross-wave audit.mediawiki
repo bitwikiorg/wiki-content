@@ -1,0 +1,314 @@
+{{Source status|status=Post-merge cross-wave audit|note=Independent audit of merged Waves 10, 11, and 12. Rechecks the combined corpus rather than trusting per-wave signoff in isolation.}}
+= Waves 10–12 cross-wave audit =
+
+'''State: post-merge cross-wave audit.'''
+
+== Scope ==
+
+This audit covers the three consecutive merged corpus waves completed on 2026-09-19:
+
+* [[BITwiki:Wave 10 context audit|Wave 10 — Decisions, incentives, and collective systems]]: 13 concepts / 39 reader surfaces.
+* [[BITwiki:Wave 11 context audit|Wave 11 — Decentralized systems and on-chain market primitives]]: 21 concepts / 63 reader surfaces.
+* [[BITwiki:Wave 12 context audit|Wave 12 — Biology and bioinformatics bridge]]: 10 concepts / 30 reader surfaces.
+
+Combined scope:
+
+<pre>
+44 canonical concepts
+132 reader surfaces
+Core + Simple + Technical
+</pre>
+
+Overall corpus after Wave 12:
+
+<pre>
+203 canonical concepts
+609 reader surfaces
+</pre>
+
+The audit checks merged <code>main</code>, semantic boundaries, reader-link resolution, evidence/provenance quality, request lifecycle, and completion bookkeeping.
+
+== Audit method ==
+
+The audit re-runs five editorial layers:
+
+# '''Structural / identity''' — one Core identity per concept; derivative Simple/Technical surfaces remain identity/category-exempt.
+# '''Semantic boundaries''' — adjacent concepts must not become aliases merely because they interact.
+# '''Knowledge-graph resolution''' — reader-facing Core links are checked against canonical Main-space identities; future coverage signals must not masquerade as existing canonical dependencies.
+# '''Evidence / provenance''' — current standards/drafts are labeled by actual publication state.
+# '''Workflow / bookkeeping''' — satisfied knowledge requests and merged-wave ledger state must agree with the canonical corpus.
+
+== Structural re-audit ==
+
+Combined scope remains:
+
+* Wave 10: 39 / 39 reader surfaces.
+* Wave 11: 63 / 63 reader surfaces.
+* Wave 12: 30 / 30 reader surfaces.
+
+No concept, title, Domain, epistemic status, or reader-surface count is changed by this audit.
+
+== Finding 1 — one unresolved future-concept link ==
+
+The 44 Core pages were checked for reader-facing internal concept links.
+
+One unresolved canonical-looking link appeared:
+
+<pre>
+Utility (decision theory)
+ └→ [[Preference]]
+</pre>
+
+[[BITwiki:Wave 10 context capture]] explicitly deferred Preference because preference spans decision theory, economics, philosophy, psychology, and cognitive science and requires its own cross-domain capture.
+
+The Core article therefore now keeps “preference” as ordinary text rather than creating a redlink that implies an existing canonical dependency.
+
+No [[Preference]] stub is created.
+
+== Finding 2 — Wave 12 was missing from the completed-wave ledger table ==
+
+After PR #30 merged, [[BITwiki:Requested knowledge]] correctly reported:
+
+<pre>
+203 canonical concepts / 609 reader surfaces
+</pre>
+
+and correctly advanced the TODO heading to “after Wave 12”, but the completed-wave table ended at Wave 11.
+
+That bookkeeping state was internally inconsistent.
+
+This audit restores the explicit Wave 12 row and links Waves 10–12 to this combined post-merge audit.
+
+== Finding 3 — attestation provenance could be more specific ==
+
+[[Attestation]] correctly separates cryptographic/verifiable provenance from truth of the attested claim.
+
+Its third reference used a generic “NIST remote-attestation and platform-attestation literature” label.
+
+The audit replaces that generic source-family reference with:
+
+* IETF RFC 9334, ''Remote ATtestation procedureS (RATS) Architecture'' (2023).
+
+RFC 9334 supplies a concrete attester → evidence → verifier → attestation result → relying-party architecture and reinforces the article's distinction between evidence/appraisal and truth by assertion.
+
+== Finding 4 — recent standards publication state is already correctly labeled ==
+
+No correction is required to the recent identity/credential standards references:
+
+* W3C DID Core v1.0 — Recommendation, 19 July 2022.
+* W3C DID Core v1.1 — Candidate Recommendation Snapshot, 5 March 2026.
+* W3C Verifiable Credentials Data Model v2.0 — Recommendation, 15 May 2025.
+* W3C Verifiable Credentials Data Model v2.1 — Working Draft, 5 September 2026.
+
+The v2.1 Working Draft remains explicitly a work in progress and is cited only for current terminology evolution, not as a finished Recommendation.
+
+The EMBL-EBI introductory bioinformatics pathway is also correctly identified as reviewed April 2026.
+
+== Cross-wave semantic audit ==
+
+=== Wave 10 → Wave 11 ===
+
+[[Governance]] remains a broad institutional concept; blockchain governance is only one application.
+
+[[Incentive]], [[Game theory]], and [[Mechanism design]] can help analyze consensus and DeFi mechanisms without defining [[Consensus mechanism]], [[Automated market maker]], or [[Decentralized finance]].
+
+[[Sybil attack]] remains a general distributed-systems/security concept. Its relationship to [[Consensus mechanism]], [[Reputation system]], and decentralized identity systems does not make it blockchain-specific.
+
+[[Identity]] remains broader than [[Decentralized identity]], wallet addresses, public keys, and token ownership.
+
+=== Wave 11 market boundaries ===
+
+The combined corpus preserves:
+
+<pre>
+AMM ≠ liquidity pool
+AMM ≠ constant-product mechanism only
+liquidity pool ≠ liquidity provider
+slippage ≠ price impact
+price impact ≠ fee
+arbitrage ≠ guaranteed executable profit
+oracle ≠ truth
+attestation ≠ truth
+token ≠ external asset itself
+wallet ≠ on-chain asset storage
+</pre>
+
+These distinctions survive cross-linking and do not require new identities.
+
+=== Wave 11 → Wave 12 ===
+
+No forced conceptual bridge is added merely because the waves are consecutive.
+
+Biological information and computational biology reuse general concepts such as [[Information]], [[Database]], [[Metadata]], [[Provenance]], [[Algorithm]], [[Software]], [[Version control]], [[Network]], and [[Scientific model]].
+
+They do not require blockchain-specific concepts to define their public scope.
+
+Sparse cross-wave connectivity here is therefore semantically correct rather than a graph defect.
+
+=== Wave 12 internal boundaries ===
+
+The combined corpus preserves:
+
+<pre>
+genetics ≠ genomics
+genomics ≠ sequencing
+biological sequence ≠ physical molecule
+sequence ≠ annotation
+alignment ≠ homology
+similarity ≠ homology
+database record ≠ verified truth
+predicted annotation ≠ experimentally validated function
+phylogenetic tree ≠ directly observed history
+gene tree ≠ species tree
+systems biology ≠ network diagram
+reproducible computational research ≠ reproducibility
+reproducibility ≠ replication
+</pre>
+
+== Request/workflow audit ==
+
+The seven near-term Bioinformatics requests remain satisfied:
+
+* [[Biological sequence]]
+* [[Sequence alignment]]
+* [[Biological database]]
+* [[Sequence annotation]]
+* [[Genomics]]
+* [[Phylogenetics]]
+* “Reproducible bioinformatics workflow” → [[Reproducible computational research]]
+
+The normalized final request intentionally maps to a broader canonical page rather than creating a redundant narrow identity.
+
+No active request/canonical-title conflict is introduced.
+
+== Title / identity audit ==
+
+The following normalizations remain correct:
+
+* [[Utility (decision theory)]]
+* [[Token (blockchain)]]
+* [[Oracle (blockchain)]]
+* [[Reproducible computational research]]
+
+The following broad titles remain appropriately unqualified:
+
+* [[Governance]]
+* [[Attestation]]
+* [[Arbitrage]]
+* [[Slippage]]
+* [[Price impact]]
+* [[Genetics]]
+* [[Genomics]]
+* [[Bioinformatics]]
+* [[Phylogenetics]]
+
+No title is added, removed, or renamed.
+
+== Epistemic-status audit ==
+
+All 44 concepts remain '''Established'''.
+
+This is a status on the existence and durable meaning of the concepts, not an endorsement of every implementation, model, governance design, biological inference, or market mechanism.
+
+No status change is required.
+
+== Source-role audit ==
+
+{| class="wikitable"
+! Source family !! Main role
+|-
+| SEP; von Neumann/Morgenstern; Savage; Osborne/Rubinstein || decision theory, utility, game theory
+|-
+| Hurwicz/Maskin/Myerson; Nobel materials; Holmström || mechanisms, incentives, delegation
+|-
+| Olson; Ostrom; Samuelson; governance literature || collective action, public goods, commons, governance
+|-
+| Resnick et al.; Douceur || reputation and Sybil attacks
+|-
+| NIST FIPS / NIST IR 8202 / NIST IR 8301 || cryptography, blockchain, consensus, smart contracts, token/wallet primitives
+|-
+| W3C DID / VC standards || decentralized identity and credential/claim structures
+|-
+| RFC 9334 || remote-attestation roles, evidence, appraisal, and results
+|-
+| BIS; Angeris/Chitra; Uniswap technical literature; Kyle || DeFi/AMM/liquidity/execution mechanics
+|-
+| NHGRI / NIH || genetics and genomics
+|-
+| NCBI / EMBL-EBI || biological sequence, databases, annotation, alignment, bioinformatics
+|-
+| statistical phylogenetics literature || evolutionary inference
+|-
+| NIH/NIGMS / systems-biology literature || systems biology
+|-
+| Sandve et al.; Piccolo/Frampton; FAIR literature || reproducible computational research
+|}
+
+== Stale per-wave merge state ==
+
+The Wave 10, Wave 11, and Wave 12 audit pages ended with pre-merge language after their PRs had already merged.
+
+This audit updates them to:
+
+* Wave 10 — PR #28, merge commit <code>b79e2cc660858521ce4018a0c7fe34ce8cdac6e7</code>.
+* Wave 11 — PR #29, merge commit <code>c99393c4fec120ab8992624e8772d922ee798b5a</code>.
+* Wave 12 — PR #30, merge commit <code>2d184471661dbc6310378854a57ba98b229b196d</code>.
+
+Each per-wave audit now links here for the combined post-merge review.
+
+== Corpus totals ==
+
+<pre>
+Wave 10: 13 concepts / 39 surfaces
+Wave 11: 21 concepts / 63 surfaces
+Wave 12: 10 concepts / 30 surfaces
+
+Combined: 44 concepts / 132 surfaces
+Overall: 203 canonical concepts / 609 reader surfaces
+</pre>
+
+== Release criteria for this cross-audit ==
+
+The audit is complete only when:
+
+# all 132 Wave 10–12 surfaces remain structurally valid;
+# the unresolved Preference link remains removed;
+# the Wave 12 completed-ledger row is present;
+# seven Bioinformatics requests remain satisfied;
+# recent standards retain correct publication-state labels;
+# controlled Domains and epistemic statuses pass;
+# runtime schema and substrate audits pass;
+# Main-space identity and workflow audits pass;
+# deployment/importer audits pass;
+# staging projection builds successfully;
+# this cross-audit is merged into <code>main</code>.
+
+== Release validation — 2026-09-19 ==
+
+PR #31 executed the established release gates on the revised Waves 10–12 combined corpus.
+
+The audited head passed:
+
+* staging frontend and canonical repository-architecture validation;
+* staging projection build and generated-artifact verification;
+* deployable MediaWiki structure and identity validation;
+* Scribunto Lua 5.1 syntax validation;
+* runtime-schema projection audit;
+* MediaWiki / SMW / Lua / Cargo substrate audit;
+* recursive deployment-plan validation;
+* deployment importer-safety validation;
+* structured knowledge-request workflow audit;
+* Main-namespace role audit;
+* V2 corpus and V1 architecture/classification inventories;
+* architecture-evidence upload.
+
+The request workflow validator confirms the seven Bioinformatics requests remain satisfied and no active request collides with a canonical Main-space title.
+
+No concept-count, Domain, title, or epistemic-status change was required.
+
+This bookkeeping commit must re-pass the same gates before merge.
+
+'''Current assessment: the post-merge Waves 10–12 cross-wave audit is complete and has passed its release gates; merge remains conditional only on final-head CI repeat.'''
+
+[[Category:BITwiki research]]
+[[Category:BITwiki meta]]

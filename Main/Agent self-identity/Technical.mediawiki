@@ -1,0 +1,86 @@
+{{Source status|status=Technical depth derivative|note=Advanced persistent-agent identity and continuity surface.}}
+{{Reading depth|base=Agent self-identity|current=Technical}}
+= Agent self-identity — Technical =
+
+== Persistent subject model ==
+A persistent agent can be modeled as an enduring subject identifier <code>I</code> associated with time-varying state and authority:
+
+<pre>
+A_t = (I, S_t, G_t, C_t, P_t, H_t)
+</pre>
+
+where:
+
+* <code>S_t</code> is mutable operational state;
+* <code>G_t</code> is goals or commitments;
+* <code>C_t</code> is configuration/constraints;
+* <code>P_t</code> is permissions or delegated authority;
+* <code>H_t</code> is provenance/history.
+
+The decomposition is architecture-dependent. The important distinction is that the subject relation can persist while these components change.
+
+== Identity resolution ==
+A persistent-state access path can be represented schematically as:
+
+<pre>
+resolve subject I
+→ resolve state namespace/version for I
+→ authorize read
+→ validate provenance/scope
+→ reconstruct current state
+→ act
+→ write under resolved subject and scope
+</pre>
+
+Skipping subject resolution makes cross-agent state misbinding possible even when the stored records are individually valid.
+
+== Identifier versus continuity ==
+FIPA Agent Identifiers and modern workload identities provide ways to name or authenticate agents.
+
+They do not by themselves solve persistence semantics. A continuity policy must still specify whether identity survives:
+
+* credential rotation;
+* process restart;
+* host migration;
+* model replacement;
+* checkpoint restore;
+* state fork.
+
+== Fork semantics ==
+A state clone creates a branching problem:
+
+<pre>
+copy(state) ≠ necessarily copy(identity)
+</pre>
+
+A migration may preserve identity; a fork may create child identities; a recovery operation may restore one identity from a checkpoint. The policy must define which interpretation applies.
+
+== Security-principal boundary ==
+IAM usually answers which principal is authenticated and what it may access.
+
+Persistent self-identity can require an additional state-continuity relation:
+
+<pre>
+authenticated principal
++ persistent agent referent
++ state ownership
++ provenance
++ delegated authority
+</pre>
+
+These relations may coincide in a simple deployment and diverge in a compound agent system.
+
+== BITwiki identity continuity invariant ==
+The following is a BITwiki engineering synthesis:
+
+<pre>
+persistent read/write/action ⇒ resolved owning agent identity
+</pre>
+
+It should be treated as a design invariant, not a standardized theorem.
+
+== References ==
+* NIST NCCoE, ''Accelerating the Adoption of Software and Artificial Intelligence Agent Identity and Authorization'' (2026).
+* Foundation for Intelligent Physical Agents, Agent Management / Agent Identifier specifications.
+* W3C PROV-O.
+* Stanford Encyclopedia of Philosophy, ''Identity''.

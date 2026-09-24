@@ -1,0 +1,94 @@
+{{Source status|status=Technical depth derivative|note=Advanced durable-state integrity and memory-governance surface.}}
+{{Reading depth|base=Persistent state contamination (artificial intelligence)|current=Technical}}
+= Persistent state contamination (artificial intelligence) — Technical =
+
+== State lifecycle ==
+Let a memory/state item <code>m</code> pass through:
+
+<pre>
+source
+→ candidate write
+→ validation
+→ storage/versioning
+→ retrieval
+→ interpretation
+→ action
+→ derived write
+</pre>
+
+Contamination occurs when an invalid or mis-scoped item survives into durable state and later has causal influence.
+
+== Integrity dimensions ==
+A durable item can be contaminated because of:
+
+* false content;
+* malicious instruction;
+* stale validity;
+* wrong identity binding;
+* wrong scope;
+* broken provenance;
+* corrupted derivation;
+* unauthorized authority;
+* unresolved contradiction.
+
+A binary true/false field is therefore insufficient for many agent-memory systems.
+
+== Provenance-carrying state ==
+A richer item can be represented as:
+
+<pre>
+m = (content, source, subject, scope, time, version, derivation, authority, confidence)
+</pre>
+
+These fields do not guarantee correctness. They make later trust decisions and rollback more tractable.
+
+== Memory poisoning ==
+Adversarial memory poisoning supplies content that the agent writes now and retrieves later.
+
+The security boundary is unusual because the agent itself may transform the hostile source through summarization or tool use before storing it. This can obscure origin.
+
+Recent work therefore studies write-time origin binding, tamper-evident provenance, retrieval screening, and lifecycle governance.
+
+== Contamination propagation ==
+A contaminated item can create descendants:
+
+<pre>
+m_bad
+→ action a
+→ result r
+→ summary s
+→ m_bad2
+</pre>
+
+Deleting the original item may not remove derived contamination unless lineage is tracked.
+
+== Recovery ==
+Recovery can require:
+
+* identify contaminated roots;
+* compute/inspect descendants;
+* quarantine dependent state;
+* restore from a trusted version;
+* replay from clean evidence;
+* invalidate derived caches;
+* re-evaluate actions taken under contaminated state.
+
+This resembles data-lineage recovery more than simple prompt filtering.
+
+== Shared memory ==
+In multi-agent systems, shared memory creates a propagation surface.
+
+One agent can write an invalid item that is later consumed by several agents, multiplying the blast radius. Subject/scope binding and write authority are therefore separate from semantic relevance.
+
+== Security evidence boundary ==
+Published 2026 memory-poisoning results demonstrate real cross-session persistence in tested systems, but attack rates vary by harness, model, memory implementation, and threat model.
+
+The broader "persistent state contamination" category also includes accidental errors and should not inherit adversarial benchmark numbers without evidence.
+
+== References ==
+* Lin et al. (2026), long-term memory security survey.
+* Pulipaka et al. (2026), sleeper memory poisoning.
+* Torres, Shrestha & Misra (2026), GhostWriter.
+* Huang, Zhang & Jia (2026), persistent memory poisoning in harness-based agents.
+* Louck (2026), origin-bound memory authority.
+* W3C PROV-O.

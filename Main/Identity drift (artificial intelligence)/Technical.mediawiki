@@ -1,0 +1,85 @@
+{{Source status|status=Technical depth derivative|note=Advanced longitudinal consistency surface for persistent-agent identity.}}
+{{Reading depth|base=Identity drift (artificial intelligence)|current=Technical}}
+= Identity drift (artificial intelligence) — Technical =
+
+== Anchor-state formulation ==
+Let <code>K</code> be a set of identity-relevant anchors and <code>Z_t</code> the agent's current identity-relevant state:
+
+<pre>
+K = {role, commitments, constraints, ownership, policy, ...}
+Z_t = current represented/operational identity state
+</pre>
+
+Identity drift exists when <code>Z_t</code> diverges from the intended interpretation of <code>K</code> without an authorized identity-changing transition.
+
+The distance function is domain-specific; there is no canonical scalar "identity drift score."
+
+== Longitudinal character ==
+A single mismatch can be configuration error or state corruption.
+
+Drift emphasizes trajectory:
+
+<pre>
+Z_0 → Z_1 → ... → Z_t
+</pre>
+
+where locally small updates accumulate into a materially different state.
+
+== Relation to goal drift ==
+Goal drift can be modeled as divergence of a goal component <code>G_t</code> from an assigned objective <code>G*</code>.
+
+Identity drift is broader when the persistent identity includes additional components:
+
+<pre>
+Z_t = (G_t, role_t, constraints_t, self-model_t, scope_t, ...)
+</pre>
+
+The generalization is conceptual, not a claim that all these variables share one metric.
+
+== Change authorization ==
+A robust system should distinguish:
+
+* allowed adaptation;
+* explicit migration;
+* operator-approved reconfiguration;
+* inferred update;
+* accidental drift.
+
+Versioned identity anchors and provenance can make this distinction auditable.
+
+== Detection ==
+Possible methods include:
+
+* invariant checks;
+* semantic comparison against canonical commitments;
+* signed/versioned configuration comparison;
+* behavioral regression tests;
+* self-model calibration;
+* provenance-aware diffing;
+* checkpoint comparison;
+* independent policy evaluation.
+
+Behavior alone may be insufficient because two internal states can produce similar short-term outputs.
+
+== Correction ==
+A correction procedure can:
+
+<pre>
+detect divergence
+→ identify changed components
+→ trace provenance
+→ classify authorized vs unauthorized change
+→ reconcile / rollback / migrate
+→ issue new checkpoint/version
+</pre>
+
+Blind rollback can itself be wrong if the agent intentionally evolved.
+
+== Research boundary ==
+Direct goal-drift and persona-drift research supplies evidence for longitudinal behavioral/goal instability. The extension to a broader persistent identity state is BITwiki synthesis and should retain that label.
+
+== References ==
+* Arike et al. (2025), ''Evaluating Goal Drift in Language Model Agents''.
+* Li et al. (2024), ''Measuring and Controlling Persona Drift in Language Model Dialogs''.
+* Lewis et al. (2016), self-aware computing.
+* SEP, ''Identity''.

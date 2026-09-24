@@ -1,0 +1,26 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Agent initialization]].}}
+{{Reading depth|base=Agent initialization|current=Simple}}
+= Agent initialization — Simple =
+
+'''Agent initialization''' is what happens before an AI agent begins its normal work.
+
+A simple agent may only need to load settings.
+
+A persistent agent may also need to determine:
+
+* which agent it is;
+* which memories belong to it;
+* which goals and rules are current;
+* which permissions it has;
+* which tools are available;
+* whether old state is still valid.
+
+A restart is not always the same as a fresh start. A resumed agent may need to restore earlier state, while a new agent may need a new identity and empty state.
+
+Initialization matters because a mistake at the beginning can affect every later step.
+
+== Sources ==
+* BDI agent-programming literature.
+* FIPA agent lifecycle specifications.
+* NIST agent identity and authorization work.
+* [[Agent initialization|Core article]]

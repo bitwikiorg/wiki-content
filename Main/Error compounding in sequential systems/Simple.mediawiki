@@ -1,0 +1,26 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Error compounding in sequential systems]].}}
+{{Reading depth|base=Error compounding in sequential systems|current=Simple}}
+= Error compounding in sequential systems — Simple =
+
+'''Error compounding''' happens when one mistake changes what happens next, making later mistakes more likely or more damaging.
+
+For example:
+
+<pre>
+wrong first step
+→ different situation
+→ next decision uses that situation
+→ another mistake becomes possible
+</pre>
+
+This can happen in forecasts, robots, language generation, planning, and AI-agent workflows.
+
+But errors do not always grow. A system can correct them with new measurements, validation, feedback, or a return to trusted state.
+
+The important question is whether earlier outputs become later inputs.
+
+== Sources ==
+* Ross, Gordon & Bagnell (2011), DAgger / sequential imitation learning.
+* Bengio et al. (2015), scheduled sampling.
+* Venkatraman, Hebert & Bagnell (2015), multi-step prediction.
+* [[Error compounding in sequential systems|Core article]]

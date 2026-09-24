@@ -1,0 +1,137 @@
+{{Source status|status=Issue 35 synthesis article|note=Engineering synthesis grounded in identity/persistence theory, agent identifiers, provenance, and 2026 agent identity/IAM work. "Agent self-identity" is not presented as a single standardized field term.}}
+{{Knowledge object
+ |title=Agent self-identity
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Emerging
+ |provenance=V2 public corpus; issue #35 research synthesis
+}}
+{{Reading depth|base=Agent self-identity|current=Core}}
+
+= Agent self-identity =
+
+== Overview ==
+'''Agent self-identity''' is the stable identification of a persistent artificial agent as the same operational referent across executions, sessions, restarts, migrations, or component changes.
+
+It answers a continuity question:
+
+<pre>
+Which state, commitments, constraints, permissions, and history belong to this agent?
+</pre>
+
+The concept concerns persistent referential continuity. It is not a claim that the agent is conscious or has a human-like sense of self.
+
+== Identity versus adjacent concepts ==
+Agent self-identity should be separated from several neighboring ideas.
+
+* [[Identity]] is the broader concept of numerical sameness and persistence.
+* An '''identifier''' is a name or token used to refer to an agent.
+* '''Authentication''' establishes that a caller can prove possession of some credential.
+* '''Authorization''' determines what an authenticated subject may do.
+* A '''persona''' is a behavioral or representational profile.
+* [[Agent memory (artificial intelligence)|Agent memory]] stores state that may belong to an agent.
+* A runtime process, model invocation, session, container, or API key can participate in an agent's execution without being the persistent agent itself.
+
+Thus:
+
+<pre>
+identity ≠ identifier ≠ credential ≠ persona ≠ process
+</pre>
+
+A persistent agent can change credentials, models, hosts, or processes while remaining the same operational subject, provided the system preserves the intended continuity relation.
+
+== Identity anchors ==
+An implementation can anchor persistent identity using combinations of:
+
+* a stable agent identifier;
+* ownership or principal relationships;
+* a state namespace;
+* versioned configuration;
+* persistent goals or commitments;
+* permission scope;
+* provenance and execution history;
+* lifecycle records;
+* cryptographic keys or attestations.
+
+No single anchor is universally sufficient. Cryptographic identity is useful for authentication and non-repudiation, but it does not by itself determine which memories, commitments, or historical state should be treated as belonging to the agent.
+
+== Identity and state ==
+Identity and state are related but different.
+
+An agent's state can change substantially while the agent remains the same referent. Conversely, two agents can begin from identical copied state and still be distinct agents.
+
+A useful distinction is:
+
+<pre>
+identity = which enduring subject
+state = what is currently true of that subject
+</pre>
+
+This matters when state is persisted outside a single process. If a memory, task record, capability grant, or checkpoint is loaded without first resolving the intended agent, valid data can be attached to the wrong subject.
+
+== Persistence across execution boundaries ==
+Persistent agents can cross boundaries such as:
+
+* process restart;
+* model replacement;
+* software upgrade;
+* host migration;
+* restored checkpoint;
+* credential rotation;
+* context-window reset;
+* handoff between orchestrators.
+
+Continuity across these boundaries is an engineering decision, not an automatic property of the model or process.
+
+A clone creates an additional identity problem. Copying an agent's state does not necessarily imply that both descendants remain numerically the same agent. Systems that support forks, replicas, or delegated sub-agents need explicit rules for when identity is preserved, split, derived, or newly created.
+
+== Operational continuity ==
+For persistent agents, identity often acts as an ownership boundary over state and authority.
+
+A robust system therefore needs to answer questions such as:
+
+* Which agent owns this memory?
+* Which version of its commitments is authoritative?
+* Which permissions belong to it now?
+* Which past actions were performed by it?
+* Which state is inherited after restart?
+* Which state belongs to a predecessor, clone, user, task, or other agent instead?
+
+NIST's 2026 agent-identity work emphasizes identification, authentication, authorization, auditing, delegation, lifecycle controls, and binding agent actions back to accountable principals.
+
+== BITwiki engineering synthesis: identity continuity invariant ==
+The following formulation is a BITwiki engineering synthesis rather than established field terminology:
+
+<pre>
+Before persistent state is read, acted on, or written back,
+the system should resolve which persistent agent identity owns that state.
+</pre>
+
+This can be treated as an '''identity continuity invariant''' for systems in which agent state survives individual executions.
+
+It does not imply that identity must never change. Continuity-changing events—forks, transfers, resets, retirement, migration, or deliberate reconfiguration—should be explicit rather than accidental.
+
+== Failure modes ==
+Failures of persistent identity can produce several distinct problems:
+
+* [[Identity drift (artificial intelligence)|identity drift]] — the maintained self-representation or commitments gradually diverge from intended anchors;
+* [[State misbinding (artificial intelligence)|state misbinding]] — state is associated with the wrong identity, task, scope, or referent;
+* [[Persistent state contamination (artificial intelligence)|persistent state contamination]] — erroneous state is written durably and later reused as trusted context.
+
+These failures can interact. A misbound record can contaminate memory; repeated contaminated recall can then contribute to identity drift.
+
+== Epistemic notes ==
+Agent identity is an active standards and engineering area, but the literature does not supply one canonical definition of "agent self-identity" covering persistence, memory ownership, commitments, and runtime continuity. Current NIST work focuses strongly on identification, authentication, authorization, auditing, non-repudiation, delegation, and lifecycle governance. Earlier multi-agent standards standardized agent identifiers and management lifecycles.
+
+This article synthesizes those lines into a persistent-state concept and should not be read as claiming that "agent self-identity" is already a universally standardized technical term.
+
+== References ==
+* [https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd NIST NCCoE, ''Accelerating the Adoption of Software and Artificial Intelligence Agent Identity and Authorization'' (2026).]
+* [https://www.nist.gov/blogs/cybersecurity-insights/back-future-why-agentic-ai-needs-strong-identity-foundation Fisher and Galluzzo, ''Back to the Future: Why Agentic AI Needs a Strong Identity Foundation'' (NIST, 2026).]
+* Foundation for Intelligent Physical Agents, ''FIPA Agent Management Specification'' and ''FIPA ACL Message Structure Specification'' (Agent Identifier semantics).
+* [https://www.ietf.org/archive/id/draft-aip-agent-identity-protocol-00.html Cao and Arango Gutierrez, ''Agent Identity Protocol: Agentic Authentication and Authorized Policy Enforcement'', Internet-Draft (2026).]
+* [https://plato.stanford.edu/entries/identity/ Stanford Encyclopedia of Philosophy — Identity.]
+* [https://plato.stanford.edu/entries/identity-personal/ Stanford Encyclopedia of Philosophy — Personal Identity.] Used here for the general distinction between persistence and changing properties, not to anthropomorphize artificial agents.
+* [https://www.w3.org/TR/prov-o/ W3C, ''PROV-O: The PROV Ontology'' (2013).]
+
+[[Category:Computer science]]

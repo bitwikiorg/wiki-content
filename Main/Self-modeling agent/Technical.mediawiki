@@ -1,0 +1,86 @@
+{{Source status|status=Technical depth derivative|note=Advanced self-modeling, metacognitive, and adaptive-system surface.}}
+{{Reading depth|base=Self-modeling agent|current=Technical}}
+= Self-modeling agent — Technical =
+
+== Functional formulation ==
+Let an agent have internal state <code>s_t</code>, observations <code>o_t</code>, and a self-model <code>M_t</code>.
+
+A self-modeling architecture can be represented abstractly as:
+
+<pre>
+M_(t+1) = U(M_t, o_t, s_t, a_t, r_t)
+a_t = π(o_t, s_t, M_t)
+</pre>
+
+where <code>U</code> updates the self-model and the policy <code>π</code> conditions action selection on it.
+
+The defining feature is causal use of <code>M_t</code>, not any particular representation.
+
+== Model targets ==
+A self-model may represent:
+
+* morphology or dynamics;
+* action capabilities;
+* resource limits;
+* tool affordances;
+* competence estimates;
+* internal reasoning process;
+* historical performance;
+* uncertainty;
+* goals or constraints.
+
+Self-models can be symbolic, probabilistic, learned latent models, programmatic structures, or hybrids.
+
+== Prediction-error update ==
+Robotic self-modeling often uses discrepancies between predicted and observed sensorimotor consequences:
+
+<pre>
+predicted outcome = M_t(state, action)
+error = observed outcome - predicted outcome
+M_(t+1) = update(M_t, error)
+</pre>
+
+Bongard et al. used this logic to rebuild a morphology model after damage and select compensating behavior.
+
+== Metacognition ==
+Model-based metacognition treats object-level cognition as something represented at a meta-level.
+
+A two-level architecture can be written as:
+
+<pre>
+object layer: solve task
+meta layer: model / monitor / modify object-layer process
+</pre>
+
+A self-model is therefore one possible substrate for metacognitive control, but self-modeling is not identical to every form of metacognition.
+
+== Evaluation ==
+A self-model can be evaluated by:
+
+* predictive accuracy about the agent's own behavior;
+* calibration of capability estimates;
+* usefulness for adaptation;
+* robustness under structural change;
+* ability to detect anomalies;
+* cost of maintaining the model;
+* whether model updates improve downstream control.
+
+== Failure modes ==
+A self-model can become stale, overfit, contaminated, or self-confirming.
+
+Because action selection can depend on the self-model, self-model error can create a feedback loop:
+
+<pre>
+incorrect self-model
+→ poor action
+→ biased evidence
+→ incorrect model update
+</pre>
+
+External measurements or independent evaluation can help break this loop.
+
+== References ==
+* Bongard, Zykov & Lipson (2006), ''Science'' 314:1118–1121.
+* Bellman et al. (2017), “Self-modeling and Self-awareness”.
+* Lewis et al. (eds.) (2016), ''Self-aware Computing Systems: An Engineering Approach''.
+* Nolte et al. (2026), metacognitive-architecture review.

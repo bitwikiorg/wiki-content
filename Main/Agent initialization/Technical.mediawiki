@@ -1,0 +1,84 @@
+{{Source status|status=Technical depth derivative|note=Advanced bootstrap and state-reconstruction surface for persistent agents.}}
+{{Reading depth|base=Agent initialization|current=Technical}}
+= Agent initialization — Technical =
+
+== Bootstrap as state reconstruction ==
+For a persistent agent, initialization can be treated as construction of an execution-ready state <code>X_0</code> from multiple authorities:
+
+<pre>
+X_0 = R(I, V, C, P, M, G, E, H)
+</pre>
+
+where:
+
+* <code>I</code> = persistent identity;
+* <code>V</code> = software/model/configuration version;
+* <code>C</code> = constraints/policy;
+* <code>P</code> = permissions/delegation;
+* <code>M</code> = persistent memory/checkpoint state;
+* <code>G</code> = goals/commitments;
+* <code>E</code> = environment/tool context;
+* <code>H</code> = provenance/history.
+
+<code>R</code> is not necessarily a pure function: reconciliation may reject inconsistent inputs or require external validation.
+
+== Suggested dependency order ==
+A defensible persistent-agent bootstrap is:
+
+<pre>
+1. resolve persistent identity
+2. load versioned configuration/policy
+3. establish authentication and current authority
+4. discover/validate environment and tools
+5. retrieve identity- and scope-bound state
+6. validate provenance, freshness, and consistency
+7. restore goals/commitments
+8. register run/provenance state
+9. enter normal reasoning loop
+</pre>
+
+This ordering is an engineering synthesis rather than a universal protocol.
+
+== Fresh start versus continuation ==
+A runtime should distinguish operations explicitly:
+
+<pre>
+create(I_new)
+restart(I_existing)
+resume(I_existing, checkpoint)
+recover(I_existing, evidence)
+fork(I_parent → I_child)
+</pre>
+
+A fork that silently reuses the parent's identity creates ambiguity over future state ownership.
+
+== BDI correspondence ==
+Classical BDI implementations commonly initialize a belief base, goals, plan library, and event/intention state before entering the deliberation cycle.
+
+Persistent foundation-model agents generalize the same idea but often externalize significant state into databases, retrieval systems, credentials, and tool registries.
+
+== Validation conditions ==
+Useful initialization checks include:
+
+* identifier/namespace consistency;
+* schema/version compatibility;
+* permission freshness;
+* checkpoint integrity;
+* provenance availability;
+* absence of contradictory authoritative records;
+* state ownership/scope match;
+* explicit handling of missing state.
+
+Fail-open reconstruction can convert missing evidence into implicit assumptions.
+
+== Initialization failure amplification ==
+If initialization chooses the wrong <code>X_0</code>, subsequent reasoning can be locally correct relative to the wrong starting state.
+
+This is why initialization errors can be harder to detect than isolated action errors.
+
+== References ==
+* Dennis et al. (2020), “Agent programming in the cognitive era”.
+* Bordini, Hübner & Wooldridge (2007), ''Programming Multi-Agent Systems in AgentSpeak using Jason''.
+* FIPA Agent Management Specification.
+* NIST agent identity and authorization work (2026).
+* W3C PROV-O.

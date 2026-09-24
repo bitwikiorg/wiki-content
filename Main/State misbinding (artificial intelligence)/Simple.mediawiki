@@ -1,0 +1,25 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[State misbinding (artificial intelligence)]].}}
+{{Reading depth|base=State misbinding (artificial intelligence)|current=Simple}}
+= State misbinding (artificial intelligence) — Simple =
+
+'''State misbinding''' means using correct or incorrect stored information as though it belonged to the wrong agent, user, task, session, or scope.
+
+Example:
+
+<pre>
+Agent A's preference is stored correctly
+→ Agent B loads it
+→ Agent B treats it as its own preference
+</pre>
+
+The information itself may be true. The problem is that it is attached to the wrong referent.
+
+Misbinding can happen when systems do not clearly store who owns state, what task it belongs to, which tenant it came from, or what authority justified it.
+
+If misbound state is saved again, it can contaminate persistent memory.
+
+== Sources ==
+* Hardy (1988), the confused-deputy problem.
+* MITRE CWE-441.
+* W3C PROV.
+* [[State misbinding (artificial intelligence)|Core article]]

@@ -1,0 +1,25 @@
+{{Source status|status=Simple depth derivative|note=Plain-language surface of [[Persistent state contamination (artificial intelligence)]].}}
+{{Reading depth|base=Persistent state contamination (artificial intelligence)|current=Simple}}
+= Persistent state contamination (artificial intelligence) — Simple =
+
+'''Persistent state contamination''' happens when bad information is saved into an AI agent's durable state and later reused as if it were trustworthy.
+
+For example:
+
+<pre>
+agent makes a wrong inference
+→ saves it as memory
+→ later retrieves the memory
+→ acts on the old mistake
+</pre>
+
+The bad state can come from an accident, stale information, wrong identity binding, or a deliberate attack.
+
+'''Memory poisoning''' is one adversarial version of this problem. Persistent state contamination is broader because it also includes ordinary mistakes that become durable.
+
+Useful protections include provenance, scope labels, validation before writes, versioning, quarantine, and rollback.
+
+== Sources ==
+* 2026 long-term-memory security and memory-poisoning research.
+* W3C PROV.
+* [[Persistent state contamination (artificial intelligence)|Core article]]

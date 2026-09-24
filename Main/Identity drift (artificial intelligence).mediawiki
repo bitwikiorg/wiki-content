@@ -1,0 +1,110 @@
+{{Source status|status=Issue 35 synthesis article|note=BITwiki synthesis informed by goal-drift, persona-drift, self-model, identity-persistence, and persistent-agent literature. "Identity drift" is not yet a standardized AI term with one accepted definition.}}
+{{Knowledge object
+ |title=Identity drift (artificial intelligence)
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Emerging
+ |provenance=V2 public corpus; issue #35 research synthesis
+}}
+{{Reading depth|base=Identity drift (artificial intelligence)|current=Core}}
+
+= Identity drift (artificial intelligence) =
+
+== Overview ==
+In persistent artificial agents, '''identity drift''' is gradual divergence between the agent's current self-representation, identity-scoped commitments, or continuity anchors and the persistent identity or commitments the system is intended to preserve.
+
+It is a BITwiki synthesis for a family of longitudinal consistency failures.
+
+Identity drift is not the same as ordinary learning or authorized change. The defining feature is unintended divergence from identity-relevant anchors.
+
+== What can drift? ==
+Possible identity-relevant anchors include:
+
+* declared role;
+* persistent goals or commitments;
+* operating constraints;
+* self-description;
+* capability model;
+* ownership/delegation relationships;
+* memory about prior commitments;
+* policy or configuration associated with the persistent agent.
+
+An agent can legitimately update any of these. Drift exists when the change is unintended, untracked, or inconsistent with the intended continuity relation.
+
+== Identity drift versus goal drift ==
+'''Goal drift''' is documented in language-model-agent research as gradual deviation from an assigned objective over time.
+
+Goal drift can contribute to identity drift when the objective is part of the agent's persistent identity or commitments, but the concepts are not identical.
+
+<pre>
+goal drift ⊂ possible identity-relevant drift
+identity drift can also involve role, self-model, scope, or continuity
+</pre>
+
+== Identity drift versus persona drift ==
+'''Persona drift''' concerns loss or alteration of a prompted behavioral persona over an interaction.
+
+A persona can be one component of an agent's represented identity, but persona stability is not sufficient for persistent identity. A system may preserve writing style while loading the wrong memory, permissions, or commitments.
+
+== Identity drift versus concept drift ==
+'''Concept drift''' in machine learning concerns changes in the statistical properties of a prediction problem that invalidate a learned model.
+
+Identity drift instead concerns divergence in the agent's identity-relevant representation or commitments. Environmental concept drift can indirectly provoke identity drift if the agent updates itself incorrectly, but the terms describe different phenomena.
+
+== Mechanisms ==
+Identity drift can arise through:
+
+* context loss or summarization that drops identity anchors;
+* repeated self-rewrites;
+* memory consolidation that changes earlier commitments;
+* conflicting instructions across sessions;
+* contaminated persistent state;
+* model or policy replacement without continuity checks;
+* incorrect state restoration;
+* environmental pressure toward competing goals;
+* untracked changes in permissions or role.
+
+The drift can be gradual even when each local update appears reasonable.
+
+== Detection ==
+Detection requires a longitudinal reference.
+
+Possible checks include comparing current identity-relevant state against:
+
+* signed or versioned configuration;
+* explicit commitments;
+* prior checkpoints;
+* invariant constraints;
+* provenance records;
+* independent external policy;
+* stable identifiers and ownership relationships.
+
+A single behavioral snapshot may be insufficient because drift is defined over time.
+
+== Correction ==
+Possible responses include:
+
+* re-grounding against canonical identity anchors;
+* restoring a trusted checkpoint;
+* reconciling conflicting state;
+* rejecting or quarantining low-provenance updates;
+* explicit migration to a new identity/version;
+* human review for identity-changing updates.
+
+Correction should distinguish unauthorized drift from intentional evolution.
+
+== Relationship to other failures ==
+[[Persistent state contamination (artificial intelligence)|Persistent state contamination]] can seed false identity-relevant memories. [[State misbinding (artificial intelligence)|State misbinding]] can import another agent's state. [[Error compounding in sequential systems|Sequential error compounding]] can then reinforce the divergence over many steps.
+
+== Epistemic notes ==
+The phrase "identity drift" is used inconsistently in contemporary discourse and is not treated here as a mature standardized term. Direct research exists on adjacent phenomena such as goal drift and persona drift. This article defines a broader persistent-agent engineering concept and labels that synthesis explicitly.
+
+== References ==
+* Rauno Arike, Elizabeth Donoway, Henning Bartsch, and Marius Hobbhahn, “Evaluating Goal Drift in Language Model Agents”, ''AAAI/ACM AIES'' 8(1), 2025, DOI: 10.1609/aies.v8i1.36541.
+* Kenneth Li et al., “Measuring and Controlling Persona Drift in Language Model Dialogs”, arXiv:2402.10962 (2024 preprint).
+* Peter R. Lewis et al. (eds.), ''Self-aware Computing Systems: An Engineering Approach'', Springer, 2016.
+* [https://plato.stanford.edu/entries/identity/ Stanford Encyclopedia of Philosophy — Identity.]
+* [https://en.wikipedia.org/wiki/Concept_drift Wikipedia — Concept drift.] Used specifically to preserve the distinction from statistical concept drift.
+* [https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd NIST NCCoE agent identity and authorization concept paper (2026).]
+
+[[Category:Computer science]]

@@ -1,0 +1,136 @@
+{{Source status|status=Issue 35 synthesis article|note=BITwiki engineering synthesis grounded in identity binding, provenance, tenant isolation, authorization context, and the classic confused-deputy literature. "State misbinding" is not presented as established field terminology.}}
+{{Knowledge object
+ |title=State misbinding (artificial intelligence)
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Emerging
+ |provenance=V2 public corpus; issue #35 research synthesis
+}}
+{{Reading depth|base=State misbinding (artificial intelligence)|current=Core}}
+
+= State misbinding (artificial intelligence) =
+
+== Overview ==
+In artificial-agent systems, '''state misbinding''' is the retrieval, interpretation, use, or writeback of state under the wrong agent identity, user, tenant, task, session, scope, or referent.
+
+The state can be internally valid and still be misbound.
+
+For example, a correct preference belonging to Agent A becomes harmful if Agent B retrieves it as its own persistent state.
+
+== Binding ==
+A '''binding''' connects a state object to the context in which it is valid.
+
+Possible binding dimensions include:
+
+* persistent agent identity;
+* user or principal;
+* tenant;
+* task or workflow;
+* conversation/session;
+* environment;
+* resource;
+* time/version;
+* permission scope;
+* provenance source.
+
+A state store that records content without enough binding information can make later reconstruction ambiguous.
+
+== Misinformation versus misbinding ==
+Misbinding is not the same as false content.
+
+<pre>
+false state: the content is wrong
+misbound state: the content may be right, but for the wrong referent/scope
+</pre>
+
+This distinction matters because ordinary factual validation may not detect a binding error.
+
+== Examples ==
+State misbinding can occur when:
+
+* an agent loads another agent's memory namespace;
+* a cross-tenant cache returns a record from the wrong tenant;
+* a task-specific instruction is promoted to a global preference;
+* a user's delegated authority is reused for a different user or task;
+* a checkpoint is restored under the wrong persistent identity;
+* a tool result is attributed to the wrong run;
+* a memory write omits the identity or scope that justified it.
+
+== Relation to the confused deputy ==
+The classic '''confused deputy''' problem occurs when a more-privileged program is induced to misuse its authority because the designation of an object/action is not correctly bound to the requester's authority.
+
+State misbinding is broader and concerns state association rather than only privilege escalation, but the structural lesson is similar:
+
+<pre>
+content/designator without trustworthy context
+can be interpreted under the wrong authority or referent
+</pre>
+
+Modern agent systems intensify this risk because tools, memory, user context, and delegated authority can be assembled dynamically.
+
+== Identity and provenance ==
+[[Agent self-identity]] establishes which persistent agent is the intended subject.
+
+[[Provenance]] records where state came from and how it was generated or transformed.
+
+Together they support stronger bindings:
+
+<pre>
+state
++ owning subject
++ scope
++ source/provenance
++ version
++ authority
+</pre>
+
+No single field guarantees correctness, but missing context increases ambiguity.
+
+== Retrieval and writeback ==
+Misbinding can occur on both reads and writes.
+
+'''Read misbinding''' supplies the wrong state to the current agent or task.
+
+'''Write misbinding''' stores a result into the wrong namespace or promotes task-local state to a broader scope.
+
+Write misbinding is especially consequential when the result becomes persistent and is later retrieved as trusted context.
+
+== Failure cascade ==
+A typical cascade can be:
+
+<pre>
+wrong identity/scope selected
+→ valid state retrieved under wrong binding
+→ agent acts on it
+→ result written as if locally valid
+→ persistent state becomes contaminated
+→ later runs inherit the contamination
+</pre>
+
+Thus state misbinding can be an upstream cause of [[Persistent state contamination (artificial intelligence)|persistent state contamination]] and [[Identity drift (artificial intelligence)|identity drift]].
+
+== Prevention patterns ==
+Useful controls include:
+
+* explicit identity-scoped namespaces;
+* tenant/task/session partitioning;
+* object-level authorization;
+* capability or authority binding;
+* provenance metadata;
+* versioned state;
+* typed scope fields rather than implicit global defaults;
+* fail-closed behavior when ownership is ambiguous;
+* tests that deliberately attempt cross-agent and cross-tenant reads/writes.
+
+== Epistemic notes ==
+"State misbinding" is a BITwiki label for a recurrent systems pattern, not a mature standardized AI term. Its mechanisms overlap with well-established problems in authorization, multi-tenant isolation, provenance, session management, and confused-deputy security. The new term is useful only if those boundaries remain explicit.
+
+== References ==
+* Norman Hardy, “The Confused Deputy (or why capabilities might have been invented)”, ''ACM SIGOPS Operating Systems Review'' 22(4), 1988.
+* [https://cwe.mitre.org/data/definitions/441.html MITRE CWE-441 — Unintended Proxy or Intermediary ('Confused Deputy').]
+* [https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html AWS IAM — The confused deputy problem.] Practical identity/context binding example.
+* [https://www.w3.org/TR/prov-o/ W3C, ''PROV-O: The PROV Ontology'' (2013).]
+* [https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd NIST NCCoE agent identity and authorization concept paper (2026).]
+* [https://en.wikipedia.org/wiki/Confused_deputy_problem Wikipedia — Confused deputy problem.] Used as orientation to the original Hardy reference.
+
+[[Category:Computer science]]

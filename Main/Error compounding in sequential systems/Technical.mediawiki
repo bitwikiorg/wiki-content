@@ -1,0 +1,98 @@
+{{Source status|status=Technical depth derivative|note=Advanced sequential-distribution, feedback, and error-growth surface.}}
+{{Reading depth|base=Error compounding in sequential systems|current=Technical}}
+= Error compounding in sequential systems — Technical =
+
+== State-transition formulation ==
+Consider:
+
+<pre>
+s_(t+1) = F(s_t, a_t, w_t)
+a_t = π(ŝ_t)
+ŝ_t = s_t + e_t
+</pre>
+
+An estimation or decision error <code>e_t</code> can alter <code>a_t</code>, which changes <code>s_(t+1)</code>. The future error distribution is therefore endogenous to prior decisions.
+
+This distinguishes sequential compounding from independent measurement error.
+
+== Distribution shift ==
+In behavior cloning, training examples are drawn from the expert-induced state distribution <code>d_π*</code>, but deployment visits states under the learned policy <code>d_π</code>.
+
+A mistake changes visitation:
+
+<pre>
+d_π ≠ d_π*
+</pre>
+
+and the policy may be least reliable precisely in states it did not observe during training.
+
+DAgger addresses this by iteratively collecting labels on states visited by the learner's own policy.
+
+== Autoregressive exposure ==
+For an autoregressive model:
+
+<pre>
+p(y_1:T | x) = ∏ p(y_t | y_&lt;t, x)
+</pre>
+
+teacher-forced training conditions on reference prefixes, while free-running generation conditions on sampled/model prefixes.
+
+An early token error therefore changes the conditioning context for all later factors.
+
+== Local stability ==
+For a differentiable deterministic transition, small perturbations can be approximated by:
+
+<pre>
+δs_(t+1) ≈ J_t δs_t + B_t δa_t
+</pre>
+
+where <code>J_t</code> is a local Jacobian.
+
+If perturbations are repeatedly expanded by the transition/controller dynamics, error can grow. If the closed-loop system is contractive or corrective, perturbations can decay.
+
+Hence there is no universal exponential-growth law.
+
+== Feedback ==
+Negative feedback can reduce trajectory divergence by incorporating new measurements:
+
+<pre>
+prediction
+→ observation
+→ residual/error
+→ corrected estimate/action
+</pre>
+
+Open-loop rollouts lack this correction until a later observation or replan.
+
+== Persistent-agent amplification ==
+A durable memory write introduces a longer loop:
+
+<pre>
+e_t
+→ state write m
+→ later retrieval of m
+→ altered policy input
+→ new action/error
+→ possible additional write
+</pre>
+
+This can move error propagation from one trajectory to multiple future trajectories.
+
+== Evaluation ==
+Long-horizon evaluation should therefore test more than one-step accuracy.
+
+Relevant measures can include:
+
+* rollout loss versus horizon;
+* state-distribution divergence;
+* recovery after injected perturbations;
+* probability of returning to a safe set;
+* error after re-grounding;
+* sensitivity to contaminated memory;
+* dependence between successive errors.
+
+== References ==
+* Ross, Gordon & Bagnell (2011), AISTATS.
+* Bengio et al. (2015), NeurIPS.
+* Venkatraman, Hebert & Bagnell (2015), AAAI.
+* Schmidt, Mandt & Hofmann (2019), INLG.

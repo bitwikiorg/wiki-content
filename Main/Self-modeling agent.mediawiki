@@ -1,0 +1,125 @@
+{{Source status|status=Issue 35 compiled article|note=Grounded in robotics self-modeling, self-aware computing, metacognitive-agent research, and cognitive-architecture literature.}}
+{{Knowledge object
+ |title=Self-modeling agent
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Supported
+ |provenance=V2 public corpus; issue #35 research synthesis
+}}
+{{Reading depth|base=Self-modeling agent|current=Core}}
+
+= Self-modeling agent =
+
+== Overview ==
+A '''self-modeling agent''' is an artificial agent that maintains and uses a representation of some aspect of its own state, capabilities, structure, limits, or behavior.
+
+The self-model matters because it participates in prediction, reasoning, control, diagnosis, explanation, or adaptation. Merely storing metadata about an agent does not necessarily make the agent self-modeling.
+
+A self-modeling agent does not require consciousness, subjective self-awareness, or a human-like self-concept.
+
+== What can be self-modeled? ==
+A self-model can represent different properties of the agent, including:
+
+* physical structure;
+* available tools or actions;
+* computational resources;
+* skills and capabilities;
+* uncertainty or confidence;
+* internal state;
+* goals and commitments;
+* failure modes;
+* policy behavior;
+* relationships between the agent and its environment.
+
+Different systems self-model at different levels. A robot may infer its body morphology; a software agent may track its available tools, limitations, or decision history.
+
+== Self-model versus world model ==
+A '''world model''' represents the environment or task domain.
+
+A '''self-model''' represents the agent itself or its relation to the environment.
+
+The two can interact:
+
+<pre>
+world model: what is the environment like?
+self-model: what am I able to do within it?
+</pre>
+
+Some cognitive and metacognitive architectures explicitly model the system's own reasoning processes as an object of higher-level control.
+
+== Self-model versus identity ==
+[[Agent self-identity]] and self-modeling answer different questions.
+
+<pre>
+identity: which persistent agent is this?
+self-model: what does the agent represent about itself?
+</pre>
+
+A self-model can be inaccurate while the agent's persistent identity remains correctly resolved. Conversely, a system can maintain a stable identifier without maintaining any meaningful representation of its own capabilities or state.
+
+== Self-model versus memory ==
+[[Agent memory (artificial intelligence)|Agent memory]] is retained computational state.
+
+A self-model is a particular representation whose subject is the agent itself.
+
+Memory can contain a self-model, evidence used to update a self-model, or records with no self-representational role at all.
+
+== Robotics example ==
+Bongard, Zykov, and Lipson demonstrated a robot that inferred models of its own morphology from sensorimotor data, used those models to generate behavior, detected unexpected change after damage, and rebuilt its self-model to recover locomotion.
+
+This is a strong example of functional self-modeling: the internal model is not decorative metadata but a causal part of adaptation.
+
+== Computational self-awareness and metacognition ==
+Research on self-aware computing treats a system's knowledge of its own state and behavior as an engineering resource for autonomous adaptation. Metacognitive architectures similarly use representations of object-level cognition to monitor or control the system's own reasoning.
+
+The terminology is not perfectly unified. "Self-modeling", "computational self-awareness", and "metacognition" overlap but are not synonyms.
+
+A useful boundary is:
+
+* self-modeling concerns maintaining/using a model of the system itself;
+* metacognition concerns cognition about or control of cognition;
+* self-aware computing is a broader engineering program in which self-models can support adaptation and explanation.
+
+== Model update loop ==
+A self-model can participate in a loop such as:
+
+<pre>
+observe self/environment
+→ infer or update self-model
+→ predict consequences
+→ choose action
+→ observe result
+→ compare prediction with result
+→ revise self-model
+</pre>
+
+The update need not be continuous. Some systems update only when prediction errors, anomalies, or explicit introspection events trigger revision.
+
+== Uses ==
+Self-models can support:
+
+* damage recovery;
+* capability-aware planning;
+* resource management;
+* confidence calibration;
+* failure diagnosis;
+* strategy selection;
+* explanation of system behavior;
+* metacognitive correction.
+
+A self-model can also fail. A stale, overconfident, or contaminated self-model can cause an agent to choose actions on false assumptions about its own capabilities.
+
+== Epistemic notes ==
+There is direct research precedent for machine self-modeling, especially in robotics and self-aware computing. The broader category "self-modeling agent" spans multiple traditions and should therefore be defined functionally rather than tied to one architecture.
+
+Claims about computational self-modeling should not be silently converted into claims about phenomenal consciousness.
+
+== References ==
+* Josh Bongard, Victor Zykov, and Hod Lipson, “Resilient Machines Through Continuous Self-Modeling”, ''Science'' 314(5802), 2006, DOI: 10.1126/science.1133687.
+* Kirstie L. Bellman et al., “Self-modeling and Self-awareness”, in ''Self-Aware Computing Systems'', Springer, 2017, DOI: 10.1007/978-3-319-47474-8_9.
+* Peter R. Lewis et al. (eds.), ''Self-aware Computing Systems: An Engineering Approach'', Springer, 2016, DOI: 10.1007/978-3-319-39675-0.
+* Robin Nolte et al., “How metacognitive architectures remember their own thoughts: a systematic scoping review”, ''Artificial Intelligence Review'' 59 (2026), article 213.
+* Jisu Kim, Mahimul Islam, and Ashok Goel, “A Metacognitive Architecture for Correcting LLM Errors in AI Agents”, ''AAAI-26'', 2026, DOI: 10.1609/aaai.v40i47.41465.
+* [https://www.scholarpedia.org/article/Artificial_General_Intelligence Scholarpedia — Artificial General Intelligence.] Used for orientation to cognitive-architecture traditions and references including Soar and related architectures.
+
+[[Category:Computer science]]

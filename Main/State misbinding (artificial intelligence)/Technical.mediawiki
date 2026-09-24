@@ -1,0 +1,89 @@
+{{Source status|status=Technical depth derivative|note=Advanced identity/scope binding and state-isolation surface.}}
+{{Reading depth|base=State misbinding (artificial intelligence)|current=Technical}}
+= State misbinding (artificial intelligence) — Technical =
+
+== Typed state key ==
+A state record should often be treated as a tuple rather than an unscoped value:
+
+<pre>
+R = (value, subject, principal, tenant, task, session, version, provenance, authority)
+</pre>
+
+The required dimensions vary by architecture.
+
+A misbinding occurs when a consumer evaluates <code>value</code> under a context that does not satisfy the record's intended binding relation.
+
+== Read and write conditions ==
+For read context <code>C</code>:
+
+<pre>
+read(R, C) allowed only if bind(R, C) holds
+</pre>
+
+For a write derived from state <code>R</code>:
+
+<pre>
+write(R') should preserve or explicitly transform
+subject/scope/provenance bindings
+</pre>
+
+Implicitly broadening scope is a common hazard.
+
+== Scope promotion ==
+A particularly dangerous pattern is:
+
+<pre>
+task-local observation
+→ summary
+→ agent-global memory
+</pre>
+
+without an explicit justification for the scope change.
+
+The content may remain semantically correct while becoming invalid outside its original task.
+
+== Confused deputy relation ==
+In the confused-deputy problem, designation and authority become detached.
+
+State misbinding generalizes the same structural concern to data/state:
+
+<pre>
+state designator/content
++ wrong subject/scope/authority context
+→ valid object used in invalid context
+</pre>
+
+This does not mean every misbinding is a security exploit; accidental namespace and attribution errors fit the same pattern.
+
+== Multi-agent and multi-tenant systems ==
+Risk rises when state stores are shared across:
+
+* multiple agents;
+* users;
+* tenants;
+* tasks;
+* delegation chains.
+
+Isolation requires both storage partitioning and retrieval-time checks. Namespaces alone can fail if identifiers are reused, incorrectly resolved, or globally defaulted.
+
+== Provenance ==
+W3C PROV relations such as attribution, derivation, association, and delegation can represent who/what generated state and on whose behalf activities occurred.
+
+Provenance supports diagnosis but is not identical to authorization.
+
+== Testing ==
+Useful adversarial tests include:
+
+* cross-agent read/write attempts;
+* cross-tenant cache-key collisions;
+* task-to-global scope promotion;
+* stale session identifiers;
+* delegated-authority reuse;
+* checkpoint restore under a different identity;
+* deliberately ambiguous ownership metadata.
+
+== References ==
+* Hardy (1988), ''The Confused Deputy''.
+* MITRE CWE-441.
+* W3C PROV-O.
+* NIST NCCoE agent identity and authorization work (2026).

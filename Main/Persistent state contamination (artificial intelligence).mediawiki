@@ -1,0 +1,170 @@
+{{Source status|status=Issue 35 synthesis article|note=BITwiki synthesis grounded in persistent-memory poisoning, data provenance, agent-memory governance, and sequential error propagation. The broader term includes accidental as well as adversarial contamination.}}
+{{Knowledge object
+ |title=Persistent state contamination (artificial intelligence)
+ |entity_type=Concept
+ |domain=Computer science
+ |status=Emerging
+ |provenance=V2 public corpus; issue #35 research synthesis
+}}
+{{Reading depth|base=Persistent state contamination (artificial intelligence)|current=Core}}
+
+= Persistent state contamination (artificial intelligence) =
+
+== Overview ==
+'''Persistent state contamination''' is a condition in which an erroneous, misleading, misattributed, stale, or malicious inference or action result is written into durable agent state and later reused as if it were trustworthy context.
+
+The defining transition is:
+
+<pre>
+transient error or hostile input
+→ durable write
+→ later retrieval
+→ renewed influence
+</pre>
+
+Persistence changes the failure from a single-run mistake into a state-management problem.
+
+== What counts as persistent state? ==
+Persistent state can include:
+
+* long-term agent memory;
+* user or agent profiles;
+* knowledge graphs;
+* task histories;
+* summaries;
+* checkpoints;
+* plans and lessons learned;
+* preferences;
+* tool-derived records;
+* configuration generated or modified by the agent.
+
+The medium is not important. The key property is survival beyond the local step or execution that produced the state.
+
+== Contamination versus memory poisoning ==
+'''Memory poisoning''' is an increasingly studied adversarial attack in which an attacker causes malicious or fabricated content to be stored in an agent's long-term memory and later activated through retrieval.
+
+Persistent state contamination is broader.
+
+It includes memory poisoning, but can also arise accidentally through:
+
+* hallucinated facts written as memory;
+* incorrect summaries;
+* stale records;
+* failed tool results stored as successes;
+* state written under the wrong identity or scope;
+* mistaken inference promoted into canonical configuration;
+* corrupted checkpoint restoration.
+
+Thus:
+
+<pre>
+memory poisoning ⊂ adversarial persistent-state contamination
+persistent-state contamination also includes non-adversarial failures
+</pre>
+
+== Why persistence changes the risk ==
+A transient error can disappear when the context ends.
+
+A durable error can:
+
+* cross session boundaries;
+* be retrieved repeatedly;
+* appear more credible because it is "remembered";
+* influence future plans or tool calls;
+* be summarized into new records;
+* spread to shared or multi-agent memory;
+* survive model replacement or process restart.
+
+This gives persistent state a different failure geometry from ordinary prompt-level error.
+
+== Write, store, retrieve, act ==
+A useful lifecycle is:
+
+<pre>
+input/event
+→ proposed memory write
+→ storage
+→ retrieval
+→ interpretation
+→ action
+→ possible new write
+</pre>
+
+Contamination can enter at any write and then propagate through later phases.
+
+Research on long-term memory security therefore increasingly treats memory governance as a lifecycle problem rather than only a retrieval filter.
+
+== Provenance and authority ==
+[[Provenance]] can record:
+
+* source;
+* generating activity;
+* responsible agent;
+* derivation history;
+* time/version;
+* transformations.
+
+Provenance does not make a claim true, but it allows later systems to avoid treating all stored state as equally authoritative.
+
+Recent memory-security research goes further by arguing for origin-bound authority, write-time controls, versioning, quarantine, and rollback because an agent's own summarization can otherwise launder untrusted content into apparently trusted memory.
+
+== Relationship to state misbinding ==
+[[State misbinding (artificial intelligence)|State misbinding]] can contaminate persistent state even when the source record is correct.
+
+For example:
+
+<pre>
+Agent A's correct state
+→ written into Agent B's namespace
+→ later retrieved by B as self-state
+</pre>
+
+The content was not originally false. The persistent store became contaminated through incorrect binding.
+
+== Relationship to error compounding ==
+Once contaminated state is retrieved, it changes future inputs.
+
+This creates a pathway to [[Error compounding in sequential systems|sequential error compounding]]:
+
+<pre>
+bad durable state
+→ biased future decision
+→ bad result
+→ result stored as additional state
+→ stronger future bias
+</pre>
+
+The loop can also be corrected if later evidence, validation, rollback, or negative feedback invalidates the bad state.
+
+== Controls ==
+Useful controls include:
+
+* write-time provenance;
+* source/authority labels;
+* explicit identity and scope binding;
+* validation before durable writes;
+* confidence and uncertainty retention;
+* contradiction detection;
+* quarantine/review states;
+* immutable history plus reversible derived views;
+* versioning and rollback;
+* memory expiration/forgetting;
+* retrieval-time policy;
+* periodic re-audit of durable state.
+
+The correct combination depends on threat model and architecture.
+
+== Epistemic notes ==
+Persistent-memory poisoning is now directly studied in agent-security literature. "Persistent state contamination" is a broader BITwiki synthesis intended to include both adversarial poisoning and accidental durable-state corruption. It should not be cited as if it were already a standardized security taxonomy.
+
+Several 2026 results are recent preprints. They provide direct evidence that writable cross-session memory can preserve and reactivate malicious state, but individual attack-success rates should not be generalized beyond the tested systems.
+
+== References ==
+* Zehao Lin et al., “A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle”, arXiv:2604.16548 (2026 preprint).
+* Sidharth Pulipaka et al., “Hidden in Memory: Sleeper Memory Poisoning in LLM Agents”, arXiv:2605.15338 (2026 preprint).
+* George Torres, Sharad Shrestha, and Satyajayant Misra, “When Agents Remember Too Much: Memory Poisoning Attacks on Large Language Model Agents”, arXiv:2607.06595 (2026 preprint).
+* Shuhuai Huang, Jingfeng Zhang, and Hong Jia, “When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents”, arXiv:2609.13889 (2026 preprint).
+* Yedidel Louck, “Securing LLM-Agent Long-Term Memory Against Poisoning: Non-Malleable, Origin-Bound Authority with Machine-Checked Guarantees”, arXiv:2606.24322 (2026 preprint).
+* [https://www.w3.org/TR/prov-o/ W3C, ''PROV-O: The PROV Ontology'' (2013).]
+
+[[Category:Computer science]]

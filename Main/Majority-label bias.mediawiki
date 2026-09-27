@@ -1,0 +1,25 @@
+{{Source status|status=Wave cognitive-bias atlas compiled article|note=LLM in-context learning phenomenon; interpretation requires positional controls.}}
+{{Knowledge object
+ |title=Majority-label bias
+ |entity_type=Concept
+ |domain=Artificial intelligence, Natural language processing
+ |status=Supported
+ |provenance=V2 public corpus; comparative cognition wave
+}}
+{{Reading depth|base=Majority-label bias|current=Core}}
+= Majority-label bias =
+== Overview ==
+'''Majority-label bias''' is a reported in-context-learning tendency for a language model's predictions to be influenced by the frequency of labels demonstrated in the prompt.
+
+== In-context learning ==
+When demonstrations contain an imbalanced label distribution, models may favor labels that appear more frequently even when that frequency is not relevant to the target item.
+
+== Measurement caution ==
+Apparent majority-label effects can interact with option order, token properties, task complexity, and prompt format. They should therefore be separated experimentally from [[Positional bias (language model)]].
+
+== References ==
+* Zhao et al., “Calibrate Before Use: Improving Few-Shot Performance of Language Models”, ICML 2021.
+* Mina et al., “Cognitive Biases, Task Complexity, and Result Interpretability in Large Language Models”, COLING 2025.
+
+[[Category:Artificial intelligence]]
+[[Category:Cognitive science]]

@@ -1,0 +1,25 @@
+{{Source status|status=Wave cognitive-bias atlas compiled article|note=Proposed LLM label-token effect; later work shows positional confounding can occur.}}
+{{Knowledge object
+ |title=Common-token bias
+ |entity_type=Concept
+ |domain=Artificial intelligence, Natural language processing
+ |status=Supported
+ |provenance=V2 public corpus; comparative cognition wave
+}}
+{{Reading depth|base=Common-token bias|current=Core}}
+= Common-token bias =
+== Overview ==
+'''Common-token bias''' is a proposed language-model tendency to favor output labels represented by tokens that are more common or otherwise favored by the model's learned distribution.
+
+== Proposed mechanism ==
+In few-shot classification, arbitrary label tokens can carry unequal prior probabilities independent of the intended class semantics.
+
+== Interpretability caution ==
+The label is not always a clean explanation. Controlled work has shown that effects previously attributed to common-token bias can instead arise from primacy or recency. The observed prediction pattern and its mechanism must therefore be separated.
+
+== References ==
+* Zhao et al., “Calibrate Before Use: Improving Few-Shot Performance of Language Models”, ICML 2021.
+* Mina et al., “Cognitive Biases, Task Complexity, and Result Interpretability in Large Language Models”, COLING 2025.
+
+[[Category:Artificial intelligence]]
+[[Category:Cognitive science]]

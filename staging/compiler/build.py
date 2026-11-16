@@ -209,7 +209,7 @@ def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
 
 def inline_markup(text: str) -> str:
     """Render a deliberately bounded subset of inline wikitext, escaping HTML."""
-    escaped = html.escape(text)
+    escaped = html.escape(text, quote=False)
     escaped = re.sub(r"'''''(.*?)'''''", r"<strong><em>\1</em></strong>", escaped)
     escaped = re.sub(r"'''(.*?)'''", r"<strong>\1</strong>", escaped)
     escaped = re.sub(r"''(.*?)''", r"<em>\1</em>", escaped)

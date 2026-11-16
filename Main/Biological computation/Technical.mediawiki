@@ -1,0 +1,31 @@
+{{Reading depth|base=Biological computation|current=Technical}}
+= Biological computation (technical) =
+
+== Models of molecular processing ==
+Gene-regulatory circuits may be represented by differential equations, stochastic reaction networks, logical models or agent-based models. No one representation is adequate for every mechanistic question. Specify the mapping from molecular state to logical state and the conditions under which an abstract computation approximates observed dynamics.
+
+== Bistability and oscillation ==
+A genetic toggle with mutually repressing regulators can exhibit two attractors. Feedback, nonlinear regulation and degradation rates determine bistability, switching thresholds and noise sensitivity. The engineered ''E. coli'' toggle of Gardner et al. (2000) illustrates experimentally realized state-dependent responses. A three-repressor negative-feedback ring (the Elowitz–Leibler repressilator) produces oscillatory gene expression. Both require biological readout and empirical characterization.
+
+== Comparison with digital logic ==
+{| class="wikitable"
+! Property !! Typical electronic implementation !! Biological implementation
+|-
+| State carrier || Voltage/charge or magnetic state || Molecular abundance, binding, modification, compartment or gene expression
+|-
+| Transition dynamics || Engineered clocked or asynchronous switching || Reaction kinetics, stochastic fluctuations, growth and dilution
+|-
+| Output || Electrical/optical signal || Molecular reporter, phenotype, metabolic or cellular response
+|-
+| Reliability assumptions || Circuit noise margins and device timing || Cellular resource burden, host variability and biochemical noise
+|}
+
+== Formalization cautions ==
+A Boolean abstraction of an analog and stochastic molecular system is an approximation under stated thresholds, not an assertion that a DNA molecule is literally a bit. A signal can carry measurable Shannon information without necessarily implementing a chosen algorithm. Network function, embodiment, and organism-level autonomy must be distinguished.
+
+== References ==
+* [https://doi.org/10.1038/35002131 Gardner, Cantor & Collins (2000).]
+* [https://doi.org/10.1038/35002125 Elowitz & Leibler (2000).]
+* [https://doi.org/10.1038/s44222-025-00303-8 Jia et al. (2025), DNA molecular circuits.]
+* [[Biological computation]] · [[Systems biology]] · [[Computer architecture]] · [[Informational inheritance]].
+

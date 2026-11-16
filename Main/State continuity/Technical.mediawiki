@@ -1,0 +1,30 @@
+{{Reading depth|base=State continuity|current=Technical}}
+= State continuity (technical) =
+
+== Operational model ==
+Let a system have state S_t and a transition relation T. A successor S_(t+1) may result from T(S_t, input, environment). A claim of continuity additionally needs an identity policy, provenance and allowed transition rules; it is not entailed by equality of state representations.
+
+<pre>
+identity_policy(I_t, I_(t+1), event) -> preserve | derive | fork | replace
+transition(S_t, input, event) -> S_(t+1)
+evidence = {source revision, actor/principal, event, integrity proof, time/ordering}
+</pre>
+
+These expressions are a proposed modeling vocabulary, not a universally standardized identity calculus.
+
+== Checkpoint, log and distributed execution ==
+A process snapshot is insufficient for a system with in-flight messages unless the checkpoint records a consistent cut. The Chandy–Lamport distributed snapshot algorithm supplies a foundational method for recording a consistent global state in an asynchronous system under its assumed channel behavior. Crash recovery, exactly-once effects and authorization still require additional mechanisms.
+
+Versioned snapshots and event-sourced transitions serve distinct purposes: snapshots accelerate restoration; events explain how a successor was derived. A cryptographic hash can support integrity, but equality of hashes does not prove ownership, consciousness, or authority.
+
+== Forking and restoration ==
+A restored state may create a new branch or replica. Explicitly distinguish continuity of a particular operational subject, derivation from source state and equivalence of data. For agents, resolve the persistent identity and permissions before accepting imported memories or goals.
+
+== Biology and philosophy boundary ==
+Genetic descent supplies a lineage relation, not numerical identity; psychological memory may support but does not conclusively determine identity in branching thought experiments. Neither can be substituted for a software consistency protocol without an explicit analogy boundary.
+
+== References ==
+* [https://doi.org/10.1145/214451.214456 Chandy & Lamport (1985), distributed snapshots.]
+* [https://www.w3.org/TR/prov-o/ W3C PROV-O (2013).]
+* [https://plato.stanford.edu/entries/identity-personal/ SEP: Personal Identity.]
+* [[State continuity]] · [[Agent self-identity]] · [[Informational inheritance]].

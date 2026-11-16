@@ -27,7 +27,19 @@ A systems model remains a scientific model: its boundary, parameters, observabil
 == Related concepts ==
 [[Complex system]], [[Network]], [[Feedback]], [[System boundary]], [[Scientific model]], [[Genomics]], [[Bioinformatics]], and [[Adaptation (systems)]] provide the systems context.
 
+== Model–experiment cycle ==
+A useful systems-biology study specifies the biological question, measurement scale, model structure and quantities that experiments can constrain. Models generate predictions; measured responses to perturbations can then support or challenge the proposed mechanism. Repeating that cycle is more informative than fitting a network model to a single dataset.
+
+== Dynamic feedback and regulatory control ==
+[[Related to::Feedback|Feedback]] occurs when the consequences of a system's state or output influence later behavior. Feedback motifs appear in gene regulation, metabolism, signaling and physiology, but a causal feedback loop should not be asserted solely from a correlation network. Delays, nonlinearities and noise can make a feedback mechanism stabilizing in one parameter regime and oscillatory in another.
+
+== Validation, identifiability and boundaries ==
+A model may reproduce observed data while having poorly identified parameters or omitted interactions. Validation should distinguish fitting/training observations from independent perturbation tests, document units and assumptions, and compare alternative explanations. [[Related to::System boundary|System boundaries]] determine which cells, molecules, compartments or environmental inputs are included; that choice can change the model's predictions.
+
 == References ==
+* [https://doi.org/10.1126/science.1069492 Hiroaki Kitano, “Systems Biology: A Brief Overview”, ''Science'' 295 (2002), 1662–1664.]
+* [https://www.ncbi.nlm.nih.gov/books/NBK559138/ NCBI Bookshelf — Physiology, Homeostasis; examples of physiological control and feedback.]
+
 * NIH/NIGMS systems-biology program definition: integration of experimental and computational approaches to biological interactions and dynamics.
 * Hiroaki Kitano, “Systems Biology: A Brief Overview”, ''Science'' 295 (2002).
 * systems-biology literature on quantitative, iterative experiment–model cycles.

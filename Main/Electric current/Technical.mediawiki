@@ -1,0 +1,31 @@
+{{Source status|status=Technical depth derivative|note=Charge conservation and circuit-level formalization of [[Electric current]].}}
+{{Reading depth|base=Electric current|current=Technical}}
+= Electric current — Technical =
+
+== Rate and flux ==
+For charge crossing an oriented surface, the signed current is the rate of net charge transfer:
+
+<pre>
+I = dQ / dt
+</pre>
+
+In a continuous-current-density model:
+
+<pre>
+I = integral over surface (J · dA)
+</pre>
+
+Here J is electric current density and dA is an oriented surface element. The orientation determines the sign. The SI unit is A = C/s.
+
+== Charge carriers and macroscopic modeling ==
+For a simple uniform conductor with one mobile carrier type, one common drift approximation is I = n q A v_d, where n is number density, q the signed carrier charge, A the cross-sectional area and v_d signed drift speed along the chosen direction. Complex materials and ionic systems may require multiple species and nonuniform fields.
+
+Under a steady-state, lumped, ohmic approximation, V = IR. Capacitors, nonlinear devices and time-varying fields require more general circuit and electromagnetic analysis.
+
+== Limitations ==
+Carrier drift speed is not the same as electromagnetic signal-propagation speed. A current measurement needs a specified surface or circuit branch, a defined time interval or bandwidth and a suitable instrument.
+
+== References ==
+* [https://openstax.org/books/university-physics-volume-2/pages/9-1-electrical-current OpenStax — Electrical Current.]
+* [https://www.nist.gov/si-redefinition/definitions-si-base-units NIST — SI ampere.]
+* [[Electric current|Core article]]

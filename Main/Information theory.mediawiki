@@ -56,7 +56,28 @@ The channel-coding theorem identifies communication rates below channel capacity
 == Related concepts ==
 [[Information]], [[Entropy]], [[Probability]], [[Probability distribution]], [[Conditional probability]], [[Correlation]], and [[Uncertainty]] provide the mathematical context.
 
+== Shannon entropy and units ==
+For a discrete random variable X with possible values x and associated probabilities p(x), Shannon entropy is commonly written:
+
+<pre>
+H(X) = - sum_x p(x) log_2 p(x)
+</pre>
+
+The standard convention assigns a zero contribution to outcomes of probability zero. With a base-2 logarithm, the result is measured in bits. A fair binary source has entropy of one bit per draw; a deterministic source has entropy zero. This formal notion of uncertainty is not a statement about whether a message is accurate, meaningful, or valuable to a reader.
+
+== Mutual information and conditions ==
+Mutual information I(X;Y) measures the statistical dependence between two random variables and can be expressed as H(X) - H(X|Y) when the relevant quantities are well-defined. It is zero for statistically independent variables, but does not by itself establish a causal influence or explain the mechanism underlying a correlation.
+
+== Channel and coding assumptions ==
+Shannon's channel-capacity results concern the limiting rates of communication with suitably designed codes under specified channel models and error criteria. They do not promise reliable communication at every finite block length, latency or implementation cost. Source coding also depends on what is assumed about the source probability model and what kinds of distortion or loss are allowed.
+
+== Scope of the mathematics ==
+[[Related to::Entropy|Entropy]] appears in both information theory and statistical physics, but a Shannon entropy calculated from message probabilities is not automatically a physical thermodynamic entropy. The mathematical structure can be closely related while the modeled objects, units and physical meaning differ.
+
 == References ==
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x C. E. Shannon, “A Mathematical Theory of Communication”, ''Bell System Technical Journal'' 27(3), 379–423 (July 1948).]
+* [https://doi.org/10.1002/j.1538-7305.1948.tb00917.x C. E. Shannon, “A Mathematical Theory of Communication”, ''Bell System Technical Journal'' 27(4), 623–656 (October 1948).]
+
 * Claude E. Shannon, “A Mathematical Theory of Communication” (1948).
 * Cover & Thomas, ''Elements of Information Theory''.
 * David MacKay, ''Information Theory, Inference, and Learning Algorithms''.

@@ -27,7 +27,15 @@ Different scoring matrices, gap penalties, algorithms, sequence quality, and evo
 == Related concepts ==
 [[Biological sequence]], [[Algorithm]], [[Probability]], [[Uncertainty]], [[Phylogenetics]], and [[Sequence annotation]] provide the comparison context.
 
+== Alignment as a phylogenetic assumption ==
+Multiple-sequence alignment is often used before [[Related to::Phylogenetics|phylogenetic inference]] to define comparable molecular positions. This makes alignment uncertainty part of the evolutionary analysis: an incorrect correspondence can bias inferred substitutions and tree structure. Similarity search, homology assessment and phylogenetic reconstruction use related evidence but are not interchangeable operations.
+
+== Reproducibility and interpretation ==
+A reported alignment should identify the source sequence accessions, database release, algorithm, scoring model, gap penalties and any filtering or masking. Two methods can produce different, defensible alignments under different biological assumptions. A high score may reflect composition bias or a short local match, so biological inference requires context beyond the score.
+
 == References ==
+* [https://openstax.org/books/biology-2e/pages/20-1-organizing-life-on-earth OpenStax, ''Biology 2e'', §20.1 — evolutionary relationships and model evidence.]
+
 * Stephen F. Altschul & Mihai Pop, “Sequence Alignment”, ''Handbook of Discrete and Combinatorial Mathematics'' (2017), via NCBI Bookshelf.
 * NCBI BLAST Glossary, “alignment”.
 * EMBL-EBI, ''A guide to sequence analysis tools'', reviewed February 2026.

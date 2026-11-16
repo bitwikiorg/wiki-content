@@ -7,6 +7,7 @@ const searchButton = document.querySelector('#searchButton');
 
 const state = {
   pages: [],
+  searchById: new Map(),
   pageById: new Map(),
   pageByTitle: new Map(),
   pageByTitleFold: new Map(),
@@ -96,13 +97,15 @@ function findPageByTitle(title) {
 
 async function initialize() {
   try {
-    const [pages, graph, ontology, meta] = await Promise.all([
+    const [pages, graph, ontology, meta, search] = await Promise.all([
       loadJSON('./data/pages.json'),
       loadJSON('./data/graph.json'),
       loadJSON('./data/ontology.json'),
       loadJSON('./data/build-meta.json'),
+      loadJSON('./data/search.json'),
     ]);
     state.pages = pages;
+    state.searchById = new Map(search.map(item => [item.id, item]));
     state.pageById = new Map(pages.map(page => [page.id, page]));
     state.pageByTitle = new Map(pages.map(page => [page.title, page]));
     state.pageByTitleFold = new Map(pages.map(page => [page.title.toLocaleLowerCase(), page]));
@@ -174,30 +177,57 @@ async function renderSidebarPortals() {
     .join('');
 }
 
-function renderDirectory({ q = '', namespace = '', heading = 'All pages' } = {}) {
+function renderDirectory({ q = '', namespace = '', heading = 'All pages', coreOnly = false } = {}) {
   const query = q.trim().toLocaleLowerCase();
-  const pages = state.pages
-    .filter(page => !namespace || page.namespace === namespace)
-    .filter(page => !query || [page.title, page.namespace, page.entity_type, page.domain, page.source_path].some(v => String(v || '').toLocaleLowerCase().includes(query)))
-    .sort((a, b) => a.title.localeCompare(b.title));
+  const terms = query.split(/\s+/).filter(Boolean);
+  const matches = state.pages
+    .filter(page => (!namespace || page.namespace === namespace))
+    .filter(page => !coreOnly || (page.namespace === 'Main' && !/\/(Simple|Technical)$/.test(page.title)))
+    .map(page => {
+      const entry = state.searchById.get(page.id) || {};
+      const title = page.title.toLocaleLowerCase();
+      const headings = (entry.headings || []).join(' ').toLocaleLowerCase();
+      const body = (entry.body || '').toLocaleLowerCase();
+      const metadata = [page.namespace, page.entity_type, page.domain, page.source_path].join(' ').toLocaleLowerCase();
+      const matchesAll = terms.every(term => title.includes(term) || headings.includes(term) || body.includes(term) || metadata.includes(term));
+      const score = !query ? 0 : (title === query ? 300 : 0) + (title.includes(query) ? 110 : 0)
+        + terms.filter(term => title.includes(term)).length * 35
+        + terms.filter(term => headings.includes(term)).length * 12
+        + terms.filter(term => body.includes(term)).length * 2;
+      return { page, entry, matchesAll, score };
+    })
+    .filter(item => item.matchesAll)
+    .sort((a, b) => b.score - a.score || a.page.title.localeCompare(b.page.title));
+
+  function excerpt(entry) {
+    if (!query || !entry.body) return '';
+    const body = entry.body;
+    const lower = body.toLocaleLowerCase();
+    let location = lower.indexOf(query);
+    if (location < 0) location = Math.max(0, ...terms.map(term => lower.indexOf(term)).filter(i => i >= 0));
+    const start = Math.max(0, location - 85);
+    const end = Math.min(body.length, Math.max(location, 0) + 175);
+    return `<div class="search-excerpt">${start ? '…' : ''}${esc(body.slice(start, end))}${end < body.length ? '…' : ''}</div>`;
+  }
 
   app.innerHTML = `
     <article class="mw-special">
       <h1 class="page-title">${esc(heading)}</h1>
-      <p class="page-subtitle">Derived staging index over repository-backed MediaWiki titles.</p>
+      <p class="page-subtitle">${coreOnly ? 'Browse canonical article titles; Simple and Technical reading depths are accessible from each article.' : 'Browse the repository-backed MediaWiki source. Search includes article text, titles, and headings.'}</p>
       <div class="directory-toolbar">
-        <span>${pages.length} titles</span>
+        <span>${matches.length} ${coreOnly ? 'canonical articles' : 'titles'}</span>
         ${namespace ? `<a href="#/all-pages">Clear namespace filter</a>` : ''}
+        ${!coreOnly ? '<a href="#/articles">Knowledge articles</a>' : '<a href="#/all-pages">All source namespaces</a>'}
       </div>
       <div class="page-list">
-        ${pages.map(page => `
+        ${matches.map(({ page, entry }) => `
           <div class="page-row">
-            <a href="${pageHref(page)}">${esc(page.title)}</a>
+            <div><a href="${pageHref(page)}">${esc(page.title)}</a>${excerpt(entry)}</div>
             <span class="muted">${esc(page.namespace)}</span>
             <span class="muted">${esc(page.entity_type || page.content_model)}</span>
             <span class="${page.validation_status === 'pass' ? 'validation-pass' : 'validation-error'}">${esc(page.validation_status)}</span>
           </div>
-        `).join('') || '<div class="empty">No staged source objects match this query.</div>'}
+        `).join('') || '<div class="empty">No staged articles match this search.</div>'}
       </div>
     </article>
   `;
@@ -237,7 +267,7 @@ function portalMembers(page, portal) {
   const params = portal.params;
   if (portal.kind === 'domain' && params.domain) {
     return state.pages
-      .filter(candidate => candidate.namespace === 'Main' && candidate.domain === params.domain)
+      .filter(candidate => candidate.namespace === 'Main' && String(candidate.domain || '').split(',').map(v => v.trim()).includes(params.domain))
       .sort((a, b) => a.title.localeCompare(b.title));
   }
 
@@ -310,12 +340,53 @@ function renderPortalRead(page, portal) {
   `;
 }
 
+function renderDepthLinks(page) {
+  if (page.namespace !== 'Main') return '';
+  const base = page.title.replace(/\/(?:Simple|Technical)$/, '');
+  const variants = [
+    ['Simple', `${base}/Simple`],
+    ['Core', base],
+    ['Technical', `${base}/Technical`],
+  ];
+  const available = variants.map(([label, title]) => ({ label, title, page: findPageByTitle(title) })).filter(item => item.page);
+  if (available.length < 2) return '';
+  return `<nav class="reading-depth" aria-label="Reading depth">
+    <span>Read as</span>
+    ${available.map(item => `<a href="${pageHref(item.page)}" class="${item.title === page.title ? 'current' : ''}">${item.label}</a>`).join('')}
+  </nav>`;
+}
+
+function renderToc(page) {
+  const headings = page.parsed.headings.filter(item => item.level >= 2);
+  if (headings.length < 3) return '';
+  return `<nav class="article-toc" aria-label="On this page"><strong>Contents</strong>
+    ${page.parsed.headings.map((heading, index) => heading.level < 2 ? '' :
+      `<button type="button" class="toc-level-${Math.min(heading.level, 4)}" data-scroll-to="section-${index + 1}">${esc(heading.title)}</button>`).join('')}
+  </nav>`;
+}
+
+function renderCategoryRead(page) {
+  const incoming = new Set(state.graph.edges
+    .filter(edge => edge.layer === 'structural' && edge.type === 'Category' && edge.target_title === page.title)
+    .map(edge => edge.source));
+  const members = [...incoming].map(id => state.pageById.get(id)).filter(Boolean).sort((a,b) => a.title.localeCompare(b.title));
+  return `<div class="read-layout">
+    <article class="article-body">${page.preview_html}
+      <h2>Pages in this category</h2>
+      <p class="muted">${members.length} staged members, generated from explicit category links.</p>
+      <ul class="category-members">${members.map(member => `<li><a href="${pageHref(member)}">${esc(member.title)}</a></li>`).join('') || '<li>No staged pages are classified here yet.</li>'}</ul>
+    </article>
+    ${identityCard(page)}
+  </div>`;
+}
+
 function renderRead(page) {
   const portal = page.namespace === 'Portal' ? parsePortalTemplate(page.source) : null;
   if (portal) return renderPortalRead(page, portal);
+  if (page.namespace === 'Category') return renderCategoryRead(page);
   return `
     <div class="read-layout">
-      <article class="article-body">${page.preview_html}</article>
+      <article class="article-body">${renderToc(page)}${page.preview_html}</article>
       ${identityCard(page)}
     </div>
   `;
@@ -602,6 +673,7 @@ async function renderPage(id, activeView = 'read', graphLayer = 'all') {
         <span>${isMainPage ? 'BITwiki Main Page' : `From BITwiki staging · ${esc(page.source_path)}`}</span>
         <span class="page-meta-actions"><a href="${repoFileUrl(page.source_path)}" target="_blank" rel="noreferrer">Git source ↗</a> · <a href="${liveWikiUrl(page.title)}" target="_blank" rel="noreferrer">Live BITwiki ↗</a></span>
       </div>
+      ${renderDepthLinks(page)}
       ${pageTabs(page, view)}
       <section class="view">${body}</section>
     </article>
@@ -613,6 +685,9 @@ async function renderPage(id, activeView = 'read', graphLayer = 'all') {
   app.querySelector('#graphLayer')?.addEventListener('change', event => setRoute(`/wiki/${encodeURIComponent(page.title.replaceAll(' ', '_'))}`, { view: 'graph', layer: event.target.value }));
   hydrateRawTables(app);
   rewriteArticleLinks(app);
+  app.querySelectorAll('[data-scroll-to]').forEach(button => {
+    button.addEventListener('click', () => app.querySelector(`#${button.dataset.scrollTo}`)?.scrollIntoView({ behavior: 'smooth' }));
+  });
   wireGraphNodeClicks();
 }
 
@@ -729,6 +804,10 @@ async function route() {
     const namespace = params.get('namespace') || '';
     searchInput.value = q;
     renderDirectory({ q, namespace, heading: q ? `Search results for “${q}”` : 'Search' });
+    return;
+  }
+  if (path === '/articles') {
+    renderDirectory({ heading: 'Knowledge articles', coreOnly: true });
     return;
   }
   if (path === '/all-pages') {

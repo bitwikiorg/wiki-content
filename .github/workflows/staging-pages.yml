@@ -17,6 +17,7 @@ on:
       - 'manifest.json'
       - 'bitwiki-runtime-schema.json'
       - 'staging/**'
+      - 'scripts/**'
       - '.github/workflows/staging-pages.yml'
   pull_request:
     paths:
@@ -92,6 +93,16 @@ jobs:
               raise SystemExit('staging projection is unexpectedly empty')
           print(json.dumps(meta, indent=2))
           PY
+
+      - name: Audit staged content and promotion-readiness evidence
+        run: python scripts/audit_staging_readiness.py
+
+      - name: Upload source-anchored readiness report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bitwiki-staging-readiness
+          path: v2-staging-readiness.json
+          if-no-files-found: error
 
       - name: Upload build evidence
         uses: actions/upload-artifact@v4

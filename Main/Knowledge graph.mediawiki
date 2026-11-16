@@ -208,7 +208,21 @@ BITwiki can be projected as a knowledge graph using pages, SMW properties and de
 
 That graph is one application of the general concept, not its definition.
 
+== Explicitly distinguishing graph layers ==
+An ordinary wikilink connects titles for navigation; a category assignment classifies a page; a template inclusion reuses content; a typed semantic assertion claims a specific relation between identified entities. Those four layers can coexist, but they should not be counted as interchangeable evidence of subject–predicate–object knowledge.
+
+[[Related to::Knowledge representation|Knowledge representation]] gives the broader disciplinary context for selecting these structures and defining their interpretation.
+
+== Identity, scope and validation ==
+An RDF triple uses a subject, predicate and object, subject to the RDF data model's identifier and literal rules. A source graph may change over time even though an RDF graph describes a particular snapshot; separating an assertion's source revision and its time of validity can be important for reproducibility. A graph schema, type and relation vocabulary help check consistency, but they do not establish that the underlying factual assertion is true.
+
+== Provenance and proposed edges ==
+An automatically extracted relation should carry its source and the method that produced it. A predicted link from an embedding model is a hypothesis or recommendation until checked, not a logically entailed fact. Semantic edges that are convenient for navigation must not be invented merely to increase graph density. For BITwiki, publication in MediaWiki and a source-controlled static graph projection remain distinct states until the deployed SMW assertions are actually verified.
+
 == References ==
+* [https://doi.org/10.1145/3447772 Hogan et al. (2021), “Knowledge Graphs”, ''ACM Computing Surveys'' 54(4), article 71.]
+* [https://www.w3.org/TR/rdf-concepts/ W3C Recommendation — RDF 1.1 Concepts and Abstract Syntax; RDF graphs, triples and datasets.]
+
 * Aidan Hogan et al., "Knowledge Graphs", ''ACM Computing Surveys'' 54(4) (2021). DOI: 10.1145/3447772.
 * W3C RDF/RDFS/OWL specifications.
 * Ronald Brachman and Hector Levesque, ''Knowledge Representation and Reasoning''.

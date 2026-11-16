@@ -66,7 +66,19 @@ Physical entropy includes physical state definitions and units such as Boltzmann
 == Related concepts ==
 [[Information]], [[Information theory]], [[Probability distribution]], [[Uncertainty]], and [[Feedback]] provide neighboring mathematical/system concepts.
 
+== Discrete information example ==
+A fair binary variable with two equally likely results has one bit of Shannon entropy. If one result has probability one, its Shannon entropy is zero. These facts follow from the chosen probability model; measurement errors, uncertainty about the model and the consequences of an outcome are separate questions.
+
+== Physical versus information-theoretic statements ==
+[[Related to::Information theory|Information theory]] describes uncertainties and coding limits for defined probability spaces. Thermodynamic entropy refers to physically modeled macrostates and microscopic degrees of freedom, with units involving Boltzmann's constant. Mathematical similarity of the Gibbs and Shannon forms does not by itself establish equivalence between semantic information, computation, heat or physical work.
+
+== Choice of coarse-graining and units ==
+A numerical entropy value depends on the chosen states, probabilities, and logarithm base. Changing the state partition may alter the computed entropy. Comparisons between experiments or datasets must therefore declare the relevant microstate model or alphabet, probability assignments and units rather than treating entropy as a context-free measure of “disorder.”
+
 == References ==
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), ''A Mathematical Theory of Communication'', part I.]
+* [https://openstax.org/books/university-physics-volume-2/pages/4-2-heat-engines OpenStax, ''University Physics Volume 2'', §4.2 — physical heat engines and second-law context.]
+
 * Claude E. Shannon, “A Mathematical Theory of Communication” (1948).
 * Thomas Cover & Joy Thomas, ''Elements of Information Theory''.
 * standard statistical-mechanics texts on Boltzmann and Gibbs entropy.

@@ -40,6 +40,21 @@ GitHub Pages / local static server
 
 `build/` is transient generated output and must not become canonical source.
 
+## Compact GitHub Pages landing page
+
+The homepage is intentionally an at-a-glance index of canonical articles,
+repository source pages, domains, and a small set of notable subjects. It does
+not render the entire MediaWiki Main Page or load the whole graph at startup.
+
+Startup fetches only `data/pages.json` and `data/build-meta.json`. Search
+text and the graph load on demand. Directory results render 40 entries at a
+time. Individual articles are loaded on selection. The original MediaWiki
+Main Page is available as a regular source article.
+
+The page is a read-only inspection preview, not a MediaWiki emulator. SMW
+queries, Cargo queries, templates beyond supported static composition, and
+Scribunto functions do not execute in the browser.
+
 ## Derived views
 
 Each staged source object exposes five inspection modes:

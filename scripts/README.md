@@ -15,6 +15,7 @@ These scripts are **executable governance over repository source**: they make ar
 | `deploy_mediawiki.py` | non-destructive-by-default MediaWiki API importer over the validated deployment plan |
 | `audit_workflow.py` | Cargo `Knowledge_requests` schema/storage/query and request lifecycle invariants |
 | `audit_mainspace.py` | Main-namespace role inventory without equating file length with quality |
+| `audit_staging_readiness.py` | Per-page, source-SHA-anchored staging checks K01–K18 with explicit editorial and live-runtime unknowns; emits untracked CI artifact |
 | `inventory_corpus.py` | semantic/content corpus and V1 classification evidence; **not** the deployment manifest |
 | `classify_v1_page_roles.py` | V1 page-role evidence before migration/ontology decisions |
 | `classify_v1_architecture_families.py` | V1 architecture-source maturation classification |
@@ -112,6 +113,8 @@ CI execution
         ↓
 run-specific evidence
 ```
+
+The readiness audit reads the existing GitHub Pages staging projection; it does not inspect publication state, use the separate Library comparator catalogs as article targets, or automatically make editorial judgments. Its coverage and reference counts are triage signals, not quality scores. Run `python staging/compiler/build.py` then `python scripts/audit_staging_readiness.py`.
 
 A clean repository audit still does not prove the remote MediaWiki instance has the expected namespaces, extension versions, Cargo tables, Scribunto behavior, or BIThub integration. Deployment validation remains a separate runtime responsibility.
 

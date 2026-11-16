@@ -1,0 +1,30 @@
+{{Source status|status=Technical depth derivative|note=Cardiovascular flow equations and model limitations derived from [[Cardiac output]].}}
+{{Reading depth|base=Cardiac output|current=Technical}}
+= Cardiac output — Technical =
+
+== Flow-rate definition ==
+Cardiac output CO is a volume flow rate, most often left ventricular volume ejected per minute:
+
+<pre>
+CO = HR × SV
+SV = EDV - ESV
+</pre>
+
+HR is heart rate, SV stroke volume, EDV end-diastolic volume and ESV end-systolic volume. If HR has units beats/minute and SV mL/beat, CO has units mL/minute. Values should be time-averaged with a specified observation interval.
+
+== Hemodynamic models ==
+A lumped steady-flow approximation of the systemic circulation can express:
+
+<pre>
+mean arterial - mean venous pressure ≈ CO × systemic vascular resistance
+</pre>
+
+This is not an equation for systolic or diastolic blood pressure. Pulsatility, vascular compliance, nonuniform flow and measurement conditions are not captured by the simplified expression.
+
+== Measurement uncertainty ==
+Invasive methods, ultrasound-based estimates and other approaches differ in how they infer volume flow. Measurement quality can depend on calibration, geometry, rhythm, operator technique and physiological assumptions. A pulse rate alone lacks the required stroke-volume information.
+
+== References ==
+* [https://www.ncbi.nlm.nih.gov/sites/books/NBK470455/ NCBI Bookshelf — Physiology, Cardiac Output.]
+* [https://www.ncbi.nlm.nih.gov/books/NBK470310/ NCBI Bookshelf — Cardiovascular Hemodynamics.]
+* [[Cardiac output|Core article]]

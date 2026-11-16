@@ -204,3 +204,32 @@ button, input, select { font: inherit; }
   .reading-depth { gap: 6px; }
   .article-toc { padding: 9px 11px; }
 }
+
+/* Compact repository-content index. No generated source text is mounted on load. */
+.corpus-overview { max-width: 990px; }
+.overview-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 18px 0; }
+.overview-stats > div { border: 1px solid var(--mw-border-subtle); padding: 12px 14px; background: var(--mw-bg-subtle); }
+.overview-stats strong { font-size: 25px; font-weight: 650; display: block; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.overview-stats span { font-size: 12px; color: var(--mw-muted); }
+.overview-actions { display: flex; gap: 9px; flex-wrap: wrap; font-size: 13px; padding: 0 0 16px; border-bottom: 1px solid var(--mw-border-subtle); }
+.overview-actions a { border: 1px solid var(--mw-border); padding: 6px 10px; background: #fff; }
+.overview-section { margin-top: 22px; }
+.overview-section h2 { font-size: 16px; font-weight: 600; margin: 0 0 10px; }
+.overview-links { display: flex; gap: 7px; flex-wrap: wrap; }
+.overview-links a { font-size: 13px; padding: 5px 9px; border: 1px solid var(--mw-border-subtle); }
+.overview-domains { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+.overview-domains a { display: flex; justify-content: space-between; align-items: center; gap: 6px; padding: 9px 10px; border: 1px solid var(--mw-border-subtle); font-size: 13px; min-width: 0; }
+.overview-domains a:hover, .overview-links a:hover { text-decoration: none; background: var(--mw-bg-subtle); border-color: var(--mw-border); }
+.overview-domains small { color: var(--mw-muted); font-variant-numeric: tabular-nums; }
+.overview-footer { font-size: 11px; color: var(--mw-muted); margin-top: 20px; }
+.more-results { display: flex; justify-content: center; margin: 16px 0; }
+.more-results button { background: #fff; border: 1px solid var(--mw-border); padding: 9px 18px; color: var(--mw-blue); cursor: pointer; }
+.more-results button:hover { background: var(--mw-bg-subtle); }
+@media (max-width: 1000px) { .overview-domains { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 540px) {
+  .overview-stats { gap: 4px; }
+  .overview-stats > div { padding: 9px 7px; }
+  .overview-stats strong { font-size: 22px; }
+  .overview-stats span { font-size: 11px; }
+  .overview-domains { grid-template-columns: 1fr; }
+}

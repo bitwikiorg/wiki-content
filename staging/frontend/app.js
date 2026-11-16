@@ -95,32 +95,46 @@ function findPageByTitle(title) {
   return state.pageByTitle.get(normalized) || state.pageByTitleFold.get(normalized.toLocaleLowerCase());
 }
 
+let graphLoad = null;
+let searchLoad = null;
+
+async function ensureGraph() {
+  if (!graphLoad) {
+    graphLoad = loadJSON('./data/graph.json').then(graph => {
+      state.graph = graph;
+      state.nodeById = new Map(graph.nodes.map(node => [node.id, node]));
+    }).catch(error => { graphLoad = null; throw error; });
+  }
+  await graphLoad;
+}
+
+async function ensureSearch() {
+  if (!searchLoad) {
+    searchLoad = loadJSON('./data/search.json').then(search => {
+      state.searchById = new Map(search.map(item => [item.id, item]));
+    }).catch(error => { searchLoad = null; throw error; });
+  }
+  await searchLoad;
+}
+
 async function initialize() {
   try {
-    const [pages, graph, ontology, meta, search] = await Promise.all([
+    const [pages, meta] = await Promise.all([
       loadJSON('./data/pages.json'),
-      loadJSON('./data/graph.json'),
-      loadJSON('./data/ontology.json'),
       loadJSON('./data/build-meta.json'),
-      loadJSON('./data/search.json'),
     ]);
     state.pages = pages;
-    state.searchById = new Map(search.map(item => [item.id, item]));
     state.pageById = new Map(pages.map(page => [page.id, page]));
     state.pageByTitle = new Map(pages.map(page => [page.title, page]));
     state.pageByTitleFold = new Map(pages.map(page => [page.title.toLocaleLowerCase(), page]));
-    state.graph = graph;
-    state.nodeById = new Map(graph.nodes.map(node => [node.id, node]));
-    state.ontology = ontology;
     state.meta = meta;
-
     renderNamespaces();
-    await renderSidebarPortals();
-    statusBar.innerHTML = `<strong>Staging projection</strong> · ${meta.page_count} source objects · ${meta.ontology_object_count} knowledge objects · ${meta.graph_edge_count} graph edges · <code>${esc(meta.source_sha.slice(0, 12))}</code>`;
-    route();
+    renderSidebarPortals();
+    statusBar.innerHTML = `<strong>Repository snapshot</strong> · ${meta.page_count} source objects · ${meta.ontology_object_count} knowledge objects · <code>${esc(String(meta.source_sha).slice(0, 12))}</code>`;
+    await route();
   } catch (error) {
-    statusBar.textContent = 'Staging build failed to load.';
-    app.innerHTML = `<div class="empty"><strong>Unable to load staging artifacts.</strong><br>${esc(error.message)}</div>`;
+    statusBar.textContent = 'Unable to load content index.';
+    app.innerHTML = `<div class="empty"><strong>Unable to load source index.</strong><br>${esc(error.message)}</div>`;
   }
 }
 
@@ -164,25 +178,73 @@ function wikiFragment(value = '') {
   return out;
 }
 
-async function renderSidebarPortals() {
-  const portalIndexes = state.pages.filter(page => page.namespace === 'Portal');
-  const fullPages = await Promise.all(portalIndexes.map(page => loadFullPage(page.id)));
-  const domainPortals = fullPages
-    .map(page => ({ page, portal: parsePortalTemplate(page.source) }))
-    .filter(item => item.portal?.kind === 'domain')
-    .sort((a, b) => a.page.title.localeCompare(b.page.title));
-
-  portalList.innerHTML = domainPortals
-    .map(({ page }) => `<a href="${pageHref(page)}">${esc(page.title.replace(/^Portal:/, ''))}</a>`)
+function renderSidebarPortals() {
+  const pages = state.pages.filter(page => page.namespace === 'Portal')
+    .sort((a, b) => a.title.localeCompare(b.title));
+  portalList.innerHTML = pages.slice(0, 20)
+    .map(page => `<a href="${pageHref(page)}">${esc(page.title.replace(/^Portal:/, ''))}</a>`)
     .join('');
 }
 
-function renderDirectory({ q = '', namespace = '', heading = 'All pages', coreOnly = false } = {}) {
+function canonicalArticles() {
+  return state.pages.filter(page => page.namespace === 'Main' && page.entity_type &&
+    !/\/(Simple|Technical)$/.test(page.title));
+}
+
+function renderOverview() {
+  const articles = canonicalArticles();
+  const domains = new Map();
+  for (const page of articles) {
+    for (const domain of String(page.domain || '').split(',').map(x => x.trim()).filter(Boolean)) {
+      domains.set(domain, (domains.get(domain) || 0) + 1);
+    }
+  }
+  const focus = [
+    'Computation', 'Information', 'Bit', 'Computer architecture',
+    'Artificial intelligence', 'AI agent', 'Biological computation',
+    'Systems biology', 'Cognition', 'Consciousness',
+    'Informational inheritance', 'IKEA effect',
+  ].map(title => findPageByTitle(title)).filter(Boolean);
+  app.innerHTML = `
+    <article class="corpus-overview">
+      <h1 class="page-title">BITwiki content index</h1>
+      <p class="page-subtitle">Browse the MediaWiki source corpus and inspect individual articles. This is a static preview, not a full wiki runtime.</p>
+      <div class="overview-stats">
+        <div><strong>${articles.length}</strong><span>Knowledge articles</span></div>
+        <div><strong>${state.pages.length}</strong><span>Source pages</span></div>
+        <div><strong>${domains.size}</strong><span>Domains</span></div>
+      </div>
+      <nav class="overview-actions" aria-label="Explore content">
+        <a href="#/articles">Articles</a>
+        <a href="#/portals">Portals</a>
+        <a href="#/categories">Categories</a>
+        <a href="#/all-pages">All source pages</a>
+      </nav>
+      <section class="overview-section">
+        <h2>Concepts to inspect</h2>
+        <div class="overview-links">
+          ${focus.map(page => `<a href="${pageHref(page)}">${esc(page.title)}</a>`).join('')}
+        </div>
+      </section>
+      <section class="overview-section">
+        <h2>Browse by discipline</h2>
+        <div class="overview-domains">
+          ${[...domains].sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([domain, count]) =>
+              `<a href="#/articles?domain=${encodeURIComponent(domain)}"><span>${esc(domain)}</span><small>${count}</small></a>`).join('')}
+        </div>
+      </section>
+      <p class="overview-footer">GitHub remains the canonical text source. Semantic MediaWiki, Cargo and Lua are not executed here.</p>
+    </article>`;
+}
+
+function renderDirectory({ q = '', namespace = '', domain = '', heading = 'All pages', coreOnly = false, maxResults = 40 } = {}) {
   const query = q.trim().toLocaleLowerCase();
   const terms = query.split(/\s+/).filter(Boolean);
   const matches = state.pages
     .filter(page => (!namespace || page.namespace === namespace))
-    .filter(page => !coreOnly || (page.namespace === 'Main' && !/\/(Simple|Technical)$/.test(page.title)))
+    .filter(page => !coreOnly || (page.namespace === 'Main' && page.entity_type && !/\/(Simple|Technical)$/.test(page.title)))
+    .filter(page => !domain || String(page.domain || '').split(',').some(value => value.trim() === domain))
     .map(page => {
       const entry = state.searchById.get(page.id) || {};
       const title = page.title.toLocaleLowerCase();
@@ -213,14 +275,14 @@ function renderDirectory({ q = '', namespace = '', heading = 'All pages', coreOn
   app.innerHTML = `
     <article class="mw-special">
       <h1 class="page-title">${esc(heading)}</h1>
-      <p class="page-subtitle">${coreOnly ? 'Browse canonical article titles; Simple and Technical reading depths are accessible from each article.' : 'Browse the repository-backed MediaWiki source. Search includes article text, titles, and headings.'}</p>
+      <p class="page-subtitle">${domain ? `Domain: ${esc(domain)} · ` : ''}${coreOnly ? 'Canonical articles. Select a title to inspect its source and reader depths.' : 'Repository-backed MediaWiki titles.'}</p>
       <div class="directory-toolbar">
-        <span>${matches.length} ${coreOnly ? 'canonical articles' : 'titles'}</span>
+        <span>${matches.length} ${coreOnly ? 'articles' : 'titles'} · showing ${Math.min(maxResults, matches.length)}</span>
         ${namespace ? `<a href="#/all-pages">Clear namespace filter</a>` : ''}
         ${!coreOnly ? '<a href="#/articles">Knowledge articles</a>' : '<a href="#/all-pages">All source namespaces</a>'}
       </div>
       <div class="page-list">
-        ${matches.map(({ page, entry }) => `
+        ${matches.slice(0, maxResults).map(({ page, entry }) => `
           <div class="page-row">
             <div><a href="${pageHref(page)}">${esc(page.title)}</a>${excerpt(entry)}</div>
             <span class="muted">${esc(page.namespace)}</span>
@@ -229,8 +291,11 @@ function renderDirectory({ q = '', namespace = '', heading = 'All pages', coreOn
           </div>
         `).join('') || '<div class="empty">No staged articles match this search.</div>'}
       </div>
+      ${matches.length > maxResults ? `<div class="more-results"><button type="button" id="moreResults">Show 40 more (${matches.length - maxResults} remaining)</button></div>` : ''}
     </article>
   `;
+  app.querySelector('#moreResults')?.addEventListener('click', () =>
+    renderDirectory({ q, namespace, domain, heading, coreOnly, maxResults: maxResults + 40 }));
 }
 
 function pageTabs(page, active) {
@@ -658,6 +723,7 @@ async function renderPage(id, activeView = 'read', graphLayer = 'all') {
   }
   const page = await loadFullPage(id);
   const view = ['read', 'source', 'structure', 'graph', 'promote'].includes(activeView) ? activeView : 'read';
+  if (view === 'graph' || (view === 'read' && ['Portal', 'Category'].includes(page.namespace))) await ensureGraph();
   let body = '';
   if (view === 'read') body = renderRead(page);
   if (view === 'source') body = renderSource(page);
@@ -794,20 +860,20 @@ async function route() {
   window.scrollTo({ top: 0, behavior: 'instant' });
 
   if (path === '/' || path === '') {
-    const mainPage = findPageByTitle('Main Page');
-    if (mainPage) await renderPage(mainPage.id, params.get('view') || 'read', params.get('layer') || 'all');
-    else renderDirectory({ heading: 'BITwiki' });
+    renderOverview();
     return;
   }
   if (path === '/search') {
     const q = params.get('q') || '';
     const namespace = params.get('namespace') || '';
     searchInput.value = q;
+    if (q) await ensureSearch();
     renderDirectory({ q, namespace, heading: q ? `Search results for “${q}”` : 'Search' });
     return;
   }
   if (path === '/articles') {
-    renderDirectory({ heading: 'Knowledge articles', coreOnly: true });
+    const domain = params.get('domain') || '';
+    renderDirectory({ heading: domain ? `${domain} articles` : 'Knowledge articles', coreOnly: true, domain });
     return;
   }
   if (path === '/all-pages') {
@@ -820,6 +886,7 @@ async function route() {
     return;
   }
   if (path === '/categories') {
+    await ensureGraph();
     renderCategories();
     return;
   }
@@ -828,6 +895,7 @@ async function route() {
     return;
   }
   if (path === '/graph') {
+    await ensureGraph();
     renderGraphExplorer(params);
     return;
   }
@@ -870,6 +938,8 @@ searchButton.addEventListener('click', submitSearch);
 searchInput.addEventListener('keydown', event => {
   if (event.key === 'Enter') submitSearch();
 });
-window.addEventListener('hashchange', route);
+window.addEventListener('hashchange', () => route().catch(error => {
+  app.innerHTML = `<div class="empty">Unable to load this view: ${esc(error.message)}</div>`;
+}));
 
 initialize();

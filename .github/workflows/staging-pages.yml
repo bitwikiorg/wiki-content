@@ -68,6 +68,9 @@ jobs:
           python scripts/audit_workflow.py
           python scripts/audit_mainspace.py
 
+      - name: Verify article rendering and transclusion behavior
+        run: python -m unittest discover -s staging/compiler -p 'test_*.py' -v
+
       - name: Build staging projection
         run: python staging/compiler/build.py
 

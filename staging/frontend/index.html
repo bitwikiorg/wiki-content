@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
-  <title>BITwiki Staging</title>
+  <title>BITwiki — Knowledge Corpus Preview</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./mediawiki-common.css" />
 </head>
@@ -14,14 +14,15 @@
       <span class="brand-mark">B</span>
       <span>
         <strong>BITwiki</strong>
-        <small>inspectable staging</small>
+        <small>knowledge corpus preview</small>
       </span>
     </a>
     <label class="search-box" aria-label="Search staged BITwiki">
-      <input id="searchInput" type="search" placeholder="Search BITwiki" autocomplete="off" />
+      <input id="searchInput" type="search" placeholder="Search articles and concepts" autocomplete="off" />
       <button id="searchButton" type="button">Search</button>
     </label>
     <nav class="header-actions" aria-label="Workbench tools">
+      <a href="#/articles">Articles</a>
       <a href="#/portals">Portals</a>
       <a href="#/graph">Graph</a>
       <a href="https://github.com/bitwikiorg/wiki-content" target="_blank" rel="noreferrer">Git source</a>
@@ -33,8 +34,9 @@
       <nav>
         <h2>Navigation</h2>
         <a href="#/">Main page</a>
+        <a href="#/articles">Knowledge articles</a>
         <a href="#/portals">Portals</a>
-        <a href="#/all-pages">All pages</a>
+        <a href="#/all-pages">All source pages</a>
         <a href="#/categories">Categories</a>
         <a href="#/random">Random page</a>
         <a href="#/graph">Knowledge graph</a>
@@ -58,7 +60,7 @@
 
       <section class="staging-note">
         <strong>Staging only</strong>
-        <p>Reader navigation follows BITwiki concepts. Source, structure, graph, and promotion views are inspection layers over the same MediaWiki-native corpus.</p>
+        <p>MediaWiki source is readable and searchable here. Semantic MediaWiki, Cargo and Lua are represented as static previews, not executed as a live wiki.</p>
       </section>
     </aside>
 

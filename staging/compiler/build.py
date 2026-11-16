@@ -134,6 +134,7 @@ def empty_parse() -> dict[str, Any]:
         "headings": [],
         "categories": [],
         "templates": [],
+        "transclusions": [],
         "modules": [],
         "properties": [],
         "semantic": [],
@@ -160,10 +161,13 @@ def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
     ]
     categories = sorted({clean_target(item) for item in CATEGORY_RE.findall(text)})
 
+    transclusions = set()
+    transclusions.update(clean_target(x) for x in re.findall(r"^\s*\{\{\s*:\s*([^{}|]+?)\s*\}\}\s*$", text, re.MULTILINE))
+    transclusions.update(clean_target(x) for x in re.findall(r"^\s*\{\{\s*#lsth\s*:\s*([^{}|]+?)\s*\|[^{}|]+\}\}\s*$", text, re.MULTILINE | re.IGNORECASE))
     templates: set[str] = set()
     for match in TEMPLATE_RE.finditer(text):
         name = match.group(1).strip()
-        if name and not name.startswith(("#", "!")):
+        if name and not name.startswith(("#", "!", ":")):
             templates.add(name if ":" in name else f"Template:{name}")
 
     modules = sorted({f"Module:{clean_target(name)}" for name in INVOKE_RE.findall(text)})
@@ -195,6 +199,7 @@ def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
         "headings": headings,
         "categories": categories,
         "templates": sorted(templates),
+        "transclusions": sorted(transclusions),
         "modules": modules,
         "properties": sorted(properties),
         "semantic": semantic,
@@ -203,41 +208,190 @@ def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
 
 
 def inline_markup(text: str) -> str:
-    escaped = html.escape(text)
+    """Render a deliberately bounded subset of inline wikitext, escaping HTML."""
+    escaped = html.escape(text, quote=False)
     escaped = re.sub(r"'''''(.*?)'''''", r"<strong><em>\1</em></strong>", escaped)
     escaped = re.sub(r"'''(.*?)'''", r"<strong>\1</strong>", escaped)
     escaped = re.sub(r"''(.*?)''", r"<em>\1</em>", escaped)
 
     def wiki_link(match: re.Match[str]) -> str:
-        target, _prop, label = classify_wikilink(html.unescape(match.group(1)))
+        target, prop, label = classify_wikilink(html.unescape(match.group(1)))
         if target.casefold().startswith("category:"):
             return ""
-        return f'<a href="#/page/{stable_id(target)}">{html.escape(label or target)}</a>'
+        if prop:
+            return html.escape(label or target)
+        # Links to a section must still locate the canonical page.
+        title, _, fragment = target.lstrip(":").partition("#")
+        if not title:
+            return html.escape(label or fragment)
+        section = f' data-section="{html.escape(fragment, quote=True)}"' if fragment else ""
+        return f'<a href="#/page/{stable_id(title)}"{section}>{html.escape(label or title)}</a>'
 
     escaped = re.sub(r"\[\[([^\[\]]+)\]\]", wiki_link, escaped)
 
     def external_link(match: re.Match[str]) -> str:
-        url = match.group(1)
-        label = match.group(2) or url
-        return f'<a href="{html.escape(url)}" target="_blank" rel="noreferrer">{html.escape(label)}</a>'
+        url = html.unescape(match.group(1))
+        label = html.unescape(match.group(2) or url)
+        if not url.startswith(("https://", "http://")):
+            return html.escape(label)
+        return f'<a href="{html.escape(url, quote=True)}" target="_blank" rel="noopener noreferrer">{html.escape(label)}</a>'
 
-    return re.sub(r"\[(https?://[^\s\]]+)(?:\s+([^\]]+))?\]", external_link, escaped)
+    escaped = re.sub(r"\[(https?://[^\s\]]+)(?:\s+([^\]]+))?\]", external_link, escaped)
+    # Known inert formatting tags are restored, but arbitrary source HTML stays escaped.
+    for tag in ("sub", "sup", "small", "code", "kbd", "samp", "em", "strong", "br"):
+        escaped = escaped.replace(f"&lt;{tag}&gt;", f"<{tag}>")
+        escaped = escaped.replace(f"&lt;/{tag}&gt;", f"</{tag}>")
+    escaped = escaped.replace("&lt;br /&gt;", "<br>").replace("&lt;br/&gt;", "<br>")
+    return escaped
+
+
+def strip_static_metadata(source: str) -> str:
+    """Hide known article metadata templates, without pretending to execute templates."""
+    text = COMMENT_RE.sub("", source)
+    for name in ("Source status", "Knowledge object", "Reading depth"):
+        text = re.sub(
+            r"\{\{\s*" + re.escape(name) + r"\b.*?\}\}\s*",
+            "", text, flags=re.IGNORECASE | re.DOTALL,
+        )
+    text = re.sub(r"<noinclude>.*?</noinclude>", "", text, flags=re.IGNORECASE | re.DOTALL)
+    text = CATEGORY_RE.sub("", text)
+    return text
+
+
+def search_body(source: str) -> str:
+    """Derive a searchable plain-text projection; do not change canonical wikitext."""
+    text = strip_static_metadata(source)
+    text = re.sub(r"<ref\b[^>]*>.*?</ref\s*>", " ", text, flags=re.IGNORECASE | re.DOTALL)
+    text = re.sub(r"\{\{[^{}]*\}\}", " ", text, flags=re.DOTALL)
+    text = re.sub(r"\[\[([^\]|]+)\|([^\]]+)\]\]", r"\2", text)
+    text = re.sub(r"\[\[([^\]]+)\]\]", r"\1", text)
+    text = re.sub(r"\[(https?://[^\s\]]+)(?:\s+([^\]]+))?\]", lambda m: m.group(2) or "", text)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"''+", "", text)
+    return " ".join(text.split())[:12000]
+
+
+
+def extract_section(source: str, heading: str) -> str | None:
+    """Return a heading's body using bounded heading-level structure."""
+    matches = list(HEADING_RE.finditer(source))
+    for i, match in enumerate(matches):
+        label = re.sub(r"''+", "", match.group(2)).strip()
+        if label.casefold() != heading.strip().casefold():
+            continue
+        end = len(source)
+        for later in matches[i + 1:]:
+            if len(later.group(1)) <= len(match.group(1)):
+                end = later.start()
+                break
+        return source[match.end():end].strip()
+    return None
+
+
+def expand_static_transclusions(
+    source: str, current_title: str, lookup: dict[str, str],
+    depth: int = 0, ancestors: frozenset[str] = frozenset(),
+) -> str:
+    """Preview only standalone canonical page and named-section composition.
+
+    Does not run templates, SMW, Cargo, Lua, parser functions or remote MediaWiki.
+    Do not expand example syntax inside pre/nowiki/source blocks.
+    """
+    if depth >= 4:
+        return source
+    result: list[str] = []
+    literal: str | None = None
+    ancestor_set = ancestors | {current_title}
+
+    for line in source.splitlines(keepends=True):
+        if literal:
+            result.append(line)
+            if re.search(r"</" + literal + r"\s*>", line, re.IGNORECASE):
+                literal = None
+            continue
+
+        opener = re.search(r"<(pre|nowiki|source|syntaxhighlight)\b[^>]*>", line, re.IGNORECASE)
+        if opener:
+            result.append(line)
+            tag = opener.group(1)
+            if not re.search(r"</" + tag + r"\s*>", line[opener.end():], re.IGNORECASE):
+                literal = tag
+            continue
+
+        full = re.fullmatch(r"\s*\{\{\s*:\s*([^{}|]+?)\s*\}\}\s*", line)
+        section = re.fullmatch(
+            r"\s*\{\{\s*#lsth\s*:\s*([^{}|]+?)\s*\|\s*([^{}|]+?)\s*\}\}\s*",
+            line, re.IGNORECASE,
+        )
+        if not full and not section:
+            result.append(line)
+            continue
+
+        title = clean_target((full or section).group(1))
+        target_source = lookup.get(title)
+        if not target_source or title in ancestor_set:
+            result.append(f"''Preview cannot resolve transclusion from [[{title}]].''\n")
+            continue
+
+        if section:
+            heading = section.group(2).strip()
+            fragment = extract_section(target_source, heading)
+            if fragment is None:
+                result.append(f"''Preview cannot find section {heading} in [[{title}]].''\n")
+                continue
+            result.append(f"\n''Static section preview from [[{title}]] — {heading}:''\n")
+            selection = fragment
+        else:
+            # Core inclusion tags determine what material is transcluded.
+            selection = re.sub(r"<noinclude\b[^>]*>.*?</noinclude\s*>", "", target_source, flags=re.IGNORECASE | re.DOTALL)
+            only = re.findall(r"<onlyinclude\b[^>]*>(.*?)</onlyinclude\s*>", selection, flags=re.IGNORECASE | re.DOTALL)
+            if only:
+                selection = "\n".join(only)
+            else:
+                selection = re.sub(r"</?onlyinclude\s*>", "", selection, flags=re.IGNORECASE)
+            selection = re.sub(r"</?includeonly\s*>", "", selection, flags=re.IGNORECASE)
+            result.append(f"\n''Static preview transcluded from [[{title}]]:''\n")
+        result.append(expand_static_transclusions(selection, title, lookup, depth + 1, ancestor_set))
+        result.append("\n")
+    return "".join(result)
 
 
 def render_preview(source: str, content_model: str) -> str:
+    """Build a readable static preview, not an execution of MediaWiki, SMW or Lua."""
     if content_model != "wikitext":
         return f'<pre class="source-code">{html.escape(source)}</pre>'
 
-    text = COMMENT_RE.sub("", source)
-    text = re.sub(r"\{\{\s*Source status\b.*?\}\}\s*", "", text, flags=re.IGNORECASE | re.DOTALL)
-    text = re.sub(r"\{\{\s*Knowledge object\b.*?\}\}\s*", "", text, flags=re.IGNORECASE | re.DOTALL)
-    text = re.sub(r"<noinclude>.*?</noinclude>", "", text, flags=re.IGNORECASE | re.DOTALL)
-    text = CATEGORY_RE.sub("", text)
+    text = strip_static_metadata(source)
+    refs: list[str] = []
+    ref_names: dict[str, int] = {}
+
+    def render_ref(match: re.Match[str]) -> str:
+        attributes, content = match.group(1) or "", match.group(2)
+        name_match = re.search(r'\bname\s*=\s*["\']([^"\']+)["\']', attributes)
+        name = name_match.group(1) if name_match else None
+        if content is None:
+            index = ref_names.get(name or "")
+            return f"@@CITE{index}@@" if index else "[unresolved reference]"
+        if name and name in ref_names:
+            index = ref_names[name]
+        else:
+            refs.append(content.strip())
+            index = len(refs)
+            if name:
+                ref_names[name] = index
+        return f"@@CITE{index}@@"
+
+    text = re.sub(
+        r"<ref\b([^>]*?)(?:>(.*?)</ref\s*>|/\s*>)",
+        render_ref, text, flags=re.IGNORECASE | re.DOTALL,
+    )
+    text = re.sub(r"<references\s*/\s*>", "@@REFERENCE_LIST@@", text, flags=re.IGNORECASE)
 
     output: list[str] = []
     paragraph: list[str] = []
     in_list = False
     in_pre = False
+    heading_number = 0
 
     def flush_paragraph() -> None:
         nonlocal paragraph
@@ -273,8 +427,9 @@ def render_preview(source: str, content_model: str) -> str:
         if heading:
             flush_paragraph()
             close_list()
-            level = min(max(len(heading.group(1)), 2), 6)
-            output.append(f"<h{level}>{inline_markup(heading.group(2))}</h{level}>")
+            heading_number += 1
+            level = min(max(len(heading.group(1)) + 1, 2), 6)
+            output.append(f'<h{level} id="section-{heading_number}">{inline_markup(heading.group(2))}</h{level}>')
             continue
 
         if re.match(r"^\*+\s+", line):
@@ -299,7 +454,23 @@ def render_preview(source: str, content_model: str) -> str:
 
     flush_paragraph()
     close_list()
-    return "\n".join(output)
+    markup = "\n".join(output)
+    for number in range(1, len(refs) + 1):
+        markup = markup.replace(
+            f"@@CITE{number}@@",
+            f'<sup class="citation"><a href="#reference-{number}" aria-label="Reference {number}">[{number}]</a></sup>',
+        )
+    if refs:
+        citations = '<ol class="references">' + "".join(
+            f'<li id="reference-{i}">{inline_markup(value)}</li>'
+            for i, value in enumerate(refs, 1)
+        ) + "</ol>"
+        if "@@REFERENCE_LIST@@" in markup:
+            markup = markup.replace("<p>@@REFERENCE_LIST@@</p>", citations)
+            markup = markup.replace("@@REFERENCE_LIST@@", citations)
+        else:
+            markup += '\n<h3>References</h3>\n' + citations
+    return markup.replace("<p>@@REFERENCE_LIST@@</p>", "").replace("@@REFERENCE_LIST@@", "")
 
 
 def namespace_name(title: str) -> str:
@@ -332,8 +503,10 @@ def validate_identity(identity: dict[str, str], schema: dict[str, Any]) -> list[
     }
     for field, allowed in controlled.items():
         value = identity.get(field)
-        if value and value not in allowed:
-            issues.append({"severity": "error", "code": "invalid_controlled_value", "field": field, "value": value})
+        values = [item.strip() for item in value.split(",")] if field == "domain" and value else ([value] if value else [])
+        for item in values:
+            if item and item not in allowed:
+                issues.append({"severity": "error", "code": "invalid_controlled_value", "field": field, "value": item})
     return issues
 
 
@@ -369,6 +542,13 @@ def collect_pages(manifest: dict[str, Any], schema: dict[str, Any]) -> list[dict
                     },
                 }
             )
+
+    # Render authored reusable sections from repository source, not from a second truth store.
+    source_by_title = {page["title"]: page["source"] for page in pages if page["content_model"] == "wikitext"}
+    for page in pages:
+        if page["content_model"] == "wikitext":
+            expanded = expand_static_transclusions(page["source"], page["title"], source_by_title)
+            page["preview_html"] = render_preview(expanded, "wikitext")
 
     ids = [page["id"] for page in pages]
     titles = [page["title"] for page in pages]
@@ -412,6 +592,9 @@ def build_graph(pages: list[dict[str, Any]], relationships: set[str]) -> dict[st
             add(source_id, target, "Category", "structural", target in known_titles)
         for template in parsed["templates"]:
             add(source_id, template, "Template", "runtime", template in known_titles)
+        for transclusion in parsed["transclusions"]:
+            resolved = resolve_target(transclusion, known_titles)
+            add(source_id, resolved or transclusion, "Transcludes", "runtime", bool(resolved))
         for module in parsed["modules"]:
             add(source_id, module, "Invokes", "runtime", module in known_titles)
         for prop in parsed["properties"]:
@@ -508,6 +691,7 @@ def build(out_dir: Path) -> dict[str, Any]:
                 "headings": [h["title"] for h in page["parsed"]["headings"]],
                 "entity_type": page["parsed"]["identity"].get("entity_type"),
                 "domain": page["parsed"]["identity"].get("domain"),
+                "body": search_body(page["source"]) if page["content_model"] == "wikitext" else "",
             }
             for page in pages
         ],

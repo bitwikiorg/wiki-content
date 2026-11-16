@@ -179,3 +179,28 @@ button, input, select { font: inherit; }
   .graph-canvas { height: 440px; }
   .page-meta-actions { display: none; }
 }
+
+/* Reader-first additions: leave inspection tools available, but make the knowledge readable. */
+.reading-depth { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 12px 0 4px; font-size: 13px; }
+.reading-depth span { color: var(--mw-muted); font-weight: 600; margin-right: 2px; }
+.reading-depth a { display: inline-block; border: 1px solid var(--mw-border-subtle); padding: 5px 12px; border-radius: 3px; }
+.reading-depth a.current { background: var(--mw-bg-subtle); border-color: var(--mw-border); color: var(--mw-text); font-weight: 700; }
+.article-toc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px; background: var(--mw-bg-subtle); border: 1px solid var(--mw-border-subtle); padding: 12px 16px; margin: 4px 0 20px; max-width: 680px; }
+.article-toc strong { display: block; margin-bottom: 6px; }
+.article-toc button { display: block; width: 100%; text-align: left; background: none; color: var(--mw-blue); border: none; padding: 3px 0; cursor: pointer; line-height: 1.4; }
+.article-toc button:hover { text-decoration: underline; }
+.article-toc .toc-level-3 { padding-left: 15px; }
+.article-toc .toc-level-4 { padding-left: 30px; }
+.article-body .citation { font-size: 12px; line-height: 0; white-space: nowrap; }
+.article-body .references { font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; padding-left: 25px; }
+.article-body .references li { padding: 0 0 6px 4px; scroll-margin-top: 90px; }
+.article-body .category-members { columns: 2; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 14px; }
+.article-body .category-members li { break-inside: avoid; padding-bottom: 5px; }
+.search-excerpt { font-size: 12px; line-height: 1.45; color: var(--mw-muted); margin-top: 5px; max-width: 760px; overflow-wrap: break-word; }
+.article-body h2[id], .article-body h3[id], .article-body h4[id] { scroll-margin-top: 90px; }
+.article-body .staged-wikitable { max-width: 100%; display: block; overflow-x: auto; }
+@media (max-width: 760px) {
+  .article-body .category-members { columns: 1; }
+  .reading-depth { gap: 6px; }
+  .article-toc { padding: 9px 11px; }
+}

@@ -27,7 +27,22 @@ A database is not merely a static file collection. Schema, identifiers, versions
 == Related concepts ==
 [[Database]], [[Metadata]], [[Provenance]], [[Biological sequence]], [[Sequence annotation]], [[Genomics]], and [[Bioinformatics]] define the data-resource context.
 
+== Archives, curation and predictions ==
+An archival repository receives records from submitters and maintains retrievable identifiers and metadata. A curated resource can reconcile records, evaluate published evidence and add expert interpretation. A computationally annotated collection adds predictions or classifications that may not have been manually verified. These functions can coexist, but their evidence levels should not be conflated.
+
+For example, NCBI GenBank primarily collects submitted nucleotide sequence data; submitted records can later be updated. UniProtKB distinguishes reviewed Swiss-Prot records from unreviewed TrEMBL records containing computational analysis. Neither a stable identifier nor a “reviewed” label proves every individual claim true without examining its evidence and provenance.
+
+== Identifier and version lineage ==
+A reproducible record-level reference should identify the database, accession, version or release where applicable, and retrieval date when records evolve. Sequence versioning, cross-database mapping and taxonomic names can change. A publication may cite a reference sequence that has since been updated, so exact record state matters.
+
+== Connections to genomic interpretation ==
+[[Related to::Genomics|Genomics]] uses sequence repositories and reference annotations for comparison and discovery. Database integration can expose useful correspondences, but mapping two accessions to the same entity needs explicit identity criteria. Contradictory annotations should be flagged and traced to their source rather than silently overwritten.
+
 == References ==
+* [https://www.ncbi.nlm.nih.gov/genbank/submit/ NCBI — Submitting data to GenBank; accessions and revision process.]
+* [https://www.uniprot.org/help/uniprotkb UniProtKB Help — reviewed Swiss-Prot and unreviewed TrEMBL sections.]
+* [https://www.ebi.ac.uk/about/faq/ EMBL-EBI FAQ — collection, curation and dissemination of biological data.]
+
 * NCBI GenBank Overview, current resource: annotated collection of publicly available DNA sequences.
 * EMBL-EBI institutional description of biological data resources.
 * UniProt Consortium literature on protein sequence and functional-information resources.

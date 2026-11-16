@@ -62,7 +62,19 @@ Shift can arise from:
 
 [[Robustness]] concerns maintaining specified performance under perturbation, while [[Adaptation (systems)]] concerns changing the system in response to altered conditions; both are relevant responses to distribution shift but are not synonyms for it.
 
+== A changed population is not necessarily model drift ==
+A shift can arise when the population being sampled changes, when measurement hardware or annotation practice changes, or when the target relationship itself changes. A lower test score after deployment is evidence of performance change, but it does not identify the cause without analysis of the population, outcome definition, sensors and deployment process.
+
+== Evaluation under shift ==
+Tests designed for one source population may not predict target-domain risk. A robust evaluation can separate sites, time periods or meaningful subgroups, preserve the target distribution definition and compare error and calibration under each condition. The same model may be stable for one metric and unreliable for another.
+
+== Limits of correction ==
+Importance weighting can sometimes help under covariate-shift assumptions when the relevant distributions overlap and the conditional target relationship stays stable. It is not a universal correction for changed labels, concepts, unobserved confounders or unsupported regions. A model's [[Related to::Generalization (machine learning)|generalization]] must be assessed relative to the distribution for which a claim is being made.
+
 == References ==
+* [https://developers.google.com/machine-learning/crash-course/overfitting/overfitting Google ML Crash Course — Generalization Conditions and Dataset Stationarity.]
+* [https://scikit-learn.org/stable/modules/cross_validation.html scikit-learn — Evaluating Models under Explicit Sampling/Split Assumptions.]
+
 * Quiñonero-Candela et al. (eds.), ''Dataset Shift in Machine Learning''.
 * Sugiyama & Kawanabe, ''Machine Learning in Non-Stationary Environments''.
 * domain-adaptation and OOD-generalization literature.

@@ -30,7 +30,26 @@ Resistors appear in analog and digital electronics, power systems, sensing, sign
 == Epistemic notes ==
 The ideal resistor is a model. Real components have parasitic capacitance and inductance, finite power limits, temperature dependence, and manufacturing tolerance.
 
+== Resistor, current, and power ==
+[[Related to::Electric current|Electric current]] is the rate of electric charge flow through a cross-section. A resistor constrains the current–voltage relation and may convert electrical energy into heat. For an approximately ohmic resistor at stable temperature:
+
+<pre>
+V = I R
+P = V I = I² R = V² / R
+</pre>
+
+Here V is the voltage across the component, I the current through it, R its resistance, and P the rate of electrical energy dissipation. The identities involving R assume the linear ohmic relation applies. A 100-ohm ideal resistor with 1 volt across it carries 0.01 ampere and dissipates 0.01 watt. A real device needs adequate power and temperature margins.
+
+== Resistance versus resistivity ==
+'''Resistance''' describes a particular component or conductor and is measured in ohms. '''Resistivity''' describes a material property and is measured in ohm-metres. In a uniform conductor model, resistance increases with length and decreases with cross-sectional area; real component geometry and construction can be more complicated.
+
+== Practical design limitations ==
+Resistor values drift with temperature and ageing. Parasitic capacitance/inductance, voltage limits, thermal noise, tolerance and packaging can matter at higher frequencies or precision requirements. A resistor is not inherently an ideal current limiter under all faults or supply conditions.
+
 == References ==
+* [https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance OpenStax, ''University Physics Volume 2'', §9.3 — resistivity, resistance and resistor components.]
+* [https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power OpenStax, ''University Physics Volume 2'', §9.5 — electrical power relations.]
+
 * [https://www.allaboutcircuits.com/textbook/direct-current/chpt-2/resistors/ All About Circuits — Resistors]
 
 [[Category:Electronics]]

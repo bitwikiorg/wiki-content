@@ -47,7 +47,19 @@ Nested cross-validation can separate inner model selection from outer performanc
 == Related concepts ==
 [[Training set]], [[Test set]], [[Overfitting]], [[Model selection bias]], [[Validation]], and [[Data leakage (machine learning)]] provide the surrounding evaluation context.
 
+== Model-selection feedback ==
+A validation set is not a pristine test set after it has been used repeatedly to select hyperparameters, prompts or thresholds. The development procedure may optimize to random variation in its scores. It can still be useful for guiding training, but the selected score is not an unbiased final estimate of generalization.
+
+== Nested evaluation ==
+Under nested cross-validation, inner folds guide model selection while outer folds estimate performance of that selection procedure. The outer-fold data must not influence the inner selection of a corresponding fitted model. This offers a more defensible assessment than choosing the best configuration with the same cross-validation score used as the final estimate.
+
+== Limits of nesting ==
+Nested cross-validation itself relies on representative sampling, valid group/time partitions, unbiased labels and correctly scoped preprocessing. Repeating experiments until an outer result looks favorable can again make that outer result part of model selection; a genuinely independent final test remains valuable where feasible.
+
 == References ==
+* [https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html scikit-learn — Nested versus Non-nested Cross-validation.]
+* [https://www.jmlr.org/beta/papers/v11/cawley10a.html Cawley & Talbot (2010), ''JMLR'' — Model Selection Bias.]
+
 * Hastie, Tibshirani & Friedman.
 * Cawley & Talbot (2010).
 * standard model-selection methodology.

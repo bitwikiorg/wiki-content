@@ -50,7 +50,19 @@ generalization ≠ absence of memorization
 
 [[Robustness]] asks whether specified performance or function survives defined perturbations and is therefore related to, but broader/differently scoped from, ordinary in-distribution generalization.
 
+== Define the target population ==
+A useful performance claim must state which examples or future conditions are intended to be represented. A random held-out split from the same dataset estimates one form of in-distribution performance, subject to sampling and design assumptions. It does not automatically estimate future performance for new hospitals, languages, time periods or measurement devices.
+
+== Independence as an operational question ==
+Independence can fail if records from one person, site or document family appear in both partitions. Cross-validation should respect the real unit of generalization, such as patients, users, subjects or future time blocks. Choosing a splitter is part of the scientific design rather than a purely computational convenience.
+
+== Generalization is metric- and context-specific ==
+A model may generalize well on average but poorly on a defined subgroup or after a [[Related to::Distribution shift|distribution shift]]. Aggregate accuracy, calibration, tail performance and robustness reflect different properties; one score does not establish all of them. A reported generalization gap should include the metric, sampling assumptions and uncertainty.
+
 == References ==
+* [https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets Google Machine Learning Crash Course — Training, Validation and Test Set Design.]
+* [https://scikit-learn.org/stable/modules/cross_validation.html scikit-learn User Guide — Cross-validation and selection of appropriate splitters.]
+
 * Shalev-Shwartz & Ben-David, ''Understanding Machine Learning''.
 * Hastie, Tibshirani & Friedman.
 * contemporary generalization literature in statistical learning and deep learning.

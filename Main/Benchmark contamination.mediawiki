@@ -47,7 +47,19 @@ Problems such as construct mismatch, annotation errors, narrow coverage, saturat
 == Related concepts ==
 [[Data leakage (machine learning)]], [[Test set]], [[Model selection bias]], [[Overfitting]], [[Generalization (machine learning)]], and [[Verification]] define the evaluation context.
 
+== Public benchmarks and adaptive use ==
+A benchmark can start as a held-out evaluation but gradually become familiar to a model developer through released answers, prompt examples, synthetic paraphrases or repeated leaderboard submissions. When a design is repeatedly changed in response to public scores, the score is no longer a wholly independent estimate of future performance even without direct training on exact benchmark items.
+
+== Detection cannot prove universal absence ==
+Exact substring overlap and near-duplicate searches can uncover some training contamination. They do not identify all semantic paraphrases, memorized solutions, indirect feedback or inaccessible pretraining records. Therefore a claim of “contamination free” should be interpreted relative to an explicit threat model and available evidence, not as a universal guarantee.
+
+== Example of a mitigation strategy ==
+The [[Related to::Test set|test-set]] role motivates changing or withholding portions of evaluation items. White and colleagues proposed LiveBench, with frequently refreshed questions and objectively checkable answers, to limit some contamination and judge-dependence risks. Frequent updates reduce exposure opportunities; they do not prove that any particular model had zero related training material.
+
 == References ==
+* [https://proceedings.iclr.cc/paper_files/paper/2025/hash/e4a46394ba5378b3f9a186a5b4c650d1-Abstract-Conference.html White et al., “LiveBench: A Challenging, Contamination-Limited LLM Benchmark”, ICLR 2025.]
+* [https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets Google Machine Learning Crash Course — Dataset Splits and Repeated Evaluation.]
+
 * White et al., “LiveBench: A Challenging, Contamination-Limited LLM Benchmark”, ICLR 2025.
 * Bordt et al., “How Much Can We Forget about Data Contamination?”, ICML 2025.
 * Choi et al., “How Contaminated Is Your Benchmark?”, ICML 2025.

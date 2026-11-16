@@ -38,7 +38,19 @@ Real deployment may involve [[Distribution shift]], new subgroups, changed incen
 == Related concepts ==
 [[Training set]], [[Validation set]], [[Generalization (machine learning)]], [[Benchmark contamination]], [[Data leakage (machine learning)]], and [[Evidence]] define the evaluation boundary.
 
+== Final assessment as a procedure ==
+A held-out test set is most informative after the task, metric, data filtering, model architecture, thresholds and hyperparameters have been fixed. After evaluation, the score should be reported with dataset size, subgroup coverage, uncertainty and any known distribution mismatch. A test set is not intrinsically independent simply because a file is named “test.”
+
+== Independence threats ==
+Exact duplicates, related documents, repeated measurements from the same person or leakage through fitted preprocessing can invalidate the split. In language-model evaluations, exposure of public questions or answer patterns during pretraining or repeated benchmark tuning can also compromise independence; see [[Related to::Benchmark contamination|benchmark contamination]].
+
+== If a test set has been used for development ==
+Once repeated test results influence design decisions, the test set serves a validation role in practice. A fresh holdout or a properly designed new evaluation is needed for a genuinely independent performance estimate. Even a clean test estimates only the specified target population, not all future deployments.
+
 == References ==
+* [https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets Google ML Crash Course — Dividing the Original Dataset.]
+* [https://scikit-learn.org/stable/modules/cross_validation.html scikit-learn — Cross-validation and Independent Testing.]
+
 * standard machine-learning evaluation texts.
 * Cawley & Talbot (2010).
 * CMU machine-learning model-selection material emphasizing independent test data.

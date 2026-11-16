@@ -27,7 +27,20 @@ Bioinformatics overlaps with computational biology. Usage varies: some communiti
 == Related concepts ==
 [[Biological sequence]], [[Sequence alignment]], [[Biological database]], [[Sequence annotation]], [[Genomics]], [[Algorithm]], and [[Database]] provide the computational-biology bridge.
 
+== Reproducible analytical workflow ==
+A bioinformatics result depends on the data version, quality filtering, parameters, software and reference resources. A reviewable analysis records input accessions or checksums, reference assembly or database release, computational environment, methods, statistical thresholds and outputs. Reproducible execution is necessary but not sufficient for a biologically correct interpretation.
+
+== Sequence analysis and uncertainty ==
+[[Related to::Sequence alignment|Sequence alignment]] can propose corresponding positions across molecular sequences using scoring and gap assumptions. Similarity is not automatically proof of shared ancestry or function. Results may depend on sequence composition, search space, sampling and multiple comparisons; interpretation should preserve evidence strength and known alternatives.
+
+== Scientific data infrastructure ==
+[[Related to::Biological database|Biological databases]] differ in whether records are submitted, reviewed, computationally annotated or otherwise curated. A successful query or accession lookup establishes that a record is retrievable, not that every associated annotation is experimentally validated. Analysts should distinguish archive records from expert-reviewed synthesis and predictions.
+
 == References ==
+* [https://www.ebi.ac.uk/about/faq/ EMBL-EBI FAQ — definition and role of bioinformatics resources.]
+* [https://www.ebi.ac.uk/training/online/courses/guide-to-sequence-analysis-tools/ EMBL-EBI Training — A guide to sequence analysis tools (reviewed February 2026).]
+* [https://www.ebi.ac.uk/training/online/courses/workflows-combining-tools-for-data-analysis/ EMBL-EBI Training — Workflows: Combining tools for data analysis.]
+
 * NCBI BLAST Glossary, “bioinformatics”, current Bookshelf resource.
 * EMBL-EBI, “What is bioinformatics?”, current institutional definition.
 * EMBL-EBI, Introductory Bioinformatics pathway, reviewed April 2026.

@@ -27,7 +27,20 @@ Genomics depends heavily on bioinformatics because genome-scale datasets are too
 == Related concepts ==
 [[Genetics]], [[Bioinformatics]], [[Biological sequence]], [[Sequence annotation]], [[Biological database]], and [[Systems biology]] define the genome-scale context.
 
+== Genome-scale inference ==
+Genome assemblies, annotations and variant calls are model-mediated outputs, not exact observations of an organism's complete biology. A draft assembly can contain gaps and errors; an annotated gene model can reflect computational predictions. Comparing assemblies or variant calls requires attention to reference version, sequencing technology, read depth, mapping ambiguity and quality filters.
+
+== Genomic reference frameworks ==
+Reference genomes provide coordinates for comparing observations, while a '''pangenome''' represents variation across multiple individuals or lineages. Reference selection influences which variants are readily detectable and comparable. A sequence from one person or isolate is not the exhaustive genetic diversity of a species. Population genomics can estimate patterns of variation, but ancestry and phenotype should not be inferred deterministically from a single marker.
+
+== Computation and biological interpretation ==
+[[Related to::Bioinformatics|Bioinformatics]] supplies alignment, assembly, annotation and statistical infrastructure. [[Related to::Biological database|Biological databases]] preserve accessions, versions, sequence annotations and provenance needed for reproducibility. Genome-scale associations may suggest mechanisms but still need appropriate validation; “omics” data quantity is not equivalent to causal explanation.
+
 == References ==
+* [https://www.genome.gov/about-genomics/fact-sheets/Genetics-vs-Genomics NHGRI — Genetics vs. Genomics Fact Sheet.]
+* [https://www.genome.gov/genetics-glossary NHGRI — Glossary entries on genome, genomic variation and pangenome.]
+* [https://www.ncbi.nlm.nih.gov/genbank/submit/ NCBI — GenBank submissions, accession identifiers and update process.]
+
 * National Human Genome Research Institute, Talking Glossary, “Genomics”, current resource.
 * NIH Style Guide, “Genetics and genomics”.
 * National Human Genome Research Institute, NIH Almanac description of genome research.

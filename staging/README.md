@@ -88,6 +88,10 @@ The graph deliberately separates different kinds of connection:
 
 Unresolved targets remain visible as unresolved edges rather than silently disappearing.
 
+## Read-only readiness audit
+
+Run `python scripts/audit_staging_readiness.py` after the staging build. It emits an ignored, CI-uploaded `v2-staging-readiness.json` containing source-SHA-bound per-page K01–K18 diagnostic statuses. Missing typed links and resolvable citations are review leads, not automatic factual failures; editorial merit and the live MediaWiki runtime are never marked verified by a static build. The external comparative wiki and primary-source catalogs remain independent research assets in ChatGPT Library rather than an additional article canon.
+
 ## Local build
 
 From repository root:

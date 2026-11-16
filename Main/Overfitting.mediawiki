@@ -55,7 +55,19 @@ No single method guarantees generalization.
 == Related concepts ==
 [[Generalization (machine learning)]], [[Validation set]], [[Test set]], [[Bias–variance tradeoff]], [[Model selection bias]], and [[Data leakage (machine learning)]] distinguish different forms of apparent performance failure.
 
+== Development can overfit without new parameter training ==
+Overfitting can occur at more than one level. In ordinary parameter fitting, a model may adapt to noise in its training observations. In hyperparameter search, the choice among many models can adapt to chance fluctuations in validation results. If the final test data are used repeatedly to choose prompts, checkpoints or architectures, the supposed test results also become part of the development process.
+
+== Appropriate diagnosis ==
+Compare training, validation and independent test performance using the same relevant metric, but state the sampling and population assumptions. A low training error with a larger test error can suggest overfitting; a high error on both sets can instead indicate [[Related to::Underfitting|underfitting]]. A small gap does not prove success when the target task or sample is unrepresentative.
+
+== Limits of remedies ==
+Regularization, early stopping, cross-validation and data augmentation may help with particular overfitting mechanisms. They do not repair contaminated labels, invalid group splits or an evaluation population unrelated to deployment. Generalization must be supported by new, appropriately independent evidence.
+
 == References ==
+* [https://developers.google.com/machine-learning/crash-course/overfitting/overfitting Google Machine Learning Crash Course — Overfitting and Generalization Conditions.]
+* [https://www.jmlr.org/beta/papers/v11/cawley10a.html Cawley & Talbot (2010), “On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation”, ''JMLR'' 11:2079–2107.]
+
 * Hastie, Tibshirani & Friedman.
 * Shalev-Shwartz & Ben-David.
 * Burridge & Tosh, ''Inference in Statistical Modelling and Machine Learning'' (2026).

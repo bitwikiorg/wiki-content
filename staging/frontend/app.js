@@ -186,6 +186,58 @@ function renderSidebarPortals() {
     .join('');
 }
 
+function canonicalArticles() {
+  return state.pages.filter(page => page.namespace === 'Main' && page.entity_type &&
+    !/\/(Simple|Technical)$/.test(page.title));
+}
+
+function renderOverview() {
+  const articles = canonicalArticles();
+  const domains = new Map();
+  for (const page of articles) {
+    for (const domain of String(page.domain || '').split(',').map(x => x.trim()).filter(Boolean)) {
+      domains.set(domain, (domains.get(domain) || 0) + 1);
+    }
+  }
+  const focus = [
+    'Computation', 'Information', 'Bit', 'Computer architecture',
+    'Artificial intelligence', 'AI agent', 'Biological computation',
+    'Systems biology', 'Cognition', 'Consciousness',
+    'Informational inheritance', 'IKEA effect',
+  ].map(title => findPageByTitle(title)).filter(Boolean);
+  app.innerHTML = `
+    <article class="corpus-overview">
+      <h1 class="page-title">BITwiki content index</h1>
+      <p class="page-subtitle">Browse the MediaWiki source corpus and inspect individual articles. This is a static preview, not a full wiki runtime.</p>
+      <div class="overview-stats">
+        <div><strong>${articles.length}</strong><span>Knowledge articles</span></div>
+        <div><strong>${state.pages.length}</strong><span>Source pages</span></div>
+        <div><strong>${domains.size}</strong><span>Domains</span></div>
+      </div>
+      <nav class="overview-actions" aria-label="Explore content">
+        <a href="#/articles">Articles</a>
+        <a href="#/portals">Portals</a>
+        <a href="#/categories">Categories</a>
+        <a href="#/all-pages">All source pages</a>
+      </nav>
+      <section class="overview-section">
+        <h2>Concepts to inspect</h2>
+        <div class="overview-links">
+          ${focus.map(page => `<a href="${pageHref(page)}">${esc(page.title)}</a>`).join('')}
+        </div>
+      </section>
+      <section class="overview-section">
+        <h2>Browse by discipline</h2>
+        <div class="overview-domains">
+          ${[...domains].sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([domain, count]) =>
+              `<a href="#/articles?domain=${encodeURIComponent(domain)}"><span>${esc(domain)}</span><small>${count}</small></a>`).join('')}
+        </div>
+      </section>
+      <p class="overview-footer">GitHub remains the canonical text source. Semantic MediaWiki, Cargo and Lua are not executed here.</p>
+    </article>`;
+}
+
 function renderDirectory({ q = '', namespace = '', heading = 'All pages', coreOnly = false } = {}) {
   const query = q.trim().toLocaleLowerCase();
   const terms = query.split(/\s+/).filter(Boolean);

@@ -30,7 +30,21 @@ Safety factors are used in structural, mechanical, aerospace, civil, pressure-sy
 == Epistemic notes ==
 There is no universal safety factor appropriate to every system. Treating a single numerical factor as proof of safety can obscure failure modes, uncertainty, fatigue, reliability, quality control, and standard-specific requirements.
 
+== Limit load, allowable capacity, and failure mode ==
+Engineering specifications may define a '''limit load''' as the maximum expected service load within the design envelope and require a structure to withstand a '''design load''' obtained by applying an appropriate factor. Yield and ultimate failure are different limit states and may have different prescribed factors. A requirement must state what the factor multiplies, the applicable material or structural response, and the intended verification method.
+
+== Factor of safety versus margin of safety ==
+A factor applied to a nominal load is not automatically the same number as a computed reserve ratio. One common structural '''margin of safety''' convention evaluates allowable capacity against factored limit load and subtracts one. This distinction prevents confusion between design requirements and a later analysis of predicted capacity.
+
+== Assumptions and verification ==
+[[Related to::Measurement|Test and measurement]] can help verify that a design meets a specified condition, while analytical models estimate behavior for loads and environments that are hard to reproduce. Neither a large nominal safety factor nor a positive modeled margin alone proves safety across fatigue, buckling, corrosion, assembly faults or other unexamined failure modes. Required margins, certification and test methods depend on the current governing standard and application.
+
+== Example without prescribing a universal factor ==
+For a hypothetical element with a nominal limit load of 1,000 newtons and an explicitly specified factor of 1.5, the factored design load is 1,500 newtons. Whether this is adequate depends on the relevant failure mode, the strength definition, verification evidence, and the actual governing requirement. This is an arithmetic illustration, not a design recommendation.
+
 == References ==
+* [https://standards.nasa.gov/standard/nasa/nasa-std-5001 NASA-STD-5001B with Change 3 — ''Structural Design and Test Factors of Safety for Spaceflight Hardware'' (active NASA standard; revalidated 2022).]
+
 * [https://nodis3.gsfc.nasa.gov/displayAll.cfm?Internal_ID=N_PR_8715_003D_&page_name=all NASA — General Safety Program Requirements]
 
 [[Category:Engineering]]

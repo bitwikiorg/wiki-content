@@ -51,7 +51,19 @@ The terms are related only at a broad statistical level.
 == Related concepts ==
 [[Validation set]], [[Test set]], [[Overfitting]], [[Selection bias]], [[Benchmark contamination]], and [[Generalization (machine learning)]] distinguish the main evaluation failures.
 
+== Why a best-of-many score is optimistic ==
+Suppose twenty configurations have similar true performance but each produces a noisy validation estimate. Selecting the largest observed estimate tends to select both good performance and favorable sampling noise. The resulting estimate may therefore exceed the selected configuration's expected score on genuinely new data. This can occur even when no test labels are used to train the model.
+
+== Evaluation design ==
+A nested cross-validation procedure performs hyperparameter optimization inside each outer training fold, then scores the chosen fit on the corresponding untouched outer fold. This evaluates a model-selection procedure rather than reusing its selection score as an independent estimate. [[Related to::Validation set|Validation data]] can guide selection; final evaluation must reflect all adaptation that occurred.
+
+== Residual uncertainty ==
+Cawley and Talbot show that variance in model-selection criteria can materially affect reported comparisons. Nested procedures help but do not cure nonrepresentative datasets, correlated subjects or adaptive reuse of outer scores. Report the search scope and uncertainty rather than a single selected score without its procedure.
+
 == References ==
+* [https://www.jmlr.org/beta/papers/v11/cawley10a.html Cawley & Talbot (2010), “On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation”, ''JMLR'' 11:2079–2107.]
+* [https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html scikit-learn — Nested versus Non-nested Cross-validation.]
+
 * Cawley & Talbot, “On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation”, ''JMLR'' 11 (2010), 2079–2107.
 * model-selection and nested-cross-validation literature.
 

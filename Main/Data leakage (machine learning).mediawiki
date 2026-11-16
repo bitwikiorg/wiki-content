@@ -49,7 +49,19 @@ It is important but narrower than machine-learning data leakage as a whole.
 == Related concepts ==
 [[Training set]], [[Validation set]], [[Test set]], [[Benchmark contamination]], [[Provenance]], [[Validation]], and [[Generalization (machine learning)]] define the relevant evaluation boundary.
 
+== A concrete preprocessing failure ==
+Suppose all examples are standardized using the mean and variance of the entire dataset before it is divided into training and test groups. Although no test label is used, the distribution of the future test inputs has already influenced the fitted preprocessing transformation, and the evaluation is no longer strictly independent. A defensible pipeline first defines the evaluation split, then fits preprocessing, feature selection and estimators only on the training portion of each fold.
+
+== Information available at prediction time ==
+Leakage must be assessed relative to the actual deployment question. A hospital record created after an outcome cannot legitimately predict that outcome at an earlier time; a patient identifier might link training and test records even when their rows are distinct. [[Related to::Test set|Test-set independence]] is therefore about subjects, time and data provenance as well as row IDs.
+
+== Detection and limits ==
+Audits can look for duplicate records, entity overlap, target-derived fields, implausibly high performance and leakage through feature selection. Absence of exact duplicate strings does not prove clean separation. Cross-validation pipelines can reduce procedural leakage, but they cannot repair an invalid study design or unknown source-data lineage.
+
 == References ==
+* [https://doi.org/10.1145/2382577.2382579 Kaufman, Rosset, Perlich & Stitelman (2012), “Leakage in Data Mining: Formulation, Detection, and Avoidance”, ''ACM TKDD'' 6(4).]
+* [https://scikit-learn.org/stable/common_pitfalls.html scikit-learn documentation — Common Pitfalls and Recommended Practices, §Data leakage.]
+
 * Kaufman, Rosset, Perlich & Stitelman, “Leakage in Data Mining: Formulation, Detection, and Avoidance”, ''ACM TKDD'' 6(4) (2012).
 * Kaufman, Rosset & Perlich, KDD 2011 precursor on leakage in data mining.
 * standard machine-learning evaluation methodology.

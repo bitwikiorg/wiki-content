@@ -95,32 +95,46 @@ function findPageByTitle(title) {
   return state.pageByTitle.get(normalized) || state.pageByTitleFold.get(normalized.toLocaleLowerCase());
 }
 
+let graphLoad = null;
+let searchLoad = null;
+
+async function ensureGraph() {
+  if (!graphLoad) {
+    graphLoad = loadJSON('./data/graph.json').then(graph => {
+      state.graph = graph;
+      state.nodeById = new Map(graph.nodes.map(node => [node.id, node]));
+    }).catch(error => { graphLoad = null; throw error; });
+  }
+  await graphLoad;
+}
+
+async function ensureSearch() {
+  if (!searchLoad) {
+    searchLoad = loadJSON('./data/search.json').then(search => {
+      state.searchById = new Map(search.map(item => [item.id, item]));
+    }).catch(error => { searchLoad = null; throw error; });
+  }
+  await searchLoad;
+}
+
 async function initialize() {
   try {
-    const [pages, graph, ontology, meta, search] = await Promise.all([
+    const [pages, meta] = await Promise.all([
       loadJSON('./data/pages.json'),
-      loadJSON('./data/graph.json'),
-      loadJSON('./data/ontology.json'),
       loadJSON('./data/build-meta.json'),
-      loadJSON('./data/search.json'),
     ]);
     state.pages = pages;
-    state.searchById = new Map(search.map(item => [item.id, item]));
     state.pageById = new Map(pages.map(page => [page.id, page]));
     state.pageByTitle = new Map(pages.map(page => [page.title, page]));
     state.pageByTitleFold = new Map(pages.map(page => [page.title.toLocaleLowerCase(), page]));
-    state.graph = graph;
-    state.nodeById = new Map(graph.nodes.map(node => [node.id, node]));
-    state.ontology = ontology;
     state.meta = meta;
-
     renderNamespaces();
-    await renderSidebarPortals();
-    statusBar.innerHTML = `<strong>Staging projection</strong> · ${meta.page_count} source objects · ${meta.ontology_object_count} knowledge objects · ${meta.graph_edge_count} graph edges · <code>${esc(meta.source_sha.slice(0, 12))}</code>`;
-    route();
+    renderSidebarPortals();
+    statusBar.innerHTML = `<strong>Repository snapshot</strong> · ${meta.page_count} source objects · ${meta.ontology_object_count} knowledge objects · <code>${esc(String(meta.source_sha).slice(0, 12))}</code>`;
+    await route();
   } catch (error) {
-    statusBar.textContent = 'Staging build failed to load.';
-    app.innerHTML = `<div class="empty"><strong>Unable to load staging artifacts.</strong><br>${esc(error.message)}</div>`;
+    statusBar.textContent = 'Unable to load content index.';
+    app.innerHTML = `<div class="empty"><strong>Unable to load source index.</strong><br>${esc(error.message)}</div>`;
   }
 }
 
@@ -164,16 +178,11 @@ function wikiFragment(value = '') {
   return out;
 }
 
-async function renderSidebarPortals() {
-  const portalIndexes = state.pages.filter(page => page.namespace === 'Portal');
-  const fullPages = await Promise.all(portalIndexes.map(page => loadFullPage(page.id)));
-  const domainPortals = fullPages
-    .map(page => ({ page, portal: parsePortalTemplate(page.source) }))
-    .filter(item => item.portal?.kind === 'domain')
-    .sort((a, b) => a.page.title.localeCompare(b.page.title));
-
-  portalList.innerHTML = domainPortals
-    .map(({ page }) => `<a href="${pageHref(page)}">${esc(page.title.replace(/^Portal:/, ''))}</a>`)
+function renderSidebarPortals() {
+  const pages = state.pages.filter(page => page.namespace === 'Portal')
+    .sort((a, b) => a.title.localeCompare(b.title));
+  portalList.innerHTML = pages.slice(0, 20)
+    .map(page => `<a href="${pageHref(page)}">${esc(page.title.replace(/^Portal:/, ''))}</a>`)
     .join('');
 }
 

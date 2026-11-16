@@ -134,6 +134,7 @@ def empty_parse() -> dict[str, Any]:
         "headings": [],
         "categories": [],
         "templates": [],
+        "transclusions": [],
         "modules": [],
         "properties": [],
         "semantic": [],
@@ -160,10 +161,13 @@ def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
     ]
     categories = sorted({clean_target(item) for item in CATEGORY_RE.findall(text)})
 
+    transclusions = set()
+    transclusions.update(clean_target(x) for x in re.findall(r"^\s*\{\{\s*:\s*([^{}|]+?)\s*\}\}\s*$", text, re.MULTILINE))
+    transclusions.update(clean_target(x) for x in re.findall(r"^\s*\{\{\s*#lsth\s*:\s*([^{}|]+?)\s*\|[^{}|]+\}\}\s*$", text, re.MULTILINE | re.IGNORECASE))
     templates: set[str] = set()
     for match in TEMPLATE_RE.finditer(text):
         name = match.group(1).strip()
-        if name and not name.startswith(("#", "!")):
+        if name and not name.startswith(("#", "!", ":")):
             templates.add(name if ":" in name else f"Template:{name}")
 
     modules = sorted({f"Module:{clean_target(name)}" for name in INVOKE_RE.findall(text)})
@@ -195,6 +199,7 @@ def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
         "headings": headings,
         "categories": categories,
         "templates": sorted(templates),
+        "transclusions": sorted(transclusions),
         "modules": modules,
         "properties": sorted(properties),
         "semantic": semantic,
@@ -264,6 +269,91 @@ def search_body(source: str) -> str:
     text = re.sub(r"<[^>]+>", " ", text)
     text = re.sub(r"''+", "", text)
     return " ".join(text.split())[:12000]
+
+
+
+def extract_section(source: str, heading: str) -> str | None:
+    """Return a heading's body using bounded heading-level structure."""
+    matches = list(HEADING_RE.finditer(source))
+    for i, match in enumerate(matches):
+        label = re.sub(r"''+", "", match.group(2)).strip()
+        if label.casefold() != heading.strip().casefold():
+            continue
+        end = len(source)
+        for later in matches[i + 1:]:
+            if len(later.group(1)) <= len(match.group(1)):
+                end = later.start()
+                break
+        return source[match.end():end].strip()
+    return None
+
+
+def expand_static_transclusions(
+    source: str, current_title: str, lookup: dict[str, str],
+    depth: int = 0, ancestors: frozenset[str] = frozenset(),
+) -> str:
+    """Preview only standalone canonical page and named-section composition.
+
+    Does not run templates, SMW, Cargo, Lua, parser functions or remote MediaWiki.
+    Do not expand example syntax inside pre/nowiki/source blocks.
+    """
+    if depth >= 4:
+        return source
+    result: list[str] = []
+    literal: str | None = None
+    ancestor_set = ancestors | {current_title}
+
+    for line in source.splitlines(keepends=True):
+        if literal:
+            result.append(line)
+            if re.search(r"</" + literal + r"\s*>", line, re.IGNORECASE):
+                literal = None
+            continue
+
+        opener = re.search(r"<(pre|nowiki|source|syntaxhighlight)\b[^>]*>", line, re.IGNORECASE)
+        if opener:
+            result.append(line)
+            tag = opener.group(1)
+            if not re.search(r"</" + tag + r"\s*>", line[opener.end():], re.IGNORECASE):
+                literal = tag
+            continue
+
+        full = re.fullmatch(r"\s*\{\{\s*:\s*([^{}|]+?)\s*\}\}\s*", line)
+        section = re.fullmatch(
+            r"\s*\{\{\s*#lsth\s*:\s*([^{}|]+?)\s*\|\s*([^{}|]+?)\s*\}\}\s*",
+            line, re.IGNORECASE,
+        )
+        if not full and not section:
+            result.append(line)
+            continue
+
+        title = clean_target((full or section).group(1))
+        target_source = lookup.get(title)
+        if not target_source or title in ancestor_set:
+            result.append(f"''Preview cannot resolve transclusion from [[{title}]].''\n")
+            continue
+
+        if section:
+            heading = section.group(2).strip()
+            fragment = extract_section(target_source, heading)
+            if fragment is None:
+                result.append(f"''Preview cannot find section {heading} in [[{title}]].''\n")
+                continue
+            result.append(f"\n''Static section preview from [[{title}]] — {heading}:''\n")
+            selection = fragment
+        else:
+            # Core inclusion tags determine what material is transcluded.
+            selection = re.sub(r"<noinclude\b[^>]*>.*?</noinclude\s*>", "", target_source, flags=re.IGNORECASE | re.DOTALL)
+            only = re.findall(r"<onlyinclude\b[^>]*>(.*?)</onlyinclude\s*>", selection, flags=re.IGNORECASE | re.DOTALL)
+            if only:
+                selection = "\n".join(only)
+            else:
+                selection = re.sub(r"</?onlyinclude\s*>", "", selection, flags=re.IGNORECASE)
+            selection = re.sub(r"</?includeonly\s*>", "", selection, flags=re.IGNORECASE)
+            result.append(f"\n''Static preview transcluded from [[{title}]]:''\n")
+        result.append(expand_static_transclusions(selection, title, lookup, depth + 1, ancestor_set))
+        result.append("\n")
+    return "".join(result)
 
 
 def render_preview(source: str, content_model: str) -> str:
@@ -453,6 +543,13 @@ def collect_pages(manifest: dict[str, Any], schema: dict[str, Any]) -> list[dict
                 }
             )
 
+    # Render authored reusable sections from repository source, not from a second truth store.
+    source_by_title = {page["title"]: page["source"] for page in pages if page["content_model"] == "wikitext"}
+    for page in pages:
+        if page["content_model"] == "wikitext":
+            expanded = expand_static_transclusions(page["source"], page["title"], source_by_title)
+            page["preview_html"] = render_preview(expanded, "wikitext")
+
     ids = [page["id"] for page in pages]
     titles = [page["title"] for page in pages]
     paths = [page["source_path"] for page in pages]
@@ -495,6 +592,9 @@ def build_graph(pages: list[dict[str, Any]], relationships: set[str]) -> dict[st
             add(source_id, target, "Category", "structural", target in known_titles)
         for template in parsed["templates"]:
             add(source_id, template, "Template", "runtime", template in known_titles)
+        for transclusion in parsed["transclusions"]:
+            resolved = resolve_target(transclusion, known_titles)
+            add(source_id, resolved or transclusion, "Transcludes", "runtime", bool(resolved))
         for module in parsed["modules"]:
             add(source_id, module, "Invokes", "runtime", module in known_titles)
         for prop in parsed["properties"]:

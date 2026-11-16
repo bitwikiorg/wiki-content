@@ -1,0 +1,44 @@
+{{Source status|status=2026 source-reviewed staging article|note=Foundational charge-flow concept grounded in OpenStax and NIST SI references.}}
+{{Knowledge object
+ |title=Electric current
+ |entity_type=Concept
+ |domain=Electronics
+ |status=Established
+ |provenance=BITwiki V2; source-reviewed disciplinary expansion 2026-11-16
+}}
+{{Reading depth|base=Electric current|current=Core}}
+
+= Electric current =
+
+== Overview ==
+'''Electric current''' is the rate of flow of electric charge through a specified surface. It is fundamental to circuit analysis and also occurs in plasmas, electrolytes and other moving-charge systems. The SI unit is the ampere (A), corresponding to one coulomb of charge per second.
+
+== Definition ==
+For an average current passing through a surface over an interval:
+
+<pre>
+I_average = ΔQ / Δt
+</pre>
+
+Here ΔQ is the net charge crossing the chosen surface and Δt is the elapsed time. Instantaneous current is the time derivative of transferred charge, I = dQ/dt, when that model applies.
+
+== Direction and charge carriers ==
+By convention, positive current follows the direction of positive-charge transport. In ordinary metallic conductors the moving carriers are usually negatively charged electrons, so their drift direction is opposite to conventional current. In an electrolyte, positive and negative ions may both contribute. Current direction and carrier direction must not be conflated.
+
+== Circuit behavior ==
+A voltage source can establish an electric field that drives charge carriers in a conducting path. The current obtained depends on the circuit and its component characteristics. For an ohmic component under suitable conditions, voltage, current and resistance are related by V = IR. A voltage source alone does not fix a unique current without a load and circuit conditions.
+
+[[Related to::Resistor|Resistors]] are components used to set or influence the current–voltage relationship and can dissipate power as heat.
+
+== Example ==
+If 3 coulombs of net charge cross a surface in 2 seconds, the average current is 1.5 amperes. This calculation describes a rate of charge transfer; it does not directly give the energy consumed, which also depends on voltage and time.
+
+== Physical and engineering limits ==
+Current is not identical to energy flow, voltage or the speed at which a signal propagates. A model may need to account for alternating current, material nonlinearity, thermal effects, capacitive behavior and geometry. The chosen cross-section and sign convention matter.
+
+== References ==
+* [https://openstax.org/books/university-physics-volume-2/pages/9-1-electrical-current OpenStax, ''University Physics Volume 2'', §9.1 — electrical current.]
+* [https://www.nist.gov/si-redefinition/definitions-si-base-units NIST — Definitions of SI Base Units; ampere.]
+* [https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance OpenStax, §9.3 — resistance and circuit interpretation.]
+
+[[Category:Electronics]]

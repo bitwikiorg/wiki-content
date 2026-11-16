@@ -43,7 +43,19 @@ Estimating them using held-out test data can cause [[Data leakage (machine learn
 == Related concepts ==
 [[Machine learning]], [[Validation set]], [[Test set]], [[Overfitting]], [[Provenance]], and [[Data leakage (machine learning)]] define the surrounding evaluation pipeline.
 
+== The training boundary includes transformations ==
+Training is not limited to updating a neural network's numerical weights. Fitting feature scaling, imputation, dimensionality reduction, learned embeddings or feature selection also extracts information from data. For a fair evaluation, each learned preprocessing component should be fitted using the training split only, and then applied without refitting to the held-out split.
+
+== Split by the intended unit of independence ==
+Randomly assigning rows may be inappropriate when rows share a patient, user, recording session, document or future timestamp. A test set can accidentally reveal the training subject through near-duplicate records. The split strategy should follow the intended deployment scenario before models and statistics are fitted.
+
+== Reproducible lineage ==
+Record dataset version, inclusion criteria, split construction, labels, transformation parameters and random seeds where relevant. A dataset's role may change across repeated cross-validation folds; its name alone does not establish that the final performance estimate was independent.
+
 == References ==
+* [https://scikit-learn.org/stable/common_pitfalls.html scikit-learn — Common Pitfalls, data leakage and preprocessing.]
+* [https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets Google ML Crash Course — Training/Validation/Test Splits.]
+
 * Shalev-Shwartz & Ben-David.
 * Hastie, Tibshirani & Friedman.
 * standard machine-learning evaluation methodology.

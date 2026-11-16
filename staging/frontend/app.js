@@ -238,12 +238,13 @@ function renderOverview() {
     </article>`;
 }
 
-function renderDirectory({ q = '', namespace = '', heading = 'All pages', coreOnly = false } = {}) {
+function renderDirectory({ q = '', namespace = '', domain = '', heading = 'All pages', coreOnly = false, maxResults = 40 } = {}) {
   const query = q.trim().toLocaleLowerCase();
   const terms = query.split(/\s+/).filter(Boolean);
   const matches = state.pages
     .filter(page => (!namespace || page.namespace === namespace))
-    .filter(page => !coreOnly || (page.namespace === 'Main' && !/\/(Simple|Technical)$/.test(page.title)))
+    .filter(page => !coreOnly || (page.namespace === 'Main' && page.entity_type && !/\/(Simple|Technical)$/.test(page.title)))
+    .filter(page => !domain || String(page.domain || '').split(',').some(value => value.trim() === domain))
     .map(page => {
       const entry = state.searchById.get(page.id) || {};
       const title = page.title.toLocaleLowerCase();
@@ -274,14 +275,14 @@ function renderDirectory({ q = '', namespace = '', heading = 'All pages', coreOn
   app.innerHTML = `
     <article class="mw-special">
       <h1 class="page-title">${esc(heading)}</h1>
-      <p class="page-subtitle">${coreOnly ? 'Browse canonical article titles; Simple and Technical reading depths are accessible from each article.' : 'Browse the repository-backed MediaWiki source. Search includes article text, titles, and headings.'}</p>
+      <p class="page-subtitle">${domain ? `Domain: ${esc(domain)} · ` : ''}${coreOnly ? 'Canonical articles. Select a title to inspect its source and reader depths.' : 'Repository-backed MediaWiki titles.'}</p>
       <div class="directory-toolbar">
-        <span>${matches.length} ${coreOnly ? 'canonical articles' : 'titles'}</span>
+        <span>${matches.length} ${coreOnly ? 'articles' : 'titles'} · showing ${Math.min(maxResults, matches.length)}</span>
         ${namespace ? `<a href="#/all-pages">Clear namespace filter</a>` : ''}
         ${!coreOnly ? '<a href="#/articles">Knowledge articles</a>' : '<a href="#/all-pages">All source namespaces</a>'}
       </div>
       <div class="page-list">
-        ${matches.map(({ page, entry }) => `
+        ${matches.slice(0, maxResults).map(({ page, entry }) => `
           <div class="page-row">
             <div><a href="${pageHref(page)}">${esc(page.title)}</a>${excerpt(entry)}</div>
             <span class="muted">${esc(page.namespace)}</span>
@@ -290,8 +291,11 @@ function renderDirectory({ q = '', namespace = '', heading = 'All pages', coreOn
           </div>
         `).join('') || '<div class="empty">No staged articles match this search.</div>'}
       </div>
+      ${matches.length > maxResults ? `<div class="more-results"><button type="button" id="moreResults">Show 40 more (${matches.length - maxResults} remaining)</button></div>` : ''}
     </article>
   `;
+  app.querySelector('#moreResults')?.addEventListener('click', () =>
+    renderDirectory({ q, namespace, domain, heading, coreOnly, maxResults: maxResults + 40 }));
 }
 
 function pageTabs(page, active) {
@@ -719,6 +723,7 @@ async function renderPage(id, activeView = 'read', graphLayer = 'all') {
   }
   const page = await loadFullPage(id);
   const view = ['read', 'source', 'structure', 'graph', 'promote'].includes(activeView) ? activeView : 'read';
+  if (view === 'graph' || (view === 'read' && ['Portal', 'Category'].includes(page.namespace))) await ensureGraph();
   let body = '';
   if (view === 'read') body = renderRead(page);
   if (view === 'source') body = renderSource(page);
@@ -855,20 +860,20 @@ async function route() {
   window.scrollTo({ top: 0, behavior: 'instant' });
 
   if (path === '/' || path === '') {
-    const mainPage = findPageByTitle('Main Page');
-    if (mainPage) await renderPage(mainPage.id, params.get('view') || 'read', params.get('layer') || 'all');
-    else renderDirectory({ heading: 'BITwiki' });
+    renderOverview();
     return;
   }
   if (path === '/search') {
     const q = params.get('q') || '';
     const namespace = params.get('namespace') || '';
     searchInput.value = q;
+    if (q) await ensureSearch();
     renderDirectory({ q, namespace, heading: q ? `Search results for “${q}”` : 'Search' });
     return;
   }
   if (path === '/articles') {
-    renderDirectory({ heading: 'Knowledge articles', coreOnly: true });
+    const domain = params.get('domain') || '';
+    renderDirectory({ heading: domain ? `${domain} articles` : 'Knowledge articles', coreOnly: true, domain });
     return;
   }
   if (path === '/all-pages') {
@@ -881,6 +886,7 @@ async function route() {
     return;
   }
   if (path === '/categories') {
+    await ensureGraph();
     renderCategories();
     return;
   }
@@ -889,6 +895,7 @@ async function route() {
     return;
   }
   if (path === '/graph') {
+    await ensureGraph();
     renderGraphExplorer(params);
     return;
   }
@@ -931,6 +938,8 @@ searchButton.addEventListener('click', submitSearch);
 searchInput.addEventListener('keydown', event => {
   if (event.key === 'Enter') submitSearch();
 });
-window.addEventListener('hashchange', route);
+window.addEventListener('hashchange', () => route().catch(error => {
+  app.innerHTML = `<div class="empty">Unable to load this view: ${esc(error.message)}</div>`;
+}));
 
 initialize();

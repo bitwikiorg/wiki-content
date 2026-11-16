@@ -203,41 +203,105 @@ def parse_page(source: str, relationship_names: set[str]) -> dict[str, Any]:
 
 
 def inline_markup(text: str) -> str:
+    """Render a deliberately bounded subset of inline wikitext, escaping HTML."""
     escaped = html.escape(text)
     escaped = re.sub(r"'''''(.*?)'''''", r"<strong><em>\1</em></strong>", escaped)
     escaped = re.sub(r"'''(.*?)'''", r"<strong>\1</strong>", escaped)
     escaped = re.sub(r"''(.*?)''", r"<em>\1</em>", escaped)
 
     def wiki_link(match: re.Match[str]) -> str:
-        target, _prop, label = classify_wikilink(html.unescape(match.group(1)))
+        target, prop, label = classify_wikilink(html.unescape(match.group(1)))
         if target.casefold().startswith("category:"):
             return ""
-        return f'<a href="#/page/{stable_id(target)}">{html.escape(label or target)}</a>'
+        if prop:
+            return html.escape(label or target)
+        # Links to a section must still locate the canonical page.
+        title, _, fragment = target.lstrip(":").partition("#")
+        if not title:
+            return html.escape(label or fragment)
+        section = f' data-section="{html.escape(fragment, quote=True)}"' if fragment else ""
+        return f'<a href="#/page/{stable_id(title)}"{section}>{html.escape(label or title)}</a>'
 
     escaped = re.sub(r"\[\[([^\[\]]+)\]\]", wiki_link, escaped)
 
     def external_link(match: re.Match[str]) -> str:
-        url = match.group(1)
-        label = match.group(2) or url
-        return f'<a href="{html.escape(url)}" target="_blank" rel="noreferrer">{html.escape(label)}</a>'
+        url = html.unescape(match.group(1))
+        label = html.unescape(match.group(2) or url)
+        if not url.startswith(("https://", "http://")):
+            return html.escape(label)
+        return f'<a href="{html.escape(url, quote=True)}" target="_blank" rel="noopener noreferrer">{html.escape(label)}</a>'
 
-    return re.sub(r"\[(https?://[^\s\]]+)(?:\s+([^\]]+))?\]", external_link, escaped)
+    escaped = re.sub(r"\[(https?://[^\s\]]+)(?:\s+([^\]]+))?\]", external_link, escaped)
+    # Known inert formatting tags are restored, but arbitrary source HTML stays escaped.
+    for tag in ("sub", "sup", "small", "code", "kbd", "samp", "em", "strong", "br"):
+        escaped = escaped.replace(f"&lt;{tag}&gt;", f"<{tag}>")
+        escaped = escaped.replace(f"&lt;/{tag}&gt;", f"</{tag}>")
+    escaped = escaped.replace("&lt;br /&gt;", "<br>").replace("&lt;br/&gt;", "<br>")
+    return escaped
+
+
+def strip_static_metadata(source: str) -> str:
+    """Hide known article metadata templates, without pretending to execute templates."""
+    text = COMMENT_RE.sub("", source)
+    for name in ("Source status", "Knowledge object", "Reading depth"):
+        text = re.sub(
+            r"\{\{\s*" + re.escape(name) + r"\b.*?\}\}\s*",
+            "", text, flags=re.IGNORECASE | re.DOTALL,
+        )
+    text = re.sub(r"<noinclude>.*?</noinclude>", "", text, flags=re.IGNORECASE | re.DOTALL)
+    text = CATEGORY_RE.sub("", text)
+    return text
+
+
+def search_body(source: str) -> str:
+    """Derive a searchable plain-text projection; do not change canonical wikitext."""
+    text = strip_static_metadata(source)
+    text = re.sub(r"<ref\b[^>]*>.*?</ref\s*>", " ", text, flags=re.IGNORECASE | re.DOTALL)
+    text = re.sub(r"\{\{[^{}]*\}\}", " ", text, flags=re.DOTALL)
+    text = re.sub(r"\[\[([^\]|]+)\|([^\]]+)\]\]", r"\2", text)
+    text = re.sub(r"\[\[([^\]]+)\]\]", r"\1", text)
+    text = re.sub(r"\[(https?://[^\s\]]+)(?:\s+([^\]]+))?\]", lambda m: m.group(2) or "", text)
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"''+", "", text)
+    return " ".join(text.split())[:12000]
 
 
 def render_preview(source: str, content_model: str) -> str:
+    """Build a readable static preview, not an execution of MediaWiki, SMW or Lua."""
     if content_model != "wikitext":
         return f'<pre class="source-code">{html.escape(source)}</pre>'
 
-    text = COMMENT_RE.sub("", source)
-    text = re.sub(r"\{\{\s*Source status\b.*?\}\}\s*", "", text, flags=re.IGNORECASE | re.DOTALL)
-    text = re.sub(r"\{\{\s*Knowledge object\b.*?\}\}\s*", "", text, flags=re.IGNORECASE | re.DOTALL)
-    text = re.sub(r"<noinclude>.*?</noinclude>", "", text, flags=re.IGNORECASE | re.DOTALL)
-    text = CATEGORY_RE.sub("", text)
+    text = strip_static_metadata(source)
+    refs: list[str] = []
+    ref_names: dict[str, int] = {}
+
+    def render_ref(match: re.Match[str]) -> str:
+        attributes, content = match.group(1) or "", match.group(2)
+        name_match = re.search(r'\bname\s*=\s*["\']([^"\']+)["\']', attributes)
+        name = name_match.group(1) if name_match else None
+        if content is None:
+            index = ref_names.get(name or "")
+            return f"@@CITE{index}@@" if index else "[unresolved reference]"
+        if name and name in ref_names:
+            index = ref_names[name]
+        else:
+            refs.append(content.strip())
+            index = len(refs)
+            if name:
+                ref_names[name] = index
+        return f"@@CITE{index}@@"
+
+    text = re.sub(
+        r"<ref\b([^>]*?)(?:>(.*?)</ref\s*>|/\s*>)",
+        render_ref, text, flags=re.IGNORECASE | re.DOTALL,
+    )
+    text = re.sub(r"<references\s*/\s*>", "@@REFERENCE_LIST@@", text, flags=re.IGNORECASE)
 
     output: list[str] = []
     paragraph: list[str] = []
     in_list = False
     in_pre = False
+    heading_number = 0
 
     def flush_paragraph() -> None:
         nonlocal paragraph
@@ -273,8 +337,9 @@ def render_preview(source: str, content_model: str) -> str:
         if heading:
             flush_paragraph()
             close_list()
-            level = min(max(len(heading.group(1)), 2), 6)
-            output.append(f"<h{level}>{inline_markup(heading.group(2))}</h{level}>")
+            heading_number += 1
+            level = min(max(len(heading.group(1)) + 1, 2), 6)
+            output.append(f'<h{level} id="section-{heading_number}">{inline_markup(heading.group(2))}</h{level}>')
             continue
 
         if re.match(r"^\*+\s+", line):
@@ -299,7 +364,23 @@ def render_preview(source: str, content_model: str) -> str:
 
     flush_paragraph()
     close_list()
-    return "\n".join(output)
+    markup = "\n".join(output)
+    for number in range(1, len(refs) + 1):
+        markup = markup.replace(
+            f"@@CITE{number}@@",
+            f'<sup class="citation"><a href="#reference-{number}" aria-label="Reference {number}">[{number}]</a></sup>',
+        )
+    if refs:
+        citations = '<ol class="references">' + "".join(
+            f'<li id="reference-{i}">{inline_markup(value)}</li>'
+            for i, value in enumerate(refs, 1)
+        ) + "</ol>"
+        if "@@REFERENCE_LIST@@" in markup:
+            markup = markup.replace("<p>@@REFERENCE_LIST@@</p>", citations)
+            markup = markup.replace("@@REFERENCE_LIST@@", citations)
+        else:
+            markup += '\n<h3>References</h3>\n' + citations
+    return markup.replace("<p>@@REFERENCE_LIST@@</p>", "").replace("@@REFERENCE_LIST@@", "")
 
 
 def namespace_name(title: str) -> str:
@@ -332,8 +413,10 @@ def validate_identity(identity: dict[str, str], schema: dict[str, Any]) -> list[
     }
     for field, allowed in controlled.items():
         value = identity.get(field)
-        if value and value not in allowed:
-            issues.append({"severity": "error", "code": "invalid_controlled_value", "field": field, "value": value})
+        values = [item.strip() for item in value.split(",")] if field == "domain" and value else ([value] if value else [])
+        for item in values:
+            if item and item not in allowed:
+                issues.append({"severity": "error", "code": "invalid_controlled_value", "field": field, "value": item})
     return issues
 
 
@@ -508,6 +591,7 @@ def build(out_dir: Path) -> dict[str, Any]:
                 "headings": [h["title"] for h in page["parsed"]["headings"]],
                 "entity_type": page["parsed"]["identity"].get("entity_type"),
                 "domain": page["parsed"]["identity"].get("domain"),
+                "body": search_body(page["source"]) if page["content_model"] == "wikitext" else "",
             }
             for page in pages
         ],

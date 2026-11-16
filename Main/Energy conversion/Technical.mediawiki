@@ -1,0 +1,30 @@
+{{Source status|status=Technical depth derivative|note=Boundary and performance definitions derived from [[Energy conversion]].}}
+{{Reading depth|base=Energy conversion|current=Technical}}
+= Energy conversion — Technical =
+
+== Energy-balance convention ==
+For a specified control volume, a simplified balance over an interval may be written:
+
+<pre>
+change in energy stored
+  = total energy entering - total energy leaving
+</pre>
+
+Each term must include relevant work, heat transfer, electrical flow, radiation, mass flows and stored energy as the model requires. This is an accounting identity under the chosen system definition, not a claim that the conversion device is reversible or lossless.
+
+== Useful-output definition ==
+For a converter with compatible energy units:
+
+<pre>
+eta = useful output energy / input energy
+</pre>
+
+The ratio depends on what qualifies as useful. A heat pump's coefficient of performance compares delivered heat with work input and can exceed one; it should not be misreported as a thermodynamic energy-conversion efficiency exceeding 100 percent.
+
+== Time-dependent operation ==
+Energy entering and leaving can vary with load, temperature, start-up and shutdown. Compare the same service and duty cycle, and include auxiliaries, conversion losses and relevant storage changes before making an energy-system claim.
+
+== References ==
+* [https://openstax.org/books/university-physics-volume-1/pages/8-5-sources-of-energy OpenStax — Energy Sources and Transformations.]
+* [https://www.eia.gov/energyexplained/what-is-energy/laws-of-energy.php U.S. EIA — Energy Conservation and Conversion.]
+* [[Energy conversion|Core article]]

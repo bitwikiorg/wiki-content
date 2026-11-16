@@ -1,0 +1,28 @@
+{{Source status|status=Technical depth derivative|note=Structural verification conventions derived from [[Safety factor]].}}
+{{Reading depth|base=Safety factor|current=Technical}}
+= Safety factor — Technical =
+
+== Required factor versus computed reserve ==
+A structural standard may specify an ultimate factor of safety F_u and yield factor F_y to multiply a defined limit load. A simple illustration is:
+
+<pre>
+design load = applicable factor × limit load
+</pre>
+
+A margin of safety is a different computed quantity. Under one common convention:
+
+<pre>
+MoS = allowable load / (limit load × required factor) - 1
+</pre>
+
+This expression depends on the relevant failure mode, allowable load definition, standard, environmental condition and uncertainty treatment. Do not combine yield and ultimate allowables or apply the equation to unrelated performance criteria without checking the governing procedure.
+
+== Qualification and uncertainty ==
+Verification may involve test, analysis, inspection and correlated structural models. Load spectra, fatigue, buckling, strength scatter, manufacturing defects and ageing can dominate a particular failure mode. Factors and margins do not replace explicit verification of the actual design.
+
+== Standard-specific context ==
+NASA-STD-5001B with Change 3 governs structural design and test factors for defined spaceflight hardware. Its values and requirements should not be generalized to consumer, medical, civil or other systems without their own standard.
+
+== References ==
+* [https://standards.nasa.gov/standard/nasa/nasa-std-5001 NASA-STD-5001B with Change 3 (2022) — structural design and factors of safety.]
+* [[Safety factor|Core article]]

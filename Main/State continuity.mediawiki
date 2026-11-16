@@ -1,0 +1,55 @@
+{{Source status|status=2026 sourced interdisciplinary coverage|note=Cross-system analytical article: operational state persistence is distinguished from psychological or biological personal identity.}}
+{{Knowledge object
+ |title=State continuity
+ |entity_type=Concept
+ |domain=Systems science, Computer science
+ |status=Supported
+ |provenance=BITwiki issue #39; primary research and disciplinary reference works
+}}
+{{Reading depth|base=State continuity|current=Core}}
+
+= State continuity =
+
+== Definition ==
+'''State continuity''' is the maintenance of an explicitly defined relationship between a system's earlier and later states across updates, interruptions, migration, replication or regeneration. A system can change while remaining operationally continuous; it can also preserve identical data while changing identity or authority. The required relation depends on the system's purpose and its domain.
+
+== Identity, state and provenance ==
+A '''state''' is a description of system variables at a given point or scope. '''Identity''' identifies the persistent referent to which state belongs. '''Continuity''' specifies how a later state is connected to an earlier one. A '''provenance record''' explains where the state came from, which operation transformed it, and who or what was responsible.
+
+<pre>
+earlier state -- recorded transformation --> later state
+       |                                     |
+  source identity                     current identity
+              \-- provenance link --/
+</pre>
+
+These cannot be reduced to byte-for-byte equality. Two snapshots may be identical yet belong to separate forks. Conversely, a running system may evolve substantially while preserving a valid persistence relation.
+
+== Computers and agents ==
+In software, continuation requires an appropriate consistency model, checkpoint or event log, state restoration rules and authorization. Distributed snapshots require explicit treatment of messages in transit and causal order rather than collecting arbitrary simultaneous-looking process snapshots. For [[AI agent|AI agents]], a reloaded context is not automatically the correct continuation without validated identity, ownership, permissions, goals and state versioning.
+
+== Organisms and cognition ==
+Biological organisms preserve and rebuild organization during metabolic turnover. Genetic material can be inherited by offspring while the offspring is a distinct individual. Psychological continuity invokes memory, beliefs, intentions or dispositions in some philosophical accounts of personal identity, but disputed branching cases show why copying state does not settle numerical identity.
+
+== Design and audit criteria ==
+# Specify the identity of the referent and the boundaries of its state.
+# Define allowed state transitions, version changes and forks.
+# Track provenance of imported, merged or derived state.
+# Verify restoration invariants and distinguish rollback from progression.
+# Record changes in authority and access independently from changes in data.
+
+These are engineering heuristics, not a universal law of identity across biology, philosophy and computing.
+
+== Epistemic notes ==
+"State continuity" here is a cross-domain operational abstraction. It does not establish consciousness, unique personal identity, or that all physical systems are state machines in the same sense.
+
+== Related concepts ==
+[[Identity]], [[Agent self-identity]], [[Memory]], [[Informational inheritance]], [[Distributed system]], [[Systems biology]], [[Consciousness]], [[State machine]].
+
+== References ==
+* [https://doi.org/10.1145/214451.214456 Chandy & Lamport (1985), "Distributed Snapshots: Determining Global States of Distributed Systems", ''ACM Transactions on Computer Systems'' 3(1):63–75.]
+* [https://www.w3.org/TR/prov-o/ W3C (2013), ''PROV-O: The PROV Ontology''.] Entities, activities and agents in provenance.
+* [https://plato.stanford.edu/entries/identity-personal/ Stanford Encyclopedia of Philosophy, "Personal Identity".] Persistence, branching and psychological/biological accounts.
+
+[[Category:Systems science]]
+[[Category:Computer science]]

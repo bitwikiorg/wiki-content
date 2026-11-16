@@ -1,0 +1,39 @@
+{{Reading depth|base=Informational inheritance|current=Technical}}
+= Informational inheritance (technical) =
+
+== Comparison framework ==
+For a source A, recipient B, transmitted payload P and transfer process F, compare:
+# encoding/carrier of P;
+# transformation F and environmental context;
+# reconstruction fidelity and source–recipient similarity;
+# mutation, recombination, copying errors and selection;
+# provenance or lineage;
+# authority/identity implications.
+
+This is a BITwiki analytical framework, '''not''' a standardized universal inheritance equation.
+
+<pre>
+source(A) --F(P, context)--> recipient(B)
+preservation of P       != sameness of A and B
+shared Shannon entropy  != shared semantics or function
+lineage/provenance       != numerical identity
+</pre>
+
+== Molecular mechanisms ==
+Vertical sequence inheritance involves replication and descent; recombination and mutation alter transmitted variants. Horizontal gene transfer can move genes across bacterial lineages through several mechanisms, and subsequent selection determines whether variants spread. Epigenetic transmission may involve methylation, histone-associated states or regulatory RNA, sometimes via reconstruction rather than literal copying. Species and generational scope are indispensable.
+
+== Systems and artificial agents ==
+State can be transmitted through serialization, snapshots, event logs, code versions and configuration. Distinguish deterministic replay from restoration of a checkpoint; distinguish cloned state from continuity of operational ownership. W3C PROV-O's derivation and activity records help represent lineage without smuggling an identity assertion. A cryptographic hash supports content integrity, not a guarantee of a valid successor identity.
+
+== Information measures ==
+Let X and Y describe source and recipient variables. I(X;Y) quantifies statistical dependence under a joint distribution. It does not, absent a validated model, measure functional inheritance, causal transfer, semantic agreement or biological fitness. To establish causal inheritance, specify transmission mechanism and intervention/counterfactual assumptions beyond correlation.
+
+== Limits of a unified ontology ==
+A common graph may encode comparable questions about source, carrier, transformation and provenance. Its classes and relations must not erase differences between genetic descent, cultural learning, numerical identity and machine-state copying. This technical presentation shares the canonical identity [[Informational inheritance]] and makes no duplicate semantic assertion.
+
+== References ==
+* [https://doi.org/10.1038/s41579-021-00650-4 Arnold, Huang & Hanage (2022), bacteria and horizontal transfer.]
+* [https://doi.org/10.1038/s41576-021-00438-5 Fitz-James & Cavalli (2022), epigenetic transmission.]
+* [https://www.w3.org/TR/prov-o/ W3C PROV-O (2013).]
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948).]
+* [[Informational inheritance]] · [[State continuity]] · [[Information theory]].

@@ -1,0 +1,59 @@
+{{Source status|status=2026 sourced interdisciplinary coverage|note=Cross-domain synthesis; not a claim that a single formal inheritance mechanism operates identically in genomes, cognition and software.}}
+{{Knowledge object
+ |title=Informational inheritance
+ |entity_type=Concept
+ |domain=Systems science, Biology, Computer science
+ |status=Emerging
+ |provenance=BITwiki issue #39; primary research and disciplinary reference works
+}}
+{{Reading depth|base=Informational inheritance|current=Core}}
+
+= Informational inheritance =
+
+== Overview ==
+'''Informational inheritance''' is the transmission, persistence or reconstruction of informationally structured constraints, records or states from an earlier system, generation or process to a later one. The phrase is used here as a '''comparative systems concept''', not as one universally standardized biological or computational mechanism.
+
+To study inheritance precisely, identify '''what is transmitted''', '''the carrier''', '''the mechanism of transfer or reconstruction''', '''how changes arise''', '''how fidelity is assessed''', and '''whether the recipient has the same identity as the source'''. Transmission does not require identity preservation.
+
+== Forms across systems ==
+{| class="wikitable"
+! Domain !! Inherited structure !! Typical mechanism !! Important distinction
+|-
+| [[Genetics]] || DNA sequence variants and genomic arrangements || Replication and descent, with mutation and recombination || Offspring differs from parent
+|-
+| Bacteria || Genes and mobile genetic elements || Vertical descent and horizontal gene transfer || Transfer can occur outside direct parent–offspring lineage
+|-
+| Epigenetics || Some regulatory states or transmitted signals || Replication or re-establishment of marks under species- and context-dependent conditions || Cross-generational transmission differs from genetic sequence inheritance
+|-
+| Software and distributed systems || Versioned code, configuration, checkpoints, datasets || Copying, checkpoint restore, forks, migration and event replay || Copying state does not automatically transfer authority or unique agent identity
+|-
+| Cognition and culture || Learned patterns, practices, symbols and records || Learning, communication, teaching and imitation || Cultural transmission differs from molecular reproduction
+|}
+
+== Biological inheritance ==
+Molecular genetics supplies mechanisms for transmission of sequence information. Bacteria can also acquire genes horizontally through transformation, transduction or conjugation and related pathways. Reviews of transgenerational epigenetic inheritance describe replicative and reconstructive mechanisms; claims must be species- and generation-specific, and transgenerational effects in mammals are especially constrained.
+
+Natural selection changes the frequency of heritable variants across generations; selection, transmission and mutation are analytically different processes. A genetic code is not a general proof that the whole cell is simply a digital computer.
+
+== Software, agents and provenance ==
+An agent may inherit stored tools, procedures, memories or task state from a predecessor. Valid continuity depends on authentication, versioning, provenance, permission scope and transformation rules. A copy should be represented as ''derived from'' its origin, not silently treated as the original identity. W3C PROV-O distinguishes entities, activities and agents in representing derivation and responsibility.
+
+== Information-theoretic caution ==
+[[Bit|Bits]] and [[Entropy]] can measure uncertainty or dependence in a modeled information channel; they do not by themselves define what is inherited or why it functions. Identical strings can have different roles, and inherited function depends on context, interpretation and environment. Shannon information, genetic inheritance, cultural transmission, and operational persistence must not be flattened into one ontology simply because all can involve information.
+
+== Epistemic notes ==
+The listed biological and computing mechanisms are established in their respective domains. The single label ''informational inheritance'' is a proposed bridge for comparison. A claim of universal substrate-independent inheritance law would require formal specification and evidence not supplied by the analogy.
+
+== Related concepts ==
+[[Information]], [[Information theory]], [[Genetics]], [[Genomics]], [[Systems biology]], [[Learning]], [[Memory]], [[Provenance]], [[State continuity]], [[Agent self-identity]], [[Consciousness]].
+
+== References ==
+* [https://doi.org/10.1038/s41579-021-00650-4 Arnold, Huang & Hanage (2022), "Horizontal gene transfer and adaptive evolution in bacteria", ''Nature Reviews Microbiology'' 20:206–218.]
+* [https://doi.org/10.1038/s41576-021-00438-5 Fitz-James & Cavalli (2022), "Molecular mechanisms of transgenerational epigenetic inheritance", ''Nature Reviews Genetics'' 23:325–341.]
+* [https://www.w3.org/TR/prov-o/ W3C (2013), PROV-O: The PROV Ontology.]
+* [https://doi.org/10.1145/214451.214456 Chandy & Lamport (1985), distributed state snapshots.]
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), mathematical communication theory.]
+
+[[Category:Systems science]]
+[[Category:Biology]]
+[[Category:Computer science]]

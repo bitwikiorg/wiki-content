@@ -1,0 +1,46 @@
+{{Reading depth|base=Bit|current=Technical}}
+= Bit (technical) =
+
+== Formal definitions ==
+A binary digit is an element of an alphabet of cardinality two. A bit as a logarithmic information unit is defined by using logarithms to base 2. Thus, a symbol's representational alphabet size and its statistical information are separate variables.
+
+<pre>
+Hartley (equiprobable): H_0 = log_2(N) bits
+Self-information:       I(x) = -log_2 p(x) bits
+Shannon entropy:        H(X) = -sum_x p(x) log_2 p(x) bits
+Convention:             0 log_2(0) = 0
+Conditional entropy:    H(X|Y) = -sum_{x,y} p(x,y) log_2 p(x|y)
+Mutual information:     I(X;Y) = H(X) - H(X|Y)
+                      = sum_{x,y} p(x,y) log_2[p(x,y)/(p(x)p(y))]
+</pre>
+
+All entropy sums refer to a specified probability distribution. A rare realization can have self-information above one bit even if the source alphabet has two symbols; for example p(x)=0.1 gives I(x)=3.3219 bits, although the binary source's maximum ''average entropy'' is one bit. An ideal n-bit binary string alphabet has 2^n possibilities. Actual coding rates depend on the source, channel, coding constraints and errors.
+
+== Worked probability examples ==
+For Bernoulli(p):
+<pre>
+h_2(p) = -p log_2(p) - (1-p) log_2(1-p)
+h_2(0.5) = 1 bit
+h_2(1) = 0 bits
+h_2(0.9) = 0.4689955936 bits
+H(uniform 8 outcomes) = log_2 8 = 3 bits
+</pre>
+
+If X is a fair binary variable and Y=X without noise, H(X|Y)=0 and I(X;Y)=1 bit. If X and Y are independent fair binary variables, I(X;Y)=0 even though H(X)=H(Y)=1. Statistical mutual information alone does not entail semantic agreement or causal influence.
+
+== Physical and conceptual boundaries ==
+* '''Representation vs entropy:''' allocating one storage cell per binary symbol does not make a deterministic recorded sequence statistically random.
+* '''Thermodynamics:''' for unbiased memory erasure under the idealized Landauer setup, heat dissipated to a bath at temperature T is bounded by k_B T ln(2); erasure is a many-to-one logical operation. The bound does not assert that every reversible logic operation dissipates this amount.
+* '''Quantum:''' the qubit state a|0> + b|1> has complex amplitudes with |a|^2+|b|^2=1. Accessible classical information from a qubit alone is constrained; a single qubit is not automatically a two-classical-bit message.
+* '''Biology:''' sequence entropy is defined over a modeled ensemble of sequences/positions; neural spike-train information depends on response and stimulus models, recording resolution and sampling.
+* '''Semantics:''' Shannon measures quantify statistical choice structure, not meaning, truth, intention, or ontology.
+
+== Reader and reuse surfaces ==
+This Technical page elaborates the same canonical [[Bit]] concept; it creates no additional identity or SMW assertions. For reuse in other topics, prefer a specific cited passage or an explicitly scoped Book Matter fragment rather than duplicating and subsequently drifting definitions. See [[BITwiki:Transclusion]].
+
+== References ==
+* [https://doi.org/10.1002/j.1538-7305.1928.tb01236.x Hartley (1928).] Equiprobable measure.
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), Part I] and [https://doi.org/10.1002/j.1538-7305.1948.tb00917.x Part II]. Probabilistic model, entropy, communication.
+* [https://plato.stanford.edu/entries/information-entropy/ Stanford Encyclopedia of Philosophy, "Information Processing and Thermodynamic Entropy".] Thermodynamic assumptions.
+* [https://doi.org/10.1103/PhysRevA.51.2738 Schumacher (1995), "Quantum coding".] Quantum information.
+* [https://doi.org/10.1103/PhysRevLett.80.197 Strong et al. (1998), "Entropy and Information in Neural Spike Trains".] Neural measurement.

@@ -1,0 +1,74 @@
+{{Source status|status=2026 reviewed interdisciplinary synthesis|note=Issue #41: formal claims follow source definitions; philosophical interpretations and cross-domain analogies remain qualified.}}
+{{Knowledge object
+ |title=Bit
+ |entity_type=Concept
+ |domain=Mathematics, Computer science, Physics
+ |status=Established
+ |provenance=BITwiki issue #41; Hartley (1928), Shannon (1948), Landauer (1961), and later research
+}}
+{{Reading depth|base=Bit|current=Core}}
+
+= Bit =
+
+== Overview ==
+A '''bit''' is a unit for quantifying information on a base-two logarithmic scale. The term also denotes a '''binary digit''', a symbol chosen from a two-element alphabet such as 0 and 1. These are related but not identical: the presence of a binary symbol does not guarantee one bit of [[Entropy|Shannon entropy]]. The bit is a mathematical unit with applications to [[Information theory]], [[Computation]], [[Physics]], [[Genetics]], and [[Cognition]], rather than a quantity defined by silicon hardware.
+
+== Definition and scope ==
+In [[Information theory]], one bit of entropy corresponds to an uncertain choice between two equally probable alternatives. A biased choice between two outcomes has less than one bit of average Shannon entropy; a deterministic binary variable has zero. A particular rare outcome may carry more than one bit of ''self-information'' even when its variable has only two possible values.
+
+The information-theoretic bit must be distinguished from (1) a Boolean truth value, (2) a physical two-state implementation, (3) a binary storage location, (4) a source's statistical uncertainty, and (5) the semantic meaning or truth of a message. An ideal string of ''n'' binary symbols has 2^n possible encodings; its source's entropy may be much lower. [[Information]] and [[Information theory]] discuss the boundary between probabilistic measures and meaning.
+
+== Mathematical measures ==
+For N equally likely messages, Hartley information is log<sub>2</sub>(N) bits. An outcome x of probability p(x) has self-information -log<sub>2</sub> p(x). The average, H(X) = -Σ p(x) log<sub>2</sub> p(x), is Shannon entropy (using 0 log 0 = 0). Conditional entropy measures the uncertainty remaining about one variable given another. Mutual information measures their statistical dependence, not semantic understanding.
+
+{| class="wikitable"
+! Situation !! Shannon entropy
+|-
+| Fair binary choice || 1 bit
+|-
+| Always 0 (deterministic) || 0 bits
+|-
+| 90% / 10% binary choice || approximately 0.469 bits
+|-
+| Eight equiprobable possibilities || 3 bits
+|}
+
+Fractions of a bit are valid average information measures. A bit is not a universal metaphysical minimum of information.
+
+== Across disciplines ==
+=== Computing and engineering ===
+Binary digits are useful for reliable digital encoding, circuits, memory, software, [[Computer architecture]], and [[Communication]]. Their discrete symbolic representation is not identical to their noisy physical implementation. A binary storage cell need not contain one bit of source entropy. A logical gate can transform symbols without its abstract logical operation defining a thermodynamic energy cost.
+
+=== Physics ===
+Information is instantiated in physical states, although mathematical information measures can be defined independently of particular materials. [[Entropy|Gibbs entropy]] and Shannon entropy share logarithmic probability forms but have distinct physical interpretations and units. Under specified assumptions, resetting an unbiased, unknown binary memory at temperature T incurs a minimum thermodynamic cost associated with k<sub>B</sub>T ln 2. Landauer's principle does not assign that cost to every elementary computing operation.
+
+=== Quantum information ===
+A [[Qubit|qubit]] is a quantum two-level information system, not simply a classical bit with two values known at once. Quantum amplitudes, measurement statistics, entanglement, and accessible classical information require a distinct formalism. One qubit does not automatically communicate two classical bits.
+
+=== Biology and cognition ===
+In biological sequences, sensory signals and neural spike trains, bits measure statistical uncertainty, coding or dependence under specified models. Calling these processes informational does not establish that DNA or neurons are ordinary silicon digital computers. See [[Bioinformatics]], [[Genetics]], [[Memory]], and [[Systems biology]].
+
+=== Philosophy ===
+Wheeler's ''it from bit'' and claims that information is ontologically fundamental are philosophical or theoretical proposals, not consequences of the Shannon unit or experimental consensus. Semantic truth, significance, and knowledge cannot be read off from entropy alone.
+
+== History ==
+Hartley (1928) formalized a logarithmic measure of choices in communication; Shannon (1948) developed the probabilistic theory of communication. Information-theoretic bits are broader than their later ubiquitous use in digital computing.
+
+== Epistemic notes ==
+The definitions and numerical examples are mathematical consequences of stated probability models. Energy bounds depend on physical assumptions; measurements of biological information depend on model and sampling. Whether information is more fundamental than computation or physical reality remains interpretive rather than established by the word ''bit''.
+
+== Related concepts ==
+[[Information]], [[Information theory]], [[Entropy]], [[Probability]], [[Probability distribution]], [[Logic]], [[Computation]], [[Measurement]], [[Computer architecture]], [[Data structure]], [[Knowledge representation]], [[Genetics]].
+
+== References ==
+* [https://doi.org/10.1002/j.1538-7305.1928.tb01236.x Hartley, R. V. L. (1928). "Transmission of Information". ''Bell System Technical Journal'' 7:535–563.] Quantifying equiprobable alternatives.
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon, C. E. (1948). "A Mathematical Theory of Communication". ''Bell System Technical Journal'' 27:379–423]; [https://doi.org/10.1002/j.1538-7305.1948.tb00917.x continuation, 623–656]. Information, entropy and channels.
+* [https://plato.stanford.edu/entries/information-entropy/ Stanford Encyclopedia of Philosophy, "Information Processing and Thermodynamic Entropy".] Logical versus thermodynamic erasure.
+* [https://doi.org/10.1038/nature10872 Bérut et al. (2012). "Experimental verification of Landauer's principle". ''Nature'' 483:187–189.] Physical erasure in a controlled experimental system.
+* [https://plato.stanford.edu/entries/information-semantic/ Stanford Encyclopedia of Philosophy, "Semantic Conceptions of Information".] Statistical versus semantic information.
+* [https://doi.org/10.1103/PhysRevA.51.2738 Schumacher, B. (1995). "Quantum coding". ''Physical Review A'' 51:2738–2747.] Quantum coding, not classical-bit equivalence.
+* [https://doi.org/10.1103/PhysRevLett.80.197 Strong et al. (1998). "Entropy and Information in Neural Spike Trains". ''Physical Review Letters'' 80:197–200.] Neural information measurements.
+
+[[Category:Mathematics]]
+[[Category:Computer science]]
+[[Category:Physics]]

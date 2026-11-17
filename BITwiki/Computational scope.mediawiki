@@ -50,6 +50,53 @@ Atmospheric change, climate, geological processes or ocean chemistry can be comp
 === Ecology and distributed biological systems ===
 Ecological research can involve distributed biological signaling, organism decision-making, sensing, adaptive interaction or validated agent-based and network models. Identifying those mechanisms or methods is different from declaring an ecosystem to be a computer. Broad ecosystem descriptions require a specific independent rationale to remain Core.
 
+== Admission protocol — applied computational sciences ==
+
+BITwiki is a '''computation-centered interdisciplinary encyclopedia''' with applied computational sciences as an important coverage pattern, not an instruction to relabel every phenomenon as computation. A useful article may address a genuine information-processing mechanism, a computational/scientific method, a foundational constraint on such systems, or a carefully scoped application in another discipline.
+
+'''Editorial review proceeds in this order:'''
+
+# '''Identify the candidate's actual object of study.''' Is this a mechanism, formal concept, algorithm, modeling/measurement method, applied computational field, observable phenomenon, or interpretation? A multidisciplinary field is not inherently an excuse for a generic article.
+# '''Establish substantive information/computational relevance.''' Name the real input, representation, state, signal, control loop, processing method, algorithm, measured variable or information-theoretic constraint. If it is only a mathematical model ''of'' a physical target, say so. A measurement is relevant when its acquisition, calibration, signal processing, inverse inference, uncertainty or downstream computation is the intellectual focus—not just because a quantity was measured.
+# '''Test the candidate canonical title against its content.''' Prefer an established, independently meaningful scientific/technical term that accurately names the mechanism, field or method. The title should permit a reader or agent to infer the subject immediately. Do not substitute an invented ''Computational X'' label, a broader famous phenomenon, a politically charged label, or a superficially neutral euphemism when the content is actually about a different object. Describe the exact meaning when a term legitimately has several uses.
+# '''Determine required granularity.''' Keep a standalone Core concept only when it has independent technical value, adequate evidence and anticipated reuse. Otherwise place phenomenon-specific context in a relevant method or mechanism article, a clearly marked case study or a research request. Being able to simulate a phenomenon does not automatically justify independent canonical coverage for the phenomenon.
+# '''Record and review the choice.''' Capture the source-grounded title, proposed knowledge object, computation/measurement relation, evidence and limits, other candidate titles, retained contexts, affected redirects/depth variants/graph links, and decision owner. Use the existing review register and PR review; do not invent a second ontology or new approval property merely for this workflow.
+
+=== Naming and inclusion examples ===
+
+{| class="wikitable"
+! Broad phenomenon or domain !! Candidate computational focus !! Editorial caution
+|-
+| Climate change, carbon cycling, Earth systems || Earth system modeling, climate-model evaluation, data assimilation, environmental sensing, calibrated time-series analysis, stock–flow modeling || These name methods or applications; none is an automatic rename of [[Climate change]] or [[Carbon cycle]]. Distinguish direct observations, modeled results, predictions and policy prescriptions.
+|-
+| Ocean acidification and marine chemistry || Oceanographic sensing, carbonate-system measurement and uncertainty, chemical-state inference || Ocean acidification may be a case study, not necessarily a Core computational identity. The chemistry remains a real subject irrespective of encyclopedia scope.
+|-
+| Ecology and ecosystems || Computational ecology, ecological network modeling, agent-based ecological simulation, biological signaling || Research and verify the actual term, definitions, methods and evidence; a network model is not proof the ecosystem itself computes.
+|-
+| Photosynthesis || Photosynthetic regulation, light sensing and biochemical signal transduction, mechanistic simulation || Distinguish evidenced sensing/control from energy conversion and researcher-built simulation.
+|-
+| Cardiovascular physiology || Physiological signal processing, cardiovascular feedback control, hemodynamic sensing and state estimation || The underlying medical quantities can remain clinically useful while the BITwiki contribution is a mechanism or method of sensing, regulation or inference.
+|}
+
+'''These are candidate examples, not approved new titles or permissions to rename existing articles.''' Choose what the source literature and actual content support; multiple overlapping candidates are not a mandate to create redundant pages.
+
+=== Adversarial review and political neutrality ===
+
+Scientific validity, application scope, predictive limits, and policy or political advocacy are '''different questions'''. Assess empirical evidence and models on their merits; do not dismiss a valid measurement because its subject is politically contentious, or transform a scientific observation into a policy mandate. For forecasts and attribution, identify the exact observation period, variables, scenario assumptions, source, uncertainty and evaluation criteria. Avoid general statements that a model is invalid, valid or policy-determining merely because an institution endorses it or an audience disputes it.
+
+'''Expertise and uncertainty:''' When an unfamiliar field or proposed term is not adequately grounded, leave the title and admission unresolved rather than asking the project owner to guess the scientific answer. First do source and domain-method verification; escalate only real editorial alternatives after presenting their consequences. The owner controls ambiguous values and scope boundaries; delegated routine decisions remain reversible when evidence changes.
+
+=== Decision states and responsibilities ===
+
+* '''Proposed''' — candidate unverified; no canonical admission.
+* '''Research-verified''' — established terminology, method/subject distinction and evidence inspected; not necessarily admitted.
+* '''Editorially accepted''' — owner decision or delegated unambiguous K01 purpose and independently useful title recorded with rationale; no implication that CI approved it.
+* '''Context-only / deferred''' — preserve valuable science as contextual matter or external research without an independent deployable canonical title.
+* '''Implemented''' — Core, optional depth pages, references, graph links and redirects updated and validated as appropriate.
+* '''Published''' — only after separately authorized MediaWiki deployment and runtime verification.
+
+The review register may contain '''provisional editorial directions''' without falsely upgrading them to research-verified, implemented or published. K01 remains <code>UNVERIFIED</code> in the staging projection unless a separate human editorial decision with its evidence is captured; the static audit cannot prove subject-matter fitness.
+
 == Retain, reframe, contextualize or defer ==
 
 For an existing page under scope review:
@@ -63,7 +110,7 @@ Scope is separate from the factual or scientific validity of a subject. An out-o
 
 == Decision and provenance ==
 
-Editorial direction established 2026-11-16: refine BITwiki's computational/informational center without collapsing the project to software or silicon and without claiming every natural phenomenon performs computation. The [[BITwiki:Computational scope review|scope review register]] tracks the previously broad articles requiring review. This policy does not authorize bulk deletion, page renaming, schema changes or live MediaWiki publication.
+Editorial direction established 2026-11-16: refine BITwiki's computational/informational center, including the applied computational sciences, without collapsing the project to software or silicon and without claiming every natural phenomenon performs computation. Canonical title accuracy and the mechanism/method/phenomenon distinction are editorial gates, not optional decorations. The [[BITwiki:Computational scope review|scope review register]] tracks the previously broad articles requiring review. This policy does not authorize bulk deletion, page renaming, schema changes or live MediaWiki publication.
 
 [[Category:BITwiki governance]]
 [[Category:BITwiki architecture]]

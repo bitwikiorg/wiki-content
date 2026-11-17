@@ -43,7 +43,9 @@ Key standards:
 - `MediaWiki substrate.mediawiki` — namespace/extension/runtime reconciliation;
 - `Ecosystem.mediawiki` — BITwiki ↔ BIThub ↔ BITCORE roles;
 - `Interoperability.mediawiki` — external and BIThub interface contracts;
-- `Deployment prerequisites.mediawiki` — repository-to-live-runtime deployment requirements.
+- `Deployment prerequisites.mediawiki` — repository-to-live-runtime deployment requirements;
+- `Computational scope.mediawiki` — normative applied computational sciences admission, naming and review procedure;
+- `Computational scope review.mediawiki` — the 36-object provisional editorial decision ledger and unresolved title mappings.
 
 ## Authority boundary
 

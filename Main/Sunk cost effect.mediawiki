@@ -19,7 +19,15 @@ Under standard forward-looking decision analysis, costs that cannot be recovered
 == Mechanisms ==
 Escalation can reflect loss framing, waste avoidance, self-justification, reputation, learning, or beliefs about future returns. Not every decision to continue after investment is a sunk-cost error.
 
+== Sequential decisions and computational evaluation ==
+For a [[Related to::Decision theory|decision policy]] that must choose whether to continue an endeavor, a past expenditure is '''sunk''' when neither continuing nor stopping can recover it. The choice can instead be compared using the expected benefits and costs from the present onward, taking new information, risk, opportunity costs and available alternatives into account. This is a property of the decision problem, not a rule that every previous investment was misguided.
+
+The effect is relevant to computational decision systems because a planner or evaluator may need a documented rule for keeping past investment separate from predictions about future outcomes. For example, evaluating a failing project should compare its forecast future return and additional costs with the forecast result of stopping or switching; the amount already spent can matter only insofar as it changes the current options or provides new information. An observed decision to continue is not enough to prove a bias without establishing those alternatives.
+
+The documented sunk-cost effect describes human behavior in particular studies. A similar error pattern in AI agents or software would be a '''separate hypothesis to test''', not a transfer proven by the human experiments. Evidence must distinguish descriptive psychology from normative optimization.
+
 == References ==
+* [https://doi.org/10.1016/0749-5978(85)90049-4 Arkes and Blumer (1985), ''The Psychology of Sunk Cost'', Organizational Behavior and Human Decision Processes 35(1):124–140.]
 * Hal R. Arkes & Catherine Blumer, “The Psychology of Sunk Cost”, ''Organizational Behavior and Human Decision Processes'' 35 (1985): 124–140.
 
 [[Category:Cognitive science]]

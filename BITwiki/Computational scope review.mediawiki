@@ -156,6 +156,46 @@ These topics already have Core, Simple and Technical pages and source-projected 
 | Cardiovascular sensing and control || [[Blood pressure]], [[Cardiac output]], [[Pulse]] || '''A:''' Retain the physiological Core concepts as durable signal/feedback/measurement primitives; '''B:''' contextualize clinical definitions within physiological sensing, control and signal-processing methods. || '''Direction accepted; title and dependency review pending'''
 |}
 
+== End-of-day source-level QA and article repair — 2026-11-16 ==
+
+This checkpoint audits the 36 flagged concept identities against [[BITwiki:Computational scope|the current admission policy]] and the source-projected staging readiness inventory at GitHub SHA <code>91176aab4e94e4424ecd69b6452e671a744d87aa</code> (302 canonical objects). It separates '''observable source deficiencies''' from the broader editorial judgment K01. Titles are not silently approved merely because a reference is present or a section has been added.
+
+{| class="wikitable"
+! Scope group !! Source audit finding !! Day-close action !! Remaining review
+|-
+| Physical information/electronics, 7 || Existing core source references and typed links present for all seven; [[Resistor]] lacked both expected reader-depth surfaces. || Review hardware signal pathways; extend [[Resistor]] with actual digital/analog signal uses and create meaningful <code>Resistor/Simple</code> and <code>Resistor/Technical</code>. || Actual relevance/cross-depth tests, beyond syntax, remain human-reviewed.
+|-
+| Biological sensing, chemical modeling, 6 || All six had source URLs and source-projected typed links; mechanisms require correct boundary between regulation, chemistry and computing. || Preserve current explanatory matter and conservative interpretations; no invented biological bits or algorithmic metaphors. || Individual claim-level expert reviews and real implementation evidence where applicable.
+|-
+| Cognitive and decision systems, 8 || [[Thought suppression]], [[Ironic process theory]], [[Sunk cost effect]], [[Loss aversion]], [[Decoy effect]], [[Status quo bias]] and [[Priming]] had no detected external URL; several had very short Core articles or no typed relations. [[IKEA effect]] had a broken plain wikilink to <code>Engineering</code>. || Add explicit cognitive or decision-model relevance, experimental operationalization, limits and original-source links to the seven thin entries. Correct the broken [[IKEA effect]] link without fabricating a new target. || Four narrow bias pages lack separate Simple/Technical versions; this is a granularity decision, not automatic failure or license to invent shallow depth.
+|-
+| Collective systems and incentive mechanisms, 4 || [[Collective action]], [[Public good]], [[Commons]] and [[Incentive]] lacked detected external URL citations or source-projected typed edges. || Add concrete multi-agent/digital information-system application boundaries and verified source links. Add only explained, resolvable relationships where directly justified. || Distinguish human institutions, game models and actual executed protocols; later validate against specific system implementations.
+|-
+| [[Momentum]] and [[Safety factor]], 2 || Source material was already referenced and developed as general mechanics/engineering, but independent K01 purpose was not demonstrated. || Leave pages and their depth variants unchanged; retain proposed contextualization direction. || Link/dependency and redirect migration review if and when a true target topic is established.
+|-
+| Higher-impact canonical identities, 9 || All nine have Core plus both reader depths; six recently received modeling/sensing/biological information boundary sections. Identity versus application remains conditional. || Retain historic source text, current titles and relationships. Record evidence-based candidate method terms below; do not bulk rename. || Source-grounded alternative identity selection, source-to-depth mapping, graph impact and owner decision before migration.
+|}
+
+=== Terminology verification for the five disputed clusters ===
+
+The following are '''real research methods, established subject terms or documented scientific/technical applications'''; these references support terminological and methodological relevance, '''not''' an automatic replacement title, new Core page, correctness of every original article claim, or a political conclusion.
+
+{| class="wikitable"
+! Existing candidate cluster !! Method/field evidence examined !! Identity conclusion
+|-
+| [[Climate change]], [[Carbon cycle]] || [https://www.gfdl.noaa.gov/earth-system-models/ NOAA GFDL Earth System Models] explicitly couple physical climate processes with interactive carbon and other biogeochemical modeling; [https://www.cesm.ucar.edu/models NCAR Community Earth System Model] documents executable Earth-system simulations. || '''Earth system modeling''' is a well-founded applied computational focus. Carbon-cycle or climate-change observations can be context, and their own identities are not replaced by this evidence alone.
+|-
+| [[Ocean acidification]] || [https://oceanacidification.noaa.gov/ocean-acidification-research/ocean-acidification-monitoring/ NOAA Ocean Acidification Program, Monitoring & Modeling] specifies monitored pH, pCO2, total alkalinity and dissolved inorganic carbon with platforms and measurement time series. || The demonstrated computational relevance lies in ocean carbonate-system sensing, calibration, time-series analysis and model-based inference. Do not confuse these methods with the chemical phenomenon's title.
+|-
+| [[Ecology]], [[Ecosystem]] || [https://pmc.ncbi.nlm.nih.gov/articles/PMC1185644/ Pascual (2005), ''Computational Ecology''] and [https://doi.org/10.24908/iee.2019.12.2.e Poisot et al. (2019), computational-ecology research agenda] document an actual research area integrating data, models and algorithms. || '''Computational ecology''' is a documented research term, but it does not follow that the entire field of ecology, or any ecosystem itself, is a computer.
+|-
+| [[Photosynthesis]] || [https://pmc.ncbi.nlm.nih.gov/articles/PMC11060691/ ''Light signaling in plants'' (2024)] distinguishes light as a signal from photosynthetic energy input; [https://pubmed.ncbi.nlm.nih.gov/25638281/ Galvão and Fankhauser (2015)] reviews photosensory receptors and early information-transduction steps. || Specific '''light sensing, photoreceptor signaling and photosynthetic regulation''' mechanisms are evidenced; generic photosynthesis and computational simulation are not synonymous.
+|-
+| [[Blood pressure]], [[Cardiac output]], [[Pulse]] || [https://technav.ieee.org/topic/biomedical-signal-processing/ IEEE, ''Biomedical signal processing''] describes physiological signal acquisition, noise reduction, feature extraction and interpretation; [https://www.nature.com/articles/s44385-025-00061-7 Lou et al. (2026)] surveys monitoring bioelectric signals and acquisition systems. || '''Biomedical/physiological signal processing''' is a documented technical focus. Cardiovascular pressure, flow and pulse are measured quantities, not equivalent canonical terms for the method itself.
+|}
+
+The independent canonical-title comparison, clinical or field expert review and source-preserving content migration remain '''not complete'''. This checkpoint does '''not''' set any legacy Core entry to a certified K01 pass. Since source lint can count URLs and relationships without evaluating their truth, substantive editorial clearance cannot be inferred from a green build.
+
 == Next implementation contract ==
 
 '''Do not simply rename the nine articles using the example labels above.''' First examine scholarly/technical usage for each potential subject name and decide whether it denotes a recognized field, an independently reusable computational method, or an application/case study. Prepare an evidence-based choice showing whether the existing page's scientific content can remain as context and whether another page already covers the same conceptual identity.

@@ -1,0 +1,34 @@
+{{Source status|status=Technical depth derivative|note=Formal resistor and information-bearing circuit examples derived from the Core electrical definitions and sources.}}
+{{Reading depth|base=Resistor|current=Technical}}
+
+= Resistor — Technical =
+
+== Electrical model ==
+For an ideal ohmic two-terminal resistor under appropriate conditions:
+
+<pre>
+V = I R
+P = V I = I^2 R = V^2 / R
+</pre>
+
+<code>V</code> is the potential difference in volts, <code>I</code> is conventional current in amperes, <code>R</code> is resistance in ohms, and <code>P</code> is dissipated power in watts. This is a '''component constitutive relation''', not an information-processing algorithm.
+
+== Signal conditioning ==
+In a voltage divider with ideal series resistors <code>R1</code> above <code>R2</code>, and an approximately unloaded output taken across <code>R2</code>:
+
+<pre>
+Vout = Vin * R2 / (R1 + R2)
+</pre>
+
+Real analog-to-digital converter inputs, leakage currents, source impedance and loading can invalidate that simple divider formula. Verify input bandwidth, voltage ratings, settling and reference uncertainty when using the divider for measurement.
+
+A pull-up resistor establishes a bias for an otherwise undriven node. Actual digital interpretation requires the receiver's specified logic thresholds, leakage specifications, switching time and noise margin; a pull-up does not generate a logical value by abstract definition. A shunt resistor may allow current inference from a measured voltage difference, with power loss, thermal drift and measurement error accounted for.
+
+== Physical limitations ==
+Resistance tolerance, temperature coefficient, frequency-dependent parasitics and thermal noise limit the ideal model. The resistor can shape or bias a signal; the larger circuit performs sensing, state detection, conversion or computation.
+
+== References ==
+* [https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance OpenStax, ''University Physics Volume 2'', §9.3 — resistance.]
+* [https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power OpenStax, ''University Physics Volume 2'', §9.5 — power.]
+
+See [[Resistor]], [[Voltage]], [[Electric current]], and [[Computer architecture]].

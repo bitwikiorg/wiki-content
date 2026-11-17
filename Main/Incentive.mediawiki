@@ -27,7 +27,15 @@ In strategic systems, incentives interact with information and the behavior of o
 == Related concepts ==
 [[Utility (decision theory)]], [[Decision theory]], [[Game theory]], [[Mechanism design]], [[Principal–agent problem]], [[Reputation system]], and [[Governance]] are closely related.
 
+== Algorithmic mechanism design and agent objectives ==
+In a distributed algorithm, participants may choose actions using private information or objectives that differ from the designer's. An '''incentive-compatible mechanism''' specifies a strategic setting in which following a designated reporting or action rule is advantageous under the exact assumed solution concept; it is not a synonym for “adding rewards”.
+
+For example, a protocol may depend on agents reporting estimates of a value, performing work or contributing a resource. To study whether incentives align with desired behavior, specify each actor's action space, information, utility or cost model, allocation rule and feedback or payment rules. Then analyze deviation incentives and the computational cost of obtaining an outcome. Real behavior can depart from a mathematical equilibrium when assumptions fail.
+
+This makes incentives directly relevant to [[Related to::Mechanism design|mechanism design]], [[Game theory]] and multi-agent software. Incentive design is an algorithmic and economic problem that requires clear assumptions and verification; it is not proof that any particular token, reward system or governance policy works.
+
 == References ==
+* [https://doi.org/10.1006/game.1999.0790 Nisan and Ronen (2001), ''Algorithmic Mechanism Design'', Games and Economic Behavior 35:166–196.]
 * Bengt Holmström, “Moral Hazard and Observability” (1979).
 * Royal Swedish Academy of Sciences, 2016 Prize materials on contract theory.
 * mechanism-design and behavioral-economics literature on incentives.

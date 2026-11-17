@@ -1,0 +1,62 @@
+{{Source status|status=editorial review register — 2026-11-16|note=Inventory of scope questions; not an article removal list, not an empirical-fact verdict, and not proof of completion of K01.}}
+
+= BITwiki computational scope review =
+
+This register makes existing questions visible under [[BITwiki:Computational scope]]. It does not treat a valid source citation, a formal model, the ability to digitize measurements or an unrelated <code>Related to</code> edge as proof that a concept belongs in BITwiki.
+
+'''All entries below are pending K01 editorial review.''' A listing is not a verdict that the subject is invalid or that its article must be deleted. Review can retain an intrinsically informational treatment, reframe around a genuine computational or measurement method, move generic context into another article, or defer publication. Preserve source and revision lineage.
+
+== Priority A — present Core treatment has no demonstrated independent computational purpose ==
+
+{| class="wikitable"
+! Current Core article !! Computational re-scope question
+|-
+| [[Climate change]] || Would the useful knowledge be climate-model architecture, observational time series, data assimilation, calibration and forecast uncertainty rather than a generic phenomenon article?
+|-
+| [[Carbon cycle]] || Would a reproducible stock-and-flux model, state estimation, time-series inference or carbon-sensor data analysis justify independent identity? Avoid calling the cycle itself a computer.
+|-
+| [[Ocean acidification]] || Can calibrated pH sensing, carbonate-system parameter inference, ocean measurement uncertainty or monitoring pipelines form the computational subject, with chemistry as context?
+|-
+| [[Ecology]] || Is the subject computational ecology, agent-based modeling, information flow or measurement rather than ecology as a whole?
+|-
+| [[Ecosystem]] || Are specific biological signaling interactions, network models or ecosystem simulation methods actually demonstrated, rather than asserted through a metaphor?
+|-
+| [[Photosynthesis]] || Does a mechanistic section on light sensing, regulation and signal transduction substantiate an information-processing lens, distinct from energy conversion alone?
+|-
+| [[Blood pressure]] || Should the core content be physiological sensing, feedback-control signals, measurement accuracy or clinical time-series inference rather than a broad clinical primer?
+|-
+| [[Cardiac output]] || Can cardiovascular control, hemodynamic measurement inference or modeling justify an independent computational article?
+|-
+| [[Pulse]] || Does the intended subject concern pulse signals, measurement, signal processing or information-bearing physiological feedback rather than general pulse examination?
+|-
+| [[Momentum]] || Is there a concrete computational or information-theoretic use, or is classical mechanics context better embedded in another article?
+|-
+| [[Safety factor]] || Is there a direct reliability/computing-hardware or safety-critical algorithmic connection, rather than a generic structural-engineering primer?
+|}
+
+== Priority B — credible bridge, but existing breadth needs narrowing ==
+
+{| class="wikitable"
+! Candidate group !! Core pages requiring a concrete relevance case
+|-
+| Physical computation and electronics || [[Energy]], [[Energy conversion]], [[Energy efficiency]], [[Thermodynamics]], [[Electric current]], [[Voltage]], [[Resistor]]
+|-
+| Chemical and biological information || [[Chemical equilibrium]], [[Enzyme]], [[pH]], [[Metabolism]], [[Homeostasis]], [[Cell membrane]]
+|-
+| Cognition and computational decision systems || [[Thought suppression]], [[Ironic process theory]], [[Sunk cost effect]], [[Loss aversion]], [[Decoy effect]], [[Status quo bias]], [[IKEA effect]], [[Priming]]
+|-
+| Coordination and institutional computation || [[Collective action]], [[Public good]], [[Commons]], [[Incentive]]
+|}
+
+These are '''review priorities''', not a claim that every other article already satisfies K01. The full 302-object snapshot needs an independent article-by-article purpose review. Prior title/keyword screening is useful for selecting questions but is not a substitute for inspecting mechanisms, uses, references and context.
+
+== Review record ==
+
+For each page, record the editorial outcome, computational mechanism or method, relevant observing/measuring evidence, whether independent identity is needed, and whether linked Simple/Technical variants and semantic edges require reconciliation. Update the record as each page is actually reviewed. No review outcome is assigned to these candidates by creating this register.
+
+== Release boundary ==
+
+GitHub <code>main</code> is the integrated source; staging compilation and CI cannot approve K01, publish changes to the live MediaWiki or remove existing site pages. Re-scope should proceed through bounded, reviewed changes with explicit dependency and redirect considerations when renaming or contextualizing a canonical page.
+
+[[Category:BITwiki governance]]
+[[Category:BITwiki maintenance]]

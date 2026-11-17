@@ -1,0 +1,69 @@
+{{Source status|status=editorial policy — 2026-11-16|note=Current scoped admission guidance for new/revised V2 canon; it qualifies the broad interdisciplinary scope of the Charter without rewriting archived V1 material.}}
+
+= BITwiki computational and informational scope =
+
+'''BITwiki is a computation-centered, interdisciplinary encyclopedia and programmable knowledge substrate.''' It studies information and computation, their mechanisms, methods, representations, constraints and implementations across disciplines. It is not a general encyclopedia of everything that can be modeled, measured, digitized or described using computational metaphors.
+
+The word ''bit'' is not limited to silicon. Biology, cognition, language, decision making, networks, electronics and physical systems can be in scope when their contributions to encoding, state, signaling, memory, control, communication, inference or computation are demonstrated rather than assumed.
+
+This standard interprets the [[BITwiki:Charter|Charter]] and is applied through [[BITwiki:Contributing|contribution review]] and [[BITwiki:Page format|page structure]]. Historical and archival texts retain their original meanings.
+
+== Three editorial lenses ==
+
+{| class="wikitable"
+! Lens !! What a page must establish !! Admission rule
+|-
+| '''Mechanism-identified information processing''' || An identified mechanism has meaningful inputs or signals, distinguishable physical or symbolic states, transformations, outputs, and possibly encoding, memory, feedback or control. Specify the model, substrate and evidence. || Strong canonical fit when independently useful and sourced.
+|-
+| '''Computational / information-measurement method''' || A concrete method measures, encodes, reconstructs, predicts, simulates or analyzes a target; identify data, units, algorithms, assumptions, test criteria and limitations. || Fit when the METHOD is the article's contribution, not merely a pretext to reproduce an unrelated general encyclopedia entry.
+|-
+| '''Computational metaphor or universal description''' || A comparison calls a phenomenon a computer or information processor without identifying a testable informational mechanism or a substantive computational methodology. || Insufficient by itself for independent canonical admission.
+|}
+
+A computation may be ''implemented in'' a physical system, a process may be ''modeled by'' computation, and an author may ''describe'' a system metaphorically as computing. These are different claims and should not be interchanged.
+
+== K01 — the purpose and value test ==
+
+Before creating or substantially expanding a canonical concept, record a concise, reviewable explanation addressing the applicable questions:
+
+# '''What is the informational/computational phenomenon or method?''' Identify the actual representation, states, encoding, transformation, signal, algorithm, memory, feedback, measurement or inference.
+# '''Where does it occur, and what is its boundary?''' Name the physical, biological, cognitive, mathematical, engineered or software system; distinguish subject from simulation.
+# '''What is being observed or measured?''' When applicable, specify observable variables, units, instruments, protocols, limitations and uncertainty.
+# '''Why does it warrant this canonical identity?''' Show independent reuse, an existing computational concept or application that needs it, and why a subsection, case study or knowledge request is insufficient.
+# '''What is the epistemic status of the connection?''' Distinguish observation, experimental mechanism, a fitted model, hypothesis, analogy and speculation.
+
+The answers need not be an artificial five-heading checklist inside every article. They must be supportable in the candidate article or associated editorial review evidence. A named Domain, a keyword, an empty category, a generic SMW <code>Related to</code> edge, the existence of a computational simulation, and the fact that a page can be digitized '''do not by themselves establish relevance'''.
+
+K01 is an '''editorial judgment with traceable evidence'''. Existing structural validators and the staging compiler cannot certify it from keywords. In the staging audit, <code>UNVERIFIED</code> remains correct until an actual review occurs. New articles must not be described as purpose-approved merely because CI succeeds.
+
+== Examples and boundaries ==
+
+=== Human and biological systems ===
+Genetic sequence encoding and expression, nervous-system signal processing, molecular recognition, sensory transduction, regulatory networks and memory can have concrete information-processing mechanisms. Do not assert that every chemical reaction, cell or organism is a classical digital computer. Describe the specific mechanism and operational definition of information/computation.
+
+=== Electronics and physical implementation ===
+Electrical circuits, switching, communication channels, memory devices and thermodynamic constraints on information erasure can justify physical concepts. A generic physics treatment of every force, energy transfer or material property does not automatically qualify. Prefer explanations tied to information-bearing signals, device operation, measurement or the limit they establish.
+
+=== Earth and environmental systems ===
+Atmospheric change, climate, geological processes or ocean chemistry can be computational '''targets''', but this fact alone does not make Earth or the universe an intrinsic computer. Modeling, sensor networks, time-series measurement, calibration, inverse problems, data assimilation, simulation and uncertainty quantification can be canonical subjects. General event descriptions may be contextual examples inside those methods rather than independent Core concepts.
+
+=== Ecology and distributed biological systems ===
+Ecological research can involve distributed biological signaling, organism decision-making, sensing, adaptive interaction or validated agent-based and network models. Identifying those mechanisms or methods is different from declaring an ecosystem to be a computer. Broad ecosystem descriptions require a specific independent rationale to remain Core.
+
+== Retain, reframe, contextualize or defer ==
+
+For an existing page under scope review:
+
+* '''Retain''' when its existing core is a demonstrated information/computation concept or method.
+* '''Reframe''' when a defensible computational mechanism or measurement/modeling method is genuinely central, without falsifying the scientific subject.
+* '''Contextualize''' when noncomputational material is needed as evidence or an example in another in-scope article, but does not deserve standalone identity.
+* '''Defer''' when the relevance claim remains hypothetical or unsupported; use [[BITwiki:Requested knowledge]] or an explicit review register rather than forcing a metaphor or deleting historical text.
+
+Scope is separate from the factual or scientific validity of a subject. An out-of-scope claim is not thereby false, and an in-scope computational method is not thereby scientifically validated.
+
+== Decision and provenance ==
+
+Editorial direction established 2026-11-16: refine BITwiki's computational/informational center without collapsing the project to software or silicon and without claiming every natural phenomenon performs computation. The [[BITwiki:Computational scope review|scope review register]] tracks the previously broad articles requiring review. This policy does not authorize bulk deletion, page renaming, schema changes or live MediaWiki publication.
+
+[[Category:BITwiki governance]]
+[[Category:BITwiki architecture]]

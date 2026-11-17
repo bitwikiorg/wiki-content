@@ -218,5 +218,38 @@ For each page, record the editorial outcome, computational mechanism or method, 
 
 GitHub <code>main</code> is the integrated source; staging compilation and CI cannot approve K01, publish changes to the live MediaWiki or remove existing site pages. Re-scope should proceed through bounded, reviewed changes with explicit dependency and redirect considerations when renaming or contextualizing a canonical page.
 
+
+== Non-destructive method/identity disposition proposal — 2026-11-16 ==
+
+'''Status: evidence-based proposed disposition for owner review, not approved K01 identity selection.''' Checked against GitHub <code>main</code> at <code>98648b0804e389e194a566e9a01555262660c9b3</code>. All nine existing articles and their Simple/Technical pages exist. Their current titles denote genuine disciplines, mechanisms, measurements or observed phenomena; method terminology must not silently overwrite those meanings.
+
+{| class="wikitable"
+! Existing titles !! Valid computational direction and evidence !! Proposed disposition (not a rename)
+|-
+| [[Climate change]]; [[Carbon cycle]] || [https://www.gfdl.noaa.gov/earth-system-models/ NOAA GFDL Earth System Models] document coupled climate and carbon-cycle simulation. ''Earth system modeling'' is a source-supported method/field title. || Preserve both source subjects and their reader depths as context; assess a separate ''Earth system modeling'' article with explicit model architecture, state variables, data assimilation, calibration and uncertainty. Do not equate the carbon cycle with a computer.
+|-
+| [[Ocean acidification]] || [https://oceanacidification.noaa.gov/ocean-acidification-research/ocean-acidification-monitoring/ NOAA Ocean Acidification Program] documents pH, pCO2, total alkalinity, DIC, time series and monitoring-modeling workflows. || Preserve the chemical phenomenon and depth pages. Develop a bounded marine carbonate-measurement/inference '''method section or case study first'''; independently verify a standardized subject name and independent purpose before proposing a new Core identity.
+|-
+| [[Ecology]]; [[Ecosystem]] || [https://doi.org/10.1371/journal.pcbi.0010018 Pascual (2005), ''Computational Ecology''] supports a recognized computational research direction. || Preserve ecology as discipline and ecosystem as system being studied. Review ''Computational ecology'' as a separate method-centered canonical candidate; distinguish algorithm/model from modeled ecosystem.
+|-
+| [[Photosynthesis]] || [https://pmc.ncbi.nlm.nih.gov/articles/PMC11060691/ Light signaling in plants (2024)] and [https://pubmed.ncbi.nlm.nih.gov/25638281/ Galvão and Fankhauser (2015)] document photoreceptor sensing and signal transduction. || Preserve photosynthesis as energy-conversion biology. Assess a separate ''Plant photoreceptor signaling'' mechanism article if source and article-level independence checks pass; do not call all photosynthesis computation.
+|-
+| [[Blood pressure]]; [[Cardiac output]]; [[Pulse]] || [https://technav.ieee.org/topic/biomedical-signal-processing/ IEEE Technology Navigator, Biomedical signal processing] describes acquisition, filtering, extraction and physiological inference. || Preserve three distinct measured/physiological quantities. Evaluate ''Biomedical signal processing'' as a method article, with cardiovascular sensing as an explicitly bounded application rather than three renames.
+|}
+
+'''Existence check:''' no exact <code>Main/</code> source file was found for ''Earth system modeling'', ''Computational ecology'', ''Plant photoreceptor signaling'' or ''Biomedical signal processing'' in the checked default branch. This check does not prove semantic non-overlap with differently named existing objects. Neither a credible name nor a missing file is itself admission approval.
+
+=== Other conditional scope matters ===
+
+* [[Momentum]] and [[Safety factor]] each have Core, Simple and Technical sources. Their general physics/engineering material is not erroneous merely for lacking a demonstrated independent computational purpose. Defer any context-only relocation until all incoming links, semantic relations, educational depth uses and target articles have been inspected. No deletion or redirect authorized.
+* '''Four confirmed Core-only cognitive-bias entries:''' [[Sunk cost effect]], [[Loss aversion]], [[Decoy effect]] and [[Status quo bias]]. Their Simple and Technical source files are absent on checked <code>main</code>. This is a content-granularity gap, not an automatic defect. Distinctive technical material could include, respectively, prospective decision benchmarks; reference-dependent estimation; asymmetric dominance/regularity tests; and default-state confound controls. Distinctive Simple material could give one concrete bounded example and its key caveat for each. Only create a derivative when it adds something materially useful beyond Core, not to satisfy a numerical quota.
+* ''Domain'' multi-value template semantics, runtime namespace assumptions, inbound-link enumeration and production deployment require a separate technical validation track. None is changed by this editorial register.
+
+=== Owner decision and implementation gate ===
+
+Recommendation: **preserve all nine legacy identities for now**, while evaluating separate computational methods and mechanisms. Owner must decide whether the existing broad domain/phenomenon pages remain canonical supporting context under an explicit K01 exception/role, or are eventually projected as contextual sections subordinate to accepted method-centered objects. Do not call any of these nine K01-certified in advance.
+
+Before creating a method article: rule out semantic duplicates, verify current technical terminology and claims, identify the computational mechanism or measurable pipeline, record evidence and uncertainty, map incoming/outgoing wikilinks and SMW assertions, specify Simple/Core/Technical roles, and review a bounded GitHub PR. Current review does not authorize migrations, redirects, releases or publication.
+
 [[Category:BITwiki governance]]
 [[Category:BITwiki architecture]]

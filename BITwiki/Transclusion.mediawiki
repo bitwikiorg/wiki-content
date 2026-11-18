@@ -6,6 +6,63 @@ Transclusion is '''not identical to knowledge organization, source verification,
 
 See [[BITwiki:Book Matter]] for identifying what content is worth reusing and [[BITwiki:Page format]] for maintaining a coherent article around that content.
 
+== Why BITwiki uses transclusion ==
+
+BITwiki treats knowledge as '''coherent, sourced articles whose reusable portions may also participate in other legitimate contexts'''. Ordinary hyperlinks connect related subjects; transclusion is useful when a host needs to '''display the same maintained content''', and copying it would create divergent versions. This supports:
+
+* '''Canonical maintenance:''' correct one authoritative source and let consuming pages reflect the change.
+* '''Contextual composition:''' reuse an appropriate part of an account without forcing every reader through the entire original article.
+* '''Cross-disciplinary reading:''' let the same carefully qualified material contribute to distinct subjects when the meaning truly transfers.
+* '''Inspectable dependencies:''' make source-to-host relationships and downstream effects identifiable for review.
+* '''Machine-assisted consumption:''' provide a possible foundation for provenance-aware extraction; it does not itself implement an agent retrieval service.
+
+These benefits are conditional. Poor extraction obscures context; excessive extraction multiplies dependencies and editorial overhead. '''Transclusion is a tool for justified reuse, not a mandate to decompose every article.'''
+
+== How composition fits BITwiki's actual architecture ==
+
+<pre>
+canonical Main article / separately maintained source
+    │ content + citations + qualifications
+    ├── ordinary article text (no reuse needed)
+    └── selected reusable component (only when justified)
+               │
+         MediaWiki transclusion
+               │
+       host page + local framing
+               │
+       reader-facing rendered article
+
+separate integration boundary, if implemented and verified:
+source title + revision + part + context + provenance
+               → derived search, knowledge view or agent context
+</pre>
+
+The '''canonical Main article''' remains the intelligible public treatment of its subject. The '''reusable source''' owns its maintained wording and intrinsic qualifications; the '''host''' owns the explanation of why the passage belongs in its context. [[BITwiki:Book Matter]] identifies the role of a piece of content; [[BITwiki:Page format]] determines how the host reads as a whole; [[BITwiki:Editorial protocol]] governs extraction and review.
+
+In the existing repository, [[Template:Knowledge object]] and [[Template:Reading depth]] are working source-controlled examples of reusable '''interface behavior'''. A static test in <code>scripts/test_editorial_architecture.py</code> composes extracted Overview sections from ''System boundary'', ''Causality'' and ''Hypothesis'' into temporary virtual hosts and checks changes, cycles and annotation hazards. These fixtures are '''not deployed Book Matter pages'''. There is no verified general fragment registry, stable component-ID schema, agent retrieval endpoint or live selective-section installation as a result of that test.
+
+== Choose the smallest appropriate mechanism ==
+
+{| class="wikitable"
+! Editorial need !! Preferred approach !! Reason
+|-
+| One-off explanation for one subject || Keep the material inline || Avoid a dependency with no reuse benefit.
+|-
+| A related but distinct knowledge object || Link to the canonical article || A link preserves subject identity; shared wording is not needed.
+|-
+| Short summary of a larger subject || Write a contextual summary and link to the detailed account || Different contexts may require different emphasis; a verbatim excerpt can mislead.
+|-
+| Identical, self-contained content needed in multiple pages || Maintain one appropriate source and transclude it || Reduce divergent copies while preserving required qualification.
+|-
+| Repeated parameterized layout, navigation or metadata interface || Use a Template (possibly invoking Lua) || Separate presentation behavior from subject-specific prose.
+|-
+| A particular heading or section || Use a verified supported selector, or extract an explicit maintained source only if warranted || Headings and extension availability are not automatically stable contracts.
+|-
+| A derived BIThub, graph, search or agent view || Use a separately authenticated and tested read/extraction integration || Wikitext inclusion is not an external API or semantic transport.
+|}
+
+A source may be independently addressable because it has multiple legitimate readers, distinct evidence or review ownership, or a recurring retrieval need. It should '''not''' be split solely because its heading matches a Book Matter label, or because its title contains a slash.
+
 == Source, inclusion and displayed context ==
 
 Three responsibilities should remain distinguishable:
@@ -98,6 +155,20 @@ Before extraction, check whether contextual definitions, counterarguments, limit
 
 A good fragment should have an identifiable purpose, a stable source address, meaningful boundaries and documented dependencies. '''Modularity should reduce maintenance, not multiply it.'''
 
+== Editorial and deployment contract ==
+
+For any consequential new transclusion, use the workflow in [[BITwiki:Editorial protocol]] and the executable editing guide at [[Help:Transclusion]]:
+
+# '''Locate:''' identify the existing canonical article, its revision, the actual repeated material and the host's need.
+# '''Choose:''' prefer inline writing or a link unless the same maintained content is genuinely required.
+# '''Bound:''' make the extracted unit intelligible, keeping evidence, citation, scope and uncertainty with its claims.
+# '''Compose:''' select core page/template inclusion, inclusion tags, or a verified extension; do not assume <code>#Heading</code> is a core selector.
+# '''Inspect:''' preview the source and each host, links, headings, references and any semantic assertions, with particular attention to source-vs-host identity.
+# '''Audit:''' evaluate dependency/cycle risks, rendering limits, author attribution and whether a source update changes host meaning.
+# '''Verify:''' for production claims, test the target MediaWiki/SMW runtime as well as source-level CI; record remaining unknowns rather than calling them deployed features.
+
+The initial composition should identify which author or editorial surface maintains the reusable source and which pages depend on it. Subsequent changes to widely reused content need downstream review, not simply a successful source edit.
+
 == Preserving epistemic meaning ==
 
 === Evidence and uncertainty travel with the claim ===
@@ -150,7 +221,9 @@ MediaWiki transclusions normally follow current source content; they are not fix
 
 The source-controlled <code>Template:Knowledge object</code> and <code>Template:Reading depth</code> illustrate two distinct forms of reusable interface behavior: semantic identity presentation and reading-level navigation. They do not themselves demonstrate a generalized Book Matter fragment registry.
 
-BITwiki's additional semantic composition goals—selective component retrieval, review-aware reuse, stable fragment identity, and bounded agent-context assembly—remain design objectives where a verified implementation and clear content contract are still needed. '''Transclusion alone is not an external API, a retrieval index, or a provenance graph.'''
+BITwiki's additional semantic composition goals—selective component retrieval, review-aware reuse, stable fragment identity, and bounded agent-context assembly—remain design objectives where a verified implementation and clear content contract are still needed. '''Transclusion alone is not an external API, a retrieval index, a provenance graph, or a guarantee that an extracted claim keeps its semantic subject.'''
+
+Before calling this operational in a production installation, verify <code>Special:Version</code> for relevant extensions, namespace/subpage configuration, core and optional syntax, source/host rendering, SMW annotation storage, dependency propagation and post-edit performance. See [[BITwiki:Deployment prerequisites]] and [[Help:Transclusion]].
 
 A reusable page should be promoted only after actual use cases justify the dependency and the resulting subject/host semantics are tested.
 
@@ -163,6 +236,6 @@ A reusable page should be promoted only after actual use cases justify the depen
 * [https://www.mediawiki.org/wiki/Manual:Template_limits MediaWiki — Template limits] — expansion and parser constraints.
 * [https://www.semantic-mediawiki.org/wiki/Help:Embedded_format Semantic MediaWiki — Embedded format] — annotation behavior when pages are embedded.
 
-See [[BITwiki:Book Matter]], [[BITwiki:Page format]], [[BITwiki:Semantic properties]], [[BITwiki:Deployment prerequisites]], and [[BITwiki:Epistemics]].
+See [[BITwiki:Book Matter]], [[BITwiki:Page format]], [[BITwiki:Editorial protocol]], [[Help:Transclusion]], [[BITwiki:Semantic properties]], [[BITwiki:Deployment prerequisites]], and [[BITwiki:Epistemics]].
 
 [[Category:BITwiki architecture]]

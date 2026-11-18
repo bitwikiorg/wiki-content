@@ -1,0 +1,95 @@
+= Reusing content with transclusion =
+
+This Help page explains '''how to include one maintained MediaWiki source in another BITwiki page'''. Use it only when the same wording or content genuinely needs to appear in multiple places. See [[BITwiki:Transclusion]] for the architectural purpose, [[BITwiki:Book Matter]] for intellectual content roles, and [[BITwiki:Editorial protocol]] for the extraction and review decision.
+
+'''Before editing:''' a Book Matter heading is not automatically a reusable page or a stable retrieval identifier. Prefer a direct link to another subject, or a locally written contextual summary, when that meets the reader's need. This guide describes MediaWiki syntax; it does not establish that BITwiki has a deployed fragment registry, agent retrieval endpoint or Labeled Section Transclusion extension.
+
+== Decide which source is authoritative ==
+
+# Locate the existing canonical article or Template and examine its citations, qualifications, existing transclusions and revision history.
+# Name the host page(s) that need exactly the same content, rather than merely a link or different explanatory treatment.
+# Check whether the proposed excerpt is understandable without the paragraphs it originally followed.
+# Identify who maintains the source and which host contexts could change when it is edited.
+# Use [[BITwiki:Editorial protocol]] for consequential extraction decisions and cross-context review.
+
+== Built-in MediaWiki syntax ==
+
+{| class="wikitable"
+! Need !! Wikitext placed in the host !! Meaning
+|-
+| Include a Main-namespace page || <code><nowiki>{{:Reusable page title}}</nowiki></code> || The colon selects Main, not Template.
+|-
+| Include a Template || <code><nowiki>{{Template name}}</nowiki></code> || Includes the Template namespace page.
+|-
+| Include an explicitly named slash-title page || <code><nowiki>{{:Reusable page title/Part}}</nowiki></code> || Works as a reference to that exact title; slash alone does not enable subpage navigation.
+|}
+
+Place inclusion markup where the included content belongs in the host's article. Write local introductory context, transitions and qualifications around the inclusion; the source does not automatically supply the host's interpretive framework.
+
+'''Do not use''' <code><nowiki>{{:Page#Section}}</nowiki></code> as though a heading anchor were a core section-transclusion selector. Linking to a section is not the same as including its text.
+
+== Inclusion tags in the maintained source ==
+
+MediaWiki provides three core controls:
+
+* <code><nowiki><noinclude>...</noinclude></nowiki></code> appears on the source page but is excluded when the source is transcluded. Common use: source-specific documentation or maintenance notes.
+* <code><nowiki><includeonly>...</includeonly></nowiki></code> appears when included by a host but is not displayed on the source page.
+* <code><nowiki><onlyinclude>...</onlyinclude></nowiki></code> restricts included output to the explicitly marked material when present.
+
+These tags are not named-fragment identifiers. Keep the source page intelligible on its own, and inspect the resulting output on both source and host. Avoid using inclusion tags to conceal caveats or citations required to understand the quoted claim.
+
+== Optional section selection ==
+
+Heading-based selection such as
+
+<pre>
+{{#lsth:Source page title|Section heading}}
+</pre>
+
+is provided by the '''Labeled Section Transclusion''' extension, not by core MediaWiki. Before using it, check [[Special:Version]] and [[BITwiki:Deployment prerequisites]] on the target installation. Verify the selected heading, its boundaries and behavior when headings are renamed or moved. The extension is '''not established as available''' solely because this guide documents it.
+
+If unavailable, leave the text inline or create an explicitly maintained source page only when the actual reuse benefit justifies it. Never create a network of empty or duplicate pages simply to make the syntax work.
+
+== Semantic MediaWiki: source versus host ==
+
+Wikitext included in a host is expanded in that host's parser context. For example, if a fragment contains:
+
+<pre>
+[[Entity type::Concept]]
+</pre>
+
+it can assign a semantic property to the '''host page''' rather than solely to its original source. An entity-type assertion that is correct for the source can be false for the host.
+
+For a reusable explanatory fragment, prefer prose and intrinsically scoped citations without unqualified page-identity annotations. Maintain the source article's identity assertions on its own page. Where the claim truly requires machine-readable identity, choose and test a supported source-, host- or subobject-specific annotation model before publication.
+
+Do not assume that the repository's static preview verifies live SMW storage or query results.
+
+== Preview and verification ==
+
+# Preview the maintained source in its own context and open each planned consuming page.
+# Confirm that the host includes precisely the intended material, with intelligible headings, links, footnotes, citations, units and qualifications.
+# Verify that the source remains discoverable and attribution/history are traceable; revision history is not a replacement for scholarly citation.
+# Compare source and host semantic annotations and SMW queries where the inclusion contains or generates properties.
+# Check nested transclusion depth, cycles, expansion size, parser errors and performance. MediaWiki parser limits apply.
+# After changing widely reused content, inspect the affected hosts again; a single source edit may change their rendered meaning.
+# If production behavior is being claimed, document the deployed MediaWiki and extension versions and test results; passing source-level CI is insufficient.
+
+Ordinary transclusion generally follows the current source content. It does not pin the host to a historical revision. When a reproducible scholarly snapshot is required, preserve an explicitly reviewed version and reference the actual revision or immutable artifact.
+
+== What BITwiki currently demonstrates ==
+
+The source repository uses [[Template:Knowledge object]] and [[Template:Reading depth]] for repeatable identity and navigation interfaces. <code>scripts/test_editorial_architecture.py</code> also composes extracted ''Overview'' text from ''System boundary'', ''Causality'' and ''Hypothesis'' into '''temporary test hosts''' to check shared updates and certain failure conditions. This is a staging test, '''not''' a deployed collection of article fragments.
+
+Advanced capabilities—stable Book Matter component IDs, a universal retrieval interface, automatic agent context assembly, and live section-based inclusion—require independent implementation and runtime evidence.
+
+== References ==
+
+* [https://www.mediawiki.org/wiki/Help:Transclusion MediaWiki: Help:Transclusion] — core inclusion and tags.
+* [https://www.mediawiki.org/wiki/Help:Templates MediaWiki: Help:Templates] — template reuse and inclusion controls.
+* [https://www.mediawiki.org/wiki/Help:Subpages MediaWiki: Help:Subpages] — namespace-dependent slash-title behavior.
+* [https://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion MediaWiki: Labeled Section Transclusion] — optional heading-based inclusion.
+* [https://www.semantic-mediawiki.org/wiki/Help:Embedded_format Semantic MediaWiki: Embedded format] — host/source annotation implications.
+
+See [[BITwiki:Page format]], [[BITwiki:Book Matter]], [[BITwiki:Transclusion]], [[BITwiki:Editorial protocol]], and [[BITwiki:Deployment prerequisites]].
+
+[[Category:BITwiki meta]]

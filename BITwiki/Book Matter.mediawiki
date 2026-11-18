@@ -102,9 +102,76 @@ The following names describe recurring functions of knowledge content. Each is a
 | '''Related subjects''' || Connect the reader to genuinely relevant articles, methods, or conceptual neighbors.
 |-
 | '''Appendices''' || Hold supplementary detail that is useful but would interrupt the main presentation.
+|-
+| '''Assumptions and premises''' || State the starting conditions or propositions on which an account depends.
+|-
+| '''Arguments and reasoning''' || Develop a traceable rationale for a conclusion, including inferential steps and alternatives.
+|-
+| '''Proofs and derivations''' || Establish formal claims or derive results using explicitly stated rules and assumptions.
+|-
+| '''Results and findings''' || Report what an observation, experiment, study, evaluation or inquiry actually found.
+|-
+| '''Analysis and interpretation''' || Examine the meaning of observations, results or source texts without confusing inference with original evidence.
+|-
+| '''Conclusions and implications''' || Synthesize warranted consequences of the account, with scope and uncertainty intact.
+|-
+| '''Procedures and instructions''' || Explain reproducible steps for performing a task, operation or technique.
+|-
+| '''Troubleshooting and diagnostics''' || Identify symptoms, causes, tests and remedies for problems or failure modes.
+|-
+| '''Reproducibility and validation''' || Describe how a result, procedure or claim may be independently checked or repeated.
+|-
+| '''Open questions and research directions''' || Identify unresolved questions, competing possibilities and further work without treating predictions as findings.
+|-
+| '''Learning objectives and assessments''' || Make teaching goals, exercises, practice and evaluation explicit where the page is educational.
+|-
+| '''Primary texts and source excerpts''' || Present original writings, records or transcribed passages with their provenance and interpretive boundaries.
+|-
+| '''Safety, ethics and responsible use''' || Address material hazards, ethical considerations and responsible practice when relevant.
 |}
 
+This vocabulary is deliberately '''extensible'''. New, substantively distinct roles may be recognized when they clarify real content. It is not a fixed-number specification, a set of compulsory headings, or a declaration of implemented component types. A role such as ''Evidence'' may coexist with a role such as ''Analysis'' in one section.
+
+=== Different dimensions, not one checklist ===
+
+Book Matter describes a part's '''intellectual job'''. Some established names also identify its delivery form or its editorial context:
+
+* '''Explanatory and analytical matter:''' definitions, foundations, theories, mechanisms, arguments, proofs, analysis, comparison and implications.
+* '''Empirical and source matter:''' methodology, evidence, data, results, cases, primary texts, limitations and reproducibility.
+* '''Procedural and educational matter:''' implementation, instructions, troubleshooting, examples, learning exercises and assessments.
+* '''Reference and supporting matter:''' notes, glossaries, citations, further reading and appendices.
+* '''Presentation and discovery forms:''' infoboxes, multimedia, outlines, indices, timelines and related-subject lists can carry multiple intellectual roles; the format itself is not a distinct semantic claim.
+* '''Editorial and attribution surfaces:''' contributor credits and editorial-review notices describe stewardship, not an article's principal subject.
+
+These groupings are descriptive and '''overlapping''', not controlled subclasses or a rigid hierarchy. A visualization can present original data, a proof or an explanatory illustration. A timeline can organize evidence or provide navigation. Preserve these differences instead of building a categorical type for every combination.
+
+=== Book matter in publishing and other wikis ===
+
+In traditional publishing, ''front matter'', ''body'' and ''back matter'' describe the placement of material within a book (such as a preface, chapters, glossary and bibliography). BITwiki's '''Book Matter''' is a broader, project-specific name for recurring functions of knowledge content; a glossary may be back matter in a book but a useful inline reference in an encyclopedia.
+
+Different wiki projects offer complementary editorial precedents:
+
+* [https://en.wikipedia.org/wiki/Wikipedia:Manual_of_Style/Layout Wikipedia's article layout] distinguishes a lead, article body, supporting notes and references from further reading and navigation.
+* [https://en.wikibooks.org/wiki/Wikibooks:Manual_of_style Wikibooks' manual of style] treats chapters, introductions, appendices and book organization as publication structures.
+* [https://en.wikiversity.org/wiki/Wikiversity:Learning_resources Wikiversity learning resources] include teaching-oriented exercises, activities and assessment patterns.
+* [https://wiki.archlinux.org/title/Help:Style ArchWiki's style guidance] reflects procedural, diagnostic and maintenance-oriented technical documentation.
+* [https://www.mediawiki.org/wiki/Help:Transclusion MediaWiki transclusion] is the technical reuse mechanism, not a vocabulary of knowledge functions.
+
+These are comparative design references, not evidence that any project adopts BITwiki's full vocabulary or that BITwiki has implemented each role as software.
+
 These are functional names, not a claim that BITwiki has a corresponding template, property, or register for every role. A subject may need only a few roles. An experimental study, philosophical argument, biography, and mathematical theorem should not be made to share identical section requirements.
+
+== Scope, placement and ownership ==
+
+A Book Matter role may appear in a sentence, section, article, independently maintained source or derived view. '''Location is not identity''': a ''Methodology'' section does not create a new Method entity; an ''Infobox'' does not validate the facts inside it.
+
+* [[BITwiki:Page format]] owns article organization, coherence and reader-facing section choices.
+* [[BITwiki:Editorial protocol]] owns decisions about extraction, review, canonical authorship and publication.
+* [[BITwiki:Transclusion]] owns the conceptual composition model and source/host responsibilities.
+* [[Help:Transclusion]] gives practical editing syntax and verification checks.
+* [[BITwiki:Readable depth and localization]] governs Simple, Core and Technical presentations of the same subject.
+
+No extraction, namespace or new semantic property follows automatically from assigning a role.
 
 == Knowledge architecture without compulsory fragmentation ==
 
@@ -179,6 +246,6 @@ The preferred result is not the largest possible set of modules. It is a system 
 * [https://www.mediawiki.org/wiki/Help:Templates MediaWiki — Templates] — parameterized reuse and inclusion controls.
 * [https://www.mediawiki.org/wiki/Help:Subpages MediaWiki — Subpages] — namespace-specific behavior for slash titles.
 
-See [[BITwiki:Page format]], [[BITwiki:Transclusion]], [[BITwiki:Epistemics]], [[BITwiki:Organization]], and [[BITwiki:Navigation]].
+See [[BITwiki:Page format]], [[BITwiki:Transclusion]], [[BITwiki:Editorial protocol]], [[Help:Transclusion]], [[BITwiki:Epistemics]], [[BITwiki:Organization]], and [[BITwiki:Navigation]].
 
 [[Category:BITwiki architecture]]

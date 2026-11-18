@@ -1,194 +1,179 @@
-{{Source status|status=source-reconciled architecture|note=Preserves V1 Ontology Alignment Matrix principles while treating specific external IDs, mappings, default confidence/status assignments, and import/export examples as historical claims requiring revalidation before production use.}}
-
 = Interoperability =
 
-BITwiki should exchange knowledge with external systems without pretending that differently designed ontologies mean the same thing merely because labels look similar.
+'''Interoperability is the ability to exchange and use information across systems while preserving enough meaning, identity, provenance and context for the result to remain trustworthy.''' Exchanging a file or matching two labels is not sufficient when the receiving system interprets them differently.
 
-V1 framed this as an '''Ontology Alignment Matrix'''. V2 preserves the core alignment discipline while separating it from unverified historical mappings.
+BITwiki connects several kinds of systems: MediaWiki articles and semantic annotations, structured operational records, discussion and agent workflows, and external scholarly or knowledge-graph resources. Each has its own purpose. The objective is to make them cooperate '''without silently manufacturing equivalence, duplicating authority, or upgrading unverified claims into facts'''.
 
-Interoperability also applies inside the BITwiki ecosystem: [[BIThub]]/Discourse should consume canonical BITwiki state without becoming a second semantic authority.
+== Three distinct problems ==
 
-== Why align ==
+{| class="wikitable"
+! Layer !! Question !! Typical failure
+|-
+| '''Identity''' || Does an identifier refer to the same real object, work, concept or page in both systems? || Two similarly named things are merged.
+|-
+| '''Semantic alignment''' || Do properties, classifications, relations and statuses carry compatible meanings? || A broad association is imported as a causal or identity claim.
+|-
+| '''Technical exchange''' || Can the intended data be retrieved, serialized, authorized, validated and kept consistent? || A prototype mapping is described as an operational API.
+|}
 
-Interoperability can enable:
+A successful technical transfer can still be semantically wrong. A sound conceptual mapping can remain an unimplemented proposal. These layers must be assessed separately.
 
-* import and enrichment from external knowledge graphs;
-* export to common structured vocabularies;
-* cross-system identifiers;
-* query translation;
-* source/provenance linking;
-* comparison and verification across independent knowledge systems;
-* BIThub/agent interfaces over canonical BITwiki entities and relationships;
-* workflow round-trips from discussion/research into durable reviewed knowledge.
+== Identity before equivalence ==
 
-Alignment is useful only when semantic loss is understood.
+A name is not a globally unique identity. Different languages, disciplines and systems use overlapping labels. An external identifier may denote a publication, a person, a scientific concept, a particular version of software, or a broader category.
 
-== Mapping relations ==
+Before linking records, establish what each identifier denotes, whether the referents actually agree, and which version or scope is relevant. Keep the local BITwiki title/identifier distinct from external identifiers; preserve both when both are informative.
 
-A mapping should state how meanings relate.
+Two articles may be '''about the same subject''' without being identical documents. A Wikipedia article, Wikidata item, and BITwiki entry can describe overlapping referents while having different statements, revision histories and editorial responsibilities.
 
-=== Exact match ===
-The two terms have materially the same intended meaning and scope for the current use.
+== Mapping concepts and properties ==
 
-Exact match should be rare and justified rather than assumed from identical labels.
+The [https://www.w3.org/TR/skos-reference/ W3C SKOS recommendation] defines mapping relations for concepts across knowledge-organization systems. These terms help describe alignment; they are not automatically equivalent to BITwiki's internal graph relations.
 
-=== Narrower match ===
-The BITwiki concept is more specific than the external concept, or vice versa. Direction must be explicit.
+{| class="wikitable"
+! Mapping !! Meaning for an alignment assessment
+|-
+| '''Exact match''' (<code>skos:exactMatch</code>) || Strong conceptual interchangeability across relevant applications, warranted by careful comparison.
+|-
+| '''Close match''' (<code>skos:closeMatch</code>) || Substantially similar concepts with differences that may matter in substitution.
+|-
+| '''Broad match''' (<code>skos:broadMatch</code>) || The external target denotes a broader concept than the local concept (local is narrower).
+|-
+| '''Narrow match''' (<code>skos:narrowMatch</code>) || The external target denotes a narrower concept than the local concept (local is broader).
+|-
+| '''Related match''' (<code>skos:relatedMatch</code>) || A meaningful association without equivalence.
+|}
 
-=== Broader match ===
-One concept covers a wider semantic range.
+These are descriptions of what a mapping would mean '''if adopted'''. They do not assert that BITwiki currently stores these specific SKOS properties.
 
-=== Close match ===
-The concepts are substantially similar but differ enough that substitution may lose meaning.
+In formal SKOS, exactMatch carries stronger inference implications than closeMatch. It is also distinct from <code>owl:sameAs</code>, which asserts identity of individuals/resources. Do not convert a convenient lexical correspondence into a strong machine-readable equivalence without evidence for that interpretation.
 
-=== Related match ===
-The concepts are connected but are not equivalent enough for type/property substitution.
+Different sorts of mappings need different checks: article-to-subject, property-to-property, type-to-class and classification-to-concept are not automatically interchangeable.
 
-== Preserve context ==
+== Preserve distinctions that external vocabularies may omit ==
 
-When exporting/importing, do not silently discard:
+BITwiki separates entity type, domain, epistemic standing, confidence rationale, review state, lifecycle and provenance. An external schema may not represent each dimension. For example, a source's publication status or peer-review record is not the same as BITwiki's judgment about a specific claim's evidentiary support.
 
-* epistemic standing;
-* provenance;
-* uncertainty;
-* source lineage;
-* entity-type distinctions;
-* relationship semantics;
-* lifecycle state;
-* V2-specific governance/Book Matter meaning where relevant.
+When a target format is less expressive, choose deliberately among:
 
-If the target system has no equivalent field, explicitly identify the loss or use a documented extension mechanism.
+* '''lossless representation''' using an established equivalent property;
+* '''explicit extension''' with a separately documented additional field;
+* '''sidecar context''' linking supplementary provenance or qualifications;
+* '''declared information loss''' where no faithful mapping is available.
 
-== Bidirectional mapping is not guaranteed ==
+Do not export only a generic <code>relatedTo</code> relation and later reconstruct the original <code>Supports</code> or <code>Depends on</code> edge from that weaker representation. Information lost in a mapping cannot be recovered reliably by wishful round-trip assumptions.
 
-A clean BITwiki→external mapping does not imply a lossless external→BITwiki mapping.
+== Provenance and mapping accountability ==
 
-Example:
+A mapping is itself an assertion that may become stale. A defensible mapping record should identify:
 
-<pre>
-BITwiki: specific evidentiary relationship
-        ↓
-external: generic relatedTo
-</pre>
+{| class="wikitable"
+! Field !! Why it matters
+|-
+| '''Local identifier''' || Identifies exactly which BITwiki object or property is being mapped.
+|-
+| '''External identifier''' || Identifies the counterpart without relying on labels alone.
+|-
+| '''Mapping relation''' || States exact, close, broader, narrower, related or another explicitly defined correspondence.
+|-
+| '''Direction and scope''' || Limits where the mapping can be applied and whether an inverse transformation is justified.
+|-
+| '''Evidence and rationale''' || Records why the correspondence is believed to hold.
+|-
+| '''Vocabulary version''' || Identifies the external and local schema interpretations being compared.
+|-
+| '''Provenance and review''' || Preserves the actor/process, date, caveats and correction history.
+|-
+| '''Semantic loss''' || Describes fields, distinctions or context that do not survive transfer.
+|}
 
-Once exported only as <code>relatedTo</code>, the original semantic strength cannot be reconstructed unless additional metadata travels with it.
+External records are evidence for what a source system says. They are not automatically proof that every substantive statement in the source system is true.
 
-== BIThub / Discourse interoperability ==
+The [https://www.w3.org/TR/prov-o/ W3C PROV-O recommendation] provides a formal model for entities, activities and agents in provenance chains; adopting it in an integration would require explicit mappings and tested output rather than merely citing its vocabulary.
 
-BIThub is not an external ontology in the ordinary sense, but it is a distinct application/runtime and therefore needs an explicit interface contract with MediaWiki.
+== Internal system boundaries ==
 
-The authority model is:
+BITwiki and BIThub serve different functions:
 
-<pre>
-BIThub / Discourse
-interaction · discussion · workflow · user/agent context
-        ↕
-authenticated API / plugin / service / agent bridge
-        ↕
-BITwiki / MediaWiki
-canonical pages · SMW graph · Cargo records · revisions
-        ↓
-Scribunto/Lua deterministic projections
-</pre>
+* '''BITwiki / MediaWiki:''' canonical public knowledge pages, revisions, structured semantic assertions and BITwiki-specific editorial context.
+* '''Semantic MediaWiki:''' properties and relations associated with wiki content, subject to the store and parser behavior of the running installation.
+* '''Cargo:''' structured operational tables for workflows that need records rather than article-centered semantic relations.
+* '''Scribunto/Lua:''' wiki-resident calculation, normalization, bounded validation and rendering; it is not a network transport agent.
+* '''BIThub / Discourse:''' interaction, discussion and agent participation that may reference, question, or propose revisions to canonical knowledge.
+* '''Integration services and agents:''' explicitly authorized transport, extraction, synchronization and change-proposal processes across the above boundaries.
 
-A BIThub integration may render a BITwiki entity card, relationship panel, graph neighborhood, comparison, knowledge-health diagnostic, or contribution task. The projection should be derived from canonical wiki state rather than copied into an independent Discourse-side semantic database unless a cache/index has an explicit synchronization contract.
+The fact that a conversation refers to a BITwiki article does not make that conversation part of the article's canonical content. A generated synthesis, agent action or Discourse discussion may be a useful contribution, but publication as durable knowledge should preserve attribution, provenance, evidentiary standing and editorial review.
 
-Likewise, a BIThub conversation, agent result, or workflow transition should not silently mutate canonical BITwiki state. Writes require an authenticated integration path and must preserve author/process identity, provenance, review state, and the relevant page/Cargo/SMW contract.
+== Read paths, derived views and caching ==
 
-Lua is not the network bridge. Scribunto executes inside MediaWiki and should produce deterministic wiki-resident transformations; cross-service transport belongs to explicit integration infrastructure.
-
-== Interface-neutral projections ==
-
-The Lua/compiler layer should prefer normalized view models when the same knowledge needs multiple presentations.
-
-<pre>
-SMW/Cargo/page state
-        ↓
-normalized BITwiki view model
-        ├── MediaWiki HTML/wikitext
-        ├── BIThub-native card/workflow
-        ├── graph visualization
-        └── agent/machine context
-</pre>
-
-This is interoperability without duplicating truth: presentation changes by consumer while canonical semantic state remains shared.
-
-== External systems ==
-
-V1 explored alignments with:
-
-* Wikidata;
-* Schema.org;
-* Dublin Core;
-* FOAF;
-* RDF/RDFS/OWL-style vocabularies.
-
-These remain natural interoperability targets.
-
-Specific mappings must be checked against the current external vocabulary at implementation time. Do not copy historical Q-IDs/property assumptions simply because they appear in V1 documentation.
-
-== BITwiki-specific semantics ==
-
-Some BITwiki dimensions may have no direct external equivalent:
-
-* epistemic standing;
-* confidence rationale;
-* provenance transformations;
-* Book Matter anatomy;
-* specialized relationship semantics;
-* compiler diagnostics and derived display state.
-
-The correct response is not to pretend equivalence. Preserve them as extensions, sidecar metadata, or explicitly documented unmapped fields.
-
-== Import protocol ==
-
-A safe import is not "copy external facts into BITwiki."
+A consuming interface may retrieve a title, revision, content fragment, semantic relation set or operational record and present it differently.
 
 <pre>
-identify source object + license/provenance
-→ map external type/relations by meaning
-→ preserve external identifier
-→ import only supported fields
-→ mark mapping relation + semantic losses
-→ assign BITwiki epistemic metadata from evidence, not from source prestige
-→ review surprising/high-impact claims
+BITwiki page / semantic state
+        ↓ authorized read
+validated data + identifiers + provenance
+        ↓ explicit transformation
+BIThub card, search result, agent context or graph view
 </pre>
 
-Never assign <code>Established</code>, a numeric confidence, or any other epistemic standing solely because the source is Wikidata, Schema.org, Wikipedia, a journal, BIThub, or another respected system.
+These are '''possible integration patterns''', not a statement that a universal projection endpoint currently exists.
 
-== Export protocol ==
+When a consumer caches or indexes data, it must distinguish its derivative copy from the canonical source and record enough information to recognize staleness—for example, source identifiers, revision IDs or modification information and an appropriate refresh/invalidation policy. A cache is not automatically a second authoritative knowledge graph.
 
-<pre>
-select exportable knowledge
-→ map V2 entity/property semantics
-→ identify unmapped V2 dimensions
-→ serialize into target vocabulary/interface
-→ retain provenance + identifiers
-→ validate round-trip where practical
-→ document lossy mappings
-</pre>
+For agent-context extraction, the requested part should remain associated with its parent, revision, supporting citations and relevant caveats. A clipped paragraph is not a self-validating knowledge object.
 
-== Mapping provenance ==
+== Write paths and editorial authority ==
 
-Mappings themselves are claims and should carry:
+Writing to MediaWiki is a separate and more consequential operation than reading it. A cross-system edit requires authenticated permissions, appropriate API operations, conflict handling and clear attribution. MediaWiki's [https://www.mediawiki.org/wiki/API:Edit Action API edit documentation] describes token and revision-related controls; actual authorization and target behavior must be tested.
 
-* source/target vocabulary or interface version;
-* mapping author/process;
-* mapping type;
-* rationale;
-* date reviewed;
-* known semantic loss;
-* external identifiers.
+A safe contribution path distinguishes:
 
-A stale mapping can be worse than no mapping because it appears machine-authoritative.
+# '''Proposal:''' an external source, discussion or agent produces a suggested change with provenance.
+# '''Assessment:''' reviewers or approved processes verify the subject, factual claims, rights and existing canonical state.
+# '''Revision:''' an authorized edit is applied against the appropriate page/version without silently overwriting concurrent work.
+# '''Verification:''' the resulting page, semantic annotations and dependent views are checked.
+# '''Continuity:''' the change's author/process, evidence, rationale and revision identity remain traceable.
 
-== V1 lineage ==
+This sequence describes desired accountability, not an assertion that BIThub currently executes every stage automatically.
 
-Primary V1 source: [[BITwiki Ontology Alignment Matrix]], plus [[Ontology Alignment Matrix.REVISED]] and [[Ontology Alignment Specification]].
+== External knowledge systems ==
 
-V1's broad principles—semantic equivalence by meaning, context preservation, bidirectionality, documented loss—are retained. Specific historical mappings/default import rules remain in <code>archive-v1/</code> until individually verified.
+Potential mappings include:
 
-See [[BITwiki:Ontology]], [[BITwiki:Semantic properties]], [[BITwiki:Provenance]], [[BITwiki:Programmable knowledge substrate]], and [[BITwiki:Ecosystem]].
+* [https://www.wikidata.org/wiki/Wikidata:Introduction Wikidata] — identifiers, statements and referenced items.
+* [https://schema.org/ Schema.org] — web-oriented structured vocabulary.
+* [https://www.dublincore.org/specifications/dublin-core/dcmi-terms/ Dublin Core] — descriptive metadata terms.
+* [https://www.w3.org/TR/skos-reference/ SKOS] — conceptual organization and mapping.
+* [https://www.w3.org/TR/prov-o/ PROV-O] — provenance and derivation.
+* [https://www.semantic-mediawiki.org/wiki/Help:RDF_export Semantic MediaWiki RDF export] — available extension mechanisms that still require target-system configuration and output testing.
+
+The repository contains imported FOAF/OWL vocabulary property pages, but their presence alone does not demonstrate completed entity matching, a trustworthy alignment table or live federation.
+
+Before production import or export, verify source-specific licenses, usage conditions, privacy constraints, revision identity, supported formats and relevant failure modes. A system's prestige is not a substitute for examining the claims it contributes.
+
+== Interoperability tests ==
+
+A proposed integration should answer:
+
+# Does the source identifier denote the intended subject and version?
+# Does each field preserve meaning and the correct source/target direction?
+# Are unmapped dimensions and semantic losses explicit?
+# Is provenance maintained for both data and the mapping itself?
+# Can unsupported or disputed claims remain qualified after transfer?
+# Are read and write permissions appropriately separated?
+# Are revisions and conflicting edits handled without silent overwrites?
+# Can query results and rendered output be checked against an actual running system?
+# If round-trip conversion is claimed, which information survives and which does not?
+
+'''Interoperability is successful when meaning and responsibility remain inspectable after crossing the boundary—not when two systems merely exchange bytes.'''
+
+== Further reading ==
+
+* [https://www.w3.org/TR/skos-reference/ W3C — SKOS Reference] — concept mapping semantics.
+* [https://www.w3.org/TR/prov-o/ W3C — PROV-O] — provenance model.
+* [https://www.semantic-mediawiki.org/wiki/Help:RDF_export Semantic MediaWiki — RDF export] — semantic data serialization and vocabulary mapping.
+* [https://www.mediawiki.org/wiki/API:Edit MediaWiki — Edit API] — authorized editing and conflict-aware requests.
+
+See [[BITwiki:Ontology]], [[BITwiki:Semantic properties]], [[BITwiki:Provenance]], [[BITwiki:Ecosystem]], [[BITwiki:Programmable knowledge substrate]] and [[BITwiki:Transclusion]].
 
 [[Category:BITwiki architecture]]
-[[Category:BITwiki meta]]

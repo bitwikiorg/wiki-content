@@ -1,216 +1,136 @@
-{{Source status|status=source-reconciled operational guide|note=Reconciles V1 Claim Validation, Evidence Framework, Evidence Evaluation, Epistemic Audit Framework, and later human-reviewed revisions. Guidance is intentionally contextual rather than a universal checklist/score.}}
-
 = Claim validation =
 
-Validation asks whether the available evidence supports a claim, how far that support reaches, what limitations remain, and what would change the assessment.
+'''Claim validation is the examination of whether a particular assertion is adequately supported, within which boundaries, and with what remaining uncertainty.''' It is a process of critical assessment, not a declaration of absolute truth or a mechanical test based on source count, credentials or confidence labels.
 
-'''These are helpful criteria, not rigid limits.'''
+An assertion may be well established in one context and unsupported in another. The relevant questions are: '''What exactly is claimed? What would demonstrate it? What does the available material establish? What would change our assessment?'''
 
-The human reader remains at the center. Validation should expose the basis for judgment rather than replace judgment with an opaque score.
+This article explains the process. [[BITwiki:Evidence]] describes evidential support, [[BITwiki:Sources]] examines source credibility and [[BITwiki:Provenance]] traces how a claim reached its present form.
 
-== Three pillars ==
+== 1. Define the assertion ==
 
-=== Evidence quality ===
+Identify the proposition precisely enough that an assessment can succeed or fail meaningfully.
 
-What evidence actually bears on the claim, and how was that evidence generated?
+* '''Meaning:''' Which terms require definitions or refer to contested constructs?
+* '''Kind:''' Is the claim empirical, causal, mathematical, historical, technical, normative, experiential or interpretive?
+* '''Scope:''' What population, system, location, version, period or boundary conditions does it cover?
+* '''Strength:''' Does the wording say “may,” “is associated with,” “causes,” “always,” or “has been proved”? These express different degrees of commitment.
+* '''Discriminating evidence:''' What observation, counterexample, proof, record or argument would distinguish this claim from alternatives?
 
-=== Source assessment ===
+A broad slogan should be replaced or qualified by a proposition that can actually be examined. Where a statement is philosophical or normative rather than empirical, assess its premises and arguments without pretending that an experiment settles the entire question.
 
-Where did the evidence come from, what is its provenance, and how appropriate is that source for this question?
-
-=== Confidence calibration ===
-
-How strongly does the total evidence justify present reliance on the claim, given contradictions, dependence, scope, and uncertainty?
-
-== Validation as conversation ==
-
-V1 described validation as a conversation between evidence and claim, source and assessor, and different perspectives.
-
-It is not:
-
-<pre>
-peer reviewed? yes
-three sources? yes
-confidence > threshold? yes
-→ TRUE
-</pre>
-
-A more useful sequence is:
-
-<pre>
-define the claim precisely
-→ identify what kind of evidence could bear on it
-→ retrieve / verify sources
-→ inspect methods and provenance
-→ seek contradictions / alternatives
-→ assess independence and replication
-→ identify scope + uncertainty
-→ write confidence rationale
-→ assign/revise epistemic standing
-→ record review history
-</pre>
-
-== Step 1 — Define the claim ==
-
-Validation fails when the claim itself is vague.
-
-Ask:
-
-* What exactly is being asserted?
-* Is it descriptive, causal, predictive, normative, historical, mathematical, interpretive, or definitional?
-* What population/system/time/context does it concern?
-* What would count as supporting or contradicting evidence?
-
-A claim should not be stronger than the evidence that can meaningfully test it.
-
-== Step 2 — Match method to question ==
-
-Different claims require different validation.
+== 2. Match the method to the question ==
 
 {| class="wikitable"
-! Claim type !! Relevant validation examples
+! Claim type !! Appropriate checks !! Common error
 |-
-| Empirical || measurement, controlled/observational study, replication, convergent methods
+| Empirical description || Sampling, instrument validity, observational conditions, uncertainty estimates, independent observation || Generalizing beyond the measured setting
 |-
-| Causal || intervention, natural experiment, causal identification, mechanism + alternatives
+| Causal claim || Comparisons, causal identification, controls, confounders, temporal ordering and alternative mechanisms || Treating association as proof of causality
 |-
-| Mathematical/formal || proof, derivation, counterexample, formal verification
+| Mathematical or formal result || Premises, definitions, derivation, proof and counterexample || Confusing an internally valid model with a true description of nature
 |-
-| Historical || primary records, provenance, chronology, independent documentary corroboration
+| Historical claim || Original records, authentication, chronology, contextual interpretation and corroboration || Treating a contemporaneous assertion as an independently verified event
 |-
-| Software/technical || source/code inspection, reproducible execution, specification, tests, deployed behavior
+| Technical or software claim || Specification, exact version, source inspection, test procedure, reproducible behavior and deployment conditions || Inferring production behavior from a proposed design
 |-
-| Interpretive/philosophical || argument validity, conceptual clarity, textual/contextual fidelity, competing interpretations
+| Philosophical or interpretive claim || Clarity, argumentative validity, textual fidelity, objections and alternative interpretations || Requiring empirical falsification of a non-empirical proposition
 |-
-| Experiential || transparent first-person report, triangulation where possible, explicit limits on generalization
+| First-person or practitioner claim || Accurate attribution, circumstances, triangulation where possible and explicit limits || Elevating one experience into a universal pattern
 |}
 
-Falsifiability is powerful for many empirical/theoretical claims, but not every meaningful proposition is validated by the same Popperian test.
+Falsifiability is important for many empirical hypotheses but is not a universal criterion for all meaningful inquiry.
 
-== Step 3 — Verify the source chain ==
+== 3. Verify the evidence and its provenance ==
 
-For important claims:
+# Locate the original material where practical.
+# Confirm that the cited work exists, identify its version and read the relevant passage or data.
+# Separate what the source directly establishes from what an editor, author or machine inferred.
+# Examine whether additional citations supply independent evidence or repeat the same ancestor.
+# Identify relevant conflicts, corrections, funding, publication history and missing records.
+# Record the chain of transformation when paraphrase, translation, summarization or automated synthesis materially affects meaning.
 
-# verify the source exists;
-# verify the source contains the attributed statement/data;
-# distinguish original source from a later summary;
-# identify transformations or synthesis;
-# note funding/conflicts when material;
-# check whether evidence is independent or repeatedly inherited from one ancestor.
+A citation can be genuine and still fail to support the attached sentence. In high-impact or contested contexts, follow the support chain rather than relying on an abstract, headline or secondary quotation.
 
-See [[BITwiki:Sources]] and [[BITwiki:Provenance]].
+== 4. Assess methods, uncertainty and alternative explanations ==
 
-== Step 4 — Inspect methodology ==
+Question-specific considerations include:
 
-Questions vary by domain, but common considerations include:
+* adequacy of measurements, definitions, sampling and controls;
+* analytical validity and material modeling assumptions;
+* effect sizes, measurement error and uncertainty intervals, where meaningful;
+* missing data, selection bias, confounding and selective publication;
+* reproducibility of computation and replication through independent observations, where applicable;
+* applicability of results beyond the original conditions;
+* contradictory evidence, competing interpretations and known limitations.
 
-* methods sufficiently described;
-* sample / dataset appropriate;
-* measurement valid for the construct;
-* controls/confounds addressed;
-* assumptions explicit;
-* raw data/code available when relevant;
-* analysis appropriate;
-* result reproducible/checkable;
-* limitations acknowledged.
+For intervention research, the [https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current Cochrane Handbook] and [https://www.bmj.com/content/389/bmj-2024-081903 GRADE approach] provide examples of evaluating risk of bias, inconsistency, indirectness, imprecision and publication bias. Those tools have defined purposes; they are not universal templates for history, mathematics, philosophy or engineering.
 
-Methodological transparency often matters more than venue prestige.
+The absence of published corroboration is not always evidence that a phenomenon is absent. Consider whether the relevant question has been investigated by a method capable of detecting it.
 
-== Step 5 — Seek contradiction ==
+== 5. Form a calibrated conclusion ==
 
-Do not validate only by collecting support.
+Separate three judgments:
 
-Ask:
+* '''Evidentiary support:''' What follows from the observations, proofs, records or arguments?
+* '''Uncertainty:''' Which limitations or competing explanations remain, and why do they matter?
+* '''Scope of reliance:''' Under what conditions is the conclusion reasonable to use or cite?
 
-* What is the strongest contradictory evidence?
-* What alternative explanation fits the same observations?
-* Has replication failed or produced smaller effects?
-* Is the apparent disagreement actually caused by different definitions or scopes?
-* Are several sources independent, or do they descend from the same original claim?
+A confidence explanation is more informative than a label alone. For example, an assessment might state:
 
-'''Metal sharpens metal.'''
+<blockquote>
+Several independent studies report an effect under the tested conditions, but estimates vary and evidence outside the studied population remains limited. A larger independent replication could materially change the estimated effect.
+</blockquote>
 
-A documented contradiction is itself a useful knowledge artifact.
+A qualitative [[BITwiki:Epistemic status|epistemic standing]] can accompany that reasoning when useful. A numerical probability requires a justified and interpretable model or calibration method; do not assign numbers simply to create an appearance of precision. Terms such as “verified” should say '''what''' was checked, '''how''', and under which conditions.
 
-== Step 6 — Calibrate confidence ==
+== 6. Make the validation traceable ==
 
-The later V1 revisions explicitly rejected arbitrary numerical confidence as false precision.
+A concise review record or article discussion should allow another reader to reconstruct the judgment:
 
-Prefer a confidence rationale that says:
+{| class="wikitable"
+! Element !! Record
+|-
+| Claim || Exact wording and its scope
+|-
+| Evidence || Sources, specific passages, measurements, tests or arguments
+|-
+| Method || How support and alternatives were assessed
+|-
+| Limitations || Contradictions, uncertainties, dependencies and boundaries
+|-
+| Judgment || Supported conclusion with reasons, not an unexplained score
+|-
+| Revision conditions || What evidence or event would prompt reassessment
+|}
 
-> Multiple independent methods support X under conditions Y. Evidence is weaker for Z; the main unresolved alternative is A. Replication in B or contradictory observation C would materially change this assessment.
+Not every paragraph requires a form or dedicated semantic property. The appropriate record depends on importance, complexity and risk of error. A completed checklist is not itself validation.
 
-Qualitative confidence terms such as Very low / Low / Moderate / High / Very high may be used when helpful, but the rationale carries more information than the label.
+== Worked example: a software performance claim ==
 
-Quantitative probability is appropriate when it is genuinely modeled or calibrated.
+Consider the '''illustrative''' assertion: “Release R reduces median API response time by 20%.” No actual product or measured improvement is being claimed here.
 
-== Step 7 — Assign epistemic standing ==
+A valid assessment would identify the baseline release, measurement window, test hardware, workload, response-time definition, number of runs, variation and method of comparison. It would check whether the 20% reduction was computed correctly and whether caches, traffic patterns or other changes could explain it. A source-code change or release note alone does not establish that production performance improved.
 
-Use [[BITwiki:Epistemic status]] after the evidence has been evaluated—not as a shortcut before evaluation.
+The supported conclusion might be limited to: “Under benchmark configuration B, release R showed a 20% lower measured median response time than release Q.” It would not justify “all users experience a 20% speed increase” without additional evidence. The test record, versions and limitations should remain inspectable.
 
-Status should be conservative enough to communicate uncertainty without systematically understating robust knowledge.
+== Review, disagreement and correction ==
 
-== Common validation errors ==
+Re-examine a claim when new material changes its support, a source is corrected or retracted, replication fails, methods change, a disputed interpretation becomes clearer, or the claim is reused in a higher-stakes setting.
 
-=== Source misattribution ===
-The cited source does not say what the page claims.
+Disagreement can identify a real contradiction, different definitions, or distinct boundary conditions. Represent the strongest relevant alternatives fairly; do not suppress contrary results or suggest that all views are equally well supported.
 
-=== Cherry-picking ===
-Only supporting evidence is represented.
+Recurring failures worth detecting include source misattribution, citation laundering, selective reporting, unsupported causal inference, exaggerated certainty, invented references, false precision and the appearance of validation produced by unexamined checklists.
 
-=== Overgeneralization ===
-The claim exceeds the evidence's population, context, time, or mechanism.
+In BITwiki, publication indicates editorial responsibility for an account; it does '''not''' establish that an accepted claim is infallible. Revisions should preserve enough source and reasoning context for readers to see what changed and why.
 
-=== False precision ===
-A numerical or rhetorical level of certainty exceeds what the method supports.
+== Further reading ==
 
-=== Correlation / causation confusion ===
-Association is presented as causal without an adequate identification strategy.
+* [https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current Cochrane Handbook for Systematic Reviews of Interventions] — evidence synthesis and risk-of-bias assessment.
+* [https://www.bmj.com/content/389/bmj-2024-081903 Core GRADE: overview] — certainty assessment for intervention effects.
+* [https://www.ncbi.nlm.nih.gov/books/NBK547535/ National Academies — Reproducibility and Replicability in Science] — reproducibility and replication.
+* [https://plato.stanford.edu/entries/evidence/ Stanford Encyclopedia of Philosophy — Evidence] — epistemic concepts of evidence.
 
-=== Authority substitution ===
-"Experts agree" or "peer-reviewed" substitutes for explaining the evidence.
-
-=== Source laundering ===
-Many citations repeat the same ancestral source or unverified assertion.
-
-=== AI citation confabulation ===
-A generated source/citation is accepted because it looks plausible rather than because it was verified.
-
-=== Validation theater ===
-Forms, status labels, or checklists are completed without substantive scrutiny.
-
-== Audit and revalidation ==
-
-The V1 Epistemic Audit Framework contains useful operational ideas despite older rigid numeric thresholds:
-
-* sample pages for review;
-* target high-impact or contested content;
-* verify citation-context alignment;
-* inspect bias/framing patterns;
-* compare historical versions;
-* audit for improvement rather than punishment;
-* track systemic failure patterns rather than only isolated mistakes.
-
-V2 keeps those audit practices while rejecting universal numerical thresholds such as "confidence >0.9 requires N sources" unless a domain-specific policy explicitly justifies them.
-
-== Review triggers ==
-
-Revalidation is especially useful when:
-
-* material new evidence appears;
-* a cited source is retracted/corrected;
-* replication fails;
-* a claim becomes high-impact or widely reused;
-* a major method or definition changes;
-* a page has not been reviewed despite rapid domain evolution;
-* a migration or agent rewrite substantially transforms sourced prose.
-
-== Source lineage ==
-
-Primary V1 source: [[BITwiki Claim Validation]], supplemented by [[BITwiki Evidence Framework]], [[BITwiki Evidence Evaluation]], [[Epistemic Audit Framework]], [[BITwiki Source Types]], and [[BITwiki Provenance Model]].
-
-See [[BITwiki:Epistemics]], [[BITwiki:Evidence]], [[BITwiki:Sources]], [[BITwiki:Provenance]], and [[BITwiki:Uncertainty]].
+See also [[BITwiki:Epistemic audit]], [[BITwiki:Epistemics]], [[BITwiki:Uncertainty]], and [[BITwiki:Knowledge lifecycle]].
 
 [[Category:Epistemics]]
-[[Category:BITwiki architecture]]
 [[Category:Provenance]]

@@ -1,97 +1,89 @@
-{{Source status|status=source-reconciled semantic model|note=Reconciles the V1 Epistemic Tiers, Epistemic Framework, Status Taxonomy, Evidence and Epistemics, and Evidence Tiers families.}}
-
 = Epistemic status =
 
-Epistemic status communicates the '''present evidentiary standing''' of a claim or knowledge object. It is a guidance surface for calibration, not a declaration of final truth.
+'''Epistemic status expresses the present evidentiary standing of a claim or knowledge object.''' It communicates how a proposition is supported or contested without claiming that an assessment is final, infallible, or reducible to a universal numerical score.
 
-== Canonical V2 standing vocabulary ==
+A status is most informative when paired with an explanation of the supporting evidence, relevant limitations, contradictory findings, and scope of the assertion. It can change as the underlying knowledge changes.
+
+== Standing vocabulary ==
+
+BITwiki uses six standing terms. These terms describe broad judgments rather than thresholds automatically calculated from citation counts or prestige.
 
 {| class="wikitable"
-! Standing !! Meaning !! Typical question
+! Standing !! Meaning !! What to explain
 |-
-| '''Hypothetical''' || Coherent conjecture, possibility, interpretation, or model with limited/no direct support. || What would begin to test or support this?
+| '''Hypothetical''' || A conjecture, interpretation, or proposed model with limited or no direct support for the asserted proposition. || The underlying argument, assumptions, possible tests, and distinctions from established facts
 |-
-| '''Emerging''' || Preliminary evidence exists, but support is early, fragile, weakly replicated, narrow, or otherwise incomplete. || What replication or additional evidence is needed?
+| '''Emerging''' || Initial support exists, but the evidence remains preliminary, narrow, fragile, or insufficiently examined. || Methods used, scope of observations, important limitations, and unresolved replication questions
 |-
-| '''Supported''' || Meaningful evidence supports the claim, while important gaps, limitations, or alternatives remain. || What are the strongest remaining uncertainties or contradictions?
+| '''Supported''' || Relevant evidence favors the claim, while substantial gaps, uncertainty, or competing explanations remain. || Which parts are supported, which alternatives persist, and where the inference is limited
 |-
-| '''Well-supported''' || Multiple credible and substantially independent lines of evidence converge. || How robust is this across methods, populations, contexts, or assumptions?
+| '''Well-supported''' || Strong and appropriately independent evidence converges across relevant methods or observations. || Range of agreement, principal limitations, and important boundary conditions
 |-
-| '''Established''' || Robust working knowledge in the relevant domain; suitable for ordinary reliance while remaining revisable. || What edge cases or future evidence could materially revise it?
+| '''Established''' || A robust and widely usable body of working knowledge within the relevant field and conditions, open to revision. || What is established, the evidentiary basis, and known exceptions or uncertainties
 |-
-| '''Disputed''' || Credible evidence, methods, or interpretations materially support incompatible positions. || What exactly is disputed, and what evidence distinguishes the positions?
+| '''Disputed''' || A consequential claim, interpretation, or finding remains subject to credible unresolved conflict. || The positions, quality of supporting evidence, precise point of disagreement, and potential means of resolution
 |}
 
-The first five describe a broad evidentiary landscape. '''Disputed''' is not simply a rung between two of them; it marks unresolved conflict that may coexist with substantial evidence.
+'''Disputed is not a sixth rung above or below Established.''' A point of disagreement may concern an explanation or generalization even when an underlying observation is well supported. State the disagreement specifically instead of applying a broad label to an entire subject.
 
-== Why V2 changed the V1 ladders ==
+== Assigning a status responsibly ==
 
-V1 contained several legitimate but incompatible schemes:
+# '''Define the assertion.''' Distinguish a specific claim from the article's full subject. “A model predicts X under conditions Y” is not the same assertion as “X always occurs.”
+# '''Identify the kind of support.''' Empirical results, formal proofs, archival records, engineering tests and philosophical arguments have different evidentiary roles.
+# '''Evaluate quality and independence.''' Consider methods, counterexamples, possible biases, replication and whether multiple citations derive from the same observation.
+# '''Examine conflicting evidence.''' An important, credible objection may require a narrower claim or a different standing.
+# '''Record boundaries.''' Include relevant populations, contexts, parameter ranges, dates, versions and interpretations.
+# '''Explain the judgment.''' Give readers enough reasoning to understand why the status is warranted and what could revise it.
 
-* a four-marker system: Hypothetical / Emerging / Established / Archived;
-* a five-tier system: Hypothetical / Emerging / Established / Verified / Axiomatic;
-* later six-marker language: Hypothetical / Emerging / Supported / Well Supported / Established / Disputed;
-* additional states such as Deprecated.
+Refer to [[BITwiki:Evidence]], [[BITwiki:Sources]] and [[BITwiki:Claim validation]] for detailed assessment methods.
 
-The writings themselves increasingly described the boundaries as porous guidance rather than rigid boxes. V2 therefore preserves the useful distinctions while moving labels that were doing other jobs onto other axes.
+== Status, confidence, and other attributes ==
 
-== Labels moved to other axes ==
+Epistemic standing should not be conflated with related but different information:
 
-=== Archived / Deprecated ===
-These describe '''lifecycle''', not evidentiary strength. A historically archived claim may have once been well-supported; a deprecated theory can remain intellectually important.
+{| class="wikitable"
+! Attribute !! Meaning !! Examples
+|-
+| '''Standing''' || How a claim is presently supported or disputed || Supported, Established, Disputed
+|-
+| '''Uncertainty''' || What is not known precisely, remains ambiguous, or depends on assumptions || Limited sampling, unknown mechanism, disputed definition
+|-
+| '''Confidence rationale''' || Reasons to place a given degree of reliance on a conclusion || Agreement among independent methods, or fragility of an estimate
+|-
+| '''Verification history''' || Which checks have been performed, by whom or what, and with which results || Source checked, proof reviewed, test reproduced
+|-
+| '''Lifecycle''' || Whether a document or representation remains current or in use || Active, Superseded, Archived, Deprecated
+|-
+| '''Foundational role''' || Whether a statement functions as a declared starting premise or normative commitment || Axiom, principle, constitutional commitment
+|}
 
-=== Axiomatic ===
-Axiomatic describes a '''declared foundational role'''. An axiom is not "more empirically verified" than an established empirical claim. It is a premise the system has chosen to operate from and remains subject to constitutional revision.
+'''Verified''' without an object and method is ambiguous: a citation may be verified as genuine while the study's conclusion remains disputed. Similarly, an archived theory may be historically important but empirically refuted.
 
-=== Verified ===
-Verified describes a '''validation history or state''': independent checking, replication, source verification, or other concrete scrutiny. Verification should say what was verified and how rather than serving as a synonym for certainty.
+Quantitative estimates of probability, uncertainty or calibration may be appropriate in a domain with a meaningful model. They are not mandatory or equivalent to the six standing terms.
 
-== Confidence is separate ==
+== Applying standing to articles and claims ==
 
-Status should not carry a fake numerical probability by default.
+A single article may discuss established observations, emerging mechanisms, unresolved debates, and historical hypotheses. An article-level status cannot faithfully replace distinctions in the prose or the assessment of individual important claims.
 
-A useful confidence rationale states:
+Where BITwiki's knowledge-object template is used, the semantic property [[Property:Epistemic status]] is text with these six controlled values. The template's <code>status</code> parameter is explicit: leaving the field unspecified must not silently assert ''Established'' or another default. A status recorded for the page is a summary, not a machine-verifiable certificate for every sentence. More detailed disagreement or uncertainty should be explained in the article.
 
-* what evidence supports the claim;
-* what limitations or contradictions remain;
-* how independent the evidence is;
-* what boundary conditions apply;
-* what would materially raise or lower confidence.
+There is no requirement to label every assertion. A status is useful where it resolves a substantive ambiguity and can be defended by evidence.
 
-Quantitative confidence is appropriate only where the domain supplies a meaningful interpretation and calibration method.
+== Revision and disagreement ==
 
-== Movement is bidirectional ==
+A claim may move in either direction as stronger evidence emerges, methods improve, definitions change, or previously hidden bias becomes known. A failed replication warrants investigation into its design and comparability; one unsuccessful repetition does not mechanically invalidate a whole research program.
 
-A claim can strengthen, weaken, split, become disputed, be superseded, or return to a more tentative standing.
+When a claim is disputed, distinguish areas of agreement from actual conflict. Do not manufacture symmetry between unsupported assertions and well-supported findings merely because someone contests the latter.
 
-<pre>
-new evidence / replication / successful prediction
-                ↑
-Hypothetical → Emerging → Supported → Well-supported → Established
-                ↓                 ↘
-failed replication / contradiction   Disputed
-</pre>
+Review the standing when a material source is corrected or retracted, an important independent study appears, an implementation changes, or the claim is reused outside the conditions originally examined.
 
-This diagram is orientation, not an automatic workflow.
+== Further reading ==
 
-== Status assignment guidance ==
+* [https://plato.stanford.edu/entries/epistemology/ Stanford Encyclopedia of Philosophy — Epistemology] — justification and the conditions for knowledge.
+* [https://www.ncbi.nlm.nih.gov/books/NBK547535/ National Academies — Reproducibility and Replicability in Science] — how independent checks inform scientific conclusions.
+* [https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-1/ IPCC — Framing, Context and Methods] — an example of domain-specific calibrated language, distinct from BITwiki's standing vocabulary.
 
-When assigning a standing:
-
-# state the claim precisely;
-# identify the relevant domain and question;
-# inspect evidence quality and independence;
-# include material contradictory evidence;
-# separate the source's prestige from the evidence it actually provides;
-# identify scope and methodological limitations;
-# write a confidence rationale;
-# record review date or trigger when the topic changes rapidly.
-
-== Historical V1 value ==
-
-V1's tier systems made epistemic status visible and machine-queryable at a time when most wiki prose treated every sentence as visually equivalent. V2 keeps that innovation while reducing category conflation and false precision.
-
-See [[BITwiki:Epistemics]], [[BITwiki:Evidence]], [[BITwiki:Claim validation]], and [[BITwiki:Uncertainty]].
+See also [[BITwiki:Epistemics]], [[BITwiki:Uncertainty]], [[BITwiki:Epistemic audit]] and [[BITwiki:Knowledge lifecycle]].
 
 [[Category:Epistemics]]
 [[Category:BITwiki architecture]]

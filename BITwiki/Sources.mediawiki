@@ -1,159 +1,118 @@
-{{Source status|status=source-reconciled framework|note=Reconciles V1 Source Hierarchy and Source Types. The historical title “hierarchy” is retained as lineage, but V2 explicitly uses contextual source evaluation rather than a fixed prestige ladder.}}
-
 = Sources =
 
-A source is an origin or transmission surface for information. Source type helps determine what questions to ask; it does not determine truth by itself.
+'''A source is an identifiable origin, record or transmission of information.''' A citation makes it possible to locate that information; a source assessment asks whether it is authentic, appropriately interpreted, and relevant to the claim being made. The same source may be highly informative about one question and inadequate for another.
 
-== No truth by source prestige ==
+Sources are not the same as [[BITwiki:Evidence|evidence]]. A source tells us where information comes from and how it reached us. Evidence is the information's bearing on a specific proposition. Neither a prestigious publication nor a digital signature can substitute for evaluating that relationship.
 
-The V1 source family repeatedly moved away from credentialist hierarchy:
+== Kinds of sources ==
 
-'''No fixed hierarchy exists—evaluation depends on context.'''
+=== Original or primary material ===
 
-Peer review, institutional prestige, credentials, community reputation, cryptographic verification, and consensus can all provide useful information. None substitutes for checking what the source actually supports.
+Original experimental reports, datasets, first-hand accounts, code, official records, correspondence, technical specifications and contemporaneous documents provide close access to a particular event, observation or statement.
 
-== Source types ==
+'''Primary''' is relative to the question. A research paper is a primary report of its own experiment; the same paper may be a secondary account of a historical theory it summarizes. Primary material may also contain error, bias, omissions or unsupported interpretations.
 
-=== Primary ===
-Original material close to the event, research, system, or claim:
+=== Synthesis and secondary analysis ===
 
-* research papers and raw datasets;
-* technical specifications;
-* original code repositories;
-* experimental records;
-* first-hand accounts;
-* original correspondence or archival documents.
+Reviews, meta-analyses, critical studies, systematic comparisons and interpretive scholarship connect and evaluate earlier work. A rigorous synthesis may offer a stronger view of a body of research than any one study, provided its search, selection, methods and limitations are transparent.
 
-Primary does not mean infallible. Evaluate authenticity, methodology, completeness, incentives, and context.
+Distinguish a systematic review from an informal narrative review, and a review's findings from its authors' conclusions. Reporting guidelines such as [https://www.prisma-statement.org/prisma-2020-statement PRISMA 2020] improve transparency about how systematic reviews were conducted; following a reporting checklist does not itself guarantee the review's validity.
 
-=== Secondary ===
-Analysis or synthesis of primary material:
+=== Reference and orientation material ===
 
-* review articles;
-* systematic reviews / meta-analyses;
-* critical analyses;
-* surveys;
-* scholarly or technical synthesis.
+Encyclopedias, handbooks, textbooks, glossaries, bibliographies and other reference works can establish terminology, introduce a field and direct readers toward foundational research. They may be excellent introductory sources without being sufficient evidence for disputed or newly emerging claims.
 
-Evaluate search/inclusion methodology, coverage, interpretation, independence, funding, and whether contradictory sources were handled fairly.
+=== Community, practitioner and institutional material ===
 
-=== Tertiary ===
-Compilations and orientation surfaces:
+Developer discussions, project issue trackers, professional reports, technical forums, community observations, industry documentation, government communications and advocacy publications can provide direct evidence of practice, statements, decisions or operational behavior.
 
-* textbooks;
-* encyclopedias;
-* handbooks;
-* reference works;
-* educational summaries;
-* glossaries and bibliographies.
+Their authority is specific. An official announcement establishes that an institution announced something; it does not automatically establish that the institution's prediction or substantive claim is correct. Where possible, test operational claims against actual implementation or independently observed behavior.
 
-Tertiary sources can be excellent for orientation and terminology. For a contested or high-stakes claim, trace important assertions closer to their evidentiary origin when practical.
+=== Records with integrity protections ===
 
-=== Community / practitioner ===
-Knowledge produced in communities of practice:
+Signed statements, cryptographically verifiable records, audit logs and timestamped datasets may allow stronger checks of authorship, integrity and transmission. Such protections do not turn a false or misleading statement into a true one.
 
-* developer discussions;
-* technical forums;
-* community documentation;
-* issue trackers;
-* operational reports;
-* crowdsourced or practitioner knowledge.
+These descriptions overlap. They are aids to investigation, not tiers of truth.
 
-These can expose tacit knowledge and current implementation reality that formal literature does not contain. Evaluate authorship, track record, reproducibility, and community verification mechanisms.
-
-=== Verified / integrity-bearing records ===
-Sources with mechanisms that strengthen authenticity or integrity:
-
-* signed documents;
-* timestamped records;
-* public ledgers;
-* cryptographic proofs;
-* audit logs;
-* multi-party attestations.
-
-Verification of integrity does not imply verification of meaning. A valid signature establishes who signed; it does not establish that the signed statement is correct.
-
-== Evaluation dimensions ==
-
-V1 used several overlapping criteria. V2 consolidates them into contextual questions:
+== Questions for evaluating a source ==
 
 {| class="wikitable"
-! Dimension !! Question
+! Consideration !! What to establish
 |-
-| '''Proximity''' || How close is the source to the original event/data/claim?
+| '''Identity''' || Who created, published or maintained this specific record? Can its author and origin be established?
 |-
-| '''Method transparency''' || Can the process that generated the information be inspected or repeated?
+| '''Authenticity''' || Is the artifact genuine, complete and unaltered in ways that affect the claim?
 |-
-| '''Verification''' || Can the relevant claim or record be independently checked?
+| '''Method''' || How was the information collected, measured, inferred, checked or compiled?
 |-
-| '''Replication''' || Has the result been independently reproduced where replication is meaningful?
+| '''Proximity''' || Is this firsthand information, an interpretation or a repetition of another source?
 |-
-| '''Expertise''' || Does the source have relevant domain knowledge? Expertise is evidence, not immunity from scrutiny.
+| '''Competence''' || What relevant access, expertise or firsthand knowledge does the author possess, and where are its limits?
 |-
-| '''Bias / incentives''' || What funding, conflicts, ideology, institutional pressure, or commercial interest may matter?
+| '''Independence''' || Does this source provide an additional observation, or does it repeat the same original claim?
 |-
-| '''Currency''' || Is this source current enough for the claim, or historically appropriate?
+| '''Interests and incentives''' || What relevant funding, commercial, ideological or institutional interests should be disclosed and examined?
 |-
-| '''Scope''' || What can this source legitimately support, and what does it not support?
+| '''Currency and version''' || Is the record appropriate to the time, software release or historical period being discussed? Has it been corrected, updated or retracted?
 |-
-| '''Transmission''' || Is this the original claim or a transformed summary of another source?
+| '''Context and scope''' || Which part of the assertion does the source actually establish, and which part remains interpretation?
 |}
 
-== Provenance-based evaluation ==
+These considerations should be proportionate to the claim and the consequences of error. Reputation and credentials can be relevant signals, but not conclusive substitutes for methods, access, and supporting material.
 
-V1 Source Types framed the alternative to credentialism as provenance-based evaluation. That remains useful.
+== Provenance and transmission ==
 
-Instead of stopping at "Where was this published?", ask:
+Information may travel through multiple intermediaries:
 
-* What is the chain of transmission?
-* Can we inspect the original?
-* What transformations occurred?
-* Who funded or benefited from the work?
-* What methods generated the evidence?
-* Was contradictory evidence considered?
-* Has anyone independently checked it?
+<pre>
+original observation or work
+   → report or publication
+   → review or summary
+   → quotation or adaptation
+   → BITwiki article
+</pre>
 
-== Funding and conflicts ==
+At each step, wording, context, uncertainty and attribution can change. A quotation can be accurate but misleading when separated from its conditions; several citations can trace back to a single unsupported source.
 
-Funding is not a binary validity test. Disclosure enables better evaluation.
+Where a claim is consequential, trace it as close to its origin as practical. Distinguish a source-authored statement from an editor's inference or synthesis. Record material transformations without treating every intermediary as independent confirmation. See [[BITwiki:Provenance]].
 
-Industry, government, foundation, advocacy, community, or self-funded work can each be rigorous or poor. The epistemic requirement is to surface material incentives and assess whether they plausibly affect design, selection, interpretation, or publication.
+== Conflicts, criticism and correction ==
 
-== Replication state ==
+Financial backing, employment, advocacy or professional interests may influence a source's choices of questions, measurements or presentation. Disclosure permits examination; a conflict is not by itself proof of falsehood, nor is declared independence proof of accuracy. Relevant guidance on disclosure appears in the [https://www.icmje.org/recommendations/browse/roles-and-responsibilities/author-responsibilities--conflicts-of-interest.html International Committee of Medical Journal Editors recommendations].
 
-Useful descriptive states include:
+Inspect corrections, retractions, changed definitions, disputed interpretations and failed replication attempts where material. A source may remain important as historical evidence even when its factual conclusion has been superseded.
 
-* independently replicated;
-* replication attempted / mixed;
-* failed replication;
-* not yet replicated;
-* irreproducible because methods/data are insufficiently available.
+== Citation and verification ==
 
-The relevance of replication varies by domain. Historical events are not replicated like laboratory experiments; software behavior may be reproduced by executing code; mathematical results are checked by proof rather than repeated sampling.
+A useful reference identifies the '''specific''' work, not merely a homepage or an authority's name. Include as appropriate: author or issuing organization, title, publication date, version or revision, publisher or venue, stable identifier (such as DOI), URL or archive location, and the page, section, table, figure or code revision supporting the assertion.
 
-== AI-generated source risk ==
+Before relying on a citation:
 
-V1 explicitly identified AI gullibility/confabulation as an epistemic concern. The durable mitigations are:
+# Confirm that the referenced artifact exists and is the intended version.
+# Locate the specific passage, dataset or behavior being cited.
+# Check whether it supports the wording and scope of the article's claim.
+# Consult original records or independent corroboration when the stakes or controversy warrant it.
+# Update or qualify a claim when its source is corrected, contradicted, retracted or obsolete.
 
-* do not cite generated text as an independent source for the fact it generated;
-* verify that cited sources exist;
-* verify that the source contains/supports the attributed claim;
-* trace generated synthesis back to primary/independent evidence;
-* disclose material agent transformation when provenance matters;
-* treat fluent wording as unrelated to evidentiary strength.
+The strength of a reference lies in what a reader can check, not the number of citations attached to a sentence.
 
-== Source type ≠ evidence type ==
+== Sources created or transformed by AI ==
 
-A primary source may contain empirical, documentary, or analytical evidence. A secondary source may synthesize many evidence types. A cryptographically verified source may carry very weak evidence for the substantive proposition it records.
+Generated prose, synthesized summaries and machine-produced bibliographies can contain invented references or real references attached to claims those sources do not support. Their fluent presentation is not independent evidence. NIST identifies such confabulations and fabricated citations as a generative-AI risk in its [https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence Generative AI Profile].
 
-Keep the dimensions separate.
+Machine assistance can help find and organize literature, compare texts or identify missing provenance. Check the original materials independently before using them to support factual conclusions. Where machine transformation materially affects the resulting account, distinguish the source-authored material from generated inference and editorial judgment.
 
-== Source lineage ==
+== Sources in BITwiki ==
 
-Primary V1 sources: [[BITwiki Source Hierarchy]] and [[BITwiki Source Types]], with additional source-evaluation guidance in [[BITwiki Evidence Framework]], [[BITwiki Claim Validation]], and [[BITwiki Provenance Model]]. Exact bodies and histories are in <code>archive-v1/</code>.
+We aim to preserve the connection between a public claim and the material that allows it to be examined. Sources should be chosen for their bearing on that claim, not their prestige, popularity or compatibility with an established narrative. Where evidence is contested, represent the meaningful disagreement and its strongest support instead of using selective quotation to imply certainty.
 
-See [[BITwiki:Evidence]], [[BITwiki:Provenance]], and [[BITwiki:Claim validation]].
+See [[BITwiki:Evidence]] for evaluating what a source establishes, [[BITwiki:Claim validation]] for reviewing a particular claim, [[BITwiki:Provenance]] for tracing transmission, and [[BITwiki:Uncertainty]] for communicating limits.
+
+== Further reading ==
+
+* [https://www.prisma-statement.org/prisma-2020-statement PRISMA 2020] — transparent reporting of systematic reviews.
+* [https://www.icmje.org/recommendations/browse/roles-and-responsibilities/author-responsibilities--conflicts-of-interest.html ICMJE — Disclosure of interests] — relationships and incentives relevant to research assessment.
+* [https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence NIST — Generative Artificial Intelligence Profile] — risks including confabulated citations.
 
 [[Category:Epistemics]]
 [[Category:Provenance]]
-[[Category:BITwiki architecture]]

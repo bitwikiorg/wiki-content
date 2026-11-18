@@ -1,158 +1,106 @@
-{{Source status|status=source-reconciled framework|note=Preserves the V1 Uncertainty Markers distinction between epistemic, ontological, linguistic/semantic, and methodological uncertainty while removing rigid universal marker requirements.}}
-
 = Uncertainty =
 
-Uncertainty is information about the limits of a claim.
+'''Uncertainty describes limits on what is known, measured, predicted, defined, or inferred.''' It is not merely a lack of confidence. A claim can be strongly supported yet imprecise about magnitude or applicability, while a precisely stated hypothesis can remain poorly supported.
 
-'''In a world of false certainty, explicit uncertainty is a gift.'''
+An honest account names the source of uncertainty, its practical importance and, when possible, the conditions under which it could be reduced. Uncertainty should not be added as a vague disclaimer when the evidence supports a definite conclusion.
 
-The purpose of uncertainty marking is not to weaken prose mechanically. It is to tell the reader what kind of limitation remains and how that limitation affects interpretation or action.
+== Sources and forms of uncertainty ==
 
-== Four core uncertainty types ==
+The following distinctions are useful but not an exhaustive or mutually exclusive taxonomy.
 
-=== Epistemic uncertainty — what we do not know ===
+=== Epistemic uncertainty — incomplete knowledge ===
 
-Uncertainty about whether a claim is true or how strongly the available evidence supports it.
+Uncertainty arising from missing evidence, incomplete understanding, untested assumptions, contested explanations or an unknown relationship between observations.
 
-Sources include:
+Examples include a poorly constrained causal mechanism, inadequate historical records, or insufficient observations to distinguish two models. More appropriate evidence or analysis may reduce some of this uncertainty.
 
-* limited/preliminary evidence;
-* conflicting results;
-* sampling uncertainty;
-* measurement error;
-* missing observations;
-* uncertain causal direction.
+=== Methodological and measurement uncertainty ===
 
-Useful language can include:
+Uncertainty introduced or amplified by study design, sampling, instruments, operational definitions, missing data, computation, model specification and inferential choices.
 
-* "Preliminary evidence suggests..."
-* "Existing studies are inconclusive..."
-* "The causal relationship remains unclear..."
-* "Evidence is limited to..."
+It may be quantifiable as measurement error, confidence or credible intervals, estimated bias or sensitivity to assumptions. These quantities have different meanings; a confidence interval is not automatically the probability that a specific fixed parameter lies within the realized interval.
 
-=== Ontological uncertainty — what exists / how categories are drawn ===
+A method can be precise without being valid for the intended construct, and highly repeatable measurements can still be systematically biased.
 
-Uncertainty about the existence, nature, boundaries, or category membership of an entity.
+=== Ontological and conceptual uncertainty ===
 
-Examples:
+Uncertainty about whether an entity exists, what kind of thing it is, or where a conceptual boundary belongs. For instance, two scientific accounts may disagree on whether a proposed theoretical object corresponds to a distinct entity.
 
-* whether a theoretical entity corresponds to something real;
-* whether a category is a natural kind, constructed convenience, or mixed case;
-* whether an entity's boundary is well-defined;
-* whether two apparently different phenomena are the same type of thing.
+This meaning of '''ontological uncertainty''' should not be confused with '''aleatory variability''', which is often used for stochastic variation in a system. Whether uncertainty is reducible depends on its source and the available modeling assumptions.
 
-Useful language:
+=== Semantic and interpretive uncertainty ===
 
-* "The existence of X is disputed..."
-* "The ontological status of X remains contested..."
-* "The category boundary is unclear..."
-* "X may function as a useful abstraction rather than a distinct entity..."
+Ambiguous words, contested definitions, translation, variable disciplinary meanings and divergent interpretations can make a proposition appear more or less settled than it is.
 
-=== Linguistic / semantic uncertainty — what we mean ===
+Clarifying whether “information” means a Shannon quantity, a biological signal or ordinary communication can resolve a disagreement in terminology without producing new experimental data.
 
-Uncertainty introduced by language or interpretation.
+=== Variability and irreducible randomness ===
 
-Sources include:
+Some systems display variation not eliminated by improved knowledge of the current model or available measurement. Statistical models may represent this as aleatory uncertainty, in contrast to epistemic uncertainty about parameters or mechanisms.
 
-* ambiguous terms;
-* contested definitions;
-* translation;
-* context-dependent meaning;
-* vagueness;
-* one label covering distinct concepts.
+The distinction is model-dependent: what is treated as irreducible in one analysis can become explainable after new observations, instruments or theories.
 
-Useful language:
+== Scope and time ==
 
-* "In this context, X means..."
-* "The term is used in several incompatible senses..."
-* "Interpretations vary..."
-* "The definition is contested..."
+Evidence may justify a finding only for a specified population, location, period, software version, instrument, experimental condition or parameter range. Extrapolation outside those conditions creates additional uncertainty, even if the result inside them is robust.
 
-=== Methodological uncertainty — how we know ===
+Some information is necessarily time-sensitive. “The system supports X” should specify a version or verification date when implementation can change. A historical statement should use the relevant period rather than an unqualified “currently.”
 
-Uncertainty introduced by measurement, study design, model assumptions, inference, instrumentation, or procedure.
+== Communicating uncertainty ==
 
-Examples:
+{| class="wikitable"
+! Insufficient expression !! More informative expression
+|-
+| “Studies disagree.” || “Results differ by population and measurement method; the available studies do not isolate which factor explains the discrepancy.”
+|-
+| “This might work.” || “The intervention produced the reported effect under the tested conditions; effectiveness outside those conditions has not been established.”
+|-
+| “The effect is significant.” || “The estimated effect is X with interval Y under model Z”; distinguish statistical significance from practical importance
+|-
+| “The software is reliable.” || “The tested release passed checks A and B under conditions C; production reliability has not been measured.”
+|}
 
-* observational design cannot establish causation;
-* measurement validity is uncertain;
-* replication is mixed;
-* model results are sensitive to assumptions;
-* code/data needed for independent verification is unavailable.
+Specificity matters more than hedging. State the uncertainty that actually affects interpretation rather than adding “possibly” to every sentence.
 
-Useful language:
+== Quantitative and qualitative expression ==
 
-* "The method cannot distinguish between..."
-* "The study design limits causal inference..."
-* "Replication results are mixed..."
-* "This estimate depends strongly on..."
+Where methods justify quantification, appropriate representations include measurement uncertainty, confidence intervals, posterior or forecast probabilities, sensitivity ranges, bounds and scenarios. Their interpretation depends on the statistical framework and assumptions used.
 
-== Scope uncertainty ==
+When quantification is unsupported, explain the available evidence, principal alternatives and missing information in ordinary language. Numbers invented for a status dashboard are not a substitute for calibrated uncertainty.
 
-A claim can be well-supported inside a narrow context yet uncertain outside it.
+Some disciplines have explicit conventions. For example, the [https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-1/ IPCC uncertainty framework] distinguishes '''confidence''' in an assessed finding, informed by evidence and agreement, from '''likelihood''' expressed probabilistically. It illustrates transparent domain-specific calibration; its terminology should not be silently imposed on every BITwiki article.
 
-State boundary conditions where useful:
+== Uncertainty and evidentiary standing ==
 
-* population;
-* geography;
-* time period;
-* system version;
-* experimental conditions;
-* parameter range;
-* domain-specific definition.
+The [[BITwiki:Epistemic status|epistemic status]] of a claim concerns its current evidentiary support; uncertainty describes the limits, ambiguities and variability that remain.
 
-"X works" is weaker than "X produced Y under conditions Z" when Z materially limits generalization.
+A well-supported experimental result can have uncertain effect size, untested boundary conditions or an incomplete mechanistic explanation. A hypothetical claim can be clearly defined even though no convincing evidence yet supports it. These distinctions can coexist in one article without contradiction.
 
-== Temporal uncertainty ==
+== Uncertainty and decisions ==
 
-Some statements are snapshots rather than stable facts.
+Decision-making may be necessary before all uncertainty disappears. The relevant questions include:
 
-Use explicit dates/versioning for rapidly changing material. Phrases such as "currently," "as of [date]," or "in the archived V1 implementation" are valuable when later readers could otherwise mistake historical state for timeless structure.
+# Which decisions are sensitive to the unknowns?
+# What is the consequence of an incorrect conclusion?
+# Which uncertainties could be reduced with additional evidence or testing?
+# What observations would discriminate between the leading alternatives?
+# Which actions remain sensible across plausible scenarios?
 
-== Good uncertainty marking ==
+High-stakes domains—such as medicine, infrastructure, finance and safety—may justify more formal decision analysis and caution than ordinary descriptive material. Risk, which combines possible outcomes and consequences, is not identical to uncertainty about those outcomes.
 
-=== Be specific ===
-Poor: "This is uncertain."
+== Updating and correcting an account ==
 
-Better: "The effect is supported in short-term studies, but long-term durability and generalization outside the studied population remain uncertain."
+An uncertainty statement should be revised when measurements improve, new studies appear, a theory is challenged, a replication fails, a source is corrected, or the conditions of applicability change.
 
-=== State why ===
-Do not hedge merely for style. Tie uncertainty to missing evidence, competing interpretation, model sensitivity, definition ambiguity, or other concrete cause.
+Do not use uncertainty to imply that all interpretations are equally plausible, or certainty to conceal material limits. Preserve the distinction between an established result and open questions about its explanation or scope.
 
-=== Quantify when the quantity is meaningful ===
-Confidence intervals, measurement error, forecast probabilities, posterior distributions, or sensitivity ranges can add real information when generated by an appropriate method.
+== Further reading ==
 
-Do not manufacture numbers to decorate qualitative judgment.
+* [https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-1/ IPCC — Framing, Context and Methods] — evidence, agreement, confidence and probabilistic likelihood.
+* [https://plato.stanford.edu/entries/epistemology/ Stanford Encyclopedia of Philosophy — Epistemology] — uncertainty and justified belief in epistemic inquiry.
+* [https://www.ncbi.nlm.nih.gov/books/NBK547535/ National Academies — Reproducibility and Replicability in Science] — understanding uncertainty through repeated and independently checked research.
 
-=== Acknowledge alternatives ===
-If several explanations fit the evidence, name the material alternatives rather than hiding them behind a generic caveat.
-
-=== Update ===
-Uncertainty should change when evidence changes. A stale phrase like "early research suggests" can become misleading if left untouched for years.
-
-== Uncertainty ≠ epistemic standing ==
-
-An Established claim can have important uncertainty around effect size, mechanism, boundary conditions, or future projection. A Hypothetical claim may be precisely defined even though evidence is weak.
-
-Record the type of uncertainty rather than assuming one status label communicates everything.
-
-== Uncertainty and action ==
-
-Decision-making sometimes requires action before uncertainty disappears. BITwiki should help expose:
-
-* what is known;
-* what remains uncertain;
-* the consequence of being wrong;
-* whether uncertainty is reducible with more information;
-* which actions are robust across competing possibilities.
-
-This is especially important in scientific, medical, engineering, policy, financial, or safety-relevant contexts.
-
-== Source lineage ==
-
-Primary V1 source: [[BITwiki Uncertainty Markers]], with related guidance across the Epistemic Framework, Claim Validation, Evidence Framework, Charter, and Constitution.
-
-See [[BITwiki:Epistemics]], [[BITwiki:Epistemic status]], [[BITwiki:Evidence]], and [[BITwiki:Claim validation]].
+See [[BITwiki:Evidence]], [[BITwiki:Claim validation]], [[BITwiki:Epistemics]] and [[BITwiki:Epistemic audit]].
 
 [[Category:Epistemics]]
 [[Category:BITwiki architecture]]

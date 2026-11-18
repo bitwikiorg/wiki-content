@@ -1,218 +1,103 @@
-{{Source status|status=source-reconciled canonical framework|note=Rebuilt after comparison of the complete public V1 epistemics/evidence/provenance family. V2 preserves the strongest distinctions while separating dimensions that V1 sometimes combined into one tier or score.}}
-
 = Epistemics =
 
-'''How do we know what we claim to know? This question is not academic ornament. It is operational necessity.'''
+'''Epistemics concerns how claims are formed, justified, evaluated, communicated, and revised.''' It asks what we have reason to believe, how we acquired those reasons, how far they extend, and what could overturn them. Its philosophical foundation is [[Epistemology|epistemology]], the study of knowledge and justified belief.
 
-BITwiki treats the conditions of knowing as part of the knowledge object. Evidence, source, confidence, provenance, uncertainty, review, disagreement, and lifecycle are related, but they are not the same thing.
+For BITwiki, a knowledge article should not merely present conclusions. Where the subject warrants it, readers should be able to distinguish observations from inferences, identify the relevant sources, understand uncertainty and disagreement, and examine how an account has changed. The goal is informed human understanding and effective machine-assisted inquiry, not deference to unexplained labels.
 
-== Human-centered epistemics ==
+== Knowledge, belief, and justification ==
 
-The strongest V1 revisions moved away from rigid gatekeeping and false numerical precision toward a human-centered model:
+A statement can be confidently believed and false; it can also happen to be true for inadequate reasons. Knowledge and responsible reliance require attention to the quality of justification, not only conviction or apparent agreement.
 
-'''Knowledge serves human understanding, not the reverse.'''
+Theories of knowledge disagree about the precise conditions for justification and whether knowledge requires more than justified true belief. Observation, memory, inference, testimony, formal proof, and instruments provide different routes to warranted conclusions, each with characteristic limitations. An encyclopedia can explain these questions without claiming that one philosophical theory exhausts them.
 
-The purpose of epistemic metadata is not to dictate belief. It is to make enough of a claim's standing visible that a reader or agent can inspect the evidence, limitations, lineage, and disagreement and reach an appropriately calibrated judgment.
+There is a practical distinction between '''what is asserted''', '''why that assertion is warranted''', and '''how strongly to rely on it'''. This distinction is especially important when an article combines established findings, contested explanations, models, historical accounts, and speculation.
 
-A weakly supported idea can still be worth preserving as a knowledge artifact. A well-established claim can still be revised. Conflict and scrutiny are not necessarily failures; they can expose assumptions and create new knowledge.
-
-== Core dimensions ==
+== Dimensions of responsible inquiry ==
 
 {| class="wikitable"
-! Dimension !! Question !! Canonical V2 surface
+! Dimension !! What it addresses !! Detailed treatment
 |-
-| '''Epistemic standing''' || What is the present evidentiary maturity of the claim? || [[BITwiki:Epistemic status]]
+| '''Evidence''' || What observations, reasons, proofs, or records bear on a particular assertion? || [[BITwiki:Evidence]]
 |-
-| '''Evidence''' || What observations, arguments, records, measurements, proofs, or other signals support or challenge it? || [[BITwiki:Evidence]]
+| '''Sources''' || Who or what supplied the information, through which methods and media? || [[BITwiki:Sources]]
 |-
-| '''Source''' || Where does the evidence or claim come from, and how appropriate is that source for this question? || [[BITwiki:Sources]]
+| '''Provenance''' || Where did the material originate, how did it travel, and what transformations occurred? || [[BITwiki:Provenance]]
 |-
-| '''Provenance''' || How did the knowledge originate, travel, transform, and become validated? || [[BITwiki:Provenance]]
+| '''Claim validation''' || What checks establish or challenge the relationship between a claim and its support? || [[BITwiki:Claim validation]]
 |-
-| '''Confidence''' || How strongly should the present evidence support reliance on the claim, and why? || qualitative/argumentative rationale; quantitative only when meaningful
+| '''Epistemic status''' || What is the current evidentiary standing of a specific claim or knowledge object? || [[BITwiki:Epistemic status]]
 |-
-| '''Uncertainty''' || What exactly remains unknown, ambiguous, method-limited, scope-limited, or contested? || [[BITwiki:Uncertainty]]
+| '''Uncertainty''' || What remains unknown, imprecise, ambiguous, context-bound, or disputed? || [[BITwiki:Uncertainty]]
 |-
-| '''Review / verification''' || What scrutiny has actually occurred? || [[BITwiki:Claim validation]]
-|-
-| '''Lifecycle''' || Is the knowledge active, superseded, deprecated, or archived? || separate from evidentiary maturity
-|-
-| '''Perspective / lens''' || From what disciplinary, theoretical, cultural, or interpretive vantage is the claim made? || explicit where interpretation changes materially
+| '''Epistemic audit''' || Do the published claims, sources, representations and review practices withstand independent scrutiny? || [[BITwiki:Epistemic audit]]
 |}
 
-== The central separation ==
+These dimensions are related without being interchangeable. In particular:
 
-<pre>
-epistemic standing
-≠ confidence
-≠ evidence type
-≠ source type
-≠ verification state
-≠ uncertainty type
-≠ lifecycle state
-≠ foundational role
-</pre>
+* A '''source''' is not evidence of every proposition it reports.
+* '''Verification''' describes an actual checking activity and its outcome; it is not a synonym for certainty.
+* '''Confidence''' is a judgment about how strongly to rely on a conclusion, and should be explained rather than inferred mechanically from source count.
+* '''Epistemic status''' describes evidentiary standing; '''archived''' or '''superseded''' describes an artifact's lifecycle.
+* An '''axiom''' or foundational commitment serves a logical or normative role; it is not the top rank of empirical confirmation.
+* A '''dispute''' may involve credible unresolved alternatives, but the mere existence of disagreement does not mean the alternatives have equal evidentiary support.
 
-This separation resolves a recurring V1 ambiguity.
+== Methods depend on the question ==
 
-* '''Archived''' and '''Deprecated''' describe lifecycle, not confidence.
-* '''Axiomatic''' describes a declared foundational/system role, not the highest rung of empirical evidence.
-* '''Verified''' is best understood as a claim about actual validation/replication state, not metaphysical certainty.
-* '''Disputed''' describes credible unresolved conflict and can coexist with substantial evidence.
+{| class="wikitable"
+! Inquiry !! Principal forms of scrutiny
+|-
+| Empirical description || Measurement quality, sampling, observation, replication, consistency across methods
+|-
+| Causal explanation || Controlled comparison, confounding, alternative mechanisms, causal identification
+|-
+| Mathematical claim || Definitions, assumptions, proof, derivation, counterexample
+|-
+| Historical claim || Authentic records, chronology, context, transmission and independent corroboration
+|-
+| Technical implementation || Source code, specification, reproducible tests, versions and observed deployment behavior
+|-
+| Philosophical or interpretive claim || Clarity of terms, argument validity, textual fidelity, objections and implications
+|}
 
-V1 used these terms in several different schemes. V2 preserves those historical schemes while making the current dimensions explicit.
+A mathematical proof establishes a consequence of premises; it does not by itself show that the premises accurately describe nature. A software design document can establish intended architecture without establishing that the system is deployed. An original record may establish that someone made an assertion without proving the assertion itself.
 
-== Epistemic standing ==
+BITwiki does not apply a universal evidence score or demand an algorithmic mechanism from subjects outside computer science. Standards of evaluation should fit the disciplinary question. See [[BITwiki:Evidence]] and [[BITwiki:Claim validation]].
 
-The default V2 standing vocabulary is intentionally compact:
+== Disagreement, criticism, and revision ==
 
-; Hypothetical
-: A coherent conjecture, possibility, interpretation, or model with limited or no direct support. Preserve when it has intellectual or practical value; mark it clearly.
+New findings can strengthen or weaken an account, expose an omitted boundary condition, or show that different investigators were addressing different propositions. Competing explanations should be represented in proportion to their support, with the strongest relevant objections rather than a token mention of controversy.
 
-; Emerging
-: Preliminary support exists, but evidence is limited, early, weakly replicated, scope-bound, or otherwise fragile.
+Consensus, specialist expertise, and peer review can be meaningful evidence about a field's understanding and review processes. They do not remove the need to inspect methods and reasons where the claim is consequential or contested. Conversely, rejecting all expertise on principle would discard an important means of learning from others.
 
-; Supported
-: Meaningful evidence supports the claim, but important gaps, limitations, or unresolved alternatives remain.
+A weakly supported idea may still be important as history, an explicit hypothesis, or a question that generates research. '''Intellectual value is not the same as evidentiary support.''' The former can warrant preservation; the latter determines how strongly a factual conclusion may be stated.
 
-; Well-supported
-: Multiple credible and substantially independent lines of evidence converge and major limitations are understood.
+== Inquiry conducted by people and artificial agents ==
 
-; Established
-: A robust working part of knowledge in its domain, supported across relevant contexts and suitable for ordinary reliance while remaining revisable.
+People learn partly through testimony and institutions; agents often retrieve, summarize, transform and interconnect that material. Both can propagate source errors, omit context or confuse an attractive explanation with an observed result. An agent's fluent account or self-reported confidence does not independently validate its claims.
 
-; Disputed
-: Credible evidence, methods, or interpretations materially support incompatible conclusions. Preserve the disagreement rather than forcing artificial consensus.
+For machine-assisted work, the relevant evidence chain may include original records, retrieved passages, tools called, code revisions, analytic transformations and the human or automated checks actually performed. These should be distinguishable when their provenance affects a consequential conclusion.
 
-These are guidance regions, not rigid boxes or a universal numerical scale. See [[BITwiki:Epistemic status]].
+Machine-readable relationships can improve discovery and auditability, but a semantic statement is still a claim requiring an appropriate basis. Publishing or querying it does not turn it into verified knowledge.
 
-== Evidence is signal, not truth ==
+== Communicating knowledge in BITwiki ==
 
-'''Evidence is not truth. Evidence is signal—information that shifts our assessment of a claim.'''
+A useful account should make clear, to the extent the claim requires:
 
-The same evidence can carry different weight for different questions. A blockchain record can strongly establish that a transaction occurred on-chain while saying little about an off-chain causal story. A mathematical proof can establish a result inside a formal system but not by itself establish that the system models a physical process.
+# '''Meaning:''' what is being asserted and which terms are defined.
+# '''Basis:''' the observation, argument, record, calculation or source supporting it.
+# '''Inference:''' how the evidence connects to the stated conclusion.
+# '''Scope:''' which versions, populations, conditions or interpretations it covers.
+# '''Limits:''' consequential uncertainty, contrary findings and alternatives.
+# '''Lineage:''' material origin, transformations, corrections and review context.
 
-The current framework therefore rejects a universal evidence hierarchy. See [[BITwiki:Evidence]].
+These are editorial considerations, not a requirement to create one metadata field or template for every dimension. A concise, accurate article is preferable to a richly annotated but unsupported one.
 
-== Source evaluation is contextual ==
+== Further reading ==
 
-V1 repeatedly revised away from source prestige as a substitute for evaluation.
-
-Primary, secondary, tertiary, community, technical, archival, or cryptographically verified sources each serve different functions. Peer review, institutional reputation, credentials, consensus, open data, replication, and provenance are signals to consider—not universal trump cards.
-
-Evaluate the process, relevance, transparency, and transmission chain. See [[BITwiki:Sources]].
-
-== Confidence trails ==
-
-V1's later Charter and epistemic work introduced a strong replacement for false precision: the '''confidence trail'''.
-
-A confidence trail should make inspectable:
-
-* what evidence exists;
-* which sources carry it;
-* which methods produced it;
-* what alternatives were considered;
-* what contradictions exist;
-* what limitations remain;
-* how the claim changed;
-* what would change the present assessment.
-
-A numerical probability can be useful when the domain supports calibration—for example forecasting, measurement uncertainty, or a formal probabilistic model. It should not be invented merely to make a qualitative judgment look scientific.
-
-== Provenance as knowledge lineage ==
-
-V1's Provenance Model described provenance as the '''etymology and phylogeny of knowledge'''. This is retained.
-
-Claims have origins, transmission paths, transformations, ancestors, descendants, branches, and sometimes extinction. Knowing that lineage helps explain both meaning and reliability.
-
-See [[BITwiki:Provenance]].
-
-== Uncertainty has kinds ==
-
-V1 distinguished at least four useful forms:
-
-* '''epistemic uncertainty''' — uncertainty about what is true;
-* '''ontological uncertainty''' — uncertainty about what exists or how a category should be drawn;
-* '''linguistic / semantic uncertainty''' — uncertainty about what a term or statement means;
-* '''methodological uncertainty''' — uncertainty introduced by measurement, design, inference, or procedure.
-
-Scope and temporal limits are also often important. See [[BITwiki:Uncertainty]].
-
-== Validation as conversation ==
-
-Validation is not a mechanical checkbox process. The V1 Claim Validation framework called it a conversation between evidence and claim, source and assessor, and competing perspectives.
-
-A good validation asks:
-
-# What exactly is the claim?
-# What evidence bears on it?
-# Do the cited sources actually say what is claimed?
-# Are methods appropriate to the question?
-# What contradictory evidence or alternative explanation exists?
-# What are the scope and boundary conditions?
-# What would change the assessment?
-# Has the claim actually been replicated, reviewed, or independently checked?
-
-See [[BITwiki:Claim validation]].
-
-== Knowledge artifacts have value beyond truth labels ==
-
-One V1 strand asked a useful additional question: '''What value does this knowledge artifact demonstrate?'''
-
-A hypothesis may be evidentially weak yet generate a fruitful experiment. A superseded theory may remain historically important. A disputed model may reveal the structure of a live controversy. A falsified claim can be valuable as a case study in error.
-
-This is why BITwiki does not equate low epistemic standing with automatic deletion.
-
-Value does not excuse mislabeling. The artifact's value and its evidentiary standing should both be explicit.
-
-== AI-specific epistemic risk ==
-
-The V1 Source Types revision explicitly called out AI gullibility/confabulation as a special concern. The durable rule is broader than any one model generation:
-
-* verify that cited sources exist;
-* verify that sources support the claim attributed to them;
-* distinguish generated synthesis from quoted/source-authored material;
-* expose uncertainty rather than manufacturing confidence;
-* use multiple independent sources when the claim warrants it;
-* preserve enough provenance to audit transformations.
-
-AI assistance increases the importance of epistemics; it does not reduce it.
-
-== Historical framework family ==
-
-The current model was reconciled from, among others:
-
-* [[BITwiki Epistemic Framework]]
-* [[BITwiki Epistemic Status Taxonomy]]
-* [[BITwiki Epistemic Tiers]] and its transcluded Book Matter
-* [[BITwiki Evidence Framework]]
-* [[BITwiki Evidence Evaluation]]
-* [[BITwiki Evidence Tiers]]
-* [[BITwiki Evidence and Epistemics]]
-* [[BITwiki Claim Validation]]
-* [[BITwiki Source Hierarchy]] and [[BITwiki Source Types]]
-* [[BITwiki Provenance Model]]
-* [[BITwiki Uncertainty Markers]]
-* [[Epistemic Audit Framework]]
-* [[Epistemic Framework Synthesis.REVISED]]
-* [[EPV Framework]]
-
-These documents were not duplicates. Some described philosophy, some operational guidance, some schema proposals, and some audit machinery. Exact sources and revision histories remain in <code>archive-v1/</code>.
-
-The EPV Event–Proposition–Value model is treated primarily as historical ontology/schema design rather than the core epistemic-status model. The Epistemic Audit Framework remains useful operational evidence but its older numeric rules do not override later human-reviewed revisions that explicitly removed false numerical precision and fixed hierarchies.
-
-== Governing principles ==
-
-* '''Knowledge serves human understanding, not the reverse.'''
-* '''Evidence is signal, not truth.'''
-* '''Conflict can be signal.'''
-* '''Consensus is evidence about a field, not a substitute for the evidence itself.'''
-* '''Uncertainty is information.'''
-* '''Provenance is understanding, not bureaucracy.'''
-* '''A claim's value and a claim's evidentiary standing are different questions.'''
-* '''No claim is final.'''
+* [https://plato.stanford.edu/entries/epistemology/ Stanford Encyclopedia of Philosophy — Epistemology] — major accounts of knowledge, justification, perception, memory and testimony.
+* [https://plato.stanford.edu/entries/evidence/ Stanford Encyclopedia of Philosophy — Evidence] — the relation between evidence and justification.
+* [https://plato.stanford.edu/entries/testimony-episprob/ Stanford Encyclopedia of Philosophy — Epistemological Problems of Testimony] — conditions and limits of knowledge acquired from others.
+* [https://www.ncbi.nlm.nih.gov/books/NBK547535/ National Academies — Reproducibility and Replicability in Science] — reproducible checks and independent confirmation.
 
 [[Category:Epistemics]]
 [[Category:BITwiki architecture]]
-[[Category:BITwiki meta]]
-[[Category:Provenance]]

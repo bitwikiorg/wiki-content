@@ -1,213 +1,146 @@
-{{Source status|status=source-reconciled semantic model|note=Draws from V1 Relationship Types, Relationship Pattern Catalog, Entity Types, Provenance Model, and actual V2 needs. V2 deliberately does not inherit unsafe universal transitivity/domain assumptions from historical tables; updated to distinguish stored SMW edges from Lua-derived presentation.}}
-
 = Relationships =
 
-Relationships state how knowledge objects connect. Their value is semantic precision: a graph becomes useful when an edge says more than "these pages are somehow associated."
+'''A semantic relationship is a specific assertion connecting one knowledge object to another.''' In BITwiki, relationships are used to distinguish implementation from dependency, part–whole composition from derivation, and evidence-based support from mere association.
 
-At the same time, an overly ambitious relationship vocabulary creates false meaning. V2 therefore starts with a small set of durable relations and expands from demonstrated use.
+A link is valuable only when its meaning can be explained. Two pages occurring in the same category, paragraph or research area does not by itself establish a strong semantic relationship.
 
-== Governing rules ==
+== The eight defined relationships ==
 
-# Prefer a specific relation when the meaning is clear.
-# Use [[Property:Related to|Related to]] when the connection matters but a stronger semantic claim is not justified.
-# Do not infer causality, transitivity, symmetry, or inverse relations unless the property's documented semantics support it.
-# A relation is not evidence merely because it is encoded semantically.
-# Relationship vocabulary evolves from real content and query needs.
-# Distinguish a stored assertion from a derived display, diagnostic, or proposed persistent assertion.
+BITwiki currently defines eight primary page-to-page relationship properties. In each example, the arrow points from the '''source page''' making the assertion to the '''target page'''.
 
-== Core V2 relations ==
+{| class="wikitable"
+! Property !! Direction and meaning !! Illustrative assertion
+|-
+| [[Property:Related to|Related to]] || Material association without claiming a more specific relation || Subject A → Related to → Subject B
+|-
+| [[Property:Implements|Implements]] || A concrete realization implements a concept, method, specification or protocol || Client software → Implements → Communication protocol
+|-
+| [[Property:Part of|Part of]] || A component, phase or constituent belongs within a larger whole || Sensor module → Part of → Instrument
+|-
+| [[Property:Depends on|Depends on]] || The source materially relies on the target for operation, construction or interpretation || Application → Depends on → Software library
+|-
+| [[Property:Supports|Supports]] || A source object supplies a relevant evidentiary or argumentative basis for another claim || Dataset → Supports → Research finding
+|-
+| [[Property:Contradicts|Contradicts]] || The source materially conflicts with a target claim, prediction or interpretation || Result A → Contradicts → Hypothesis B
+|-
+| [[Property:Refines|Refines]] || A later or more specific account improves, narrows or qualifies another while retaining continuity || Revised model → Refines → Earlier model
+|-
+| [[Property:Derived from|Derived from]] || A claim, artifact or representation materially descends from another || New dataset → Derived from → Original dataset
+|}
+
+These examples illustrate how the properties should be used; they are not claims that any named edge is already present in BITwiki's stored graph.
+
+== Stronger claims require stronger justification ==
 
 === Related to ===
 
-A deliberately weak association.
+Use this for a meaningful association when the precise relationship is unknown or not yet represented. It should not become an indiscriminate substitute for understanding how two things connect.
 
-Use when two knowledge objects are materially connected but a stronger relation would overstate what is known.
+=== Implements and Depends on ===
 
-Do not use as a substitute for every missing property; if the same specific pattern recurs, define the pattern.
-
-=== Implements ===
-
-A concrete realization implements an abstract concept, method, protocol, design, or specification.
-
-Examples:
-
-* thermostat → implements → feedback control;
-* software client → implements → protocol;
-* deployed workflow → implements → method.
-
-The inverse phrase is '''implemented by'''; V2 does not require storing both directions when queries or deterministic projection can derive the display relationship.
+'''Implements''' describes a realization of a design or method; '''Depends on''' describes a material reliance. An application might depend on a library without implementing the library's API specification, and might implement a protocol without depending on one particular vendor implementation. Do not confuse these claims.
 
 === Part of ===
 
-A component, phase, subsystem, or member structure belongs within a larger whole.
+Part–whole relationships require context: physical components, temporal phases, logical constituents and institutional membership may have different rules. Do not assume every kind of parthood is interchangeable or universally transitive.
 
-Part–whole semantics vary across domains. Do not assume all <code>Part of</code> chains are automatically transitive in every context simply because classical mereology can define transitive parthood.
+=== Supports and Contradicts ===
 
-=== Depends on ===
+These are epistemic relations, not automatic truth operators. A supporting article can be weak, methodologically flawed or disputed. A contradiction may concern a restricted claim, measurement or interpretation rather than a whole article.
 
-A materially necessary dependency: the source object's operation, interpretation, construction, or validity relies on the target.
+Record the actual reason for support or conflict through references and prose. See [[BITwiki:Evidence]] and [[BITwiki:Claim validation]].
 
-Dependency is directional. Avoid using it for mere chronological influence or loose conceptual relevance.
+=== Refines and Derived from ===
 
-=== Supports ===
+'''Refines''' expresses conceptual development while retaining recognizable continuity. '''Derived from''' expresses origin or material lineage; it does not guarantee improvement or correctness.
 
-A knowledge object provides evidence, argument, data, or other epistemically relevant support for another claim/object.
+For example, a revised model may refine an older theory, while a translated text is derived from its source without thereby being theoretically superior. See [[BITwiki:Provenance]].
 
-Support should remain inspectable through [[BITwiki:Evidence]] and [[BITwiki:Provenance]]. A <code>Supports</code> edge does not by itself establish that the support is strong.
+== Direction, inverse display and persistence ==
 
-=== Contradicts ===
-
-A knowledge object materially conflicts with another claim, prediction, interpretation, or result.
-
-Do not make contradiction transitive. If A contradicts B and B contradicts C, nothing follows automatically about A and C.
-
-=== Refines ===
-
-A later or more specific object improves, narrows, extends, or qualifies an earlier model/concept while retaining significant continuity.
-
-Refinement is not necessarily replacement. A refinement may operate only in a particular scope.
-
-=== Derived from ===
-
-A provenance relationship indicating that an artifact, claim, model, dataset, or representation materially descends from another.
-
-Use when lineage is stronger than mere citation. Document transformations when they affect meaning.
-
-== Stored graph state and compiler projection ==
-
-Semantic MediaWiki remains the owner of durable relationship assertions. Scribunto/Lua may validate and project that state, but it does not become a second relationship database.
+An assertion has direction. The stored statement
 
 <pre>
-canonical page / Template
-        ↓ asserts
-SMW relationship property
-        ↓ durable graph state
-Lua / query layer
-        ↓
-normalize · validate · inverse display · adjacency/view model · diagnose
-        ↓
-MediaWiki / graph / BIThub-facing presentation
+<nowiki>[[Implements::Example protocol]]</nowiki>
 </pre>
 
-The compiler-facing relationship dictionary in <code>bitwiki-runtime-schema.json</code> contains deterministic runtime metadata such as inverse '''display''' labels. It does not itself assert that an edge exists.
+on the page describing a software implementation denotes an outgoing relation to ''Example protocol''. A reader might want to see the reverse description, ''Implemented by'', on the protocol's page. But that reverse label is not the same as a separately stored inverse assertion.
 
-For example:
-
-<pre>
-Bitcoin Core → Implements → Bitcoin protocol    stored edge
-Bitcoin protocol ← Implemented by — Bitcoin Core  derived inverse display
-</pre>
-
-The second form can be generated from the first without persisting a second edge.
-
-This distinction is an invariant:
-
-<pre>
-stored assertion
-≠ derived display
-≠ derived diagnostic
-≠ proposed persistent assertion
-</pre>
-
-A rule that proposes a new persistent relationship needs explicit semantics, provenance, review behavior, and a write path outside incidental rendering.
-
-== Self-modeling substrate ==
-
-The BITwiki/BIThub technology slice now exercises relationship semantics directly. Examples include BITwiki depending on MediaWiki, Semantic MediaWiki, Scribunto, and Cargo; BIThub depending on Discourse; and BITwiki being related to BIThub.
-
-These edges are conservative real graph state that future relationship panels, graph views, dependency diagnostics, and BIThub integrations can project. They are not demo-only relationships created merely to exercise Lua.
-
-== Relations not yet made universal V2 primitives ==
-
-V1 documented many additional relations, including:
-
-* Subtopic of / Has subtopic;
-* Instance of;
-* Causes / Caused by;
-* Enables / Enabled by;
-* Prevents / Prevented by;
-* Precedes / Follows;
-* Concurrent with;
-* During / Contains;
-* Located in;
-* Adjacent to;
-* Originates / Originated by;
-* Contributes to;
-* Collaborates with.
-
-Many are valuable. They are not rejected.
-
-They are held to the same test as entity types: repeated use, clear semantics, useful query/reasoning behavior, and appropriate domain/range constraints before becoming universal V2 properties.
-
-== Why V2 is conservative about inference ==
-
-The V1 Relationship Types table sometimes described broad relations such as <code>Causes</code> and <code>Enables</code> as transitive.
-
-That is unsafe as a universal knowledge-graph rule.
-
-If A causes B and B causes C, A's contribution to C may be conditional, mediated, blocked, probabilistic, or irrelevant under changed context. Similar problems arise with generic enablement and containment.
-
-V2 therefore distinguishes:
-
-* '''edge meaning''' — what the direct relation asserts;
-* '''inference rule''' — what additional information may legitimately be derived;
-* '''projection rule''' — how the same stored relation may be displayed in another context.
-
-Inference rules should be documented separately and only enabled when their semantics have been validated. Projection rules may be simpler—for example inverse labels—but still must not silently become stored facts.
-
-== Domain and range ==
-
-Domain/range constraints can improve validation but should not be invented too early.
-
-Examples of useful tendencies:
+The repository's <code>bitwiki-runtime-schema.json</code> includes the following '''inverse display labels''':
 
 {| class="wikitable"
-! Relation !! Typical source !! Typical target
+! Stored relation !! Inverse label for presentation
 |-
-| Implements || Implementation / Technology || Concept / Method / Protocol
+| Related to || Related to
 |-
-| Supports || Publication / Dataset / Evidence-bearing object || Claim / Concept / model
+| Implements || Implemented by
 |-
-| Contradicts || Evidence-bearing object / claim || Claim / prediction / model
+| Part of || Has part
 |-
-| Derived from || Any knowledge artifact || Source / ancestor artifact
+| Depends on || Dependency of
 |-
-| Part of || component / phase / subsystem || larger object
+| Supports || Supported by
+|-
+| Contradicts || Contradicted by
+|-
+| Refines || Refined by
+|-
+| Derived from || Source of
 |}
 
-These are modeling guidance, not metaphysical laws. If real content requires broader use, refine the property definition rather than silently violating it.
+For every entry, the schema sets <code>derive_inverse_assertion</code> to <code>false</code>. These definitions are '''metadata for potential presentation or controlled processing'''; they do not establish that inverse-link rendering or automatic inverse writes have been implemented.
 
-== Relationship quality ==
+A displayed reverse label, a graph query result, and an additional persisted semantic assertion are three different things. No extra relationship should be written solely because an inverse phrase exists.
 
-For consequential edges, ask:
+== Semantics before inference ==
 
-* Is the relationship explicit in a source or inferred by BITwiki?
-* What evidence supports the edge?
-* Is direction correct?
-* Is the target at the right level of abstraction?
-* Is a weaker relation more honest?
-* Has the relation become stale after a page/schema revision?
-* Is the interface showing a stored edge or only a derived presentation of one?
+Some relations are symmetric in a particular logical model; others are directional. Some kinds of parthood permit transitivity; others do not. Causal, temporal and dependency chains may contain contextual qualifications.
 
-== Composition ==
-
-Multi-hop paths are powerful:
+BITwiki's eight properties do not, merely by existing, authorize general rules such as:
 
 <pre>
-Person → authored → Publication → supports → Concept
-Technology → implements → Protocol → depends on → Concept
-Project → produces → Dataset → supports → Claim
+A Depends on B, B Depends on C
+therefore A Depends on C
 </pre>
 
-But a query path is not automatically a valid logical deduction. The semantics of each edge determine what can be inferred from the path.
+The conclusion may be useful for a specific dependency analysis, but only if the relation's semantics and the relevant conditions justify it. The same applies to support, contradiction and refinement: do not treat multi-hop paths as proofs.
 
-== Source lineage ==
+A query can traverse recorded edges without asserting that its path is a logically valid deduction.
 
-Primary V1 source: [[BITwiki Relationship Types]], supplemented by [[BITwiki Relationship Pattern Catalog]], [[BITwiki Entity Types]], [[BITwiki Expanded Entity Types]], and [[BITwiki Provenance Model]].
+== What the current implementation checks ==
 
-Exact V1 source and history are preserved under <code>archive-v1/</code>.
+The eight relationship names and their inverse-display metadata appear in the repository schema and corresponding Lua data file. Their <code>Property:</code> pages declare Semantic MediaWiki type '''Page'''.
 
-See [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Semantic properties]], [[BITwiki:Provenance]], [[BITwiki:Programmable knowledge substrate]], and [[BITwiki:Lua architecture]].
+The current <code>Module:BITwiki/Compiler</code> validates knowledge-object identity fields—entity type, domain, epistemic status and provenance. It does '''not''' yet implement general relation-domain/range checking, graph inference, contradiction detection or inverse edge generation.
+
+Semantic MediaWiki property assertions can be written in page content and are intended to be durable graph state when the pages are published and parsed. Actual stored values, query behavior and live execution must be checked in the running wiki. Source presence and passing static validation do not certify those facts.
+
+== Quality checks for an edge ==
+
+Before asserting or retaining a consequential relationship:
+
+# Identify both source and target unambiguously.
+# Explain why the named relationship—not merely a weak association—holds.
+# Confirm direction and the intended level of abstraction.
+# Trace factual, causal or evidentiary claims to appropriate support.
+# Check whether the relation remains valid after a source, target or version changes.
+# Avoid automated inverse assertions or multi-hop deductions without independently justified semantics.
+# Where relevant, state domain, time, scope and uncertainty explicitly.
+
+A relationship is a claim made about the world or about documented knowledge; the graph does not certify that claim simply by storing it.
+
+== Extending the relationship vocabulary ==
+
+Relations such as ''Causes'', ''Located in'', ''Authored by'', ''Precedes'', and ''Instance of'' may be important in particular subjects. They are '''not among the eight current primary relationship properties'''. Do not use them as existing semantic properties until separately defined and implemented.
+
+A new relation needs a recurring use case, a clear definition, direction and examples, appropriate types, justified inference behavior if any, query tests, and a migration strategy for older assertions. Avoid automatically promoting domain-specific expressions to universal ontology rules.
+
+== Further reading ==
+
+* [https://www.w3.org/TR/skos-reference/ W3C — SKOS Reference] — distinctions among hierarchical, associative and mapping relationships.
+* [https://www.w3.org/TR/prov-o/ W3C — PROV-O] — derivation and attribution as explicit provenance relationships.
+* [https://www.semantic-mediawiki.org/wiki/Help:Property_page Semantic MediaWiki — Property pages] — representation of semantic property definitions.
+
+See [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Semantic properties]], [[BITwiki:Provenance]] and [[BITwiki:Interoperability]].
 
 [[Category:BITwiki architecture]]
-[[Category:BITwiki meta]]

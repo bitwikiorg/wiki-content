@@ -1,140 +1,171 @@
-{{Source status|status=V2 format|note=Default anatomy tested across one exemplar in each major domain. It is a starting grammar, not a mandatory checklist.}}
+= Page format =
 
-= V2 knowledge page format =
+'''A BITwiki article should explain its subject clearly, support consequential claims with inspectable sources, and expose meaningful qualifications without requiring the reader to understand the wiki's internal architecture.''' Page format is the editorial arrangement that makes those goals possible.
 
-A BITwiki page should be a coherent knowledge object first. Semantic metadata and [[BITwiki:Book Matter|Book Matter]] make it easier to retrieve, compare, transclude, and reuse without turning the article into a filesystem or a form to be completed.
+A page is a coherent knowledge object first. Semantic fields, [[BITwiki:Book Matter|Book Matter]], templates, and transclusion help organize it, but none should substitute for an accurate and readable account.
 
-== Admission and interdisciplinary knowledge quality ==
+== The subject determines the structure ==
 
-BITwiki supports a broad interdisciplinary general encyclopedia, centered on information and computation as an organizing perspective rather than an exclusionary topic filter. A scientific phenomenon, historical subject, philosophy, field, method or system can be a canonical article on its own merits. See [[BITwiki:Computational scope]].
+BITwiki is a broad interdisciplinary encyclopedia. Mathematics, biology, medicine, philosophy, history, engineering, linguistics and other fields need different methods of exposition. An article does not need to invent a computational mechanism to belong; it should accurately represent its actual subject.
 
-K01 reviews '''purpose, identity, evidence, useful content and appropriate knowledge integration'''. A page does not need a computer-like mechanism or a separate computational method to qualify. When claims actually concern computation or information processing, describe states, encodings, observables, methods, assumptions and limits as warranted. Keep scientific phenomena, computational models ''of'' those phenomena, and metaphors conceptually distinct.
+A mathematical theorem may benefit from a formal statement, proof, examples and limitations. An organism may need taxonomy, anatomy, ecology and evolutionary relationships. A historical event may require chronology, sources, competing accounts and consequences. A software system may need purpose, implementation, versions and verified behavior.
 
-== Canonical title versus neighboring concepts ==
+'''Use the structure the subject requires.''' A uniform checklist should not force empty sections, premature conclusions or invented explanations.
 
-The canonical title must identify the actual subject, not forcibly translate biology, chemistry, physics or another field into an algorithmic counterpart. Broad foundations and specialized methods can both be canonical and meaningfully linked. Before any genuine rename or merge, reconcile source material, redirects, Simple/Technical variants, semantic relationships, provenance and deployment dependencies. A green CI build is a technical check, not editorial or scientific certification.
+== Identify one canonical subject ==
 
-== Reader-depth surfaces ==
+The article title should name the actual subject rather than a category, portal, imagined computational equivalent or incidental aspect.
 
-Foundational public concepts use the depth convention defined in [[BITwiki:Readable depth and localization]]:
+Before starting or replacing an article, determine:
 
-* <code>Title/Simple</code> — Simple English orientation;
-* <code>Title</code> — canonical Core article;
-* <code>Title/Technical</code> — formal/practitioner depth.
+# Whether the subject already has a canonical page, redirect or closely overlapping treatment.
+# What distinguishes it from neighboring concepts or artifacts.
+# Whether the proposed title represents a phenomenon, theory, method, system, person, publication or another type of subject.
+# What evidence or argument supports the substantial claims.
+# Whether the material should form a complete article, improve an existing article, or remain a section within one.
 
-Use [[Template:Reading depth]] on all three surfaces. The depth pages are presentations of one concept identity, not separate ontological entities. Core owns the canonical concept title and semantic identity; Simple and Technical should normally avoid duplicating identity assertions unless a later query workflow demonstrates a need.
+A scientific phenomenon is not the same thing as a mathematical model of the phenomenon. A technical protocol is not the same thing as a particular implementation. The page should preserve such distinctions and link the related subjects where useful. See [[BITwiki:Ontology]] and [[BITwiki:Entity types]].
 
-Simple/Core/Technical are reading-depth states, not epistemic status, Domain, or Entity type. Frontier/open research belongs inside appropriately qualified Core/Technical sections rather than a fourth depth clone.
+== An effective article opening ==
 
-== Identity ==
+A reader should quickly learn:
 
-Use [[Template:Knowledge object]] for the deliberately small common identity surface:
+* '''What it is:''' a precise, intelligible identification or definition.
+* '''Why it matters:''' significance to inquiry, practice, history or human understanding.
+* '''What makes it distinctive:''' the key property, process, problem or disagreement that warrants a separate explanation.
+* '''How securely it is understood:''' qualification where a definition, explanation or result is contested.
 
-* entity type;
-* domain;
-* page-level epistemic status when meaningful;
-* concise provenance.
+For example, an article on [[Cell membrane]] should first identify the membrane's biological role before introducing specialist transport models. An article on [[Causality]] should distinguish causation from correlation while acknowledging that philosophical accounts of causation differ.
 
-The template is a baseline, not the complete semantic model. Optional dimensions belong only where they carry information. See [[BITwiki:Semantic properties]].
+Avoid opening with maintenance status, repository history, migration decisions, workflow identifiers or declarations that the page passed validation. Such information may belong in change history or project documentation; it does not teach the reader the subject.
 
-== Epistemic dimensions stay separate ==
+== Organizing the body ==
 
-V1 experimented with several tier systems that sometimes mixed evidentiary maturity, confidence, verification, lifecycle, and constitutional role. V2 keeps these jobs distinct.
+A commonly useful—but optional—sequence is:
 
 {| class="wikitable"
-! Dimension !! Question !! Typical representation
+! Section function !! Question it answers
 |-
-| '''Epistemic status''' || What is the present evidentiary standing? || Hypothetical, Emerging, Supported, Well-supported, Established, Disputed
+| '''Overview or definition''' || What is this?
 |-
-| '''Confidence rationale''' || Why should the reader rely on this assessment, and what would change it? || concise evidence/limitation rationale
+| '''Scope and context''' || Where does the term apply, and what meanings or boundaries are relevant?
 |-
-| '''Review status''' || What review or verification has actually occurred? || explicit operational state
+| '''Core concepts, structure or mechanism''' || How is the subject organized or explained, when a mechanism is appropriate?
 |-
-| '''Lifecycle status''' || Is this current, superseded, deprecated, archived, etc.? || maintenance state
+| '''Methods, examples or history''' || How is the concept investigated, illustrated or situated in time?
 |-
-| '''Provenance''' || Where did this knowledge come from and how did it reach this form? || source/lineage note or richer provenance structure
+| '''Applications and implications''' || What does understanding the subject enable, or what follows from it?
+|-
+| '''Evidence, limitations and disagreement''' || Which claims are supported, contested or limited to particular conditions?
+|-
+| '''References and related reading''' || Where can the reader check and pursue the account?
 |}
 
-Do not use <code>Archived</code> as an epistemic status, <code>Axiomatic</code> as evidence maturity, or a numerical confidence score merely because an older schema did so. Preserve those historical meanings in lineage while using the normalized V2 dimensions for current pages.
+Some subjects warrant a glossary, timeline, mathematical formalism, datasets, diagrams, implementation notes, comparisons or case studies. [[BITwiki:Book Matter]] names these distinct intellectual functions without requiring every one to become a separate page or template.
 
-=== Page-level versus claim-level standing ===
+Sections should be substantial and useful. Combining two roles is often better than creating empty headings merely for structural uniformity.
 
-A page-level status is an orientation, not a universal verdict over every sentence on the page.
+== Claims and source discipline ==
 
-For example, the basic concept of [[Causality]] is established subject matter while major philosophical analyses of causation remain disputed. The page can therefore carry an established descriptive standing while its '''Epistemic notes''' explicitly preserve disagreement about theories and interpretations.
+An article should distinguish observation, mathematical derivation, documented history, reasoned interpretation and speculative proposal. Where the inference matters, explain how the sources support it rather than attaching a bibliography that does not correspond to the prose.
 
-When a page contains materially different claim states:
+* Support important empirical and historical claims with appropriate identifiable sources.
+* Cite specific works, passages, datasets, tests or records where practical.
+* Attribute disputed or interpretive positions accurately and in proportion to their support.
+* State meaningful limitations, versions, populations and assumptions.
+* Use dates for claims that can change.
+* Do not represent a model, a plausible mechanism or a source quotation as direct proof of a stronger claim.
+* Do not invent citations, quantitative confidence or implementation results.
 
-* qualify the relevant claim or section directly;
-* preserve contradictory evidence or competing interpretations;
-* use [[Property:Confidence rationale|Confidence rationale]] where a rationale adds real value;
-* do not average heterogeneous claims into a fake page-wide number.
+A well-supported subject can contain disputed explanations. A page-level epistemic label must not erase this difference. See [[BITwiki:Evidence]], [[BITwiki:Claim validation]], [[BITwiki:Epistemic status]] and [[BITwiki:Uncertainty]].
 
-See [[BITwiki:Epistemics]], [[BITwiki:Epistemic status]], [[BITwiki:Evidence]], [[BITwiki:Provenance]], and [[BITwiki:Uncertainty]].
+== Reading depths represent one subject ==
 
-== Default concept anatomy ==
+BITwiki uses three source-level presentations for suitable public concepts:
 
-A small concept page normally begins with:
+{| class="wikitable"
+! Surface !! Editorial role
+|-
+| '''Simple''' — <code>Title/Simple</code> || An accurate low-prerequisite orientation using clear terms and examples.
+|-
+| '''Core''' — <code>Title</code> || The canonical general account, intelligible without forcing the reader into a specialist treatment.
+|-
+| '''Technical''' — <code>Title/Technical</code> || Formalism, detailed methods, implementation considerations, standards and advanced limitations when meaningful.
+|}
 
-# '''Overview''' — a fast orientation.
-# '''Definition''' — what the term means.
-# '''Scope & importance''' — why the distinction matters and where it applies.
-# '''Core concepts''' or '''Mechanism''' — the minimum structure required to understand it.
-# '''Examples''' — concrete cases.
-# '''Applications / implications''' — how the concept is used or what follows from it.
-# '''Epistemic notes''' — qualifications, competing definitions, scope limits, uncertainty, measurement caveats, or evidence boundaries.
-# '''References''' — source-bearing links.
+These are pedagogical presentations of the same subject, not three competing ontological identities. Source-level pages commonly use [[Template:Reading depth]] for navigation.
 
-This is not a mandatory list. Remove sections that do no work; add richer Book Matter when the subject requires it.
+Simple must not turn uncertain statements into facts. Technical must not contradict the Core definition. The unsuffixed Core page owns the canonical subject treatment; derivative presentations ordinarily should not repeat identity properties solely to satisfy a template.
 
-== Richer Book Matter ==
+'''Frontier research is not a fourth mandatory reading-depth page.''' Open questions, emerging hypotheses and unsettled evidence can be addressed explicitly within the appropriate Core or Technical account.
 
-See [[BITwiki:Book Matter]] for history, frameworks, methods, evidence/results, case studies, controversies, timelines/chrono-literacy, primary and secondary sources, bibliography, knowledge maps, implementation, limitations, criticism, and related concepts.
+Not every topic requires the same number of depth pages. Creating a nearly empty Technical page for a subject without meaningful advanced treatment adds maintenance without improving understanding. See [[BITwiki:Readable depth and localization]].
 
-Book Matter describes the semantic anatomy of content. It is not another classification axis.
+== Semantic identity is supplementary ==
 
-== Transclusion ==
+For a page using [[Template:Knowledge object]], the current source-controlled invocation accepts:
 
-Keep the canonical parent page readable. Promote a section to an independently addressable/transcluded object only when it has a real reuse case—for example, when another page, query, agent, or interface needs the references, mechanism, introduction, evidence, or other section independently.
+* <code>entity_type</code> — one of the defined primary types;
+* <code>domain</code> — the appropriate subject field or fields;
+* <code>status</code> — a defensible page-level epistemic standing;
+* <code>provenance</code> — a concise origin or transformation description.
 
-Modularity should increase reuse without fragmenting comprehension.
+'''All four are required when this template is invoked''': its current [[Module:Structure]]/compiler path diagnoses missing values. The template does not silently invent a type, standing or provenance.
 
-== Relationships ==
+This is a narrow metadata interface, not a complete article format, an admission certificate, or a validation of every sentence. An article may need nuanced claim-level discussion beyond its page-level standing. Where a meaningful page-level label cannot be justified, do not manufacture one to make the infobox appear complete; resolve the article's appropriate representation editorially.
 
-Use semantic relationships when they express a stable fact about how knowledge objects connect. Prefer the strongest relation that can be justified: <code>Implements</code>, <code>Part of</code>, <code>Depends on</code>, <code>Supports</code>, <code>Contradicts</code>, <code>Refines</code>, or <code>Derived from</code> before falling back to <code>Related to</code>.
+The compiler checks controlled identity values and required fields; it does not audit factual accuracy, citation quality, live deployment, or semantic assertions in every page. See [[BITwiki:Semantic properties]].
 
-See [[BITwiki:Relationships]] and [[BITwiki:Semantic properties]].
+== Linking and structured relations ==
 
-== Domain exemplars ==
+Ordinary MediaWiki links should connect concepts naturally within the text. Readers should not have to decode graph terminology to follow an explanation.
 
-The twelve small exemplars test whether this grammar works across different kinds of knowledge without forcing identical content:
+Typed semantic properties are different: <code>Implements</code>, <code>Part of</code>, <code>Depends on</code>, <code>Supports</code>, <code>Contradicts</code>, <code>Refines</code>, and <code>Derived from</code> state specific relationships. They require justification and appropriate direction; do not create them merely because two pages mention each other.
 
-* [[System boundary]] — Systems science
-* [[Hypothesis]] — Science
-* [[Cell membrane]] — Biology
-* [[Prime number]] — Mathematics
-* [[Causality]] — Philosophy
-* [[Version control]] — Technology
-* [[Resistor]] — Electronics
-* [[Energy efficiency]] — Energy
-* [[Safety factor]] — Engineering
-* [[pH]] — Chemistry
-* [[Momentum]] — Physics
-* [[Pulse]] — Medicine
+[[BITwiki:Navigation]] explains portals, categories and indices. These are discovery tools, not a replacement for accurate subjects or an ontology. See [[BITwiki:Relationships]].
 
-Their purpose is architectural validation as much as subject coverage. Mature articles may become substantially richer without abandoning the same distinctions.
+== Reusable content and composition ==
 
-== Editorial test ==
+An overview, definition, source note, mechanism or other useful piece of Book Matter may be independently maintained and [[BITwiki:Transclusion|transcluded]] when there is an actual reuse need.
 
-Before adding structure, ask what job it performs:
+The article must remain coherent for a reader even when its parts are sourced elsewhere. Reused material retains its original evidentiary limits, and the host should identify the context in which the material applies. Extraction must not inadvertently assign a fragment's semantic annotations to the whole host.
 
-* Does it improve understanding?
-* Does it preserve provenance or uncertainty?
-* Does it make knowledge retrievable, queryable, or transcludable?
-* Does it encode a stable relationship?
-* Does another real page or workflow need it?
+Separately maintained reading-depth explanations may legitimately use different wording to teach the same knowledge. Shared factual accuracy matters more than literal prose reuse.
 
-If not, leave it out.
+== Different page roles ==
+
+This format chiefly guides public subject articles in Main. Other pages have different jobs:
+
+* A '''BITwiki project page''' documents governance, editorial methods or architecture without pretending to be an encyclopedia article.
+* A '''Template''' defines reusable rendering or annotation behavior.
+* A '''Property''' documents a semantic attribute or relation.
+* A '''Portal''' is a reader-facing navigation view, not an additional kind of knowledge object.
+* A '''Help''' page provides practical instructions.
+* A '''research request''' records an identified coverage need but is not a finished article.
+
+Page role, entity type, category and domain should remain distinct. Where an article is revised or merged, preserve meaningful references, links, attribution and source history rather than simply changing the title.
+
+== Editorial review before publication ==
+
+Review a proposed page through the substance, not just its compliance with structure:
+
+# '''Identity:''' Is the subject distinct and accurately named?
+# '''Explanation:''' Can the intended reader understand the main claim and its significance?
+# '''Evidence:''' Do the cited materials support what is actually asserted?
+# '''Boundaries:''' Are disagreement, uncertainty, scope and time identified when relevant?
+# '''Composition:''' Do headings, media and reusable components aid comprehension?
+# '''Relations:''' Are links and semantic claims accurate rather than decorative?
+# '''Depth:''' Are Simple, Core and Technical presentations mutually consistent where they exist?
+# '''Maintenance:''' Can future editors trace the provenance and update the account coherently?
+
+Passing repository validation does not establish editorial acceptance or a successful deployment to the live MediaWiki installation. See [[BITwiki:Epistemic audit]].
+
+== Further reading ==
+
+* [https://www.mediawiki.org/wiki/Help:Formatting MediaWiki — Formatting] — basic wikitext article structure.
+* [https://www.mediawiki.org/wiki/Help:Templates MediaWiki — Templates] — reusable presentation and source composition.
+* [https://www.semantic-mediawiki.org/wiki/Help:Property_page Semantic MediaWiki — Property pages] — structured semantic annotations.
+
+See [[BITwiki:Book Matter]], [[BITwiki:Transclusion]], [[BITwiki:Contributing]], [[BITwiki:Organization]] and [[BITwiki:Computational scope]].
 
 [[Category:BITwiki architecture]]
-[[Category:BITwiki meta]]

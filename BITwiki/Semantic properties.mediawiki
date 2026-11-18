@@ -1,136 +1,130 @@
-{{Source status|status=current V2 implementation reference|note=Documents properties that actually exist in the V2 Property namespace. V1 Property Dictionary and SMW specifications remain design/source lineage, not claims about current implementation.}}
-
 = Semantic properties =
 
-This is the current V2 property dictionary.
+'''Semantic properties are named attributes and relationships that express information about BITwiki knowledge objects in a form suitable for querying and reuse.''' Each property has a purpose, a declared data type and a meaning that should remain stable across its uses.
 
-A property belongs here only when its meaning is stable enough to support repeated machine queries or relations. The list is intentionally smaller than V1's proposed property catalogs.
+In Semantic MediaWiki, a property may hold a value such as text or a link to another page. The existence of a property definition is not evidence that its values are accurate, populated across the corpus, or verified in a running installation.
 
-== Classification ==
+== Core descriptive properties ==
 
-{| class="wikitable"
-! Property !! Type !! Purpose
-|-
-| [[Property:Entity type|Entity type]] || Text || Primary ontological pattern of the knowledge object.
-|-
-| [[Property:Domain|Domain]] || Page/Text as implemented || Field/body of knowledge; separate from entity identity.
-|}
-
-== Epistemics / provenance ==
+Seven source-controlled properties describe identity, disciplinary context, evidentiary standing and documentation state.
 
 {| class="wikitable"
-! Property !! Type !! Purpose
+! Property !! Declared SMW type !! Meaning
 |-
-| [[Property:Epistemic status|Epistemic status]] || Text || Present evidentiary standing.
+| [[Property:Entity type|Entity type]] || Text || Primary kind of knowledge object; one of the twelve controlled values in the knowledge-object validator
 |-
-| [[Property:Confidence rationale|Confidence rationale]] || Text || Why the evidence justifies current reliance and what would change it.
+| [[Property:Domain|Domain]] || Text || Subject or disciplinary context, distinct from type, namespace and category
 |-
-| [[Property:Review status|Review status]] || Text || Actual review/verification state.
+| [[Property:Epistemic status|Epistemic status]] || Text || Evidentiary standing, using Hypothetical, Emerging, Supported, Well-supported, Established or Disputed
 |-
-| [[Property:Lifecycle status|Lifecycle status]] || Text || Active/superseded/deprecated/archived maintenance state.
+| [[Property:Confidence rationale|Confidence rationale]] || Text || Explanation of the support, limitations and circumstances that would change an assessment
 |-
-| [[Property:Provenance|Provenance]] || Text || Concise origin/lineage note where a full provenance graph is unnecessary.
+| [[Property:Review status|Review status]] || Text || What editorial or verification activity has occurred, independently of factual standing
+|-
+| [[Property:Lifecycle status|Lifecycle status]] || Text || Whether an artifact is active, superseded, deprecated or archived
+|-
+| [[Property:Provenance|Provenance]] || Text || Origin or material transformation context for the knowledge object
 |}
 
-These properties intentionally separate concepts that V1 sometimes combined into one tier or numeric score.
+These are '''different dimensions'''. For example, an archived publication can describe established scientific knowledge, while its review state can remain unverified. Neither lifecycle nor review status should be inserted into the epistemic-status property.
 
-== Relationships ==
+The six epistemic standing values are controlled in the repository schema. Review and lifecycle status pages describe example values, but those fields are '''not''' given equivalent compiler-enforced enumerations in the current source.
+
+== Core relationship properties ==
+
+Eight primary properties link knowledge objects. Each is declared with Semantic MediaWiki type '''Page'''.
 
 {| class="wikitable"
-! Property !! Type !! Meaning
+! Property !! Meaning
 |-
-| [[Property:Related to|Related to]] || Page || Material but semantically weak association.
+| [[Property:Related to|Related to]] || Relevant but semantically weak association
 |-
-| [[Property:Implements|Implements]] || Page || Concrete realization of a concept/method/protocol/design.
+| [[Property:Implements|Implements]] || Concrete realization of a concept, method, protocol or design
 |-
-| [[Property:Part of|Part of]] || Page || Constituent relationship to a larger whole.
+| [[Property:Part of|Part of]] || Constituent within a larger whole
 |-
-| [[Property:Depends on|Depends on]] || Page || Material directional dependency.
+| [[Property:Depends on|Depends on]] || Material directional dependency
 |-
-| [[Property:Supports|Supports]] || Page || Epistemically relevant support for a target claim/object.
+| [[Property:Supports|Supports]] || Evidentiary or argumentative support for another claim or object
 |-
-| [[Property:Contradicts|Contradicts]] || Page || Material conflict with a target claim/result/model.
+| [[Property:Contradicts|Contradicts]] || Material conflict between claims, results or interpretations
 |-
-| [[Property:Refines|Refines]] || Page || Improves/narrows/extends an earlier object with continuity.
+| [[Property:Refines|Refines]] || Continuity with an earlier model or account, plus substantive qualification or improvement
 |-
-| [[Property:Derived from|Derived from]] || Page || Material provenance/ancestry relationship.
+| [[Property:Derived from|Derived from]] || Material derivation or lineage from another knowledge object
 |}
 
-See [[BITwiki:Relationships]] for semantic guidance and limits on inference.
+Property type '''Page''' allows a value to refer to a wiki page; it does not by itself verify that the target exists, that the asserted edge is meaningful, or that inferences across several edges are valid. See [[BITwiki:Relationships]].
 
-== Property-design rules ==
+== Existing imported vocabulary entries ==
 
-=== One property, one job ===
+The source corpus also includes four imported-vocabulary property files: <code>foaf:homepage</code>, <code>foaf:knows</code>, <code>foaf:name</code> and <code>owl:differentFrom</code>. They are distinguished from the fifteen primary BITwiki properties above.
 
-Do not overload one field with several dimensions merely because the values are text.
+Imported descriptions and mappings should not be treated as proof that external ontology alignment, query federation, property constraints or inference has been implemented. Imported terms must be interpreted according to their documented meaning and any relevant local usage.
 
-For example:
+== How a property is recorded ==
+
+For example, wikitext on a page describing a particular implementation could include:
 
 <pre>
-Epistemic status = Established
-Lifecycle status = Archived
-Review status = Reviewed
+<nowiki>[[Entity type::Implementation]]
+[[Domain::Computer science]]
+[[Implements::Example protocol]]</nowiki>
 </pre>
 
-is meaningful. <code>Epistemic status = Archived</code> collapses evidentiary maturity and lifecycle.
+The first two examples assign Text values; the third asserts a Page relationship. These are illustrative annotations, not confirmation that the example page or target exists.
 
-=== Use the strongest honest semantic relation ===
+A dedicated <code>Property:</code> page describes the field and declares its data type through <code><nowiki>[[Has type::Text]]</nowiki></code> or <code><nowiki>[[Has type::Page]]</nowiki></code> as appropriate. Querying depends on correctly published annotations, the semantic store and the running wiki's configuration.
 
-If A implements B, use <code>Implements</code> rather than <code>Related to</code>. If the stronger claim cannot be justified, use the weaker relation.
+== Controlled identity and validation boundaries ==
 
-=== Do not encode display-only data as ontology ===
+The source-controlled <code>bitwiki-runtime-schema.json</code> lists twelve entity types, fifteen domain labels, six epistemic statuses and eight relationship metadata entries. Its Lua projection is <code>Module:BITwiki/Data/Schema</code>.
 
-Word counts, UI style, section order, decorative state, and other presentation concerns should not become semantic properties unless a real machine/query workflow needs them.
+<code>Template:Knowledge object</code> emits four fields when explicitly supplied: entity type, domain, epistemic status and provenance. Its <code>Module:Structure</code> wrapper invokes <code>Module:BITwiki/Compiler</code>, which checks that those fields are present and validates the controlled values for entity type, domain and status.
 
-=== Avoid duplicated MediaWiki-native state ===
+This checker '''does not''' certify the correctness of provenance, evaluate the truth of an epistemic label, test relation domain/range, or validate every other property in the namespace.
 
-MediaWiki already stores revision time, editor, page title, namespace, and history. Do not duplicate native data into SMW unless there is a concrete query/interoperability reason.
+=== Domain values require a distinct check ===
 
-=== Prefer relations over encoded strings ===
+The compiler parses comma-separated domain labels for controlled-vocabulary validation. However, the current template emits the entire supplied domain parameter through a '''single''' <code><nowiki>[[Domain::...]]</nowiki></code> Text-property annotation.
 
-When the target is a real wiki knowledge object, a Page relation is usually more useful than embedding its title in free text.
+Consequently, support for several individually queryable Domain values from one comma-separated template parameter '''has not been established by the source code'''. It requires a specific emission strategy and runtime query tests; checking that each label is allowed is not the same as storing separate semantic values.
 
-=== Do not create properties from documentation alone ===
+Until this behavior is verified or corrected, do not assert that every multiple-domain parameter produces distinct queryable domain annotations.
 
-The V1 Property Dictionary proposed dozens of fields. Some encoded durable distinctions; some duplicated native data; some reflected one historical workflow; many were never authored in <code>Property:</code> namespace.
+== Inverse labels are not stored inverse facts ==
 
-V2 requires a demonstrated use before promotion.
+The runtime schema records an inverse '''display label''' for each of the eight relationships, for example <code>Implements</code> / <code>Implemented by</code>. All entries explicitly set <code>derive_inverse_assertion</code> to <code>false</code>.
 
-== V1 property families under review ==
+These labels do not create a second semantic edge. Nor does the current identity compiler implement automatic relationship inference or inverse graph generation. Presentation, querying and persistence must be distinguished. See [[BITwiki:Relationships]].
 
-Potential future families include:
+== When to introduce a property ==
 
-* authorship / contribution;
-* dates where MediaWiki-native revision dates are insufficient;
-* external identifiers and interoperability mappings;
-* method / evidence structure;
-* location / participation;
-* project goals and outputs;
-* dataset schema/licensing;
-* more specific temporal relationships.
+A new property is warranted when it has:
 
-These are not rejected. They should be added through real content work so their cardinality, type, and meaning are validated against use.
+# A specific question or query that existing data cannot answer adequately.
+# A stable, explainable meaning with multiple legitimate examples.
+# An appropriate data type and clear handling of empty or multiple values.
+# A defensible direction for relations and an explicit policy on inferences, if applicable.
+# A plan to avoid duplication with existing properties or MediaWiki-native metadata.
+# Reconciliation of existing pages, templates and stored values where meanings would change.
+# Tests of emitted annotations, query results and relevant failure cases.
 
-== Change process ==
+Adding a property because an interface could display it is insufficient. Prefer source-backed information, meaningful relationships and small well-tested schemas over elaborate but semantically empty catalogs.
 
-For a new canonical property:
+== Source, runtime and interpretation ==
 
-# show multiple real use cases;
-# define one precise semantic job;
-# choose the correct SMW type;
-# specify allowed cardinality/constraints only where actually needed;
-# test queries;
-# document interaction with existing properties;
-# migrate legacy values deliberately;
-# add validation only after semantics are stable.
+Source-controlled property declarations and Lua tables document the repository's present implementation model. They do not, by themselves, establish what a deployed MediaWiki instance contains or which queries are operational.
 
-== Historical source ==
+For important semantic claims, review the exact property's definition, the page where it is asserted, the underlying supporting evidence and the behavior of the intended query. Static consistency checks and live data checks answer different questions.
 
-V1's [[BITwiki Property Dictionary]], [[SMW Property Definitions]], [[SMW Property Types Complete]], [[Epistemic Properties]], [[Relationship Types]], and related schema documents remain preserved in <code>archive-v1/</code>.
+== Further reading ==
 
-The exhaustive V1 implementation audit is important context: V1 documented a far larger property system than the four authored imported-vocabulary Property pages that actually existed. V2 intentionally makes implementation and documentation converge.
+* [https://www.semantic-mediawiki.org/wiki/Help:Property_page Semantic MediaWiki — Property pages] — property declaration and interpretation.
+* [https://www.semantic-mediawiki.org/wiki/Help:Changing_property_types Semantic MediaWiki — Changing property types] — consequences of changing stored property types.
+* [https://www.w3.org/TR/skos-reference/ W3C — SKOS Reference] — relationships in controlled concept vocabularies.
+* [https://www.w3.org/TR/prov-o/ W3C — PROV-O] — provenance and derivation representations.
 
-See [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Relationships]], and [[BITwiki:V1 implementation audit]].
+See [[BITwiki:Ontology]], [[BITwiki:Entity types]], [[BITwiki:Relationships]], [[BITwiki:Epistemics]] and [[BITwiki:Deployment prerequisites]].
 
 [[Category:BITwiki architecture]]
-[[Category:BITwiki meta]]

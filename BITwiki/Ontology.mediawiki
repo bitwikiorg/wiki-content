@@ -1,191 +1,109 @@
-{{Source status|status=source-reconciled canonical architecture|note=Reconciles V1 Entity Types, Page Types, Expanded Entity Types, Taxonomy Architecture, Relationship Types, Property Dictionary, Ontology Alignment Matrix, and related ontology writings while separating design intent from deployed V1 SMW objects.}}
-
 = Ontology =
 
-Ontology asks '''what kinds of things, processes, distinctions, and relationships BITwiki is representing'''.
+'''Ontology concerns what kinds of things a knowledge system represents, which distinctions it makes, and what relationships can hold among them.''' In philosophy, ontology examines questions of being and existence. In knowledge representation, an ontology makes a conceptual model explicit so that people and software can describe, connect, retrieve and evaluate information consistently.
 
-In V2, ontology is not a directory tree and not a list of page templates. It is the semantic model that lets knowledge objects remain meaningfully distinct while still connecting to one another.
+BITwiki's ontology is a model of knowledge, '''not a claim that the model exhausts reality'''. An entity type, category or semantic property can be useful without corresponding to a unique natural kind in every discipline. A classification must remain open to challenge when the evidence or purpose changes.
 
-== Types are lenses, not boxes ==
+== What BITwiki models ==
 
-The later V1 entity-type revisions state the principle clearly:
-
-'''Types are not discovered but constructed. They proliferate, merge, and speciate as our understanding deepens. The question is not “Is this the correct type?” but “Does this type help us understand?”'''
-
-V2 retains that position.
-
-A type is a stable recognition pattern that helps readers and machines reason about an object. It should earn its existence through use.
-
-Types may:
-
-* emerge from repeated knowledge patterns;
-* overlap conceptually;
-* acquire more specific subtypes;
-* merge when distinctions stop being useful;
-* retire when they constrain more than they enable.
-
-See [[BITwiki:Entity types]].
-
-== Ontology is not navigation ==
-
-V1 often used <code>Topic</code> simultaneously as:
-
-* a broad subject/domain;
-* a page type;
-* a hierarchy node;
-* a portal/navigation anchor.
-
-Those are useful functions, but they are different.
-
-V2 separates them:
+A BITwiki article can describe a phenomenon, idea, person, institution, dataset, method, technology or another subject. The page is a representation of that subject; the two should not be confused.
 
 {| class="wikitable"
-! Question !! Primitive
+! Question !! Representation !! Purpose
 |-
-| What kind of thing is this? || [[Property:Entity type|Entity type]] / ontology
+| What is this page principally about? || [[Property:Entity type|Entity type]] || Distinguishes kinds of knowledge objects
 |-
-| What field does it belong to? || [[Property:Domain|Domain]]
+| Which fields study or use it? || [[Property:Domain|Domain]] || Classifies disciplinary contexts independently of identity
 |-
-| How should a human browse it? || Category / Portal / index / outline
+| What claims connect it to other objects? || [[BITwiki:Relationships|Relationships]] || Makes explicitly meaningful graph connections
 |-
-| What reusable part of a page is this? || [[BITwiki:Book Matter|Book Matter]]
+| What evidence supports its account? || [[BITwiki:Evidence|Evidence]] and [[BITwiki:Sources|Sources]] || Grounds substantive claims
 |-
-| What is its evidentiary standing? || [[BITwiki:Epistemic status|Epistemic status]]
+| What remains uncertain or disputed? || [[BITwiki:Epistemic status|Epistemic status]] and [[BITwiki:Uncertainty|Uncertainty]] || Distinguishes support from limitations
 |-
-| How does it connect to another object? || [[BITwiki:Relationships|Relationship]]
+| How is the content composed and reused? || [[BITwiki:Book Matter|Book Matter]] and [[BITwiki:Transclusion|transclusion]] || Supports coherent modular authorship
+|-
+| How do readers find it? || Categories, portals, indices and searches || Provides navigation without changing what the subject is
 |}
 
-A Systems science portal can organize many types of objects without becoming their ontological parent.
+'''Entity type, domain, category, namespace and article structure are different dimensions.''' A subject can belong to several disciplines without being assigned several competing identities, and a portal can group different types without becoming their ontological parent.
 
-== Entity model ==
+== Types and boundaries ==
 
-The V1 family repeatedly stabilized around a useful distinction between abstract knowledge, concrete realization, organized effort, procedure, data, actors, events, publications, places, and technologies.
+The repository's controlled vocabulary currently recognizes twelve primary entity types: Concept, Method, Protocol, Implementation, Project, Dataset, Person, Organization, Event, Publication, Location and Technology. [[BITwiki:Entity types]] defines their meanings.
 
-V2 normalizes that family rather than freezing every V1 variant.
+Types help readers interpret an article and help tools recognize patterns across the corpus. They are '''conceptual commitments made for a purpose''', not proof of universal metaphysical boundaries. Some objects plausibly satisfy several descriptions. Choose the primary subject of the page, then express its other roles through accurate prose or separately modeled relationships.
 
-The current base vocabulary is documented in [[BITwiki:Entity types]]. It is intentionally extensible.
+For example, a scientific article about photosynthesis describes a biological phenomenon. A computational model of photosynthesis is a distinct representation with its own assumptions and methods. The fact that a phenomenon can be modeled does not make the phenomenon itself a computer. Both subjects can be legitimate and connected without conflating them.
 
-== Relationship model ==
+The boundary between Method and Protocol is similarly contextual: a method describes an approach, while a protocol prescribes a more specific procedure or set of interaction rules. A real system may instantiate a protocol and also be a technology or an implementation; the identity chosen should match what that particular page documents.
 
-Relationships transform isolated pages into a knowledge graph.
+== Relationships express meaning ==
 
-V1 proposed rich families including:
+An ontology becomes useful through the relationships it can state, not merely through a list of page types.
 
-* hierarchical / specialization;
-* implementation;
-* causal / enabling;
-* temporal;
-* part–whole / spatial;
-* epistemic support and contradiction;
-* attribution / contribution;
-* dependency and refinement.
+<pre>
+specific implementation → Implements → protocol
+research dataset       → Supports   → finding
+knowledge artifact     → Derived from → source
+subsystem              → Part of    → larger system
+</pre>
 
-V2 keeps relationship semantics explicit but introduces properties from demonstrated use rather than bulk-creating the entire historical dictionary. See [[BITwiki:Relationships]].
+These examples illustrate the intended meanings; they are not assertions that the corresponding wiki edges have already been created.
 
-== Properties are dimensions, not decoration ==
+An edge such as <code>Depends on</code> makes a stronger claim than <code>Related to</code>. Its direction and scope matter. Nor does a sequence of edges necessarily license a logical inference: an intermediate relation may be conditional, context-dependent or represent a different sense of the term. See [[BITwiki:Relationships]].
 
-V1's Property Dictionary contains many valuable semantic dimensions, but the exhaustive implementation audit shows that most were documentation/specification rather than authored <code>Property:</code> pages.
+== Ontology and navigation ==
 
-V2 therefore uses a smaller curated property surface whose meaning is documented before it becomes canonical. See [[BITwiki:Semantic properties]].
+Category hierarchies, subject portals and outlines help people browse knowledge. They need not reproduce an ontology's logical structure.
 
-== Taxonomy and faceting ==
+A category called ''Biology'' can include papers, organisms, methods, institutions, experiments and theoretical concepts. ''Biology'' is a domain or navigation grouping in this example, not an entity type shared by all those objects.
 
-V1 Taxonomy Architecture contains two competing impulses:
+Faceted discovery can combine independent dimensions such as domain, type, review standing and relationships. The value comes from preserving the distinctions rather than compressing them into a single hierarchy. See [[BITwiki:Navigation]].
 
-# a traditional tree with primary categories and stability rules;
-# later polyhierarchy, flexible boundaries, and faceted classification.
+== Models, processes and uncertainty ==
 
-V2 adopts the latter where knowledge demands it.
+Some subjects have contested boundaries: an evolving organization, a biological species concept, a system boundary, or a theory's proposed entity. BITwiki can document the different definitions, their evidence and their uses without fabricating one universally correct classification.
 
-Useful facets include:
+Process-oriented and relational approaches are important philosophical perspectives: what appears to be a stable object may also be understood through its transformations and interactions. This is a lens for inquiry, not a mandatory metaphysics for all articles.
 
-* domain / subject;
-* entity type;
-* epistemic standing;
-* time / lifecycle;
-* method;
-* scale;
-* application;
-* provenance or authorship when relevant.
+When a distinction is disputed, explain '''what''' is disputed and which model is being applied. A semantic label does not settle that question. See [[BITwiki:Uncertainty]].
 
-These facets should remain independent rather than becoming one giant category tree.
+== From conceptual model to implemented schema ==
 
-'''Category hierarchy is a navigation graph, not the ontology.'''
+BITwiki uses Semantic MediaWiki to express page attributes and page-to-page relations in wikitext. In the source repository, <code>bitwiki-runtime-schema.json</code> defines the controlled entity-type, domain and epistemic-status vocabularies and the eight named relationship metadata entries. A Lua projection in <code>Module:BITwiki/Data/Schema</code> supplies the controlled values to the knowledge-object validator.
 
-== Boundaries are explicit ==
+The current <code>Template:Knowledge object</code> can emit four explicit attributes—entity type, domain, epistemic status and provenance—while <code>Module:BITwiki/Compiler</code> checks their required values and supported controlled terms. This is '''bounded identity validation''', not a general theorem prover, ontology reasoner or guarantee of scientific accuracy.
 
-Ontology is partly the art of drawing boundaries.
+A source-controlled property or module demonstrates repository implementation intent. The behavior of a running wiki, stored query results, inverse graph projections and external integrations require separate runtime checks before they can be described as operational.
 
-For important entities, ask:
+See [[BITwiki:Semantic properties]] for the property definitions and constraints.
 
-* What is inside this object and what is outside?
-* Is it an object, process, event, relation, or useful abstraction?
-* Is the boundary intrinsic to the domain or chosen for a practical purpose?
-* What changes if the boundary is moved?
+== Evolution and interoperability ==
 
-The [[System boundary]] domain exemplar demonstrates this directly.
+A useful ontology changes carefully. A new type or relation should address a recurring modeling need, have a precise meaning and at least two credible examples, improve a real query or representation, and identify how existing annotations would be interpreted or migrated.
 
-== Process and relation ==
+External vocabularies require equally careful alignment. The [https://www.w3.org/TR/skos-reference/ W3C SKOS Reference] distinguishes broader, narrower, related, close-match and exact-match links in knowledge organization. These are not automatically interchangeable with BITwiki's properties. The [https://www.w3.org/TR/prov-o/ W3C PROV-O recommendation] offers a model for provenance entities, agents and activities; citing it does not assert that BITwiki has deployed an equivalent graph.
 
-V1 often described entities as temporary stabilizations in processes and relations rather than isolated substances. V2 preserves that process-relational orientation as a useful lens without requiring it as the only metaphysics available to all domains.
+Meaning takes priority over superficial label agreement. An external mapping should explain what is equivalent, what differs and what information would be lost. See [[BITwiki:Interoperability]].
 
-An Organization may be modeled as an entity while also being understood as an evolving process of people, roles, resources, decisions, and outputs.
+== Principles for ontological change ==
 
-== Ontological uncertainty ==
+* Classify the actual subject rather than manufacturing an identity to satisfy a template.
+* Keep disciplinary membership, navigation and epistemic judgment separate from entity identity.
+* Prefer relationships with specific, defensible meanings.
+* Distinguish facts represented in the wiki from inferences or presentation-only transformations.
+* Make conceptual disagreements explicit instead of hiding them inside a schema.
+* Preserve meaningful identifiers, prior formulations and provenance when definitions evolve.
+* Validate technical behavior separately from the philosophical or editorial value of the model.
 
-A classification can itself be uncertain.
+== References and further reading ==
 
-Examples:
+* [https://www.w3.org/TR/skos-reference/ W3C — SKOS Simple Knowledge Organization System Reference] — concept schemes and semantic mapping relationships.
+* [https://www.w3.org/TR/prov-o/ W3C — PROV-O: The PROV Ontology] — provenance representation and derivation.
+* [https://www.semantic-mediawiki.org/wiki/Help:Property_page Semantic MediaWiki — Property pages] — defining semantic attributes in MediaWiki.
 
-* disagreement about whether a phenomenon constitutes a distinct natural kind;
-* fuzzy boundaries between Method and Protocol;
-* a Technology that is also the implementation of an abstract Concept;
-* multiple theories positing different underlying entities.
-
-Do not hide these cases by forcing a false single answer. See [[BITwiki:Uncertainty]].
-
-== Interoperability ==
-
-V1's Ontology Alignment Matrix mapped BITwiki concepts to Wikidata, Schema.org, Dublin Core, and FOAF and correctly emphasized mapping by meaning rather than label.
-
-V2 preserves the alignment principles:
-
-* exact match;
-* narrower / broader match;
-* close match;
-* related but non-equivalent;
-* explicit information loss.
-
-External alignment is valuable only when semantic differences remain visible. BITwiki-specific epistemic/provenance dimensions should not be discarded simply because another vocabulary lacks equivalents.
-
-The specific V1 Q-IDs, property mappings, defaults, and import rules are historical design evidence and must be revalidated before production use.
-
-== Knowledge beyond its containers ==
-The historical ''Holographic Charter'' described categories as provisional containers and knowledge as something that can flow between them. The operational insight is that a namespace, category, schema or interface is a representation of knowledge, not the reality represented. A taxonomy can be useful today and misleading tomorrow without either fact making the underlying knowledge disappear.
-
-We preserve clear types and stable identifiers where they matter, while remaining capable of revising a container that obscures relations or makes distinctions harder to inspect. This is an argument for semantically accountable evolution, not for removing classification or pretending every model is equivalent. See [[BITwiki:Human-AI symbiosis]] for the attributed historical metaphor.
-
-== Ontology evolution ==
-
-A proposed new type or relation should normally demonstrate:
-
-# a recurring knowledge need;
-# more than one real example;
-# a meaning that existing primitives cannot express cleanly;
-# useful queries/navigation/reasoning enabled by the distinction;
-# clear interaction with existing terms;
-# a migration path if it changes existing semantics.
-
-Do not create a type because a taxonomy can be made more detailed. Create it when the distinction carries useful information.
-
-== Source family ==
-
-Primary V1 sources include [[BITwiki Entity Types]], [[BITwiki Entity Types.REVISED]], [[BITwiki Expanded Entity Types]], [[BITwiki Page Types]], [[BITwiki Taxonomy Architecture]], [[BITwiki Relationship Types]], [[BITwiki Property Dictionary]], [[BITwiki Ontology Alignment Matrix]], [[BITwiki Semantic Patterns]], and related alignment/specification documents.
-
-Exact source and revision history remain in <code>archive-v1/</code>.
-
-See [[BITwiki:Foundational triad]], [[BITwiki:Organization]], [[BITwiki:Entity types]], [[BITwiki:Relationships]], [[BITwiki:Semantic properties]], and [[BITwiki:V1 category migration]].
+See [[BITwiki:Entity types]], [[BITwiki:Relationships]], [[BITwiki:Semantic properties]] and [[BITwiki:Organization]].
 
 [[Category:BITwiki architecture]]
-[[Category:BITwiki meta]]
 [[Category:Philosophy]]

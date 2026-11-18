@@ -2,35 +2,30 @@
 
 <!-- Describe the real problem solved. Avoid generic coverage-expansion justifications. -->
 
-## K01 — computation/information relevance (new or substantially expanded Core subjects)
+## K01 — editorial purpose and quality (new or substantially revised Core subjects)
 
-<!-- If no Core concepts are being created/expanded, write "Not applicable". Otherwise identify the intended lens:
-1. Mechanism-identified information processing: specify physical/symbolic states, signals, transformations, memory/feedback/control and supporting evidence.
-2. Computational or measurement method: specify data, observable quantities, units, algorithm/model, assumptions and validity limits.
-3. Metaphor only: NOT sufficient to justify standalone canon.
--->
+<!-- BITwiki is an interdisciplinary general encyclopedia, not limited to computational topics.
+For a scope-irrelevant change, write "Not applicable". Do not invent a computation analogy. -->
 
-- **Type:** mechanism, formal foundation, computational/measurement method, applied field, phenomenon-as-case-study, or metaphor (the last alone is insufficient).
-- **Proposed canonical title and established scientific/technical use of that term:**
-- **Lens / role:**
-- **Concrete mechanism or method and system boundary:**
-- **What is represented, measured, transformed, inferred or controlled?**
-- **Why does this deserve its own canonical concept rather than a contextual section, existing page or knowledge request?**
-- **Evidence and uncertainty for the connection:**
-- **If this is a broad real-world phenomenon, why is the standalone concept needed instead of a case study in a named computational method?**
-- **What alternative title/identity was considered?**
-- **Human editorial decision / unresolved owner decision:**
+- **Canonical subject and role:** field, phenomenon, historical concept, formal model, mechanism, method, interpretation, etc.
+- **Purpose and standalone knowledge value:**
+- **Evidence, provenance, known limitations or uncertainty:**
+- **Existing pages / potential duplication / title accuracy:**
+- **Meaningful relationships and other domain connections (if useful):**
+- **Computational details only if this page actually makes computational claims:**
+- **Reader depths, affected links and preservation/migration impact:**
+- **Human review or unresolved substantive decisions:**
 
-Do not assert that an organism, ecosystem, planet or universe is a computer solely because it can be simulated or analyzed. A claim's scientific credibility and its relevance to BITwiki are separate decisions. Read [BITwiki computational scope](../BITwiki/Computational%20scope.mediawiki).
+The existence of a computational simulation does not mean the modeled subject is literally a computer; this epistemic distinction is **not** a restriction against covering that subject. See [BITwiki interdisciplinary scope](../BITwiki/Computational%20scope.mediawiki).
 
 ## Verification and review
 
 - [ ] Existing canonical identities, wikitext, relationships and depth pages are preserved or changes are explained.
 - [ ] Relevant claims are supported by appropriate evidence and uncertainty is retained.
-- [ ] CI/staging results checked; no claim that a green build proves editorial K01 or live MediaWiki functionality.
+- [ ] CI/staging results checked; no claim that a green build proves scientific/editorial quality or live MediaWiki functionality.
 - [ ] Redirects, dependencies and historical provenance reviewed where a page is renamed, archived or re-scoped.
-- [ ] A method or applied-science article title denotes its actual technical subject and was not derived solely by adding “computational” to an unrelated phenomenon.
-- [ ] When domain evidence is inconclusive, the author documented the uncertainty and escalated a real canonical-identity choice rather than guessing or performing a bulk rename.
+- [ ] Subject titles are accurate and do not force a legitimate domain concept into a different computational-method identity.
+- [ ] When evidence is inconclusive, uncertainty is documented and no unsupported claim or bulk rename is made.
 
 ## Deployment boundary
 

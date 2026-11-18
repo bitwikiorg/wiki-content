@@ -80,17 +80,15 @@ A dedicated <code>Property:</code> page describes the field and declares its dat
 
 The source-controlled <code>bitwiki-runtime-schema.json</code> lists twelve entity types, fifteen domain labels, six epistemic statuses and eight relationship metadata entries. Its Lua projection is <code>Module:BITwiki/Data/Schema</code>.
 
-<code>Template:Knowledge object</code> emits four fields when explicitly supplied: entity type, domain, epistemic status and provenance. Its <code>Module:Structure</code> wrapper invokes <code>Module:BITwiki/Compiler</code>, which checks that those fields are present and validates the controlled values for entity type, domain and status.
+<code>Template:Knowledge object</code> can emit four optional fields when explicitly supplied: entity type, domain, epistemic status and provenance. <code>Module:Structure</code> delegates to <code>Module:BITwiki/Compiler</code>. Unregistered entity types or domains produce maintenance review signals rather than publication-blocking errors; an explicitly invalid epistemic-status value remains an error and is not emitted as a semantic standing.
 
 This checker '''does not''' certify the correctness of provenance, evaluate the truth of an epistemic label, test relation domain/range, or validate every other property in the namespace.
 
 === Domain values require a distinct check ===
 
-The compiler parses comma-separated domain labels for controlled-vocabulary validation. However, the current template emits the entire supplied domain parameter through a '''single''' <code><nowiki>[[Domain::...]]</nowiki></code> Text-property annotation.
+The compiler parses comma-separated domain labels separately. <code>Module:Structure</code> now generates a separate <code>Domain</code> Text-property annotation for each unique supplied label, rather than concatenating the labels inside one assertion. A static regression test checks the generated annotation strings and the runtime module's deduplication.
 
-Consequently, support for several individually queryable Domain values from one comma-separated template parameter '''has not been established by the source code'''. It requires a specific emission strategy and runtime query tests; checking that each label is allowed is not the same as storing separate semantic values.
-
-Until this behavior is verified or corrected, do not assert that every multiple-domain parameter produces distinct queryable domain annotations.
+This is a '''source-level correction'''. Whether the target installation stores and queries the values as intended must still be confirmed by running MediaWiki/SMW parser and query tests.
 
 == Inverse labels are not stored inverse facts ==
 

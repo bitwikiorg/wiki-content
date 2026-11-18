@@ -6,7 +6,7 @@ Types are chosen to support clear knowledge representation. They are not exhaust
 
 == Current types ==
 
-The following twelve values form the controlled entity-type vocabulary used by BITwiki's knowledge-object validator.
+The following twelve values are the reviewed baseline entity-type vocabulary used by BITwiki's knowledge-object validator. A genuinely new type may be used provisionally and flagged for editorial normalization; it is not automatically a canonical addition, and a valid subject should not be rejected merely because this list is incomplete.
 
 {| class="wikitable"
 ! Type !! Meaning !! Illustrative subject
@@ -98,7 +98,7 @@ This describes the source-controlled template path. It does not imply that every
 
 Some disciplines may benefit from narrower types such as Species, Algorithm, Chemical substance, Biological process, Software or Instrument. These are '''possible refinements, not currently supported base values'''.
 
-A proposed type should answer:
+A proposed canonical type should answer:
 
 * Does it describe a stable distinction across multiple real knowledge objects?
 * Is it different from a Domain, Category, relationship, or document section?
@@ -106,7 +106,7 @@ A proposed type should answer:
 * Are its boundaries and overlaps with existing types explainable?
 * Can existing data be reconciled without silently changing meaning?
 
-Adding a type requires updating the controlled schema and its Lua projection, reviewing affected annotations, and validating the resulting queries and documentation. Until adopted, use the closest accurate existing type and explain any important nuance in prose.
+Promoting a type into the reviewed baseline requires updating the controlled schema and its Lua projection, reviewing affected annotations, and validating the resulting queries and documentation. Until adopted, a new explicitly supplied type is flagged for review through [[:Category:BITwiki semantic vocabulary review]]; authors should not substitute a misleading existing label merely to conform.
 
 Types may become more specialized, merge or be retired as understanding develops. Such changes should preserve provenance and avoid destroying meaningful distinctions merely to simplify a taxonomy.
 

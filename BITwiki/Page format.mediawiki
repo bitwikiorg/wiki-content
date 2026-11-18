@@ -110,11 +110,11 @@ For a page using [[Template:Knowledge object]], the current source-controlled in
 * <code>status</code> — a defensible page-level epistemic standing;
 * <code>provenance</code> — a concise origin or transformation description.
 
-'''All four are required when this template is invoked''': its current [[Module:Structure]]/compiler path diagnoses missing values. The template does not silently invent a type, standing or provenance.
+'''The four parameters are optional.''' Omit a value rather than invent a type, domain, source history, or page-wide epistemic standing. Unregistered entity types and domains are retained for explicit vocabulary review rather than blocking the subject. An invalid asserted epistemic status still produces a validation error.
 
-This is a narrow metadata interface, not a complete article format, an admission certificate, or a validation of every sentence. An article may need nuanced claim-level discussion beyond its page-level standing. Where a meaningful page-level label cannot be justified, do not manufacture one to make the infobox appear complete; resolve the article's appropriate representation editorially.
+This is a narrow metadata interface, not a complete article format, an admission certificate, or a validation of every sentence. An article may need nuanced claim-level discussion beyond its page-level standing. Where a meaningful page-level label cannot be justified, omit it and explain any significant claim-level distinctions in the article.
 
-The compiler checks controlled identity values and required fields; it does not audit factual accuracy, citation quality, live deployment, or semantic assertions in every page. See [[BITwiki:Semantic properties]].
+The compiler checks supplied metadata: it flags unregistered types/domains for review and rejects an explicitly invalid epistemic standing. Optional missing values are not errors. It does not audit factual accuracy, citation quality, live deployment, or semantic assertions in every page. See [[BITwiki:Semantic properties]].
 
 == Linking and structured relations ==
 

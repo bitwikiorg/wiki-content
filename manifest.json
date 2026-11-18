@@ -123,7 +123,10 @@
     "controlled_domains_required": 13,
     "domain_exemplar_coverage_required": true,
     "semantic_identity_validation": true,
-    "knowledge_object_fields_required": ["entity_type", "domain", "status", "provenance"],
+    "knowledge_object_fields_required": [],
+    "knowledge_object_fields_optional": ["entity_type", "domain", "status", "provenance"],
+    "unregistered_type_domain_policy": "review-only; not a corpus admission failure",
+    "invalid_explicit_epistemic_status_policy": "error",
     "runtime_schema_audit": {
       "generator": "scripts/audit_runtime_schema.py",
       "output": "v2-runtime-schema-audit.json",

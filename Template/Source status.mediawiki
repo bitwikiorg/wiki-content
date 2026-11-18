@@ -1,6 +1,15 @@
-<includeonly><div class="mw-message-box mw-message-box-notice"><strong>Source status:</strong> {{{status|unspecified}}}{{#if:{{{note|}}}| — {{{note}}}}}</div></includeonly><noinclude>
+<includeonly></includeonly><noinclude>
 = Source status =
-Marks source/reconciliation status during V2 migration without pretending provenance is stronger than it is.
-<pre>{{Source status|status=source-grounded|note=Short provenance note.}}</pre>
+
+Legacy source/reconciliation provenance marker. This template intentionally emits '''no public notice''' when transcluded.
+
+The original status and note remain in the calling page's wikitext and revision history for editorial traceability; they are not a substitute for a reader-facing citation, source explanation, epistemic qualification, or a genuine maintenance notice.
+
+Do not use this template for reader-facing quality judgments, article admission, or a status that should be made visible to the public. For genuine editorial issues, use accurate prose or an appropriate dedicated review surface instead.
+
+<pre>
+{{Source status|status=historical marker|note=Internal editorial provenance}}
+</pre>
+
 [[Category:BITwiki templates]]
 </noinclude>

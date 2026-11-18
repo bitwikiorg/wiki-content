@@ -1,41 +1,21 @@
 -- Module:BITwiki/Compiler
--- Deterministic normalization/type-checking layer for BITwiki knowledge objects.
+-- Validate explicit identity assertions without treating incomplete editorial
+-- metadata or a provisional classification as a reason to reject a subject.
 
 local Core = require("Module:BITwiki/Core")
 local Schema = mw.loadData("Module:BITwiki/Data/Schema")
 
 local p = {}
-local REQUIRED = {"entity_type", "domain", "status", "provenance"}
 
-local function validateRequired(record, diagnostics)
-    for _, field in ipairs(REQUIRED) do
-        if record[field] == "" then
-            Core.appendDiagnostic(
-                diagnostics,
-                "required-field",
-                field,
-                field .. " is required",
-                "error"
-            )
-        end
-    end
-end
-
-local function validateControlled(field, value, vocabulary, diagnostics)
+local function validateControlled(field, value, vocabulary, diagnostics, severity)
     if value ~= "" and not vocabulary[value] then
         Core.appendDiagnostic(
             diagnostics,
-            "unsupported-value",
+            severity == "warning" and "vocabulary-review" or "unsupported-value",
             field,
-            "unsupported value '" .. value .. "'",
-            "error"
+            "unregistered " .. field .. " value '" .. value .. "'",
+            severity or "error"
         )
-    end
-end
-
-local function validateDomains(domains, diagnostics)
-    for _, domain in ipairs(domains) do
-        validateControlled("domain", domain, Schema.domain, diagnostics)
     end
 end
 
@@ -52,13 +32,28 @@ function p.compileKnowledgeObject(args)
     }
     local diagnostics = {}
 
-    validateRequired(record, diagnostics)
-    validateControlled("entity_type", record.entity_type, Schema.entity_type, diagnostics)
-    validateDomains(domains, diagnostics)
-    validateControlled("status", record.status, Schema.status, diagnostics)
+    -- The source-controlled vocabulary is a reviewed baseline, not an
+    -- encyclopedia admission gate. Explicit novel types/domains are flagged
+    -- for editorial normalization rather than silently replaced or rejected.
+    validateControlled("entity_type", record.entity_type, Schema.entity_type, diagnostics, "warning")
+    for _, domain in ipairs(domains) do
+        validateControlled("domain", domain, Schema.domain, diagnostics, "warning")
+    end
+
+    -- Status is optional, but when asserted must retain its precise meaning.
+    -- In particular, "Verified" and "Archived" are not evidentiary standings.
+    validateControlled("status", record.status, Schema.status, diagnostics, "error")
+
+    local has_errors = false
+    for _, diagnostic in ipairs(diagnostics) do
+        if diagnostic.severity == "error" then
+            has_errors = true
+            break
+        end
+    end
 
     return {
-        ok = #diagnostics == 0,
+        ok = not has_errors,
         schema_version = Schema.schema_version,
         record = record,
         diagnostics = diagnostics,

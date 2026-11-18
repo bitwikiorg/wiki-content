@@ -24,9 +24,9 @@ The archival snapshot of the former public V1 corpus was verified at capture tim
 * File revision metadata;
 * namespace and maintenance-report state.
 
-The fidelity audit reports no current-source mismatch.
+The capture-time fidelity check was reported as matching the then-readable source. This is historical audit evidence, not a check reproduced in this repository checkout or proof of the current live deployment.
 
-This does '''not''' mean every body of every page ever deleted from V1 is publicly recoverable. The deletion log contains historical deletions whose bodies require privileged deleted-revision access or older backups. See <code>v1-fidelity-audit.json</code>, <code>v1-deleted-content-audit.json</code>, and <code>v1-deleted-unresolved.json</code>.
+This does '''not''' mean every body of every page ever deleted from V1 is publicly recoverable. The deletion log contains historical deletions whose bodies require privileged deleted-revision access or older backups. For reproducibility, see <code>scripts/verify_v1_fidelity.py</code> and <code>.github/workflows/verify-v1-fidelity.yml</code>. The generated fidelity-report JSON is not tracked here. The deletion records <code>v1-deleted-content-audit.json</code> and <code>v1-deleted-unresolved.json</code> are tracked.
 
 == Editorial rule ==
 

@@ -12,57 +12,52 @@
 | {{#if:{{{entity_type|}}}|[[Entity type::{{{entity_type}}}]]|''Not specified''}}
 |-
 ! Domain
-| {{#if:{{{domain|}}}|[[Domain::{{{domain}}}]]|''Not specified''}}
+| {{#if:{{{domain|}}}|{{#invoke:Structure|renderDomains|domain={{{domain}}}}}|''Not specified''}}
 |-
 ! Epistemic status
-| {{#if:{{{status|}}}|[[Epistemic status::{{{status}}}]]|''Not specified''}}
+| {{#if:{{{status|}}}|{{#invoke:Structure|renderStatus|status={{{status}}}}}|''Not specified''}}
 |-
 ! Provenance
 | {{#if:{{{provenance|}}}|[[Provenance::{{{provenance}}}]]|''Not specified''}}
 |}
 </includeonly>
+
 <noinclude>
 = Knowledge object =
 
-Lightweight V2 semantic infobox for the common identity fields used across knowledge pages.
+Optional, explicit semantic metadata infobox for BITwiki public knowledge objects.
 
 <pre>
 {{Knowledge object
  |entity_type=Concept
- |domain=Biology
- |status=Established
- |provenance=V2 public corpus
+ |domain=Biology, Philosophy
+ |status=
+ |provenance=
 }}
 </pre>
 
-== Explicit identity only ==
+All four parameters may be omitted when the author cannot justify a value. Empty fields display ''Not specified'' without emitting semantic assertions. Do not invent a page-wide epistemic standing or provenance merely to complete an infobox. Consequential claims still require appropriate support and qualification in the article itself.
 
-Identity fields intentionally have '''no semantic defaults'''. Omitting a parameter displays <code>Not specified</code> and emits no corresponding semantic assertion.
+== Fields and semantics ==
 
-This prevents missing information from silently becoming claims such as <code>Concept</code>, <code>Established</code>, <code>Unspecified</code>, or <code>V2 public corpus</code>.
+* <code>entity_type</code> — primary type of the page's subject, when meaningful. The existing vocabulary is a reviewed baseline, not a limit on which subjects may be covered.
+* <code>domain</code> — one or more subject fields separated by commas. <code>Module:Structure</code> emits distinct <code>Domain</code> Text-property annotations for each unique supplied value; this should be verified against the live semantic store before asserting production query behavior.
+* <code>status</code> — optional epistemic standing. When supplied, it must be one of Hypothetical, Emerging, Supported, Well-supported, Established, or Disputed. The template deliberately does not store unsupported status labels.
+* <code>provenance</code> — a concise source/origin or transformation note when useful. Ordinary article citations and page history are not replaced by this field.
 
-Repository validation requires instantiated <code>Knowledge object</code> calls to provide explicit <code>entity_type</code>, <code>domain</code>, <code>status</code>, and <code>provenance</code>, and checks controlled values for Entity type, Domain, and Epistemic status.
+Unregistered entity types or domains remain explicitly recorded as supplied and are flagged for review in [[:Category:BITwiki semantic vocabulary review]]. They are not silently remapped to a misleading existing type or used to deny a valid article. Maintainers should check for duplicates and justify vocabulary promotion rather than allowing unchecked synonym growth.
 
-<code>Module:Structure</code> now performs the same bounded validation at MediaWiki render time. This is a runtime backstop for direct wiki edits, not a second metadata system: valid calls emit nothing extra, while malformed calls produce an explicit validation error and maintenance category.
+An invalid epistemic-status value produces a validation error in [[:Category:BITwiki semantic validation errors]]. Omitting a field is not an error.
 
-This template is a baseline identity surface, not the complete BITwiki schema and not a replacement for every historical V1 infobox parameter.
+== Implementation boundaries ==
 
-V1's heavily used [[Template:Infobox]] and larger proposed property catalogs are preserved as implementation and design lineage. The live compatibility template is source-controlled beside V2 templates; new V2 knowledge objects should use this template unless a richer stable surface is justified.
+<code>Template:Knowledge object</code> invokes <code>Module:Structure</code>, which delegates normalized field checks to <code>Module:BITwiki/Compiler</code> and reads the current controlled vocabulary from the source-controlled Lua schema projection.
 
-Do not add optional dimensions merely to fill an infobox. When they materially improve the knowledge object, use the dedicated properties documented in [[BITwiki:Semantic properties]], including:
+The fields are a supplementary editorial and query surface, not a certificate of article accuracy or a universal schema for every discipline. The module does not prove cited claims, test all relationships, or establish that the target wiki has been deployed.
 
-* [[Property:Confidence rationale|Confidence rationale]] — why the present evidence supports the stated standing and what would change it;
-* [[Property:Review status|Review status]] — what review or verification has actually occurred;
-* [[Property:Lifecycle status|Lifecycle status]] — active, superseded, deprecated, archived, or other maintenance state;
-* semantic relationships such as [[Property:Implements|Implements]], [[Property:Part of|Part of]], [[Property:Depends on|Depends on]], [[Property:Supports|Supports]], and [[Property:Contradicts|Contradicts]].
+The <code>status</code> shown here is at most a page-level orientation. Contested interpretations, unknown mechanism, narrower evidence and contrary findings must be explained at claim or section level when consequential.
 
-== Epistemic status is not a universal verdict ==
-
-The page-level <code>status</code> describes the evidentiary standing of the page's principal descriptive knowledge at the level where that is meaningful. It does not imply that every interpretation, application, mechanism, or theory mentioned on the page has the same standing.
-
-Use claim- or section-level qualification in the prose when a page contains mixed evidence or genuine dispute. Do not manufacture numerical confidence or review status from the page-level label.
-
-See [[BITwiki:Page format]], [[BITwiki:Epistemics]], [[BITwiki:Epistemic status]], [[BITwiki:MediaWiki substrate]], and [[BITwiki:V1 subject and composition migration]].
+See [[BITwiki:Page format]], [[BITwiki:Entity types]], [[BITwiki:Semantic properties]], [[BITwiki:Epistemic status]], and [[BITwiki:Epistemics]].
 
 [[Category:BITwiki templates]]
 </noinclude>

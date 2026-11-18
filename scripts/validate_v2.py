@@ -81,7 +81,7 @@ MAGIC_WORDS = {
 ALLOWED_ENTITY_TYPES = set(RUNTIME_SCHEMA["entity_types"])
 ALLOWED_DOMAINS = set(RUNTIME_SCHEMA["domains"])
 ALLOWED_EPISTEMIC_STATUSES = set(RUNTIME_SCHEMA["epistemic_statuses"])
-REQUIRED_KNOWLEDGE_FIELDS = ("entity_type", "domain", "status", "provenance")
+REQUIRED_KNOWLEDGE_FIELDS = ()  # Optional: do not force unsupported metadata or a page-wide verdict
 
 
 def title(value: str) -> str:
@@ -284,7 +284,15 @@ def main() -> None:
         "knowledge_object_required_fields_missing": missing_knowledge_fields,
         "invalid_entity_type_values": invalid_entity_types,
         "invalid_domain_values": invalid_domains,
+        "unregistered_entity_type_values": invalid_entity_types,
+        "unregistered_domain_values": invalid_domains,
         "invalid_epistemic_status_values": invalid_epistemic_statuses,
+        "review_only_findings": {
+            "missing_category_pages": missing_categories,
+            "uncategorized_content_or_navigation_pages": uncategorized,
+            "unregistered_entity_type_values": invalid_entity_types,
+            "unregistered_domain_values": invalid_domains,
+        },
         "controlled_vocabularies": {
             "authority": str(RUNTIME_SCHEMA_PATH.relative_to(ROOT)),
             "schema_version": RUNTIME_SCHEMA.get("schema_version"),
@@ -299,19 +307,17 @@ def main() -> None:
             "Module/Lua is audited by scripts/audit_substrate.py rather than parsed as wikitext.",
             "Compiler-facing controlled vocabularies are loaded from bitwiki-runtime-schema.json.",
             "Simple/Technical Main-space reading-depth derivatives are category-exempt; their Core page owns canonical identity/category membership.",
+            "Knowledge object metadata fields are optional; missing values must not imply false certainty.",
+            "Unregistered entity types/domains and category gaps are review findings, not content-admission failures.",
+            "Explicit epistemic status remains controlled and invalid assertions fail validation.",
         ],
     }
 
     report["valid"] = not any([
-        missing_categories,
         missing_templates,
-        uncategorized,
         missing_domain_categories,
         missing_domain_portals,
         missing_domain_exemplar_domains,
-        missing_knowledge_fields,
-        invalid_entity_types,
-        invalid_domains,
         invalid_epistemic_statuses,
     ])
 

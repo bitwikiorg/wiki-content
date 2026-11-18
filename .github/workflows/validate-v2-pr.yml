@@ -49,6 +49,14 @@ jobs:
           sudo apt-get install -y lua5.1
           find Module -type f -name '*.lua' -print0 | xargs -0 -n1 luac5.1 -p
 
+      - name: Regression-test optional semantic metadata and Book Matter composition
+        if: always()
+        run: python scripts/test_editorial_architecture.py
+
+      - name: Regression-test Scribunto semantic identity behavior
+        if: always()
+        run: lua5.1 scripts/test_semantic_entry.lua
+
       - name: Audit compiler runtime schema projections
         if: always()
         run: python scripts/audit_runtime_schema.py

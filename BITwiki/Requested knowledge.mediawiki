@@ -45,65 +45,11 @@ For each request, record only what is known:
 |}
 
 
-== Corpus wave status ==
+== Completed corpus expansion — historical note ==
 
-The concept-wave program uses the same three-state workflow for every interconnected cluster:
+The numbered concept-wave program (Waves 0–14) concluded in the '''2026-09-19 source snapshot''' at 232 Core concepts and 696 Core/Simple/Technical reader surfaces. These are historical repository-audit counts, not live deployment verification or a promise that coverage is complete. Research dossiers, per-wave context captures, compilations and audits are recoverable in Git history rather than kept as a second public operational index.
 
-<pre>
-context capture → context compilation + writing → context audit
-</pre>
-
-A completed wave means its reader surfaces exist, the shared concept boundaries were audited, and the repository validation/staging gates passed. Completion does not imply that every descendant topic or redlink has been covered.
-
-{| class="wikitable"
-! Wave !! Scope !! Canonical concepts !! Reader surfaces !! Audit state
-|-
-| '''Wave 0''' || Foundational computation / software / scientific-system primitives || [[Algorithm]], [[Causality]], [[Computation]], [[Data structure]], [[Hypothesis]], [[Program (computing)]], [[Programming language]], [[Software]], [[System boundary]], [[Version control]] || 10 concepts / 30 surfaces || [[BITwiki:Wave 0 context audit|complete and audited]]
-|-
-| '''Wave 1''' || Epistemology and scientific reasoning || [[Knowledge]], [[Belief]], [[Epistemology]], [[Evidence]], [[Empirical evidence]], [[Justification]], [[Uncertainty]], [[Epistemic status]], [[Provenance]], [[Verification]], [[Validation]], [[Falsifiability]], [[Scientific method]], [[Scientific model]], [[Measurement]], [[Accuracy and precision]], [[Reproducibility]], [[Replication]], [[Explanation]], [[Counterexample]] || 20 concepts / 60 surfaces || [[BITwiki:Wave 1 context audit|complete and audited]]
-|-
-| '''Wave 2''' || Ontology and knowledge representation || [[Semantics]], [[Ontology]], [[Entity]], [[Identity]], [[Concept]], [[Category]], [[Classification]], [[Taxonomy]], [[Relation]], [[Property]], [[Knowledge representation]], [[Knowledge graph]], [[Semantic network]], [[Schema]], [[Metadata]], [[Semantic Web]], [[Resource Description Framework]], [[Web Ontology Language]], [[Description logic]], [[Inference]] || 20 concepts / 60 surfaces || [[BITwiki:Wave 2 context audit|complete and audited]]
-|-
-| '''Wave 3''' || Language, meaning, and discourse || [[Language]], [[Syntax]], [[Pragmatics]], [[Reference]], [[Context (linguistics)|Context]], [[Ambiguity]], [[Polysemy]], [[Compositionality]], [[Presupposition]], [[Implicature]], [[Speech act]], [[Discourse (linguistics)|Discourse]], [[Common ground]], [[Lexical semantics]], [[Distributional semantics]], [[Semantic similarity]], [[Meaning representation]] || 17 concepts / 51 surfaces || [[BITwiki:Wave 3 context audit|complete and audited]]
-|-
-| '''Wave 4''' || Cognition and cognitive bias || [[Cognition]], [[Perception]], [[Attention]], [[Memory]], [[Working memory]], [[Learning]], [[Reasoning]], [[Metacognition]], [[Cognitive load]], [[Cognitive bias]], [[Priming]], [[Salience]], [[Confirmation bias]], [[Anchoring effect]], [[Availability heuristic]], [[Framing effect]], [[Selection bias]], [[Anthropomorphism]], [[Theory of mind]], [[Distributed cognition]], [[Embodied cognition]], [[Thought suppression]], [[Ironic process theory]] || 23 concepts / 69 surfaces || [[BITwiki:Wave 4 context audit|complete and audited]]; [[BITwiki:Waves 4-6 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 5''' || Logic and probability || [[Logic]], [[Deductive reasoning]], [[Inductive reasoning]], [[Abductive reasoning]], [[Argument]], [[Proof]], [[Conjecture]], [[Contradiction]], [[Consistency (logic)|Consistency]], [[Probability]], [[Probability distribution]], [[Correlation]], [[Conditional probability]], [[Bayesian inference]], [[Belief revision]], [[Propositional logic]], [[First-order logic]], [[Modal logic]] || 18 concepts / 54 surfaces || [[BITwiki:Wave 5 context audit|complete and audited]]; [[BITwiki:Waves 4-6 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 6''' || Formal computation and computer-science foundations || [[Formal language]], [[Automaton (computation)|Automaton]], [[State machine]], [[Turing machine]], [[Computability]], [[Turing completeness]], [[Computational complexity]], [[Computer architecture]], [[Operating system]], [[Computer network]], [[Database]], [[Compiler]], [[Distributed system]], [[Computer security]], [[Cryptography]], [[Human-computer interaction]], [[Esoteric programming language]] || 17 concepts / 51 surfaces || [[BITwiki:Wave 6 context audit|complete and audited]]; [[BITwiki:Waves 4-6 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 7''' || Machine learning and generalization || [[Machine learning]], [[Generalization (machine learning)|Generalization]], [[Overfitting]], [[Underfitting]], [[Inductive bias]], [[Bias–variance tradeoff]], [[Training set]], [[Validation set]], [[Test set]], [[Distribution shift]], [[Data leakage (machine learning)|Data leakage]], [[Benchmark contamination]], [[Model selection bias]], [[Spurious correlation]], [[Shortcut learning]] || 15 concepts / 45 surfaces || [[BITwiki:Wave 7 context audit|complete and audited]]; [[BITwiki:Waves 7-9 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 8''' || Artificial intelligence and agents || [[Artificial intelligence]], [[Intelligent agent]], [[AI agent]], [[Planning (artificial intelligence)|Planning]], [[Tool use (artificial intelligence)|Tool use]], [[Agent memory (artificial intelligence)|Agent memory]], [[Multi-agent system]], [[Autonomous agent (artificial intelligence)|Autonomous agent]], [[Large language model]] || 9 concepts / 27 surfaces || [[BITwiki:Wave 8 context audit|complete and audited]]; [[BITwiki:Waves 7-9 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 9''' || Systems, complexity, and information || [[Information]], [[Information theory]], [[Entropy]], [[Feedback]], [[Emergence]], [[Self-organization]], [[Complex system]], [[Network]], [[Robustness]], [[Adaptation (systems)|Adaptation]] || 10 concepts / 30 surfaces || [[BITwiki:Wave 9 context audit|complete and audited]]; [[BITwiki:Waves 7-9 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 10''' || Decisions, incentives, and collective systems || [[Decision theory]], [[Utility (decision theory)|Utility]], [[Game theory]], [[Mechanism design]], [[Incentive]], [[Coordination problem]], [[Collective action]], [[Public good]], [[Commons]], [[Principal–agent problem]], [[Governance]], [[Reputation system]], [[Sybil attack]] || 13 concepts / 39 surfaces || [[BITwiki:Wave 10 context audit|complete and audited]]; [[BITwiki:Waves 10-12 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 11''' || Decentralized systems and on-chain market primitives || [[Hash function]], [[Public-key cryptography]], [[Digital signature]], [[Blockchain]], [[Consensus mechanism]], [[Smart contract]], [[Token (blockchain)|Token]], [[Cryptocurrency wallet]], [[Decentralized identity]], [[Zero-knowledge proof]], [[Decentralized finance]], [[Automated market maker]], [[Liquidity pool]], [[Liquidity provider]], [[Constant-product market maker]], [[Concentrated liquidity]], [[Arbitrage]], [[Slippage]], [[Price impact]], [[Oracle (blockchain)|Oracle]], [[Attestation]] || 21 concepts / 63 surfaces || [[BITwiki:Wave 11 context audit|complete and audited]]; [[BITwiki:Waves 10-12 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 12''' || Biology and bioinformatics bridge || [[Genetics]], [[Genomics]], [[Bioinformatics]], [[Biological sequence]], [[Sequence alignment]], [[Biological database]], [[Sequence annotation]], [[Phylogenetics]], [[Systems biology]], [[Reproducible computational research]] || 10 concepts / 30 surfaces || [[BITwiki:Wave 12 context audit|complete and audited]]; [[BITwiki:Waves 10-12 cross-wave audit|post-merge cross-wave audit]]
-|-
-| '''Wave 13''' || Public / platform technology || [[Internet]], [[World Wide Web]], [[Protocol (computing)|Protocol]], [[Internet protocol suite]], [[Domain Name System]], [[Uniform Resource Identifier]], [[Hypertext Transfer Protocol]], [[Client-server model]], [[Web browser]], [[Web server]], [[Application programming interface]], [[Authentication]], [[Authorization]], [[Interoperability]], [[Federation (information technology)|Federation]], [[Online platform]], [[Content moderation]] || 17 concepts / 51 surfaces || [[BITwiki:Wave 13 context audit|complete and audited]]; [[BITwiki:Waves 13-14 final cross-wave audit|final post-merge cross-wave audit]]
-|-
-| '''Wave 14''' || Scholarly communication and open research || [[Scientific literature]], [[Scholarly communication]], [[Peer review]], [[Citation]], [[Academic publishing]], [[Preprint]], [[Open access]], [[Open science]], [[Dataset]], [[Research data management]], [[Data repository]], [[FAIR data]] || 12 concepts / 36 surfaces || [[BITwiki:Wave 14 context audit|complete and audited]]; [[BITwiki:Waves 13-14 final cross-wave audit|final post-merge cross-wave audit]]
-|}
-
-'''Current completed total: 232 canonical concepts / 696 reader surfaces.'''
-
-== Concept-wave program status after Wave 14 ==
-
-The numbered concept-wave queue established for this expansion pass is complete through Wave 14. Future coverage should return to evidence-driven requests and new scope research rather than extending the numbering automatically.
-
-The completion state is:
-
-<pre>
-232 canonical concepts
-696 reader surfaces
-Waves 0–14 complete
-</pre>
-
-Wave completion does not imply encyclopedic completeness. The high-level coverage gaps and future normalized redlinks remain research signals, not authorization for automatic page creation. The closing pair was independently rechecked in [[BITwiki:Waves 13-14 final cross-wave audit]].
+New coverage proceeds through independently justified requests and current source review, not through extending the old wave-numbering scheme. Existing requests below retain their individual lifecycle records.
 
 == Current high-level coverage gaps ==
 
@@ -234,6 +180,34 @@ These are research priorities derived from navigation/core-coverage comparison, 
 |}
 
 Computer science moved out of this high-level gap class after repeated navigational/coverage evidence justified a controlled Domain, portal, category, and substantive [[Algorithm]] exemplar.
+
+== Historical subject signals requiring new research ==
+
+Two distinct biology-related subject candidates emerged from the V1 corpus review. They are '''not''' preapproved computational knowledge objects: original V1 prose, precise mechanisms, contemporary sources, and independent scope must be re-examined before a canonical page is created.
+
+{| class="wikitable"
+! Proposed title !! Why it matters !! Candidate Domain(s) !! Source leads !! Needed depth !! Status !! Canonical page !! Notes
+{{Knowledge request
+ |request=Bioluminescent organisms
+ |reason=Historical V1 subject material may support research into biological light production, signalling, sensing and computational approaches to observation.
+ |candidate_domains=Biology
+ |source_leads=archive-v1/pages/Main/Bioluminescent Organisms.mediawiki
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Check whether a distinct computation/information mechanism warrants independent BITwiki treatment. Separate underlying bioluminescence from organisms, mechanisms and applications; no V1 scientific assertions adopted without verification.
+}}
+{{Knowledge request
+ |request=Fluorescent coral reefs
+ |reason=Historical V1 content offers a candidate case involving coral fluorescence, optical sensing, environmental measurement and genomic applications.
+ |candidate_domains=Biology
+ |source_leads=archive-v1/pages/Main/Fluorescent Coral Reefs.mediawiki
+ |needed_depth=scope research
+ |status=requested
+ |canonical_page=
+ |notes=Verify optical/biological mechanisms and scope; distinguish fluorescence from bioluminescence and contextual applications from independent computational knowledge. Historical content is not current evidence.
+}}
+|}
 
 == Computer science request lifecycle ==
 

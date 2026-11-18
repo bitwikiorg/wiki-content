@@ -12,9 +12,9 @@ For inherited BITwiki material:
 # '''Historical Notion/design material''' used as archaeology and provenance, not automatic current-state truth.
 # '''New V2 editorial connective text''' only where the source corpus does not already provide a better formulation.
 
-== Current V1 completeness boundary ==
+== Historical V1 snapshot coverage ==
 
-The current anonymous-readable V1 corpus has been independently verified against the live wiki:
+The archival snapshot of the former public V1 corpus was verified at capture time against the then-readable wiki. These figures describe that historical capture, not the current live V2 corpus:
 
 * 186 / 186 public pages;
 * 606 / 606 public revision bodies;
@@ -24,9 +24,9 @@ The current anonymous-readable V1 corpus has been independently verified against
 * File revision metadata;
 * namespace and maintenance-report state.
 
-The fidelity audit reports no current-source mismatch.
+The capture-time fidelity check was reported as matching the then-readable source. This is historical audit evidence, not a check reproduced in this repository checkout or proof of the current live deployment.
 
-This does '''not''' mean every body of every page ever deleted from V1 is publicly recoverable. The deletion log contains historical deletions whose bodies require privileged deleted-revision access or older backups. See <code>v1-fidelity-audit.json</code>, <code>v1-deleted-content-audit.json</code>, and <code>v1-deleted-unresolved.json</code>.
+This does '''not''' mean every body of every page ever deleted from V1 is publicly recoverable. The deletion log contains historical deletions whose bodies require privileged deleted-revision access or older backups. For reproducibility, see <code>scripts/verify_v1_fidelity.py</code> and <code>.github/workflows/verify-v1-fidelity.yml</code>. The generated fidelity-report JSON is not tracked here. The deletion records <code>v1-deleted-content-audit.json</code> and <code>v1-deleted-unresolved.json</code> are tracked.
 
 == Editorial rule ==
 
@@ -63,7 +63,11 @@ Both layers remain evidence.
 
 Older material can be obsolete in implementation while remaining important in thought. Newer is not automatically better. Older is not automatically canonical.
 
-Foundational writings may have genuine branches. For example, the Charter lineage includes an epistemic/field Charter, a research-space Charter, and a performative holographic Charter. V2 should make that lineage intelligible rather than pretending the three documents always said the same thing.
+Foundational writings may have genuine branches. The former Charter lineage comprises an epistemic/field Charter, a research-space Charter, and a performative Holographic Charter. These texts are independent historical sources, not present constitutional authorities. The [[BITwiki:Constitution|approved Constitution]] is BITwiki's sole founding instrument; the [[BITwiki:Foundations|Foundations index]] identifies its companion philosophical writings.
+
+The historical originals and their revision bodies remain in <code>archive-v1/pages/Main/</code> and <code>archive-v1/history/Main/</code> under <code>BITwiki Charter</code>, <code>BITwiki Charter Revised</code>, and <code>Charter</code>. The distinctive H=1/symbiosis theory is now examined critically in [[BITwiki:Human-AI symbiosis]]; its use does not retroactively endorse the historical Charter's metaphysical or institutional claims.
+
+The completed 2026 concept-wave working records and V1 migration analyses are process evidence. Retiring their project-namespace renderings must not erase authorship, revision history, reproducible classification evidence, or any unresolved issue transferred to the active knowledge request and validation work.
 
 See [[BITwiki:Foundations]].
 

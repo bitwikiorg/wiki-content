@@ -118,6 +118,19 @@ The readiness audit reads the existing GitHub Pages staging projection; it does 
 
 A clean repository audit still does not prove the remote MediaWiki instance has the expected namespaces, extension versions, Cargo tables, Scribunto behavior, or BIThub integration. Deployment validation remains a separate runtime responsibility.
 
+## Pending semantic validation — not implemented by this extraction
+
+The completed V2 architecture evaluation identified additional tests which should be implemented as adopted vocabulary and runtime features permit:
+
+- semantic relationship target resolution and documented relation meaning;
+- canonical redirect and duplicate-target integrity, including retiring historical BITwiki project pages;
+- transclusion caller/cycle safety;
+- property domain/range checks where domain and range are actually defined;
+- graph/query regression against reviewed sample knowledge objects;
+- review/lifecycle and research-object schema validation after their semantics are accepted.
+
+These remain distinct from the current source-level validators and from live MediaWiki/Cargo/Lua verification. A passing CI check is not confirmation of deployment or editorial correctness. See <code>BITwiki/Deployment prerequisites.mediawiki</code> and <code>scripts/audit_staging_readiness.py</code>.
+
 ## Design rules
 
 - Reflect actual MediaWiki/SMW/Cargo/Scribunto semantics rather than inventing a parallel schema in Python.

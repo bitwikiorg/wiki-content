@@ -92,7 +92,7 @@ def audit_pages(root: Path) -> dict:
         technical = f"{title}/Technical" in known_titles
         validation = page.get("validation", {}).get("status", "unknown")
         checks = {
-            "K01": status("UNVERIFIED", "Computation/information purpose, mechanism versus model versus metaphor, and independent value require human review under BITwiki:Computational scope") if is_obj else status("NOT_APPLICABLE"),
+            "K01": status("UNVERIFIED", "Interdisciplinary editorial purpose, factual quality, canonical identity and source relevance require human review; explicit computation is not required for subject admission") if is_obj else status("NOT_APPLICABLE"),
             "K02": status("PASS" if validation == "pass" else "NEEDS_WORK", "Static title/identity validation only"),
             "K03": status("UNVERIFIED", "Wikitext/content model represented in staging; live parser execution not established"),
             "K04": status("PASS" if validation == "pass" else "NEEDS_WORK", "Static identity/schema projection") if is_obj else status("NOT_APPLICABLE"),

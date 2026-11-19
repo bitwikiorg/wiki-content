@@ -1,0 +1,412 @@
+{{Reading depth|base=Semiconductor|current=Technical}}
+
+= Semiconductor — Technical =
+
+A '''semiconductor''' is a material system whose electron states, carrier populations and transport properties permit useful control of electrical conduction and other electronic or optoelectronic behavior. This technical account begins with microscopic electronic structure, then derives common carrier, junction and transistor models under their stated approximations. It concerns '''materials and device physics'''; chip design, digital logic, [[Computer architecture/Technical|computer architecture]] and semiconductor manufacturing are related but separate disciplines.
+
+The conventional equations below primarily describe near-equilibrium, bulk crystalline semiconductors and idealized devices. They must not be applied unchanged to strongly disordered materials, degenerate carrier gases, ballistic nanoscale structures, heterojunctions or extreme-field operation.<ref name="mit">Jesús del Alamo, ''Integrated Microelectronic Devices'', MIT OpenCourseWare 6.720J/3.43J (Spring 2007), [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ lecture notes], especially lectures 2–3, 6–7, 12–15 and 23–28.</ref>
+
+== Electronic structure and band gap ==
+
+In a periodic crystal potential, electronic states are described by energy bands E(k), with k the wavevector. The valence-band maximum E_v and conduction-band minimum E_c are separated by a forbidden energy interval of width E_g = E_c − E_v in the simplest band picture. A semiconductor ordinarily has a band gap small enough that thermal excitation, optical excitation, intentional impurities or device electrostatics can provide technologically useful carriers. There is no single universal numerical band-gap or room-temperature conductivity cutoff between “semiconductor” and “insulator”.<ref name="mitintro">Massachusetts Institute of Technology, ''Introduction to Solid-State Chemistry'', 3.091SC (Fall 2010), [https://ocw.mit.edu/courses/3-091sc-introduction-to-solid-state-chemistry-fall-2010/pages/electronic-materials/14-semiconductors/ session 14: Semiconductors].</ref>
+
+In a '''direct-gap''' semiconductor, the valence-band maximum and conduction-band minimum occur at essentially the same crystal momentum. In an '''indirect-gap''' semiconductor they do not, so optical transitions may require phonon participation to conserve crystal momentum. This distinction helps explain why direct-gap III–V materials are widely used for efficient light emission while ordinary crystalline silicon is primarily used for electronics and many solar cells. The actual optical response also depends on matrix elements, selection rules, defects, surfaces and device design.
+
+The band picture presupposes meaningful extended states and crystal momentum. Amorphous and organic semiconductors can have localized states, disorder-related tails and transport dominated partly by hopping; do not assign a crystalline dispersion E(k) to such systems without qualification.<ref name="amorphous">''Recombination and transport through localized states in hydrogenated amorphous and microcrystalline silicon'', ''Journal of Non-Crystalline Solids'' (2008), [https://www.sciencedirect.com/science/article/abs/pii/S0022309307013750 publisher abstract]. Specific to disordered silicon rather than all organic semiconductors.</ref>
+
+== Occupation statistics and equilibrium carriers ==
+
+At temperature T in thermal equilibrium, the Fermi–Dirac occupation of an electronic state of energy E is
+
+<math display="block">f(E)=\frac{1}{1+\exp[(E-E_F)/(k_BT)]}.</math>
+
+Here <math>E_F</math> is the equilibrium Fermi level (chemical potential), <math>k_B</math> Boltzmann's constant and <math>T</math> the absolute temperature.
+
+A band electron density n is obtained by integrating the conduction-band density of states g_c(E) against f(E). The hole density p is obtained by integrating the valence-band density of states g_v(E) against [1 − f(E)]. Under the nondegenerate Maxwell–Boltzmann approximation and a parabolic-band effective-mass model, these become<ref name="mitcarrier">Jesús del Alamo, MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/1bccffbfa7b4487be99b8af8b46186ef_lecture3.pdf lecture 3, “Carrier statistics in equilibrium”], pp. 3–15 (lecture pagination).</ref>
+
+<math display="block">n\simeq N_c\exp[-(E_c-E_F)/(k_BT)],\qquad p\simeq N_v\exp[-(E_F-E_v)/(k_BT)].</math>
+<math display="block">np=n_i^2\simeq N_cN_v\exp[-E_g/(k_BT)],\qquad n_i\simeq\sqrt{N_cN_v}\exp[-E_g/(2k_BT)].</math>
+
+Here N_c and N_v are effective densities of states, n_i is intrinsic carrier concentration, and densities must use consistent units (commonly cm⁻³). The mass-action equation n p = n_i² applies to the equilibrium nondegenerate model; in an illuminated or driven device the electron and hole quasi-Fermi levels generally differ, so the same equality cannot simply be assumed. High doping, band-gap narrowing, degeneracy and non-ideal density-of-states behavior require different statistics.
+
+'''A Fermi level inside the band gap is not an electron orbit at that energy.''' It is a parameter determining occupations; the forbidden gap may contain no allowed extended states even though E_F lies within it.
+
+== Doping and charge neutrality ==
+
+Substitutional donor impurities can contribute electrons, and acceptor impurities can contribute holes. For ordinary silicon, phosphorus is a common donor and boron a common acceptor. '''n-type''' means electrons are majority carriers; '''p-type''' means holes are majority carriers, not that an entire charge-neutral sample is respectively negatively or positively charged.<ref name="openstax">OpenStax, ''University Physics, Volume 3'', [https://openstax.org/books/university-physics-volume-3/pages/9-6-semiconductors-and-doping §9.6 “Semiconductors and Doping”].</ref>
+
+A local charge-balance model is
+
+<math display="block">\rho=q\left(p-n+N_D^{+}-N_A^{-}\right).</math>
+
+Here <math>\rho</math> is net volume charge density, <math>q</math> the positive elementary charge, <math>N_D^+</math> the ionized donor density and <math>N_A^-</math> the ionized acceptor density. With SI densities (m<sup>−3</sup>) the result is C/m<sup>3</sup>; with densities in cm<sup>−3</sup> it is C/cm<sup>3</sup>.
+
+For a macroscopically neutral bulk region, rho ≈ 0. When donors and acceptors are fully ionized and the material is nondegenerate, far from interfaces one obtains n ≈ N_D − N_A for donor-dominated doping and p ≈ N_A − N_D for acceptor-dominated doping, provided the respective difference greatly exceeds n_i. At low temperature, dopant freeze-out invalidates full-ionization assumptions; at high temperature intrinsic excitation can dominate. Near a junction, charge neutrality is not locally satisfied across the depletion region.<ref name="delft">Delft University of Technology, ''Open Solid State Notes'', [https://solidstate.quantumtinkerer.tudelft.nl/14_doping_and_devices/ “Doping and devices”], charge balance and carrier approximations.</ref>
+
+'''Worked idealized example.''' For a nondegenerate n-type silicon region near 300 K, suppose N_D = 10¹⁶ cm⁻³, acceptor compensation is negligible, donors are fully ionized and n_i ≈ 10¹⁰ cm⁻³. Then n ≈ 10¹⁶ cm⁻³ and p ≈ n_i²/n ≈ 10⁴ cm⁻³. These are illustrative assumptions, not universally fixed silicon parameters. Actual n_i estimates, mobility and conductivity vary with temperature, processing and model choice.<ref name="mitcarrier"/>
+
+== Carrier drift, diffusion and conservation ==
+
+In a low-field, local drift–diffusion approximation, electron and hole currents combine field-driven drift with concentration-gradient-driven diffusion. Using conventional positive current, scalar mobilities and a Cartesian isotropic model:
+
+<math display="block">\mathbf J_n=q\mu_n n\mathbf E+qD_n\nabla n,\qquad\mathbf J_p=q\mu_pp\mathbf E-qD_p\nabla p.</math>
+<math display="block">\mathbf J=\mathbf J_n+\mathbf J_p,\qquad \sigma\simeq q(n\mu_n+p\mu_p).</math>
+
+J_n and J_p are conventional current densities (A/m²), E is electric field (V/m), μ denotes mobility (m²/V·s), D diffusivity (m²/s) and sigma conductivity (S/m). These signs follow from the negative electron charge and the positive hole charge. In an isothermal nondegenerate model with suitable scattering assumptions, the Einstein relation is D/μ = k_B T/q for each carrier species; more general systems require corrected transport relations.<ref name="mittransport">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture6/ lecture 6] and [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ lecture 7] on drift, diffusion and transit time.</ref>
+
+Charge carriers also appear and disappear through generation and recombination. In a standard continuum sign convention, separate continuity equations are
+
+<math display="block">\frac{\partial n}{\partial t}=\frac{1}{q}\nabla\cdot\mathbf J_n+G_n-R_n,\qquad\frac{\partial p}{\partial t}=-\frac{1}{q}\nabla\cdot\mathbf J_p+G_p-R_p.</math>
+
+These combine with Poisson's equation and E = −grad(phi):
+
+<math display="block">\nabla\cdot(\epsilon\mathbf E)=\rho,\qquad \rho=q(p-n+N_D^+-N_A^-).</math>
+
+The continuum equations are coupled: electrostatic potential changes carrier density, which changes charge and current. Constitutive relations, contact boundary conditions, recombination parameters and geometry complete a device problem. This is a model family, '''not''' a full fabrication or simulation specification; nanoscale quantum effects, nonlocal transport and high injection may require other models.
+
+== P–n junction electrostatics ==
+
+At equilibrium, diffusion across a junction between donor-dominated and acceptor-dominated regions produces an internal electric field and an ionized space-charge region. In an ideal, abrupt, nondegenerate homojunction with uniform doping, complete ionization, negligible interfacial states and thermal equilibrium, the built-in electrostatic potential is<ref name="shockley">William Shockley, “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors,” ''Bell System Technical Journal'' 28(3), 435–489 (1949). [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x DOI:10.1002/j.1538-7305.1949.tb03645.x]. Original junction theory; the model assumptions must still be stated.</ref><ref name="mitjunction">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ lectures 12–15], junction electrostatics, bias and dynamics.</ref>
+
+<math display="block">V_{\mathrm{bi}}=\frac{k_BT}{q}\ln\left(\frac{N_AN_D}{n_i^2}\right).</math>
+
+In the depletion approximation under an applied junction voltage V_a (positive for forward bias), a one-dimensional depletion width for an abrupt junction is approximately
+
+<math display="block">W\simeq\sqrt{\frac{2\epsilon_s}{q}\left(\frac1{N_A}+\frac1{N_D}\right)(V_{\mathrm{bi}}-V_a)}.</math>
+
+The formula assumes that a depletion approximation remains applicable and V_bi − V_a stays positive. Doping must be in consistent spatial units with permittivity epsilon_s. Real junction profiles, high injection, strong forward bias, breakdown and interface charge may invalidate this expression.
+
+'''Illustration:''' for N_A = N_D = 10¹⁶ cm⁻³, n_i = 10¹⁰ cm⁻³ and 300 K, k_B T/q ≈ 25.9 mV gives V_bi ≈ 0.71 V. This is a built-in potential calculated from an ideal model, '''not''' the universal forward voltage drop read from a diode data sheet.
+
+== Junction current, limits and contacts ==
+
+An idealized diode diffusion-current relation is
+
+<math display="block">I\simeq I_S\left\{\exp\!\left[\frac{qV}{n_{\mathrm{id}}k_BT}\right]-1\right\}.</math>
+
+Here <math>I_S</math> is the reverse-saturation current scale, <math>n_{\mathrm{id}}</math> is an empirical ideality factor (one in the simplest diffusion-dominated limit), and <math>V</math> is the junction terminal bias under the chosen sign convention.
+
+This exponential law summarizes a regime, not all diode operation. Real devices can exhibit depletion-region recombination, series resistance, surface leakage, high injection, tunneling and avalanche breakdown. Reverse bias does not imply zero current, and reverse breakdown must be distinguished from safe steady operating conditions.<ref name="shockley"/><ref name="mitjunction"/>
+
+Not every rectifier is a p–n junction. A '''Schottky contact''' uses metal–semiconductor interface behavior and majority-carrier transport, with barrier height, surface states and processing affecting its current–voltage characteristics. A practical '''ohmic contact''' is engineered for suitably low-resistance current injection or extraction. Both are distinct from the intrinsic semiconductor material.
+
+== Field-effect and bipolar transistors ==
+
+A metal–oxide–semiconductor field-effect transistor (MOSFET) uses a gate-controlled surface potential to influence charge in a channel connecting source and drain. An n-channel enhancement-mode device can turn on by forming an electron inversion layer; the device is not merely a passive variable resistor. Contact, oxide/interface, subthreshold and parasitic effects shape behavior.<ref name="mitmos">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture25/ lecture 25, “MOSFET operation”], [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture26/ lecture 26, “I–V characteristics”] and [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture32/ lecture 32, “MOSFET scaling”].</ref>
+
+One first-order, ideal n-channel long-channel saturation relation is
+
+<math display="block">I_D\simeq\frac12\mu_n C_{\mathrm{ox}}\frac{W_{\mathrm{ch}}}{L_{\mathrm{ch}}}(V_{\mathrm{GS}}-V_T)^2,\qquad V_{\mathrm{GS}}>V_T,\quad V_{\mathrm{DS}}\geq V_{\mathrm{GS}}-V_T.</math>
+
+C_ox is gate-oxide capacitance per area, W_ch/L_ch channel width/length, V_T threshold voltage. The expression requires strong inversion, gradual-channel behavior and approximately constant mobility while neglecting channel-length modulation and many parasitics. It does '''not''' describe modern short-channel MOSFET behavior across all bias or temperature regimes. Advanced transport, electrostatic scaling, threshold variability and thermal constraints must be treated separately.
+
+A '''bipolar junction transistor''' (BJT) relies on carrier injection, transport and collection across coupled emitter–base and base–collector junctions. Its controlling mechanisms differ from an insulated-gate MOSFET. MOSFETs are central to complementary MOS (CMOS) digital circuits, but device and circuit behavior should not be conflated with abstract Boolean logic or the instruction-set level of a processor.<ref name="mit"/>
+
+== Optical effects and materials selection ==
+
+If a photon is absorbed through an allowed electronic transition, it can create an electron–hole excitation. Its energy is E_photon = h c/λ. Optical absorption, luminescence, photoconduction and photovoltaic operation depend on the band structure, transition rules, recombination, carrier collection, interfaces and external circuit. For many transitions the photon must supply at least a relevant gap energy, but this simple threshold overlooks phonon-assisted and defect-related processes.<ref name="doepv">US Department of Energy, [https://www.energy.gov/cmei/systems/solar-photovoltaic-cell-basics ''Solar Photovoltaic Cell Basics'']. Introductory photovoltaic mechanism and material selection.</ref>
+
+{| class="wikitable"
+! Material class !! Characteristic advantage !! Limitation / qualification
+|-
+| Crystalline silicon || Mature CMOS technology, stable silicon dioxide interface, broad availability || Indirect fundamental gap limits conventional radiative emission; high-voltage devices require geometry and thermal design.
+|-
+| Gallium arsenide and other III–V compounds || Direct-gap optical transitions and selected high-frequency devices || Processing, integration, cost, toxicity and thermal behavior are application-specific.
+|-
+| Silicon carbide (polytype-dependent) || Wide-gap and high-breakdown-field potential for power devices || Crystal growth, defects, oxide interface and packaging affect achievable device performance.
+|-
+| Gallium nitride and related alloys || Wide-gap optoelectronics and high-field switching architectures || Device structure, interfaces, traps, gate and thermal management remain critical.
+|-
+| Amorphous silicon / organic semiconductors || Thin-film and substrate-processing opportunities || Disorder and localized-state transport complicate crystalline bulk equations.
+|}
+
+A recent review comparing Si, SiC and GaN likewise emphasizes application-specific power-electronic devices, thermal issues and reliability rather than a universal material ranking.<ref name="widegap">''Power Electronics Revolutionized: A Comprehensive Analysis of Emerging Wide and Ultrawide Bandgap Devices'', ''Micromachines'' 14(11), 2045 (2023), [https://doi.org/10.3390/mi14112045 DOI:10.3390/mi14112045]. Review rather than an original device measurement.</ref>
+
+A '''larger band gap is not a universal measure of superiority'''. Material choice is a multi-criteria engineering decision involving field strength, mobility, thermal transport, wavelength, reliability, growth defects, integration, available process technology, cost and end-use conditions.
+
+== Fabrication, measurement and system interfaces ==
+
+A semiconductor material becomes a functioning device through engineered composition, geometry, interfaces and contacts. Depending on the process, manufacturing involves single-crystal growth and wafer preparation, thin-film deposition, lithography, etching, diffusion or ion implantation, annealing, dielectric growth, metallization, testing, dicing and packaging. These processes have occupational, chemical and resource requirements; they are not interchangeable across all materials or technology nodes.<ref name="osha">US Occupational Safety and Health Administration, [https://www.osha.gov/semiconductors/silicon/device-fabrication ''Semiconductors — Device Fabrication''], silicon processing steps and associated hazards.</ref>
+
+Device characterization can include current–voltage curves, capacitance–voltage measurements, Hall measurements, optical spectra, temperature-dependent measurements, microscopy and defect analysis. An electrical measurement constrains a model only when contact behavior, geometry, calibration and operating conditions are specified.
+
+At system scale the chain is '''material → device → circuit → component → system'''. The semiconductor is essential to many processors, sensors, memories and power converters, but it does not itself define an algorithm, programming language, microarchitecture or firmware. See [[Electric current/Technical|Electric current]], [[Voltage/Technical|Voltage]], [[Resistor/Technical|Resistor]], [[Computation/Technical|Computation]] and [[Computer architecture/Technical|Computer architecture]].
+
+== Quantum-mechanical foundations beyond the band cartoon ==
+
+=== Hamiltonian, symmetry, and density of states ===
+
+A periodic single-particle potential has lattice translation symmetry. For a Bloch eigenstate, <math>\psi_{n\mathbf{k}}(\mathbf r)=e^{i\mathbf k\cdot\mathbf r}u_{n\mathbf{k}}(\mathbf r)</math>, where <math>u</math> has the lattice periodicity. In an independent-electron approximation the crystal Hamiltonian and eigenproblem can be expressed as<ref name="mitbands">MIT OpenCourseWare, ''Electronic, Optical and Magnetic Properties of Materials'', [https://ocw.mit.edu/courses/3-024-electronic-optical-and-magnetic-properties-of-materials-spring-2013/pages/lecture-notes/ course lecture notes] on crystal bands, effective mass and semiconductor optical properties. The single-electron Hamiltonian is a model, not a complete interacting many-electron theory.</ref>
+
+<math display="block">\left[-\frac{\hbar^2}{2m_0}\nabla^2+V_{\mathrm{periodic}}(\mathbf r)\right]\psi_{n\mathbf k}=E_n(\mathbf k)\psi_{n\mathbf k}.</math>
+
+The band index <math>n</math>, crystal momentum <math>\mathbf{k}</math>, degeneracies, strain and symmetry must be specified before interpreting a computed band gap or optical selection rule. The Brillouin-zone integrals determine observable carrier populations. Close to a nondegenerate extremum, an effective-mass expansion is
+
+<math display="block">E_n(\mathbf k)\simeq E_n(\mathbf k_0)+\frac{\hbar^2}{2}\sum_{i,j}(k_i-k_{0i})(m^{*-1})_{ij}(k_j-k_{0j}),</math>
+
+with <math>(m^{*-1})_{ij}=\hbar^{-2}\partial^2E_n/\partial k_i\partial k_j</math> evaluated at the extremum. Effective mass is therefore an energy-band curvature parameter, generally a tensor; it need not equal a free electron's inertial mass and can vary between valleys and directions. An effective-mass model is local to its chosen bands and energy window.
+
+For a single 3-D isotropic parabolic conduction-band valley, including spin degeneracy two and using energy measured upward from <math>E_c</math>, the density of allowed states per unit volume per unit energy is
+
+<math display="block">g_c(E)=\frac{1}{2\pi^2}\left(\frac{2m^*}{\hbar^2}\right)^{3/2}\sqrt{E-E_c},\qquad E\ge E_c.</math>
+
+Extra valleys or spin splitting require corresponding multiplicities or a sum of separate dispersions. Integrating <math>g_c(E)f(E)</math> produces the electron concentration. In the nondegenerate limit one obtains the effective density of states
+
+<math display="block">N_c=2\left(\frac{2\pi m_{\mathrm{DOS}}^*k_BT}{h^2}\right)^{3/2},</math>
+
+where the relevant DOS effective mass accounts for the material's occupied valleys. The familiar <math>n=N_c\exp[-(E_c-E_F)/(k_BT)]</math> thus follows from stated dispersion and occupation assumptions, not from a definition of doping.
+
+'''Research consequence.''' A reported “band gap” must identify the material composition/polytype, temperature, strain, method, sample and what kind of gap is meant: quasiparticle excitation, optical absorption onset or device-extracted effective gap. They need not coincide. Density-functional approximations, quasiparticle corrections and many-body electron–hole interactions introduce additional choices; a numerical calculation without its functional, basis, convergence tests and structural assumptions is not reproducible evidence.
+
+=== Excitons, phonons, and optical selection ===
+
+An electron and hole can form a correlated bound excitation called an '''exciton'''. The photon absorption edge can therefore differ from the independent-particle quasiparticle gap; binding energies depend on screening, dimensionality and effective masses. In an idealized three-dimensional Wannier–Mott hydrogenic approximation,
+
+<math display="block">E_B\simeq\frac{\mu^*q^4}{2(4\pi\epsilon)^2\hbar^2},\qquad\frac{1}{\mu^*}=\frac{1}{m_e^*}+\frac{1}{m_h^*},</math>
+
+with dielectric screening <math>\epsilon</math> and reduced mass <math>\mu^*</math>. This simple model is especially inappropriate when the electron–hole pair spans only a few unit cells, dielectric screening is highly nonlocal, or two-dimensional confinement is strong. Phonons carry crystal momentum and can assist otherwise indirect optical transitions. Carrier–phonon scattering, electron–electron scattering and disorder also broaden optical features and affect transport.
+
+=== When the Fermi picture fails ===
+
+The single equilibrium Fermi level describes a system in thermal equilibrium. Driven electrons and holes may instead be represented by separate quasi-Fermi levels <math>F_n,F_p</math> when each carrier population internally thermalizes; the resulting relation <math>np=n_i^2\exp[(F_n-F_p)/(k_BT)]</math> relies on nondegenerate statistics and consistent band-edge conventions. Transient hot carriers, strong ballistic injection and nonthermal populations can invalidate even the quasi-equilibrium description. This distinction matters in lasers, LEDs, solar cells and switching devices.
+
+== Defects, generation and recombination ==
+
+=== Radiative, trap-assisted and Auger processes ===
+
+Carrier balance is incomplete without a mechanism for capture and generation. For a nondegenerate semiconductor, an illustrative net band-to-band radiative rate can be written
+
+<math display="block">U_{\mathrm{rad}}=B\left(np-n_i^2\right),</math>
+
+where <math>B</math> is a material-, spectrum- and condition-dependent coefficient with units of volume per time. The expression describes the net rate relative to equilibrium, not an absolute photon count in every optical geometry. Indirect-gap materials can require phonon assistance, while quantum wells, excitonic effects and photon recycling change emission and absorption.
+
+The single-trap-level Shockley–Read–Hall (SRH) net recombination model is<ref name="srh">W. Shockley and W. T. Read, Jr., [https://doi.org/10.1103/PhysRev.87.835 “Statistics of the Recombinations of Holes and Electrons”], ''Physical Review'' 87, 835–842 (1952), original trap-mediated model; R. N. Hall, [https://doi.org/10.1103/PhysRev.87.387 “Electron-Hole Recombination in Germanium”], ''Physical Review'' 87, 387 (1952), complementary historical experiment/theory.</ref>
+
+<math display="block">U_{\mathrm{SRH}}=\frac{np-n_i^2}{\tau_p(n+n_1)+\tau_n(p+p_1)},</math>
+<math display="block">n_1=N_c e^{-(E_c-E_t)/(k_BT)},\quad p_1=N_v e^{-(E_t-E_v)/(k_BT)}.</math>
+
+Here <math>E_t</math> is the trap-level energy, and <math>\tau_n,\tau_p</math> are effective capture-time parameters linked to trap density, capture cross sections and thermal velocity. The formula assumes a well-described discrete trap in the chosen statistics and capture model. A distribution of traps, multicharge defects and nonequilibrium occupation may require integrating over energy and solving trap-occupancy kinetics, not merely fitting one “lifetime”.
+
+A schematic net Auger recombination law under nondegenerate conditions is
+
+<math display="block">U_{\mathrm{Auger}}=(C_n n+C_p p)(np-n_i^2),</math>
+
+where <math>C_n,C_p</math> are material-dependent Auger coefficients (volume squared per time). Defect-assisted and direct Auger channels differ. In the simple regime where these mechanisms can be treated independently, rates add: <math>U_{\mathrm{net}}=U_{\mathrm{rad}}+U_{\mathrm{SRH}}+U_{\mathrm{Auger}}+\cdots</math>. Effective lifetimes need not be constants when injection, trap occupation or temperature varies.<ref name="mitrecomb">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture4/ lecture 4] and [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture5/ lecture 5], generation, recombination and carrier lifetime.</ref>
+
+=== Defect physics and measurement ===
+
+Vacancies, interstitials, antisite defects, dislocations, grain boundaries, interface traps and impurities can change local charge, trap capture kinetics and recombination; they can also scatter carriers or modify the effective doping balance. A defect is not simply “a bad atom”: some electrically active levels are functional dopants, while some defects are harmful only in particular charge states or environments. Formation energies, chemical potentials, charge transitions, strain and growth conditions determine populations. Time-dependent degradation often depends on defect kinetics at contacts or dielectrics, not only bulk defect concentration.<ref name="apsdefects">American Physical Society, [https://journals.aps.org/imperfection “A Century of Imperfection: Point Defect Science in the APS Journals”] (2026), curated historical literature on defect characterization and the SRH lineage; use underlying primary papers for numerical claims.</ref>
+
+For a small excess minority-carrier perturbation with effectively constant recombination lifetime <math>\tau</math> and diffusion coefficient <math>D</math>, the diffusion length is
+
+<math display="block">L=\sqrt{D\tau}.</math>
+
+With <math>D=25\ {\rm cm^2\,s^{-1}}</math> and <math>\tau=1\ \mu{\rm s}</math>, <math>L=50\ \mu{\rm m}</math>. This scale must be compared with the device geometry and contact/surface recombination; it cannot alone determine a collection efficiency. In time-resolved photoluminescence, an observed decay may combine radiative and nonradiative rates, carrier diffusion, trapping and photon recycling, so fitting it to a single exponential does not uniquely identify an SRH lifetime.
+
+== Transport from statistical mechanics to device simulation ==
+
+=== Boltzmann transport and mobility ===
+
+The semiclassical Boltzmann transport equation for a band distribution <math>f_n(\mathbf r,\mathbf k,t)</math> takes the form
+
+<math display="block">\frac{\partial f_n}{\partial t}+\mathbf v_n(\mathbf k)\cdot\nabla_{\mathbf r}f_n+\frac{\mathbf F}{\hbar}\cdot\nabla_{\mathbf k}f_n=\left.\frac{\partial f_n}{\partial t}\right|_{\mathrm{coll}},</math>
+
+with group velocity <math>\mathbf v_n=\hbar^{-1}\nabla_{\mathbf k}E_n</math> and force <math>\mathbf F</math> determined by charge and fields. The collision integral describes transitions and is not universally equivalent to a single relaxation time. Under weak field, isotropic parabolic bands and a relaxation-time approximation, a Drude-like mobility is <math>\mu=q\tau_m/m^*</math>, where <math>\tau_m</math> is a momentum relaxation time. Phonons, impurities, interface roughness and defects can have distinct energy and temperature dependencies. Matthiessen's reciprocal-scattering-time rule is an approximation, especially questionable when mechanisms are correlated or the carrier distribution changes.
+
+The drift–diffusion and Poisson system above is a continuum moment closure for transport, not a replacement for the full distribution function. Van Roosbroeck's original formulation jointly treats transport, electrostatics and recombination; it motivates contemporary self-consistent semiconductor device solvers.<ref name="vanroos">W. van Roosbroeck, [https://doi.org/10.1002/j.1538-7305.1950.tb03653.x “Theory of the Flow of Electrons and Holes in Germanium and Other Semiconductors”], ''Bell System Technical Journal'' 29, 560–607 (1950). Original coupled drift–diffusion/continuity framework.</ref>
+
+=== Nondimensionalization and numerical stability ===
+
+A research simulation should state characteristic scales: thermal voltage <math>V_T=k_BT/q</math>, length <math>L_0</math>, density <math>N_0</math> and time <math>t_0</math>. For instance, set <math>\phi=V_T\hat\phi</math>, <math>\mathbf r=L_0\hat{\mathbf r}</math>, <math>n=N_0\hat n</math>. Nondimensionalization exposes competing diffusion, drift and electrostatic length scales, prevents avoidable floating-point overflow and makes parameter sensitivity visible. It does not eliminate physical approximation errors.
+
+A naive centered spatial discretization of drift-dominated transport can produce negative densities or oscillations. Exponentially fitted schemes such as Scharfetter–Gummel fluxes are commonly used for stable, charge-conserving discretization; Newton or Gummel iteration then solves the nonlinear coupled system. Mesh-refinement, conservation residuals and contact boundary conditions should be reported, rather than citing “TCAD simulation” as sufficient evidence.
+
+For example, in a 1-D steady-state isothermal n-type slab, one can solve
+
+<math display="block">\nabla\!\cdot(\epsilon\nabla\phi)=-q(p-n+N_D^+-N_A^-),\qquad\nabla\!\cdot\mathbf J_n=q(R_n-G_n),</math>
+
+together with the hole continuity equation, the constitutive laws above and specified terminal/carrier-flux boundary conditions. The sign of the electron equation follows the current convention stated earlier; current continuity is an auditable invariant. Fixed potentials with unspecified injected carrier distributions are not a complete contact model.
+
+== Heterojunctions, interfaces and low-dimensional structures ==
+
+=== Band offsets and electrostatic boundary conditions ===
+
+At an interface between unlike semiconductors, conduction- and valence-band edges can be discontinuous. A first-pass electron-affinity or Anderson alignment uses differences in isolated-material vacuum levels; real offsets depend on chemical bonding, interface dipoles, strain, atomic termination, polarization and defects. Blindly subtracting two handbook electron affinities can therefore misrepresent a measured heterojunction. Interfaces require electrostatic and current continuity laws augmented by interface sheet charge and finite transmission/recombination conditions where appropriate.<ref name="bandalign">[https://www.sciencedirect.com/science/article/pii/0038110187900724 “A review of models for heterojunction band offsets”], ''Solid-State Electronics'' (1987), comparison of Anderson electron-affinity and interface-sensitive alignment descriptions.</ref>
+
+Heterostructures support high-electron-mobility transistors, separate-confinement lasers, photodetectors and some multijunction solar cells. In polar nitrides, spontaneous and piezoelectric polarization charge can strongly affect channel charge without conventional impurity doping. A bound interface charge associated with discontinuous polarization obeys the normal-component jump condition <math>\sigma_{\mathrm b}=\mathbf{\hat n}\cdot(\mathbf P_1-\mathbf P_2)</math> for the orientation chosen, with the sign convention and free charge accounting stated explicitly.
+
+=== Quantum wells and confinement ===
+
+In an idealized infinite one-dimensional quantum well of width <math>L</math>, the lowest single-particle confinement energy above its well bottom is
+
+<math display="block">E_1=\frac{\pi^2\hbar^2}{2m^*L^2}.</math>
+
+For <math>L=10\ {\rm nm}</math> and <math>m^*=0.067m_0</math>, this idealization gives <math>E_1\approx 0.0561\ {\rm eV}</math>. Real heterostructures have finite barrier heights, energy-dependent masses, band offsets, strain and self-consistent electrostatics; the infinite-well estimate is therefore an order-of-scale check rather than a device-level prediction.
+
+The density of states changes with dimensionality: near an ideal parabolic-band edge, the functional dependence is <math>g_{3D}(E)\propto\sqrt{E-E_c}</math>, <math>g_{2D}(E)</math> is step-like, <math>g_{1D}(E)</math> has inverse-square-root singularities at subband thresholds, and a zero-dimensional dot has discrete levels. Disorder, interactions and finite lifetime broaden these ideal features. Confinement alters transport, light absorption and recombination, so an otherwise correct 3-D carrier-density expression may not apply.
+
+== Quantum transport, tunnelling and nanoscale transistor limits ==
+
+When a device is shorter than the relevant carrier mean free path or phase-coherence length, a local drift–diffusion picture may not capture the current distribution. The Landauer picture relates a coherent elastic conductor's current to reservoir occupation and energy-dependent transmission. For spin-degenerate modes in a two-terminal conductor,
+
+<math display="block">I=\frac{2q}{h}\int_{-\infty}^{\infty}{\cal T}(E)\left[f_S(E)-f_D(E)\right]\,dE.</math>
+
+At low temperature and linear response, the conductance of an independently transmitted spin-degenerate channel tends to
+
+<math display="block">G=\frac{2q^2}{h}\sum_m{\cal T}_m(E_F),</math>
+
+with <math>2q^2/h\approx 77.48\ \mu\mathrm S</math> per perfectly transmitted spin-degenerate mode. Additional valley degeneracy or broken spin degeneracy changes mode counting. The reservoirs must have well-defined distributions; this is not the general answer for strongly inelastic, interacting or transient devices.<ref name="datta">S. Datta, [https://doi.org/10.1006/spmi.2000.0920 “Nanoscale device modeling: the Green's function method”], ''Superlattices and Microstructures'' 28(4), 253–278 (2000), quantum transport and example calculations.</ref>
+
+In a basis with Hamiltonian <math>H</math>, retarded contact self-energies <math>\Sigma_{S,D}^r</math> and energy argument including a positive infinitesimal, coherent noninteracting NEGF gives
+
+<math display="block">G^r(E)=\left[(E+i0^+)I-H-\Sigma_S^r(E)-\Sigma_D^r(E)\right]^{-1},</math>
+<math display="block">{\cal T}(E)=\operatorname{Tr}\left[\Gamma_S G^r\Gamma_DG^a\right],\qquad\Gamma_\alpha=i\left(\Sigma_\alpha^r-\Sigma_\alpha^a\right).</math>
+
+A self-consistent potential changes <math>H</math> as carriers accumulate; contacts, basis choice, finite-temperature reservoir functions and scattering self-energies determine the model's validity. The trace formula above requires the stated elastic, coherent assumptions. A researcher must not silently substitute a ballistic calculation for measured mobility in a long diffusive channel.
+
+Tunnelling across thin barriers, quantum confinement, direct source–drain leakage, interface roughness, drain-induced barrier lowering, velocity saturation, quantum capacitance and non-equilibrium carrier heating affect scaled MOSFETs. A simplistic minimum-length narrative ignores contact resistance, stochastic dopants or traps, energy dissipation, circuit delays and variability. Advanced gate-all-around devices have geometry-specific electrostatics and reliability mechanisms; the long-channel square-law MOS equation earlier is deliberately a teaching asymptote, not a contemporary foundry compact model.
+
+== Gate electrostatics, MOS capacitance and reliability ==
+
+=== Why capacitance and surface states matter ===
+
+A MOS capacitor combines electrostatic drops across the insulator and semiconductor. In a simple parallel-plate idealization <math>C_{\rm ox}/A=\epsilon_{\rm ox}/t_{\rm ox}</math>. The gate potential redistributes into flat-band offset, surface potential and oxide charge; it does not all appear across the semiconductor. For a low-frequency p-type substrate under an ideal depletion approximation, the depletion charge magnitude is <math>|Q_d|\simeq\sqrt{2q\epsilon_sN_A\psi_s}</math> for positive surface potential <math>\psi_s</math> in the depletion regime. This is not a universal expression once inversion charge, nonuniform profiles or interface states are important.
+
+A first-order depletion capacitance follows from differential charge,
+
+<math display="block">C_d=A\left|\frac{dQ_d}{d\psi_s}\right|=A\sqrt{\frac{q\epsilon_sN_A}{2\psi_s}},</math>
+
+and the idealized series combination is <math>C_{\rm measured}^{-1}\simeq C_{\rm ox}^{-1}+C_d^{-1}</math> only under the relevant small-signal bias and frequency conditions. Interface traps, inversion response, distributed resistance and leakage distort the measured capacitance–voltage trace. Interface trap density <math>D_{it}</math> is energy-dependent and cannot be inferred from any arbitrary C–V shift alone.<ref name="mitmoscv">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ MOS structure and MOSFET electrostatics lectures], including C–V and channel formation.</ref>
+
+For an ideal subthreshold MOSFET in weak inversion, a first-order slope in mV/decade is
+
+<math display="block">S=\left(\frac{d\log_{10} I_D}{dV_G}\right)^{-1}=(\ln 10)\frac{k_BT}{q}\left(1+\frac{C_d+C_{it}}{C_{\rm ox}}\right),</math>
+
+where capacitances are consistently per area, <math>C_{it}</math> is an effective interface-trap capacitance and the model assumes thermionic subthreshold control without substantial drain leakage or tunnelling. At 300 K, the ideal lower limit for conventional thermal switching with body factor one is about <math>59.5\ \mathrm{mV/decade}</math>. A measured value below this over a specified interval does not automatically falsify thermodynamics; the physical mechanism, transients, hysteresis, measurement protocol and device class must be identified.
+
+=== Degradation as a model-selection problem ===
+
+Hot-carrier damage, bias-temperature instability, time-dependent dielectric breakdown, stochastic trap occupancy and self-heating have distinct signatures. Predicting lifetime requires explicit stress and recovery protocols, statistical distributions, bias/temperature acceleration, active area and failure criterion. Combining several mechanisms into a single fitted power law can mislead extrapolation outside its calibration range.<ref name="reliability">[https://pmc.ncbi.nlm.nih.gov/articles/PMC10820476/ “The Understanding and Compact Modeling of Reliability in Modern Metal–Oxide–Semiconductor Field-Effect Transistors: From Single-Mode to Mixed-Mode Mechanisms”], ''Micromachines'' 15(1), 127 (2024), review of degradation and mixed-mode models.</ref>
+
+== Optoelectronics and thermodynamic bounds ==
+
+A photovoltaic device can be modelled as a light-dependent current source in opposition to a diode current. Under idealized, spatially uniform and isothermal single-diode conditions,
+
+<math display="block">J(V)=J_{\rm ph}-J_0\left[e^{qV/(n_{\rm id}k_BT)}-1\right],</math>
+
+where current density, temperature, recombination assumptions, spectral illumination and contact losses must be specified. Open-circuit voltage is set implicitly by <math>J(V_{\rm oc})=0</math>; current at short circuit is a different operating point. Series resistance, shunts, nonradiative recombination, incomplete photon absorption and spectrum-dependent collection limit practical efficiency.
+
+Shockley and Queisser developed a '''detailed-balance''' radiative limit for an ideal single-junction cell under specified illumination and emissive assumptions.<ref name="sq">W. Shockley and H. J. Queisser, [https://doi.org/10.1063/1.1736034 “Detailed Balance Limit of Efficiency of p-n Junction Solar Cells”], ''Journal of Applied Physics'' 32, 510–519 (1961); original limiting model, not a universal measured limit for all photovoltaic architectures.</ref> The conclusion is not that all solar cells have one universal maximal efficiency; concentration, multijunctions, spectral conversion, tandem architectures, nonradiative loss, geometry and operating assumptions change the bound. A rigorous efficiency statement must give its spectral distribution, irradiance, cell temperature, material spectrum and area/measurement convention.
+
+In an LED or laser diode, carrier injection, electron–hole overlap, radiative and nonradiative lifetime, optical outcoupling, waveguiding, gain and threshold determine performance. A direct band gap increases the likelihood of strong radiative band-to-band transitions, but does not itself guarantee a high external quantum efficiency. Lasers require optical gain and cavity feedback. OLEDs and other molecular devices often require different excitonic and transport physics than inorganic crystalline p–n junction diodes.<ref name="mitopt">MIT OCW 3.024, [https://ocw.mit.edu/courses/3-024-electronic-optical-and-magnetic-properties-of-materials-spring-2013/pages/lecture-notes/ optical and electronic material lecture notes], optical transitions and semiconductor materials.</ref>
+
+== Materials data, uncertainty and computational provenance ==
+
+=== What to compare ===
+
+Representative approximate room-temperature (near 300 K) fundamental gaps are 1.12 eV for crystalline Si (indirect), 1.42 eV for GaAs (direct), roughly 3.26 eV for 4H-SiC (indirect), and approximately 3.3–3.5 eV for wurtzite GaN (direct, with experimental and methodological variation). These are orientation values, '''not''' universal constants; source, polytype, pressure, strain, impurity concentrations, temperature and the measurement definition control the exact figure.<ref name="bandgap">[https://www.nature.com/articles/s41597-022-01294-6 “Auto-generated database of semiconductor band gaps using ChemDataExtractor”], ''Scientific Data'' 9 (2022): large literature-extracted records highlight the need to track source and method. For documented experimental GaN band-gap spread and excitonic interpretation, see [https://pmc.ncbi.nlm.nih.gov/articles/PMC12895411/ “Benchmarking Density Functional Theory for Accurate Calculation of Nitride Band Gaps”] (2026). The approximate values above are contextual, not taken from one controlled measurement series.</ref>
+
+{| class="wikitable"
+! Material / state !! Approximate gap near 300 K !! Optical character !! Research warning
+|-
+| Silicon, crystalline diamond-cubic || 1.12 eV || Indirect || Resistivity, mobility and lifetime are strongly processing dependent; the optical edge is not the only material-quality metric.
+|-
+| GaAs, zinc-blende || 1.42 eV || Direct || Surface passivation, defect density and device integration matter; excess material mobility alone does not predict circuit speed.
+|-
+| 4H-SiC || 3.26 eV || Indirect || Specify the SiC polytype and crystallographic face; interface states affect MOS channels.
+|-
+| Wurtzite GaN || About 3.3–3.5 eV || Direct || Composition, strain, polarity and measurement methodology affect band alignment and optical extraction.
+|}
+
+For semiconductor materials datasets, a minimal scholarly record is not just the pair (material, gap). It is (sample identifier, composition, polytype, structural characterization, temperature, measurement observable, instrument/method, uncertainty, source DOI or dataset version, analysis method and units). Band-offset datasets require two named materials plus interface orientation/termination and the common energy reference. The National Institute of Standards and Technology's ''InterMat'' work illustrates that even computationally predicted offsets require an explicit underlying method, corrected electronic structure and test dataset.<ref name="intermat">K. Choudhary and K. Garrity, [https://www.nist.gov/publications/intermat-accelerating-band-offset-prediction-semiconductor-interfaces-dft-and-deep “InterMat: Accelerating Band Offset Prediction in Semiconductor Interfaces with DFT and Deep Learning”], ''Digital Discovery'' (2024), DOI [https://doi.org/10.1039/D4DD00031E 10.1039/D4DD00031E].</ref>
+
+A literature-mined dataset containing over 100,000 extracted gaps is a useful discovery index but not the same thing as 100,000 independently standardized measurements. Duplicates, composition ambiguity, provenance, text-mining confidence, experimental vs computed values and publication selection have to be audited before quantitative inference.<ref name="bandgap"/>
+
+== Reproducible case study: abrupt silicon p–n junction ==
+
+This is a '''specified analytic benchmark, not an experimental silicon-device measurement'''. Assume a one-dimensional, uniformly doped, abrupt silicon homojunction in thermal equilibrium at <math>T=300\ \mathrm K</math>, with <math>N_A=N_D=10^{16}\ \mathrm{cm}^{-3}</math>, <math>n_i=10^{10}\ \mathrm{cm}^{-3}</math> as an illustrative assumed value, full dopant ionization, nondegenerate statistics, no interface charge and a depletion approximation. Use <math>\epsilon_s=11.7\epsilon_0</math>, <math>\epsilon_0=8.8541878128\times10^{-12}\ \mathrm{F\,m^{-1}}</math>, and the exact SI values <math>q=1.602176634\times10^{-19}\ \mathrm C</math> and <math>k_B=1.380649\times10^{-23}\ \mathrm{J\,K^{-1}}</math>.
+
+In the neutral n-type region, <math>n\simeq N_D=10^{16}\ \mathrm{cm^{-3}}</math> and <math>p\simeq n_i^2/n=10^4\ \mathrm{cm^{-3}}</math>. Convert doping to SI for electrostatic calculations: <math>10^{16}\ \mathrm{cm^{-3}}=10^{22}\ \mathrm{m^{-3}}</math>. The predicted equilibrium quantities are
+
+<math display="block">V_T=\frac{k_BT}{q}\simeq0.025852\ {\rm V},\qquad V_{\mathrm{bi}}\simeq0.7143\ {\rm V},</math>
+<math display="block">W\simeq0.4298\ \mu{\rm m},\qquad\frac{C_j}{A}=\frac{\epsilon_s}{W}\simeq2.410\times10^{-4}\ {\rm F\,m^{-2}},</math>
+<math display="block">|E_{\max}|\simeq\frac{2V_{\mathrm{bi}}}{W}\simeq3.32\times10^6\ {\rm V\,m^{-1}}.</math>
+
+The symmetry gives <math>x_n=x_p=W/2\simeq0.2149\ \mu{\rm m}</math>. The triangular depletion-field expression, ideal junction capacitance and built-in voltage are not universal terminal characteristics. In particular <math>V_{\mathrm{bi}}</math> is not automatically a diode's measured forward “turn-on” voltage.
+
+'''Independent Scribunto computation of the assumed model:''' {{#invoke:Semiconductor|idealJunction|Na=1e16|Nd=1e16|ni=1e10|T=300}}
+
+The reusable computation above depends on a source-controlled Lua function that checks finite positive inputs, enforces the example's doping-domain assumptions, performs logarithms without multiplying large densities, and emits no SMW claims. It requires a live Scribunto test to confirm real parser execution.
+
+{| class="wikitable"
+! Quantity !! Expected analytic result !! Scope
+|-
+| n-type bulk minority holes || 10<sup>4</sup> cm<sup>−3</sup> || Equilibrium, nondegenerate, full ionization
+|-
+| Thermal voltage || 0.025852 V || 300 K, exact SI constants
+|-
+| Built-in potential || 0.7143 V || Abrupt homojunction, specified n<sub>i</sub>
+|-
+| Depletion width || 0.4298 μm || Zero bias; epsilon<sub>s</sub> = 11.7 epsilon<sub>0</sub>
+|-
+| Junction capacitance per area || 2.410 × 10<sup>−4</sup> F/m<sup>2</sup> || Ideal depletion capacitance
+|-
+| Maximum field magnitude || 3.32 × 10<sup>6</sup> V/m || Triangular-field approximation
+|}
+
+A credible independent calculation must reproduce the equations and numerical tolerances with unit conversion. A temperature sweep must also update the temperature-dependent intrinsic carrier concentration and relevant material parameters; holding the illustrative 300 K n<sub>i</sub> fixed cannot be presented as measured temperature-dependent physics.
+
+=== Reproducible simulation protocol ===
+
+To extend this benchmark into a device study, specify (1) semiconductor composition and parameter-set source/revision; (2) the mesh, doping profile, contacts and recombination laws; (3) boundary conditions and current convention; (4) residual and charge/current conservation tolerances; (5) grid and solver convergence; (6) voltage and temperature sweeps; and (7) measurements or independently derived benchmarks withheld from parameter fitting. Persist raw and processed I–V/C–V data with uncertainty and provenance. An equation reproduced by software is an implementation test, not proof that its assumptions describe a fabricated device.
+
+== Experimental characterization and inference ==
+
+{| class="wikitable"
+! Measurement !! Direct observation !! Model-dependent inference !! Failure mode
+|-
+| Four-point probe / van der Pauw || Voltages and driven current || Sheet resistance and conductivity with thickness/geometry || Edge geometry, anisotropy and inhomogeneity
+|-
+| Hall effect || Transverse voltage under magnetic field || Dominant carrier sign, Hall density and mobility in a single-carrier model || Parallel conduction, Hall factor, multiband transport
+|-
+| Temperature-dependent I–V, C–V || Electrical terminal response versus temperature and frequency || Junction barriers, depletion profiles, trap kinetics || Series resistance, leakage, hysteresis
+|-
+| Optical absorption / photoluminescence || Energy-resolved spectra and temporal response || Optical onset, excitonic and defect-related transitions || Excitation density, heating, collection geometry, photon recycling
+|-
+| XRD / Raman || Diffraction peaks and vibrational frequencies || Crystal phase, orientation, strain and disorder || Phase overlap, calibration and texture
+|-
+| SIMS / microscopy / DLTS || Depth profile, structural contrast or trap transient || Element distributions, structural defects or electrically active trap parameters || Matrix effects, instrument response, nonunique defect assignments
+|}
+
+For one carrier type at weak magnetic field, <math>R_H\simeq -1/(qn)</math> for electrons or <math>R_H\simeq+1/(qp)</math> for holes, under the sign convention and Hall factor approximately one; <math>\mu_H=|R_H|\sigma</math>. More complex conduction channels cannot generally be reduced to a single Hall density. A research article must report wafer/crystal orientation, measurement temperature, magnetic-field polarity, contact linearity, instrument calibration, sample geometry and uncertainty.
+
+A linear <math>1/C^2</math> versus reverse-bias characteristic is consistent with certain depletion approximations but does not prove a uniform dopant profile. Interface traps, frequency dispersion and series resistance can produce misleading carrier or barrier estimates. Likewise, an optical decay fitted to a single lifetime cannot uniquely identify SRH recombination without testing diffusion, radiative contributions and surface effects.
+
+== Research evidence and comparative model selection ==
+
+A PhD-level claim should distinguish (a) an original reproducible experiment, (b) an independently benchmarked model, (c) a review synthesis and (d) a pedagogical approximation. Experiments require sample identity, uncertainty, operating range, measurement definitions and source provenance. Models require explicit constitutive laws, material parameters, convergence, residuals and tests against independent measurements. A large literature-mined band-gap dataset is not automatically a collection of independent standardized measurements, and material-property values cannot safely be compared without temperature, polytype, method and sample context.<ref name="dataquality">[https://www.nature.com/articles/s41597-022-01294-6 “Auto-generated database of semiconductor band gaps using ChemDataExtractor”], ''Scientific Data'' (2022): literature-mined gap records require deduplication, method/context reconciliation and provenance before physical comparison.</ref>
+
+The following original works illustrate distinct validity regimes: [https://doi.org/10.1103/PhysRev.87.835 Shockley and Read (1952)] treats trap-assisted recombination; [https://doi.org/10.1002/j.1538-7305.1950.tb03653.x van Roosbroeck (1950)] treats coupled continuum carrier flow; [https://doi.org/10.1006/spmi.2000.0920 Datta (2000)] develops a nanoscale quantum transport framework; [https://doi.org/10.1063/1.1736034 Shockley and Queisser (1961)] establishes a radiative photovoltaic limit for an explicitly idealized system. None supersedes the others for every question. Each should be selected based on physical length/time scales, carrier statistics, boundary conditions, environmental coupling and the observable being predicted.
+
+Substantive open research areas include reliable defect identification by combining computation and spectroscopy; interface energetics and low-resistance contacts; controlled nonequilibrium transport under nanoscale confinement; wide-bandgap device reliability and packaging; integrated electronic and photonic heterostructures; and validated cross-material datasets with uncertainty and measurement provenance. These themes are not assertions that a single technology or theory solves every area. Relevant doctoral work requires specific research questions and direct examination of current primary literature beyond this general article.
+
+== Model selection and unresolved engineering limits ==
+
+* '''Equilibrium vs driven operation:''' one Fermi level is appropriate at thermal equilibrium; driven carrier populations may require separate quasi-Fermi levels.
+* '''Nondegenerate vs degenerate:''' the Boltzmann formulas and conventional Einstein relation are not universal at high carrier density.
+* '''Bulk vs interface:''' trapping, surface recombination, Schottky barriers, band offsets and oxide charge can dominate a device despite good bulk material.
+* '''Diffusive vs ballistic:''' drift–diffusion is a continuum model; short transport lengths, high electric fields and quantum confinement can require nonlocal or quantum transport.
+* '''Electrical vs system merit:''' faster or smaller individual devices do not guarantee a faster or more efficient system without interconnect, memory, thermal, yield, power-delivery, software and workload considerations.
+* '''Verification vs explanation:''' a citation supports a particular scientific premise or historical account; experimental device performance still requires actual measurements under stated conditions.
+
+== References and provenance ==
+
+The sources below have different evidentiary roles. MIT and Delft material supplies educational derivations; Shockley (1949) is an original theory paper, not proof that its idealized assumptions hold for every present-day device. DOE and OSHA document particular application and fabrication contexts. Explanations and worked examples are BITwiki editorial synthesis; equations are attributed where introduced rather than treated as original findings.
+
+<references/>
+
+== Further reading ==
+
+* Mark Lundstrom, ''Semiconductor Fundamentals'', Purdue University (2021), [https://courses.edx.org/asset-v1%3APurdueX%2B69502x%2B1T2023%2Btype%40asset%2Bblock/Semiconductor_Fundamentals_v1_reduced_file_size.pdf open course text], on carrier statistics and transport.
+* OpenStax, ''University Physics, Volume 3'', [https://openstax.org/books/university-physics-volume-3/pages/9-7-semiconductor-devices §9.7 “Semiconductor Devices”], for a shorter device-level introduction.
+* [[Semiconductor/Simple|Simple overview]] and [[Semiconductor|canonical topic map]].

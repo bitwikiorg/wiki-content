@@ -1,0 +1,157 @@
+{{Reading depth|base=Sensitivity analysis|current=Technical}}
+
+= Sensitivity analysis — Technical =
+
+'''Sensitivity analysis''' concerns the dependence of outputs from a specified mathematical, statistical or computational model on uncertain inputs, model assumptions or design choices. It is not one scalar “importance” measure: the formal question, input-domain support, joint distribution, output statistic and decision determine the appropriate analysis.
+
+Let a deterministic model be <math>Y=f(\mathbf X;\mathcal M)</math>, where <math>\mathbf X=(X_1,\ldots,X_k)</math> represents factors and <math>\mathcal M</math> denotes the mathematical/structural model and its boundary conditions. If the inputs are uncertain random variables with joint measure <math>P_{\mathbf X}</math>, sensitivity measures concern the induced distribution of <math>Y</math>. The assumptions of <math>P_{\mathbf X}</math> are part of the definition, not decoration. Sensitivity of a mathematical model must also be distinguished from identifying causes in a real system.<ref name="jrc">European Commission Joint Research Centre, [https://joint-research-centre.ec.europa.eu/sensitivity-analysis-samo/methods_en ''Sensitivity Analysis: Methods''], overview of local/global methods, uncertainty attribution and modelling boundaries.</ref>
+
+== Define the question before selecting the estimator ==
+
+{| class="wikitable"
+! Intended question !! Mathematical object !! Common pitfall
+|-
+| Local response to a small change || <math>\partial f/\partial x_i</math> at a point || Mistakes local slope for global importance.
+|-
+| Propagation of measurement uncertainty || Jacobian and input covariance || Treats correlated inputs as independent.
+|-
+| Output variance attribution || First-order, interaction, total Sobol indices || Applies independent-input ANOVA decomposition to correlated factors.
+|-
+| Screening many candidate parameters || Morris elementary effects || Interprets elementary-effect spread as a direct physical interaction estimate.
+|-
+| Effect on a decision, failure or tail probability || Scenario-dependent loss/event probability || Ranks inputs by ordinary output variance instead of the decision.
+|-
+| Robustness to alternative model structures || Multimodel, scenario and sensitivity auditing || Assumes the chosen parameter ranges cover structural misspecification.
+|}
+
+The study's objective should identify whether output is scalar/vector/time-dependent, which inputs can vary, a physically plausible joint domain, error tolerance, and whether the reported quantity is a derivative, variance fraction, probability, threshold or intervention response. This prevents treating unrelated numerical indices as comparable.<ref name="saltelli2019">Andrea Saltelli and colleagues, [https://publications.jrc.ec.europa.eu/repository/handle/JRC114437 ''Why so many published sensitivity analyses are false: a systematic review of sensitivity analysis practices''] (2019), audit of common flawed sensitivity methods.</ref>
+
+== Local derivatives, elasticities and numerical error ==
+
+At an operating point <math>\mathbf x_0</math>, if <math>f</math> is differentiable,
+
+<math display="block">f(\mathbf x_0+\delta\mathbf x)=f(\mathbf x_0)+\nabla f(\mathbf x_0)^\mathsf T\delta\mathbf x+O(\lVert\delta\mathbf x\rVert^2).</math>
+
+The partial derivative <math>\partial f/\partial x_i</math> has output units divided by input units. A dimensionless logarithmic elasticity for positive <math>x_i</math> and nonzero <math>f</math> is
+
+<math display="block">E_i=\frac{x_i}{f}\frac{\partial f}{\partial x_i}=\frac{\partial\ln |f|}{\partial\ln x_i}</math>
+
+when the logarithms are defined locally. Because it scales the response relative to the input, elasticity can improve comparisons across quantities with different units, but it becomes unstable when <math>f</math> approaches zero and requires an interpretation of what is held fixed.
+
+For a numerical finite difference,
+
+<math display="block">\frac{\partial f}{\partial x_i}\approx\frac{f(\mathbf x+h\mathbf e_i)-f(\mathbf x-h\mathbf e_i)}{2h}.</math>
+
+The central-difference truncation error is ordinarily <math>O(h^2)</math> under adequate smoothness, while floating-point roundoff and noisy solvers worsen as <math>h</math> becomes too small. Choose <math>h</math> relative to the factor's scale and model-solver tolerance; check a step-size sweep rather than reporting a single unexamined derivative. Complex-step differentiation can reduce cancellation for analytic functions whose implementation supports complex inputs and operations, but it cannot be applied blindly to nonanalytic branches or simulators.
+
+When <math>k</math> is large and the output scalar, adjoint/automatic differentiation methods may provide gradients more efficiently than <math>k</math> separate perturbed solves, subject to differentiability and correct implementation. When the output is a time series or vector, the Jacobian can be large and sensitivity summaries must identify times, norms, event metrics or principal directions.
+
+=== Local uncertainty propagation ===
+
+For a differentiable measurement or physical model and input covariance matrix <math>\Sigma_X</math>, first-order uncertainty propagation gives
+
+<math display="block">\Sigma_Y\approx J\,\Sigma_X\,J^\mathsf T,\qquad J=\left.\frac{\partial f}{\partial\mathbf x}\right|_{\mathbf x_0}.</math>
+
+For a scalar result this is <math>u_y^2\approx\sum_{i,j}(\partial_if)(\partial_jf)\operatorname{Cov}(X_i,X_j)</math>, evaluated at the nominated point under the linearization assumptions. Off-diagonal covariances can be consequential; discarding them is not justified simply because the software accepts independent inputs. This propagation law is a local approximation, not a general replacement for Monte Carlo propagation in nonlinear, discontinuous or heavy-tailed problems.<ref name="nistgum">NIST Technical Note 1297, [https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-law-propagation-uncertainty Appendix A: Law of Propagation of Uncertainty], partial derivatives as sensitivity coefficients and covariance-based propagation.</ref>
+
+== Variance-based global sensitivity: independent inputs ==
+
+Let <math>Y=f(X_1,\ldots,X_k)</math>, with finite nonzero variance <math>V=\operatorname{Var}(Y)</math> and independent random input factors <math>X_1,\ldots,X_k</math> under a specified product distribution. Under square integrability, the functional ANOVA/Hoeffding–Sobol decomposition is
+
+<math display="block">f(\mathbf X)=f_0+\sum_i f_i(X_i)+\sum_{i<j}f_{ij}(X_i,X_j)+\cdots+f_{1\ldots k}(\mathbf X).</math>
+
+The components are constructed to have zero integral in each of their component arguments, making distinct terms orthogonal under the independent-input measure. Thus, for input subsets <math>u</math>,
+
+<math display="block">V=\sum_{\varnothing\ne u\subseteq\{1,\ldots,k\}}V_u,\qquad V_u=\operatorname{Var}[f_u(\mathbf X_u)].</math>
+
+The first-order Sobol index is
+
+<math display="block">S_i=\frac{\operatorname{Var}_{X_i}\left(\mathbb E[Y\mid X_i]\right)}{V},</math>
+
+and the total-effect index, collecting all contributions involving <math>X_i</math>, can be written
+
+<math display="block">S_{T_i}=\frac{\mathbb E_{\mathbf X_{\sim i}}\left[\operatorname{Var}_{X_i}(Y\mid\mathbf X_{\sim i})\right]}{V}=1-\frac{\operatorname{Var}_{\mathbf X_{\sim i}}\left(\mathbb E[Y\mid\mathbf X_{\sim i}]\right)}{V}.</math>
+
+Here <math>\mathbf X_{\sim i}</math> denotes all inputs except the <math>i</math>th. Under the assumptions above, indices lie between zero and one; generally <math>S_i\le S_{T_i}</math>, while <math>\sum_i S_i\le1</math>. The gap between total and first-order contribution signals higher-order interactions involving that input; it is not an error term. Sobol indices attribute variance under a chosen measure, not necessarily variance of physical measurement errors nor causal influence.<ref name="sobol">I. M. Sobol, [https://doi.org/10.1016/S0378-4754(00)00270-6 ''Global sensitivity indices for nonlinear mathematical models and their Monte Carlo estimates''], ''Mathematics and Computers in Simulation'' 55, 271–280 (2001), original variance-based sensitivity formalism and estimators.</ref>
+
+=== Exact analytic example: an input with zero main effect ===
+
+Let <math>X,Z</math> be independent <math>\mathrm{Uniform}(-1,1)</math> variables and define the dimensionless toy model
+
+<math display="block">Y=f(X,Z)=X+XZ=X(1+Z).</math>
+
+The required moments are <math>\mathbb E[X]=\mathbb E[Z]=0</math> and <math>\mathbb E[X^2]=\mathbb E[Z^2]=1/3</math>. Hence
+
+<math display="block">\mathbb E[Y]=0,\qquad \operatorname{Var}(Y)=\mathbb E[X^2]\mathbb E[(1+Z)^2]=\frac13\left(1+\frac13\right)=\frac49.</math>
+
+The ANOVA components are <math>f_0=0</math>, <math>f_X(X)=X</math>, <math>f_Z(Z)=0</math> and <math>f_{XZ}(X,Z)=XZ</math>. Their separate variance components are <math>V_X=1/3</math>, <math>V_Z=0</math> and <math>V_{XZ}=1/9</math>. Therefore the exact Sobol indices are
+
+<math display="block">S_X=\frac34,\qquad S_Z=0,\qquad S_{XZ}=\frac14,\qquad S_{T_X}=1,\qquad S_{T_Z}=\frac14.</math>
+
+This is a '''constructed mathematical illustration, not an experimentally estimated causal effect'''. It demonstrates a factor <math>Z</math> with zero first-order influence but nonzero total influence via interaction. At the nominal point <math>(X,Z)=(0,0)</math>, <math>\partial f/\partial Z=X=0</math>, so a one-at-a-time local perturbation of <math>Z</math> reveals nothing. Yet globally its interaction contributes one-quarter of the output variance. A method that reports only local gradients at that point would fail to detect this mathematically known interaction.
+
+Changing the input distributions changes the indices; zero first-order effect and interaction magnitude are not immutable properties of the algebraic formula alone. Changing to correlated <math>X,Z</math> requires revisiting the underlying decomposition and attribution definition.
+
+== Screening methods, sampling and estimators ==
+
+'''Morris elementary effects''' sample differences along randomized trajectories in the input space. For normalized input <math>x_i</math> and an admissible step <math>\Delta</math>, an elementary effect has the form
+
+<math display="block">EE_i(\mathbf x)=\frac{f(\mathbf x+\Delta\mathbf e_i)-f(\mathbf x)}{\Delta}.</math>
+
+The mean of absolute elementary effects can indicate influential factors; their spread can reflect nonlinearity or interaction, though these sources are not separately identified by the spread alone. Morris screening is often economical for many candidate factors, but results depend on the design grid, permissible steps, scaling, model variability and trajectories. It is not the same as computing Sobol variance contributions.<ref name="morris">Max D. Morris, [https://doi.org/10.1080/00401706.1991.10484804 ''Factorial Sampling Plans for Preliminary Computational Experiments''], ''Technometrics'' 33(2), 161–174 (1991), original method.</ref>
+
+For variance-based indices, pick-freeze and replicated input designs can estimate first-order and total effects. A sample estimator should declare the convention for its hybrid design matrices, because swapping the replaced columns changes which index a formula computes. If <math>A</math> and <math>B</math> are independent <math>N\times k</math> design matrices, and <math>A_B^{(i)}</math> denotes <math>A</math> with its <math>i</math>th column replaced by column <math>i</math> of <math>B</math>, then a commonly used total-effect estimator is
+
+<math display="block">\widehat S_{T_i}=\frac{1}{2N\widehat V}\sum_{j=1}^N\left[f(A_j)-f\big((A_B^{(i)})_j\big)\right]^2.</math>
+
+Estimation accuracy depends on how <math>\widehat V</math> is computed, randomization, sample size and estimator bias. Monte Carlo and quasi-Monte Carlo designs do not eliminate stochastic or numerical uncertainty by their label alone. Report confidence intervals, bootstrap or repeated independent randomizations where justified, estimator version, sampling seed, total model evaluations and convergence. Complex, irregular or discontinuous response surfaces can produce unstable finite-budget results.<ref name="jrcmethods">European Commission JRC, [https://publications.jrc.ec.europa.eu/repository/handle/JRC31472 ''Sensitivity Analysis Practices: Strategies for Model-Based Inference''] (2006); JRC [https://joint-research-centre.ec.europa.eu/sensitivity-analysis-samo/methods_en methods overview], treatment of variance-based, Morris and Monte Carlo approaches.</ref>
+
+For expensive models, Gaussian-process or polynomial-chaos surrogate models may reduce direct solver evaluations. Their sensitivity indices are properties of the surrogate approximation unless prediction and uncertainty have been checked against held-out original-model runs. Emulator error must not be conflated with physical uncertainty or model discrepancy.
+
+== Correlated inputs and identification ==
+
+The standard independent-input Sobol ANOVA uniqueness and simple variance-allocation interpretation do not carry over unchanged when inputs are correlated. Dependence can arise from conservation laws, shared measurements, compositional constraints or calibration correlations. For correlated inputs the conditional expectation <math>\mathbb E[Y\mid X_i]</math> may contain information about variables associated with <math>X_i</math> rather than an isolated “effect” of varying it.
+
+Dependent-input approaches may use explicitly defined conditional or interventional sensitivity indices, grouped variables, Shapley effects or structural causal models. Each answers a different attribution question and must state the joint distribution and what perturbations are physically allowable. '''Observational conditioning is not an intervention.''' If it is impossible to vary one input while holding the others fixed, an ordinary partial derivative does not define a feasible experiment or causal intervention.
+
+For compositional inputs constrained by <math>\sum_i X_i=1</math>, a perturbation changing one component while holding all others fixed leaves the feasible simplex. One must use a constraint-preserving coordinate representation or a defined perturbation along the simplex. Likewise, conservation of energy or mass can couple engineering inputs. This is one reason not to treat a generic sensitivity ranking as an ontology of causes.
+
+== Model structure, measurement uncertainty and sensitivity auditing ==
+
+Input-value uncertainty, experimental/measurement error, numerical solver error, omitted mechanisms and structural model discrepancy are different sources of disagreement. Sensitivity analysis can expose fragility to those modeled factors, but it does not automatically identify unknown omitted influences. A deterministic sensitivity ranking performed with the wrong governing equations may be perfectly reproducible and scientifically irrelevant.
+
+Sensitivity auditing adds questions about whether the system has been framed correctly, whether the model is fit for its stated decision, and whether the range of plausible futures and competing model structures is honestly represented. Saltelli and coauthors stress that many published procedures use limited one-at-a-time calculations while claiming conclusions about overall input importance, and that model use should document its assumptions and social context when relevant.<ref name="saltelliaudit">Andrea Saltelli et al., [https://publications.jrc.ec.europa.eu/repository/handle/JRC114437 ''Why so many published sensitivity analyses are false''] (2019), systematic review; [https://www.nature.com/articles/d41586-020-01812-9 ''Five ways to ensure that models serve society''], ''Nature'' 582, 482–484 (2020).</ref>
+
+'''Calibration''' may produce a strong fit even when two parameters are not separately identifiable. Correlated posterior parameter distributions, sloppy parameter directions and compensating error can make naïve one-parameter-at-a-time sensitivity misleading. Report which outputs are actually observed, the identifiability of parameters, posterior or profile-likelihood uncertainty where relevant, and the distinction between learning parameters from data and stress-testing conclusions.
+
+== Sensitivity of decisions rather than output variance ==
+
+Some applications care whether a threshold, ranking, classification or engineering choice changes. If <math>L(a,\mathbf X)</math> is a loss under action <math>a</math>, one might analyze the stability of <math>a^*=\operatorname*{arg\,min}_a\mathbb E[L(a,\mathbf X)]</math> under assumptions. The variance of an unrelated model output is not necessarily the right sensitivity target. For rare failures, failure probability <math>P[f(\mathbf X)>c]</math> may be more relevant than <math>\operatorname{Var}(f(\mathbf X))</math>, but reliable rare-event estimates can require specialized sampling designs. Scenario uncertainty may not admit a defensible probability distribution at all, so modelers may instead report robust ranges or qualitative alternatives.
+
+In biological and cognitive systems, the model inputs, output constructs and measurement instruments require domain-specific validity. Observing that an agent's benchmark score changes with a prompt setting does not establish an equivalent human psychological mechanism. Agentic use demands an implemented intervention definition, a benchmark, a failure condition and empirical replication.
+
+== Relation to dimensional analysis and physical similarity ==
+
+Before varying parameters in an engineering model, [[Dimensional analysis/Technical|dimensional analysis]] may reveal governing dimensionless groups. For a steady model <math>y=f(\rho,v,L,\mu)</math>, a physically valid set of groups can be a more informative sensitivity basis than separately perturbing dimensionful input values without regard to constraints. However, dimensionless parameters may still be statistically dependent under the actual experimental design, and selecting groups does not imply independence.
+
+For a positive power-law output <math>y=C\prod_i x_i^{a_i}</math>, the elasticity is <math>E_i=a_i</math> when other input coordinates are fixed. That compact calculation depends on the model and its parameterization and should not be generalized to interactions, variable coefficients or all operating regimes. An empirical sensitivity result needs observed or calculated response variation, not just a dimensional identity.
+
+== Reproducible research specification and acceptance tests ==
+
+A defensible computational study should record: the scientific question and decision metric; model equations and code revision; input names, units, transformations and meaningful boundaries; joint distributions or deterministic scenarios with dependencies; explicit structural alternatives; the selected sensitivity index and estimator; sampling design and seed; number of model runs; simulator convergence and failure handling; sensitivity-index uncertainty; tests for nonlinearity and interaction; and comparison against independent data or simpler benchmarks.
+
+For the exact <math>Y=X(1+Z)</math> example, verification requires <math>\mathbb E[Y]=0</math>, <math>\operatorname{Var}(Y)=4/9</math>, <math>(S_X,S_Z)=(3/4,0)</math>, <math>(S_{T_X},S_{T_Z})=(1,1/4)</math>. A Monte Carlo implementation should converge toward these analytic values with confidence bounds as budget increases. A reported exact analytic result and a noisy estimate must not be presented as the same type of evidence.
+
+The model can also be sensitivity-tested with another distribution for <math>Z</math> or with correlated <math>X</math> and <math>Z</math>. In those cases the independent uniform-input values above are '''not''' the expected results, and methods must be selected to match the changed measure. Cross-check [[Reproducibility]], [[Verification]], [[Validation]], [[Uncertainty]], [[Robustness]] and [[Scientific model]].
+
+== Epistemic boundaries and unresolved research questions ==
+
+Sensitivity analysis has a broad mathematical literature and several active methodological problems: efficient high-dimensional global estimation; interaction detection under strong parameter dependence; non-smooth or stochastic simulators; reliability of surrogate-based sensitivity in rare tails; attribution under structural uncertainty; and integration of global sensitivity findings into consequential decisions. These topics are not evidence of one universal best estimator or a machine-verifiable “importance” ranking for all domains.
+
+The first question for an advanced reader is therefore not “what method is most sophisticated?” but “what question is identified by the reported index, what is the source of the uncertainty distribution, which inputs are feasible to vary, and which independent tests could invalidate the answer?”
+
+== References and further reading ==
+
+<references/>
+
+See [[Sensitivity analysis/Simple|Simple explanation]], [[Sensitivity analysis|canonical topic map]], [[Dimensional analysis/Technical|dimensional analysis]], [[Measurement]], [[Reproducibility]] and [[Uncertainty]].

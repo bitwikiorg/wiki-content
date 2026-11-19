@@ -183,6 +183,16 @@ class SourceContractTests(unittest.TestCase):
         self.assertNotIn("{{Knowledge object", page)
         self.assertNotIn("{{Reading depth", page)
         self.assertNotIn("{{Source status", page)
+        self.assertIn("{{Template:BITwiki header element}}", page)
+        banner = (ROOT / "Template" / "BITwiki header element.mediawiki").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("BITwiki: The Digital Codex", banner)
+        self.assertIn("Bridging the Gap Between Bits and Bytes", banner)
+        self.assertIn("== What Makes Us Different ==", page)
+        self.assertIn("== Start Exploring ==", page)
+        self.assertIn("https://github.com/bitwikiorg/wiki-content", page)
+        self.assertEqual(page.count("{{Template:BITwiki header element}}"), 1)
 
         for segment in page.split("[[")[1:]:
             link = segment.split("]]", 1)[0]

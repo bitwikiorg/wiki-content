@@ -1,0 +1,82 @@
+{{Knowledge object
+ |title=Root cause analysis
+ |entity_type=Method
+ |domain=Engineering, Systems science, Science
+ |status=Established
+ |provenance=Research synthesis of NASA mishap-investigation guidance, Leveson systems safety, and causal inference methodology; #65 cohort
+}}
+{{Reading depth|base=Root cause analysis|current=Core}}
+
+= Root cause analysis =
+
+== Overview ==
+
+{{:Root cause analysis/Simple}}
+
+'''Root cause analysis''' is a family of retrospective, evidence-driven failure and incident investigation practices. Its objective is to understand an adverse event sufficiently to recommend and verify effective preventive actions. The term is not a theorem guaranteeing that every event possesses exactly one hidden, uniquely discoverable "root cause."
+
+== Define the system and event ==
+
+A defensible investigation states the observed event, affected people or functions, event timeline, operating conditions, evidence sources and [[Related to::System boundary|system boundary]]. Causes are hypotheses that require support beyond temporal proximity or correlation. Explanatory scope can range from a component to interacting hardware, software, organizations, controls and external conditions.
+
+Investigators should distinguish an '''initiating event''' from an '''enabling condition''', a '''failed barrier''' and the '''magnitude of the consequences'''. These may be causally connected, but cannot be treated as interchangeable labels.<ref name="nasa_core">NASA, [https://nodis3.gsfc.nasa.gov/displayCA.cfm?Internal_ID=N_PR_8621_0001_&page_name=AppdxI1 ''NPR 8621.1: Investigation tools''], including management oversight and risk tree and event/causal factor charting.</ref>
+
+== Families of investigative methods ==
+
+{| class="wikitable"
+! Method family !! Primary use !! Important qualification
+|-
+| Timeline and event–causal factor charting || Reconstruct event sequence and barriers || Order alone does not identify causes.
+|-
+| Five Whys questioning || Expose assumptions and deeper conditions || May yield an arbitrary single chain without corroboration.
+|-
+| Fault-tree analysis || Examine combinations of conditions leading to a defined top event || Gate logic and independence assumptions must be justified.
+|-
+| Failure mode and effects analysis || Prospectively inspect potential component/process failures || Primarily a preventive risk method, not automatically a retrospective causal reconstruction.
+|-
+| Systems-theoretic accident analysis || Examine unsafe control interactions, constraints and feedback || Requires specified control structure and system boundary.
+|-
+| Counterfactual / causal-model analysis || Ask whether an intervention would change the outcome || Conclusions depend on assumptions and available identification evidence.
+|}
+
+Nancy Leveson's STAMP framework shifts attention from chains of component failures to unsafe control and inadequate enforcement of constraints in complex sociotechnical systems. It is one substantive approach, not the only legitimate explanation model.<ref name="leveson_core">Nancy G. Leveson, [https://mitpress.mit.edu/9780262297301/engineering-a-safer-world/ ''Engineering a Safer World: Systems Thinking Applied to Safety''], MIT Press, systems-theoretic accident model, STPA and CAST.</ref>
+
+== Evidence, uncertainty and corrective action ==
+
+Evidence can include telemetry, independent measurements, physical inspection, interviews, maintenance records, code revisions and relevant procedures. Each carries possible omissions, bias and time-order ambiguity. The inquiry should record which hypotheses were supported, contradicted, merely plausible or left unresolved.
+
+A recommendation must identify the hazard it addresses and the evidence expected after intervention. Reliability engineering distinguishes verifying that a corrective action was installed from validating that it reduced the relevant hazard. An event's absence immediately after a change may be weak evidence when adverse events are rare.
+
+These distinctions connect RCA to [[Related to::Causality|causal inference]], [[Related to::Verification|verification]], [[Related to::Validation|validation]] and [[Related to::Resilience|system resilience]]. None implies the article's method can certify a particular incident explanation without independent evidence.
+
+== A research workflow ==
+
+A domain reviewer should be able to reconstruct the event definition; time-stamped evidence ledger; candidate causal graph or control structure; competing causal hypotheses; rationale for including or excluding factors; known dependencies; uncertainty; feasible corrective interventions; and prospective verification plan.
+
+For numerical events, explicit fault logic and probability models can help test assumptions. Probabilities of independent failures are not automatically probabilities that individual failures *caused* a realized event.
+
+== Incoming semantic relationships ==
+
+This query shows only recorded incoming [[Property:Related to|Related to]] assertions and makes no claim of exhaustive coverage:
+
+{{#ask:
+ [[Related to::Root cause analysis]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming semantic relationships are currently recorded.''
+}}
+
+== Reading depths ==
+
+[[Root cause analysis/Simple|Simple]] gives a low-prerequisite investigation framework. [[Root cause analysis/Technical|Technical]] develops competing causal approaches, probabilistic fault logic, structural causal models, real-world evidence requirements and an independently testable quantitative example.
+
+== References ==
+
+<references/>
+
+[[Category:Engineering]]
+[[Category:Systems science]]
+[[Category:Science]]

@@ -1,14 +1,14 @@
 = Readable depth and localization =
 
-'''Status: Adopted source-level reader-depth convention.''' The Wave 0–14 expansion created Core, Simple and Technical source surfaces for 232 concepts (696 pages) by the 2026-09-19 repository audit; this is a dated source-state figure, not independent verification of the live wiki. Implementation and cross-surface consistency remain subject to runtime and editorial review.
+'''Status: Existing three-depth source convention; future default under evaluation.''' The Wave 0–14 expansion created Core, Simple and Technical source surfaces for 232 concepts (696 pages) by the 2026-09-19 repository audit; this is a dated source-state figure, not independent verification of the live wiki. Implementation and cross-surface consistency remain subject to runtime and editorial review.
 
 BITwiki localizes knowledge primarily by '''reader depth and technicality''', while preserving one semantic identity for each concept.
 
 == Principle ==
 
-'''One concept, three reader surfaces.'''
+'''Current source convention: one concept, three reader surfaces.'''
 
-A mature public concept should normally be addressable at three depths:
+The existing corpus addresses suitable public concepts at three depths:
 
 <pre>
 Title/Simple
@@ -34,7 +34,7 @@ A single long article can technically contain simple and advanced sections, but 
 * technical depth without overwhelming the Core article;
 * Simple English treatment without deleting necessary advanced content.
 
-The trade-off is duplication risk. The capture → compile/write → audit workflow exists partly to prevent the three surfaces from drifting into contradictory truth stores.
+The trade-off is duplication risk. The historical capture → compile/write → audit method helped limit divergence across these surfaces. Future editorial workflows must still verify cross-depth factual consistency, regardless of how the presentation model evolves.
 
 == Depth definitions ==
 
@@ -60,7 +60,7 @@ Ontology/Simple      → Simple
 Ontology/Technical   → Technical
 </pre>
 
-The unsuffixed title owns the canonical public concept name. The suffixed pages are depth-localized reader surfaces.
+Under the '''current''' source mapping, the unsuffixed title owns the canonical public concept name. The suffixed pages are depth-localized reader surfaces. This records existing pages and links; it does not settle whether a separately maintained Core presentation remains the long-term default.
 
 The Core page owns the concept's canonical `Knowledge object` identity and domain/category membership. Simple and Technical derivatives should not duplicate those assertions merely to satisfy navigation or CI. This prevents category listings and semantic queries from treating one concept as three independent subjects.
 
@@ -136,19 +136,19 @@ language / locale
 
 A Spanish Technical page is still Technical. A Simple English page can still be rigorous.
 
-== Required surfaces ==
+== Current source surfaces and open reader policy ==
 
-For foundational public concepts:
+The present corpus includes unsuffixed Core titles and <code>/Simple</code> and <code>/Technical</code> source pages; existing pages and [[Template:Reading depth|reader-depth links]] must be preserved while their future organization is evaluated.
 
-* '''Core''' is mandatory.
-* '''Simple''' is expected.
-* '''Technical''' is expected when meaningful technical/formal depth exists.
+* '''Simple''' is a desired minimum reader outcome: a correct, low-prerequisite orientation.
+* '''Technical''' is a desired minimum reader outcome where substantive formal, specialist or practitioner treatment exists; do not generate empty filler when it does not.
+* '''Core''' is the current canonical general article and title mapping, but whether it remains a separately required middle surface, becomes a composed/adaptive view, or follows another reviewed model is '''not yet decided'''.
 
-Wave-based context compilation may still conclude that a Technical surface would only duplicate Core. Such an exception should be explicit rather than silently generating filler.
+No page rename, deletion, redirect, template change or migration is authorized by this editorial clarification.
 
-== Workflow ==
+== Historical Wave workflow ==
 
-Depth surfaces are produced together through a three-state wave workflow:
+The completed Waves 0–14 source expansion used a three-state capture, compilation/writing and audit method:
 
 <pre>
 Context capture
@@ -158,7 +158,7 @@ Context compilation + writing
 Context audit
 </pre>
 
-Research is captured across the whole concept wave first. Definitions and relationships are then compiled consistently before any of the three depth surfaces are written. The final audit checks factual, citation, link, semantic, and cross-depth consistency.
+In that historical method, research was captured across a concept wave, definitions and relationships were compiled before writing the depth surfaces, and the final audit checked factual, citation, link, semantic and cross-depth consistency. These remain useful review concerns, not a required universal sequence or a declaration that the old wave program continues.
 
 == Portal behavior ==
 

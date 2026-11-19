@@ -14,7 +14,10 @@ This namespace is the **living specification layer for BITwiki itself**. It expl
 - navigation, portals, categories, contents, outlines, and coverage;
 - contribution/review/request workflows;
 - deployment and migration protocol;
-- interoperability and BIThub/Discourse integration boundaries.
+- interoperability and BIThub/Discourse integration boundaries;
+- public project research, comparative analyses, and reference registers that inform BITwiki's architecture or editorial standards.
+
+Historical internal process receipts are not current public standards; their provenance can be preserved in Git history.
 
 General knowledge about a technology belongs in Main space. For example, `Main/Lua.mediawiki` explains Lua; `BITwiki/Lua architecture.mediawiki` explains **how BITwiki uses Lua**.
 
@@ -44,8 +47,7 @@ Key standards:
 - `Ecosystem.mediawiki` — BITwiki ↔ BIThub ↔ BITCORE roles;
 - `Interoperability.mediawiki` — external and BIThub interface contracts;
 - `Deployment prerequisites.mediawiki` — repository-to-live-runtime deployment requirements;
-- `Computational scope.mediawiki` — interdisciplinary knowledge admission, epistemic distinctions, naming and quality-review guidance;
-- `Computational scope review.mediawiki` — correction of the previous restrictive 36-object triage and retained content-quality audit notes.
+- `Computational scope.mediawiki` — interdisciplinary knowledge admission, epistemic distinctions, naming and quality-review guidance.
 
 ## Authority boundary
 

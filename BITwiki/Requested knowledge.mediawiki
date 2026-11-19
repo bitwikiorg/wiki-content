@@ -51,6 +51,8 @@ The numbered concept-wave program (Waves 0–14) concluded in the '''2026-09-19 
 
 New coverage proceeds through independently justified requests and current source review, not through extending the old wave-numbering scheme. Existing requests below retain their individual lifecycle records.
 
+'''Source audit, 2026-11-19:''' All 51 authored <code>Knowledge request</code> invocations were compared against the repository's <code>Main/</code> title inventory at <code>05db31fa</code>. The 32 requests marked <code>satisfied</code> each identify an existing canonical Main-space source page; none of the 17 <code>requested</code> or 2 <code>researching</code> entries has a Main source file under its exact proposed title. This is title-level repository evidence, '''not''' verification of scientific quality, coverage completeness, live wiki publication or broader topic overlap. No request statuses were changed. Twenty <code>source_leads</code> fields mention retired numbered Wave context or compilation records: treat those mentions as historical Git provenance, not live wiki page references. Retain original source leads until their specific historical references are checked, rather than fabricating present-day links.
+
 == Current high-level coverage gaps ==
 
 These are research priorities derived from navigation/core-coverage comparison, not automatic Domain approvals:
@@ -59,7 +61,7 @@ These are research priorities derived from navigation/core-coverage comparison, 
 ! Proposed title !! Why it matters !! Candidate Domain(s) !! Source leads !! Needed depth !! Status !! Canonical page !! Notes
 {{Knowledge request
  |request=Earth and environmental science
- |reason=Evaluate computational methods for Earth-system observation: sensor networks, environmental time series, calibration, data assimilation, uncertainty and simulation. Generic Earth-science coverage by itself is not a BITwiki admission rationale.
+ |reason=Develop substantive Earth and environmental science coverage on its own scientific merits, including Earth-system processes, observation and supporting evidence. Sensor networks, environmental time series, calibration, data assimilation, uncertainty and simulation are relevant methodological connections, not admission requirements.
  |candidate_domains=
  |source_leads=
  |needed_depth=scope research
@@ -603,7 +605,7 @@ The first cross-domain core concepts have been written and explicitly recorded a
 
 == Live workflow view ==
 
-The table above remains the authored source. Cargo provides a computed operational view over the same records:
+The table above remains the authored source. Cargo provides a computed operational view over the same records. This public Cargo-backed view is the '''present interim request workflow'''; a future private operational queue with public article-discussion summaries may be considered, but neither its implementation nor a record migration is asserted here:
 
 {{#cargo_query:
  tables=Knowledge_requests
@@ -631,7 +633,7 @@ missing signal
 
 A request in <code>requested</code>, <code>researching</code>, <code>drafting</code>, or <code>review</code> remains non-canonical. Repository workflow validation rejects an active request whose proposed title already exists as a Main-namespace page. This makes the request/canon boundary executable rather than advisory.
 
-A <code>satisfied</code> request must link to the resulting canonical page. A declined request remains evidence that the gap was considered rather than disappearing from history.
+A <code>satisfied</code> request must link to the resulting canonical page. A declined request remains evidence that the gap was considered rather than disappearing from history. Leave existing request records and their Cargo-backed status intact unless a source-specific editorial review establishes a change; public source records are not silently transferred into a proposed private workflow.
 
 == Sensitive topics ==
 

@@ -15,6 +15,8 @@ Before deployment, reconcile the target installation against:
 
 Filesystem folders are source-control projections. They do not create MediaWiki namespaces by existing in Git.
 
+'''Current versus intended authority:''' reviewed GitHub source and the deployer currently form a staging/publication route, not a permanent exclusive authoring authority. Actual MediaWiki publication is a separately authenticated revision in the target installation and must be checked against its real page state. Future interaction or orchestration channels do not inherit write rights merely because their requests exist in BIThub or GitHub.
+
 == Required / assumed capabilities ==
 
 The captured BITwiki runtime currently provides the capabilities V2 actively depends on:
@@ -68,7 +70,7 @@ Module/BITwiki/Compiler.lua    → Module:BITwiki/Compiler
 Module/Structure.lua           → Module:Structure
 </pre>
 
-<code>scripts/inventory_corpus.py</code> is semantic/content evidence, '''not''' the deployment manifest. Its scope must not be used to decide which runtime pages are imported.
+<code>scripts/inventory_corpus.py</code> is semantic/content evidence, '''not''' the deployment manifest. Its scope must not be used to decide which runtime pages are imported. A successful source review, dry run or CI report does not establish that the target MediaWiki page was updated; confirm published revision identity and rendered behavior separately when an authorized deployment occurs.
 
 Some deployment requirements cannot be completed by importing pages. The deployment plan therefore supports explicit runtime checkpoints. A checkpoint must be completed and verified in the target runtime before the deployer is rerun with its exact acknowledgement ID.
 
@@ -197,7 +199,7 @@ Do not create additional Cargo tables, subobjects, Network views, or faceted str
 
 == BIThub / Discourse integration boundary ==
 
-The programmable substrate is designed to support BIThub as an interaction plane, but this repository does not by itself deploy the cross-service transport.
+The programmable substrate is designed to support BIThub as an interaction plane, but this repository does not by itself deploy the cross-service transport. The intended reader contribution path should not require ordinary MediaWiki account sign-in. This does '''not''' remove the need for authenticated and permission-bounded bot/service writes when an approved contribution is actually published; no future public request interface is claimed to exist here.
 
 Before enabling a BIThub→BITwiki write workflow, verify:
 

@@ -1,0 +1,69 @@
+{{Reading depth|base=Semiconductor|current=Simple}}
+
+= Semiconductor — Simple =
+
+<onlyinclude>A '''semiconductor''' is a material whose ability to carry [[Electric current/Simple|electric current]] can be carefully controlled. Silicon is a common example. Engineers use semiconductor materials to make devices that switch electrical signals, detect light, and convert some sunlight into electricity. The material itself is not a computer chip: a chip contains many carefully designed devices and connections.<ref name="openstax">OpenStax, ''University Physics, Volume 3'', [https://openstax.org/books/university-physics-volume-3/pages/9-6-semiconductors-and-doping §9.6, “Semiconductors and Doping”] and [https://openstax.org/books/university-physics-volume-3/pages/9-7-semiconductor-devices §9.7, “Semiconductor Devices”].</ref>
+
+The special feature is '''control'''. Adding a small amount of selected atoms, applying a voltage, or shining light on the material can change how it behaves. The result depends on the material and the device design; semiconductors are not simply wires that are always half-conductive.<ref name="mitintro">Massachusetts Institute of Technology, ''Introduction to Solid-State Chemistry'', 3.091SC (Fall 2010), [https://ocw.mit.edu/courses/3-091sc-introduction-to-solid-state-chemistry-fall-2010/pages/electronic-materials/14-semiconductors/ session 14: Semiconductors].</ref></onlyinclude>
+
+== How does it work? ==
+
+Electricity in solid materials involves the movement and available energy of electrons. In a semiconductor, electrons cannot take just any energy; some ranges of energy are allowed and another range between them is called the '''band gap'''. Supplying enough energy can make new mobile charge carriers available. The empty place left in a filled electronic state can behave like a positively charged carrier called a '''hole'''. A hole is not a loose proton moving through the material.<ref name="mitintro"/>
+
+Temperature, light, and deliberately introduced impurities can change how many electrons and holes are available to transport charge. They do not all act in the same way, and a large band gap does not by itself tell us how good a computer chip will be.
+
+== What are n-type and p-type? ==
+
+'''Doping''' means adding carefully selected atoms to change a semiconductor's electrical behavior.
+
+* In an '''n-type''' semiconductor, mobile electrons are the main charge carriers.
+* In a '''p-type''' semiconductor, mobile holes are the main charge carriers.
+
+Both kinds can contain electrons ''and'' holes. The labels do not mean that the entire material must have a net negative or positive electric charge.<ref name="openstax"/>
+
+When suitably designed p-type and n-type regions meet, they can form a '''p–n junction'''. Many diodes use such junctions so that current flows much more easily in one direction than the other. Other diodes work differently, and actual devices have electrical and temperature limits.
+
+== What do semiconductors make possible? ==
+
+{| class="wikitable"
+! Example !! What the semiconductor device does
+|-
+| '''Transistor''' || Regulates a current or electrical signal; many transistors are combined into logic circuits and memory.
+|-
+| '''Photodiode''' || Produces an electrical response when it absorbs suitable light.
+|-
+| '''Light-emitting diode (LED)''' || Produces light when electrons and holes recombine under suitable conditions.
+|-
+| '''Solar cell''' || Uses absorbed light and a device structure to separate and collect electrical charge.<ref name="doepv">US Department of Energy, [https://www.energy.gov/cmei/systems/solar-photovoltaic-cell-basics ''Solar Photovoltaic Cell Basics''].</ref>
+|}
+
+Some devices use silicon; others need materials such as gallium arsenide, gallium nitride, or silicon carbide because their optical, temperature, or voltage requirements differ. No one material is best for every use.
+
+== From silicon to computers ==
+
+A simple way to follow the chain is:
+
+<pre>
+semiconductor material
+  -> engineered transistors and other devices
+  -> electronic circuits
+  -> processor, memory, sensor or other component
+  -> a working computer or electronic system
+</pre>
+
+Transistors do not individually “understand” computer programs. Circuit design and [[Computer architecture/Simple|computer architecture]] determine how their electrical behavior is organized into useful operations. Related concepts include [[Voltage/Simple|voltage]], [[Resistor/Simple|resistors]], and [[Computation/Simple|computation]].
+
+== Things to remember ==
+
+* A '''material''', a '''device''', and a '''chip''' are different things.
+* An n-type region is not necessarily an electrically negative object; a p-type region is not necessarily a positive object.
+* Semiconductor properties change with temperature, light, defects, and operating conditions.
+* A simplified picture is useful for learning, but real engineering must also consider leakage, heating, manufacturing imperfections, and reliability.
+
+== Learn more ==
+
+For the canonical topic map, see [[Semiconductor]]. For a fresh, equation-based treatment covering carrier statistics, drift and diffusion, junction physics, transistors, materials and model limits, see [[Semiconductor/Technical|Semiconductor — Technical]].
+
+== References ==
+
+<references/>

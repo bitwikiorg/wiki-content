@@ -216,18 +216,18 @@ class SourceContractTests(unittest.TestCase):
         self.assertNotIn("{{:Semiconductor/Simple}}", technical)
         # Real Math rendering (separate from preformatted/plaintext formulas).
         self.assertNotIn("<pre>", technical)
-        math_open = re.findall(r"<math(?:\\s+[^>]*)?>", technical)
+        math_open = re.findall(r"<math(?:\s+[^>]*)?>", technical)
         self.assertGreaterEqual(len(math_open), 60)
         self.assertEqual(len(math_open), technical.count("</math>"))
         for marker in (
-            r"f(E)=\\frac{1}{1+",
+            r"f(E)=\frac{1}{1+",
             r"np=n_i^2",
-            r"\\mathbf J_n",
-            r"\\mathbf J_p",
-            r"V_{\\mathrm{bi}}",
-            r"I_D\\simeq",
-            r"U_{\\mathrm{SRH}}",
-            r"\\operatorname{Tr}",
+            r"\mathbf J_n",
+            r"\mathbf J_p",
+            r"V_{\mathrm{bi}}",
+            r"I_D\simeq",
+            r"U_{\mathrm{SRH}}",
+            r"\operatorname{Tr}",
         ):
             self.assertIn(marker, technical)
         self.assertGreaterEqual(technical.count("<ref name="), 25)

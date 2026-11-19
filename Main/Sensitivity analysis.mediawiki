@@ -1,0 +1,74 @@
+{{Knowledge object
+ |title=Sensitivity analysis
+ |entity_type=Method
+ |domain=Mathematics, Science, Engineering
+ |status=Established
+ |provenance=Research synthesis of JRC modelling methodology, Morris (1991), Sobol (2001), Saltelli et al. (2019) and NIST uncertainty guidance; cohort #65, 2026-11-19
+}}
+{{Reading depth|base=Sensitivity analysis|current=Core}}
+
+= Sensitivity analysis =
+
+== Overview ==
+
+{{:Sensitivity analysis/Simple}}
+
+Sensitivity analysis is a family of modelling methods, not a universal ranking formula. Its definition is inseparable from a stated response variable, model, input factors, allowed perturbations or probability model, and decision being supported. The same input can dominate an analysis near one operating point but be relatively unimportant for another output, distribution or decision.
+
+== Scope and distinguishable questions ==
+
+In local sensitivity analysis, one may evaluate a partial derivative or finite perturbation at a nominated operating point. In global sensitivity analysis, one investigates model response across a specified multidimensional input space or probability distribution, often including interactions. In '''sensitivity auditing''', the inquiry also considers structural assumptions, omitted factors and the social or scientific framing of a model.<ref name="jrc">European Commission Joint Research Centre, [https://joint-research-centre.ec.europa.eu/sensitivity-analysis-samo/methods_en ''Sensitivity Analysis: Methods''] and [https://publications.jrc.ec.europa.eu/repository/handle/JRC114437 ''Why so many published sensitivity analyses are false''] (2019). Method families and observed methodological failures.</ref>
+
+Examples of distinct research questions:
+
+{| class="wikitable"
+! Question !! Candidate method !! Caution
+|-
+| What is the effect of changing one parameter near the current operating point? || Local derivatives or structured finite differences || May miss interactions and regime changes.
+|-
+| Which uncertain inputs account for most output variance? || Variance-based Sobol indices || Requires an explicit joint input distribution and careful dependence assumptions.
+|-
+| Which among many factors should be screened first? || Morris elementary-effects designs || Screening statistics are not proof of causal importance.
+|-
+| Does the recommended option change when assumptions vary? || Scenario and decision-sensitivity analysis || Output variance is not automatically decision instability.
+|-
+| Which model assumptions should be challenged? || Sensitivity auditing / structural model comparison || No scalar index captures every epistemic weakness.
+|}
+
+== Interpretation and epistemic limits ==
+
+A variable-importance ranking is meaningful only under the assumptions of the chosen sensitivity measure. A first-order variance contribution is not a causal effect, a confidence interval on a model parameter, or the fraction of the system's true behavior explained by a factor. An interaction can make a factor important even when its isolated first-order effect is zero.
+
+Sensitivity analysis is relevant to [[Related to::Uncertainty|uncertainty]] and [[Related to::Scientific model|scientific modelling]]. It is complementary to [[Related to::Dimensional analysis|dimensional analysis]], which checks physical quantity consistency and derives dimensionless parameter groups, but does not quantify parameter importance. Reliable application requires [[Measurement]], [[Reproducibility]], [[Validation]] and [[Verification]].
+
+== Example and model validation ==
+
+The [[Sensitivity analysis/Technical|Technical]] article develops an exact two-input model whose output depends on the product of uncertain factors. One input has zero first-order variance importance yet a nonzero total effect because of interaction. The example shows why one-at-a-time changes at a single input setting can be misleading and why results should be tied to the parameter space investigated.<ref name="sobol">I. M. Sobol, [https://doi.org/10.1016/S0378-4754(00)00270-6 ''Global sensitivity indices for nonlinear mathematical models and their Monte Carlo estimates''], ''Mathematics and Computers in Simulation'' 55, 271–280 (2001), variance-decomposition approach.</ref>
+
+The method cannot repair omitted physics or an invalid model. A robust workflow makes the input distribution, dependencies, assumptions, numerical error and computational budget explicit before interpreting indices.<ref name="saltelli">Andrea Saltelli et al., [https://www.nature.com/articles/d41586-020-01812-9 ''Five ways to ensure that models serve society''], ''Nature'' 582, 482–484 (2020), research-model transparency and quality principles.</ref>
+
+== Incoming semantic connections ==
+
+The following table uses explicit incoming [[Property:Related to|Related to]] relationships rather than claiming that every unlisted subject is irrelevant.
+
+{{#ask:
+ [[Related to::Sensitivity analysis]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming relationships have yet been asserted.''
+}}
+
+== Reading depths ==
+
+[[Sensitivity analysis/Simple|Simple]] explains why changing assumptions matters. [[Sensitivity analysis/Technical|Technical]] independently presents equations, analysis designs, exact Sobol decomposition, local/global interpretation, correlated-input caveats, numerical verification, and research reporting requirements.
+
+== References ==
+
+<references/>
+
+[[Category:Mathematics]]
+[[Category:Science]]
+[[Category:Engineering]]

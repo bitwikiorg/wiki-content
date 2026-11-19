@@ -1,0 +1,69 @@
+{{Knowledge object
+ |title=Dimensional analysis
+ |entity_type=Method
+ |domain=Mathematics, Physics, Engineering
+ |status=Established
+ |provenance=Source-grounded synthesis of Buckingham (1914), NIST metrology guidance and applied dimensional-analysis literature; cohort #65, 2026-11-19
+}}
+{{Reading depth|base=Dimensional analysis|current=Core}}
+
+= Dimensional analysis =
+
+== Overview ==
+
+{{:Dimensional analysis/Simple}}
+
+Dimensional analysis is an established formal constraint on relations among physical quantities. It supports error detection, reducing experimental variables, scaling arguments and constructing dimensionless similarity parameters. Its limits are equally important: it cannot prove an equation is physically correct, uniquely fix an unknown response function or distinguish physically different quantities that happen to have the same dimensions.
+
+== Scope and method ==
+
+For a physical quantity <math>Q</math>, write its dimension as a product of powers of base dimensions, such as mass <math>M</math>, length <math>L</math> and time <math>T</math>. Dimensions concern types of physical quantities; units provide conventions for expressing numerical values. A quantity's reported numerical value changes when its unit changes, but its physical dimension does not.<ref name="nist">NIST, [https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values ''Guide to the SI, Chapter 7''], quantity values, units and dimension-one quantities.</ref>
+
+The common workflow is to identify the governing variables, write a dimensional vector for each, require dimensional homogeneity in valid sums and differences, and reduce the independent variables to dimensionless combinations. A physically similar experiment can then be analyzed in terms of those combinations, subject to geometric, boundary, regime and model constraints.<ref name="buckingham">Edgar Buckingham, [https://doi.org/10.1103/PhysRev.4.345 “On Physically Similar Systems; Illustrations of the Use of Dimensional Equations”], ''Physical Review'' 4, 345–376 (1914). Primary historical statement of the π theorem.</ref>
+
+== What can dimensional analysis establish? ==
+
+* '''Consistency:''' different additive terms must have compatible dimensions. A mathematically dimensionally valid relation may nevertheless have the wrong numerical coefficient, omit a phenomenon or fail experimentally.
+* '''Similarity:''' dimensionless ratios can help identify comparable physical regimes. Matching one ratio may not be sufficient.
+* '''Reduction:''' a dimension matrix of rank <math>r</math> over <math>n</math> relevant variables has a null-space dimension <math>n-r</math> when the usual π-theorem conditions hold; this yields a basis of independent dimensionless groups.
+* '''Prediction constraints:''' an unknown physical dependence can be expressed as a function of π-groups, but the function usually requires data, a governing equation or another physical argument.
+
+The method is often useful before fitting or calibrating a [[Scientific model|scientific model]]. It can help identify nondimensional parameters in the model's equations and expose unstable or inconsistent unit conventions. See [[Measurement]], [[Uncertainty]], [[Reproducibility]] and [[Validation]].
+
+== Example: an object moving in a fluid ==
+
+Suppose drag force depends on fluid density, speed, body diameter and dynamic viscosity, with geometry otherwise fixed. The natural independent groups include a dimensionless drag coefficient and Reynolds number. This makes it possible to organize laboratory observations from more than one scale into a dimensionless relationship—subject to flow and shape assumptions.
+
+The [[Dimensional analysis/Technical|Technical]] article derives the dimension-exponent matrix, its null space and both groups explicitly, then computes a reproducible numerical example. Dimensional reasoning by itself does not determine the drag curve or decide whether the fluid flow is steady or turbulent.
+
+== What dimensional analysis is not ==
+
+'''Dimensional analysis''' differs from [[Related to::Sensitivity analysis|sensitivity analysis]], which quantifies changes in model outputs under specified input perturbations or distributions. It differs from [[Related to::Measurement|measurement]], which provides observations with traceability and uncertainty. It is related to [[Related to::Scientific model|scientific modelling]], but the graph relation expresses a meaningful interdisciplinary connection rather than treating these methods as identical.
+
+Dimensional correctness is a necessary condition for many quantitative physical relations; it is not sufficient evidence of causation, correctness or performance. The NIST account of dimension-one quantities also warns that equal dimensions do not prove that two quantities have the same meaning.<ref name="nistdimensionless">NIST, [https://www.nist.gov/publications/redressing-grievances-treatment-dimensionless-quantities-si ''Redressing grievances with the treatment of dimensionless quantities in SI''], distinctions among dimension-one quantity kinds.</ref>
+
+== Queryable connections ==
+
+This view selects incoming explicitly recorded [[Property:Related to|Related to]] statements about dimensional analysis. It does not claim that unlisted models or articles are scientifically unrelated.
+
+{{#ask:
+ [[Related to::Dimensional analysis]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming semantic relations have yet been recorded.''
+}}
+
+== Reading depths ==
+
+The [[Dimensional analysis/Simple|Simple]] article explains the ideas without formal linear algebra. The independent [[Dimensional analysis/Technical|Technical]] article starts from dimensional quantity algebra and develops mathematical derivations, null-space algorithms, similarity theory, scaling examples, uncertainty and validation boundaries.
+
+== References ==
+
+<references/>
+
+[[Category:Mathematics]]
+[[Category:Physics]]
+[[Category:Engineering]]

@@ -1,0 +1,53 @@
+{{Reading depth|base=Sensitivity analysis|current=Simple}}
+
+= Sensitivity analysis — Simple =
+
+<onlyinclude>'''Sensitivity analysis''' investigates how the output of a calculation or model changes when its inputs or assumptions change. It helps researchers find which factors matter most for a question, whether several factors interact, and whether a conclusion remains the same under plausible alternatives. The answer depends on the model, chosen inputs and range of changes; a result that is “important” in one experiment is not necessarily important everywhere.<ref name="jrc">European Commission Joint Research Centre, [https://joint-research-centre.ec.europa.eu/sensitivity-analysis-samo/methods_en ''Sensitivity Analysis: Methods''], description of global sensitivity analysis and the importance of input uncertainty and interactions.</ref></onlyinclude>
+
+== A simple example ==
+
+Imagine a researcher estimates the electricity cost of running a computer. The calculation depends on how much power it uses, how many hours it operates, and the price of electricity.
+
+If the estimated power changes a little while everything else stays the same, does the predicted bill change a little or a lot? If the price and hours change together, could the bill respond differently? Those are sensitivity-analysis questions.
+
+Another model might estimate how much medicine enters the bloodstream, how quickly a vehicle heats up, or how much a crop grows. The essential question is always the same: '''How does the conclusion depend on the inputs and assumptions?'''
+
+== Local and global analysis ==
+
+A '''local''' sensitivity analysis looks at changes near a particular starting point. It might increase one number by 1% while keeping the others fixed.
+
+A '''global''' sensitivity analysis examines a wider region of possible inputs. It may change several inputs across their plausible ranges and investigate how they interact. Many global methods also require an assumed probability distribution for the input values.<ref name="jrc"/>
+
+Neither is automatically better for every purpose. A small local change is useful near a known operating point; a wider global analysis can expose behavior hidden by one-point experiments. But an unrealistically wide input range may produce irrelevant results.
+
+== Why interactions matter ==
+
+Suppose the output is the product of two input values. Changing the first input has a small effect when the second is near zero, but a large effect when the second is large. One-at-a-time tests made at one starting point can miss that relationship.
+
+A good sensitivity study specifies the change being tested, checks whether inputs can really vary independently, and reports the output measure used to rank their importance. For some models the important result is a mean, a rare failure event, a threshold crossing, or a model decision—not merely overall variance.<ref name="saltelli">Saltelli and colleagues, [https://publications.jrc.ec.europa.eu/repository/handle/JRC114437 ''Why so many published sensitivity analyses are false''] (2019), systematic review of common shortcomings in sensitivity-analysis practice.</ref>
+
+== What results can tell us ==
+
+Sensitivity analysis can help with designing experiments, deciding what to measure more precisely, identifying unstable assumptions, comparing candidate designs, prioritizing further research, and finding calculations whose conclusions are fragile.
+
+It cannot, by itself, tell us that a model is scientifically correct. A model can be highly sensitive to a parameter that does not exist in the real system, or insensitive to a crucial variable that the model forgot to include.
+
+That is why sensitivity analysis belongs alongside [[Validation|model validation]], [[Verification|code verification]], [[Measurement/Simple|measurement]], [[Uncertainty/Simple|uncertainty]], and [[Robustness/Simple|robustness]].
+
+== A mistake to avoid ==
+
+Saying “parameter A explains 70%” is incomplete. Seventy percent of what? Output variance, expected output shift, a particular decision, or some other measure? Which input distributions and constraints were used? What about interactions?
+
+A sensitivity score is not a permanent physical property of the input. It is a conditional result of a defined model experiment.
+
+== Where it connects to dimensional analysis ==
+
+[[Dimensional analysis/Simple|Dimensional analysis]] checks whether a physical formula uses compatible quantities and can reduce a physical model to meaningful combinations without units. Sensitivity analysis then explores the effect of changing those combinations or other assumptions. The first cannot replace the second.
+
+== Continue reading ==
+
+The [[Sensitivity analysis|Core]] page maps the method to scientific modelling and engineering choices. [[Sensitivity analysis/Technical|Technical]] begins independently, derives local derivatives and variance-based global sensitivity indices, shows a worked interaction model and details sampling, correlated inputs, model auditing and verification.
+
+== References ==
+
+<references/>

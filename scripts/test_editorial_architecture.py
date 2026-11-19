@@ -10,6 +10,7 @@ from __future__ import annotations
 import contextlib
 import io
 import json
+import re
 import os
 from pathlib import Path
 import sys
@@ -164,6 +165,60 @@ class SourceContractTests(unittest.TestCase):
         self.assertIn("[[Entity type::Concept]]", result)
         # Static preview is deliberately not treated as an SMW parsing oracle.
 
+
+    def test_semiconductor_pilot_depths_and_source_owned_summary(self):
+        """One material concept, accessible entry, self-contained technical study.
+
+        Static staging expansion exercises native onlyinclude boundaries, not a
+        live MediaWiki parser or actual stored Semantic MediaWiki assertions.
+        """
+        core = (ROOT / "Main/Semiconductor.mediawiki").read_text(encoding="utf-8")
+        simple = (ROOT / "Main/Semiconductor/Simple.mediawiki").read_text(encoding="utf-8")
+        technical = (ROOT / "Main/Semiconductor/Technical.mediawiki").read_text(encoding="utf-8")
+
+        self.assertEqual(core.count("{{Knowledge object"), 1)
+        for derivative in (simple, technical):
+            self.assertNotIn("{{Knowledge object", derivative)
+            self.assertNotIn("[[Related to::", derivative)
+            self.assertNotIn("[[Depends on::", derivative)
+            self.assertNotIn("[[Part of::", derivative)
+        for source, depth in ((core, "Core"), (simple, "Simple"), (technical, "Technical")):
+            self.assertIn(f"{{{{Reading depth|base=Semiconductor|current={depth}}}}}", source)
+            self.assertIn("<references/>", source)
+        self.assertIn("{{:Semiconductor/Simple}}", core)
+        self.assertEqual(simple.count("<onlyinclude>"), 1)
+        self.assertEqual(simple.count("</onlyinclude>"), 1)
+
+        def preview(variant: str) -> str:
+            return staging.expand_static_transclusions(
+                core, "Semiconductor", {"Semiconductor/Simple": variant}
+            )
+
+        rendered = preview(simple)
+        self.assertIn("A '''semiconductor''' is a material", rendered)
+        self.assertNotIn("== How does it work? ==", rendered)
+        self.assertNotIn("= Semiconductor — Simple =", rendered)
+        self.assertNotIn("current=Simple", rendered)
+        self.assertNotIn("{{Knowledge object\n |title=Semiconductor", simple)
+        self.assertNotIn("[[Related to::", rendered.split("== Overview ==", 1)[1].split("== What the name refers to ==", 1)[0])
+
+        changed = simple.replace(
+            "A '''semiconductor''' is a material",
+            "A '''semiconductor''' is a revised material",
+            1,
+        )
+        self.assertNotEqual(changed, simple)
+        self.assertIn("is a revised material", preview(changed))
+        self.assertNotIn("is a revised material", rendered)
+
+        # The technical account is not a transcluded excerpt or filler page.
+        self.assertNotIn("{{:Semiconductor/Simple}}", technical)
+        for marker in ("f(E) =", "n p = n_i²", "J_n =", "J_p =", "V_bi =", "I_D ≈"):
+            self.assertIn(marker, technical)
+        self.assertGreaterEqual(technical.count("<ref name="), 12)
+        for source in (core, simple, technical):
+            names = re.findall(r'<ref name="([^"]+)">', source)
+            self.assertEqual(len(names), len(set(names)), "Duplicate Cite definitions in a depth surface")
 
     def test_main_page_links_to_existing_source_and_respects_page_roles(self):
         """The public entry point cannot depend on retired pages or internal queues."""

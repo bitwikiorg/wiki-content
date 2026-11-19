@@ -322,6 +322,74 @@ For semiconductor materials datasets, a minimal scholarly record is not just the
 
 A literature-mined dataset containing over 100,000 extracted gaps is a useful discovery index but not the same thing as 100,000 independently standardized measurements. Duplicates, composition ambiguity, provenance, text-mining confidence, experimental vs computed values and publication selection have to be audited before quantitative inference.<ref name="bandgap"/>
 
+== Reproducible case study: abrupt silicon p–n junction ==
+
+This is a '''specified analytic benchmark, not an experimental silicon-device measurement'''. Assume a one-dimensional, uniformly doped, abrupt silicon homojunction in thermal equilibrium at <math>T=300\ \mathrm K</math>, with <math>N_A=N_D=10^{16}\ \mathrm{cm}^{-3}</math>, <math>n_i=10^{10}\ \mathrm{cm}^{-3}</math> as an illustrative assumed value, full dopant ionization, nondegenerate statistics, no interface charge and a depletion approximation. Use <math>\epsilon_s=11.7\epsilon_0</math>, <math>\epsilon_0=8.8541878128\times10^{-12}\ \mathrm{F\,m^{-1}}</math>, and the exact SI values <math>q=1.602176634\times10^{-19}\ \mathrm C</math> and <math>k_B=1.380649\times10^{-23}\ \mathrm{J\,K^{-1}}</math>.
+
+In the neutral n-type region, <math>n\simeq N_D=10^{16}\ \mathrm{cm^{-3}}</math> and <math>p\simeq n_i^2/n=10^4\ \mathrm{cm^{-3}}</math>. Convert doping to SI for electrostatic calculations: <math>10^{16}\ \mathrm{cm^{-3}}=10^{22}\ \mathrm{m^{-3}}</math>. The predicted equilibrium quantities are
+
+<math display="block">V_T=\frac{k_BT}{q}\simeq0.025852\ {\rm V},\qquad V_{\mathrm{bi}}\simeq0.7143\ {\rm V},</math>
+<math display="block">W\simeq0.4298\ \mu{\rm m},\qquad\frac{C_j}{A}=\frac{\epsilon_s}{W}\simeq2.410\times10^{-4}\ {\rm F\,m^{-2}},</math>
+<math display="block">|E_{\max}|\simeq\frac{2V_{\mathrm{bi}}}{W}\simeq3.32\times10^6\ {\rm V\,m^{-1}}.</math>
+
+The symmetry gives <math>x_n=x_p=W/2\simeq0.2149\ \mu{\rm m}</math>. The triangular depletion-field expression, ideal junction capacitance and built-in voltage are not universal terminal characteristics. In particular <math>V_{\mathrm{bi}}</math> is not automatically a diode's measured forward “turn-on” voltage.
+
+'''Independent Scribunto computation of the assumed model:''' {{#invoke:Semiconductor|idealJunction|Na=1e16|Nd=1e16|ni=1e10|T=300}}
+
+The reusable computation above depends on a source-controlled Lua function that checks finite positive inputs, enforces the example's doping-domain assumptions, performs logarithms without multiplying large densities, and emits no SMW claims. It requires a live Scribunto test to confirm real parser execution.
+
+{| class="wikitable"
+! Quantity !! Expected analytic result !! Scope
+|-
+| n-type bulk minority holes || 10<sup>4</sup> cm<sup>−3</sup> || Equilibrium, nondegenerate, full ionization
+|-
+| Thermal voltage || 0.025852 V || 300 K, exact SI constants
+|-
+| Built-in potential || 0.7143 V || Abrupt homojunction, specified n<sub>i</sub>
+|-
+| Depletion width || 0.4298 μm || Zero bias; epsilon<sub>s</sub> = 11.7 epsilon<sub>0</sub>
+|-
+| Junction capacitance per area || 2.410 × 10<sup>−4</sup> F/m<sup>2</sup> || Ideal depletion capacitance
+|-
+| Maximum field magnitude || 3.32 × 10<sup>6</sup> V/m || Triangular-field approximation
+|}
+
+A credible independent calculation must reproduce the equations and numerical tolerances with unit conversion. A temperature sweep must also update the temperature-dependent intrinsic carrier concentration and relevant material parameters; holding the illustrative 300 K n<sub>i</sub> fixed cannot be presented as measured temperature-dependent physics.
+
+=== Reproducible simulation protocol ===
+
+To extend this benchmark into a device study, specify (1) semiconductor composition and parameter-set source/revision; (2) the mesh, doping profile, contacts and recombination laws; (3) boundary conditions and current convention; (4) residual and charge/current conservation tolerances; (5) grid and solver convergence; (6) voltage and temperature sweeps; and (7) measurements or independently derived benchmarks withheld from parameter fitting. Persist raw and processed I–V/C–V data with uncertainty and provenance. An equation reproduced by software is an implementation test, not proof that its assumptions describe a fabricated device.
+
+== Experimental characterization and inference ==
+
+{| class="wikitable"
+! Measurement !! Direct observation !! Model-dependent inference !! Failure mode
+|-
+| Four-point probe / van der Pauw || Voltages and driven current || Sheet resistance and conductivity with thickness/geometry || Edge geometry, anisotropy and inhomogeneity
+|-
+| Hall effect || Transverse voltage under magnetic field || Dominant carrier sign, Hall density and mobility in a single-carrier model || Parallel conduction, Hall factor, multiband transport
+|-
+| Temperature-dependent I–V, C–V || Electrical terminal response versus temperature and frequency || Junction barriers, depletion profiles, trap kinetics || Series resistance, leakage, hysteresis
+|-
+| Optical absorption / photoluminescence || Energy-resolved spectra and temporal response || Optical onset, excitonic and defect-related transitions || Excitation density, heating, collection geometry, photon recycling
+|-
+| XRD / Raman || Diffraction peaks and vibrational frequencies || Crystal phase, orientation, strain and disorder || Phase overlap, calibration and texture
+|-
+| SIMS / microscopy / DLTS || Depth profile, structural contrast or trap transient || Element distributions, structural defects or electrically active trap parameters || Matrix effects, instrument response, nonunique defect assignments
+|}
+
+For one carrier type at weak magnetic field, <math>R_H\simeq -1/(qn)</math> for electrons or <math>R_H\simeq+1/(qp)</math> for holes, under the sign convention and Hall factor approximately one; <math>\mu_H=|R_H|\sigma</math>. More complex conduction channels cannot generally be reduced to a single Hall density. A research article must report wafer/crystal orientation, measurement temperature, magnetic-field polarity, contact linearity, instrument calibration, sample geometry and uncertainty.
+
+A linear <math>1/C^2</math> versus reverse-bias characteristic is consistent with certain depletion approximations but does not prove a uniform dopant profile. Interface traps, frequency dispersion and series resistance can produce misleading carrier or barrier estimates. Likewise, an optical decay fitted to a single lifetime cannot uniquely identify SRH recombination without testing diffusion, radiative contributions and surface effects.
+
+== Research evidence and comparative model selection ==
+
+A PhD-level claim should distinguish (a) an original reproducible experiment, (b) an independently benchmarked model, (c) a review synthesis and (d) a pedagogical approximation. Experiments require sample identity, uncertainty, operating range, measurement definitions and source provenance. Models require explicit constitutive laws, material parameters, convergence, residuals and tests against independent measurements. A large literature-mined band-gap dataset is not automatically a collection of independent standardized measurements, and material-property values cannot safely be compared without temperature, polytype, method and sample context.<ref name="dataquality">[https://www.nature.com/articles/s41597-022-01294-6 “Auto-generated database of semiconductor band gaps using ChemDataExtractor”], ''Scientific Data'' (2022): literature-mined gap records require deduplication, method/context reconciliation and provenance before physical comparison.</ref>
+
+The following original works illustrate distinct validity regimes: [https://doi.org/10.1103/PhysRev.87.835 Shockley and Read (1952)] treats trap-assisted recombination; [https://doi.org/10.1002/j.1538-7305.1950.tb03653.x van Roosbroeck (1950)] treats coupled continuum carrier flow; [https://doi.org/10.1006/spmi.2000.0920 Datta (2000)] develops a nanoscale quantum transport framework; [https://doi.org/10.1063/1.1736034 Shockley and Queisser (1961)] establishes a radiative photovoltaic limit for an explicitly idealized system. None supersedes the others for every question. Each should be selected based on physical length/time scales, carrier statistics, boundary conditions, environmental coupling and the observable being predicted.
+
+Substantive open research areas include reliable defect identification by combining computation and spectroscopy; interface energetics and low-resistance contacts; controlled nonequilibrium transport under nanoscale confinement; wide-bandgap device reliability and packaging; integrated electronic and photonic heterostructures; and validated cross-material datasets with uncertainty and measurement provenance. These themes are not assertions that a single technology or theory solves every area. Relevant doctoral work requires specific research questions and direct examination of current primary literature beyond this general article.
+
 == Model selection and unresolved engineering limits ==
 
 * '''Equilibrium vs driven operation:''' one Fermi level is appropriate at thermal equilibrium; driven carrier populations may require separate quasi-Fermi levels.

@@ -14,7 +14,10 @@ This namespace is the **public specification and governance layer for BITwiki it
 - navigation, portals, categories, contents, outlines, and coverage;
 - editorial principles and public contribution guidance;
 - public architectural interfaces and publication authority boundaries;
-- interoperability and BIThub/Discourse integration boundaries.
+- interoperability and BIThub/Discourse integration boundaries;
+- public project research, comparative analyses, and reference registers that inform BITwiki's architecture or editorial standards.
+
+Historical internal process receipts are not current public standards; their provenance can be preserved in Git history.
 
 General knowledge about a technology belongs in Main space. For example, `Main/Lua.mediawiki` explains Lua; `BITwiki/Lua architecture.mediawiki` explains **how BITwiki uses Lua**.
 

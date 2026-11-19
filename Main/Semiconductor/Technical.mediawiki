@@ -18,23 +18,14 @@ The band picture presupposes meaningful extended states and crystal momentum. Am
 
 At temperature T in thermal equilibrium, the Fermi–Dirac occupation of an electronic state of energy E is
 
-<pre>
-f(E) = 1 / {1 + exp[(E − E_F)/(k_B T)]}
+<math display="block">f(E)=\frac{1}{1+\exp[(E-E_F)/(k_BT)]}.</math>
 
-E_F  = equilibrium chemical potential (Fermi level)
-k_B  = Boltzmann constant
-T    = absolute temperature
-</pre>
+Here <math>E_F</math> is the equilibrium Fermi level (chemical potential), <math>k_B</math> Boltzmann's constant and <math>T</math> the absolute temperature.
 
 A band electron density n is obtained by integrating the conduction-band density of states g_c(E) against f(E). The hole density p is obtained by integrating the valence-band density of states g_v(E) against [1 − f(E)]. Under the nondegenerate Maxwell–Boltzmann approximation and a parabolic-band effective-mass model, these become<ref name="mitcarrier">Jesús del Alamo, MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/1bccffbfa7b4487be99b8af8b46186ef_lecture3.pdf lecture 3, “Carrier statistics in equilibrium”], pp. 3–15 (lecture pagination).</ref>
 
-<pre>
-n ≈ N_c exp[−(E_c − E_F)/(k_B T)]
-p ≈ N_v exp[−(E_F − E_v)/(k_B T)]
-
-n p = n_i² ≈ N_c N_v exp[−E_g/(k_B T)]
-n_i ≈ sqrt(N_c N_v) exp[−E_g/(2 k_B T)]
-</pre>
+<math display="block">n\simeq N_c\exp[-(E_c-E_F)/(k_BT)],\qquad p\simeq N_v\exp[-(E_F-E_v)/(k_BT)].</math>
+<math display="block">np=n_i^2\simeq N_cN_v\exp[-E_g/(k_BT)],\qquad n_i\simeq\sqrt{N_cN_v}\exp[-E_g/(2k_BT)].</math>
 
 Here N_c and N_v are effective densities of states, n_i is intrinsic carrier concentration, and densities must use consistent units (commonly cm⁻³). The mass-action equation n p = n_i² applies to the equilibrium nondegenerate model; in an illuminated or driven device the electron and hole quasi-Fermi levels generally differ, so the same equality cannot simply be assumed. High doping, band-gap narrowing, degeneracy and non-ideal density-of-states behavior require different statistics.
 
@@ -46,14 +37,9 @@ Substitutional donor impurities can contribute electrons, and acceptor impuritie
 
 A local charge-balance model is
 
-<pre>
-rho = q (p − n + N_D⁺ − N_A⁻)
+<math display="block">\rho=q\left(p-n+N_D^{+}-N_A^{-}\right).</math>
 
-rho   = net space-charge density (C/m³ or C/cm³)
-q     = positive elementary charge
-N_D⁺  = ionized donor density
-N_A⁻  = ionized acceptor density
-</pre>
+Here <math>\rho</math> is net volume charge density, <math>q</math> the positive elementary charge, <math>N_D^+</math> the ionized donor density and <math>N_A^-</math> the ionized acceptor density. With SI densities (m<sup>−3</sup>) the result is C/m<sup>3</sup>; with densities in cm<sup>−3</sup> it is C/cm<sup>3</sup>.
 
 For a macroscopically neutral bulk region, rho ≈ 0. When donors and acceptors are fully ionized and the material is nondegenerate, far from interfaces one obtains n ≈ N_D − N_A for donor-dominated doping and p ≈ N_A − N_D for acceptor-dominated doping, provided the respective difference greatly exceeds n_i. At low temperature, dopant freeze-out invalidates full-ionization assumptions; at high temperature intrinsic excitation can dominate. Near a junction, charge neutrality is not locally satisfied across the depletion region.<ref name="delft">Delft University of Technology, ''Open Solid State Notes'', [https://solidstate.quantumtinkerer.tudelft.nl/14_doping_and_devices/ “Doping and devices”], charge balance and carrier approximations.</ref>
 
@@ -63,29 +49,18 @@ For a macroscopically neutral bulk region, rho ≈ 0. When donors and acceptors 
 
 In a low-field, local drift–diffusion approximation, electron and hole currents combine field-driven drift with concentration-gradient-driven diffusion. Using conventional positive current, scalar mobilities and a Cartesian isotropic model:
 
-<pre>
-J_n = q μ_n n E + q D_n grad(n)
-J_p = q μ_p p E − q D_p grad(p)
-
-J = J_n + J_p
-sigma ≈ q (n μ_n + p μ_p)
-</pre>
+<math display="block">\mathbf J_n=q\mu_n n\mathbf E+qD_n\nabla n,\qquad\mathbf J_p=q\mu_pp\mathbf E-qD_p\nabla p.</math>
+<math display="block">\mathbf J=\mathbf J_n+\mathbf J_p,\qquad \sigma\simeq q(n\mu_n+p\mu_p).</math>
 
 J_n and J_p are conventional current densities (A/m²), E is electric field (V/m), μ denotes mobility (m²/V·s), D diffusivity (m²/s) and sigma conductivity (S/m). These signs follow from the negative electron charge and the positive hole charge. In an isothermal nondegenerate model with suitable scattering assumptions, the Einstein relation is D/μ = k_B T/q for each carrier species; more general systems require corrected transport relations.<ref name="mittransport">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture6/ lecture 6] and [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ lecture 7] on drift, diffusion and transit time.</ref>
 
 Charge carriers also appear and disappear through generation and recombination. In a standard continuum sign convention, separate continuity equations are
 
-<pre>
-∂n/∂t = +(1/q) div(J_n) + G_n − R_n
-∂p/∂t = −(1/q) div(J_p) + G_p − R_p
-</pre>
+<math display="block">\frac{\partial n}{\partial t}=\frac{1}{q}\nabla\cdot\mathbf J_n+G_n-R_n,\qquad\frac{\partial p}{\partial t}=-\frac{1}{q}\nabla\cdot\mathbf J_p+G_p-R_p.</math>
 
 These combine with Poisson's equation and E = −grad(phi):
 
-<pre>
-div(epsilon E) = rho
-rho = q (p − n + N_D⁺ − N_A⁻)
-</pre>
+<math display="block">\nabla\cdot(\epsilon\mathbf E)=\rho,\qquad \rho=q(p-n+N_D^+-N_A^-).</math>
 
 The continuum equations are coupled: electrostatic potential changes carrier density, which changes charge and current. Constitutive relations, contact boundary conditions, recombination parameters and geometry complete a device problem. This is a model family, '''not''' a full fabrication or simulation specification; nanoscale quantum effects, nonlocal transport and high injection may require other models.
 
@@ -93,15 +68,11 @@ The continuum equations are coupled: electrostatic potential changes carrier den
 
 At equilibrium, diffusion across a junction between donor-dominated and acceptor-dominated regions produces an internal electric field and an ionized space-charge region. In an ideal, abrupt, nondegenerate homojunction with uniform doping, complete ionization, negligible interfacial states and thermal equilibrium, the built-in electrostatic potential is<ref name="shockley">William Shockley, “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors,” ''Bell System Technical Journal'' 28(3), 435–489 (1949). [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x DOI:10.1002/j.1538-7305.1949.tb03645.x]. Original junction theory; the model assumptions must still be stated.</ref><ref name="mitjunction">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ lectures 12–15], junction electrostatics, bias and dynamics.</ref>
 
-<pre>
-V_bi = (k_B T/q) ln[(N_A N_D)/(n_i²)]
-</pre>
+<math display="block">V_{\mathrm{bi}}=\frac{k_BT}{q}\ln\left(\frac{N_AN_D}{n_i^2}\right).</math>
 
 In the depletion approximation under an applied junction voltage V_a (positive for forward bias), a one-dimensional depletion width for an abrupt junction is approximately
 
-<pre>
-W ≈ sqrt[(2 epsilon_s/q) (1/N_A + 1/N_D) (V_bi − V_a)]
-</pre>
+<math display="block">W\simeq\sqrt{\frac{2\epsilon_s}{q}\left(\frac1{N_A}+\frac1{N_D}\right)(V_{\mathrm{bi}}-V_a)}.</math>
 
 The formula assumes that a depletion approximation remains applicable and V_bi − V_a stays positive. Doping must be in consistent spatial units with permittivity epsilon_s. Real junction profiles, high injection, strong forward bias, breakdown and interface charge may invalidate this expression.
 
@@ -111,13 +82,9 @@ The formula assumes that a depletion approximation remains applicable and V_bi �
 
 An idealized diode diffusion-current relation is
 
-<pre>
-I ≈ I_S { exp[q V/(n_id k_B T)] − 1 }
+<math display="block">I\simeq I_S\left\{\exp\!\left[\frac{qV}{n_{\mathrm{id}}k_BT}\right]-1\right\}.</math>
 
-I_S  = reverse saturation current scale
-n_id = ideality factor (1 in the simplest diffusion model)
-V    = junction terminal bias under the chosen convention
-</pre>
+Here <math>I_S</math> is the reverse-saturation current scale, <math>n_{\mathrm{id}}</math> is an empirical ideality factor (one in the simplest diffusion-dominated limit), and <math>V</math> is the junction terminal bias under the chosen sign convention.
 
 This exponential law summarizes a regime, not all diode operation. Real devices can exhibit depletion-region recombination, series resistance, surface leakage, high injection, tunneling and avalanche breakdown. Reverse bias does not imply zero current, and reverse breakdown must be distinguished from safe steady operating conditions.<ref name="shockley"/><ref name="mitjunction"/>
 
@@ -129,10 +96,7 @@ A metal–oxide–semiconductor field-effect transistor (MOSFET) uses a gate-con
 
 One first-order, ideal n-channel long-channel saturation relation is
 
-<pre>
-I_D ≈ (1/2) μ_n C_ox (W_ch/L_ch) (V_GS − V_T)²
-       for V_GS > V_T and V_DS >= V_GS − V_T
-</pre>
+<math display="block">I_D\simeq\frac12\mu_n C_{\mathrm{ox}}\frac{W_{\mathrm{ch}}}{L_{\mathrm{ch}}}(V_{\mathrm{GS}}-V_T)^2,\qquad V_{\mathrm{GS}}>V_T,\quad V_{\mathrm{DS}}\geq V_{\mathrm{GS}}-V_T.</math>
 
 C_ox is gate-oxide capacitance per area, W_ch/L_ch channel width/length, V_T threshold voltage. The expression requires strong inversion, gradual-channel behavior and approximately constant mobility while neglecting channel-length modulation and many parasitics. It does '''not''' describe modern short-channel MOSFET behavior across all bias or temperature regimes. Advanced transport, electrostatic scaling, threshold variability and thermal constraints must be treated separately.
 
@@ -340,7 +304,7 @@ In an LED or laser diode, carrier injection, electron–hole overlap, radiative 
 
 === What to compare ===
 
-Representative approximate room-temperature (near 300 K) fundamental gaps are 1.12 eV for crystalline Si (indirect), 1.42 eV for GaAs (direct), roughly 3.26 eV for 4H-SiC (indirect), and approximately 3.3–3.5 eV for wurtzite GaN (direct, with experimental and methodological variation). These are orientation values, '''not''' universal constants; source, polytype, pressure, strain, impurity concentrations, temperature and the measurement definition control the exact figure.<ref name="bandgap">D. J. R. et al., [https://www.nature.com/articles/s41597-022-01294-6 “Auto-generated database of semiconductor band gaps using ChemDataExtractor”], ''Scientific Data'' 9 (2022): large literature-extracted records highlight the need to track source and method. For documented experimental GaN band-gap spread and excitonic interpretation, see [https://pmc.ncbi.nlm.nih.gov/articles/PMC12895411/ “Benchmarking Density Functional Theory for Accurate Calculation of Nitride Band Gaps”] (2026). The approximate values above are contextual, not taken from one controlled measurement series.</ref>
+Representative approximate room-temperature (near 300 K) fundamental gaps are 1.12 eV for crystalline Si (indirect), 1.42 eV for GaAs (direct), roughly 3.26 eV for 4H-SiC (indirect), and approximately 3.3–3.5 eV for wurtzite GaN (direct, with experimental and methodological variation). These are orientation values, '''not''' universal constants; source, polytype, pressure, strain, impurity concentrations, temperature and the measurement definition control the exact figure.<ref name="bandgap">[https://www.nature.com/articles/s41597-022-01294-6 “Auto-generated database of semiconductor band gaps using ChemDataExtractor”], ''Scientific Data'' 9 (2022): large literature-extracted records highlight the need to track source and method. For documented experimental GaN band-gap spread and excitonic interpretation, see [https://pmc.ncbi.nlm.nih.gov/articles/PMC12895411/ “Benchmarking Density Functional Theory for Accurate Calculation of Nitride Band Gaps”] (2026). The approximate values above are contextual, not taken from one controlled measurement series.</ref>
 
 {| class="wikitable"
 ! Material / state !! Approximate gap near 300 K !! Optical character !! Research warning

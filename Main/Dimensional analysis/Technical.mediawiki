@@ -1,0 +1,151 @@
+{{Reading depth|base=Dimensional analysis|current=Technical}}
+
+= Dimensional analysis — Technical =
+
+'''Dimensional analysis''' studies constraints on physical relations that follow from quantity dimensions and invariance under changes of unit scale. Its principal outputs are checks of dimensional homogeneity and representations of a complete physical dependence in terms of dimensionless invariants. It is a mathematical reduction method, not a physical equation solver, causal identification algorithm or guarantee of similarity between experiments.
+
+This account derives the dimension-matrix approach to Buckingham's π theorem, constructs a full drag-force example and reviews its connection to scaling, asymptotics, experimental design, metrology and sensitivity analysis. The relevant assumptions are identified at each level. Edgar Buckingham's landmark 1914 paper formalized a physical-similarity approach that had historical antecedents; it was not the invention of all unit-based reasoning.<ref name="buckingham">Edgar Buckingham, [https://doi.org/10.1103/PhysRev.4.345 “On Physically Similar Systems; Illustrations of the Use of Dimensional Equations”], ''Physical Review'' 4(4), 345–376 (1914). Primary historical source.</ref><ref name="nist">National Institute of Standards and Technology, [https://www.nist.gov/blogs/taking-measure/life-buckingham-pi “The Life of (Buckingham) Pi”] (2020), history and research use.</ref>
+
+== Quantities, units and dimensions ==
+
+A physical quantity <math>q</math> has a dimension expressed relative to a selected basis of base dimensions. In classical mechanics one often uses <math>M</math> (mass), <math>L</math> (length) and <math>T</math> (time). For an example mechanical quantity <math>q_i</math>,
+
+<math display="block">[q_i]=M^{a_{Mi}}L^{a_{Li}}T^{a_{Ti}}.</math>
+
+The dimension exponents <math>\mathbf a_i=(a_{Mi},a_{Li},a_{Ti})^\mathsf T</math> are not numerical values of <math>q_i</math>. Dimensions can be written with additional bases for electrical current, thermodynamic temperature, amount of substance and luminous intensity when necessary. The appropriate rank is determined by the relevant quantities, not by assuming all seven SI base dimensions are independently represented.
+
+A dimension is distinct from a unit. Speed may be recorded in metres per second or kilometres per hour, but it retains dimension <math>LT^{-1}</math>. A quantity's dimension may equal one even though its physical meaning differs from another dimension-one quantity: a count, an angle and a friction coefficient should not be treated as interchangeable simply because their dimensions cancel.<ref name="nistunits">NIST, [https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values ''Guide to the SI, Chapter 7''], formal units and quantity notation; [https://www.nist.gov/publications/redressing-grievances-treatment-dimensionless-quantities-si NIST discussion of dimension-one quantity distinctions].</ref>
+
+One must convert affine units such as Celsius temperatures to an appropriate absolute scale before treating temperature as a multiplicative quantity. A temperature difference may be expressed in kelvins or Celsius degrees, while ratios of absolute temperatures have a different meaning. Even a dimensionally consistent use of a logarithm is invalid if its argument is dimensionful; the physically meaningful argument must be a ratio or another dimension-one expression.
+
+== Dimensional homogeneity and the limits of unit checks ==
+
+Consider a proposed constitutive law <math>y=f(x_1,\ldots,x_n)</math> with additions and products of physical quantities. For a dimensionally homogeneous physical equality, both sides and all terms of an additive sum must be commensurate:
+
+<math display="block">[q_a+q_b]\;\mathrm{is\ meaningful\ only\ if}\;[q_a]=[q_b],\qquad [q_aq_b]=[q_a][q_b].</math>
+
+If a purported mechanical force is computed from <math>m v</math> alone, the result has dimensions of momentum <math>MLT^{-1}</math>, not force <math>MLT^{-2}</math>. Multiplying by an inverse time introduces the correct dimensions but does not establish the correct physical dynamics.
+
+A valid differential equation can be checked term by term. For example, in a scalar diffusion model <math>\partial_t c=D\nabla^2c</math>, the diffusivity has dimensions <math>L^2T^{-1}</math>. Yet dimensional homogeneity alone does not establish that diffusion is the appropriate mechanism: the process may instead require advection, reactions, anomalous transport or nonlinear coefficients.
+
+For exponentials and logarithms, arguments must be dimensionless. In the idealized Boltzmann factor <math>\exp[-E/(k_BT)]</math>, energy <math>E</math> and thermal energy <math>k_BT</math> have the same dimensions; the ratio is meaningful. Replacing the exponent with <math>-E/T</math> would violate the formal dimensional requirement unless the symbols' meanings were redefined.
+
+== Dimension matrix and rank–nullity formulation ==
+
+Suppose the governing relation involves <math>n</math> strictly positive dimensional quantities <math>q_1,\ldots,q_n</math> and a complete relevant list of variables. Let <math>D\in\mathbb R^{d\times n}</math> contain their exponents in a fixed dimension basis; the <math>i</math>th column is <math>\mathbf a_i</math>. A monomial
+
+<math display="block">\Pi_{\mathbf z}=\prod_{i=1}^{n}q_i^{z_i}</math>
+
+has dimensions determined by <math>D\mathbf z</math>. It is dimensionless precisely when
+
+<math display="block">D\mathbf z=\mathbf 0.</math>
+
+If <math>\operatorname{rank}(D)=r</math>, the rank–nullity theorem yields
+
+<math display="block">\dim\ker D=n-r.</math>
+
+A basis <math>\mathbf z^{(1)},\ldots,\mathbf z^{(n-r)}</math> of this null space defines <math>n-r</math> independent π-groups. Under the usual smoothness, positivity and dimensional-covariance assumptions, an admissible relation may be written
+
+<math display="block">\Phi(\Pi_1,\ldots,\Pi_{n-r})=0.</math>
+
+If the dependent group can be resolved as a function of others on the regime of interest, one may write <math>\Pi_1=\phi(\Pi_2,\ldots,\Pi_{n-r})</math>. That step requires an invertible/local functional relation; it is not automatically guaranteed. Replacing a π-basis by an invertible linear combination of null-space exponent vectors yields a different but equivalent set of dimensionless monomials. Thus the dimensional groups are '''not unique'''.<ref name="mathworld">Wolfram MathWorld, [https://mathworld.wolfram.com/BuckinghamPiTheorem.html “Buckingham Pi Theorem”], rank/nullity formulation; for an engineering teaching treatment see MIT OCW [https://ocw.mit.edu/courses/2-25-advanced-fluid-mechanics-fall-2013/pages/dimensional-analysis/ ''Advanced Fluid Mechanics'', dimensional analysis unit].</ref>
+
+A group-theoretic interpretation uses a change of the selected base units: nonzero quantities transform multiplicatively by exponents from <math>D</math>. π-groups remain invariant under that action. This is a restricted scaling group, not a complete derivation of all symmetries, conservation laws or the system's physical response.
+
+=== Conditions commonly omitted in textbook slogans ===
+
+The count <math>n-r</math> presumes the complete relevant variable list, a consistent dimension basis and a relation that transforms covariantly when units change. A missing physical quantity (for example roughness, fluid compressibility, contact angle or a forcing frequency) changes what dimensionless groups exist and can make an apparently successful collapse spurious. A function may be singular or discontinuous on some regimes; formal algebra on nonzero magnitudes does not guarantee a global smooth one-to-one description. A dimensionless constant such as a geometric ratio remains physically relevant even if it has zero dimension vector.
+
+The theorem does not determine <math>\phi</math>. A measured, theoretical or computational constitutive law still supplies the missing dependence. For asymptotic regimes, matching the right dimensionless parameters is a necessary similarity condition under the given model but need not be sufficient for complete physical similarity.
+
+== Fully worked case: hydrodynamic drag ==
+
+Assume a body of fixed shape and orientation, moving steadily relative to a Newtonian, incompressible fluid. In this deliberately reduced model, drag force <math>F</math> is assumed to depend on fluid density <math>\rho</math>, speed <math>v</math>, a characteristic body diameter <math>L</math>, and dynamic viscosity <math>\mu</math>:
+
+<math display="block">F=f(\rho,v,L,\mu;\,\mathrm{fixed\ shape}).</math>
+
+No roughness variation, wall confinement, free-surface effects, compressibility, acceleration or changing shape is included. The dimensions of the five variables are
+
+{| class="wikitable"
+! Quantity !! M exponent !! L exponent !! T exponent
+|-
+| <math>F</math> || 1 || 1 || −2
+|-
+| <math>\rho</math> || 1 || −3 || 0
+|-
+| <math>v</math> || 0 || 1 || −1
+|-
+| <math>L</math> || 0 || 1 || 0
+|-
+| <math>\mu</math> || 1 || −1 || −1
+|}
+
+In the column order <math>(F,\rho,v,L,\mu)</math>, the dimension matrix is
+
+<math display="block">D=\begin{pmatrix}1&1&0&0&1\\1&-3&1&1&-1\\-2&0&-1&0&-1\end{pmatrix},\qquad\operatorname{rank}(D)=3.</math>
+
+Thus two independent groups remain. Choosing the conventional drag normalization and Reynolds number,
+
+<math display="block">\Pi_1=\frac{F}{\rho v^2L^2},\qquad\Pi_2=\mathrm{Re}=\frac{\rho vL}{\mu}.</math>
+
+Direct exponent checks give dimension-one for both groups. For <math>\Pi_1</math>, its exponent vector in column order is <math>(1,-1,-2,-2,0)^\mathsf T</math>; for <math>\mathrm{Re}</math> it is <math>(0,1,1,1,-1)^\mathsf T</math>. Multiplication by <math>D</math> gives the zero vector for either. The resulting model class is
+
+<math display="block">\frac{F}{\rho v^2L^2}=\phi(\mathrm{Re};\,\mathrm{fixed\ shape}).</math>
+
+Under the usual drag-coefficient convention <math>C_D=F/(\tfrac12\rho v^2A)</math> with frontal area <math>A</math>, the geometry-dependent relationship is <math>C_D=2(L^2/A)\Pi_1</math>. The factor of two and the frontal area are definitions of the coefficient, not deductions of the π theorem.
+
+For the illustrative inputs <math>F=0.30\ {\rm N}</math>, <math>\rho=1.20\ {\rm kg\,m^{-3}}</math>, <math>v=10\ {\rm m\,s^{-1}}</math>, <math>L=0.10\ {\rm m}</math> and <math>\mu=1.8\times10^{-5}\ {\rm Pa\,s}</math>,
+
+<math display="block">\mathrm{Re}=\frac{1.2\cdot10\cdot0.1}{1.8\times10^{-5}}\simeq6.6667\times10^4,\qquad\Pi_1=\frac{0.30}{1.2(10)^2(0.10)^2}=0.25.</math>
+
+These are worked mathematical values for declared inputs; they are '''not''' measurements of a particular drag coefficient or evidence of an actual flow regime. A computation using an arbitrary F cannot predict a drag law from dimensional analysis. To infer drag, measure or solve the response across the relevant <math>\mathrm{Re}</math> range with consistent geometry and boundary conditions.<ref name="mitfluid">MIT OCW, [https://ocw.mit.edu/courses/2-25-advanced-fluid-mechanics-fall-2013/pages/dimensional-analysis/ ''2.25 Advanced Fluid Mechanics: Dimensional Analysis''], Buckingham π theorem, similarity and model experiments.</ref>
+
+== Similarity, scaling laws and asymptotic regimes ==
+
+'''Geometric similarity''' means compatible shapes and scaled geometry. '''Kinematic similarity''' compares motion patterns; '''dynamic similarity''' concerns compatible force balances and governing dimensionless parameters. Matching a Reynolds number in flows of different geometry does not establish equal normalized drag; matching Reynolds number while ignoring Mach number may fail in compressible flow. In rotating or free-surface problems, other groups such as Rossby or Froude numbers can matter.
+
+For partial differential equations, nondimensionalization rescales states and independent variables. Take a simple advection–diffusion equation
+
+<math display="block">\frac{\partial c}{\partial t}+\mathbf u\cdot\nabla c=D_c\nabla^2c.</math>
+
+Choose length <math>L</math>, speed <math>U</math>, time <math>L/U</math>, and reference concentration <math>C_0</math>. Let <math>\mathbf x=L\hat{\mathbf x}</math>, <math>t=(L/U)\hat t</math>, <math>\mathbf u=U\hat{\mathbf u}</math>, <math>c=C_0\hat c</math>. Then
+
+<math display="block">\frac{\partial\hat c}{\partial\hat t}+\hat{\mathbf u}\cdot\hat\nabla\hat c=\frac1{\mathrm{Pe}}\hat\nabla^2\hat c,\qquad\mathrm{Pe}=\frac{UL}{D_c}.</math>
+
+Here the Péclet number is a ratio of advective and diffusive transport scales; its appearance follows from chosen model terms and characteristic scales. Large <math>\mathrm{Pe}</math> suggests advection may dominate in some regions, but boundary layers or sharp concentration gradients can preserve important local diffusion effects. An asymptotic statement must name its spatial and temporal regimes and governing conditions.
+
+Barenblatt's treatment distinguishes complete and incomplete similarity: dimensional parameters alone do not always determine scaling exponents in complicated asymptotic structures. Some exponents depend on dynamics, boundary conditions or additional analysis. Accordingly, one should not claim every observed power law can be deduced from Buckingham's theorem.<ref name="barenblatt">Grigory I. Barenblatt, [https://www.cambridge.org/core/books/scaling/E08325F4C8A14AAD4742E39FE5D0A6B3 ''Scaling''], Cambridge University Press (2003), chapters on dimensional analysis, similarity and scaling laws beyond dimensional analysis.</ref>
+
+== Quantities of dimension one: semantic hazards ==
+
+A dimension-one quantity can have meaningful type, scale or unit conventions. An angle and a strain are both formally dimensionless but can have different interpretations. Logarithms of dimensionful raw values, arguments to exponentials, and trigonometric functions should be normalized appropriately. A ratio <math>x/x_0</math> compares a quantity with a named reference; <math>\log(x/x_0)</math> is well formed when its domain conditions hold, while writing <math>\log(x)</math> for a dimensional <math>x</math> conceals a scale assumption.
+
+Stated numerical units also matter. In electromagnetism, unit systems such as SI and Gaussian/CGS allocate dimensions and constants differently. Using dimensional formulas without identifying conventions can create errors in current/charge relations. Dimensional homogeneity should be checked against the same consistent unit convention and underlying quantity definitions.<ref name="nistunits"/>
+
+== Link to uncertainty and sensitivity analysis ==
+
+Dimensional reduction and [[Sensitivity analysis/Technical|sensitivity analysis]] answer different research questions. Dimensional analysis can replace a raw list of inputs by a smaller, physically interpretable set of π-groups; sensitivity analysis then asks how an output changes as those independent groups vary within a specified parameter space or probability model. The resulting sensitivity findings can identify dominant regimes, interactions, and experimental-design priorities, but they are conditional on the chosen response model and explored range.
+
+For a differentiable, dimensionally homogeneous power-law model <math>y=C\prod_i x_i^{a_i}</math>, the relative sensitivity to a positive input is
+
+<math display="block">\frac{\partial\log y}{\partial\log x_i}=a_i</math>
+
+when other inputs are held fixed. This elasticity is dimensionless; its value is not generally an empirical effect size. If physical constraints couple the inputs, a partial derivative holding others fixed may describe an impossible perturbation. Appropriate constrained sensitivity pathways must be chosen from the actual experiment.
+
+== Reproducibility and verification protocol ==
+
+For a published dimensional reduction, record the governing physical question, explicit dependent quantity, all considered variables, dimensions and units, fixed conditions and omitted influences, the full exponent matrix, numerical rank and tolerance, a null-space basis, the chosen normalized π-groups and their signs, and the evidence used to determine the remaining response function.
+
+A reproducible computational check should confirm <math>D\mathbf z_j=\mathbf0</math> for each chosen group, rank and nullity, unit conversion correctness, and invariance under changing base-unit scales. This test is necessary but insufficient: one must also verify source definitions, experimental similarity, boundary conditions, model validity and actual data agreement. A learned numerical approximation <math>\hat\phi</math> may be reproducible and dimensionally consistent yet fail outside its training range. Consult [[Reproducibility]], [[Validation]], [[Verification]], [[Measurement]] and [[Scientific model]].
+
+== Interpretation, history and open questions ==
+
+Dimension reduction is closely related to symmetry and invariance methods, but no general physical causal mechanism follows from a unit-rescaling symmetry alone. Buckingham's 1914 work remains a foundational point in the formal history of similitude; broader historical work discusses its relationship to earlier similarity principles and the physical assumptions behind the approach.<ref name="history">[https://www.journals.uchicago.edu/doi/10.1086/731678 “Metaphysics and Convention in Dimensional Analysis, 1914–1917”], historical and philosophical analysis of the Buckingham/Tolman debates (2024).</ref>
+
+In contemporary research, difficult cases include data-driven discovery of candidate quantities and dimensionless invariants without omitting hidden physics, similarity outside narrow asymptotic regimes, unit-safe machine-learning systems, and deciding whether dimension-one features should share a representation. These are research programs, not theorems guaranteeing a result.
+
+== References and further reading ==
+
+<references/>
+
+See also [[Dimensional analysis/Simple|Simple explanation]], [[Dimensional analysis|canonical topic map]], [[Sensitivity analysis/Technical|sensitivity analysis]], [[Uncertainty]] and [[Scientific method]].

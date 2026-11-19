@@ -1,0 +1,83 @@
+{{Knowledge object
+ |title=Semiconductor
+ |entity_type=Concept
+ |domain=Physics, Electronics, Engineering
+ |status=Established
+ |provenance=BITwiki editorial synthesis of MIT OpenCourseWare, OpenStax, DoITPoMS, CAS and OSHA references (2026-11-19)
+}}
+
+= Semiconductor =
+
+A '''semiconductor''' is a material whose electronic structure permits electrical conduction that can be controlled by changing the population or motion of charge carriers. Temperature, illumination, impurities, electric fields and material interfaces can change its electrical behavior. Silicon is a familiar example, but semiconductors also include compound materials used in optical and power-electronic devices.
+
+A semiconductor is a '''class of materials''', not a synonym for a transistor, a computer chip, or the industry that manufactures them. Its importance is that materials with appropriately engineered electronic properties can be made into rectifiers, switches, amplifiers, light emitters, photodetectors and photovoltaic devices.
+
+== Electronic structure ==
+
+In the usual crystalline-solid model, electrons occupy ranges of allowed energies called '''bands'''. A semiconductor has an energy gap (the ''band gap'') between its valence band and conduction band. Exciting an electron into an available conduction-band state leaves an unoccupied valence-band state called a '''hole'''. Both can contribute to electrical transport.
+
+The band-gap concept distinguishes many semiconductors from ordinary metals, whose electronic states allow abundant conduction without the same gap. It does '''not''' define a universal conductivity threshold separating all conductors, semiconductors and insulators: measured conductivity also depends on temperature, impurities, defects and carrier mobility. Semiconductor behavior is therefore better understood from electronic structure and carrier transport than from one resistance measurement. MIT OpenCourseWare's [https://ocw.mit.edu/courses/3-091sc-introduction-to-solid-state-chemistry-fall-2010/pages/electronic-materials/14-semiconductors/ ''Introduction to Solid-State Chemistry'', session 14] introduces band gaps and thermal and optical excitation.
+
+== Charge carriers and doping ==
+
+In an '''intrinsic''' semiconductor, electrons and holes are generated without intentionally introduced carrier-producing impurities. At thermal equilibrium in an ideal intrinsic material their concentrations are equal; increasing temperature or illuminating the material can change carrier populations. Electrons are negatively charged. A hole is a useful description of an unoccupied electronic state that moves through the valence band as electrons rearrange; it is not a separate positively charged atom traveling through the crystal.
+
+'''Doping''' deliberately introduces selected impurity atoms to influence carrier concentrations and electrical behavior:
+
+* '''n-type:''' donor impurities make electrons the majority mobile carriers under the relevant operating conditions. Phosphorus in silicon is a common example.
+* '''p-type:''' acceptor impurities make holes the majority mobile carriers under the relevant operating conditions. Boron in silicon is a common example.
+
+The material does not simply become negatively charged when it is n-type or positively charged when it is p-type; the ionized dopants and mobile carriers must be considered together. Both carrier types may be present in either doped material. The relative concentrations depend on dopants, temperature and other conditions. See OpenStax's [https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_%28OpenStax%29/University_Physics_III_-_Optics_and_Modern_Physics_%28OpenStax%29/09%3A_Condensed_Matter_Physics/9.07%3A_Semiconductors_and_Doping ''University Physics III'', §9.7] and the DoITPoMS [https://eng.libretexts.org/Bookshelves/Materials_Science/TLP_Library_II/22%3A_Introduction_to_Semiconductors/22.4%3A_Intrinsic_and_Extrinsic_Semiconductors treatment of intrinsic and extrinsic materials].
+
+Mobile carriers contribute to [[Related to::Electric current|electric current]] through '''drift''' in response to an electric field and '''diffusion''' in response to concentration differences. Generation, recombination, trapping and scattering also affect transport. A device's current therefore depends on geometry, material, contacts, [[Voltage|applied voltage]] and operating conditions, not merely on its chemical formula.
+
+== Junctions and devices ==
+
+When p-type and n-type regions meet, carrier diffusion and the resulting space-charge region establish a '''p–n junction''' with a built-in electric field. An applied bias changes the potential barrier and carrier transport; this underlies the rectifying behavior of many semiconductor diodes. Not every diode is a p–n junction diode: metal–semiconductor (Schottky) contacts provide another mechanism.
+
+A '''transistor''' uses a controlled electrical condition to regulate current. A bipolar junction transistor uses coupled junction and carrier-injection behavior; in a metal–oxide–semiconductor field-effect transistor (MOSFET), a gate field changes conduction in a channel. These are different device mechanisms, not interchangeable definitions of a semiconductor. MIT OpenCourseWare's [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/ ''Integrated Microelectronic Devices''] treats junctions, MOS structures, MOSFETs and bipolar devices separately.
+
+Semiconductor devices can also convert between electrical and optical energy. Photodiodes and solar cells use photo-generated charge carriers; light-emitting diodes use radiative recombination. Whether a material efficiently emits light depends, among other properties, on whether its fundamental band gap is direct or indirect. Device structure, surfaces and defects also matter.
+
+== Materials and applications ==
+
+{| class="wikitable"
+! Material or family !! Representative role !! Important qualification
+|-
+| '''Silicon (Si)''' || General-purpose integrated circuits, sensors and photovoltaic devices || Its processing ecosystem and usable oxide are major advantages; silicon is not an efficient conventional light emitter.
+|-
+| '''Gallium arsenide (GaAs) and related compounds''' || Optoelectronics and selected high-frequency electronics || Direct-gap optical behavior can be useful, but performance and manufacturing constraints depend on the compound and device.
+|-
+| '''Silicon carbide (SiC) and gallium nitride (GaN)''' || Power switching and other demanding electronic applications || Wide band gaps and favorable breakdown-field properties can enable different operating regimes; they do not guarantee superior cost, efficiency or reliability in every circuit.
+|}
+
+The band gap alone does not determine suitability. Carrier mobility, breakdown field, thermal conductivity, defect density, interfaces, manufacturability, packaging and cost are among the relevant design variables. See the Chemical Abstracts Service's [https://www.cas.org/resources/cas-insights/wide-bandgap-semiconductors overview of wide-band-gap materials] for examples and trade-offs.
+
+== From material to circuit ==
+
+Device fabrication creates selected regions and layers within or on a semiconductor substrate. Depending on the technology, it involves crystal and wafer preparation, lithographic patterning, deposition, etching, doping, annealing, contacts and interconnects. These steps are repeated and verified to produce usable devices or integrated circuits. The [https://www.osha.gov/semiconductors/silicon/device-fabrication US Occupational Safety and Health Administration's silicon fabrication overview] documents major operations and their occupational hazards. Its description of a silicon process is not a universal recipe for every semiconductor technology.
+
+The relation to computing is a layered one. Transistors and associated circuit elements can implement electrical switching networks. Circuit designers arrange these devices into logic, memory and interfaces; system designers then define larger components and [[Computer architecture|computer architectures]]. A semiconductor by itself is neither a binary digit nor an algorithm. The physical ability to switch current and the abstract rules of [[Computation|computation]] are different levels of explanation.
+
+== Limits and engineering considerations ==
+
+Semiconductor models are conditional. Carrier statistics, junction approximations and circuit models depend on temperature, geometry, impurity density, fields and device scale. At small dimensions or high fields, leakage, tunneling, contact resistance, parasitic capacitance, heating and variability may materially change operation. Material defects and manufacturing variation affect yield and reliability.
+
+'''Three distinctions prevent common misunderstandings:'''
+
+* A semiconductor material is not necessarily an active device; device behavior depends on engineered structure and contacts.
+* '''n-type''' and '''p-type''' describe majority carriers, not a permanent net electrical charge of an entire sample.
+* A larger band gap or smaller fabrication feature does not automatically yield a better device or a faster or more efficient computer; outcomes require specified workloads, circuits, thermal conditions and other system boundaries.
+
+== References ==
+
+* Massachusetts Institute of Technology, ''Introduction to Solid-State Chemistry'', 3.091SC (Fall 2010), [https://ocw.mit.edu/courses/3-091sc-introduction-to-solid-state-chemistry-fall-2010/pages/electronic-materials/14-semiconductors/ session 14: Semiconductors]. Band structure, charge carriers, intrinsic/extrinsic behavior and applications.
+* OpenStax, ''University Physics'', volume III, [https://phys.libretexts.org/Bookshelves/University_Physics/University_Physics_%28OpenStax%29/University_Physics_III_-_Optics_and_Modern_Physics_%28OpenStax%29/09%3A_Condensed_Matter_Physics/9.07%3A_Semiconductors_and_Doping §9.7: Semiconductors and Doping] (reproduced by Physics LibreTexts). Donor and acceptor impurities, holes and carrier behavior.
+* DoITPoMS, University of Cambridge, [https://eng.libretexts.org/Bookshelves/Materials_Science/TLP_Library_II/22%3A_Introduction_to_Semiconductors/22.4%3A_Intrinsic_and_Extrinsic_Semiconductors ''Introduction to Semiconductors'', §22.4] (reproduced by Engineering LibreTexts). Carrier concentrations and doping mechanisms.
+* Massachusetts Institute of Technology, ''Integrated Microelectronic Devices'', 6.720J (Spring 2007), [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/ course materials]. Junctions, MOS devices and bipolar transistors.
+* Chemical Abstracts Service, [https://www.cas.org/resources/cas-insights/wide-bandgap-semiconductors ''Wide-bandgap semiconductors: Transforming EVs, UV, and wireless communications'']. SiC and GaN material properties and applications.
+* US Occupational Safety and Health Administration, [https://www.osha.gov/semiconductors/silicon/device-fabrication ''Semiconductors — Device Fabrication'']. Silicon processing steps and workplace hazards.
+
+[[Category:Electronics]]
+[[Category:Physics]]
+[[Category:Engineering]]

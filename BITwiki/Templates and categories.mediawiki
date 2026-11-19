@@ -89,7 +89,7 @@ V2 separates those functions:
 * the four Main-namespace Infobox pages remain source/design artifacts until reconciled against <code>Template:Infobox</code> and the V2 semantic model;
 * <code>SMW Template System</code> informs semantic/template architecture;
 * <code>Template System Validation Framework</code> informs validation and release checks;
-* [[Category List]] informs the historical classification model and is addressed by [[BITwiki:V1 category migration]].
+* [[Category List]] informs the historical classification model; current classification follows the V2 category rules below.
 
 Do not infer Template namespace membership from a page being categorized <code>BITwiki Templates</code>.
 
@@ -118,7 +118,7 @@ Category pages are indexes, not directories. A page may belong to multiple categ
 
 A category may include SMW/query/Lua-computed views, but those are projections over canonical state. Category membership does not silently create Entity type, Domain, or relationship assertions.
 
-See [[BITwiki:V1 category migration]] for the complete functional refactor of the 162 V1 category memberships.
+For historical V1 category memberships, inspect <code>archive-v1/categories/index.json</code> and its archived member lists; apply the current V2 rules above.
 
 == State and rendering invariants ==
 

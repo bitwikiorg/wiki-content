@@ -168,6 +168,119 @@ Device characterization can include current–voltage curves, capacitance–volt
 
 At system scale the chain is '''material → device → circuit → component → system'''. The semiconductor is essential to many processors, sensors, memories and power converters, but it does not itself define an algorithm, programming language, microarchitecture or firmware. See [[Electric current/Technical|Electric current]], [[Voltage/Technical|Voltage]], [[Resistor/Technical|Resistor]], [[Computation/Technical|Computation]] and [[Computer architecture/Technical|Computer architecture]].
 
+== Quantum-mechanical foundations beyond the band cartoon ==
+
+=== Hamiltonian, symmetry, and density of states ===
+
+A periodic single-particle potential has lattice translation symmetry. For a Bloch eigenstate, <math>\psi_{n\mathbf{k}}(\mathbf r)=e^{i\mathbf k\cdot\mathbf r}u_{n\mathbf{k}}(\mathbf r)</math>, where <math>u</math> has the lattice periodicity. In an independent-electron approximation the crystal Hamiltonian and eigenproblem can be expressed as<ref name="mitbands">MIT OpenCourseWare, ''Electronic, Optical and Magnetic Properties of Materials'', [https://ocw.mit.edu/courses/3-024-electronic-optical-and-magnetic-properties-of-materials-spring-2013/pages/lecture-notes/ course lecture notes] on crystal bands, effective mass and semiconductor optical properties. The single-electron Hamiltonian is a model, not a complete interacting many-electron theory.</ref>
+
+<math display="block">\left[-\frac{\hbar^2}{2m_0}\nabla^2+V_{\mathrm{periodic}}(\mathbf r)\right]\psi_{n\mathbf k}=E_n(\mathbf k)\psi_{n\mathbf k}.</math>
+
+The band index <math>n</math>, crystal momentum <math>\mathbf{k}</math>, degeneracies, strain and symmetry must be specified before interpreting a computed band gap or optical selection rule. The Brillouin-zone integrals determine observable carrier populations. Close to a nondegenerate extremum, an effective-mass expansion is
+
+<math display="block">E_n(\mathbf k)\simeq E_n(\mathbf k_0)+\frac{\hbar^2}{2}\sum_{i,j}(k_i-k_{0i})(m^{*-1})_{ij}(k_j-k_{0j}),</math>
+
+with <math>(m^{*-1})_{ij}=\hbar^{-2}\partial^2E_n/\partial k_i\partial k_j</math> evaluated at the extremum. Effective mass is therefore an energy-band curvature parameter, generally a tensor; it need not equal a free electron's inertial mass and can vary between valleys and directions. An effective-mass model is local to its chosen bands and energy window.
+
+For a single 3-D isotropic parabolic conduction-band valley, including spin degeneracy two and using energy measured upward from <math>E_c</math>, the density of allowed states per unit volume per unit energy is
+
+<math display="block">g_c(E)=\frac{1}{2\pi^2}\left(\frac{2m^*}{\hbar^2}\right)^{3/2}\sqrt{E-E_c},\qquad E\ge E_c.</math>
+
+Extra valleys or spin splitting require corresponding multiplicities or a sum of separate dispersions. Integrating <math>g_c(E)f(E)</math> produces the electron concentration. In the nondegenerate limit one obtains the effective density of states
+
+<math display="block">N_c=2\left(\frac{2\pi m_{\mathrm{DOS}}^*k_BT}{h^2}\right)^{3/2},</math>
+
+where the relevant DOS effective mass accounts for the material's occupied valleys. The familiar <math>n=N_c\exp[-(E_c-E_F)/(k_BT)]</math> thus follows from stated dispersion and occupation assumptions, not from a definition of doping.
+
+'''Research consequence.''' A reported “band gap” must identify the material composition/polytype, temperature, strain, method, sample and what kind of gap is meant: quasiparticle excitation, optical absorption onset or device-extracted effective gap. They need not coincide. Density-functional approximations, quasiparticle corrections and many-body electron–hole interactions introduce additional choices; a numerical calculation without its functional, basis, convergence tests and structural assumptions is not reproducible evidence.
+
+=== Excitons, phonons, and optical selection ===
+
+An electron and hole can form a correlated bound excitation called an '''exciton'''. The photon absorption edge can therefore differ from the independent-particle quasiparticle gap; binding energies depend on screening, dimensionality and effective masses. In an idealized three-dimensional Wannier–Mott hydrogenic approximation,
+
+<math display="block">E_B\simeq\frac{\mu^*q^4}{2(4\pi\epsilon)^2\hbar^2},\qquad\frac{1}{\mu^*}=\frac{1}{m_e^*}+\frac{1}{m_h^*},</math>
+
+with dielectric screening <math>\epsilon</math> and reduced mass <math>\mu^*</math>. This simple model is especially inappropriate when the electron–hole pair spans only a few unit cells, dielectric screening is highly nonlocal, or two-dimensional confinement is strong. Phonons carry crystal momentum and can assist otherwise indirect optical transitions. Carrier–phonon scattering, electron–electron scattering and disorder also broaden optical features and affect transport.
+
+=== When the Fermi picture fails ===
+
+The single equilibrium Fermi level describes a system in thermal equilibrium. Driven electrons and holes may instead be represented by separate quasi-Fermi levels <math>F_n,F_p</math> when each carrier population internally thermalizes; the resulting relation <math>np=n_i^2\exp[(F_n-F_p)/(k_BT)]</math> relies on nondegenerate statistics and consistent band-edge conventions. Transient hot carriers, strong ballistic injection and nonthermal populations can invalidate even the quasi-equilibrium description. This distinction matters in lasers, LEDs, solar cells and switching devices.
+
+== Defects, generation and recombination ==
+
+=== Radiative, trap-assisted and Auger processes ===
+
+Carrier balance is incomplete without a mechanism for capture and generation. For a nondegenerate semiconductor, an illustrative net band-to-band radiative rate can be written
+
+<math display="block">U_{\mathrm{rad}}=B\left(np-n_i^2\right),</math>
+
+where <math>B</math> is a material-, spectrum- and condition-dependent coefficient with units of volume per time. The expression describes the net rate relative to equilibrium, not an absolute photon count in every optical geometry. Indirect-gap materials can require phonon assistance, while quantum wells, excitonic effects and photon recycling change emission and absorption.
+
+The single-trap-level Shockley–Read–Hall (SRH) net recombination model is<ref name="srh">W. Shockley and W. T. Read, Jr., [https://doi.org/10.1103/PhysRev.87.835 “Statistics of the Recombinations of Holes and Electrons”], ''Physical Review'' 87, 835–842 (1952), original trap-mediated model; R. N. Hall, [https://doi.org/10.1103/PhysRev.87.387 “Electron-Hole Recombination in Germanium”], ''Physical Review'' 87, 387 (1952), complementary historical experiment/theory.</ref>
+
+<math display="block">U_{\mathrm{SRH}}=\frac{np-n_i^2}{\tau_p(n+n_1)+\tau_n(p+p_1)},</math>
+<math display="block">n_1=N_c e^{-(E_c-E_t)/(k_BT)},\quad p_1=N_v e^{-(E_t-E_v)/(k_BT)}.</math>
+
+Here <math>E_t</math> is the trap-level energy, and <math>\tau_n,\tau_p</math> are effective capture-time parameters linked to trap density, capture cross sections and thermal velocity. The formula assumes a well-described discrete trap in the chosen statistics and capture model. A distribution of traps, multicharge defects and nonequilibrium occupation may require integrating over energy and solving trap-occupancy kinetics, not merely fitting one “lifetime”.
+
+A schematic net Auger recombination law under nondegenerate conditions is
+
+<math display="block">U_{\mathrm{Auger}}=(C_n n+C_p p)(np-n_i^2),</math>
+
+where <math>C_n,C_p</math> are material-dependent Auger coefficients (volume squared per time). Defect-assisted and direct Auger channels differ. In the simple regime where these mechanisms can be treated independently, rates add: <math>U_{\mathrm{net}}=U_{\mathrm{rad}}+U_{\mathrm{SRH}}+U_{\mathrm{Auger}}+\cdots</math>. Effective lifetimes need not be constants when injection, trap occupation or temperature varies.<ref name="mitrecomb">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture4/ lecture 4] and [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/resources/lecture5/ lecture 5], generation, recombination and carrier lifetime.</ref>
+
+=== Defect physics and measurement ===
+
+Vacancies, interstitials, antisite defects, dislocations, grain boundaries, interface traps and impurities can change local charge, trap capture kinetics and recombination; they can also scatter carriers or modify the effective doping balance. A defect is not simply “a bad atom”: some electrically active levels are functional dopants, while some defects are harmful only in particular charge states or environments. Formation energies, chemical potentials, charge transitions, strain and growth conditions determine populations. Time-dependent degradation often depends on defect kinetics at contacts or dielectrics, not only bulk defect concentration.<ref name="apsdefects">American Physical Society, [https://journals.aps.org/imperfection “A Century of Imperfection: Point Defect Science in the APS Journals”] (2026), curated historical literature on defect characterization and the SRH lineage; use underlying primary papers for numerical claims.</ref>
+
+For a small excess minority-carrier perturbation with effectively constant recombination lifetime <math>\tau</math> and diffusion coefficient <math>D</math>, the diffusion length is
+
+<math display="block">L=\sqrt{D\tau}.</math>
+
+With <math>D=25\ {\rm cm^2\,s^{-1}}</math> and <math>\tau=1\ \mu{\rm s}</math>, <math>L=50\ \mu{\rm m}</math>. This scale must be compared with the device geometry and contact/surface recombination; it cannot alone determine a collection efficiency. In time-resolved photoluminescence, an observed decay may combine radiative and nonradiative rates, carrier diffusion, trapping and photon recycling, so fitting it to a single exponential does not uniquely identify an SRH lifetime.
+
+== Transport from statistical mechanics to device simulation ==
+
+=== Boltzmann transport and mobility ===
+
+The semiclassical Boltzmann transport equation for a band distribution <math>f_n(\mathbf r,\mathbf k,t)</math> takes the form
+
+<math display="block">\frac{\partial f_n}{\partial t}+\mathbf v_n(\mathbf k)\cdot\nabla_{\mathbf r}f_n+\frac{\mathbf F}{\hbar}\cdot\nabla_{\mathbf k}f_n=\left.\frac{\partial f_n}{\partial t}\right|_{\mathrm{coll}},</math>
+
+with group velocity <math>\mathbf v_n=\hbar^{-1}\nabla_{\mathbf k}E_n</math> and force <math>\mathbf F</math> determined by charge and fields. The collision integral describes transitions and is not universally equivalent to a single relaxation time. Under weak field, isotropic parabolic bands and a relaxation-time approximation, a Drude-like mobility is <math>\mu=q\tau_m/m^*</math>, where <math>\tau_m</math> is a momentum relaxation time. Phonons, impurities, interface roughness and defects can have distinct energy and temperature dependencies. Matthiessen's reciprocal-scattering-time rule is an approximation, especially questionable when mechanisms are correlated or the carrier distribution changes.
+
+The drift–diffusion and Poisson system above is a continuum moment closure for transport, not a replacement for the full distribution function. Van Roosbroeck's original formulation jointly treats transport, electrostatics and recombination; it motivates contemporary self-consistent semiconductor device solvers.<ref name="vanroos">W. van Roosbroeck, [https://doi.org/10.1002/j.1538-7305.1950.tb03653.x “Theory of the Flow of Electrons and Holes in Germanium and Other Semiconductors”], ''Bell System Technical Journal'' 29, 560–607 (1950). Original coupled drift–diffusion/continuity framework.</ref>
+
+=== Nondimensionalization and numerical stability ===
+
+A research simulation should state characteristic scales: thermal voltage <math>V_T=k_BT/q</math>, length <math>L_0</math>, density <math>N_0</math> and time <math>t_0</math>. For instance, set <math>\phi=V_T\hat\phi</math>, <math>\mathbf r=L_0\hat{\mathbf r}</math>, <math>n=N_0\hat n</math>. Nondimensionalization exposes competing diffusion, drift and electrostatic length scales, prevents avoidable floating-point overflow and makes parameter sensitivity visible. It does not eliminate physical approximation errors.
+
+A naive centered spatial discretization of drift-dominated transport can produce negative densities or oscillations. Exponentially fitted schemes such as Scharfetter–Gummel fluxes are commonly used for stable, charge-conserving discretization; Newton or Gummel iteration then solves the nonlinear coupled system. Mesh-refinement, conservation residuals and contact boundary conditions should be reported, rather than citing “TCAD simulation” as sufficient evidence.
+
+For example, in a 1-D steady-state isothermal n-type slab, one can solve
+
+<math display="block">\nabla\!\cdot(\epsilon\nabla\phi)=-q(p-n+N_D^+-N_A^-),\qquad\nabla\!\cdot\mathbf J_n=q(R_n-G_n),</math>
+
+together with the hole continuity equation, the constitutive laws above and specified terminal/carrier-flux boundary conditions. The sign of the electron equation follows the current convention stated earlier; current continuity is an auditable invariant. Fixed potentials with unspecified injected carrier distributions are not a complete contact model.
+
+== Heterojunctions, interfaces and low-dimensional structures ==
+
+=== Band offsets and electrostatic boundary conditions ===
+
+At an interface between unlike semiconductors, conduction- and valence-band edges can be discontinuous. A first-pass electron-affinity or Anderson alignment uses differences in isolated-material vacuum levels; real offsets depend on chemical bonding, interface dipoles, strain, atomic termination, polarization and defects. Blindly subtracting two handbook electron affinities can therefore misrepresent a measured heterojunction. Interfaces require electrostatic and current continuity laws augmented by interface sheet charge and finite transmission/recombination conditions where appropriate.<ref name="bandalign">[https://www.sciencedirect.com/science/article/pii/0038110187900724 “A review of models for heterojunction band offsets”], ''Solid-State Electronics'' (1987), comparison of Anderson electron-affinity and interface-sensitive alignment descriptions.</ref>
+
+Heterostructures support high-electron-mobility transistors, separate-confinement lasers, photodetectors and some multijunction solar cells. In polar nitrides, spontaneous and piezoelectric polarization charge can strongly affect channel charge without conventional impurity doping. A bound interface charge associated with discontinuous polarization obeys the normal-component jump condition <math>\sigma_{\mathrm b}=\mathbf{\hat n}\cdot(\mathbf P_1-\mathbf P_2)</math> for the orientation chosen, with the sign convention and free charge accounting stated explicitly.
+
+=== Quantum wells and confinement ===
+
+In an idealized infinite one-dimensional quantum well of width <math>L</math>, the lowest single-particle confinement energy above its well bottom is
+
+<math display="block">E_1=\frac{\pi^2\hbar^2}{2m^*L^2}.</math>
+
+For <math>L=10\ {\rm nm}</math> and <math>m^*=0.067m_0</math>, this idealization gives <math>E_1\approx 0.0561\ {\rm eV}</math>. Real heterostructures have finite barrier heights, energy-dependent masses, band offsets, strain and self-consistent electrostatics; the infinite-well estimate is therefore an order-of-scale check rather than a device-level prediction.
+
+The density of states changes with dimensionality: near an ideal parabolic-band edge, the functional dependence is <math>g_{3D}(E)\propto\sqrt{E-E_c}</math>, <math>g_{2D}(E)</math> is step-like, <math>g_{1D}(E)</math> has inverse-square-root singularities at subband thresholds, and a zero-dimensional dot has discrete levels. Disorder, interactions and finite lifetime broaden these ideal features. Confinement alters transport, light absorption and recombination, so an otherwise correct 3-D carrier-density expression may not apply.
+
 == Model selection and unresolved engineering limits ==
 
 * '''Equilibrium vs driven operation:''' one Fermi level is appropriate at thermal equilibrium; driven carrier populations may require separate quasi-Fermi levels.

@@ -20,6 +20,28 @@ RAW SIGNAL
 → RECUR
 </pre>
 
+'''Distill signal''' means retaining material relevant to the subject and its credible evidence, interpretations, limitations and legitimate interdisciplinary connections while excluding repetition and unrelated claims. Relevant contradictions are signals to investigate, not noise to suppress.
+
+== Request types and editorial intents ==
+
+The following are five intended contribution channels, not five implemented queues, forms or state machines:
+
+{| class="wikitable"
+! Request type !! Editorial purpose
+|-
+| '''Request an Edit''' || Correct or improve an existing account, source, link or explanation
+|-
+| '''Request Verification''' || Challenge the support, interpretation, provenance or uncertainty of an existing claim
+|-
+| '''Request New Knowledge''' || Propose a new subject or substantive missing coverage
+|-
+| '''Governance RFC''' || Propose a policy, authority or editorial-process change for deliberation
+|-
+| '''Technical/Schema Request''' || Propose a change to implementation, integration, vocabulary or semantic contracts
+|}
+
+These classes describe how a request should be understood; routing, permissions, interfaces and final authorities remain to be specified. Coverage backlogs and their internal records belong outside the public wiki namespace; the proposed five-channel interface is not yet deployed.
+
 == Rules ==
 * Verify state and source before acting.
 * Preserve source text before interpreting it.
@@ -51,7 +73,7 @@ Use [[BITwiki:Page format]] for reader-facing structure and [[Help:Transclusion]
 == Inquiry, methods, and accountable authorship ==
 BITwiki is a curated research environment, not an authority that establishes truth by publication. The method of evaluation follows the question: empirical observation, formal proof, documented history, engineering testing and interpretation have different evidentiary jobs. Credentials, reputation and peer review may inform source assessment but cannot replace examination of the work itself. See [[BITwiki:Epistemics]], [[BITwiki:Sources]] and [[BITwiki:Claim validation]].
 
-Human and artificial contributors can research, draft, challenge and revise within their assigned permissions. For consequential material, preserve enough provenance to distinguish originating source, participant direction, machine-generated transformation, validation and editorial admission. The historical research-space Charter proposed a specific agent-mediated route through BIThub; that is lineage, not a permanent requirement for every contribution channel. See [[BITwiki:Contributing]] and [[BITwiki:Human-AI symbiosis]].
+Human and artificial contributors can research, draft, challenge and revise within their assigned permissions. Once appropriately authorized, editorial or workflow agents may also evaluate and decide within bounded mandates; a human approval step is not assumed to be universal. Decisions must remain attributable, reviewable and reversible, with provenance, limits and escalation paths appropriate to the action. These are governance requirements for future authorized workflows, not a claim that automatic publication or a decision engine is already operational. For consequential material, preserve enough provenance to distinguish originating source, participant direction, machine-generated transformation, validation and editorial admission. The historical research-space Charter proposed a specific agent-mediated route through BIThub; that is lineage, not a permanent requirement for every contribution channel. See [[BITwiki:Contributing]] and [[BITwiki:Human-AI symbiosis]].
 
 == Canonicalization is not paraphrasing ==
 For important authored passages recover source, date/version, exact wording, later revisions, unique meaning, citations, and context. New prose must not silently replace source-derived prose.

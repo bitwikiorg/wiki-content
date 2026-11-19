@@ -1,0 +1,182 @@
+{{Reading depth|base=Root cause analysis|current=Technical}}
+
+= Root cause analysis — Technical =
+
+'''Root cause analysis''' (RCA) is a family of retrospective incident-investigation practices that seek defensible explanations for undesirable outcomes and effective preventive interventions. It is not identical to reliability engineering, causal inference, failure mode and effects analysis (FMEA), fault-tree analysis (FTA), or systems-theoretic accident analysis; rather, an investigation can employ these methods under different assumptions. A scientific RCA must distinguish '''what occurred''', '''what contributed to occurrence''', '''why controls failed''' and '''which intervention is likely to prevent recurrence'''.
+
+The phrase "root cause" can mislead if interpreted as a unique, deepest cause shared by every failure. In most complex incidents, explanatory stopping rules are partly pragmatic: the system boundary, evidence, available interventions and desired recurrence criterion determine what counts as an actionable causal explanation. NASA's investigation guidance explicitly considers more than one root cause, and its more recent mishap requirements distinguish causal factors, failed barriers and substantiated recommendations.<ref name="nasa_old">NASA, [https://nodis3.gsfc.nasa.gov/displayCA.cfm?Internal_ID=N_PR_8621_0001_&page_name=AppdxI1 ''NPR 8621.1: Root Cause Analysis and Investigation Tools''], especially multiple-root-cause instruction and event/causal-factor charting (historical guidance).</ref><ref name="nasa_current">NASA, [https://nodis3.gsfc.nasa.gov/displayDir.cfm?Internal_ID=N_PR_8621_001D_&page_name=Chapter4 ''NPR 8621.1D, Chapter 4: Mishap Investigation Analysis''] and [https://nodis3.gsfc.nasa.gov/displayDir.cfm?Internal_ID=N_PR_8621_001D_&page_name=Chapter5 Chapter 5: Investigation Reports]. Document edition and applicable interim directives matter in operational NASA contexts.</ref>
+
+== The causal question must be specified ==
+
+An investigation starts by operationalizing the event: a named harm or unacceptable loss <math>Y</math>, a time interval, exposure population, system boundaries and measurable outcome criteria. The observed top event is not automatically the only dependent variable; loss severity, downtime, near misses and recurrence probability may require separate models.
+
+Distinguish:
+
+* '''Trigger:''' an occurrence preceding a loss, often a last visible change.
+* '''Mechanism:''' a physical, informational, biological, social or organizational pathway that explains how the event occurred.
+* '''Contributing factor:''' a condition or action that altered the probability, severity or mechanism of the event, under the selected interpretation.
+* '''Failed or missing constraint:''' a safety or operational requirement whose enforcement was inadequate.
+* '''Intervention target:''' a feasible controllable factor that could plausibly improve future outcomes.
+
+These categories overlap in practice. A contributing factor is not defined solely by appearing early in a timeline. An investigation should identify what kind of causal claim is made: historical singular explanation, population-level risk contrast, physical failure mechanism, or prospective intervention prediction. Each has a different evidentiary standard.
+
+=== Evidence ledger and reconstructing the sequence ===
+
+A useful event timeline separates measured timestamps from inferred chronology. Sources might include telemetry with clock synchronization uncertainty, system logs, laboratory results, parts inspections, audit records, interview statements, code/configuration diffs and control/approval artifacts. Preserve original, time-stamped evidence and the process by which transformed evidence was derived.
+
+{| class="wikitable"
+! Claim class !! Example !! Appropriate support !! Limitation
+|-
+| Observation || A transaction failed at time t || Signed/independently preserved logs || Logs can be incomplete or altered.
+|-
+| Mechanism || A queue overflowed because consumption lagged || Instrumentation, traces, queue dynamics or reproduced load || Reproduction can change load and system conditions.
+|-
+| Statistical association || Incidents cluster after release events || Exposure-corrected cohort with a defined baseline || Confounding and selection bias remain.
+|-
+| Causal contrast || Removing a faulty constraint reduces losses || Controlled intervention, credible counterfactual model or valid natural experiment || The observed incident cannot usually be rerun identically.
+|-
+| Remediation efficacy || A protective barrier prevents the relevant failure mode || Installation verification plus challenge/operational outcome measurement || Rare-event absence alone proves little.
+|}
+
+'''Incident-only selection''' is an important bias. Sampling exclusively incidents can create spurious relationships between independent risk factors, because conditioning on a common outcome (a collider in a causal graph) induces statistical association. Near misses, unaffected operations and exposure denominators can be as important as the failure logs themselves. The evidence plan should state its sampling mechanism.
+
+== Fault trees, event trees and causal models ==
+
+=== Fault-tree logic ===
+
+An FTA defines a top event and decomposes it through logical gates. In a deterministic two-condition illustration, let <math>A</math> and <math>B</math> be Boolean basic events and <math>Y</math> the top event.
+
+<math display="block">Y_{\mathrm{OR}}=A\lor B=1-(1-A)(1-B),\qquad Y_{\mathrm{AND}}=A\land B=AB.</math>
+
+A minimal cut set is a minimal combination of basic events sufficient to produce the top event under the fixed Boolean model. For <math>A\lor B</math>, each singleton is a minimal cut set. For <math>A\land B</math>, the pair <math>\{A,B\}</math> is one minimal cut set. Cut sets depend on the chosen logic and basic-event assumptions, not on the investigator's preferences.
+
+If each event is a Bernoulli occurrence over the '''same specified interval''' and independent under the model, then
+
+<math display="block">P(Y_{\mathrm{OR}}=1)=p_A+p_B-p_Ap_B,\qquad P(Y_{\mathrm{AND}}=1)=p_Ap_B.</math>
+
+For dependent events, the exact general union formula is <math>P(A\lor B)=P(A)+P(B)-P(A\land B)</math>. Replacing the intersection by a product without testing dependence is a potentially consequential error. Shared power supplies, common maintenance procedures, synchronized changes or common environmental disturbances invalidate naïve independence.<ref name="nasa_ft">NASA, [https://nodis3.gsfc.nasa.gov/displayCA.cfm?Internal_ID=N_PR_8621_0001_&page_name=AppdxI1 ''Mishap investigation tools''], fault-tree and management oversight/risk tree methods. Fault and event tree methods have broader reliability engineering histories; this citation supports NASA's use, not exclusive invention.</ref>
+
+A fault tree is a proposed logical system model. It does not, by itself, identify which basic events actually occurred, establish the validity of supplied probabilities or prove which events are amenable to intervention. Real systems may have dynamic order, feedback, repair and load-dependent hazards that a static Boolean FTA omits.
+
+=== Structural causal formulation ===
+
+A structural causal model makes hypothesized mechanisms explicit, for example
+
+<math display="block">A=f_A(U_A),\quad B=f_B(U_B),\quad Y=1-(1-A)(1-B).</math>
+
+The exogenous variables <math>U_A,U_B</math> encode the factors determining each basic event. Their independence is an extra assumption, not a consequence of drawing distinct nodes. A shared environmental factor <math>U_C</math> influencing both failure modes can introduce dependence and invalidate simple products. Causal graphs are useful precisely when mechanisms, omitted variables and possible interventions are made inspectable.
+
+An intervention on a component policy or hazard mechanism is not the same as conditioning on observing that component. In causal notation, a contrast such as <math>P(Y=1\mid\operatorname{do}(A=0))</math> asks for the outcome distribution if the model forcibly prevents <math>A</math>, with other structural equations maintained appropriately. The observed association <math>P(Y=1\mid A=0)</math> can differ when causes of A also influence Y. The relevant scientific question is what the proposed corrective action physically changes, not merely what parameter looks important in a regression.<ref name="hernan">Miguel A. Hernán and James M. Robins, [https://miguelhernan.org/whatifbook ''Causal Inference: What If''], openly available methodology for counterfactual outcomes, intervention contrasts, exchangeability, selection and positivity assumptions.</ref>
+
+For a realized incident in which <math>A=B=1</math>, removing either single sufficient pathway may leave the loss unchanged. It is therefore incorrect to infer that every antecedent in a causal diagram is individually necessary. Multiple sufficient causes, conjunctive pathways and preventive barriers require different reasoning. Counterfactual claims about a particular historic event can remain underdetermined even when some population-level intervention effects are identifiable.
+
+== Worked analytical benchmark: two independent failure paths ==
+
+Consider an invented service in which either failure mode causes an outage in a single defined operating interval. Suppose <math>P(A=1)=0.01</math> and <math>P(B=1)=0.02</math>, that A and B are independent, and the OR top-event logic captures all relevant outages. Then
+
+<math display="block">p_{\mathrm{outage}}=0.01+0.02-(0.01)(0.02)=0.0298.</math>
+
+If a real corrective measure changes only mechanism A's occurrence probability to <math>p'_A=0.001</math> while B's probability and independence remain unchanged, the illustrative new model gives
+
+<math display="block">p'_{\mathrm{outage}}=0.001+0.02-(0.001)(0.02)=0.02098.</math>
+<math display="block">\Delta p=0.0298-0.02098=0.00882,\qquad 100\frac{\Delta p}{0.0298}\approx29.6\%.</math>
+
+The absolute reduction is 0.00882 per specified observation interval and the relative reduction is approximately 29.6%. The residual risk is dominated by B under the stipulated OR model. These are '''model-derived illustrative quantities''': the numbers were assumed, not inferred from historical outages, and the intervention effect is conditional on unchanged mechanisms and exposures.
+
+A different top-event logic produces a different answer. If an outage instead requires both independent failures, the original probability would be <math>p_{\mathrm{outage}}=0.01\times0.02=0.0002</math>. This difference reflects a substantive physical/operational assumption, not an alternative way to format the same data. A common-cause shock also changes both estimates.
+
+{| class="wikitable"
+! Explicitly assumed model !! Top-event probability !! Meaning
+|-
+| A OR B, independent, original || 0.0298 || At least one path suffices.
+|-
+| A OR B, independent, improved A || 0.02098 || Change to A alone; B unchanged.
+|-
+| A AND B, independent, original || 0.00020 || Both paths required in the same interval.
+|}
+
+An empirical RCA would additionally verify actual event pathways, whether both failures are observable, correlation, common-cause structure, recovery duration, affected users, risk tolerance and the corrective measure's implementation. The example is a falsifiable logic/probability test, not an investigation report.
+
+== Event sequences, barriers and systemic constraints ==
+
+=== Event–causal factor charting ===
+
+Event–causal factor charting joins documented event sequences with hypothesized causal and contextual conditions. Its scientific virtue is traceability: the chart can distinguish what occurred from the investigator's explanation. It is vulnerable when chronology is treated as proof that the earlier event caused the later one; missing logs and hindsight bias can also distort reconstruction. A timeline should show time bases, event ordering uncertainty and corroboration.
+
+=== Barriers and the Swiss-cheese metaphor ===
+
+James Reason's accident research distinguishes unsafe acts, local conditions, organizational latent conditions and defenses. His Swiss-cheese metaphor communicates that hazards can traverse multiple imperfect defenses. It is a conceptual tool, not a mathematically complete model whose depicted holes can be assigned universal probabilities. Importing the metaphor without evidence about actual barriers can make an RCA sound systemic while remaining unfalsifiable.<ref name="reason">James Reason, [https://doi.org/10.1136/bmj.320.7237.768 “Human error: models and management”], ''BMJ'' 320, 768–770 (2000), active/latent conditions and defense/barrier model.</ref>
+
+Instead of writing “operator error caused the failure,” investigators can ask whether controls were comprehensible, alerts timely, procedures usable under actual workload, authority clear, and organizational tradeoffs documented. Those are testable hypotheses. Equally, attributing every outcome to abstract organizational culture without measured pathways is not an adequate RCA.
+
+=== STAMP and control-structure analysis ===
+
+Leveson's Systems-Theoretic Accident Model and Processes (STAMP) views safety as enforcement of constraints within a hierarchical/adaptive control structure. An accident may arise from inadequate control actions, incorrect process models, feedback delays and unsafe interactions even without a simple component-failure chain. System-Theoretic Process Analysis (STPA) is chiefly a prospective hazard analysis, while Causal Analysis based on Systems Theory (CAST) is designed for accident analysis. These should not be described as interchangeable versions of RCA or as a rigid four-step checklist.<ref name="leveson">Nancy G. Leveson, [https://mitpress.mit.edu/9780262297301/engineering-a-safer-world/ ''Engineering a Safer World: Systems Thinking Applied to Safety''], MIT Press (2011/2012), STAMP, STPA, CAST and systems-safety methodology.</ref>
+
+A systems-theoretic investigation maps controllers and controlled processes, safety constraints, control actions, feedback channels, model assumptions and disturbances. It asks whether a command was absent, unsafe, provided too early/late, applied for the wrong duration, or inadequately enforced. This widens analysis beyond linear chains, but depends on evidence about the real control architecture.
+
+== Comparing methods without assuming one universal root ==
+
+{| class="wikitable"
+! Method !! Preferred evidence representation !! Strongest bounded application !! Typical failure
+|-
+| Five Whys || A reasoned question chain with supporting facts || Rapid exploration of an apparently simple defect || Stops at a plausible but arbitrary single chain.
+|-
+| FTA || Boolean failure pathways, cut sets and component data || Reliability modeling with specified gate semantics || Hidden dependencies or dynamic failure sequences.
+|-
+| Event tree || Initial event plus protection and consequence branches || Consequence and barrier-path analysis || Conditional branch probabilities unverified.
+|-
+| Causal graphs || Variables, structural assumptions and intervention contrasts || Distinguishing confounding, intervention and association || Missing causes and untestable causal identification.
+|-
+| Reason/barrier analysis || Local actions and multiple protective layers || Organizational/defense improvement hypotheses || Metaphor replaces measurement.
+|-
+| STAMP/CAST || Safety control structure and inadequate control constraints || Complex software-intensive sociotechnical accidents || Incomplete control model or unfalsifiable systemic claims.
+|}
+
+An investigation may combine methods, but should reconcile their assumptions rather than present independent diagrams as mutually confirming evidence. FMEA and hazard analysis can contribute prospective failure catalogs, while RCA reconstructs a realized event. A prospective hazard model should be updated only when the incident supports a change.
+
+== Research design: estimates, exposure and uncertainty ==
+
+Estimating an event probability requires a specified unit of analysis and exposure denominator (for example outages per service-hour, incidents per operation, or a fixed monitoring interval). Counts are not interchangeable with probabilities. Failure rates from heterogeneous conditions cannot be combined without adjusting for design, workload, preventive maintenance and dependencies.
+
+One can quantify uncertainty in observed rates or conditional risks, but this does not remove uncertainty about the causal graph. Bayesian or frequentist confidence summaries conditional on a mis-specified model are not a guarantee of identification. A hypothesis may be consistent with available evidence but one of several observationally equivalent causal explanations.
+
+For a proposed intervention, define the expected measurable risk contrast and possible adverse side effects. If data are sparse, report plausible uncertainty or sensitivity to assumptions rather than false precision. A system-level corrective action may change exposure, logging and incident reporting, so an observed increase in reported incidents after monitoring improvements could reflect detection rather than worsening safety.
+
+=== Corrective action and independent verification ===
+
+Recommended actions should specify:
+
+* The failure mechanism, barrier or control constraint addressed and the evidence tying it to the event.
+* The exact change to configuration, workflow, technology or human-machine interface.
+* An owner, deadline, rollback plan and any new hazards introduced.
+* Evidence of implementation (verification) and evidence of improved outcomes or constraints (validation).
+* An appropriate observation window, challenge test or controlled comparison, including how rare-event uncertainty is handled.
+* Residual risk, dependencies and what would falsify the claimed improvement.
+
+A successful postmortem is not proven by the production of a report or by a short event-free period. A credible closure criterion is prospective and testable under realistic conditions.
+
+== Cross-domain and agentic interpretation ==
+
+In software operations, incident diagnosis may require request traces, distributed-clock uncertainties, configuration lineage, resource contention, user-impact monitoring and load-sensitive causal experiments. In manufacturing, one may trace process lots, metrology, materials and change control. In healthcare, patient case mix, care workflows, intervention hazards and ethics complicate causal identification. A method cannot be transplanted unchanged across these systems.
+
+For an artificial agent, one can define an observable failure (invalid tool action, schema violation, hallucinated citation), reconstruct the model context and tool timeline, and compare counterfactual settings where safe and feasible. This is not evidence that the agent has the same cognitive mechanisms as humans. An attribution to “reasoning failure” should identify a reproducible process/measurement and distinguish stochastic output, prompt dependence, retrieval errors, permissions and tool execution.
+
+Useful adjacent canonical subjects include [[Causality]], [[Scientific model]], [[System boundary]], [[Feedback]], [[Verification]], [[Validation]], [[Uncertainty]] and [[Resilience/Technical|Resilience]]. A source-grounded report should link evidence to these conceptual distinctions rather than storing a made-up universal classification of causes.
+
+== Verification checklist and limitations ==
+
+A technical RCA is ready for expert review only if its event definition, documentary provenance, causal alternatives, system and time boundaries, evidence quality, analytical methods, model dependencies, intervention assumptions and follow-up measures are explicit. Reviewers should recompute numerical examples, check the report against original records and identify causal claims lacking independent support.
+
+No finite investigation establishes metaphysical certainty, no simple fault tree automatically captures a feedback-rich system, and no statistical association identifies the relevant intervention without assumptions. The intended outcome is a better-tested explanation and safer design, not a narrative that assigns one universal root to every incident.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* NASA, [https://nodis3.gsfc.nasa.gov/displayDir.cfm?Internal_ID=N_PR_8621_001D_&page_name=Chapter4 ''Mishap Investigation Analysis''] (current requirements must be separately checked for applicability).
+* Leveson, [https://mitpress.mit.edu/9780262297301/engineering-a-safer-world/ ''Engineering a Safer World''], for the underlying systems-theoretic causal model.
+* Hernán and Robins, [https://miguelhernan.org/whatifbook ''Causal Inference: What If''], for intervention, counterfactual and identification rigor.
+* [[Root cause analysis/Simple|Simple overview]] · [[Root cause analysis|canonical topic map]].

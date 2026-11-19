@@ -1,0 +1,69 @@
+{{Reading depth|base=Root cause analysis|current=Simple}}
+
+= Root cause analysis — Simple =
+
+<onlyinclude>'''Root cause analysis''' (RCA) is a structured way to investigate why an unwanted event happened and what could prevent a similar event. It aims to go beyond the last visible failure—for example, a broken component or a person's mistake—and examine the conditions that allowed that failure to cause harm. Complex events may have '''several interacting causes''', not one uniquely identifiable root.<ref name="nasa">NASA, [https://nodis3.gsfc.nasa.gov/displayCA.cfm?Internal_ID=N_PR_8621_0001_&page_name=AppdxI1 ''NASA Procedural Requirements, Mishap and Close Call Reporting: Investigation tools''], guidance on identifying causal factors, localized and systemic root causes.</ref></onlyinclude>
+
+== A practical example ==
+
+A website becomes unavailable. At first, the investigation finds that the database stopped responding. That tells us ''what failed'', but it may not explain why the service was vulnerable.
+
+An investigation may find that a storage device failed, backups were not tested, monitoring missed warning signs, and the system had no alternative database server. Different findings suggest different preventive actions. Replacing only the failed device may restore service while leaving the other vulnerabilities in place.
+
+This example is hypothetical. Without event logs, system records and tests, we cannot assert any particular cause.
+
+== How an investigation works ==
+
+Investigators first describe the unwanted outcome and its boundaries: which users, machines and time period were involved? They then reconstruct a timeline using logs, measurements, eyewitness accounts and physical evidence.
+
+They identify possible contributing factors, distinguish observations from explanations, and test competing accounts. Finally, they recommend actions and check whether those actions actually reduce the risk of recurrence.
+
+Asking "Why?" several times—often called the '''Five Whys'''—can be a useful starting prompt. It does not guarantee that an investigator has found the one true root cause. Other approaches use fault trees, event diagrams and system-safety analysis.<ref name="nasa"/>
+
+== Different levels of explanation ==
+
+{| class="wikitable"
+! Level !! Example question
+|-
+| Outcome || What went wrong, and for whom?
+|-
+| Immediate mechanism || Which component or process directly failed?
+|-
+| Contributing conditions || What made the failure more likely or more damaging?
+|-
+| Organizational and system conditions || What decisions, controls or incentives left the hazard unmanaged?
+|-
+| Prevention || Which change would reliably reduce harm, and how will we test it?
+|}
+
+These levels are practical investigative categories, not a universal physical hierarchy. The details vary across aviation, healthcare, software engineering, manufacturing and environmental incidents.
+
+== Why blaming someone is not enough ==
+
+Saying "human error" can be the beginning of an investigation, not its endpoint. People operate within interfaces, training, workloads, procedures and incentives. Treating a person's action as the complete explanation can obscure unsafe system design. Conversely, assigning every problem to abstract "system failure" without concrete evidence is also unhelpful.
+
+Systems-safety researchers, including Nancy Leveson, have developed methods that examine hazardous interactions and inadequate controls rather than assuming accidents always consist of a linear chain of failed parts.<ref name="leveson">Nancy G. Leveson, [https://mitpress.mit.edu/9780262297301/engineering-a-safer-world/ ''Engineering a Safer World: Systems Thinking Applied to Safety''], MIT Press (2011/2012), systems-theoretic accident and hazard analysis.</ref>
+
+== How do we know a proposed cause is real? ==
+
+A good explanation should fit the evidence, distinguish competing hypotheses, and identify a change whose predicted effects can be checked. Sometimes experiments are unsafe or impossible, so the best conclusion is a qualified explanation with explicit uncertainty.
+
+An action plan should name the responsible party, the corrective action, its verification method and the future performance signal. A list of recommendations does not prove a hazard was eliminated.
+
+Root cause analysis relates to [[Causality|causal reasoning]], [[System boundary|system boundaries]], [[Verification|verification]], [[Validation|validation]] and [[Robustness|robustness]].
+
+== Limits ==
+
+* There may be multiple sufficient paths to an incident; not every event has a single root.
+* Correlation, chronological order or someone's confidence does not establish causation.
+* Evidence gathered after an incident can be incomplete, selective or affected by the investigation itself.
+* Fixing a visible symptom without addressing conditions may not prevent recurrence.
+* Recommendations should be evaluated for adverse side effects, cost and effectiveness.
+
+== Continue reading ==
+
+[[Root cause analysis|Core]] organizes the scope and methods. [[Root cause analysis/Technical|Technical]] restarts with causal models, fault trees, competing system-safety frameworks, an explicit probabilistic example and an audit protocol.
+
+== References ==
+
+<references/>

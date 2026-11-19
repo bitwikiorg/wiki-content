@@ -2,7 +2,7 @@
 
 **BITwiki V2 is the source-controlled knowledge architecture and public corpus for BITwiki.**
 
-**Editorial scope:** BITwiki is an **interdisciplinary general encyclopedia** and programmable knowledge substrate, with **information and computation** as organizing perspectives—not exclusionary admission tests. Durable scientific, historical, humanistic and technical topics may stand alone with accurate identity, appropriate sources, epistemic qualification and meaningful semantic links. Computational methods are distinct from subjects they model; neither is a mandatory replacement for the other. See [BITwiki scope](BITwiki/Computational%20scope.mediawiki) and [review correction](BITwiki/Computational%20scope%20review.mediawiki). K01 is article-purpose and quality review, not proof of computational utility; CI does not certify editorial or scientific validity.
+**Editorial scope:** BITwiki is an **interdisciplinary general encyclopedia** and programmable knowledge substrate, with **information and computation** as organizing perspectives—not exclusionary admission tests. Durable scientific, historical, humanistic and technical topics may stand alone with accurate identity, appropriate sources, epistemic qualification and meaningful semantic links. Computational methods are distinct from subjects they model; neither is a mandatory replacement for the other. See [BITwiki scope](BITwiki/Computational%20scope.mediawiki). K01 is article-purpose and quality review, not proof of computational utility; CI does not certify editorial or scientific validity.
 
 This repository is the reviewed source and deployment projection for BITwiki's MediaWiki knowledge substrate: canonical knowledge, semantic graph state, operational records, programmable computation, navigation, project standards, migration evidence, and executable validation.
 
@@ -185,7 +185,6 @@ active request
 | Semantic properties | [`BITwiki/Semantic properties.mediawiki`](BITwiki/Semantic%20properties.mediawiki) |
 | Navigation | [`BITwiki/Navigation.mediawiki`](BITwiki/Navigation.mediawiki) |
 | Knowledge requests | [`BITwiki/Requested knowledge.mediawiki`](BITwiki/Requested%20knowledge.mediawiki) |
-| V1 → V2 maturation | [`BITwiki/V1 to V2 maturation.mediawiki`](BITwiki/V1%20to%20V2%20maturation.mediawiki) |
 | Deployment | [`BITwiki/Deployment prerequisites.mediawiki`](BITwiki/Deployment%20prerequisites.mediawiki) |
 | Runtime mapping manifest | [`manifest.json`](manifest.json) |
 | V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |

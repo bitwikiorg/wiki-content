@@ -1,0 +1,72 @@
+{{Reading depth|base=Dimensional analysis|current=Simple}}
+
+= Dimensional analysis — Simple =
+
+<onlyinclude>'''Dimensional analysis''' is a way to reason about physical measurements by checking the kinds of quantities involved, such as length, time and mass. It can expose an impossible equation, help convert units, and show which combinations of measurements matter for comparing experiments. A formula must make dimensional sense, but being dimensionally correct does '''not''' prove it describes nature.<ref name="nistpi">National Institute of Standards and Technology (NIST), [https://www.nist.gov/blogs/taking-measure/life-buckingham-pi ''The Life of (Buckingham) Pi''] (2020); describes dimensional analysis and the role of the Buckingham π theorem in research and experimental design.</ref></onlyinclude>
+
+== What are dimensions? ==
+
+A '''dimension''' describes the physical kind of a quantity. The length of a table has the dimension of length; how long a process takes has the dimension of time; how much matter an object contains has the dimension of mass.
+
+A '''unit''' is a convention for expressing a quantity. Metres and feet are different units of length. Seconds and minutes are different units of time. Changing units does not change the quantity's physical dimension. In the International System of Units (SI), speed has dimensions length divided by time; its units may be metres per second.<ref name="nistunits">NIST, [https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-7-rules-and-style-conventions-expressing-values ''Guide to the SI, Chapter 7''], dimensional expressions and quantity notation.</ref>
+
+Examples:
+
+{| class="wikitable"
+! Quantity !! Dimensions !! Typical unit
+|-
+| Distance || Length || m
+|-
+| Duration || Time || s
+|-
+| Speed || Length / time || m/s
+|-
+| Acceleration || Length / time squared || m/s<sup>2</sup>
+|-
+| Force || Mass × length / time squared || kg·m/s<sup>2</sup>
+|}
+
+== A quick test for an equation ==
+
+Suppose somebody writes the formula:
+
+<math display="block">d=vt+t.</math>
+
+Distance <math>d</math> has the dimension of length. The product speed × time, <math>vt</math>, also has the dimension of length. But an extra <math>t</math> on the right has the dimension of time. Adding a distance and a time is not meaningful as written, so the proposed equation fails the dimensional test.
+
+The corrected equation for an object moving at constant speed in a straight line, with distance measured from zero, is
+
+<math display="block">d=vt.</math>
+
+This passes the test. Yet it is still only true under its stated motion assumptions. An object that accelerates needs another model.
+
+== Why do dimensionless ratios help? ==
+
+A '''dimensionless number''' combines quantities so that the units cancel. For example, dividing one length by another gives a pure ratio. Such numbers can help engineers compare very different-sized systems.
+
+When engineers study fluid flow, the '''Reynolds number''' compares the effects associated with inertia and viscosity. A small model and a much larger object can share the same Reynolds number under appropriately selected conditions. That alone does not make all details identical; geometry, other dimensionless numbers and physical assumptions also matter.
+
+The '''Buckingham π theorem''' is a mathematical way to identify independent dimensionless combinations from the dimensions of the quantities in a problem. It does not discover the missing physical law automatically.<ref name="buckingham">Edgar Buckingham, [https://doi.org/10.1103/PhysRev.4.345 “On Physically Similar Systems; Illustrations of the Use of Dimensional Equations”], ''Physical Review'' 4, 345–376 (1914), original formulation.</ref>
+
+== Where is it useful? ==
+
+Dimensional analysis helps scientists and engineers with [[Measurement/Simple|measurements]], calculations, laboratory scale models, computer simulations, and finding mistakes in units. For example, if a calculation mixes centimetres with metres without conversion, it may produce an apparently plausible but incorrect number.
+
+It is also helpful for reading scientific papers: one can ask whether an equation is dimensionally homogeneous, which physical variables were omitted, and whether the proposed scaling applies to the actual experiment.
+
+A different technique, [[Sensitivity analysis/Simple|sensitivity analysis]], asks how much the output of a calculation changes when its inputs change. The methods are complementary: dimensional analysis checks meaningful quantities and combinations; sensitivity analysis studies dependence on assumptions and inputs.
+
+== What it cannot do ==
+
+* It cannot determine a numerical constant such as a drag coefficient without empirical or theoretical information.
+* It cannot establish a physical causal relationship merely because two quantities have matching dimensions.
+* It cannot distinguish all quantities whose dimensions cancel—for example, two physically different kinds of ratios can both have dimension one.
+* It cannot replace [[Validation|validation]], [[Verification|verification]], or real experiments.
+
+== Continue reading ==
+
+[[Dimensional analysis|Core]] maps the method to measurement, modelling and engineering. [[Dimensional analysis/Technical|Technical]] develops the dimension-exponent matrix, Buckingham π theorem, null-space construction, numerical drag example, limitations and research workflow.
+
+== References ==
+
+<references/>

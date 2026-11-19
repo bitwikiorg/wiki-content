@@ -12,7 +12,7 @@ In a periodic crystal potential, electronic states are described by energy bands
 
 In a '''direct-gap''' semiconductor, the valence-band maximum and conduction-band minimum occur at essentially the same crystal momentum. In an '''indirect-gap''' semiconductor they do not, so optical transitions may require phonon participation to conserve crystal momentum. This distinction helps explain why direct-gap III–V materials are widely used for efficient light emission while ordinary crystalline silicon is primarily used for electronics and many solar cells. The actual optical response also depends on matrix elements, selection rules, defects, surfaces and device design.
 
-The band picture presupposes meaningful extended states and crystal momentum. Amorphous and organic semiconductors can have localized states, disorder-related tails and transport dominated partly by hopping; do not assign a crystalline dispersion E(k) to such systems without qualification.
+The band picture presupposes meaningful extended states and crystal momentum. Amorphous and organic semiconductors can have localized states, disorder-related tails and transport dominated partly by hopping; do not assign a crystalline dispersion E(k) to such systems without qualification.<ref name="amorphous">''Recombination and transport through localized states in hydrogenated amorphous and microcrystalline silicon'', ''Journal of Non-Crystalline Solids'' (2008), [https://www.sciencedirect.com/science/article/abs/pii/S0022309307013750 publisher abstract]. Specific to disordered silicon rather than all organic semiconductors.</ref>
 
 == Occupation statistics and equilibrium carriers ==
 
@@ -136,7 +136,7 @@ I_D ≈ (1/2) μ_n C_ox (W_ch/L_ch) (V_GS − V_T)²
 
 C_ox is gate-oxide capacitance per area, W_ch/L_ch channel width/length, V_T threshold voltage. The expression requires strong inversion, gradual-channel behavior and approximately constant mobility while neglecting channel-length modulation and many parasitics. It does '''not''' describe modern short-channel MOSFET behavior across all bias or temperature regimes. Advanced transport, electrostatic scaling, threshold variability and thermal constraints must be treated separately.
 
-A '''bipolar junction transistor''' (BJT) relies on carrier injection, transport and collection across coupled emitter–base and base–collector junctions. Its controlling mechanisms differ from an insulated-gate MOSFET. MOSFETs are central to complementary MOS (CMOS) digital circuits, but device and circuit behavior should not be conflated with abstract Boolean logic or the instruction-set level of a processor.<ref name="mit"> </ref>
+A '''bipolar junction transistor''' (BJT) relies on carrier injection, transport and collection across coupled emitter–base and base–collector junctions. Its controlling mechanisms differ from an insulated-gate MOSFET. MOSFETs are central to complementary MOS (CMOS) digital circuits, but device and circuit behavior should not be conflated with abstract Boolean logic or the instruction-set level of a processor.<ref name="mit"/>
 
 == Optical effects and materials selection ==
 
@@ -155,6 +155,8 @@ If a photon is absorbed through an allowed electronic transition, it can create 
 |-
 | Amorphous silicon / organic semiconductors || Thin-film and substrate-processing opportunities || Disorder and localized-state transport complicate crystalline bulk equations.
 |}
+
+A recent review comparing Si, SiC and GaN likewise emphasizes application-specific power-electronic devices, thermal issues and reliability rather than a universal material ranking.<ref name="widegap">''Power Electronics Revolutionized: A Comprehensive Analysis of Emerging Wide and Ultrawide Bandgap Devices'', ''Micromachines'' 14(11), 2045 (2023), [https://doi.org/10.3390/mi14112045 DOI:10.3390/mi14112045]. Review rather than an original device measurement.</ref>
 
 A '''larger band gap is not a universal measure of superiority'''. Material choice is a multi-criteria engineering decision involving field strength, mobility, thermal transport, wavelength, reliability, growth defects, integration, available process technology, cost and end-use conditions.
 

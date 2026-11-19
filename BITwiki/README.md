@@ -47,7 +47,7 @@ Key standards:
 - `Ecosystem.mediawiki` — BITwiki ↔ BIThub ↔ BITCORE roles;
 - `Interoperability.mediawiki` — external and BIThub interface contracts;
 - `Deployment prerequisites.mediawiki` — repository-to-live-runtime deployment requirements;
-- `Computational scope.mediawiki` — interdisciplinary knowledge admission, epistemic distinctions, naming and quality-review guidance;
+- `Computational scope.mediawiki` — interdisciplinary knowledge admission, epistemic distinctions, naming and quality-review guidance.
 
 ## Authority boundary
 

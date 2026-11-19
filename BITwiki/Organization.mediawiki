@@ -225,9 +225,9 @@ This is primarily depth/readability localization within one canonical knowledge 
 
 Missing knowledge should not be represented by generic empty shells. Track work through a separately maintained operational request process rather than exposing an internal backlog as a wiki article.
 
-[[BITwiki:Contributing]] defines the contribution path. Architecture, governance, maintenance, validation, research queues, requests, portal/category administration, templates/properties/modules, migrations, automation, BIThub integration, and security belong to project-operational surfaces rather than subject Domains.
+[[BITwiki:Contributing]] explains the public contribution path. Project architecture, editorial standards, and adopted governance can be documented in the BITwiki namespace. Internal research queues, workflow records, privileged maintenance, and deployment procedures belong outside public wiki articles; neither belongs in subject Domains.
 
-== V1 lessons carried forward ==
+== Design lessons ==
 
 === Keep ===
 
@@ -263,11 +263,11 @@ Missing knowledge should not be represented by generic empty shells. Track work 
 |-
 | missing subject not ready to write || operational coverage request outside the public wiki namespace
 |-
-| project/about-wiki architecture, research, governance || BITwiki namespace
+| public project architecture, editorial principles and governance || BITwiki namespace
 |-
 | stable end-user workflow guidance || Help namespace
 |-
-| reusable content anatomy || Book Matter / transclusion
+| explanatory or evidentiary role within an account || Book Matter (usually a section, not a new page)
 |-
 | repeated declarative rendering/interface pattern || Template
 |-
@@ -275,7 +275,7 @@ Missing knowledge should not be represented by generic empty shells. Track work 
 |-
 | typed semantic fact/relation || Property / SMW assertion
 |-
-| repeated operational records || Cargo
+| repeated, publicly appropriate structured records || Cargo, only when justified and supported
 |-
 | human browse collection || Category
 |-
@@ -285,7 +285,7 @@ Missing knowledge should not be represented by generic empty shells. Track work 
 |-
 | cross-service interaction/workflow || BIThub + authenticated integration boundary
 |-
-| historical V1 source evidence || archive-v1, not deployed V2
+| historical editorial and implementation evidence || versioned repository archive, not a default public article
 |}
 
 == Living architecture ==
@@ -294,11 +294,7 @@ Architecture changes should update implementation, canonical BITwiki standards, 
 
 == Source lineage ==
 
-Primary V1 sources include [[Wiki Organization Guidelines]], [[BITwiki Architecture Overview]], [[System Architecture]], [[BITwiki Taxonomy Architecture]], [[CATEGORY ARCHITECTURE]], [[BITwiki Entity Types]], [[BITwiki Page Types]], [[BITwiki Ontology Alignment Matrix]], [[BITwiki Property Dictionary]], [[BITwiki Relationship Types]], [[BITwiki Semantic Patterns]], [[Portal Architecture Specification]], and [[BITwiki Transclusion Rules]].
-
-Historical Notion WIKI-Philosophy and Book Matter research remain useful design archaeology, especially for recursive/modular structure and progressive disclosure. Exact V1 source/public history remains in <code>archive-v1/</code>.
-
-External comparative research is tracked in [[BITwiki:Research references]] and [[BITwiki:Comparative wiki research register]].
+The principles above developed through earlier organizational, taxonomic and modular-content experiments. Their historical sources and revisions remain available through the repository archive; they are not separate present-day standards simply because they once had public pages. [[BITwiki:Source lineage]] explains the authority and attribution distinctions. Current organization must be justified by actual subjects, reader needs, and maintained interfaces.
 
 See [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], [[BITwiki:MediaWiki substrate]], [[BITwiki:Ecosystem]], [[BITwiki:Ontology]], [[BITwiki:Epistemics]], [[BITwiki:Book Matter]], [[BITwiki:Navigation]], [[BITwiki:Readable depth and localization]], and [[BITwiki:Templates and categories]].
 

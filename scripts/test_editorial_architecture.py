@@ -165,5 +165,45 @@ class SourceContractTests(unittest.TestCase):
         # Static preview is deliberately not treated as an SMW parsing oracle.
 
 
+    def test_main_page_links_to_existing_source_and_respects_page_roles(self):
+        """The public entry point cannot depend on retired pages or internal queues."""
+        page = (ROOT / "Main" / "Main Page.mediawiki").read_text(encoding="utf-8")
+
+        for title in ("BITwiki:Manifesto", "BITwiki:Four foundations", "BITwiki:Constitution"):
+            self.assertIn("[[" + title, page)
+        for retired in (
+            "BITwiki:Charter", "BITwiki:BITCORE Manifesto",
+            "BITwiki:V1 public corpus inventory", "BITwiki:V1 implementation audit",
+            "BITwiki:Requested knowledge", "BITwiki:Deployment prerequisites",
+            "BITwiki:Computational scope",
+        ):
+            self.assertNotIn("[[" + retired, page)
+
+        # This navigation page does not inherit another article's semantic identity.
+        self.assertNotIn("{{Knowledge object", page)
+        self.assertNotIn("{{Reading depth", page)
+        self.assertNotIn("{{Source status", page)
+
+        for segment in page.split("[[")[1:]:
+            link = segment.split("]]", 1)[0]
+            target = link.split("|", 1)[0].split("#", 1)[0].strip()
+            if target.startswith("Special:"):
+                continue
+            namespace, sep, local = target.partition(":")
+            if not sep:
+                source_path = ROOT / "Main" / (target + ".mediawiki")
+            else:
+                self.assertIn(
+                    namespace,
+                    ("BITwiki", "Portal", "Category", "Template", "Property", "Help"),
+                    msg=f"Unexpected entry-point namespace: {target}",
+                )
+                source_path = ROOT / namespace / (local + ".mediawiki")
+            self.assertTrue(
+                source_path.is_file(),
+                msg=f"Main Page contains an unresolved source link: {target}",
+            )
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

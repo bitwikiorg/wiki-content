@@ -27,7 +27,7 @@ Choose the smallest useful contribution:
 |-
 | create a new page || research, source, model, write, verify, then publish a minimum coherent knowledge object
 |-
-| improve BITwiki itself || work in architecture, navigation, governance, Lua/modules, semantic contracts, validation, integration, maintenance, or research queues
+| improve BITwiki itself || improve its public architecture, navigation, governance, explanations, semantic contracts or contribution guidance
 |}
 
 '''Intended request channels:''' readers and collaborators should be able to propose an edit, ask for verification, request new knowledge, submit a Governance RFC or raise a Technical/Schema Request as distinguished in [[BITwiki:Editorial protocol]]. A future request-an-edit interaction is intended to work without ordinary MediaWiki sign-in; no live button, modal, unified intake or finalized permission routing is claimed here. Public suggestions and privileges reserved for authorized members (including paid access where applicable) are distinct, but their precise rights, priorities and enforcement are not established by this document.
@@ -145,20 +145,13 @@ For categories, explain scope, includes, excludes/boundary, category role, paren
 
 Navigation projections should consume canonical state rather than become independent semantic databases.
 
-== Missing knowledge workflow ==
+== Proposing missing knowledge ==
 
-Missing coverage is an operational signal, not a public wiki article or empty Main-space shell. The former Cargo-backed public queue is retired from the deployable corpus. Source-controlled records are retained outside the wiki namespace for continuity; no specific public submission interface or private backend is asserted as deployed. Public contribution guidance should point to a separately verified channel once available.
+First check for a canonical article, redirect, alternate name, relevant section, or another treatment of the subject. A useful proposal identifies the missing question, why existing coverage does not answer it, and the sources or distinctions that could support an article or expansion.
 
-The progression is:
+A proposal is not an article. Do not publish empty shells to reserve titles, and do not present an internal research queue as a public knowledge surface. [[BITwiki:Editorial protocol]] distinguishes proposed request types, but it does not assert that a unified public submission interface or an internal workflow engine has been deployed.
 
-<pre>
-requested → researching → drafting → review → satisfied
-                                      ↘ declined
-</pre>
-
-An active request is '''not''' a canonical article. Repository validation checks the non-deployable records against Main-space filenames. When a coherent page is actually canonicalized, reconcile any associated operational request with its canonical page; this process does not require a public wiki backlog.
-
-Do not change request status merely to make validation pass; status describes the actual workflow state.
+Once material is adequately sourced and reviewed, improve the existing article or create a coherent new account with appropriate links and attribution. Do not make repository task statuses part of the article's subject matter.
 
 == Living architecture and repository documentation ==
 
@@ -177,7 +170,7 @@ READMEs are living operational orientation. They should summarize the local cont
 
 == BITwiki administration ==
 
-Project-facing work belongs in the BITwiki namespace and related administration categories rather than subject Domains. Useful areas include:
+Public project guidance belongs in the BITwiki namespace rather than subject Domains. Internal administrative records and maintenance procedures remain outside public wiki articles. Relevant public subjects include:
 
 * architecture and ontology;
 * programmable substrate and Lua modules;
@@ -189,7 +182,7 @@ Project-facing work belongs in the BITwiki namespace and related administration 
 * governance/security;
 * templates/properties/automation;
 * BIThub/Discourse interoperability;
-* archive/V1 migration and reconciliation.
+* source provenance and historical continuity, where they matter to readers.
 
 == External lessons ==
 

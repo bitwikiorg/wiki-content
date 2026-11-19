@@ -11,6 +11,7 @@ import contextlib
 import io
 import json
 import re
+import math
 import os
 from pathlib import Path
 import sys
@@ -213,9 +214,44 @@ class SourceContractTests(unittest.TestCase):
 
         # The technical account is not a transcluded excerpt or filler page.
         self.assertNotIn("{{:Semiconductor/Simple}}", technical)
-        for marker in ("f(E) =", "n p = n_i²", "J_n =", "J_p =", "V_bi =", "I_D ≈"):
+        # Real Math rendering (separate from preformatted/plaintext formulas).
+        self.assertNotIn("<pre>", technical)
+        math_open = re.findall(r"<math(?:\\s+[^>]*)?>", technical)
+        self.assertGreaterEqual(len(math_open), 60)
+        self.assertEqual(len(math_open), technical.count("</math>"))
+        for marker in (
+            r"f(E)=\\frac{1}{1+",
+            r"np=n_i^2",
+            r"\\mathbf J_n",
+            r"\\mathbf J_p",
+            r"V_{\\mathrm{bi}}",
+            r"I_D\\simeq",
+            r"U_{\\mathrm{SRH}}",
+            r"\\operatorname{Tr}",
+        ):
             self.assertIn(marker, technical)
-        self.assertGreaterEqual(technical.count("<ref name="), 12)
+        self.assertGreaterEqual(technical.count("<ref name="), 25)
+        self.assertIn("{{#invoke:Semiconductor|idealJunction|Na=1e16|Nd=1e16|ni=1e10|T=300}}", technical)
+        lua = (ROOT / "Module/Semiconductor.lua").read_text(encoding="utf-8")
+        for marker in ("function p.idealJunction", "parsePositive", "math.log(Na / ni)", "math.log(Nd / ni)"):
+            self.assertIn(marker, lua)
+        for forbidden in ("mw.smw", "mw.ext.cargo", "[[Related to::", "os.execute", "io.open"):
+            self.assertNotIn(forbidden, lua)
+        # Independently recompute the illustrative ideal quantities with SI units.
+        q = 1.602176634e-19
+        kb = 1.380649e-23
+        eps0 = 8.8541878128e-12
+        thermal = kb * 300 / q
+        vbi = thermal * math.log((1e16 / 1e10) ** 2)
+        doped_m3 = 1e16 * 1e6
+        eps_si = 11.7 * eps0
+        width = math.sqrt((2 * eps_si / q) * (2 / doped_m3) * vbi)
+        self.assertAlmostEqual(thermal, 0.025852, places=6)
+        self.assertAlmostEqual(vbi, 0.7143, places=4)
+        self.assertAlmostEqual(width * 1e6, 0.4298, places=4)
+        self.assertAlmostEqual(eps_si / width, 2.410e-4, delta=2e-7)
+        self.assertAlmostEqual(2 * vbi / width, 3.32e6, delta=10000)
+        self.assertAlmostEqual((1e10 ** 2) / 1e16, 1e4, delta=1)
         for source in (core, simple, technical):
             names = re.findall(r'<ref name="([^"]+)">', source)
             self.assertEqual(len(names), len(set(names)), "Duplicate Cite definitions in a depth surface")

@@ -281,6 +281,83 @@ For <math>L=10\ {\rm nm}</math> and <math>m^*=0.067m_0</math>, this idealization
 
 The density of states changes with dimensionality: near an ideal parabolic-band edge, the functional dependence is <math>g_{3D}(E)\propto\sqrt{E-E_c}</math>, <math>g_{2D}(E)</math> is step-like, <math>g_{1D}(E)</math> has inverse-square-root singularities at subband thresholds, and a zero-dimensional dot has discrete levels. Disorder, interactions and finite lifetime broaden these ideal features. Confinement alters transport, light absorption and recombination, so an otherwise correct 3-D carrier-density expression may not apply.
 
+== Quantum transport, tunnelling and nanoscale transistor limits ==
+
+When a device is shorter than the relevant carrier mean free path or phase-coherence length, a local drift–diffusion picture may not capture the current distribution. The Landauer picture relates a coherent elastic conductor's current to reservoir occupation and energy-dependent transmission. For spin-degenerate modes in a two-terminal conductor,
+
+<math display="block">I=\frac{2q}{h}\int_{-\infty}^{\infty}{\cal T}(E)\left[f_S(E)-f_D(E)\right]\,dE.</math>
+
+At low temperature and linear response, the conductance of an independently transmitted spin-degenerate channel tends to
+
+<math display="block">G=\frac{2q^2}{h}\sum_m{\cal T}_m(E_F),</math>
+
+with <math>2q^2/h\approx 77.48\ \mu\mathrm S</math> per perfectly transmitted spin-degenerate mode. Additional valley degeneracy or broken spin degeneracy changes mode counting. The reservoirs must have well-defined distributions; this is not the general answer for strongly inelastic, interacting or transient devices.<ref name="datta">S. Datta, [https://doi.org/10.1006/spmi.2000.0920 “Nanoscale device modeling: the Green's function method”], ''Superlattices and Microstructures'' 28(4), 253–278 (2000), quantum transport and example calculations.</ref>
+
+In a basis with Hamiltonian <math>H</math>, retarded contact self-energies <math>\Sigma_{S,D}^r</math> and energy argument including a positive infinitesimal, coherent noninteracting NEGF gives
+
+<math display="block">G^r(E)=\left[(E+i0^+)I-H-\Sigma_S^r(E)-\Sigma_D^r(E)\right]^{-1},</math>
+<math display="block">{\cal T}(E)=\operatorname{Tr}\left[\Gamma_S G^r\Gamma_DG^a\right],\qquad\Gamma_\alpha=i\left(\Sigma_\alpha^r-\Sigma_\alpha^a\right).</math>
+
+A self-consistent potential changes <math>H</math> as carriers accumulate; contacts, basis choice, finite-temperature reservoir functions and scattering self-energies determine the model's validity. The trace formula above requires the stated elastic, coherent assumptions. A researcher must not silently substitute a ballistic calculation for measured mobility in a long diffusive channel.
+
+Tunnelling across thin barriers, quantum confinement, direct source–drain leakage, interface roughness, drain-induced barrier lowering, velocity saturation, quantum capacitance and non-equilibrium carrier heating affect scaled MOSFETs. A simplistic minimum-length narrative ignores contact resistance, stochastic dopants or traps, energy dissipation, circuit delays and variability. Advanced gate-all-around devices have geometry-specific electrostatics and reliability mechanisms; the long-channel square-law MOS equation earlier is deliberately a teaching asymptote, not a contemporary foundry compact model.
+
+== Gate electrostatics, MOS capacitance and reliability ==
+
+=== Why capacitance and surface states matter ===
+
+A MOS capacitor combines electrostatic drops across the insulator and semiconductor. In a simple parallel-plate idealization <math>C_{\rm ox}/A=\epsilon_{\rm ox}/t_{\rm ox}</math>. The gate potential redistributes into flat-band offset, surface potential and oxide charge; it does not all appear across the semiconductor. For a low-frequency p-type substrate under an ideal depletion approximation, the depletion charge magnitude is <math>|Q_d|\simeq\sqrt{2q\epsilon_sN_A\psi_s}</math> for positive surface potential <math>\psi_s</math> in the depletion regime. This is not a universal expression once inversion charge, nonuniform profiles or interface states are important.
+
+A first-order depletion capacitance follows from differential charge,
+
+<math display="block">C_d=A\left|\frac{dQ_d}{d\psi_s}\right|=A\sqrt{\frac{q\epsilon_sN_A}{2\psi_s}},</math>
+
+and the idealized series combination is <math>C_{\rm measured}^{-1}\simeq C_{\rm ox}^{-1}+C_d^{-1}</math> only under the relevant small-signal bias and frequency conditions. Interface traps, inversion response, distributed resistance and leakage distort the measured capacitance–voltage trace. Interface trap density <math>D_{it}</math> is energy-dependent and cannot be inferred from any arbitrary C–V shift alone.<ref name="mitmoscv">MIT OCW 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ MOS structure and MOSFET electrostatics lectures], including C–V and channel formation.</ref>
+
+For an ideal subthreshold MOSFET in weak inversion, a first-order slope in mV/decade is
+
+<math display="block">S=\left(\frac{d\log_{10} I_D}{dV_G}\right)^{-1}=(\ln 10)\frac{k_BT}{q}\left(1+\frac{C_d+C_{it}}{C_{\rm ox}}\right),</math>
+
+where capacitances are consistently per area, <math>C_{it}</math> is an effective interface-trap capacitance and the model assumes thermionic subthreshold control without substantial drain leakage or tunnelling. At 300 K, the ideal lower limit for conventional thermal switching with body factor one is about <math>59.5\ \mathrm{mV/decade}</math>. A measured value below this over a specified interval does not automatically falsify thermodynamics; the physical mechanism, transients, hysteresis, measurement protocol and device class must be identified.
+
+=== Degradation as a model-selection problem ===
+
+Hot-carrier damage, bias-temperature instability, time-dependent dielectric breakdown, stochastic trap occupancy and self-heating have distinct signatures. Predicting lifetime requires explicit stress and recovery protocols, statistical distributions, bias/temperature acceleration, active area and failure criterion. Combining several mechanisms into a single fitted power law can mislead extrapolation outside its calibration range.<ref name="reliability">[https://pmc.ncbi.nlm.nih.gov/articles/PMC10820476/ “The Understanding and Compact Modeling of Reliability in Modern Metal–Oxide–Semiconductor Field-Effect Transistors: From Single-Mode to Mixed-Mode Mechanisms”], ''Micromachines'' 15(1), 127 (2024), review of degradation and mixed-mode models.</ref>
+
+== Optoelectronics and thermodynamic bounds ==
+
+A photovoltaic device can be modelled as a light-dependent current source in opposition to a diode current. Under idealized, spatially uniform and isothermal single-diode conditions,
+
+<math display="block">J(V)=J_{\rm ph}-J_0\left[e^{qV/(n_{\rm id}k_BT)}-1\right],</math>
+
+where current density, temperature, recombination assumptions, spectral illumination and contact losses must be specified. Open-circuit voltage is set implicitly by <math>J(V_{\rm oc})=0</math>; current at short circuit is a different operating point. Series resistance, shunts, nonradiative recombination, incomplete photon absorption and spectrum-dependent collection limit practical efficiency.
+
+Shockley and Queisser developed a '''detailed-balance''' radiative limit for an ideal single-junction cell under specified illumination and emissive assumptions.<ref name="sq">W. Shockley and H. J. Queisser, [https://doi.org/10.1063/1.1736034 “Detailed Balance Limit of Efficiency of p-n Junction Solar Cells”], ''Journal of Applied Physics'' 32, 510–519 (1961); original limiting model, not a universal measured limit for all photovoltaic architectures.</ref> The conclusion is not that all solar cells have one universal maximal efficiency; concentration, multijunctions, spectral conversion, tandem architectures, nonradiative loss, geometry and operating assumptions change the bound. A rigorous efficiency statement must give its spectral distribution, irradiance, cell temperature, material spectrum and area/measurement convention.
+
+In an LED or laser diode, carrier injection, electron–hole overlap, radiative and nonradiative lifetime, optical outcoupling, waveguiding, gain and threshold determine performance. A direct band gap increases the likelihood of strong radiative band-to-band transitions, but does not itself guarantee a high external quantum efficiency. Lasers require optical gain and cavity feedback. OLEDs and other molecular devices often require different excitonic and transport physics than inorganic crystalline p–n junction diodes.<ref name="mitopt">MIT OCW 3.024, [https://ocw.mit.edu/courses/3-024-electronic-optical-and-magnetic-properties-of-materials-spring-2013/pages/lecture-notes/ optical and electronic material lecture notes], optical transitions and semiconductor materials.</ref>
+
+== Materials data, uncertainty and computational provenance ==
+
+=== What to compare ===
+
+Representative approximate room-temperature (near 300 K) fundamental gaps are 1.12 eV for crystalline Si (indirect), 1.42 eV for GaAs (direct), roughly 3.26 eV for 4H-SiC (indirect), and approximately 3.3–3.5 eV for wurtzite GaN (direct, with experimental and methodological variation). These are orientation values, '''not''' universal constants; source, polytype, pressure, strain, impurity concentrations, temperature and the measurement definition control the exact figure.<ref name="bandgap">D. J. R. et al., [https://www.nature.com/articles/s41597-022-01294-6 “Auto-generated database of semiconductor band gaps using ChemDataExtractor”], ''Scientific Data'' 9 (2022): large literature-extracted records highlight the need to track source and method. For documented experimental GaN band-gap spread and excitonic interpretation, see [https://pmc.ncbi.nlm.nih.gov/articles/PMC12895411/ “Benchmarking Density Functional Theory for Accurate Calculation of Nitride Band Gaps”] (2026). The approximate values above are contextual, not taken from one controlled measurement series.</ref>
+
+{| class="wikitable"
+! Material / state !! Approximate gap near 300 K !! Optical character !! Research warning
+|-
+| Silicon, crystalline diamond-cubic || 1.12 eV || Indirect || Resistivity, mobility and lifetime are strongly processing dependent; the optical edge is not the only material-quality metric.
+|-
+| GaAs, zinc-blende || 1.42 eV || Direct || Surface passivation, defect density and device integration matter; excess material mobility alone does not predict circuit speed.
+|-
+| 4H-SiC || 3.26 eV || Indirect || Specify the SiC polytype and crystallographic face; interface states affect MOS channels.
+|-
+| Wurtzite GaN || About 3.3–3.5 eV || Direct || Composition, strain, polarity and measurement methodology affect band alignment and optical extraction.
+|}
+
+For semiconductor materials datasets, a minimal scholarly record is not just the pair (material, gap). It is (sample identifier, composition, polytype, structural characterization, temperature, measurement observable, instrument/method, uncertainty, source DOI or dataset version, analysis method and units). Band-offset datasets require two named materials plus interface orientation/termination and the common energy reference. The National Institute of Standards and Technology's ''InterMat'' work illustrates that even computationally predicted offsets require an explicit underlying method, corrected electronic structure and test dataset.<ref name="intermat">K. Choudhary and K. Garrity, [https://www.nist.gov/publications/intermat-accelerating-band-offset-prediction-semiconductor-interfaces-dft-and-deep “InterMat: Accelerating Band Offset Prediction in Semiconductor Interfaces with DFT and Deep Learning”], ''Digital Discovery'' (2024), DOI [https://doi.org/10.1039/D4DD00031E 10.1039/D4DD00031E].</ref>
+
+A literature-mined dataset containing over 100,000 extracted gaps is a useful discovery index but not the same thing as 100,000 independently standardized measurements. Duplicates, composition ambiguity, provenance, text-mining confidence, experimental vs computed values and publication selection have to be audited before quantitative inference.<ref name="bandgap"/>
+
 == Model selection and unresolved engineering limits ==
 
 * '''Equilibrium vs driven operation:''' one Fermi level is appropriate at thermal equilibrium; driven carrier populations may require separate quasi-Fermi levels.

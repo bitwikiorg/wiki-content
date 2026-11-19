@@ -66,6 +66,26 @@ def main() -> int:
         errors.append("Operational request queue must be a nonempty array.")
         calls = []
 
+    # Detect incoming links to titles retired from the public wiki namespace.
+    # This only inspects source-controlled wiki pages, not historical archives or
+    # non-deployable repository documents.
+    manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
+    retired = re.compile(
+        r"\[\[\s*BITwiki\s*:\s*"
+        r"(?:Computational scope|Requested knowledge|Deployment prerequisites)"
+        r"\s*(?:[\]|#])|\[\[\s*Template\s*:\s*Knowledge request"
+        r"\s*(?:[\]|#])|\{\{\s*Knowledge request\b",
+        re.IGNORECASE,
+    )
+    for spec in manifest["mediawiki_substrate"]["source_control_mappings"].values():
+        source_root = ROOT / spec["path"]
+        for public_source in source_root.rglob("*.mediawiki"):
+            if retired.search(public_source.read_text(encoding="utf-8")):
+                errors.append(
+                    "Public page still links or invokes a retired operational title: "
+                    + public_source.relative_to(ROOT).as_posix()
+                )
+
     # Prevent silent reintroduction into public MediaWiki source.
     for forbidden in (
         ROOT / "BITwiki" / "Requested knowledge.mediawiki",

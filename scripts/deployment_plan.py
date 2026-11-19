@@ -4,7 +4,7 @@
 The plan is derived from manifest.json source-control mappings. Discovery is recursive:
 nested Module paths are first-class deployable pages, not an optional convention.
 Manual runtime checkpoints are encoded where repository page ordering alone cannot
-complete deployment (for example Cargo table creation).
+complete deployment when an explicitly declared runtime checkpoint is present.
 """
 
 from __future__ import annotations
@@ -52,9 +52,7 @@ EXPLICIT_PRIORITY = {
     "Module:BITwiki/Compiler": 303,
     "Module:Structure": 304,
     "Template:Knowledge object": 401,
-    "Template:Knowledge request": 402,
-    "BITwiki:Requested knowledge": 601,
-}
+ }
 REQUIRED_RUNTIME_CHAIN = [
     "Module:BITwiki/Data/Schema",
     "Module:BITwiki/Core",
@@ -62,16 +60,7 @@ REQUIRED_RUNTIME_CHAIN = [
     "Module:Structure",
     "Template:Knowledge object",
 ]
-MANUAL_CHECKPOINTS = {
-    "BITwiki:Requested knowledge": {
-        "id": "cargo:Knowledge_requests",
-        "after": "Template:Knowledge request",
-        "reason": (
-            "Create or recreate the Cargo Knowledge_requests table after deploying "
-            "Template:Knowledge request and before deploying/querying its workflow consumer."
-        ),
-    }
-}
+MANUAL_CHECKPOINTS = {}  # No current runtime checkpoint; add only for a reviewed dependency.
 
 
 def read_manifest() -> dict:

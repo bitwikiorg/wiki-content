@@ -49,11 +49,11 @@ Here V is the voltage across the component, I the current through it, R its resi
 Resistor values drift with temperature and ageing. Parasitic capacitance/inductance, voltage limits, thermal noise, tolerance and packaging can matter at higher frequencies or precision requirements. A resistor is not inherently an ideal current limiter under all faults or supply conditions.
 
 == Information-bearing circuit applications ==
-A resistor is a passive electrical component, '''not a computer by itself'''. Its relevance to information processing comes from the defined voltages and currents it helps establish or measure in electronic circuits. In a '''pull-up''' or '''pull-down''' arrangement, a resistor can bias an input toward a specified electrical state when another element is not driving it. Whether that state is interpreted as a digital 0 or 1 depends on the device's actual logic thresholds and noise margins.
+A resistor is a passive electrical component. In signal circuits, the voltages and currents it establishes or measures can help encode electrical states. In a '''pull-up''' or '''pull-down''' arrangement, a resistor can bias an input toward a specified electrical state when another element is not driving it. Whether that state is interpreted as a digital 0 or 1 depends on the device's actual logic thresholds and noise margins.
 
 In a '''voltage divider''', a resistor network produces a voltage related to an input or measured quantity. An analog-to-digital converter may subsequently sample that voltage; the resistor itself does not perform the conversion. A '''current-sense shunt''' similarly produces a voltage drop related to current that measurement circuitry can read.
 
-Correct design depends on resistance tolerance, allowable dissipation, measurement loading, parasitic effects, temperature, noise and the receiving circuit's thresholds. A resistor is therefore a concrete physical implementation or constraint in a signal pathway, rather than proof that all electrical energy flow constitutes computation. See [[Voltage]], [[Electric current]], [[Computer architecture]] and [[BITwiki:Computational scope]].
+Correct design depends on resistance tolerance, allowable dissipation, measurement loading, parasitic effects, temperature, noise and the receiving circuit's thresholds. A resistor therefore provides physical parameters and constraints in a signal pathway; its role depends on the surrounding circuit. See [[Voltage]], [[Electric current]] and [[Computer architecture]].
 
 == References ==
 * [https://openstax.org/books/university-physics-volume-2/pages/9-3-resistivity-and-resistance OpenStax, ''University Physics Volume 2'', §9.3 — resistivity, resistance and resistor components.]

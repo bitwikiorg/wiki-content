@@ -137,7 +137,7 @@ A named or heading-based section is not included through universal core syntax s
 {{#lsth:Example page|Section heading}}
 </pre>
 
-The operation depends on that extension being enabled and compatible with the deployed MediaWiki installation. Its availability is '''not established merely because BITwiki documentation mentions it'''. See [[BITwiki:Deployment prerequisites]].
+The operation depends on that extension being enabled and compatible with the deployed MediaWiki installation. Its availability is '''not established merely because BITwiki documentation mentions it'''. See [[BITwiki:MediaWiki substrate]] for the public architecture; deployment checks belong in the repository runbook.
 
 When selective section inclusion is unavailable or too fragile, leave the material in its source article, use core inclusion controls where appropriate, or create an explicit reusable page if the maintenance value justifies one. Do not assume that every heading is a machine-stable identifier.
 
@@ -223,7 +223,7 @@ The source-controlled <code>Template:Knowledge object</code> and <code>Template:
 
 BITwiki's additional semantic composition goals—selective component retrieval, review-aware reuse, stable fragment identity, and bounded agent-context assembly—remain design objectives where a verified implementation and clear content contract are still needed. '''Transclusion alone is not an external API, a retrieval index, a provenance graph, or a guarantee that an extracted claim keeps its semantic subject.'''
 
-Before calling this operational in a production installation, verify <code>Special:Version</code> for relevant extensions, namespace/subpage configuration, core and optional syntax, source/host rendering, SMW annotation storage, dependency propagation and post-edit performance. See [[BITwiki:Deployment prerequisites]] and [[Help:Transclusion]].
+Before calling this operational in a production installation, verify <code>Special:Version</code> for relevant extensions, namespace/subpage configuration, core and optional syntax, source/host rendering, SMW annotation storage, dependency propagation and post-edit performance. See [[BITwiki:MediaWiki substrate]] and [[Help:Transclusion]].
 
 A reusable page should be promoted only after actual use cases justify the dependency and the resulting subject/host semantics are tested.
 
@@ -236,6 +236,6 @@ A reusable page should be promoted only after actual use cases justify the depen
 * [https://www.mediawiki.org/wiki/Manual:Template_limits MediaWiki — Template limits] — expansion and parser constraints.
 * [https://www.semantic-mediawiki.org/wiki/Help:Embedded_format Semantic MediaWiki — Embedded format] — annotation behavior when pages are embedded.
 
-See [[BITwiki:Book Matter]], [[BITwiki:Page format]], [[BITwiki:Editorial protocol]], [[Help:Transclusion]], [[BITwiki:Semantic properties]], [[BITwiki:Deployment prerequisites]], and [[BITwiki:Epistemics]].
+See [[BITwiki:Book Matter]], [[BITwiki:Page format]], [[BITwiki:Editorial protocol]], [[Help:Transclusion]], [[BITwiki:Semantic properties]], [[BITwiki:MediaWiki substrate]], and [[BITwiki:Epistemics]].
 
 [[Category:BITwiki architecture]]

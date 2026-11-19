@@ -2,9 +2,9 @@
 
 **BITwiki V2 is the source-controlled knowledge architecture and public corpus for BITwiki.**
 
-**Editorial scope:** BITwiki is an **interdisciplinary general encyclopedia** and programmable knowledge substrate, with **information and computation** as organizing perspectives—not exclusionary admission tests. Durable scientific, historical, humanistic and technical topics may stand alone with accurate identity, appropriate sources, epistemic qualification and meaningful semantic links. Computational methods are distinct from subjects they model; neither is a mandatory replacement for the other. See [BITwiki scope](BITwiki/Computational%20scope.mediawiki). K01 is article-purpose and quality review, not proof of computational utility; CI does not certify editorial or scientific validity.
+**Editorial scope:** BITwiki documents knowledge across disciplines without imposing a computation- or information-centered admission gate. Canonical subjects must have defensible identity, appropriate sources, meaningful qualifications and relations. Editorial quality is evaluated on the substance; CI does not certify scientific or philosophical validity. See [page format](BITwiki/Page%20format.mediawiki) and [editorial protocol](BITwiki/Editorial%20protocol.mediawiki).
 
-This repository is the reviewed source and deployment projection for BITwiki's MediaWiki knowledge substrate: canonical knowledge, semantic graph state, operational records, programmable computation, navigation, project standards, migration evidence, and executable validation.
+This repository includes the reviewed deployment projection for BITwiki's public MediaWiki knowledge substrate, as well as separate non-deployable validation, historical and operational files. Repository visibility is public; internal-only records should ultimately live in a separately access-controlled system.
 
 - **BITwiki:** https://bitwiki.org/
 - **GitHub Pages staging:** https://bitwikiorg.github.io/wiki-content/
@@ -107,7 +107,7 @@ Project-specific implementation standards remain in `BITwiki:*`; Main-space page
 ```text
 wiki-content/
 ├── Main/          canonical Main-namespace knowledge, self-model objects, redirects, Book Matter
-├── BITwiki/       project architecture, standards, governance, epistemics, operations
+├── BITwiki/       public project architecture, editorial standards, governance, epistemics
 ├── Template/      declarative authoring/invocation and recovered compatibility templates
 ├── Module/        Scribunto/Lua compiler, transformation, projection, diagnostics
 ├── Property/      Semantic MediaWiki assertion vocabulary
@@ -119,6 +119,8 @@ wiki-content/
 ├── Portal/        Portal:* navigation title projection; not a confirmed namespace
 ├── archive-v1/    preserved public V1 provenance and migration evidence
 ├── scripts/       archival, validation, audit, inventory, and migration tooling
+├── docs/          non-deployable maintainer deployment runbook
+├── ops/           non-deployable operational records (still visible in public GitHub)
 ├── .github/       CI and repository automation
 ├── bitwiki-runtime-schema.json  compiler-facing schema authority
 └── manifest.json  explicit runtime/source mappings and architecture invariants
@@ -166,7 +168,7 @@ active request
 ≠ canonical Main page
 ```
 
-`Template:Knowledge request` stores repeated workflow state in Cargo table `Knowledge_requests`; `BITwiki:Requested knowledge` remains the authored queue and computed operational view.
+The prior public Cargo-backed queue has been retired from source-controlled MediaWiki publication. Existing 51 request records are preserved in `ops/knowledge-requests.json`, validated by `scripts/audit_workflow.py`, and **not** a public wiki page or Cargo table. This public GitHub repository is not a private operations database; a confidential workflow requires a separate private migration.
 
 ---
 
@@ -184,8 +186,8 @@ active request
 | Page/content standard | [`BITwiki/Page format.mediawiki`](BITwiki/Page%20format.mediawiki) |
 | Semantic properties | [`BITwiki/Semantic properties.mediawiki`](BITwiki/Semantic%20properties.mediawiki) |
 | Navigation | [`BITwiki/Navigation.mediawiki`](BITwiki/Navigation.mediawiki) |
-| Knowledge requests | [`BITwiki/Requested knowledge.mediawiki`](BITwiki/Requested%20knowledge.mediawiki) |
-| Deployment | [`BITwiki/Deployment prerequisites.mediawiki`](BITwiki/Deployment%20prerequisites.mediawiki) |
+| Operational request records (not wiki source) | [`ops/knowledge-requests.json`](ops/knowledge-requests.json) |
+| Deployment runbook (not wiki source) | [`docs/deployment.md`](docs/deployment.md) |
 | Runtime mapping manifest | [`manifest.json`](manifest.json) |
 | V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
 
@@ -209,7 +211,7 @@ find Module -type f -name '*.lua' -print0 | xargs -0 -n1 luac5.1 -p
 
 CI treats these checks as executable architecture evidence. Generated JSON reports are run-specific evidence and are not committed as mutable canonical source.
 
-Repository validation does not prove the remote MediaWiki deployment. Runtime deployment must still verify module dependency order, Scribunto behavior, Cargo tables, SMW state, and any BIThub integration contract. Native `mw.smw` access is not assumed; it requires an explicitly deployed and compatible SemanticScribunto capability.
+Repository validation does not prove the remote MediaWiki deployment. Runtime deployment must still verify module dependency order, Scribunto behavior, relevant SMW state and any supported integration contract. Cargo must be checked if a future reviewed feature actually uses it. Native `mw.smw` access is not assumed; it requires an explicitly deployed and compatible SemanticScribunto capability.
 
 ---
 
@@ -253,4 +255,4 @@ READMEs should summarize the current operational contract rather than duplicate 
 
 Before changing content or architecture, determine whether the change is canonical knowledge, project architecture, graph state, operational state, navigation, interface configuration, executable logic, or provenance. Use the corresponding native primitive, preserve evidence, run the relevant audits, and integrate accepted work into `main`.
 
-See [`BITwiki/Contributing.mediawiki`](BITwiki/Contributing.mediawiki) and [`BITwiki/Deployment prerequisites.mediawiki`](BITwiki/Deployment%20prerequisites.mediawiki).
+See [`BITwiki/Contributing.mediawiki`](BITwiki/Contributing.mediawiki) and the maintainer [`docs/deployment.md`](docs/deployment.md).

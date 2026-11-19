@@ -234,26 +234,26 @@ Administrative categories remain intentionally concise.
 
 == Cargo: bounded operational state ==
 
-Cargo now has one real consumer: the repeated records in [[BITwiki:Requested knowledge]]. [[Template:Knowledge request]] declares and stores the <code>Knowledge_requests</code> table, while the queue page uses <code>#cargo_query</code> for a computed lifecycle view.
+Cargo is an available extension for suitable repeated structured records, not a reason to publish internal work queues. The formerly source-controlled <code>Knowledge_requests</code> queue and its public template have been retired from the deployable corpus; its records are preserved outside MediaWiki source. No active Cargo-backed public research queue is claimed.
 
 This is deliberately not page-identity duplication. Request records are project-operational objects with repeated fields and mutable workflow state; canonical knowledge remains modeled through pages, SMW properties, relationships, and provenance.
 
-The request workflow also demonstrates why implementation should follow a use case rather than an extension checklist:
+A hypothetical research workflow illustrates why implementation should follow a genuine use case rather than an extension checklist:
 
 <pre>
 missing coverage signal
-→ authored Knowledge request record
-→ Cargo storage/query
+→ non-public operational request record
+→ accountable research workflow (storage backend separately selected)
 → research lifecycle
 → canonical page only when ready
 → satisfied request links canonical result
 </pre>
 
-<code>scripts/audit_workflow.py</code> validates the Cargo declaration/store contract and enforces the critical governance invariant that an active request cannot simultaneously exist as a canonical Main page.
+<code>scripts/audit_workflow.py</code> validates the non-deployable operational JSON records, including the invariant that an active request must not already exist under its proposed Main-page title.
 
-Cargo exposes native Lua access through <code>mw.ext.cargo</code>. Future modules may normalize a query result once and project the same operational state into multiple interfaces, including wiki views and BIThub-facing workflows, while Cargo remains the state owner.
+Cargo exposes Lua integration through <code>mw.ext.cargo</code> where available. Future uses should follow an independently justified record model, permission boundaries and runtime verification; it is not the default owner of internal requests.
 
-The Cargo database table itself is runtime state and must be explicitly created/recreated after deploying the template; Git source alone cannot prove that remote database step. See [[BITwiki:Deployment prerequisites]].
+If a future approved Cargo consumer is built, its database table must be separately created/recreated and verified in the target runtime. The repository deployment runbook is maintained outside public wiki source.
 
 == Subobjects and additional exploration remain evidence-gated ==
 
@@ -289,10 +289,10 @@ The audits report/check:
 * transclusion markup use;
 * mapped roots or directories missing README orientation;
 * compiler-runtime schema agreement;
-* Cargo request schema/storage/query agreement;
+* operational record integrity and non-publication boundary;
 * request lifecycle integrity and active-request/canonical-page conflicts.
 
-The goal is to make architectural claims falsifiable. A page saying “BITwiki uses Lua” is weak evidence; source-controlled modules plus real <code>#invoke</code> consumers and schema invariants are stronger evidence. Likewise, “Cargo is installed” is not a workflow; a declared table, stored records, queries, deployment procedure and invariant tests are.
+The goal is to make architectural claims falsifiable. A page saying “BITwiki uses Lua” is weak evidence; source-controlled modules plus real <code>#invoke</code> consumers and schema invariants are stronger evidence. Likewise, “Cargo is installed” does not demonstrate any current Cargo-backed workflow; one must have an independently justified schema, consumer and verified runtime behavior.
 
 Generated audit JSON is commit-specific evidence. CI uploads it as an artifact; it is intentionally not committed back to <code>main</code>.
 
@@ -316,7 +316,7 @@ MediaWiki / SMW schema prerequisites
 → semantic/Cargo/Lua verification
 </pre>
 
-Exact deployment remains additive and non-destructive. Cross-service BIThub/Discourse integrations have separate authentication/provenance/deployment requirements and should not be inferred from importing this content corpus. See [[BITwiki:Deployment prerequisites]].
+Exact deployment remains additive and non-destructive. Cross-service BIThub/Discourse integrations have separate authentication, provenance and deployment requirements and should not be inferred from importing this corpus. Maintainer procedures live in the repository runbook, not a public wiki page.
 
 == Sources and evidence ==
 

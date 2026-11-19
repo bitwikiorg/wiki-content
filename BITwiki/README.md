@@ -2,7 +2,7 @@
 
 Deployable project/governance/architecture pages corresponding to `BITwiki:*` titles.
 
-This namespace is the **living specification layer for BITwiki itself**. It explains how the knowledge system is organized, how native MediaWiki/SMW/Cargo/Scribunto primitives are used, where authority boundaries sit, and how humans, BIThub, and agents interact with the durable wiki.
+This namespace is the **public specification and governance layer for BITwiki itself**. It explains how knowledge is organized, represented, sourced and connected, how authoritative decisions are bounded, and how humans and agents can contribute. Private/internal work queues and deployment runbooks are not project-namespace articles.
 
 ## What belongs here
 
@@ -12,8 +12,8 @@ This namespace is the **living specification layer for BITwiki itself**. It expl
 - ontology, semantic properties, relationships, provenance, and epistemics;
 - Book Matter, transclusion, page format, and composition;
 - navigation, portals, categories, contents, outlines, and coverage;
-- contribution/review/request workflows;
-- deployment and migration protocol;
+- editorial principles and public contribution guidance;
+- public architectural interfaces and publication authority boundaries;
 - interoperability and BIThub/Discourse integration boundaries.
 
 General knowledge about a technology belongs in Main space. For example, `Main/Lua.mediawiki` explains Lua; `BITwiki/Lua architecture.mediawiki` explains **how BITwiki uses Lua**.
@@ -43,9 +43,10 @@ Key standards:
 - `MediaWiki substrate.mediawiki` — namespace/extension/runtime reconciliation;
 - `Ecosystem.mediawiki` — BITwiki ↔ BIThub ↔ BITCORE roles;
 - `Interoperability.mediawiki` — external and BIThub interface contracts;
-- `Deployment prerequisites.mediawiki` — repository-to-live-runtime deployment requirements;
-- `Computational scope.mediawiki` — interdisciplinary knowledge admission, epistemic distinctions, naming and quality-review guidance;
-- `Computational scope review.mediawiki` — correction of the previous restrictive 36-object triage and retained content-quality audit notes.
+- `Page format.mediawiki` — subject clarity, evidence and editorial scope without disciplinary admission gates;
+- `Editorial protocol.mediawiki` — source-grounded research and accountable editing.
+
+The non-deployable deployment runbook is in `docs/deployment.md`. The operational request records are in `ops/knowledge-requests.json`; both are in a **public GitHub repository**, not a private service, and neither is a public wiki article.
 
 ## Authority boundary
 

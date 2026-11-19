@@ -247,7 +247,7 @@ def main() -> int:
         default=[],
         help=(
             "Acknowledge a manual deployment checkpoint by exact ID; repeat as needed. "
-            "Example: --ack-checkpoint cargo:Knowledge_requests"
+            "Only use IDs explicitly declared by the current deployment plan"
         ),
     )
     parser.add_argument(

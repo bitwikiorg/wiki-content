@@ -1,0 +1,43 @@
+{{Reading depth|base=Microarchitecture|current=Simple}}
+= Microarchitecture — Simple =
+
+<onlyinclude>A '''microarchitecture''' is the internal design a processor uses to carry out the instructions defined by its instruction set architecture (ISA). The ISA describes what software can observe; the microarchitecture determines how the processor performs the work, including its pipelines, execution units, caches, scheduling, and branch prediction. Two processors can execute compatible programs while having very different speed, power use, and internal organization.<ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], versioned programmer-visible ISA specification.</ref><ref name="boom">Berkeley Architecture Research, [https://docs.boom-core.org/en/latest/ ''The Berkeley Out-of-Order Machine (BOOM) Documentation''], publicly documented superscalar out-of-order RISC-V processor implementation.</ref></onlyinclude>
+
+== Instructions and implementation ==
+
+Imagine two people following the same recipe. One works step by step; another prepares ingredients while the oven heats. Both can produce the same meal, but the process differs. Likewise, two processors can implement the same instruction set while using different internal designs.
+
+The analogy has limits: a processor must preserve the architectural behavior permitted by the ISA, including its rules for exceptions and memory. It cannot simply reorder operations whenever convenient.
+
+== A simple pipeline ==
+
+A processor may divide instruction processing into stages: fetch an instruction, decode it, execute the operation, access memory if needed, and commit its result. Several instructions can occupy different stages simultaneously. This is '''pipelining'''. A pipeline does not guarantee that every instruction finishes in one clock cycle.
+
+Instructions may depend on earlier results, share a scarce execution unit, or encounter a branch whose destination is not yet known. These situations can stall or redirect the pipeline.
+
+== Why processors have caches ==
+
+A processor can calculate much faster than it can retrieve some data from main memory. Small, fast caches retain recently used information to reduce average access time. Cache misses, contention, and memory access patterns can dominate execution time even when arithmetic units are idle.
+
+== In order and out of order ==
+
+An in-order processor generally issues instructions in program order. An out-of-order design can execute some ready operations before older instructions that are waiting for data, while maintaining the required externally observable behavior. The latter requires more complex scheduling, dependency tracking, and recovery machinery; it is not automatically faster or more energy efficient on every workload.<ref name="boom"/>
+
+== What performance numbers mean ==
+
+Clock frequency alone does not tell you which processor is faster. A processor's execution time also depends on instruction count, cycles per instruction, memory behavior, instruction-level parallelism, and workload characteristics.
+
+For example, if a task takes 2 billion cycles on one processor running at 2 GHz, it takes one second in the simplified fixed-frequency calculation. A second processor at 3 GHz taking 6 billion cycles needs two seconds. Higher frequency did not mean lower execution time. These are hypothetical counts, not a hardware benchmark.
+
+== Security and correctness ==
+
+Speculative execution may temporarily perform operations before it is certain they are needed. Even when incorrect speculative results are discarded architecturally, microarchitectural traces such as cache state can sometimes leak information through timing. Spectre research demonstrated important examples of this distinction.<ref name="spectre">Paul Kocher et al., [https://spectreattack.com/spectre.pdf ''Spectre Attacks: Exploiting Speculative Execution''] (2018), original attack analysis.</ref>
+
+A correct ISA implementation, fast benchmark result, and secure implementation are different claims requiring different tests.
+
+== Further reading ==
+
+[[Microarchitecture|Core]] explains design tradeoffs and relationships. [[Microarchitecture/Technical|Technical]] treats hazards, scheduling, quantitative performance, speculation, memory, and verification. [[Computer architecture]] gives the broader context.
+
+== References ==
+<references/>

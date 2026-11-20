@@ -1,0 +1,106 @@
+{{Reading depth|base=Microarchitecture|current=Technical}}
+
+= Microarchitecture — Technical =
+
+'''Microarchitecture''' is the organization and implementation of hardware mechanisms that realize an architectural contract. The instruction set architecture (ISA) specifies programmer-visible state transitions and permitted outcomes, whereas the microarchitecture selects datapaths, control logic, resource sharing, storage hierarchy, scheduling and physical timing. ISA conformance does not determine pipeline depth, instruction throughput, issue width, branch predictor design, reorder-buffer capacity, cache geometry or power use. The distinction is central to comparative processor design and to explaining why software-compatible machines can have different performance and side-channel behavior.<ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], versioned normative ISA reference, including instruction semantics and memory ordering.</ref><ref name="boom">Berkeley Architecture Research, [https://docs.boom-core.org/en/latest/ ''The Berkeley Out-of-Order Machine (BOOM) Documentation''], implementation-specific pipeline, execution, branch prediction and memory-system descriptions.</ref>
+
+== Architectural versus implementation state ==
+
+An architectural model may represent general-purpose registers, program counter, architecturally visible memory and control registers. A microarchitecture can maintain extra state such as decoded micro-operations, physical registers, rename maps, reservation stations, speculative history, load/store queues, branch predictor tables and cache tags. These internal structures need not be visible to normal software instructions.
+
+In a simplified sequential formal model, an instruction maps an architectural state <math>S</math> to an allowed next state <math>S'</math>. The implementation may take many cycles and internal state transitions to produce a committed architectural effect. In a concurrent processor, compatibility must also respect allowed memory outcomes, exception behavior and platform rules; the ISA contract is not always reducible to a single global sequential instruction order. RISC-V's memory-model sections provide an example of such formal distinctions.<ref name="riscv"/>
+
+An implementation can retire an architecturally correct result yet leak secret-dependent timing or cache effects. Architectural functional equivalence alone is therefore insufficient for a complete security assessment.
+
+== Pipeline throughput, latency and hazards ==
+
+A simple pipeline partitions instruction processing into fetch, decode, execute, memory access and writeback/retirement. If each stage requires a clock cycle and there are no stalls, an ideal five-stage pipeline can begin one new instruction per cycle after filling, although a particular instruction's latency remains at least five cycles. A single-issue pipeline with <math>N</math> independent instructions and <math>k</math> equal-duration stages has idealized elapsed cycles
+
+<math display="block">C_{ideal}=k+(N-1),</math>
+
+assuming one new instruction enters per cycle, no inter-stage overhead and no pipeline hazards. With <math>N=100</math> and <math>k=5</math>, the ideal count is <math>104</math> cycles, not 500. This is a pedagogical model, not a universal measured throughput.
+
+Real processors incur data hazards (read-after-write dependencies), structural hazards (competing for a unit), control hazards (unresolved branches) and latency variation (cache misses, multi-cycle arithmetic). Forwarding can reduce some data stalls; branch prediction can reduce some control stalls; neither removes dependencies or resource constraints.
+
+=== Performance accounting and independently checkable example ===
+
+For a single fixed-frequency execution interval, define <math>I</math> as retired instruction count, <math>C</math> as elapsed core cycles, <math>f</math> as clock cycles per second and <math>CPI=C/I</math>. Then
+
+<math display="block">t=\frac{C}{f}=\frac{I\,CPI}{f}.</math>
+
+This identity does not guarantee constant CPI across workloads or that the clock frequency is constant during an actual run. It also requires matching measurement domains: counting instructions on one core and cycles across an entire heterogeneous device is not meaningful without an explicit aggregation model.
+
+In an illustrative benchmark, processor A retires <math>I_A=10^9</math> instructions with <math>CPI_A=2</math> at <math>f_A=2\times10^9</math> cycles/s. Its elapsed time is
+
+<math display="block">t_A=\frac{10^9\times2}{2\times10^9}=1\ \mathrm{s}.</math>
+
+Processor B retires the same number with <math>CPI_B=6</math> at <math>f_B=3\times10^9</math> cycles/s, yielding
+
+<math display="block">t_B=\frac{10^9\times6}{3\times10^9}=2\ \mathrm{s}.</math>
+
+B has the higher clock rate yet takes twice as long. The figures are invented and are not measurements of particular processors. If a compiler changes instruction count, if work is parallelized, or if frequency varies, the comparison must be redefined rather than silently reusing these values.
+
+== Superscalar issue and out-of-order execution ==
+
+A superscalar processor may issue more than one operation per cycle, provided dependencies and functional units permit it. Out-of-order execution can schedule ready operations before older blocked operations. These terms are not synonymous: issue width and dynamic scheduling are independent design dimensions, and a superscalar implementation can be in order.
+
+A common out-of-order design decodes instructions into internal operations, renames destination registers to eliminate false name dependencies, places operations into issue structures, executes them when operands and resources are ready, and commits results in a controlled architectural order. A reorder buffer can track speculative instructions and support precise recovery after exceptions or branch mispredictions. Actual implementation details vary across designs; BOOM is one documented instance rather than a mandatory template.<ref name="boom"/>
+
+Register renaming eliminates name-based write-after-read and write-after-write hazards in the relevant register domain, but cannot eliminate true read-after-write dependencies. A load may also depend on the address and ordering of earlier stores, requiring memory-dependence handling. Execution width alone does not imply that a program has enough independent work to fill every issue slot.
+
+A theoretical upper bound on useful issue throughput is constrained by instruction dependencies, available execution ports, branch behavior, memory bandwidth, cache latency and retirement bandwidth. A nominal width of four is not a promise of four retired instructions on every cycle.
+
+== Branch prediction, speculation and recovery ==
+
+Conditional branches can interrupt instruction fetch before their outcomes are known. Prediction allows speculative fetching and execution along a likely path. A misprediction causes wrong-path work to be discarded and the correct path to be fetched, at a cost that depends on the machine's depth and recovery mechanisms.
+
+A first-order performance model, under explicitly simplified independence and stationary-workload assumptions, adds branch misprediction penalty to a baseline CPI:
+
+<math display="block">CPI\simeq CPI_{base}+b\,m\,P,</math>
+
+where <math>b</math> is branches per retired instruction, <math>m</math> the fraction of those branches mispredicted and <math>P</math> the mean extra cycles per misprediction. With <math>CPI_{base}=1</math>, <math>b=0.20</math>, <math>m=0.05</math> and <math>P=12</math>, the illustrative estimate is <math>CPI\simeq1.12</math>. This assumes the extra cycles do not double-count other stalls or overlap; in real processors the effects can interact nonlinearly.
+
+Speculation can affect caches and other shared microarchitectural state before an instruction is known to be on the committed path. The Spectre papers demonstrated that such traces can support side-channel attacks despite rollback of architecturally incorrect speculative results.<ref name="spectre">Paul Kocher et al., [https://spectreattack.com/spectre.pdf ''Spectre Attacks: Exploiting Speculative Execution''] (2018), original speculative-execution side-channel study.</ref> Mitigation requires threat-model-specific hardware, software and system controls; no single universal performance/security claim follows from disabling one predictor.
+
+== Cache hierarchies and memory behavior ==
+
+Caches exploit spatial and temporal locality by retaining lines of data or instructions closer to execution units. Important parameters include line size, capacity, associativity, hit latency, replacement policy, write policy, coherence mechanisms and prefetching. A cache hierarchy is not simply one fast store: each level introduces cost, traffic and contention.
+
+For a single-level idealized lookup, a common average memory access time (AMAT) model is
+
+<math display="block">AMAT=H+MR\times MP,</math>
+
+where <math>H</math> is cache hit time, <math>MR</math> the fraction of accesses that miss and <math>MP</math> the additional miss penalty. If <math>H=1</math> ns, <math>MR=0.05</math> and <math>MP=40</math> ns, then <math>AMAT=3</math> ns. The equation is a weighted expectation under the specified event definitions. Overlap, memory-level parallelism, prefetching, multi-level lookups and queueing can make observed execution stalls very different from this simple AMAT.
+
+Cache coherence and memory consistency are separate concepts. Coherence addresses how different agents observe writes to a particular location under a chosen protocol; consistency constrains the allowed ordering of memory operations across locations and agents. An ISA can specify a memory model while leaving many coherence implementation choices open.<ref name="riscv"/>
+
+== Power, physical constraints and design tradeoffs ==
+
+Microarchitectural choices affect area, switching activity, wire length, leakage, verification complexity and power density. A common first-order CMOS dynamic-power approximation is
+
+<math display="block">P_{dyn}\approx\alpha C V^2 f,</math>
+
+where <math>\alpha</math> is a dimensionless effective switching-activity factor under a declared convention, <math>C</math> effective switched capacitance, <math>V</math> voltage and <math>f</math> frequency. It omits leakage, short-circuit and many system effects, and <math>\alpha</math> can be defined differently by source.
+
+Increasing pipeline depth can support higher clocks in some physical designs while increasing branch-recovery penalties, control complexity and register overhead. Wider issue may improve throughput on sufficiently parallel workloads but raises data movement and scheduling cost. A larger cache can reduce misses but increases area, leakage and sometimes access latency. None of these tradeoffs has a universal optimal point independent of process technology and workload.
+
+== Verification and reproducibility ==
+
+Functional verification can compare instruction-level behavior to an ISA reference model, run directed and randomized tests, and check corner cases involving exceptions, interrupts and memory ordering. Formal refinement and equivalence techniques can establish properties under stated abstractions and assumptions, but proving all architectural functional behavior does not prove absence of microarchitectural timing channels.
+
+Performance evaluation should state benchmark input, compiler and flags, machine configuration, firmware, frequency policy, cache state, thermal conditions, measurement methodology, repetitions and variability. Performance counters can help attribute stalls, but their event definitions and precision vary by implementation and vendor. A simulator is a model; cycle-accurate claims require validation against its target and documented timing assumptions.
+
+The worked fixtures above can be recomputed independently: a five-stage, single-issue pipeline processing 100 independent instructions ideally takes 104 cycles; <math>t_A=1</math> s and <math>t_B=2</math> s; a simplified branch penalty produces CPI 1.12; a one-level AMAT produces 3 ns. These checks validate arithmetic under assumptions, not predictions for an actual chip.
+
+== Sources and limits ==
+
+The RISC-V specification is authoritative for the architecture's documented visible behavior, not a guarantee about BOOM's internal timing. BOOM documentation describes one concrete open-source microarchitecture, not all RISC-V processors. Spectre establishes specific security mechanisms and attack classes; it does not mean every speculative implementation is exploitable in the same way. Distinguishing these evidence types is essential to sound computer engineering.
+
+== References ==
+<references/>
+
+== Further reading ==
+* RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''Unprivileged ISA Manual''].
+* Berkeley Architecture Research, [https://docs.boom-core.org/en/latest/ ''BOOM Documentation''].
+* Kocher et al., [https://spectreattack.com/spectre.pdf ''Spectre Attacks''].
+* [[Microarchitecture|Canonical article]] · [[Microarchitecture/Simple|Accessible introduction]] · [[Computer architecture]].

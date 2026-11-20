@@ -1,0 +1,52 @@
+{{Knowledge object
+ |title=Device driver
+ |entity_type=Concept
+ |domain=Computer science, Engineering
+ |status=Established
+ |provenance=Linux kernel driver model and DMA API documentation; Microsoft Windows Driver Frameworks; issue #64, 2026-11-20
+}}
+{{Reading depth|base=Device driver|current=Core}}
+
+= Device driver =
+
+== Overview ==
+{{:Device driver/Simple}}
+
+A '''device driver''' is software that mediates operations between a device or device class and a software environment. It implements an interface and device-specific control, translating requests into operations that the hardware, virtual device or controller can execute. Drivers may run in kernel space, user space or embedded environments. A driver need not be a separately loadable kernel module, and not all drivers control a physical peripheral.<ref name="linuxcore">Linux kernel documentation, [https://docs.kernel.org/driver-api/driver-model/driver.html Device Drivers] and [https://docs.kernel.org/driver-api/driver-model/binding.html Driver Binding], current documentation.</ref>
+
+== Distinct roles ==
+An [[Operating system]] manages processes, protection and resources; a driver implements a narrower interface for a device or class of devices. [[Computer architecture]] specifies relevant hardware and programmer-visible constraints. A bootloader's main role is transferring execution to another stage, although it may incorporate drivers. Firmware executes on a device or platform controller and may provide the protocol a host driver uses. None of these roles is universally identical.
+
+== A request's journey ==
+An application or kernel subsystem submits an operation through an interface. The driver validates and schedules it, maps buffers or programs registers as appropriate, then reports completion or error. A device may signal completion by interrupt, a polled status change or a queue entry. Some devices transfer data by DMA; others do not. Completion, memory ordering, error propagation and cancellation are part of correctness, not optional performance details.<ref name="linuxdma">Linux kernel documentation, [https://docs.kernel.org/core-api/dma-api-howto.html DMA API HOWTO], device DMA mapping and synchronization contracts.</ref>
+
+== Discovery and lifetime ==
+A bus or platform subsystem can discover a device and match it to a driver. The Linux driver model describes matching, probing, binding, removal and power-management callbacks; probe can fail or defer until dependencies are available.<ref name="linuxcore"/> Hot-unplug and failed initialization require safe cleanup of requests, resources and references. A driver must not continue using memory or hardware that has been removed.
+
+== Implementation families ==
+Windows Driver Frameworks provide both kernel-mode (KMDF) and user-mode (UMDF) driver models, with framework-managed object lifetimes and request queues. Linux has bus-specific driver APIs and generic driver-core infrastructure. These are platform-specific implementation models, not a single portable binary interface.<ref name="wdfcore">Microsoft Learn, [https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/using-the-framework-to-develop-a-driver Using WDF to Develop a Driver], driver objects, device objects and I/O queues.</ref>
+
+== Security and verification ==
+Drivers may access privileged memory, DMA-capable devices and security-sensitive state. Threat models include malformed device responses, compromised firmware, malicious peripherals, race conditions, use-after-free and erroneous DMA mappings. User-mode placement can limit some consequences, but isolation depends on OS policies, hardware support and exposed interfaces. Testing should cover success and failure paths, concurrency, suspend/resume, removal and resource exhaustion.
+
+The related [[Related to::Operating system|operating-system]], [[Related to::Computer architecture|computer-architecture]] and [[Related to::Computer security|security]] articles describe broader contexts. These links indicate association, not a claim that one subject subsumes the others.
+
+== Incoming semantic relationships ==
+{{#ask:
+ [[Related to::Device driver]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming relationships recorded.''
+}}
+
+== Reading depths ==
+[[Device driver/Simple|Simple]] explains how drivers connect software to devices. [[Device driver/Technical|Technical]] develops binding, I/O, DMA, lifetime, concurrency, performance and platform-specific contracts.
+
+== References ==
+<references/>
+
+[[Category:Computer science]]
+[[Category:Engineering]]

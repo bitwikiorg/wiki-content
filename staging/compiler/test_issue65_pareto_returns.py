@@ -81,7 +81,7 @@ class ParetoReturnsTests(unittest.TestCase):
         self.assertAlmostEqual(share,.8)
         self.assertAlmostEqual(gini,.75647079737,places=9)
         text=source("Pareto principle/Technical")
-        for token in ("1.160964","0.75647","80,5,5,5,5","The principle is not"):
+        for token in ("1.160964","0.75647","80,5,5,5,5","It is not a theorem"):
             # The final token intentionally checks wording elsewhere when amended.
             self.assertIn(token,text)
 

@@ -1,0 +1,157 @@
+{{Reading depth|base=Transistor|current=Technical}}
+
+= Transistor — Technical =
+
+A '''transistor''' is a multi-terminal device whose electrical control input changes the current or conductance of a principal conduction path. Bipolar junction transistors (BJTs) and field-effect transistors (FETs) are physically distinct: bipolar transport involves carrier injection and coupled junctions, while conventional MOS field-effect operation depends on a gate-controlled surface/channel carrier distribution. The same word therefore covers materially different band structures, boundary conditions, noise mechanisms, transit times and reliability limits.
+
+The historic point-contact transistor reported by John Bardeen and Walter Brattain in 1948, William Shockley's p–n junction transistor theory of 1949, and the 1960 Atalla–Kahng MOS transistor are separate milestones, not interchangeable descriptions of a single device.<ref name="bardeen">John Bardeen and Walter H. Brattain, [https://doi.org/10.1103/PhysRev.74.230 “The Transistor, A Semi-Conductor Triode”], ''Physical Review'' 74, 230–231 (1948), original reported point-contact transistor.</ref><ref name="shockley">William Shockley, [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors”], ''Bell System Technical Journal'' 28, 435–489 (1949), theoretical junction and transistor analysis.</ref><ref name="mos_history">Computer History Museum, [https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/ ''1960: Metal Oxide Semiconductor (MOS) Transistor Demonstrated''], Atalla and Kahng's insulated-gate structure.</ref> The MIT 6.720J microelectronic-device course separately treats carrier physics, junctions, MOS electrostatics, long- and short-channel MOSFETs and BJTs.<ref name="mit">MIT OpenCourseWare, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ ''Integrated Microelectronic Devices''], lecture notes on MOSFETs and bipolar transistors and their physical models.</ref>
+
+== Multi-terminal control and the physical state ==
+
+Transistor action cannot in general be reduced to a fixed two-terminal current–voltage law. It must be described with the relevant terminal potentials, boundary conditions and charge distributions. Some devices are nominally three-terminal; MOSFET body bias may be a fourth relevant terminal. A useful modeling distinction is among a '''terminal circuit model''', a '''compact model''' calibrated to measured characteristics and a '''transport model''' that solves internal electrostatics and carrier continuity with material parameters.
+
+The terminal reference direction and bias conventions must be stated. For an n-channel MOSFET, <math>V_{GS}=V_G-V_S</math>, <math>V_{DS}=V_D-V_S</math>; in a BJT, <math>V_{BE}=V_B-V_E</math>, <math>V_{CE}=V_C-V_E</math>. Changing device polarity, doping, emitter/source definition or signs can change equation interpretation. Positive current and voltage symbols alone are not enough to fix a transistor's actual state.
+
+== Bipolar junction transistor: injection and transport ==
+
+A BJT has an emitter, base and collector engineered with coupled doped junctions. In an NPN forward-active device, the emitter–base junction is forward biased while the collector–base junction is reverse biased under the usual terminal convention. Minority carriers injected into the thin base can diffuse toward and be collected by the collector; base recombination, emitter efficiency and transport losses set the current relation. A transistor is not faithfully represented by two independent diode junctions because minority-carrier populations and transport couple the two junctions.
+
+Under a simplified low-injection, isothermal long-base transport approximation, the forward-active collector current is
+
+<math display="block">I_C\simeq I_S\exp\left(\frac{V_{BE}}{V_T}\right),\qquad V_T=\frac{k_BT}{q},</math>
+
+where the structural saturation current scale <math>I_S</math> depends on material, geometry, recombination, doping and temperature. The forward common-emitter current gain <math>\beta_F=I_C/I_B</math> is a useful model parameter within a specified regime, not a guaranteed constant of every BJT. The alpha parameter <math>\alpha_F=I_C/I_E</math> satisfies <math>\alpha_F=\beta_F/(\beta_F+1)</math> under the consistent current sign convention and negligible extra currents.
+
+For a fixed operating point in the ideal diffusion-active model, the intrinsic transconductance and small-signal base resistance are
+
+<math display="block">g_m=\frac{\partial I_C}{\partial V_{BE}}\simeq\frac{I_C}{V_T},\qquad r_\pi\simeq\frac{\beta_F}{g_m}.</math>
+
+This relation illustrates why BJT amplification is naturally a differential property around an operating point. In a practical device, finite output resistance, parasitic capacitances and base/emitter resistances limit bandwidth, gain and linearity.
+
+=== Early effect and finite output conductance ===
+
+Modulation of effective neutral base width by the collector–base field can make collector current depend on <math>V_{CE}</math> even in forward-active operation. A first-order empirical active-region model may take the form
+
+<math display="block">I_C\simeq I_{C0}\left(1+\frac{V_{CE}}{V_A}\right),</math>
+
+where <math>V_A</math> is an effective Early-voltage parameter under that extrapolation. Near a bias point, output conductance is often summarized as <math>g_o\approx I_C/(V_A+V_{CE})</math> within the same simple model. A single fitted Early voltage may fail across different injection, temperature and voltage ranges.
+
+BJT regions also include cutoff, saturation, reverse-active behavior and breakdown. A current-gain model calibrated in forward-active operation is not a valid description of deep saturation, high-level injection, avalanche or thermal failure. Charge stored in saturated junctions affects turn-off time, which is why switching circuits may deliberately prevent deep BJT saturation.
+
+== Independently calculated BJT active-mode example ==
+
+Assume a hypothetical isothermal NPN active-region model at <math>T=300\ {\rm K}</math> with <math>I_S=10^{-15}\ \mathrm A</math>, <math>V_{BE}=0.600\ \mathrm V</math>, and local <math>\beta_F=100</math>. Use the exact SI constants for <math>V_T</math> and ignore series resistance, leakage, high injection and output modulation.
+
+<math display="block">V_T\simeq0.025852\ {\rm V},\qquad I_C=10^{-15}\exp(0.600/V_T)\simeq1.20104\times10^{-5}\ {\rm A}.</math>
+<math display="block">I_B\simeq1.20104\times10^{-7}\ {\rm A},\qquad g_m\simeq4.6458\times10^{-4}\ {\rm S},\qquad r_\pi\simeq2.1525\times10^5\ \Omega.</math>
+
+Thus the illustrative model predicts collector current ~12.0 μA, base current ~0.120 μA, transconductance ~0.465 mS and small-signal <math>r_\pi</math> about 215 kΩ. These values are not measured performance or universal properties of any manufactured transistor. The current scale and gain were intentionally assumed; changing temperature or bias changes the inference and may change the gain model.
+
+== MOS field-effect transistor: electrostatics ==
+
+In a conventional MOSFET, gate insulation permits the gate voltage to control semiconductor surface potential, depletion and inversion charge with small direct steady gate current relative to a simple uninsulated conductive path. An nMOS channel forms when suitable surface inversion charge connects the source and drain regions. The measured threshold voltage depends on substrate doping, work function, oxide and interface charge, geometry, temperature and how the threshold is operationally extracted.
+
+The ideal oxide capacitance per unit gate area is <math>C_{\mathrm{ox}}=\epsilon_{\mathrm{ox}}/t_{\mathrm{ox}}</math> in a simple parallel-plate approximation. Near an ideal long-channel strong-inversion condition, a charge-sheet approximation may be written
+
+<math display="block">Q_{\mathrm{inv}}(x)\simeq-C_{\mathrm{ox}}\left[V_{GS}-V_{\mathrm{th}}-V(x)\right],</math>
+
+where <math>V(x)</math> is the local channel potential relative to source, and the approximation is valid where strong inversion and gradual-channel assumptions apply. Integrating the drift current under constant mobility produces the textbook long-channel current laws.<ref name="mit"/>
+
+Let <math>\beta=\mu_n C_{\mathrm{ox}}W/L</math> and overdrive <math>V_{\mathrm{OV}}=V_{GS}-V_{\mathrm{th}}</math>. In an ideal nMOS, with <math>V_{\mathrm{OV}}>0</math>, negligible channel-length modulation and low-field mobility approximation,
+
+<math display="block">I_D\simeq\beta\left[V_{\mathrm{OV}}V_{DS}-\frac{V_{DS}^2}{2}\right],\qquad0\le V_{DS}<V_{\mathrm{OV}},</math>
+<math display="block">I_{D,\mathrm{sat}}\simeq\frac{\beta}{2}V_{\mathrm{OV}}^2,\qquad V_{DS}\ge V_{\mathrm{OV}}.</math>
+
+These are '''not''' universal transistor laws. Mobility degradation, source/drain resistance, velocity saturation, channel-length modulation, drain-induced barrier lowering, body effects and quantum capacitance make real I–V curves deviate from the square law. Here the label “saturation” refers to pinch-off/ideal long-channel drain-current behavior, not necessarily the same physical state as BJT saturation.
+
+The ideal strong-inversion saturation transconductance is
+
+<math display="block">g_m=\frac{\partial I_D}{\partial V_{GS}}\simeq\beta V_{\mathrm{OV}}=\frac{2I_D}{V_{\mathrm{OV}}}.</math>
+
+A common small-signal equivalent circuit includes <math>g_mv_{gs}</math>, finite <math>r_o</math>, gate/source/drain capacitances and bulk transconductance when body potential varies. Capacitances are bias-, geometry- and frequency-dependent. Any extraction should specify the operating region and measurement convention.
+
+=== Subthreshold and electrostatic control ===
+
+Below the usual strong-inversion threshold, MOSFETs can still carry subthreshold current. For an ideal conventional thermionic weak-inversion device, an approximate subthreshold slope can be written
+
+<math display="block">S=\left(\frac{d\log_{10} I_D}{dV_G}\right)^{-1}\simeq(\ln10)\frac{k_BT}{q}\,n_s,</math>
+
+where the electrostatic body factor <math>n_s\ge1</math> for the usual positive-capacitance equilibrium approximation. At 300 K with <math>n_s=1</math>, <math>S\simeq59.5\ \mathrm{mV/decade}</math>. This conventional thermal electrostatic model is not a universal switching minimum for every device technology or measurement condition. Hysteresis, transient traps, tunnelling, unconventional switching mechanisms and device extraction criteria must be separately examined.
+
+== Independently calculated long-channel MOS benchmark ==
+
+Consider a hypothetical 300 K nMOS strong-inversion saturation model with electron mobility <math>\mu_n=0.030\ \mathrm{m^2\,V^{-1}\,s^{-1}}</math>, oxide capacitance per area <math>C_{\mathrm{ox}}=0.010\ \mathrm{F\,m^{-2}}</math>, aspect ratio <math>W/L=10</math>, and overdrive <math>V_{\mathrm{OV}}=0.200\ \mathrm V</math>. Assume ideal long-channel conditions and an appropriate drain bias <math>V_{DS}\ge0.200\ \mathrm V</math>. Then
+
+<math display="block">\beta=\mu_n C_{\mathrm{ox}}\frac{W}{L}=0.003\ {\rm A\,V^{-2}},</math>
+<math display="block">I_{D,\mathrm{sat}}=\frac12(0.003)(0.200)^2=6.0\times10^{-5}\ {\rm A}=60\ \mu{\rm A},</math>
+<math display="block">g_m=(0.003)(0.200)=6.0\times10^{-4}\ {\rm S}=0.600\ {\rm mS}.</math>
+
+The ratio <math>g_m/I_D=10\ \mathrm{V^{-1}}</math> follows from the chosen square-law parameters. These values are mathematical checks of the assumed model, not foundry parameters and not measured data. The model should not be used to estimate actual nanoscale switching current without calibration and short-channel transport corrections.
+
+== Beyond the textbook square law ==
+
+Modern MOS device analysis may require self-consistent Poisson/continuity equations, energy-dependent scattering, carrier heating, source-to-drain tunnelling, quantum confinement, interface charge, trap kinetics and finite contact resistance. At small device dimensions, local drift–diffusion can fail when carrier mean free paths are comparable to channel length; quantum/ballistic and mixed transport models then become important.
+
+In power electronics, the operating concerns differ: on-resistance, blocking voltage, gate charge, switching energy, avalanche ruggedness, thermal impedance and package parasitics can dominate. A power MOSFET's safe operating area is a joint time-, voltage-, current- and temperature-dependent constraint, not just three independent maximum values.
+
+High electron mobility devices and III–V or GaN heterostructures can have polarization- and band-offset-driven channel populations, unlike a conventional silicon MOS capacitor. Their behavior should not be inferred solely from an elementary MOS threshold equation. Conversely, integrated digital logic often optimizes energy per transition, density and variability, not maximum standalone transistor DC transconductance.
+
+== Charge, switching, interconnect and energy ==
+
+A transistor switching a capacitive node consumes dynamic energy through charging/discharging:
+
+<math display="block">E_{\mathrm{sw}}\approx C_{\mathrm{load}}V_{DD}^2</math>
+
+for a complete charge-and-discharge event under the usual supply-energy accounting with a simple capacitive model; actual energy includes short-circuit and leakage contributions and may depend on recovery, topology and waveform. With switching activity factor <math>\alpha</math> and frequency <math>f</math>, a commonly used first-order dynamic power estimate is
+
+<math display="block">P_{\mathrm{dyn}}\approx\alpha C_{\mathrm{load}}V_{DD}^2f.</math>
+
+The meaning of <math>\alpha</math> must be specified: transitions per cycle, probability of a charging event and other activity conventions differ. Real power includes leakage, clocking, interconnect and load effects. Dynamic power can become the dominant system constraint long before individual devices reach their theoretical maximum frequency.
+
+Interconnect resistance and capacitance, noise margins, fan-out, clock skew and thermal delivery affect system-level switching. A transistor count is neither a computation rate nor a direct quality metric, so claims about processor speed, memory and inference must be tied to actual architectural and workload measurements. See [[Computer architecture]], [[Electric current]], [[Voltage]] and [[Energy conversion]].
+
+== Device measurement and parameter identification ==
+
+{| class="wikitable"
+! Characterization !! Direct observable !! Model-dependent interpretation and traps
+|-
+| BJT collector/base I–V || <math>I_C,I_B</math> versus biases/temperature || Active gain, Early effect, injection/recombination, contact resistance; regime-dependent
+|-
+| MOS transfer/output I–V || <math>I_D</math> versus <math>V_{GS},V_{DS}</math> || Threshold, mobility, saturation and series resistance; extraction convention required
+|-
+| C–V and charge pumping || Capacitance or interface charge-related signals || Oxide/inversion and traps; frequency/distribution effects
+|-
+| S-parameters and pulsed tests || High-frequency response and charge dynamics || Gain, capacitance, transit, self-heating and parasitics
+|-
+| Noise and stress/recovery || Spectral noise, drift, hysteresis, degradation || Trap behavior and reliability; multiple nonunique causes
+|}
+
+Transconductance, threshold and gain should be quoted with bias, frequency and temperature. Parameters extracted from one circuit may not transfer to another geometry or technology. A semilog subthreshold slope near the ideal thermal value does not establish the absence of interface defects at all energies, and a clean DC I–V fit does not validate switching speed.
+
+Historical and modern models should be applied at the correct abstraction level. A SPICE compact model is designed for circuit simulation and parameter interpolation within characterized ranges; a full device simulator solves more detailed coupled physical equations but remains conditional on uncertain material and boundary parameters. Neither is a complete microscopic account of a manufactured device.
+
+== Reproducibility and physical validation ==
+
+A rigorous transistor study specifies semiconductor material and geometry, doping and contact profiles, dielectric interfaces, temperature, package, calibrated instrumentation, bias sweep, parameter extraction method, model family and version. A simulation additionally requires boundary conditions, numerical convergence, constitutive laws, mobility/recombination models, and test cases that check conservation and physical asymptotes.
+
+For the BJT numerical fixture, verify <math>V_T</math>, ideal <math>I_C</math>, <math>I_B=I_C/100</math>, <math>g_m=I_C/V_T</math> and <math>r_\pi=100/g_m</math>. For the MOS fixture, verify the mobility unit conversion, <math>\beta=0.003\ \mathrm{A\,V^{-2}}</math>, <math>I_D=60\ \mu\mathrm A</math> and <math>g_m=0.600\ \mathrm{mS}</math>. These are source-controlled analytical tests, not proof that a measured device satisfies the assumed regimes.
+
+For an actual transistor, predictive validation requires independent observations across temperatures, frequencies, voltages and preferably manufacturing variability, not simply fit-quality at one nominal operating point. A failure to reproduce the intended operating regime or a mismatch of body/source reference can invalidate an otherwise mathematically correct calculation.
+
+== Open technical boundaries ==
+
+The transistor subject connects physics, analog electronics, digital computing, power conversion and fabrication. Research problems include reducing contact and interconnect losses, maintaining electrostatic control at small dimensions, mitigating variability and reliability degradation, finding useful low-power device structures, and integrating heterogeneous semiconductors with electronics and photonics. Each requires specialized device literature, not a universal extrapolation from the MOS square law or simple BJT current gain.
+
+A research-useful transistor article should expose operating regimes and physical mechanism, not merely display a list of device types or an invented current rating. This reference is a gateway to specialized MOSFET, bipolar, power, nanoscale and heterostructure treatments, not a substitute for each.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* [https://doi.org/10.1103/PhysRev.74.230 Bardeen and Brattain (1948)], initial point-contact transistor.
+* [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x Shockley (1949)], theoretical p–n junction and transistor physics.
+* [https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/ Computer History Museum], MOS history.
+* [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ MIT 6.720J], transistor physics, modeling and characterization.
+* [[Transistor/Simple|Simple]] · [[Transistor|Core]] · [[Diode]] · [[Computer architecture]].

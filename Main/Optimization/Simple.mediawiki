@@ -1,0 +1,63 @@
+{{Reading depth|base=Optimization|current=Simple}}
+
+= Optimization — Simple =
+
+<onlyinclude>'''Optimization''' is the process of finding a choice that performs best according to a defined goal while respecting any applicable limits. An engineer may minimize energy use, a company may plan deliveries at lower cost, or a researcher may choose model parameters that reduce prediction error. The word “best” is not absolute: it depends on what is measured, what choices are allowed, and whether the mathematical model accurately represents the real problem.<ref name="boyd">Stephen Boyd and Lieven Vandenberghe, [https://web.stanford.edu/~boyd/cvxbook/ ''Convex Optimization''], Cambridge University Press (2004), Stanford-hosted textbook, optimization objectives and constraints.</ref></onlyinclude>
+
+== What goes into an optimization problem? ==
+
+A basic optimization problem has three parts.
+
+* '''Choices:''' things we can change, such as a route, a design, a schedule or a model setting.
+* '''Objective:''' a score to minimize or maximize, such as travel time, cost, error or scientific benefit.
+* '''Constraints:''' rules the solution must satisfy, such as a budget, safety requirement, resource limit or deadline.
+
+Imagine a small delivery team choosing how many vehicles to operate. It might minimize cost while guaranteeing that each order can be delivered on time. The cheapest plan that ignores deadlines is not a solution to the original problem.
+
+== A small example ==
+
+Suppose you must choose a nonnegative quantity <math>x</math> and want it as close as possible to 3, but a constraint limits it to at most 2.
+
+The task can be written
+
+<math display="block">\text{Minimize }(x-3)^2\quad\text{subject to }0\le x\le2.</math>
+
+Without the limit, the best choice would be 3. Under the limit, the best permitted choice is 2, and the minimum score is 1. This simple example shows why constraints matter just as much as the goal.
+
+== Several types of optimization ==
+
+Some problems involve continuous quantities like temperature, time or resource allocation. Others involve discrete choices like assigning workers to shifts or selecting a sequence of delivery stops. Some models are smooth and easier to solve; others contain many local solutions or require searching large combinations.
+
+A '''local optimum''' is better than nearby feasible choices, but may not be the best feasible choice anywhere. A '''global optimum''' is best among all feasible solutions under the stated objective. Certain mathematical problems, including many convex optimization models, allow algorithms and mathematical conditions to establish a global solution reliably.<ref name="stanford">Stanford University, [https://web.stanford.edu/class/ee364a/ ''EE364A: Convex Optimization I''], lecture material on convex functions, constraints, duality and optimality.</ref>
+
+== When goals conflict ==
+
+A design may need to be fast, affordable, safe and energy efficient. Improving one quality may worsen another.
+
+'''Multiobjective optimization''' studies such tradeoffs. Sometimes there is no single design that is best on every goal. Instead, there may be several options for which no goal can be improved without sacrificing another. Those are called '''Pareto-efficient''' or '''Pareto-optimal''' options under the chosen objectives.
+
+This is different from the popular [[Pareto principle]] concentration heuristic, which claims that some outcomes are unevenly distributed. They should not be treated as the same mathematical statement.
+
+== The challenge of a good objective ==
+
+An algorithm can minimize exactly what the programmer tells it to minimize and still give an undesirable real-world result. A recommendation system rewarded only for clicks might prioritize misleading material. A machine tuned solely for speed might violate safety constraints.
+
+A good optimization study therefore asks whether the objective represents the intended benefit, which conditions are omitted, who bears hidden costs, and whether the result remains useful when the world differs from the model.
+
+== How can results be checked? ==
+
+We can test whether the selected choice satisfies its constraints, calculate its objective value, compare it with a simple baseline, and sometimes prove it is globally optimal. We also need to test the model against the real process.
+
+A computer program finding the best solution to an inaccurate problem is not evidence that we found the best decision in reality.
+
+== Optimization and related topics ==
+
+[[Decision theory]] studies choices, consequences and uncertainty. [[Satisficing]] concerns selecting an acceptable option without exhausting every alternative. [[Sensitivity analysis]] asks how solutions and results change as inputs vary. [[Scaling]] examines how performance changes with workload or system size. These ideas overlap, but solve different questions.
+
+== Continue reading ==
+
+[[Optimization|Core]] maps objectives, feasible sets and methods. [[Optimization/Technical|Technical]] independently develops constrained optimization, convexity, Karush–Kuhn–Tucker conditions, Lagrangian duality, a solved numerical example, algorithmic complexity, sensitivity and multiobjective limits.
+
+== References ==
+
+<references/>

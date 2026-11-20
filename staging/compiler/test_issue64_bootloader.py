@@ -69,7 +69,7 @@ class BootloaderArticleTests(unittest.TestCase):
                      "32-bit", "64-bit", "NIST SP 800-193", "not a universal"):
             self.assertIn(term.lower(), t.lower())
         self.assertIn("not proof", t.lower())
-        self.assertIn("not a universal uefi/linux", t.lower())
+        self.assertIn("neither specification establishes a universal boot sequence", t.lower())
 
     def test_alignment_fixture(self):
         align = lambda x, a: ((x + a - 1) // a) * a

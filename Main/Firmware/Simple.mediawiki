@@ -1,0 +1,59 @@
+{{Reading depth|base=Firmware|current=Simple}}
+= Firmware — Simple =
+
+<onlyinclude>'''Firmware''' is software designed to work closely with a particular electronic device or hardware platform. It can initialize components, control built-in functions, or provide an interface for other software. Unlike a general application, firmware often needs to work before an [[Operating system]] starts or without one at all. Firmware is not necessarily permanent, stored only in ROM, or immune to updates.<ref name="uefi">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11'', Overview], platform firmware, boot environment and services.</ref></onlyinclude>
+
+== Where do we encounter firmware? ==
+
+A personal computer has platform firmware that helps prepare hardware and start an operating system. A router may have firmware controlling network interfaces and configuration. A solid-state drive may contain controller firmware that manages its flash storage. Many sensors and embedded devices have programs running directly on small microcontrollers.
+
+Firmware is a '''role''' that software plays in a hardware system, not a special programming language or a guarantee that it lives in one kind of chip.
+
+== What happens when a computer starts? ==
+
+A simplified example:
+# Power is supplied and a processor begins executing code from a platform-defined initial location.
+# Early firmware prepares enough hardware to continue initialization, discover devices and establish a boot environment.
+# A boot manager or loader locates and starts an operating system.
+# The operating system assumes responsibility for most device and resource management; some firmware facilities may remain callable.
+
+Not every computer follows this sequence. Microcontrollers may run one firmware program indefinitely, and different processor families have different boot architectures. In UEFI systems, boot services and runtime services have distinct lifetimes; the boundary is marked by <code>ExitBootServices()</code>.<ref name="uefiboot">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html ''UEFI 2.11'', Boot Services] and [https://uefi.org/specs/UEFI/2.11/08_Services_Runtime_Services.html Runtime Services].</ref>
+
+== Firmware versus drivers and operating systems ==
+
+{| class="wikitable"
+! Software role !! Typical responsibility !! Important caveat
+|-
+| Firmware || Hardware-specific initialization or on-device control || Can continue executing after OS boot
+|-
+| Bootloader || Loads or transfers control to the next executable stage || Sometimes distributed as part of a firmware image
+|-
+| Device driver || Mediates between a software environment and a device || UEFI itself also defines preboot drivers
+|-
+| Operating system || Schedules programs and manages shared resources || An embedded device may have no full operating system
+|}
+
+The terms can overlap in real products. They are not mutually exclusive boxes into which every binary fits.
+
+== Can firmware be updated? ==
+
+Yes. Updates may correct defects, improve compatibility or address vulnerabilities. A firmware update can also fail because of interrupted power, a wrong image, corrupted storage or a defect in the update mechanism. Some platforms provide fallback or recovery paths; others require external programming or manufacturer service.
+
+An update should come from the device vendor or another verified authorized source, match the exact hardware model and follow the documented procedure. Firmware updates should not be treated as ordinary harmless file copying.
+
+== Why is firmware security important? ==
+
+Firmware can run before operating-system protections are established or within privileged device environments. A malicious or damaged firmware image can therefore be difficult to detect or repair from within a running OS. NIST's platform-firmware resiliency guidance distinguishes '''protection''', '''detection''' and '''recovery''' as complementary capabilities, not interchangeable assurances.<ref name="nist">Andrew Regenscheid, NIST, [https://doi.org/10.6028/NIST.SP.800-193 ''Platform Firmware Resiliency Guidelines'', SP 800-193] (2018).</ref>
+
+Digital signatures and hardware roots of trust can help, but a signature alone does not prove that code is free of vulnerabilities, that an update cannot roll back to an unsafe version, or that recovery will work.
+
+== A common misconception ==
+
+“Firmware is software burned into a chip forever” is historically suggestive but technically unreliable. Modern firmware can be stored in rewritable nonvolatile memory, copied into RAM, downloaded by a host driver or updated over a network. The useful distinction is its close responsibility for a particular device's operation.
+
+== Further reading ==
+
+[[Firmware|Core]] covers interfaces and security boundaries. [[Firmware/Technical|Technical]] examines the UEFI handoff, device-controller execution, verified update, failure models and measurable test procedures.
+
+== References ==
+<references/>

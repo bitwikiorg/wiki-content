@@ -1,0 +1,63 @@
+{{Reading depth|base=Flash memory|current=Technical}}
+= Flash memory — Technical =
+'''Flash memory''' is nonvolatile semiconductor storage in which electrically modified charge states encode information. It is a device family, not a single storage protocol or guaranteed durability contract. This treatment separates cell physics, NAND/NOR topology, interface commands, controller algorithms and system-level persistence. DRAM refresh, flash erase, logical deletion and filesystem synchronization are different operations.
+
+== Provenance and historical scope ==
+Kioxia's account of its Toshiba predecessor places the flash-memory announcement in 1984 and NAND development in 1987, with a commercial 4-Mbit NAND product in 1991. These are manufacturer-documented milestones, not proof that all nonvolatile electrically erasable memory originated in one laboratory. Flash emerged from a broader EEPROM and semiconductor-memory research tradition.<ref name="history">Kioxia, [https://www.kioxia.com/en-jp/rd/technology/history.html ''Technology Development History''], corporate historical record and 1984/1987/1991 milestones.</ref>
+
+== Charge-storage device physics ==
+In common floating-gate devices, charge is stored on an electrically isolated conducting gate. In charge-trap variants, carriers occupy localized states in an insulating structure. The stored charge modifies the channel's effective threshold voltage; a sensing circuit infers a state from current under specified bias. Programming and erasure require controlled charge transfer through engineered insulating barriers. Field-assisted tunneling and other injection mechanisms depend on the actual cell design; neither a single voltage nor a single microscopic mechanism defines all flash products.
+
+A useful first-order electrostatic relationship is <math>\Delta V_T\approx-\Delta Q/C_{\mathrm{eff}}</math> for a specified sign convention and effective coupling capacitance. It is a local lumped model, not a full floating-gate or charge-trap device equation: coupling to other electrodes, trapped-charge distribution, oxide fields and temperature matter. Reading involves threshold-voltage distributions, not an ideal binary switch.
+
+For a purely illustrative calculation, suppose <math>|\Delta Q|=10^{-16}\ \mathrm C</math> and <math>C_{\mathrm{eff}}=2\times10^{-16}\ \mathrm F</math>. The magnitude is <math>|\Delta V_T|=0.5\ \mathrm V</math>. These invented parameters are not a measurement or a recommended programming target.
+
+== NAND versus NOR topology ==
+NAND strings place multiple cells in a series conduction path, allowing dense arrays with page-oriented data transfer. Readout depends on selected and pass-biased unselected cells, peripheral sense amplifiers and array organization. NOR's parallel access topology supports more directly addressable read behavior, useful for some execute-in-place firmware designs. Modern devices vary substantially in die stacking, cell structure, interface and controller features. Do not infer random byte programming, execute-in-place or fixed endurance from the NAND/NOR name alone.
+
+{| class="wikitable"
+! Boundary !! Typical raw NAND !! Typical NOR
+|-
+| Read access || Page/buffer and column operations through an interface || Address-oriented reads, often memory-mappable
+|-
+| Program/erase || Page programming and block erase, constrained sequencing || Device-specific programming units and sector/block erase
+|-
+| Common role || High-density data storage || Firmware/code and addressable nonvolatile storage
+|-
+| Limitation || Bad blocks, error correction and controller policy || Density, write/erase and interface constraints
+|}
+The table summarizes families, not normative requirements for all products.
+
+== Program, erase and command ordering ==
+A raw NAND page program changes cell states according to allowed program sequences. Erasure resets a larger block before further programming. Reprogramming a page without erasure is generally restricted, and partial-page operations may have additional device-specific constraints. Page size, spare/OOB area, block geometry, plane/die organization, timing and legal command sequences must come from the exact part specification.
+
+ONFI revision 6.0, dated 18 December 2025, is an authoritative interface document for its specified NAND protocol family. It must not be treated as a universal NAND implementation, NOR standard, SSD host protocol or guaranteed maximum speed for any arbitrary chip.<ref name="onfi">Open NAND Flash Interface Workgroup, [https://onfi.org/files/ONFI_6_0_Final.pdf ''Open NAND Flash Interface Specification'', revision 6.0 (18 December 2025)]. Consult the exact revision and device data sheet for supported command sequences and timing.</ref>
+
+A host logical write may involve several physical operations: map a new physical page, program it, validate or protect metadata, mark old data obsolete, and later reclaim a block. The physical erasure may happen long after the host reports a logical deletion. Conversely, sudden power loss can interrupt controller metadata updates even when stored charge is nonvolatile.
+
+== Voltage margins, multilevel cells and reliability ==
+Single-level cell (SLC) operation represents one bit per cell with two nominal threshold regions. Multi-level operation represents additional bits through more threshold regions (for example, two bits require four logical states). Narrower state separation increases sensitivity to noise, retention drift and disturb, so sensing, encoding, read-retry and error correction become important. Actual performance and endurance depend on device generation, process, temperature, retention age and workload; a universal SLC/MLC/TLC/QLC lifetime figure is not defensible.
+
+Errors arise from wear-induced dielectric damage, charge leakage, program/read disturb, coupling, fabrication defects and controller faults. Raw bit-error rate is not identical to uncorrectable data-loss probability. ECC can correct errors within a specified code and operating regime, but its protection has finite limits. Scrubbing, redundancy, bad-block retirement and power-loss protection address different risks.
+
+== Quantitative capacity and write amplification ==
+For a hypothetical NAND geometry with <math>4096</math> data bytes per page, <math>256</math> pages per block and <math>1024</math> usable blocks, nominal user-data area before reserved space and metadata is
+<math display="block">4096\times256\times1024=2^{30}\ \mathrm{bytes}=1\ \mathrm{GiB}.</math>
+This is an invented geometry, not a specification of a commercial chip. Spare/OOB bytes, bad blocks, controller reservation and formatting change usable capacity.
+
+Write amplification is defined over a chosen observation window as
+<math display="block">WA=\frac{\text{physical bytes programmed}}{\text{host bytes written}},</math>
+with a consistent accounting boundary. If an illustrative controller programs 12 GiB while receiving 8 GiB of host writes, <math>WA=1.5</math>. The ratio does not by itself determine wear lifetime, since distribution across blocks, temperature, ECC margin, cell technology and workload matter. Counting metadata and background copying changes the measurement boundary. Garbage collection, overprovisioning and write locality affect this ratio.
+
+== Translation, durability and security ==
+An FTL maps host logical addresses to physical locations, reconciles block erasure with logical overwrites and tracks valid pages. Wear leveling distributes erase cycles; garbage collection reclaims blocks with obsolete pages; bad-block management retires unreliable regions. These algorithms are controller policies, not physical definitions of flash. Managed NAND devices, SSDs, removable cards and raw chips expose different responsibilities to their hosts.
+
+Durability requires a complete chain: application ordering, filesystem journal or transaction protocol, host flush/FUA semantics where supported, device volatile-cache handling, controller metadata integrity and physical programming completion. Nonvolatility does not guarantee atomic writes, nor does an acknowledged host command universally imply persistence across power failure. Likewise, ordinary file deletion or a logical overwrite does not prove immediate physical erasure of remapped cells. Security claims require interface- and device-specific sanitize/crypto-erase guarantees and threat models.
+
+== Evidence limits and research questions ==
+Vendor specifications are normative for the specified device or interface, not empirical distributions of field failure. Accelerated endurance/retention tests require explicit stress conditions and extrapolation models. Cross-device comparisons should control for process generation, temperature, retention time, programmed states, workload, ECC configuration and controller policy. Useful research questions include threshold-voltage distribution evolution, disturb mitigation, FTL crash consistency and lifetime under measured write traces.
+
+== Connections ==
+[[Computer architecture]] and the pending [[Computer memory]] review draft cover system memory and storage hierarchy; [[Semiconductor]] explains charge transport and devices; [[Operating system]] and storage software manage logical data and persistence. [[Dynamic random-access memory]] is a separate pending volatile-memory article. These related draft titles are not evidence of live wiki publication.
+== References ==
+<references/>

@@ -1,0 +1,122 @@
+{{Reading depth|base=Dunning–Kruger effect|current=Technical}}
+
+= Dunning–Kruger effect — Technical =
+
+The '''Dunning–Kruger effect''' is a named psychological research pattern and explanatory hypothesis concerning the accuracy of self-evaluations among individuals with different measured levels of task performance. The original 1999 article by Justin Kruger and David Dunning reported systematic discrepancies between self-assessed and objectively scored performance on tasks including logic, grammar and humor judgments. The authors proposed that weak performers may suffer a “dual burden”: low task competence and insufficient metacognitive resources to recognize their own errors.<ref name="original">Justin Kruger and David Dunning, [https://doi.org/10.1037/0022-3514.77.6.1121 “Unskilled and Unaware of It: How Difficulties in Recognizing One's Own Incompetence Lead to Inflated Self-Assessments”], ''Journal of Personality and Social Psychology'' 77(6), 1121–1134 (1999), original experimental account.</ref>
+
+The research literature is contested. Alternative statistical accounts show that a similar relationship between observed test scores and self-judgments can arise from measurement error, conditioning on extremes, scale constraints and general self-enhancement, even when no stronger metacognitive deficit is assigned to low-ability individuals. Gignac and Zajenkowski (2020) argued that conventional analyses are largely artifact-prone, while subsequent exchanges and empirical analyses dispute the extent of that conclusion.<ref name="stat_crit">Gilles E. Gignac and Marcin Zajenkowski, [https://doi.org/10.1016/j.intell.2020.101449 “The Dunning-Kruger effect is (mostly) a statistical artefact: Valid approaches to testing the hypothesis with individual differences data”], ''Intelligence'' 80, 101449 (2020).</ref><ref name="reply">[https://doi.org/10.1016/j.intell.2022.101717 “Reevaluating the Dunning-Kruger effect: A response to and replication of Gignac and Zajenkowski (2020)”], ''Intelligence'' (2022), contested subsequent interpretation.</ref><ref name="stat_alt">[https://doi.org/10.3389/fpsyg.2022.840180 “A Statistical Explanation of the Dunning–Kruger Effect”], ''Frontiers in Psychology'' 13, 840180 (2022), analytical statistical alternative.</ref>
+
+== Specify the dependent variables before inference ==
+
+A study should distinguish at least four quantities:
+
+* '''Latent task ability''' <math>\theta_i</math>: a conceptual, not directly observed, construct relevant to the task domain.
+* '''Observed performance''' <math>X_i</math>: a task score measured with sampling, context and instrument error.
+* '''Self-evaluation''' <math>S_i</math>: an estimate of ability or performance recorded under a specified response format.
+* '''Calibration error''' <math>S_i-X_i</math> or <math>S_i-\theta_i</math>, which are not equivalent when <math>X_i</math> is noisy.
+
+The target hypothesis might assert <math>E[S_i-\theta_i\mid\theta_i]</math> increases as true ability decreases, or that the variance of self-evaluation error varies with ability. Those are different hypotheses. A conventional graph comparing percentile <math>S_i</math> with percentile <math>X_i</math> grouped by <math>X_i</math> does not by itself isolate either latent-ability mechanism.
+
+Testing percentile estimates is particularly sensitive to floor/ceiling effects and distribution knowledge. A below-average observed score is not the same as a person's absolute lack of competence, and the self-assessment scale may measure relative standing while the test score measures percentage correct.
+
+== Fully specified statistical countermodel: regression toward the mean ==
+
+To show why a Dunning–Kruger-shaped calibration plot is not a proof of impaired self-insight, define the following hypothetical Gaussian measurement model:
+
+<math display="block">\theta\sim N(0,1),\qquad X=\theta+\epsilon_X,\qquad S=\theta+\epsilon_S,</math>
+
+with mutually independent zero-mean errors <math>\epsilon_X,\epsilon_S\sim N(0,1)</math>. In this '''null countermodel''', the self-rating is unbiased for latent ability at every level:
+
+<math display="block">E[S\mid\theta]=\theta.</math>
+
+There is no assumption that low-ability people have larger self-evaluation errors. All people share the same independent self-evaluation noise distribution.
+
+The observed performance score <math>X</math> has variance <math>\operatorname{Var}(X)=2</math> and covariance with latent skill <math>\operatorname{Cov}(\theta,X)=1</math>. Under joint normality the conditional expectation is
+
+<math display="block">E[\theta\mid X=x]=\frac{\operatorname{Cov}(\theta,X)}{\operatorname{Var}(X)}x=\frac{x}{2}.</math>
+
+Because <math>\epsilon_S</math> is independent of <math>X</math> and has mean zero,
+
+<math display="block">E[S\mid X=x]=\frac{x}{2},\qquad E[S-X\mid X=x]=-\frac{x}{2}.</math>
+
+For an unusually low observed score <math>X=-2</math>, the expected self-rating is <math>-1</math>; the expected difference is <math>+1</math> even though the rater is not selectively overconfident relative to latent ability. For an unusually high observed score <math>X=+2</math>, the expected self-rating is <math>+1</math>, with expected difference <math>-1</math>. This produces the recognizable pattern of low measured performers “overestimating” and high measured performers “underestimating” their observed scores without any group-specific metacognitive deficiency.
+
+{| class="wikitable"
+! Selected observed performance <math>X=x</math> !! <math>E[S\mid X=x]</math> !! <math>E[S-X\mid X=x]</math>
+|-
+| −2 || −1 || +1
+|-
+| 0 || 0 || 0
+|-
+| +2 || +1 || −1
+|}
+
+This is a mathematical counterexample to the inference “pattern necessarily proves a skill-dependent lack of insight,” not proof that all reported behavioral effects are statistical artifacts. True skill and self-report are imperfectly measured, and real participants may show genuine metacognitive differences in addition to such artifacts.
+
+=== Reliability and regression factor ===
+
+More generally, if <math>\theta\sim N(0,\sigma_\theta^2)</math> and <math>\epsilon_X\sim N(0,\sigma_X^2)</math>, with independent zero-mean errors, the conditional regression coefficient is
+
+<math display="block">\lambda=\frac{\sigma_\theta^2}{\sigma_\theta^2+\sigma_X^2},\qquad E[S-X\mid X=x]=(\lambda-1)x,</math>
+
+provided the self-report remains unbiased for latent ability and its error is independent of the measured score. When test reliability is poorer, <math>\sigma_X^2</math> is larger relative to ability variance and <math>\lambda</math> is smaller; the apparent divergence at extremes becomes larger. In this model the pattern can occur under equivalent metacognitive accuracy at every latent skill level.
+
+Note that <math>\lambda</math> is an ordinary reliability-like regression coefficient under these assumptions; estimating real-world reliability involves repeated tests, item-response models or other independent validation. Simply fitting a line and relabeling <math>\lambda</math> “metacognition” would be circular.
+
+== Why quartile plots can mislead ==
+
+Stratifying participants by observed test-score quartiles selects extreme realizations of both latent skill and measurement noise. By construction, low measured quartiles contain a share of participants who scored below their latent expected performance, and high measured quartiles contain some who scored above it. Comparing the same selected score with a separate self-rating gives the regression pattern described above.
+
+Replacing each score with its percentile can amplify boundary issues: a person in a bottom percentile group has limited room to rank themselves lower on a bounded scale, while someone near the top has limited upward room. Ordinary group averages do not resolve this asymmetry.
+
+A credible analysis should specify the self-rating target (absolute task score, percentile among peers, comparison with normative criteria), ensure scale equivalence, model test reliability, and avoid interpreting grouped averages as individual psychological mechanisms. When feasible, use an independent test to estimate latent ability and another task or trial to evaluate prediction quality.
+
+== What would discriminate the rival mechanisms? ==
+
+A genuine metacognitive deficit hypothesis predicts a systematic relation between independently estimated ability and insight after controlling for the mechanical correlations induced by scoring noise. Potential approaches include:
+
+* Multiple independent performance tests to estimate latent ability and performance reliability.
+* Proper scoring of trial-by-trial confidence judgments, where outcomes have known correctness.
+* Manipulations of feedback or instruction that distinguish self-knowledge from generic optimism.
+* Statistical simulations under null models with equal error distributions across skill strata.
+* Structural measurement models that separate actual performance, self-report bias and uncertainty.
+* Replication across distinct tasks rather than assuming one cross-domain personality trait.
+
+The original study's evidence about learning to detect errors and subsequent research on self-insight remains relevant, but should be examined against these alternative accounts. A failure to identify one theory in a particular dataset does not imply that all forms of poor metacognition are nonexistent.
+
+== Measurement invariance and external validity ==
+
+A grammar test and a humor judgment can differ in scoring reliability, subjective norm, expertise and participants' reference populations. A calibration pattern in one does not guarantee the same mechanism in another. If the sample contains mainly college students, extrapolation to working professionals, older adults, medical experts or AI systems needs independent evidence.
+
+Participants may self-report confidence rather than expected accuracy, and different verbal probability scales can introduce additional distortions. A meaningful result needs a predeclared quantitative outcome and appropriate statistical uncertainty, not an attractive plot alone.
+
+### The meme curve is not the original result
+
+The widely reproduced “Mount Stupid / Valley of Despair / Slope of Enlightenment” curve is a contemporary popular illustration, not a published empirical trajectory established by Kruger and Dunning (1999). It should not be used as a sourced diagram of the study. Longitudinal learning can change confidence in many ways depending on feedback and task structure.
+
+The scientifically relevant distinction is between actual competence, observed evidence and the individual's belief about their competence. A novice may recognize their ignorance, while an expert may overstate confidence. The namesake of the effect is not evidence about a particular person.
+
+== Computational and AI-agent analogies ==
+
+For a model that emits a probability <math>q_i</math> of an answer being correct and receives correctness label <math>y_i</math>, calibration can be evaluated through a proper score, such as <math>BS_i=(q_i-y_i)^2</math>, or by reliability diagrams with suitable uncertainty and binning diagnostics. This is not identical to human self-evaluation of latent competence. Model confidence may depend on prompt formatting, training, abstention policy or logit scale.
+
+Calling an AI model “Dunning–Kruger” because it gives a confident wrong answer transfers an unverified human psychological mechanism to software. An engineering investigation should instead measure accuracy, calibration, confidence representation, retrieval state, task difficulty and relevant causal factors. Descriptive analogy is acceptable if labeled as analogy.
+
+== Verification and epistemic audit ==
+
+A research report should provide original instruments, individual-level data where ethically permitted, scoring rubric, recruitment, preregistration if applicable, scale transformations, test reliability, observed error patterns, uncertainty intervals and alternative statistical model fits. Plotting grouped means without conditioning diagnostics is inadequate evidence for the explanatory mechanism.
+
+The Gaussian fixture above should independently reproduce <math>\lambda=1/2</math>, <math>E[S\mid X=-2]=-1</math>, <math>E[S-X\mid X=-2]=+1</math>, and corresponding negative bias for <math>X=+2</math>. These are exact consequences of the invented countermodel, not a reproduction of Kruger and Dunning's original empirical datasets.
+
+A justified encyclopedic conclusion is that the namesake literature established interesting self-assessment patterns and proposed a metacognitive account, while the size and causal interpretation of specific plots remain subject to active methodological dispute. The responsible treatment is neither automatic dismissal nor unqualified popular certainty.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* [https://doi.org/10.1037/0022-3514.77.6.1121 Kruger and Dunning (1999)], original study.
+* [https://doi.org/10.1016/j.intell.2020.101449 Gignac and Zajenkowski (2020)], statistical critique.
+* [https://doi.org/10.3389/fpsyg.2022.840180 Statistical Explanation (2022)], alternative model.
+* [[Dunning–Kruger effect|Core]] · [[Dunning–Kruger effect/Simple|Simple]] · [[Metacognition]] · [[Cognition]].

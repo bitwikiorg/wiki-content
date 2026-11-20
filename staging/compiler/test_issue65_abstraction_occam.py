@@ -118,7 +118,7 @@ class Issue65AbstractionOccamTests(unittest.TestCase):
                        "10.1109/TAC.1974.1100705", "10.1214/aos/1176344136"):
             self.assertIn(marker, tech)
         self.assertIn("not a universal", tech.lower())
-        self.assertIn("not a verified", source("Occam's razor/Simple").lower())
+        self.assertIn("not be presented uncritically as a verified verbatim quotation", source("Occam's razor/Simple").lower())
 
 
 if __name__ == "__main__":

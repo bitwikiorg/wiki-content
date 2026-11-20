@@ -1,0 +1,68 @@
+{{Knowledge object
+ |title=Integrated circuit
+ |entity_type=Technology
+ |domain=Electronics, Computer science, Engineering
+ |status=Established
+ |provenance=Smithsonian and Computer History Museum originals; MIT Computation Structures, Moore (1965) and Dennard et al. (1974); issue #64
+}}
+{{Reading depth|base=Integrated circuit|current=Core}}
+
+= Integrated circuit =
+
+== Overview ==
+
+{{:Integrated circuit/Simple}}
+
+An '''integrated circuit''' (IC) is a device in which multiple circuit elements and electrical connections are fabricated together in or on a substrate. It can be analog, digital, mixed-signal, radio-frequency, power-management or another specialized technology. An IC is neither equivalent to a particular transistor nor necessarily a processor.
+
+== Physical and functional organization ==
+
+{| class="wikitable"
+! Level !! Key objects and verification questions
+|-
+| Devices || Transistors, junctions, resistors and capacitors: current, voltage, reliability and manufacturing variation
+|-
+| Logic / analog blocks || Gates, memories, amplifiers, converters: functionality, analog behavior and interfaces
+|-
+| Physical layout || Cells, wiring, interconnect parasitics, clock and power distribution, thermal hotspots
+|-
+| Die and package || Wafer fabrication, die test, interconnect, assembly, system-level thermal/electrical conditions
+|-
+| Application || Processor, sensor, memory, power system or communication circuit with external requirements
+|}
+
+The early solid-state demonstration by Jack Kilby in 1958 and the subsequent planar, interconnected monolithic circuit approach associated with Robert Noyce and Jean Hoerni are complementary milestones. Fabrication at production scale required more than a laboratory demonstration.<ref name="history_core">Computer History Museum, [https://www.computerhistory.org/siliconengine/practical-monolithic-integrated-circuit-concept-patented/ ''1959: Practical Monolithic Integrated Circuit Concept Patented''] and [https://www.computerhistory.org/siliconengine/first-planar-integrated-circuit-is-fabricated/ ''1960: First Planar Integrated Circuit is Fabricated''].</ref>
+
+== Integration is conditional, not a guarantee ==
+
+An increase in integration may reduce interconnect distance and unit assembly costs, but design complexity, thermal management, yield, process variation, verification and packaging can become significant constraints. Gordon Moore's 1965 article discussed the economics of component density as an empirical and prospective observation, not an immutable physical law.<ref name="moore_core">Gordon E. Moore, [https://web.stanford.edu/class/cs114/readings/moore.pdf “Cramming More Components onto Integrated Circuits”], ''Electronics'' 38(8), 114–117 (1965), original historical projection.</ref>
+
+An engineering study needs process assumptions, technology libraries, layout, functional and timing verification, power/thermal estimates, fabrication yield models and measured silicon data before making claims about performance or cost.
+
+== Relationship to other subjects ==
+
+Integration relates to [[Related to::Logic gate|logic gates]], [[Related to::Computer architecture|computer architecture]], [[Related to::Electric current|electric current]] and [[Related to::Energy conversion|energy conversion]]. These are grounded general relationships rather than invented semiconductor production taxonomy.
+
+== Incoming semantic relationships ==
+
+{{#ask:
+ [[Related to::Integrated circuit]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming semantic relations have yet been recorded.''
+}}
+
+== Reading depths ==
+
+[[Integrated circuit/Simple|Simple]] explains chips, history and manufacture. [[Integrated circuit/Technical|Technical]] independently develops design-flow formalization, static timing, dynamic power, process variation, yield economics, manufacturing and reproducible analyses.
+
+== References ==
+
+<references/>
+
+[[Category:Electronics]]
+[[Category:Computer science]]
+[[Category:Engineering]]

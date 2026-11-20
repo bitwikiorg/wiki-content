@@ -1,0 +1,69 @@
+{{Reading depth|base=Logic gate|current=Simple}}
+
+= Logic gate — Simple =
+
+<onlyinclude>A '''logic gate''' is a basic building block of digital electronic circuits. It combines one or more input signals to produce an output according to a rule such as AND, OR or NOT. The rule can be described with true/false values, but an actual electronic gate operates using physical voltages, currents and transistors; its signals take time to change and can be disturbed by noise.<ref name="mitgate">MIT OpenCourseWare, [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ ''6.004 Computation Structures'', lectures on digital abstraction, combinational logic and CMOS gate design].</ref></onlyinclude>
+
+== Three common gates ==
+
+The simplest rules can be expressed as questions:
+
+* '''AND''': are both inputs true?
+* '''OR''': is at least one input true?
+* '''NOT''': reverse a single true/false input.
+
+A truth table lists every possible combination for a rule. Using 0 for false and 1 for true:
+
+{| class="wikitable"
+! A !! B !! AND !! OR !! NAND
+|-
+| 0 || 0 || 0 || 0 || 1
+|-
+| 0 || 1 || 0 || 1 || 1
+|-
+| 1 || 0 || 0 || 1 || 1
+|-
+| 1 || 1 || 1 || 1 || 0
+|}
+
+'''NAND''' means NOT-AND. Other commonly used gates include NOR, XOR (true when exactly one of two inputs is true) and XNOR (true when inputs match).
+
+== How do physical gates work? ==
+
+In a common CMOS logic circuit, tiny transistors connect an output to the supply voltage or ground under different input conditions. The circuit is designed so the output voltage falls within a recognized range for logic 1 or logic 0.
+
+Those voltage ranges are a convention of the circuit technology, not natural physical categories. Voltages between them can be uncertain, and an output needs time to settle after an input changes.
+
+Early switching systems could use electromechanical relays. Claude Shannon's 1938 work showed how Boolean reasoning could describe and simplify relay and switching circuits.<ref name="shannon">Claude E. Shannon, [https://doi.org/10.1109/EE.1938.6431064 “A Symbolic Analysis of Relay and Switching Circuits”], ''Electrical Engineering'' 57, 713–723 (1938).</ref>
+
+== Why are NAND and NOR important? ==
+
+Any ordinary Boolean function with a finite number of binary inputs can be built from a suitable network of only NAND gates, or only NOR gates, under the usual Boolean-circuit assumptions. This is called '''functional completeness'''.
+
+That does not mean a NAND gate is always the fastest or smallest way to build every circuit. The practical design must account for transistor counts, delay, available standard cells, energy and the loads attached to outputs.
+
+== Connecting gates together ==
+
+Several gates can form a '''combinational circuit''': its stable outputs depend on the currently presented input values, assuming the circuit has settled. An adder and a comparator are examples.
+
+A '''sequential circuit''' also depends on stored state, such as what happened in an earlier clock cycle. Registers and memory elements use feedback or dedicated storage structures. One cannot describe all their behavior with a single truth table of just the present external inputs.
+
+== Important practical limits ==
+
+A gate is not instantaneous. As more gates and wires are connected, delay, switching power and the risk of transient glitches increase. An input must be driven within its specified voltage range; attaching too many loads can produce unreliable behavior.
+
+A printed truth table proves what a Boolean formula means. It does not prove that the fabricated circuit meets timing, noise, temperature or manufacturing requirements.
+
+== Where are logic gates used? ==
+
+Logic gates help implement arithmetic circuits, processors, memory control, sensors and communications equipment. Many gates may be built within one [[Integrated circuit/Simple|integrated circuit]], but a chip also contains wires, storage elements and other structures.
+
+The wider ideas are explored by [[Logic]], [[Computation]] and [[Computer architecture]].
+
+== Continue reading ==
+
+[[Logic gate|Core]] organizes the logical and physical meanings. [[Logic gate/Technical|Technical]] derives NAND-only XOR, CMOS transistor networks, timing and energy models, logical hazards and verification methods.
+
+== References ==
+
+<references/>

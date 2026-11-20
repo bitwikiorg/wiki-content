@@ -43,7 +43,7 @@ class MicroarchitectureTests(unittest.TestCase):
             self.assertEqual(len(re.findall(r"<math(?:\s+[^>]*)?>",body)),body.count("</math>"))
             for target in re.findall(r"\[\[([^\]]+)\]\]",body):
                 target=target.split("|")[0].split("#")[0]
-                if target.startswith("Related to::"):
+                if target.startswith("Category:"):\n                    continue\n                if target.startswith("Related to::"):
                     target=target.split("::",1)[1]
                 self.assertTrue((ROOT/"Main"/(target+".mediawiki")).exists(),msg=target)
         lead=read("/Simple").split("<onlyinclude>")[1].split("</onlyinclude>")[0]

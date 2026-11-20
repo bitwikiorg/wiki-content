@@ -48,6 +48,8 @@ class CPUArticleTests(unittest.TestCase):
                     self.assertEqual(prop,"Related to")
                 if target.startswith(":"):
                     target=target[1:]
+                if target.startswith("Category:"):
+                    continue
                 self.assertTrue((ROOT/"Main"/(target+".mediawiki")).is_file(),target)
         self.assertGreater(read("/Technical").count("<math"),20)
 

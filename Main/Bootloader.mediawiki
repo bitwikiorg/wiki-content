@@ -1,0 +1,65 @@
+{{Knowledge object
+ |title=Bootloader
+ |entity_type=Concept
+ |domain=Computer science, Engineering
+ |status=Established
+ |provenance=UEFI Specification 2.11 boot manager/image services and Linux kernel x86 boot protocol; issue #64, 2026-11-20
+}}
+{{Reading depth|base=Bootloader|current=Core}}
+
+= Bootloader =
+
+== Overview ==
+{{:Bootloader/Simple}}
+
+A '''bootloader''' (boot loader) is a program or sequence of programs that prepares and transfers control to another executable, often an operating-system kernel. It occupies a distinct functional role from the platform [[Operating system|operating system]] and [[Computer architecture|processor architecture]]. It may be supplied by firmware, installed on storage media, embedded in ROM or integrated with another boot stage. The name describes a '''role in an execution transition''', not a particular storage location, file format, vendor, or trustworthiness.
+
+== Loading and transfer ==
+A loader locates a target image, interprets a platform-specific executable or boot protocol, arranges necessary memory and machine state, supplies parameters and transfers control. The target may be an OS kernel, a second-stage loader, a recovery environment or another embedded application. The image must be compatible with the processor, platform conventions and available memory. Simply copying bytes into RAM does not establish a valid execution environment.
+
+The UEFI 2.11 specification distinguishes firmware boot-option selection from the OS loader, which is a UEFI application. The firmware boot manager selects options and invokes image services; a loader can subsequently take over and transition into the OS.<ref name="ueficore">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/03_Boot_Manager.html ''UEFI Specification 2.11'', Boot Manager] and [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html Boot Services, image loading and handoff].</ref>
+
+== Variants and boundaries ==
+{| class="wikitable"
+! Variant !! Boot role !! Boundary
+|-
+| Embedded ROM first-stage || Find and start later boot stages or application || May not have filesystems or a general OS
+|-
+| Legacy PC disk boot || Run code according to platform/firmware boot conventions || Historical BIOS/MBR paths differ from UEFI
+|-
+| UEFI OS loader || Use boot services, load and prepare kernel, terminate boot services when taking control || UEFI boot manager is not automatically the OS loader
+|-
+| Recovery or network loader || Select or retrieve an alternate image || Trust, availability and rollback must be independently addressed
+|}
+
+A bootloader is not identical to a device driver: a driver exposes and manages device operations, whereas the loader's primary task is to prepare the next execution stage. Some bootloaders contain their own storage, filesystem or network drivers. Likewise a bootloader is not synonymous with firmware: firmware can initialize hardware or provide runtime services without loading a separate OS, and a bootloader can be ordinary software on a disk.
+
+== The handoff is a contract ==
+The Linux x86 boot protocol documents the image header, boot parameters, memory arrangements, machine mode and entry conditions for specific supported kernel formats. These requirements are versioned and architecture-specific; they must not be generalized to every CPU or kernel.<ref name="linuxcore">Linux kernel documentation, [https://www.kernel.org/doc/html/latest/arch/x86/boot.html ''The Linux/x86 Boot Protocol''], loader and kernel entry contracts.</ref>
+
+UEFI's <code>ExitBootServices()</code> marks a distinct transition: boot-time firmware services cease, while explicitly defined runtime services may remain. Calling it without a valid memory-map key can fail, and an OS loader must follow the UEFI memory-map and handoff requirements. A successful load operation alone is not equivalent to a successful OS boot.<ref name="ueficore"/>
+
+== Security and failure modes ==
+Secure boot policies may authenticate images or enforce signature and revocation rules, but successful verification is not proof of freedom from vulnerabilities. An attacker who can modify an unauthenticated earlier stage may subvert later checks. Reliability also depends on recoverable boot entries, correct image placement, power-loss behavior and a safe path when the preferred image cannot start.
+
+A loader must be evaluated against a particular hardware, firmware and kernel combination. There is no single universal boot procedure. [[Related to::Operating system|Operating-system]] startup, [[Related to::Computer architecture|architecture]] and [[Related to::Computer security|security]] are related but distinct research domains.
+
+== Incoming semantic relationships ==
+{{#ask:
+ [[Related to::Bootloader]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming relationships recorded.''
+}}
+
+== Reading depths ==
+[[Bootloader/Simple|Simple]] introduces the loading process and common confusions. [[Bootloader/Technical|Technical]] details UEFI and Linux x86 contracts, boot-stage trust, state-machine reasoning and testable recovery behavior.
+
+== References ==
+<references/>
+
+[[Category:Computer science]]
+[[Category:Engineering]]

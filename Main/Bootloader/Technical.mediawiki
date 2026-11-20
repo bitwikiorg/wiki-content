@@ -1,0 +1,123 @@
+{{Reading depth|base=Bootloader|current=Technical}}
+= Bootloader — Technical =
+
+A '''bootloader''' implements a controlled transition from an executing boot stage to a target executable, typically a kernel or subsequent loader. The fundamental problem is not merely finding bytes: the stage must identify an image compatible with its execution environment, establish the target's entry contract, supply required parameters and relinquish control without corrupting data needed by the next stage. The boot process may include hardware-defined ROM code, platform firmware, firmware-resident boot managers, removable or fixed-media loaders, recovery agents and a kernel. These are distinct roles; any particular machine may omit or combine stages.
+
+This treatment focuses on two independently documented interfaces: UEFI Specification 2.11 for UEFI boot manager, image loading and boot-service termination, and the Linux x86 boot protocol for architecture-specific kernel handoff. Neither specification establishes a universal boot sequence for all embedded systems, ARM/RISC-V platforms, boot media or operating systems.<ref name="uefitech">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11'', Overview], [https://uefi.org/specs/UEFI/2.11/03_Boot_Manager.html Boot Manager], and [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html Boot Services].</ref><ref name="linuxtech">Linux kernel, [https://www.kernel.org/doc/html/latest/arch/x86/boot.html ''The Linux/x86 Boot Protocol''], versioned setup header, boot parameters and execution contracts.</ref>
+
+== Execution-stage model ==
+Let the active stage be <math>S_i</math> and its selected target be <math>S_{i+1}</math>. For reasoning purposes, define a handoff state
+
+<math display="block">H_i=(I_i,M_i,C_i,P_i,T_i),</math>
+
+where <math>I_i</math> is the selected image identity, <math>M_i</math> the memory map and loaded-image placement, <math>C_i</math> the CPU execution state, <math>P_i</math> the parameter structures, and <math>T_i</math> the trust and policy decisions. This tuple is a '''pedagogical model''', not a data structure specified by UEFI or Linux.
+
+A correct transition must satisfy a target-specific precondition <math>\mathcal P_{i+1}(H_i)</math>. For example, the target may require a particular CPU mode, aligned data structure, nonoverlapping memory region, register value or firmware service state. A successful image read is necessary in many loaders but is not sufficient for this precondition.
+
+The transition may fail before or after image selection. It is useful to distinguish:
+# discovery: enumerate candidates and locate an image;
+# interpretation: check format, architecture and load parameters;
+# placement: allocate and copy/relocate code and data as required;
+# validation: enforce configured trust policy and compatibility;
+# handoff: establish registers, memory, parameter tables and entry point;
+# recovery: choose an alternate path or stop safely if any precondition fails.
+
+This is an analytic decomposition; implementations can reorder or combine steps. In particular, a loader may verify authenticity before or after some reads, and an image may itself load more images.
+
+== UEFI boot manager is not the same as the OS loader ==
+UEFI provides a firmware boot manager and an image-service environment. The manager evaluates persistent boot options. The specification defines <code>BootOrder</code> as a normal option order and <code>BootNext</code> as a one-time priority option; <code>BootNext</code> is removed before attempting the selected entry, preventing repeated selection merely because that variable remains set. Recovery rules apply when normal attempts are exhausted or recovery has been requested.<ref name="uefiboot">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/03_Boot_Manager.html ''UEFI 2.11'', §3 Boot Manager], boot variables, image loading and boot option recovery.</ref>
+
+The firmware boot manager may load a UEFI application serving as an OS loader. The OS loader is not required to be built into firmware. Conversely, a firmware boot manager need not parse a Linux kernel image itself: it can select an appropriate UEFI loader. A UEFI application can load another UEFI application, and a multi-stage boot can involve more than one loader.
+
+The UEFI boot-services image API distinguishes <code>LoadImage()</code> (load an EFI image into memory), <code>StartImage()</code> (invoke the loaded image entry point), and <code>ExitBootServices()</code> (terminate boot services). These calls have different semantics and error conditions. In particular, <code>StartImage()</code> can return to its caller if the invoked image exits; it is not inherently a permanent OS takeover. Firmware policy may reject starting an image, and the interface does not guarantee that every loaded image will execute successfully.<ref name="uefiservices">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html ''UEFI 2.11'', §7.4 Image Services], LoadImage, StartImage and ExitBootServices.</ref>
+
+=== Boot-time versus runtime services ===
+UEFI distinguishes Boot Services, which are available during the pre-OS boot-services phase, from Runtime Services, which have a defined continued interface when supported by the platform and OS. A loader that takes over the platform must not assume it can keep invoking boot services after <code>ExitBootServices()</code> succeeds.
+
+The UEFI memory map contains descriptors with types and attributes. An OS loader typically obtains a current map using <code>GetMemoryMap()</code> and passes the corresponding map key to <code>ExitBootServices()</code>. The memory map may change when allocations occur. A stale key can make termination fail, requiring the loader to obtain an updated map and retry under the specification's rules. Thus, “read map once, perform arbitrary allocations, then exit” is not a safe general algorithm.<ref name="uefimemory">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html ''UEFI 2.11'', GetMemoryMap and ExitBootServices], memory map key and termination conditions.</ref>
+
+The OS must distinguish memory reclaimed after boot services from memory reserved for runtime firmware and other platform-defined purposes. Misclassifying memory can corrupt firmware data or cause a kernel fault. The existence of runtime services does not imply that a given OS is obligated to use every one.
+
+== Legacy BIOS-era disk boot is a separate family ==
+Historically, x86 PCs commonly started disk boot code via BIOS conventions and a boot sector, with later stages acquiring more capability. The Linux x86 boot protocol documents legacy constraints and boot sector conventions, including low-memory placement and machine-mode requirements for particular protocol versions. These conventions are not the UEFI file-based boot manager contract, and should not be copied blindly into modern firmware implementations.
+
+A first-stage loader can be intentionally tiny because the earliest environment has limited memory, device access and executable format support. A later stage may provide filesystems, menus, network access, kernel decompression and recovery. These functions are optional and architecture-dependent.
+
+== Linux x86 kernel handoff contracts ==
+The Linux x86 boot protocol is a primary technical specification for loader authors, with versioned setup headers and different entry paths. It documents boot parameters, image placement, command line and initrd handling, and entry state for legacy, 32-bit and 64-bit protocols.<ref name="linuxtech"/>
+
+For an applicable 32-bit protocol path, the loader initializes a <code>struct boot_params</code>, copies the relevant setup header, arranges the kernel image and enters with specified segment descriptors, interrupt state, CPU mode and register contents. The 64-bit path has different entry and paging conditions. A loader cannot treat “x86” as a single unversioned machine state.
+
+An initrd or initramfs image may be passed to support early userspace. The loader's responsibility is to place and describe it according to the target kernel's documented interface; it does not mean the loader itself becomes the root filesystem or initializes all OS services.
+
+The command line is an input to the kernel and must be treated as part of the boot configuration. Misstating the target root device, console, memory layout or security settings can make an otherwise valid image fail or start in an unintended mode.
+
+=== An independently checkable alignment fixture ===
+Suppose a hypothetical boot protocol requires an image to start at an address aligned to <math>A=4096</math> bytes. For an unsigned address <math>x</math>, the smallest aligned address at or above <math>x</math> is
+
+<math display="block">\operatorname{align\_up}(x,A)=A\left\lceil\frac{x}{A}\right\rceil.</math>
+
+For <math>x=0x1003=4099</math>, the next aligned address is <math>0x2000=8192</math>, a padding difference of <math>8192-4099=4093</math> bytes. If an illustrative payload occupies 6000 bytes beginning at that aligned address, its half-open interval is <math>[8192,14192)</math>. The next aligned free address is <math>16384=0x4000</math>. A placement algorithm must also test for overlaps with reserved regions and integer overflow; alignment alone does not establish safe allocation.
+
+These figures are '''invented to test arithmetic'''. The 4096-byte alignment is a stated example assumption, not a universal UEFI/Linux kernel load requirement. Different image formats and boot protocols specify different alignment and placement constraints.
+
+== Image format and relocation ==
+A loader may understand an executable container such as PE/COFF in UEFI, or use a platform-defined raw image, ELF-like executable or kernel-specific compressed image format. The exact file representation is not the same as the in-memory layout: sections may need copying, relocation or decompression. A mismatch between an image's declared architecture and the executing processor can prevent execution even when the file was read without error.
+
+The UEFI specification defines PE image loading and relocation behavior for UEFI applications and drivers. The OS loader may use the resulting firmware-provided environment to arrange a kernel image according to the kernel's own contract.<ref name="uefitech"/> The two contracts should not be conflated: UEFI's <code>StartImage()</code> invocation is not equivalent to every kernel entry protocol.
+
+== Chain of trust and measured boot ==
+Boot integrity involves distinct mechanisms:
+* '''Authenticated boot''' can require cryptographic signatures or hashes under a policy. This provides a defined integrity/authenticity property relative to trusted keys and permitted algorithms, not proof of correct behavior.
+* '''Measured boot''' can record measurements into protected registers or logs for later attestation. A measurement alone does not prevent execution.
+* '''Anti-rollback''' can reject images below an allowed version or security epoch, but version monotonicity and emergency recovery can conflict unless policy is designed explicitly.
+* '''Recovery''' must provide a tested path if an image is missing, invalid, incompatible or unable to start.
+
+A bootloader cannot establish the integrity of a stage that has already compromised its own verification environment. A trusted early stage and protected policy/key material are therefore relevant assumptions. Signed malicious software, vulnerable signed binaries, compromised update infrastructure and configuration errors are not excluded by signature validation alone.
+
+NIST SP 800-193 organizes platform-firmware resilience around protection, detection and recovery; it is a framework for firmware platforms, not a universal proof that every bootloader implements secure boot or measured boot.<ref name="nist">A. Regenscheid, [https://doi.org/10.6028/NIST.SP.800-193 ''Platform Firmware Resiliency Guidelines''], NIST SP 800-193 (2018).</ref>
+
+== Boot failures and state-machine testing ==
+For a testable abstract loader, let states be <code>DISCOVER</code>, <code>VALIDATE</code>, <code>PREPARE</code>, <code>HANDOFF</code>, <code>RECOVER</code> and <code>HALT</code>. Each state has explicit preconditions and failure exits. For example:
+{| class="wikitable"
+! Condition !! Expected response !! Test concern
+|-
+| Preferred image absent || Try permitted alternate or enter recovery || No infinite search or accidental fallback to untrusted media
+|-
+| Image signature invalid under policy || Reject image, record reason, select permitted recovery || No unauthenticated bypass
+|-
+| Image format incompatible || Reject before execution || No uncontrolled jump to arbitrary bytes
+|-
+| Memory map changed before UEFI exit || Follow specification-compliant map retrieval/retry || No stale-key assumption
+|-
+| Kernel returns unexpectedly || Follow platform-defined error/recovery behavior || Do not assume all handoffs are irreversible
+|}
+
+The table is a '''design checklist''', not a claim that all firmware platforms implement identical error states or that UEFI mandates this state machine. Real systems also need bounded retry counts, watchdog handling, secure logging, power-loss injection tests and hardware-in-the-loop recovery validation.
+
+=== A bounded retry example ===
+Assume a hypothetical independent boot attempt succeeds with probability <math>p=0.9</math>, and a system permits up to three attempts. The probability of at least one success under the '''independence assumption''' is
+
+<math display="block">P(\text{success by attempt 3})=1-(1-p)^3=1-(0.1)^3=0.999.</math>
+
+The probability of three failures is <math>0.001</math>. This is a teaching example only: actual boot failures are often correlated (a corrupt image may fail on every retry), so repeated attempts can provide no benefit. For a permanent image incompatibility, all three attempts fail deterministically. Therefore no reliability target follows from the hypothetical 0.999 without a validated failure model.
+
+If the system offers two independent, valid images, recovery success still depends on failure correlations, shared storage, firmware policy, power supply, hardware and the trustworthiness of the alternate. A second copy on the same failing medium may not be meaningfully independent.
+
+== Operational validation and reproducibility ==
+A review of a real bootloader should record: architecture and revision, firmware implementation and version, target image/OS and boot protocol, image provenance and signatures, storage and filesystem assumptions, memory map, parameter ABI, entry mode, key enrollment, fallback behavior and recovery process.
+
+Validation can use emulation for image parsing and handoff logic, unit tests for alignment and bounds checks, fuzzing for malformed image headers, and hardware-in-the-loop tests for power interruptions and recovery. Emulation does not establish behavior on every board, secure element or firmware implementation. CI that checks Wikitext structure or arithmetic does not boot a real kernel and cannot certify firmware compliance.
+
+The independent fixtures here are the 4096-byte alignment calculation (4099 → 8192; 6000-byte payload end 14192; next aligned address 16384) and the explicitly conditional three-attempt reliability model (0.999). They verify two mathematical statements, not a physical bootloader or an empirical success rate.
+
+== Scope and epistemic boundary ==
+A bootloader is an execution-transition mechanism, not an operating system, firmware category, security guarantee or unique piece of hardware. The specific contract determines what code may be loaded, where it is placed, which services are available and what constitutes a valid handoff. UEFI and Linux x86 documents supply authoritative specifications for particular interfaces, while other platforms require their own primary specifications. Real-world correctness requires implementation-specific verification, security analysis and failure testing beyond this article.
+
+== References ==
+<references/>
+
+== Further reading ==
+* UEFI Forum, [https://uefi.org/specs/UEFI/2.11/03_Boot_Manager.html ''Boot Manager''] and [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html ''Boot Services''].
+* Linux kernel, [https://www.kernel.org/doc/html/latest/arch/x86/boot.html ''Linux/x86 Boot Protocol''].
+* [[Bootloader|Core]] · [[Bootloader/Simple|Simple]] · [[Operating system]] · [[Computer architecture]].

@@ -112,7 +112,7 @@ For finite Boolean functions, exhaustive truth-table tests become exponentially 
 
 A credible release process separates at least these claims: Boolean functionality; correct state-machine transitions; static timing; physical electrical integrity; manufacturing rule compliance; and silicon or hardware characterization. Each can pass while another fails. The transition from RTL to a fabricated chip adds synthesis, layout, interconnect and physical constraints.
 
-## Reliability, process variation and research bounds
+== Reliability, process variation and research bounds ==
 
 CMOS logic is affected by transistor threshold variation, dielectric defects, supply transients, clock skew, electromigration in interconnect, temperature and noise. An overaggressive speed design may meet a nominal clock period yet fail at a slower process corner or reduced voltage. Aging and variability can change margins after manufacture.
 

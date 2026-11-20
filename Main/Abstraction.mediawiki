@@ -1,0 +1,66 @@
+{{Knowledge object
+ |title=Abstraction
+ |entity_type=Concept
+ |domain=Philosophy, Computer science, Mathematics
+ |status=Established
+ |provenance=Source-grounded synthesis of SEP Models in Science and Philosophy of Computer Science, Cousot–Cousot (1977), and scientific representation scholarship; issue #65
+}}
+{{Reading depth|base=Abstraction|current=Core}}
+
+= Abstraction =
+
+== Overview ==
+
+{{:Abstraction/Simple}}
+
+'''Abstraction''' is the selective representation of features of an object, process, system or domain while omitting, suppressing or organizing other features. In mathematics, computer science, cognition and science, abstractions have different formal and empirical criteria; they should not be identified by a single general operation of “making something simpler.”
+
+== Purposes and validity ==
+
+{| class="wikitable"
+! Domain !! Typical purpose !! Test or limit
+|-
+| Computer science || Hide implementation details behind a defined interface, or approximate possible program states || Behavioral refinement, interface conformance or conservative program analysis
+|-
+| Mathematical structures || Preserve specified relations while identifying otherwise different objects || Homomorphisms, invariants or precisely stated equivalence
+|-
+| Scientific representation || Model selected processes, variables or regularities || Predictive/explanatory validity for an identified target and regime
+|-
+| Cognitive reasoning || Represent categories and relevant commonalities || Task-specific performance and empirical studies of human behavior
+|}
+
+Philosophical work distinguishes '''abstraction''' (leaving some aspects unspecified) from '''idealization''' (sometimes introducing deliberately false simplifying assumptions), while recognizing that real scientific models can combine them. There is no universal representation function that preserves exactly the right aspects for every scientific question.<ref name="sep_core">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/models-science/ ''Models in Science''], abstraction, idealization and model-based representation; [https://plato.stanford.edu/entries/scientific-representation/ ''Scientific Representation''], purpose and contextual accuracy.</ref>
+
+Formal abstraction can be made auditable. In computer program verification, an abstract domain may represent sets of concrete states and overapproximate possible results; soundness is an explicit correctness relation, not a generic label for a simplified diagram.<ref name="cousot_core">Patrick Cousot and Radhia Cousot, [https://doi.org/10.1145/512950.512973 “Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs by Construction or Approximation of Fixpoints”], POPL (1977).</ref>
+
+== What the topic is not ==
+
+Abstraction is not identical to the metaphysical category of '''abstract objects''', nor is it a synonym for generalization, removing complexity, or selecting a statistically parsimonious hypothesis. Its value depends on what is preserved.
+
+Connections include [[Related to::Scientific model|scientific models]], [[Related to::Computation|computation]], [[Related to::Reasoning|reasoning]] and [[Related to::Occam's razor|parsimony as a distinct methodological principle]]. These are semantic relationships, not claims of a single psychological or machine-learning mechanism.
+
+== Incoming semantic relationships ==
+
+The view below retrieves recorded incoming [[Property:Related to|Related to]] annotations only.
+
+{{#ask:
+ [[Related to::Abstraction]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming semantic relationships are recorded.''
+}}
+
+== Reading depths ==
+
+[[Abstraction/Simple|Simple]] gives accessible examples and practical limits. [[Abstraction/Technical|Technical]] independently presents formal representation, sound overapproximation, abstract interpretation, information loss and cross-domain validation criteria.
+
+== References ==
+
+<references/>
+
+[[Category:Philosophy]]
+[[Category:Computer science]]
+[[Category:Mathematics]]

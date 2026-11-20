@@ -1,0 +1,130 @@
+{{Reading depth|base=Abstraction|current=Technical}}
+
+= Abstraction — Technical =
+
+'''Abstraction''' denotes selective representation, omission of irrelevant distinctions and construction of a description at a chosen level of granularity. Its formal instances can preserve specified observables or deliberately overapproximate possible states; its scientific and cognitive instances are usually evaluated relative to an explanatory or task-oriented goal. The fact that several disciplines use the term does not establish a single underlying mechanism. A research-grade account must identify the representation, what it suppresses, what it preserves, and what evidence licenses its use.
+
+This treatment distinguishes abstraction from idealization and metaphysical abstract objects, formalizes information preservation and sound overapproximation, works a complete interval-analysis example, and specifies the boundary between computer program semantics, scientific modeling and cognitive generalization. The Stanford Encyclopedia of Philosophy examines scientific models as selective representations and distinguishes idealized false assumptions from leaving some properties unspecified; the philosophy-of-computer-science literature emphasizes interfaces, types and implementation relations.<ref name="models">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/models-science/ ''Models in Science''], discussions of scientific idealization and abstraction, and [https://plato.stanford.edu/entries/scientific-representation/ ''Scientific Representation''], intended targets and contextual criteria of fit.</ref><ref name="csphilosophy">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/computer-science/ ''The Philosophy of Computer Science''], abstraction, specification, program semantics and relation to physical implementation.</ref>
+
+== Abstraction as a structure-preserving representation ==
+
+Suppose a concrete domain of objects or states is <math>C</math> and an abstract domain is <math>A</math>. A basic representation map can be written
+
+<math display="block">\alpha:C\longrightarrow A.</math>
+
+This map may be many-to-one. The equivalence relation it induces is <math>x\sim_\alpha y</math> exactly when <math>\alpha(x)=\alpha(y)</math>; properties of concrete objects that differ within one equivalence class cannot be recovered from the abstract value alone.
+
+For a concrete observable <math>g:C\to Y</math>, exact preservation through the abstraction means that a function <math>h:A\to Y</math> exists such that
+
+<math display="block">g=h\circ\alpha,\qquad \text{that is,}\quad g(x)=h(\alpha(x))\quad\forall x\in C.</math>
+
+Equivalently, <math>g</math> must be constant on every nonempty fiber <math>\alpha^{-1}(a)</math>. If two concrete states have the same abstract representation but different values of a desired observable, the abstraction does not preserve that observable exactly. This is a precise formulation of why a map suitable for one question can be unsuitable for another.
+
+=== Fully checkable parity example ===
+
+Let <math>C=\mathbb Z</math>, <math>A=\mathbb Z/2\mathbb Z=\{0,1\}</math>, and <math>\alpha(n)=n\bmod 2</math>. The representation forgets magnitude and sign while preserving parity:
+
+<math display="block">\alpha(m+n)=[\alpha(m)+\alpha(n)]\bmod2.</math>
+
+The parity observable <math>g(n)=n\bmod2</math> factors through <math>\alpha</math> with <math>h(a)=a</math>. The magnitude observable <math>g_2(n)=|n|</math> cannot factor through this abstraction, because <math>\alpha(1)=\alpha(3)=1</math> but <math>|1|\ne|3|</math>. This is a mathematical demonstration of both useful preservation and unavoidable information loss, not an assertion that parity is all an arithmetic model should represent.
+
+The same principle applies to data processing. Aggregating individual measurements into a mean preserves a particular summary but usually loses the distribution, tails and individual differences. For downstream failure analysis, those missing features may be precisely what matters.
+
+== Abstract interpretation and sound approximation ==
+
+In static analysis, a program may have too many concrete executions for exhaustive enumeration. Patrick Cousot and Radhia Cousot's 1977 work developed '''abstract interpretation''', using lattices and fixed-point approximation to reason conservatively about all program behaviors within a stated semantics.<ref name="cousot">Patrick Cousot and Radhia Cousot, [https://doi.org/10.1145/512950.512973 “Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs by Construction or Approximation of Fixpoints”], POPL, 238–252 (1977). Original formal framework.</ref>
+
+In one common formulation, the concrete domain is a powerset <math>\mathcal P(C)</math> of possible states, an abstract domain <math>A</math> carries an approximation order, and an abstraction map and a concretization map connect the domains:
+
+<math display="block">\alpha:\mathcal P(C)\to A,\qquad\gamma:A\to\mathcal P(C).</math>
+
+Soundness can require a concrete set <math>S</math> to be included in its abstract concretization,
+
+<math display="block">S\subseteq\gamma(\alpha(S)).</math>
+
+A Galois connection, where appropriate, satisfies <math>\alpha(S)\sqsubseteq a</math> if and only if <math>S\subseteq\gamma(a)</math>. This gives a principled relationship between approximation order and possible concrete behaviors. Not every practical simplification is a Galois connection; that structure is a specific formal choice.
+
+For concrete transition function <math>F:C\to C</math>, a sound abstract post-operation <math>F^\sharp:A\to A</math> should satisfy
+
+<math display="block">F(\gamma(a))\subseteq\gamma(F^\sharp(a))</math>
+
+when <math>F(\gamma(a))</math> denotes the image of the represented concrete states. Soundness here means that no behavior permitted by the specified concrete semantics is omitted. It does '''not''' mean an implementation is free from bugs, the semantics captures real hardware, or every flagged error is a real execution.
+
+=== Interval abstraction: one fully specified example ===
+
+For a bounded nonempty set of real states, define its interval abstraction as the smallest closed interval containing it. For finite bounds, <math>\alpha(S)=[\inf S,\sup S]</math>, and <math>\gamma([a,b])=\{x\in\mathbb R:a\le x\le b\}</math>. Extended intervals and empty-set elements are needed to describe every possible set, but the finite example here avoids those complications.
+
+Suppose independent input ranges are <math>x\in[1,2]</math> and <math>y\in[3,4]</math>. Standard interval arithmetic yields
+
+<math display="block">[1,2]+[3,4]=[4,6],</math>
+<math display="block">[1,2]-[3,4]=[1-4,\,2-3]=[-3,-1].</math>
+
+These results contain every possible real sum or difference under the specified ranges. The subtraction interval establishes <math>x-y<0</math> for all allowed pairs without enumerating continuum-many pairs.
+
+Now consider an expression containing the same uncertain variable twice, <math>z=x-x</math> for <math>x\in[1,2]</math>. The concrete result is always zero, but straightforward interval operations treat the two occurrences as if their ranges could vary independently:
+
+<math display="block">[1,2]-[1,2]=[-1,1]\supsetneq\{0\}.</math>
+
+The interval is '''sound but imprecise'''. An analysis that claims a possible nonzero result has a false positive relative to the true expression, not a demonstration that the arithmetic identity is false. A richer relational domain, symbolic simplification or correlated representation can preserve the dependency at greater analysis cost.
+
+{| class="wikitable"
+! Expression !! Concrete result set or bound !! Simple interval result !! Interpretation
+|-
+| x+y || [4,6] || [4,6] || Exact for these independent intervals
+|-
+| x−y || [−3,−1] || [−3,−1] || Safely establishes negativity
+|-
+| x−x || {0} || [−1,1] || Sound overapproximation caused by lost dependence
+|}
+
+An abstract interpreter approximating loop invariants may need fixed-point iteration; widening can force termination at the expense of precision, and narrowing can recover some lost detail. Convergence and soundness require explicit transfer, join and widening definitions. A program analysis that is sound for an integer model may be inapplicable to floating-point overflow, concurrency or external I/O without additional modeling.
+
+== Representational interfaces and refinement ==
+
+In software engineering, abstraction often hides implementation behind a contract. A client uses an operation based on its declared preconditions, postconditions and observable effects. Correct implementation requires that concrete behavior satisfy the advertised contract; an interface is not adequate merely because its name is simple.
+
+A stronger formal notion is '''refinement''': a concrete implementation is acceptable when its externally visible behavior falls within the specification's allowed behavior under the specified environment. Safety properties, liveness, concurrency and timing may each require distinct refinement relations. Replacing a physical system with a block diagram is not a proof of refinement.
+
+At a hardware level, one abstraction might describe a transistor as a gate; another describes interconnected gates as registers, datapaths or programmable processors. Each mapping preserves some behavior and suppresses other behavior. A Boolean gate truth table may preserve stable logical functionality while omitting switching hazards, power or metastability. [[Computation]] and [[Computer architecture]] provide existing higher-level contexts.
+
+== Scientific abstraction versus idealization ==
+
+Scientific modeling may remove detail because it is irrelevant to a target question. One can describe a falling object using position and velocity without specifying its molecular structure; the model is an abstraction if omitted variables are left unspecified. A frictionless surface model may instead deliberately posit a false condition to simplify an analysis, an '''idealization'''. These practices can overlap, and their classification depends on the representation and philosophy-of-science account used.<ref name="models"/>
+
+A scientifically useful abstraction should state the intended target system, spatial and temporal scales, observables, domain of applicability and how omitted influences affect predictions. A reduced-order model can preserve some dynamical modes while missing fast transients or rare events. A statistical average can fit mean outcomes while obscuring disparities and risk. Validation should therefore measure performance on the observables the research actually cares about, not merely on the features the abstraction makes easy to calculate.
+
+### Mathematical abstraction, ontology and category errors
+
+'''Abstract objects''' in metaphysics refer to a contested category of entities (for example numbers or sets under some philosophies), not automatically the process of constructing an abstraction of a concrete system. Treating the two as the same concept produces a philosophical category error. The relevant positions include nominalism, platonism and other accounts of mathematical ontology, not one settled scientific identity.<ref name="abstractobjects">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/abstract-objects/ ''Abstract Objects''], ontological issues distinct from practical or mathematical abstraction procedures.</ref>
+
+Likewise, category formation in human cognition cannot be reduced without evidence to the same operation as a type constructor or a Galois connection. They may share a useful descriptive analogy, but actual psychological or neural mechanisms require their own experiments and explanatory models. No statement about human abstraction here licenses conclusions about the architecture or abilities of an artificial agent.
+
+== Abstraction and explanatory economy ==
+
+Abstraction is frequently associated with simplicity, but the two goals can diverge. A representation with few states can be computationally cheap yet inadequate for an observation; a complicated abstraction with explicit invariants can be safer and more interpretable for an important application. [[Occam's razor]] concerns the justification for avoiding unnecessary complexity in hypotheses and models, not the mathematical property of preserving a chosen observable.
+
+A useful formal research question is: does the chosen abstraction preserve enough information to evaluate the decision loss, safety property or predictive metric? If yes, the reduced representation can be efficient. If not, selecting it merely because it is shorter is an error.
+
+== Independent verification and research protocol ==
+
+A rigorous abstraction study documents the concrete state domain, abstract elements, abstraction and concretization maps, which operations are modeled, the exact soundness or refinement obligations, the properties intended to be preserved, and the tests used to check precision and implementation.
+
+For the parity and interval examples, independent checks can enumerate finite integer inputs and verify <math>\alpha(m+n)=(\alpha(m)+\alpha(n))\bmod2</math>, <math>[1,2]+[3,4]=[4,6]</math>, <math>[1,2]-[3,4]=[-3,-1]</math> and the strict imprecision <math>\{0\}\subsetneq[-1,1]</math> for the repeated-variable expression.
+
+For an actual analysis, also verify source code and compiler version, data types, overflow behavior, environmental assumptions and an independent reference implementation. A soundness proof conditional on an inaccurate concrete semantics is not a validation of the real system. Reproducing a reduced model's outputs is not the same as demonstrating that it is an adequate scientific explanation.
+
+== Open research and epistemic limits ==
+
+Research challenges include adaptive abstraction refinement, relational and probabilistic abstract domains, trustworthy AI/software verification, abstractions for real-time cyber-physical systems, multiscale scientific modeling and loss of essential information in aggregate statistics. None of these implies that there is one universally best level of description.
+
+The appropriate abstraction is defined jointly by the target system and the question being asked. A research-useful article must preserve the distinction between exact representation, conservative approximation, empirical model validity and a useful but unverified analogy.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* Cousot and Cousot, [https://doi.org/10.1145/512950.512973 ''Abstract Interpretation'' (1977)].
+* Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/models-science/ ''Models in Science''], [https://plato.stanford.edu/entries/scientific-representation/ ''Scientific Representation''] and [https://plato.stanford.edu/entries/computer-science/ ''The Philosophy of Computer Science''].
+* [[Abstraction/Simple|Simple]] · [[Abstraction|Core]] · [[Scientific model]] · [[Logic]] · [[Computation]].

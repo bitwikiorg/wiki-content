@@ -1,0 +1,120 @@
+{{Reading depth|base=Graphics processing unit|current=Technical}}
+
+= Graphics processing unit — Technical =
+
+A '''graphics processing unit''' (GPU) is a throughput-oriented programmable or partly fixed-function processor used for graphics and general parallel workloads. Its architectural identity is not defined by a single vendor, instruction width, physical packaging format or count of execution units. Modern devices integrate thread scheduling, arithmetic pipelines, register files, caches, local/shared memories, external memory interfaces and, depending on purpose, specialized graphics, matrix and media engines. Some are integrated into systems-on-chip; others occupy dedicated packages and accelerator boards.
+
+This treatment separates three descriptions that are often confused: a program's logical parallel work, the programming/runtime contract, and the physical execution resources. It uses NVIDIA CUDA and AMD HIP documentation as concrete, explicitly architecture-dependent examples, not universal standards for all GPUs.<ref name="cuda">NVIDIA, [https://docs.nvidia.com/cuda/archive/12.3.0/cuda-c-programming-guide/ ''CUDA C Programming Guide'' (CUDA 12.3 archived version)], thread hierarchy, memory model, SIMT scheduling, occupancy and hardware constraints.</ref><ref name="hip">AMD, [https://rocm.docs.amd.com/projects/HIP/en/docs-6.3.0/understand/programming_model.html ''HIP programming model'' (6.3)], RDNA/CDNA execution hierarchy, workgroups and architecture-dependent wavefront widths.</ref><ref name="mem">NVIDIA, [https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/writing-cuda-kernels.html ''CUDA Programming Guide: Writing SIMT Kernels''], coalesced global-memory access and transpose examples.</ref>
+
+== From graphics pipeline to general parallel processor ==
+
+Traditional graphics hardware specialized in geometric transformation, rasterization, texture sampling and display composition. Programmable vertex, fragment/pixel and compute stages widened its applicability. Contemporary graphics APIs and compute APIs expose different execution and synchronization abstractions. A compute shader and a CUDA/HIP kernel can target similar arithmetic hardware without sharing identical language, memory-scope or resource contracts.
+
+A graphics pipeline may contain fixed-function blocks that do not behave like general-purpose arithmetic cores. The distinction matters when comparing pixel fill, texture sampling, ray intersection, matrix throughput and ordinary scalar arithmetic. No single “GPU FLOPS” figure describes all those units.
+
+The term '''GPGPU''' refers to general-purpose computation using GPU resources. This does not make GPUs drop-in replacements for CPUs. A CPU generally retains system-control duties, interrupt/privilege mechanisms and the execution of latency-sensitive host code. An accelerator's device-side instruction architecture and microarchitecture are different from the host CPU's architectural state, although both execute instructions.
+
+== Execution hierarchy and scheduling ==
+
+A CUDA kernel launch specifies a grid of thread blocks. Each block contains logical threads with indexes; blocks can be scheduled on available streaming multiprocessors (SMs). On the NVIDIA CUDA architectures described by the referenced guide, threads are grouped into '''warps''' of 32 for SIMT scheduling. A logical thread maintains its own registers and program semantics, but multiple active lanes share instruction issue. Hardware residency is constrained by per-thread registers, per-block shared memory, available warps, resident blocks and other architecture-specific limits.<ref name="cuda"/>
+
+AMD HIP likewise describes grids, blocks and tightly coupled wavefronts, but the wavefront width can be 32 or 64 depending on architecture. The AMD terminology of compute units and wavefronts should not be collapsed into NVIDIA's SM/warp nomenclature as though they were exact one-to-one hardware equivalents.<ref name="hip"/>
+
+For a one-dimensional kernel of <math>N</math> elements and <math>B</math> threads per block, a common launch chooses
+
+<math display="block">G=\left\lceil\frac{N}{B}\right\rceil</math>
+
+blocks and computes logical index <math>i=bB+t</math>, with block index <math>b</math> and thread index <math>t</math>. Every thread checks <math>i<N</math> before accessing its element. The check matters because the last block may contain inactive lanes.
+
+=== Reproducible dispatch fixture ===
+
+For <math>N=1000</math> and <math>B=256</math>, <math>G=\lceil1000/256\rceil=4</math>. The launch creates 1024 logical thread slots, of which 1000 correspond to valid elements and 24 are out of range. The fraction of launched slots doing useful element work is <math>1000/1024=0.9765625</math> (97.65625%). This is a simple dispatch-coverage ratio, '''not''' a GPU occupancy or performance measurement. Real residency depends on hardware resources and compiler register allocation.
+
+At NVIDIA's documented 32-thread warp width, 256 threads correspond to eight warps per block; at a 64-lane wavefront width they correspond to four wavefronts. These numbers describe logical grouping for the stated models, not execution time or the number of physical cores.
+
+== SIMT, divergence and synchronization ==
+
+'''Single-instruction, multiple-thread''' (SIMT) execution groups multiple logical threads around instruction issue. If different lanes follow different branches, the hardware may execute divergent paths with inactive lanes masked or otherwise coordinate execution; divergence can reduce utilization of execution resources. It does not mean the program is necessarily incorrect. The effect depends on active masks, path lengths, control flow, compiler decisions and device generation.
+
+Modern NVIDIA architectures introduced independent thread scheduling, changing assumptions about implicit warp-synchronous behavior. A kernel that relies on threads reaching a particular instruction together can be incorrect without explicit synchronization even when it happened to work on earlier devices. The programming contract, not a presumed hardware lockstep, must determine which barriers, atomics and memory-ordering operations are needed.<ref name="cuda"/>
+
+A '''data race''' arises when conflicting unsynchronized accesses lack an appropriate ordering guarantee. Kernel correctness must be assessed under the relevant memory model. Shared memory may be visible to cooperating threads in a block after the correct synchronization, but ordinary thread-block barriers are not a universal global-grid synchronization mechanism. Atomic operations protect specified read-modify-write semantics, but do not automatically order every unrelated access.
+
+== Memory hierarchy and coalescing ==
+
+GPU memory systems can include per-thread registers, on-chip block-local shared memory or local data stores, several levels of cache, device global memory and host-visible memory. These have different latency, capacity, bandwidth and visibility. The word “local” is overloaded across APIs: CUDA local memory is not synonymous with programmer-managed shared memory.
+
+Global-memory coalescing combines accesses from a warp/wavefront into a smaller set of transactions when their addresses occupy favorable segments. This is architecture-, instruction- and alignment-dependent. The CUDA guide illustrates 32 lanes each loading a contiguous 4-byte word: 128 useful bytes can be served by four 32-byte transactions when aligned appropriately. If instead each lane accesses a distinct 32-byte segment, the same 128 useful bytes can require 32 transactions totaling 1024 transferred bytes in the guide's illustrative model.<ref name="mem"/>
+
+The idealized transfer utilization in these two cases is
+
+<math display="block">U_{\mathrm{contiguous}}=\frac{128}{4\cdot32}=1,\qquad U_{\mathrm{strided}}=\frac{128}{32\cdot32}=0.125.</math>
+
+Thus 100% versus 12.5% of requested transaction bytes are useful under those particular segment assumptions. These ratios do not by themselves predict runtime: caching, repeated accesses, instruction issue, transaction merging, memory controllers and computation can alter measured throughput.
+
+Tiling can improve reuse by staging data in shared memory, but it also consumes capacity and adds synchronization. Unaligned accesses, bank conflicts and register spills can reverse an apparent optimization. Coalescing should be evaluated using memory-transaction and profiler measurements, not by visual inspection alone.
+
+== Compute-bound versus bandwidth-bound workloads ==
+
+A useful first-order performance model is the roofline bound. Let <math>P_{\max}</math> denote sustainable or specified peak arithmetic throughput in operations per second for the operation and precision of interest, <math>W_{\max}</math> the relevant memory bandwidth in bytes per second, and <math>I</math> arithmetic intensity in operations per byte transferred across that memory level. The bound is
+
+<math display="block">P_{\mathrm{attainable}}\le\min(P_{\max},I W_{\max}).</math>
+
+It is an upper bound conditional on what operations are counted, which memory traffic is measured, which hardware engine performs them, and whether the selected peaks are simultaneously attainable. It is not a guarantee of real performance. The conceptual roofline formulation was developed to connect computation and communication limits.<ref name="roof">Samuel Williams, Andrew Waterman and David Patterson, [https://doi.org/10.1145/1498765.1498785 “Roofline: An Insightful Visual Performance Model for Multicore Architectures”], ''Communications of the ACM'' 52(4), 65–76 (2009). The model applies to many architectures; GPU adaptation must use appropriate measured ceilings.</ref>
+
+=== Reproducible roofline fixture ===
+
+Suppose an explicitly hypothetical device has <math>P_{\max}=10</math> teraoperations/s and memory bandwidth <math>W_{\max}=500</math> gigabytes/s. With intensity <math>I=4</math> operations/byte, the memory roof is <math>4\cdot500=2000</math> gigaoperations/s = 2 teraoperations/s. The roofline bound is therefore <math>\min(10,2)=2</math> teraoperations/s. At <math>I=40</math> operations/byte the memory roof is 20 teraoperations/s and the bound becomes 10 teraoperations/s. The crossover intensity is <math>P_{\max}/W_{\max}=20</math> operations/byte. These numbers are hypothetical arithmetic fixtures, not benchmark measurements or claims about a marketed GPU.
+
+A memory-bandwidth ceiling is only one bottleneck. Irregular accesses, occupancy limitations, dependencies, launch overhead, atomics and cache behavior can yield much less than the bound.
+
+== Occupancy, latency hiding and arithmetic throughput ==
+
+'''Occupancy''' in CUDA-style terminology measures the fraction of maximum active warps resident on an SM. It is limited by registers per thread, shared memory per block, threads per block, architectural block limits and other hardware resources. More occupancy can help hide latency, but beyond a point it may have little effect. Reducing registers to increase occupancy may cause spills and worse performance. Occupancy must not be equated with percentage of arithmetic units doing useful work.
+
+The throughput of a program is not the number of marketed “cores” multiplied by a single universal clock-and-operations factor. Specialized matrix engines can have different precision modes and numerical semantics. Effective work depends on data layout, scheduling, compiler lowering, instruction mix, and whether the workload actually uses those engines.
+
+Floating-point reductions are often not associative due to rounding; different parallel reduction trees can produce slightly different numerical answers. A benchmark must report precision, numerical tolerance and whether operations such as fused multiply-add, reduced precision or sparsity assumptions change the comparison.
+
+== Host-device transfers and end-to-end performance ==
+
+A useful latency decomposition for an application that explicitly transfers input and output between host and device is
+
+<math display="block">T_{\mathrm{total}}=T_{\mathrm{prepare}}+T_{\mathrm{H2D}}+T_{\mathrm{launch}}+T_{\mathrm{kernel}}+T_{\mathrm{D2H}}+T_{\mathrm{sync}}+T_{\mathrm{other}}.</math>
+
+Some phases can overlap when supported by the runtime, dependencies and hardware; then their durations cannot simply be added as though execution were serial. For small kernels, launch and transfer overhead can dominate. Unified virtual addressing or shared physical memory does not make all data access free or eliminate synchronization costs.
+
+=== Transfer break-even fixture ===
+
+For an invented serial execution model, assume CPU computation takes 8 ms, GPU kernel execution 1 ms, total transfers 4 ms and dispatch/synchronization 0.5 ms. GPU end-to-end time is 5.5 ms and speedup is <math>8/5.5\approx1.4545</math>, '''not''' the eightfold ratio suggested by kernel-only timing. If transfers instead take 8 ms, total GPU time is 9.5 ms and the GPU is slower (<math>8/9.5\approx0.8421</math>). No empirical hardware claim is implied.
+
+Data already resident on a GPU can change the accounting. Conversely, a workflow with many small dependent kernels may incur substantial scheduling overhead. Correct benchmarking requires device synchronization around the timed interval, careful warmup, repeated measurements and an honest baseline.
+
+== Graphics-specific and compute-specific capabilities ==
+
+Rendering uses geometry and raster stages, texture sampling, shading, depth tests and presentation interfaces. Some devices support dedicated ray-tracing acceleration. Compute applications use kernels and memory/synchronization abstractions and may employ specialized matrix engines. The graphics pipeline and compute runtime can coexist on the same hardware but have distinct resource contracts and scheduling interactions.
+
+Driver and runtime software translate API requests into device commands, handle allocations, schedule execution and enforce supported isolation boundaries. Compilation may involve an intermediate representation and architecture-specific lowering. The same high-level program can map differently to NVIDIA, AMD and other implementations. Portability is not performance equivalence.
+
+== Correctness, security and reproducibility ==
+
+GPU kernels can fail through out-of-bounds accesses, synchronization errors, race conditions, arithmetic instability, unsupported memory-order assumptions or device-specific undefined behavior. Shared hardware may also present side-channel and isolation concerns, but particular vulnerabilities require architecture- and threat-model-specific evidence. A GPU should not be described as secure or insecure based solely on its throughput orientation.
+
+A rigorous evaluation states hardware model, driver/runtime/compiler versions, programming API, kernel source, data shape and distribution, numerical precision, transfer policy, synchronization, warmup, clocks/power, measurement distribution and error bars. Profile actual memory transactions, stalls and occupancy when diagnosing performance. Prefer a workload-representative optimized CPU comparison over a naïve scalar baseline.
+
+A device-level model must not be mistaken for proof that all GPUs use the same warp width, register architecture or memory transactions. Likewise a vendor guide documents a supported programming model, not an independent cross-vendor performance experiment.
+
+== Conclusion ==
+
+The GPU is best understood as a heterogeneous hardware/software execution system designed to exploit parallelism and data locality. Its real advantage emerges from a workload with enough independent useful work, compatible data movement, suitable numerical behavior and adequate software support. Peak compute rates, lane counts and occupancy are not sufficient evidence of application speedup. The worked examples above test only declared algebraic and architectural assumptions; live device behavior must be measured separately.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* NVIDIA, [https://docs.nvidia.com/cuda/archive/12.3.0/cuda-c-programming-guide/ ''CUDA C Programming Guide''].
+* AMD, [https://rocm.docs.amd.com/projects/HIP/en/docs-6.3.0/understand/programming_model.html ''HIP programming model''].
+* Williams et al., [https://doi.org/10.1145/1498765.1498785 ''Roofline''].
+* [[Graphics processing unit|Core]] · [[Graphics processing unit/Simple|Simple]] · [[Computer architecture]] · [[Compiler]].

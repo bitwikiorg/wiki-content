@@ -108,7 +108,7 @@ Power/thermal limits, hardware diversity, energy delivery, data locality and coo
 
 For geometric scaling by factor <math>k</math> with a family of similar shapes, characteristic lengths scale as <math>k</math>, surface area scales as <math>k^2</math> and volume as <math>k^3</math>. Therefore surface-to-volume ratio scales as <math>1/k</math>. Changing geometry can alter heat transfer, structural loading and transport, because different mechanisms depend on different dimensional powers.
 
-In fluid mechanics, dynamic similarity may depend on dimensionless groups such as Reynolds number, <math>\mathrm{Re}=\rho UL/\mu</math>. Under an assumed fixed shape and geometry, matching scale alone is insufficient when fluid viscosity, speed and length are changed in incompatible ways. See [[Dimensional analysis]] for the underlying matrix/null-space argument. A dimensionally consistent relation can still omit relevant physics or boundary conditions.
+In fluid mechanics, dynamic similarity may depend on dimensionless groups such as Reynolds number, <math>\mathrm{Re}=\rho UL/\mu</math>. Under an assumed fixed shape and geometry, matching scale alone is insufficient when fluid viscosity, speed and length are changed in incompatible ways. See dimensional analysis for the underlying matrix/null-space argument. A dimensionally consistent relation can still omit relevant physics or boundary conditions.
 
 This physical meaning of scaling is not the same as horizontal server expansion, and a biological size-to-physiology scaling law is not derived merely from software benchmarks. In an interdisciplinary encyclopedia, each domain must preserve its modeling assumptions.
 
@@ -131,7 +131,7 @@ Results should plot throughput, service time distribution and errors against off
 
 [[Optimization]] seeks a best feasible choice for a specified objective and constraints; scaling evaluates behavior across changes in size/work/resources. Selecting a cost-optimal number of replicas for one load level does not establish how the design responds across a larger demand range. An optimization algorithm may itself scale poorly in computational time as its decision-space dimension grows.
 
-[[Robustness]] concerns maintaining function under a defined perturbation. [[Sensitivity analysis]] examines output change with parameters. [[Scientific model]] governs assumptions; [[Validation]] asks whether model predictions describe the target. These are separate questions.
+[[Robustness]] concerns maintaining function under a defined perturbation. sensitivity analysis examines output change with parameters. [[Scientific model]] governs assumptions; [[Validation]] asks whether model predictions describe the target. These are separate questions.
 
 Statistical and machine-learning scaling curves often analyze test performance as model, data and compute resources change. The fitted exponent and transition regimes depend on model class, dataset, allocation and evaluation metric. Transfer of an observed relation across architectures, languages or tasks must be tested rather than asserted from a catchy scaling-law headline.
 

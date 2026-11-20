@@ -1,0 +1,112 @@
+{{Reading depth|base=Chronotype|current=Technical}}
+
+= Chronotype — Technical =
+
+'''Chronotype''' concerns stable but modifiable interindividual differences in the timing of daily sleep, wakefulness, preferred activity and associated circadian physiology. In human chronobiology it is often operationalized by morningness–eveningness questionnaire scores or habitual free-day sleep timing. These observables are not identical to one another or to the phase of an endogenous pacemaker. The circadian clock, the sleep homeostatic process, light exposure, work schedules, age and social pressures all influence measured sleep behavior.
+
+Horne and Östberg's 1976 morningness–eveningness questionnaire examined individual preferences and relationships with daily temperature variation. Roenneberg, Wirz-Justice and Merrow's 2003 work developed questionnaires distinguishing temporal behavior on work and free days and helped establish a framework for studying social constraints on sleep timing.<ref name="horne">J. A. Horne and O. Östberg, [https://pubmed.ncbi.nlm.nih.gov/1027738/ “A Self-Assessment Questionnaire to Determine Morningness-Eveningness in Human Circadian Rhythms”], ''International Journal of Chronobiology'' 4(2), 97–110 (1976).</ref><ref name="roenneberg">Till Roenneberg, Anna Wirz-Justice and Martha Merrow, [https://doi.org/10.1177/0748730402239679 “Life Between Clocks: Daily Temporal Patterns of Human Chronotypes”], ''Journal of Biological Rhythms'' 18(1), 80–90 (2003).</ref>
+
+== What is being measured? ==
+
+A study of chronotype may intend to measure subjective preference, actual sleep behavior, physiological circadian phase or performance at different clock times. The variables overlap, but none can be substituted without validation.
+
+{| class="wikitable"
+! Measurement !! Definition or observable !! Main confound or requirement
+|-
+| Morningness–Eveningness Questionnaire (MEQ) || Scores from self-reported preferred activity and sleep timing || Self-report, population norms and question interpretation
+|-
+| Munich ChronoType Questionnaire (MCTQ) || Reported sleep onset and offset on work and free days || Sleep debt, school/work time constraints and recall
+|-
+| Actigraphy / sleep diary || Behavioral sleep timing and activity through multiple days || Does not by itself identify the endogenous circadian pacemaker's phase
+|-
+| Dim-light melatonin onset (DLMO) || A physiological phase marker under controlled light and sampling conditions || Threshold definition, recent light history and assay protocol
+|-
+| Repeated performance testing || Accuracy, reaction time or alertness by testing time || Time awake, prior sleep, task learning and circadian phase must be separated
+|}
+
+A categorical label like “evening type” often compresses a continuous distribution. Classification cutoffs from one reference population may not transfer to other age groups or regions. Population studies found that demographic and work-schedule factors affect questionnaire classification, reinforcing the need for sample-specific measurement validity.<ref name="epidemiology">[https://pubmed.ncbi.nlm.nih.gov/16461986/ “The epidemiology of morningness/eveningness: influence of age, gender, ethnicity, and socioeconomic factors in adults (30–49 years)”], epidemiologic study of MEQ distributions and contextual predictors.</ref>
+
+== Circadian phase, entrainment and behavior ==
+
+Human physiology contains oscillatory processes synchronized, or '''entrained''', in part by environmental light–dark cycles. A simplified 24-hour observable may be represented as a cosinor,
+
+<math display="block">x(t)=\mu+A\cos\left(\frac{2\pi}{24}(t-\phi)\right),</math>
+
+where <math>\mu</math> is a baseline, <math>A</math> amplitude and <math>\phi</math> an acrophase in hours for a chosen observable and idealized sinusoidal fit. The model does not imply that all biological rhythms are perfectly sinusoidal, free-running period is exactly 24 hours, or that every measured signal has the same phase.
+
+For the invented values <math>\mu=10</math>, <math>A=2</math>, <math>\phi=5</math> hours, the model predicts a peak <math>x(5)=12</math> and a trough <math>x(17)=8</math>, 12 hours later. These are mathematical phase checks and do not measure any person's melatonin, temperature or activity.
+
+A person's sleep timing can shift even when the internal pacemaker phase has not shifted by the same amount. Conversely, a measured change in circadian phase may be masked by work requirements. The relationship between habitual clock time and endogenous phase depends on entrainment history, light sensitivity, internal period and sleep homeostasis.
+
+== Social jetlag and sleep midpoint conventions ==
+
+A commonly studied operational measure of social jetlag compares the midpoint of sleep on free days with the midpoint on workdays. Suppose recorded clock times are interpreted on an unwrapped 24-hour timeline.
+
+For bedtime 23:00 on workdays and waking 07:00 the next day, treat the waking time as 31:00 relative to the start of that clock day:
+
+<math display="block">MSW=\frac{23+31}{2}=27\pmod{24}=03{:}00.</math>
+
+On free days with sleep 01:00–09:00, the midpoint is
+
+<math display="block">MSF=\frac{1+9}{2}=05{:}00.</math>
+
+The signed midpoint difference in the straightforward within-12-hours case is <math>MSF-MSW=+2</math> hours. Because clock time is circular, a general shortest signed difference can be represented as
+
+<math display="block">\Delta t=\bigl[(MSF-MSW+12)\bmod24\bigr]-12.</math>
+
+The result here is <math>+2</math> hours. This measure describes a difference in observed sleep timing. It is not automatically an intrinsic two-hour difference in circadian phase, and the specific “social jetlag” operational definition may be adjusted for sleep-debt compensation in the chosen instrument and research protocol.<ref name="roenneberg"/>
+
+The treatment of daylight saving time, travel, rotating shifts and sleep spanning midnight is central to correct calculation. A naive arithmetic mean of clock readings can produce nonsense near the midnight boundary; intervals should be unwrapped or handled with circular statistics.
+
+=== Sleep debt and free-day correction ===
+
+If work schedules restrict sleep duration, people may sleep longer on free days, shifting the free-day midpoint. A comparison of raw MSF and MSW then mixes intrinsic timing preference with homeostatic recovery. Adjusted MCTQ measures attempt to account for oversleep on free days; their formula and eligibility conditions must be reported precisely. Applying one correction universally to shift workers or populations with irregular schedules is not justified.
+
+Habitual weekday/weekend labels are also imperfect when someone's workdays differ from a standard Monday–Friday schedule. A valid study should define “workday” and “free day” by actual obligations rather than the calendar alone.
+
+== Two-process sleep regulation and developmental differences ==
+
+Sleep timing emerges from interactions between the circadian component and homeostatic sleep pressure that rises during wakefulness and dissipates with sufficient sleep. A pure circadian-phase model cannot explain all sleep timing variation without considering the duration and quality of prior sleep.
+
+Developmental and demographic variables influence measured chronotype. Adolescents often show later timing than children or older adults in population data, but this is not a universal rule about every person or a reason to label a participant as disordered. Work schedules, artificial light, geography and social selection can also shape observed distributions.
+
+In clinical and public-health settings, an evening preference should not be conflated with an actual circadian rhythm sleep–wake disorder. Diagnosis depends on more than self-reported preferred bedtime and requires relevant clinical criteria and assessment.
+
+== Study design and causal interpretation ==
+
+To ask whether chronotype causes a difference in performance, a researcher must define a target outcome, timing exposure and the relevant sleep and social confounders. Testing everyone at 08:00 may favor some participants because of prior sleep or time awake; it does not isolate a stable trait without controls.
+
+One approach is to test within individuals at multiple clock/circadian phases with counterbalanced task order and measured prior sleep. Such experiments must attend to order effects, learning, participant fatigue and blinding where feasible. Laboratory constant-routine or forced-desynchrony protocols can help disentangle endogenous phase from behavioral masking, but are resource intensive and may not represent ordinary life.
+
+Comparing MEQ scores with work performance in an observational survey cannot identify a causal effect without addressing work schedule selection, job type, health, socioeconomic factors and measurement reliability. A confident interpretation of a small correlation requires a credible causal design, not a chronotype stereotype.
+
+== Circular statistics and phase errors ==
+
+Clock times live on a circle. Raw linear means and Pearson correlations can mislead near midnight. Transform a phase time <math>t</math> into an angle <math>\theta=2\pi t/24</math> and consider circular means or suitable directional models when a phase is the target variable.
+
+For example 23:00 and 01:00 average arithmetically to noon, but their circular mean is midnight. This exact counterexample illustrates why analysis of mid-sleep and physiological phase should use appropriate time representations. The result can be verified by unit vectors at the corresponding angles.
+
+An appropriately chosen cosinor analysis estimates phase and amplitude with uncertainty, but a poor sinusoidal fit may require a more flexible periodic model. Missing data, irregular daylight exposure and phase drift complicate inference.
+
+== Individual differences, measurement reliability and adaptation ==
+
+Chronotype estimates are influenced by questionnaires, diary durations and biological markers. Two methods can correlate without agreeing in absolute phase for every person. Research should report test–retest reliability, calibration between methods and the conditions under which estimates transfer across schedules.
+
+Sleep pressure, light exposure, age and chronobiology can produce changes over months or years; the concept should not be sold as an immutable identity or as evidence of specific cognitive superiority. Any intervention directed at sleep or light requires the proper safety and clinical context and should not be inferred solely from a quiz.
+
+== Reproducibility and evidence criteria ==
+
+A robust study specifies instrument and version, language and scoring, participant selection, actual work/free days, daylight exposure, time zone, clock changes, sleep duration/quality, physiological markers where used, observation window and uncertainty. If an outcome concerns performance, report task reliability, testing phase and adjustment for sleep restriction.
+
+The teaching fixtures here should reproduce the 03:00 and 05:00 midpoints, their +2-hour signed difference, a circular mean of midnight for 23:00 and 01:00, and the cosinor's peak/trough 12 and 8. These verify arithmetic and representation choices rather than epidemiologic claims.
+
+Chronotype is a legitimate biological and behavioral research construct; its effective use requires distinguishing internal phase, preference and constrained actual behavior. The same term should not become a personality label, performance ranking or universal schedule prescription.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* [https://pubmed.ncbi.nlm.nih.gov/1027738/ Horne and Östberg (1976)] and [https://doi.org/10.1177/0748730402239679 Roenneberg et al. (2003)], original self-report and sleep-timing instruments.
+* [[Chronotype/Simple|Simple]] · [[Chronotype|Core]] · [[Cognition]] · [[Scientific model]].

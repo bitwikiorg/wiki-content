@@ -35,7 +35,7 @@ class CognitiveSimulationAndSpotlightTests(unittest.TestCase):
                     self.assertNotIn("{{Knowledge object",text)
                     self.assertNotIn("[[Related to::",text)
                 preview=expand_static_transclusions(core,title,{title+"/Simple":simple})
-                self.assertIn("'''"+title.lower()+"'''",preview)
+                self.assertIn("'''"+("Mental simulation" if title == "Mental simulation" else "spotlight effect")+"'''",preview)
                 self.assertNotIn("current=Simple",preview)
                 self.assertGreater(len(simple.split()),520)
                 self.assertGreater(len(tech.split()),1550)

@@ -1,0 +1,78 @@
+{{Knowledge object
+ |title=Scaling
+ |entity_type=Concept
+ |domain=Systems science, Computer science, Engineering
+ |status=Established
+ |provenance=Research synthesis from Amdahl (1967), Gustafson (1988), Little (1961), systems performance engineering and dimensional analysis; issue #65
+}}
+{{Reading depth|base=Scaling|current=Core}}
+
+= Scaling =
+
+== Overview ==
+
+{{:Scaling/Simple}}
+
+'''Scaling''' is the relationship between changes in a system's size, work, resources, or operating conditions and corresponding changes in its behavior. It occurs in mathematics and the physical sciences, computing, economics, infrastructure and organizational systems. Its meaning is always qualified by an input axis, an output measure and the assumptions of the model or experiment.
+
+== Distinct kinds of scaling ==
+
+{| class="wikitable"
+! Sense !! What changes !! What must be established
+|-
+| Workload scaling || Number or difficulty of tasks || Throughput, latency, accuracy, service-level requirements
+|-
+| Resource scaling || Processors, memory, storage, network or capital || Utilization, coordination overhead, cost and saturation
+|-
+| Physical scaling || Length, area, volume or other physical dimensions || Dimensional similarity and material/geometry limitations
+|-
+| Statistical scaling || Sample size or model/parameter count || Error, uncertainty, generalization and compute/data assumptions
+|-
+| Organizational scaling || Staff, volume, operations or market served || Coordination, quality, incentive and governance constraints
+|}
+
+Scaling a system is not identical to [[Computational complexity|asymptotic complexity]], which analyzes formal resource growth under an explicit computational model. Nor is it identical to [[Related to::Optimization|optimization]], which selects a feasible design for a stated objective. A system can become faster for a fixed workload while scaling poorly as demand rises.
+
+== Computing as a worked domain ==
+
+For a fixed program with fraction <math>s</math> of execution that cannot be parallelized under a simplified model, speedup on <math>p</math> processors is bounded by the familiar Amdahl expression:
+
+<math display="block">S(p)=\frac{1}{s+(1-s)/p}.</math>
+
+The formula abstracts away communication, synchronization, input/output and changing program behavior. Gustafson's scaled-size argument instead emphasizes how an increased processor count can be used for an increased workload, not the same fixed-size calculation. Neither implies that measured system throughput scales linearly without conditions.<ref name="amdahl_core">Gene M. Amdahl, [https://doi.org/10.1145/1465482.1465560 “Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities”], ''AFIPS Spring Joint Computer Conference'' (1967), fixed-workload serial bottleneck.</ref><ref name="gustafson_core">John L. Gustafson, [https://doi.org/10.1145/42411.42415 “Reevaluating Amdahl's Law”], ''Communications of the ACM'' 31(5), 532–533 (1988), scaled-workload contrast.</ref>
+
+A distributed computing service has other limits: shared state, contention, network partitions, queueing, retries, resource provisioning, database throughput, and downstream dependency capacity. Little's queueing relation connects average number of jobs in a stable defined system to the average arrival/completion rate and time spent in that system, provided its conditions and system boundary are met.<ref name="little_core">John D. C. Little, [https://doi.org/10.1287/opre.9.3.383 “A Proof for the Queuing Formula: L = λW”], ''Operations Research'' 9(3), 383–387 (1961), foundational queueing result.</ref>
+
+== Scaling experiments and constraints ==
+
+An empirical study should define the workload generator, input distribution, hardware and software versions, baseline, concurrency, duration, background traffic, error budget and result metrics. Throughput without latency, failure rate and operating cost can conceal a poor result.
+
+For physical scaling, dimensional analysis identifies dimensionless ratios governing similarity under stated assumptions. Geometric enlargement alone is not proof of dynamic similarity, because surface area, volume, heat transfer and other mechanisms scale at different rates.
+
+[[Related to::Scientific model|scientific modelling]] specifies assumptions; sensitivity analysis assesses dependence on inputs; [[Related to::Robustness|robustness]] addresses disturbance-specific performance maintenance. Scaling results require evidence beyond an attractive plotted trend.
+
+== Incoming semantic relationships ==
+
+This table contains only recorded incoming semantic relations, not every scientific or engineering connection.
+
+{{#ask:
+ [[Related to::Scaling]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming semantic relationships have yet been recorded.''
+}}
+
+== Reading depths ==
+
+[[Scaling/Simple|Simple]] explains growth, bottlenecks and measurement. [[Scaling/Technical|Technical]] independently analyzes fixed- and scaled-workload laws, queueing and saturation, elasticity, experiments and cost, physical scaling and the consequences of model assumptions.
+
+== References ==
+
+<references/>
+
+[[Category:Systems science]]
+[[Category:Computer science]]
+[[Category:Engineering]]

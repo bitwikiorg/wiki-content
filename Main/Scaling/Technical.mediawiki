@@ -1,0 +1,151 @@
+{{Reading depth|base=Scaling|current=Technical}}
+
+= Scaling — Technical =
+
+'''Scaling''' is the dependence of a system's performance, function, cost or quality on a change in its resource budget, problem size, workload or physical dimensions. A scientifically meaningful scaling claim is conditional on an explicitly measured output, controlled change, operating regime and comparison baseline. It is useful across parallel computing, distributed services, physical similarity, engineering production and statistical models, but no single scaling exponent or "law" automatically covers all of these.
+
+This article distinguishes '''strong scaling''' (fixed total problem size while increasing resources), '''weak scaling''' (increasing problem size roughly in proportion to resources), '''capacity scaling''' (increasing offered load while preserving defined service constraints), '''cost scaling''' (resource and economic burden), and '''physical/geometric scaling''' (changes in characteristic size under mechanical and dimensional constraints). It examines tractability, throughput, latency, bottlenecks, saturation and nonideal parallelism with independent analytic examples.
+
+== Define the independent and dependent variables ==
+
+Let <math>N</math> denote workload or problem size, <math>p</math> available processing resources and <math>\theta</math> the architecture, data distribution and environment. Let <math>T(N,p;\theta)</math> be completion time for a well-defined job, <math>X(\lambda,p;\theta)</math> sustained throughput at offered arrival rate <math>\lambda</math>, and <math>C(N,p;\theta)</math> operating cost. These are different functions; changing <math>N</math> and changing <math>p</math> are different experiments.
+
+For a fixed workload <math>N_0</math>, the '''speedup''' and '''parallel efficiency''' are conventionally
+
+<math display="block">S_p(N_0)=\frac{T(N_0,1)}{T(N_0,p)},\qquad E_p(N_0)=\frac{S_p(N_0)}{p}.</math>
+
+The reference must represent a specified one-resource execution on comparable hardware. Different baselines, memory capacity, cache effects and optimized serial algorithms can alter reported speedup. Superlinear measured speedup is possible, for instance from improved cache locality or memory behavior; it does not invalidate the definition, but it means a simplistic fixed-fraction model is inappropriate.
+
+Under a weak-scaling experiment, set <math>N(p)=pN_0</math> and compare <math>T(pN_0,p)</math> with <math>T(N_0,1)</math>. Idealized weak-scaling efficiency may be expressed as
+
+<math display="block">E_{\mathrm{weak}}(p)=\frac{T(N_0,1)}{T(pN_0,p)}</math>
+
+under a fixed per-resource workload convention. Many real studies vary time horizon or use a different weak-scaling metric, so reproducibility requires the exact formula, benchmark problem and tolerances.<ref name="gustafson">John L. Gustafson, [https://doi.org/10.1145/42411.42415 “Reevaluating Amdahl's Law”], ''Communications of the ACM'' 31(5), 532–533 (1988). Contrast between fixed-problem and scaled-problem interpretations.</ref>
+
+== Amdahl's fixed-workload ceiling ==
+
+Suppose a fixed program spends fraction <math>s\in[0,1]</math> of its one-processor time in work that receives no speedup and fraction <math>1-s</math> in perfectly divisible parallel work. Under homogeneous processors, no communication overhead and identical work, its normalized completion time is
+
+<math display="block">\frac{T_p}{T_1}=s+\frac{1-s}{p},\qquad S_p=\frac{1}{s+(1-s)/p}.</math>
+
+For <math>s>0</math>, <math>\lim_{p\to\infty}S_p=1/s</math>. This is a limit of the specified fixed-fraction idealization, not a universal ceiling of every parallel program. Amdahl's original 1967 argument focused on the limits imposed by essential serial execution in large computing systems.<ref name="amdahl">Gene M. Amdahl, [https://doi.org/10.1145/1465482.1465560 “Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities”], ''Proceedings of the AFIPS Spring Joint Computer Conference'', 483–485 (1967). Primary historical statement.</ref>
+
+For <math>s=0.1</math> and <math>p=8</math>,
+
+<math display="block">S_8=\frac{1}{0.1+0.9/8}=\frac{80}{17}\approx4.70588,\qquad E_8=\frac{10}{17}\approx0.588235.</math>
+
+Even an arbitrarily large <math>p</math> cannot exceed a 10-fold speedup in this precise fixed-workload model. Its 8-processor efficiency of about 58.8% is a '''model result''', not measured performance of a particular machine.
+
+A more realistic decomposition includes communication, scheduling and resource contention:
+
+<math display="block">T_p=T_{\mathrm{serial}}+\frac{T_{\mathrm{parallel}}}{p}+T_{\mathrm{sync}}(p)+T_{\mathrm{comm}}(p)+T_{\mathrm{memory}}(p).</math>
+
+These terms are not always separable additive quantities; overlap among computation, memory and communication must be modeled when relevant. The original <math>s</math> may also change with workload, algorithm and processor configuration. Observed performance that differs from the toy formula does not establish that the hardware is defective.
+
+=== Gustafson's scaled-size interpretation ===
+
+Suppose serial work accounts for fraction <math>\alpha</math> of the measured parallel execution time on <math>p</math> processors, while the parallelizable fraction can be done <math>p</math> times faster than its corresponding serial work on the same scaled problem. Under those stated assumptions, Gustafson's scaled speedup is
+
+<math display="block">S_{\mathrm{scaled}}(p)=\alpha+p(1-\alpha)=p-\alpha(p-1).</math>
+
+For <math>\alpha=0.1</math>, <math>p=8</math> gives <math>S_{\mathrm{scaled}}=8-0.1\cdot7=7.3</math>. One must not set <math>\alpha=s</math> automatically: Amdahl's <math>s</math> is measured relative to the serial fixed-problem time, while the scaled fraction in Gustafson's derivation refers to a different workload and execution-time normalization.<ref name="gustafson"/>
+
+The two models answer distinct questions rather than supplying competing universally true forecasts. If the scientific problem grows, parallelism can offer substantial useful capacity without making a fixed-size problem proportionally faster.
+
+== Queueing, throughput and latency ==
+
+In an online or physical production service, distinguish the offered arrival rate <math>\lambda</math>, the actual completed-job throughput <math>X</math>, the mean number of jobs in the defined system <math>L</math>, and mean sojourn time <math>W</math>. Under suitable steady long-run averages and a consistent boundary, Little's relation is
+
+<math display="block">L=\lambda_{\mathrm{eff}}W,</math>
+
+where <math>\lambda_{\mathrm{eff}}</math> is the effective long-run rate through that boundary, not necessarily the unconstrained offered rate when requests are rejected or lost. The relation itself is broad, but applying it to a measurement requires a stable regime and consistent job definitions.<ref name="little">John D. C. Little, [https://doi.org/10.1287/opre.9.3.383 “A Proof for the Queuing Formula: L = λW”], ''Operations Research'' 9(3), 383–387 (1961), original proof.</ref>
+
+For example, if a stable service completes 80 jobs/s and mean time in system is 0.25 s, the expected mean number in system is <math>L=80\cdot0.25=20</math> jobs. This is a consistency equation; it does not by itself give a distribution of queue lengths or determine the architecture and processing speed.
+
+=== Saturation in a stylized M/M/1 queue ===
+
+For an ideal infinite-buffer single-server queue with Poisson arrivals of rate <math>\lambda</math>, independent exponential service times of rate <math>\mu</math>, and stable <math>\lambda<\mu</math>, the steady-state utilization and mean time in system are
+
+<math display="block">\rho=\frac{\lambda}{\mu},\qquad W=\frac{1}{\mu-\lambda},\qquad L=\lambda W=\frac{\lambda}{\mu-\lambda}.</math>
+
+For <math>\mu=100</math> jobs/s and <math>\lambda=80</math> jobs/s, utilization is 0.8, <math>W=0.05</math> s and <math>L=4</math> jobs. When <math>\lambda</math> rises to 90 jobs/s without a service-rate change, utilization rises to 0.9, <math>W=0.10</math> s and <math>L=9</math> jobs. This is a twofold latency increase for a 12.5% increase in offered work, '''under the M/M/1 assumptions'''. It shows why near-saturation delay can rise nonlinearly without a proportional resource increase.
+
+{| class="wikitable"
+! Quantity !! 80 jobs/s case !! 90 jobs/s case
+|-
+| Service capacity <math>\mu</math> || 100 jobs/s || 100 jobs/s
+|-
+| Utilization <math>\rho</math> || 0.80 || 0.90
+|-
+| Mean time <math>W</math> || 0.05 s || 0.10 s
+|-
+| Mean jobs <math>L</math> || 4 || 9
+|}
+
+Actual computer and manufacturing queues often have multiple servers, finite buffers, non-exponential service times, autocorrelated arrivals, retries, priority policies, network fan-out and failures. Their waiting times should not be inferred from this toy formula without model fitting and validation. A service can maintain throughput while latency tails and error rates deteriorate dramatically.
+
+== Bottlenecks in connected systems ==
+
+A pipeline comprising stages with finite capacities may have a bottleneck determined by the minimum sustainable flow through required stages. Adding compute workers can move the bottleneck to a database, shared state service, storage, network, synchronization point or external API. Queueing, cache behavior and contention can cause nonlinear saturation well before nominal resource counts are exhausted.
+
+A naive upper bound on steady throughput for a fixed, single-flow serial pipeline with stage capacities <math>c_i</math> is <math>X\le\min_i c_i</math>, when every job must traverse every stage and shared resource accounting is consistent. Branching networks, rework loops and class-dependent routing require more careful flow models. Provisioning additional servers only helps if the limiting service demands are reduced or the bottleneck resource is effectively expanded.
+
+Distributed state and coordination impose costs that are missing in a perfect-parallelism model. A larger service may incur coordination overhead, replication consistency costs and failure domains not present at small scale. Scaling a stateless task is not equivalent to scaling a transactionally consistent shared-state application. [[Distributed system]] and [[Computer architecture]] provide relevant complementary models, while [[Computational complexity]] addresses intrinsic problem-size resource growth.
+
+== Elasticity, capacity and cost ==
+
+For a positive observed output <math>Y(R)</math> as a function of positive resource level <math>R</math>, a dimensionless local scaling elasticity can be defined by
+
+<math display="block">\eta_{Y,R}=\frac{d\ln Y}{d\ln R}=\frac{R}{Y}\frac{dY}{dR},</math>
+
+provided the model is differentiable and <math>Y,R>0</math>. If <math>Y=aR^\beta</math>, then <math>\eta_{Y,R}=\beta</math>. This is a conditional power-law exponent or elasticity for the chosen output and regime, not an eternal property of a system. A log–log straight line over one observed range does not establish validity across many orders of magnitude.
+
+Cost efficiency may be expressed as completed valid work per unit cost, with energy, equipment, labor, network fees and reliability budgets included as relevant. A system that provides 2× throughput for 3× cost may still be useful under an urgent deadline, but should not be described as an unqualified efficiency gain.
+
+Power/thermal limits, hardware diversity, energy delivery, data locality and cooling place physical constraints on large computing systems. A performance comparison should report power where possible, not merely processor count. In the real world more resource can change the operating conditions and algorithm choice, defeating an isolated resource elasticity interpretation.
+
+== Physical scaling and dimensional similarity ==
+
+For geometric scaling by factor <math>k</math> with a family of similar shapes, characteristic lengths scale as <math>k</math>, surface area scales as <math>k^2</math> and volume as <math>k^3</math>. Therefore surface-to-volume ratio scales as <math>1/k</math>. Changing geometry can alter heat transfer, structural loading and transport, because different mechanisms depend on different dimensional powers.
+
+In fluid mechanics, dynamic similarity may depend on dimensionless groups such as Reynolds number, <math>\mathrm{Re}=\rho UL/\mu</math>. Under an assumed fixed shape and geometry, matching scale alone is insufficient when fluid viscosity, speed and length are changed in incompatible ways. See dimensional analysis for the underlying matrix/null-space argument. A dimensionally consistent relation can still omit relevant physics or boundary conditions.
+
+This physical meaning of scaling is not the same as horizontal server expansion, and a biological size-to-physiology scaling law is not derived merely from software benchmarks. In an interdisciplinary encyclopedia, each domain must preserve its modeling assumptions.
+
+== Workload design and reproducible performance evidence ==
+
+A credible scaling experiment states which independent axis is varied (problem size, concurrency, number of nodes, data size, physical dimension or time), which outcomes are measured and which other factors are controlled. For computing, the minimum record includes:
+
+* Hardware and execution environment, processor/memory configuration, software revision and dependencies.
+* Workload definition: request classes, payload sizes, locality, warm-up, batch versus interactive behavior, read/write mix and offered-arrival process.
+* Capacity configuration: worker count, replica count, database capacity, network topology and load-balancer behavior.
+* Outputs: completed valid work, average and tail latencies, error and timeout rates, utilization, energy and cost.
+* Repeatability: run length, random seeds when appropriate, confidence intervals, independent repetitions, clock synchronization and known instrumentation overhead.
+* Failure envelope: admission control, resource throttling, memory pressure, retries, dependency collapse and recovery behavior.
+
+An open-loop load generator fixes offered arrivals independently of response time and can reveal overload, but requires careful handling of dropped requests and coordinated omission. A closed-loop user model generates new work after prior responses and can conceal saturation by reducing achieved arrival rate. Neither design is automatically superior; the experiment must represent the intended production workload.
+
+Results should plot throughput, service time distribution and errors against offered demand and resources, with boundaries of stable operation. Claims based on a single peak throughput run or an unreported workload generator have weak external validity.
+
+== Scaling versus optimization, robustness and learning ==
+
+[[Optimization]] seeks a best feasible choice for a specified objective and constraints; scaling evaluates behavior across changes in size/work/resources. Selecting a cost-optimal number of replicas for one load level does not establish how the design responds across a larger demand range. An optimization algorithm may itself scale poorly in computational time as its decision-space dimension grows.
+
+[[Robustness]] concerns maintaining function under a defined perturbation. sensitivity analysis examines output change with parameters. [[Scientific model]] governs assumptions; [[Validation]] asks whether model predictions describe the target. These are separate questions.
+
+Statistical and machine-learning scaling curves often analyze test performance as model, data and compute resources change. The fitted exponent and transition regimes depend on model class, dataset, allocation and evaluation metric. Transfer of an observed relation across architectures, languages or tasks must be tested rather than asserted from a catchy scaling-law headline.
+
+== Research checklist and open limits ==
+
+Before using a scaling claim, ask what is varied; what remains fixed; whether the test is strong, weak or capacity scaling; which resources or costs are counted; whether load is offered or completed; how quality and error rates enter; whether saturation and queueing are measured; what uncertainty exists; and whether the tested range includes the intended deployment conditions.
+
+Open problem families include predicting performance under coupled uncertain bottlenecks; measuring limits under hardware/software heterogeneity; energy-constrained distributed scaling; adaptive workload and autoscaling behavior; resilience of services during overload; and generalization of empirical scaling relations beyond their calibration region. None implies unrestricted linear improvement or an architecture-independent exponent.
+
+== References and further reading ==
+
+<references/>
+
+* [https://doi.org/10.1145/1465482.1465560 Amdahl (1967)]: fixed-workload speedup limits.
+* [https://doi.org/10.1145/42411.42415 Gustafson (1988)]: scaled-size workload.
+* [https://doi.org/10.1287/opre.9.3.383 Little (1961)]: stable queue throughput/time relationship.
+* [[Scaling|Canonical topic map]] · [[Scaling/Simple|Simple overview]] · [[Computer architecture]] · [[Distributed system]] · [[Computational complexity]].

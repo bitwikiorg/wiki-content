@@ -1,0 +1,84 @@
+{{Knowledge object
+ |title=Optimization
+ |entity_type=Method
+ |domain=Mathematics, Engineering, Computer science
+ |status=Established
+ |provenance=Formal research synthesis grounded in Boyd and Vandenberghe, Stanford EE364A, and primary mathematical-optimization literature; issue #65
+}}
+{{Reading depth|base=Optimization|current=Core}}
+
+= Optimization =
+
+== Overview ==
+
+{{:Optimization/Simple}}
+
+'''Optimization''' addresses the selection of a best feasible point according to a specified mathematical objective. The method encompasses continuous and discrete, deterministic and stochastic, single- and multiple-objective problems. Optimality is a statement about a defined feasible set and objective, not a general guarantee that the chosen action is ethically desirable or operationally correct.
+
+== Canonical mathematical structure ==
+
+For decision vector <math>x\in\mathcal X</math>, a common form is
+
+<math display="block">\min_{x}\ f_0(x)\quad\text{subject to}\quad f_i(x)\le0,\ i=1,\ldots,m,\quad h_j(x)=0,\ j=1,\ldots,p.</math>
+
+The '''feasible set''' contains all <math>x</math> satisfying the constraints. The objective <math>f_0</math> defines how feasible choices are ranked. An infeasible choice is not an optimum of the constrained problem, even if its numerical objective is small.<ref name="boyd_core">Stephen Boyd and Lieven Vandenberghe, [https://web.stanford.edu/~boyd/cvxbook/ ''Convex Optimization''], Cambridge University Press (2004), formal optimization problem definitions, feasibility, convexity and duality.</ref>
+
+The relationship between local and global optimality depends on mathematical structure. Convex objectives minimized over convex feasible sets have the useful property that every local minimum is global under the standard definition. Strict convexity, when applicable, gives uniqueness of a minimizer if one exists; it is not necessary for global optimality.
+
+== Major problem families ==
+
+{| class="wikitable"
+! Formulation !! Representative decision !! Central limitation
+|-
+| Linear programming || Allocate quantities under linear constraints || A model's linearity may be an approximation.
+|-
+| Convex optimization || Minimize convex cost over a convex domain || Real constraints may not be convex.
+|-
+| Nonlinear, nonconvex optimization || Control, design and complex model fitting || A local solution need not be globally best.
+|-
+| Integer/combinatorial optimization || Schedule, route, select or assign discrete options || Search can grow rapidly; optimality gaps matter.
+|-
+| Stochastic/robust optimization || Plan with uncertain parameters or scenarios || Results depend on specified distributions or uncertainty sets.
+|-
+| Multiobjective optimization || Explore efficiency, cost and safety tradeoffs || A unique universal ranking may not exist.
+|}
+
+These are related but not interchangeable algorithm labels. Selecting a solver without examining structure and constraints can yield a plausible number with no reliable certificate of global optimality.
+
+== The evidence of an optimum ==
+
+A complete computational report identifies the objective, constraints, units, data origin, algorithm, stopping conditions, solution feasibility and objective value. For convex problems, dual variables and primal–dual residuals can provide powerful optimality diagnostics. For mixed-integer optimization, a solver may report an incumbent feasible solution, a lower/upper bound and a remaining optimality gap. These distinguish '''found a feasible answer''' from '''proved its quality'''.
+
+The independently authored [[Optimization/Technical|Technical]] treatment derives Lagrange multipliers, Karush–Kuhn–Tucker conditions and a constrained quadratic example with an exact global solution.
+
+== Limits and related knowledge ==
+
+Optimization relies on [[Related to::Scientific model|scientific modeling]] and is closely connected to [[Related to::Decision theory|decision theory]], [[Related to::Computational complexity|computational complexity]] and [[Related to::Scaling|scaling]]. [[Related to::Satisficing|Satisficing]] may be appropriate where complete search costs outweigh a marginal improvement. Robustness concerns response to disturbances and is not guaranteed simply by attaining an optimum at one parameter setting.
+
+For engineering, the problem statement must also specify what happens when data, constraints or operating conditions change. A globally optimal mathematical answer can be unsafe when its model excludes an essential hazard or incorrectly represents an affected population.
+
+== Query-backed incoming relationships ==
+
+This is a query over explicit incoming [[Property:Related to|Related to]] annotations, not an inferred claim about all optimization applications.
+
+{{#ask:
+ [[Related to::Optimization]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming semantic links are yet recorded.''
+}}
+
+== Reading depths ==
+
+[[Optimization/Simple|Simple]] introduces objectives, choices and constraints. [[Optimization/Technical|Technical]] develops geometric and dual optimality conditions, verified calculations, numerical algorithms, sensitivity, robust/discrete alternatives and model-auditing criteria.
+
+== References ==
+
+<references/>
+
+[[Category:Mathematics]]
+[[Category:Engineering]]
+[[Category:Computer science]]

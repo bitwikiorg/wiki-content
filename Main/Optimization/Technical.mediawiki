@@ -1,0 +1,218 @@
+{{Reading depth|base=Optimization|current=Technical}}
+
+= Optimization — Technical =
+
+'''Optimization''' concerns finding a best feasible decision under an explicitly specified objective, constraints and model. The field includes variational calculus, convex analysis, nonlinear and combinatorial programming, optimal control, robust and stochastic programming, and multiobjective methods. Mathematical optimality is conditional on the stated feasible set and criterion; neither a solver's success flag nor a formal proof is evidence that the model captures every real-world consequence.
+
+This treatment begins with mathematical formulation and convexity, derives Lagrangian duality and Karush–Kuhn–Tucker (KKT) conditions, independently solves a constrained quadratic example, distinguishes numerical and discrete algorithms, and addresses uncertainty, interpretation and reproducible verification. Boyd and Vandenberghe's ''Convex Optimization'' (2004) is a foundational scholarly account of convex sets, duality and first-order optimality; Nocedal and Wright's ''Numerical Optimization'' (second edition, 2006) treats iterative methods and general nonlinear programming.<ref name="boyd">Stephen Boyd and Lieven Vandenberghe, [https://web.stanford.edu/~boyd/cvxbook/ ''Convex Optimization''], Cambridge University Press (2004); [https://web.stanford.edu/class/ee364a/ Stanford EE364A] course material. Theory of convex problems, duality and KKT conditions.</ref><ref name="nocedal">Jorge Nocedal and Stephen J. Wright, [https://doi.org/10.1007/978-0-387-40065-5 ''Numerical Optimization''], second edition, Springer (2006), line search, trust-region, nonlinear constrained and quasi-Newton methods.</ref>
+
+== Optimization as a mathematical decision problem ==
+
+Let <math>x\in\mathbb R^n</math> be continuous decision variables. A standard constrained minimization is
+
+<math display="block">\begin{aligned}\min_{x\in\mathbb R^n}\quad&f_0(x)\\\text{subject to}\quad&f_i(x)\le0,\quad i=1,\ldots,m,\\&h_j(x)=0,\quad j=1,\ldots,p.\end{aligned}</math>
+
+The '''feasible set''' is <math>\mathcal F=\{x:f_i(x)\le0,\ h_j(x)=0\}</math>. A '''global minimizer''' <math>x^*</math> satisfies <math>x^*\in\mathcal F</math> and <math>f_0(x^*)\le f_0(x)</math> for all <math>x\in\mathcal F</math>. A local minimizer only guarantees this inequality within some neighborhood of <math>x^*</math> intersected with the feasible set.
+
+For a real engineering system, the vector <math>x</math> may mix capacities, schedules, voltages, control settings or statistical model parameters. Decision variables can have units; feasibility and objective functions must be dimensionally meaningful. Numerical conditioning depends strongly on variable scaling, but simply rescaling the numbers does not change the underlying physical optimization problem when done consistently.
+
+The existence of a minimizer is not automatic. A feasible problem may be unbounded below, as in <math>\min_{x\in\mathbb R}x</math>; a finite infimum may fail to be attained on an open domain, as in <math>\min_{x>0}x</math>. A solver termination report must distinguish optimal, infeasible, unbounded, numerical failure and iteration-limit conditions.
+
+=== Geometry and convexity ===
+
+A set <math>C\subseteq\mathbb R^n</math> is '''convex''' when
+
+<math display="block">\theta x+(1-\theta)y\in C\quad\text{for all }x,y\in C,\quad0\le\theta\le1.</math>
+
+A function <math>f</math> is convex on <math>C</math> if
+
+<math display="block">f(\theta x+(1-\theta)y)\le\theta f(x)+(1-\theta)f(y).</math>
+
+For differentiable convex <math>f</math>, its first-order supporting inequality is
+
+<math display="block">f(y)\ge f(x)+\nabla f(x)^\mathsf T(y-x).</math>
+
+If the feasible set is convex and <math>f_0</math> convex, any local minimizer is global. If the objective is strictly convex on the convex feasible set, any minimizer, if it exists, is unique. For twice-differentiable <math>f</math> on an open convex set, positive semidefinite Hessians are sufficient for convexity; positive definiteness everywhere is a sufficient condition for strict convexity, not a necessary characterization of every strictly convex function.<ref name="boyd"/>
+
+'''Convexity of the objective alone is insufficient''' when the feasible set is nonconvex. Nonlinear equalities, integer requirements, disconnected feasible regions and nonlinear dynamics can fundamentally change what an optimizer can certify.
+
+== Optimality conditions and Lagrangian duality ==
+
+For smooth inequality constraints and equality constraints, define Lagrange multipliers <math>\lambda_i\ge0</math> and unrestricted multipliers <math>\nu_j</math>. The Lagrangian is
+
+<math display="block">\mathcal L(x,\lambda,\nu)=f_0(x)+\sum_{i=1}^m\lambda_i f_i(x)+\sum_{j=1}^p\nu_j h_j(x).</math>
+
+The dual function is the infimum of the Lagrangian over the specified primal domain:
+
+<math display="block">g(\lambda,\nu)=\inf_{x\in\mathcal D}\mathcal L(x,\lambda,\nu),\qquad \lambda\ge0.</math>
+
+For a minimization problem, any dual-feasible <math>(\lambda,\nu)</math> produces a lower bound <math>g(\lambda,\nu)\le p^*</math> on the best primal objective <math>p^*</math>, a result called '''weak duality'''. The dual optimum is <math>d^*=\sup_{\lambda\ge0,\nu}g(\lambda,\nu)</math>, and <math>d^*\le p^*</math>. Strong duality is the more specific equality <math>d^*=p^*</math>, which requires suitable assumptions.
+
+In a convex problem whose inequality functions are convex, equality functions affine, and with appropriate regularity such as Slater's strict-feasibility condition, strong duality holds under the standard theorem assumptions. Slater's condition is sufficient in that setting, but not a universal necessary requirement for every convex problem. Constraint qualifications determine when Lagrange multipliers and KKT conditions are valid descriptions of optimum points.<ref name="boyd"/>
+
+The KKT conditions for differentiable data are:
+
+<math display="block">\begin{aligned}
+\nabla_x\mathcal L(x^*,\lambda^*,\nu^*)&=0 &&\text{(stationarity)},\\
+f_i(x^*)&\le0,\ \ h_j(x^*)=0 &&\text{(primal feasibility)},\\
+\lambda_i^*&\ge0 &&\text{(dual feasibility)},\\
+\lambda_i^*f_i(x^*)&=0 &&\text{(complementary slackness)}.
+\end{aligned}</math>
+
+Under the convex assumptions, these conditions are sufficient for a global solution; with strong duality and appropriate regularity they characterize an optimum. For nonconvex problems, KKT conditions are at best necessary under constraint qualifications and are not sufficient for global optimality without additional structure. A stationarity residual near zero alone does not establish feasibility, absence of a better basin, or numerical accuracy.
+
+== Independently worked benchmark: constrained quadratic projection ==
+
+Consider a two-variable convex problem with dimensionless pedagogical variables:
+
+<math display="block">\begin{aligned}
+\min_{x,y}\quad &(x-3)^2+(y-1)^2\\
+\text{subject to}\quad&x+y\le3,\qquad x\ge0,\quad y\ge0.
+\end{aligned}</math>
+
+The unconstrained optimum <math>(3,1)</math> is infeasible because its sum is 4. The objective's Hessian is <math>2I</math>, positive definite; its strictly convex objective and convex closed feasible set imply a unique minimizer exists in this instance. A strictly feasible point such as <math>(1,1)</math> satisfies <math>x+y<3</math> and <math>x,y>0</math>, enabling the usual strong-duality KKT reasoning.
+
+Introduce multiplier <math>\lambda\ge0</math> for <math>x+y-3\le0</math> and <math>\mu_x,\mu_y\ge0</math> for <math>-x\le0,-y\le0</math>. The complete Lagrangian is
+
+<math display="block">\mathcal L=(x-3)^2+(y-1)^2+\lambda(x+y-3)-\mu_xx-\mu_yy.</math>
+
+At a candidate with <math>x,y>0</math>, complementary slackness makes <math>\mu_x=\mu_y=0</math>. The first-order equations give
+
+<math display="block">2(x-3)+\lambda=0,\qquad2(y-1)+\lambda=0,</math>
+<math display="block">x=3-\frac{\lambda}{2},\quad y=1-\frac{\lambda}{2},\quad x+y=4-\lambda.</math>
+
+The active upper-sum constraint requires <math>4-\lambda=3</math>, so <math>\lambda^*=1</math>. Therefore
+
+<math display="block">(x^*,y^*)=(2.5,0.5),\quad f^*=(-0.5)^2+(-0.5)^2=0.5.</math>
+
+Feasibility is immediate: <math>x^*+y^*=3</math>, <math>x^*,y^*>0</math>, and all multipliers obey their signs. The Lagrangian gradient vanishes and complementary slackness holds, establishing global optimality by convex KKT. Since the objective is strictly convex, this minimizer is unique.
+
+=== Dual certificate and sensitivity meaning ===
+
+Ignoring the nonnegativity inequalities temporarily while retaining the upper-sum inequality gives the relaxed Lagrangian
+
+<math display="block">\mathcal L_0(x,y,\lambda)=(x-3)^2+(y-1)^2+\lambda(x+y-3).</math>
+
+The infimum over unrestricted <math>(x,y)</math> occurs at <math>x=3-\lambda/2</math>, <math>y=1-\lambda/2</math>, so its dual function is
+
+<math display="block">g_0(\lambda)=\lambda-\frac{\lambda^2}{2},\qquad\lambda\ge0.</math>
+
+The unique maximum over <math>\lambda\ge0</math> is at <math>\lambda^*=1</math>, with <math>g_0(1)=0.5</math>. Since the associated minimizer is nonnegative, this relaxed dual certificate achieves the primal value for the full constrained problem. The lower bound and feasible upper bound match at 0.5: this is a transparent independent optimality proof.
+
+The multiplier's local interpretation is a '''shadow price''' of the upper-sum constraint under suitable regularity. If the bound becomes <math>x+y\le b</math> near <math>b=3</math> and the active set remains unchanged, the optimum-value derivative is <math>dp^*(b)/db=-\lambda^*=-1</math>. This is a sensitivity statement about a mathematical bound, not a dollar price unless the objective and constraint have suitable units. It may change at active-set transitions.<ref name="boyd"/>
+
+{| class="wikitable"
+! Benchmark check !! Exact result
+|-
+| Unconstrained minimum || (3, 1), infeasible
+|-
+| Constrained minimizer || (2.5, 0.5)
+|-
+| Objective value || 0.5
+|-
+| Active constraint || x+y=3
+|-
+| Upper-sum multiplier || 1
+|-
+| Nonnegativity multipliers || 0, 0
+|-
+| Relaxed dual lower bound at lambda=1 || 0.5
+|}
+
+A computational solver should reproduce the optimal objective and a feasible decision to its declared numerical tolerance; a solver report alone is weaker evidence than matching this independent analytic certificate.
+
+== Numerical algorithms and convergence claims ==
+
+A basic unconstrained gradient-descent iteration is
+
+<math display="block">x_{k+1}=x_k-\alpha_k\nabla f(x_k).</math>
+
+For <math>f(x)=(x-3)^2</math> with constant <math>\alpha</math>, the error evolves as
+
+<math display="block">e_{k+1}=(1-2\alpha)e_k,\qquad e_k=x_k-3.</math>
+
+Thus <math>0<\alpha<1</math> makes this ideal deterministic one-dimensional iteration contract. At <math>\alpha=0.25</math> and <math>x_0=0</math>, <math>x_1=1.5</math>, <math>x_2=2.25</math>. But if the genuine constraint is <math>0\le x\le2</math>, unprojected gradient descent eventually becomes infeasible; convergence to the unconstrained optimum 3 solves the '''wrong''' problem.
+
+A projected gradient step for a closed convex feasible set <math>C</math> is <math>x_{k+1}=\Pi_C[x_k-\alpha_k\nabla f(x_k)]</math>. For <math>C=[0,2]</math>, <math>\alpha=0.25</math>, the iterates from zero are 1.5 and then 2, yielding the constrained global optimum <math>x^*=2</math> with objective 1. This demonstration distinguishes iteration correctness from optimization-model correctness.
+
+In higher-dimensional smooth problems, line-search and trust-region methods control steps and address numerical failure; Newton and quasi-Newton methods use curvature information and can converge more rapidly locally under favorable regularity. Nocedal and Wright analyze these algorithms along with sequential quadratic programming and constrained methods.<ref name="nocedal"/>
+
+An algorithm described as "convergent" needs a specific meaning: objective values, iterates, stationarity residual, feasible gap or global optimality under a given model and assumptions. Ill-conditioning, nonsmoothness, discontinuities, noise and saddle points can invalidate casual extrapolations from a textbook quadratic example.
+
+== Linear, integer and combinatorial optimization ==
+
+Linear programming minimizes a linear objective under affine constraints. Its feasible geometry is a polyhedron; optimal solutions, when they exist, may lie on a face with multiple minimizers. Simplex-type algorithms traverse a structured set of candidate bases, whereas interior-point methods approach solutions through different numerical strategies. Formal worst-case complexity, expected runtime and observed solver behavior are distinct.
+
+Integer and mixed-integer programming introduce discrete feasibility. A relaxation that allows integer variables to take continuous values can provide a lower bound for a minimization, while the best currently known feasible integer solution gives an upper bound. Branch-and-bound and cutting-plane strategies can tighten these bounds until an accepted gap criterion is met.
+
+For minimization with feasible incumbent value <math>U</math> and valid lower bound <math>L</math>, the absolute optimality gap is <math>U-L</math> whenever both are valid under the same model. A stated relative gap must define the normalization because different solvers use different conventions, especially near zero or with negative objectives. A small gap certifies model-relative solution quality, not the validity of an omitted constraint. Solver tolerances for feasibility and integrality also matter.
+
+The computational difficulty of an optimization problem depends on its structure and input encoding. One must not claim every nonlinear problem is intractable or every convex problem can be solved in a constant amount of work. [[Computational complexity]] addresses these formal distinctions, and [[Scaling]] studies resource use as problem or workload size changes.
+
+== Stochastic and robust formulations ==
+
+A decision may be made before uncertain conditions <math>\xi</math> are observed. In stochastic optimization with an explicit probability model <math>P</math>, one form is
+
+<math display="block">\min_{x\in C}\ \mathbb E_{\xi\sim P}[f(x,\xi)],</math>
+
+subject to any additional constraints and measurability/integrability conditions. The solution's meaning depends on the selected loss, the true applicability of <math>P</math>, and whether the decision is allowed to adapt after new information arrives.
+
+In robust optimization, a deterministic uncertainty set <math>\mathcal U</math> may instead define a worst-case criterion,
+
+<math display="block">\min_{x\in C}\ \sup_{\xi\in\mathcal U}f(x,\xi).</math>
+
+The two objectives answer different questions. An expected optimum may expose rare severe loss; an overly broad robust set may be excessively conservative or infeasible. Distributionally robust variants optimize against a collection of plausible probability distributions, but these depend on how the ambiguity set is constructed. No mathematical notation substitutes for evidentiary justification of the uncertainty model.
+
+When objectives or constraints derive from measurements, uncertainty propagation and input dependence matter. A solution stable under one parameter sweep can be fragile under structural model changes, and uncertainty about a causal effect is not equivalent to random variability in a simulator.
+
+== Multiobjective optimality and Pareto frontiers ==
+
+For objective vector <math>\mathbf f(x)=(f_1(x),\ldots,f_k(x))</math> to be minimized, a feasible point <math>x^*</math> is '''Pareto efficient''' if no other feasible point improves at least one objective without worsening any other (equivalently, no feasible point weakly improves all objectives and strictly improves at least one). This is a mathematical dominance relation, not the unrelated popular "80/20 rule."
+
+Weighted sums such as
+
+<math display="block">\min_{x\in C}\sum_{i=1}^k w_i f_i(x),\qquad w_i>0,</math>
+
+can identify supported efficient tradeoffs under appropriate assumptions. For a nonconvex objective image, varying weights can miss nonsupported efficient points. Choosing weights embeds value judgments and unit/normalization choices; a numerical optimum cannot establish which societal or safety tradeoff ought to be accepted.
+
+Different stakeholders may prioritize risk, efficiency, equity, energy cost, interpretability or reliability. In consequential applications the admissibility of tradeoffs and mandatory constraints should be defined before solving rather than retrofitted to the optimizer's output.
+
+== Goodhart-type failures and objective validity ==
+
+When a proxy metric becomes a target, decision-makers or algorithms can exploit weaknesses of the proxy. This is not a failure of convex duality or gradient descent; it is a discrepancy between the formal objective and the human, scientific or institutional goal. An "optimal" recommendation engine that maximizes short-term clicks may violate accuracy or safety expectations absent from its constraints.
+
+For an artificial agent, optimization language should correspond to an implemented objective and an observable decision process. A system generating fluent action plans does not prove that it internally solves a specified global optimization problem. Likewise, a human or organization making adaptive choices need not be represented as solving one maximization unless the model and empirical fit justify the claim.
+
+This connects to [[Decision theory]], [[Satisficing]], [[Robustness]], [[Validation]], [[Scientific model]] and [[Uncertainty]]. Useful metrics are always conditional on measurement and design choices.
+
+== Verification, reproducibility and epistemic audit ==
+
+A scholarly optimization result should provide:
+
+* '''Problem identity:''' objective, exact constraint definitions, variable dimensions/units and all implicit domain restrictions.
+* '''Data provenance:''' sampling, calibration, preprocessing, parameter versions and any hidden exogenous dependencies.
+* '''Model class:''' smooth/convex, linear, mixed-integer, stochastic, robust, dynamic or multiobjective; cite the applicable theory.
+* '''Algorithm and environment:''' solver, exact version, initialization, scaling, tolerance, random seeds, runtime and computational resource.
+* '''Feasibility:''' largest absolute/relative constraint violation, integrality compliance and sign/unit conventions.
+* '''Optimality evidence:''' KKT/dual residuals, bound gap, a verified global certificate or clearly qualified local stopping criterion.
+* '''Sensitivity and validity:''' performance under input changes, alternative constraint regimes, independent test scenarios and stakeholder costs.
+* '''Adversarial checks:''' whether the apparent objective improvement exploits measurement artifacts or omitted constraints.
+
+Reproduce analytic benchmarks before a large simulation. For the quadratic case, independently verify <math>x+y=3</math>, <math>(x,y)=(2.5,0.5)</math>, objective 0.5, multiplier 1, dual value 0.5 and zero primal–dual gap. An implementation yielding a lower numerical objective while violating a constraint has '''not''' discovered a superior feasible solution.
+
+A program solving its encoded objective accurately is an implementation achievement; asserting that the encoded objective is the right scientific question requires separate experimental, ethical and domain evidence. This distinction is a central limit on interpreting all optimization results.
+
+== Research directions and boundaries ==
+
+Advanced research includes scalable nonlinear and mixed-integer methods, high-dimensional nonconvex landscapes, learning-to-optimize and implicit differentiation, uncertainty-aware decisions, adversarial distribution shift, safe adaptive control, multiobjective preference elicitation and trustworthy optimality certificates for large engineered systems. Each has its own mathematical assumptions and validation standards.
+
+No article can establish a global solution algorithm that is universally tractable for arbitrary nonconvex combinatorial problems. The task is instead to state the solvable structure, choose defensible approximations or relaxations, and expose how much is formally proved versus numerically observed.
+
+== References and further reading ==
+
+<references/>
+
+* [https://web.stanford.edu/~boyd/cvxbook/ Boyd and Vandenberghe (2004)], foundational convex optimization.
+* [https://doi.org/10.1007/978-0-387-40065-5 Nocedal and Wright (2006)], numerical continuous optimization.
+* [https://web.stanford.edu/class/ee364a/ Stanford EE364A], worked lectures on convex problems and duality.
+* [[Optimization|Canonical topic map]] · [[Optimization/Simple|Simple introduction]] · [[Scientific model]] · [[Computational complexity]].

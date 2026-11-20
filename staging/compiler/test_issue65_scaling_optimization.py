@@ -100,7 +100,7 @@ class ScalingOptimizationArticleTests(unittest.TestCase):
         self.assertAlmostEqual(90 / (mu - 90), 9)
         self.assertEqual(80 * 0.25, 20)  # Separate generic Little's-law example.
         technical = get("Scaling/Technical")
-        for term in (r"S_p=", r"E_p=", r"S_{\mathrm{scaled}}", r"\lambda_{\mathrm{eff}}W", r"\mu-\lambda"):
+        for term in (r"S_p=", r"E_p(N_0)=", r"S_{\mathrm{scaled}}", r"\lambda_{\mathrm{eff}}W", r"\mu-\lambda"):
             self.assertIn(term, technical)
         for doi in ("10.1145/1465482.1465560", "10.1145/42411.42415", "10.1287/opre.9.3.383"):
             self.assertIn(doi, technical)

@@ -1,0 +1,71 @@
+{{Knowledge object
+ |title=Graphics processing unit
+ |entity_type=Technology
+ |domain=Computer science, Engineering
+ |status=Established
+ |provenance=NVIDIA CUDA programming specifications, AMD ROCm/HIP programming model and hardware architecture documentation; issue #64
+}}
+{{Reading depth|base=Graphics processing unit|current=Core}}
+
+= Graphics processing unit =
+
+== Overview ==
+
+{{:Graphics processing unit/Simple}}
+
+A '''graphics processing unit''' (GPU) is a programmable or specialized parallel processing device originally developed to accelerate graphics workloads and now widely used for general-purpose parallel computation. A GPU is not necessarily a discrete expansion card, and a device marketed as a GPU may incorporate fixed-function graphics blocks, programmable execution units, caches, memory interfaces, scheduling engines and other specialized accelerators.
+
+== Hardware and software boundaries ==
+
+{| class="wikitable"
+! Level !! Role !! What it does not imply
+|-
+| GPU hardware || Compute units, arithmetic lanes, scheduling, memory and graphics engines || One universal execution width or memory hierarchy
+|-
+| Programming model || Threads/work-items, blocks/workgroups, kernels, synchronization and memory scopes || Exact correspondence to hardware circuits
+|-
+| Driver and runtime || Compilation, submission, allocation, command scheduling and device coordination || That a kernel launch has zero overhead
+|-
+| Graphics API || Drawing/compute commands, resource state and synchronization contracts || Identical capabilities across devices
+|-
+| Application || Rendering, simulation, machine learning or other workloads || That every workload is accelerated
+|}
+
+In NVIDIA's CUDA model, blocks of threads execute on streaming multiprocessors and threads are organized into 32-thread warps; AMD's HIP model describes compute units and architecture-dependent wavefront widths, commonly 32 or 64. These are vendor- and architecture-specific execution details, not an invariant definition of every GPU.<ref name="cuda">NVIDIA, [https://docs.nvidia.com/cuda/archive/12.3.0/cuda-c-programming-guide/ ''CUDA C Programming Guide'', §§2–4], programming and execution hierarchy, SIMT and hardware resources.</ref><ref name="hip">AMD, [https://rocm.docs.amd.com/projects/HIP/en/docs-6.3.0/understand/programming_model.html ''HIP programming model''], grid, block, wavefront and RDNA/CDNA distinctions.</ref>
+
+== Architectural distinctions ==
+
+GPUs favor large amounts of independent or structured data-parallel work, throughput-oriented scheduling and memory bandwidth. CPUs are commonly designed for broad general-purpose execution, operating-system control, low-latency serial execution and varied branch-heavy tasks. Neither architecture dominates for every program: dependencies, transfer overhead, synchronization, cache locality, arithmetic precision, software support and device capabilities determine actual results.
+
+A '''GPU kernel''' is a device program dispatched across many logical threads. Its semantics are not identical to the number of physical execution lanes. Branch divergence, register pressure, shared-memory usage and memory-access patterns affect effective throughput; occupancy is only one resource constraint, not a direct measure of useful performance.
+
+== Connections to established topics ==
+
+GPU design builds on [[Related to::Computer architecture|computer architecture]], [[Related to::Computation|computation]], [[Related to::Compiler|compilation]], [[Related to::Operating system|operating-system services]] and [[Related to::Software|software]]. GPU execution also intersects [[Related to::Algorithm|algorithms]], [[Related to::Computer security|computer security]] and [[Related to::Information theory|representation and communication limits]]. These relations express subject connections, not fabricated component-of or manufacturing properties.
+
+== Research and measurement ==
+
+A meaningful GPU benchmark states device, firmware/driver/runtime version, kernel implementation, input shape, precision, synchronization policy, memory transfers, power conditions, warmup and repetitions. Report end-to-end latency separately from kernel-only execution. Compare against an appropriate optimized CPU baseline and account for data movement and numerical error. Vendor peak arithmetic rates are upper bounds under particular operations and cannot be treated as application throughput.
+
+== Incoming relationships ==
+
+{{#ask:
+ [[Related to::Graphics processing unit]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming relationships are recorded.''
+}}
+
+== Reader depths ==
+
+[[Graphics processing unit/Simple|Simple]] introduces the GPU and its strengths. [[Graphics processing unit/Technical|Technical]] derives throughput and bandwidth bounds, parallel dispatch geometry, divergence and transfer break-even models, with independently checkable examples.
+
+== References ==
+
+<references/>
+
+[[Category:Computer science]]
+[[Category:Engineering]]

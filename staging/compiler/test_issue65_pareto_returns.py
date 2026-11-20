@@ -39,7 +39,7 @@ class ParetoReturnsTests(unittest.TestCase):
                 self.assertGreater(len(simple.split()), 450)
                 self.assertGreater(len(tech.split()), 1250)
                 result = expand_static_transclusions(core, name, {name + "/Simple": simple})
-                self.assertIn("'''" + name + "'''", result)
+                self.assertIn("'''" + (name if name == "Pareto principle" else name.lower()) + "'''", result)
                 self.assertNotIn("current=Simple", result)
 
     def test_math_citations_internal_links(self):

@@ -48,6 +48,9 @@ class FirmwareArticleTests(unittest.TestCase):
             self.assertEqual(text.count("<onlyinclude>"), text.count("</onlyinclude>"))
             for link in re.findall(r"\[\[([^\]]+)\]\]", text):
                 target = link.split("|", 1)[0].split("#", 1)[0]
+                if target.startswith("Category:"):
+                    self.assertTrue((ROOT / (target.replace(":", "/", 1) + ".mediawiki")).is_file())
+                    continue
                 if target.startswith("Related to::"):
                     target = target.split("::", 1)[1]
                 self.assertTrue((ROOT / "Main" / (target + ".mediawiki")).is_file(),

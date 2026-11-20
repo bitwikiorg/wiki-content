@@ -1,0 +1,156 @@
+{{Reading depth|base=Integrated circuit|current=Technical}}
+
+= Integrated circuit — Technical =
+
+An '''integrated circuit''' (IC) is a manufactured electrical network whose active and passive devices and interconnections are fabricated together within or upon a substrate. Modern semiconductor IC engineering spans electronic device physics, circuit theory, Boolean and analog design, layout, process integration, verification, testing, power delivery, thermal management and economic yield. The term includes mixed-signal and application-specific devices as well as digital processors; it is not synonymous with a CPU, a silicon wafer, or a package containing several separately manufactured dies.
+
+This Technical article connects levels from the circuit description to manufactured silicon and identifies where the familiar ideals of logic, process scaling and production yield stop being sufficient. It draws on early historical device records, Gordon Moore's 1965 component-density economics, Dennard and colleagues' 1974 field-scaling framework, and MIT's engineering treatment of gates, timing and processors.<ref name="smithsonian">Smithsonian Institution, [https://www.si.edu/object/integrated-circuit-jack-kilby%3Anmah_689592 ''Integrated Circuit by Jack Kilby''], historical semiconductor IC object and the 1958 demonstration.</ref><ref name="history">Computer History Museum, [https://www.computerhistory.org/siliconengine/practical-monolithic-integrated-circuit-concept-patented/ ''1959: Practical Monolithic Integrated Circuit Concept Patented''] and [https://www.computerhistory.org/siliconengine/first-planar-integrated-circuit-is-fabricated/ ''1960: First Planar Integrated Circuit Is Fabricated''], planar production and interconnection.</ref><ref name="mit">MIT OpenCourseWare, [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ ''6.004 Computation Structures''], device-to-system logic and physical timing.</ref>
+
+== Integration and historical identity ==
+
+In September 1958, Jack Kilby demonstrated a functioning integrated circuit at Texas Instruments. Robert Noyce's subsequent monolithic circuit conception relied on Jean Hoerni's planar process, oxide insulation and deposited metal interconnection; this formed a foundation for scalable silicon manufacture. Kilby, Noyce and Hoerni made distinct contributions. A history that credits a single universally modern IC to one demonstration misses the transition from laboratory proof to reproducible mass production.<ref name="history"/>
+
+The transistor remains a device; a logic gate is a possible circuit building block; an IC integrates many device and wiring structures. A PCB can connect several packaged ICs but is not itself a single monolithic circuit. A multi-die package or chiplet module can function as one complex component, but it should be described distinctly from one monolithic die when discussing yield, defects, manufacturing nodes and electrical parasitics.
+
+== Hierarchy: specification to physical realization ==
+
+A digital IC may be described at several levels:
+
+{| class="wikitable"
+! Abstraction !! Typical representation !! Key validation obligation
+|-
+| System function || Interface, data and performance requirements || Does the specified behavior answer the real need?
+|-
+| Architecture || Datapaths, registers, memories, execution/control blocks || Function, throughput, timing, resources, security and fault behavior
+|-
+| RTL or behavioral design || Hardware-description processes and finite-state machines || Functional equivalence, reset behavior, clock and protocol assumptions
+|-
+| Gate / cell netlist || Standard-cell instances and connectivity || Logical correctness, sequential timing and library validity
+|-
+| Placement and routing || Polygons, vias, power grid and routed nets || Design-rule/layout-versus-schematic checks and parasitic timing
+|-
+| Fabricated die || Material layers, defects, interconnect and devices || Electrical characterization, yield, variability, reliability
+|-
+| Package and board || Contacts, heat transfer and system interfaces || Signal/power integrity, thermal and production testing
+|}
+
+The transition from a high-level representation to the next is not lossless merely because a synthesis program reports success. Functional equivalence can be proved within a specified model, while physical timing and analog noise depend on additional details. A library cell has nominal Boolean behavior but also voltage-, load-, temperature- and process-dependent delay and power characterizations.
+
+Some ICs are predominantly analog or mixed-signal and never pass through a purely Boolean gate-level netlist. Operational amplifiers, converters, RF front ends and sensor interfaces rely heavily on continuous-time electronics, mismatch, noise and calibration.
+
+=== Design flow and libraries ===
+
+A common digital-design flow includes specification, microarchitecture, RTL, functional simulation and formal checks, synthesis, clock tree/power planning, placement, routing, parasitic extraction, static timing analysis, power integrity and physical verification. Engineering practice varies; FPGA, custom analog, RF, memory and advanced-node ASIC flows differ significantly.
+
+A process design kit (PDK) and technology libraries describe modeled devices, layers, design rules, standard cells, corners and extraction conditions, subject to foundry-specific agreements. Their validity depends on process calibration and model assumptions. A successful DRC check establishes that a layout satisfies a chosen set of geometric/manufacturing rules; it is not a proof of circuit functionality. LVS checks consistency between extracted layout connectivity and a specified schematic or netlist; it is not a full silicon yield certificate.
+
+== CMOS gates and chip-level timing ==
+
+Combinational logic is built from transistor-based gates, multiplexers and more complex structures. Sequential logic uses latches, flip-flops and memory. A correctly specified gate truth table is a starting point, not a complete description of delay or transient hazards.
+
+For one synchronous register-to-register setup path, a simplified conservative timing constraint is
+
+<math display="block">T_{\mathrm{clk}}\ge t_{\mathrm{CQ,max}}+t_{\mathrm{comb,max}}+t_{\mathrm{setup}}+t_{\mathrm{margin}},</math>
+
+where the nonnegative margin collects the required clock skew, uncertainty and other engineering allowance under the chosen conventions. This deliberately omits detailed skew sign and edge pairing; a real static timing report uses explicit launch and capture clocks, uncertainty, derating and multicycle/false-path conditions.
+
+For an invented path with <math>t_{\mathrm{CQ,max}}=70\ {\rm ps}</math>, <math>t_{\mathrm{comb,max}}=540\ {\rm ps}</math>, <math>t_{\mathrm{setup}}=90\ {\rm ps}</math> and <math>t_{\mathrm{margin}}=100\ {\rm ps}</math>,
+
+<math display="block">T_{\mathrm{clk,min}}=800\ {\rm ps},\qquad f_{\mathrm{clk,max}}=\frac1{T_{\mathrm{clk,min}}}=1.25\ {\rm GHz}.</math>
+
+The result is an illustrative single-path setup bound, not a verified frequency for any fabricated chip. Actual synchronous systems must satisfy '''all''' setup paths and separate minimum-delay/hold checks, clock domain crossings, asynchronous paths and voltage/temperature corners. A faster average gate does not guarantee a faster system if memory or interconnect becomes the critical path.
+
+### Interconnect and physical effects
+
+At advanced density, wire resistance/capacitance, fan-out, buffer insertion and crosstalk can dominate significant parts of path delay. A lumped approximation <math>t\sim RC</math> may capture an order of scale but cannot replace extracted distributed parasitics in critical paths. Power delivery networks must limit voltage droop; localized temperature affects carrier mobility, leakage, electromigration and lifetime.
+
+Timing signoff is therefore an exercise in bounded physical models and measured characterization, not simply adding logic-gate counts. If the clock frequency is specified without source corners, input/output timing constraints and reliability margins, the claim is not reproducible.
+
+== Dynamic power and thermal constraints ==
+
+A common first-order switching model is
+
+<math display="block">P_{\mathrm{dyn}}\simeq\alpha C_{\mathrm{sw}}V_{DD}^{\,2}f,\qquad P_{\mathrm{total}}\simeq P_{\mathrm{dyn}}+P_{\mathrm{leak}}+P_{\mathrm{other}},</math>
+
+where <math>\alpha</math> is the average 0-to-1 activity per clock per modeled capacitance, <math>C_{\mathrm{sw}}</math> is effective switched capacitance, <math>V_{DD}</math> supply, and <math>f</math> clock frequency. Internal short-circuit currents, clock trees, analog blocks and power-conversion losses require explicit accounting; <math>P_{\mathrm{other}}</math> is not a fixed empirical constant.
+
+For <math>\alpha=0.1</math>, <math>C_{\mathrm{sw}}=100\ {\rm pF}</math>, <math>V_{DD}=0.8\ {\rm V}</math> and <math>f=1\ {\rm GHz}</math>, the idealized dynamic component is
+
+<math display="block">P_{\mathrm{dyn}}=0.1(100\times10^{-12})(0.8)^2(10^9)=6.4\times10^{-3}\ {\rm W}=6.4\ {\rm mW}.</math>
+
+This example does not include an entire chip's switching nodes, leakage or cooling, and it is not a measured processor power. Reducing voltage quadratically helps the dynamic model, but often reduces timing margins and interacts with leakage and variability; frequency, area, yield and thermal constraints must be included.
+
+Dennard and coworkers' 1974 MOSFET scaling analysis studied how dimensions, voltages, doping and fields can scale together under an idealized constant-field approach.<ref name="dennard">R. H. Dennard et al., [https://doi.org/10.1109/JSSC.1974.1050511 “Design of Ion-Implanted MOSFET's with Very Small Physical Dimensions”], ''IEEE Journal of Solid-State Circuits'' 9(5), 256–268 (1974), original scaling framework.</ref> It is not a promise that arbitrarily shrinking gates will forever produce identical fields, proportional power reductions or sustainable clock speeds. Interconnect, quantum tunnelling, defect variability, power density and thermal management become central in advanced processes.
+
+== Fabrication and physical design transfer ==
+
+Modern fabrication deposits and patterns successive material layers. Depending on the process these include isolation, dopant introduction, gate dielectric and electrodes, contacts, interlayer dielectrics and multiple levels of metal routing. Photolithography, etching, deposition, ion implantation and annealing use tightly calibrated sequences; process integration and contamination control are essential.
+
+A completed wafer contains many die images. Wafer probing tests accessible electrical properties before separation; packaging adds contacts, mechanical protection and heat transfer, after which further test and qualification may occur. A die can pass one test but fail at another condition or after aging. Test coverage and failure interpretation must therefore be scoped to fault models and measurement conditions.
+
+### Process variation and yield
+
+One elementary statistical yield model assumes critical defects occur independently and uniformly according to a spatial Poisson process with areal density <math>D_0</math> and die area <math>A</math>. The probability of no critical defects in that area is
+
+<math display="block">Y_{\mathrm{Poisson}}=P(N=0)=\exp(-D_0A).</math>
+
+This is a '''model assumption''', not a universal yield law. Actual fabrication has defect clustering, layout sensitivities, systematic failure mechanisms, redundancy/repair, edge losses, wafer-scale trends and testing/qualification rules. A single defect-density number without process and failure definition is inadequate.
+
+For illustrative <math>D_0=0.4\ {\rm cm^{-2}}</math> and die area <math>A=0.5\ {\rm cm^2}</math>, the expected critical-defect count is <math>\lambda=D_0A=0.2</math>, so
+
+<math display="block">Y=\exp(-0.2)\simeq0.81873.</math>
+
+If a hypothetical wafer provides 500 complete gross dies before those yield effects, an expected number of good dies under this simplified model is <math>500Y\simeq409.37</math>. This is an expectation, not 409.37 physical dies, and assumes the 500 gross estimate already handles any edge geometries. Given an invented wafer-level cost <math>C_w=\$10{,}000</math>, a simplified cost per working die is
+
+<math display="block">C_{\mathrm{good}}\simeq\frac{C_w}{N_{\mathrm{gross}}Y}=\frac{\$10{,}000}{500\exp(-0.2)}\simeq\$24.43.</math>
+
+This excludes nonrecurring engineering, mask sets, wafer-test costs, packaging, scrap economics, assembly, reliability qualification and commercial pricing. The independence model and economic inputs were chosen for a checkable calculation, not taken from foundry records.
+
+Increasing a die's area while keeping defect density fixed lowers this toy model's yield, even if more transistors improve functionality. The optimal die size requires a specific economic and technical objective, not merely maximum density.
+
+== Scale, performance and historical trends ==
+
+In 1965 Gordon E. Moore analyzed economic incentives and observations about the number of components per integrated circuit and anticipated further integration; the resulting phrase “Moore's law” is an empirical historical trend and planning heuristic, not an inviolable physical law.<ref name="moore">Gordon E. Moore, [https://web.stanford.edu/class/cs114/readings/moore.pdf “Cramming More Components onto Integrated Circuits”], ''Electronics'' 38(8), 114–117 (1965), original article.</ref>
+
+Transistor count, logic-gate density, wafer cost, chip area and usable computation per watt are distinct quantities. Their trends can diverge when interconnect, memory access, heat, power delivery and defect sensitivity dominate. The number of fabricated transistors also is not the same as the number of simultaneously switching elements or usable arithmetic operations per second.
+
+Advanced modules may combine heterogeneous dies (chiplets) in a shared package. Chiplets can improve design modularity and some yield/economics tradeoffs but introduce inter-die bandwidth, latency, energy, packaging and verification costs. A multi-die assembly is not automatically equivalent to a single monolithic chip even when marketed as one system component.
+
+== Verification, testing and trust boundaries ==
+
+An IC project's evidence chain includes more than a working simulation:
+
+{| class="wikitable"
+! Check !! Supports !! Does not establish alone
+|-
+| Functional or formal verification || Conformance to a specified digital/analog model || Model matches physical device or customer requirements
+|-
+| Timing analysis || Constraints are met within characterized corners and paths || Analog correctness, integrity or future lifetime
+|-
+| DRC/LVS || Layout conforms to rule and connectivity definitions || Fabrication yield or post-silicon performance
+|-
+| Wafer probe / package test || Measured operation under test conditions and fault coverage || Absence of all latent failure modes
+|-
+| Accelerated reliability qualification || Performance under declared stress and extrapolation assumptions || Universal lifetime or safety across all environments
+|}
+
+Reproducible work should report die identity/process revision when permitted, PDK/model version, RTL/netlist revision, testbench coverage, timing/environment corners, electrical measurement calibration, fabrication source and manufacturing uncertainties. A simulated yield, derived area or nominal timing graph is not an original experiment.
+
+For the example equations, independent tests should reproduce 800 ps and 1.25 GHz timing, 6.4 mW ideal switching power, and <math>\exp(-0.2)\simeq0.81873</math> Poisson yield. Each verifies calculations within a stipulated model, not the trustworthiness of every assumption or material source.
+
+== Limits and active research ==
+
+Major technical challenges include physically reliable small-device transport, interconnect delays and energy, rising test/verification complexity, heterogeneous integration, package-level thermal management, variability-aware design, secure hardware supply chains and affordable process development. Specialized articles should treat modern lithography, device physics, foundry economics, 3D integration and circuit security separately where there is enough independently grounded material.
+
+The integrated circuit remains a convergence point: Boolean logic alone cannot specify fabrication; materials alone cannot specify computation; and source-controlled design files alone do not prove that manufactured silicon works. Research-grade explanation must link the levels without confusing them.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* [https://www.si.edu/object/integrated-circuit-jack-kilby%3Anmah_689592 Smithsonian, Kilby's early circuit] and [https://www.computerhistory.org/siliconengine/practical-monolithic-integrated-circuit-concept-patented/ Computer History Museum, Noyce and planar manufacture].
+* [https://web.stanford.edu/class/cs114/readings/moore.pdf Moore (1965)] and [https://doi.org/10.1109/JSSC.1974.1050511 Dennard et al. (1974)] on integration and device scaling under distinct assumptions.
+* [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ MIT 6.004], device-to-system logic and architecture.
+* [[Integrated circuit/Simple|Simple explanation]] · [[Integrated circuit|Core]] · [[Logic gate]] · [[Computer architecture]].

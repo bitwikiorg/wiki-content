@@ -1,0 +1,66 @@
+{{Reading depth|base=Diode|current=Simple}}
+
+= Diode — Simple =
+
+<onlyinclude>A '''diode''' is an electronic device whose electrical behavior depends strongly on the direction and magnitude of an applied voltage. Many semiconductor diodes allow much more current in their usual forward direction than in reverse, but no real diode acts as a perfect one-way switch under every condition. Diodes can convert alternating current to direct current, protect circuits, emit or detect light, and control voltages.<ref name="mit">MIT OpenCourseWare, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ ''Integrated Microelectronic Devices'', lecture notes], semiconductor p–n junctions, Schottky contacts and device characteristics.</ref></onlyinclude>
+
+== What does a diode do? ==
+
+Imagine an electrical circuit with a battery, a resistor and a diode. In one connection direction, the diode may let current pass readily once the voltage and circuit conditions are suitable. Reversing the diode often reduces the current substantially.
+
+This behavior is called '''rectification'''. Diodes are used in power supplies to turn an alternating current waveform into a current that flows mostly in one direction. A rectifier also needs appropriate circuit design and filtering to produce a smooth output.
+
+The two main terminals are commonly called the '''anode''' and '''cathode'''. A symbol or package marking can help identify the cathode, but its exact marking depends on the component and the manufacturer's specification.
+
+== Why does direction matter? ==
+
+A common semiconductor diode contains a '''p–n junction''' formed between regions with different electrical doping. Near the junction, positive and negative mobile charge carriers redistribute, producing an internal electrical field. Applying a voltage can change the barrier that carriers must cross, so forward and reverse operation differ.<ref name="shockley">William Shockley, [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors”], ''Bell System Technical Journal'' 28, 435–489 (1949), foundational junction analysis.</ref>
+
+There are also diodes that use a metal–semiconductor contact rather than an ordinary p–n junction, and other devices whose light-emitting or light-detecting properties are central. Not every diode works by precisely the same mechanism.
+
+== Common kinds of diodes ==
+
+{| class="wikitable"
+! Kind !! Main use or distinguishing behavior
+|-
+| Rectifier diode || Conducts forward current and blocks reverse current within its ratings
+|-
+| Schottky diode || Often has lower forward drop and different switching/leakage tradeoffs than a comparable p–n diode
+|-
+| Zener / avalanche breakdown diode || Designed to operate under specified reverse breakdown conditions for voltage control or protection
+|-
+| Light-emitting diode (LED) || Produces light through radiative carrier recombination
+|-
+| Photodiode || Produces a measurable current or other electrical signal in response to absorbed light
+|}
+
+The labels refer to device construction or intended use. Real datasheets specify the operating voltage, reverse voltage rating, forward current, thermal limits and any conditions needed for safe use.
+
+== Is a diode always a perfect one-way valve? ==
+
+No. A forward-biased diode has a voltage–current relationship, not a fixed universal “on” voltage. The familiar teaching approximation of about 0.7 volts for certain silicon p–n diodes can be useful at a particular current and temperature, but it is not a universal physical constant.
+
+Reverse-biased diodes carry small leakage currents; some are designed to enter a controlled reverse-breakdown regime. Power dissipation and heating may limit performance in either direction.
+
+== Why are diodes useful? ==
+
+* '''Power conversion:''' rectifiers control current direction in power electronics.
+* '''Signal processing:''' detectors, clamps and protection circuits exploit nonlinear conduction.
+* '''Light and sensing:''' LEDs and photodiodes connect electronic and optical processes.
+* '''Voltage protection:''' selected devices can restrict voltage excursions within rated conditions.
+
+Choosing a diode requires the actual operating circuit. A device that works at one current may be too slow, too leaky or insufficiently rated for another.
+
+== What is the difference between a diode and a transistor? ==
+
+A diode is commonly a two-terminal device with a strongly asymmetric voltage–current characteristic. A [[Transistor/Simple|transistor]] is typically a three-terminal or multiple-terminal device whose control input influences current flowing through another path, enabling amplification and switching. Both are important building blocks of integrated circuits, but they serve different roles.
+
+Diodes relate directly to [[Voltage]], [[Electric current]], [[Resistor]] and [[Energy conversion]].
+
+== Continue reading ==
+
+[[Diode|Core]] maps the diode device families and applications. [[Diode/Technical|Technical]] explains energy-band barriers, p–n transport, the ideal diode equation and its assumptions, capacitance, nonideal recombination, reverse recovery and numerical design checks.
+
+== References ==
+
+<references/>

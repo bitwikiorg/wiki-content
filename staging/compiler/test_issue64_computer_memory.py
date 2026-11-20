@@ -46,7 +46,7 @@ class ComputerMemoryArticleTests(unittest.TestCase):
                 link=raw.split("|")[0].split("#")[0]
                 if link.startswith("Related to::"):
                     link=link[len("Related to::"):]
-                if not link: continue
+                if not link or link.startswith("Category:"): continue
                 self.assertTrue((ROOT/"Main"/f"{link}.mediawiki").is_file(),msg=link)
 
     def test_homonym_boundary(self):

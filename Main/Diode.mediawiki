@@ -1,0 +1,76 @@
+{{Knowledge object
+ |title=Diode
+ |entity_type=Concept
+ |domain=Electronics, Physics, Engineering
+ |status=Established
+ |provenance=Research synthesis of Shockley (1949), MIT 6.720J semiconductor-device lectures and device-engineering primary literature; issue #64
+}}
+{{Reading depth|base=Diode|current=Core}}
+
+= Diode =
+
+== Overview ==
+
+{{:Diode/Simple}}
+
+A '''diode''' is a nonlinear device whose current–voltage response is usually asymmetric under voltage reversal. This article distinguishes the physical device from an ideal circuit symbol, identifies p–n junction and metal–semiconductor examples, and records which conclusions require particular material, geometry, temperature and frequency assumptions.
+
+== Core mechanisms and functions ==
+
+{| class="wikitable"
+! Device family !! Junction or process !! Engineering significance
+|-
+| Semiconductor p–n diode || Charge redistribution, depletion field and minority-carrier injection || Rectification, junction capacitance and stored-charge dynamics
+|-
+| Metal–semiconductor Schottky diode || Majority-carrier transport over/through contact barrier || Switching speed, forward voltage and leakage tradeoffs
+|-
+| Avalanche/Zener-rated junction || Field-dependent reverse carrier multiplication or tunnelling || Reverse voltage control within specified power and temperature ratings
+|-
+| Light-emitting diode || Electron–hole recombination and photon emission || Optoelectronic energy conversion
+|-
+| Photodiode || Photon absorption and carrier collection || Optical sensing and signal conversion
+|}
+
+A general diode article should not be confused with the underlying electronic structure of semiconductor materials as a whole, nor with the specialized designs of individual power or optoelectronic components.
+
+== The circuit and physical model are different ==
+
+In the idealized low-level-injection diffusion model of a p–n junction, current is often approximated by
+
+<math display="block">I=I_S\left[\exp\left(\frac{qV}{k_BT}\right)-1\right],</math>
+
+with an effective reverse-saturation current scale <math>I_S</math>, elementary charge <math>q</math>, temperature <math>T</math> and Boltzmann constant <math>k_B</math>. This is not the complete behavior of real semiconductor diodes: series resistance, recombination, high injection, breakdown, parasitic capacitances and temperature effects change the terminal characteristic.<ref name="shockley_core">William Shockley, [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors”], ''Bell System Technical Journal'' 28, 435–489 (1949), original analytical junction treatment.</ref><ref name="mit_core">MIT OpenCourseWare, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ ''Integrated Microelectronic Devices''], p–n junction and Schottky contact lecture sequence, including nonideal dynamics.</ref>
+
+Different diode mechanisms demand different models; fitting one exponential to every diode is not sound physical inference. A measured I–V curve should record polarity, temperature, sweep speed, compliance limits and possible self-heating or hysteresis.
+
+== Physical design and validation ==
+
+Design considerations include forward voltage and loss at a specified operating current; maximum repetitive reverse voltage; switching/recovery time; reverse leakage; junction or depletion capacitance; peak surge current; thermal resistance; package limitations and intended frequency. Voltage alone is not enough: maximum current, power dissipation and transient energy also constrain safe operation.
+
+Diodes are connected to [[Related to::Voltage|voltage]], [[Related to::Electric current|electric current]], [[Related to::Resistor|resistive circuit elements]] and [[Related to::Energy conversion|energy conversion]]. The [[Related to::Transistor|transistor]] is a related but distinct controllable electronic device. These links are explicit general semantic relationships, not declarations of subcomponent identity.
+
+== Incoming semantic connections ==
+
+This view lists incoming explicit [[Property:Related to|Related to]] relationships; it does not presume exhaustive scientific or technological coverage.
+
+{{#ask:
+ [[Related to::Diode]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming semantic relationships are recorded.''
+}}
+
+== Reading depths ==
+
+[[Diode/Simple|Simple]] explains typical uses and caveats. [[Diode/Technical|Technical]] independently develops semiconductor junction electrostatics, current transport, small-signal capacitance, reverse characteristics, nonideal loss and measurement protocols.
+
+== References ==
+
+<references/>
+
+[[Category:Electronics]]
+[[Category:Physics]]
+[[Category:Engineering]]

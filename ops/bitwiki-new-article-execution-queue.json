@@ -1,0 +1,632 @@
+{
+  "schema": "bitwiki-new-article-queue/v1",
+  "instructions": "OWNER-APPROVED HOURLY EXECUTION ONLY. Planning/selection was completed manually before schedule. The scheduler reads this file, takes next pending item, writes the specified article using its scope and source leads, validates, PRs, and updates only queue status/checkpoint fields. It must not browse issues, audit the entire wiki, build/rebuild the plan, invent new candidates or modify this queue's scope/ordering.",
+  "repository": "bitwikiorg/wiki-content",
+  "canonical_base": "main",
+  "execution_branch": "automation/bitwiki-new-article-queue-v1",
+  "source_issues": [
+    64,
+    65
+  ],
+  "excluded_issue": 66,
+  "editorial_mode": "Core+Simple+Technical for phase 1 (owner will separately decide and authorize consolidation to two reader-facing depths after drafting)",
+  "state": {
+    "last_completed_id": null,
+    "last_pr": 101,
+    "run_count": 0
+  },
+  "counts": {
+    "previously_drafted_subjects": 31,
+    "ready_queue_subjects": 34
+  },
+  "drafted_existing_review_prs": [
+    {
+      "title": "Semiconductor",
+      "pr": 81,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Dimensional analysis",
+      "pr": 82,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Sensitivity analysis",
+      "pr": 82,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Resilience",
+      "pr": 83,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Root cause analysis",
+      "pr": 83,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Optimization",
+      "pr": 84,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Scaling",
+      "pr": 84,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Diode",
+      "pr": 85,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Transistor",
+      "pr": 85,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Integrated circuit",
+      "pr": 86,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Logic gate",
+      "pr": 86,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Abstraction",
+      "pr": 87,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Occam's razor",
+      "pr": 87,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Law of diminishing returns",
+      "pr": 88,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Pareto principle",
+      "pr": 88,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Mental simulation",
+      "pr": 89,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Spotlight effect",
+      "pr": 89,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Dunning–Kruger effect",
+      "pr": 90,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Halo effect",
+      "pr": 90,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Chronotype",
+      "pr": 91,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Hawthorne effect",
+      "pr": 91,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Instruction set architecture",
+      "pr": 92,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Microarchitecture",
+      "pr": 93,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Central processing unit",
+      "pr": 94,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Graphics processing unit",
+      "pr": 95,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Computer memory",
+      "pr": 96,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Firmware",
+      "pr": 97,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Bootloader",
+      "pr": 98,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Device driver",
+      "pr": 99,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Dynamic random-access memory",
+      "pr": 100,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Flash memory",
+      "pr": 101,
+      "status": "drafted_review_pending"
+    }
+  ],
+  "queue": [
+    {
+      "id": "N001",
+      "title": "Generalization",
+      "issue": 65,
+      "scope": "Cross-disciplinary generalization in inductive reasoning, human learning transfer and statistical inference; explicitly differentiate existing Generalization (machine learning) without duplicating its technical content.",
+      "source_leads": "SEP induction; psychology of transfer; statistical external validity",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N002",
+      "title": "Johari window",
+      "issue": 65,
+      "scope": "Historically attributed Luft–Ingham interpersonal awareness diagram; describe quadrants and limitations without claiming validated fixed personality parts.",
+      "source_leads": "Luft and Ingham 1955 original proceedings; APA Dictionary of Psychology",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N003",
+      "title": "Kolb's experiential learning cycle",
+      "issue": 65,
+      "scope": "Kolb's 1984 experiential learning theory and cycle; differentiate from disputed learning-style assignments and evidence of instructional efficacy.",
+      "source_leads": "David Kolb Experiential Learning 1984; peer-reviewed critical reviews",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N004",
+      "title": "Nonviolent Communication",
+      "issue": 65,
+      "scope": "Rosenberg's named communication framework, concrete steps and applied training, with qualified empirical evaluation and without conflating intervention claims with proven outcomes.",
+      "source_leads": "Marshall Rosenberg Nonviolent Communication; independent intervention evaluations",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N005",
+      "title": "OODA loop",
+      "issue": 65,
+      "scope": "Boyd's orientation-centered feedback/decision model and evolution; not simplistic mandatory serial four-state machine; military and organizational applications must be qualified.",
+      "source_leads": "John Boyd The Essence of Winning and Losing 1995; US Marine Corps archival Boyd material",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N006",
+      "title": "Six Thinking Hats",
+      "issue": 65,
+      "scope": "de Bono's 1985 structured deliberation method; descriptive procedural treatment, evidence limits; no claim that six hats correspond to brain modules.",
+      "source_leads": "Edward de Bono Six Thinking Hats 1985; independent facilitation evaluations",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N007",
+      "title": "Parkinson's law",
+      "issue": 65,
+      "scope": "1955 historical satirical organizational observation and subsequent uses; no universal quantitative duration law.",
+      "source_leads": "C Northcote Parkinson The Economist 19 Nov 1955 original essay",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N008",
+      "title": "Cache memory",
+      "issue": 64,
+      "scope": "Hardware caching as a distinct subject: cache mapping, associativity, replacement, miss classification, inclusive/exclusive hierarchies, write policies, coherence and AMAT; avoid duplicating Computer memory #96.",
+      "source_leads": "Patterson & Hennessy; Intel optimization manual; cache-coherence research",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N009",
+      "title": "Hardware description language",
+      "issue": 64,
+      "scope": "HDL semantics and use across simulation, synthesis and verification; contrasting VHDL, Verilog and SystemVerilog, avoiding confusion with general programming languages.",
+      "source_leads": "IEEE 1076 VHDL; IEEE 1800 SystemVerilog",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N010",
+      "title": "Register-transfer level",
+      "issue": 64,
+      "scope": "RTL abstraction: synchronous state transfers, clocked semantics, combinational logic, synthesizability and verification; distinct from HDL as a language and EDA as tool ecosystem.",
+      "source_leads": "IEEE 1800; academic digital design textbooks; OpenROAD flow",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N011",
+      "title": "Electronic design automation",
+      "issue": 64,
+      "scope": "EDA ecosystem and verified ASIC/FPGA flow from specification to synthesis, placement, routing, timing closure and verification; distinguish software tools from physical manufacturing.",
+      "source_leads": "IEEE/ACM Design Automation Conference research; OpenROAD documentation",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N012",
+      "title": "Field-programmable gate array",
+      "issue": 64,
+      "scope": "FPGA configurable fabric, LUTs, routing, block RAM, DSP slices, partial reconfiguration, design tradeoffs; distinct from custom ASIC and GPU.",
+      "source_leads": "AMD Xilinx device user guides; Intel FPGA documentation",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N013",
+      "title": "Application-specific integrated circuit",
+      "issue": 64,
+      "scope": "ASIC design/manufacture tradeoffs, standard cells and custom design, NRE, performance/power/area and mask/verification constraints; not interchangeable with FPGA.",
+      "source_leads": "OpenROAD digital flow; IEEE VLSI design research",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N014",
+      "title": "Operating system kernel",
+      "issue": 64,
+      "scope": "Kernel responsibilities and isolation, scheduling, memory management, syscalls, interrupts and device mediation; distinct from the existing Operating system article.",
+      "source_leads": "Linux kernel documentation; OS design literature",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N015",
+      "title": "Silicon",
+      "issue": 64,
+      "scope": "Element and semiconductor material science: crystal structure, band properties, doping, oxidation, manufacturing and applications; distinct from generic Semiconductor PR #81.",
+      "source_leads": "NIST Chemistry WebBook; solid-state physics references; SEMI sources",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N016",
+      "title": "Semiconductor fabrication",
+      "issue": 64,
+      "scope": "Wafer-fab workflow from substrate to films, pattern transfer, doping, interconnect, process control and yield; distinguish equipment, technology node and device physics.",
+      "source_leads": "SEMI manufacturing references; process technology textbooks",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N017",
+      "title": "Photolithography",
+      "issue": 64,
+      "scope": "Pattern transfer with masks/resists/optical or EUV exposure, imaging/resolution assumptions, overlay and process limits; distinct from entire fabrication flow.",
+      "source_leads": "ASML lithography technical resources; optical lithography literature",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N018",
+      "title": "Thin-film deposition",
+      "issue": 64,
+      "scope": "CVD, PVD and ALD techniques, thickness/uniformity, chemical transport and process control; distinguish film growth from etching and lithography.",
+      "source_leads": "AVS vacuum science; peer-reviewed CVD/ALD reviews",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N019",
+      "title": "Semiconductor etching",
+      "issue": 64,
+      "scope": "Wet and plasma etch mechanisms, selectivity, anisotropy and damage, with bounded process models; distinct from photolithography.",
+      "source_leads": "Journal of Vacuum Science and Technology; semiconductor process texts",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N020",
+      "title": "Semiconductor packaging",
+      "issue": 64,
+      "scope": "Package-level electrical/thermal/mechanical integration, interposers, 2.5D/3D integration and testing; distinguish wafer fabrication from chip packaging.",
+      "source_leads": "IEEE Heterogeneous Integration Roadmap; JEDEC packaging standards",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N021",
+      "title": "Semiconductor foundry",
+      "issue": 64,
+      "scope": "Contract manufacturing, process design kits, wafer sourcing, fabless/foundry interface, capital and yield economics; distinguish a foundry from fabless design.",
+      "source_leads": "TSMC public technology materials; SEMI ecosystem reports",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N022",
+      "title": "Neural processing unit",
+      "issue": 64,
+      "scope": "Domain-specific neural-network accelerators, compute/memory dataflow, inference precision and software stack; distinguish CPU/GPU/DSP.",
+      "source_leads": "Arm Ethos technical documentation; peer-reviewed ML accelerator surveys",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N023",
+      "title": "Digital signal processor",
+      "issue": 64,
+      "scope": "DSP processor architecture for sampled-signal workloads, MAC units, fixed vs floating point, circular buffers, latency and energy tradeoffs.",
+      "source_leads": "IEEE signal processing literature; TI DSP architecture manuals",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N024",
+      "title": "High-bandwidth memory",
+      "issue": 64,
+      "scope": "Stacked DRAM, wide-interface bandwidth, TSVs and packaging; distinguish generic DRAM #100 and broader Computer memory #96.",
+      "source_leads": "JEDEC JESD235 HBM specifications; JEDEC updates",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N025",
+      "title": "Chiplet",
+      "issue": 64,
+      "scope": "Multi-die design, interconnect, partitioning, packaging, power and yield tradeoffs; not a synonym for 3D packaging.",
+      "source_leads": "UCIe specification; IEEE heterogeneous integration",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N026",
+      "title": "Memory controller",
+      "issue": 64,
+      "scope": "Command scheduling, arbitration, DRAM timings, refresh and ECC interfaces; distinct from DRAM device article #100 and memory overview #96.",
+      "source_leads": "JEDEC DDR5 JESD79 family; memory-controller research",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N027",
+      "title": "Computer bus",
+      "issue": 64,
+      "scope": "Address/data/control transfers, arbitration, timing, protocol and modern PCIe/USB/SoC fabric distinctions; not a generic network article.",
+      "source_leads": "PCI-SIG PCIe specifications; USB-IF specs",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N028",
+      "title": "Network interface controller",
+      "issue": 64,
+      "scope": "NIC hardware/firmware, DMA queues, offloads and OS interfaces; separate from generic Computer network and Device driver PR #99.",
+      "source_leads": "Linux networking driver docs; IEEE 802.3",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N029",
+      "title": "Power electronics",
+      "issue": 64,
+      "scope": "Power conversion, MOSFET/IGBT switches, topology design, loss/thermal/safety constraints; separate from device physics in Transistor PR #85.",
+      "source_leads": "IEEE Power Electronics Society literature; application notes with model assumptions",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N030",
+      "title": "Voltage regulator",
+      "issue": 64,
+      "scope": "Linear and switching voltage regulation, feedback stability, ripple, efficiency and thermal limits; a specialized hardware/power subject.",
+      "source_leads": "Texas Instruments power-management design references; IEEE control literature",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N031",
+      "title": "Parallel computing",
+      "issue": 64,
+      "scope": "Models and tradeoffs in concurrency and parallelism, scaling, synchronization, shared vs distributed memory; do not duplicate Scaling PR #84.",
+      "source_leads": "OpenMP specification; MPI standard; original Amdahl and Gustafson analyses",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N032",
+      "title": "Wafer testing",
+      "issue": 64,
+      "scope": "Probe-level semiconductor electrical testing, defect screening, parametric variation and yield disposition; separate from packaged system test.",
+      "source_leads": "SEMI wafer test standards; IEEE test literature",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N033",
+      "title": "Semiconductor manufacturing yield",
+      "issue": 64,
+      "scope": "Defect-density/wafer-yield modeling, spatial variation, binning and economic consequences; model assumptions and counterexamples.",
+      "source_leads": "Foundational yield-model literature; SEMI process-control reports",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    },
+    {
+      "id": "N034",
+      "title": "Motherboard",
+      "issue": 64,
+      "scope": "Mainboard function, power delivery, sockets, firmware interfaces and interconnect standards; distinguish Computer architecture theory and specific CPU devices.",
+      "source_leads": "ATX design guides; PCI-SIG/JEDEC platform interface standards",
+      "status": "pending",
+      "attempts": 0,
+      "pr": null,
+      "note": null
+    }
+  ],
+  "dispositions": [
+    {
+      "title": "Memory hierarchy",
+      "issue": 64,
+      "decision": "section",
+      "reason": "Existing Computer architecture plus draft Computer memory #96 already treat hierarchy as a systems abstraction; revisit only in second, existing-content workflow"
+    },
+    {
+      "title": "Cache coherence",
+      "issue": 64,
+      "decision": "section",
+      "reason": "Included in the Cache memory assignment and Computer memory #96; avoid two simultaneous identities"
+    },
+    {
+      "title": "Software compiler",
+      "issue": 64,
+      "decision": "existing",
+      "reason": "Existing Main/Compiler"
+    },
+    {
+      "title": "Operating system",
+      "issue": 64,
+      "decision": "existing",
+      "reason": "Existing Main/Operating system; kernel is a separate queued subject"
+    },
+    {
+      "title": "Computer architecture",
+      "issue": 64,
+      "decision": "existing",
+      "reason": "Existing Main/Computer architecture"
+    },
+    {
+      "title": "Bit and information theory",
+      "issue": 64,
+      "decision": "existing",
+      "reason": "Existing Main/Bit, Main/Information and Main/Information theory"
+    },
+    {
+      "title": "Robustness",
+      "issue": 65,
+      "decision": "existing",
+      "reason": "Existing Main/Robustness"
+    },
+    {
+      "title": "Serial-position effect",
+      "issue": 65,
+      "decision": "existing",
+      "reason": "Existing Main/Serial-position effect"
+    },
+    {
+      "title": "Tacitus Razor",
+      "issue": 65,
+      "decision": "exclude",
+      "reason": "Unsupported named concept and attribution per issue #65"
+    },
+    {
+      "title": "5x5 Rule",
+      "issue": 65,
+      "decision": "exclude",
+      "reason": "Unverified independent scientific status per issue #65"
+    },
+    {
+      "title": "SMART goals and Mehrabian 7-38-55",
+      "issue": 65,
+      "decision": "section",
+      "reason": "Within goal-setting and communication parent topics as editorial intake already decided"
+    },
+    {
+      "title": "Other #64 examples",
+      "issue": 64,
+      "decision": "covered_or_not_presumed",
+      "reason": "Issue #64 includes broad research seeds, not automatic independent-page authorizations; retained under issue for later editorial intake, outside this fixed approved queue"
+    }
+  ],
+  "authority": "New article files and tests in review branches, source research, CI, unmerged review PRs only. No existing Main edits, merge, publishing, issue closure, schema/template changes, or second workflow.",
+  "stop_rule": "On queue exhaustion (every item drafted or blocked), report exact PRs and blocked items and pause task ID 6affa2c4aae48191ae593055ee0a20ac. Do not claim issue #64's broad seeds all published.",
+  "safety": "On a claimed item recovered after crash, check ONLY that title's own exact PR/file before changing status; never blindly recreate a draft. If blocked, record the concrete missing input and advance to next pending. No full audit."
+}

@@ -1,0 +1,25 @@
+<onlyinclude>'''Semiconductor fabrication''' is a process-integrated sequence of substrate preparation, thermal treatment, film formation, lithographic pattern definition, selective removal, doping, planarization, and multilevel interconnect construction. Its engineering objective is not merely to print small features but to produce electrically conforming structures across a wafer with controlled variation and economically acceptable yield.</onlyinclude>
+
+== Process integration ==
+A process flow specifies a dependency-ordered collection of unit operations, materials, metrology checkpoints, and thermal budgets. For silicon CMOS, early steps can include substrate cleaning, isolation, gate-stack formation, implantation, activation, and contact formation; the exact ordering and materials depend on device architecture. Front-end-of-line (FEOL) broadly forms active devices; middle-of-line (MOL) forms local contacts; back-end-of-line (BEOL) forms wiring and dielectric stacks. These labels describe integration regions rather than universal, sharply separated recipes.
+
+Film formation includes oxidation, chemical vapor deposition, physical vapor deposition, and atomic layer deposition, each with different conformality, chemistry, and throughput constraints. Lithography transfers a mask-derived image into resist; subsequent etching or other selective processing transfers that pattern into underlying material. Implantation controls dose and depth distribution, while annealing can activate dopants and repair implantation damage. Chemical-mechanical planarization reduces topography before further patterning. These steps are repeated with cleaning and inspection throughout.<ref name="sia">[https://www.semiconductors.org/semiconductors-101/how-are-semiconductors-made/stage-3-front-end-manufacturing/ Semiconductor Industry Association, ''Stage 3: Front-end Manufacturing''].</ref><ref name="asml">[https://www.asml.com/en/technology/all-about-microchips/how-microchips-are-made ASML, ''How microchips are made''].</ref>
+
+== Pattern fidelity and integration limits ==
+Feature size alone does not characterize manufacturability. Overlay between patterned layers, critical-dimension distributions, sidewall profile, film thickness, stress, contamination, and defectivity affect circuit behavior. A nominal mask dimension need not equal the final etched dimension. Optical proximity correction and other computational techniques can compensate for predictable imaging effects, but process windows and residual variation remain.<ref name="asml" />
+
+Thermal cycles can alter previously formed structures, so downstream temperatures constrain material selection. Interconnect resistance, capacitance, electromigration, and dielectric reliability introduce constraints distinct from transistor switching physics. Lithography tools, deposition reactors, etchers, implant tools, metrology systems, and factory automation each contribute to the flow; none alone constitutes an entire fabrication process.
+
+== Quantitative reasoning ==
+A simple illustrative yield model assumes independently distributed, fatal defects with spatially uniform Poisson density:
+:<math>Y = \exp(-AD)</math>
+where <math>A</math> is die area in cm² and <math>D</math> is fatal-defect density in cm⁻². For a hypothetical <math>A=1.0\,\mathrm{cm}^2</math> and <math>D=0.2\,\mathrm{cm}^{-2}</math>, <math>Y=e^{-0.2}\approx0.8187</math> (81.9%). This is a model demonstration, '''not''' a measured industry yield or a prediction for a specific process. Defect clustering, systematic faults, redundancy, wafer-edge losses, and test binning can violate its assumptions. Yield must be defined at the relevant stage (wafer sort, final test, or another acceptance gate).
+
+== Metrology, control, and provenance ==
+Thickness measurement, critical-dimension measurement, overlay metrology, defect inspection, and electrical process-control monitors provide feedback. Statistical process control distinguishes common variation from excursions but cannot by itself establish causality. Wafer electrical probing is downstream evidence of device function; package assembly and final test are separate stages.<ref name="nist">[https://www.nist.gov/system/files/documents/2024/06/28/Final%20PEA%20for%20Modernization%20and%20Expansion%20of%20Semiconductor%20Fabs%206-28-2024%20-%20OGC-508C.pdf NIST, ''Final Programmatic Environmental Assessment: Modernization and Expansion of Existing Semiconductor Fabrication Facilities'' (2024)].</ref>
+
+== Limitations ==
+The description is representative of integrated-circuit wafer fabrication, especially silicon logic. Memory, compound-semiconductor, MEMS, and power-device flows can differ substantially. Public process descriptions do not establish proprietary recipes, device dimensions, fab-specific yields, or the exact meaning of a commercial node label.
+
+== References ==
+<references />

@@ -1,0 +1,31 @@
+{{Source status|status=Technical depth derivative|note=Architectural models and limitations; not device-specific performance predictions.}}
+{{Reading depth|base=Cache memory|current=Technical}}
+= Cache memory — Technical =
+
+== Address placement and lookup ==
+For a conventional physically indexed, fixed-line cache with usable data capacity <math>C</math> bytes, line size <math>B</math> bytes and associativity <math>W</math> ways, the number of sets is <math>S=C/(BW)</math>, assuming integer values and no reserved ways. For power-of-two <math>B</math> and <math>S</math>, a byte address is partitioned into offset, set index and tag. The line number is <math>\lfloor a/B\rfloor</math>; a common indexing function is <math>(\lfloor a/B\rfloor)\bmod S</math>. Hashed indexing, virtual indexing and other implementations need not follow this simple decomposition.
+
+A direct-mapped cache has <math>W=1</math>; a fully associative cache has <math>S=1</math>. Set-associative lookup compares the selected set's candidate tags. Wider associativity can lower conflict misses but adds tag comparisons, routing or selection complexity.<ref name="hill1989">Mark D. Hill and Alan Jay Smith, “Evaluating Associativity in CPU Caches,” ''IEEE Transactions on Computers'' 38(12):1612–1630 (1989), DOI: [https://doi.org/10.1109/12.40842 10.1109/12.40842]. [https://courses.grainger.illinois.edu/ece511/Fa2004/papers/Hill.1989.IEEE.pdf Author paper].</ref>
+
+=== Worked mapping example ===
+A hypothetical 32 KiB data cache with 64-byte lines and four ways has <math>32768/(64\cdot4)=128</math> sets, 512 resident line slots, six byte-offset bits and seven index bits. For an address <math>a=0x12340</math>, the line number is <math>0x48D=1165</math>; the set index is <math>1165\bmod128=13</math>. The tag for this simple model is <math>\lfloor1165/128\rfloor=9</math>. These numbers describe a teaching model, not an Intel cache implementation.
+
+== Replacement and miss classification ==
+On a miss to a full set, replacement chooses a victim. True LRU tracks recency order but becomes costly with many ways; pseudo-LRU, random, FIFO and adaptive policies trade complexity for workload-specific behavior. No policy is universally optimal. Hill and Smith's trace-driven study separated compulsory misses (first reference), capacity misses (also missed by a fully associative cache of equal capacity) and conflict misses (extra misses due to limited associativity), under explicit reference-cache assumptions.<ref name="hill1989" /> Coherence invalidations and prefetching complicate this classic 3C decomposition.
+
+== Write policies ==
+'''Write-through''' propagates writes toward the next level at write time; '''write-back''' retains dirty lines and propagates them on eviction or another required event. A write miss can allocate a line or bypass allocation. Write buffers, ordering constraints and coherence traffic affect observed behavior. Neither “write-back” nor “write-through” alone specifies persistence to nonvolatile storage.
+
+== Multilevel caches and sharing ==
+Private L1 caches and shared or private lower-level caches may use inclusive, exclusive or noninclusive arrangements. Inclusion is a property of what lower levels must contain; it is not implied merely by increasing capacity. A coherence mechanism coordinates copies of writable shared lines, often using invalidation and ownership states. Coherence establishes rules about individual memory locations; architectural memory consistency additionally constrains the ordering of operations across locations.
+
+== Performance models ==
+For a single-level model with no overlapping requests, no queueing and a fixed miss penalty, average memory access time is
+<math>AMAT = t_{hit} + m\,p</math>,
+where <math>m</math> is the miss probability per access and <math>p</math> is the incremental miss penalty. A hypothetical 1 ns hit, 5% miss rate and 40 ns incremental miss penalty yields <math>1+0.05\cdot40=3</math> ns. For a two-level serial lookup, the L1 miss penalty can itself contain an L2 lookup and conditional next-level penalty; denominators for local versus global miss rates must be specified. Real processors overlap misses, prefetch, reorder requests, contend for bandwidth and have nonuniform latency, so this scalar AMAT is not a prediction of application execution time.
+
+== Research provenance and limits ==
+Hill's 1987 dissertation investigated cache associativity, access times and instruction-buffer performance.<ref name="hill1987">Mark D. Hill, ''Aspects of Cache Memory and Instruction Buffer Performance'', UCB/CSD-87-381 (1987), [https://www2.eecs.berkeley.edu/Pubs/TechRpts/1987/5701.html UC Berkeley archive].</ref> Hill and Smith (1989) introduced trace-simulation methods for comparing mappings and associativities; their measured relative miss-ratio changes were trace- and technology-specific, not universal constants.<ref name="hill1989" /> Device-specific manuals are needed to assert any particular processor's indexing, coherence, replacement, or inclusion policy.
+
+== References ==
+<references />

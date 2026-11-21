@@ -1,0 +1,37 @@
+{{Source status|status=New source-grounded article draft|note=Technical and simple treatments remain separate source pages; expert review and live rendering pending.}}
+{{Knowledge object
+ |title=Application-specific integrated circuit
+ |entity_type=Concept
+ |domain=Electrical engineering, Computer engineering
+ |status=Established
+ |provenance=OpenROAD design-flow documentation; DAC 2019; Cambridge ASIC costing; IEEE TVLSI 2025
+}}
+{{Reading depth|base=Application-specific integrated circuit|current=Core}}
+
+= Application-specific integrated circuit =
+
+== Overview ==
+An '''application-specific integrated circuit''' ('''ASIC''') is an integrated circuit designed to implement a specified application or family of functions, rather than provide a general-purpose, field-reconfigurable fabric. The term covers digital standard-cell designs, mixed-signal and custom circuits, and structured ASIC variants. ASICs are not necessarily single-function or single-customer chips.
+
+== Design and implementation ==
+A digital standard-cell ASIC typically proceeds through requirements and architecture, register-transfer-level description, functional verification, logic synthesis using a technology library, floorplanning, placement, clock-tree synthesis, routing, timing and physical verification, fabrication, packaging, and production test. The precise flow varies with technology, circuit type and foundry. A process design kit (PDK) and characterized cells connect circuit implementation to fabrication constraints.
+
+== Design styles ==
+* '''Standard-cell ASIC:''' logic assembled from characterized library cells, with physical placement and interconnect optimized for a target process.
+* '''Full-custom ASIC:''' transistor and layout choices tailored more directly to the function, commonly used for analog, memory or performance-critical blocks.
+* '''Structured ASIC:''' partially predefined fabric or layers customized for an application; cost and flexibility depend on platform.
+
+== Economics and limitations ==
+Design, verification, tooling, masks and qualification incur non-recurring engineering (NRE) costs. Manufacturing cost per usable die depends on wafer cost, area, yield, testing and packaging. Lower per-unit cost or better power/performance/area is possible at sufficient volume, but is not guaranteed. Revisions after tapeout may require costly redesign and new masks.
+
+== Distinction from programmable logic ==
+An [[Integrated circuit|integrated circuit]] can be custom-manufactured or field-programmable. An ASIC's fabricated functionality is generally not reconfigured like an FPGA fabric, although its embedded firmware, processors and configuration registers may be programmable. [[Computer architecture]] and [[Semiconductor]] provide related context.
+
+== References ==
+* Ajay et al. (2019), “Toward an Open-Source Digital Flow: First Learnings from the OpenROAD Project,” ''DAC 2019''. [https://people.ece.umn.edu/~luo../sachin/conf/dac19-OR.pdf Conference paper].
+* OpenROAD Project, [https://openroad-flow-scripts.readthedocs.io/en/latest/tutorials/FlowTutorial.html OpenROAD Flow Scripts tutorial], design-flow implementation documentation (accessed 2026-11-21).
+* University of Cambridge, [https://www.cl.cam.ac.uk/research/srg/han/ACS-P35/obj-2.2/zhpb6c4869bc.html ASIC costing], educational costing model (accessed 2026-11-21).
+* T. Kuroda et al., “Agile-X: A Structured-ASIC Created With a Mask-Less Lithography System Enabling Low-Cost and Agile Chip Fabrication,” ''IEEE Transactions on Very Large Scale Integration (VLSI) Systems'' 33(3), 746–756 (2025). doi:10.1109/TVLSI.2024.3486239. [https://doi.org/10.1109/TVLSI.2024.3486239 DOI].
+
+[[Category:Electrical engineering]]
+[[Category:Computer engineering]]

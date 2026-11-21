@@ -1,0 +1,28 @@
+{{Knowledge object
+ |title=Hardware description language
+ |entity_type=Concept
+ |domain=Computer science, Engineering
+ |status=Established
+ |provenance=IEEE Std 1076-2019; IEEE Std 1800-2023
+}}
+{{Reading depth|base=Hardware description language|current=Core}}
+= Hardware description language =
+{{:Hardware description language/Simple}}
+== Scope and identity ==
+A '''hardware description language''' ('''HDL''') expresses the structure or behavior of electronic hardware in a form that tools can analyze. The same language family can describe concurrent circuits, simulate design behavior, and specify checks; a description is not automatically a physically realizable circuit.
+
+VHDL and SystemVerilog are standardized HDLs. Their language definitions are distinct from the synthesizable subsets accepted by particular implementation tools.<ref name="ieee1076">IEEE Standards Association, ''IEEE Std 1076-2019: VHDL Language Reference Manual'' (2019), https://standards.ieee.org/ieee/1076/5179/</ref><ref name="ieee1800">IEEE Standards Association, ''IEEE Std 1800-2023: SystemVerilog—Unified Hardware Design, Specification, and Verification Language'' (published 2024), https://standards.ieee.org/ieee/1800/7743/</ref>
+
+== Boundaries ==
+* An HDL is a language; '''register-transfer level''' (RTL) is a design abstraction expressible in an HDL.
+* Simulation evaluates a model's specified behavior; synthesis attempts to map supported constructs into implementable logic.
+* Verification checks claims about a model or implementation; simulation alone does not establish complete correctness.
+* A gate-level description and a behavioral testbench may both use HDL syntax but serve different purposes.
+
+== Related concepts ==
+[[Computer architecture]] supplies a system-level context; [[Software]] provides a useful contrast with ordinary sequential programming. Hardware description languages connect design specifications to circuit implementation and verification.
+
+== References ==
+<references/>
+[[Category:Computer science]]
+[[Category:Engineering]]

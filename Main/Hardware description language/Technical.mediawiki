@@ -39,7 +39,7 @@ Consider an unsigned four-bit register with reset and an enable signal. On each 
 The wraparound follows from the specified four-bit state width: there are <math>2^4=16</math> representable unsigned values, 0 through 15. The table is a hand-checked behavioral specification; no HDL simulator or synthesis tool is claimed to have executed it.
 
 A representative SystemVerilog ''illustration'' is:
-<syntaxhighlight lang="verilog">
+<pre>
 module counter4 (
     input  logic       clk,
     input  logic       reset,
@@ -53,7 +53,7 @@ module counter4 (
             q <= q + 4'd1;
     end
 endmodule
-</syntaxhighlight>
+</pre>
 Here the absent final `else` expresses state retention, while the nonblocking assignment models a clocked state update. The example uses synchronous active-high reset; it is not an asynchronous-reset circuit. Tool-specific synthesis support and runtime compilation were not independently tested.
 
 == Simulation versus synthesis ==

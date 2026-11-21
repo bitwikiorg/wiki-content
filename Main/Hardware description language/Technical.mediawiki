@@ -1,0 +1,87 @@
+{{Reading depth|base=Hardware description language|current=Technical}}
+= Hardware description language — Technical =
+== Definition and standardization ==
+An '''HDL''' is a formal notation for describing hardware structure, behavior, and—in languages with appropriate constructs—verification properties. The IEEE 1076-2019 VHDL language reference manual specifies VHDL; IEEE 1800-2023 specifies SystemVerilog as a unified design, specification, and verification language.<ref name="vhdl">IEEE Standards Association, ''IEEE Std 1076-2019: IEEE Standard for VHDL Language Reference Manual'' (2019), https://standards.ieee.org/ieee/1076/5179/</ref><ref name="sv">IEEE Standards Association, ''IEEE Std 1800-2023: IEEE Standard for SystemVerilog—Unified Hardware Design, Specification, and Verification Language'' (published 28 February 2024), https://standards.ieee.org/ieee/1800/7743/; DOI: 10.1109/IEEESTD.2024.10458102.</ref>
+
+The language specification establishes syntax and semantics; it does not promise that every valid construct can be synthesized by every tool. An implementation flow separately imposes synthesis, library, timing, and target constraints.
+
+== Models and abstraction boundaries ==
+HDLs support several distinct levels:
+* '''Behavioral:''' specifies input/output behavior or algorithms, sometimes without an implementation-ready structure.
+* '''Register-transfer level (RTL):''' specifies state-holding elements, clocked updates, and combinational transformations between state elements.
+* '''Structural or gate level:''' connects instantiated components or technology-mapped primitives.
+* '''Testbench and properties:''' generates stimuli, observes outputs, and expresses assertions or coverage goals.
+
+These levels overlap in practical source code. RTL is not synonymous with a particular language, and a verification testbench is not necessarily hardware to fabricate. IEEE 1800 explicitly covers behavioral, RTL and gate-level modeling as well as assertions, coverage and constrained-random verification.<ref name="sv"/>
+
+== Concurrency, state and time ==
+A hardware model represents concurrently active components. In an event-driven simulator, updates can trigger dependent processes; the language's scheduling rules determine when reads and writes become visible. This is not equivalent to executing the entire source file as a single sequential program.
+
+A simple synchronous design can be specified abstractly by
+<math>q_{n+1}=F(q_n,x_n),\qquad y_n=G(q_n,x_n)</math>,
+where <math>q_n</math> is sampled state, <math>x_n</math> is input, and <math>F,G</math> are state-transition and output functions. This is a modeling convention, not a universal claim that all digital hardware is synchronous. Asynchronous circuits, analog effects, and clock-domain crossings require different or additional models.
+
+=== Worked example: four-bit modulo counter ===
+Consider an unsigned four-bit register with reset and an enable signal. On each active clock edge, reset takes precedence; otherwise, when enabled, the next value is <math>(q+1)\bmod 16</math>. When disabled, state is retained.
+
+{| class="wikitable"
+! Current state !! Reset !! Enable !! Next state
+|-
+| 14 || 0 || 1 || 15
+|-
+| 15 || 0 || 1 || 0
+|-
+| 9 || 0 || 0 || 9
+|-
+| 9 || 1 || 1 || 0
+|}
+
+The wraparound follows from the specified four-bit state width: there are <math>2^4=16</math> representable unsigned values, 0 through 15. The table is a hand-checked behavioral specification; no HDL simulator or synthesis tool is claimed to have executed it.
+
+A representative SystemVerilog ''illustration'' is:
+<pre>
+module counter4 (
+    input  logic       clk,
+    input  logic       reset,
+    input  logic       enable,
+    output logic [3:0] q
+);
+    always_ff @(posedge clk) begin
+        if (reset)
+            q <= 4'd0;
+        else if (enable)
+            q <= q + 4'd1;
+    end
+endmodule
+</pre>
+Here the absent final `else` expresses state retention, while the nonblocking assignment models a clocked state update. The example uses synchronous active-high reset; it is not an asynchronous-reset circuit. Tool-specific synthesis support and runtime compilation were not independently tested.
+
+== Simulation versus synthesis ==
+'''Simulation''' interprets the HDL model and testbench according to language semantics, including time and event scheduling. It can expose mismatches for supplied stimuli but cannot establish the absence of errors in untested cases.
+
+'''Synthesis''' translates a supported hardware description into a lower-level representation under tool and target constraints. Language legality, synthesizability, and satisfactory implementation are separate properties. For example, a delay used to schedule testbench stimulus is meaningful in simulation but does not by itself specify a realizable clocked delay element.
+
+'''Formal verification''' can prove properties under explicit assumptions and model bounds, but a proof about an abstract model does not automatically validate physical timing, analog behavior, or the correctness of the assumptions.
+
+== Language comparison ==
+{| class="wikitable"
+! Aspect !! VHDL !! SystemVerilog
+|-
+| Principal reference || IEEE 1076-2019 || IEEE 1800-2023
+|-
+| Design descriptions || Behavioral, RTL and structural modeling || Behavioral, RTL and gate-level modeling
+|-
+| Verification || Testbenches, assertions and language-supported verification patterns || Testbenches, assertions, functional coverage, object-oriented and constrained-random constructs
+|}
+The table compares standard scopes rather than asserting universal superiority or identical support across simulators and synthesizers.<ref name="vhdl"/><ref name="sv"/>
+
+== Provenance and limitations ==
+VHDL grew from the VHSIC hardware-description effort and was standardized as IEEE 1076; Verilog's lineage and later SystemVerilog extensions were consolidated into IEEE 1800. Historical lineage should not be confused with claims about current tool adoption. The cited IEEE standards are normative language references, not empirical benchmarks of productivity or bug reduction.
+
+Important limitations include incomplete stimulus coverage, mismatches between simulation and synthesis interpretations, unknown initial values, clock-domain crossing risks, timing closure, physical constraints, and vendor-specific supported subsets. No general numerical improvement in reliability or development speed is asserted.
+
+== Connections ==
+[[Computer architecture]] describes programmer-visible and implementation-level computer structure, whereas HDL source describes hardware models used during design. [[Software]] shares textual and tooling practices with HDLs but does not erase the concurrency and physical-implementation distinctions.
+
+== References ==
+<references/>

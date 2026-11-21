@@ -1,0 +1,46 @@
+{{Source status|status=New review draft|note=Technical RTL semantics and verification; illustrative model, not silicon validation.}}
+{{Reading depth|base=Register-transfer level|current=Technical}}
+= Register-transfer level — Technical =
+
+== Transition-system semantics ==
+A useful mathematical abstraction for a synchronous RTL block is a discrete transition system with state vector <math>s_t</math>, input vector <math>x_t</math>, next-state function <math>F</math> and output function <math>G</math>:
+:<math>s_{t+1}=F(s_t,x_t),\qquad y_t=G(s_t,x_t).</math>
+Here <math>t</math> indexes active sampling events, not continuous physical time. This abstraction assumes a chosen clock-domain boundary, a defined reset/initial state, and an interpretation of input sampling. A Mealy-style output can depend on both state and current inputs; a Moore-style output depends on state alone. Real circuits also have propagation delays, setup/hold constraints and analog behavior omitted from this model.
+
+== Worked four-bit enabled counter ==
+For an unsigned four-bit register, let <math>s_t\in\{0,\ldots,15\}</math>, enable <math>e_t\in\{0,1\}</math>, and synchronous reset <math>r_t</math>. The specified transition is:
+:<math>s_{t+1}=\begin{cases}0&r_t=1\\(s_t+1)\bmod16&r_t=0\land e_t=1\\s_t&\text{otherwise.}\end{cases}</math>
+Starting at 14 with reset deasserted and enable asserted, the next two states are 15 and 0. If enable is deasserted at state 15, the next state remains 15. The calculation is an illustration of the specification, not a measured implementation.
+
+<syntaxhighlight lang="verilog">
+module counter4 (
+    input  logic clk,
+    input  logic rst,
+    input  logic en,
+    output logic [3:0] count
+);
+    always_ff @(posedge clk) begin
+        if (rst)
+            count <= 4'd0;
+        else if (en)
+            count <= count + 4'd1;
+    end
+endmodule
+</syntaxhighlight>
+
+The example has synchronous active-high reset; it intentionally omits an asynchronous reset. Nonblocking assignment schedules the register update under SystemVerilog simulation semantics, rather than treating each clocked assignment as an immediate software mutation.<ref name="ieee">IEEE, ''IEEE Std 1800-2023: SystemVerilog—Unified Hardware Design, Specification, and Verification Language'', clauses on procedural blocks, event regions and nonblocking assignments, https://standards.ieee.org/ieee/1800/7743/ .</ref> The absence of an explicit else in this clocked process expresses state retention when enable is false; the same omission in a combinational process may infer unintended storage.
+
+== Combinational and sequential processes ==
+SystemVerilog provides <code>always_comb</code> for combinational behavior and <code>always_ff</code> for sequential intent. These constructs impose language-level restrictions and are useful for identifying some modeling errors; they do not substitute for formal verification. Combinational assignments are commonly written with blocking assignment and clocked state updates with nonblocking assignment, consistent with widely used engineering style guidance.<ref name="style">Google, ''Verilog Style Guide'', sections on sequential logic and nonblocking assignments, https://chromium.googlesource.com/external/github.com/google/styleguide/+/HEAD/verilogguide.md .</ref>
+
+== Synthesizability and implementation ==
+Synthesis attempts to map supported RTL behavior into logic elements and registers. It is not a universal compiler for all legal HDL constructs: testbench delays, file I/O, unconstrained dynamic structures and technology-dependent primitives may be unsupported or inappropriate for synthesis. Even a successfully synthesized design needs a target library, constraints and checks for timing, reset, clocking, power and physical implementation. Timing closure depends on accurate clocks, input/output delays, exceptions and physical parasitics.<ref name="openlane">OpenLane 2, ''Achieving Timing Closure'', https://openlane2.readthedocs.io/en/latest/usage/timing_closure/index.html .</ref>
+
+== Verification boundaries ==
+Simulation tests selected traces and corner cases; assertions can specify invariants such as “when reset is sampled high, the next state is zero.” Formal property checking can reason about larger or exhaustive bounded/unbounded state spaces subject to tool and model assumptions. Equivalence checking can compare RTL and transformed representations, but does not establish that the original specification was correct. Clock-domain crossings and metastability require methods beyond a single-clock discrete-state model.
+
+== Relationship to adjacent concepts ==
+RTL is an abstraction level; [[Logic gate]] describes primitive Boolean structures, [[Integrated circuit]] concerns physical realization, and [[Computer architecture]] concerns system-level organization. An HDL is a notation capable of expressing RTL and other models, whereas EDA refers to the tool ecosystem processing those models.
+
+== References ==
+<references/>

@@ -1,0 +1,25 @@
+{{Reading depth|base=Hardware description language|current=Simple}}
+= Hardware description language — Simple =
+<onlyinclude>'''A hardware description language (HDL)''' is a way to describe what an electronic circuit contains and how its signals behave. Engineers use HDLs to explore a design in simulation, check it, and—when the description uses supported constructs—turn it into a circuit implementation.</onlyinclude>
+
+== Why use one? ==
+Imagine designing a digital counter. Instead of wiring every component immediately, an engineer can describe a register that holds a number and a rule that updates it at a clock edge. A simulator can then test sequences of clock pulses and resets before physical hardware exists.
+
+== How is this different from ordinary code? ==
+A software program commonly describes operations executed by a processor. An HDL can describe many pieces of hardware that operate concurrently. The source text may look like programming code, but its meaning depends on the HDL's event, timing, and concurrency rules.
+
+== Three different jobs ==
+* '''Modeling:''' state what signals and components do.
+* '''Simulation and verification:''' exercise a model and check expected outcomes.
+* '''Synthesis:''' translate a supported design description into logic for a chip or programmable device.
+
+Not every valid HDL statement can be synthesized. A testbench can use timing delays or generated stimuli that help test a design without representing physical hardware to be built.
+
+== Examples ==
+'''VHDL''' and '''SystemVerilog''' are two widely used, IEEE-standardized HDLs. SystemVerilog includes specialized verification features such as assertions and constrained-random testbench constructs.<ref name="simple1076">IEEE, ''VHDL Language Reference Manual'', IEEE 1076-2019, https://standards.ieee.org/ieee/1076/5179/</ref><ref name="simple1800">IEEE, ''SystemVerilog'', IEEE 1800-2023, https://standards.ieee.org/ieee/1800/7743/</ref>
+
+== What an HDL cannot guarantee ==
+A simulation can miss untested scenarios. A synthesizable design can still fail timing, use too much power, or be functionally incorrect. Tool settings and target technology matter.
+
+== Sources ==
+<references/>

@@ -1,0 +1,15 @@
+<onlyinclude>A '''field-programmable gate array''' ('''FPGA''') is an integrated circuit whose digital logic and interconnections can be configured after manufacture. Its programmable fabric implements spatially arranged, concurrent circuits rather than executing every operation as a sequential software instruction. Imagine a box of electronic building blocks whose connections can be changed: the same chip can become a signal filter, controller or custom data-processing pipeline.</onlyinclude>
+
+== How it works ==
+The chip contains small logic elements, memory and configurable wires. A designer describes a circuit, then software determines how the elements should be connected. The result is loaded onto the FPGA as configuration data. Many operations can happen at once because the chip is implementing a circuit, not merely running a list of instructions.
+
+== When it is useful ==
+FPGAs are useful when hardware needs to be updated, when custom interfaces are required, or when a specialized data path can benefit from parallel execution. They are not automatically faster or more efficient than CPUs, GPUs or custom chips: the answer depends on the task and implementation.
+
+== Important distinction ==
+A regular FPGA can be reconfigured between designs; changing part of the chip while the rest keeps operating requires specific partial-reconfiguration support and careful design.
+
+== References ==
+* [https://docs.amd.com/r/en-US/ug574-ultrascale-clb AMD, ''UltraScale Architecture Configurable Logic Block User Guide'' (UG574), rev. 1.6, 22 January 2025].
+* [https://docs.amd.com/r/en-US/ug573-ultrascale-memory-resources AMD, ''UltraScale Architecture Memory Resources User Guide'' (UG573), rev. 1.14, 18 November 2025].
+* [https://docs.amd.com/r/en-US/ug574-ultrascale-clb/Recommended-Design-Flow AMD, UG574, ''Recommended Design Flow''].

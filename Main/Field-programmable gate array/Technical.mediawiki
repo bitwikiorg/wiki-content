@@ -1,0 +1,29 @@
+<onlyinclude>An '''FPGA''' implements a configurable synchronous or asynchronous digital network by programming logic functions, state elements and interconnect. Its performance is determined by both logical depth and physical routing, so HDL-level functional correctness alone does not establish timing closure.</onlyinclude>
+
+== Configurable fabric ==
+For a LUT with ''k'' independent binary inputs, a complete truth table contains 2<sup>k</sup> output bits. Thus an arbitrary six-input, single-output Boolean function requires 64 truth-table bits in the abstract. This is a logical capacity calculation, not the total physical configuration-bit count: real devices additionally encode routing, control and architectural options. AMD's UltraScale CLB guide specifies eight six-input LUTs, sixteen storage elements and a dedicated carry chain per CLB slice; these are ''family-specific'', not universal FPGA constants.
+
+SLICEM-type UltraScale LUTs can also serve as distributed RAM or shift registers, while dedicated block RAM supports larger storage structures. AMD UG573 describes 36-Kb block RAMs subdividable into two independently controlled 18-Kb memories. Memory-port modes, read-during-write semantics, and timing vary with primitives and device generation.
+
+== Mapping and timing ==
+The implementation flow proceeds from RTL or other design representation through elaboration, logic synthesis, technology mapping, placement, routing, timing analysis and bitstream generation. A simplified synchronous register-to-register setup constraint is:
+
+:<math>T_{clk} \geq T_{cq}+T_{comb}+T_{route}+T_{setup}+T_{uncertainty}</math>
+
+Here ''T''<sub>cq</sub> is launching-register clock-to-Q delay; ''T''<sub>comb</sub> is combinational delay; ''T''<sub>route</sub> is interconnect delay; ''T''<sub>setup</sub> is destination setup time; and ''T''<sub>uncertainty</sub> represents relevant clock uncertainty. This simplified relation assumes an appropriately related launch and capture clock; skew, multicycle paths, clock domains, hold constraints and tool-specific timing conventions require separate analysis.
+
+'''Illustrative arithmetic only:''' if these contributions are 0.15 ns, 1.20 ns, 0.85 ns, 0.20 ns and 0.10 ns, their sum is 2.50 ns and the idealized maximum clock rate is 400 MHz. This is not a measured FPGA benchmark or a guarantee of achievable frequency. Placement and routing may dominate critical-path delay, especially across distant fabric regions.
+
+== Reconfiguration and correctness ==
+Full-device reconfiguration changes the implemented circuit; partial reconfiguration can update a designated region while other regions remain active only when supported by the device and deployment flow. Configuration interfaces, isolation, state preservation, timing and security must be engineered explicitly. Functional simulation cannot prove timing closure or physical integrity. Verification should include constrained timing analysis, clock-domain crossing checks, resource-utilization reports and board-level validation where appropriate.
+
+== Comparative limitations ==
+FPGAs trade post-fabrication flexibility for configuration storage and programmable-interconnect overhead. ASIC comparisons must normalize process node, volume, non-recurring engineering cost and performance targets. GPU comparisons must distinguish custom datapath throughput from programmable instruction throughput, development effort and memory bandwidth. There is no universal performance ranking.
+
+== Provenance and scope ==
+Architectural numbers above are taken from AMD's UltraScale documentation and should not be generalized to Intel or other FPGA families. The timing equation and numeric example are explanatory engineering abstractions, not vendor device measurements.
+
+== References ==
+* [https://docs.amd.com/r/en-US/ug574-ultrascale-clb AMD, ''UltraScale Architecture Configurable Logic Block User Guide'' (UG574), rev. 1.6, 22 January 2025].
+* [https://docs.amd.com/r/en-US/ug573-ultrascale-memory-resources AMD, ''UltraScale Architecture Memory Resources User Guide'' (UG573), rev. 1.14, 18 November 2025].
+* [https://docs.amd.com/r/en-US/ug574-ultrascale-clb/Recommended-Design-Flow AMD, UG574, ''Recommended Design Flow''].

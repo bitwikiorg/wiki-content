@@ -55,7 +55,7 @@
         "A23"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R05",
@@ -559,18 +559,52 @@
       "title": "Instruction set architecture",
       "pr_number": 92,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/92",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "date": "2026-11-22",
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/92",
+        "summary": "Two reader-facing localizations maintained; canonical Main retains one Knowledge object, category and Related to assertions, and incoming SMW query. Explicit reciprocal navigation; Core source prose consolidated into Technical with distinct ISA/microarchitecture research boundaries.",
+        "preservation": "Core citations matched against technical references by exact source URLs; canonical semantic relations, metadata and category assertions retained. Core distinct contract, implementation, security and memory-ordering qualifications retained in technical treatment.",
+        "checks": {
+          "source_invariants": "8/8 static invariants passed in JS over complete source before GitHub writes",
+          "tests": "Article-specific Python tests still require update and execution; old tests expect legacy Reading depth",
+          "ci": "not run; shared PR #136 prerequisite",
+          "scientific_review": "partial; full claim-level citation audit outstanding"
+        },
+        "blockers": [
+          "Shared V2 two-localization compatibility PR #136 unmerged",
+          "Article-specific tests not yet executed",
+          "Full citation verification not complete"
+        ],
+        "merge_authorized": false
+      }
     },
     {
       "id": "A23",
       "title": "Microarchitecture",
       "pr_number": 93,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/93",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "date": "2026-11-22",
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/93",
+        "summary": "Two reader-facing localizations maintained; canonical Main retains one Knowledge object, category and Related to assertions, and incoming SMW query. Explicit reciprocal navigation; Core source prose consolidated into Technical with distinct ISA/microarchitecture research boundaries.",
+        "preservation": "Core citations matched against technical references by exact source URLs; canonical semantic relations, metadata and category assertions retained. Core distinct contract, implementation, security and memory-ordering qualifications retained in technical treatment.",
+        "checks": {
+          "source_invariants": "8/8 static invariants passed in JS over complete source before GitHub writes",
+          "tests": "Article-specific Python tests still require update and execution; old tests expect legacy Reading depth",
+          "ci": "not run; shared PR #136 prerequisite",
+          "scientific_review": "partial; full claim-level citation audit outstanding"
+        },
+        "blockers": [
+          "Shared V2 two-localization compatibility PR #136 unmerged",
+          "Article-specific tests not yet executed",
+          "Full citation verification not complete"
+        ],
+        "merge_authorized": false
+      }
     },
     {
       "id": "A24",
@@ -972,16 +1006,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A11",
-    "run_count": 3,
+    "last_checkpoint_article": "A23",
+    "run_count": 4,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R03",
-    "articles_corrected_pending_validation": 6,
-    "pairs_corrected_pending_validation": 3
+    "last_reviewed_pair": "R04",
+    "articles_corrected_pending_validation": 8,
+    "pairs_corrected_pending_validation": 4
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

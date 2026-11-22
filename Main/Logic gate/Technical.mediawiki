@@ -1,4 +1,4 @@
-{{Reading depth|base=Logic gate|current=Technical}}
+''Reading localization: [[Logic gate/Simple|Simple]] · '''Technical'''.''
 
 = Logic gate — Technical =
 
@@ -120,6 +120,32 @@ Logic gates remain one level of a larger abstraction hierarchy. Their mathematic
 
 For an advanced experiment, document the exact Boolean function, technology and transistor network, supply and temperature, input and load waveforms, cell characterization source, timing/power convention and independent validation. Recompute the NAND-only XOR and RC/power fixtures above before trusting a numerical library or simulation output.
 
+== Preserved foundational distinctions from the canonical account ==
+
+A '''logic gate''' realizes a specified relation between discrete logical input and output symbols. In digital hardware it is a physical circuit engineered to reliably implement that relation under a defined input-voltage range, output load, supply voltage and timing envelope. A Boolean gate abstraction and a physical electronic circuit are different description levels.
+
+== Two distinct models ==
+
+{| class="wikitable"
+! Level !! What is specified !! What is omitted unless modeled
+|-
+| Boolean truth-function model || A mapping between discrete input and output values || Delay, current, noise, energy, transistor defects and transient states
+|-
+| Physical circuit model || Voltage thresholds, transistor networks, input/output loads and time-domain behavior || Some microscopic device physics, manufacturing statistical variability and unmodeled disturbances
+|}
+
+Claude Shannon's 1938 switching-circuit analysis established a systematic correspondence between Boolean algebra and relay circuit organization, while modern CMOS technologies use complementary transistor networks to implement digital gates.<ref name="core_shannon_core">Claude E. Shannon, [https://doi.org/10.1109/EE.1938.6431064 “A Symbolic Analysis of Relay and Switching Circuits”], ''Electrical Engineering'' 57, 713–723 (1938).</ref><ref name="core_mit_core">MIT OpenCourseWare 6.004, [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ ''Computation Structures'', digital abstraction, combinational synthesis, CMOS technology and timing].</ref>
+
+== From gates to systems ==
+
+NAND and NOR are each functionally complete for finite Boolean functions under standard assumptions. Multiple interconnected gates form combinational circuits; state-bearing elements enable sequential circuits and storage. Functional completeness does not guarantee optimal transistor count, speed, noise immunity or physical manufacturability.
+
+The distinction is useful in [[Related to::Logic|logic]], [[Related to::Computation|computation]], [[Related to::Computer architecture|computer architecture]] and [[Related to::Integrated circuit|integrated-circuit engineering]]. These links record subject relevance rather than asserting that all computational logic is physically implemented in one gate technology.
+
+== Verification and physical validity ==
+
+A design review must separately check Boolean equivalence, transistor-level behavior and timing/power/noise constraints. Two circuits can have identical stable truth tables but different hazards, propagation delays and susceptibility to asynchronous input transitions. A gate operating outside its specified electrical region need not output a valid binary level.
+
 == References ==
 
 <references/>
@@ -128,4 +154,4 @@ For an advanced experiment, document the exact Boolean function, technology and 
 
 * Claude Shannon, [https://doi.org/10.1109/EE.1938.6431064 ''A Symbolic Analysis of Relay and Switching Circuits'' (1938)].
 * MIT OCW, [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ ''Computation Structures''], digital abstraction, CMOS and synthesis.
-* [[Logic gate/Simple|Simple explanation]] · [[Logic gate|Core]] · [[Integrated circuit]] · [[Logic]].
+* [[Logic gate/Simple|Simple explanation]] · [[Logic gate/Simple|Simple]] · [[Integrated circuit]] · [[Logic]].

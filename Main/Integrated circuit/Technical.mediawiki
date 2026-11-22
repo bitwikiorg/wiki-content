@@ -1,4 +1,4 @@
-{{Reading depth|base=Integrated circuit|current=Technical}}
+''Reading localization: [[Integrated circuit/Simple|Simple]] · '''Technical'''.''
 
 = Integrated circuit — Technical =
 
@@ -144,6 +144,38 @@ Major technical challenges include physically reliable small-device transport, i
 
 The integrated circuit remains a convergence point: Boolean logic alone cannot specify fabrication; materials alone cannot specify computation; and source-controlled design files alone do not prove that manufactured silicon works. Research-grade explanation must link the levels without confusing them.
 
+== Preserved foundational distinctions from the canonical account ==
+
+An '''integrated circuit''' (IC) is a device in which multiple circuit elements and electrical connections are fabricated together in or on a substrate. It can be analog, digital, mixed-signal, radio-frequency, power-management or another specialized technology. An IC is neither equivalent to a particular transistor nor necessarily a processor.
+
+== Physical and functional organization ==
+
+{| class="wikitable"
+! Level !! Key objects and verification questions
+|-
+| Devices || Transistors, junctions, resistors and capacitors: current, voltage, reliability and manufacturing variation
+|-
+| Logic / analog blocks || Gates, memories, amplifiers, converters: functionality, analog behavior and interfaces
+|-
+| Physical layout || Cells, wiring, interconnect parasitics, clock and power distribution, thermal hotspots
+|-
+| Die and package || Wafer fabrication, die test, interconnect, assembly, system-level thermal/electrical conditions
+|-
+| Application || Processor, sensor, memory, power system or communication circuit with external requirements
+|}
+
+The early solid-state demonstration by Jack Kilby in 1958 and the subsequent planar, interconnected monolithic circuit approach associated with Robert Noyce and Jean Hoerni are complementary milestones. Fabrication at production scale required more than a laboratory demonstration.<ref name="core_history_core">Computer History Museum, [https://www.computerhistory.org/siliconengine/practical-monolithic-integrated-circuit-concept-patented/ ''1959: Practical Monolithic Integrated Circuit Concept Patented''] and [https://www.computerhistory.org/siliconengine/first-planar-integrated-circuit-is-fabricated/ ''1960: First Planar Integrated Circuit is Fabricated''].</ref>
+
+== Integration is conditional, not a guarantee ==
+
+An increase in integration may reduce interconnect distance and unit assembly costs, but design complexity, thermal management, yield, process variation, verification and packaging can become significant constraints. Gordon Moore's 1965 article discussed the economics of component density as an empirical and prospective observation, not an immutable physical law.<ref name="core_moore_core">Gordon E. Moore, [https://web.stanford.edu/class/cs114/readings/moore.pdf “Cramming More Components onto Integrated Circuits”], ''Electronics'' 38(8), 114–117 (1965), original historical projection.</ref>
+
+An engineering study needs process assumptions, technology libraries, layout, functional and timing verification, power/thermal estimates, fabrication yield models and measured silicon data before making claims about performance or cost.
+
+== Relationship to other subjects ==
+
+Integration relates to [[Related to::Logic gate|logic gates]], [[Related to::Computer architecture|computer architecture]], [[Related to::Electric current|electric current]] and [[Related to::Energy conversion|energy conversion]]. These are grounded general relationships rather than invented semiconductor production taxonomy.
+
 == References ==
 
 <references/>
@@ -153,4 +185,4 @@ The integrated circuit remains a convergence point: Boolean logic alone cannot s
 * [https://www.si.edu/object/integrated-circuit-jack-kilby%3Anmah_689592 Smithsonian, Kilby's early circuit] and [https://www.computerhistory.org/siliconengine/practical-monolithic-integrated-circuit-concept-patented/ Computer History Museum, Noyce and planar manufacture].
 * [https://web.stanford.edu/class/cs114/readings/moore.pdf Moore (1965)] and [https://doi.org/10.1109/JSSC.1974.1050511 Dennard et al. (1974)] on integration and device scaling under distinct assumptions.
 * [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ MIT 6.004], device-to-system logic and architecture.
-* [[Integrated circuit/Simple|Simple explanation]] · [[Integrated circuit|Core]] · [[Logic gate]] · [[Computer architecture]].
+* [[Integrated circuit/Simple|Simple explanation]] · [[Integrated circuit/Simple|Simple]] · [[Logic gate]] · [[Computer architecture]].

@@ -611,9 +611,28 @@
       "title": "Central processing unit",
       "pr_number": 94,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/94",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "date": "2026-11-22",
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/94",
+        "scope": "Converted three-depth article to canonical semantic host plus Simple and Technical reader surfaces; preserved existing unique Core explanatory sections verbatim in Technical with scoped citation renaming, retained canonical SMW relations only in host, updated article-specific tests.",
+        "preservation": "Original Core mechanism, distinctions, source citations, hardware/software boundaries and measurement caveats retained in Technical; original Simple and Technical bodies retained. Canonical host retains Knowledge object, incoming SMW query, relations and categories.",
+        "checks": {
+          "static_source_checks_passed": 8,
+          "static_source_checks_total": 8,
+          "checks_executed": "Remote content inspection and in-memory structural/reference/math invariants; no Python test execution",
+          "python_regression": "updated but not executed",
+          "ci": "not verified; shared #136 prerequisite",
+          "scholarly_citations": "existing official architecture/vendor references retained; comprehensive claim-by-claim source audit not completed"
+        },
+        "blockers": [
+          "PR #136 shared V2/substrate compatibility remains unmerged",
+          "Execute article-specific Python regression and CI",
+          "Complete scholarly claim-by-claim citation audit"
+        ],
+        "merge_approved": false
+      }
     },
     {
       "id": "A25",
@@ -1006,15 +1025,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A23",
+    "last_checkpoint_article": "A24",
     "run_count": 4,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R04",
-    "articles_corrected_pending_validation": 8,
+    "last_reviewed_pair": "R05",
+    "articles_corrected_pending_validation": 9,
     "pairs_corrected_pending_validation": 4
   },
   "hard_rules": [

@@ -1,0 +1,26 @@
+{{Reading depth|base=Network interface controller|current=Technical}}
+= Network interface controller — Technical =
+<onlyinclude>'''Technical perspective.''' NIC performance emerges from link encoding, packet size, DMA descriptor and buffer management, interrupt/poll scheduling, host-memory bandwidth, and software-stack costs. Line rate alone cannot predict application goodput or tail latency.</onlyinclude>
+
+== Ethernet boundary and provenance ==
+IEEE 802.3-2022 defines Ethernet MAC and PHY interfaces and behaviors, including full-duplex links and supported PHY variants; it does not prescribe a unique PCIe queue architecture.<ref name="ieee">IEEE, ''IEEE Std 802.3-2022'', doi:10.1109/IEEESTD.2022.9844436, https://standards.ieee.org/ieee/802.3/10422/</ref> The host-facing descriptor-ring and interrupt designs are device-specific.
+
+== DMA and queue lifecycle ==
+A driver typically allocates buffers and descriptors, maps DMA addresses, publishes producer indices or doorbells, and reclaims completed transmissions. Receive buffers must be replenished. Ordering and DMA ownership rules are platform-dependent; device DMA is not equivalent to a CPU pointer dereference. Kernel DMA API guidance should govern mapping, cache coherency, and synchronization rather than assuming universal coherent memory.<ref name="dma">Linux kernel, ''DMA API HOWTO'', https://docs.kernel.org/core-api/dma-api-howto.html</ref>
+
+== Polling and scheduling ==
+Linux NAPI usually starts from an interrupt and then processes packets under a receive budget; drivers also retire transmit completions. Its instances often correspond to interrupt/queue pairs, but this is a common configuration rather than a standard requirement.<ref name="napi">Linux kernel, ''NAPI'', https://docs.kernel.org/networking/napi.html</ref> Interrupt moderation can reduce interrupts per packet at the cost of additional waiting; busy polling trades CPU time for potentially lower wakeup latency.
+
+== Throughput sanity check ==
+For an illustrative 10 Gbit/s link, the raw bit-rate bound is 10 × 10^9 / 8 = 1.25 × 10^9 bytes/s = 1.25 GB/s (decimal). This is not TCP goodput: Ethernet framing, inter-frame gaps, optional tags, IP/TCP headers, retransmissions, host contention, and workload effects reduce useful delivered data. The numerical example assumes the stated link rate and makes no claim about a particular adapter.
+
+A simple packets-per-second ceiling at a fixed average ''on-wire'' frame cost B bytes is approximately R/(8B), where R is link bits/s. For B=1000 bytes and R=10^10 bits/s, this yields 1.25 million packets/s before accounting for additional overhead; real systems vary substantially. Do not apply the approximation to application payload size without including framing and inter-frame costs.
+
+== Offloads and tradeoffs ==
+Checksum and segmentation offloads reduce some CPU operations; receive-side scaling distributes flow processing, while queue steering and interrupt affinity influence cache locality. Hardware offload can complicate packet captures because packets may be observed before or after transformation. Device firmware, IOMMU configuration, and driver quality also affect correctness and security.
+
+== Limitations ==
+No universal latency, CPU utilization, energy efficiency, or throughput value follows from NIC link speed. The 802.3 standard and kernel API documentation describe interfaces and mechanisms, not a benchmark of any vendor device. Device-specific claims require datasheets, driver versions, and reproducible tests.
+
+== References ==
+<references/>

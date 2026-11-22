@@ -5,51 +5,24 @@
  |status=Established
  |provenance=BITwiki synthesis of reviewed physics teaching materials, original junction theory and device/fabrication references (2026-11-19)
 }}
-{{Reading depth|base=Semiconductor|current=Core}}
+
+[[Category:Electronics]]
+[[Category:Physics]]
+[[Category:Engineering]]
+[[Related to::Electric current]]
+[[Related to::Computer architecture]]
+[[Related to::Energy conversion]]
 
 = Semiconductor =
 
-== Overview ==
-
 {{:Semiconductor/Simple}}
 
-The introductory explanation gives the essential meaning of the subject. The rest of this article distinguishes materials, devices and systems and provides routes to [[Semiconductor/Simple|a beginner-friendly explanation]] and an independent [[Semiconductor/Technical|technical account]] of the underlying physics and engineering.
+''Reader localizations:'' [[Semiconductor/Simple|Simple (complete explanation)]] · [[Semiconductor/Technical|Technical (in-depth research treatment)]]
 
-== What the name refers to ==
-
-A '''semiconductor material''' is a physical substance with electronic states and charge transport that can be shaped by doping, fields, light and interfaces. A '''semiconductor device''' is an engineered structure using such a material; examples include diodes, transistors, photodetectors and solar cells. An '''integrated circuit''' contains many such devices and electrical interconnections. The '''semiconductor industry''' is the network of organizations, processes and equipment used to design, manufacture, package and distribute devices. These are related subjects but not one interchangeable definition.<ref name="openstaxcore">OpenStax, ''University Physics, Volume 3'', [https://openstax.org/books/university-physics-volume-3/pages/9-6-semiconductors-and-doping §9.6 “Semiconductors and Doping”] and [https://openstax.org/books/university-physics-volume-3/pages/9-7-semiconductor-devices §9.7 “Semiconductor Devices”].</ref>
-
-The subject can be studied through quantum and solid-state physics, chemistry and materials science, device physics, electrical engineering, manufacturing, and computing. Each examines a different level of the same physical system; merely describing a processor does not explain carrier transport, and understanding a band gap does not specify a computer architecture.
-
-== A navigable hierarchy of explanations ==
-
-{| class="wikitable"
-! Level !! Central question !! Where to continue
-|-
-| '''Material and carriers''' || Why are particular electronic states available, and how do electrons and holes move? || [[Semiconductor/Technical|Technical: electronic structure, carrier statistics and transport]]; [[Electric current]]
-|-
-| '''Junctions and devices''' || How do engineered boundaries and gate fields control currents and light? || [[Semiconductor/Technical|Technical: p–n junctions, MOSFETs and bipolar transistors]]; [[Voltage]]
-|-
-| '''Circuits''' || How do multiple devices implement useful electrical behavior? || [[Resistor]] and [[Computer architecture]] for neighboring concepts; device-level examples in the Technical account
-|-
-| '''Computing systems''' || How are switching elements organized into processing and memory? || [[Computer architecture]], [[Computation]]
-|-
-| '''Other applications''' || How is radiation converted to electrical signals or vice versa? || [[Energy conversion]] and the Technical treatment of optoelectronics
-|-
-| '''Manufacturing''' || How are real structures patterned, contacted, measured and packaged? || [https://www.osha.gov/semiconductors/silicon/device-fabrication OSHA — silicon device fabrication] and the Technical fabrication section
-|}
-
-These rows are reading routes, not claims that each topic has already been implemented as a separate BITwiki article.
-
-== Governing physical distinctions ==
-
-In crystalline semiconductors, occupied and available electron energy states form bands. A '''band gap''' is a range without the relevant extended electron states. Electrons and positively behaving holes can transport electrical charge, while doping, light, temperature and applied fields can alter carrier distributions. In an engineered p–n junction, spatial charge and internal fields affect transport; in a MOSFET, gate voltage controls a channel. Semiconductor theory is therefore both a study of material properties and a basis for designing devices.<ref name="mitcore">Jesús del Alamo, ''Integrated Microelectronic Devices'', MIT OpenCourseWare 6.720J (Spring 2007), [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ lecture notes] on charge carriers, junctions and MOSFETs.</ref>
-
-The related [[Related to::Electric current|electric current]] article explains charge flow as a measurable electrical quantity; semiconductor physics supplies material-dependent mechanisms for that flow. Semiconductor device behavior also connects to [[Related to::Computer architecture|computer architecture]] through physical switching networks and to [[Related to::Energy conversion|energy conversion]] through photovoltaic and optoelectronic systems. These broad associations do not assert that a semiconductor literally implements an architecture or that its material is a constituent of every energy converter.
+The unsuffixed title preserves the '''one canonical knowledge-object identity''' and its semantic links. The maintained educational content lives in the two reader localizations above; this page does not introduce a third separately edited explanation.
 
 == Semantically related knowledge ==
-
-The list below is generated from pages that explicitly assert a [[Property:Related to|Related to]] link to this canonical subject. It is not a list of all semiconductor-dependent technologies: omissions reflect unrecorded links, not scientific absence. Links in the body and [[Category:Electronics|Electronics category]] remain complementary navigation routes.
+Pages explicitly asserting a [[Property:Related to|Related to]] link to this canonical concept may appear below. A missing result is not evidence that a scientific relationship does not exist.
 
 {{#ask:
  [[Related to::Semiconductor]]
@@ -61,26 +34,5 @@ The list below is generated from pages that explicitly assert a [[Property:Relat
  |default=''No incoming semantic relationships have yet been recorded for this subject.''
 }}
 
-== Materials, evidence and engineering limits ==
-
-Silicon and germanium are elemental semiconductors. Gallium arsenide, silicon carbide and gallium nitride are examples of compound semiconductors. The latter can offer useful optical or high-field properties in appropriate devices, but suitability depends on crystal structure, defect populations, contacts, interfaces, heat removal, geometry and operating conditions. Amorphous and organic semiconductors require care because the simple crystalline band picture does not describe every transport regime.
-
-A material should not be classified as “better” solely because of a wider band gap, higher mobility, finer manufacturing node or its use in a more advanced computer. A responsible comparison specifies the intended application, operating limits and measurements. The quantitative conditions and known failure modes are developed in [[Semiconductor/Technical#Model_selection_and_unresolved_engineering_limits|Technical: model selection and limits]].
-
-== Choose a reading depth ==
-
-For a low-prerequisite explanation with examples, read [[Semiconductor/Simple|Simple]]. For the mathematical treatment of electron statistics, charge transport, junctions, transistor models and model limits, read [[Semiconductor/Technical|Technical]]. The technical article can be read from its beginning without first reading the simpler explanation.
-
 == References ==
-
 <references/>
-
-== Further reading ==
-
-* William Shockley, [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors”], ''Bell System Technical Journal'' 28(3), 435–489 (1949): original junction theory, treated with its model assumptions.
-* MIT OCW [https://ocw.mit.edu/courses/3-091sc-introduction-to-solid-state-chemistry-fall-2010/pages/electronic-materials/14-semiconductors/ 3.091SC session 14]: solid-state and chemical foundations.
-* [[Semiconductor/Technical|Technical references and equation-specific citations]].
-
-[[Category:Electronics]]
-[[Category:Physics]]
-[[Category:Engineering]]

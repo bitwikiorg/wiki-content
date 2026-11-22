@@ -101,15 +101,15 @@ A '''central processing unit''' (CPU) is a general-purpose programmable processo
 {| class="wikitable"
 ! Concept !! Distinct role
 |-
-| [[Related to::Computer architecture|Computer architecture]] || System-level organization of processors, memory and interfaces
+| [[Computer architecture]] || System-level organization of processors, memory and interfaces
 |-
 | Instruction set architecture || Programmer-visible operations and state, independent of any one implementation
 |-
 | Microarchitecture || Datapaths, pipelines, scheduling, caches and other implementation mechanisms
 |-
-| [[Related to::Operating system|Operating system]] || Software that manages scheduling, protection and hardware access
+| [[Operating system]] || Software that manages scheduling, protection and hardware access
 |-
-| [[Related to::Compiler|Compiler]] || Translates programs into target instructions, subject to language and ABI semantics
+| [[Compiler]] || Translates programs into target instructions, subject to language and ABI semantics
 |}
 
 The ISA/microarchitecture distinction is documented by the official RISC-V ISA reference, which explicitly avoids fixing microarchitectural details, and by Intel's separate architectural and system-programming documentation.<ref name="riscvcorelegacy">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''Unprivileged ISA''], official architecture specification.</ref><ref name="intelcorelegacy">Intel, [https://www.intel.com/content/www/us/en/content-details/789583/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html ''Intel 64 and IA-32 Software Developer's Manual''], processor architecture, instruction semantics and system programming.</ref>

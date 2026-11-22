@@ -5,15 +5,13 @@
  |status=Established
  |provenance=Intel 64 and IA-32 Software Developer's Manual and RISC-V ratified architecture specifications; hardware and execution model distinguished from particular implementations
 }}
-{{Reading depth|base=Central processing unit|current=Core}}
-
 = Central processing unit =
 
-== Overview ==
+'''Reading depth:''' '''Simple''' · [[Central processing unit/Technical|Technical]]
 
 {{:Central processing unit/Simple}}
 
-A '''central processing unit''' (CPU) is a general-purpose programmable processor, often organized into one or more cores, that executes a defined instruction architecture and provides computational and control services to a computer system. The CPU is a functional role and hardware design class; it is not interchangeable with the entire system-on-chip, a chip package, a particular ISA or the microarchitectural details of a given core.
+== Canonical semantic relationships ==
 
 == Boundaries and organization ==
 
@@ -31,17 +29,7 @@ A '''central processing unit''' (CPU) is a general-purpose programmable processo
 | [[Related to::Compiler|Compiler]] || Translates programs into target instructions, subject to language and ABI semantics
 |}
 
-The ISA/microarchitecture distinction is documented by the official RISC-V ISA reference, which explicitly avoids fixing microarchitectural details, and by Intel's separate architectural and system-programming documentation.<ref name="riscvcore">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''Unprivileged ISA''], official architecture specification.</ref><ref name="intelcore">Intel, [https://www.intel.com/content/www/us/en/content-details/789583/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html ''Intel 64 and IA-32 Software Developer's Manual''], processor architecture, instruction semantics and system programming.</ref>
-
-A CPU core can expose one or more hardware execution contexts; simultaneous multithreading is not the same as multiple independent physical cores. A processor package can also contain non-CPU functions. An integrated GPU, memory controller or accelerator is not automatically a CPU core.
-
-== Performance, correctness and security ==
-
-CPU throughput and task latency depend on instruction count, cycles per instruction, frequency, memory stalls and parallel execution. CPU performance comparisons require the same workload, measurement method and operating conditions. Instruction-set compatibility does not imply equivalent speed, energy consumption or side-channel resistance.
-
-Instruction retirement, memory ordering, exceptions and interrupts are governed by the relevant architectural and platform rules. Internal speculation can affect observable timing even when retired architectural results are correct.
-
-== Related semantic subjects ==
+== Incoming relationships ==
 
 {{#ask:
  [[Related to::Central processing unit]]
@@ -52,10 +40,6 @@ Instruction retirement, memory ordering, exceptions and interrupts are governed 
  |limit=30
  |default=''No incoming semantic relations are recorded.''
 }}
-
-== Reader depths ==
-
-[[Central processing unit/Simple|Simple]] explains the processor's role and common misconceptions. [[Central processing unit/Technical|Technical]] gives a formal execution model, performance derivations, concurrency and security constraints.
 
 == References ==
 

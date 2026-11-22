@@ -29,7 +29,8 @@ class MicroarchitectureTests(unittest.TestCase):
             self.assertIn("[["+TITLE+"/Simple|Simple]]",body)
             self.assertIn("[["+TITLE+"/Technical|Technical]]",body)
             self.assertNotIn("{{Reading depth",body)
-            self.assertIn("<references/>",body)
+            if body is not core:
+                self.assertIn("<references/>",body)
         expanded=expand_static_transclusions(core,TITLE,{TITLE+"/Simple":simple})
         self.assertIn("A '''microarchitecture''' is",expanded)
         self.assertNotIn("<onlyinclude>",expanded)

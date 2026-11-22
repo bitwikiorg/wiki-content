@@ -1,4 +1,4 @@
-{{Reading depth|base=Microarchitecture|current=Technical}}
+'''Reading versions:''' [[Microarchitecture/Simple|Simple]] · [[Microarchitecture/Technical|Technical]]
 
 = Microarchitecture — Technical =
 
@@ -94,6 +94,9 @@ The worked fixtures above can be recomputed independently: a five-stage, single-
 
 == Sources and limits ==
 
+Implementation choices can affect throughput without reducing individual instruction latency. Architectural memory ordering is distinct from cache design and store buffering. ISA compliance, platform behavior and microarchitectural information-flow security require separate verification evidence.
+
+
 The RISC-V specification is authoritative for the architecture's documented visible behavior, not a guarantee about BOOM's internal timing. BOOM documentation describes one concrete open-source microarchitecture, not all RISC-V processors. Spectre establishes specific security mechanisms and attack classes; it does not mean every speculative implementation is exploitable in the same way. Distinguishing these evidence types is essential to sound computer engineering.
 
 == References ==
@@ -103,4 +106,4 @@ The RISC-V specification is authoritative for the architecture's documented visi
 * RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''Unprivileged ISA Manual''].
 * Berkeley Architecture Research, [https://docs.boom-core.org/en/latest/ ''BOOM Documentation''].
 * Kocher et al., [https://spectreattack.com/spectre.pdf ''Spectre Attacks''].
-* [[Microarchitecture|Canonical article]] · [[Microarchitecture/Simple|Accessible introduction]] · [[Computer architecture]].
+* [[Microarchitecture/Simple|Simple introduction]] · [[Microarchitecture/Simple|Accessible introduction]] · [[Computer architecture]].

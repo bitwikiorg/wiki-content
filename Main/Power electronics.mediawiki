@@ -1,0 +1,24 @@
+<onlyinclude>'''Power electronics''' is the engineering discipline concerned with controlling and converting electrical power using semiconductor switches, magnetic components, capacitors, control systems and thermal design. It encompasses AC–DC rectifiers, DC–DC converters, DC–AC inverters and AC–AC conversion.</onlyinclude>
+
+== Scope ==
+Power-electronic systems regulate the flow of energy between a source and a load. Unlike signal-processing circuits, their principal objective is efficient transfer of appreciable power under electrical, thermal and safety constraints. Switching converters alternately store and release energy in inductors and capacitors; idealized conversion ratios are useful starting points, not complete designs.
+
+== Main architectures ==
+* '''Rectifier:''' converts alternating current to direct current; active rectification can control power factor and bidirectional flow.
+* '''Buck converter:''' reduces DC voltage; an ideal continuous-conduction buck has output voltage approximately equal to duty ratio times input voltage.
+* '''Boost converter:''' increases DC voltage, with substantial current and voltage stresses near extreme duty ratios.
+* '''Inverter:''' synthesizes alternating output from a DC link, commonly through pulse-width modulation and filtering.
+* '''Isolated converter:''' uses transformer coupling to provide galvanic isolation where required by system design and applicable standards.
+
+== Engineering considerations ==
+MOSFETs, IGBTs and wide-bandgap switches differ in conduction characteristics, switching behavior and voltage capability. Device selection must account for gate drive, reverse recovery, parasitic inductance, electromagnetic interference, protection and thermal paths. Efficiency alone is not a substitute for safety analysis.
+
+== Relationships ==
+* Related field: [[Semiconductor]]
+* Related device: [[Transistor]]
+* Related function: [[Voltage regulator]]
+
+== Further reading ==
+* [https://www.ti.com/lit/ds/symlink/lm3753.pdf Texas Instruments, LM3753/LM3754 synchronous buck controller datasheet], loss-model and switching-design discussion.
+* [https://community.infineon.com/t5/Knowledge-Base-Articles/Dead-time-calculation-for-Insulated-Gate-Bipolar-Transistors-IGBT/ta-p/434308 Infineon Technologies, ''Dead time calculation for IGBTs'' (2023)], bridge interlock and shoot-through.
+* [https://www.infineon.com/gated/infineon-deadtime-calculation-for-igbt-modules-applicationnotes-en_4ab8571e-4c23-4176-936e-390d75489cdd Infineon, ''Deadtime calculation for IGBT modules'' (2021)], application note; gated download.

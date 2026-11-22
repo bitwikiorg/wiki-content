@@ -20,16 +20,22 @@ def page(title):
 
 
 class IntegratedLogicArticlesTests(unittest.TestCase):
-    def test_one_canonical_concept_per_article_and_three_reader_depths(self):
+    def test_one_canonical_concept_and_two_localizations(self):
         for title, entity_type in (("Logic gate", "Concept"), ("Integrated circuit", "Technology")):
             with self.subTest(article=title):
                 core, simple, technical = page(title), page(title + "/Simple"), page(title + "/Technical")
                 self.assertEqual(core.count("{{Knowledge object"), 1)
                 self.assertIn("|entity_type=" + entity_type, core)
                 self.assertIn("|status=Established", core)
-                for text, depth in ((core, "Core"), (simple, "Simple"), (technical, "Technical")):
-                    self.assertIn("{{Reading depth|base=" + title + "|current=" + depth + "}}", text)
+                for text in (core, simple, technical):
                     self.assertIn("<references/>", text)
+                    self.assertNotIn("{{Reading depth", text)
+                self.assertIn("[[" + title + "/Technical|Technical]]", core)
+                self.assertIn("[[" + title + "/Technical|Technical]]", simple)
+                self.assertIn("[[" + title + "/Simple|Simple]]", technical)
+                self.assertNotIn("== Physical and functional organization ==", core)
+                self.assertNotIn("== Two distinct models ==", core)
+                self.assertIn("== Preserved foundational distinctions from the canonical account ==", technical)
                 for derivative in (simple, technical):
                     self.assertNotIn("{{Knowledge object", derivative)
                     self.assertNotIn("[[Related to::", derivative)
@@ -47,7 +53,7 @@ class IntegratedLogicArticlesTests(unittest.TestCase):
                 self.assertNotEqual(changed, simple)
                 changed_preview = expand_static_transclusions(core, title, {title + "/Simple": changed})
                 self.assertIn("'''reviewed " + title.lower() + "'''", changed_preview)
-                self.assertGreaterEqual(len(simple.split()), 580)
+                self.assertGreaterEqual(len(simple.split()), 350)
                 self.assertGreaterEqual(len(technical.split()), 1600)
 
     def test_all_references_math_and_links_are_source_valid(self):

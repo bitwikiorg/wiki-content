@@ -1,0 +1,22 @@
+<onlyinclude>A '''DRAM memory controller''' is a constrained online scheduler: it converts incoming transactions into legal command sequences while trading off service latency, bandwidth, fairness, power and reliability.</onlyinclude>
+
+== Request-to-command translation ==
+A physical address is mapped to a memory channel and an internal location (for example rank, bank, row and column). The mapping is implementation-specific and should not be inferred from the DRAM standard alone. A row miss may require precharging a previously open row, activating the target row and then issuing a column command; a row hit can avoid some of that work.
+
+The controller tracks per-bank state and inter-command timing constraints. Representative DDR timing parameters include ''tRCD'' (activation-to-column delay), ''tRP'' (precharge-to-activation delay), ''tRAS'' (minimum active time) and ''tRFC'' (refresh-cycle time). Actual values depend on device, speed grade, temperature and configuration; these parameters are not interchangeable.
+
+== Scheduling and arbitration ==
+First-ready, first-come-first-served (FR-FCFS) policies commonly favor requests that can issue without a row conflict, then age. This can improve row locality while disadvantaging competing threads. Mutlu and Moscibroda (2007) studied stall-time fairness, emphasizing that throughput alone does not measure interference. Real controllers may also prioritize reads over buffered writes, subject to write-drain and read/write turnaround costs.
+
+== Refresh and integrity ==
+DRAM cells leak charge. JEDEC JESD79-5 §4.13 specifies DDR5 refresh operations, including all-bank and same-bank mechanisms under defined modes. A controller must schedule required refresh commands and honor recovery intervals; the precise legal postponement rules are mode- and revision-specific. On-die ECC inside a DDR5 device must not be confused with system ECC that detects or corrects errors over a broader path. Controller-side ECC capability, scrubbing and reporting vary by platform.
+
+== Worked scheduling bound (illustrative) ==
+Suppose a ''hypothetical'' isolated bank has a minimum activation-to-read delay of 14 ns and a read cannot be issued until after activation. A read issued to a closed row cannot begin its column command sooner than 14 ns after ACT under that assumption. This is a lower bound for that command interval, '''not''' complete request latency: queueing, precharge, data-burst and return-path delays remain. No DDR5 speed-bin timing is asserted by this example.
+
+== Limits of generalization ==
+JEDEC specifies device-facing behavior, not a unique controller microarchitecture. Address mapping, QoS, cache interaction, error coverage and policies are implementation-dependent. DDR4, DDR5, LPDDR and HBM controllers cannot be treated as identical.
+
+== Primary sources ==
+* JEDEC, ''DDR5 SDRAM'', JESD79-5 (2020), particularly §4.13 (refresh). Standard text: https://raw.githubusercontent.com/RAMGuide/TheRamGuide-WIP-/main/DDR5%20Spec%20JESD79-5.pdf (third-party mirror; verify against licensed/current JEDEC revision for implementation).
+* O. Mutlu and T. Moscibroda, “Stall-Time Fair Memory Access Scheduling for Chip Multiprocessors,” ''Proceedings of MICRO-40'' (2007), pp. 146–160, doi:10.1109/MICRO.2007.21; https://www.microsoft.com/en-us/research/publication/stall-time-fair-memory-access-scheduling-for-chip-multiprocessors/

@@ -1,0 +1,20 @@
+<onlyinclude>A '''motherboard''' implements a platform-level electrical, mechanical and firmware integration boundary; processor execution, memory signaling, I/O routing and voltage conversion are coordinated but remain distinct subsystems.</onlyinclude>
+
+== Topology and interfaces ==
+The processor package connects to board-level memory and I/O interfaces through sockets or solder joints and controlled-impedance traces. On a given platform, some PCI Express links terminate directly at the processor and others at a chipset or I/O hub; the topology must be established from the specific board and processor documentation, not inferred from slot length. PCI-SIG defines PCIe as a scalable serial interconnect supporting multiple lane widths. A physical x16 connector can be wired with fewer active lanes; link negotiation, shared resources and protocol overhead further distinguish interface labeling from measured throughput.
+
+Memory slots and channels have generation-specific electrical and signaling requirements. The number of connectors is not equal to the number of independent channels. Board layout, termination and routing affect signal integrity; supported data rates depend on the full processor, memory-module, firmware and board configuration.
+
+== Power delivery ==
+A supply feeds board connectors; local multiphase regulators may convert 12 V into lower processor rails. For a simplified ideal converter, <math>P_{in}=V_{in}I_{in}</math> and <math>P_{out}=V_{out}I_{out}</math>, with <math>\eta=P_{out}/P_{in}</math>. As an illustrative, not product-specific calculation, delivering 100 W at 90% efficiency requires approximately 111.1 W input and dissipates 11.1 W as loss. Actual losses vary with load, switching conditions, temperature and phase operation; connector ratings and PSU guidance do not by themselves prove adequate transient or thermal margins. Intel's ATX design guide distinguishes CPU power connectors from add-in-card power connections and cautions against equating conductor current capability with device demand.
+
+== Firmware and initialization ==
+Platform firmware initializes hardware before transferring control to the boot path. The UEFI Forum publishes separate UEFI and Platform Initialization specifications: firmware services and initialization phases should not be conflated with the motherboard's physical circuitry. Vendor firmware, CPU microcode, board revisions and supported-device lists constrain actual compatibility. Security properties such as verified boot depend on implementation and configuration rather than the presence of a UEFI label alone.
+
+== Limitations and verification ==
+ATX describes a desktop-oriented family, not every laptop, embedded or server board. PCIe slot dimensions, connector counts and nominal generation labels are insufficient to establish electrical lane allocation, memory compatibility or sustained performance. Validate a specific configuration against its board schematic/manual, processor and module specifications, power/thermal envelope and firmware release notes; vendor documentation is not independent reliability evidence.
+
+== References ==
+* [https://pcisig.com/what-pci-express-pcie-architecture PCI-SIG, What is the PCI Express architecture?], interconnect and lane-width principles.
+* [https://edc.intel.com/content/www/us/en/design/ipla/software-development-platforms/client/platforms/alder-lake-desktop/atx-version-3-0-multi-rail-desktop-platform-power-supply-design-guide/2.0/2.01/modular-power-supply-connectors/ Intel, ATX Version 3.0 Power Supply Design Guide], power connector topology and current caveats.
+* [https://uefi.org/specifications UEFI Forum, UEFI and PI specifications], normative firmware architecture and release listing.

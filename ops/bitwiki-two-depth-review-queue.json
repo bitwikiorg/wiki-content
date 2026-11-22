@@ -27,7 +27,8 @@
         "N015"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "claimed"
+      "status": "corrected_pending_validation",
+      "note": "Both subjects corrected in their original PRs. Static checks passed (Semiconductor 13/13, Silicon 14/14); full V2 CI blocked by shared legacy three-depth validation until draft infrastructure PR #136 reviewed and merged. No articles merged or published."
     },
     {
       "pair_id": "R02",
@@ -323,12 +324,28 @@
       "title": "Semiconductor",
       "pr_number": 81,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/81",
-      "status": "claimed",
+      "status": "corrected_pending_validation",
       "attempts": 1,
       "review": {
-        "claim": "initial 2026-11-22 review; retrieving complete source and tests",
-        "test_evidence": [],
-        "preservation_evidence": []
+        "changed": "PR #81: canonical Main identity/SMW host composed from Simple, legacy 86-line Core unique conceptual taxonomy and engineering research map preserved in 60k-character Technical, two-way depth links, article-specific tests updated. Original technical equations, worked model and ~34 technical ref definitions retained.",
+        "preservation_evidence": [
+          "Canonical Knowledge object and #ask retained in Main",
+          "Material-device-circuit-system-industry hierarchy moved to Technical",
+          "Engineering cross-scale study routes and links retained",
+          "All original 412 technical lines preserved; new taxonomy section added",
+          "Simple 69-line explanation and source citation set retained"
+        ],
+        "static_checks": "13/13 read-only source checks passed on current PR branch",
+        "scientific_sources": [
+          "MIT OCW 6.720J",
+          "OpenStax University Physics 3",
+          "Shockley original diode theory",
+          "Van Roosbroeck transport model",
+          "Sze-related semiconductor methods"
+        ],
+        "tests": "Source-level checks executed; GitHub V2/staging CI underway/not confirmed passed. Updated Python unit test not independently executed here.",
+        "gate": "New two-localization format requires backwards-compatible shared validator PR #136. Existing main validator expects old Template:Reading depth. Human scholarly review and PR merge authorization remain outstanding.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/81"
       }
     },
     {
@@ -732,12 +749,27 @@
       "title": "Silicon",
       "pr_number": 116,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/116",
-      "status": "claimed",
+      "status": "corrected_pending_validation",
       "attempts": 1,
       "review": {
-        "claim": "initial 2026-11-22 review; retrieving complete source and tests",
-        "test_evidence": [],
-        "preservation_evidence": []
+        "changed": "PR #116: original Silicon Simple preserved/clarified, canonical Main now metadata and Simple-summary host, Technical expanded from ~3.4k to 13k characters with six-valley structure, Varshni gap model, charge neutrality, transport, MOS/oxide boundaries, metrology and research framework, tests updated.",
+        "preservation_evidence": [
+          "Original atomic number, cubic lattice, 300K gap and density retained",
+          "Doping, material forms, oxidation model, historical citations retained",
+          "Existing original 8/a³ quantitative example retained",
+          "Semantic relationships and categories remain on Main; no duplicate identity on derivatives"
+        ],
+        "static_checks": "14/14 read-only source checks passed on current PR branch; illustrative 8/a³ density and minority-carrier arithmetic checked",
+        "scientific_sources": [
+          "Deal and Grove (1965), DOI:10.1063/1.1713945",
+          "Varshni (1967), DOI:10.1016/0031-8914(67)90062-6",
+          "Jacoboni et al. (1977), Solid-State Electronics",
+          "Purdue/Lundstrom Semiconductor Fundamentals",
+          "BYU Cleanroom semiconductor constants"
+        ],
+        "tests": "GitHub V2 validation and staging job failed on the old shared depth-audit rules; underlying compatibility issue confirmed by source inspection. New source test is in PR but not yet verified passing.",
+        "gate": "Await backward-compatible validator PR #136 and CI rerun; independent scholarly/expert review and merge approval still required.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/116"
       }
     },
     {
@@ -914,13 +946,14 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": null,
+    "last_checkpoint_article": "N015",
     "run_count": 1,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
-    "merges_done_by_this_task": 0
+    "merges_done_by_this_task": 0,
+    "last_reviewed_pair": "R01"
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",
@@ -933,5 +966,12 @@
     "Validate static checks, relevant Python/unittest/pytest/V2 CI where accessible, correct defects, distinguish executed PASS from merely inspected or unknown. A passing CI is not scientific proof.",
     "Record evidence and gaps per article. Checkpoint each completed article immediately with current queue blob SHA. On interrupted claim inspect its exact PR branch and recover without duplicate commits.",
     "Do NOT change original article-authoring queue; never merge or deploy from this task. Pause automatically when all entries are reviewed/blocked and report remaining human gates."
-  ]
+  ],
+  "dependencies": {
+    "shared_depth_validator": {
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/136",
+      "status": "draft_review_pending",
+      "reason": "Current main V2 validator and substrate audit require Template:Reading depth for reading-depth page exemptions; two-localization sources intentionally use reciprocal links. CI for reviewed PRs cannot be green until compatible validator available in their base."
+    }
+  }
 }

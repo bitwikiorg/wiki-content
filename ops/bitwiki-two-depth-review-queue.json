@@ -46,7 +46,7 @@
         "A11"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R04",
@@ -453,9 +453,16 @@
       "title": "Logic gate",
       "pr_number": 86,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/86",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "date": "2026-11-22",
+        "branch": "content/64-logicgate-integratedcircuit-20261119",
+        "changes": "Retained canonical metadata, categories, SMW relationships and incoming query. Converted canonical body to transcluded Simple landing. Preserved all unique Core explanations, cited historical context, engineering caveats and comparisons in Technical appendix; source references renamed to avoid collisions. Explicit reciprocal two-way navigation. Removed duplicate derivative semantic assertions. Updated article-specific regression source.",
+        "evidence": "Shannon 1938 IEEE DOI 10.1109/EE.1938.6431064 and Dennard et al. 1974 IEEE DOI 10.1109/JSSC.1974.1050511 independently checked against publisher records. Full reference-by-reference scholarly audit incomplete.",
+        "validation": "Executed source-level checks: 11/11 assertions per article after semantic correction (identity, transclusion, reciprocal navigation, two-depth convention, preservation, named-reference closure, Math tag balance, categories, incoming SMW, derivative semantic ownership). Numerical regression source exists and was updated but Python test NOT executed; GitHub CI NOT confirmed. Existing shared PR #136 required for V2 compatibility.",
+        "gate": "Corrected pending #136 merge/rebase, executable article tests, CI, full scientific reference audit and human approval. Do not merge."
+      }
     },
     {
       "id": "A12",
@@ -965,15 +972,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A10",
+    "last_checkpoint_article": "A11",
     "run_count": 3,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R01",
-    "articles_corrected_pending_validation": 5
+    "last_reviewed_pair": "R03",
+    "articles_corrected_pending_validation": 6,
+    "pairs_corrected_pending_validation": 3
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

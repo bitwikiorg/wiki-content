@@ -1,0 +1,12 @@
+<onlyinclude>A '''computer bus''' is a way for components inside or attached to a computer to exchange information. It includes rules for who may send, where a message goes and when the receiver accepts it. Despite the name, modern buses do not always share one set of wires.</onlyinclude>
+
+== How it works ==
+Imagine a processor requesting information from a device. The interconnect must identify the destination, carry the request, return the response and prevent simultaneous senders from interfering. Older shared buses often had separate address, data and control lines. Modern links may send encoded packets over fast serial connections.
+
+== Examples ==
+PCI Express connects expansion devices through dedicated serial links and switches. USB4 can carry several kinds of device and display traffic over a shared external connection.<ref name="pcisig">PCI-SIG, [https://pcisig.com/what-pci-express-pcie-architecture PCIe architecture].</ref><ref name="usb">USB-IF, [https://www.usb.org/usb4 USB4 overview].</ref>
+
+A higher advertised speed does not guarantee the same speed for a file copy: encoding, protocol messages, device limitations and other traffic consume time or capacity.
+
+== References ==
+<references/>

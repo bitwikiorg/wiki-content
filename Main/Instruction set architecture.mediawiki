@@ -5,34 +5,17 @@
  |status=Established
  |provenance=RISC-V International ratified unprivileged ISA specification, Arm architecture reference manuals, and established computer architecture distinctions
 }}
-{{Reading depth|base=Instruction set architecture|current=Core}}
+
+'''Reading versions:''' [[Instruction set architecture/Simple|Simple]] · [[Instruction set architecture/Technical|Technical]]
 
 = Instruction set architecture =
 
-== Overview ==
-
 {{:Instruction set architecture/Simple}}
 
-An '''ISA''' is the software-visible abstract machine contract implemented by a processor. It is a separable part of [[Related to::Computer architecture|computer architecture]], rather than a synonym for the processor, microarchitecture, chip design or instruction encoding alone. Architecture manuals specify semantics and compatibility requirements, while physical implementations may vary in pipelines, timing, energy consumption and transistor count.<ref name="riscvcore">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''RISC-V Instruction Set Manual'', Volume I], official unprivileged specification version 20260120; the specification explicitly separates ISA from implementation.</ref><ref name="armcore">Arm, [https://www.arm.com/architecture ''Arm Architecture''] and [https://support.arm.com/documentation/ddi0487/md/251-chdhfbec ''Arm Architecture Reference Manual for A-profile architecture''], architectural contract and versioned reference manual.</ref>
+== Canonical semantic relationships ==
+[[Related to::Computer architecture]] · [[Related to::Compiler]]
 
-== Components of the contract ==
-
-The ISA typically defines a set of architecturally visible registers, instruction encodings and meanings, operand widths, addressing modes, control transfers, memory-access rules and exception-related behavior. Some features belong to complementary privileged-architecture manuals. Extension sets and architecture versions must be stated when making a compatibility claim.
-
-The ISA is not the same as an '''application binary interface''' (ABI): an ABI specifies software conventions such as function arguments, stack layout and object formats. The same ISA can host multiple ABIs and operating systems.
-
-== Abstraction and implementation ==
-
-A processor that retires a particular instruction must deliver the defined architectural effect, even if the implementation uses speculative execution or internal instruction decomposition. Correct architectural behavior does not imply identical timing, energy use or security properties. Microarchitectural side channels can reveal implementation state that is not an intended architectural output.
-
-A compiler translates higher-level program representations into a target ISA. [[Related to::Compiler|Compilation]] therefore depends on both the specified instruction semantics and the chosen ABI, runtime and operating-system environment.
-
-== Portability and limits ==
-
-Portability requires matching relevant ISA base and extensions, privilege/environment assumptions and binary interfaces. ISA compatibility alone does not guarantee an arbitrary executable runs unchanged across operating systems. Similarly, a binary for a particular extension may fail on a machine supporting only the base instruction set.
-
-== Semantic relationships ==
-
+== Incoming semantic relationships ==
 {{#ask:
  [[Related to::Instruction set architecture]]
  |?Entity type
@@ -43,13 +26,8 @@ Portability requires matching relevant ISA base and extensions, privilege/enviro
  |default=''No incoming semantic relationships are recorded.''
 }}
 
-== Reader depths ==
-
-[[Instruction set architecture/Simple|Simple]] teaches the software/hardware contract. [[Instruction set architecture/Technical|Technical]] models architectural state and instruction encodings, discusses concurrency and memory ordering, and supplies independently checkable examples.
-
-== References ==
-
-<references/>
+== Advanced treatment ==
+[[Instruction set architecture/Technical|Technical]] presents detailed research, formal models, engineering evidence and limitations.
 
 [[Category:Computer science]]
 [[Category:Engineering]]

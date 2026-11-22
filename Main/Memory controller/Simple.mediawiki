@@ -1,0 +1,13 @@
+<onlyinclude>A '''memory controller''' is the traffic manager between a processor and its main memory. It decides which memory request can proceed next and sends the commands the memory chips need, at the right times.</onlyinclude>
+
+== Why it matters ==
+Several processor cores may request data simultaneously. The controller queues those requests, chooses an order, and avoids issuing commands too close together for the memory hardware. It also arranges refresh operations that keep DRAM data from fading.
+
+A controller can favor requests that are fast to serve, but that may make another program wait longer. Good scheduling balances speed with fairness. Some systems also use error-correcting codes; their coverage depends on the whole hardware design.
+
+== What it is not ==
+The controller does not itself hold most of the data: the [[Dynamic random-access memory|DRAM]] devices do. Nor is it the same as a processor [[Cache memory|cache]].
+
+== Further reading ==
+* JEDEC, ''DDR5 SDRAM'', JESD79-5 (2020), §4.13.
+* Mutlu and Moscibroda (2007), https://doi.org/10.1109/MICRO.2007.21

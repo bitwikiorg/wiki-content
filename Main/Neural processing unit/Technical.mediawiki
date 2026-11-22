@@ -1,0 +1,30 @@
+<onlyinclude>'''NPU architecture''' is best characterized by the mapping of neural-network computation and data movement onto specialized arithmetic units, on-chip storage, interconnect, and a compiler/runtime stack. The effective operating point depends on workload shape, precision, memory traffic, and utilization.</onlyinclude>
+
+== Computational model ==
+For a dense matrix product <math>C=AB</math> with <math>A\in\mathbb{R}^{M\times K}</math> and <math>B\in\mathbb{R}^{K\times N}</math>, the conventional algorithm performs <math>MNK</math> multiply–accumulate operations (MACs). If one MAC is counted as two arithmetic operations, its nominal work is <math>2MNK</math> operations; some hardware vendors use different counting conventions. This is an algorithmic count, not a prediction of runtime.
+
+A simplified compute bound is <math>t_{\mathrm{compute}}\geq MNK/(P f u)</math>, where <math>P</math> is the number of MACs issued per cycle, <math>f</math> is frequency, and <math>0&lt;u\leq 1</math> is achieved utilization. Actual time is also constrained by data transfer, synchronization, unsupported operations, and software overhead. The expression assumes a steady workload with the stated utilization and does not account for startup or tiling overhead.
+
+== Memory hierarchy and dataflow ==
+NPU implementations may contain register files, scratchpad SRAM, shared on-chip buffers, DMA engines, and external memory interfaces. Weight-stationary, output-stationary, and row-stationary mappings describe which data are preferentially retained locally. They are architectural strategies rather than universal properties of every NPU.
+
+Chen et al. demonstrated an Eyeriss spatial CNN accelerator with 168 processing elements and row-stationary dataflow, reporting 35 AlexNet convolution frames/s at 278 mW under the authors' specified evaluation conditions.<ref name="eyeriss">Chen, Y.-H., Krishna, T., Emer, J., and Sze, V. (2017). [https://doi.org/10.1109/JSSC.2016.2616357 Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks]. ''IEEE Journal of Solid-State Circuits'' 52(1), 127–138.</ref> Those measurements must not be extrapolated to arbitrary models, newer accelerators, or full application energy.
+
+== Precision and numerical correctness ==
+Inference accelerators frequently support quantized integer arithmetic; some support multiple integer or floating-point formats. Lower precision reduces storage and transfer demands but may require calibration, scale management, wider accumulation, and validation against task-level accuracy requirements. Support for an operation or data type is implementation-specific.
+
+Arm documents Ethos-U85 configurations from 128 to 2048 MAC units, INT8 weights, INT8/INT16 activations, and support for CNN, RNN, and transformer networks.<ref name="arm">Arm. [https://support.arm.com/compute-ip/ethos-u85 Ethos-U85 Product Support], specifications and software components (accessed 2026-11-21).</ref> Arm's quoted peak of 256 GOP/s to 4 TOP/s at 1 GHz is a configuration-dependent theoretical rating, not measured throughput for all models.
+
+== Compiler, runtime and system boundary ==
+A model compiler or graph partitioner selects supported operators, transforms tensor layouts, allocates scratchpads, and schedules transfers. The runtime and host coordinate invocation and fallback execution. Unsupported operations can fragment a graph into multiple partitions and introduce synchronization and data-copy costs. Therefore, meaningful comparisons require the same model, input shape, precision/accuracy target, batch size, memory constraints, and measurement boundary.
+
+== Worked quantitative check ==
+For <math>M=N=K=256</math>, dense multiplication requires <math>256^3=16{,}777{,}216</math> MACs, or <math>33{,}554{,}432</math> arithmetic operations under the two-operations-per-MAC convention. A hypothetical 128-MAC/cycle device at 1 GHz and perfect utilization has a compute-only lower bound of <math>16{,}777{,}216/(128\times10^9)\approx 0.1311</math> ms. This excludes memory traffic, tiling, and launch overhead and is '''not''' a measured Ethos-U85 latency.
+
+== Limitations and provenance ==
+* The generic NPU label spans different architectures; no single dataflow, precision, or programming interface is universal.
+* Vendor specifications document supported configurations and theoretical limits; peer-reviewed silicon measurements provide workload-specific evidence.
+* End-to-end energy and latency cannot be inferred from arithmetic throughput alone.
+
+== References ==
+<references />

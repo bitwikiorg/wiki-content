@@ -25,8 +25,11 @@ class InstructionSetArchitectureTests(unittest.TestCase):
         self.assertEqual(simple.count("<onlyinclude>"),1)
         self.assertEqual(simple.count("</onlyinclude>"),1)
         for body,depth in ((core,"Core"),(simple,"Simple"),(technical,"Technical")):
-            self.assertIn("{{Reading depth|base="+NAME+"|current="+depth+"}}",body)
-            self.assertIn("<references/>",body)
+            self.assertIn("[["+NAME+"/Simple|Simple]]",body)
+            self.assertIn("[["+NAME+"/Technical|Technical]]",body)
+            self.assertNotIn("{{Reading depth",body)
+            if body is not core:
+                self.assertIn("<references/>",body)
         self.assertNotIn("{{Knowledge object",simple+technical)
         self.assertNotIn("[[Related to::",simple+technical)
         expanded=expand_static_transclusions(core,NAME,{NAME+"/Simple":simple})

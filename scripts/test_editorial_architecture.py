@@ -167,32 +167,41 @@ class SourceContractTests(unittest.TestCase):
         # Static preview is deliberately not treated as an SMW parsing oracle.
 
 
-    def test_semiconductor_pilot_depths_and_source_owned_summary(self):
-        """One material concept, accessible entry, self-contained technical study.
+    def test_semiconductor_two_localizations_and_canonical_identity(self):
+        """Canonical Main owns identity; exactly Simple and Technical own prose.
 
-        Static staging expansion exercises native onlyinclude boundaries, not a
-        live MediaWiki parser or actual stored Semantic MediaWiki assertions.
+        Static projection verifies onlyinclude behavior, not live SMW or rendering.
         """
-        core = (ROOT / "Main/Semiconductor.mediawiki").read_text(encoding="utf-8")
+        root = (ROOT / "Main/Semiconductor.mediawiki").read_text(encoding="utf-8")
         simple = (ROOT / "Main/Semiconductor/Simple.mediawiki").read_text(encoding="utf-8")
         technical = (ROOT / "Main/Semiconductor/Technical.mediawiki").read_text(encoding="utf-8")
 
-        self.assertEqual(core.count("{{Knowledge object"), 1)
+        self.assertEqual(root.count("{{Knowledge object"), 1)
+        self.assertIn("{{:Semiconductor/Simple}}", root)
+        self.assertIn("[[Semiconductor/Technical|Technical", root)
+        self.assertIn("{{#ask:", root)
+        self.assertIn("[[Related to::Electric current]]", root)
+        self.assertIn("[[Related to::Computer architecture]]", root)
+        self.assertIn("[[Related to::Energy conversion]]", root)
+        self.assertNotIn("{{Reading depth|base=Semiconductor|current=Core}}", root)
+        self.assertNotIn("== What the name refers to ==", root)
         for derivative in (simple, technical):
             self.assertNotIn("{{Knowledge object", derivative)
             self.assertNotIn("[[Related to::", derivative)
             self.assertNotIn("[[Depends on::", derivative)
             self.assertNotIn("[[Part of::", derivative)
-        for source, depth in ((core, "Core"), (simple, "Simple"), (technical, "Technical")):
-            self.assertIn(f"{{{{Reading depth|base=Semiconductor|current={depth}}}}}", source)
-            self.assertIn("<references/>", source)
-        self.assertIn("{{:Semiconductor/Simple}}", core)
+            self.assertIn("<references/>", derivative)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("'''Simple''' · [[Semiconductor/Technical|Technical]]", simple)
+        self.assertIn("[[Semiconductor/Simple|Simple]] · '''Technical'''", technical)
+        self.assertNotIn("{{Reading depth|", simple)
+        self.assertNotIn("{{Reading depth|", technical)
+        self.assertIn("== Terminology across material, device, circuit, and system ==", technical)
 
         def preview(variant: str) -> str:
             return staging.expand_static_transclusions(
-                core, "Semiconductor", {"Semiconductor/Simple": variant}
+                root, "Semiconductor", {"Semiconductor/Simple": variant}
             )
 
         rendered = preview(simple)
@@ -200,34 +209,24 @@ class SourceContractTests(unittest.TestCase):
         self.assertNotIn("== How does it work? ==", rendered)
         self.assertNotIn("= Semiconductor — Simple =", rendered)
         self.assertNotIn("current=Simple", rendered)
-        self.assertNotIn("{{Knowledge object\n |title=Semiconductor", simple)
-        self.assertNotIn("[[Related to::", rendered.split("== Overview ==", 1)[1].split("== What the name refers to ==", 1)[0])
-
         changed = simple.replace(
             "A '''semiconductor''' is a material",
-            "A '''semiconductor''' is a revised material",
-            1,
+            "A '''semiconductor''' is a revised material", 1
         )
         self.assertNotEqual(changed, simple)
         self.assertIn("is a revised material", preview(changed))
         self.assertNotIn("is a revised material", rendered)
 
-        # The technical account is not a transcluded excerpt or filler page.
+        # Technical depth must be independent, quantitatively supported, not filler.
         self.assertNotIn("{{:Semiconductor/Simple}}", technical)
-        # Real Math rendering (separate from preformatted/plaintext formulas).
         self.assertNotIn("<pre>", technical)
-        math_open = re.findall(r"<math(?:\s+[^>]*)?>", technical)
+        math_open = re.findall(r"<math(?:\\s+[^>]*)?>", technical)
         self.assertGreaterEqual(len(math_open), 60)
         self.assertEqual(len(math_open), technical.count("</math>"))
         for marker in (
-            r"f(E)=\frac{1}{1+",
-            r"np=n_i^2",
-            r"\mathbf J_n",
-            r"\mathbf J_p",
-            r"V_{\mathrm{bi}}",
-            r"I_D\simeq",
-            r"U_{\mathrm{SRH}}",
-            r"\operatorname{Tr}",
+            r"f(E)=\\frac{1}{1+", r"np=n_i^2", r"\\mathbf J_n",
+            r"\\mathbf J_p", r"V_{\\mathrm{bi}}", r"I_D\\simeq",
+            r"U_{\\mathrm{SRH}}", r"\\operatorname{Tr}",
         ):
             self.assertIn(marker, technical)
         self.assertGreaterEqual(technical.count("<ref name="), 25)
@@ -237,7 +236,7 @@ class SourceContractTests(unittest.TestCase):
             self.assertIn(marker, lua)
         for forbidden in ("mw.smw", "mw.ext.cargo", "[[Related to::", "os.execute", "io.open"):
             self.assertNotIn(forbidden, lua)
-        # Independently recompute the illustrative ideal quantities with SI units.
+        # Independently recomputed model quantities using consistent SI units.
         q = 1.602176634e-19
         kb = 1.380649e-23
         eps0 = 8.8541878128e-12
@@ -252,9 +251,9 @@ class SourceContractTests(unittest.TestCase):
         self.assertAlmostEqual(eps_si / width, 2.410e-4, delta=2e-7)
         self.assertAlmostEqual(2 * vbi / width, 3.32e6, delta=10000)
         self.assertAlmostEqual((1e10 ** 2) / 1e16, 1e4, delta=1)
-        for source in (core, simple, technical):
+        for source in (root, simple, technical):
             names = re.findall(r'<ref name="([^"]+)">', source)
-            self.assertEqual(len(names), len(set(names)), "Duplicate Cite definitions in a depth surface")
+            self.assertEqual(len(names), len(set(names)), "Duplicate citation definitions")
 
     def test_main_page_links_to_existing_source_and_respects_page_roles(self):
         """The public entry point cannot depend on retired pages or internal queues."""

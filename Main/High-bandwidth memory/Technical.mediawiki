@@ -1,0 +1,27 @@
+<onlyinclude>'''High-bandwidth memory''' (HBM) increases DRAM interface throughput by combining stacked memory dies, through-silicon vias (TSVs), and a wide package-level interface; peak interface bandwidth is distinct from delivered application throughput.</onlyinclude>
+
+== Organization and provenance ==
+JEDEC's JESD235A update (2016) describes a 1,024-bit stack interface divided into eight independent channels, supporting multiple TSV stack heights. The later JESD235B announcement (2018) describes up to 2.4 Gbit/s per pin and a nominal peak of approximately 307 GB/s per stack. These are historical revision-specific parameters, not universal values for all HBM generations. See the JEDEC association announcements reproduced in the references.
+
+AMD PG276 documents one concrete controller implementation: eight 128-bit channels per 1,024-bit stack, each divided into two 64-bit pseudo-channels. Pseudo-channel operation and bank scheduling influence how efficiently a workload can use the interface. That implementation is not a universal definition of later HBM generations.
+
+== Bandwidth model ==
+For a single interface with ''W'' data pins and ''R'' effective transfers per second per pin, theoretical payload bandwidth, ignoring overhead, is
+
+:<math>B_{peak}=\frac{W R}{8}\quad\mathrm{bytes/s}.</math>
+
+For the JESD235B announced parameters, ''W'' = 1,024 bits and ''R'' = 2.4 × 10<sup>9</sup> bit/s per pin, giving 307.2 × 10<sup>9</sup> bytes/s = '''307.2 GB/s''' (decimal). Four identical stacks would nominally provide 1,228.8 GB/s, provided the processor and memory system can drive all stacks concurrently. The simple product is an upper bound, not a measured benchmark.
+
+Effective bandwidth depends on request sizes, bank conflicts, row-buffer behavior, command overhead, controller scheduling, address mapping, thermal throttling, and workload locality. Bandwidth does not imply equivalent random-access latency improvement. Capacity is a separate dimension.
+
+== Packaging and constraints ==
+TSVs connect vertically stacked dies. A nearby logic die and high-density package interconnects support the very wide interface; integration increases manufacturing, yield, repair, and thermal-design complexity. Packaging implementation varies by product. Energy efficiency comparisons require matched workloads, technology generations, and measurement boundaries; no blanket energy-saving factor is implied here.
+
+== Scope and limitations ==
+This article distinguishes stacked HBM architecture from generic DRAM device physics, caches, and system-level memory hierarchies. JEDEC announcements document capabilities of named revisions; AMD documentation describes a particular device family. Neither is evidence that all commercial products reach theoretical peak bandwidth.
+
+== References ==
+* [https://www.circuitnet.com/press/95853.html JEDEC Solid State Technology Association (12 January 2016), ''Updates Groundbreaking High Bandwidth Memory Standard'' (JESD235A)].
+* [https://www.cdrinfo.com/D7/content/jedec-updates-high-bandwidth-memory-standard JEDEC Solid State Technology Association (17 December 2018), ''Updates the High Bandwidth Memory Standard'' (JESD235B)].
+* [https://docs.amd.com/r/en-US/pg276-axi-hbm/HBM-Topology AMD, ''HBM Topology'', Product Guide PG276].
+* [https://docs.amd.com/r/en-US/pg276-axi-hbm/Core-Overview AMD, ''Core Overview'', Product Guide PG276].

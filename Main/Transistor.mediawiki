@@ -5,49 +5,13 @@
  |status=Established
  |provenance=Research synthesis based on Bardeen–Brattain (1948), Shockley (1949), MIT 6.720J and Computer History Museum MOS history; issue #64
 }}
-{{Reading depth|base=Transistor|current=Core}}
+
 
 = Transistor =
 
-== Overview ==
-
 {{:Transistor/Simple}}
 
-A '''transistor''' is a multi-terminal electronic device in which a control input modulates carrier transport or the effective conductivity of a separate conduction path. This general subject includes bipolar, field-effect and other transistor families with different transport mechanisms and engineering characteristics.
-
-== Two complementary operating mechanisms ==
-
-{| class="wikitable"
-! Device family !! Main mechanism !! Example model boundary
-|-
-| Bipolar junction transistor (BJT) || Injection and collection of mobile carriers across two coupled junction regions || Exponential current and current gain depend on active-region bias, injection and recombination
-|-
-| MOS field-effect transistor (MOSFET) || Gate-controlled electrostatic surface/channel charge and source–drain transport || Long-channel square-law approximations fail for strongly scaled or velocity-saturated devices
-|-
-| Other field-effect and high-frequency devices || Charge control at semiconducting interfaces/heterostructures and short transit times || Requires device-specific band offsets, polarization, confinement and contact models
-|}
-
-The word transistor is not a synonym for MOSFET, nor does every transistor have the same number of external terminals or the same switching threshold.
-
-== Model versus actual device ==
-
-A simple BJT active-mode representation is
-
-<math display="block">I_C\simeq I_S\exp\left(\frac{V_{BE}}{V_T}\right),\qquad V_T=\frac{k_BT}{q},</math>
-
-where <math>I_S</math> depends on structure, temperature and transport physics. The model presumes a particular bias, carrier transport regime and negligible nonideal contributions. In a long-channel, conventional enhancement nMOS in strong inversion and saturation, a teaching approximation is
-
-<math display="block">I_D\simeq\frac12\mu_n C_{\mathrm{ox}}\frac{W}{L}(V_{GS}-V_{\mathrm{th}})^2.</math>
-
-Real devices may violate both ideal expressions because of parasitics, high-field transport, geometry, leakage, temperature, dynamic charge and breakdown. Model choice should follow physical structure and intended operating conditions, not a universal stereotype about transistor behavior.<ref name="mit_core">MIT OpenCourseWare 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ ''Integrated Microelectronic Devices''], lecture material on MOS and bipolar transistor physics, transport, bias and short-channel effects.</ref>
-
-== Historical provenance ==
-
-Bardeen and Brattain's 1948 report described the early point-contact transistor, while Shockley's 1949 theory analyzed junction transistor operation. The later insulated-gate MOS development by Atalla and Kahng enabled a distinct device family; these inventions should not be combined into a single undifferentiated “invented the transistor” claim.<ref name="bardeen_core">John Bardeen and Walter H. Brattain, [https://doi.org/10.1103/PhysRev.74.230 “The Transistor, A Semi-Conductor Triode”], ''Physical Review'' 74, 230–231 (1948).</ref><ref name="shockley_core">William Shockley, [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors”], ''Bell System Technical Journal'' 28, 435–489 (1949).</ref><ref name="museum_core">Computer History Museum, [https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/ ''1960: MOS Transistor Demonstrated''], Atalla–Kahng work and surface passivation.</ref>
-
-== Engineering applications and limits ==
-
-Transistors are used for digital switching, amplification, radio-frequency conversion, power conversion, precision sensing and other functions. Relevant measures include transconductance, gain, threshold or turn-on conditions, dynamic capacitance, on-resistance, output resistance, noise, breakdown voltage, thermal constraints, reliability and energy lost per switching event. A transistor's terminal name or nominal device family does not settle its safe operating area.
+'''Advanced localization:''' [[Transistor/Technical|Technical]].
 
 Transistor operation is related to [[Related to::Electric current|current flow]], [[Related to::Voltage|voltage]], [[Related to::Diode|junction devices]], [[Related to::Computer architecture|computer architectures]] and [[Related to::Energy conversion|energy conversion]]. These explicit semantic links record broad relevance; they do not imply a particular circuit configuration or composition.
 
@@ -65,13 +29,6 @@ The following table uses only recorded incoming [[Property:Related to|Related to
  |default=''No incoming semantic relationships are currently recorded.''
 }}
 
-== Reading depths ==
-
-[[Transistor/Simple|Simple]] explains switching and amplification without relying on formal device equations. [[Transistor/Technical|Technical]] covers carrier injection, MOS inversion, small-signal and transient models, quantum/high-field limits and independent quantitative examples.
-
-== References ==
-
-<references/>
 
 [[Category:Electronics]]
 [[Category:Engineering]]

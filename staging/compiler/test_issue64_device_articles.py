@@ -28,9 +28,9 @@ class NewSemiconductorDevicesTests(unittest.TestCase):
                 self.assertIn("|title=" + title, core)
                 self.assertIn("|entity_type=Concept", core)
                 self.assertIn("|status=Established", core)
-                self.assertIn("{{Reading depth|base=" + title + "|current=Core}}", core)
-                self.assertIn("{{Reading depth|base=" + title + "|current=Simple}}", simple)
-                self.assertIn("{{Reading depth|base=" + title + "|current=Technical}}", technical)
+                self.assertNotIn("{{Reading depth", core)
+                self.assertIn("[[" + title + "/Technical|Technical explanation]]", simple)
+                self.assertIn("[[" + title + "/Simple|Simple explanation]]", technical)
                 self.assertIn("{{:" + title + "/Simple}}", core)
                 self.assertEqual(simple.count("<onlyinclude>"), 1)
                 self.assertEqual(simple.count("</onlyinclude>"), 1)
@@ -39,6 +39,9 @@ class NewSemiconductorDevicesTests(unittest.TestCase):
                     self.assertNotIn("[[Related to::", derived)
                     self.assertNotIn("{{#ask:", derived)
                 self.assertIn("{{#ask:", core)
+                self.assertNotIn("== Core mechanisms", core)
+                self.assertNotIn("== Two complementary operating mechanisms", core)
+                self.assertIn("== Additional engineering synthesis preserved from canonical article ==", technical)
                 self.assertGreaterEqual(len(simple.split()), 600)
                 self.assertGreaterEqual(len(technical.split()), 1850)
                 preview = expand_static_transclusions(
@@ -57,7 +60,7 @@ class NewSemiconductorDevicesTests(unittest.TestCase):
             core, simple, tech = source(title), source(title + "/Simple"), source(title + "/Technical")
             for suffix, content in (("", core), ("/Simple", simple), ("/Technical", tech)):
                 with self.subTest(name=title+suffix):
-                    self.assertIn("<references/>", content)
+                    self.assertIn("<references/>", content) if suffix else self.assertIn("{{Knowledge object", content)
                     names = re.findall(r'<ref name="([^"]+)">', content)
                     uses = re.findall(r'<ref name="([^"]+)"\s*/>', content)
                     self.assertEqual(len(names), len(set(names)))

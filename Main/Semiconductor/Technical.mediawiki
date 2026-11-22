@@ -1,4 +1,4 @@
-{{Reading depth|base=Semiconductor|current=Technical}}
+''Reader localizations:'' [[Semiconductor/Simple|Simple]] · '''Technical'''
 
 = Semiconductor — Technical =
 
@@ -398,6 +398,29 @@ Substantive open research areas include reliable defect identification by combin
 * '''Diffusive vs ballistic:''' drift–diffusion is a continuum model; short transport lengths, high electric fields and quantum confinement can require nonlocal or quantum transport.
 * '''Electrical vs system merit:''' faster or smaller individual devices do not guarantee a faster or more efficient system without interconnect, memory, thermal, yield, power-delivery, software and workload considerations.
 * '''Verification vs explanation:''' a citation supports a particular scientific premise or historical account; experimental device performance still requires actual measurements under stated conditions.
+
+== Terminology across material, device, circuit, and system ==
+A '''semiconductor material''' is a substance whose electronic structure, carrier concentrations and transport can be engineered; '''semiconductor devices''' are physical structures built from it, such as rectifiers, field-effect transistors, detectors and solar cells. An '''integrated circuit''' implements connected groups of devices; a '''computing system''' combines circuits with memory, interfaces and architectural/software organization. The '''semiconductor industry''' includes design, fabrication, equipment, packaging, testing and supply chains. These are related levels of analysis, not interchangeable physical definitions. Their dependencies do not imply that a material itself specifies an algorithm or machine instruction set.<ref name="openstax"/><ref name="mit"/>
+
+For research linking new materials to computing, follow an explicit hypothesis chain:
+{| class="wikitable"
+! Scale !! Question !! Appropriate evidence
+|-
+| Material / carriers || What states, defects, lifetime, transport and thermal properties exist? || Structural, Hall, optical and spectroscopic data with stated temperature and uncertainty
+|-
+| Junction / transistor / memory element || Can bias, geometry and processing control a reproducible device response? || I–V, C–V, reliability, statistical variability and calibrated transport models
+|-
+| Circuit || Can multiple devices meet fan-out, noise, switching, retention and power constraints? || Implemented circuits and measured parasitics, delays and energy
+|-
+| Architecture / system || Does this organization improve a useful workload at equal accuracy and conditions? || Software/runtime, memory and interconnect measurements, end-to-end benchmarks and workload provenance
+|-
+| Manufacturing || Can the device and circuit be reproduced at useful yield and cost? || Wafer maps, defect/yield distributions, packaging and production control limits
+|}
+
+This chain is a method for organizing evidence, not a statement that any listed result has been demonstrated by a new device. [[Semiconductor fabrication]], [[Semiconductor/Simple|the simple account]], [[Electric current/Technical|electric current]], [[Voltage/Technical|voltage]], [[Resistor/Technical|resistors]], [[Computer architecture/Technical|computer architecture]] and [[Computation/Technical|computation]] are adjacent, not substitute domains. The links identify study routes; they are not assertions that every linked page has been deployed.
+
+== Semiconductor knowledge as an engineering research map ==
+A useful study path moves from quantum band structure and equilibrium statistics to defects and nonequilibrium transport; then to interfaces, junctions and transistors; then to circuit constraints, system integration and device fabrication/characterization. This path is not a fixed historical chronology. Silicon and germanium are elemental semiconductors; III–V compounds, SiC and GaN can offer different optical or high-field tradeoffs. No single material ranking follows from band gap alone. Relevant materials and process decisions require sample-level evidence and explicit target operating conditions. This preserves the physical distinctions developed in [[Semiconductor|the canonical subject map]] without maintaining a third prose localization.
 
 == References and provenance ==
 

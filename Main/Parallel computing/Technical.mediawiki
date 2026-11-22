@@ -1,0 +1,29 @@
+<onlyinclude>'''Parallel computing''' studies the decomposition, scheduling, communication and synchronization of computations on multiple simultaneously active processing elements. Its performance is determined by dependency structure and machine costs, not processor count alone.</onlyinclude>
+
+== Computational models ==
+A dependency directed acyclic graph represents operations as vertices and precedence constraints as edges. Its total work ''W'' is the sum of operation costs; its span ''D'' is the longest dependency path. For ''p'' identical processors, any schedule obeys ''T<sub>p</sub> ≥ max(W/p, D)''. This is a lower bound, not a performance prediction: memory traffic, scheduling overhead and communication may increase time.
+
+Shared-memory systems coordinate through synchronization and memory ordering; incorrect unsynchronized access can create data races. OpenMP defines directives, runtime facilities, tasking, reductions, synchronization and a memory model for C/C++ and Fortran; its specification explicitly does not require implementations to detect data races or deadlocks. Distributed-memory programs often use MPI point-to-point and collective operations; MPI is a communication interface, not a guarantee of distributed shared memory.
+
+== Fixed-size and scaled-size performance ==
+For a fixed workload, assume a fraction ''s'' of the one-processor execution time cannot be parallelized, the remainder divides perfectly among ''p'' identical processors, and there is no added overhead. Then Amdahl's idealized speedup is
+
+:<math>S_p=\frac{1}{s+(1-s)/p}.</math>
+
+For ''s = 0.10'' and ''p = 8'', ''S<sub>8</sub> = 1/(0.10+0.90/8) = 80/17 ≈ 4.706''. This does not describe arbitrary measured software. Amdahl's 1967 analysis emphasizes serial constraints. Gustafson's 1988 argument considers increasing problem size as resources increase; under its scaled-workload assumptions, ''S<sub>p</sub> = p - s(p-1)'', where ''s'' is the serial fraction of the parallel execution time. These ''s'' parameters are defined relative to different baselines and must not be interchanged.
+
+== Practical limits ==
+* '''Communication:''' message startup latency and transfer cost can dominate fine-grained decomposition.
+* '''Memory:''' bandwidth saturation, locality, cache coherence and nonuniform access constrain speedup.
+* '''Synchronization:''' barriers, locks and atomic operations may serialize critical paths.
+* '''Load balance:''' unequal tasks leave resources idle.
+* '''Reproducibility:''' floating-point reduction order can change rounding; deterministic outcomes may require explicit ordering.
+
+== Provenance and limitations ==
+The formulas above are analytic models with stated assumptions, not measured benchmarks. MPI and OpenMP specify programming interfaces, not universal performance guarantees. Processor topology, data sizes, compiler, runtime and communication fabric must be specified before comparing implementations.
+
+== References ==
+* [https://www.openmp.org/spec-html/5.2/openmp.html OpenMP ARB, ''OpenMP Application Programming Interface'', version 5.2 (2021)], especially scope, execution and memory models.
+* [https://www.mpi-forum.org/docs/ MPI Forum, official MPI specifications], including MPI 5.0 (approved June 2025).
+* [https://doi.org/10.1145/1465482.1465560 Amdahl, G. M. (1967), AFIPS Spring Joint Computer Conference, pp. 483–485].
+* [https://doi.org/10.1145/42411.42415 Gustafson, J. L. (1988), ''Communications of the ACM'' 31(5), 532–533].

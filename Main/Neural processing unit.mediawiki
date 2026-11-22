@@ -1,0 +1,23 @@
+{{Infobox/Topic
+|Page type=Topic Article
+|Domain=Computer engineering
+|Epistemic status=Established
+|Stability class=Stable
+}}
+<onlyinclude>'''Neural processing unit''' ('''NPU''') denotes a specialized processor or accelerator designed to execute neural-network operators efficiently, commonly through parallel multiply–accumulate (MAC) engines and a memory hierarchy arranged for tensor reuse. The term describes a functional class, not one uniform instruction set, chip configuration, or guaranteed performance level.</onlyinclude>
+
+== Overview ==
+An NPU commonly executes convolution, matrix multiplication, activation, and other supported tensor operations. A host processor typically handles control flow and delegates compatible model subgraphs to the accelerator. [[Computer memory|Memory]] movement, operator coverage, tensor dimensions, and compiler mapping determine realized performance, not merely peak arithmetic throughput.
+
+{{:Neural processing unit/Simple}}
+
+== Architecture and engineering ==
+{{:Neural processing unit/Technical}}
+
+== Relationships ==
+* [[Related to::Semiconductor]]
+* [[Related to::Application-specific integrated circuit]]
+* [[Related to::Computer memory]]
+
+== References ==
+<references />

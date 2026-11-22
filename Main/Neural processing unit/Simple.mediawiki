@@ -1,0 +1,14 @@
+<onlyinclude>An '''NPU''' is a computer chip or part of a chip built to run the calculations used by neural networks. Instead of making one general-purpose core do every step, it performs many small numerical operations in parallel and tries to keep frequently used data close to the calculation units.</onlyinclude>
+
+== What it does ==
+When a phone recognizes speech or a camera detects objects, an NPU may execute compatible parts of the neural network. A CPU still coordinates the application, and other processors may handle unsupported steps.
+
+== Why memory matters ==
+Moving data between a chip and external memory can consume substantial energy. Reusing weights and intermediate results in nearby storage can save energy and time.<ref name="eyeriss">Chen, Y.-H., Krishna, T., Emer, J., and Sze, V. (2017). [https://doi.org/10.1109/JSSC.2016.2616357 Eyeriss: An Energy-Efficient Reconfigurable Accelerator for Deep Convolutional Neural Networks]. ''IEEE Journal of Solid-State Circuits'' 52(1), 127–138.</ref>
+
+== What it does not guarantee ==
+An NPU is not automatically faster for every AI model. A model may contain unsupported operations, exceed available memory, or require transfers that outweigh acceleration. Software compatibility and accuracy after lower-precision conversion matter.
+
+== Further reading ==
+* [https://support.arm.com/compute-ip/ethos-u85 Arm Ethos-U85 product support and specifications].
+<references />

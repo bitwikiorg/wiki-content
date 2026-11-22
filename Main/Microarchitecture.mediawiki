@@ -5,34 +5,17 @@
  |status=Established
  |provenance=RISC-V ISA specification, Berkeley BOOM implementation documentation, and peer-reviewed speculative-execution research; design-specific behavior requires implementation evidence
 }}
-{{Reading depth|base=Microarchitecture|current=Core}}
+
+'''Reading versions:''' [[Microarchitecture/Simple|Simple]] · [[Microarchitecture/Technical|Technical]]
 
 = Microarchitecture =
 
-== Overview ==
-
 {{:Microarchitecture/Simple}}
 
-A '''microarchitecture''' is an implementation organization for an instruction set architecture, including datapaths, control logic, pipelines, issue and retirement rules, cache hierarchies, prediction mechanisms and memory interfaces. An ISA defines programmer-visible behavior, but ordinarily leaves these internal choices open. The difference permits independent implementations of a common software contract.
-
-== Design boundaries ==
-
-A pipeline may improve throughput by overlapping instruction stages without reducing the latency of every individual instruction. Superscalar designs may issue several operations in a cycle when dependencies and resources permit. Out-of-order designs maintain dependency information and reorder some execution, then recover from mispredictions or exceptions. Branch prediction and speculation can reduce stalls but introduce recovery costs and security concerns.
-
-A cache is an implementation feature that affects performance and timing. Its exact configuration is not necessarily specified by the ISA, and its existence does not imply a single memory-consistency model. ISA-visible ordering guarantees and implementation-level buffering must be distinguished.<ref name="riscv_core">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''Unprivileged ISA Manual''], especially RVWMO and memory-access rules.</ref><ref name="boom_core">Berkeley Architecture Research, [https://docs.boom-core.org/en/latest/ ''BOOM Documentation''], pipeline and out-of-order scheduling implementation.</ref>
-
-== Evaluation ==
-
-Performance depends on workload, compiler, frequency, instruction mix, memory behavior and power/thermal constraints. A simplified identity is execution time = retired instruction count × average cycles per retired instruction / clock frequency. This identity is a useful accounting device when the definitions and measurement period match; it is not a predictive physical law for variable-frequency heterogeneous execution.
-
-Correctness is evaluated against the appropriate ISA/platform contract, including faults, interrupts, memory ordering and supported extensions. Microarchitectural security also requires testing information leakage through timing and shared resources, even when architectural registers appear correct.<ref name="spectre_core">Kocher et al., [https://spectreattack.com/spectre.pdf ''Spectre Attacks: Exploiting Speculative Execution''] (2018).</ref>
-
-== Connections ==
-
-Microarchitecture is a narrower implementation topic than [[Related to::Computer architecture|computer architecture]] and is related to [[Related to::Compiler|compilation]], [[Related to::Operating system|operating systems]] and [[Related to::Computational complexity|resource analysis]]. The standalone Instruction set architecture article is drafted in an open review PR rather than deployed or merged, so it is not a hard dependency of this page.
+== Canonical semantic relationships ==
+[[Related to::Computer architecture]] · [[Related to::Compiler]] · [[Related to::Operating system]] · [[Related to::Computational complexity]]
 
 == Incoming semantic relationships ==
-
 {{#ask:
  [[Related to::Microarchitecture]]
  |?Entity type
@@ -43,12 +26,8 @@ Microarchitecture is a narrower implementation topic than [[Related to::Computer
  |default=''No incoming semantic relations recorded.''
 }}
 
-== Reader depths ==
-
-[[Microarchitecture/Simple|Simple]] provides intuition. [[Microarchitecture/Technical|Technical]] gives quantitative models, structural examples and their limits.
-
-== References ==
-<references/>
+== Advanced treatment ==
+[[Microarchitecture/Technical|Technical]] presents detailed research, formal models, engineering evidence and limitations.
 
 [[Category:Computer science]]
 [[Category:Engineering]]

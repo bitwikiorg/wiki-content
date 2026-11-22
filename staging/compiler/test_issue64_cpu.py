@@ -22,9 +22,12 @@ class CPUArticleTests(unittest.TestCase):
         self.assertIn("{{:" + TITLE + "/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
-        for text, depth in ((core,"Core"),(simple,"Simple"),(technical,"Technical")):
-            self.assertIn("{{Reading depth|base="+TITLE+"|current="+depth+"}}",text)
-            self.assertIn("<references/>",text)
+        for body in (core, simple, technical):
+            self.assertIn("<references/>", body)
+        self.assertNotIn("{{Reading depth", core + simple + technical)
+        self.assertIn("[[Central processing unit/Technical|Technical]]", core)
+        self.assertIn("[[Central processing unit/Technical|Technical]]", simple)
+        self.assertIn("[[Central processing unit/Simple|Simple]]", technical)
         for text in (simple,technical):
             self.assertNotIn("{{Knowledge object",text)
             self.assertNotIn("[[Related to::",text)

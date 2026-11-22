@@ -1,4 +1,4 @@
-{{Reading depth|base=Instruction set architecture|current=Technical}}
+'''Reading versions:''' [[Instruction set architecture/Simple|Simple]] · [[Instruction set architecture/Technical|Technical]]
 
 = Instruction set architecture — Technical =
 
@@ -108,6 +108,9 @@ No benchmark or claimed speedup is inferred from the example. Cycle counts and l
 
 == Research boundaries ==
 
+A compiler, ABI, loader and operating-system service interface form distinct compatibility contracts. Architecturally compliant processors can still differ in timing, power, and microarchitectural side channels; each requires implementation-specific evidence.
+
+
 ISA evolution creates compatibility questions across versions and extensions; backward compatibility is a documented property of specific designs, not an automatic law. Binary translation and emulation can provide functionality across different ISAs with performance and semantic constraints. A single ISA may be implemented in microcontrollers, application processors and simulators, but suitability depends on the full hardware/software system.
 
 The appropriate evidence hierarchy is a versioned normative ISA manual for instruction semantics, an ABI specification for binary conventions, an operating-system reference for system services and implementation-specific measurements for performance or security claims. This separation prevents a software-visible architectural fact from being misrepresented as a claim about any particular semiconductor device.
@@ -120,4 +123,4 @@ The appropriate evidence hierarchy is a versioned normative ISA manual for instr
 
 * RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html official unprivileged ISA specification], version 20260120.
 * Arm, [https://support.arm.com/documentation/ddi0487/md/251-chdhfbec architecture reference manual].
-* [[Instruction set architecture|Canonical topic]] · [[Instruction set architecture/Simple|Simple reading]] · [[Computer architecture]] · [[Compiler]] · [[Operating system]].
+* [[Instruction set architecture/Simple|Simple introduction]] · [[Instruction set architecture/Simple|Simple reading]] · [[Computer architecture]] · [[Compiler]] · [[Operating system]].

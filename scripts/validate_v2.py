@@ -120,18 +120,28 @@ def split_domains(domain_text: str) -> list[str]:
 
 
 def is_reading_depth_derivative(path: Path, text: str) -> bool:
-    """Return True for Simple/Technical reader surfaces derived from a Core Main page.
+    """Identify a one-subject Simple/Technical localization, not a second ontology.
 
-    These pages intentionally do not duplicate the Core page's Knowledge object
-    identity or domain category membership. They remain deployable Main-space
-    titles and use Template:Reading depth for navigation.
+    Backwards compatible: legacy pages use Template:Reading depth (three-way).
+    New pages may have explicit two-way links while the published wiki's global
+    navigation template continues to support the older corpus. Both forms are
+    category-exempt; the unsuffixed Main title owns canonical semantics.
     """
-    if path.parts[0] != "Main" or len(path.relative_to("Main").parts) < 2:
+    if path.parts[0] != "Main":
         return False
+    parts = path.relative_to("Main").parts
+    if len(parts) != 2 or parts[1] not in {"Simple.mediawiki", "Technical.mediawiki"}:
+        return False
+    role = parts[1].removesuffix(".mediawiki")
     params = template_params(text, "Reading depth")
-    if not params:
+    if params and params.get("current") == role:
+        return True
+    # Require explicit, reciprocal navigation and self-identification; a
+    # keyword alone or a link to a different concept is not an identity test.
+    if "''Reader localizations:''" not in text or f"'''{role}'''" not in text:
         return False
-    return params.get("current") in {"Simple", "Technical"}
+    other = "Technical" if role == "Simple" else "Simple"
+    return f"[[{parts[0]}/{other}|{other}]]" in text
 
 
 def is_magic_word_or_parser_prefix(template: str) -> bool:

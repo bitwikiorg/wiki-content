@@ -1,0 +1,29 @@
+<onlyinclude>'''Power electronics''' studies switched energy-conversion networks, including their steady-state conversion laws, transient control, semiconductor losses, magnetic design and electrical/thermal safety. A practical converter is a coupled electrical, control and heat-transfer system rather than an ideal switch network.</onlyinclude>
+
+== Switched-converter model ==
+Consider an ideal nonisolated buck converter in continuous conduction with constant input voltage V_in, duty fraction D (0 ≤ D ≤ 1), switching period T_s, output V_o and inductance L. During the on interval, the inductor voltage is V_in − V_o; during the off interval it is −V_o. Periodic steady state requires zero net inductor volt-seconds:
+: D(V_in − V_o)T_s + (1 − D)(−V_o)T_s = 0.
+Thus V_o = D V_in. The corresponding ideal inductor ripple (peak-to-peak) is
+: ΔI_L = (V_in − V_o)D/(L f_s).
+These equalities assume ideal switches, negligible losses and parasitics, sufficiently large output capacitance and continuous inductor current. They do not describe discontinuous conduction, startup or closed-loop stability.
+
+== Loss accounting ==
+A first-order MOSFET conduction estimate is P_cond = I_rms² R_DS(on), evaluated at the operating junction temperature. For approximately linear hard-switching voltage/current overlap, a rough transition-loss estimate is P_sw ≈ (V I/2)(t_r + t_f)f_s. This expression is a screening approximation, not a substitute for datasheet E_on/E_off curves or double-pulse characterization; capacitance energy, reverse recovery, dead-time diode conduction, magnetic and capacitor losses can be material. Gate-drive energy is often approximated by Q_g V_drive f_s, but is primarily dissipated in the drive path rather than necessarily in the switch die.
+
+Overall efficiency is η = P_out/P_in = P_out/(P_out + P_loss). Heat must be removed within the actual thermal network. A simplified steady-state temperature estimate T_j ≈ T_a + P_device R_θJA assumes the quoted thermal resistance is applicable to the real PCB, airflow and mounting.
+
+== Numerical consistency check ==
+For an ideal 24 V to 12 V buck at 100 kHz with L = 100 μH, D = 0.5 and ΔI_L = (24 − 12)×0.5/(100×10⁻⁶×100000) = 0.6 A peak-to-peak. If delivered output power is 120 W and total losses are 10 W, efficiency is 120/130 ≈ 92.31%, with 10 W requiring thermal management. These are independent illustrative assumptions: the ideal voltage and ripple equations do not establish a real converter's 10 W loss budget.
+
+== Topology, protection and constraints ==
+A synchronous half-bridge needs nonoverlapping gate commands to avoid shoot-through; required dead time depends on worst-case driver and switch delays. Excess dead time increases diode conduction and can degrade waveforms. Parasitic inductance and rapid di/dt can create overvoltage; rapid dv/dt contributes to EMI and unintended coupling. Snubbers, layout, filtering and suitable gate drive must be assessed at the intended operating point. Galvanic isolation, creepage/clearance, overcurrent and overtemperature protection require application-specific standards and validation; a general article cannot certify a design.
+
+MOSFETs are frequently attractive at high switching frequencies; IGBTs can be useful at higher powers and voltages. Silicon carbide and gallium nitride devices can enable faster switching, but introduce distinct gate-drive, packaging, reliability and EMI challenges. Selection must use device-specific ratings and measured behavior, not generic technology rankings.
+
+== Provenance and limitations ==
+The buck derivation follows ideal periodic inductor volt-second balance; the numerical example is an original worked calculation. Semiconductor loss approximations follow the design framework in Texas Instruments' LM3753/LM3754 controller datasheet, which discusses conduction, switching and gate-drive contributions. Infineon's IGBT dead-time guidance motivates the half-bridge interlock discussion. Both vendor sources are application-specific and should not be interpreted as universal device measurements.
+
+== References ==
+* [https://www.ti.com/lit/ds/symlink/lm3753.pdf Texas Instruments, ''LM3753/LM3754 Scalable 2-Phase Synchronous Buck Controller'', SNVS614A (2012)], sections on MOSFET power dissipation.
+* [https://community.infineon.com/t5/Knowledge-Base-Articles/Dead-time-calculation-for-Insulated-Gate-Bipolar-Transistors-IGBT/ta-p/434308 Infineon Technologies, ''Dead time calculation for IGBTs'' (2023)], driver timing and shoot-through.
+* [https://www.infineon.com/gated/infineon-deadtime-calculation-for-igbt-modules-applicationnotes-en_4ab8571e-4c23-4176-936e-390d75489cdd Infineon Technologies, ''Calculate and minimize the dead time for IGBTs'', AN2007-04, v1.10 (2021)], application-specific dead-time guidance.

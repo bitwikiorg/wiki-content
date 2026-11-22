@@ -1,0 +1,19 @@
+<onlyinclude>'''Wafer testing''' combines wafer-level parametric metrology with electrical die screening, but the measured population, acceptance criteria and interpretation differ between these operations.</onlyinclude>
+
+== Measurement architecture ==
+A precision prober aligns the wafer to a probe card, establishing temporary electrical contact with pads or bumps. ATE forces stimuli and records responses. Contact resistance, probe-tip wear, alignment, temperature, parasitic impedance and measurement calibration can introduce errors. SEMI G78 describes comparative measurements of automated wafer prober accuracy, repeatability and throughput; the cited 1999 edition is superseded and must not be represented as current qualification requirements.
+
+== Process monitoring versus die disposition ==
+Wafer-acceptance/parametric testing commonly measures scribe-line or dedicated structures (for example threshold voltage, leakage and resistance) to monitor fabrication. Product-die sort applies continuity, functional, structural or application-specific tests and assigns pass/fail or performance bins. Sampling policies, coverage and thresholds are product- and process-dependent. Spatial wafer maps can support investigation of clusters or edge effects, but a spatial signature alone does not prove root cause.
+
+== Quantitative interpretation ==
+For a wafer with ''N'' tested product dies and ''G'' dies assigned acceptable bins, the observed wafer-sort pass fraction is <math>Y_{sort}=G/N</math>. For example, 840 acceptable dies out of 1,000 tested gives 0.84, or 84%. This is an observed classification fraction, not necessarily intrinsic fabrication yield: false rejects, escaped defects, untested dies, retest policy and bin definitions affect interpretation. The economic benefit of early screening must be weighed against test cost, test time and possible yield loss from over-rejection.
+
+== Limitations ==
+Probe contact and temperature can differ from packaged operation. Fault coverage is never implied to be complete. Wafer-level results do not establish lifetime reliability, and final package testing may expose assembly-induced defects. The cited manufacturer materials describe available techniques rather than independently verified universal performance.
+
+== References ==
+* [https://store-us.semi.org/products/g07800-semi-g78-test-method-for-comparing-automated-wafer-probe-systems-utilizing-process-specific-measurements SEMI G78-0699 (superseded)], scope and comparative prober metrology.
+* [https://www.keysight.com/us/en/assets/7018-05884/application-notes/5992-2508.pdf Keysight application note], parametric test structures, sequencing and wafer maps.
+* [https://www.formfactor.com/applications/high-volume-test-on-wafer/parametric-test/ FormFactor], parametric probing and contact limitations.
+* [https://www.swtest.org/library/2025proc/pdf/M02_02_TRAN_SWTest-2025.pdf SWTest 2025 technical presentation], distinction between process testing, wafer sort and downstream final test.

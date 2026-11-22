@@ -1,0 +1,31 @@
+{{Source status|status=New article draft|note=Primary references: IEEE 802.3-2022 and Linux kernel networking documentation; review pending.}}
+{{Knowledge object
+ |title=Network interface controller
+ |entity_type=Concept
+ |domain=Computer science, Computer engineering
+ |status=Established
+ |provenance=IEEE 802.3-2022; Linux kernel NAPI and DMA documentation
+}}
+{{Reading depth|base=Network interface controller|current=Core}}
+= Network interface controller =
+{{:Network interface controller/Simple}}
+== Architecture and responsibilities ==
+A '''network interface controller''' (NIC) connects a host computer to a network link. Ethernet NICs commonly implement media-access control (MAC), frame transmission and reception, buffering, filtering, host-bus access, and status reporting. A PHY may be integrated or separate. IEEE 802.3 specifies Ethernet MAC and PHY behavior, not the internal design of every host NIC.<ref name="ieee">IEEE, ''IEEE Std 802.3-2022: IEEE Standard for Ethernet'', doi:10.1109/IEEESTD.2022.9844436, https://standards.ieee.org/ieee/802.3/10422/</ref>
+
+Host drivers configure descriptor rings, DMA mappings, queues, interrupts, and offload capabilities. The driver is software; the NIC is hardware with possible device firmware. NIC functionality is narrower than a [[Computer network]], which also includes links, protocols, and other endpoints.
+
+== Data movement ==
+A typical transmit path is: application → operating-system networking stack → driver queue → NIC DMA read → MAC/PHY → link. Receive reverses this direction, with device DMA writes to host buffers. Actual implementations may use multiple queues and bypass or virtualization facilities. DMA does not eliminate CPU processing or memory traffic.
+
+== Queues and processing ==
+Multiple transmit and receive queues allow work to be distributed across processors. Linux NAPI combines interrupt-driven notification with budgeted polling and can map instances to receive/transmit queue pairs; mappings are not universally one-to-one.<ref name="napi">Linux kernel documentation, ''NAPI'', https://docs.kernel.org/networking/napi.html</ref>
+
+== Offloads and constraints ==
+Depending on hardware and driver, checksum, segmentation, receive aggregation, receive-side steering, and virtualization features can reduce host work. They are not universal and may change packet visibility, latency, and debugging behavior. Link signaling rate is an upper bound on application goodput, not a promise of delivered payload throughput.
+
+== Further reading ==
+{{:Network interface controller/Technical}}
+== References ==
+<references/>
+[[Category:Computer science]]
+[[Category:Technology]]

@@ -1,4 +1,4 @@
-{{Reading depth|base=Graphics processing unit|current=Technical}}
+'''Reading depth:''' [[Graphics processing unit/Simple|Simple]] · '''Technical'''
 
 = Graphics processing unit — Technical =
 
@@ -108,6 +108,36 @@ A device-level model must not be mistaken for proof that all GPUs use the same w
 
 The GPU is best understood as a heterogeneous hardware/software execution system designed to exploit parallelism and data locality. Its real advantage emerges from a workload with enough independent useful work, compatible data movement, suitable numerical behavior and adequate software support. Peak compute rates, lane counts and occupancy are not sufficient evidence of application speedup. The worked examples above test only declared algebraic and architectural assumptions; live device behavior must be measured separately.
 
+== Additional preserved canonical context ==
+
+The following system-level distinctions and source qualifications were retained from the original canonical account during two-depth localization. They supplement the technical model above.
+
+A '''graphics processing unit''' (GPU) is a programmable or specialized parallel processing device originally developed to accelerate graphics workloads and now widely used for general-purpose parallel computation. A GPU is not necessarily a discrete expansion card, and a device marketed as a GPU may incorporate fixed-function graphics blocks, programmable execution units, caches, memory interfaces, scheduling engines and other specialized accelerators.
+
+== Hardware and software boundaries ==
+
+{| class="wikitable"
+! Level !! Role !! What it does not imply
+|-
+| GPU hardware || Compute units, arithmetic lanes, scheduling, memory and graphics engines || One universal execution width or memory hierarchy
+|-
+| Programming model || Threads/work-items, blocks/workgroups, kernels, synchronization and memory scopes || Exact correspondence to hardware circuits
+|-
+| Driver and runtime || Compilation, submission, allocation, command scheduling and device coordination || That a kernel launch has zero overhead
+|-
+| Graphics API || Drawing/compute commands, resource state and synchronization contracts || Identical capabilities across devices
+|-
+| Application || Rendering, simulation, machine learning or other workloads || That every workload is accelerated
+|}
+
+In NVIDIA's CUDA model, blocks of threads execute on streaming multiprocessors and threads are organized into 32-thread warps; AMD's HIP model describes compute units and architecture-dependent wavefront widths, commonly 32 or 64. These are vendor- and architecture-specific execution details, not an invariant definition of every GPU.<ref name="cudacorelegacy">NVIDIA, [https://docs.nvidia.com/cuda/archive/12.3.0/cuda-c-programming-guide/ ''CUDA C Programming Guide'', §§2–4], programming and execution hierarchy, SIMT and hardware resources.</ref><ref name="hipcorelegacy">AMD, [https://rocm.docs.amd.com/projects/HIP/en/docs-6.3.0/understand/programming_model.html ''HIP programming model''], grid, block, wavefront and RDNA/CDNA distinctions.</ref>
+
+== Architectural distinctions ==
+
+GPUs favor large amounts of independent or structured data-parallel work, throughput-oriented scheduling and memory bandwidth. CPUs are commonly designed for broad general-purpose execution, operating-system control, low-latency serial execution and varied branch-heavy tasks. Neither architecture dominates for every program: dependencies, transfer overhead, synchronization, cache locality, arithmetic precision, software support and device capabilities determine actual results.
+
+A '''GPU kernel''' is a device program dispatched across many logical threads. Its semantics are not identical to the number of physical execution lanes. Branch divergence, register pressure, shared-memory usage and memory-access patterns affect effective throughput; occupancy is only one resource constraint, not a direct measure of useful performance.
+
 == References ==
 
 <references/>
@@ -117,4 +147,4 @@ The GPU is best understood as a heterogeneous hardware/software execution system
 * NVIDIA, [https://docs.nvidia.com/cuda/archive/12.3.0/cuda-c-programming-guide/ ''CUDA C Programming Guide''].
 * AMD, [https://rocm.docs.amd.com/projects/HIP/en/docs-6.3.0/understand/programming_model.html ''HIP programming model''].
 * Williams et al., [https://doi.org/10.1145/1498765.1498785 ''Roofline''].
-* [[Graphics processing unit|Core]] · [[Graphics processing unit/Simple|Simple]] · [[Computer architecture]] · [[Compiler]].
+* [[Graphics processing unit/Simple|Simple]] · [[Computer architecture]] · [[Compiler]].

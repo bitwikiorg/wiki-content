@@ -1,0 +1,929 @@
+{
+  "schema": "bitwiki/two-depth-review-queue/v1",
+  "created_on": "2026-11-22",
+  "repository": "bitwikiorg/wiki-content",
+  "review_branch": "automation/bitwiki-two-depth-review-v1",
+  "canonical_base": "main",
+  "scope": "All 65 distinct new article subjects in the 55 verified open drafting PRs #81–#135 at 2026-11-22 intake; NOT the existing published wiki-wide migration.",
+  "principle": "Exactly TWO independently edited reader-facing localizations of one concept: Simple and Technical. Unsuffixed Main/<Title>.mediawiki remains canonical identity/SMW ownership and routes/default-renders Simple; it is not a third independently edited explanatory depth. Preserve all unique claims/evidence/provenance and link destinations before modifying or removing redundant Core prose.",
+  "navigation_boundary": "Template:Reading depth currently offers three depths and other published pages rely on it. Do NOT break global 3-depth navigation in this scoped run. For each reviewed PR provide correct 2-way Simple/Technical navigation and preserve canonical Main identity. Defer wiki-wide documentation/template migration until separate authorized phase.",
+  "status_vocabulary": [
+    "pending",
+    "claimed",
+    "corrected_pending_validation",
+    "ready_for_human_review",
+    "blocked",
+    "merged"
+  ],
+  "merge_policy": "NO PR merge, deployment, production page update, or shared global template/schema change without explicit separate human approval. GitHub PR edits within the reviewed article are authorized; review and corrections are not merge authorization.",
+  "pairing_policy": "Fixed order; two distinct subjects per hourly run when available, reviewed together to compare consistency, editorial quality and domain connections without inventing relationships. The final run has one subject because 65 is odd. No discovery/replanning on hourly runs.",
+  "pair_count": 33,
+  "article_count": 65,
+  "pairs": [
+    {
+      "pair_id": "R01",
+      "item_ids": [
+        "A01",
+        "N015"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R02",
+      "item_ids": [
+        "A08",
+        "A09"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R03",
+      "item_ids": [
+        "A10",
+        "A11"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R04",
+      "item_ids": [
+        "A22",
+        "A23"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R05",
+      "item_ids": [
+        "A24",
+        "A25"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R06",
+      "item_ids": [
+        "A26",
+        "A30"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R07",
+      "item_ids": [
+        "A27",
+        "A28"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R08",
+      "item_ids": [
+        "A29",
+        "N014"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R09",
+      "item_ids": [
+        "A31",
+        "N008"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R10",
+      "item_ids": [
+        "N009",
+        "N010"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R11",
+      "item_ids": [
+        "N011",
+        "N012"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R12",
+      "item_ids": [
+        "N013",
+        "N025"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R13",
+      "item_ids": [
+        "N016",
+        "N017"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R14",
+      "item_ids": [
+        "N018",
+        "N019"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R15",
+      "item_ids": [
+        "N020",
+        "N021"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R16",
+      "item_ids": [
+        "N022",
+        "N023"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R17",
+      "item_ids": [
+        "N024",
+        "N026"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R18",
+      "item_ids": [
+        "N027",
+        "N028"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R19",
+      "item_ids": [
+        "N029",
+        "N030"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R20",
+      "item_ids": [
+        "N031",
+        "N034"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R21",
+      "item_ids": [
+        "N032",
+        "N033"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R22",
+      "item_ids": [
+        "A02",
+        "A03"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R23",
+      "item_ids": [
+        "A04",
+        "A05"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R24",
+      "item_ids": [
+        "A06",
+        "A07"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R25",
+      "item_ids": [
+        "A12",
+        "A13"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R26",
+      "item_ids": [
+        "A14",
+        "A15"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R27",
+      "item_ids": [
+        "A16",
+        "A17"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R28",
+      "item_ids": [
+        "A18",
+        "A19"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R29",
+      "item_ids": [
+        "A20",
+        "A21"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R30",
+      "item_ids": [
+        "N001",
+        "N003"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R31",
+      "item_ids": [
+        "N002",
+        "N004"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R32",
+      "item_ids": [
+        "N005",
+        "N006"
+      ],
+      "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
+      "status": "pending"
+    },
+    {
+      "pair_id": "R33",
+      "item_ids": [
+        "N007"
+      ],
+      "reason": "Unpaired final subject; do not fabricate another article",
+      "status": "pending"
+    }
+  ],
+  "articles": [
+    {
+      "id": "A01",
+      "title": "Semiconductor",
+      "pr_number": 81,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/81",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A02",
+      "title": "Dimensional analysis",
+      "pr_number": 82,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/82",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A03",
+      "title": "Sensitivity analysis",
+      "pr_number": 82,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/82",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A04",
+      "title": "Resilience",
+      "pr_number": 83,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/83",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A05",
+      "title": "Root cause analysis",
+      "pr_number": 83,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/83",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A06",
+      "title": "Optimization",
+      "pr_number": 84,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/84",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A07",
+      "title": "Scaling",
+      "pr_number": 84,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/84",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A08",
+      "title": "Diode",
+      "pr_number": 85,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/85",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A09",
+      "title": "Transistor",
+      "pr_number": 85,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/85",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A10",
+      "title": "Integrated circuit",
+      "pr_number": 86,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/86",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A11",
+      "title": "Logic gate",
+      "pr_number": 86,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/86",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A12",
+      "title": "Abstraction",
+      "pr_number": 87,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/87",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A13",
+      "title": "Occam's razor",
+      "pr_number": 87,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/87",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A14",
+      "title": "Law of diminishing returns",
+      "pr_number": 88,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/88",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A15",
+      "title": "Pareto principle",
+      "pr_number": 88,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/88",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A16",
+      "title": "Mental simulation",
+      "pr_number": 89,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/89",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A17",
+      "title": "Spotlight effect",
+      "pr_number": 89,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/89",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A18",
+      "title": "Dunning–Kruger effect",
+      "pr_number": 90,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/90",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A19",
+      "title": "Halo effect",
+      "pr_number": 90,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/90",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A20",
+      "title": "Chronotype",
+      "pr_number": 91,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/91",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A21",
+      "title": "Hawthorne effect",
+      "pr_number": 91,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/91",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A22",
+      "title": "Instruction set architecture",
+      "pr_number": 92,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/92",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A23",
+      "title": "Microarchitecture",
+      "pr_number": 93,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/93",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A24",
+      "title": "Central processing unit",
+      "pr_number": 94,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/94",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A25",
+      "title": "Graphics processing unit",
+      "pr_number": 95,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/95",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A26",
+      "title": "Computer memory",
+      "pr_number": 96,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/96",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A27",
+      "title": "Firmware",
+      "pr_number": 97,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/97",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A28",
+      "title": "Bootloader",
+      "pr_number": 98,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/98",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A29",
+      "title": "Device driver",
+      "pr_number": 99,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/99",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A30",
+      "title": "Dynamic random-access memory",
+      "pr_number": 100,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/100",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "A31",
+      "title": "Flash memory",
+      "pr_number": 101,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/101",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N001",
+      "title": "Generalization",
+      "pr_number": 102,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/102",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N002",
+      "title": "Johari window",
+      "pr_number": 103,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/103",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N003",
+      "title": "Kolb's experiential learning cycle",
+      "pr_number": 104,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/104",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N004",
+      "title": "Nonviolent Communication",
+      "pr_number": 105,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/105",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N005",
+      "title": "OODA loop",
+      "pr_number": 106,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/106",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N006",
+      "title": "Six Thinking Hats",
+      "pr_number": 107,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/107",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N007",
+      "title": "Parkinson's law",
+      "pr_number": 108,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/108",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N008",
+      "title": "Cache memory",
+      "pr_number": 109,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/109",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N009",
+      "title": "Hardware description language",
+      "pr_number": 110,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/110",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N010",
+      "title": "Register-transfer level",
+      "pr_number": 111,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/111",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N011",
+      "title": "Electronic design automation",
+      "pr_number": 112,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/112",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N012",
+      "title": "Field-programmable gate array",
+      "pr_number": 113,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/113",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N013",
+      "title": "Application-specific integrated circuit",
+      "pr_number": 114,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/114",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N014",
+      "title": "Operating system kernel",
+      "pr_number": 115,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/115",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N015",
+      "title": "Silicon",
+      "pr_number": 116,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/116",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N016",
+      "title": "Semiconductor fabrication",
+      "pr_number": 117,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/117",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N017",
+      "title": "Photolithography",
+      "pr_number": 118,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/118",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N018",
+      "title": "Thin-film deposition",
+      "pr_number": 119,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/119",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N019",
+      "title": "Semiconductor etching",
+      "pr_number": 120,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/120",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N020",
+      "title": "Semiconductor packaging",
+      "pr_number": 121,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/121",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N021",
+      "title": "Semiconductor foundry",
+      "pr_number": 122,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/122",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N022",
+      "title": "Neural processing unit",
+      "pr_number": 135,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/135",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N023",
+      "title": "Digital signal processor",
+      "pr_number": 123,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/123",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N024",
+      "title": "High-bandwidth memory",
+      "pr_number": 124,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/124",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N025",
+      "title": "Chiplet",
+      "pr_number": 125,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/125",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N026",
+      "title": "Memory controller",
+      "pr_number": 126,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/126",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N027",
+      "title": "Computer bus",
+      "pr_number": 127,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/127",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N028",
+      "title": "Network interface controller",
+      "pr_number": 128,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/128",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N029",
+      "title": "Power electronics",
+      "pr_number": 129,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/129",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N030",
+      "title": "Voltage regulator",
+      "pr_number": 130,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/130",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N031",
+      "title": "Parallel computing",
+      "pr_number": 131,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/131",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N032",
+      "title": "Wafer testing",
+      "pr_number": 132,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/132",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N033",
+      "title": "Semiconductor manufacturing yield",
+      "pr_number": 133,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/133",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    },
+    {
+      "id": "N034",
+      "title": "Motherboard",
+      "pr_number": 134,
+      "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/134",
+      "status": "pending",
+      "attempts": 0,
+      "review": null
+    }
+  ],
+  "state": {
+    "last_completed_pair": null,
+    "last_checkpoint_article": null,
+    "run_count": 0,
+    "pairs_fully_reviewed": 0,
+    "articles_ready_for_human_review": 0,
+    "articles_pending_or_incomplete": 65,
+    "articles_blocked": 0,
+    "merges_done_by_this_task": 0
+  },
+  "hard_rules": [
+    "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",
+    "First inspect all three complete prior article surfaces and other PR files; make a preservation map of unique claims, provenance, equations, specialized sections and external links before editing.",
+    "Simple = KISS, immediate accurate low-prerequisite orientation, plain vocabulary, useful examples, honest uncertainty; not a second technical article.",
+    "Technical = research-grade, doctoral/practitioner depth appropriate to domain, robust claims and primary credible citations, derivations/standards/methods/code/limits/open problems when genuinely useful, actionable conceptual depth for new computing paradigms in relevant engineering subjects. No filler, invented links/citations or benchmark claims.",
+    "Preserve semantic identity and title paths. Leave metadata/SMW assertions canonical on unsuffixed Main title. Use Simple and Technical depth variants as the only maintained reader-facing prose, with Main a composed/simple default and proper technical link.",
+    "Never delete any unique source information. Keep history in git; move relevant unique information to the appropriate localization; verify destination prior to removing source prose.",
+    "Retarget article-specific tests and transclusions for the TWO localization contract. Do not modify shared global templates, compiler, schema or unrelated content unless directly necessary and explicitly justified; prefer flagging a shared prerequisite for owner.",
+    "Validate static checks, relevant Python/unittest/pytest/V2 CI where accessible, correct defects, distinguish executed PASS from merely inspected or unknown. A passing CI is not scientific proof.",
+    "Record evidence and gaps per article. Checkpoint each completed article immediately with current queue blob SHA. On interrupted claim inspect its exact PR branch and recover without duplicate commits.",
+    "Do NOT change original article-authoring queue; never merge or deploy from this task. Pause automatically when all entries are reviewed/blocked and report remaining human gates."
+  ]
+}

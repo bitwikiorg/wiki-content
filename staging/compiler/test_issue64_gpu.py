@@ -23,9 +23,12 @@ class GPUArticleTests(unittest.TestCase):
         self.assertIn("{{:" + TITLE + "/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
-        for body, depth in ((core, "Core"), (simple, "Simple"), (tech, "Technical")):
-            self.assertIn("{{Reading depth|base=" + TITLE + "|current=" + depth + "}}", body)
+        for body in (core, simple, tech):
             self.assertIn("<references/>", body)
+        self.assertNotIn("{{Reading depth", core + simple + tech)
+        self.assertIn("[[Graphics processing unit/Technical|Technical]]", core)
+        self.assertIn("[[Graphics processing unit/Technical|Technical]]", simple)
+        self.assertIn("[[Graphics processing unit/Simple|Simple]]", tech)
         self.assertNotIn("{{Knowledge object", simple + tech)
         self.assertNotIn("[[Related to::", simple + tech)
         rendered = expand_static_transclusions(core, TITLE, {TITLE + "/Simple": simple})

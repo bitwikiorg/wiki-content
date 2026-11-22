@@ -11,14 +11,14 @@
   "excluded_issue": 66,
   "editorial_mode": "Core+Simple+Technical for phase 1 (owner will separately decide and authorize consolidation to two reader-facing depths after drafting)",
   "state": {
-    "last_completed_id": "N034",
-    "last_pr": 134,
-    "run_count": 33
+    "last_completed_id": "N022",
+    "last_pr": 135,
+    "run_count": 34
   },
   "counts": {
-    "drafted": 33,
+    "drafted": 34,
     "pending": 0,
-    "blocked": 1
+    "blocked": 0
   },
   "drafted_existing_review_prs": [
     {
@@ -415,10 +415,10 @@
       "issue": 64,
       "scope": "Domain-specific neural-network accelerators, compute/memory dataflow, inference precision and software stack; distinguish CPU/GPU/DSP.",
       "source_leads": "Arm Ethos technical documentation; peer-reviewed ML accelerator surveys",
-      "status": "blocked",
-      "attempts": 1,
-      "pr": null,
-      "note": "Interrupted claimed task recovery: targeted exact-title PR search found no matching draft; main exact-title file returned 404. No recoverable PR or checkpoint; requires manual recovery before retry."
+      "status": "drafted",
+      "attempts": 2,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/135",
+      "note": "Manual recovery 2026-11-22: added Core, Simple, Technical and scoped Python regression in PR #135. Source-level checks and illustrative MAC arithmetic verified; Python unittest/V2-staging/CI/MediaWiki rendering/expert review remain unverified. No merge or deployment."
     },
     {
       "id": "N023",

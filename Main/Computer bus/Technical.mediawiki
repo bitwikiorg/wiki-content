@@ -1,0 +1,24 @@
+<onlyinclude>A '''computer bus''' is an interconnection mechanism whose physical signaling, transaction semantics, arbitration and ordering rules coordinate transfers between hardware agents. The classical shared parallel bus is one implementation; modern serial fabrics generalize the functional concept without preserving a single shared electrical medium.</onlyinclude>
+
+== Transaction model ==
+A transaction can be represented as a request tuple (initiator, target, operation, address, length, attributes), potentially followed by data and a completion. This is a conceptual model, not a universal wire format. Address, data and control may occupy separate wires, time-multiplexed phases or packet fields. Transactions can be posted (without a completion carrying response data) or non-posted, depending on the protocol.
+
+On a shared medium, arbitration grants access to one contender at a time; centralized fixed priority is simple but can starve low-priority agents, whereas round-robin bounds repeated priority preference under suitable assumptions. In switched fabrics, independent links can transfer concurrently, subject to shared downstream resources and ordering constraints. Coherency is an additional property, not a universal attribute of buses.
+
+== Performance and quantitative limits ==
+For a hypothetical 64-bit parallel data path delivering one transfer each 100 MHz clock, the ideal raw rate is (64 bits/transfer) × (100 million transfers/s) ÷ (8 bits/byte) = '''800 MB/s''' (decimal). This assumes continuous full-width transfers with no idle cycles, turnarounds, arbitration or protocol overhead. If 70% of cycles carry useful full-width data, the corresponding illustrative payload rate is 560 MB/s. These are not measurements or performance specifications.
+
+For serial links, distinguish signaling transfers per second (GT/s), encoded information bits, protocol framing and application payload. Lane counts and directionality matter: adding upstream and downstream rates yields aggregate bidirectional capacity, not the maximum one-way transfer rate. PCI Express is a serial point-to-point architecture with negotiated lane widths.<ref name="pcisig">PCI-SIG, [https://pcisig.com/what-pci-express-pcie-architecture What is the PCI Express (PCIe) architecture?].</ref>
+
+== Protocol families and scope ==
+'''PCIe''' separates transaction, data-link and physical concerns, and its packet transactions do not require a shared parallel address bus. PCI-SIG publishes its architectural specification and revision history.<ref name="pcibase">PCI-SIG, [https://pcisig.com/specification-overview/pci-express-base PCI Express Base specification overview] (revision listing; full specification access may be restricted).</ref>
+
+'''USB4''' supports sharing a high-speed connection among multiple protocols, including data and display transport. Tunneling does not mean that all hosts implement every optional tunnel type or that all cables provide maximum advertised rates.<ref name="usbif">USB-IF, [https://www.usb.org/usb4 USB4 architecture overview].</ref><ref name="usb4spec">USB-IF, [https://www.usb.org/document-library/usb4r-specification-v20 USB4 Specification v2.0], 2 April 2026 (specification landing page).</ref>
+
+'''SoC interconnects''' may use crossbars, rings or packet-switched networks-on-chip. Their clock-domain crossings, QoS, deadlock avoidance and coherency require implementation-specific treatment. This article does not claim that any named SoC protocol or MediaWiki extension is installed or supported.
+
+== Engineering limitations ==
+Electrical loading constrains wide shared parallel buses; serial links instead require signal-integrity engineering, clock recovery and equalization. Transaction ordering, latency, contention, flow control, security isolation and DMA permissions can dominate observed behavior. Neither theoretical bandwidth nor connector shape establishes compatibility or achievable workload performance.
+
+== References ==
+<references/>

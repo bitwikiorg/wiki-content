@@ -37,7 +37,7 @@
         "A09"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "claimed"
     },
     {
       "pair_id": "R03",
@@ -407,9 +407,15 @@
       "title": "Diode",
       "pr_number": 85,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/85",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "date": "2026-11-22",
+        "branch": "content/64-diode-transistor-20261119",
+        "changes": "Canonical host reduced to identity, Simple inclusion and incoming semantic query; original unique Core mechanisms, model limitations, measurement notes, numerical equation and links retained in Technical appendix with renamed references; reciprocal two-way navigation.",
+        "validation": "GitHub writes succeeded; targeted tests/CI not executed. Existing test expects legacy three-depth and needs updating. Shared #136 pending.",
+        "gate": "Human scientific review and CI after article-specific tests and #136."
+      }
     },
     {
       "id": "A09",
@@ -946,11 +952,11 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N015",
+    "last_checkpoint_article": "A08",
     "run_count": 1,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 65,
+    "articles_pending_or_incomplete": 64,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R01"

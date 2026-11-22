@@ -1,0 +1,12 @@
+<onlyinclude>A '''voltage regulator''' keeps the voltage supplied to a circuit close to its target value even when the source voltage or the circuit's demand changes. It is not a perfect voltage source: every regulator has limits on current, temperature and how quickly it can respond.</onlyinclude>
+
+== Two common approaches ==
+A '''linear regulator''' reduces voltage by controlling a transistor, much like an adjustable valve. It is often straightforward and quiet, but the voltage difference becomes heat. A '''switching regulator''' rapidly switches electrical energy through an inductor or other storage component. It can waste less energy, but may produce electrical noise that needs filtering.
+
+For example, reducing 12 V to 5 V at 1 A with an idealized linear regulator dissipates (12 − 5) × 1 = '''7 W''' as heat. A suitable switching regulator may run cooler, but its actual efficiency depends on its design and load.
+
+== What to check ==
+Choose a regulator by its input range, output voltage, maximum current, heat dissipation, ripple, startup and response to sudden changes. Consult the specific component datasheet rather than assuming all devices behave alike.
+
+== Further reading ==
+* [https://www.analog.com/en/resources/app-notes/2020/05/12/19/12/an-140.html Analog Devices: linear and switching power supplies].

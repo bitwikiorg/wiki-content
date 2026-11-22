@@ -1,0 +1,15 @@
+<onlyinclude>A '''digital signal processor''' (DSP) is a computer chip designed to perform the same kinds of calculations on streams of measurements, such as audio samples, radio signals, or sensor readings, many times per second. Its architecture helps it multiply numbers, add the results, and move through stored samples efficiently.</onlyinclude>
+
+== How it works ==
+A microphone or sensor may produce a sequence of numbers. A DSP can combine recent samples to remove noise, detect patterns, or prepare the data for transmission. One common calculation multiplies each of several recent samples by a coefficient and adds the products. This is called a ''multiply–accumulate'' operation.
+
+DSPs often have hardware that helps repeat these calculations with low delay. Some can wrap a pointer back to the start of a sample buffer automatically, rather than spending extra instructions on bookkeeping.
+
+== Where they are used ==
+DSPs appear in audio equipment, communications, industrial controllers, and embedded sensing systems. Their exact capabilities vary widely. A general-purpose CPU or GPU can also perform signal processing; the name DSP describes an architectural emphasis, not exclusive ownership of an algorithm.
+
+== Limitations ==
+Performance depends on memory transfers, numerical precision, compiler scheduling, power limits, and required response time. A DSP is not automatically faster or more energy efficient than another processor for every workload.
+
+== Sources ==
+* Texas Instruments, ''TMS320C67x/C67x+ DSP CPU and Instruction Set Reference Guide'', https://www.ti.com/lit/ug/spru733a/spru733a.pdf

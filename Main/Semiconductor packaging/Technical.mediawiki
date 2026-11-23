@@ -1,5 +1,7 @@
 <onlyinclude>'''Semiconductor packaging''' is a coupled electrical, thermal and mechanical design problem spanning die interconnect, redistribution, substrate routing, environmental protection and board attachment. Integration density is not an independent objective: shorter links may reduce some parasitics while increasing heat flux, stress and test complexity.</onlyinclude>
 
+'''Reading depth:''' [[Semiconductor packaging/Simple|Simple]] · [[Semiconductor packaging/Technical|Technical]]
+
 == Physical and architectural model ==
 A typical path comprises on-die pads, bumps or wire bonds, redistribution, package substrate and board-level contacts. The appropriate interconnect model depends on frequency and geometry: a lumped RLC approximation may suffice for electrically short paths, whereas high-speed links require transmission-line and electromagnetic analysis. A 2.5D package routes adjacent dies through an interposer or dense bridge; a 3D stack routes between vertically separated dies. Through-silicon vias are one possible 3D connection, not a defining requirement for every stack.
 
@@ -11,6 +13,9 @@ where ΔT is temperature rise in kelvin, P dissipated power in watts and R<sub>�
 == Thermomechanical and environmental reliability ==
 Thermal expansion mismatch between silicon, copper, organic substrates and solder joints produces cyclic strain; interposer size, underfill properties and package warpage affect fatigue. Moisture absorbed by nonhermetic packages can induce delamination or cracking during solder reflow. IPC/JEDEC J-STD-020E provides a moisture/reflow sensitivity classification procedure, not a substitute for stress qualification or field-life prediction. Relevant tests include thermal cycling, moisture preconditioning, electrical continuity and application-specific functional tests. A passing sample is not proof of zero population failures.
 
+== Measurement and validation workflow ==
+For a particular package, specify the power map, ambient or case boundary condition, and thermal-interface properties before extracting a thermal resistance. Measure junction temperature with calibrated sensors or thermal test structures; compare transient measurements against finite-element predictions and report uncertainty. Characterize signal paths with frequency-domain S-parameters or time-domain eye diagrams at specified data rates, and correlate warpage and interconnect continuity across thermal cycling. These are methods to evaluate a design, not universal acceptance thresholds.
+
 == Design tradeoffs and limitations ==
 * Dense die-to-die interconnect can improve bandwidth per unit distance, but power delivery, crosstalk, signal integrity and repairability impose constraints.
 * Thermal models must account for nonuniform power maps and temperature-dependent electrical parameters; finite-element and reduced-order models trade computational expense against fidelity.
@@ -21,4 +26,4 @@ Thermal expansion mismatch between silicon, copper, organic substrates and solde
 * IEEE Electronics Packaging Society, ''Heterogeneous Integration Roadmap 2024'', Co-Design chapter: electrical–thermal coupling and modeling. [https://eps.ieee.org/wp-content/uploads/2025/11/HIR_2024_ch13_HIR_Co-Design.pdf Full chapter].
 * ''Thermomechanical Challenges of 2.5-D Packaging: A Review of Warpage and Interconnect Reliability'', ''IEEE Transactions on Components, Packaging and Manufacturing Technology'' 13 (2023), 1624–1641. DOI: [https://doi.org/10.1109/TCPMT.2023.3317383 10.1109/TCPMT.2023.3317383].
 * ''3.5D Advanced Packaging Enabling Heterogeneous Integration of HPC and AI Accelerators'', IEEE ECTC (2024). DOI: [https://doi.org/10.1109/ECTC51529.2024.00391 10.1109/ECTC51529.2024.00391]. A particular commercial example, not evidence that all packages share its performance.
-* IPC/JEDEC ''J-STD-020E'', January 2015, ''Moisture/Reflow Sensitivity Classification for Nonhermetic Surface Mount Devices''. [https://www.acoustech-inc.com/download-file/ipcjedec-j-std-020e.pdf Standard text].
+* IPC/JEDEC ''J-STD-020E'', January 2015 (historical revision; superseded by J-STD-020F in 2022), ''Moisture/Reflow Sensitivity Classification for Nonhermetic Surface Mount Devices''. [https://www.ipc.org/TOC/IPC-JEDEC-J-STD-020E.pdf IPC-hosted standard text].

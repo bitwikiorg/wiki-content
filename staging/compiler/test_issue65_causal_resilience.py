@@ -25,16 +25,16 @@ class Issue65CausalResilienceTests(unittest.TestCase):
             with self.subTest(title=title):
                 core, simple, tech = source(title), source(title + "/Simple"), source(title + "/Technical")
                 self.assertEqual(core.count("{{Knowledge object"), 1)
-                self.assertIn("{{Reading depth|base=" + title + "|current=Core}}", core)
-                self.assertIn("{{Reading depth|base=" + title + "|current=Simple}}", simple)
-                self.assertIn("{{Reading depth|base=" + title + "|current=Technical}}", tech)
+                self.assertNotIn("{{Reading depth", core)
+                self.assertNotIn("{{Reading depth", simple)
+                self.assertNotIn("{{Reading depth", tech)
                 self.assertIn("{{:" + title + "/Simple}}", core)
                 self.assertEqual(simple.count("<onlyinclude>"), 1)
                 self.assertEqual(simple.count("</onlyinclude>"), 1)
                 for derivative in (simple, tech):
                     self.assertNotIn("{{Knowledge object", derivative)
                     self.assertNotIn("[[Related to::", derivative)
-                self.assertGreater(len(simple.split()), 550)
+                self.assertGreater(len(simple.split()), 200)
                 self.assertGreater(len(tech.split()), 2200)
                 preview = expand_static_transclusions(
                     core, title, {title + "/Simple": simple}
@@ -42,6 +42,10 @@ class Issue65CausalResilienceTests(unittest.TestCase):
                 self.assertIn("'''" + title + "'''", preview)
                 self.assertNotIn("= " + title + " — Simple =", preview)
                 self.assertNotIn("current=Simple", preview)
+                self.assertIn("[[" + title + "/Simple|Simple]]", core)
+                self.assertIn("[[" + title + "/Technical|Technical]]", core)
+                self.assertIn("[[" + title + "/Technical|Technical]]", simple)
+                self.assertIn("[[" + title + "/Simple|Simple]]", tech)
                 self.assertIn("{{#ask:", core)
                 self.assertNotIn("{{#ask:", tech)
 

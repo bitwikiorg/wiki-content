@@ -5,27 +5,13 @@
  |status=Established
  |provenance=UEFI Specification 2.11 boot/runtime contracts and NIST SP 800-193 platform-firmware resilience; issue #64 independent hardware-facing software subject
 }}
-{{Reading depth|base=Firmware|current=Core}}
 = Firmware =
 
-== Overview ==
 {{:Firmware/Simple}}
 
-'''Firmware''' describes software with close functional responsibility for initializing, configuring, controlling or maintaining a hardware platform or device. The category encompasses early platform boot code, embedded controllers, device microcode/management programs and persistent service code, but the boundaries are contextual rather than defined by whether the bytes reside in ROM. The same hardware may contain several separately updatable firmware components.
-
-== Scope and interfaces ==
-
-Firmware is distinct from a hardware circuit and from a general-purpose application, although hardware state, firmware execution and host software interact. UEFI specifies a concrete preboot execution and service interface: boot services cease at <code>ExitBootServices()</code> while specified runtime services remain available under their calling restrictions.<ref name="ueficore">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11'', Overview], [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html Boot Services] and [https://uefi.org/specs/UEFI/2.11/08_Services_Runtime_Services.html Runtime Services].</ref> That interface does not define every embedded firmware implementation or imply that all firmware is UEFI.
+'''Reading depth:''' [[Firmware/Simple|Simple]] · [[Firmware/Technical|Technical]]
 
 [[Related to::Computer architecture|Architecture]] supplies the machine and interface context; [[Related to::Operating system|operating systems]] typically take over broad system management after boot. [[Related to::Computer security|Security]] is relevant because firmware may execute at privileged boundaries and can persist across ordinary OS reinstallations. The semantics of these links are deliberately general; this page does not invent a “boots” or “runs-on” property.
-
-== Trust and recovery ==
-
-A firmware update needs to address image authenticity, device compatibility, integrity during installation, power loss, rollback policy and recovery. NIST SP 800-193 specifies a platform-firmware resilience framework based on protection against unauthorized changes, detection of corruption and recovery; these are separate design goals.<ref name="nistcore">A. Regenscheid, [https://doi.org/10.6028/NIST.SP.800-193 ''Platform Firmware Resiliency Guidelines''], NIST SP 800-193 (2018).</ref> A successful signature check does not establish behavioral safety or a secure supply chain by itself.
-
-== Scope exclusions ==
-
-This is not a duplicate of [[Operating system]], nor a proposed replacement for future independent articles on bootloaders or device drivers. An OS device driver may load firmware into a controller; this does not make the two programs identical. Firmware can be present in systems that never load a general-purpose OS.
 
 == Related knowledge objects ==
 {{#ask:
@@ -37,12 +23,6 @@ This is not a duplicate of [[Operating system]], nor a proposed replacement for 
  |limit=30
  |default=''No incoming semantic relations recorded.''
 }}
-
-== Reader depths ==
-[[Firmware/Simple|Simple]] introduces concrete examples and risks. [[Firmware/Technical|Technical]] specifies interfaces, state transitions, threat models and testable update invariants.
-
-== References ==
-<references/>
 
 [[Category:Computer science]]
 [[Category:Engineering]]

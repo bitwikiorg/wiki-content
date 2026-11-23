@@ -1,6 +1,8 @@
-{{Source status|status=Technical depth derivative|note=Architectural models and limitations; not device-specific performance predictions.}}
-{{Reading depth|base=Cache memory|current=Technical}}
+{{Source status|status=Technical authoritative localization|note=Architectural models and limitations; not device-specific performance predictions.}}
 = Cache memory — Technical =
+'''Reading depth:''' [[Cache memory/Simple|Simple]] · [[Cache memory/Technical|Technical]].
+
+A cache stores fixed-size lines with address tags, valid state and, for some write policies, dirty state. Hardware caches can be instruction-only, data-only, unified, private or shared. They exploit temporal and spatial locality but are not universally faster for every workload. The broader [[Computer memory]] article covers the hierarchy; this article covers cache mechanisms.
 
 == Address placement and lookup ==
 For a conventional physically indexed, fixed-line cache with usable data capacity <math>C</math> bytes, line size <math>B</math> bytes and associativity <math>W</math> ways, the number of sets is <math>S=C/(BW)</math>, assuming integer values and no reserved ways. For power-of-two <math>B</math> and <math>S</math>, a byte address is partitioned into offset, set index and tag. The line number is <math>\lfloor a/B\rfloor</math>; a common indexing function is <math>(\lfloor a/B\rfloor)\bmod S</math>. Hashed indexing, virtual indexing and other implementations need not follow this simple decomposition.
@@ -11,13 +13,16 @@ A direct-mapped cache has <math>W=1</math>; a fully associative cache has <math>
 A hypothetical 32 KiB data cache with 64-byte lines and four ways has <math>32768/(64\cdot4)=128</math> sets, 512 resident line slots, six byte-offset bits and seven index bits. For an address <math>a=0x12340</math>, the line number is <math>0x48D=1165</math>; the set index is <math>1165\bmod128=13</math>. The tag for this simple model is <math>\lfloor1165/128\rfloor=9</math>. These numbers describe a teaching model, not an Intel cache implementation.
 
 == Replacement and miss classification ==
-On a miss to a full set, replacement chooses a victim. True LRU tracks recency order but becomes costly with many ways; pseudo-LRU, random, FIFO and adaptive policies trade complexity for workload-specific behavior. No policy is universally optimal. Hill and Smith's trace-driven study separated compulsory misses (first reference), capacity misses (also missed by a fully associative cache of equal capacity) and conflict misses (extra misses due to limited associativity), under explicit reference-cache assumptions.<ref name="hill1989" /> Coherence invalidations and prefetching complicate this classic 3C decomposition.
+On a miss to a full set, replacement chooses a victim. True LRU tracks recency order but becomes costly with many ways; pseudo-LRU, random, FIFO and adaptive policies trade complexity for workload-specific behavior. No policy is universally optimal. Under a specified cold-start trace and equal-capacity fully associative reference cache with an appropriate replacement policy, the classic 3C framework distinguishes compulsory (first-access), capacity (reference-cache) and conflict (extra mapping-induced) misses. This taxonomy is a modeling convention rather than a physical counter classification. Hill and Smith (1989) measured associativity effects using trace-driven simulation; their actual contribution includes efficient forest and all-associativity simulation algorithms, not merely a universal 3C law.<ref name="hill1989" /> Coherence invalidations and prefetching complicate this classic 3C decomposition.
 
 == Write policies ==
 '''Write-through''' propagates writes toward the next level at write time; '''write-back''' retains dirty lines and propagates them on eviction or another required event. A write miss can allocate a line or bypass allocation. Write buffers, ordering constraints and coherence traffic affect observed behavior. Neither “write-back” nor “write-through” alone specifies persistence to nonvolatile storage.
 
 == Multilevel caches and sharing ==
 Private L1 caches and shared or private lower-level caches may use inclusive, exclusive or noninclusive arrangements. Inclusion is a property of what lower levels must contain; it is not implied merely by increasing capacity. A coherence mechanism coordinates copies of writable shared lines, often using invalidation and ownership states. Coherence establishes rules about individual memory locations; architectural memory consistency additionally constrains the ordering of operations across locations.
+
+== Measurement and reproducibility ==
+Record line size, ways, set mapping, replacement, write-allocate policy, cache hierarchy and inclusion, coherence domain, cold/warm state and the precise reference trace. Report misses per access or misses per kilo-instruction with a defined denominator; hardware performance counters may include speculative traffic and prefetches and are not interchangeable with demand-only trace misses. A trace simulator must distinguish demand requests, writebacks, invalidations and prefetches. Compare energy, hit latency and miss ratio under a consistent workload rather than optimizing hit rate alone. The Hill–Smith measurements were made on their evaluated traces and should not be extrapolated as universal hardware ratios.<ref name="hill1989" />
 
 == Performance models ==
 For a single-level model with no overlapping requests, no queueing and a fixed miss penalty, average memory access time is
@@ -26,6 +31,9 @@ where <math>m</math> is the miss probability per access and <math>p</math> is th
 
 == Research provenance and limits ==
 Hill's 1987 dissertation investigated cache associativity, access times and instruction-buffer performance.<ref name="hill1987">Mark D. Hill, ''Aspects of Cache Memory and Instruction Buffer Performance'', UCB/CSD-87-381 (1987), [https://www2.eecs.berkeley.edu/Pubs/TechRpts/1987/5701.html UC Berkeley archive].</ref> Hill and Smith (1989) introduced trace-simulation methods for comparing mappings and associativities; their measured relative miss-ratio changes were trace- and technology-specific, not universal constants.<ref name="hill1989" /> Device-specific manuals are needed to assert any particular processor's indexing, coherence, replacement, or inclusion policy.
+
+== Architectural research questions ==
+Predictable real-time execution, side-channel isolation, adaptive replacement, heterogeneous CPU/GPU coherence and near-memory processing impose competing goals. Cache partitioning may reduce interference but sacrifices usable capacity; bypassing caches may reduce pollution but increases downstream bandwidth. Any proposed novel architecture needs a workload model, coherence/consistency contract, energy/area budget and measurement protocol rather than a blanket cache-speed claim.
 
 == References ==
 <references />

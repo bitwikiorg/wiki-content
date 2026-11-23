@@ -1416,9 +1416,26 @@
       "title": "Wafer testing",
       "pr_number": 132,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/132",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #132 Core now composes Simple; explicit reciprocal two-way navigation, Technical measurement-uncertainty and misclassification model, scoped regression revised.",
+        "preservation_evidence": [
+          "Parametric test structures versus die sort and packaged final test distinctions",
+          "Probe/ATE, contact resistance, calibration, temperature, binning, wafer map, yield limitations",
+          "SEMI G78 superseded status and scope; Keysight/FormFactor vendor references; SWTest 2025 reference",
+          "840/1000 observed 84% wafer-sort fraction; SMW metadata and relationships"
+        ],
+        "scientific_sources": [
+          "SEMI G78-0699 vendor standards catalog (superseded), verified 2026-11-23",
+          "Keysight and FormFactor manufacturer sources (not independent performance validation)",
+          "SWTest 2025 reference retained; full presentation not independently audited"
+        ],
+        "static_checks": "Post-write source files committed; executable checks not run",
+        "tests": "Scoped pytest source updated but not executed; CI/V2/staging not run; complete citation audit outstanding",
+        "gate": "PR #136 validation prerequisite; human scholarly review and merge approval",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/132"
+      }
     },
     {
       "id": "N033",
@@ -1455,15 +1472,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N034",
-    "run_count": 17,
+    "last_checkpoint_article": "N032",
+    "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 65,
+    "articles_pending_or_incomplete": 24,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R20",
-    "articles_corrected_pending_validation": 40,
+    "articles_corrected_pending_validation": 41,
     "pairs_corrected_pending_validation": 20
   },
   "hard_rules": [

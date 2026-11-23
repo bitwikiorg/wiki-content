@@ -17,7 +17,7 @@ def page(suffix=""):
 
 
 class FirmwareArticleTests(unittest.TestCase):
-    def test_three_depths_and_one_canonical_identity(self):
+    def test_two_localizations_and_one_canonical_identity(self):
         core, simple, tech = page(), page("/Simple"), page("/Technical")
         self.assertEqual(core.count("{{Knowledge object"), 1)
         self.assertEqual(simple.count("{{Knowledge object"), 0)
@@ -28,8 +28,11 @@ class FirmwareArticleTests(unittest.TestCase):
         self.assertIn("{{:Firmware/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
-        for text, depth in ((core, "Core"), (simple, "Simple"), (tech, "Technical")):
-            self.assertIn("{{Reading depth|base=Firmware|current=" + depth + "}}", text)
+        self.assertNotIn("{{Reading depth", core + simple + tech)
+        for text in (core, simple, tech):
+            self.assertIn("[[Firmware/Simple|Simple]]", text)
+            self.assertIn("[[Firmware/Technical|Technical]]", text)
+        for text in (simple, tech):
             self.assertIn("<references/>", text)
         self.assertGreater(len(simple.split()), 450)
         self.assertGreater(len(tech.split()), 1400)

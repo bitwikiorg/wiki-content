@@ -1,3 +1,5 @@
+'''Reading depth:''' [[Semiconductor fabrication/Simple|Simple]] · [[Semiconductor fabrication/Technical|Technical]]
+
 <onlyinclude>'''Semiconductor fabrication''' is a process-integrated sequence of substrate preparation, thermal treatment, film formation, lithographic pattern definition, selective removal, doping, planarization, and multilevel interconnect construction. Its engineering objective is not merely to print small features but to produce electrically conforming structures across a wafer with controlled variation and economically acceptable yield.</onlyinclude>
 
 == Process integration ==
@@ -11,6 +13,8 @@ Feature size alone does not characterize manufacturability. Overlay between patt
 Thermal cycles can alter previously formed structures, so downstream temperatures constrain material selection. Interconnect resistance, capacitance, electromigration, and dielectric reliability introduce constraints distinct from transistor switching physics. Lithography tools, deposition reactors, etchers, implant tools, metrology systems, and factory automation each contribute to the flow; none alone constitutes an entire fabrication process.
 
 == Quantitative reasoning ==
+The simple Poisson model is an ''area-based illustration'' rather than a general defect-limited yield estimator: actual critical area depends on layout geometry, defect size and the layer under consideration. Defect clustering motivates alternative distributions, while systematic process excursions need separate treatment. For a meaningful experiment, record the defect-inspection sampling plan, critical-area assumptions, electrical test criteria and wafer-level spatial distribution. These variables must be independently measured or calibrated before comparing candidate process flows.
+
 A simple illustrative yield model assumes independently distributed, fatal defects with spatially uniform Poisson density:
 :<math>Y = \exp(-AD)</math>
 where <math>A</math> is die area in cm² and <math>D</math> is fatal-defect density in cm⁻². For a hypothetical <math>A=1.0\,\mathrm{cm}^2</math> and <math>D=0.2\,\mathrm{cm}^{-2}</math>, <math>Y=e^{-0.2}\approx0.8187</math> (81.9%). This is a model demonstration, '''not''' a measured industry yield or a prediction for a specific process. Defect clustering, systematic faults, redundancy, wafer-edge losses, and test binning can violate its assumptions. Yield must be defined at the relevant stage (wafer sort, final test, or another acceptance gate).

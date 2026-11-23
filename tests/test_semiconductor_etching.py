@@ -12,7 +12,10 @@ class SemiconductorEtchingTest(unittest.TestCase):
         simple = (BASE / TITLE / "Simple.mediawiki").read_text(encoding="utf-8")
         technical = (BASE / TITLE / "Technical.mediawiki").read_text(encoding="utf-8")
         self.assertIn("{{:Semiconductor etching/Simple}}", core)
-        self.assertIn("{{:Semiconductor etching/Technical}}", core)
+        self.assertNotIn("{{:Semiconductor etching/Technical}}", core)
+        self.assertIn("[[Semiconductor etching/Technical|Technical explanation]]", core)
+        self.assertIn("[[Semiconductor etching/Technical|Read the technical explanation]]", simple)
+        self.assertIn("[[Semiconductor etching/Simple|Read the simple explanation]]", technical)
         for text in (simple, technical):
             self.assertEqual(text.count("<onlyinclude>"), 1)
             self.assertEqual(text.count("</onlyinclude>"), 1)
@@ -23,6 +26,8 @@ class SemiconductorEtchingTest(unittest.TestCase):
         self.assertAlmostEqual((120 / 60) / (6 / 60), 20)
         self.assertEqual(300 / 2, 150)
         self.assertEqual(150 * (6 / 60), 15)
+        self.assertEqual((1 + .20) * 300 / 2, 180)
+        self.assertEqual((1 + .20) * 300 / 20, 18)
 
 if __name__ == "__main__":
     unittest.main()

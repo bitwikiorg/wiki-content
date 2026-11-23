@@ -632,9 +632,16 @@
       "title": "Mental simulation",
       "pr_number": 89,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/89",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/89",
+        "evidence": "Schacter/Addis/Buckner 2007 publisher and PubMed metadata; Kahneman/Tversky and Kahneman/Miller citations retained; original Core taxonomy and methodological cautions preserved in Technical.",
+        "preservation": "Original Core semantic Knowledge object, Related to links, incoming #ask and categories retained; Core-specific distinctions rehomed to Technical; Simple remains transcluded as default.",
+        "tests": "Post-write file edits confirmed by GitHub content update; regression source needs retargeting; executable tests, V2, staging and CI NOT executed.",
+        "blocker": "Shared two-depth validator PR #136 unmerged; regression update pending.",
+        "gate": "Human approval after shared validator and actual CI."
+      }
     },
     {
       "id": "A17",
@@ -1616,15 +1623,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A15",
+    "last_checkpoint_article": "A16",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 13,
+    "articles_pending_or_incomplete": 12,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R26",
-    "articles_corrected_pending_validation": 52,
+    "articles_corrected_pending_validation": 53,
     "pairs_corrected_pending_validation": 26
   },
   "hard_rules": [

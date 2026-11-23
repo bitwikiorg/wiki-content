@@ -664,9 +664,24 @@
       "title": "Dunning–Kruger effect",
       "pr_number": 90,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/90",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/90",
+        "changed": "Core converted to Simple composition; explicit two-way navigation; Technical corrected 2023 response bibliographic metadata and qualified minimal observed effect.",
+        "preservation_evidence": [
+          "Original canonical metadata, semantic relationships, incoming SMW query and categories retained in canonical host",
+          "Original Core distinctions among latent ability, score noise, percentile self-rating, calibration and causal mechanisms retained in Technical",
+          "Simple examples, meme caveat and uncertainty preserved; Gaussian null model, reliability, AI analogies and literature retained"
+        ],
+        "scientific_sources": [
+          "Kruger and Dunning 1999 DOI 10.1037/0022-3514.77.6.1121",
+          "Gignac and Zajenkowski 2020 DOI 10.1016/j.intell.2020.101449",
+          "Dunkel, Nedelec and van der Linden 2023 DOI 10.1016/j.intell.2022.101717; university publication record"
+        ],
+        "tests": "Source-level changes checked in text; executable regression, CI and V2 not executed. Shared PR #136 prerequisite.",
+        "gate": "Human review and PR #136 prerequisite; no merge."
+      }
     },
     {
       "id": "A19",
@@ -1630,15 +1645,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A17",
+    "last_checkpoint_article": "A18",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 11,
+    "articles_pending_or_incomplete": 10,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R27",
-    "articles_corrected_pending_validation": 54,
+    "articles_corrected_pending_validation": 55,
     "pairs_corrected_pending_validation": 27
   },
   "hard_rules": [

@@ -73,7 +73,7 @@
         "A30"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R07",
@@ -667,9 +667,26 @@
       "title": "Computer memory",
       "pr_number": 96,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/96",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/96",
+        "head_branch": "content/64-computer-memory-20261120",
+        "preservation": "Canonical Knowledge object, related SMW properties, incoming semantic query and homonym distinction preserved; unique Core discussion of physical/logical memory, hierarchy, CPU/GPU spaces, technology tradeoffs, fault models and persistence incorporated into Technical. Existing equations, numeric examples and source references retained.",
+        "corrections": "Canonical now Simple-composed host, no third explanatory Core; reciprocal Simple/Technical links and article regression updated.",
+        "citation_quality": "CUDA vendor sources retained, but primary-source verification of semiconductor mechanisms and full citation audit outstanding.",
+        "tests": {
+          "source_static": "Metadata/navigation and arithmetic expressions inspected; Python test updated but not executed",
+          "python": "not executed",
+          "ci": "not executed",
+          "v2": "PR #136 prerequisite"
+        },
+        "blockers": [
+          "PR #136",
+          "Run targeted Python/CI and full citation audit"
+        ],
+        "human_review_gate": "Human approval only after validation; do not merge"
+      }
     },
     {
       "id": "A27",
@@ -1061,16 +1078,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A30",
-    "run_count": 5,
+    "last_checkpoint_article": "A26",
+    "run_count": 6,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R05",
-    "articles_corrected_pending_validation": 11,
-    "pairs_corrected_pending_validation": 5
+    "last_reviewed_pair": "R06",
+    "articles_corrected_pending_validation": 12,
+    "pairs_corrected_pending_validation": 6
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

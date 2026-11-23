@@ -1,7 +1,12 @@
 <onlyinclude>A '''voltage regulator''' is a power-conditioning feedback system whose small-signal dynamics, conversion losses and operating constraints determine whether a specified rail remains within tolerance under disturbances.</onlyinclude>
 
+''Reading depth: [[Voltage regulator/Simple|Simple]] · [[Voltage regulator/Technical|Technical]].''
+
 == Regulation and control ==
 For a conventional negative-feedback regulator, the sensed voltage is ''V''<sub>FB</sub> = β''V''<sub>out</sub>. In steady state with sufficiently high loop gain, ''V''<sub>out</sub> ≈ ''V''<sub>ref</sub>/β. Finite gain, reference error, offsets and load-dependent impedance cause deviations. Stability depends on the open-loop transfer function and compensation; a DC setpoint calculation cannot establish phase margin or load-step behavior. Real switching controllers may use voltage-mode, current-mode or hysteretic control with distinct dynamics.
+
+== Control-system model and verification ==
+For a linearized single-loop negative-feedback system with forward gain G(s) and sensing factor H(s), the closed-loop reference transfer is G(s)/[1+G(s)H(s)] under the chosen signal normalization, and the return ratio is L(s)=G(s)H(s). These expressions apply only around an operating point and for the assumed block diagram; nonlinear saturation, pulse skipping and current limits require separate analysis. Verify stability with a loop-gain injection measurement or a validated frequency-response model, including worst-case input, load, capacitance, ESR and temperature. Gain/phase margin alone is insufficient if the system is strongly nonlinear or switches operating modes. Load-step undershoot and settling time must be measured against the actual load slew rate and rail tolerance.
 
 == Linear regulation: thermal and headroom constraints ==
 For a series linear regulator with negligible ground current, ''P''<sub>loss</sub> ≈ (''V''<sub>in</sub> − ''V''<sub>out</sub>)''I''<sub>out</sub> and η ≈ ''V''<sub>out</sub>/''V''<sub>in</sub>. At 12 V in, 5 V out and 1 A, output power is 5 W, input power is approximately 12 W, heat is 7 W and idealized efficiency is 41.7%. If θ<sub>JA</sub> = 20 °C/W under the relevant board conditions, the first-order junction rise is 140 °C: an illustration of thermal infeasibility, not a safe operating-point recommendation. Ground current, dropout, thermal shutdown, package/PCB thermal paths and transient stresses require datasheet-specific analysis.
@@ -9,12 +14,18 @@ For a series linear regulator with negligible ground current, ''P''<sub>loss</su
 == Switching conversion: ideal relations and nonideal behavior ==
 For an ideal continuous-conduction buck converter, ''V''<sub>out</sub> = ''D V''<sub>in</sub>, where ''D'' is duty ratio. At 12 V to 5 V, ''D'' ≈ 0.417. For a simple buck stage, the idealized inductor ripple magnitude is Δ''I''<sub>L</sub> ≈ (''V''<sub>in</sub> − ''V''<sub>out</sub>)''D''/(''L f''<sub>s</sub>). At 10 µH and 500 kHz, the estimate is 0.583 A peak-to-peak. This assumes ideal components, fixed-frequency PWM and continuous conduction; discontinuous operation, switching dead time, losses and control modes modify the relationship. Capacitor ESR, capacitance and layout affect output ripple, while switching edges contribute conducted and radiated emissions.
 
+== Output impedance and load-transient derivation ==
+The small-signal output disturbance obeys ΔV_out(s) = −Z_out,cl(s) ΔI_load(s) under a defined current sign convention and with the reference held fixed. A sudden increase in load initially draws charge from the output capacitor: ΔV ≈ −ΔI Δt/C for a short interval when control response and ESR are neglected; ESR introduces an additional instantaneous component approximately −ΔI·ESR. These approximations establish neither a guaranteed peak droop nor a universal recovery time. Report the measured waveform, probe grounding, load-step amplitude/slew, bandwidth, temperature and component tolerances.
+
 == Stability, transients and noise ==
 The output LC network introduces resonant dynamics. Feedback compensation must be designed for the chosen topology, operating mode, output network and load range. Datasheet stability constraints and measurement of gain/phase response are preferable to a generic crossover-frequency rule. PSRR is frequency dependent and must not be confused with output noise or load-transient deviation. LDO post-regulation can reduce noise, but modern filtered buck converters can also serve low-noise rails.
 
+== Power-delivery research boundary ==
+For high-current digital loads, characterize the regulator together with package/board impedance, decoupling and workload-dependent current transients. Distributed regulation and adaptive voltage scaling may reduce some distribution losses or improve transient response, but each architecture trades control complexity, area, switching noise and thermal coupling. Compare against a specified baseline using end-to-end energy, rail droop, workload timing, efficiency maps and uncertainty rather than asserting a universal advantage.
+
 == Provenance and limitations ==
 The equations above are introductory circuit approximations, not measured performance or device-specific guarantees. No numerical stability margin, ripple spectrum or junction temperature can be certified without component parameters, layout and operating conditions. Primary engineering references:
-* Analog Devices, [https://www.analog.com/en/resources/app-notes/2020/05/12/19/12/an-140.html AN-140], linear versus switching regulator power losses.
+* Analog Devices, [https://www.analog.com/en/resources/app-notes/an-140.html AN-140], linear versus switching regulator power losses.
 * Texas Instruments, [https://www.ti.com/document-viewer/lit/html/slvafj5 SLVAFJ5], buck operation and duty-cycle limitations.
 * Texas Instruments, [https://www.ti.com/product/TPS65288 TPS65288 datasheet], peak-current-mode compensation and protection.
 * Analog Devices, [https://www.analog.com/en/resources/analog-dialogue/articles/applying-low-dropout-regulators.html Applying low-dropout regulators], dropout and transient criteria.

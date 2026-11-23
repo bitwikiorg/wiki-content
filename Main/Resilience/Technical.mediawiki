@@ -1,4 +1,4 @@
-{{Reading depth|base=Resilience|current=Technical}}
+[[Resilience/Simple|Simple]] · [[Resilience/Technical|Technical]]
 
 = Resilience — Technical =
 
@@ -157,6 +157,23 @@ Active research challenges include estimating regime boundaries from short noisy
 Before citing a quantitative resilience claim, identify the author and disciplinary sense of resilience; the exact observable and numerical formula; system function, baseline and time horizon; perturbation class and distribution; calibration evidence; uncertainty and dependence; validation outside the fitting sample; possible regime changes; and the interests of stakeholders whose welfare the metric obscures or prioritizes.
 
 Never interpret a high scalar score, an untested model basin, a backup architecture diagram or a brand's promise as sufficient evidence that a system is broadly resilient. The correct conclusion is necessarily conditional on tested conditions and explicitly acknowledged limits.
+
+
+== Disciplinary scope and operational assessment ==
+
+{| class="wikitable"
+! Context !! Primary operational question !! Interpretive limitation
+|-
+| Ecological resilience || Can the system persist in a regime despite disturbance? || Rapid equilibrium return is not a universal criterion.
+|-
+| Engineering resilience || Can essential functions be maintained, restored or adapted after specified failures? || One successful failover does not establish protection against all hazards.
+|-
+| Cyber resiliency || Can the system anticipate, withstand, recover from and adapt to cyber adversity? || Prevention or uptime alone does not cover the NIST engineering scope.<ref name="nist_scope">NIST, [https://csrc.nist.gov/pubs/sp/800/160/v2/r1/final SP 800-160 Vol. 2 Rev. 1] (December 2021), cyber-resiliency engineering objectives.</ref>
+|-
+| Community and disaster resilience || Can essential services prepare, absorb, recover and adapt across coupled infrastructure and communities? || Aggregated service scores can conceal unequal distribution of harm.<ref name="nas_scope">National Research Council, [https://www.nationalacademies.org/read/13457/chapter/3 ''Disaster Resilience: A National Imperative''] (2012).</ref>
+|}
+
+A reproducible assessment records the disturbance distribution or adversarial scenario, timing and recurrence, functional thresholds, system boundaries, dependencies, stakeholder valuations and feasible response actions. Compare interventions under the same hazard envelope and observation horizon; include repeated disturbances, cascading dependencies, restoration costs and adaptation burdens when applicable. An observed absence of losses can reflect a mild test rather than strong resilience. Backup restoration validates one recovery path, not independence from shared-fate faults. These are evaluation requirements, not claims of a universal resilience score.
 
 == References ==
 

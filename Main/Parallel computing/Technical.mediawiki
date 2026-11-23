@@ -12,6 +12,12 @@ For a fixed workload, assume a fraction ''s'' of the one-processor execution tim
 
 For ''s = 0.10'' and ''p = 8'', ''S<sub>8</sub> = 1/(0.10+0.90/8) = 80/17 ≈ 4.706''. This does not describe arbitrary measured software. Amdahl's 1967 analysis emphasizes serial constraints. Gustafson's 1988 argument considers increasing problem size as resources increase; under its scaled-workload assumptions, ''S<sub>p</sub> = p - s(p-1)'', where ''s'' is the serial fraction of the parallel execution time. These ''s'' parameters are defined relative to different baselines and must not be interchanged.
 
+== Communication and memory performance models ==
+For an illustrative point-to-point message of <math>n</math> bytes, <math>T_{msg}=\alpha+\beta n</math> separates startup latency <math>\alpha</math> and transfer time per byte <math>\beta</math>. This simplified model excludes congestion, overlap and collective topology. A roofline-style bound <math>P\leq\min(P_{peak},IB)</math> relates arithmetic intensity <math>I</math> (operations per byte at a specified memory level), attainable bandwidth <math>B</math> and compute ceiling <math>P_{peak}</math>; neither is a universal benchmark.
+
+== Implementation and measurement ==
+Specify task dependencies, data ownership, memory ordering and communication before selecting thread/process placement. For reproducible measurements report fixed-size (strong) and proportional-size (weak) scaling separately, processor topology, problem size, compiler/runtime, affinity, repeated wall-clock timings and variance, memory traffic, throughput, numerical tolerance and energy-meter boundaries. Investigate heterogeneous scheduling, communication avoidance and energy-aware placement as open design problems rather than proven speedups.
+
 == Practical limits ==
 * '''Communication:''' message startup latency and transfer cost can dominate fine-grained decomposition.
 * '''Memory:''' bandwidth saturation, locality, cache coherence and nonuniform access constrain speedup.
@@ -23,6 +29,7 @@ For ''s = 0.10'' and ''p = 8'', ''S<sub>8</sub> = 1/(0.10+0.90/8) = 80/17 ≈ 4.
 The formulas above are analytic models with stated assumptions, not measured benchmarks. MPI and OpenMP specify programming interfaces, not universal performance guarantees. Processor topology, data sizes, compiler, runtime and communication fabric must be specified before comparing implementations.
 
 == References ==
+* [https://doi.org/10.1145/1498765.1498785 Williams, Waterman and Patterson (2009), ''Roofline: An Insightful Visual Performance Model for Multicore Architectures''].
 * [https://www.openmp.org/spec-html/5.2/openmp.html OpenMP ARB, ''OpenMP Application Programming Interface'', version 5.2 (2021)], especially scope, execution and memory models.
 * [https://www.mpi-forum.org/docs/ MPI Forum, official MPI specifications], including MPI 5.0 (approved June 2025).
 * [https://doi.org/10.1145/1465482.1465560 Amdahl, G. M. (1967), AFIPS Spring Joint Computer Conference, pp. 483–485].

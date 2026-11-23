@@ -17,13 +17,13 @@ class HardwareDescriptionLanguageSourceTests(unittest.TestCase):
     def setUpClass(cls):
         cls.core, cls.simple, cls.technical = [p.read_text(encoding="utf-8") for p in FILES]
 
-    def test_three_distinct_surfaces(self):
+    def test_two_reader_localizations(self):
         for p in FILES:
             self.assertTrue(p.is_file(), str(p))
         self.assertIn("{{Knowledge object", self.core)
-        self.assertIn("{{Reading depth|base=Hardware description language|current=Core}}", self.core)
-        self.assertIn("current=Simple", self.simple)
-        self.assertIn("current=Technical", self.technical)
+        self.assertNotIn("{{Reading depth", self.core)
+        self.assertIn("[[Hardware description language/Technical|Technical]]", self.simple)
+        self.assertIn("[[Hardware description language/Simple|Simple]]", self.technical)
 
     def test_source_owned_transclusion(self):
         self.assertEqual(self.simple.count("<onlyinclude>"), 1)
@@ -33,7 +33,7 @@ class HardwareDescriptionLanguageSourceTests(unittest.TestCase):
 
     def test_citations_and_refs(self):
         for surface in (self.core, self.simple, self.technical):
-            self.assertIn("<references/>", surface)
+            self.assertIn("<references/>", surface) if surface != self.core else self.assertNotIn("<references/>", surface)
             names = re.findall(r'<ref name="([^"]+)"', surface)
             self.assertEqual(len(names), len(set(names)), "duplicate reference declaration")
         self.assertIn("standards.ieee.org/ieee/1076/5179/", self.technical)

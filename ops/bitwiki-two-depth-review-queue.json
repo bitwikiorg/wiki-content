@@ -946,7 +946,7 @@
         "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/112",
         "notes": "Read full original Core, Simple, Technical and regression file; preserved original EDA stages, representations, PDK limitations, ASIC/FPGA distinction, simulation/formal/STA/DRC/LVS boundaries, related concepts and sources in Simple/Technical. Replaced malformed DAC PDF URL and corrected Ajay to Ajayi; DOI 10.1145/3316781.3326334 checked against OpenROAD bibliography and conference record. Hypothetical 0.35 ns setup slack retained. Canonical now transcludes Simple with reciprocal depth links; targeted source invariants passed in memory before writes. Four sequential branch writes succeeded. Executable pytest, CI, staging and complete citation audit not run; human review required.",
         "tests": {
-          "source_checks": "pre-write navigation/preservation assertions passed; post-write not yet independently executed",
+          "source_checks": "6/6 targeted post-write GitHub source checks passed; executable pytest not run",
           "regression": "updated_not_executed",
           "ci": "not_run",
           "scholarly": "partial_primary_source_check"
@@ -967,7 +967,7 @@
         "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/113",
         "notes": "Read complete Core/Simple/Technical and scoped test. Preserved original programmable fabric, LUT/register resources, SLICEM distributed RAM and SRL, UG573 block RAM, 2.50 ns/400 MHz illustrative constraint, partial reconfiguration, FPGA/ASIC/GPU comparisons, HDL/HLS workflow, applications, security and timing caveats, AMD primary documentation and related links. Clarified UltraScale one slice per CLB and CARRY8 using UG574 rev 1.6; corrected the potential 7-series conflation. Canonical transcludes Simple with reciprocal two-way links; four sequential writes completed. In-memory source assertions passed, executable tests and CI not run; human review required.",
         "tests": {
-          "source_checks": "pre-write navigation/preservation assertions passed; post-write GitHub fetch pending",
+          "source_checks": "6/6 targeted post-write GitHub source checks passed; executable pytest not run",
           "regression": "updated_not_executed",
           "ci": "not_run",
           "scholarly": "partial_vendor_specification_check"

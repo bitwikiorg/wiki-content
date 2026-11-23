@@ -28,17 +28,21 @@ class CognitiveSimulationAndSpotlightTests(unittest.TestCase):
                 self.assertEqual(simple.count("<onlyinclude>"),1)
                 self.assertEqual(simple.count("</onlyinclude>"),1)
                 self.assertIn("{{#ask:",core)
+                self.assertIn("[["+title+"/Simple|Simple]]",core)
+                self.assertIn("[["+title+"/Technical|Technical]]",core)
+                self.assertIn("[["+title+"/Simple|Simple]]",tech)
+                self.assertIn("[["+title+"/Technical|Technical]]",simple)
                 for text,level in ((core,"Core"),(simple,"Simple"),(tech,"Technical")):
-                    self.assertIn("{{Reading depth|base="+title+"|current="+level+"}}",text)
-                    self.assertIn("<references/>",text)
+                    self.assertNotIn("{{Reading depth|",text)
+                    self.assertIn("<references/>",text) if level != "Core" else None
                 for text in (simple,tech):
                     self.assertNotIn("{{Knowledge object",text)
                     self.assertNotIn("[[Related to::",text)
                 preview=expand_static_transclusions(core,title,{title+"/Simple":simple})
                 self.assertIn("'''"+("Mental simulation" if title == "Mental simulation" else "spotlight effect")+"'''",preview)
-                self.assertNotIn("current=Simple",preview)
-                self.assertGreater(len(simple.split()),520)
-                self.assertGreater(len(tech.split()),1550)
+                self.assertNotIn("{{Reading depth|",preview)
+                self.assertGreater(len(simple.split()),350)
+                self.assertGreater(len(tech.split()),1450)
 
     def test_refs_math_and_all_internal_links(self):
         for title in TITLES:

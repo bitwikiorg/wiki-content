@@ -1392,9 +1392,24 @@
       "title": "Parallel computing",
       "pr_number": 131,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/131",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/131",
+        "changed": "R20: four article-scoped files updated sequentially on existing PR head; canonical Simple host and reciprocal depth links.",
+        "preservation_evidence": [
+          "Retained original work/span, Amdahl/Gustafson derivations, OpenMP/MPI semantics, data/task and shared/distributed memory distinctions, concurrency/scaling distinctions, correctness and citations.",
+          "Preserved category metadata and related computing links in canonical host; added communication latency and roofline bounds, reproducible measurement requirements and architecture research gaps."
+        ],
+        "scientific_sources": [
+          "OpenMP API 5.2 https://www.openmp.org/spec-html/5.2/openmp.html",
+          "MPI Forum https://www.mpi-forum.org/docs/",
+          "Amdahl DOI 10.1145/1465482.1465560; Gustafson DOI 10.1145/42411.42415",
+          "Williams et al. roofline DOI 10.1145/1498765.1498785"
+        ],
+        "tests": "Post-write GitHub source assertions 6/7; Python regression updated but not executed; CI/V2/staging and complete citation audits not run.",
+        "gate": "PR #136 required for V2; human approval required; no merge."
+      }
     },
     {
       "id": "N032",
@@ -1426,15 +1441,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N030",
-    "run_count": 16,
+    "last_checkpoint_article": "N031",
+    "run_count": 17,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R19",
-    "articles_corrected_pending_validation": 38,
+    "articles_corrected_pending_validation": 39,
     "pairs_corrected_pending_validation": 19
   },
   "hard_rules": [

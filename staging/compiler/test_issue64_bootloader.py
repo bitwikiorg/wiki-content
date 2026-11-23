@@ -18,7 +18,7 @@ def page(suffix=""):
 
 
 class BootloaderArticleTests(unittest.TestCase):
-    def test_canonical_identity_depths_and_transclusion(self):
+    def test_canonical_identity_two_localizations_and_transclusion(self):
         core, simple, tech = page(), page("/Simple"), page("/Technical")
         self.assertEqual(core.count("{{Knowledge object"), 1)
         self.assertEqual(simple.count("{{Knowledge object"), 0)
@@ -29,8 +29,11 @@ class BootloaderArticleTests(unittest.TestCase):
         self.assertIn("{{:Bootloader/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
-        for text, depth in ((core, "Core"), (simple, "Simple"), (tech, "Technical")):
-            self.assertIn("{{Reading depth|base=Bootloader|current=" + depth + "}}", text)
+        self.assertNotIn("{{Reading depth", core + simple + tech)
+        for text in (core, simple, tech):
+            self.assertIn("[[Bootloader/Simple|Simple]]", text)
+            self.assertIn("[[Bootloader/Technical|Technical]]", text)
+        for text in (simple, tech):
             self.assertIn("<references/>", text)
         self.assertGreater(len(simple.split()), 450)
         self.assertGreater(len(tech.split()), 1400)

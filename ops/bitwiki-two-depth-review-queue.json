@@ -91,7 +91,7 @@
         "N014"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R09",
@@ -906,9 +906,25 @@
       "title": "Operating system kernel",
       "pr_number": 115,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/115",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #115: canonical Main identity and source status retained; Simple composed by default; two-way links; responsibilities and design caveats rehomed to Technical; targeted regression tests updated.",
+        "preservation_evidence": [
+          "coreUnique: source-status provenance; Knowledge object metadata; five kernel responsibilities: execution, memory, syscall, interrupts/devices, protection; monolithic vs microkernel vs hybrid and design caveats; kernel security is not end-to-end security; Operating system, Computer architecture, Computer security links; Linux and seL4 primary references",
+          "simpleUnique: system-call explanation; desktop and user-space examples; non-universal kernel design",
+          "technicalUnique: access_ok/EFAULT versioned Linux example; scheduling execution context and latency; virtual memory and page-table assumptions; seL4 proof trusted assumptions and covert channels; 80% accounting fixture; architecture-specific performance caveats"
+        ],
+        "scientific_sources": [
+          "Linux kernel versioned Memory Management APIs v5.19",
+          "Klein et al. SOSP 2009 DOI 10.1145/1629575.1629596",
+          "Murray et al. IEEE S&P 2013 DOI 10.1109/SP.2013.35"
+        ],
+        "static_checks": "4/4 source transformation assertions passed before write; post-write executable tests not run",
+        "tests": "Updated pytest source; not executed. Linux access_ok version-specific source and Murray IEEE publisher abstract checked; full scholarly audit and CI not executed",
+        "gate": "Shared PR #136 needed for V2 validation; human scholarly approval and merge authorization required",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/115"
+      }
     },
     {
       "id": "N015",
@@ -1112,16 +1128,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A29",
-    "run_count": 7,
+    "last_checkpoint_article": "N014",
+    "run_count": 8,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R07",
-    "articles_corrected_pending_validation": 15,
-    "pairs_corrected_pending_validation": 7
+    "last_reviewed_pair": "R08",
+    "articles_corrected_pending_validation": 16,
+    "pairs_corrected_pending_validation": 8
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

@@ -1,3 +1,5 @@
+'''Reading depth:''' [[Photolithography/Simple|Simple]] · [[Photolithography/Technical|Technical]]
+
 <onlyinclude>'''Photolithography''' is a coupled optical-imaging, photochemical and process-control operation. Its output is a developed resist geometry with a statistical distribution of edge locations, not merely the aerial image predicted by diffraction theory.</onlyinclude>
 
 ==Optical imaging and resolution==
@@ -12,11 +14,15 @@ At constant wavelength and process factors, changing EUV numerical aperture from
 '''Illustrative calculation (not a scanner specification):''' for <math>\lambda=13.5\,\mathrm{nm}</math> and an assumed <math>k_1=0.40</math>, <math>CD=16.36\,\mathrm{nm}</math> at <math>NA=0.33</math> and <math>CD=9.82\,\mathrm{nm}</math> at <math>NA=0.55</math>. Feature-specific process windows may differ substantially.
 
 ==Exposure physics==
+A representative resist process includes wafer preparation, spin coating, soft bake, alignment, exposure, optional post-exposure bake, development and inspection. Positive-tone and negative-tone resist systems differ in the chemistry-dependent relationship between exposed regions and remaining resist. Resist removal and pattern transfer are distinct operations. These process distinctions must be specified before interpreting an aerial-image model or a metrology result.
+
 The mask modifies incident illumination; projection optics form an aerial intensity distribution. Photoacid generation and diffusion (in chemically amplified resists), stochastic photon and reaction events, post-exposure bake, and development map that distribution into a resist profile. Therefore image contrast alone does not determine line-edge roughness, defect probability or critical-dimension uniformity.
 
 DUV projection uses refractive optics; immersion raises the accessible numerical aperture. At EUV wavelengths most materials absorb strongly, so multilayer reflective optics operate in vacuum. High-NA EUV raises NA to 0.55 from 0.33, trading improved resolution for a tighter focus budget and additional optical and mask challenges.<ref name="optics">[https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors ASML, ''Lenses and mirrors''].</ref>
 
 ==Pattern placement and process integration==
+Overlay and focus-exposure process windows should be characterized with measured across-field and across-wafer distributions; a reported minimum printable line alone is not a production qualification. Record feature geometry, dose, focus, resist formulation, metrology convention and downstream etch conditions. For multi-patterning, measure additional overlay and edge-placement error rather than assuming the constituent errors are independent.
+
 Registration between successive masks is measured as overlay. Feature-edge placement is affected by overlay, optical proximity effects, mask errors, focus, dose, resist statistics and downstream etch bias. These terms are not necessarily independent; root-sum-square combination requires justified correlation assumptions. Optical proximity correction and illumination optimization can improve a specified process window but cannot eliminate stochastic defects or alignment errors.<ref name="k1">[https://www.asml.com/en/technology/lithography-principles/pushing-k1-further ASML, ''Pushing k1 further''].</ref>
 
 A developed resist pattern is an intermediate artifact. The wafer undergoes etching, implantation, lift-off or other processes before the intended material geometry exists. Multi-patterning adds process steps and overlay constraints; lithography throughput, defectivity and cost must therefore be evaluated at the integrated-flow level.
@@ -25,4 +31,6 @@ A developed resist pattern is an intermediate artifact. The wafer undergoes etch
 The Rayleigh equations describe a useful first-order optical scaling model. They do not uniquely predict two-dimensional corner fidelity, stochastic bridge/break defects, yield, resist collapse, edge-placement error or final etched dimensions. The illustrative calculation assumes identical <math>k_1</math> across optical systems and is not a production-node comparison. Reported feature size should specify measurement convention (e.g. half-pitch versus isolated critical dimension) and metrology conditions.
 
 ==References==
+The optical scaling and High-NA numerical aperture descriptions above are supported by ASML's published lithography-principles documentation. The depth-of-focus scaling is a first-order approximation; ASML's public 2016 presentation expresses it as <math>DOF=k_2\lambda/NA^2</math> with a process-dependent <math>k_2</math>.<ref name="dof">[https://www.euvlitho.com/2016/P61.pdf ASML, ''High-NA calls for tight focus control'', presentation, 25 February 2016, slide 27].</ref>
+
 <references/>

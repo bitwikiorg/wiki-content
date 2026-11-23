@@ -982,9 +982,25 @@
       "title": "Application-specific integrated circuit",
       "pr_number": 114,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/114",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/114",
+        "preservation_inventory": [
+          "Original ASIC types and PDK distinctions moved into Technical; canonical Knowledge object metadata, semantic links and categories preserved; original flow, economics, yield, PPA equations and sources retained"
+        ],
+        "corrections": [
+          "Corrected Ajay to Ajayi and malformed DAC 2019 PDF to publisher DOI 10.1145/3316781.3326334"
+        ],
+        "validation": {
+          "static": "navigation, metadata, preserved technical content checked before write; four GitHub writes acknowledged",
+          "tests": "test file updated but not executed",
+          "ci": "not executed",
+          "citation": "OpenROAD DOI and authors verified; other citations not fully audited",
+          "dependency": "PR #136"
+        },
+        "human_review_required": true
+      }
     },
     {
       "id": "N014",
@@ -1213,15 +1229,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N012",
+    "last_checkpoint_article": "N013",
     "run_count": 10,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R11",
-    "articles_corrected_pending_validation": 22,
+    "last_reviewed_pair": "R12",
+    "articles_corrected_pending_validation": 23,
     "pairs_corrected_pending_validation": 11
   },
   "hard_rules": [

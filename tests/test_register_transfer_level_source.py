@@ -16,8 +16,10 @@ class TestRegisterTransferLevel(unittest.TestCase):
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
         self.assertNotIn("<onlyinclude>", core)
-        self.assertIn("{{Reading depth|base=Register-transfer level|current=Technical}}", technical)
-        self.assertIn("<references/>", core)
+        self.assertIn("[[Register-transfer level/Simple|Simple]]", technical)
+        self.assertIn("[[Register-transfer level/Technical|Technical]]", simple)
+        self.assertNotIn("{{Reading depth", core)
+        self.assertNotIn("<references/>", core)
         self.assertIn("<references/>", technical)
         for article in (core, simple, technical):
             self.assertNotIn("[[Hardware description language]]", article)

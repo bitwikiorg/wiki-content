@@ -1,4 +1,4 @@
-{{Reading depth|base=Computer memory|current=Technical}}
+[[Computer memory/Simple|Simple]] · [[Computer memory/Technical|Technical]]
 = Computer memory — Technical =
 
 '''Computer memory''' comprises physical devices, addressable state and architectural mechanisms by which a computer retains and retrieves instructions, data and intermediate results. A computer-memory system is not a single homogeneous array: it combines semiconductor cells, buses, controllers, translation structures, caches, coherence protocols and software-visible memory semantics. This technical treatment distinguishes '''physical storage''' from '''addressing and protection''', '''performance hierarchy''' and '''consistency/durability guarantees'''. It does not equate digital memory with human [[Memory|cognitive memory]].
@@ -118,6 +118,9 @@ A useful benchmark reports platform, processor and memory model, operating frequ
 Microbenchmarks can be distorted by compiler optimization, prefetching, turbo/power states, TLB misses, page placement and synchronization. A measurement on one system does not establish an invariant DRAM, SRAM or flash latency for all devices.
 
 The worked cache and transfer examples are analytic fixtures with explicit hypothetical inputs. Their purpose is to verify units, conditional probabilities and scaling. They cannot establish that a particular CPU/GPU implements those cache parameters, that a workload has a given hit rate, or that a given storage product meets its advertised durability.
+
+== Architectural qualifications preserved from the canonical overview ==
+Memory is a family of devices and abstractions, not a single semiconductor cell. Registers, caches, main memory and persistent storage occupy different functional layers; flash SSDs expose block operations and durability contracts unlike volatile working RAM. Virtual address translation, cache coherence and language-level memory ordering must not be conflated with physical bit storage. CPU and GPU memory domains and their access paths can differ. Technology choice depends on working set, bandwidth, latency, power, fault model, thermal limits and cost. Higher raw bandwidth does not guarantee faster applications under dependencies, contention or synchronization. Integrity mechanisms such as parity, ECC, scrubbing and recovery require explicit fault assumptions; persistence requires power-loss and flush semantics.
 
 == Research boundary and further reading ==
 

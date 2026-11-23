@@ -109,7 +109,7 @@
         "N010"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R11",
@@ -919,9 +919,21 @@
       "title": "Register-transfer level",
       "pr_number": 111,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/111",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/111",
+        "notes": "RTL canonical identity, source-status metadata, categories and Simple transclusion retained; unique Core definitions, design workflow, state behavior, caveats, related links and named sources preserved in Technical with collision-safe reference names. Explicit two-way navigation. IEEE 1800-2023 scope verified with publisher. Ten of ten targeted post-write static invariants passed; executable Python tests, CI, staging and comprehensive scholarly citation review not run. Human approval gate and PR #136 dependency remain.",
+        "tests": {
+          "source_checks": "10/10 post-write static checks",
+          "regression": "updated_not_executed",
+          "ci": "not_run",
+          "scholarly": "partial_publisher_check"
+        },
+        "blockers": [
+          "PR #136 two-way depth validation prerequisite"
+        ]
+      }
     },
     {
       "id": "N011",
@@ -1177,16 +1189,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N009",
-    "run_count": 9,
+    "last_checkpoint_article": "N010",
+    "run_count": 10,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R09",
-    "articles_corrected_pending_validation": 19,
-    "pairs_corrected_pending_validation": 9
+    "last_reviewed_pair": "R10",
+    "articles_corrected_pending_validation": 20,
+    "pairs_corrected_pending_validation": 10
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

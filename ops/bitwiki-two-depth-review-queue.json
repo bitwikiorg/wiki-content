@@ -172,7 +172,7 @@
         "N026"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R18",
@@ -1274,9 +1274,23 @@
       "title": "Memory controller",
       "pr_number": 126,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/126",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/126",
+        "changed": "R17: PR #126 four scoped files updated; canonical Simple transclusion and reciprocal two-way navigation; Technical expanded timing legality, latency decomposition, fairness and measurement methodology.",
+        "preservation_evidence": [
+          "Core address mapping, queues, row scheduling, refresh, ECC distinctions, fairness and engineering caveats preserved",
+          "Technical tRCD/tRP/tRAS/tRFC, hypothetical 14 ns bound, FR-FCFS, Mutlu/Moscibroda 2007, JESD79-5 and DDR generation limitations retained",
+          "Original ontology links DRAM, computer memory and cache preserved; added HBM connection without asserting equivalence"
+        ],
+        "scientific_sources": [
+          "JEDEC JESD79-5 DDR5 2020 (exact device revision still requires normative check)",
+          "Mutlu and Moscibroda, MICRO-40 2007, doi:10.1109/MICRO.2007.21"
+        ],
+        "tests": "Four sequential GitHub writes succeeded; executable regression tests, CI, V2 and staging not executed; full scholarly citation audit outstanding.",
+        "gate": "Shared two-way validation PR #136 pending; human review and merge authorization required."
+      }
     },
     {
       "id": "N027",
@@ -1353,16 +1367,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N024",
-    "run_count": 13,
+    "last_checkpoint_article": "N026",
+    "run_count": 14,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R16",
-    "articles_corrected_pending_validation": 33,
-    "pairs_corrected_pending_validation": 16
+    "last_reviewed_pair": "R17",
+    "articles_corrected_pending_validation": 34,
+    "pairs_corrected_pending_validation": 17
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

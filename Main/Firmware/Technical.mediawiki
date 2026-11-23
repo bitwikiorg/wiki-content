@@ -1,4 +1,4 @@
-{{Reading depth|base=Firmware|current=Technical}}
+'''Reading depth:''' [[Firmware/Simple|Simple]] · [[Firmware/Technical|Technical]]
 = Firmware — Technical =
 
 '''Firmware''' is software whose execution is closely coupled to the initialization, control, management or recovery of a particular hardware device or platform. It may be stored in nonvolatile memory, staged in volatile memory, loaded from a host, or distributed among multiple controllers. Its defining feature is its operational position at a hardware/software boundary, not an immutable storage medium. An embedded microcontroller program, PC platform firmware, storage-controller program and accelerator device image may all be called firmware while exhibiting very different architectures and threat models.
@@ -139,6 +139,11 @@ Firmware can include code in a secure execution environment, a management contro
 
 The term historically emphasizes software tightly bound to hardware, often difficult to change, but modern field-updatable implementations blur any fixed ROM-versus-software distinction. BIOS and UEFI are not synonyms for all firmware: BIOS describes a historical family of PC boot interfaces, whereas UEFI defines a modern standardized firmware interface; many embedded platforms use neither. Likewise CPU microcode, boot ROM, baseboard management-controller code and storage firmware have distinct update and trust models. A generic firmware article must not collapse them into a single execution domain.
 
+
+== Additional scope and preservation notes ==
+
+A single hardware product may contain several separately updatable firmware components, with different authorization and recovery boundaries. Firmware may execute at privileged boundaries and survive an ordinary operating-system reinstall, but neither persistence nor privilege is universal. An OS device driver may load firmware into a controller; the host driver and the device-executed program remain distinct software components. Firmware may operate without any general-purpose operating system. A successful signature check establishes neither behavioral safety nor supply-chain integrity; update analysis must also address device compatibility, interrupted power, rollback authorization and recovery.
+
 == Research and verification limits ==
 
 The UEFI documentation is normative for UEFI-conforming implementations, not evidence that every shipping device is compliant. NIST SP 800-193 is security guidance, not a certification of any particular product. The mathematical example is a declared hypothetical probability model, not a measurement. Empirical claims about update reliability, exploitability, recovery success or performance require platform-specific test evidence.
@@ -151,4 +156,4 @@ This article's source and numerical checks can verify reference structure, the c
 == Further reading ==
 * UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11''] (normative UEFI interfaces).
 * NIST, [https://doi.org/10.6028/NIST.SP.800-193 ''Platform Firmware Resiliency Guidelines''] (2018).
-* [[Firmware|Canonical topic]] · [[Firmware/Simple|Simple explanation]] · [[Operating system]] · [[Computer architecture]] · [[Computer security]].
+* [[Firmware/Simple|Simple explanation]] · [[Operating system]] · [[Computer architecture]] · [[Computer security]].

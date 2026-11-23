@@ -1,4 +1,8 @@
+'''Reading depth:''' [[Chiplet/Simple|Simple]] · [[Chiplet/Technical|Technical]]
 <onlyinclude>'''Chiplet-based integration''' partitions a system into multiple separately manufactured dies and connects them at package scale. Its feasibility depends jointly on functional partitioning, die-to-die communication, test coverage, manufacturing yield and package-level electrical and thermal constraints.</onlyinclude>
+
+== Scope and integration topologies ==
+Chiplets are modular die-level components, not synonyms for 2.5D or 3D integration. Dies can use the same or different fabrication processes, and can be arranged side by side on substrates, bridges or interposers, or vertically stacked. Architecture must consider reuse, manufacturing yield, bandwidth, latency, power delivery, thermal coupling, assembly and test cost jointly.
 
 == Architectural partitioning ==
 Partition boundaries determine which transactions traverse the package rather than on-die wires. The designer must budget link bandwidth, serialization, protocol overhead, latency, clock-domain crossing, coherence (where applicable), and power. Separating I/O and compute onto different process nodes can reduce the area fabricated at the most expensive node, but extra interfaces and package complexity can offset the savings.
@@ -12,7 +16,10 @@ Under an idealized independent random-defect Poisson model, die yield is <math>Y
 == Design and verification limits ==
 Die-level functional verification does not replace link compliance, power-integrity, thermal, package-assembly and post-assembly testing. Inter-die links create new fault surfaces. Partition optimization is workload- and technology-dependent: a chiplet system may perform worse or cost more than a monolithic design.
 
-== Sources and provenance ==
+== Interface and system-level validation ==
+UCIe defines specified die-to-die interface layers and revision-dependent compliance provisions; it does not ensure arbitrary vendor chiplets are plug-and-play at the power, clock, coherency, security, firmware or package levels. The [https://www.uciexpress.org/specifications/ucie-3-0 UCIe Consortium specifications] document revisions. Validate channel loss, training, signal integrity, thermal coupling, assembly yield and test escape rates for the intended implementation.
+
+== Sources and provenance =
 * [https://eps.ieee.org/technology/heterogeneous-integration-roadmap/ IEEE Electronics Packaging Society, Heterogeneous Integration Roadmap], industry roadmap and terminology.
 * [https://doi.org/10.1109/TCPMT.2022.3207195 Das Sharma et al. (2022), IEEE Transactions on Components, Packaging and Manufacturing Technology, DOI 10.1109/TCPMT.2022.3207195], original UCIe architecture.
 * [https://doi.org/10.1038/s41928-024-01126-y Das Sharma et al. (2024), Nature Electronics 7, 244–254], 3D interconnect research.

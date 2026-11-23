@@ -1,27 +1,33 @@
-<onlyinclude>'''High-bandwidth memory''' (HBM) increases DRAM interface throughput by combining stacked memory dies, through-silicon vias (TSVs), and a wide package-level interface; peak interface bandwidth is distinct from delivered application throughput.</onlyinclude>
+<onlyinclude>'''High-bandwidth memory''' (HBM) is stacked DRAM with through-silicon-via (TSV) connections and a wide package-level data interface. Its principal design objective is aggregate memory throughput; device peak bandwidth and delivered workload bandwidth must be measured separately.</onlyinclude>
 
-== Organization and provenance ==
-JEDEC's JESD235A update (2016) describes a 1,024-bit stack interface divided into eight independent channels, supporting multiple TSV stack heights. The later JESD235B announcement (2018) describes up to 2.4 Gbit/s per pin and a nominal peak of approximately 307 GB/s per stack. These are historical revision-specific parameters, not universal values for all HBM generations. See the JEDEC association announcements reproduced in the references.
+== Standards and organization ==
+JEDEC's JESD235A (2016 announcement) and JESD235B (17 December 2018 announcement) are historical revisions, not interchangeable with later HBM generations. JESD235B specifies a 1,024-bit interface organized into eight 128-bit channels, up to 2.4 Gbit/s per pin, and supported 2-, 4-, 8- and 12-high TSV stack configurations with announced capacity up to 24 GB per stack. These are standard capabilities, not a guarantee for every implementation [https://www.cdrinfo.com/D7/content/jedec-updates-high-bandwidth-memory-standard JEDEC 2018 announcement].
 
-AMD PG276 documents one concrete controller implementation: eight 128-bit channels per 1,024-bit stack, each divided into two 64-bit pseudo-channels. Pseudo-channel operation and bank scheduling influence how efficiently a workload can use the interface. That implementation is not a universal definition of later HBM generations.
+AMD's [https://docs.amd.com/r/en-US/pg276-axi-hbm/HBM-Topology PG276 HBM topology] describes one controller implementation with eight channels per stack and two 64-bit pseudo-channels per 128-bit channel. Pseudo-channel behavior, address mapping and scheduling must be verified against the target device/controller documentation; they are not universal properties of all revisions.
 
-== Bandwidth model ==
-For a single interface with ''W'' data pins and ''R'' effective transfers per second per pin, theoretical payload bandwidth, ignoring overhead, is
+== Peak bandwidth derivation ==
+For ''W'' physical data pins and effective signaling rate ''R'' bits per second per pin, the ideal data-interface rate (decimal bytes/s) is
 
-:<math>B_{peak}=\frac{W R}{8}\quad\mathrm{bytes/s}.</math>
+:<math>B_{peak}=\frac{WR}{8}.</math>
 
-For the JESD235B announced parameters, ''W'' = 1,024 bits and ''R'' = 2.4 × 10<sup>9</sup> bit/s per pin, giving 307.2 × 10<sup>9</sup> bytes/s = '''307.2 GB/s''' (decimal). Four identical stacks would nominally provide 1,228.8 GB/s, provided the processor and memory system can drive all stacks concurrently. The simple product is an upper bound, not a measured benchmark.
+For the JESD235B announced example, <math>W=1024</math> and <math>R=2.4\times10^9</math> bit/s/pin, yielding <math>B_{peak}=307.2\times10^9</math> bytes/s = '''307.2 GB/s''' per stack. Four independently saturated identical stacks would nominally yield '''1,228.8 GB/s'''. Neither number includes effective utilization or demonstrates a measured workload rate. Capacity and stack count must be evaluated separately.
 
-Effective bandwidth depends on request sizes, bank conflicts, row-buffer behavior, command overhead, controller scheduling, address mapping, thermal throttling, and workload locality. Bandwidth does not imply equivalent random-access latency improvement. Capacity is a separate dimension.
+An explicit utilization model is <math>B_{delivered}=\eta B_{peak}</math>, where <math>0\leq\eta\leq1</math> is a ''measured'', workload-specific aggregate efficiency factor, not a universal constant. Bank conflicts, row-buffer misses, request granularity, command overhead, read/write turnaround, controller arbitration, refresh, thermal constraints, interconnect contention and software locality can reduce <math>\eta</math>. Random-access latency is a distinct metric.
 
-== Packaging and constraints ==
-TSVs connect vertically stacked dies. A nearby logic die and high-density package interconnects support the very wide interface; integration increases manufacturing, yield, repair, and thermal-design complexity. Packaging implementation varies by product. Energy efficiency comparisons require matched workloads, technology generations, and measurement boundaries; no blanket energy-saving factor is implied here.
+== Architectural evaluation ==
+A bandwidth-bound kernel with <math>Q</math> transferred bytes and <math>F</math> operations has arithmetic intensity <math>I=F/Q</math>. A simplified roofline bound is <math>P\leq\min(P_{compute},I B_{delivered})</math>, assuming bytes counted at the measured HBM interface, consistent units and negligible unmodeled bottlenecks. It is an analytical bound, not a performance prediction. Different cache hit rates and reuse strategies change <math>Q</math>; controllers and interconnects may limit throughput before the DRAM interface.
 
-== Scope and limitations ==
-This article distinguishes stacked HBM architecture from generic DRAM device physics, caches, and system-level memory hierarchies. JEDEC announcements document capabilities of named revisions; AMD documentation describes a particular device family. Neither is evidence that all commercial products reach theoretical peak bandwidth.
+Measure sustained read, write and mixed traffic separately with stated transfer sizes, address patterns, channel distribution, working-set size, temperature, clock state and concurrency. Report achieved bytes/time and tail latency, not only nominal pin rate. Compare with conventional DRAM only at matched capacity, power-measurement boundary, generation and workload. Power efficiency, repairability and cost cannot be inferred from pin count alone.
+
+== Packaging and research constraints ==
+TSVs and high-density package wiring connect memory layers and processing dies; yield, thermal gradients, repair strategies and signal integrity constrain implementation. Potential research directions include bank-aware scheduling, data placement, thermal-aware throttling and computation near memory. These are research questions, not claims of established performance gains. HBM is not a processor cache and does not eliminate data-movement or coherence costs.
+
+== Reading depth ==
+* [[High-bandwidth memory/Simple|Simple]]
+* [[High-bandwidth memory/Technical|Technical]]
 
 == References ==
-* [https://www.circuitnet.com/press/95853.html JEDEC Solid State Technology Association (12 January 2016), ''Updates Groundbreaking High Bandwidth Memory Standard'' (JESD235A)].
-* [https://www.cdrinfo.com/D7/content/jedec-updates-high-bandwidth-memory-standard JEDEC Solid State Technology Association (17 December 2018), ''Updates the High Bandwidth Memory Standard'' (JESD235B)].
-* [https://docs.amd.com/r/en-US/pg276-axi-hbm/HBM-Topology AMD, ''HBM Topology'', Product Guide PG276].
-* [https://docs.amd.com/r/en-US/pg276-axi-hbm/Core-Overview AMD, ''Core Overview'', Product Guide PG276].
+* [https://www.circuitnet.com/press/95853.html JEDEC, ''Updates Groundbreaking High Bandwidth Memory Standard'' (2016), reproduced announcement for JESD235A].
+* [https://www.cdrinfo.com/D7/content/jedec-updates-high-bandwidth-memory-standard JEDEC, ''Updates the High Bandwidth Memory Standard'' (17 December 2018), reproduced announcement for JESD235B].
+* [https://docs.amd.com/r/en-US/pg276-axi-hbm/HBM-Topology AMD, ''HBM Topology'', PG276].
+* [https://docs.amd.com/r/en-US/pg276-axi-hbm/Core-Overview AMD, ''Core Overview'', PG276].

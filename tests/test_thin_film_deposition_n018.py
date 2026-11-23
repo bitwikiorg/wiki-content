@@ -13,7 +13,9 @@ class ThinFilmDepositionTests(unittest.TestCase):
     def test_source_owned_transclusion(self):
         core = (BASE / "Thin-film deposition.mediawiki").read_text()
         self.assertIn("{{:Thin-film deposition/Simple}}", core)
-        self.assertIn("{{:Thin-film deposition/Technical}}", core)
+        self.assertNotIn("{{:Thin-film deposition/Technical}}", core)
+        self.assertIn("[[Thin-film deposition/Technical|Technical explanation]]", core)
+        self.assertNotIn("== References ==", core)
         for depth in ("Simple", "Technical"):
             source = (BASE / f"Thin-film deposition/{depth}.mediawiki").read_text()
             self.assertEqual(source.count("<onlyinclude>"), 1)
@@ -26,6 +28,9 @@ class ThinFilmDepositionTests(unittest.TestCase):
             self.assertIn(term, simple)
             self.assertIn(term, technical)
         self.assertIn("10.1021/cr900056b", technical)
+        self.assertIn("[[Thin-film deposition/Simple|Read the simple explanation]]", technical)
+        self.assertIn("[[Thin-film deposition/Technical|Read the technical explanation]]", simple)
+        self.assertIn("d\\theta", technical)
         self.assertIn("0.10", technical)
         self.assertIn("100 cycles", technical)
 

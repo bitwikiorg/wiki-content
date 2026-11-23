@@ -729,9 +729,25 @@
       "title": "Device driver",
       "pr_number": 99,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/99",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #99: canonical Main identity, SMW relationships and incoming #ask retained; Simple default; explicit two-way depth navigation; Core unique prose moved to Technical; scoped source tests revised.",
+        "preservation_evidence": [
+          "coreUnique: device-driver distinct roles vs operating system, architecture, bootloader and firmware; request journey with validation, scheduling, register mapping and completion; discovery, binding, probe failure and hot-unplug; KMDF/UMDF platform differences; security and threat-model list; SMW Knowledge object and incoming relationship query; Core's named references linuxcore, linuxdma, wdfcore",
+          "simpleUnique: network adapter worked example; missing-driver vs firmware/dependency/hardware failure; update not always safer; nonprivileged user-mode distinction; diagnostic limits",
+          "technicalUnique: probe deferral and child-device warning; descriptor memory ordering; interrupt/polling completion races; DMA mapping IOMMU lifetime; hot-unplug synchronization; M/M/1 numerical fixture; formal liveness and hardware assumptions"
+        ],
+        "scientific_sources": [
+          "Linux kernel driver model/binding documentation",
+          "Linux DMA API HOWTO",
+          "Microsoft Windows Driver Frameworks"
+        ],
+        "static_checks": "4/4 transformation source assertions passed in executor before commit; post-commit repository test execution not performed",
+        "tests": "Regression test source updated; Python execution, staging V2 and CI not run or verified; scholarly references checked selectively, not exhaustively",
+        "gate": "Shared PR #136 required for V2 two-depth validation; human scholarly review and explicit merge approval required",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/99"
+      }
     },
     {
       "id": "A30",
@@ -1096,7 +1112,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A28",
+    "last_checkpoint_article": "A29",
     "run_count": 7,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1104,7 +1120,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R07",
-    "articles_corrected_pending_validation": 14,
+    "articles_corrected_pending_validation": 15,
     "pairs_corrected_pending_validation": 7
   },
   "hard_rules": [

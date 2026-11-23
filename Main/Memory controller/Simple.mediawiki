@@ -1,13 +1,17 @@
-<onlyinclude>A '''memory controller''' is the traffic manager between a processor and its main memory. It decides which memory request can proceed next and sends the commands the memory chips need, at the right times.</onlyinclude>
+<onlyinclude>A '''memory controller''' is the traffic manager between a processor and its memory chips. It decides which requests to serve and sends the correct commands at the times the chips can accept them.</onlyinclude>
 
 == Why it matters ==
-Several processor cores may request data simultaneously. The controller queues those requests, chooses an order, and avoids issuing commands too close together for the memory hardware. It also arranges refresh operations that keep DRAM data from fading.
+Many processor cores can ask for data simultaneously. The controller places requests in queues, selects an order and coordinates reads and writes. For common [[Dynamic random-access memory|DRAM]], it also schedules refresh operations so stored electrical charges do not fade.
 
-A controller can favor requests that are fast to serve, but that may make another program wait longer. Good scheduling balances speed with fairness. Some systems also use error-correcting codes; their coverage depends on the whole hardware design.
+A controller may favor requests that can be served quickly, but doing so can make other programs wait. Good scheduling balances speed and fairness. Some systems use error-correcting codes (ECC) to detect or repair errors, although protection depends on the hardware design.
 
 == What it is not ==
-The controller does not itself hold most of the data: the [[Dynamic random-access memory|DRAM]] devices do. Nor is it the same as a processor [[Cache memory|cache]].
+Memory chips store most of the data; the controller organizes access to them. It is not the same as a processor [[Cache memory|cache]]. Different kinds of memory, including DDR and [[High-bandwidth memory|HBM]], require different interfaces and timing rules.
 
-== Further reading ==
-* JEDEC, ''DDR5 SDRAM'', JESD79-5 (2020), §4.13.
-* Mutlu and Moscibroda (2007), https://doi.org/10.1109/MICRO.2007.21
+== Reading depth ==
+* [[Memory controller/Simple|Simple]]
+* [[Memory controller/Technical|Technical]]
+
+== Sources ==
+* JEDEC, ''DDR5 SDRAM'', JESD79-5 (2020); consult the applicable revision and device datasheet.
+* [https://doi.org/10.1109/MICRO.2007.21 Mutlu and Moscibroda (2007), memory scheduling fairness].

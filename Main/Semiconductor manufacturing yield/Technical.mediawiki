@@ -1,5 +1,7 @@
 <onlyinclude>'''Semiconductor manufacturing yield''' is a stage-specific empirical pass fraction; statistical yield models relate this fraction to defect mechanisms, critical area and process variation, but cannot substitute for wafer-map and electrical-test observations.</onlyinclude>
 
+'''Reading depth:''' [[Semiconductor manufacturing yield/Simple|Simple]] · [[Semiconductor manufacturing yield/Technical|Technical]]
+
 == Definitions and estimands ==
 For <math>n</math> eligible tested dies and <math>g</math> passing dies, <math>\hat Y=g/n</math>. This estimator is meaningful only with a declared sampling frame, acceptance criterion and test stage. Wafer-sort yield, assembly yield, final-test yield, parametric yield and bin-specific yield have different denominators. Multiplying stage yields is justified only when they are properly defined as conditional probabilities along the same manufacturing flow.
 
@@ -17,10 +19,15 @@ Assume <math>A_c=1\ \mathrm{cm}^2</math>, <math>D_0=0.2\ \mathrm{cm}^{-2}</math>
 == Spatial variation, tests and economics ==
 Observed wafer maps may show radial gradients, edge effects, tool signatures or local clusters. Spatial regression and zero-inflated models can fit these patterns better than one homogeneous rate, but require representative data and out-of-sample validation. Electrical binning captures speed, leakage and power constraints that a zero-fatal-defect model does not. A simplified processed-wafer cost per expected good die is <math>C_w/(N_gY)</math>; it omits test and package costs, multi-bin revenue, rework and correlated wafer-level loss. Gross die count itself depends on wafer geometry, edge exclusion, scribe streets and placement.
 
+== Model identification and experimental validation ==
+The gamma-mixture result follows by integrating <math>E[e^{-\Lambda}]</math> for <math>\Lambda\sim\mathrm{Gamma}(\alpha,\lambda/\alpha)</math>, with the second argument the scale. Its variance is <math>\lambda^2/\alpha</math>; the corresponding defect-count variance is <math>\lambda+\lambda^2/\alpha</math>. Different defect-rate distributions can share the same mean and zero fraction, so a measured pass rate alone cannot identify the clustering mechanism. For comparison, zero-inflated Poisson models allow a structural-zero component; generalized-Poisson and hurdle models represent different count-generating assumptions, not interchangeable physical explanations.
+
+A credible model comparison should report the defect-inspection detection threshold, die-level spatial coordinates, critical-area extraction assumptions, test-bin definition, wafer/lot stratification, held-out-wafer predictive error and uncertainty intervals. Use spatially separated or lot-held-out validation when wafer-map dependence makes random die-level splitting optimistic. The 2007 Bae–Hwang–Kuo study evaluates Poisson, negative-binomial and zero-inflated Poisson regressions with spatial covariates; the 2020 IEEE study additionally examines generalized-Poisson and hurdle-at-zero families. Neither establishes a universal best model across processes.
+
 == Limitations and provenance ==
 The Poisson expression follows from the zero-count probability of a homogeneous process. The gamma-mixture result is the standard clustered-defect extension, not a universal calibration. Bae et al. show why spatial covariates matter; Stapper reports empirical process-monitoring applications. All numerical parameters above are hypothetical and should not be read as production measurements.
 
 == References ==
 * C. H. Stapper, ''LSI Yield Modeling and Process Monitoring'', ''IBM Journal of Research and Development''. [https://bitsavers.org/pdf/ibm/IBM_Journal_of_Research_and_Development/441/stapper.pdf Full text]
 * S. J. Bae, J. Y. Hwang and W. Kuo (2007), ''Yield prediction via spatial modeling of clustered defect counts across a wafer map'', ''IIE Transactions'' 39:1073–1083. [https://doi.org/10.1080/07408170701275335 DOI]
-* ''Statistical Models of Overdispersed Spatial Defects for Predicting the Yield of Integrated Circuits'', ''IEEE Transactions on Reliability'' 69 (2020):510–521. [https://doi.org/10.1109/TR.2019.2943925 DOI]
+* T. Yuan, S. J. Bae and Y. Kuo (2020), ''Statistical Models of Overdispersed Spatial Defects for Predicting the Yield of Integrated Circuits'', ''IEEE Transactions on Reliability'' 69 (2020):510–521. [https://doi.org/10.1109/TR.2019.2943925 DOI]

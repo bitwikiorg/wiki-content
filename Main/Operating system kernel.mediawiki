@@ -1,4 +1,4 @@
-{{Source status|status=New article draft|note=Source-grounded kernel-specific treatment; review pending.}}
+{{Source status|status=New article draft|note=Two-localization editorial correction; expert and CI validation pending.}}
 {{Knowledge object
  |title=Operating system kernel
  |entity_type=Concept
@@ -6,29 +6,24 @@
  |status=Established
  |provenance=Linux kernel documentation; Klein et al. (2009)
 }}
-{{Reading depth|base=Operating system kernel|current=Core}}
 = Operating system kernel =
-<onlyinclude>An '''operating system kernel''' is the privileged core of an [[Operating system]] that mediates access to processor execution, memory and devices, and implements critical protection and resource-management mechanisms. The kernel is not the entire operating system: user-space services, applications and utilities generally operate outside it.</onlyinclude>
+{{:Operating system kernel/Simple}}
 
-== Responsibilities ==
-* '''Execution and scheduling:''' represent runnable tasks, coordinate context switches, and arbitrate processor time.
-* '''Memory:''' manage physical pages, virtual-address mappings and faults, with hardware-assisted isolation where supported.
-* '''System-call interface:''' validate requests from less-privileged programs and mediate privileged operations.
-* '''Interrupts and devices:''' handle asynchronous hardware events and coordinate device access, often through kernel drivers.
-* '''Protection:''' enforce privilege and address-space boundaries subject to correct implementation and hardware behavior.
-
-== Design choices ==
-Monolithic kernels implement many services in privileged address space; microkernels seek to minimize privileged mechanisms and place more services outside the kernel. Neither label alone establishes security, correctness or performance. Hybrid designs blur this classification.
-
-== Boundaries and limitations ==
-Kernel protection does not establish end-to-end security: firmware, hardware, privileged drivers, configuration and user-space components remain relevant. Different kernels distribute services differently. Linux-specific interfaces should not be mistaken for universal kernel requirements.
+== Reading depths ==
+[[Operating system kernel/Simple|Simple explanation]] · [[Operating system kernel/Technical|Technical explanation]]
 
 == Related knowledge ==
-[[Operating system]] describes the broader software system; [[Computer architecture]] provides hardware execution and privilege mechanisms; [[Computer security]] addresses protection beyond the kernel boundary.
+[[Related to::Operating system|Operating system]] describes the broader software system; [[Related to::Computer architecture|Computer architecture]] provides hardware execution and privilege mechanisms; [[Related to::Computer security|Computer security]] addresses protection beyond the kernel boundary. These are contextual relationships, not identity or subclass assertions.
 
-== References ==
-* Linux kernel documentation, [https://www.kernel.org/doc/html/latest/core-api/mm-api.html Memory Management APIs] (accessed 2026-11-21).
-* Klein et al. (2009), [https://doi.org/10.1145/1629575.1629596 ''seL4: Formal Verification of an OS Kernel''], ACM SOSP, pp. 207–220.
-* Murray et al. (2013), [https://doi.org/10.1109/SP.2013.35 ''seL4: From General Purpose to a Proof of Information Flow Enforcement''], IEEE Symposium on Security and Privacy.
+== Incoming semantic relationships ==
+{{#ask:
+ [[Related to::Operating system kernel]]
+ |?Entity type
+ |?Domain
+ |format=table
+ |mainlabel=Related knowledge object
+ |limit=30
+ |default=''No incoming relationships recorded.''
+}}
 
 [[Category:Computer science]]

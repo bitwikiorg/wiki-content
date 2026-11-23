@@ -118,7 +118,7 @@
         "N012"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R12",
@@ -961,9 +961,21 @@
       "title": "Field-programmable gate array",
       "pr_number": 113,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/113",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/113",
+        "notes": "Read complete Core/Simple/Technical and scoped test. Preserved original programmable fabric, LUT/register resources, SLICEM distributed RAM and SRL, UG573 block RAM, 2.50 ns/400 MHz illustrative constraint, partial reconfiguration, FPGA/ASIC/GPU comparisons, HDL/HLS workflow, applications, security and timing caveats, AMD primary documentation and related links. Clarified UltraScale one slice per CLB and CARRY8 using UG574 rev 1.6; corrected the potential 7-series conflation. Canonical transcludes Simple with reciprocal two-way links; four sequential writes completed. In-memory source assertions passed, executable tests and CI not run; human review required.",
+        "tests": {
+          "source_checks": "pre-write navigation/preservation assertions passed; post-write GitHub fetch pending",
+          "regression": "updated_not_executed",
+          "ci": "not_run",
+          "scholarly": "partial_vendor_specification_check"
+        },
+        "blockers": [
+          "PR #136 two-way depth validation prerequisite"
+        ]
+      }
     },
     {
       "id": "N013",
@@ -1201,16 +1213,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N011",
+    "last_checkpoint_article": "N012",
     "run_count": 10,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R10",
-    "articles_corrected_pending_validation": 21,
-    "pairs_corrected_pending_validation": 10
+    "last_reviewed_pair": "R11",
+    "articles_corrected_pending_validation": 22,
+    "pairs_corrected_pending_validation": 11
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

@@ -1,22 +1,11 @@
-<onlyinclude>'''Parallel computing''' is the execution of cooperating computations at overlapping times on multiple processing resources to reduce elapsed time, increase throughput, or solve larger problems. Unlike [[Concurrency]], which concerns independently progressing activities, parallel execution requires work to proceed simultaneously. Parallel computing may use shared-memory threads, distributed-memory processes, accelerators, or combinations of these.</onlyinclude>
+<onlyinclude>'''Parallel computing''' divides cooperating computation among simultaneously active processing resources.</onlyinclude>
 
-== Models ==
-* '''Data parallelism''' applies related operations to different data partitions.
-* '''Task parallelism''' executes distinct tasks with possible dependencies.
-* '''Shared memory''' allows threads to address common memory; synchronization and the memory-consistency model constrain safe access.
-* '''Distributed memory''' typically exchanges data through explicit messages; network latency and communication volume influence performance.
+{{:Parallel computing/Simple}}
 
-== Correctness and performance ==
-Dependencies, data races, deadlock, load imbalance, communication, and synchronization can limit scalability. A faster parallel program is not automatically more energy-efficient or more cost-effective. Parallelism differs from the broad concept of [[Scaling]]: scaling concerns how a system's behavior changes with resources or workload.
+'''Reading depth:''' [[Parallel computing/Simple|Simple]] · [[Parallel computing/Technical|Technical]]
 
 == Related concepts ==
-[[Computer architecture]] · [[Central processing unit]] · [[Graphics processing unit]] · [[Operating system kernel]]
-
-== Sources ==
-* [https://www.openmp.org/spec-html/5.2/openmp.html OpenMP Architecture Review Board, ''OpenMP API Specification 5.2'' (2021)].
-* [https://www.mpi-forum.org/docs/ MPI Forum, ''MPI standards'' (MPI 5.0 approved 2025)].
-* [https://doi.org/10.1145/1465482.1465560 G. M. Amdahl, ''Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities'' (1967)].
-* [https://doi.org/10.1145/42411.42415 J. L. Gustafson, ''Reevaluating Amdahl's Law'' (1988)].
+[[Computer architecture]] · [[Central processing unit]] · [[Graphics processing unit]] · [[Operating system kernel]] · [[Concurrency]] · [[Scaling]]
 
 [[Category:Computer science]]
 [[Category:Computing]]

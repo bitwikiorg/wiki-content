@@ -145,7 +145,7 @@
         "N019"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R15",
@@ -1130,9 +1130,18 @@
       "title": "Semiconductor etching",
       "pr_number": 120,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/120",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/120",
+        "source_notes": "Read complete three surfaces and scoped test on PR #120; preserved wet/plasma etching distinctions, ion-neutral synergy, ALE caveats, all three original DOIs, rate/selectivity/anisotropy arithmetic and SMW relationships. Removed duplicate Core explanation and third Technical transclusion; preserved default Simple with explicit two-way links. Added mask-budget/overetch derivation, experimental measurement and coupled-process research gaps. Coburn and Winters 1979 mechanism DOI and abstract checked against bibliographic record; complete independent citation audit outstanding.",
+        "validation": "7 pre-write in-memory checks passed; four sequential GitHub commits. Executable Python tests, V2/staging, CI and live rendering not run. Hypothetical 180 s/18 nm overetch arithmetic checked.",
+        "blockers": [
+          "Shared two-depth V2 support PR #136 unmerged",
+          "Executable tests/CI and full citation audit/human review outstanding"
+        ],
+        "human_review_required": true
+      }
     },
     {
       "id": "N020",
@@ -1288,16 +1297,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N018",
+    "last_checkpoint_article": "N019",
     "run_count": 11,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R13",
-    "articles_corrected_pending_validation": 27,
-    "pairs_corrected_pending_validation": 13
+    "last_reviewed_pair": "R14",
+    "articles_corrected_pending_validation": 28,
+    "pairs_corrected_pending_validation": 14
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

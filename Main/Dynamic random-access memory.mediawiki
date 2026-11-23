@@ -5,24 +5,12 @@
  |status=Established
  |provenance=JEDEC DRAM standards; Micron device specifications; original RowHammer research; issue #64
 }}
-{{Reading depth|base=Dynamic random-access memory|current=Core}}
 = Dynamic random-access memory =
-== Overview ==
+[[Dynamic random-access memory/Simple|Simple]] · [[Dynamic random-access memory/Technical|Technical]]
 {{:Dynamic random-access memory/Simple}}
-'''Dynamic random-access memory''' ('''DRAM''') is volatile semiconductor memory whose information is represented by charge states requiring periodic restoration. A conventional cell contains one access transistor and one storage capacitor, with peripheral sensing and row-selection circuits. It is not synonymous with all RAM, [[Computer architecture|computer memory]], or the memory hierarchy.<ref name="micron">Micron Technology, [https://www.micron.com/products/memory/dram-components DRAM products and device-specific technical resources].</ref>
-== Cells, rows and banks ==
-A row activation connects selected cells to sense amplifiers, which detect small charge differences and restore data. Column operations then transfer selected data. Precharge prepares the bank for another row. Timing, refresh and controller scheduling constrain the sequence; commands differ by DRAM generation.<ref name="jedec">JEDEC, [https://www.jedec.org/standards-documents JESD79-5 DDR5 SDRAM standards family], revision-dependent normative command and timing rules.</ref>
-== Dynamic retention ==
-Cell charge leaks, so refresh restores data within specified operating limits. Temperature, device variation and access history matter. Ordinary DRAM loses its reliable contents when power is removed. SRAM normally uses bistable cells without the same capacitor refresh requirement; flash is nonvolatile with different program/erase behavior.
-== Performance ==
-A row-buffer hit may avoid a new activation; a conflicting row requires additional commands. Command timing, bank-level parallelism, queueing, refresh, bus turnaround and controller policy all influence observed performance. Nominal transfer rate does not determine every request's latency.
-== Reliability and evidence ==
-Repeated activations can disturb nearby cells on susceptible devices, as experimentally shown in the original RowHammer study. Vulnerability and mitigation efficacy vary with platform and device; this is not a universal claim about every DRAM chip.<ref name="hammer">Yoongu Kim et al., [https://doi.org/10.1145/2678373.2665726 “Flipping Bits in Memory Without Accessing Them”], ISCA (2014).</ref>
-== Connections and boundaries ==
-[[Related to::Computer architecture|Computer architecture]] locates DRAM in systems; [[Related to::Semiconductor|semiconductor]] physics explains device operation; [[Related to::Operating system|operating systems]] manage address spaces without defining DRAM cell physics. The broader proposed [[Computer memory]] article (PR #96) covers SRAM, DRAM, flash and virtual memory; this article instead treats DRAM-specific physical operations, standards, timing and reliability.
-== Reading depths ==
-[[Dynamic random-access memory/Simple|Simple]] teaches the core idea. [[Dynamic random-access memory/Technical|Technical]] analyzes command sequencing, retention, timing and experimental limitations.
-== References ==
-<references/>
+
+== Related knowledge ==
+[[Related to::Computer architecture|Computer architecture]] places DRAM in a system; [[Related to::Semiconductor|semiconductor]] physics explains its device operation; [[Related to::Operating system|operating systems]] manage address spaces without defining cell physics. [[Computer memory]] covers the broader memory taxonomy.
+
 [[Category:Computer science]]
 [[Category:Engineering]]

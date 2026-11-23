@@ -21,6 +21,13 @@ class TestMotherboard(unittest.TestCase):
                 self.assertIn("https://", text)
                 self.assertNotIn("[[Motherboard]]", text)
 
+    def test_two_depth_navigation(self):
+        core, simple, technical = [p.read_text(encoding='utf-8') for p in FILES]
+        self.assertIn('{{:Motherboard/Simple}}', core)
+        self.assertIn('[[Motherboard/Technical|Technical', simple)
+        self.assertIn('[[Motherboard/Simple|Simple', technical)
+        self.assertNotIn('Template:Reading depth', core + simple + technical)
+
     def test_core_semantic_relationships(self):
         text = FILES[0].read_text(encoding="utf-8")
         self.assertIn("[[Related to::Computer bus]]", text)

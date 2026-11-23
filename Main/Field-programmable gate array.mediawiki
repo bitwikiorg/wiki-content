@@ -1,20 +1,5 @@
-<onlyinclude>A '''field-programmable gate array''' ('''FPGA''') is an integrated circuit whose digital logic and interconnections can be configured after manufacture. Its programmable fabric implements spatially arranged, concurrent circuits rather than executing every operation as a sequential software instruction.</onlyinclude>
+<onlyinclude>{{:Field-programmable gate array/Simple}}</onlyinclude>
 
-== Architecture ==
-A typical FPGA combines configurable logic blocks containing lookup tables (LUTs) and registers, programmable routing, clock networks, input/output interfaces, and dedicated arithmetic and memory resources. LUTs realize Boolean functions; registers store synchronous state. Configuration data controls these resources and their connectivity. Device families vary considerably: for example, AMD UltraScale CLB slices provide eight six-input LUTs and sixteen storage elements, while some slices also support distributed RAM and shift registers.
+''Reading depth:'' [[Field-programmable gate array/Simple|Simple]] · [[Field-programmable gate array/Technical|Technical]]
 
-== Design and use ==
-Hardware description languages or high-level synthesis specify the desired behavior. Synthesis maps logic to primitives; placement and routing allocate physical resources; timing analysis checks constraints; a configuration bitstream programs the device. Typical applications include digital signal processing, hardware prototyping, interface bridging and reconfigurable accelerators. Reconfiguration is device-dependent and does not necessarily imply runtime partial reconfiguration.
-
-== Tradeoffs ==
-An FPGA can be reprogrammed after fabrication, unlike a conventional fixed-function [[Application-specific integrated circuit|ASIC]]. Compared with an ASIC implementing the same function, programmable routing and configuration generally impose area, energy and timing overhead; the comparison depends on process, design and workload. An FPGA is also distinct from a [[Graphics processing unit|GPU]]: the latter executes instructions on a predesigned parallel processor architecture.
-
-== Related concepts ==
-* [[Hardware description language]]
-* [[Register-transfer level]]
-* [[Electronic design automation]]
-
-== References ==
-* [https://docs.amd.com/r/en-US/ug574-ultrascale-clb AMD, ''UltraScale Architecture Configurable Logic Block User Guide'' (UG574), rev. 1.6, 22 January 2025].
-* [https://docs.amd.com/r/en-US/ug573-ultrascale-memory-resources AMD, ''UltraScale Architecture Memory Resources User Guide'' (UG573), rev. 1.14, 18 November 2025].
-* [https://docs.amd.com/r/en-US/ug574-ultrascale-clb/Recommended-Design-Flow AMD, UG574, ''Recommended Design Flow''].
+[[Category:Programmable logic]]

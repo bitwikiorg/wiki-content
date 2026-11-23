@@ -1,4 +1,4 @@
-{{Reading depth|base=Hardware description language|current=Technical}}
+'''Reading depth:''' [[Hardware description language/Simple|Simple]] · [[Hardware description language/Technical|Technical]] (current: Technical)
 = Hardware description language — Technical =
 == Definition and standardization ==
 An '''HDL''' is a formal notation for describing hardware structure, behavior, and—in languages with appropriate constructs—verification properties. The IEEE 1076-2019 VHDL language reference manual specifies VHDL; IEEE 1800-2023 specifies SystemVerilog as a unified design, specification, and verification language.<ref name="vhdl">IEEE Standards Association, ''IEEE Std 1076-2019: IEEE Standard for VHDL Language Reference Manual'' (2019), https://standards.ieee.org/ieee/1076/5179/</ref><ref name="sv">IEEE Standards Association, ''IEEE Std 1800-2023: IEEE Standard for SystemVerilog—Unified Hardware Design, Specification, and Verification Language'' (published 28 February 2024), https://standards.ieee.org/ieee/1800/7743/; DOI: 10.1109/IEEESTD.2024.10458102.</ref>
@@ -82,6 +82,22 @@ Important limitations include incomplete stimulus coverage, mismatches between s
 
 == Connections ==
 [[Computer architecture]] describes programmer-visible and implementation-level computer structure, whereas HDL source describes hardware models used during design. [[Software]] shares textual and tooling practices with HDLs but does not erase the concurrency and physical-implementation distinctions.
+
+== Preserved scope, boundaries and related concepts ==
+== Scope and identity ==
+A '''hardware description language''' ('''HDL''') expresses the structure or behavior of electronic hardware in a form that tools can analyze. The same language family can describe concurrent circuits, simulate design behavior, and specify checks; a description is not automatically a physically realizable circuit.
+
+VHDL and SystemVerilog are standardized HDLs. Their language definitions are distinct from the synthesizable subsets accepted by particular implementation tools.<ref name="core_ieee1076">IEEE Standards Association, ''IEEE Std 1076-2019: VHDL Language Reference Manual'' (2019), https://standards.ieee.org/ieee/1076/5179/</ref><ref name="core_ieee1800">IEEE Standards Association, ''IEEE Std 1800-2023: SystemVerilog—Unified Hardware Design, Specification, and Verification Language'' (published 2024), https://standards.ieee.org/ieee/1800/7743/</ref>
+
+== Boundaries ==
+* An HDL is a language; '''register-transfer level''' (RTL) is a design abstraction expressible in an HDL.
+* Simulation evaluates a model's specified behavior; synthesis attempts to map supported constructs into implementable logic.
+* Verification checks claims about a model or implementation; simulation alone does not establish complete correctness.
+* A gate-level description and a behavioral testbench may both use HDL syntax but serve different purposes.
+
+== Related concepts ==
+[[Computer architecture]] supplies a system-level context; [[Software]] provides a useful contrast with ordinary sequential programming. Hardware description languages connect design specifications to circuit implementation and verification.
+
 
 == References ==
 <references/>

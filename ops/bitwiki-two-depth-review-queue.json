@@ -100,7 +100,7 @@
         "N008"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R10",
@@ -872,9 +872,26 @@
       "title": "Cache memory",
       "pr_number": 109,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/109",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #109 canonical host composed from Simple; two-way depth navigation; detailed trace simulation, miss taxonomy, measurement and architecture research tradeoffs added to Technical; scoped test revised.",
+        "preservation_evidence": [
+          "Core source-status provenance and links to Computer architecture and Computer memory",
+          "Core distinctions: line/tag/valid state, instruction/data/unified caches, private/shared hierarchy, replacement, write policies, coherence versus consistency",
+          "Simple desk analogy, hit/miss sequence, set conflict, dirty data and energy limitations",
+          "Technical equations for C/(BW), 32 KiB 4-way mapping to 128 sets, set 13 and tag 9; 3 ns hypothetical AMAT; 3C miss caveats, inclusion, write-allocate, coherence",
+          "Hill and Smith 1989 primary DOI and Hill 1987 Berkeley dissertation references"
+        ],
+        "scientific_sources": [
+          "Hill and Smith, IEEE Transactions on Computers 38(12):1612-1630, 1989, DOI 10.1109/12.40842, author-hosted paper verified",
+          "Hill, UC Berkeley technical report UCB/CSD-87-381, 1987"
+        ],
+        "static_checks": "10/10 post-write static invariants and illustrative address arithmetic passed; no Python execution",
+        "tests": "Scoped regression source updated, not executed; V2/staging/CI and comprehensive citation audit not executed",
+        "gate": "PR #136 compatibility prerequisite; human scholarly approval and explicit merge authorization required",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/109"
+      }
     },
     {
       "id": "N009",
@@ -1148,16 +1165,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A31",
-    "run_count": 8,
+    "last_checkpoint_article": "N008",
+    "run_count": 9,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R09",
-    "articles_corrected_pending_validation": 17,
-    "pairs_corrected_pending_validation": 8
+    "articles_corrected_pending_validation": 18,
+    "pairs_corrected_pending_validation": 9
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

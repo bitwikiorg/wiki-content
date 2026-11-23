@@ -693,9 +693,18 @@
       "title": "Firmware",
       "pr_number": 97,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/97",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/97",
+        "source_branch": "content/64-firmware-20261120",
+        "summary": "Consolidated Firmware into canonical transclusion host plus Simple and Technical; preserved metadata, SMW relations, incoming query, citations on authoritative depth pages and unique Core qualifications.",
+        "preservation": "Retained UEFI Boot/Runtime distinction, NIST protection/detection/recovery, device driver versus controller firmware, multiple independently updated components, privileged execution, OS-independent firmware, update compatibility/power/rollback and non-guarantee of signatures. Existing technical state machines, hypothetical reliability calculation, and limitations retained.",
+        "evidence": "UEFI 2.11 specification and NIST SP 800-193 already cited; no independent full citation audit executed in this run.",
+        "validation": "Source structure reviewed and article-specific regression test updated; executable tests and CI not run; scholarly citation verification incomplete.",
+        "blocker": "Shared V2 prerequisite PR #136; additional article-specific test execution and scholarly citation audit needed.",
+        "human_review_gate": "Do not merge until PR #136 compatibility is integrated and tests, citations, CI and editorial review pass."
+      }
     },
     {
       "id": "A28",
@@ -1078,15 +1087,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A26",
-    "run_count": 6,
+    "last_checkpoint_article": "A27",
+    "run_count": 7,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R06",
-    "articles_corrected_pending_validation": 12,
+    "articles_corrected_pending_validation": 13,
     "pairs_corrected_pending_validation": 6
   },
   "hard_rules": [

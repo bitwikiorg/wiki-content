@@ -1,4 +1,5 @@
-{{Reading depth|base=Scaling|current=Technical}}
+'''Reading depth: [[Scaling/Simple|Simple]] · Technical'''
+
 
 = Scaling — Technical =
 
@@ -140,6 +141,24 @@ Statistical and machine-learning scaling curves often analyze test performance a
 Before using a scaling claim, ask what is varied; what remains fixed; whether the test is strong, weak or capacity scaling; which resources or costs are counted; whether load is offered or completed; how quality and error rates enter; whether saturation and queueing are measured; what uncertainty exists; and whether the tested range includes the intended deployment conditions.
 
 Open problem families include predicting performance under coupled uncertain bottlenecks; measuring limits under hardware/software heterogeneity; energy-constrained distributed scaling; adaptive workload and autoscaling behavior; resilience of services during overload; and generalization of empirical scaling relations beyond their calibration region. None implies unrestricted linear improvement or an architecture-independent exponent.
+
+== Additional scaling taxonomy and scope ==
+
+{| class="wikitable"
+! Scaling sense !! Varied input !! Necessary outcome and limitation
+|-
+| Workload || Task count or difficulty || Throughput, latency, accuracy and service levels
+|-
+| Resources || Processors, memory, storage, network or capital || Utilization, coordination, cost and saturation
+|-
+| Physical || Length, area, volume or other dimensions || Dimensional similarity, geometry and material limits
+|-
+| Statistical || Sample size, model size or parameter count || Error, uncertainty, generalization and compute/data assumptions
+|-
+| Organizational || Staff, operations or market served || Coordination, quality, incentives and governance
+|}
+
+Scaling is distinct from [[Computational complexity|asymptotic computational complexity]] under a formal computation model, and from optimization of a single resource configuration. An organization or statistical model need not follow the power laws of a geometric object. These distinctions constrain interpretation of measured trends.
 
 == References and further reading ==
 

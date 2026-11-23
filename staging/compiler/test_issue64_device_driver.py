@@ -24,9 +24,13 @@ class DeviceDriverArticleTests(unittest.TestCase):
         self.assertIn("{{:Device driver/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
-        for body, depth in ((core, "Core"), (simple, "Simple"), (tech, "Technical")):
-            self.assertIn("{{Reading depth|base=Device driver|current=" + depth + "}}", body)
-            self.assertIn("<references/>", body)
+        self.assertNotIn("{{Reading depth", core + simple + tech)
+        self.assertIn("[[Device driver/Simple|Simple explanation]]", core)
+        self.assertIn("[[Device driver/Technical|Technical explanation]]", core)
+        self.assertIn("[[Device driver/Technical|Technical]]", simple)
+        self.assertIn("[[Device driver/Simple|Simple]]", tech)
+        self.assertIn("<references/>", simple)
+        self.assertIn("<references/>", tech)
         self.assertIn("'''device driver'''", expand_static_transclusions(core, TITLE, {TITLE + "/Simple": simple}).lower())
         self.assertGreater(len(simple.split()), 450)
         self.assertGreater(len(tech.split()), 1250)
@@ -53,6 +57,7 @@ class DeviceDriverArticleTests(unittest.TestCase):
             if depth:
                 self.assertNotIn("[[Related to::", body)
         self.assertIn("{{#ask:", page())
+        self.assertIn("[[Related to::Operating system", page())
 
     def test_source_scoping_and_failure_modes(self):
         tech = page("Technical").lower()

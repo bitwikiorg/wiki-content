@@ -20,16 +20,22 @@ def source(title):
 
 
 class Issue65AbstractionOccamTests(unittest.TestCase):
-    def test_one_canonical_subject_and_three_reader_surfaces(self):
+    def test_one_canonical_subject_and_two_reader_localizations(self):
         for title in TITLES:
             with self.subTest(title=title):
                 core, simple, tech = source(title), source(title + "/Simple"), source(title + "/Technical")
                 self.assertEqual(core.count("{{Knowledge object"), 1)
                 self.assertIn("|entity_type=Concept", core)
                 self.assertIn("|status=Established", core)
-                for text, level in ((core, "Core"), (simple, "Simple"), (tech, "Technical")):
-                    self.assertIn("{{Reading depth|base=" + title + "|current=" + level + "}}", text)
+                for text in (core, simple, tech):
                     self.assertIn("<references/>", text)
+                    self.assertNotIn("{{Reading depth", text)
+                for depth, body in (("Simple", simple), ("Technical", tech)):
+                    self.assertIn("[[" + title + "/Simple|Simple]]", body)
+                    self.assertIn("[[" + title + "/Technical|Technical]]", body)
+                    self.assertNotIn("[[" + title + "|Core]]", body)
+                self.assertIn("[[" + title + "/Simple|Simple]]", core)
+                self.assertIn("[[" + title + "/Technical|Technical]]", core)
                 for derivative in (simple, tech):
                     self.assertNotIn("{{Knowledge object", derivative)
                     self.assertNotIn("[[Related to::", derivative)

@@ -1,4 +1,4 @@
-{{Reading depth|base=Abstraction|current=Technical}}
+[[Abstraction/Simple|Simple]] · [[Abstraction/Technical|Technical]]
 
 = Abstraction — Technical =
 
@@ -93,7 +93,7 @@ Scientific modeling may remove detail because it is irrelevant to a target quest
 
 A scientifically useful abstraction should state the intended target system, spatial and temporal scales, observables, domain of applicability and how omitted influences affect predictions. A reduced-order model can preserve some dynamical modes while missing fast transients or rare events. A statistical average can fit mean outcomes while obscuring disparities and risk. Validation should therefore measure performance on the observables the research actually cares about, not merely on the features the abstraction makes easy to calculate.
 
-### Mathematical abstraction, ontology and category errors
+== Mathematical abstraction, ontology and category errors ==
 
 '''Abstract objects''' in metaphysics refer to a contested category of entities (for example numbers or sets under some philosophies), not automatically the process of constructing an abstraction of a concrete system. Treating the two as the same concept produces a philosophical category error. The relevant positions include nominalism, platonism and other accounts of mathematical ontology, not one settled scientific identity.<ref name="abstractobjects">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/abstract-objects/ ''Abstract Objects''], ontological issues distinct from practical or mathematical abstraction procedures.</ref>
 
@@ -104,6 +104,10 @@ Likewise, category formation in human cognition cannot be reduced without eviden
 Abstraction is frequently associated with simplicity, but the two goals can diverge. A representation with few states can be computationally cheap yet inadequate for an observation; a complicated abstraction with explicit invariants can be safer and more interpretable for an important application. [[Occam's razor]] concerns the justification for avoiding unnecessary complexity in hypotheses and models, not the mathematical property of preserving a chosen observable.
 
 A useful formal research question is: does the chosen abstraction preserve enough information to evaluate the decision loss, safety property or predictive metric? If yes, the reduced representation can be efficient. If not, selecting it merely because it is shorter is an error.
+
+== Domain-specific validity criteria ==
+
+Mathematical abstractions preserve specified relations or invariants; software abstractions can hide implementation behind contracts or conservatively approximate program states; scientific models must be tested against their intended targets and regimes; cognitive categories require empirical task-specific evaluation. Leaving features unspecified differs from deliberately idealizing them, although models can do both. Neither metaphysical abstract objects nor statistical parsimony is synonymous with abstraction. For each use, specify the observable and admissible error: an exact homomorphism has an algebraic preservation obligation; a sound static analyzer must conservatively include behaviors under its stated concrete semantics; a software interface needs a refinement or conformance relation; a scientific reduced-order model needs independent measurement in its stated operating regime. These criteria are not interchangeable. A sound overapproximation may produce false alarms, while a good empirical fit alone does not prove program-analysis soundness.
 
 == Independent verification and research protocol ==
 
@@ -127,4 +131,4 @@ The appropriate abstraction is defined jointly by the target system and the ques
 
 * Cousot and Cousot, [https://doi.org/10.1145/512950.512973 ''Abstract Interpretation'' (1977)].
 * Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/models-science/ ''Models in Science''], [https://plato.stanford.edu/entries/scientific-representation/ ''Scientific Representation''] and [https://plato.stanford.edu/entries/computer-science/ ''The Philosophy of Computer Science''].
-* [[Abstraction/Simple|Simple]] · [[Abstraction|Core]] · [[Scientific model]] · [[Logic]] · [[Computation]].
+* [[Abstraction/Simple|Simple]] · [[Scientific model]] · [[Logic]] · [[Computation]].

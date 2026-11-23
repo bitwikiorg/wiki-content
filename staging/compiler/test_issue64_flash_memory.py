@@ -11,7 +11,7 @@ class FlashSourceTests(unittest.TestCase):
         p = ROOT / (NAME + ".mediawiki") if depth is None else ROOT / NAME / (depth + ".mediawiki")
         return p.read_text(encoding="utf-8")
 
-    def test_three_depths_and_transclusion(self):
+    def test_two_authoritative_depths_and_transclusion(self):
         core, simple, tech = self.read(), self.read("Simple"), self.read("Technical")
         self.assertIn("|title=Flash memory", core)
         self.assertIn("|entity_type=Concept", core)
@@ -19,11 +19,15 @@ class FlashSourceTests(unittest.TestCase):
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
         self.assertNotIn("<onlyinclude>", core + tech)
-        self.assertIn("{{Reading depth|base=Flash memory|current=Technical}}", tech)
+        self.assertNotIn("{{Reading depth", core + simple + tech)
+        self.assertIn("[[Flash memory/Technical|Technical]]", simple)
+        self.assertIn("[[Flash memory/Simple|Simple]]", tech)
+        self.assertEqual(core.count("{{:Flash memory/Simple}}"), 1)
+        self.assertNotIn("== NAND and NOR ==", core)
 
     def test_references_and_math(self):
         for body in (self.read(), self.read("Simple"), self.read("Technical")):
-            self.assertEqual(body.count("<references/>"), 1)
+            self.assertEqual(body.count("<references/>"), 0 if body == self.read() else 1)
             self.assertEqual(body.count("<math"), body.count("</math>"))
             defined = re.findall(r'<ref name="([^"]+)"\s*>', body)
             self.assertEqual(len(defined), len(set(defined)))

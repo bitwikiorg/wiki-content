@@ -6,16 +6,7 @@
 [[Related to::Artificial intelligence]]
 <onlyinclude>A '''neural processing unit''' ('''NPU''') is a specialized computing accelerator designed to execute selected neural-network operations efficiently. Typical implementations emphasize parallel multiply–accumulate arithmetic and controlled movement of model weights, activations, and intermediate results. The term describes a class of accelerators, not a universal instruction set, precision standard, or guarantee of performance.</onlyinclude>
 
-== Overview ==
+== Read this article ==
 {{:Neural processing unit/Simple}}
 
-== Technical treatment ==
-{{:Neural processing unit/Technical}}
-
-== Scope and boundaries ==
-An NPU may be integrated into a system-on-chip or attached as a separate accelerator. Host processors typically handle application control, operating-system functions, and operations that an NPU does not support. NPUs overlap with GPUs, DSPs, and other tensor accelerators in the calculations they can run; distinctions depend on each implementation's supported operators, programmability, memory system, compiler and intended workload.
-
-== Sources ==
-* [https://support.arm.com/documentation/109267/latest/Arm-Ethos-U-NPU/Ethos-U-system-integration Arm, ''ML Developers Guide for Cortex-M Processors and Ethos-U NPU''], system integration and memory.
-* [https://dspace.mit.edu/entities/publication/97f40a24-e38f-48e6-901c-2608a590862f Sze et al., ''Efficient Processing of Deep Neural Networks: A Tutorial and Survey'' (2017)], accelerator design principles.
-* [https://research.google/pubs/in-datacenter-performance-analysis-of-a-tensor-processing-unit/ Jouppi et al., ''In-Datacenter Performance Analysis of a Tensor Processing Unit'' (2017)], a documented specialized accelerator case.
+'''Choose reading depth:''' [[Neural processing unit/Simple|Simple]] · [[Neural processing unit/Technical|Technical]]

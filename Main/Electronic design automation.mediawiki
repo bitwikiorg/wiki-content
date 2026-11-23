@@ -1,21 +1,5 @@
-<onlyinclude>'''Electronic design automation''' ('''EDA''') is the use of computational methods and software tools to design, analyze, verify, and implement electronic systems, particularly integrated circuits and programmable logic. EDA spans functional specification, hardware description, simulation, synthesis, physical implementation, and verification; it is not itself semiconductor fabrication.</onlyinclude>
+<onlyinclude>{{:Electronic design automation/Simple}}</onlyinclude>
 
-== Scope ==
-EDA transforms design representations and checks their properties. In a digital ASIC flow, hardware descriptions and timing constraints inform logic synthesis, technology mapping, floorplanning, placement, clock-tree synthesis, routing, parasitic extraction, timing analysis, and physical verification. Verification is iterative rather than one final step. An FPGA flow instead maps logic to configurable fabric and generates a device configuration; it does not produce custom photomasks.
+''Reading depth:'' [[Electronic design automation/Simple|Simple]] · [[Electronic design automation/Technical|Technical]]
 
-== Design representations ==
-A hardware description language specifies behavior and structure; register-transfer level (RTL) expresses clocked state and combinational transformations. A synthesized netlist, placement, routing, and final layout describe progressively more implementation detail. A process design kit (PDK) supplies technology-specific models and rules; tool success is conditional on their accuracy.
-
-== Verification and limits ==
-Simulation explores selected behaviors; formal verification establishes properties only within specified assumptions; static timing analysis checks constrained paths under timing models; design-rule checking and layout-versus-schematic comparison check distinct physical properties. None individually establishes manufacturing yield, functional correctness in all environments, or signoff readiness.
-
-== Related concepts ==
-* [[Hardware description language]]
-* [[Register-transfer level]]
-* [[Integrated circuit]]
-* [[Semiconductor fabrication]]
-
-== Sources ==
-* Ajay et al. (2019), ''Toward an Open-Source Digital Flow: First Learnings from the OpenROAD Project'', Design Automation Conference. [https://people.ece.umn.edu/~luo../sachin/conf/dac19-OR.pdf Paper]
-* OpenROAD Project, [https://openroad.readthedocs.io/en/latest/main/README.html OpenROAD documentation], flow stages and implementation checks.
-* YosysHQ, [https://yosyshq.readthedocs.io/projects/yosys/en/0.47/appendix/primer.html Digital circuit synthesis primer].
+[[Category:Electronic design automation]]

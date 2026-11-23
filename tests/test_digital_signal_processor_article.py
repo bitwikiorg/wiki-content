@@ -16,11 +16,14 @@ class DigitalSignalProcessorArticleTest(unittest.TestCase):
             self.assertEqual(text.count("</onlyinclude>"), 1)
         core = files[0].read_text(encoding="utf-8")
         self.assertIn("{{:Digital signal processor/Simple}}", core)
-        self.assertIn("{{:Digital signal processor/Technical}}", core)
+        self.assertNotIn("{{:Digital signal processor/Technical}}", core)
+        self.assertIn("[[Digital signal processor/Technical|Technical]]", core)
 
     def test_provenance_and_arithmetic(self):
         technical = (ROOT / "Main" / TITLE / "Technical.mediawiki").read_text(encoding="utf-8")
         self.assertIn("SPRU733A", technical)
+        self.assertIn("FIR implementation and numerical constraints", technical)
+        self.assertIn("§§2.7.3 and 3.8", technical)
         self.assertIn("SPRABF2", technical)
         self.assertEqual(32 * 48000, 1536000)
         self.assertEqual(31 * 48000, 1488000)

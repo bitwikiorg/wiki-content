@@ -940,9 +940,21 @@
       "title": "Electronic design automation",
       "pr_number": 112,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/112",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/112",
+        "notes": "Read full original Core, Simple, Technical and regression file; preserved original EDA stages, representations, PDK limitations, ASIC/FPGA distinction, simulation/formal/STA/DRC/LVS boundaries, related concepts and sources in Simple/Technical. Replaced malformed DAC PDF URL and corrected Ajay to Ajayi; DOI 10.1145/3316781.3326334 checked against OpenROAD bibliography and conference record. Hypothetical 0.35 ns setup slack retained. Canonical now transcludes Simple with reciprocal depth links; targeted source invariants passed in memory before writes. Four sequential branch writes succeeded. Executable pytest, CI, staging and complete citation audit not run; human review required.",
+        "tests": {
+          "source_checks": "pre-write navigation/preservation assertions passed; post-write not yet independently executed",
+          "regression": "updated_not_executed",
+          "ci": "not_run",
+          "scholarly": "partial_primary_source_check"
+        },
+        "blockers": [
+          "PR #136 two-way depth validation prerequisite"
+        ]
+      }
     },
     {
       "id": "N012",
@@ -1189,7 +1201,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N010",
+    "last_checkpoint_article": "N011",
     "run_count": 10,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1197,7 +1209,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R10",
-    "articles_corrected_pending_validation": 20,
+    "articles_corrected_pending_validation": 21,
     "pairs_corrected_pending_validation": 10
   },
   "hard_rules": [

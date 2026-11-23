@@ -190,7 +190,7 @@
         "N030"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R20",
@@ -1368,9 +1368,24 @@
       "title": "Voltage regulator",
       "pr_number": 130,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/130",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/130",
+        "changed": "R19: four scoped files sequentially committed; canonical Simple host, reciprocal depth navigation and regression update.",
+        "preservation_evidence": [
+          "Preserved regulator definition, feedback, linear/LDO/switching families, preregulator-LDO tradeoff, dropout, PSRR, line/load regulation, stability, ESR and SMW relationships",
+          "Retained 12 V to 5 V at 1 A 7 W and 41.67% linear efficiency example, illustrative 140 °C junction rise, 0.583 A ripple, TI/ADI references and nonideal caveats",
+          "Added loop transfer/return ratio, output impedance and capacitor droop approximations, explicit measurement methodology and power-delivery architecture research limits"
+        ],
+        "scientific_sources": [
+          "Analog Devices AN-140 https://www.analog.com/en/resources/app-notes/an-140.html",
+          "Analog Devices LDO guidance https://www.analog.com/en/resources/analog-dialogue/articles/applying-low-dropout-regulators.html",
+          "Texas Instruments SLVAFJ5 https://www.ti.com/document-viewer/lit/html/slvafj5"
+        ],
+        "tests": "Four GitHub file writes succeeded; numerical calculations reviewed (7 W, 41.67%, 0.583 A). Python regression updated but not executed; V2/CI/staging and comprehensive source attribution audit unverified.",
+        "gate": "PR #136 shared validation prerequisite; human approval required; no merge."
+      }
     },
     {
       "id": "N031",
@@ -1411,16 +1426,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N029",
-    "run_count": 15,
+    "last_checkpoint_article": "N030",
+    "run_count": 16,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R18",
-    "articles_corrected_pending_validation": 37,
-    "pairs_corrected_pending_validation": 18
+    "last_reviewed_pair": "R19",
+    "articles_corrected_pending_validation": 38,
+    "pairs_corrected_pending_validation": 19
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

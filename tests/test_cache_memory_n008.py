@@ -9,13 +9,20 @@ TITLE = "Cache memory"
 
 
 class CacheMemorySourceTest(unittest.TestCase):
-    def test_three_surfaces_and_owned_lead(self):
+    def test_two_depths_and_composed_host(self):
         for suffix in (".mediawiki", "/Simple.mediawiki", "/Technical.mediawiki"):
             p = BASE / (TITLE + suffix)
             self.assertTrue(p.is_file(), str(p))
             s = p.read_text(encoding="utf-8")
             self.assertEqual(s.count("<onlyinclude>"), s.count("</onlyinclude>"))
-            self.assertEqual(s.count("<onlyinclude>"), 1 if suffix != "/Technical.mediawiki" else 0)
+            self.assertEqual(s.count("<onlyinclude>"), 1 if suffix == "/Simple.mediawiki" else 0)
+            self.assertNotIn("{{Reading depth", s)
+        core = (BASE / (TITLE + ".mediawiki")).read_text(encoding="utf-8")
+        simple = (BASE / TITLE / "Simple.mediawiki").read_text(encoding="utf-8")
+        technical = (BASE / TITLE / "Technical.mediawiki").read_text(encoding="utf-8")
+        self.assertEqual(core.count("{{:Cache memory/Simple}}"), 1)
+        self.assertIn("[[Cache memory/Technical|Technical]]", simple)
+        self.assertIn("[[Cache memory/Simple|Simple]]", technical)
             self.assertNotIn("{{#ask:", s)
 
     def test_reference_and_math_integrity(self):

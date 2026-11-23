@@ -1,4 +1,4 @@
-{{Reading depth|base=Sensitivity analysis|current=Technical}}
+'''Reading depth:''' [[Sensitivity analysis/Simple|Simple]] · [[Sensitivity analysis/Technical|Technical]]
 
 = Sensitivity analysis — Technical =
 
@@ -143,6 +143,10 @@ A defensible computational study should record: the scientific question and deci
 For the exact <math>Y=X(1+Z)</math> example, verification requires <math>\mathbb E[Y]=0</math>, <math>\operatorname{Var}(Y)=4/9</math>, <math>(S_X,S_Z)=(3/4,0)</math>, <math>(S_{T_X},S_{T_Z})=(1,1/4)</math>. A Monte Carlo implementation should converge toward these analytic values with confidence bounds as budget increases. A reported exact analytic result and a noisy estimate must not be presented as the same type of evidence.
 
 The model can also be sensitivity-tested with another distribution for <math>Z</math> or with correlated <math>X</math> and <math>Z</math>. In those cases the independent uniform-input values above are '''not''' the expected results, and methods must be selected to match the changed measure. Cross-check [[Reproducibility]], [[Verification]], [[Validation]], [[Uncertainty]], [[Robustness]] and [[Scientific model]].
+
+== Scope comparison and preservation of model questions ==
+
+A local derivative, a variance-based Sobol index, a Morris screening statistic, a scenario decision threshold and sensitivity auditing answer different questions. Their rankings are not interchangeable: each requires an explicit output, admissible perturbations, input measure or scenario set and uncertainty treatment. In particular, first-order variance attribution is not a parameter confidence interval, causal effect or fraction of real-world behavior explained. A zero first-order index does not exclude interactions; a sensitivity study cannot restore missing physics or make an invalid model scientifically valid. These distinctions govern selection and interpretation before numerical optimization.
 
 == Epistemic boundaries and unresolved research questions ==
 

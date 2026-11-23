@@ -1,7 +1,12 @@
+''Reading depth:'' [[Electronic design automation/Simple|Simple]] · [[Electronic design automation/Technical|Technical]]
+
 <onlyinclude>'''Electronic design automation''' (EDA) comprises algorithms and software infrastructure for transforming circuit specifications into implementation artifacts while checking logical, electrical, timing, and physical constraints. Its results depend on design assumptions, technology models, and verification coverage.</onlyinclude>
 
+== Scope, representations, and constraints ==
+EDA covers functional specification, hardware descriptions, simulation, synthesis, physical implementation and iterative verification. RTL describes clocked state and combinational transformations; synthesis creates a mapped netlist; placement, routing and final layout progressively encode physical implementation. A process design kit (PDK) supplies technology-specific rules and models whose fidelity bounds any signoff conclusion. ASIC tools ultimately prepare manufacturing layout data; FPGA tools instead map designs into existing configurable fabric and generate configuration data, not photomasks. These stages and boundaries were distinct in the original canonical article.
+
 == Digital implementation as constrained optimization ==
-A digital ASIC implementation takes RTL, constraints, libraries, and technology rules as inputs. Synthesis elaborates the design and maps it to library cells; physical-design tools establish a floorplan, place cells, synthesize a clock distribution network, route signal wires, and extract interconnect parasitics. Timing and physical verification recur across the process. The 2019 OpenROAD DAC paper documents this staged approach; current OpenROAD documentation describes its supported flow and tool boundaries.<ref name="openroad">[https://openroad.readthedocs.io/en/latest/main/README.html OpenROAD Project, OpenROAD documentation]</ref><ref name="dac">[https://people.ece.umn.edu/~luo../sachin/conf/dac19-OR.pdf Ajay et al., ''Toward an Open-Source Digital Flow: First Learnings from the OpenROAD Project'', DAC 2019]</ref>
+A digital ASIC implementation takes RTL, constraints, libraries, and technology rules as inputs. Synthesis elaborates the design and maps it to library cells; physical-design tools establish a floorplan, place cells, synthesize a clock distribution network, route signal wires, and extract interconnect parasitics. Timing and physical verification recur across the process. The 2019 OpenROAD DAC paper documents this staged approach; current OpenROAD documentation describes its supported flow and tool boundaries.<ref name="openroad">[https://openroad.readthedocs.io/en/latest/main/README.html OpenROAD Project, OpenROAD documentation]</ref><ref name="dac">[https://doi.org/10.1145/3316781.3326334 Ajayi et al., ''Toward an Open-Source Digital Flow: First Learnings from the OpenROAD Project'', DAC 2019]</ref>
 
 An illustrative objective may minimize area and power subject to setup/hold timing and physical-design constraints. This is a ''model'', not a single universal EDA objective: different stages use distinct heuristics, surrogate costs, and feasibility conditions. Timing closure depends on actual constraints and extracted delay models.
 
@@ -13,6 +18,8 @@ For an illustrative register-to-register setup path, define launch clock arrival
 For example, T = 2 ns, C-L = 0.1 ns, t_cq = 0.12 ns, t_data = 1.45 ns, t_setup = 0.10 ns, and u = 0.08 ns give S = 0.35 ns. These are hypothetical values, not a measured chip result. Real analysis also requires appropriate path exceptions, corners, derating, clock relationships, and hold checks. Positive setup slack alone does not establish functional correctness or signoff.
 
 == Verification layers and non-equivalence ==
+Checks are iterative rather than a final step. In particular, clean static timing, DRC and LVS reports each answer different questions and cannot establish manufacturing yield or behavior in every operating environment.
+
 * ''RTL simulation'' tests selected input traces and testbench assertions; finite test coverage is not exhaustive proof.
 * ''Formal methods'' can establish defined properties under explicit models and assumptions; unmodeled analog effects remain outside their guarantee.
 * ''Logic equivalence checking'' compares representations under defined equivalence assumptions, not arbitrary real-world behavior.
@@ -24,6 +31,8 @@ For example, T = 2 ns, C-L = 0.1 ns, t_cq = 0.12 ns, t_data = 1.45 ns, t_setup =
 ASIC physical-design tools target technology-specific cells, routing layers, and ultimately manufacturing layout data. FPGA tools map to fixed configurable resources and generate configuration data. Neither workflow is identical to wafer fabrication. Tool interoperability, PDK licensing, IP availability, and verification coverage limit portability.
 
 == Provenance and limitations ==
+The 2019 DAC paper documents the planned OpenROAD alpha and early open-source design-flow lessons; it is not evidence that any later release provides commercial signoff equivalence. The current documentation is the appropriate source for present tool capabilities.
+
 The Yosys synthesis primer explains RTL transformations and netlist abstraction.<ref name="yosys">[https://yosyshq.readthedocs.io/projects/yosys/en/0.47/appendix/primer.html YosysHQ, ''A primer on digital circuit synthesis'']</ref> The OpenROAD project documents a concrete open-source ASIC implementation pipeline rather than all commercial or FPGA flows. The numerical timing example above is pedagogical and does not claim empirical performance. Standards compliance, signoff, and fabricated-device behavior require separate evidence.
 
 == References ==

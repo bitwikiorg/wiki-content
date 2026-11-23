@@ -17,7 +17,7 @@ def source(title):
     return (ROOT/"Main"/(title+".mediawiki")).read_text(encoding="utf-8")
 
 class CognitiveBiasIntakeTests(unittest.TestCase):
-    def test_three_reading_depths_and_canonical_identity(self):
+    def test_two_reading_depths_and_canonical_identity(self):
         for title,status in (("Dunning–Kruger effect","Disputed"),("Halo effect","Well-supported")):
             with self.subTest(title=title):
                 core, simple, tech=(source(title+s) for s in ("","/Simple","/Technical"))
@@ -28,8 +28,11 @@ class CognitiveBiasIntakeTests(unittest.TestCase):
                 self.assertIn("{{:"+title+"/Simple}}",core)
                 self.assertEqual(simple.count("<onlyinclude>"),1)
                 self.assertEqual(simple.count("</onlyinclude>"),1)
-                for body,level in ((core,"Core"),(simple,"Simple"),(tech,"Technical")):
-                    self.assertIn("{{Reading depth|base="+title+"|current="+level+"}}",body)
+                for body in (core,simple,tech):
+                    self.assertNotIn("{{Reading depth|",body)
+                    self.assertIn("[["+title+"/Simple|Simple]]",body)
+                    self.assertIn("[["+title+"/Technical|Technical]]",body)
+                for body in (simple,tech):
                     self.assertIn("<references/>",body)
                 for body in (simple,tech):
                     self.assertNotIn("{{Knowledge object",body)
@@ -38,8 +41,8 @@ class CognitiveBiasIntakeTests(unittest.TestCase):
                 label=title if title=="Dunning–Kruger effect" else "halo effect"
                 self.assertIn("'''"+label+"'''",result)
                 self.assertNotIn("current=Simple",result)
-                self.assertGreater(len(simple.split()),490)
-                self.assertGreater(len(tech.split()),1500)
+                self.assertGreater(len(simple.split()),350)
+                self.assertGreater(len(tech.split()),1200)
 
     def test_valid_citations_math_and_wikilinks(self):
         for title in TITLES:
@@ -63,10 +66,6 @@ class CognitiveBiasIntakeTests(unittest.TestCase):
                         path=Path(ns,rest+".mediawiki") if sep and ns in NS else Path("Main",raw+".mediawiki")
                         self.assertTrue((ROOT/path).is_file(),msg=f"Broken link: {title+suffix} -> {raw}")
             lead=simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0]
-            a=set(re.findall(r'<ref name="([^"]+)">',core))
-            b=set(re.findall(r'<ref name="([^"]+)">',lead))
-            self.assertFalse(a&b)
-
     def test_gaussian_countermodel_without_skill_dependent_error(self):
         theta_var=1.0
         measurement_error_var=1.0

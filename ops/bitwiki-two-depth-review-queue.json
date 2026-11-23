@@ -1112,9 +1112,18 @@
       "title": "Thin-film deposition",
       "pr_number": 119,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/119",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/119",
+        "source_notes": "Read complete three surfaces and test on PR #119; preserved PVD/CVD/ALD distinctions, geometry, metrology, stress/adhesion, equations, all original citations and SMW relationships. Removed redundant Core explanatory prose and duplicate Technical transclusion; Simple is default. Added explicit reciprocal depth navigation, saturation-model assumptions, experimental qualification and architecture constraints. George 2010 ACS record and Cremers et al. 2019 AIP/Aalto record checked; Rumaiz bibliographic detail not independently verified.",
+        "validation": "7 in-memory structural/preservation assertions passed before writes; four sequential GitHub writes committed. Python unittest, CI, V2/staging and live rendering not executed; full scholarly source audit incomplete.",
+        "blockers": [
+          "Shared two-depth V2 support PR #136 remains unmerged",
+          "Executable tests/CI and human scholarly review outstanding"
+        ],
+        "human_review_required": true
+      }
     },
     {
       "id": "N019",
@@ -1279,7 +1288,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N017",
+    "last_checkpoint_article": "N018",
     "run_count": 11,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1287,7 +1296,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R13",
-    "articles_corrected_pending_validation": 26,
+    "articles_corrected_pending_validation": 27,
     "pairs_corrected_pending_validation": 13
   },
   "hard_rules": [

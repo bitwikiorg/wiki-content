@@ -353,9 +353,23 @@
       "title": "Dimensional analysis",
       "pr_number": 82,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/82",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/82",
+        "changed": "Canonical Method host now composes Simple; two explicit reciprocal depth links; Technical supplemented; regression updated for first article.",
+        "preservation_evidence": [
+          "Retained Buckingham dimension-matrix/null-space derivation, drag/Re worked values, advection-diffusion Péclet scaling, Barenblatt incomplete similarity and all primary citations",
+          "Preserved original Core SMW relationships, incoming #ask query, metadata, categories, unit/quantity distinctions, omitted-variable and physical similarity caveats",
+          "Retained unit-conversion versus dimensional-consistency distinction and limits of causal/physical inference"
+        ],
+        "scientific_sources": [
+          "Buckingham (1914) publisher DOI 10.1103/PhysRev.4.345 verified",
+          "NIST SI guidance and MIT fluid mechanics links retained; full source-by-source audit not completed"
+        ],
+        "tests": "Source transformations checked; test file updated but not executed; CI/V2/staging unverified; PR #136 remains prerequisite.",
+        "gate": "Shared PR #136 and independent human approval; no merge."
+      }
     },
     {
       "id": "A03",
@@ -1489,15 +1503,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N033",
+    "last_checkpoint_article": "A02",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 23,
+    "articles_pending_or_incomplete": 22,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R21",
-    "articles_corrected_pending_validation": 42,
+    "articles_corrected_pending_validation": 43,
     "pairs_corrected_pending_validation": 21
   },
   "hard_rules": [

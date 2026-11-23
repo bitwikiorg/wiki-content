@@ -1344,9 +1344,24 @@
       "title": "Power electronics",
       "pr_number": 129,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/129",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/129",
+        "changed": "R19: four scoped files sequentially committed; canonical Simple transclusion, explicit reciprocal depth navigation and scoped regression assertions.",
+        "preservation_evidence": [
+          "Rectification, buck/boost, inversion, isolation, active power-factor/bidirectional qualifications, MOSFET/IGBT/SiC/GaN device tradeoffs, EMI, safety and SMW relationships retained",
+          "Original volt-second/ripple derivation, 24-to-12 V 0.6 A example, 120/130 efficiency, switching/conduction/gate/thermal loss qualifications and Infineon dead-time references retained",
+          "Added switched state-space/averaged model, CCM screening condition, measurement uncertainty, double-pulse characterization and bounded architecture research questions"
+        ],
+        "scientific_sources": [
+          "Analog Devices AN-140 https://www.analog.com/en/resources/app-notes/an-140.html",
+          "Texas Instruments LM3753/LM3754 https://www.ti.com/lit/ds/symlink/lm3753.pdf",
+          "Infineon IGBT dead-time guidance https://community.infineon.com/t5/Knowledge-Base-Articles/Dead-time-calculation-for-Insulated-Gate-Bipolar-Transistors-IGBT/ta-p/434308"
+        ],
+        "tests": "Four GitHub file writes succeeded. Source-level review and 0.6 A, 92.31% arithmetic checked; updated Python tests not executed, V2/CI/staging and full citation audit unverified.",
+        "gate": "PR #136 shared validation prerequisite; human approval required; no merge."
+      }
     },
     {
       "id": "N030",
@@ -1396,7 +1411,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N028",
+    "last_checkpoint_article": "N029",
     "run_count": 15,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1404,7 +1419,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R18",
-    "articles_corrected_pending_validation": 36,
+    "articles_corrected_pending_validation": 37,
     "pairs_corrected_pending_validation": 18
   },
   "hard_rules": [

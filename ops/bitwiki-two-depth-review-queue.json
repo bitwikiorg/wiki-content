@@ -181,7 +181,7 @@
         "N028"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R19",
@@ -1320,9 +1320,24 @@
       "title": "Network interface controller",
       "pr_number": 128,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/128",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/128",
+        "changed": "R18: four scoped files sequentially updated; canonical Simple host, reciprocal two-way navigation, updated regression.",
+        "preservation_evidence": [
+          "MAC/PHY, host driver/firmware distinction, Tx/Rx DMA rings, queues, NAPI, interrupts, offloads, security and performance limitations preserved",
+          "IEEE 802.3-2022, Linux NAPI and DMA documentation retained; hypothetical 10 Gbit/s=1.25 GB/s and 1000-byte 1.25 Mpps arithmetic preserved",
+          "Clarified NAPI Rx budget versus Tx cleanup; added payload-to-wire ratio, device-specific assumptions, experimental methodology and research questions"
+        ],
+        "scientific_sources": [
+          "IEEE 802.3-2022 DOI 10.1109/IEEESTD.2022.9844436",
+          "Linux kernel NAPI https://docs.kernel.org/networking/napi.html",
+          "Linux DMA API https://docs.kernel.org/core-api/dma-api-howto.html"
+        ],
+        "tests": "Four sequential GitHub writes and six post-write source assertions passed; arithmetic verified; Python regression updated but not executed; CI/V2/staging and comprehensive citation audit outstanding.",
+        "gate": "PR #136 shared validation prerequisite; human review and separate merge authorization required."
+      }
     },
     {
       "id": "N029",
@@ -1381,16 +1396,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N027",
-    "run_count": 14,
+    "last_checkpoint_article": "N028",
+    "run_count": 15,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R17",
-    "articles_corrected_pending_validation": 35,
-    "pairs_corrected_pending_validation": 17
+    "last_reviewed_pair": "R18",
+    "articles_corrected_pending_validation": 36,
+    "pairs_corrected_pending_validation": 18
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

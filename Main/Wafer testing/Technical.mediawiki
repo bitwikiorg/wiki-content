@@ -1,5 +1,7 @@
 <onlyinclude>'''Wafer testing''' combines wafer-level parametric metrology with electrical die screening, but the measured population, acceptance criteria and interpretation differ between these operations.</onlyinclude>
 
+'''Reading depth:''' [[Wafer testing/Simple|Simple]] · [[Wafer testing/Technical|Technical]]
+
 == Measurement architecture ==
 A precision prober aligns the wafer to a probe card, establishing temporary electrical contact with pads or bumps. ATE forces stimuli and records responses. Contact resistance, probe-tip wear, alignment, temperature, parasitic impedance and measurement calibration can introduce errors. SEMI G78 describes comparative measurements of automated wafer prober accuracy, repeatability and throughput; the cited 1999 edition is superseded and must not be represented as current qualification requirements.
 
@@ -8,6 +10,11 @@ Wafer-acceptance/parametric testing commonly measures scribe-line or dedicated s
 
 == Quantitative interpretation ==
 For a wafer with ''N'' tested product dies and ''G'' dies assigned acceptable bins, the observed wafer-sort pass fraction is <math>Y_{sort}=G/N</math>. For example, 840 acceptable dies out of 1,000 tested gives 0.84, or 84%. This is an observed classification fraction, not necessarily intrinsic fabrication yield: false rejects, escaped defects, untested dies, retest policy and bin definitions affect interpretation. The economic benefit of early screening must be weighed against test cost, test time and possible yield loss from over-rejection.
+
+== Measurement uncertainty and experimental design ==
+For a forced current <math>I</math> and measured voltage <math>V</math>, an apparent resistance <math>R=V/I</math> can include contact and lead contributions; four-terminal sensing can reduce, but not eliminate, relevant error sources. Contact-resistance drift, settling time, probe force, thermal gradients and calibration uncertainty should be characterized using reference structures, repeated touchdowns, randomized wafer order where feasible and traceable instrumentation. Report repeatability, reproducibility, uncertainty, temperature, wafer position, sample size and retest policy rather than treating a single pass fraction as an intrinsic process property.
+
+For bin <math>b</math>, define <math>\hat p_b=n_b/N</math> on the explicitly stated tested-die denominator. When tests have false-reject probability <math>f_r</math> and false-accept probability <math>f_a</math>, the observed pass fraction obeys <math>p_{obs}=p_{true}(1-f_r)+(1-p_{true})f_a</math> under a binary-classification model with stable error rates. This is a model-based sensitivity relation, not a measured correction: the error rates require independent characterization and may vary by die, lot and test condition.
 
 == Limitations ==
 Probe contact and temperature can differ from packaged operation. Fault coverage is never implied to be complete. Wafer-level results do not establish lifetime reliability, and final package testing may expose assembly-induced defects. The cited manufacturer materials describe available techniques rather than independently verified universal performance.

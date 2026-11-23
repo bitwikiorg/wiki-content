@@ -23,7 +23,8 @@ class NeuralProcessingUnitArticleTests(unittest.TestCase):
                 self.assertNotIn("[[Neural processing unit]]", source)
         core = FILES[0].read_text(encoding="utf-8")
         self.assertIn("{{:Neural processing unit/Simple}}", core)
-        self.assertIn("{{:Neural processing unit/Technical}}", core)
+        self.assertNotIn("{{:Neural processing unit/Technical}}", core)
+        self.assertIn("[[Neural processing unit/Technical|Technical]]", core)
         self.assertIn("[[Related to::Machine learning]]", core)
         self.assertIn("[[Related to::Computer architecture]]", core)
 
@@ -32,6 +33,8 @@ class NeuralProcessingUnitArticleTests(unittest.TestCase):
         for reference in ('<ref name="sze">', '<ref name="arm">', '<ref name="jouppi">'):
             self.assertIn(reference, technical)
         self.assertIn("<references/>", technical)
+        self.assertIn("Throughput, bandwidth and evaluation model", technical)
+        self.assertIn("10.1109/JPROC.2017.2761740", technical)
         self.assertEqual(32 * 16, 512)
         self.assertEqual(2 * (32 * 16), 1024)
 

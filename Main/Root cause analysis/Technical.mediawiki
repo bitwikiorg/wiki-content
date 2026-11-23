@@ -1,4 +1,4 @@
-{{Reading depth|base=Root cause analysis|current=Technical}}
+[[Root cause analysis/Simple|Simple]] · [[Root cause analysis/Technical|Technical]]
 
 = Root cause analysis — Technical =
 
@@ -169,6 +169,17 @@ Useful adjacent canonical subjects include [[Causality]], [[Scientific model]], 
 A technical RCA is ready for expert review only if its event definition, documentary provenance, causal alternatives, system and time boundaries, evidence quality, analytical methods, model dependencies, intervention assumptions and follow-up measures are explicit. Reviewers should recompute numerical examples, check the report against original records and identify causal claims lacking independent support.
 
 No finite investigation establishes metaphysical certainty, no simple fault tree automatically captures a feedback-rich system, and no statistical association identifies the relevant intervention without assumptions. The intended outcome is a better-tested explanation and safer design, not a narrative that assigns one universal root to every incident.
+
+
+== Evidence provenance and classification of contributing conditions ==
+
+For each documented incident, distinguish the '''initiating event''' (an event that begins a pathway), '''enabling conditions''' (conditions that make a pathway possible), '''failed barriers''' (missing or ineffective protective controls), and '''consequence severity''' (the resulting harm). These are analytically distinct: the initiating event may be neither necessary nor sufficient under alternative causal pathways, and the same event can yield different harm under different barrier states.
+
+Maintain a time-stamped evidence ledger linking each claim to original telemetry, physical inspection, independent measurement, interviews, maintenance records, code/configuration revisions and procedures. Document clock uncertainty, provenance, contradictory accounts and missing evidence. Label causal hypotheses supported, contradicted, merely plausible or unresolved; temporal order and statistical association alone do not establish causal attribution. The record should identify alternative hypotheses and the evidence that could discriminate among them.
+
+NASA's [https://nodis3.gsfc.nasa.gov/npg_img/N_PR_8621_001D_/N_PR_8621_001D_.pdf NPR 8621.1D] explicitly distinguishes proximate causes, root causes, contributing factors and failed barriers in mishap reporting; its terminology is agency-specific rather than a universal ontology.<ref name="nasa_current">NASA, [https://nodis3.gsfc.nasa.gov/npg_img/N_PR_8621_001D_/N_PR_8621_001D_.pdf NPR 8621.1D], chapter 5 investigation reporting requirements (consult current revision for operational compliance).</ref>
+
+A prospective failure-mode and effects analysis (FMEA) may inform an investigation but does not itself reconstruct a realized incident. Likewise, fault-tree probabilities are conditional on gate semantics and dependencies, not direct probabilities that a factor caused a particular observed event. Corrective action closure requires both implementation evidence and an outcome-oriented test with a defensible exposure denominator; absence of rare events during a short period is weak evidence of risk reduction.
 
 == References ==
 

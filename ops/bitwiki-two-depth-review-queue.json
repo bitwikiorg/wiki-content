@@ -1297,9 +1297,23 @@
       "title": "Computer bus",
       "pr_number": 127,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/127",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/127",
+        "changed": "R18: four scoped files updated sequentially; canonical Simple host, explicit two-way links and targeted regression.",
+        "preservation_evidence": [
+          "Shared/serial definitions, address-data-control, synchronous/asynchronous timing, arbitration, flow control and ordering preserved",
+          "PCIe, USB4, on-chip fabrics, 800/560 MB/s arithmetic, limitations, references and canonical identity preserved",
+          "Added latency decomposition, protocol-dependent qualification and measurement methodology"
+        ],
+        "scientific_sources": [
+          "PCI-SIG PCI Express architecture and Base specification overview",
+          "USB-IF USB4 overview and USB4 Specification v2.0 dated 2026-04-02"
+        ],
+        "tests": "Four GitHub writes succeeded; arithmetic checked; regression updated but not executed; CI/V2/staging not executed; full citation audit pending.",
+        "gate": "Shared PR #136 pending; human review required."
+      }
     },
     {
       "id": "N028",
@@ -1367,7 +1381,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N026",
+    "last_checkpoint_article": "N027",
     "run_count": 14,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1375,7 +1389,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R17",
-    "articles_corrected_pending_validation": 34,
+    "articles_corrected_pending_validation": 35,
     "pairs_corrected_pending_validation": 17
   },
   "hard_rules": [

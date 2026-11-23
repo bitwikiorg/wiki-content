@@ -31,3 +31,15 @@ def test_example_arithmetic():
     ripple = (vin - vout) * duty / (inductance * freq)
     assert math.isclose(ripple, 0.6, rel_tol=1e-12)
     assert math.isclose(120 / (120 + 10), 0.9230769230769231)
+
+
+def test_exact_two_reader_depths():
+    core, simple, technical = [p.read_text(encoding="utf-8") for p in paths]
+    assert "{{:Power electronics/Simple}}" in core
+    assert "[[Related to::Voltage regulator]]" in core
+    for text in (simple, technical):
+        assert "[[Power electronics/Simple|" in text
+        assert "[[Power electronics/Technical|" in text
+        assert "Template:Reading depth" not in text
+    assert "== Scope and converter families ==" in technical
+    assert "== State-space interpretation and experimental boundaries ==" in technical

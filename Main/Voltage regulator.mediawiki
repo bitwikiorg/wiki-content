@@ -1,23 +1,9 @@
 {{DISPLAYTITLE:Voltage regulator}}
-<onlyinclude>'''Voltage regulation''' maintains an electrical supply near a specified output voltage as its input, load and operating temperature vary within a designed range. A '''voltage regulator''' implements this function using a reference, sensing and a control element. Linear regulators dissipate excess voltage as heat; switching regulators transfer energy through periodically switched devices and reactive components.</onlyinclude>
+<onlyinclude>{{:Voltage regulator/Simple}}</onlyinclude>
 
-== Operating principle ==
-A feedback regulator compares a fraction of output voltage with a reference and adjusts its pass element or switching duty cycle. Accuracy depends on reference tolerance, feedback network, load regulation, line regulation and temperature drift. Transient performance and stability are separate from steady-state accuracy.
+''Read: [[Voltage regulator/Simple|Simple]] · [[Voltage regulator/Technical|Technical]]''
 
-== Families ==
-* '''Linear regulators''', including low-dropout regulators (LDOs), typically offer simple low-ripple supplies but dissipate approximately the input-to-output voltage difference times load current.
-* '''Switching regulators''' include buck, boost and buck–boost topologies. Inductors, capacitors and switching devices permit efficient conversion, but introduce ripple, electromagnetic interference and control-loop design requirements.
-* A switching preregulator followed by an LDO can trade conversion efficiency against output noise and rejection.
-
-== Design considerations ==
-Verify voltage and current limits, dropout or duty-cycle headroom, stability with the selected output capacitor and equivalent series resistance, load-step recovery, ripple spectrum, thermal resistance and protection behavior. A nominal output voltage alone does not establish suitability.
-
-== Related concepts ==
+== Semantic relationships ==
 [[Related to::Power electronics]]
 [[Related to::Semiconductor]]
 [[Related to::Feedback control]]
-
-== Sources ==
-* Analog Devices, [https://www.analog.com/en/resources/app-notes/2020/05/12/19/12/an-140.html AN-140: Basic Concepts of Linear Regulator and Switching Mode Power Supplies].
-* Texas Instruments, [https://www.ti.com/document-viewer/lit/html/slvafj5 Buck converter operating considerations], SLVAFJ5.
-* Analog Devices, [https://www.analog.com/en/resources/analog-dialogue/articles/applying-low-dropout-regulators.html How to Successfully Apply Low-Dropout Regulators].

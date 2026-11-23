@@ -1,4 +1,5 @@
-{{Reading depth|base=Optimization|current=Technical}}
+'''Reading depth: [[Optimization/Simple|Simple]] · Technical'''
+
 
 = Optimization — Technical =
 
@@ -207,6 +208,12 @@ A program solving its encoded objective accurately is an implementation achievem
 Advanced research includes scalable nonlinear and mixed-integer methods, high-dimensional nonconvex landscapes, learning-to-optimize and implicit differentiation, uncertainty-aware decisions, adversarial distribution shift, safe adaptive control, multiobjective preference elicitation and trustworthy optimality certificates for large engineered systems. Each has its own mathematical assumptions and validation standards.
 
 No article can establish a global solution algorithm that is universally tractable for arbitrary nonconvex combinatorial problems. The task is instead to state the solvable structure, choose defensible approximations or relaxations, and expose how much is formally proved versus numerically observed.
+
+== Additional formulation taxonomy and interpretation safeguards ==
+
+A mathematical formulation should report decision variables and units, objective, admissible constraints, and whether a feasible optimum exists. Linear programming assumes linear objectives and constraints; convex optimization can certify global minima under its stated assumptions; nonconvex optimization may return only local solutions; integer/combinatorial models require discrete search and explicit incumbent/bound gaps; stochastic and robust formulations depend on a specified probability model or uncertainty set; multiobjective problems generally require explicit preference or Pareto-front analysis. These categories overlap and are not interchangeable solver labels.
+
+A computational certificate should distinguish primal feasibility, objective value, dual feasibility, duality gap, numerical stopping tolerances and model validity. The existence of a mathematical optimum does not imply ethical adequacy or safety when omitted constraints or affected parties change the decision problem. [[Satisficing]] is a distinct decision criterion, not a claim of global optimality.
 
 == References and further reading ==
 

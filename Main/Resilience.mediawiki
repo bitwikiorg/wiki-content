@@ -5,49 +5,12 @@
  |status=Established
  |provenance=Research synthesis of Holling (1973), Woods (2015), NIST cyber-resiliency engineering and National Academies disaster resilience; #65 cohort
 }}
-{{Reading depth|base=Resilience|current=Core}}
-
 = Resilience =
-
-== Overview ==
 
 {{:Resilience/Simple}}
 
-'''Resilience''' is a family of related but nonidentical system properties concerning persistence under disturbance, absorption of adverse effects, restoration of valued functions, and capacity to adapt. A resilience claim should identify its object (which system), disturbance (what hazard), functions (what must persist or recover), timescale (how long), and observers or stakeholders (who assigns value to an outcome). The general term does not define a universal quantitative index.
-
-== Disciplinary meanings and scope ==
-
-{| class="wikitable"
-! Discipline or approach !! Core emphasis !! Common interpretation error
-|-
-| Ecological resilience || Persistence within a regime, or capacity to absorb disturbance without unwanted regime shift || Equating resilience exclusively with quick return to a fixed equilibrium.
-|-
-| Engineering resilience || Maintain, restore or adapt essential functions after specified failures || Treating a successful failover test as immunity to all hazards.
-|-
-| Cyber resiliency || Anticipate, withstand, recover and adapt to attacks and changing threats || Equating resilience solely with prevention or system uptime.
-|-
-| Disaster/community resilience || Prepare, absorb, recover and adapt under hazards affecting infrastructure and communities || Ignoring equity, unequal impacts, or dependencies among services.
-|}
-
-Holling (1973) emphasized persistence and the potential for alternative ecological regimes; Woods (2015) separated four distinct research traditions hidden under the same word; the National Research Council's 2012 disaster report places preparation and adaptation alongside restoration.<ref name="holling_core">C. S. Holling, [https://doi.org/10.1146/annurev.es.04.110173.000245 “Resilience and Stability of Ecological Systems”], ''Annual Review of Ecology and Systematics'' 4, 1–23 (1973).</ref><ref name="woods_core">David D. Woods, [https://doi.org/10.1016/j.ress.2015.03.018 “Four concepts for resilience and the implications for the future of resilience engineering”], ''Reliability Engineering & System Safety'' 141, 5–9 (2015).</ref><ref name="nas_core">National Research Council, [https://www.nationalacademies.org/read/13457/chapter/3 ''Disaster Resilience: A National Imperative''] (2012), foundational definition and cross-sector disaster-policy framework.</ref>
-
-== Distinguish resilience from adjacent concepts ==
-
-[[Related to::Robustness|Robustness]] concerns performance maintenance under a perturbation; [[Related to::Adaptation (systems)|adaptation]] denotes change in system behavior or organization; [[Related to::Feedback|feedback]] is a mechanism that can support or undermine stability; [[Related to::Root cause analysis|root cause analysis]] is a retrospective investigation method. Some definitions deliberately include robustness under resilience, but they are not synonyms by universal convention.
-
-Persistence across disturbances is not the same as making a system's present output constant. In ecological systems, the ability to remain in a viable regime despite substantial change may be more important than rapid convergence to an old equilibrium. Conversely, engineering contracts can legitimately prioritize a narrow measurable recovery time for a specified service; those objectives should not be silently substituted for ecological persistence.
-
-== Measurable outcomes ==
-
-Engineering studies can observe essential service level over time, maximum degradation, restoration time, unmet demand, safety constraints, additional energy or cost, and the system's behavior during subsequent disturbances. A commonly used normalized functional-loss summary integrates performance degradation over a predeclared observation horizon; it must specify its baseline and weighting. The same numerical result can conceal different disturbance patterns or burdens.
-
-NIST's cyber-resiliency guidance frames resiliency as a systems engineering discipline involving both defensive capabilities and recovery/adaptation under cyber threats, rather than as an unbounded promise of “never failing.”<ref name="nist_core">NIST, [https://csrc.nist.gov/pubs/sp/800/160/v2/r1/final ''SP 800-160, Vol. 2, Rev. 1: Developing Cyber-Resilient Systems''] (2021), engineering approach and terminology.</ref>
-
-== Research and testing requirements ==
-
-A resilience study should state disturbance distribution or adversarial scenario, timing, functional thresholds, system boundary, dependencies and feasible response actions. Compare interventions over the same hazard envelope and time horizon. Test repeated failures, cascading dependencies and adaptation costs where relevant.
-
-A passing backup restore test verifies one recovery procedure. It does not validate broader resilience under different workloads, shared-fate faults or attacker behavior. Equally, a system's lack of observed loss may reflect a mild test rather than superior resilience.
+== Related concepts ==
+[[Related to::Robustness|Robustness]] · [[Related to::Adaptation (systems)|adaptation]] · [[Related to::Feedback|feedback]] · [[Related to::Root cause analysis|root cause analysis]] · [[Related to::Resilience]]
 
 == Incoming semantic relationships ==
 
@@ -65,11 +28,7 @@ This SMW query displays recorded incoming [[Property:Related to|Related to]] edg
 
 == Reading depths ==
 
-[[Resilience/Simple|Simple]] supplies accessible examples and distinctions. [[Resilience/Technical|Technical]] restarts with mathematical definitions, perturbation-dependent metrics, dynamical basins and tipping points, cyber-physical dependency models and auditable numerical examples.
-
-== References ==
-
-<references/>
+[[Resilience/Simple|Simple]] · [[Resilience/Technical|Technical]]
 
 [[Category:Systems science]]
 [[Category:Engineering]]

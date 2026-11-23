@@ -5,39 +5,14 @@
  |status=Established
  |provenance=Computer architecture and memory-system design; official vendor memory-space documentation and computer-architecture references
 }}
-{{Reading depth|base=Computer memory|current=Core}}
 = Computer memory =
-
-== Overview ==
-
+[[Computer memory/Simple|Simple]] · [[Computer memory/Technical|Technical]]
 {{:Computer memory/Simple}}
 
-'''Computer memory''' is a family of hardware technologies and architectural abstractions for storing and retrieving machine-readable state. It is distinct from the existing [[Memory]] article, which concerns psychological encoding, retention and retrieval in biological cognition. The shared word does not imply identical mechanisms.
-
-== Functional layers ==
-
-At the processor level, registers hold architecturally or microarchitecturally relevant values. Caches exploit temporal and spatial locality. Main memory provides relatively large directly addressable working storage, most commonly DRAM. Persistent devices such as flash SSDs store information without continuous power, but storage interfaces, block operations and durability semantics differ from ordinary volatile RAM.
-
-A memory hierarchy is a system design, not a particular semiconductor device. Its performance depends on capacity, latency, bandwidth, locality, energy and concurrency. The existing [[Computer architecture]] article provides a brief overview; this article develops memory as its own hardware and systems subject.
-
-== Physical and logical memory ==
-
-SRAM and DRAM are distinct volatile semiconductor memory technologies. Flash is nonvolatile and has erase/program endurance and granularity constraints. A virtual address space, cache-coherence protocol and programming-language memory model are not interchangeable with the physical memory cells that implement storage.
-
-Modern GPUs and CPUs can have separate memory domains and heterogeneous access paths. NVIDIA's official documentation distinguishes global DRAM, on-chip shared memory, registers and caches, with explicit access scopes.<ref name="nvidia_core">NVIDIA, [https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html ''CUDA Programming Guide'', GPU Memory], device DRAM and on-chip memories, and host/device distinctions.</ref>
-
-== Engineering tradeoffs ==
-
-An architect chooses among technologies according to the working set, throughput, power, error rate, thermal envelope and price. Higher raw memory bandwidth does not guarantee higher application throughput if data dependencies, access locality, synchronization or computation limit performance.
-
-Data integrity includes parity, error-correcting codes, scrubbing and system-level recovery, each with specified fault assumptions. Persistent storage requires separate treatment of power-loss behavior and durability.
-
 == Related knowledge ==
-
-[[Related to::Computer architecture|Computer architecture]] addresses the complete system; [[Related to::Operating system|operating systems]] manage virtual address spaces and allocation. [[Related to::Information|information]] is a more abstract concept independent of a particular memory medium. The existing psychological [[Memory]] is a distinct homonym, not a parent article.
+[[Related to::Computer architecture|Computer architecture]] describes the complete system; [[Related to::Operating system|operating systems]] manage virtual address spaces and allocation; [[Related to::Information|information]] is independent of its physical medium. The existing [[Memory]] article concerns psychological memory and is a distinct homonym, not an ontology parent.
 
 == Incoming semantic relationships ==
-
 {{#ask:
  [[Related to::Computer memory]]
  |?Entity type
@@ -47,13 +22,6 @@ Data integrity includes parity, error-correcting codes, scrubbing and system-lev
  |limit=30
  |default=''No incoming semantic relationships recorded.''
 }}
-
-== Reader depths ==
-
-[[Computer memory/Simple|Simple]] provides intuitive examples. [[Computer memory/Technical|Technical]] examines quantitative performance, addressing, technology, consistency and fault models.
-
-== References ==
-<references/>
 
 [[Category:Computer science]]
 [[Category:Engineering]]

@@ -1,5 +1,7 @@
 <onlyinclude>'''Neural processing units''' specialize computation and data movement for supported neural-network operators. Their performance is determined jointly by arithmetic parallelism, on-chip data reuse, off-chip bandwidth, numerical representation, operator coverage, and the software toolchain; peak advertised operations per second alone is insufficient to predict inference latency or energy use.</onlyinclude>
 
+'''Reading depth:''' [[Neural processing unit/Simple|Simple]] · [[Neural processing unit/Technical|Technical]]
+
 == Workload and arithmetic ==
 A dense layer with <math>N</math> inputs and <math>M</math> outputs can be written
 :<math>y_j=b_j+\sum_{i=1}^{N}W_{ji}x_i,\quad j=1,\ldots,M.</math>

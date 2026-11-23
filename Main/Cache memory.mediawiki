@@ -1,27 +1,7 @@
-{{Source status|status=Core knowledge object|note=Hardware cache design; distinct from the broad computer-memory hierarchy.}}
-{{Reading depth|base=Cache memory|current=Core}}
+{{Source status|status=Canonical knowledge object|note=Hardware cache design; distinct from the broad computer-memory hierarchy.}}
 = Cache memory =
-<onlyinclude>'''Cache memory''' is a hardware structure that keeps copies of recently or predictively useful memory blocks near a processor or other requester. It reduces the cost of some accesses by exploiting locality, but its performance depends on address mapping, replacement, write behavior, and interaction with other caches.</onlyinclude>
-
-== Scope ==
-A cache stores fixed-size '''lines''' with identifying tags and validity state. A hit finds a requested line; a miss requires access to another level or backing memory. Caches may be instruction, data, unified, private or shared. They differ from the larger topic of [[Computer memory]]: this article focuses on how hardware caches are organized, evaluated and kept coherent.
-
-== Design questions ==
-* '''Placement:''' direct mapping, set associativity, and full associativity determine where a line may reside.
-* '''Replacement:''' policies such as least recently used (LRU), approximations, or random selection choose victims when a set is full.
-* '''Writes:''' write-through and write-back differ in when modified data reaches the next level; write-allocate and no-write-allocate differ on write misses.
-* '''Hierarchy:''' inclusion, exclusion and noninclusive policies govern relationships among levels, with implementation-dependent exceptions.
-* '''Sharing:''' coherence protocols coordinate copies of writable data among agents. Coherence is not the same as a complete memory-consistency model.
-
-== Evidence and limits ==
-Cache hit rates and access times are workload- and implementation-dependent. Higher associativity may reduce conflict misses but can increase area, energy and access latency. A cache does not guarantee that a given program will run faster.
-
-== Read further ==
-* [[Cache memory/Simple|Simple explanation]]
-* [[Cache memory/Technical|Technical treatment]]
-* [[Computer architecture]]
-* [[Computer memory]]
-
-== References ==
-* Hill, Mark D., and Alan Jay Smith (1989). “Evaluating Associativity in CPU Caches.” ''IEEE Transactions on Computers'' 38(12), 1612–1630. DOI: [https://doi.org/10.1109/12.40842 10.1109/12.40842].
-* Hill, Mark D. (1987). ''Aspects of Cache Memory and Instruction Buffer Performance''. University of California, Berkeley technical report UCB/CSD-87-381. [https://www2.eecs.berkeley.edu/Pubs/TechRpts/1987/5701.html Berkeley archive].
+{{:Cache memory/Simple}}
+== Reading depth ==
+[[Cache memory/Simple|Simple]] · [[Cache memory/Technical|Technical]]
+== Related concepts ==
+[[Computer architecture]] · [[Computer memory]]

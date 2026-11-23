@@ -557,9 +557,18 @@
       "title": "Abstraction",
       "pr_number": 87,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/87",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/87",
+        "source_evidence": "Read original Core, Simple and Technical and scoped issue65 test; ACM POPL 1977 DOI 10.1145/512950.512973 checked against publisher.",
+        "preservation": "Retained ontology metadata, categories, four SMW relations, incoming query, formal and empirical validity taxonomy, distinction from idealization and abstract objects; transferred unique Core distinctions into Technical; retained Simple examples.",
+        "validation": "Source transformations and preservation prechecks ran; executable tests, CI, V2, staging and comprehensive citation verification not run.",
+        "blockers": [
+          "Shared two-depth V2 dependency PR #136"
+        ],
+        "human_review_required": true
+      }
     },
     {
       "id": "A13",
@@ -1577,15 +1586,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A07",
+    "last_checkpoint_article": "A12",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 17,
+    "articles_pending_or_incomplete": 16,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R24",
-    "articles_corrected_pending_validation": 48,
+    "articles_corrected_pending_validation": 49,
     "pairs_corrected_pending_validation": 24
   },
   "hard_rules": [

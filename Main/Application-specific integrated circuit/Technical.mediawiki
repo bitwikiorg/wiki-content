@@ -1,8 +1,11 @@
-{{Reading depth|base=Application-specific integrated circuit|current=Technical}}
+'''Reading depth:''' [[Application-specific integrated circuit/Simple|Simple]] · [[Application-specific integrated circuit/Technical|Technical]]
 = Application-specific integrated circuit: technical treatment =
 
 == Scope and architecture ==
 ASIC denotes an application-targeted manufactured integrated circuit, not a single design methodology. Standard-cell digital ASICs map a logical netlist onto a characterized cell library; full-custom designs may optimize transistor topology and geometry directly. Mixed-signal chips combine analog and digital blocks. Structured ASICs reduce some customization by predefining portions of the fabric. A dedicated accelerator with embedded programmable cores can still be an ASIC.
+
+== Design styles and process interface ==
+Standard-cell implementations map characterized logic cells; full-custom circuits optimize transistor-level structures, often for analog, memory or performance-critical blocks. Structured ASICs customize predefined fabrics or layers. Process design kits (PDKs) and characterized cell libraries bridge circuit intent and foundry constraints. Embedded programmable processors and configuration registers do not turn a manufactured ASIC into an FPGA.
 
 == Digital implementation and verification ==
 A representative standard-cell path is specification → microarchitecture → RTL → simulation/formal verification → technology-mapped synthesis → floorplan and power grid → placement → clock-tree synthesis → routing → extraction → static timing and physical signoff → mask data → fabrication and test. These stages iterate rather than constitute an irreversible one-way pipeline. OpenROAD documents an RTL-to-GDS flow, but its successful execution is not evidence of foundry signoff or a functioning manufactured die.
@@ -25,7 +28,7 @@ An FPGA trades configurable fabric and routing overhead for post-manufacture fle
 The DAC 2019 OpenROAD paper and project documentation substantiate digital implementation stages, not universal commercial tapeout qualification. Cambridge teaching material illustrates NRE and yield accounting, not current market prices. IEEE TVLSI 2025 provides a platform-specific experimental comparison. No physical implementation, signoff, silicon characterization, or expert review was performed for this article.
 
 == References ==
-* Ajay et al. (2019), “Toward an Open-Source Digital Flow: First Learnings from the OpenROAD Project,” ''DAC 2019''. [https://people.ece.umn.edu/~luo../sachin/conf/dac19-OR.pdf Conference paper].
+* Ajayi et al. (2019), “Toward an Open-Source Digital Flow: First Learnings from the OpenROAD Project,” ''DAC 2019'', doi:10.1145/3316781.3326334. [https://doi.org/10.1145/3316781.3326334 Publisher record].
 * OpenROAD Project, [https://openroad-flow-scripts.readthedocs.io/en/latest/tutorials/FlowTutorial.html OpenROAD Flow Scripts tutorial], design-flow implementation documentation (accessed 2026-11-21).
 * University of Cambridge, [https://www.cl.cam.ac.uk/research/srg/han/ACS-P35/obj-2.2/zhpb6c4869bc.html ASIC costing], educational costing model (accessed 2026-11-21).
 * T. Kuroda et al., “Agile-X: A Structured-ASIC Created With a Mask-Less Lithography System Enabling Low-Cost and Agile Chip Fabrication,” ''IEEE Transactions on Very Large Scale Integration (VLSI) Systems'' 33(3), 746–756 (2025). doi:10.1109/TVLSI.2024.3486239. [https://doi.org/10.1109/TVLSI.2024.3486239 DOI].

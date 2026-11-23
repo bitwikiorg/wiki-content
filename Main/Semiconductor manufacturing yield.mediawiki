@@ -1,20 +1,6 @@
-<onlyinclude>'''Semiconductor manufacturing yield''' is the proportion of manufactured semiconductor units that meet a defined acceptance criterion. At wafer level, ''die yield'' counts electrically acceptable dies divided by the eligible dies tested; final packaged-product yield additionally reflects assembly, test and screening. The denominator and test stage must be stated for comparisons.</onlyinclude>
+<onlyinclude>{{:Semiconductor manufacturing yield/Simple}}</onlyinclude>
 
-== Scope and measurement ==
-A wafer map records die positions and test outcomes. Gross dies, functional dies, and saleable performance bins are different counts. A die passing a basic electrical test may fail timing, power or reliability requirements; parametric yield and functional yield should not be conflated. Spatial wafer-edge losses and correlated process excursions mean a single wafer-average defect density is insufficient to explain all outcomes.
+'''Reading depth:''' [[Semiconductor manufacturing yield/Simple|Simple]] · [[Semiconductor manufacturing yield/Technical|Technical]]
 
-== Yield mechanisms ==
-Random yield-relevant defects can cause opens, shorts and other faults, but not every inspected particle is a fatal defect. Layout-sensitive critical area, layer-specific defect mechanisms, systematic patterning failures and process variability all affect yield. Wafer sort, binning and later package tests observe different stages of the same production flow.
-
-== Models and interpretation ==
-The independent Poisson model predicts <math>Y=e^{-A_c D_0}</math> for critical area <math>A_c</math> and fatal-defect density <math>D_0</math> in compatible units. Clustered defects motivate negative-binomial and spatial models. These are estimates conditioned on assumptions, not universal manufacturing laws. See [[Semiconductor manufacturing yield/Technical]] for derivations and limitations.
-
-== Economic implications ==
-For <math>N_g</math> gross dies per wafer and expected die yield <math>Y</math>, the expected good-die count is <math>N_gY</math>. A first-order wafer-processing cost per good die is <math>C_w/(N_gY)</math>; this excludes probe, packaging, scrap, bin-dependent revenue and capacity effects. Yield improvements can raise output without increasing wafer starts.
-
-== Sources ==
-* C. H. Stapper, ''LSI Yield Modeling and Process Monitoring'', IBM Journal of Research and Development. [https://bitsavers.org/pdf/ibm/IBM_Journal_of_Research_and_Development/441/stapper.pdf Original paper]
-* Bae, Hwang and Kuo (2007), ''Yield prediction via spatial modeling of clustered defect counts across a wafer map'', ''IIE Transactions'' 39:1073–1083. [https://doi.org/10.1080/07408170701275335 DOI]
-* ''Statistical Models of Overdispersed Spatial Defects for Predicting the Yield of Integrated Circuits'', ''IEEE Transactions on Reliability'' 69 (2020):510–521. [https://doi.org/10.1109/TR.2019.2943925 DOI]
-
+== Relationships ==
 [[Category:Semiconductor manufacturing]]

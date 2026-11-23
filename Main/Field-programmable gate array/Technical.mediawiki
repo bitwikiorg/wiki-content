@@ -1,7 +1,11 @@
+''Reading depth:'' [[Field-programmable gate array/Simple|Simple]] · [[Field-programmable gate array/Technical|Technical]]
+
 <onlyinclude>An '''FPGA''' implements a configurable synchronous or asynchronous digital network by programming logic functions, state elements and interconnect. Its performance is determined by both logical depth and physical routing, so HDL-level functional correctness alone does not establish timing closure.</onlyinclude>
 
 == Configurable fabric ==
-For a LUT with ''k'' independent binary inputs, a complete truth table contains 2<sup>k</sup> output bits. Thus an arbitrary six-input, single-output Boolean function requires 64 truth-table bits in the abstract. This is a logical capacity calculation, not the total physical configuration-bit count: real devices additionally encode routing, control and architectural options. AMD's UltraScale CLB guide specifies eight six-input LUTs, sixteen storage elements and a dedicated carry chain per CLB slice; these are ''family-specific'', not universal FPGA constants.
+An FPGA is a manufactured integrated circuit with configurable logic, registers, routing, clock distribution, I/O, arithmetic and memory resources. The resulting circuit can implement spatially concurrent computation, unlike an ordinary sequential instruction stream, although embedded processors and sequential control are also possible. Hardware description languages or high-level synthesis provide source representations; mapping and routing generate configuration data. Applications include DSP, interface bridging, prototyping and reconfigurable accelerators. These distinctions and use cases were present in the original canonical Core.
+
+For a LUT with ''k'' independent binary inputs, a complete truth table contains 2<sup>k</sup> output bits. Thus an arbitrary six-input, single-output Boolean function requires 64 truth-table bits in the abstract. This is a logical capacity calculation, not the total physical configuration-bit count: real devices additionally encode routing, control and architectural options. AMD's UltraScale CLB guide specifies one slice per CLB, with eight six-input LUTs, sixteen storage elements and one CARRY8 carry chain per CLB; these are ''family-specific'', not universal FPGA constants.
 
 SLICEM-type UltraScale LUTs can also serve as distributed RAM or shift registers, while dedicated block RAM supports larger storage structures. AMD UG573 describes 36-Kb block RAMs subdividable into two independently controlled 18-Kb memories. Memory-port modes, read-during-write semantics, and timing vary with primitives and device generation.
 
@@ -15,12 +19,18 @@ Here ''T''<sub>cq</sub> is launching-register clock-to-Q delay; ''T''<sub>comb</
 '''Illustrative arithmetic only:''' if these contributions are 0.15 ns, 1.20 ns, 0.85 ns, 0.20 ns and 0.10 ns, their sum is 2.50 ns and the idealized maximum clock rate is 400 MHz. This is not a measured FPGA benchmark or a guarantee of achievable frequency. Placement and routing may dominate critical-path delay, especially across distant fabric regions.
 
 == Reconfiguration and correctness ==
+Conventional full-device reconfiguration is not equivalent to runtime partial reconfiguration. Configuration bitstream integrity, interface behavior, power sequencing, clock-domain crossing and external memory bandwidth can determine whether a mapped circuit is safe or useful in a deployed system.
+
 Full-device reconfiguration changes the implemented circuit; partial reconfiguration can update a designated region while other regions remain active only when supported by the device and deployment flow. Configuration interfaces, isolation, state preservation, timing and security must be engineered explicitly. Functional simulation cannot prove timing closure or physical integrity. Verification should include constrained timing analysis, clock-domain crossing checks, resource-utilization reports and board-level validation where appropriate.
 
 == Comparative limitations ==
+An FPGA is distinct from a [[Graphics processing unit|GPU]], which executes instructions on a fixed parallel-processor architecture. A conventional fixed-function [[Application-specific integrated circuit|ASIC]] cannot be reprogrammed into an arbitrary new logic network after fabrication. These are architectural distinctions, not universal rankings.
+
 FPGAs trade post-fabrication flexibility for configuration storage and programmable-interconnect overhead. ASIC comparisons must normalize process node, volume, non-recurring engineering cost and performance targets. GPU comparisons must distinguish custom datapath throughput from programmable instruction throughput, development effort and memory bandwidth. There is no universal performance ranking.
 
 == Provenance and scope ==
+AMD UG574 revision 1.6 (22 January 2025) explicitly documents one slice per UltraScale CLB, eight six-input LUTs and sixteen storage elements; this must not be confused with older 7-series CLBs containing two slices. Its SLICEM supports LUT-based distributed RAM and shift registers. The 2.50 ns arithmetic is correct under the stated simplified constraint, but the reciprocal 400 MHz is an illustrative bound, not device timing closure.
+
 Architectural numbers above are taken from AMD's UltraScale documentation and should not be generalized to Intel or other FPGA families. The timing equation and numeric example are explanatory engineering abstractions, not vendor device measurements.
 
 == References ==

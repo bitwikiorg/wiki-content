@@ -15,6 +15,15 @@ class ParallelComputingSources(unittest.TestCase):
             self.assertIn("== ", text)
             self.assertIn("https://", text)
 
+    def test_two_depth_navigation(self):
+        core = BASE.with_suffix(' .mediawiki'.strip()).read_text(encoding='utf-8')
+        simple = (BASE / 'Simple.mediawiki').read_text(encoding='utf-8')
+        technical = (BASE / 'Technical.mediawiki').read_text(encoding='utf-8')
+        self.assertIn('{{:Parallel computing/Simple}}', core)
+        self.assertIn('[[Parallel computing/Technical|Technical', simple)
+        self.assertIn('[[Parallel computing/Simple|Simple', technical)
+        self.assertNotIn('Template:Reading depth', core + simple + technical)
+
     def test_amdahl_example(self):
         self.assertTrue(math.isclose(1 / (0.1 + 0.9 / 8), 80 / 17, rel_tol=1e-12))
 

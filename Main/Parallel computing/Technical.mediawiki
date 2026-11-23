@@ -28,6 +28,9 @@ Specify task dependencies, data ownership, memory ordering and communication bef
 == Provenance and limitations ==
 The formulas above are analytic models with stated assumptions, not measured benchmarks. MPI and OpenMP specify programming interfaces, not universal performance guarantees. Processor topology, data sizes, compiler, runtime and communication fabric must be specified before comparing implementations.
 
+== Reading depth ==
+[[Parallel computing/Simple|Simple treatment]]
+
 == References ==
 * [https://doi.org/10.1145/1498765.1498785 Williams, Waterman and Patterson (2009), ''Roofline: An Insightful Visual Performance Model for Multicore Architectures''].
 * [https://www.openmp.org/spec-html/5.2/openmp.html OpenMP ARB, ''OpenMP Application Programming Interface'', version 5.2 (2021)], especially scope, execution and memory models.

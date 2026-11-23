@@ -1226,9 +1226,23 @@
       "title": "High-bandwidth memory",
       "pr_number": 124,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/124",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/124",
+        "changed": "R17: PR #124 four scoped files updated; canonical identity/categories retained, Simple transcluded, reciprocal two-way navigation, Technical expanded with utilization/roofline model, measurement and architecture research boundaries.",
+        "preservation_evidence": [
+          "Core DRAM/TSV, packaging, bandwidth-versus-latency, controller, thermals and links retained across localizations",
+          "2016 JESD235A, 2018 JESD235B, 1024-bit, 8-channel, 2.4 Gbit/s, 307.2 GB/s, four-stack 1228.8 GB/s and PG276 pseudo-channel details retained",
+          "Capacity, packaging/yield/repair, locality, energy-comparison caveats and all original reference destinations retained"
+        ],
+        "scientific_sources": [
+          "JEDEC JESD235B announcement reproduced 17 Dec 2018 (cdrinfo.com)",
+          "AMD PG276 topology/core overview"
+        ],
+        "tests": "Four sequential GitHub writes succeeded; executable regression tests, CI, V2 and staging not executed; full scholarly citation audit outstanding.",
+        "gate": "Shared two-way validation PR #136 pending; human review and merge authorization required."
+      }
     },
     {
       "id": "N025",
@@ -1339,7 +1353,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N023",
+    "last_checkpoint_article": "N024",
     "run_count": 13,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1347,7 +1361,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R16",
-    "articles_corrected_pending_validation": 32,
+    "articles_corrected_pending_validation": 33,
     "pairs_corrected_pending_validation": 16
   },
   "hard_rules": [

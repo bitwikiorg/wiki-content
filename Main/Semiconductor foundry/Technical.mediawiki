@@ -1,5 +1,7 @@
 <onlyinclude>A '''semiconductor foundry''' provides process-qualified wafer manufacturing for customer-owned circuit designs. The commercial interface couples process technology, physical-design constraints, wafer capacity, yield learning and contractual allocation of manufacturing risk.</onlyinclude>
 
+'''Reading depth:''' [[Semiconductor foundry/Simple|Simple]] · [[Semiconductor foundry/Technical|Technical]]
+
 == Foundry architecture and process enablement ==
 A technology offering comprises transistor and interconnect process modules, lithography and patterning rules, compact device models, parasitic extraction data, design-rule checking, layout-versus-schematic verification, standard-cell and memory IP qualification, and production test assumptions. A process design kit (PDK) represents a process-specific interface, not a guarantee that all designs are manufacturable. Its proprietary content is typically controlled under commercial agreements.
 
@@ -15,10 +17,13 @@ Let ''C<sub>w</sub>'' denote wafer processing cost, ''N<sub>g</sub>'' the gross 
 
 For a hypothetical $10,000 wafer with 500 gross die sites and 80% yield, the model gives 400 good dies and $25 wafer cost per good die. At 60% yield, it gives 300 good dies and approximately $33.33 each. These numbers are ''illustrative inputs'', not published foundry prices or yield benchmarks. Gross die counts depend on wafer diameter, die geometry, edge exclusions and layout. Actual economics also include masks, qualification, capacity commitments, packaging, test, scrap and yield distribution across performance bins.
 
+== Model sensitivity and verification ==
+For fixed wafer cost and gross die count, the illustrative model implies a reciprocal yield sensitivity: <math>\partial C_{\mathrm{good}}/\partial Y=-C_w/(N_gY^2)</math>. It assumes a single bin of interchangeable good dies and a constant wafer cost; it does not model spatial defect clustering, parametric yield, throughput, or contractual pricing. A defensible comparison reports wafer diameter, gross-die accounting, yield definition, test coverage, binning and cost scope. Statistical process control and test data, not the algebra alone, establish observed yield.
+
 == Business boundaries and limitations ==
 A pure-play foundry does not sell competing customer-designed chips under its own product brand; an IDM designs and manufactures its own products, though hybrid outsourcing arrangements exist. Process node names are commercial technology labels and should not be interpreted as a universal measured transistor dimension. Foundry process details, customer-specific yields, negotiated pricing and PDKs are often confidential, so public reports cannot support precise cross-foundry comparisons without matched definitions.
 
-TSMC's 2025 annual report describes its pure-play business model and its range of technologies, but figures reported by one company should not be generalized to every foundry.<ref name="annual">[https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20Annual%20Report.E.pdf TSMC, 2025 Annual Report], business overview.</ref>
+TSMC's 2025 annual report describes its pure-play business model and its range of technologies, but figures reported by one company should not be generalized to every foundry.<ref name="annual">[https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf TSMC, 2025 Annual Report], business overview.</ref>
 
 == References ==
 <references />

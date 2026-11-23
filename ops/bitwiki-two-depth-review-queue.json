@@ -253,7 +253,7 @@
         "A15"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R27",
@@ -613,9 +613,19 @@
       "title": "Pareto principle",
       "pr_number": 88,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/88",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/88",
+        "source_evidence": [
+          "Juran 1974 original first-person account reviewed: he acknowledges misattribution; avoid treating Pareto's historical study as proof of universal 80/20",
+          "Preserved original Core provenance, Pareto chart categorization and denominator cautions, causal distinctions, model limitations, SMW Causality relation and incoming query",
+          "Technical retains Lorenz/Gini derivation, Pareto Type I finite-mean assumptions, exact 80/20 shape parameter and counterexamples"
+        ],
+        "preservation": "Core-only context rehomed into Technical; canonical metadata, categories, SMW relationship and incoming query retained; Simple lead transcluded.",
+        "tests": "Source inspection and mathematical model reviewed; executable regression, CI, V2 and staging not executed. Shared PR #136 prerequisite.",
+        "gate": "PR #136 and human approval; no merge."
+      }
     },
     {
       "id": "A16",
@@ -1606,16 +1616,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A14",
+    "last_checkpoint_article": "A15",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 14,
+    "articles_pending_or_incomplete": 13,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R25",
-    "articles_corrected_pending_validation": 51,
-    "pairs_corrected_pending_validation": 25
+    "last_reviewed_pair": "R26",
+    "articles_corrected_pending_validation": 52,
+    "pairs_corrected_pending_validation": 26
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

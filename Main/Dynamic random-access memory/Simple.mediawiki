@@ -1,4 +1,4 @@
-{{Reading depth|base=Dynamic random-access memory|current=Simple}}
+[[Dynamic random-access memory/Simple|Simple]] · [[Dynamic random-access memory/Technical|Technical]]
 = Dynamic random-access memory — Simple =
 <onlyinclude>'''Dynamic random-access memory''' ('''DRAM''') is computer memory that stores bits using tiny electrical charges. The charges leak, so the memory must regularly refresh them while power is supplied. DRAM is widely used for a computer's main working memory, but it is not the same as every kind of RAM.</onlyinclude>
 == Rows of tiny cells ==
@@ -11,6 +11,6 @@ An already-open row can be quicker to access than a different row in the same ba
 SRAM usually uses stable transistor-based latches while powered and is common in processor caches. Flash memory retains information without continuous power but has different writing and erasing behavior. DRAM's dense charge-storage cells, refresh requirements and row organization make it a separate technical subject.
 == What can go wrong? ==
 Cells may fail to retain charge or experience disturbance under certain access patterns. Research has demonstrated row-disturbance bit flips in susceptible devices, but no one result applies to all chips.<ref name="hammersimple">Kim et al., [https://doi.org/10.1145/2678373.2665726 ISCA 2014 DRAM disturbance experiments].</ref>
-For device timing and the evidence limitations, see [[Dynamic random-access memory/Technical|Technical]].
+For device timing, engineering models and evidence limitations, continue to [[Dynamic random-access memory/Technical|Technical]].
 == References ==
 <references/>

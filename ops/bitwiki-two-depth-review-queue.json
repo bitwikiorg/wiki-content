@@ -271,7 +271,7 @@
         "A19"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R29",
@@ -688,9 +688,23 @@
       "title": "Halo effect",
       "pr_number": 90,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/90",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/90",
+        "changed": "Core composed from Simple; reciprocal two-way navigation; competing-explanations table rehomed to Technical.",
+        "preservation_evidence": [
+          "Canonical identity, knowledge-object metadata, semantic relationships, incoming query and categories retained",
+          "Original three-way explanation table transferred into Technical; historical source distinctions and evidence requirements retained",
+          "Simple classroom/workplace examples, negative halo and limits preserved; Technical covariance counterexample, randomized design and research methods retained"
+        ],
+        "scientific_sources": [
+          "Thorndike 1920 DOI 10.1037/h0071663",
+          "Nisbett and Wilson 1977 DOI 10.1037/0022-3514.35.4.250; bibliographic metadata independently checked"
+        ],
+        "tests": "Source text inspected; numerical covariance 1/3 and difference 0.7 checked conceptually; executable tests and CI/V2/staging not run. Shared PR #136 prerequisite.",
+        "gate": "Human review and PR #136 prerequisite; no merge."
+      }
     },
     {
       "id": "A20",
@@ -1645,16 +1659,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A18",
-    "run_count": 18,
+    "last_checkpoint_article": "A19",
+    "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 10,
+    "articles_pending_or_incomplete": 9,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R27",
-    "articles_corrected_pending_validation": 55,
-    "pairs_corrected_pending_validation": 27
+    "last_reviewed_pair": "R28",
+    "articles_corrected_pending_validation": 56,
+    "pairs_corrected_pending_validation": 28
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

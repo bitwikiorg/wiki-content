@@ -1,6 +1,10 @@
+''Reading depth:'' [[Field-programmable gate array/Simple|Simple]] · [[Field-programmable gate array/Technical|Technical]]
+
 <onlyinclude>A '''field-programmable gate array''' ('''FPGA''') is an integrated circuit whose digital logic and interconnections can be configured after manufacture. Its programmable fabric implements spatially arranged, concurrent circuits rather than executing every operation as a sequential software instruction. Imagine a box of electronic building blocks whose connections can be changed: the same chip can become a signal filter, controller or custom data-processing pipeline.</onlyinclude>
 
 == How it works ==
+The design software turns a hardware description into a configuration for the existing chip; unlike manufacturing a custom ASIC, this does not require a new photomask.
+
 The chip contains small logic elements, memory and configurable wires. A designer describes a circuit, then software determines how the elements should be connected. The result is loaded onto the FPGA as configuration data. Many operations can happen at once because the chip is implementing a circuit, not merely running a list of instructions.
 
 == When it is useful ==

@@ -17,10 +17,20 @@ class ASICArticleTest(unittest.TestCase):
                 self.assertTrue(file.is_file())
                 data = file.read_text(encoding="utf-8")
                 self.assertIn("Application-specific integrated circuit", data)
-                self.assertIn("== References ==", data) if file.name != "Simple.mediawiki" else self.assertIn("== Further reading ==", data)
-                self.assertIn("https://", data)
+                self.assertIn("== References ==", data) if file.name == "Technical.mediawiki" else None
+                self.assertIn("https://", data) if file.name != "Application-specific integrated circuit.mediawiki" else self.assertIn("{{Knowledge object", data)
         self.assertEqual((BASE / "Application-specific integrated circuit" / "Simple.mediawiki").read_text().count("<onlyinclude>"), 1)
         self.assertEqual((BASE / "Application-specific integrated circuit" / "Simple.mediawiki").read_text().count("</onlyinclude>"), 1)
+
+    def test_two_depth_navigation(self):
+        core = (BASE / 'Application-specific integrated circuit.mediawiki').read_text(encoding='utf-8')
+        self.assertIn('{{Knowledge object', core)
+        self.assertIn('{{:Application-specific integrated circuit/Simple}}', core)
+        for depth in ('Simple', 'Technical'):
+            content = (BASE / 'Application-specific integrated circuit' / f'{depth}.mediawiki').read_text(encoding='utf-8')
+            self.assertIn('[[Application-specific integrated circuit/Simple|Simple]]', content)
+            self.assertIn('[[Application-specific integrated circuit/Technical|Technical]]', content)
+            self.assertNotIn('{{Reading depth', content)
 
     def test_cost_example(self):
         n = (1_000_000 - 20_000) / (28 - 8)

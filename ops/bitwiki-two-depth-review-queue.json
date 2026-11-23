@@ -244,7 +244,7 @@
         "A13"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R26",
@@ -575,9 +575,19 @@
       "title": "Occam's razor",
       "pr_number": 87,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/87",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/87",
+        "source_evidence": "Read original Core, Simple, Technical and scoped regression; Rissanen 1978 DOI 10.1016/0005-1098(78)90005-5 checked against publisher.",
+        "preservation": "Retained ontology metadata, categories, four SMW relations, incoming query, parsimony taxonomy, historical caveats, Bayesian worked examples, MDL, AIC/BIC and citation sources; Core redundant prose removed after verifying equivalents in Technical.",
+        "corrections": "Added proper-prior scale sensitivity and diffuse-prior limit, distinguished derived hypothetical result from empirical evidence; two-way navigation and regression assertions updated.",
+        "validation": "Source transformations and preservation prechecks ran; executable regression, CI, V2, staging and comprehensive citation verification not run.",
+        "blockers": [
+          "Shared two-depth V2 dependency PR #136"
+        ],
+        "human_review_required": true
+      }
     },
     {
       "id": "A14",
@@ -1586,16 +1596,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A12",
+    "last_checkpoint_article": "A13",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 16,
+    "articles_pending_or_incomplete": 15,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R24",
-    "articles_corrected_pending_validation": 49,
-    "pairs_corrected_pending_validation": 24
+    "last_reviewed_pair": "R25",
+    "articles_corrected_pending_validation": 50,
+    "pairs_corrected_pending_validation": 25
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

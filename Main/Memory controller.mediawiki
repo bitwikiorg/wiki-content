@@ -1,19 +1,11 @@
-<onlyinclude>'''Memory controller''' is the hardware logic that translates processor or device memory requests into correctly timed commands for an attached memory technology. In a DRAM system it arbitrates competing requests, schedules bank and row operations, observes device timing constraints, manages refresh and coordinates data-integrity features. It is distinct from the DRAM chips that store bits and from the broader memory hierarchy.</onlyinclude>
+<onlyinclude>{{:Memory controller/Simple}}</onlyinclude>
 
-== Functions ==
-A controller maps physical addresses to channels, ranks, banks, rows and columns according to its implementation. It queues reads and writes, resolves resource conflicts and issues commands such as activate, read, write and precharge while respecting the relevant timing constraints. Scheduling may exploit an already-open row but must also consider starvation and fairness.
-
-Refresh is required to preserve charge in conventional DRAM; controller behavior depends on the DRAM generation and refresh mode. Error-correcting code (ECC) may involve controller-side encoding, checking and correction, but device-internal on-die ECC is not equivalent to end-to-end protection of the memory path.
-
-== Engineering considerations ==
-* '''Latency:''' queueing, row state, turnaround delays and refresh can affect completion time.
-* '''Throughput:''' bank-level parallelism and channel utilization compete with command and data-bus constraints.
-* '''Fairness:''' maximizing row-buffer hits can penalize other requesters.
-* '''Reliability:''' refresh, error reporting and supported ECC mechanisms address different failure modes.
+== Read at another depth ==
+* [[Memory controller/Simple|Simple]]
+* [[Memory controller/Technical|Technical]]
 
 == Related subjects ==
-[[Dynamic random-access memory]] describes the storage device; [[Computer memory]] describes the wider memory system. [[Cache memory]] serves a different role closer to processor execution.
-
-== Sources ==
-* JEDEC, ''DDR5 SDRAM'', JESD79-5 (2020), §4.13, refresh operation; consult the applicable revision and device datasheet for exact timings.
-* O. Mutlu and T. Moscibroda, “Stall-Time Fair Memory Access Scheduling for Chip Multiprocessors,” ''MICRO'' (2007), doi:10.1109/MICRO.2007.21, https://www.microsoft.com/en-us/research/publication/stall-time-fair-memory-access-scheduling-for-chip-multiprocessors/
+* [[Dynamic random-access memory]]
+* [[Computer memory]]
+* [[Cache memory]]
+* [[High-bandwidth memory]]

@@ -1060,9 +1060,26 @@
       "title": "Semiconductor fabrication",
       "pr_number": 117,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/117",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/117",
+        "preservation_inventory": [
+          "Canonical Has domain and Related to assertions retained; original core definition rehomed through Simple and Technical; wafer preparation, deposition, etching, lithography, doping, CMP, FEOL/MOL/BEOL, defect mechanisms, metrology, yield model, scope caveats and three original citations preserved"
+        ],
+        "corrections": [
+          "Removed separately maintained Core explanation and Technical transclusion; canonical now presents Simple and explicit two-way depth links",
+          "Clarified Poisson yield is a layout-critical-area approximation requiring calibrated defect statistics and explicit acceptance gates"
+        ],
+        "validation": {
+          "static": "source transformations inspected before write; GitHub contents writes acknowledged; post-write source checks not executed",
+          "tests": "article-specific regression updated but not executed",
+          "ci": "not executed; shared PR #136 dependency",
+          "citation": "SIA, ASML, NIST citations retained; full attribution and scholarly audit incomplete",
+          "dependency": "PR #136"
+        },
+        "human_review_required": true
+      }
     },
     {
       "id": "N017",
@@ -1245,15 +1262,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N025",
+    "last_checkpoint_article": "N016",
     "run_count": 10,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R12",
-    "articles_corrected_pending_validation": 24,
+    "last_reviewed_pair": "R13",
+    "articles_corrected_pending_validation": 25,
     "pairs_corrected_pending_validation": 12
   },
   "hard_rules": [

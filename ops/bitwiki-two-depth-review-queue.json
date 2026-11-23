@@ -416,8 +416,8 @@
           "NIST SP 800-160 Vol 2 Rev 1 December 2021",
           "National Research Council Disaster Resilience 2012"
         ],
-        "tests": "9 in-memory pre-write source checks passed; source files written sequentially; executable Python tests, CI, V2, staging and full citation audit not run; shared test file still expects legacy three-depth template and must be updated after second article.",
-        "gate": "PR #136 two-depth V2 validation prerequisite; article-specific regression update and execution; human review before merge."
+        "tests": "Post-write GitHub source checks 9/9 passed: identity, two paths, transclusion, SMW, local named refs and math tag balance. Scoped Python regression file updated, NOT executed. CI/V2/staging and complete scholarly citation audits NOT executed. PR #136 remains shared dependency.",
+        "gate": "Corrected_pending_validation: PR #136 merge/update prerequisite; executable regression, V2/CI and human scholarly review before merge."
       }
     },
     {
@@ -441,8 +441,8 @@
           "Nancy Leveson Engineering a Safer World MIT Press 2012",
           "Hernan and Robins Causal Inference What If"
         ],
-        "tests": "9 in-memory pre-write source checks passed; executable Python tests, CI, V2 and staging not run. Article-specific regression test still requires update for two-depth format.",
-        "gate": "PR #136 two-depth validator dependency; targeted regression update and execution; human review."
+        "tests": "Post-write GitHub source checks 9/9 passed: identity, two paths, transclusion, SMW, local named refs and math tag balance. Scoped Python regression file updated, NOT executed. CI/V2/staging and complete scholarly citation audits NOT executed. PR #136 remains shared dependency.",
+        "gate": "Corrected_pending_validation: PR #136 merge/update prerequisite; executable regression, V2/CI and human scholarly review before merge."
       }
     },
     {

@@ -1,21 +1,10 @@
-<onlyinclude>'''Photolithography''' is a pattern-transfer process in microfabrication that uses patterned exposure of a photosensitive resist to define regions for subsequent etching, deposition, implantation or other processing. A mask or reticle and an optical projection system form an image in the resist; development converts the latent exposure pattern into a physical resist pattern. The resulting geometry depends on the optical image, resist chemistry and subsequent process steps.</onlyinclude>
+'''Reading depth:''' [[Photolithography/Simple|Simple]] · [[Photolithography/Technical|Technical]]
 
-==Principle==
-A typical sequence comprises surface preparation, resist coating and soft bake, alignment and exposure, post-exposure processing where required, development, inspection, and pattern transfer or resist removal. Positive-tone and negative-tone processes differ in which exposed regions remain after development; their behavior depends on the resist chemistry.
+== Overview ==
+{{:Photolithography/Simple}}
 
-Deep-ultraviolet (DUV) systems commonly use 193 nm radiation and refractive optics, including immersion projection. Extreme-ultraviolet (EUV) systems use approximately 13.5 nm radiation, reflective multilayer optics and vacuum-compatible exposure paths. These are not interchangeable process recipes.<ref name="asmloptics">[https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors ASML, ''Lenses and mirrors''].</ref>
-
-==Resolution and process window==
-A first-order projection-lithography scaling relation is <math>CD=k_1\lambda/NA</math>, where <math>CD</math> is a characteristic critical dimension, <math>\lambda</math> the exposure wavelength, <math>NA</math> numerical aperture, and <math>k_1</math> a pattern- and process-dependent factor.<ref name="rayleigh">[https://www.asml.com/en/technology/lithography-principles/rayleigh-criterion ASML, ''The Rayleigh criterion for resolution''].</ref> This is a scaling approximation, not a guarantee of printable yield or universal feature geometry. Increasing NA improves nominal resolution while reducing depth-of-focus margin. Overlay alignment, line-edge variability, mask effects, exposure dose, focus and etch bias also determine usable dimensions.
-
-==Relationship to semiconductor manufacturing==
-Photolithography defines where later unit operations act; it is not itself the complete [[Semiconductor fabrication]] flow. Pattern transfer and verification must be considered together. Multi-patterning can extend effective pitch control at the cost of added masks, steps and overlay sensitivity.
-
-==Semantic relationships==
+== Semantic relationships ==
 [[Category:Semiconductor manufacturing]]
 [[Category:Microfabrication]]
 [[Related to::Semiconductor fabrication]]
 [[Related to::Silicon]]
-
-==References==
-<references/>

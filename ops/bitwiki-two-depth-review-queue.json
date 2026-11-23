@@ -1148,9 +1148,19 @@
       "title": "Semiconductor packaging",
       "pr_number": 121,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/121",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/121",
+        "source_notes": "Preserved package functions, 2.5D/3D distinctions, electrical/thermal/mechanical coupling, moisture-reflow qualification, original citations and 12W × 3K/W example. Added measurement workflow and corrected J-STD-020E historical revision (superseded by F in 2022); IPC primary PDF.",
+        "preservation": "Unique Core content rehomed in Simple/Technical; canonical host only transcludes Simple and links Technical.",
+        "checks": "Four sequential GitHub file writes succeeded; no executable regression tests or V2/staging/CI run; complete DOI proposition-level audit outstanding.",
+        "blockers": [
+          "Shared infrastructure PR #136 pending review/merge",
+          "Human scholarly and PR review required"
+        ],
+        "review_gate": "No merge/deploy without human approval"
+      }
     },
     {
       "id": "N021",
@@ -1297,7 +1307,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N019",
+    "last_checkpoint_article": "N020",
     "run_count": 11,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1305,7 +1315,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R14",
-    "articles_corrected_pending_validation": 28,
+    "articles_corrected_pending_validation": 29,
     "pairs_corrected_pending_validation": 14
   },
   "hard_rules": [

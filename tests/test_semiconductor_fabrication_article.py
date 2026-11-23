@@ -12,11 +12,15 @@ class SemiconductorFabricationArticleTest(unittest.TestCase):
         simple = (BASE / "Semiconductor fabrication/Simple.mediawiki").read_text()
         technical = (BASE / "Semiconductor fabrication/Technical.mediawiki").read_text()
         self.assertIn("{{:Semiconductor fabrication/Simple}}", core)
-        self.assertIn("{{:Semiconductor fabrication/Technical}}", core)
+        self.assertNotIn("{{:Semiconductor fabrication/Technical}}", core)
+        self.assertIn("{{:Semiconductor fabrication/Simple}}", core)
+        self.assertIn("[[Semiconductor fabrication/Technical|Technical]]", core)
         for source in (simple, technical):
             self.assertEqual(source.count("<onlyinclude>"), 1)
             self.assertEqual(source.count("</onlyinclude>"), 1)
             self.assertIn("<references />", source)
+            self.assertIn("[[Semiconductor fabrication/Simple|Simple]]", source)
+            self.assertIn("[[Semiconductor fabrication/Technical|Technical]]", source)
         self.assertIn("Semiconductor fabrication", core)
 
     def test_illustrative_poisson_arithmetic(self):

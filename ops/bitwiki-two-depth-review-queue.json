@@ -226,7 +226,7 @@
         "A05"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "claimed"
     },
     {
       "pair_id": "R24",
@@ -399,9 +399,26 @@
       "title": "Resilience",
       "pr_number": 83,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/83",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/83",
+        "summary": "Resilience Core reduced to canonical metadata, incoming SMW query and Simple transclusion; two explicit depth links; unique Core disciplinary comparison, hazard/test protocol, equity and cross-domain qualifications transferred to Technical. Existing ecological/engineering examples, mathematical recovery and bifurcation analysis, citations and categories retained.",
+        "preservation": [
+          "Four domain-specific meanings and caveats",
+          "Hazard envelope, recovery testing, dependency and stakeholder criteria",
+          "Original SMW Related to edges, categories, query and Knowledge object",
+          "Technical dynamical and quantitative material and Simple explanations retained"
+        ],
+        "scientific_sources": [
+          "Holling 1973 DOI 10.1146/annurev.es.04.110173.000245",
+          "Woods 2015 DOI 10.1016/j.ress.2015.03.018",
+          "NIST SP 800-160 Vol 2 Rev 1 December 2021",
+          "National Research Council Disaster Resilience 2012"
+        ],
+        "tests": "9 in-memory pre-write source checks passed; source files written sequentially; executable Python tests, CI, V2, staging and full citation audit not run; shared test file still expects legacy three-depth template and must be updated after second article.",
+        "gate": "PR #136 two-depth V2 validation prerequisite; article-specific regression update and execution; human review before merge."
+      }
     },
     {
       "id": "A05",
@@ -1517,15 +1534,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A03",
+    "last_checkpoint_article": "A04",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 21,
+    "articles_pending_or_incomplete": 20,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R22",
-    "articles_corrected_pending_validation": 44,
+    "articles_corrected_pending_validation": 45,
     "pairs_corrected_pending_validation": 22
   },
   "hard_rules": [

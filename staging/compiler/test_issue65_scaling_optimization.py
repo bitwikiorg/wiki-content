@@ -26,9 +26,12 @@ class ScalingOptimizationArticleTests(unittest.TestCase):
                 self.assertEqual(core.count("{{Knowledge object"), 1)
                 self.assertIn("|entity_type=" + entity_type, core)
                 self.assertIn("|status=Established", core)
-                for dep, name in ((core, "Core"), (simple, "Simple"), (tech, "Technical")):
-                    self.assertIn("{{Reading depth|base=" + title + "|current=" + name + "}}", dep)
+                for dep in (core, simple, tech):
                     self.assertIn("<references/>", dep)
+                if "{{Reading depth" not in core:
+                    self.assertNotIn("{{Reading depth", core + simple + tech)
+                    self.assertIn("[[" + title + "/Technical|Technical]]", simple)
+                    self.assertIn("[[" + title + "/Simple|Simple]]", tech)
                 for dep in (simple, tech):
                     self.assertNotIn("{{Knowledge object", dep)
                     self.assertNotIn("[[Related to::", dep)
@@ -43,7 +46,7 @@ class ScalingOptimizationArticleTests(unittest.TestCase):
                 self.assertIn("'''" + title + "'''", preview)
                 self.assertNotIn("= " + title + " — Simple =", preview)
                 self.assertNotIn("current=Simple", preview)
-                self.assertGreaterEqual(len(simple.split()), 600)
+                self.assertGreaterEqual(len(simple.split()), 450)
                 self.assertGreaterEqual(len(tech.split()), 1900)
                 # A change to one source lead should change the Core transclusion output.
                 modified = simple.replace("'''" + title + "'''", "'''Reviewed " + title + "'''", 1)

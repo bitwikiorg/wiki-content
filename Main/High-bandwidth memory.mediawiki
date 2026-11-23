@@ -1,24 +1,14 @@
 {{Infobox|title=High-bandwidth memory}}
-<onlyinclude>'''High-bandwidth memory''' ('''HBM''') is a family of stacked [[Dynamic random-access memory|DRAM]] technologies designed to supply high aggregate data bandwidth through wide interfaces and advanced package-level connections to processors. It is used in high-performance computing and accelerator systems, where data movement can constrain throughput.</onlyinclude>
+[[Category:Computer hardware]]
+[[Category:Semiconductor memory]]
+<onlyinclude>{{:High-bandwidth memory/Simple}}</onlyinclude>
 
-== Architecture ==
-HBM stacks multiple DRAM dies and uses through-silicon vias (TSVs) and associated interconnect structures to connect layers. A memory controller communicates with a wide, partitioned interface. HBM is a form of DRAM, not a replacement for processor caches or a guarantee of low access latency.
-
-== System integration ==
-HBM is integrated close to processing dies using advanced packaging. Package routing, thermals, capacity, controller scheduling, and memory-access locality affect realized performance. The bandwidth of one stack should not be confused with the aggregate bandwidth of a multi-stack processor.
-
-== Reading levels ==
-* [[High-bandwidth memory/Simple|Simple overview]]
-* [[High-bandwidth memory/Technical|Technical treatment]]
+== Read at another depth ==
+* [[High-bandwidth memory/Simple|Simple]]
+* [[High-bandwidth memory/Technical|Technical]]
 
 == Related topics ==
 * [[Dynamic random-access memory]]
 * [[Computer memory]]
 * [[Semiconductor packaging]]
-
-== References ==
-* [https://www.circuitnet.com/press/95853.html JEDEC, ''Updates Groundbreaking High Bandwidth Memory Standard'', 2016] (reproduced association release).
-* [https://www.cdrinfo.com/D7/content/jedec-updates-high-bandwidth-memory-standard JEDEC, ''Updates the High Bandwidth Memory Standard'', 2018] (release reproduced).
-* [https://docs.amd.com/r/en-US/pg276-axi-hbm/HBM-Topology AMD, ''HBM Topology'', PG276].
-[[Category:Computer hardware]]
-[[Category:Semiconductor memory]]
+* [[Memory controller]]

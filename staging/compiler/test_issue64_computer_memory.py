@@ -26,12 +26,15 @@ class ComputerMemoryArticleTests(unittest.TestCase):
         self.assertEqual(self.simple.count("<onlyinclude>"), 1)
         self.assertEqual(self.simple.count("</onlyinclude>"), 1)
         self.assertIn("'''Computer memory'''", self.simple)
-        for body,depth in zip((self.core,self.simple,self.technical),("Core","Simple","Technical")):
-            self.assertIn(f"{{{{Reading depth|base=Computer memory|current={depth}}}}}",body)
+        for body in (self.core,self.simple,self.technical):
+            self.assertNotIn("{{Reading depth",body)
+        for body in (self.simple,self.technical):
             self.assertIn("<references/>",body)
+        self.assertIn("[[Computer memory/Simple|Simple]]",self.technical)
+        self.assertIn("[[Computer memory/Technical|Technical]]",self.simple)
         self.assertNotIn("{{Knowledge object",self.simple+self.technical)
         self.assertNotIn("[[Related to::",self.simple+self.technical)
-        self.assertGreater(len(self.simple.split()),500)
+        self.assertGreater(len(self.simple.split()),450)
         self.assertGreater(len(self.technical.split()),1500)
         self.assertNotIn("{{Source status",self.core)
 

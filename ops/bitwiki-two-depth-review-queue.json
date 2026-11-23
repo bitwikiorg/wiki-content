@@ -208,7 +208,7 @@
         "N033"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R22",
@@ -1442,9 +1442,26 @@
       "title": "Semiconductor manufacturing yield",
       "pr_number": 133,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/133",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #133 canonical host now composes Simple, explicit two-way navigation, Technical expanded with gamma-mixture variance, model-identification limits and validation design; scoped regression updated.",
+        "preservation_evidence": [
+          "Poisson critical-area model and gamma-mixture negative-binomial derivation with assumptions and numerical examples",
+          "Wafer-sort, final-test, bin-specific yield denominators; spatial variation, wafer-map and critical-area limitations",
+          "Economic cost-per-good-die equation and omitted costs",
+          "Stapper, Bae–Hwang–Kuo 2007, Yuan–Bae–Kuo 2020 references; canonical category metadata"
+        ],
+        "scientific_sources": [
+          "Bae, Hwang and Kuo (2007), IIE Transactions 39:1073–1083, DOI 10.1080/07408170701275335, primary full text verified",
+          "Yuan, Bae and Kuo (2020), IEEE Transactions on Reliability 69:510–521, DOI 10.1109/TR.2019.2943925, publisher abstract and institutional metadata verified",
+          "Stapper IBM article retained; full-text audit incomplete"
+        ],
+        "static_checks": "Source files committed sequentially; numerical expressions reviewed against mathematical definitions; no executable test run",
+        "tests": "Scoped pytest source updated but not executed; V2/staging/CI not run; complete citation audit outstanding",
+        "gate": "PR #136 shared validator prerequisite; human scholarly review and merge approval",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/133"
+      }
     },
     {
       "id": "N034",
@@ -1472,16 +1489,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N032",
+    "last_checkpoint_article": "N033",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 24,
+    "articles_pending_or_incomplete": 23,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R20",
-    "articles_corrected_pending_validation": 41,
-    "pairs_corrected_pending_validation": 20
+    "last_reviewed_pair": "R21",
+    "articles_corrected_pending_validation": 42,
+    "pairs_corrected_pending_validation": 21
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

@@ -703,9 +703,26 @@
       "title": "Dynamic random-access memory",
       "pr_number": 100,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/100",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/100",
+        "head_branch": "editorial/issue64-dram-2026-11-20",
+        "preservation": "Retained canonical Knowledge object and SMW relations; DRAM charge retention, row/bank sensing, command timing, SRAM/flash distinctions, row-buffer tradeoffs, RowHammer evidence and limits, JEDEC/Micron/ISCA citations in Simple/Technical. Removed redundant third explanatory Core surface.",
+        "corrections": "Explicit two-way navigation; canonical host now transcludes Simple; technical distinction clarifies row-buffer behavior and non-universality of disturbance.",
+        "citation_quality": "Existing vendor/JEDEC/ISCA references retained; full primary-source proposition audit not completed; JEDEC edition-specific compliance unverified.",
+        "tests": {
+          "source_static": "Reciprocal links, metadata, math tags and citation names inspected; article regression updated, not executed",
+          "python": "not executed",
+          "ci": "not executed",
+          "v2": "blocked by PR #136"
+        },
+        "blockers": [
+          "PR #136 compatibility prerequisite",
+          "Executable regression, CI and full scholarly citation audit pending"
+        ],
+        "human_review_gate": "Do not merge until #136 and validation complete"
+      }
     },
     {
       "id": "A31",
@@ -1044,7 +1061,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A25",
+    "last_checkpoint_article": "A30",
     "run_count": 5,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1052,7 +1069,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R05",
-    "articles_corrected_pending_validation": 10,
+    "articles_corrected_pending_validation": 11,
     "pairs_corrected_pending_validation": 5
   },
   "hard_rules": [

@@ -1,4 +1,4 @@
-{{Reading depth|base=Bootloader|current=Technical}}
+'''Reading depth:''' [[Bootloader/Simple|Simple]] · [[Bootloader/Technical|Technical]]
 = Bootloader — Technical =
 
 A '''bootloader''' implements a controlled transition from an executing boot stage to a target executable, typically a kernel or subsequent loader. The fundamental problem is not merely finding bytes: the stage must identify an image compatible with its execution environment, establish the target's entry contract, supply required parameters and relinquish control without corrupting data needed by the next stage. The boot process may include hardware-defined ROM code, platform firmware, firmware-resident boot managers, removable or fixed-media loaders, recovery agents and a kernel. These are distinct roles; any particular machine may omit or combine stages.
@@ -111,6 +111,22 @@ Validation can use emulation for image parsing and handoff logic, unit tests for
 
 The independent fixtures here are the 4096-byte alignment calculation (4099 → 8192; 6000-byte payload end 14192; next aligned address 16384) and the explicitly conditional three-attempt reliability model (0.999). They verify two mathematical statements, not a physical bootloader or an empirical success rate.
 
+== Variants and boundaries ==
+{| class="wikitable"
+! Variant !! Boot role !! Boundary
+|-
+| Embedded ROM first-stage || Find and start later boot stages or application || May not have filesystems or a general OS
+|-
+| Legacy PC disk boot || Run code according to platform/firmware boot conventions || Historical BIOS/MBR paths differ from UEFI
+|-
+| UEFI OS loader || Use boot services, load and prepare kernel, terminate boot services when taking control || UEFI boot manager is not automatically the OS loader
+|-
+| Recovery or network loader || Select or retrieve an alternate image || Trust, availability and rollback must be independently addressed
+|}
+
+A bootloader is not identical to a device driver: a driver exposes and manages device operations, whereas the loader's primary task is to prepare the next execution stage. Some bootloaders contain their own storage, filesystem or network drivers. Likewise a bootloader is not synonymous with firmware: firmware can initialize hardware or provide runtime services without loading a separate OS, and a bootloader can be ordinary software on a disk.
+
+
 == Scope and epistemic boundary ==
 A bootloader is an execution-transition mechanism, not an operating system, firmware category, security guarantee or unique piece of hardware. The specific contract determines what code may be loaded, where it is placed, which services are available and what constitutes a valid handoff. UEFI and Linux x86 documents supply authoritative specifications for particular interfaces, while other platforms require their own primary specifications. Real-world correctness requires implementation-specific verification, security analysis and failure testing beyond this article.
 
@@ -120,4 +136,4 @@ A bootloader is an execution-transition mechanism, not an operating system, firm
 == Further reading ==
 * UEFI Forum, [https://uefi.org/specs/UEFI/2.11/03_Boot_Manager.html ''Boot Manager''] and [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html ''Boot Services''].
 * Linux kernel, [https://www.kernel.org/doc/html/latest/arch/x86/boot.html ''Linux/x86 Boot Protocol''].
-* [[Bootloader|Core]] · [[Bootloader/Simple|Simple]] · [[Operating system]] · [[Computer architecture]].
+* [[Bootloader/Simple|Simple]] · [[Operating system]] · [[Computer architecture]].

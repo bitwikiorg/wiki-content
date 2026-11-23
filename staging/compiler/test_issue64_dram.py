@@ -16,7 +16,11 @@ class DRAMSourceTests(unittest.TestCase):
         self.assertIn("{{:Dynamic random-access memory/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
-        self.assertIn("{{Reading depth|base=Dynamic random-access memory|current=Technical}}", technical)
+        self.assertNotIn("{{Reading depth", core + simple + technical)
+        self.assertIn("[[Dynamic random-access memory/Simple|Simple]]", technical)
+        self.assertIn("[[Dynamic random-access memory/Technical|Technical]]", simple)
+        self.assertNotIn("== Overview ==", core)
+        self.assertIn("[[Related to::Semiconductor|semiconductor]]", core)
         self.assertNotIn("<onlyinclude>", core)
 
     def test_refs_math_and_aliases(self):

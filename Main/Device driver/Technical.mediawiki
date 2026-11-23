@@ -1,8 +1,13 @@
-{{Reading depth|base=Device driver|current=Technical}}
+''Reading depth:'' [[Device driver/Simple|Simple]] · '''Technical'''
 
 = Device driver — Technical =
 
 A '''device driver''' implements a device-facing software interface under a particular operating-system, firmware or embedded execution contract. Its behavior is defined jointly by device documentation, bus protocols, the OS driver model, concurrency and memory-ordering rules, and the observable interface promised to clients. A driver may manage physical devices, virtual devices or an abstraction layer over multiple components. This article concerns design and verification principles rather than a universal driver API.
+
+== Scope, responsibilities and engineering boundaries ==
+A driver bridges a client-facing interface and a device-specific control contract. In a typical request journey, an application or kernel subsystem submits an operation, the driver validates and schedules it, maps buffers or programs registers where appropriate, and reports success, partial progress, cancellation or error. Interrupts, polling and completion queues are alternatives rather than universal requirements. Completion ordering and cancellation are correctness obligations, not merely throughput optimizations. This is a generalized model, not an ABI specification.<ref name="linuxcore">Linux kernel documentation, [https://docs.kernel.org/driver-api/driver-model/driver.html Device Drivers] and [https://docs.kernel.org/driver-api/driver-model/binding.html Driver Binding].</ref>
+
+An operating system manages broader process, protection and resource mechanisms; a driver implements a narrower interface. A bootloader primarily transfers execution to a subsequent stage, though it may contain drivers; firmware can execute on a separate controller and implement a protocol used by a host driver. Computer architecture supplies hardware-visible ordering and addressing constraints. These are distinct responsibilities, not an exclusive taxonomy. A driver may be built into the kernel, separately loaded, user-mode or embedded, and may represent a virtual device.
 
 == Origins and architecture ==
 As computers gained diverse peripheral controllers, operating systems separated general resource management from hardware-specific I/O routines. The modern term encompasses in-kernel code, user-mode services, paravirtual interfaces, embedded controller support and device-class drivers. No single historical inventor or driver architecture accounts for all of these systems.
@@ -52,6 +57,9 @@ A systematic threat model identifies assets, entry points, trusted and untrusted
 Review should cover: (1) matching and unsuccessful probe cleanup; (2) memory and DMA ownership; (3) ordering between descriptor publication and notification; (4) interrupt and completion races; (5) removal during in-flight I/O; (6) suspend/resume and power loss; (7) error injection and bounded retries; (8) permission and isolation boundaries. Unit tests can validate state transitions and arithmetic, while emulators and hardware-in-the-loop tests examine integration. Passing static source tests does not establish OS API conformance or correct operation on actual devices.
 
 Formal methods can model a bounded request state machine and invariants such as ''every accepted request eventually completes or is explicitly cancelled'', subject to fairness and hardware assumptions. Liveness cannot be asserted unconditionally when a device is disconnected, power is lost or the environment stops making progress. Model checking a simplified state machine is not a proof of the full implementation.
+
+== Cross-platform implementation and assurance checklist ==
+Windows Driver Frameworks provide kernel-mode (KMDF) and user-mode (UMDF) models with framework-managed object lifetimes and I/O queues. Linux provides a driver core plus bus-specific interfaces. They are not interchangeable binary interfaces.<ref name="wdfcore">Microsoft Learn, [https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/using-the-framework-to-develop-a-driver Using WDF to Develop a Driver].</ref> A meaningful validation matrix should include discovery and failed probe, deferred dependencies, unplug during in-flight I/O, concurrent cancellation, power transitions, resource exhaustion, malformed device responses, DMA mapping failures and addressability, and reproducible log-based diagnosis. Firmware incompatibility or physical device damage cannot be repaired merely by changing driver software. Driver signatures establish provenance or integrity under a trust policy, not absence of defects.
 
 == Research and platform references ==
 * Linux kernel, [https://docs.kernel.org/driver-api/driver-model/driver.html Driver model] and [https://docs.kernel.org/driver-api/driver-model/binding.html binding documentation], current online edition; Linux-specific behavior.

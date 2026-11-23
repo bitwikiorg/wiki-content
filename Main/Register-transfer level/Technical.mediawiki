@@ -1,5 +1,5 @@
 {{Source status|status=New review draft|note=Technical RTL semantics and verification; illustrative model, not silicon validation.}}
-{{Reading depth|base=Register-transfer level|current=Technical}}
+'''Reading depth:''' [[Register-transfer level/Simple|Simple]] · [[Register-transfer level/Technical|Technical]] (current: Technical)
 = Register-transfer level — Technical =
 
 == Transition-system semantics ==
@@ -41,6 +41,27 @@ Simulation tests selected traces and corner cases; assertions can specify invari
 
 == Relationship to adjacent concepts ==
 RTL is an abstraction level; [[Logic gate]] describes primitive Boolean structures, [[Integrated circuit]] concerns physical realization, and [[Computer architecture]] concerns system-level organization. An HDL is a notation capable of expressing RTL and other models, whereas EDA refers to the tool ecosystem processing those models.
+
+== Preserved design boundaries, workflow and limitations ==
+== Definition and boundary ==
+'''Register-transfer level''' ('''RTL''') is an abstraction for describing digital circuits in terms of stored state, transfers between registers, and combinational transformations of signals. In a typical synchronous design, state is sampled at active clock edges; combinational logic determines candidate next-state values between edges.<ref name="core_ieee">IEEE, ''IEEE Std 1800-2023: SystemVerilog—Unified Hardware Design, Specification, and Verification Language'', https://standards.ieee.org/ieee/1800/7743/ .</ref>
+
+RTL is a '''design representation''', not a programming language or a physical implementation. Hardware description languages such as Verilog, SystemVerilog and VHDL can express RTL, but they also support other forms of modeling and verification. An RTL source file does not itself establish that the design is synthesizable, meets timing, or works on silicon.
+
+== State and combinational behavior ==
+A register retains a value across clock cycles. Combinational logic produces outputs from current inputs and state; a clocked element captures its input according to its clock and reset behavior. A counter, for example, can update its state to the previous value plus one on each enabled rising edge, modulo its register width.
+
+== Design and verification ==
+A design workflow may elaborate RTL, simulate it against a testbench, check properties, synthesize logic into a technology-specific netlist, and perform physical implementation and timing analysis. These stages answer different questions; passing simulation alone does not prove timing closure or functional correctness under all inputs.<ref name="core_openlane">OpenLane 2, ''Achieving Timing Closure'', https://openlane2.readthedocs.io/en/latest/usage/timing_closure/index.html .</ref>
+
+== Scope and limitations ==
+RTL normally abstracts away transistor physics, placement, routing, analog effects, and many delay details. Clock-domain crossings, reset release, metastability, asynchronous interfaces and constraints need explicit engineering treatment beyond a simple single-clock model. Some behavioral HDL constructs are valid in simulation but cannot be synthesized into the intended hardware.
+
+== Further reading ==
+* [[Computer architecture]] — organization of computer systems.
+* [[Logic gate]] — combinational building blocks.
+* [[Integrated circuit]] — fabricated circuit implementation.
+
 
 == References ==
 <references/>

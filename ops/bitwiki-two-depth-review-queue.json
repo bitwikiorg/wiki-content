@@ -898,9 +898,21 @@
       "title": "Hardware description language",
       "pr_number": 110,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/110",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/110",
+        "notes": "HDL canonical Core retained metadata, semantic categories and Simple transclusion; unique scope, language-vs-RTL, simulation/synthesis/verification boundaries, history and source citations rehomed into Technical; IEEE 1076-2019 and 1800-2023 publisher records checked. Explicit reciprocal Simple/Technical links. Source tests updated, NOT executed. Full citation audit, staging and CI NOT run. Shared dependency PR #136. Human review required.",
+        "tests": {
+          "source_checks": "source review only; no executable tests run",
+          "regression": "updated_not_executed",
+          "ci": "not_run",
+          "scholarly": "partial_publisher_check"
+        },
+        "blockers": [
+          "PR #136 two-way depth validation prerequisite"
+        ]
+      }
     },
     {
       "id": "N010",
@@ -1165,7 +1177,7 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N008",
+    "last_checkpoint_article": "N009",
     "run_count": 9,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
@@ -1173,7 +1185,7 @@
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R09",
-    "articles_corrected_pending_validation": 18,
+    "articles_corrected_pending_validation": 19,
     "pairs_corrected_pending_validation": 9
   },
   "hard_rules": [

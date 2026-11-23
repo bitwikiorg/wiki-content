@@ -450,9 +450,22 @@
       "title": "Optimization",
       "pr_number": 84,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/84",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/84",
+        "changed": "R24: three article sources and scoped regression edited on original PR head; canonical subject host now transcludes Simple and links Technical; reciprocal two-depth links.",
+        "preservation_evidence": [
+          "Canonical entity_type Method, provenance, categories, all Related to edges and incoming SMW query retained.",
+          "Core formulation taxonomy, local/global/strict convexity distinctions, feasibility and optimality certification, decision-model caveats preserved in Technical; original examples, KKT, duality, robust/discrete and Pareto content retained."
+        ],
+        "scientific_sources": [
+          "Boyd and Vandenberghe 2004, https://web.stanford.edu/~boyd/cvxbook/ (KKT/Slater crosschecked with original author textbook)",
+          "Nocedal and Wright 2006 DOI 10.1007/978-0-387-40065-5 (bibliography retained, full text not audited)"
+        ],
+        "tests": "Source preservation/link/navigation assertions checked in executor; Python regression source updated but not executed; V2/CI/staging and full claim-level citation audit not executed.",
+        "gate": "PR #136 two-depth validator prerequisite; executable checks and independent human scholarly/merge review outstanding."
+      }
     },
     {
       "id": "A07",
@@ -1550,15 +1563,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A05",
+    "last_checkpoint_article": "A06",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 19,
+    "articles_pending_or_incomplete": 18,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R23",
-    "articles_corrected_pending_validation": 46,
+    "articles_corrected_pending_validation": 47,
     "pairs_corrected_pending_validation": 23
   },
   "hard_rules": [

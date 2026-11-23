@@ -11,8 +11,16 @@ A supply feeds board connectors; local multiphase regulators may convert 12 V in
 == Firmware and initialization ==
 Platform firmware initializes hardware before transferring control to the boot path. The UEFI Forum publishes separate UEFI and Platform Initialization specifications: firmware services and initialization phases should not be conflated with the motherboard's physical circuitry. Vendor firmware, CPU microcode, board revisions and supported-device lists constrain actual compatibility. Security properties such as verified boot depend on implementation and configuration rather than the presence of a UEFI label alone.
 
+== Signal integrity, validation and architecture research ==
+High-speed board interconnects require frequency-dependent loss, impedance discontinuity, return-path continuity, crosstalk and timing-jitter analysis. A link's eye diagram, bit-error rate, receiver equalization and channel insertion loss must be evaluated at its actual signaling rate and test conditions; connector geometry alone cannot prove link margin. For power integrity, measured transient droop depends on the regulator control loop, decoupling network, plane inductance and load step, not only steady-state efficiency. A simplified capacitive contribution during a current step is <math>\Delta V\approx\Delta I\Delta t/C</math> if the capacitor alone supplies the step and ESR/ESL are neglected; this is not a complete PDN model.
+
+A board-specific engineering study should document schematic revision, stack-up, controlled-impedance targets, CPU and memory population, firmware version, measured negotiated link width and speed, thermal conditions, rail ripple and load-step response. Evaluate whether alternative interconnect topology, integrated memory, optical links or heterogeneous chiplet packaging changes system constraints; these are research directions, not universal claims of superiority.
+
 == Limitations and verification ==
 ATX describes a desktop-oriented family, not every laptop, embedded or server board. PCIe slot dimensions, connector counts and nominal generation labels are insufficient to establish electrical lane allocation, memory compatibility or sustained performance. Validate a specific configuration against its board schematic/manual, processor and module specifications, power/thermal envelope and firmware release notes; vendor documentation is not independent reliability evidence.
+
+== Reading depth ==
+[[Motherboard/Simple|Simple treatment]]
 
 == References ==
 * [https://pcisig.com/what-pci-express-pcie-architecture PCI-SIG, What is the PCI Express architecture?], interconnect and lane-width principles.

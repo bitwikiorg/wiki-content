@@ -226,7 +226,7 @@
         "A05"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "claimed"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R24",
@@ -425,9 +425,25 @@
       "title": "Root cause analysis",
       "pr_number": 83,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/83",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/83",
+        "summary": "Canonical Core retains identity, SMW edges and incoming query; two-way depth navigation. Rehomed Core distinctions between initiating event, enabling condition, failed barrier, severity, evidence provenance, FMEA versus retrospective RCA, corrective verification into Technical. Updated NASA citation to NPR 8621.1D; original causal models, quantitative fault-tree example and source citations retained.",
+        "preservation": [
+          "Causal classification and evidence uncertainty",
+          "Five Whys, FTA, FMEA, STAMP/CAST and counterfactual methodological limits",
+          "Original SMW edges, metadata, categories and incoming query",
+          "Quantitative examples, technical citations and accessible hypothetical service failure"
+        ],
+        "scientific_sources": [
+          "NASA NPR 8621.1D official document",
+          "Nancy Leveson Engineering a Safer World MIT Press 2012",
+          "Hernan and Robins Causal Inference What If"
+        ],
+        "tests": "9 in-memory pre-write source checks passed; executable Python tests, CI, V2 and staging not run. Article-specific regression test still requires update for two-depth format.",
+        "gate": "PR #136 two-depth validator dependency; targeted regression update and execution; human review."
+      }
     },
     {
       "id": "A06",
@@ -1534,16 +1550,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A04",
+    "last_checkpoint_article": "A05",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 20,
+    "articles_pending_or_incomplete": 19,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R22",
-    "articles_corrected_pending_validation": 45,
-    "pairs_corrected_pending_validation": 22
+    "last_reviewed_pair": "R23",
+    "articles_corrected_pending_validation": 46,
+    "pairs_corrected_pending_validation": 23
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

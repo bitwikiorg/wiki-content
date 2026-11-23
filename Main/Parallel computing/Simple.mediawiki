@@ -12,5 +12,8 @@ Doubling processors rarely halves elapsed time: some work must remain sequential
 * [https://www.openmp.org/spec-html/5.2/openmp.html OpenMP 5.2 specification].
 * [https://www.mpi-forum.org/docs/ MPI standards].
 
+== Distinctions ==
+Data parallelism performs related work on different pieces of data; task parallelism runs different activities. Concurrency means tasks can make progress independently, but does not necessarily mean they execute simultaneously. Parallel computing is not the same as scaling, which describes how a system changes as resources or workload change. Speedup can also increase energy use or cost.
+
 == Technical treatment ==
 [[Parallel computing/Technical|Technical article]]

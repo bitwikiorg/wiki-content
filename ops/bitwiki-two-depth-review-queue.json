@@ -780,9 +780,29 @@
       "title": "Flash memory",
       "pr_number": 101,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/101",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #101 canonical host composed from Simple; explicit reciprocal Simple/Technical navigation; Technical expanded with device-specific experimental evidence; regression test updated.",
+        "preservation_evidence": [
+          "Core Knowledge object metadata, semantic links to Computer architecture, Semiconductor and Operating system, categories",
+          "NAND/NOR topology and command granularity, charge-storage models and illustrative 0.5 V threshold calculation",
+          "Kioxia 1984/1987/1991 attribution, ONFI 6.0 scope and limitations",
+          "ECC, retention, disturb, bad-block, FTL, garbage collection, logical deletion, power-loss and sanitize caveats",
+          "Illustrative 1 GiB geometry and 1.5 write-amplification arithmetic"
+        ],
+        "scientific_sources": [
+          "Kioxia historical record (vendor provenance only)",
+          "ONFI 6.0 NAND interface specification (not all flash)",
+          "Cai et al., DSN 2015 DOI 10.1109/DSN.2015.49",
+          "Cai et al., experimental retention study arXiv:1805.02819",
+          "Spinelli et al., Computers 2017 DOI 10.3390/computers6020016"
+        ],
+        "static_checks": "9/9 post-write source checks passed; arithmetic reviewed; no Python execution",
+        "tests": "Regression source updated but not executed; V2/staging/CI not executed; complete citation audit outstanding",
+        "gate": "PR #136 shared compatibility prerequisite; human scholarly review and merge approval required",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/101"
+      }
     },
     {
       "id": "N001",
@@ -1128,15 +1148,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N014",
+    "last_checkpoint_article": "A31",
     "run_count": 8,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R08",
-    "articles_corrected_pending_validation": 16,
+    "last_reviewed_pair": "R09",
+    "articles_corrected_pending_validation": 17,
     "pairs_corrected_pending_validation": 8
   },
   "hard_rules": [

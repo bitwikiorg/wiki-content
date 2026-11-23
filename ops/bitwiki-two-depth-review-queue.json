@@ -82,7 +82,7 @@
         "A28"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R08",
@@ -711,9 +711,18 @@
       "title": "Bootloader",
       "pr_number": 98,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/98",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/98",
+        "source_branch": "content/64-bootloader-20261120",
+        "summary": "Consolidated Bootloader into canonical host, Simple and Technical; retained metadata, SMW relationships and incoming query.",
+        "preservation": "Moved unique Core variant table into Technical: embedded ROM, legacy BIOS disk boot, UEFI loader, network/recovery loader and boundaries. Existing UEFI 2.11 boot-manager/image-service and Linux x86 protocol contracts, boot parameters, memory-map key, trust/recovery caveats, alignment and conditional retry math preserved.",
+        "evidence": "UEFI 2.11 and Linux x86 kernel boot protocol primary specifications already cited; no independent full citation audit completed.",
+        "validation": "Source structure reviewed, article-specific regression test updated; executable tests and CI not run, citation audit incomplete.",
+        "blocker": "Shared V2 prerequisite PR #136; article-specific test execution, CI and scholarly verification outstanding.",
+        "human_review_gate": "Human approval after prerequisite, tests, citation audit and CI; no merge authorized."
+      }
     },
     {
       "id": "A29",
@@ -1087,16 +1096,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A27",
+    "last_checkpoint_article": "A28",
     "run_count": 7,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R06",
-    "articles_corrected_pending_validation": 13,
-    "pairs_corrected_pending_validation": 6
+    "last_reviewed_pair": "R07",
+    "articles_corrected_pending_validation": 14,
+    "pairs_corrected_pending_validation": 7
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

@@ -1192,7 +1192,7 @@
         "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/135",
         "source_notes": "Reviewed Core/Simple/Technical and scoped regression; preserved NPU taxonomy, operator/dataflow and memory hierarchy, precision, CPU fallback, 512 MAC example, original Arm/Sze/Jouppi sources and SMW relationships. Added roofline lower-bound assumptions, explicit measurement protocol, architecture research questions; completed Sze DOI metadata.",
         "preservation": "Core subject identity and all SMW links remain; unique Core scope distinctions moved into Technical; canonical host displays Simple by default and links Technical, with reciprocal Simple navigation.",
-        "checks": "Four sequential GitHub file updates succeeded. In-memory source invariants checked; executable Python tests, V2/staging and CI NOT run. Citation verification partial: Sze 2017 bibliographic record and TI DSP guide checked; full claim-by-claim scholarly audit pending.",
+        "checks": "Four sequential GitHub file updates succeeded. In-memory source invariants checked; executable Python tests, V2/staging and CI NOT run. Citation verification partial: Sze 2017 bibliographic record and TI DSP guide checked; full claim-by-claim scholarly audit pending. Reciprocal Technical-to-Simple navigation subsequently written on assigned PR head branch and confirmed by GitHub update response.",
         "blockers": [
           "Shared validation PR #136 pending review/merge",
           "Executable tests and comprehensive citation/CI review outstanding",
@@ -1212,7 +1212,7 @@
         "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/123",
         "source_notes": "Reviewed all Core/Simple/Technical surfaces and targeted tests; preserved FIR formula, 32-tap 48 kHz numerical example, fixed/floating-point tradeoffs, circular addressing, VLIW, DMA, worst-case latency, TI ISA and optimization references. Corrected C67x circular-addressing citation from §3.9 to §§2.7.3/3.8; added deadline inequality, accumulator precision bound, buffer alignment and measurement protocol.",
         "preservation": "Canonical metadata/SMW links preserved. Simple is default transclusion and Technical linked explicitly, not rendered as third depth. Unique Core distinction between DSP architecture and digital signal processing discipline remains in canonical lead.",
-        "checks": "Four sequential GitHub file writes completed; five source-level invariants checked in memory. Python regression updated but not executed; V2/staging/CI not executed. TI SPRU733A addressing-register scope verified against primary manual; comprehensive citation audit outstanding.",
+        "checks": "Four sequential GitHub file writes completed; five source-level invariants checked in memory. Python regression updated but not executed; V2/staging/CI not executed. TI SPRU733A addressing-register scope verified against primary manual; comprehensive citation audit outstanding. Reciprocal Technical-to-Simple navigation subsequently written on assigned PR head branch and confirmed by GitHub update response.",
         "blockers": [
           "Shared infrastructure PR #136 pending",
           "Executable regression/V2/CI and full scholarly audit outstanding",

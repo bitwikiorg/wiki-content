@@ -1,5 +1,5 @@
 {{Source status|status=New article draft|note=Accessible explanation; editorial review pending.}}
-{{Reading depth|base=Operating system kernel|current=Simple}}
+''Reading depth:'' '''Simple''' · [[Operating system kernel/Technical|Technical]]
 = Operating system kernel — Simple =
 <onlyinclude>The '''kernel''' is the part of an [[Operating system]] that can perform privileged operations. It helps programs share the processor, use memory and communicate with hardware while keeping many operations behind controlled interfaces.</onlyinclude>
 
@@ -12,7 +12,11 @@ The kernel is not the whole operating system. A desktop, command shell, applicat
 == Different designs ==
 Some kernels include many device drivers and services in privileged code. Others keep a smaller privileged core and delegate more work to separate processes. Both approaches involve engineering tradeoffs.
 
+== Limits and tradeoffs ==
+The kernel cannot guarantee safety on its own: hardware, firmware, drivers, permissions and other software matter. A smaller kernel can reduce the amount of privileged code but may require more communication between components. Neither approach is automatically faster or more secure.
+
 == Learn more ==
+* [[Operating system kernel|Canonical subject page]] — identity and relationships.
 * [[Operating system]] — the wider system around the kernel.
 * [https://www.kernel.org/doc/html/latest/core-api/mm-api.html Linux kernel memory-management documentation].
 * Klein et al., [https://doi.org/10.1145/1629575.1629596 seL4 formal-verification research] (2009).

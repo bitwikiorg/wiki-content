@@ -217,7 +217,7 @@
         "A03"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R23",
@@ -376,9 +376,23 @@
       "title": "Sensitivity analysis",
       "pr_number": 82,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/82",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/82",
+        "changed": "Canonical Method host composes Simple, explicit reciprocal navigation, Technical scope distinctions, scoped regression revised.",
+        "preservation_evidence": [
+          "Retained local derivatives, Jacobian uncertainty propagation, Sobol decomposition and exact X(1+Z) indices, Morris effects, estimators, correlated-input and constrained-variable caveats",
+          "Preserved decision sensitivity, sensitivity auditing, rare-event limitations, computational reproducibility and scientific source citations",
+          "Retained canonical SMW outgoing links, incoming #ask query, metadata and categories; moved Core-specific method-selection distinctions into Technical"
+        ],
+        "scientific_sources": [
+          "Sobol (2001) DOI 10.1016/S0378-4754(00)00270-6 bibliographic metadata checked",
+          "Morris (1991), NIST and JRC references retained; full proposition-level audit outstanding"
+        ],
+        "tests": "Scoped regression source updated, not executed; source/math examples inspected; V2/CI/staging not executed; PR #136 required.",
+        "gate": "Human approval and PR #136 shared validator; no merge."
+      }
     },
     {
       "id": "A04",
@@ -1503,16 +1517,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A02",
+    "last_checkpoint_article": "A03",
     "run_count": 18,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 22,
+    "articles_pending_or_incomplete": 21,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R21",
-    "articles_corrected_pending_validation": 43,
-    "pairs_corrected_pending_validation": 21
+    "last_reviewed_pair": "R22",
+    "articles_corrected_pending_validation": 44,
+    "pairs_corrected_pending_validation": 22
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

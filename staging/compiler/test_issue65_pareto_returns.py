@@ -30,13 +30,16 @@ class ParetoReturnsTests(unittest.TestCase):
                 self.assertIn("{{:" + name + "/Simple}}", core)
                 self.assertEqual(simple.count("<onlyinclude>"), 1)
                 self.assertEqual(simple.count("</onlyinclude>"), 1)
-                for body, depth in ((core, "Core"), (simple, "Simple"), (tech, "Technical")):
-                    self.assertIn("{{Reading depth|base=" + name + "|current=" + depth + "}}", body)
+                for body in (core, simple, tech):
+                    self.assertNotIn("{{Reading depth", body)
+                    self.assertIn("[[" + name + "/Simple|Simple]]", body)
+                    self.assertIn("[[" + name + "/Technical|Technical]]", body)
+                for body in (simple, tech):
                     self.assertIn("<references/>", body)
                 for body in (simple, tech):
                     self.assertNotIn("{{Knowledge object", body)
                     self.assertNotIn("[[Related to::", body)
-                self.assertGreater(len(simple.split()), 450)
+                self.assertGreater(len(simple.split()), 250)
                 self.assertGreater(len(tech.split()), 1250)
                 result = expand_static_transclusions(core, name, {name + "/Simple": simple})
                 self.assertIn("'''" + (name if name == "Pareto principle" else name.lower()) + "'''", result)

@@ -1,13 +1,18 @@
-<onlyinclude>'''High-bandwidth memory''' (HBM) is a kind of computer memory that stacks several memory chips and connects them to a processor through a very wide connection. This helps move large amounts of data quickly, especially in graphics, scientific computing, and AI accelerators.</onlyinclude>
+<onlyinclude>'''High-bandwidth memory''' (HBM) is a type of [[Dynamic random-access memory|DRAM]] made from memory chips stacked vertically and connected to a processor through a very wide interface. It moves large amounts of data per second, helping graphics processors, scientific simulations and AI accelerators.</onlyinclude>
 
 == How it works ==
-Imagine several floors of memory connected vertically, placed close to a processor. Many data connections can operate in parallel, reducing the need to send all the data through a narrow interface.
+Tiny vertical electrical connections join the stacked chips. Advanced packaging puts the memory close to the processor, allowing many data wires to work in parallel. HBM stores data temporarily and needs regular refresh, like other DRAM.
 
-HBM is still DRAM: it stores information temporarily and needs refreshing. Its main advantage is ''bandwidth'' (how much data can be transferred per second), not necessarily faster response to each individual request.
+== Why it matters ==
+A program that moves large data sets can benefit from the extra ''bandwidth'' (data transferred per second). HBM does not necessarily respond to an individual request faster, and software that rarely waits for memory may see little improvement.
 
-== Tradeoffs ==
-HBM requires sophisticated packaging and cooling, can cost more than conventional memory arrangements, and has finite capacity. Actual speed depends on the program and memory controller.
+== Limits ==
+HBM needs complex packaging and thermal management. Its capacity, cost, available bandwidth and actual performance depend on the particular product and workload; a manufacturer's peak bandwidth number is not a promise of application speed.
+
+== Reading depth ==
+* [[High-bandwidth memory/Simple|Simple]]
+* [[High-bandwidth memory/Technical|Technical]]
 
 == Sources ==
-* [https://www.circuitnet.com/press/95853.html JEDEC HBM specification update (2016)]
-* [https://docs.amd.com/r/en-US/pg276-axi-hbm/HBM-Topology AMD HBM topology documentation]
+* [https://www.cdrinfo.com/D7/content/jedec-updates-high-bandwidth-memory-standard JEDEC association announcement reproduced, JESD235B (2018)]
+* [https://docs.amd.com/r/en-US/pg276-axi-hbm/HBM-Topology AMD PG276 HBM topology]

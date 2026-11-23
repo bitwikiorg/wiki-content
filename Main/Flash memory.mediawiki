@@ -5,24 +5,11 @@
  |status=Established
  |provenance=Kioxia historical technology record; ONFI 6.0 specification (2025); issue #64
 }}
-{{Reading depth|base=Flash memory|current=Core}}
 = Flash memory =
-== Overview ==
 {{:Flash memory/Simple}}
-'''Flash memory''' is electrically programmable and erasable '''nonvolatile semiconductor memory'''. It represents stored information using engineered charge-storage states, commonly floating-gate or charge-trap devices. Unlike [[Computer architecture|working-memory]] DRAM, it retains information without continuous refresh, but its program, erase and read operations have different granularities and reliability constraints.<ref name="history">Kioxia, [https://www.kioxia.com/en-jp/rd/technology/history.html Technology Development History], corporate record of Toshiba flash developments in 1984 and NAND in 1987; historical priority is attributed to the manufacturer.</ref>
-== NAND and NOR ==
-'''NAND flash''' organizes memory cells in strings for high-density storage and normally uses page-based programming and block-based erase. '''NOR flash''' supports addressable reads suited to code storage and memory-mapped access in appropriate devices. These are broad architectural tendencies, not universal performance rankings; specific interfaces and devices determine what operations are supported.
-== Physical state and endurance ==
-Programming and erasure change stored charge and therefore a transistor's threshold-voltage distribution. Finite oxide endurance, charge leakage, read/program disturb, temperature and manufacturing variability can affect data reliability. Multiple bits per cell require narrower voltage-state margins and more sophisticated sensing and error management. A power interruption during programming is not equivalent to loss of all stored charge.
-== Device versus managed storage ==
-Raw NAND exposes physical program/erase constraints; a managed device may add a flash translation layer, error-correcting codes, bad-block management, wear leveling and garbage collection. An SSD's logical writes and durability promises depend on its controller, interface, firmware, cache and power-failure handling, not solely on nonvolatile cells.<ref name="onfi">Open NAND Flash Interface Workgroup, [https://onfi.org/files/ONFI_6_0_Final.pdf ''Open NAND Flash Interface Specification'', revision 6.0, 18 December 2025], NAND interface and command contracts; not a universal NOR or SSD specification.</ref>
-== Historical and specification boundaries ==
-Kioxia attributes the flash concept and 1984 announcement to Toshiba's work, followed by NAND development in 1987. ONFI revision 6.0 specifies one interoperable NAND interface family; it is not the definition of every flash product, historical revision or storage protocol.
-== Connections ==
-[[Related to::Computer architecture|Computer architecture]] uses persistent storage alongside volatile memory; [[Related to::Semiconductor|semiconductor]] devices supply the charge-storage mechanism; [[Related to::Operating system|operating systems]] coordinate persistence through higher-level software. The pending [[Computer memory]] review PR #96 covers memory hierarchy broadly, whereas this article treats flash-device operation and reliability.
-== Reading depths ==
-[[Flash memory/Simple|Simple]] introduces flash operation and uses. [[Flash memory/Technical|Technical]] examines device physics, command granularity, error budgets and controller boundaries.
-== References ==
-<references/>
+== Reading depth ==
+[[Flash memory/Simple|Simple]] · [[Flash memory/Technical|Technical]]
+== Semantic connections ==
+[[Related to::Computer architecture|Computer architecture]] · [[Related to::Semiconductor|Semiconductor]] · [[Related to::Operating system|Operating system]]
 [[Category:Computer science]]
 [[Category:Engineering]]

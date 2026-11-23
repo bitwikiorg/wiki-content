@@ -199,7 +199,7 @@
         "N034"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R21",
@@ -1434,23 +1434,37 @@
       "title": "Motherboard",
       "pr_number": 134,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/134",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/134",
+        "changed": "R20: four scoped files committed sequentially; canonical host transcludes Simple, reciprocal depth navigation and regression update.",
+        "preservation_evidence": [
+          "Retained CPU/socket, memory, I/O, chipset, PCIe lane and firmware distinctions, electrical and thermal compatibility qualifications, ATX connector discussion and 100 W/90% efficiency arithmetic.",
+          "Retained six original SMW/category relationships and Intel/PCI-SIG/UEFI references; added channel integrity, PDN transient assumptions, board-level measurements and architecture research questions."
+        ],
+        "scientific_sources": [
+          "PCI-SIG https://pcisig.com/what-pci-express-pcie-architecture",
+          "Intel ATX 3.0 PSU design guide linked in original",
+          "UEFI Forum https://uefi.org/specifications"
+        ],
+        "tests": "Post-write source checks 7/7; regression updated but not executed; CI/V2/staging and full citation audits not executed.",
+        "gate": "PR #136 shared V2 dependency and human approval; no merge."
+      }
     }
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N031",
+    "last_checkpoint_article": "N034",
     "run_count": 17,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R19",
-    "articles_corrected_pending_validation": 39,
-    "pairs_corrected_pending_validation": 19
+    "last_reviewed_pair": "R20",
+    "articles_corrected_pending_validation": 40,
+    "pairs_corrected_pending_validation": 20
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

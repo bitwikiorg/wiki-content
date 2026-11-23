@@ -1,17 +1,13 @@
-<onlyinclude>'''Computer bus''' is a hardware communication arrangement that transfers information among processors, memory, controllers and peripherals. Historically a bus could mean a shared set of electrical conductors; modern usage also encompasses switched, point-to-point serial links and on-chip interconnect fabrics. A bus specification defines not merely wires but addressing, transactions, timing, arbitration, flow control and error handling.</onlyinclude>
-
-== Architecture ==
-A conventional shared bus separates '''address''' (destination or selected resource), '''data''' (transferred values) and '''control''' (read/write, validity, acknowledgement and other coordination) signals. Multiplexed designs reuse conductors at different times. A transfer may be synchronous to a shared clock or governed by asynchronous handshakes.
-
-Multiple initiators require arbitration; bus ownership, priority and fairness are design decisions. Contention, propagation delay, electrical loading and protocol overhead constrain throughput.
-
-== Contemporary interconnects ==
-* '''PCI Express''' uses packet-based, point-to-point serial links organized in lanes and switched topologies, rather than a single shared parallel electrical bus.<ref name="pcisig">PCI-SIG, [https://pcisig.com/what-pci-express-pcie-architecture What is the PCI Express (PCIe) architecture?].</ref>
-* '''USB4''' provides a high-speed external transport that can share capacity among data and display protocols; USB4 and PCIe are not interchangeable abstractions.<ref name="usbif">USB Implementers Forum, [https://www.usb.org/usb4 USB4].</ref>
-* '''On-chip fabrics''' connect IP blocks using implementations ranging from simple shared interconnects to crossbars and networks-on-chip; their ordering, coherency and arbitration rules are architecture-dependent.
-
-== Distinctions ==
-A computer bus is an interconnect and protocol family, not a general-purpose computer network. A physical connector alone does not define the bus protocol. Nominal line rate is not application payload throughput.
-
-== References ==
-<references/>
+{{Source status|status=New article draft|note=Two reader localizations; editorial review pending shared V2 validation.}}
+{{Knowledge object
+ |title=Computer bus
+ |entity_type=Concept
+ |domain=Computer science, Computer engineering
+ |status=Established
+ |provenance=PCI-SIG PCI Express architecture; USB-IF USB4 specification
+}}
+= Computer bus =
+{{:Computer bus/Simple}}
+<p>'''Reading depth:''' [[Computer bus/Simple|Simple]] · [[Computer bus/Technical|Technical]]</p>
+[[Category:Computer science]]
+[[Category:Technology]]

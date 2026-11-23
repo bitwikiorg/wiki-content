@@ -136,7 +136,7 @@
         "N017"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "corrected_pending_validation"
     },
     {
       "pair_id": "R14",
@@ -1086,9 +1086,26 @@
       "title": "Photolithography",
       "pr_number": 118,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/118",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/118",
+        "preservation_inventory": [
+          "Canonical categories and Related to assertions retained; core process description rehomed into Simple and Technical; positive/negative tone, DUV/EUV optical distinctions, Rayleigh and DOF models, exposure chemistry, overlay, OPC, multipatterning, limitations and ASML citations retained"
+        ],
+        "corrections": [
+          "Removed separately maintained third explanatory localization and installed explicit two-way navigation; canonical hosts Simple",
+          "Added explicit resist processing sequence and process-dependent DOF factor; distinguished resolution proxy from process qualification"
+        ],
+        "validation": {
+          "static": "GitHub writes acknowledged; source transformations inspected before write; post-write checks not executed",
+          "tests": "article-specific regression updated but not executed",
+          "ci": "not executed; shared PR #136 dependency",
+          "citation": "ASML Rayleigh and optics pages independently checked; ASML 2016 DOF presentation checked; comprehensive source audit pending",
+          "dependency": "PR #136"
+        },
+        "human_review_required": true
+      }
     },
     {
       "id": "N018",
@@ -1262,16 +1279,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N016",
-    "run_count": 10,
+    "last_checkpoint_article": "N017",
+    "run_count": 11,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
     "articles_pending_or_incomplete": 65,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R13",
-    "articles_corrected_pending_validation": 25,
-    "pairs_corrected_pending_validation": 12
+    "articles_corrected_pending_validation": 26,
+    "pairs_corrected_pending_validation": 13
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

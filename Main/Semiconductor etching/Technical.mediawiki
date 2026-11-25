@@ -1,0 +1,36 @@
+<onlyinclude>'''Semiconductor etching''' is a coupled transport, surface-reaction, and material-removal process. Its performance is evaluated by etch rate, selectivity, profile fidelity, across-wafer uniformity, surface integrity, and process-window robustness. The mask specifies exposed regions, but chemical kinetics, crystal orientation, ion bombardment, and feature geometry determine the actual etched profile.</onlyinclude>
+
+[[Semiconductor etching/Simple|Read the simple explanation]]
+
+== Reaction and transport mechanisms ==
+In liquid etching, reactants diffuse to a surface, react with a target solid, and soluble products diffuse away. Etch rate can be limited by reaction kinetics or by mass transport; agitation and temperature can alter either regime. Some wet chemistries etch approximately isotropically, while crystallographic etchants can produce orientation-dependent facets. ''Wet'' does not imply ''isotropic''.
+
+In plasma etching, feed gases undergo dissociation and ionization; neutral radicals adsorb, surface reactions form products, and products desorb and are pumped away. Ion bombardment can enhance reactions or sputter material, while surface passivation can suppress lateral removal. Coburn and Winters (1979) describe adsorption, product formation, and desorption as a useful mechanistic decomposition and demonstrate ion–neutral synergy; a simple additive model of isolated ion and neutral removal is therefore not generally reliable.<ref name="coburnmechanism">J. W. Coburn and H. F. Winters, “Plasma etching—A discussion of mechanisms,” ''Journal of Vacuum Science and Technology'' 16(2), 391–403 (1979). [https://doi.org/10.1116/1.569958 DOI].</ref><ref name="coburnsynergy">J. W. Coburn and H. F. Winters, “Ion- and electron-assisted gas-surface chemistry—An important effect in plasma etching,” ''Journal of Applied Physics'' 50(5), 3189–3196 (1979). [https://doi.org/10.1063/1.326355 DOI].</ref>
+
+== Quantitative process descriptors ==
+For an approximately steady etch over an interval, the average vertical rate is
+:<math>R_t = \frac{d_t}{\Delta t}</math>
+where <math>d_t</math> is target thickness removed. The target-to-mask selectivity is
+:<math>S_{t:m} = \frac{R_t}{R_m}</math>
+for rates measured under the same conditions, provided <math>R_m>0</math>. These are operational ratios, not universal material constants. For a hypothetical process removing 120 nm of target in 60 s and 6 nm of mask in the same interval, <math>R_t=2\,\mathrm{nm/s}</math>, <math>R_m=0.1\,\mathrm{nm/s}</math>, and <math>S_{t:m}=20</math>. A 300 nm target at that steady rate would take 150 s nominally; if mask erosion remains 0.1 nm/s, 15 nm of mask would be lost. This calculation excludes breakthrough, overetch, loading, nonlinearity, and spatial variability.
+
+One descriptive anisotropy index is <math>A=1-R_{\mathrm{lateral}}/R_{\mathrm{vertical}}</math>, with both rates positive and defined for a specified geometry. Under this convention, equal rates give <math>A=0</math> and zero lateral removal gives <math>A=1</math>; negative values are possible if lateral removal exceeds vertical removal. Other publications use different profile metrics, so the definition must accompany reported numbers.
+
+== Process-window derivation and verification ==
+Under the explicit constant-rate assumptions above, if the target film has thickness <math>H</math>, required overetch fraction <math>f</math>, mask thickness <math>M</math>, and target-to-mask selectivity <math>S</math>, nominal etch time is <math>t=(1+f)H/R_t</math> and mask loss is <math>\Delta M=(1+f)H/S</math>. A necessary nominal mask-budget condition is <math>M>(1+f)H/S</math>; it is not sufficient because nonuniformity, selectivity drift, breakthrough, and local microloading require additional margins. With the illustrative rates above, <math>H=300\,\mathrm{nm}</math>, <math>f=0.20</math>, and <math>S=20</math>, nominal time is 180 s and mask loss is 18 nm, before process margins. These are derived examples, not measured process data.
+
+Measure etched depth and mask erosion by cross-sectional microscopy or calibrated profilometry, surface chemistry by appropriate spectroscopy, and feature-size distributions across die and wafer; report uncertainty, feature geometry, sampling and etch endpoint definition. Comparing wet and plasma processes requires matched material stacks and damage budgets, not a single blanket rate ranking.
+
+== Pattern fidelity and process limits ==
+Feature-scale transport, aspect-ratio-dependent etching, microloading, local charging, sidewall polymer formation, and mask erosion can change rates and profiles. A vertical profile may require ion-assisted reactions plus lateral passivation; increased ion energy can also cause defects, substrate charging, or roughness. High selectivity does not guarantee high anisotropy or low damage.
+
+Atomic layer etching (ALE) uses sequential surface modification and removal steps intended to approach self-limited removal per cycle. Its idealized cyclic picture is useful but actual processes can suffer incomplete saturation, nonuniformity, or substrate damage. Kanarik and colleagues' 2015 review describes ALE as a process family rather than a universal guarantee of atomically perfect control.<ref name="ale">K. J. Kanarik et al., “Overview of atomic layer etching in the semiconductor industry,” ''Journal of Vacuum Science & Technology A'' 33, 020802 (2015). [https://doi.org/10.1116/1.4913379 DOI].</ref>
+
+== Research gaps ==
+Predicting local etch profiles across heterogeneous feature densities remains difficult because radical transport, ion-angle distributions, charging, passivation and temperature are coupled. A research-grade model should state which of these terms are measured, fitted or omitted and validate against independent cross-sections; the simple selectivity and anisotropy ratios cannot uniquely identify underlying mechanisms.
+
+== Provenance and limitations ==
+The mechanism discussion is grounded in Coburn and Winters' 1979 primary studies; the ALE characterization follows Kanarik et al.'s 2015 review. Numerical examples above are illustrative arithmetic, not measured recipes. Actual etch conditions require material-specific process characterization, metrology, and safety controls. These sources do not establish universal rates, gas recipes, defect budgets, or guaranteed selectivity for a particular fabrication line.
+
+== References ==
+<references />

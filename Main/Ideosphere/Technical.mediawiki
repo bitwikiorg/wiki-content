@@ -1,17 +1,255 @@
-The '''ideosphere''' is a metaphor for the environment in which ideas circulate, interact, change and compete for attention. It is sometimes discussed in connection with memetics and cultural evolution. It is not an independently established physical layer of reality.
+{{Reading depth|base=Ideosphere|current=Technical}}
 
-== Conceptual boundaries and historical context ==
-The term is used loosely in discussions of idea transmission and memetics, and does not have a single agreed formal definition. Dawkins's meme analogy in ''The Selfish Gene'' (1976) is influential background for such discussions. Cultural evolutionary research supplies more explicitly testable models of transmission. The ideosphere should be distinguished from Lotman's semiosphere (cultural sign processes), Floridi's infosphere (informational environment), and a concrete knowledge graph (explicit records and relations). These are related conceptual perspectives, not synonymous objects.
+= Ideosphere — Technical =
 
-== A bounded transmission model ==
-Suppose p_i denotes the observed fraction of sampled participants expressing an explicitly operationalized idea variant i. A simple selection-like update can be written <math>p_i'=p_i w_i/\sum_j p_jw_j</math>, where w_i is a fitted relative transmission factor. This model assumes a closed set of variants and a specified observation interval. It is not a general law of the ideosphere: ideas can be recombined, independently invented, strategically promoted or interpreted differently by different people.
+The '''ideosphere''' is a metaphorical or hypothetical model of cultural idea circulation. It treats ideas as if they occupied an ecology in which variants propagate, compete, recombine, persist, and disappear. The construct belongs historically to memetic discourse rather than to an established formal science with a canonical state space, measurable boundary, or agreed unit of replication.
 
-== Evidence and limitations ==
-Study a delimited corpus with timestamps, citations and documented channels. Define variant equivalence and distinguish copies from independent use; test transmission hypotheses against a model including common external causes. Popularity is not truth or utility. Cultural evolution may be investigated empirically without accepting memetics as a universal theory, and an analogy between biological selection and idea circulation does not establish consciousness or agency of ideas themselves.
+A technical treatment must therefore distinguish three levels:
+
+# the '''metaphor''' of an ecology of ideas;
+# formal models of cultural transmission that can be tested;
+# stronger ontological claims that ideas literally constitute autonomous replicators or a global sphere.
+
+Only the second level can be evaluated directly through specified empirical variables.
+
+== Historical lineage ==
+
+Richard Dawkins introduced the meme analogy in ''The Selfish Gene'' (1976), proposing that cultural entities such as tunes, ideas, and fashions could be considered through the conceptual lens of replication and selection.<ref name="dawkins">Dawkins, R. (1976), ''The Selfish Gene'', Oxford University Press.</ref>
+
+Douglas Hofstadter later explored self-replicating and “viral” sentences and used ''ideosphere'' for the larger domain in which such ideas spread, collected in ''Metamagical Themas''.<ref name="hofstadter">Hofstadter, D. R. (1985), ''Metamagical Themas: Questing for the Essence of Mind and Pattern'', Basic Books.</ref> Aaron Lynch subsequently described himself and Hofstadter as co-inventors of the term in memetic literature.
+
+This history supports a clear provenance: ideosphere language emerged as an analogy for cultural replication. It was not discovered as a physical component of cognition or Earth systems.
+
+== Candidate cultural-replicator model ==
+
+Suppose a study defines <math>k</math> mutually exclusive cultural variants with frequencies
+
+<math>\mathbf p_t=(p_{1,t},\ldots,p_{k,t}), \qquad \sum_i p_{i,t}=1.</math>
+
+A simple selection-like update is
+
+<math>p_{i,t+1}=\frac{p_{i,t}w_i}{\sum_j p_{j,t}w_j},</math>
+
+where <math>w_i</math> is an estimated relative transmission factor.
+
+The equation is useful only under restrictive assumptions:
+
+* variants are well defined;
+* the population is specified;
+* transmission intervals are meaningful;
+* <math>w_i</math> is sufficiently stable;
+* innovation and recombination are negligible or modeled separately;
+* observations represent actual adoption.
+
+Calling <math>w_i</math> “memetic fitness” does not establish biological equivalence.
+
+== Mutation, innovation and reconstruction ==
+
+Cultural variants can change through copying error, deliberate editing, inference, translation, creative recombination, strategic framing, or independent invention.
+
+A more general transition model may use a matrix <math>Q</math> where
+
+<math>Q_{ij}=P(v_j\mid v_i)</math>
+
+is the probability that exposure to variant <math>v_i</math> results in expression of variant <math>v_j</math>. Then a simplified transmission-selection system can be written
+
+<math>p'_{j}\propto\sum_i p_i w_iQ_{ij}.</math>
+
+This resembles mutation–selection models in population genetics, but the interpretation is different. <math>Q_{ij}</math> can include intentional transformation and inference, processes with no direct genetic counterpart.
+
+If people reconstruct representations from meaning rather than copying surface form, variant identity itself becomes difficult to define.
+
+== Horizontal transmission and network structure ==
+
+Cultural transmission is heavily horizontal. Let
+
+<math>G=(V,E)</math>
+
+represent a social or document network. An exposure model can assign each directed edge <math>(u,v)</math> a time-dependent probability of transmitting a representation.
+
+Observed adoption probability may depend on:
+
+<math>P(A_v(t)=1)=F(E_v(t),X_v,C_t),</math>
+
+where <math>E_v(t)</math> is exposure, <math>X_v</math> individual or institutional covariates, and <math>C_t</math> shared external context.
+
+This highlights a central inference problem. Correlated adoption can result from:
+
+* direct transmission;
+* homophily;
+* common media exposure;
+* institutional policy;
+* independent response to the same event.
+
+Network cascades do not identify causal contagion automatically.
+
+== Defining the unit ==
+
+A biological gene has a comparatively constrained physical substrate and replication mechanism. Cultural “ideas” do not have an analogous universally accepted unit.
+
+Potential units include:
+
+* exact strings;
+* propositions;
+* narratives;
+* practices;
+* concepts;
+* images;
+* hashtags;
+* behavioral routines.
+
+Each choice changes the analysis.
+
+Exact-string matching may miss semantic continuity. Semantic clustering may merge distinct claims. Human coding introduces interpretation. Embedding-based similarity introduces model dependence.
+
+A rigorous study should publish the operational definition and sensitivity analyses showing whether conclusions survive plausible alternative groupings.
+
+== Cultural selection versus biased transmission ==
+
+Changes in cultural frequency can arise through several processes often grouped loosely as “selection”:
+
+* content bias;
+* prestige bias;
+* conformity;
+* anti-conformity;
+* payoff-biased learning;
+* institutional enforcement;
+* algorithmic ranking;
+* demographic turnover.
+
+These mechanisms differ causally. A generic ideosphere metaphor can hide them if everything is described as idea competition.
+
+Contemporary cultural evolution therefore tends to model specific social-learning and population processes rather than rely on a single meme-selection mechanism.<ref name="cultural">[https://plato.stanford.edu/entries/evolution-cultural/ Stanford Encyclopedia of Philosophy, “Cultural Evolution.”]</ref>
+
+== External storage ==
+
+Cultural representations can persist outside active cognition in books, databases, recordings, code repositories, and archives.
+
+Let <math>M_t</math> represent representations actively expressed by people and <math>A_t</math> archived representations. Dynamics can involve
+
+<pre>
+M → A    recording
+A → M    retrieval
+M → M    interpersonal transmission
+A → A    copying/migration
+</pre>
+
+This differs sharply from biological replication because an archived item can remain unchanged and causally inactive for long periods before being retrieved.
+
+The Internet therefore changes cultural storage and diffusion without proving that it is literally a global mind or self-organizing ideosphere.
+
+== Institutions as transmission operators ==
+
+Institutions select and transform cultural material. Schools determine curricula; journals review manuscripts; search engines rank pages; governments regulate publication; social platforms recommend content.
+
+An institutional pipeline can be represented as
+
+<math>x \xrightarrow{F_1} x_1 \xrightarrow{F_2} x_2 \cdots \xrightarrow{F_n} y,</math>
+
+where each <math>F_i</math> filters, ranks, reformats, or recontextualizes a representation.
+
+Observed prevalence of <math>y</math> is therefore jointly produced by content, users, institutions, and technical infrastructure. Assigning agency to the “meme” alone can obscure these mechanisms.
+
+== Diversity metrics ==
+
+Some memetic discussions describe ideosphere “health” through diversity. Diversity can be quantified, but no standard metric establishes ideospheric health.
+
+For variant proportions <math>p_i</math>, Shannon diversity is
+
+<math>H=-\sum_i p_i\log p_i,</math>
+
+while Simpson-type measures weight common variants differently.
+
+These metrics describe distributional diversity only. A high-diversity misinformation ecosystem is not necessarily epistemically healthy, and a low-diversity domain can reflect strong scientific consensus. Normative evaluation requires independent criteria.
+
+== Truth and diffusion ==
+
+Let <math>T_i</math> denote truth status or evidential support and <math>w_i</math> transmission success. There is no general law requiring
+
+<math>w_i=f(T_i)</math>
+
+to be monotonic.
+
+A false claim can have high transmission fitness; a true but technical claim can spread slowly. Empirical studies of misinformation, rumor, and scientific communication must therefore keep epistemic quality separate from diffusion.
+
+[[Knowledge]] is not defined by cultural prevalence.
+
+== Ideosphere versus semiosphere ==
+
+The [[Semiosphere]] is a cultural-semiotic framework centered on sign systems, translation, boundaries, and meaning generation. The ideosphere is more directly tied to ideas as cultural entities and memetic/ecological metaphors.
+
+A study of a translated political slogan could use semiosphere theory to analyze boundary translation and ideosphere language to discuss diffusion. These are different explanatory lenses.
+
+== Ideosphere versus infosphere ==
+
+The [[Infosphere]] concerns informational environments and entities. A digital archive belongs straightforwardly to an informational environment even if no idea within it is actively diffusing.
+
+Ideosphere claims add a stronger cultural-dynamic interpretation: ideas are treated as members of a population or ecology.
+
+== Ideosphere versus information ecology ==
+
+[[Information ecology]] can analyze information practices, infrastructures, institutions, and users without positing replicator-like ideas. It is often a better framework when the research target is organizational information flow rather than cultural evolution.
+
+== Artificial agents ==
+
+Generative models and autonomous agents can change cultural-diffusion dynamics by producing variants at low marginal cost and redistributing existing representations.
+
+A research model should distinguish:
+
+* human-authored versus machine-generated content;
+* original generation versus retrieval or paraphrase;
+* bot amplification versus human adoption;
+* platform exposure versus belief;
+* syntactic replication versus semantic endorsement.
+
+High machine-generated volume could increase measured representation diversity while reducing human viewpoint diversity, or vice versa. “Expansion of the ideosphere” is too vague to resolve these possibilities.
+
+== Empirical design ==
+
+A testable ideosphere-inspired study should specify:
+
+# corpus or population;
+# time interval;
+# unit of cultural variation;
+# measurement of exposure;
+# adoption/expression criterion;
+# transmission graph;
+# mutation/recombination rule;
+# external shocks;
+# competing causal models;
+# uncertainty.
+
+Inference should distinguish descriptive diffusion from causal transmission.
+
+Where possible, evaluate on later time periods, independently collected datasets, experiments, or natural experiments.
+
+== Epistemic classification ==
+
+The ideosphere is classified here as '''Hypothetical''' because no accepted empirical procedure identifies a single ideosphere as an independent entity with agreed boundaries, state variables, or causal laws.
+
+This does not imply that cultural transmission is imaginary. The observable phenomena motivating the metaphor are real. The uncertainty concerns the ontological and explanatory claim that they form one coherent ecology of ideas with replicator-like units.
+
+== Failure modes ==
+
+Common errors include:
+
+* treating metaphors as mechanisms;
+* equating popularity with fitness and fitness with truth;
+* assuming textual similarity proves transmission;
+* assuming network adjacency proves influence;
+* treating every idea as a stable meme;
+* ignoring intentional reasoning and institutional power;
+* treating external storage as equivalent to cognitive belief;
+* attributing agency or consciousness to ideas;
+* conflating the [[Semiosphere]], [[Infosphere]], and ideosphere.
 
 == References ==
-* [https://plato.stanford.edu/entries/evolution-cultural/ Stanford Encyclopedia of Philosophy, Cultural Evolution]
-* [https://global.oup.com/academic/product/the-selfish-gene-9780198788607 Dawkins (1976), The Selfish Gene, Oxford University Press]
+
+<references />
+
+* Dennett, D. C. (1995), ''Darwin's Dangerous Idea'', Simon & Schuster.
+* Mesoudi, A. (2011), ''Cultural Evolution'', University of Chicago Press.
 
 == Reading depth ==
-[[Ideosphere/Simple|Simple explanation]]
+
+[[Ideosphere/Simple|Simple explanation]] · [[Ideosphere|Core article]]

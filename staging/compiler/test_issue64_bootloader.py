@@ -29,6 +29,7 @@ class BootloaderArticleTests(unittest.TestCase):
         self.assertIn("{{:Bootloader/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertNotIn("{{Reading depth", core + simple + tech)
         for text in (core, simple, tech):
             self.assertIn("[[Bootloader/Simple|Simple]]", text)

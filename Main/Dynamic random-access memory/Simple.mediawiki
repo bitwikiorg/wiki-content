@@ -1,0 +1,19 @@
+[[Dynamic random-access memory/Simple|Simple]] · [[Dynamic random-access memory/Technical|Technical]]
+= Dynamic random-access memory — Simple =
+<onlyinclude>'''Dynamic random-access memory''' ('''DRAM''') is computer memory that stores bits using tiny electrical charges. The charges leak, so the memory must regularly refresh them while power is supplied. DRAM is widely used for a computer's main working memory, but it is not the same as every kind of RAM.
+== Rows of tiny cells ==
+Think of a library with many shelves. DRAM cells are grouped into rows and banks. A memory controller opens a row; sensing circuits detect and restore its tiny electrical signals. The controller can then read or write selected columns. This is an organizational analogy, not a literal physical library.<ref name="micronsimple">Micron Technology, [https://www.micron.com/products/memory/dram-components DRAM component resources and data sheets].</ref>
+== Why refresh? ==
+The stored charge does not last indefinitely. The memory system periodically restores data according to the device's requirements. Ordinary DRAM is volatile, so turning off power does not preserve its contents reliably.
+== Why does speed vary? ==
+An already-open row can be quicker to access than a different row in the same bank, which may require closing the first row and opening the next. Other requests and refresh operations also take time. A transfer-rate label is not a promise of fixed access latency.<ref name="jedecsimple">JEDEC, [https://www.jedec.org/standards-documents DDR5 SDRAM standards family], command and timing requirements.</ref>
+== DRAM versus other memory ==
+SRAM usually uses stable transistor-based latches while powered and is common in processor caches. Flash memory retains information without continuous power but has different writing and erasing behavior. DRAM's dense charge-storage cells, refresh requirements and row organization make it a separate technical subject.
+== What can go wrong? ==
+Cells may fail to retain charge or experience disturbance under certain access patterns. Research has demonstrated row-disturbance bit flips in susceptible devices, but no one result applies to all chips.<ref name="hammersimple">Kim et al., [https://doi.org/10.1145/2678373.2665726 ISCA 2014 DRAM disturbance experiments].</ref>
+
+</onlyinclude>
+
+For device timing, engineering models and evidence limitations, continue to [[Dynamic random-access memory/Technical|Technical]].
+== References ==
+<references/>

@@ -1,0 +1,17 @@
+A '''digital organism''' is an artificial-life entity represented by executable instructions or another computational structure that can participate in a simulated process of replication, variation and evolution.
+
+== Experimental architecture ==
+Avida is an influential platform in which instruction sequences execute in a virtual environment, reproduce with mutation and compete under resource and scheduling rules. Genotype denotes the inherited instruction sequence; phenotype refers to operational properties such as execution, replication or task performance. The simulator supplies an instruction set, memory, resource allocation and mutation mechanisms. These are part of the experimental environment and must be reported.
+
+== Evolutionary dynamics ==
+In a simple discrete-generation model with genotype frequencies p_i, relative reproduction weights w_i and mutation matrix Q_ij, <math>p_j'=\sum_i p_iw_i Q_{ij}/\sum_i p_iw_i</math>, assuming each row of Q sums to one. This idealization omits spatial effects, asynchronous execution and stochastic drift. Digital experiments can vary mutation rates and environmental rewards independently, record ancestry, and reconstruct the effect of intermediate variants. Lenski et al. (2003) examined the evolution of complex computational features in digital populations, including trajectories involving initially disadvantageous mutations.
+
+== Reproducibility and limits ==
+Record platform version, instruction set, population size, resource model, initialization, mutation policy and seeds. Compare replicate trajectories and controls with task rewards or mutation disabled; do not infer inevitability from one successful run. Digital experiments offer inspectable lineage and controlled conditions but their conclusions depend on the implemented environment. Self-copying behavior does not by itself establish biochemical metabolism, autopoietic self-production or subjective experience. Findings may inform evolutionary hypotheses without making digital and biological organisms interchangeable.
+
+== References ==
+* [https://www.nature.com/articles/nature01568 Lenski, Ofria, Pennock and Adami (2003), The evolutionary origin of complex features]
+* [https://pubmed.ncbi.nlm.nih.gov/12736677/ Lenski et al., PubMed record]
+
+== Reading depth ==
+[[Digital organism/Simple|Simple explanation]]

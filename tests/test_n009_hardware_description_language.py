@@ -35,8 +35,10 @@ class HardwareDescriptionLanguageSourceTests(unittest.TestCase):
     def test_citations_and_refs(self):
         for surface in (self.core, self.simple, self.technical):
             self.assertIn("<references/>", surface)
-            names = re.findall(r'<ref name="([^"]+)"', surface)
+            names = re.findall(r'<ref name="([^"]+)"\s*>', surface)
+            uses = re.findall(r'<ref name="([^"]+)"\s*/>', surface)
             self.assertEqual(len(names), len(set(names)), "duplicate reference declaration")
+            self.assertFalse(set(uses) - set(names), "undefined named reference")
         self.assertIn("standards.ieee.org/ieee/1076/5179/", self.technical)
         self.assertIn("standards.ieee.org/ieee/1800/7743/", self.technical)
 

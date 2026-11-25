@@ -2141,6 +2141,21 @@
           "Human PR approval required"
         ],
         "review_gate": "No merge/deploy without human approval"
+      },
+      "final_validation_source_audit": {
+        "id": "N022",
+        "pr": 135,
+        "head": "5e3dcbaea1a468e110db741348804180a17e2c4d",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Computer hardware"
+        ],
+        "regression_paths": [
+          "tests/test_neural_processing_unit_article.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2239,6 +2254,20 @@
           "dependency": "PR #136"
         },
         "human_review_required": true
+      },
+      "final_validation_source_audit": {
+        "id": "N025",
+        "pr": 125,
+        "head": "0e71199c4c7dd44b0a3d22a493398264053fb3dc",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Computer hardware, Semiconductor technology"
+        ],
+        "regression_paths": [
+          "tests/test_n025_chiplet.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2262,6 +2291,20 @@
         ],
         "tests": "Four sequential GitHub writes succeeded; executable regression tests, CI, V2 and staging not executed; full scholarly citation audit outstanding.",
         "gate": "Shared two-way validation PR #136 pending; human review and merge authorization required."
+      },
+      "final_validation_source_audit": {
+        "id": "N026",
+        "pr": 126,
+        "head": "7f945dd5533144ae16fa034b55ec40dfaf081477",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity"
+        ],
+        "regression_paths": [
+          "tests/test_memory_controller_article.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2285,6 +2328,18 @@
         ],
         "tests": "Four GitHub writes succeeded; arithmetic checked; regression updated but not executed; CI/V2/staging not executed; full citation audit pending.",
         "gate": "Shared PR #136 pending; human review required."
+      },
+      "final_validation_source_audit": {
+        "id": "N027",
+        "pr": 127,
+        "head": "2ab3041470c8366b3f16eb32472e410bff5612ce",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "tests/test_computer_bus_article.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2309,6 +2364,18 @@
         ],
         "tests": "Four sequential GitHub writes and six post-write source assertions passed; arithmetic verified; Python regression updated but not executed; CI/V2/staging and comprehensive citation audit outstanding.",
         "gate": "PR #136 shared validation prerequisite; human review and separate merge authorization required."
+      },
+      "final_validation_source_audit": {
+        "id": "N028",
+        "pr": 128,
+        "head": "dc1fd92d0d76474dd3ada281f8f044978aef0fc0",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "tests/test_network_interface_controller_n028.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2333,6 +2400,21 @@
         ],
         "tests": "Four GitHub file writes succeeded. Source-level review and 0.6 A, 92.31% arithmetic checked; updated Python tests not executed, V2/CI/staging and full citation audit unverified.",
         "gate": "PR #136 shared validation prerequisite; human approval required; no merge."
+      },
+      "final_validation_source_audit": {
+        "id": "N029",
+        "pr": 129,
+        "head": "574b8c86f7baedec257c13e1844e4b2085b3076b",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity"
+        ],
+        "regression_paths": [
+          "tests/test_power_electronics_n029.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2357,6 +2439,22 @@
         ],
         "tests": "Four GitHub file writes succeeded; numerical calculations reviewed (7 W, 41.67%, 0.583 A). Python regression updated but not executed; V2/CI/staging and comprehensive source attribution audit unverified.",
         "gate": "PR #136 shared validation prerequisite; human approval required; no merge."
+      },
+      "final_validation_source_audit": {
+        "id": "N030",
+        "pr": 130,
+        "head": "17c0bc96525b6bc280ac388aa34a4dbfe34ab9a4",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "Related to targets absent: Feedback control"
+        ],
+        "regression_paths": [
+          "tests/test_n030_voltage_regulator.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2381,6 +2479,21 @@
         ],
         "tests": "Post-write source assertions 7/7 after reciprocal navigation correction; regression test updated but not executed; CI/V2/staging and complete citation audits not run.",
         "gate": "PR #136 required for V2; human approval required; no merge."
+      },
+      "final_validation_source_audit": {
+        "id": "N031",
+        "pr": 131,
+        "head": "98d05d417f1718d0839ea7b7b32f6132e174a187",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Computing"
+        ],
+        "regression_paths": [
+          "tests/test_parallel_computing_n031.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2407,6 +2520,21 @@
         "tests": "Scoped pytest source updated but not executed; CI/V2/staging not run; complete citation audit outstanding",
         "gate": "PR #136 validation prerequisite; human scholarly review and merge approval",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/132"
+      },
+      "final_validation_source_audit": {
+        "id": "N032",
+        "pr": 132,
+        "head": "03e94c4dd64493b5aad7ac1a2f1e6eb1a2d80254",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Semiconductor manufacturing"
+        ],
+        "regression_paths": [
+          "tests/test_wafer_testing_n032.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2433,6 +2561,21 @@
         "tests": "Scoped pytest source updated but not executed; V2/staging/CI not run; complete citation audit outstanding",
         "gate": "PR #136 shared validator prerequisite; human scholarly review and merge approval",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/133"
+      },
+      "final_validation_source_audit": {
+        "id": "N033",
+        "pr": 133,
+        "head": "79d5e5d7d72d3e06cf248714aca97bb773efbc7d",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Semiconductor manufacturing"
+        ],
+        "regression_paths": [
+          "tests/test_semiconductor_manufacturing_yield.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2456,6 +2599,21 @@
         ],
         "tests": "Post-write source checks 7/7; regression updated but not executed; CI/V2/staging and full citation audits not executed.",
         "gate": "PR #136 shared V2 dependency and human approval; no merge."
+      },
+      "final_validation_source_audit": {
+        "id": "N034",
+        "pr": 134,
+        "head": "905c3f1df340966fe7fe7209757bcf76bddf4c18",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Computer hardware"
+        ],
+        "regression_paths": [
+          "tests/test_motherboard.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     }
   ],

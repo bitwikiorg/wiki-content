@@ -11,6 +11,7 @@ class NetworkInterfaceControllerSources(unittest.TestCase):
         simple = (BASE / "Network interface controller/Simple.mediawiki").read_text(encoding="utf-8")
         technical = (BASE / "Network interface controller/Technical.mediawiki").read_text(encoding="utf-8")
         self.assertIn("|title=Network interface controller", core)
+        self.assertIn("== What it does ==", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
         self.assertIn("{{:Network interface controller/Simple}}", core)
         self.assertNotIn("{{:Network interface controller/Technical}}", core)
         for source in (core, simple, technical):

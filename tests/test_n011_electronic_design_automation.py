@@ -28,6 +28,9 @@ def test_technical_has_provenance_and_caveats():
 def test_only_two_reader_depths():
     core, simple, technical = [p.read_text(encoding='utf-8') for p in FILES]
     assert '{{:Electronic design automation/Simple}}' in core
+    assert '{{Knowledge object' in core
+    assert '<onlyinclude>{{:Electronic design automation/Simple}}</onlyinclude>' in core
+    assert '== ' in simple.split('<onlyinclude>', 1)[1].split('</onlyinclude>', 1)[0]
     assert '== Scope ==' not in core
     assert 'Template:Reading depth' not in '\n'.join([core,simple,technical])
     assert 'Ajayi et al.' in technical

@@ -1,0 +1,17 @@
+A '''digital ecosystem''' is a collection of interacting digital technologies, services, organizations and users whose activities depend on one another. An ecosystem may include platforms, applications, devices, shared standards and participants that maintain or use them.
+
+== Architectural senses ==
+In platform studies the focus is on interdependent participants and complementary services; in computing, Briscoe and De Wilde proposed an ecosystem-oriented architecture combining service-oriented systems with distributed evolutionary search. Their particular architecture is one research model, not a required characteristic of every digital ecosystem.
+
+== Representation and interaction ==
+Represent dependencies using a directed graph in which an edge points from a consumer to a required service. Record version constraints and access policies as distinct relations. An outage may propagate along dependency paths, while redundancy can mitigate some failures if alternatives do not share the same underlying provider. A service-composition search can encode a sequence of compatible services, evaluate latency and correctness against a request, and mutate candidate compositions under interface constraints.
+
+== Governance and evaluation ==
+Assess interoperability with contract tests, fault injection, version migration and measured switching costs. Compare distributed search against static service composition on representative tasks. Platform rules can facilitate compatibility while concentrating control; a graph of dependencies cannot establish fair governance. Avoid mapping biological fitness or reproduction onto digital participants unless the operational mechanism is explicitly defined.
+
+== References ==
+* [https://doi.org/10.1145/1315843.1315864 Briscoe and De Wilde (2006), Digital ecosystems: evolving service-oriented architectures]
+* [https://arxiv.org/abs/1112.0204 Briscoe, Sadedin and De Wilde, Digital Ecosystems: Ecosystem-Oriented Architectures]
+
+== Reading depth ==
+[[Digital ecosystem/Simple|Simple explanation]]

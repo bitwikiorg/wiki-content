@@ -24,6 +24,7 @@ class InstructionSetArchitectureTests(unittest.TestCase):
         self.assertIn("{{:"+NAME+"/Simple}}",core)
         self.assertEqual(simple.count("<onlyinclude>"),1)
         self.assertEqual(simple.count("</onlyinclude>"),1)
+        self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         for body,depth in ((core,"Core"),(simple,"Simple"),(technical,"Technical")):
             self.assertIn("[["+NAME+"/Simple|Simple]]",body)
             self.assertIn("[["+NAME+"/Technical|Technical]]",body)

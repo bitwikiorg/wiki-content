@@ -2,7 +2,7 @@
 
 = Instruction set architecture — Simple =
 
-<onlyinclude>An '''instruction set architecture''' ('''ISA''') is the set of rules that defines how a processor presents itself to machine-code software. It specifies what instructions mean, which registers programs can use, and other visible behaviors such as how memory is addressed. An ISA is not the same thing as a particular processor chip or the internal circuits used to build one.<ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], official release version 20260120, including the base integer instruction set and its extensions.</ref></onlyinclude>
+<onlyinclude>An '''instruction set architecture''' ('''ISA''') is the set of rules that defines how a processor presents itself to machine-code software. It specifies what instructions mean, which registers programs can use, and other visible behaviors such as how memory is addressed. An ISA is not the same thing as a particular processor chip or the internal circuits used to build one.<ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], official release version 20260120, including the base integer instruction set and its extensions.</ref>
 
 == Instructions are a shared language ==
 
@@ -29,6 +29,8 @@ A [[Compiler]] chooses machine instructions supported by its target ISA. An [[Op
 == How can compatibility fail? ==
 
 Programs can fail because they use unsupported instructions, assume a different binary format or calling convention, depend on incompatible operating-system services, or rely on behavior that the ISA does not promise. The ISA, the application binary interface (ABI) and the operating-system interface are related but distinct contracts.
+
+</onlyinclude>
 
 == Continue reading ==
 '''Reading versions:''' [[Instruction set architecture/Simple|Simple]] · [[Instruction set architecture/Technical|Technical]]

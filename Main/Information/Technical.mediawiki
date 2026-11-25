@@ -21,7 +21,17 @@ Information can be embodied in physical states, encoded in symbols, or represent
 
 Claims that information is “physical” concern implementation and physical constraints, not an identity between all informational and semantic concepts.
 
+
+== Distinct information measures ==
+Self-information <math>I(x)=-\log_2 p(x)</math> is defined for a specified probability model. Shannon entropy averages it across outcomes, whereas mutual information measures statistical dependence. For a fair coin H=1 bit; for a coin with heads probability 0.9, H≈0.469 bits. Neither entropy measures whether a proposition is true. Algorithmic information theory instead studies minimal description lengths relative to a computational description language; exact Kolmogorov complexity is generally uncomputable. Semantic information theories introduce content, representation and sometimes truth conditions; they are not interchangeable with a coding-length measure.
+
+== Representation, inference and evidence ==
+A sensor output is a signal, a character encoding maps symbols to representations, and a probability model quantifies uncertainty about defined variables. Establish the variable, units, alphabet, sampling protocol and context before comparing measurements. A received message may be accurately transmitted but false or misleading. Bayes' rule updates a probability distribution conditional on an observation only relative to prior and likelihood assumptions. Information ecology studies the social and technical conditions affecting circulation, while semiotics analyzes sign interpretation. These do not follow solely from entropy. A knowledge claim requires appropriate evidence and justification beyond data availability.
+
 == References ==
 * SEP, “Information”.
 * Cover & Thomas.
 * MacKay, ''Information Theory, Inference, and Learning Algorithms''.
+* [https://plato.stanford.edu/entries/information/ Stanford Encyclopedia of Philosophy, Information]
+* [https://plato.stanford.edu/entries/information-semantic/ Stanford Encyclopedia of Philosophy, Semantic Conceptions of Information]
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]

@@ -29,7 +29,19 @@ Channel coding relates reliable transmission rate to channel capacity.
 
 Rate–distortion theory studies lossy compression when controlled distortion is permitted.
 
+
+== Divergence and channel capacity ==
+For distributions p and q on the same discrete alphabet, <math>D_{KL}(p\|q)=\sum_xp(x)\log_2[p(x)/q(x)]</math> is nonnegative, but is generally asymmetric and not a metric. It is infinite when q assigns zero probability to an event of positive p probability. For a discrete memoryless channel with transition law W(y|x), capacity is <math>C=\max_{p(x)}I(X;Y)</math> bits per channel use. For a binary symmetric channel with independent crossover probability ε, uniform input achieves C=1−h₂(ε), where h₂ is binary entropy. The coding theorem concerns asymptotically reliable transmission at rates below capacity, not zero error at arbitrary finite block length.
+
+== Coding and distortion ==
+For an independently drawn discrete symbol and a binary prefix code, expected length L is bounded by H; a Shannon code achieves H≤L<H+1 for a nondegenerate finite source. Huffman coding optimizes expected length among binary prefix codes. Lossy coding replaces exact reconstruction with a distortion constraint; under a memoryless source model the rate–distortion function is the minimum mutual information over test channels satisfying the expected distortion bound. The distortion function is part of the problem specification, not a measure of semantic truth.
+
+== Experimental estimation ==
+Estimate empirical entropy from repeated samples with documented alphabet and sample size. Finite-sample plug-in estimates may be biased, especially for sparse distributions. Evaluate a communication code on independent messages under an explicit channel model and report error rate, throughput, latency and overhead separately. Statistical dependence does not imply causation.
+
 == References ==
 * Shannon (1948).
 * Cover & Thomas.
 * MacKay.
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]
+* [https://crypto.stanford.edu/~blynn/pr/symbol.html Stanford, Symbol Codes]

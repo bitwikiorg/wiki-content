@@ -1,0 +1,76 @@
+''Reader localizations:'' '''Simple''' · [[Scaling/Technical|Technical]]
+
+
+= Scaling — Simple =
+
+<onlyinclude>'''Scaling''' describes how a system, quantity or process changes when its size, workload, resources or operating conditions change. A computer service may need to handle more users; a factory may need to make more products; a physical model may need to predict what happens to a larger object. These are related questions, but they do not have one universal scaling rule. Whether something scales well depends on what is increased, what must stay the same and which limits matter.<ref name="amdahl">Gene M. Amdahl, [https://doi.org/10.1145/1465482.1465560 “Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities”], ''AFIPS Spring Joint Computer Conference'' (1967), limits from work that does not benefit from parallelism.</ref>
+
+== Why growing a system is not always simple ==
+
+Suppose an online service handles 100 requests each second. If twice as many users arrive, adding another server may help—but only if enough of the work can be divided. If all servers need the same database, the database may become the bottleneck. More hardware can then increase costs without doubling useful capacity.
+
+Something similar happens in a factory. Doubling the number of machines does not necessarily double production if supplies, electricity, quality checks or deliveries cannot keep pace.
+
+== What should we measure? ==
+
+The word “scale” is incomplete without a metric and a workload.
+
+{| class="wikitable"
+! Measurement !! Practical question
+|-
+| Throughput || How many useful requests, units or tasks finish per second?
+|-
+| Latency || How long does one request or task take?
+|-
+| Resource cost || How much equipment, energy or money does the system need?
+|-
+| Quality || Does the output remain correct and reliable as demand increases?
+|-
+| Availability || Can the system keep working under the larger demand?
+|}
+
+A service can process more requests while making each user wait longer. That may be acceptable for one application and unacceptable for another.
+
+== Two ways to add computing resources ==
+
+'''Vertical scaling''' commonly means giving a computer more resources, such as memory or processing power. '''Horizontal scaling''' commonly means adding more computers or service instances. Either can be appropriate, but each introduces different costs and failure conditions.
+
+When a program is divided among processors, some work may still be serial. Gene Amdahl's 1967 argument explains why that part limits speedup for a fixed amount of work.<ref name="amdahl"/> John Gustafson later showed why a different answer is possible when larger computing systems also solve larger problems: the workload being scaled matters.<ref name="gustafson">John L. Gustafson, [https://doi.org/10.1145/42411.42415 “Reevaluating Amdahl's law”], ''Communications of the ACM'' 31(5), 532–533 (1988), scaled-size workload interpretation.</ref>
+
+== Scaling in the physical sciences ==
+
+A physical object may change in more than one way as its dimensions increase. For a cube, doubling the length of every edge multiplies surface area by four and volume by eight. These different rates help explain why very large and very small objects may face different heat, weight or strength constraints.
+
+dimensional analysis helps identify combinations of physical quantities that can be compared across scales. It does not guarantee that a small experiment predicts every behavior of a larger system.
+
+== A bottleneck can move ==
+
+Suppose a team improves a slow database. Now the network, storage, power supply or another service may limit performance. Scaling is an ongoing system problem rather than a one-time request to add machines.
+
+For an existing system, engineers may test different workloads and record the output, latency, errors and costs. A claim like “10× scalable” is weak without the test conditions and a definition of what improved tenfold.
+
+== Scaling and other ideas ==
+
+* [[Computational complexity]] studies how the resources needed by algorithms or problems change with input size.
+* [[Computer architecture]] explains processing and memory organization.
+* [[Distributed system]] studies coordination among separate computing components.
+* sensitivity analysis studies how outputs change when parameters vary.
+* [[Optimization]] helps select resource allocations for a specified objective and constraints.
+
+These topics overlap, but no single one explains every kind of scaling.
+
+== What scaling does not promise ==
+
+More users, more computers and more work are different changes. A system may scale in throughput but not in cost, reliability or fairness. Some tasks cannot be divided efficiently; others become dominated by communication, coordination or waiting.
+
+A useful claim states the workload, baseline, added resources, observed results, failure thresholds and economic cost. Without those details, “scales indefinitely” is a slogan, not a scientific conclusion.
+
+</onlyinclude>
+
+== Continue reading ==
+
+[[Scaling|Canonical subject]] compares resource, workload and physical scaling. [[Scaling/Technical|Technical]] develops throughput and efficiency equations, Amdahl and Gustafson models, queueing relations, load testing, economies of scale, and physical similarity limits with quantitative examples.
+
+== References ==
+
+<references/>

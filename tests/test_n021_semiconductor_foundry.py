@@ -9,6 +9,8 @@ class FoundrySurfaces(unittest.TestCase):
         simple = (BASE / "Simple.mediawiki").read_text(encoding="utf-8")
         technical = (BASE / "Technical.mediawiki").read_text(encoding="utf-8")
         self.assertIn("{{:Semiconductor foundry/Simple}}", core)
+        self.assertIn("{{Knowledge object", core)
+        self.assertIn("== How it works ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertNotIn("{{:Semiconductor foundry/Technical}}", core)
         self.assertIn("[[Semiconductor fabrication]]", core)
         for body in (simple, technical):

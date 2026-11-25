@@ -1,0 +1,157 @@
+''Reader localizations:'' [[Logic gate/Simple|Simple]] · '''Technical'''
+
+= Logic gate — Technical =
+
+A '''logic gate''' is an implementation of a Boolean input–output function at an engineered physical interface. A mathematical gate has discrete inputs and a deterministic truth function; a circuit realizes the abstraction with devices, voltages, charge transport, capacitances and nonzero propagation time. The gap between the Boolean representation and real electrical behavior is essential for synthesis, verification, reliability and systems integration. Claude Shannon's 1938 analysis systematically mapped Boolean expressions to relay switching networks; contemporary CMOS gates implement related functions with complementary transistor networks.<ref name="shannon">Claude E. Shannon, [https://doi.org/10.1109/EE.1938.6431064 “A Symbolic Analysis of Relay and Switching Circuits”], ''Electrical Engineering'' 57, 713–723 (1938), mathematical organization of relay circuits.</ref><ref name="mit">MIT OCW 6.004, [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ ''Computation Structures'', digital abstraction, combinational synthesis and CMOS timing notes], formal and device-level treatments.</ref>
+
+== Boolean functions and completeness ==
+
+For <math>n</math> Boolean inputs, a combinational function is a mapping <math>f:\{0,1\}^{n}\to\{0,1\}^{m}</math> for <math>m</math> outputs. A single-output truth table has <math>2^n</math> input rows. Two symbolic expressions are Boolean-equivalent when they define the same output on every allowed input assignment, regardless of their circuit area or delays.
+
+For a two-input AND, OR, NAND, NOR and XOR, writing negation as <math>\neg</math>, conjunction as <math>\land</math> and disjunction as <math>\lor</math>:
+
+<math display="block">f_{\rm NAND}(A,B)=\neg(A\land B),\quad f_{\rm NOR}(A,B)=\neg(A\lor B),</math>
+<math display="block">f_{\rm XOR}(A,B)=(A\land\neg B)\lor(\neg A\land B).</math>
+
+{| class="wikitable"
+! A !! B !! AND !! OR !! NAND !! NOR !! XOR
+|-
+| 0 || 0 || 0 || 0 || 1 || 1 || 0
+|-
+| 0 || 1 || 0 || 1 || 1 || 0 || 1
+|-
+| 1 || 0 || 0 || 1 || 1 || 0 || 1
+|-
+| 1 || 1 || 1 || 1 || 0 || 0 || 0
+|}
+
+De Morgan's laws show that <math>\neg(A\land B)=(\neg A)\lor(\neg B)</math> and <math>\neg(A\lor B)=(\neg A)\land(\neg B)</math>. NAND alone is '''functionally complete''': NOT, AND and OR may each be expressed using NAND, and AND/OR/NOT can express any finite Boolean function in the standard propositional model. For instance,
+
+<math display="block">\neg A=A\uparrow A,\quad A\land B=(A\uparrow B)\uparrow(A\uparrow B),</math>
+<math display="block">A\lor B=(A\uparrow A)\uparrow(B\uparrow B),</math>
+
+where <math>\uparrow</math> denotes NAND. Functional completeness concerns representation, not minimality, switching time, transistor count, power or robustness. Real libraries often contain NAND, NOR, XOR, multiplexers and complex gates to improve physical implementation.
+
+=== Independent four-NAND XOR construction ===
+
+Define
+
+<math display="block">u=A\uparrow B,\quad v=A\uparrow u,\quad w=B\uparrow u,\quad y=v\uparrow w.</math>
+
+Evaluating all four input combinations gives <math>y=0,1,1,0</math> in input order (00, 01, 10, 11). This is exactly <math>A\oplus B</math>. The construction uses four two-input NAND gates and three internal nodes. It does not prove four NAND gates minimize area, energy or delay in all physical cell libraries, or that every transient waveform behaves like the settled truth table.
+
+The same circuit may be synthesized from alternative algebraic expressions or multi-output factorizations. Karnaugh maps, algebraic rewriting and Boolean decision diagrams are finite-function representations; SAT/SMT equivalence checking can verify that transformed networks preserve the intended stable logical semantics.
+
+== Combinational versus sequential logic ==
+
+A combinational circuit can be modeled as <math>\mathbf y(t)=f(\mathbf x(t))</math> only after disregarding finite settling time and environmental effects. Sequential systems require an internal state <math>\mathbf s</math> and a transition relation or clocked update, for example
+
+<math display="block">\mathbf s_{k+1}=F(\mathbf s_k,\mathbf x_k),\qquad \mathbf y_k=G(\mathbf s_k,\mathbf x_k).</math>
+
+Registers, flip-flops and latches exploit feedback and controlled timing to store information. A combinational gate netlist with a feedback cycle may have multiple equilibria or oscillate; the existence of feedback cannot be silently reduced to one acyclic truth table.
+
+Clocked logic also requires setup, hold and clock distribution conditions. An asynchronous input can bring a storage element into metastability. Metastability is a physical analog phenomenon with probabilistic settling behavior; finite-time logical correctness cannot be guaranteed merely by drawing a Boolean diagram.
+
+== Digital voltage abstraction and noise margins ==
+
+Real gate inputs are continuous electrical quantities, not literal 0s and 1s. A digital technology specifies ranges for valid input levels and guaranteed output ranges, usually described as <math>V_{IL},V_{IH},V_{OL},V_{OH}</math> with suitable ordering. The low and high static noise margins under a common convention are
+
+<math display="block">NM_L=V_{IL}-V_{OL},\qquad NM_H=V_{OH}-V_{IH}.</math>
+
+Here <math>V_{IL}</math> is the maximum voltage considered a valid input low, <math>V_{IH}</math> is the minimum valid input high, and <math>V_{OL},V_{OH}</math> bound recognized output levels under specified loads. If <math>NM_L</math> or <math>NM_H</math> becomes negative, the intended static input–output compatibility is not established.
+
+The transfer characteristic of a physical inverter is not a discontinuous step. Between guaranteed voltage regions, small disturbances and gain can produce intermediate outputs; the receiver and supply conditions determine actual recognition. Digital abstractions work by engineered noise separation and regenerative devices, not because physical voltages have only two possible values.
+
+=== Static CMOS gates ===
+
+A simple static CMOS inverter uses pMOS pull-up and nMOS pull-down paths, with gates controlled by the same input. For a valid low input, the output is nominally connected to the high rail through the pMOS; for a valid high input, to the low rail through the nMOS. Leakage and short-circuit transition current mean this is not a lossless two-state switch.
+
+A two-input static CMOS NAND typically consists of '''two series nMOS''' transistors in the pull-down network and '''two parallel pMOS''' transistors in the pull-up network. The output is pulled low only when both inputs are high. A two-input NOR reverses the network connection pattern: parallel nMOS for pull-down and series pMOS for pull-up. Transistor sizing, p/n mobility differences, stack effect, threshold and fan-out must be accounted for in real gate design.<ref name="mit"/>
+
+An integrated standard-cell library provides electrical/timing characterizations at specified process, voltage and temperature corners. A Boolean cell symbol is not itself a transistor-level netlist or a valid timing report.
+
+== Delay, fan-out and physical interconnect ==
+
+A gate's propagation delay depends on the transition direction, input slew, load capacitance, device size, supply, temperature and process state. A rough first-order RC model for a single lumped load is
+
+<math display="block">t_{pd}\simeq(\ln2)R_{\rm eq}C_L\simeq0.693R_{\rm eq}C_L.</math>
+
+With a purely hypothetical effective resistance <math>R_{\rm eq}=2\,000\ \Omega</math> and load <math>C_L=10\ {\rm fF}</math>, this gives <math>R_{\rm eq}C_L=20\ {\rm ps}</math> and <math>t_{pd}\simeq13.86\ {\rm ps}</math>. This is a first-order model check, not a measured inverter delay; actual cells have nonlinear current, distributed wiring and direction-specific response.
+
+Fan-out increases the load seen by a driver. A gate feeding many other gate inputs and wires can fail timing or voltage specifications even though every gate's truth table is logically correct. Buffers and resizing can improve timing but increase area and power. Long interconnects may require distributed RC or electromagnetic models; a gate-only Boolean graph is insufficient.
+
+At the level of an acyclic combinational path, a conventional timing approximation sums selected cell and net delays, but actual worst-case delay depends on input transition, reconvergent paths and correlation in manufactured process variation. Static timing analysis uses characterized cells and explicit path, clock and operating constraints rather than proving performance from truth tables alone.
+
+== Dynamic power, static leakage and a numerical example ==
+
+In a simplified CMOS output-load model, energy drawn from the supply on a 0-to-1 charge event is approximately <math>C_LV_{DD}^2</math>, of which <math>\tfrac12C_LV_{DD}^2</math> is stored in the capacitor and the remainder dissipated during charging. Subsequent discharge dissipates the stored energy. With activity factor <math>\alpha</math> defined here as the mean number of 0-to-1 charging events per clock cycle, switching frequency <math>f</math> and load <math>C_L</math>,
+
+<math display="block">P_{\rm dyn}\simeq\alpha C_LV_{DD}^2f.</math>
+
+For illustrative values <math>C_L=10\ {\rm fF}</math>, <math>V_{DD}=1.0\ {\rm V}</math>, <math>f=100\ {\rm MHz}</math> and <math>\alpha=0.2</math> charging events/cycle,
+
+<math display="block">P_{\rm dyn}=0.2(10\times10^{-15})(1.0)^2(10^8)\ {\rm W}=2.0\times10^{-7}\ {\rm W}=0.20\ \mu{\rm W}.</math>
+
+The stated result is per modeled output load only; internal nodes, short-circuit currents, leakage, clock generation and off-chip loading are excluded. If an activity factor instead counts both upward and downward transitions per cycle, an additional convention-dependent factor is needed. A numeric power estimate without a declared activity definition is ambiguous.
+
+Power consumption can persist even without switching because of leakage currents. Low-power circuit design must also account for leakage dependence on temperature, semiconductor defects, body bias and the chosen operating state. Real energy efficiency involves clock distribution, interconnect, power conversion and storage.
+
+== Hazards, glitches and delay-sensitive behavior ==
+
+A function can be expressed in algebraically equivalent ways that exhibit different transient behavior. For example,
+
+<math display="block">F=(A\land B)\lor(A\land\neg B)=A</math>
+
+is a Boolean identity. If the sum-of-products circuit has unequal gate delays, holding <math>A=1</math> while <math>B</math> changes can temporarily make both product terms low before the other becomes high. The output may show a '''static-1 hazard''' despite a truth table predicting constant 1. The direct-wire implementation <math>F=A</math> avoids that particular reconvergent path.
+
+Hazards are important in asynchronous controls, clocks, reset signals and devices with narrow glitch susceptibility. The presence of a hazard in a delay model is not proof that it will cause a system failure; the receiving circuit's pulse sensitivity, filtering and timing determine consequences. Designers use hazard-aware logic restructuring, synchronous sampling discipline and timing analysis as appropriate.
+
+=== Verification is more than gate simulation ===
+
+For finite Boolean functions, exhaustive truth-table tests become exponentially large in the number of inputs. Formal equivalence methods, SAT/SMT and binary decision diagrams can compare large logic networks, but their success is relative to the modeled semantics and trusted verification setup. Transistor-level simulation tests analog voltages and transient behavior under modeled devices and parasitics.
+
+A credible release process separates at least these claims: Boolean functionality; correct state-machine transitions; static timing; physical electrical integrity; manufacturing rule compliance; and silicon or hardware characterization. Each can pass while another fails. The transition from RTL to a fabricated chip adds synthesis, layout, interconnect and physical constraints.
+
+== Reliability, process variation and research bounds ==
+
+CMOS logic is affected by transistor threshold variation, dielectric defects, supply transients, clock skew, electromigration in interconnect, temperature and noise. An overaggressive speed design may meet a nominal clock period yet fail at a slower process corner or reduced voltage. Aging and variability can change margins after manufacture.
+
+Logic gates remain one level of a larger abstraction hierarchy. Their mathematical truth functions do not dictate a particular physical realization, and their switching behavior does not alone determine the architecture of a computer. Research directions include lower-energy switching, robust circuits under process variation, secure computation and side-channel leakage, asynchronous design and technology-specific standard cells.
+
+For an advanced experiment, document the exact Boolean function, technology and transistor network, supply and temperature, input and load waveforms, cell characterization source, timing/power convention and independent validation. Recompute the NAND-only XOR and RC/power fixtures above before trusting a numerical library or simulation output.
+
+== Preserved foundational distinctions from the canonical account ==
+
+A '''logic gate''' realizes a specified relation between discrete logical input and output symbols. In digital hardware it is a physical circuit engineered to reliably implement that relation under a defined input-voltage range, output load, supply voltage and timing envelope. A Boolean gate abstraction and a physical electronic circuit are different description levels.
+
+== Two distinct models ==
+
+{| class="wikitable"
+! Level !! What is specified !! What is omitted unless modeled
+|-
+| Boolean truth-function model || A mapping between discrete input and output values || Delay, current, noise, energy, transistor defects and transient states
+|-
+| Physical circuit model || Voltage thresholds, transistor networks, input/output loads and time-domain behavior || Some microscopic device physics, manufacturing statistical variability and unmodeled disturbances
+|}
+
+Claude Shannon's 1938 switching-circuit analysis established a systematic correspondence between Boolean algebra and relay circuit organization, while modern CMOS technologies use complementary transistor networks to implement digital gates.<ref name="core_shannon_core">Claude E. Shannon, [https://doi.org/10.1109/EE.1938.6431064 “A Symbolic Analysis of Relay and Switching Circuits”], ''Electrical Engineering'' 57, 713–723 (1938).</ref><ref name="core_mit_core">MIT OpenCourseWare 6.004, [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ ''Computation Structures'', digital abstraction, combinational synthesis, CMOS technology and timing].</ref>
+
+== From gates to systems ==
+
+NAND and NOR are each functionally complete for finite Boolean functions under standard assumptions. Multiple interconnected gates form combinational circuits; state-bearing elements enable sequential circuits and storage. Functional completeness does not guarantee optimal transistor count, speed, noise immunity or physical manufacturability.
+
+The distinction is useful in [[Logic|logic]], [[Computation|computation]], [[Computer architecture|computer architecture]] and [[Integrated circuit|integrated-circuit engineering]]. These links record subject relevance rather than asserting that all computational logic is physically implemented in one gate technology.
+
+== Verification and physical validity ==
+
+A design review must separately check Boolean equivalence, transistor-level behavior and timing/power/noise constraints. Two circuits can have identical stable truth tables but different hazards, propagation delays and susceptibility to asynchronous input transitions. A gate operating outside its specified electrical region need not output a valid binary level.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* Claude Shannon, [https://doi.org/10.1109/EE.1938.6431064 ''A Symbolic Analysis of Relay and Switching Circuits'' (1938)].
+* MIT OCW, [https://ocw.mit.edu/courses/6-004-computation-structures-spring-2009/pages/lecture-notes/ ''Computation Structures''], digital abstraction, CMOS and synthesis.
+* [[Logic gate/Simple|Simple explanation]] · [[Logic gate/Simple|Simple]] · [[Integrated circuit]] · [[Logic]].

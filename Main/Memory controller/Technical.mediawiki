@@ -1,0 +1,31 @@
+<onlyinclude>A '''memory controller''' is the transaction-to-command scheduler and interface logic between requesters and memory devices. In DRAM systems it maps addresses, arbitrates requests, enforces legal command timing, coordinates refresh and manages implementation-dependent integrity mechanisms.</onlyinclude>
+
+== Address mapping and device state ==
+A physical address may map to channel, rank, bank group, bank, row and column. Mapping and interleaving are controller-specific, not fixed by JEDEC. The controller tracks bank states and outstanding transactions. An open-row hit can issue a column read/write without a new activation; a conflict with a different open row requires precharge and subsequent activation.
+
+Representative DDR timing constraints include ''tRCD'' (ACT-to-column), ''tRP'' (PRE-to-ACT), ''tRAS'' (minimum active interval), ''tRC'' (row cycle), ''tCCD'' (column spacing), ''tRRD'' (activation spacing), ''tFAW'' (four-activate window), ''tWTR'' (write-to-read) and ''tRFC'' (refresh recovery). Their numerical values and applicability depend on revision, speed bin, temperature, rank/bank configuration and device documentation. A legal scheduler must enforce multiple simultaneous constraints rather than adding all timings indiscriminately.
+
+== Online scheduling ==
+Requests arrive asynchronously to a finite queue. FR-FCFS prioritizes ready requests and then arrival order, often improving row-buffer locality but potentially harming fairness. Read prioritization and buffered write draining trade turnaround overhead against read latency. Mutlu and Moscibroda (MICRO-40, 2007) demonstrated why memory-stall-time interference matters independently of raw throughput; their proposed stall-time fairness is a research policy, not a required JEDEC feature [https://doi.org/10.1109/MICRO.2007.21 primary paper].
+
+For request ''i'', an accounting decomposition is <math>L_i=L_{queue,i}+L_{command,i}+L_{data,i}+L_{return,i}</math>. These terms require a declared measurement boundary and must not be interpreted as independent physical constants. A useful utilization estimate is <math>U=B_{measured}/B_{interface,peak}</math> for matched direction, time window and byte-counting convention. Fairness may be evaluated with per-requester slowdown or tail latency alongside aggregate throughput, not inferred from utilization alone.
+
+== Refresh and data integrity ==
+Conventional DRAM requires periodic refresh. JESD79-5 (2020), including its refresh section, describes DDR5 command modes and timing obligations; all-bank and same-bank options and postponement rules must be checked against the exact revision. The controller must honor refresh recovery and account for interference with service. DDR5 on-die ECC is internal to a device and does not provide the same end-to-end coverage as system ECC; controller-side encoding, syndrome reporting, scrubbing and error propagation are platform-specific.
+
+== Illustrative timing bound ==
+For a hypothetical idle, closed bank with <math>t_{RCD}=14\,\mathrm{ns}</math>, a column read command cannot issue sooner than 14 ns after its ACT, assuming no stricter constraint intervenes. This is '''not''' a full request latency or a claimed DDR5 speed-bin parameter. A conflicting open row also requires legal PRE and ACT spacing; queueing, data-burst transfer and return interconnect add further delay.
+
+== Measurement and research directions ==
+To compare schedulers, hold device timings, clock, address map, workload traces and queue capacities fixed. Report row-hit fraction, bank-level parallelism, read/write mix, achieved bytes/s, p50/p99 latency, refresh interference, power and per-requester slowdown. Synthetic traffic and real applications may rank policies differently. A cycle-accurate simulator should document its command-state machine and verify command legality against device timing constraints; hardware performance counters may not expose every internal bank event.
+
+Research possibilities include QoS-aware scheduling, interference isolation, adaptive address mapping, thermal/refresh coordination and near-memory processing. Any proposed advantage must be tested under controlled workloads; no single policy optimizes throughput, fairness, energy and worst-case latency simultaneously. DDR4, DDR5, LPDDR and HBM controllers have distinct requirements.
+
+== Reading depth ==
+* [[Memory controller/Simple|Simple]]
+* [[Memory controller/Technical|Technical]]
+
+== Primary sources ==
+* JEDEC, ''DDR5 SDRAM'', JESD79-5 (2020), especially refresh; consult current JEDEC edition and the target device datasheet for normative timing.
+* [https://doi.org/10.1109/MICRO.2007.21 O. Mutlu and T. Moscibroda, ''Stall-Time Fair Memory Access Scheduling for Chip Multiprocessors'', MICRO-40 (2007), pp. 146–160].
+* [https://www.microsoft.com/en-us/research/publication/stall-time-fair-memory-access-scheduling-for-chip-multiprocessors/ Microsoft Research author/publisher landing page].

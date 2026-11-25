@@ -1,0 +1,19 @@
+<onlyinclude>A '''memory controller''' is the traffic manager between a processor and its memory chips. It decides which requests to serve and sends the correct commands at the times the chips can accept them.
+
+== Why it matters ==
+Many processor cores can ask for data simultaneously. The controller places requests in queues, selects an order and coordinates reads and writes. For common [[Dynamic random-access memory|DRAM]], it also schedules refresh operations so stored electrical charges do not fade.
+
+A controller may favor requests that can be served quickly, but doing so can make other programs wait. Good scheduling balances speed and fairness. Some systems use error-correcting codes (ECC) to detect or repair errors, although protection depends on the hardware design.
+
+== What it is not ==
+Memory chips store most of the data; the controller organizes access to them. It is not the same as a processor [[Cache memory|cache]]. Different kinds of memory, including DDR and [[High-bandwidth memory|HBM]], require different interfaces and timing rules.
+
+
+== Sources ==
+* JEDEC, ''DDR5 SDRAM'', JESD79-5 (2020); consult the applicable revision and device datasheet.
+* [https://doi.org/10.1109/MICRO.2007.21 Mutlu and Moscibroda (2007), memory scheduling fairness].
+</onlyinclude>
+
+== Reading depth ==
+* [[Memory controller/Simple|Simple]]
+* [[Memory controller/Technical|Technical]]

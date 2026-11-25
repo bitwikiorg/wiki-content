@@ -30,7 +30,20 @@ Methods include:
 == Definition caution ==
 Nonlinearity, emergence, heterogeneity, adaptation, and network structure are frequent but not individually necessary or sufficient across all definitions.
 
+
+== Coupled dynamics and scale ==
+One general representation is a vector state x with dynamics <math>\dot x_i=f_i(x_i,u_i)+\sum_j A_{ij}g_{ij}(x_i,x_j)</math>, where A specifies modeled interactions and u represents external inputs. Nonlinear coupling can produce multiple attractors, oscillations, synchronization or sensitivity to perturbations. The existence of this representation does not imply that every complex system is nonlinear or chaotic. A linear system can be difficult to control at scale; a nonlinear system can have simple behavior. Identify which property the model explains.
+
+== Network structure and coarse-graining ==
+Connectivity is necessary for communication along modeled paths but is not evidence that a causal effect traverses each path. Weighted or time-dependent edges and feedback delays can change dynamics. A macro-observable such as mean density, order parameter or throughput may summarize many microstates; coarse-graining can erase relevant heterogeneity. Compare the predictions of different resolutions and examine whether inferred parameters transfer across scales.
+
+== Empirical evaluation ==
+Calibrate a model against data from specified conditions and test it on independent conditions or perturbations. Perform sensitivity analysis on initial states, interaction rules, topology and observation assumptions. For an agent-based simulation, record seeds and compare distributions of outcomes rather than one visually compelling trajectory. Power laws and abrupt transitions can occur through multiple mechanisms; they do not establish self-organized criticality without independent dynamical evidence. A complex-system label alone predicts neither resilience nor failure.
+
 == References ==
 * Mitchell.
 * Holland.
 * complexity-science literature.
+* [https://academic.oup.com/book/51004 Mitchell (2009), Complexity: A Guided Tour]
+* [https://doi.org/10.1103/PhysRevLett.59.381 Bak, Tang and Wiesenfeld (1987), Self-organized criticality]
+* [https://link.springer.com/book/10.1007/978-3-662-53622-3 Diestel, Graph Theory]

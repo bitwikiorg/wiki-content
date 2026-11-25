@@ -21,7 +21,20 @@ In an open system, energy may cross the boundary as heat, work, radiation or mat
 == Reference frames and advanced regimes ==
 Kinetic energy depends on the reference frame. Relativistic and quantum theories use more general formulations of energy than elementary K = (1/2)mv²; the applicable regime must be specified.
 
+
+== Thermodynamic control volume ==
+For a stationary control volume under a conventional sign convention, an energy rate balance is <math>\frac{dE_{CV}}{dt}=\dot Q-\dot W+\sum_{in}\dot m(h+v^2/2+gz)-\sum_{out}\dot m(h+v^2/2+gz)</math>. Here h is specific enthalpy, v speed and z elevation; flow work is included in enthalpy and the remaining work term must be defined accordingly. The balance assumes classical macroscopic accounting, and terms may simplify under steady-state or negligible kinetic and potential energy changes. Mixing closed-system internal-energy balances with open-system enthalpy terms can double-count flow work.
+
+== Conservation and symmetry ==
+For an autonomous Lagrangian system, time-translation symmetry yields a conserved energy under the usual assumptions of Noether's theorem. An explicitly time-dependent drive can change a subsystem's energy, so the accounting boundary matters. Global energy conservation in general relativity is more subtle than the Newtonian isolated-system statement and requires appropriate spacetime symmetries or boundary conditions.
+
+== Information and material throughput ==
+Shannon entropy is dimensionless when measured in bits or nats, whereas thermodynamic entropy has physical units of joules per kelvin. A physical information-processing device uses energy, but a message's semantic importance is not measured in joules. Societal metabolism uses physical energy and material accounting across defined socioeconomic boundaries; biological autopoiesis concerns the organization of a self-producing network and does not imply energetic independence. In each application, state the energy carrier, reference frame, unit, boundary and measurement uncertainty.
+
 == References ==
 * [https://openstax.org/books/university-physics-volume-1/pages/7-1-work OpenStax, §7.1 — Work.]
 * [https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy OpenStax, §8.3 — Conservation of Energy.]
 * [[Energy|Core article]]
+* [https://openstax.org/books/university-physics-volume-2/pages/3-3-first-law-of-thermodynamics OpenStax, University Physics Volume 2, First Law of Thermodynamics]
+* [https://doi.org/10.1162/jiec.1998.2.4.107 Fischer-Kowalski and Hüttler (1998), Society's Metabolism]
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]

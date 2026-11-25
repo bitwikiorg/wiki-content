@@ -3,8 +3,8 @@
   "base_commit": "e26be703ce02e4396e46072141dedeaf472fdfc1",
   "inventory_method": "Direct exact-title fetches against main; recursive Git tree returned 2404 untruncated entries. Keyword code searches for the four authored subjects and Inforg returned no hits. The inventory is preliminary for remaining candidates; exact-title absence is not proof of absent related coverage.",
   "staged_branch": "content/knowledge-expansion-information-foundations-20261124",
-  "scope_note": "All 48 missing exact-title candidates authored as independent canonical hosts with two reader localizations. The 11 existing exact-title candidates retain their independent identities; detailed review is still required. No consolidation, redirects, exclusions, merge, or deployment authorized.",
-  "validation_note": "Commit and PR are the authoritative immutable evidence for staged source; PR workflow must be independently checked. Full local execution and live MediaWiki verification not performed.",
+  "scope_note": "All 59 supplied candidates have independent article identities and maintained Simple and Technical surfaces. 48 new subjects authored; 11 existing subjects inspected and expanded in host and Technical while retaining their existing legacy depth convention. No candidate consolidated, redirected, or excluded. No merge or deployment authorized.",
+  "validation_note": "Authored source files are staged on the named branch. All source claims and references require independent scientific editorial review; the source URLs field records cited materials, not a claim that every full text or link has been independently inspected. Final GitHub CI and repository inventory checks remain necessary. Live MediaWiki verification not performed.",
   "secondary_outline_research": {
     "status": "initial inventory; no secondary articles authorized",
     "records": [
@@ -1251,12 +1251,23 @@
       "group": "Complex systems, emergence and self-organization",
       "base_exact_title": "present",
       "canonical_identity": "Complex system",
-      "editorial_disposition": "existing canonical coverage; detailed review pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "editorial_disposition": "existing independent canonical article; technical expansion and semantic links staged",
+      "research_status": "existing three reader surfaces inspected; technical expansion authored; independent editorial review pending",
+      "verified_source_urls": [
+        "https://academic.oup.com/book/51004",
+        "https://doi.org/10.1103/PhysRevLett.59.381",
+        "https://link.springer.com/book/10.1007/978-3-662-53622-3"
+      ],
+      "dependencies": [
+        "Self-organized criticality",
+        "Connectivity (graph theory)",
+        "Boids",
+        "Conway's Game of Life",
+        "Social metabolism",
+        "Artificial life"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "existing Simple preserved; host and Technical reviewed and amended; PR workflow pending",
       "integration": "not merged"
     },
     {
@@ -1264,12 +1275,22 @@
       "group": "Complex systems, emergence and self-organization",
       "base_exact_title": "present",
       "canonical_identity": "Self-organization",
-      "editorial_disposition": "existing canonical coverage; detailed review pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "editorial_disposition": "existing independent canonical article; technical expansion and semantic links staged",
+      "research_status": "existing three reader surfaces inspected; technical expansion authored; independent editorial review pending",
+      "verified_source_urls": [
+        "https://doi.org/10.1145/37401.37406",
+        "https://academic.oup.com/book/51004",
+        "https://pubmed.ncbi.nlm.nih.gov/4407425/"
+      ],
+      "dependencies": [
+        "Self-organized criticality",
+        "Boids",
+        "Emergent algorithm",
+        "Autopoiesis",
+        "Swarm intelligence"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "existing Simple preserved; host and Technical reviewed and amended; PR workflow pending",
       "integration": "not merged"
     },
     {
@@ -1554,12 +1575,20 @@
       "group": "Philosophy and physical foundations",
       "base_exact_title": "present",
       "canonical_identity": "Energy",
-      "editorial_disposition": "existing canonical coverage; detailed review pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "editorial_disposition": "existing independent canonical article; technical expansion and semantic links staged",
+      "research_status": "existing three reader surfaces inspected; technical expansion authored; independent editorial review pending",
+      "verified_source_urls": [
+        "https://openstax.org/books/university-physics-volume-2/pages/3-3-first-law-of-thermodynamics",
+        "https://doi.org/10.1162/jiec.1998.2.4.107",
+        "https://doi.org/10.1002/j.1538-7305.1948.tb01338.x"
+      ],
+      "dependencies": [
+        "Social metabolism",
+        "Information theory",
+        "Autopoiesis"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "existing Simple preserved; host and Technical reviewed and amended; PR workflow pending",
       "integration": "not merged"
     }
   ]

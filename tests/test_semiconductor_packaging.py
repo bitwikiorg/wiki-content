@@ -7,6 +7,8 @@ def test_two_authoritative_depths():
     simple = (BASE / "Simple.mediawiki").read_text(encoding="utf-8")
     technical = (BASE / "Technical.mediawiki").read_text(encoding="utf-8")
     assert "{{:Semiconductor packaging/Simple}}" in core
+    assert "{{Knowledge object" in core
+    assert "== How it works ==" in simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0]
     assert "{{:Semiconductor packaging/Technical}}" not in core
     assert "== Functions and boundaries ==" not in core
     for body in (simple, technical):

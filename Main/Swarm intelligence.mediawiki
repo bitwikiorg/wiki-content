@@ -2,13 +2,313 @@
  |title=Swarm intelligence
  |entity_type=Concept
  |domain=Computer science, Systems science, Biology, Mathematics
- |provenance=Kennedy and Poli et al.; Reynolds (1987)
+ |status=Established
+ |provenance=Reynolds (1987); Kennedy and Eberhart (1995); Dorigo, Maniezzo and Colorni (1996); Bonabeau, Dorigo and Theraulaz (1999)
 }}
-<onlyinclude>{{:Swarm intelligence/Simple}}</onlyinclude>
+{{Reading depth|base=Swarm intelligence|current=Core}}
 
-'''Reading depth:''' [[Swarm intelligence/Simple|Simple]] · [[Swarm intelligence/Technical|Technical]]
+= Swarm intelligence =
+
+'''Swarm intelligence''' is collective problem solving or coordinated behavior that emerges from interactions among many relatively simple agents without requiring one agent to direct every action. The term covers biological phenomena such as social-insect coordination and engineered methods including swarm robotics, particle swarm optimization, ant-colony optimization, and flocking models.
+
+Bonabeau, Dorigo, and Theraulaz describe social-insect colonies as systems in which sophisticated collective behavior arises through interactions among individuals and between individuals and their environment.<ref name="bonabeau">[https://doi.org/10.1093/oso/9780195131581.001.0001 Bonabeau, E., Dorigo, M., and Theraulaz, G. (1999), ''Swarm Intelligence: From Natural to Artificial Systems'', Oxford University Press.]</ref>
+
+The biological inspiration should not be confused with identity. Artificial swarm algorithms abstract selected mechanisms from nature and often behave very differently from the organisms that inspired them.
+
+== Core properties ==
+
+Swarm-intelligence systems commonly emphasize:
+
+* many agents;
+* local interaction;
+* decentralized control;
+* limited individual capability;
+* feedback through neighbors or environment;
+* emergence of system-level patterns;
+* robustness through redundancy.
+
+Not every system has all these properties.
+
+A centrally commanded fleet of robots is multi-agent but may not be a swarm in the stronger decentralized sense.
+
+== Local rules and global behavior ==
+
+A defining idea is that simple local rules can generate organized global behavior.
+
+An agent may respond only to:
+
+* nearby neighbors;
+* local resource conditions;
+* shared environmental traces.
+
+No individual needs a complete global model.
+
+The collective pattern can still include:
+
+* trails;
+* clusters;
+* task allocation;
+* flocking;
+* coordinated search.
+
+The global pattern should be demonstrated, not inferred merely from the existence of many agents.
+
+== Self-organization ==
+
+[[Self-organization]] occurs when system-level structure develops through local interactions rather than direct central specification.
+
+Swarm systems often rely on:
+
+* positive feedback;
+* negative feedback;
+* randomness;
+* repeated local interaction.
+
+Positive feedback amplifies successful patterns.
+
+Negative feedback prevents unlimited amplification.
+
+Randomness supports exploration.
+
+== Stigmergy ==
+
+'''Stigmergy''' is indirect coordination through traces in a shared environment.
+
+Ants can deposit pheromone while traveling.
+
+Later ants respond to the resulting trail.
+
+The environment becomes a distributed communication medium and external memory.
+
+Artificial systems can use digital markers, shared maps, or virtual pheromones in similar roles.
+
+Stigmergy reduces direct messaging but can create delayed or stale information.
+
+== Social insects ==
+
+Ants, bees, termites, and wasps inspired much swarm-intelligence research.
+
+Collective behaviors include:
+
+* foraging;
+* nest construction;
+* division of labor;
+* brood sorting;
+* cooperative transport;
+* nest-site selection.
+
+These behaviors arise through biological mechanisms shaped by evolution.
+
+Engineered algorithms usually abstract one small principle rather than reproduce the full biology.
+
+== Flocking ==
+
+Craig Reynolds's 1987 boids model showed that flock-like motion could emerge from local rules rather than one global flight plan.<ref name="reynolds">[https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools: A Distributed Behavioral Model,” ''Computer Graphics'' 21(4), 25–34.]</ref>
+
+The commonly summarized local tendencies are:
+
+* separation;
+* alignment;
+* cohesion.
+
+The model is an influential computational demonstration.
+
+It is not a complete biological model of real birds or fish.
+
+== Particle swarm optimization ==
+
+'''Particle swarm optimization''' (PSO) is a population-based optimization method introduced by James Kennedy and Russell Eberhart in 1995.<ref name="pso">[https://doi.org/10.1109/ICNN.1995.488968 Kennedy, J. and Eberhart, R. (1995), “Particle swarm optimization,” ''Proceedings of ICNN'95'', 1942–1948.]</ref>
+
+A set of particles moves through a search space.
+
+Each particle is influenced by:
+
+* its current velocity;
+* its own best-known solution;
+* a best-known solution from neighbors or the swarm.
+
+PSO uses the social metaphor of individuals learning from experience and neighbors.
+
+Particles are numerical search states, not autonomous biological organisms.
+
+== Ant colony optimization ==
+
+'''Ant colony optimization''' (ACO) uses artificial agents that construct solutions probabilistically while modifying a shared pheromone-like data structure.
+
+Dorigo, Maniezzo, and Colorni's Ant System combined:
+
+* positive feedback;
+* distributed computation;
+* probabilistic choice;
+* heuristic desirability.<ref name="aco">[https://doi.org/10.1109/3477.484436 Dorigo, M., Maniezzo, V., and Colorni, A. (1996), “Ant system: optimization by a colony of cooperating agents,” ''IEEE Transactions on Systems, Man, and Cybernetics B'' 26(1), 29–41.]</ref>
+
+Pheromone evaporation provides negative feedback by reducing the influence of old paths.
+
+ACO is especially associated with combinatorial optimization.
+
+== PSO and ACO are different mechanisms ==
+
+PSO moves candidate points through a continuous or encoded search space using velocity-like state.
+
+ACO constructs solutions through probabilistic transitions influenced by shared pheromone.
+
+Both are swarm-inspired.
+
+They should not be described as variants of one update rule.
+
+== Swarm robotics ==
+
+Swarm robotics applies decentralized collective principles to physical robots.
+
+Potential applications include:
+
+* exploration;
+* mapping;
+* environmental monitoring;
+* search and rescue;
+* collective transport.
+
+Physical embodiment creates constraints absent from software optimization:
+
+* collision;
+* battery capacity;
+* localization error;
+* communication range;
+* mechanical failure.
+
+A simulation result is not enough to establish real-world swarm performance.
+
+== Robustness ==
+
+Swarm systems can be robust because no one agent is indispensable.
+
+If one individual fails, others may continue.
+
+Robustness depends on actual redundancy.
+
+A swarm relying on one central server or one global communication channel can still have a single point of failure.
+
+== Scalability ==
+
+Local interaction can support scalability because each agent need not communicate with every other agent.
+
+If each agent communicates with <math>k</math> neighbors rather than all <math>n-1</math> agents, per-agent communication can remain bounded as the swarm grows.
+
+But large populations can create:
+
+* congestion;
+* interference;
+* collision;
+* communication contention.
+
+Scalability must be measured experimentally.
+
+== Exploration and exploitation ==
+
+Optimization swarms balance:
+
+'''exploration''' — searching new regions;
+
+'''exploitation''' — refining known good regions.
+
+Too much exploitation can create premature convergence.
+
+Too much exploration can prevent convergence.
+
+Parameters controlling feedback and randomness therefore strongly affect performance.
+
+== Stagnation ==
+
+A swarm can become trapped around a poor solution.
+
+Agents may reinforce one another's mistake.
+
+This is '''stagnation''' or premature convergence.
+
+Decentralization does not guarantee diverse search.
+
+Maintaining exploration requires explicit mechanisms.
+
+== Collective error ==
+
+Swarm systems can amplify false local information.
+
+Positive feedback that finds a good path quickly can also reinforce a bad path.
+
+Robust design therefore uses:
+
+* evaporation;
+* noise;
+* alternative exploration;
+* failure recovery;
+* validation.
+
+Emergence has no built-in guarantee of correctness.
+
+== Biological collective behavior ==
+
+Natural collective behavior can include rich sensory, ecological, evolutionary, and physiological mechanisms.
+
+An ant-colony algorithm does not establish how real ants solve every foraging problem.
+
+Likewise, bird flocking is influenced by aerodynamics, vision, predation, and ecology beyond simple boid rules.
+
+The biological and algorithmic literatures should inform one another without collapsing into one another.
+
+== Swarm intelligence and collective intelligence ==
+
+[[Collective intelligence]] is broader.
+
+It includes human groups, organizations, crowds, and other collectives.
+
+Swarm intelligence usually emphasizes many relatively simple agents, decentralization, and local interaction.
+
+All swarm intelligence can be treated as a form of collective intelligence under a broad definition, but not all collective intelligence is swarm intelligence.
+
+== Swarm intelligence and DAI ==
+
+[[Distributed artificial intelligence]] includes distributed problem solving and multi-agent systems.
+
+Swarm intelligence is a particular decentralized style within that broader field.
+
+A multi-agent negotiation system with a few sophisticated agents is DAI but not normally called a swarm.
+
+== Swarm intelligence and emergence ==
+
+Swarm systems are canonical examples of [[Emergence]].
+
+The macro-pattern can have properties not specified as direct commands to individuals.
+
+“Emergent” does not mean inexplicable.
+
+Researchers can derive, simulate, and test how local rules generate global outcomes.
+
+== Optimization claims ==
+
+No swarm optimizer is universally best.
+
+Performance depends on:
+
+* objective function;
+* dimension;
+* constraints;
+* parameter tuning;
+* evaluation budget.
+
+A fair benchmark compares algorithms under equal resource budgets and uses many independent random seeds.
+
+One favorable benchmark does not establish general superiority.
+
+== Artificial consciousness boundary ==
+
+A swarm can display adaptive, coordinated behavior without subjective experience.
+
+Collective intelligence does not establish consciousness.
+
+The same caution applies to biological swarms: coordinated colony behavior does not by itself demonstrate one colony-level conscious subject.
 
 == Semantic relationships ==
+
 * [[Related to::Distributed artificial intelligence]]
 * [[Related to::Collective intelligence]]
 * [[Related to::Multi-agent system]]
@@ -16,16 +316,9 @@
 * [[Related to::Boids]]
 * [[Related to::Optimization]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Swarm intelligence]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Systems science]]

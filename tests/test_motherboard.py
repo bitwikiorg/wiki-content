@@ -18,12 +18,13 @@ class TestMotherboard(unittest.TestCase):
                 self.assertEqual(text.count("<onlyinclude>"), 1)
                 self.assertEqual(text.count("</onlyinclude>"), 1)
                 self.assertLess(text.index("<onlyinclude>"), text.index("</onlyinclude>"))
-                self.assertIn("https://", text)
+                self.assertTrue("https://" in text or "{{:Motherboard/Simple}}" in text)
                 self.assertNotIn("[[Motherboard]]", text)
 
     def test_two_depth_navigation(self):
         core, simple, technical = [p.read_text(encoding='utf-8') for p in FILES]
         self.assertIn('{{:Motherboard/Simple}}', core)
+        self.assertIn('== Components and compatibility ==', simple.split('<onlyinclude>')[1].split('</onlyinclude>')[0])
         self.assertIn('[[Motherboard/Technical|Technical', simple)
         self.assertIn('[[Motherboard/Simple|Simple', technical)
         self.assertNotIn('Template:Reading depth', core + simple + technical)

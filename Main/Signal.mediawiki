@@ -2,29 +2,123 @@
  |title=Signal
  |entity_type=Concept
  |domain=Mathematics, Electronics, Computer science, Physics
- |provenance=MIT OpenCourseWare; Shannon (1948)
+ |status=Established
+ |provenance=Oppenheim and Willsky; Oppenheim and Schafer; Shannon (1948, 1949); IEEE Signal Processing Society
 }}
-<onlyinclude>{{:Signal/Simple}}</onlyinclude>
+{{Reading depth|base=Signal|current=Core}}
 
-'''Reading depth:''' [[Signal/Simple|Simple]] · [[Signal/Technical|Technical]]
+= Signal =
+
+A '''signal''' is a varying physical quantity, mathematical function, or sequence used to represent, convey, or observe information about a phenomenon or system. In engineering and applied mathematics, signals are commonly modeled as functions of one or more independent variables such as time or spatial position. A microphone voltage can represent acoustic pressure, an image can represent light intensity or color over two spatial coordinates, and a sequence of numbers can represent sampled measurements. Signals may be intentionally generated for communication, but they may also arise from measurement of natural processes without any sender or message.<ref name="mit-signals">[https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/ MIT OpenCourseWare, ''Signals and Systems'', 6.003.]</ref>
+
+The term has related but non-identical meanings across telecommunications, signal processing, physics, biology, and information theory. In a communication system, a signal is the physical or mathematical carrier through which a message is encoded and transmitted. In measurement, a signal is an observable representation of a quantity of interest. In [[Information theory]], signals are analyzed in relation to possible messages, probability distributions, channels, and noise; Shannon's theory intentionally separates the engineering problem of reliable communication from the semantic meaning of a message.<ref name="shannon1948">[https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon, C. E. (1948), “A Mathematical Theory of Communication,” ''Bell System Technical Journal'' 27(3), 379–423.]</ref>
+
+== Mathematical representation ==
+
+A scalar continuous-time signal is often written <math>x(t)</math>, with <math>t\in\mathbb R</math>. A discrete-time signal is commonly written <math>x[n]</math>, where <math>n\in\mathbb Z</math>. The independent variable need not be time: an image may be modeled as <math>x(u,v)</math>, a function of two spatial coordinates, and a multichannel measurement may take vector values. This functional viewpoint allows the same mathematical tools to be used for audio, images, communications, scientific instruments, control systems, and other applications.<ref name="oppenheim-willsky">Oppenheim, A. V., Willsky, A. S., and Nawab, S. H. (1997), ''Signals and Systems'', 2nd ed., Prentice Hall. See also [https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/pages/readings/ MIT OCW 6.003 readings].</ref>
+
+A signal should be distinguished from the phenomenon it represents. The voltage produced by a temperature sensor is not temperature itself; it is an electrical representation whose interpretation depends on calibration, sensor response, units, and environmental conditions. [[Measurement]] therefore connects physical quantities to signals through an observation process, and any scientific interpretation must preserve the uncertainties and limitations of that process.
+
+== Principal classifications ==
+
+Signals can be classified along several independent dimensions. These classifications are useful because different mathematical and engineering methods apply under different assumptions.
+
+=== Continuous and discrete independent variables ===
+
+A '''continuous-time''' signal is defined over a continuous time variable. A '''discrete-time''' signal is defined only at separated instants, commonly indexed by integers. Sampling a continuous-time signal at period <math>T_s</math> produces a sequence
+
+<math>x[n]=x_a(nT_s).</math>
+
+Discrete time does not by itself imply discrete amplitude. A sampled signal can retain continuous-valued amplitudes before quantization.
+
+=== Continuous and discrete amplitudes ===
+
+A signal may take values from a continuum or from a discrete set. Quantization maps a range of possible amplitudes to a finite or countable set of representative values. This is conceptually distinct from sampling: sampling discretizes an independent variable, while quantization discretizes signal values.
+
+The words '''analog''' and '''digital''' are therefore related to, but not perfectly synonymous with, continuous-time and discrete-time. An analog representation varies continuously with another quantity. Digital systems represent information using a discrete symbol set, while the physical waveforms carrying those symbols remain continuous physical processes.
+
+=== Deterministic and stochastic signals ===
+
+A deterministic signal is specified by a rule or known waveform for the purpose of a model. A stochastic or random signal is modeled using probability because individual realizations are not fully specified in advance. Noise, communication traffic, sensor fluctuations, and natural processes are often modeled stochastically. Whether a model should be deterministic or stochastic depends on the question and available information; randomness in a model does not imply that the underlying physical process is fundamentally indeterminate.
+
+=== Periodicity, symmetry, energy and power ===
+
+A continuous-time signal is periodic when there is a positive <math>T</math> such that <math>x(t+T)=x(t)</math> for all relevant <math>t</math>; a discrete-time signal is periodic when <math>x[n+N]=x[n]</math> for some positive integer <math>N</math>. Signals may also be decomposed into even and odd components, which can simplify analysis.
+
+In signals-and-systems theory, an energy signal has finite squared norm, for example <math>E_x=\int_{-\infty}^{\infty}|x(t)|^2dt</math> in continuous time, whereas a power signal has finite nonzero long-term average squared magnitude. These quantities are mathematical signal measures unless a particular physical normalization makes them literal energy or power.
+
+== Measurement, sensing and transduction ==
+
+Many physical signals enter computational or communication systems through sensors and transducers. A microphone converts acoustic pressure variations into an electrical waveform; a camera converts incident light into electrical measurements; electrodes can measure aggregate electrical activity in biological tissue. Conversion introduces a transfer function, finite bandwidth, sensitivity limits, noise, nonlinearities, drift, and possible saturation. Consequently, a recorded signal is an interaction between the phenomenon, the measurement apparatus, and the acquisition procedure rather than a transparent copy of reality.
+
+Scientific use of signals should therefore record relevant acquisition conditions: sensor type, calibration, units, sampling rate, bandwidth, filtering, dynamic range, uncertainty, and preprocessing. Apparent structure can be produced or removed by the measurement chain.
+
+== Sampling and quantization ==
+
+Sampling converts a continuous-domain signal into observations at discrete positions or times. For an ideally band-limited continuous-time signal with no spectral content at or above <math>B</math> hertz, uniform sampling above <math>2B</math> samples per second permits exact reconstruction under the assumptions of the sampling theorem.<ref name="mit-sampling">[https://ocw.mit.edu/courses/2-161-signal-processing-continuous-and-discrete-fall-2008/80ec6fb9bd027f30adcdc16577e8ab16_samplingdft.pdf MIT OpenCourseWare, ''Sampling and the Discrete Fourier Transform''.]</ref> This result is an ideal mathematical condition, not a guarantee that any real sampled record can be perfectly reconstructed. Real acquisition uses finite observation windows, imperfect filters, finite timing precision, and signals that may not be strictly band-limited.
+
+When frequencies above half the sampling rate enter the sampled data, they can become indistinguishable from lower frequencies, producing '''aliasing'''. Practical systems therefore use anti-alias filtering and choose sampling rates with engineering margin.
+
+Quantization maps measured amplitudes into discrete representable levels. It introduces quantization error and limits dynamic range; its effects depend on resolution, scaling, signal distribution, and subsequent processing. Sampling error and quantization error are different phenomena and should not be conflated.
+
+== Signal processing and systems ==
+
+'''Signal processing''' analyzes, transforms, estimates, compresses, detects, or otherwise manipulates signals. Typical operations include filtering, spectral analysis, modulation, feature extraction, denoising, estimation, compression, and reconstruction. Modern signal processing spans communications, audio and speech, imaging, radar and sonar, biomedical measurements, scientific instrumentation, sensor networks, and machine-learning pipelines.<ref name="ieee-sps">[https://signalprocessingsociety.org/our-story/signal-processing-101 IEEE Signal Processing Society, “Signal Processing 101.”]</ref>
+
+Signals are frequently studied together with systems. A system maps an input signal to an output signal. For a linear time-invariant system, the output is determined by convolution with the system's impulse response. In discrete time,
+
+<math>y[n]=\sum_{k=-\infty}^{\infty}h[k]x[n-k].</math>
+
+Frequency-domain representations, particularly Fourier analysis, reveal how a system responds to sinusoidal components. Other transform domains, including Laplace and <math>z</math> domains, are useful for analyzing dynamics, stability, and implementation.<ref name="mit-signals" />
+
+Digital processing can be implemented in software, general-purpose processors, or specialized hardware such as a [[Digital signal processor]]. Hardware and numerical choices constrain achievable latency, precision, throughput, and power consumption.
+
+== Noise, distortion and signal recovery ==
+
+A common measurement or communication model is
+
+<math>y=x+w,</math>
+
+where <math>x</math> is a desired signal and <math>w</math> represents additive disturbance. This model is useful only when its assumptions are appropriate. Real disturbances may be colored, correlated with the signal, impulsive, nonstationary, multiplicative, or created by nonlinear distortion. Clipping and saturation cannot generally be treated as independent additive noise.
+
+Signal-to-noise ratio compares specified signal and noise power measures, but its meaning depends on how the components and bandwidth are defined. Recovery methods may include filtering, statistical estimation, error-correcting codes, model-based inference, or repeated measurement. No algorithm can restore information that was never captured unless additional assumptions or prior information are introduced.
+
+== Signals, information and meaning ==
+
+Signals can carry [[Information]], but a signal and its meaning are not the same object. Shannon's communication theory quantifies uncertainty and channel constraints using probability distributions; it does not determine whether a message is true, important, meaningful, or causally explanatory.<ref name="shannon1948" /> [[Entropy]] in information theory therefore has a precise mathematical role that should not be treated as a general measure of semantic significance.
+
+Likewise, a [[Code]] specifies a mapping between symbols or representations, whereas the physical signal is the medium in which an encoded sequence may be instantiated. The same message can be represented by many different signals, and the same physical waveform can be interpreted differently under different coding conventions.
+
+In biological and behavioral contexts, the word signal may refer to a causal cue or communicative act rather than merely a mathematical waveform. Those usages can overlap with engineering models but should not be collapsed into them without specifying the mechanism and level of description.
+
+== Examples ==
+
+* '''Audio:''' acoustic pressure varies over time and space; microphones convert local pressure variation into electrical signals.
+* '''Images:''' intensity or color varies over two spatial coordinates; digital images additionally sample spatial position and quantize values.
+* '''Video:''' image information varies over two spatial dimensions and time.
+* '''Motion and navigation:''' position, velocity, orientation, or inertial measurements form scalar or vector signals.
+* '''Communications:''' electromagnetic, optical, or acoustic waveforms carry encoded symbol sequences through channels.
+* '''Scientific and biomedical measurement:''' temperature, pressure, membrane voltage, field strength, chemical concentration, and other variables can be represented as signals produced by instruments.
+
+These examples differ physically but can share mathematical representations and processing methods.
+
+== Interpretation and limitations ==
+
+A signal is evidence only through a measurement or communication model. Processing can improve detectability or estimation under stated assumptions, but it can also introduce artifacts, remove relevant structure, or exaggerate confidence. Correlation in a signal does not establish causation. A high signal-to-noise ratio does not establish that a model is correct. A complex or adaptive waveform does not establish intelligence, meaning, or consciousness.
+
+Responsible analysis therefore keeps separate: the physical phenomenon, the measurement process, the signal representation, the processing algorithm, the statistical model, and the scientific or semantic interpretation.
 
 == Semantic relationships ==
+
 * [[Related to::Information]]
 * [[Related to::Information theory]]
 * [[Related to::Digital signal processor]]
 * [[Related to::Measurement]]
 * [[Related to::Code]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Signal]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Mathematics]]
 [[Category:Electronics]]

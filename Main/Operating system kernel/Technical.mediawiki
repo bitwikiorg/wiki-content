@@ -1,0 +1,45 @@
+{{Source status|status=New article draft|note=Technical synthesis with explicit assumptions and proof limits; expert review pending.}}
+''Reading depth:'' [[Operating system kernel/Simple|Simple]] · '''Technical'''
+= Operating system kernel — Technical =
+<onlyinclude>An '''operating system kernel''' implements privileged mechanisms for execution, address-space management, interrupt handling and controlled access to hardware. Its precise trusted-computing-base boundary depends on architecture and deployment.</onlyinclude>
+
+== Scope and kernel responsibility taxonomy ==
+The kernel mediates processor scheduling, physical and virtual memory, system-call entry, interrupts and device access, and privilege boundaries. The distribution of these mechanisms among privileged code and user-space services differs by design; a hybrid architecture is not captured by a strict monolithic/microkernel binary. The kernel is not synonymous with the entire operating system. Security is end-to-end and depends additionally on firmware, hardware, privileged drivers, user-space components and configuration.
+
+== Privilege transition and system calls ==
+On architectures with separate privilege levels, a system call transfers control through a defined entry mechanism to privileged code. The kernel must interpret arguments, check authorization, validate user-supplied pointers and avoid trusting user-controlled data. A valid pointer-range check alone does not guarantee that subsequent memory access succeeds: the Linux kernel documents that <code>access_ok</code> may succeed while the eventual access returns <code>-EFAULT</code>.<ref name="linuxmm">Linux kernel documentation, [https://www.kernel.org/doc/html/latest/core-api/mm-api.html Memory Management APIs], accessed 2026-11-21.</ref> This is a Linux implementation example, not a universal ABI contract.
+
+== Scheduling and execution contexts ==
+A scheduler chooses among runnable tasks subject to policy and available CPUs. Preemption, blocking, priority, affinity and interrupt activity complicate latency. A context switch can entail register and address-space state changes, but its cost is architecture- and workload-dependent. Interrupt handlers execute under constraints different from ordinary process context; implementations may defer work to schedulable contexts. No single scheduling policy guarantees both low worst-case latency and maximal throughput.
+
+== Virtual memory and isolation ==
+Kernel memory management coordinates page tables, allocation, mapping and page faults. Page-table permissions and privilege checks can isolate address spaces when hardware and configuration enforce them. A virtual address is not intrinsically a physical address, and mappings may change over time. Isolation is conditional on correctness of the kernel, hardware, privileged extensions and surrounding trusted components.
+
+== Engineering contracts and implementation verification ==
+A kernel's system-call ABI must define argument encoding, validation, error reporting, object lifetime and observable concurrency. The design must distinguish process context, hard/soft interrupt contexts, and deferred execution. Scheduling claims require an explicit task model (periodic, sporadic or best effort), processor count, preemption and interrupt assumptions; average utilization alone does not prove schedulability. Virtual-memory correctness requires explicit page-table permission, translation, fault and invalidation rules; stale translation caches and device DMA introduce additional synchronization and isolation concerns. A device driver is a distinct interface component and may run inside or outside the privileged kernel depending on the design.
+
+For reproducible evaluation, specify hardware and privilege architecture, kernel revision, configuration, compiler, scheduler policy, task mix, interrupt load and measurement clocks. Measure syscall and context-switch latency distributions (including tails), fault handling, IPC throughput and isolation failures separately. Comparison between architectures must control for workload and implementation quality; kernel taxonomy alone cannot establish universal performance or security rankings.
+
+== Kernel architecture ==
+A monolithic design keeps a relatively broad set of mechanisms, including many drivers, in kernel privilege; a microkernel restricts the privileged core and relies more on interprocess communication with external services. Design names do not determine measurable overhead: message-transfer costs, caching, driver boundaries and workload dominate comparisons.
+
+== Proof obligations and research gaps ==
+A proof of functional refinement, a proof of access-control enforcement, and a proof of information-flow noninterference are distinct claims. Their assumptions, system boundary and excluded channels must be documented separately. Relevant open engineering problems include hardware side channels, DMA/IOMMU integration, device-driver trusted code, dynamic reconfiguration, verified toolchains and maintaining proofs as implementations evolve. These are research directions, not claims that any given kernel resolves them.
+
+== Formal assurance and scope ==
+Klein and colleagues presented a machine-checked functional-correctness proof for the seL4 microkernel relative to an abstract specification, explicitly assuming correctness of compiler, assembly, boot code and hardware.<ref name="klein">Klein, G. et al. (2009), [https://doi.org/10.1145/1629575.1629596 ''seL4: Formal Verification of an OS Kernel''], SOSP, 207–220.</ref> Such a proof does not establish that all deployments are secure or that every desired security property follows from functional refinement. Later information-flow work specified further conditions for isolation and identified covert-channel limitations.<ref name="murray">Murray, T. et al. (2013), [https://doi.org/10.1109/SP.2013.35 ''seL4: From General Purpose to a Proof of Information Flow Enforcement''], IEEE S&P.</ref>
+
+== Platform-specific interface evidence ==
+Linux documentation for the user-access API specifies that a successful <code>access_ok</code> check does not guarantee that a later memory access succeeds; access may still fail with <code>-EFAULT</code>. This behavior is documented in versioned Linux memory-management API references, and exact API wording changes between releases. A generic kernel description should not imply that every architecture implements Linux's ABI.<ref name="linuxaccess">Linux kernel, [https://docs.kernel.org/5.19/core-api/mm-api.html Memory Management APIs (v5.19)], section on user-space memory access.</ref>
+
+== Worked model: scheduling utilization ==
+For a hypothetical single processor, suppose two CPU-bound tasks each receive 4 ms of execution in a repeating 10 ms observation window, with 2 ms consumed by other activity or idle time. Their combined observed execution fraction is (4+4)/10 = 0.8, or 80%. This arithmetic does '''not''' predict scheduling fairness, deadlines, context-switch overhead, or the feasibility of any real workload; it merely illustrates an accounting ratio. Time fractions must be measured on a consistent clock and distinguish idle from overhead.
+
+== Numerical model limitations ==
+For the illustrative 10 ms interval, two tasks consume 4 ms each: total task CPU utilization is <math>U=(4+4)/10=0.8</math>. The remaining 2 ms may be idle or other execution; this observation does not imply any particular response-time bound or real-time schedulability. For periodic tasks with deadlines, analysis additionally needs task periods, deadlines, blocking, interference and scheduling policy. This is arithmetic illustration, not a measured kernel benchmark.
+
+== Provenance and limitations ==
+The Linux memory-management API is primary implementation documentation; it cannot establish cross-platform semantics. The seL4 papers are primary research on a particular kernel and proof model; generalization to Linux, Windows or all microkernels would be unwarranted. Hardware privilege, side channels and the total trusted computing base require separate analysis.
+
+== References ==
+<references/>

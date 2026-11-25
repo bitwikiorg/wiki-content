@@ -16,6 +16,7 @@ class DRAMSourceTests(unittest.TestCase):
         self.assertIn("{{:Dynamic random-access memory/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertNotIn("{{Reading depth", core + simple + technical)
         self.assertIn("[[Dynamic random-access memory/Simple|Simple]]", technical)
         self.assertIn("[[Dynamic random-access memory/Technical|Technical]]", simple)

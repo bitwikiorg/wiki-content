@@ -1,0 +1,140 @@
+'''Reading depth:''' [[Halo effect/Simple|Simple]] · [[Halo effect/Technical|Technical]]
+
+= Halo effect — Technical =
+
+The '''halo effect''' describes contamination of judgments about specific attributes by an overall positive or negative impression of an evaluated person, object or institution. In psychometric terms, it can appear as shared rater variance, anchoring by global evaluations or inference from a salient attribute without adequate independent evidence. However, the mere observation of correlated ratings is '''not sufficient''' to identify a psychological bias: underlying traits may genuinely covary, evaluators may share valid evidence, or a rating instrument may introduce common-method artifacts.
+
+Edward L. Thorndike's 1920 study of psychological ratings described surprisingly broad covariance across judgments of attributes thought partly independent. Nisbett and Wilson (1977) experimentally studied global evaluations and participants' explanations of their own judgments, contributing to the empirical literature on how evaluations can influence specific impressions.<ref name="thorndike">Edward L. Thorndike, [https://doi.org/10.1037/h0071663 “A Constant Error in Psychological Ratings”], ''Journal of Applied Psychology'' 4(1), 25–29 (1920), early evidence and measurement discussion.</ref><ref name="nisbett">Richard E. Nisbett and Timothy D. Wilson, [https://doi.org/10.1037/0022-3514.35.4.250 “The Halo Effect: Evidence for Unconscious Alteration of Judgments”], ''Journal of Personality and Social Psychology'' 35(4), 250–256 (1977), original experimental investigation.</ref>
+
+== Define an evaluative construct operationally ==
+
+Suppose a rater judges a target on several dimensions, such as competence, conscientiousness, appearance and friendliness. Let <math>Y_{ijr}</math> denote the rating of target <math>i</math> on attribute <math>j</math> by rater <math>r</math>. A halo hypothesis is not merely that two observed ratings correlate, but that a general impression or irrelevant evaluative cue systematically influences attribute ratings beyond what the attribute evidence justifies.
+
+The observational data must distinguish:
+
+* Actual target characteristics or independently measured performance.
+* Global evaluation of the target, possibly made before the specific ratings.
+* Rater characteristics and scale-use tendencies.
+* Attribute-specific evidence presented to the rater.
+* Experimental manipulations of irrelevant impression cues.
+* Measurement noise and known dependencies among dimensions.
+
+Without these distinctions, observed “halo” can be an ambiguous label applied to any convenient correlation.
+
+== Common-rater covariance: independent Gaussian illustration ==
+
+To demonstrate how an apparent relationship between separate ratings can arise without any genuine correlation between underlying traits, construct the following invented measurement model:
+
+<math display="block">Y_1=T_1+H+\epsilon_1,\qquad Y_2=T_2+H+\epsilon_2,</math>
+
+where <math>T_1,T_2</math> are distinct true attributes; <math>H</math> is a common impression factor influencing both ratings; and <math>\epsilon_1,\epsilon_2</math> are independent attribute-specific rating noises. Assume all five variables are mutually independent, have mean zero and variance one. In particular, the true traits <math>T_1</math> and <math>T_2</math> are uncorrelated.
+
+The measured variances are
+
+<math display="block">\operatorname{Var}(Y_1)=1+1+1=3,\qquad\operatorname{Var}(Y_2)=3.</math>
+
+The measured covariance is
+
+<math display="block">\operatorname{Cov}(Y_1,Y_2)=\operatorname{Var}(H)=1,</math>
+
+because all cross-covariance terms vanish under the stipulated independence. Hence the Pearson correlation is
+
+<math display="block">\rho(Y_1,Y_2)=\frac1{\sqrt{3\cdot3}}=\frac13\simeq0.33333.</math>
+
+The model generates positively correlated ratings even though the true attributes are unrelated. The common <math>H</math> can be interpreted as an invented shared impression effect. This is a mathematical possibility, not evidence that a measured correlation of one-third in a real study must be due to halo bias.
+
+If the common factor is removed, so <math>Y_1=T_1+\epsilon_1</math> and <math>Y_2=T_2+\epsilon_2</math>, then <math>\operatorname{Cov}(Y_1,Y_2)=0</math> under the same assumptions. Conversely, genuine covariance between <math>T_1,T_2</math> can also create measured rating correlation even with <math>H=0</math>. Without independent data or an experiment these explanations can be observationally indistinguishable.
+
+=== Generalized covariance decomposition ===
+
+More generally, in a linear latent rating model
+
+<math display="block">Y_j=\mu_j+\lambda_jG+b_r+\epsilon_j,</math>
+
+the shared factor <math>G</math> might represent a real target-wide trait or global impression, while <math>b_r</math> represents rater-specific scale use. Their meanings depend on a particular study design and identifiability assumptions. If <math>G</math>, <math>b_r</math> and residuals are independent, covariance between ratings on two traits includes <math>\lambda_j\lambda_k\operatorname{Var}(G)+\operatorname{Var}(b_r)</math> and any genuine cross-trait covariance included in the specification.
+
+Factor analysis may detect shared variance, but a latent factor's statistical existence does not establish its psychological interpretation. One must validate the factor through independent measures, experimental manipulation or well-specified theoretical constraints. Labels such as “halo factor” are hypotheses rather than discoveries guaranteed by fitting a model.
+
+== Competing explanations preserved from the canonical review ==
+
+The original source distinguishes three observationally confusable explanations for correlated ratings. Their predictions and identification requirements are summarized below; these are hypotheses to test, not mechanisms inferred from correlation alone.
+
+{| class="wikitable"
+! Explanation !! What it predicts !! Distinguishing information
+|-
+| Shared underlying trait || Ratings correlate because abilities or behaviors actually covary || Independent objective measurement and multi-rater agreement
+|-
+| Global impression bias || Unrelated impression affects specific ratings || Random manipulation of irrelevant cues
+|-
+| Response-style artifact || A rater systematically uses high or low scale values || Rater fixed effects, scale checks and randomized anchors
+|}
+
+== Experimental identification of halo bias ==
+
+A more credible design manipulates information intended to affect a general impression while holding evidence for a specific rated attribute constant. For example, randomly assign evaluators to receive an irrelevant favorable or neutral introduction about an otherwise identical applicant, then obtain ratings of the applicant's objectively documented technical skill.
+
+Let <math>Z\in\{0,1\}</math> denote the randomized impression manipulation and <math>Y</math> the technical-skill rating. Under a successful randomized design with consistent measurement, the causal effect of the introduced cue on ratings can be estimated as
+
+<math display="block">\Delta=E[Y\mid Z=1]-E[Y\mid Z=0].</math>
+
+Suppose an entirely hypothetical dataset yielded mean rating 4.2 in the favorable-introduction group and 3.5 in the neutral group on an adequately justified rating scale. The observed difference is <math>\Delta=4.2-3.5=0.7</math> scale points. This is a teaching example, not an effect size attributed to a published study.
+
+An investigator should also verify that the treatment changes the intended overall impression rather than inadvertently providing task-relevant evidence. If the introduction directly communicates reliable skill information, a rating difference may be rational inference, not halo bias.
+
+Randomization can identify an effect of the supplied cue on ratings, but labeling that effect a halo mechanism requires additional argument. Different mechanisms such as demand characteristics, social desirability or changed attention may also generate <math>\Delta\ne0</math>.
+
+== Rater effects, measurement scales and shared methods ==
+
+In personnel appraisal or education, the evaluation instrument may use a bounded Likert-type scale. Ceiling and floor effects can compress observed differences; differences in how raters use extreme categories can mimic trait differences. A shared evaluator answering multiple items may produce method covariance that is not fully captured by a single global impression factor.
+
+Useful tools include multi-trait multi-method designs, independent raters, random stimulus presentation, inter-rater reliability estimates, and confirmatory models with identified measurement structures. Rater fixed or random effects can help account for systematic leniency and severity but do not automatically remove all halo contamination.
+
+Another major concern is '''criterion contamination''': if the supposedly objective reference outcome is itself a supervisor's rating, comparing it against the same supervisor's other assessments cannot independently validate the effect. Observational correlations can remain confounded by real skill, selection and organizational context.
+
+### When favorable impressions contain valid information
+
+Suppose two attributes reflect a shared underlying quality such as conscientious attention to detail. A supervisor may rationally update expectations about one attribute after observing reliable evidence about another. Such Bayesian or statistical updating can produce cross-trait associations without error.
+
+The scientific burden is to show that the spillover exceeds what independently supported relationships justify, or that it arises from a manipulated attribute known to be irrelevant to the target judgment. One cannot classify every high overall rating as “halo” merely because the observer also rated specific skills highly.
+
+Likewise, negative impressions can affect multiple judgments, sometimes termed a horn effect. It is useful terminology for a possible asymmetric bias, but its prevalence and magnitude should not be assumed equivalent across all evaluation tasks.
+
+== Historical and later research context ==
+
+Thorndike's original study concerned psychological ratings of persons and documented correlations he interpreted as a constant error; it did not conduct every contemporary randomized experiment necessary to identify a general universal mechanism. Nisbett and Wilson's experiments later provided a different kind of evidence on the relation between global impressions and specific judgments.<ref name="thorndike"/><ref name="nisbett"/>
+
+Modern work revisits the explanation of the halo phenomenon and may propose alternatives involving inference, rater beliefs, common-method variance and memory. Historical familiarity does not settle the correct causal interpretation of every dataset.<ref name="modern">[https://pmc.ncbi.nlm.nih.gov/articles/PMC11614318/ “A Constant Error, Revisited: A New Explanation of the Halo Effect”], recent research proposing a revised account and discussing Thorndike's original work.</ref>
+
+A strong review should separate original observations, later manipulations, measurement-theoretic reconstructions and possible interventions. The historical citation is necessary for attribution, while the statistical model is a deliberately modern illustration, not a reconstruction of Thorndike's data.
+
+== Application contexts and consequences ==
+
+Halo effects can be studied in hiring, teaching, healthcare, consumer evaluations and organizational performance metrics. They may affect decisions, especially when a rater is asked to provide precise attribute-level judgments with limited information.
+
+A practical mitigation strategy can separate evaluation criteria, require concrete evidence per attribute, blind irrelevant identity or appearance cues, and use multiple raters. Such interventions may also introduce cost, procedural burden or new biases, so their effectiveness requires controlled evaluation. No process is proven unbiased simply because it is “structured.”
+
+In machine learning, a similar measurement problem arises if a human evaluator's global preference for a response colors separate rubric scores for factual correctness, safety and style. This is a testable common-rater effect, not proof that the model itself possesses a human halo bias. Independent scoring, calibrated anchors and inter-rater analyses help distinguish evaluation artifacts from genuine output properties.
+
+== Replication and statistical reporting ==
+
+A rigorous study should predefine the target attribute and global impression, document the randomization if used, disclose manipulation checks and evaluator blinding, report effect sizes with uncertainty, analyze rater/target clustering, and compare the results with independently measured criteria.
+
+For the illustrative covariance model, independent arithmetic verifies <math>\operatorname{Var}(Y_1)=3</math>, <math>\operatorname{Cov}(Y_1,Y_2)=1</math> and correlation <math>1/3</math>. The model is not an estimate from published data. Additional tests should confirm that allowing genuine trait correlation can reproduce similar observed patterns, demonstrating non-identification without stronger design.
+
+For a randomized judgment experiment, the difference between groups is an effect of the manipulation on the measured rating; attributing it specifically to halo requires controls against demand, valid evidence transfer and differing expectations.
+
+== Epistemic boundaries ==
+
+The halo effect is a well-established topic in psychology, but its magnitude is context-dependent and its mechanisms can differ. It should not be treated as an immutable trait of all people, an explanation for every flattering review or an excuse to dismiss favorable judgments without evidence.
+
+The core methodological lesson is to distinguish what a person's ratings reveal about an evaluated target from what they reveal about the rating process. A common positive impression is not automatically a hidden true trait, and a shared correlation is not automatically a cognitive bias.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* [https://doi.org/10.1037/h0071663 Thorndike (1920)], original observation.
+* [https://doi.org/10.1037/0022-3514.35.4.250 Nisbett and Wilson (1977)], experimental alteration of judgments.
+* [[Halo effect/Simple|Simple]] · [[Cognition]] · [[Decision theory]].

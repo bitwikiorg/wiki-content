@@ -15,10 +15,14 @@ class VoltageRegulatorArticleTest(unittest.TestCase):
     def test_two_depth_navigation(self):
         core = BASE.with_suffix(".mediawiki").read_text(encoding="utf-8")
         self.assertIn("{{:Voltage regulator/Simple}}", core)
+        self.assertIn("{{Knowledge object", core)
+        self.assertIn("[[Related to::Feedback]]", core)
+        simple = (BASE / "Simple.mediawiki").read_text(encoding="utf-8")
+        self.assertIn("== Two common approaches ==", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
         for p in [BASE / "Simple.mediawiki", BASE / "Technical.mediawiki"]:
             text = p.read_text(encoding="utf-8")
-            self.assertIn("[[Voltage regulator/Simple|", text)
-            self.assertIn("[[Voltage regulator/Technical|", text)
+            self.assertTrue("[[Voltage regulator/Simple|" in text or "'''Simple'''" in text)
+            self.assertTrue("[[Voltage regulator/Technical|" in text or "'''Technical'''" in text)
             self.assertNotIn("Template:Reading depth", text)
     def test_numerical_examples(self):
         self.assertAlmostEqual((12-5)*1, 7)

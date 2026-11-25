@@ -25,8 +25,10 @@ class OODALoopArticleTest(unittest.TestCase):
     def test_canonical_identity(self):
         core, simple, technical = self.texts
         self.assertIn("|title=OODA loop", core)
-        for depth, content in (("Core", core), ("Simple", simple), ("Technical", technical)):
-            self.assertIn(f"|base=OODA loop|current={depth}", content)
+        self.assertNotIn("{{Reading depth", core + simple + technical)
+        self.assertIn("[[OODA loop/Technical|Technical]]", simple)
+        self.assertIn("[[OODA loop/Simple|Simple]]", technical)
+        self.assertNotIn("== Concept and provenance ==", core)
 
     def test_transclusion_owned_by_simple(self):
         core, simple, technical = self.texts
@@ -34,6 +36,7 @@ class OODALoopArticleTest(unittest.TestCase):
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
         self.assertNotIn("<onlyinclude>", core + technical)
+        self.assertIn("== A practical example ==", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
 
     def test_sources_and_qualifications(self):
         for content in self.texts:
@@ -41,6 +44,7 @@ class OODALoopArticleTest(unittest.TestCase):
             self.assertIn("1995", content)
             names = re.findall(r'<ref name="([^"]+)"', content)
             self.assertEqual(len(names), len(set(names)))
+        self.assertIn("Boyd_Errata_page384.pdf", self.texts[2])
         self.assertIn("implicit guidance", self.texts[2].lower())
         self.assertIn("not a deterministic four-step", self.texts[2])
         self.assertIn("not guarantee success", self.texts[1])

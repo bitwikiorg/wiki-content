@@ -11,7 +11,9 @@ class TestHighBandwidthMemory(unittest.TestCase):
     def test_two_localizations_and_identity(self):
         core, simple, technical = (p.read_text(encoding="utf-8") for p in (CORE, SIMPLE, TECH))
         self.assertIn("{{:High-bandwidth memory/Simple}}", core)
-        self.assertIn("[[Category:Semiconductor memory]]", core)
+        self.assertIn("[[Category:Electronics]]", core)
+        self.assertIn("{{Knowledge object", core)
+        self.assertIn("== How it works ==", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
         self.assertNotIn("Template:Reading depth", core + simple + technical)
         for text in (simple, technical):
             self.assertEqual(text.count("<onlyinclude>"), 1)

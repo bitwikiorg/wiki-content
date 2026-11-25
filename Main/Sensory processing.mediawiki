@@ -2,29 +2,385 @@
  |title=Sensory processing
  |entity_type=Concept
  |domain=Biology, Cognitive science, Medicine, Science
- |provenance=Purves et al.; MIT OpenCourseWare
+ |status=Established
+ |provenance=Purves et al.; sensory neuroscience; psychophysics; multisensory neuroscience
 }}
-<onlyinclude>{{:Sensory processing/Simple}}</onlyinclude>
+{{Reading depth|base=Sensory processing|current=Core}}
 
-'''Reading depth:''' [[Sensory processing/Simple|Simple]] · [[Sensory processing/Technical|Technical]]
+= Sensory processing =
+
+'''Sensory processing''' is the set of biological processes by which physical or chemical events are detected by sensory receptors, transduced into neural signals, transformed within neural circuits, integrated with other information, and used to guide [[Perception]] and [[Behavior]]. Sensory processing includes detection of external stimuli such as light, sound, touch, odor, and taste, as well as internal and body-related signals such as proprioception, vestibular input, temperature, pain, and interoception.
+
+Sensation is not a passive copy of the environment. Receptors and neural circuits selectively encode some stimulus dimensions while discarding or transforming others. Context, adaptation, attention, learning, body state, and multisensory information can all change neural responses.<ref name="purves">[https://www.ncbi.nlm.nih.gov/books/NBK10955/ Purves, D. et al., ''Neuroscience'', Part II: Sensation and Sensory Processing.]</ref>
+
+== Sensory transduction ==
+
+'''Transduction''' converts stimulus energy or chemistry into a change in receptor activity.
+
+Examples include:
+
+* photoreceptors responding to photons;
+* mechanoreceptors responding to deformation;
+* auditory hair cells responding to mechanical vibration;
+* chemoreceptors responding to molecules;
+* thermoreceptors responding to temperature;
+* nociceptors responding to potentially damaging conditions.
+
+Transduction commonly produces a graded receptor potential that influences action-potential firing in the receptor neuron or downstream afferent neuron.
+
+The neural signal is therefore related to the stimulus through the receptor's biophysics rather than being a literal copy.
+
+== Sensory modalities ==
+
+A '''sensory modality''' is a class of sensation associated with particular receptor systems and neural pathways.
+
+Major modalities include:
+
+* vision;
+* audition;
+* somatosensation;
+* proprioception;
+* vestibular sensation;
+* olfaction;
+* taste;
+* nociception;
+* thermosensation;
+* interoception.
+
+Each modality has different receptor mechanisms and stimulus dimensions.
+
+The nervous system nevertheless uses recurring coding principles across modalities.
+
+== Receptor selectivity ==
+
+Receptors differ in which stimulus properties they respond to most strongly.
+
+A photoreceptor may be sensitive to a range of wavelengths.
+
+A mechanoreceptor may respond preferentially to vibration, pressure, or stretch.
+
+Selectivity is usually not absolute.
+
+A receptor can respond outside its preferred range when stimulation is sufficiently strong.
+
+== Labeled lines ==
+
+Sensory identity depends partly on which neural pathways are activated.
+
+In a simplified labeled-line model, activity in a particular pathway is interpreted according to its modality and projection targets.
+
+This helps explain why electrical stimulation of a sensory pathway can evoke a modality-specific sensation without the ordinary external stimulus.
+
+Labeled-line organization is useful but not a complete account because neural pathways diverge, converge, and interact.
+
+== Receptive fields ==
+
+A '''receptive field''' is the region or stimulus domain in which stimulation changes a neuron's activity.
+
+For a tactile neuron, the receptive field can be an area of skin.
+
+For a visual neuron, it can be a region of visual space with preferences for features such as orientation or movement.
+
+Small receptive fields can support fine spatial discrimination.
+
+Larger receptive fields can integrate information across wider regions.<ref name="receptors">[https://www.ncbi.nlm.nih.gov/books/NBK539861/ StatPearls, “Physiology, Sensory Receptors.”]</ref>
+
+== Topographic maps ==
+
+Many sensory systems preserve spatial relationships in neural maps.
+
+Examples include:
+
+* retinotopy in visual pathways;
+* somatotopy in somatosensory cortex;
+* tonotopy in auditory pathways.
+
+Topographic maps are not photographic images inside the brain.
+
+They are ordered neural representations in which nearby stimulus locations or frequencies tend to activate related neural populations.
+
+== Intensity coding ==
+
+Stimulus intensity can be represented by combinations of:
+
+* firing rate;
+* recruitment of additional neurons;
+* temporal pattern;
+* population activity.
+
+Individual neurons have limited firing ranges.
+
+Population coding extends the range over which sensory systems can represent intensity.
+
+Perceived magnitude is not generally a simple linear function of physical stimulus magnitude.
+
+== Temporal coding ==
+
+Some sensory information is carried by timing.
+
+Neural responses can encode:
+
+* stimulus onset;
+* phase;
+* periodicity;
+* interaural time differences;
+* temporal texture.
+
+The relevant timescale differs across sensory systems.
+
+Temporal precision can range from sub-millisecond synchronization in auditory pathways to slower adaptation over seconds or minutes.
+
+== Population coding ==
+
+Sensory variables are frequently represented by activity across populations rather than one neuron.
+
+Let neurons have overlapping tuning curves.
+
+A stimulus changes the pattern across the population.
+
+The nervous system can estimate a stimulus property from this distributed pattern.
+
+Population coding provides robustness but complicates simple one-neuron/one-feature interpretations.
+
+== Sensory adaptation ==
+
+Sensory responses change during sustained or repeated stimulation.
+
+'''Adaptation''' can reduce responses to constant input, shift sensitivity, or change temporal dynamics.
+
+This allows sensory systems to allocate limited dynamic range to current environmental conditions.
+
+Adaptation can occur at receptors and throughout neural circuits.
+
+It should not be equated with fatigue; it can be an active recalibration process.<ref name="adaptive">[https://doi.org/10.1038/s41593-021-00846-0 Młynarski, W. and Hermundstad, A. M. (2021), “Efficient and adaptive sensory codes,” ''Nature Neuroscience'' 24, 998–1009.]</ref>
+
+== Gain control ==
+
+Neural responses are often normalized relative to context.
+
+A response to one stimulus can depend on surrounding or preceding stimulation.
+
+Gain control helps sensory systems operate across large environmental ranges.
+
+Examples include visual adaptation across illumination levels and auditory adaptation across sound levels.
+
+Context dependence means a firing rate cannot always be interpreted without knowing the recent stimulus distribution.
+
+== Sensory coding and information ==
+
+Sensory coding asks how stimulus variables are represented in neural activity.
+
+Possible codes include:
+
+* rate codes;
+* temporal codes;
+* population codes;
+* sparse codes;
+* distributed codes.
+
+Information-theoretic measures can quantify statistical dependence between stimuli and neural responses.
+
+Such measures do not by themselves reveal subjective experience.
+
+== Noise and variability ==
+
+Neural responses vary across repeated presentations of the same nominal stimulus.
+
+Variability can arise from:
+
+* receptor noise;
+* stochastic ion channels;
+* network state;
+* uncontrolled stimulus variation;
+* attention;
+* movement.
+
+Experimental analysis should therefore estimate response distributions rather than infer coding from one trial.
+
+== Psychophysics ==
+
+'''Psychophysics''' relates controlled physical stimuli to behavioral reports or performance.
+
+Researchers can measure:
+
+* detection threshold;
+* discrimination threshold;
+* perceived magnitude;
+* reaction time.
+
+Psychophysics characterizes system-level sensory performance.
+
+It does not identify the underlying neural circuit by itself.
+
+== Detection thresholds ==
+
+A threshold is not a perfect boundary between sensing and not sensing.
+
+Behavioral responses are probabilistic.
+
+Detection depends on:
+
+* sensory evidence;
+* internal noise;
+* attention;
+* expectations;
+* decision criterion.
+
+Modern psychophysics therefore uses repeated trials and probabilistic models.
+
+== Signal detection theory ==
+
+Signal detection theory separates sensitivity from response bias.
+
+An observer can respond “yes” frequently and achieve many hits but also many false alarms.
+
+Sensitivity measures how well signal and noise distributions can be distinguished.
+
+Decision criterion measures willingness to report the signal.
+
+This distinction prevents response strategy from being mistaken for sensory sensitivity.
+
+== Multisensory processing ==
+
+Natural perception is frequently multisensory.
+
+Visual, auditory, tactile, vestibular, olfactory, and proprioceptive signals can interact.
+
+The nervous system can combine partially redundant cues to improve estimation.
+
+It can also experience conflict when cues disagree.
+
+Multisensory processing occurs in several subcortical and cortical circuits rather than at one single “integration center.”<ref name="multisensory">[https://www.ncbi.nlm.nih.gov/books/NBK92848/ Murray, M. M. and Wallace, M. T., eds. (2012), ''The Neural Bases of Multisensory Processes''.]</ref>
+
+== Bayesian interpretation ==
+
+Some sensory computations can be modeled as probabilistic inference.
+
+Sensory evidence is noisy.
+
+Prior expectations and current observations can be combined to estimate likely causes.
+
+Bayesian models can describe behavior well in some tasks.
+
+A good Bayesian fit does not prove that neurons literally implement an explicit symbolic Bayesian calculation.
+
+== Attention ==
+
+[[Attention]] changes sensory processing by prioritizing some information over competing information.
+
+Attention can alter:
+
+* neural response gain;
+* effective connectivity;
+* behavioral detection;
+* reaction time.
+
+Attention does not simply turn a sense “on” or “off.”
+
+Its effects depend on task and circuit.
+
+== Learning and plasticity ==
+
+Sensory processing changes with experience.
+
+Perceptual learning can improve discrimination after training.
+
+Developmental experience can shape sensory maps.
+
+Injury or sensory deprivation can also drive plastic reorganization.
+
+Plasticity means sensory representation is not completely fixed after early development.
+
+== Perception ==
+
+[[Perception]] is the organization and interpretation of sensory information into experienced or behaviorally relevant representations.
+
+Sensory processing can occur without conscious perception.
+
+For example, early receptor and neural responses can be measured even when a stimulus is not reported consciously.
+
+Therefore:
+
+<pre>
+sensory transduction
+≠ perception
+≠ conscious awareness
+</pre>
+
+These levels should remain distinct.
+
+== Sensorimotor loops ==
+
+Sensation and action form feedback loops.
+
+Eye movements determine which visual input reaches the retina.
+
+Head movement changes auditory and vestibular input.
+
+Touch often depends on active exploration.
+
+Sensory systems therefore process input partly generated by the organism's own behavior.
+
+== Clinical sensory disorders ==
+
+Sensory deficits can arise at different levels:
+
+* receptor damage;
+* peripheral nerve damage;
+* spinal or brainstem pathway lesions;
+* thalamic dysfunction;
+* cortical injury;
+* attentional or perceptual disorder.
+
+Similar behavioral complaints can therefore have different mechanisms.
+
+Clinical diagnosis requires appropriate examination rather than broad labels.
+
+== Sensory-processing terminology in clinical practice ==
+
+Terms such as “sensory processing difficulties” are used in occupational and clinical contexts.
+
+These descriptions should be separated from specific established neurological diagnoses.
+
+A behavioral pattern involving discomfort with sensory input does not identify one neural mechanism without further evaluation.
+
+== Engineered sensory systems ==
+
+Robots and devices also use sensors and signal processing.
+
+A camera transduces light into electrical measurements.
+
+A microphone transduces pressure waves.
+
+Algorithms can detect features and combine modalities.
+
+These are legitimate functional analogies.
+
+They do not imply subjective sensation or conscious perception.
+
+== Epistemic boundary ==
+
+A measured sensory response supports conclusions at the level actually observed.
+
+A receptor response does not establish perception.
+
+A neural activation pattern does not establish subjective experience.
+
+A behavioral report does not uniquely identify a neural mechanism.
+
+Strong sensory claims should connect physical stimulus, receptor transduction, neural coding, behavioral evidence, and perception without collapsing the levels.
 
 == Semantic relationships ==
+
 * [[Related to::Signal]]
 * [[Related to::Perception]]
 * [[Related to::Cognition]]
 * [[Related to::Attention]]
 * [[Related to::Behavior]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Sensory processing]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Biology]]
 [[Category:Cognitive science]]

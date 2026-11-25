@@ -2,32 +2,361 @@
  |title=Digital organism
  |entity_type=Concept
  |domain=Biology, Computer science, Systems science, Science
- |provenance=Lenski; Lenski et al.
+ |status=Established
+ |provenance=Ray (1991); Ofria and Wilke (2004); Lenski et al. (2003)
 }}
-<onlyinclude>{{:Digital organism/Simple}}</onlyinclude>
+{{Reading depth|base=Digital organism|current=Core}}
 
-'''Reading depth:''' [[Digital organism/Simple|Simple]] · [[Digital organism/Technical|Technical]]
+= Digital organism =
 
-== Semantic relationships ==
-* [[Related to::Artificial life]]
-* [[Related to::Algorithm]]
-* [[Related to::Genetic inheritance]]
-* [[Related to::Adaptation (systems)]]
-* [[Related to::Computation]]
-* [[Related to::Autopoiesis]]
+A '''digital organism''' is a self-replicating executable program used as an experimental model of evolution. Digital organisms contain heritable instruction sequences, reproduce within a computational environment, acquire mutations, compete for limited resources, and can evolve by natural selection.
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Digital organism]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+The term “organism” is operational and model-based. Digital organisms are not biological cells: they do not contain DNA, proteins, membranes, or biochemical metabolism. Their scientific value comes from implementing core evolutionary processes in a system whose complete state can be recorded and experimentally manipulated.
 
-[[Category:Biology]]
-[[Category:Computer science]]
-[[Category:Systems science]]
-[[Category:Science]]
+[[Artificial life]] research uses digital organisms to study adaptation, mutation, selection, ecological interaction, complexity, and open-ended evolution.
+
+== Historical development ==
+
+Early experiments with self-reproducing programs preceded modern digital-evolution platforms, but Thomas Ray's '''Tierra''' became a major landmark. Ray described a computational environment in which machine-code-like programs copied themselves, mutated, competed for memory and processor time, and evolved ecological interactions.<ref name="ray">[https://tomray.me/pubs/ Ray, T. S. (1991), “An Approach to the Synthesis of Life,” in ''Artificial Life II'', pp. 371–408.]</ref>
+
+'''Avida''' later developed a more controlled experimental platform. Each Avida organism executes a digital genome on a virtual CPU, replicates with mutation, and can receive computational resources for performing specified tasks. Ofria and Wilke describe Avida explicitly as a platform for experiments with self-replicating and evolving computer programs.<ref name="avida">[https://doi.org/10.1162/106454604773563612 Ofria, C. and Wilke, C. O. (2004), “Avida: A Software Platform for Research in Computational Evolutionary Biology,” ''Artificial Life'' 10(2), 191–229.]</ref>
+
+Digital evolution has been used for controlled tests of evolutionary hypotheses. Lenski and colleagues used Avida to analyze the stepwise evolutionary origin of a complex logic function, reconstructing lineages and testing intermediate genotypes.<ref name="lenski">[https://doi.org/10.1038/nature01568 Lenski, R. E. et al. (2003), “The evolutionary origin of complex features,” ''Nature'' 423, 139–144.]</ref>
+
+== Digital genome ==
+
+A digital genome is usually a sequence of executable instructions,
+
+<math>g=(i_1,i_2,\ldots,i_L).</math>
+
+An interpreter or virtual CPU maps the genome and environmental state to behavior:
+
+<math>\phi=Exec(g,E).</math>
+
+The resulting phenotype can include:
+
+* replication time;
+* resource acquisition;
+* task performance;
+* interactions with other organisms;
+* movement through digital space;
+* production of offspring.
+
+Unlike a static bit string in a conventional genetic algorithm, a digital organism can execute an algorithm that controls its own replication.
+
+== Replication and inheritance ==
+
+Reproduction creates a descendant genome <math>g'</math> from parent <math>g</math>:
+
+<math>g'=R(g,\xi),</math>
+
+where <math>\xi</math> represents mutation events.
+
+Depending on the platform, mutations can include:
+
+* substitutions;
+* insertions;
+* deletions;
+* copy errors;
+* instruction changes during division.
+
+Inheritance is digital but not necessarily error-free.
+
+A system becomes evolutionarily interesting when replication creates heritable variation and variants differ in reproductive success.
+
+== Natural selection ==
+
+Let genotype <math>i</math> have frequency <math>x_i</math> and fitness <math>f_i</math>. A deterministic approximation is
+
+<math>\dot{x}_i=x_i(f_i-\bar f),</math>
+
+where
+
+<math>\bar f=\sum_j x_jf_j.</math>
+
+Actual digital populations are finite and therefore also experience stochastic drift.
+
+Fitness is environment-dependent. A genome rewarded for one computational function can lose its advantage if the reward structure changes.
+
+There is no context-free digital fitness.
+
+== Resource competition ==
+
+Digital environments can impose scarcity through:
+
+* processor time;
+* memory;
+* spatial sites;
+* energy-like resource counters;
+* task-dependent rewards.
+
+If a total computational budget is <math>C</math>, allocations can satisfy
+
+<math>\sum_i c_i\leq C.</math>
+
+Scarcity links behavior to reproductive success and allows ecological interaction.
+
+Without resource constraints, every replicator may expand independently and selection pressures can be substantially different.
+
+== Tierra ==
+
+Tierra placed replicating programs into a shared computational environment.
+
+Important outcomes included:
+
+* competition for memory and execution time;
+* changes in genome length;
+* parasite-like programs that exploited replication routines of other organisms;
+* higher-order ecological responses.
+
+These interactions were not simply labels assigned by the researcher. They emerged from executable behavior under the rules of the environment.
+
+The ecological analogy should nevertheless remain precise: a Tierra parasite is a digital strategy exploiting another program's machinery, not a biochemical parasite.
+
+== Avida ==
+
+Avida isolates organisms more strongly than Tierra and provides detailed experimental control.
+
+An Avida organism typically has:
+
+* a genome;
+* virtual registers and stacks;
+* an instruction pointer;
+* an execution history;
+* a parent lineage;
+* reproductive output.
+
+Researchers can configure mutation rates, population size, spatial structure, task rewards, and environmental changes.
+
+Complete ancestry and genotype histories allow experiments that are impossible or difficult in biological populations.
+
+== Experimental evolution ==
+
+Digital organisms support replicated evolutionary experiments.
+
+A general design can be:
+
+# initialize many populations from the same ancestor;
+# assign treatment and control environments;
+# evolve populations for a fixed number of updates or generations;
+# archive genomes through time;
+# measure fitness and phenotype;
+# replay ancestral and evolved genotypes;
+# test causal mutations.
+
+Because the experimenter controls the environment, competing hypotheses can often be tested by direct intervention.
+
+== Lineage reconstruction ==
+
+For a lineage
+
+<math>L=(g_0,g_1,\ldots,g_n),</math>
+
+every inherited change can be retained.
+
+Researchers can construct intermediate genotypes and ask which mutation changed a phenotype.
+
+This permits causal decomposition of historical pathways.
+
+Lenski et al.'s digital-evolution work used this ability to study how a complex function arose through mutations whose effects depended on prior genetic context.<ref name="lenski" />
+
+== Epistasis ==
+
+The effect of one mutation can depend on another.
+
+For mutations <math>A</math> and <math>B</math>, one simple additive-scale interaction is
+
+<math>\epsilon=W_{AB}-W_A-W_B+W_0.</math>
+
+Nonzero <math>\epsilon</math> indicates departure from additivity on that scale.
+
+Digital systems can map such interactions across large numbers of precisely known genotypes.
+
+== Neutral evolution ==
+
+Different genomes can have similar or identical measured fitness.
+
+A population can therefore move across a neutral network in genotype space.
+
+Neutral changes can alter which beneficial or harmful mutations are accessible later, affecting evolvability without producing an immediate fitness increase.
+
+== Ecology and coevolution ==
+
+Digital populations can exhibit:
+
+* competition;
+* parasitism;
+* mutual dependence;
+* frequency-dependent selection;
+* spatial structure;
+* arms races.
+
+To call an interaction ecological, the mechanism should be defined operationally. For example, a parasite should obtain a reproductive advantage by exploiting another organism's resources or functions, not merely by belonging to a category named “parasite.”
+
+== Complexity ==
+
+Digital evolution can produce more complex behavior, but complexity requires an explicit metric.
+
+Possible measures include:
+
+* genome length;
+* number of essential instructions;
+* algorithmic task complexity;
+* dependency structure;
+* phenotypic repertoire;
+* information required to specify an adaptation.
+
+Genome length alone is weak because genomes can accumulate neutral or redundant code.
+
+A claim that complexity increased should state which quantity increased and why it matters.
+
+== Open-ended evolution ==
+
+'''Open-ended evolution''' refers to sustained production of evolutionary novelty rather than convergence on a fixed set of solutions.
+
+Digital systems commonly face limits such as:
+
+* finite instruction sets;
+* fixed task rewards;
+* bounded environments;
+* resource ceilings;
+* repetitive ecological states.
+
+Long runtimes alone do not demonstrate open-endedness.
+
+Researchers need measures of novelty, diversity, ecological change, and continued creation of new adaptive opportunities.
+
+== Digital organisms and genetic algorithms ==
+
+A genetic algorithm usually treats candidate solutions as data structures evaluated by an external fitness function.
+
+A digital organism is normally executable and carries out behavior—including replication—inside its environment.
+
+The boundary is not absolute, but self-replication and autonomous execution are central to the digital-organism concept.
+
+== Digital organisms and computer viruses ==
+
+Computer viruses also self-replicate, but their usual purpose and environment differ.
+
+A virus is generally studied as software that propagates through real computer systems, often without authorization. Digital organisms are typically confined to controlled experimental environments designed to study evolution.
+
+Shared technical properties do not make the research categories identical.
+
+== Digital organisms and AI agents ==
+
+An [[Intelligent agent]] can optimize decisions without reproducing or evolving.
+
+A digital organism can reproduce and evolve while having little capability that would ordinarily be called intelligence.
+
+Evolution and intelligence are therefore independent dimensions.
+
+Evolutionary processes can, however, be used to evolve agent controllers.
+
+== Relation to biological evolution ==
+
+Digital organisms can implement genuine abstract conditions for Darwinian evolution:
+
+* reproduction;
+* heredity;
+* variation;
+* differential reproductive success.
+
+What they do not automatically reproduce are the full constraints of biological life.
+
+Digital systems may omit or simplify:
+
+* molecular chemistry;
+* development;
+* multicellularity;
+* biomechanics;
+* environmental physics;
+* horizontal gene transfer;
+* ecological diversity;
+* energetic metabolism.
+
+A digital result supports a general biological claim only when the mechanism of interest survives those differences.
+
+== Life status ==
+
+Whether a digital organism should literally be called “alive” depends on the definition of life.
+
+Digital organisms can satisfy operational definitions based on replication and evolution but fail definitions requiring biochemical metabolism, cellular organization, or autonomous material self-maintenance.
+
+[[Autopoiesis]] supplies a different criterion: a system must recursively produce the components and boundary that constitute its organization. Most conventional digital organisms rely on externally supplied hardware, virtual-machine rules, and execution infrastructure and therefore should not be assumed autopoietic.
+
+== Consciousness ==
+
+Evolution, replication, adaptation, and behavioral complexity do not establish subjective experience.
+
+There is no general inference
+
+<pre>
+evolved digital behavior → consciousness
+</pre>
+
+without an independently justified theory and discriminating evidence.
+
+Digital-organism experiments should therefore report measurable computational and evolutionary properties without anthropomorphic inflation.
+
+== Methodological strengths ==
+
+Digital evolution offers unusually strong experimental access:
+
+* exact state recording;
+* complete genealogy;
+* reproducible starting conditions;
+* controlled mutation;
+* rapid generation time;
+* destructive genotype tests;
+* counterfactual replay;
+* replicated populations.
+
+These strengths make digital organisms valuable for mechanism testing.
+
+== Methodological limitations ==
+
+The same explicit rules that make digital systems tractable can constrain their conclusions.
+
+Important risks include:
+
+* researcher-designed reward functions;
+* unrealistic mutation operators;
+* finite task vocabularies;
+* artificial resource accounting;
+* dependence on one instruction set;
+* hidden software bugs;
+* overgeneralization from model to biology.
+
+A robust study states which conclusions concern the digital system and which are proposed to generalize beyond it.
+
+== Reproducibility ==
+
+A reproducible digital-evolution study should report:
+
+* simulator version and source code;
+* random seeds;
+* ancestral genome;
+* instruction set;
+* mutation operators and rates;
+* population structure;
+* resource and reward schedules;
+* termination criteria;
+* analysis scripts.
+
+Because every event is computable, failure to preserve this information is avoidable loss of scientific evidence.
+
+== Related concepts ==
+
+Digital organisms connect [[Artificial life]], [[Evolution]], [[Genetic inheritance]], [[Adaptation (systems)]], [[Computation]], and [[Emergence]]. They are experimental evolutionary entities, not automatically biological organisms, intelligent agents, or conscious systems.
+
+== References ==
+
+<references />
+
+* [https://tomray.me/pubs/ Ray, T. S. (1991), “An Approach to the Synthesis of Life,” ''Artificial Life II'', 371–408.]
+* [https://doi.org/10.1162/106454604773563612 Ofria, C. and Wilke, C. O. (2004), “Avida: A Software Platform for Research in Computational Evolutionary Biology,” ''Artificial Life'' 10(2), 191–229.]
+* [https://doi.org/10.1038/nature01568 Lenski, R. E. et al. (2003), “The evolutionary origin of complex features,” ''Nature'' 423, 139–144.]
+
+== Reading depth ==
+
+[[Digital organism/Simple|Simple explanation]] · [[Digital organism/Technical|Technical treatment]]

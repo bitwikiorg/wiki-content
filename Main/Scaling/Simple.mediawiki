@@ -3,7 +3,7 @@
 
 = Scaling — Simple =
 
-<onlyinclude>'''Scaling''' describes how a system, quantity or process changes when its size, workload, resources or operating conditions change. A computer service may need to handle more users; a factory may need to make more products; a physical model may need to predict what happens to a larger object. These are related questions, but they do not have one universal scaling rule. Whether something scales well depends on what is increased, what must stay the same and which limits matter.<ref name="amdahl">Gene M. Amdahl, [https://doi.org/10.1145/1465482.1465560 “Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities”], ''AFIPS Spring Joint Computer Conference'' (1967), limits from work that does not benefit from parallelism.</ref></onlyinclude>
+<onlyinclude>'''Scaling''' describes how a system, quantity or process changes when its size, workload, resources or operating conditions change. A computer service may need to handle more users; a factory may need to make more products; a physical model may need to predict what happens to a larger object. These are related questions, but they do not have one universal scaling rule. Whether something scales well depends on what is increased, what must stay the same and which limits matter.<ref name="amdahl">Gene M. Amdahl, [https://doi.org/10.1145/1465482.1465560 “Validity of the Single Processor Approach to Achieving Large Scale Computing Capabilities”], ''AFIPS Spring Joint Computer Conference'' (1967), limits from work that does not benefit from parallelism.</ref>
 
 == Why growing a system is not always simple ==
 
@@ -64,6 +64,8 @@ These topics overlap, but no single one explains every kind of scaling.
 More users, more computers and more work are different changes. A system may scale in throughput but not in cost, reliability or fairness. Some tasks cannot be divided efficiently; others become dominated by communication, coordination or waiting.
 
 A useful claim states the workload, baseline, added resources, observed results, failure thresholds and economic cost. Without those details, “scales indefinitely” is a slogan, not a scientific conclusion.
+
+</onlyinclude>
 
 == Continue reading ==
 

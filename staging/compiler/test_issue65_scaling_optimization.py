@@ -38,6 +38,7 @@ class ScalingOptimizationArticleTests(unittest.TestCase):
                     self.assertNotIn("{{#ask:", dep)
                 self.assertEqual(simple.count("<onlyinclude>"), 1)
                 self.assertEqual(simple.count("</onlyinclude>"), 1)
+                self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
                 self.assertIn("{{:" + title + "/Simple}}", core)
                 self.assertIn("{{#ask:", core)
                 preview = expand_static_transclusions(

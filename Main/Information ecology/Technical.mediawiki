@@ -1,0 +1,29 @@
+'''Information ecology''' is a family of sociotechnical perspectives on information environments. In organizational information management it concerns the interdependence of sources, human conduct, incentives, governance and technology. In human–computer interaction it emphasizes situated practices and values within local settings. The term is not the name of one universally standardized scientific theory.
+
+== Two research traditions ==
+Davenport and Prusak (1997) describe an organization-wide approach in which strategy, politics, culture, staff, management processes and information architecture jointly shape information use. An inventory of computer assets alone does not capture informal sources, incentives to conceal information, quality judgments or the work of making information intelligible.
+
+Nardi and O'Day (1999) focus on locally constituted information ecologies, drawing attention to the relationship among tools, human activities and values. A local ecology changes when a tool is introduced or a role disappears, and specialists who mediate between people and technologies can be important even when their work is not represented in a database. The approaches overlap but have different units of analysis: the organization-wide information environment versus situated sociotechnical practice.
+
+== Analytic representation ==
+One useful, explicitly optional representation is a directed temporal multigraph <math>G_t=(V,E_t)</math>. Vertices may represent people, systems or documented information resources; typed edges describe observed transfers, transformations or access permissions. Separate an actual event edge from an authorization edge: a user able to read a record has not necessarily read it. Edge attributes might record time, transformation, provenance, access role and uncertainty. An event log is a partial observation of the ecology, not the ecology itself.
+
+For a specified task cohort, define retrieval success as <math>R=N_{\mathrm{successful}}/N_{\mathrm{attempted}}</math>, measure elapsed time from request to usable answer, and report the fraction of sampled answers with traceable provenance. Stratify by role and task difficulty, document missing logs and avoid treating throughput as accuracy. An information system can improve retrieval speed while reducing trust or increasing duplicated corrections. Privacy and access constraints must be assessed separately rather than counted as retrieval failures indiscriminately.
+
+== Empirical investigation and design ==
+A study can combine workflow observation, interviews, document sampling and system logs. Define the local task and stakeholders, map formal and informal routes, identify bottlenecks or conflicting records, and compare observed outcomes before and after a targeted change. Qualitative methods help distinguish a user deliberately avoiding a system from a user unable to use it; logs alone may not. Use a comparison group or staggered deployment where possible, and record changes in staffing, policy and case mix that threaten causal interpretation.
+
+For example, introducing a shared provenance field in a knowledge base may reduce the cost of verifying a claim. Evaluate a fixed set of tasks for correct retrieval, source traceability and completion time; also examine update burden, privacy and incentives for contributors. This is a proposed evaluation design, not a result from the cited books.
+
+== Related frameworks and limits ==
+[[Distributed cognition/Technical|Distributed cognition]] investigates how cognitive activity is coordinated across people and artifacts. Information ecology places additional emphasis on the environment, situated values and practices affecting information flow. The [[Infosphere/Technical|infosphere]] in information philosophy has a wider scope, including philosophical and ethical claims about informational entities. These distinctions are useful without treating one framework as a strict subset of another.
+
+Ecological terminology can obscure power, ownership and conflict if it implies harmonious adaptation. Boundaries and indicators should be chosen explicitly. A network metric cannot establish the meaning or truth of a message, nor can a successful local case establish a universal organizational law.
+
+== References ==
+* [https://doi.org/10.1093/oso/9780195111682.001.0001 Davenport, T. H., with Prusak, L. ''Information Ecology: Mastering the Information and Knowledge Environment.'' Oxford University Press (1997)].
+* [https://doi.org/10.7551/MITPRESS/3767.001.0001 Nardi, B. A., and O'Day, V. L. ''Information Ecologies: Using Technology with Heart.'' MIT Press (1999)].
+* [https://doi.org/10.5210/fm.v4i5.672 Nardi, B., and O'Day, V. “Information Ecologies: Using Technology with Heart—Chapter Four: Information Ecologies.” ''First Monday'' 4(5) (1999)].
+
+== Reading depth ==
+[[Information ecology/Simple|Simple explanation]]

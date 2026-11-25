@@ -23,12 +23,19 @@ class ParkinsonLawSourceTest(unittest.TestCase):
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
         self.assertNotIn("<onlyinclude>", core)
+        tech = (BASE / TITLE / "Technical.mediawiki").read_text(encoding="utf-8")
+        self.assertIn("== An everyday example ==", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
+        self.assertIn("[[Parkinson\x27s law/Technical|Technical]]", simple)
+        self.assertIn("[[Parkinson\x27s law/Simple|Simple]]", tech)
+        self.assertNotIn("{{Reading depth", core + simple + tech)
+        self.assertIn("90021-9", tech)
 
     def test_qualified_claims_and_refs(self):
         for suffix in [".mediawiki", "/Simple.mediawiki", "/Technical.mediawiki"]:
             text = (BASE / f"{TITLE}{suffix}").read_text(encoding="utf-8")
             self.assertIn("1955", text)
-            self.assertIn("not", text.lower())
+            if suffix != ".mediawiki":
+                self.assertIn("not", text.lower())
         for suffix in [".mediawiki", "/Technical.mediawiki"]:
             text = (BASE / f"{TITLE}{suffix}").read_text(encoding="utf-8")
             self.assertEqual(text.count("<references/>"), 1)

@@ -2,13 +2,351 @@
  |title=Emergent algorithm
  |entity_type=Concept
  |domain=Computer science, Systems science, Mathematics, Engineering
- |provenance=Arizona State University; Reynolds (1987)
+ |status=Supported
+ |provenance=Reynolds (1987); self-organizing particle systems; distributed and local algorithms
 }}
-<onlyinclude>{{:Emergent algorithm/Simple}}</onlyinclude>
+{{Reading depth|base=Emergent algorithm|current=Core}}
 
-'''Reading depth:''' [[Emergent algorithm/Simple|Simple]] · [[Emergent algorithm/Technical|Technical]]
+= Emergent algorithm =
+
+An '''emergent algorithm''' is an informal term for a computational procedure in which useful global behavior arises from repeated local rules or interactions rather than from a central controller directly specifying every system-wide action. The designer specifies local mechanisms; the collective computation, pattern, or organization appears at a larger scale through their interaction.
+
+The term is not a standardized algorithm class in the same sense as sorting algorithms, graph algorithms, or linear programming. It is used most defensibly for local distributed and self-organizing procedures whose correctness or performance is defined at the global level.
+
+Examples include:
+
+* local flocking rules producing coherent group motion;
+* distributed averaging producing consensus;
+* self-organizing particles producing a target shape;
+* cellular automata producing propagating or computational structures;
+* stigmergic agents producing trails or clustering.
+
+“Emergent” should describe the relation between local specification and global outcome, not replace an explanation of how the algorithm works.
+
+== Local rule, global property ==
+
+A conventional centralized algorithm can directly maintain a global state and execute a prescribed sequence of operations.
+
+An emergent algorithm instead has many local components.
+
+A generic pattern is:
+
+<pre>
+local state
++ local observations
++ local update rule
+→ repeated interactions
+→ global pattern or computation
+</pre>
+
+The global property may never be stored explicitly in any one component.
+
+For example, no single boid needs to know the flock's global shape for flock-like motion to emerge.
+
+== Designed emergence ==
+
+An emergent algorithm can be deliberately designed.
+
+The fact that global behavior is not explicitly scripted step by step does not mean the system arose without engineering.
+
+The designer can choose:
+
+* state variables;
+* topology;
+* neighborhood;
+* update rule;
+* randomization;
+* constraints;
+* objective.
+
+Emergence describes the route from local rules to global result.
+
+It does not imply lack of design.
+
+== Self-organization ==
+
+[[Self-organization]] is closely related.
+
+A self-organizing algorithm produces structured system-level states through local interaction without a central controller imposing the final arrangement.
+
+Examples can include:
+
+* aggregation;
+* shape formation;
+* leader election;
+* distributed memory;
+* consensus.
+
+Self-organization is broader than emergent algorithms because self-organizing behavior also occurs in biological and physical systems without being an algorithm.
+
+== Distributed algorithms ==
+
+Many emergent algorithms are [[Distributed system|distributed algorithms]].
+
+However, not every distributed algorithm is usefully called emergent.
+
+A distributed database protocol can follow an explicit global specification with strong centralized coordination.
+
+The emergent label is most informative when global organization arises indirectly from local rules and local information.
+
+== Flocking ==
+
+Craig Reynolds's 1987 boids model is a classic computational example.
+
+Each simulated agent responds to nearby neighbors using local steering behavior.
+
+The aggregate produces flock-like motion without a central flock controller.<ref name="reynolds">[https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools: A Distributed Behavioral Model.”]</ref>
+
+The local-to-global relationship is the important feature.
+
+The model is not a full biological account of real flocking.
+
+== Consensus ==
+
+Consensus algorithms show how local exchange can produce global agreement.
+
+Each node repeatedly adjusts its value using neighboring values.
+
+Under appropriate graph and update conditions, the values converge.
+
+No node needs the initial values of every other node.
+
+Consensus is especially useful because the global property can often be proved mathematically rather than observed only through simulation.
+
+== Cellular automata ==
+
+A cellular automaton updates each cell according to a local rule.
+
+Repeated updates can produce:
+
+* stable patterns;
+* oscillators;
+* propagating structures;
+* complex computation.
+
+[[Conway's Game of Life]] is a famous example.
+
+The local rule is simple and fully specified.
+
+The resulting global structures can be difficult to predict from inspection of the rule alone.
+
+== Programmable matter ==
+
+Research on self-organizing particle systems provides a rigorous modern example.
+
+The amoebot model represents large collections of simple particles with limited memory and local communication.
+
+Researchers have designed distributed algorithms for:
+
+* leader election;
+* shape formation;
+* coating;
+* compression;
+* reconfiguration.
+
+The challenge is to prove that local asynchronous actions produce the desired global property.<ref name="amoebot">[https://labs.engineering.asu.edu/sops/amoebot/ Arizona State University, Self-Organizing Particle Systems, “Computing by Programmable Particles.”]</ref>
+
+== Stochastic emergence ==
+
+Some emergent algorithms use randomness deliberately.
+
+A local random process can bias the system toward desirable macrostates.
+
+For example, a Markov-chain particle algorithm can cause a distributed particle system to spend most of its long-run time in highly compressed configurations under suitable parameters.<ref name="compression">[https://jdaymude.github.io/publication/cannon2016-compression/ Cannon, Daymude, Randall and Richa (2016), “A Markov Chain Algorithm for Compression in Self-Organizing Particle Systems.”]</ref>
+
+The system is stochastic locally but analyzable globally.
+
+== Invariants ==
+
+An '''invariant''' is a property preserved by every valid update.
+
+Useful invariants can include:
+
+* connectivity;
+* total number of particles;
+* conserved quantity;
+* safety separation.
+
+Proving invariants is one of the strongest ways to reason about emergent systems.
+
+A visually convincing simulation cannot substitute for a proof of safety where safety matters.
+
+== Convergence ==
+
+A global target can be expressed as a set of acceptable configurations <math>G</math>.
+
+An emergent algorithm should establish whether the system:
+
+* reaches <math>G</math>;
+* remains in <math>G</math>;
+* approaches <math>G</math> probabilistically;
+* oscillates among acceptable states.
+
+Convergence can be deterministic or probabilistic.
+
+The distinction must be explicit.
+
+== Robustness ==
+
+Local algorithms can be robust because they avoid a central point of control.
+
+Robustness can include tolerance to:
+
+* node failure;
+* communication loss;
+* asynchronous updates;
+* local noise.
+
+But local design does not guarantee robustness.
+
+A single failed bridge node can partition a network.
+
+Robustness must be tested or proved under a stated failure model.
+
+== Asynchrony ==
+
+Many self-organizing systems do not update every component at once.
+
+An asynchronous scheduler activates one or several agents over time.
+
+An algorithm proved only under synchronous rounds may fail when updates are delayed or interleaved.
+
+The scheduler model is therefore part of the algorithm.
+
+== Emergent behavior versus emergent algorithm ==
+
+A system can display unplanned emergent behavior even when the algorithm was not designed to exploit it.
+
+For example, independent trading agents can create unexpected market dynamics.
+
+That is emergent behavior.
+
+Calling it an emergent algorithm is stronger: the local computational procedure is being treated as a mechanism for producing a global function or property.
+
+== Evolutionary algorithms ==
+
+An '''evolutionary algorithm''' searches by selection, variation, and reproduction-inspired operators.
+
+It can discover strategies the designer did not explicitly encode.
+
+That is different from an emergent algorithm.
+
+An emergent algorithm can be hand-designed.
+
+An evolutionary algorithm can be centralized.
+
+The concepts overlap only in some systems.
+
+== Learned algorithms ==
+
+Machine learning can produce policies or neural networks whose internal strategy was not explicitly programmed.
+
+This is sometimes described as emergent computation.
+
+Again, that is not sufficient to classify the result as an emergent algorithm.
+
+The important distinction is whether global behavior is produced through interacting local components.
+
+== Emergent strategy ==
+
+Multi-agent systems can develop conventions or strategies not anticipated by the designer.
+
+These are emergent strategies.
+
+They can be beneficial or harmful.
+
+A system should not call every surprising learned behavior an algorithm unless it has a stable operational procedure and defined function.
+
+== Verification ==
+
+Emergent algorithms can be difficult to verify because local correctness does not imply global correctness.
+
+Verification methods include:
+
+* mathematical proof;
+* invariant analysis;
+* model checking;
+* Markov-chain analysis;
+* simulation;
+* randomized stress testing.
+
+Proof is strongest where the model matches deployment.
+
+Simulation is essential when the full system is too complex for exact analysis.
+
+== Simulation ==
+
+A simulation should vary:
+
+* initial conditions;
+* random seeds;
+* update schedules;
+* network size;
+* communication delays;
+* failures.
+
+A single visually attractive run provides weak evidence.
+
+Emergent behavior often has multiple basins of attraction.
+
+== Scaling ==
+
+A local rule that works for 100 agents may fail for 100,000.
+
+Scaling can change:
+
+* interaction density;
+* message load;
+* convergence time;
+* failure probability.
+
+Complexity should therefore be measured as system size grows.
+
+== Safety ==
+
+Emergence is not inherently desirable.
+
+Local rules can produce:
+
+* congestion;
+* runaway feedback;
+* oscillation;
+* fragmentation;
+* deadlock.
+
+Safety constraints should be proved independently of performance when possible.
+
+== Engineering workflow ==
+
+A useful design workflow is:
+
+# define global objective;
+# identify local information available;
+# design local rule;
+# specify scheduler and failure model;
+# prove invariants;
+# analyze convergence;
+# simulate edge cases;
+# test physical or deployed implementation.
+
+This converts “emergence” from a metaphor into an engineering method.
+
+== Epistemic boundary ==
+
+The term emergent algorithm is useful but informal.
+
+A rigorous article should always replace the label with a precise statement of:
+
+* local state;
+* neighborhood;
+* update rule;
+* global target;
+* convergence conditions.
+
+If those are absent, “emergent” explains very little.
 
 == Semantic relationships ==
+
 * [[Related to::Algorithm]]
 * [[Related to::Emergence]]
 * [[Related to::Self-organization]]
@@ -16,16 +354,9 @@
 * [[Related to::Boids]]
 * [[Related to::Conway's Game of Life]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Emergent algorithm]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Systems science]]

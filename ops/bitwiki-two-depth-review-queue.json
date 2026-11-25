@@ -290,7 +290,8 @@
         "N003"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "pending",
+      "note": "N001 independently checkpointed; N003 pending."
     },
     {
       "pair_id": "R31",
@@ -1012,9 +1013,22 @@
       "title": "Generalization",
       "pr_number": 102,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/102",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #102 commit afdc4158d7e5f19d00fa9a2934e05e345f73aacf canonical host composes Simple, explicit reciprocal navigation, added causal transport and predictive risk under covariate shift, source attribution and unittest-discoverable regressions.",
+        "preservation_evidence": [
+          "Original metadata, categories, machine-learning semantic relation, induction link, transfer synthesis, conditional target mean identity and hypothetical example retained.",
+          "Expanded distinction between bounded inductive claims, sample inference, causal transport, learning transfer and ML prediction."
+        ],
+        "scientific_sources": [
+          "Hume Enquiry section IV (1748), Barnett/Ceci PMID 12081085, Bareinboim/Pearl DOI 10.1073/pnas.1510507113, Sugiyama et al. JMLR 2007 (publisher abstracts and accessible text)"
+        ],
+        "static_checks": "9/9 post-commit connector source assertions passed including exact head, math, citations, navigation, arithmetic and regression presence.",
+        "tests": "Python regression updated for unittest discovery; execution not yet verified; CI, full citation and V2/staging validation remain.",
+        "gate": "PR #136 and owner approval; no merge/publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/102"
+      }
     },
     {
       "id": "N002",
@@ -1692,15 +1706,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A21",
+    "last_checkpoint_article": "N001",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 7,
+    "articles_pending_or_incomplete": 6,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R29",
-    "articles_corrected_pending_validation": 58,
+    "articles_corrected_pending_validation": 59,
     "pairs_corrected_pending_validation": 29
   },
   "hard_rules": [

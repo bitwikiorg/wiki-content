@@ -2,30 +2,400 @@
  |title=Simulated reality
  |entity_type=Concept
  |domain=Philosophy, Computer science, Physics, Cognitive science
- |provenance=Bostrom (2003); Bostrom; Stanford Encyclopedia of Philosophy
+ |status=Hypothetical
+ |provenance=Bostrom (2003); philosophical skepticism; philosophy of simulation
 }}
-<onlyinclude>{{:Simulated reality/Simple}}</onlyinclude>
+{{Reading depth|base=Simulated reality|current=Core}}
 
-'''Reading depth:''' [[Simulated reality/Simple|Simple]] · [[Simulated reality/Technical|Technical]]
+= Simulated reality =
 
-== Semantic relationships ==
-* [[Related to::Metaphysics]]
-* [[Related to::Consciousness]]
-* [[Related to::Scientific model]]
-* [[Related to::Computation]]
-* [[Related to::Probability]]
-* [[Related to::Epistemology]]
+'''Simulated reality''' is the hypothesis that the world experienced by an observer is generated wholly or substantially by an artificial simulation rather than being the most fundamental level of physical reality. The idea is a philosophical and technological hypothesis, not an established scientific finding.
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Simulated reality]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+The modern discussion is strongly associated with Nick Bostrom's 2003 '''simulation argument'''. Bostrom did not present empirical evidence that our world is simulated. He argued that, given a set of assumptions about future civilizations and observer sampling, at least one of three propositions must be true: civilizations like ours almost never reach a posthuman stage capable of running large numbers of ancestor simulations; posthuman civilizations almost never run such simulations; or simulated observers with experiences like ours vastly outnumber corresponding nonsimulated observers.<ref name="bostrom">[https://doi.org/10.1111/1467-9213.00309 Bostrom, N. (2003), “Are We Living in a Computer Simulation?”, ''The Philosophical Quarterly'' 53(211), 243–255.]</ref>
+
+The simulation hypothesis should be distinguished from ordinary [[Virtual reality]], scientific computer simulation, fictional simulated worlds, and the use of “simulation” as a metaphor.
+
+== Philosophical background ==
+
+Questions about whether experience accurately represents an external world long predate computers.
+
+Examples of related skeptical scenarios include:
+
+* Descartes's evil-demon thought experiment;
+* dream arguments;
+* the brain-in-a-vat scenario;
+* philosophical idealism and appearance–reality distinctions.
+
+The simulation hypothesis updates this family of problems with computational language.
+
+The important epistemic structure is similar:
+
+<pre>
+observed experience
+can be compatible with
+more than one underlying reality
+</pre>
+
+If two hypotheses predict the same observations, experience alone may not distinguish them.
+
+== Simulation hypothesis versus simulation argument ==
+
+These terms are often confused.
+
+'''Simulation hypothesis''' — the proposition that our experienced world is simulated.
+
+'''Simulation argument''' — Bostrom's conditional reasoning about the relative numbers of simulated and nonsimulated observers under assumptions about technological development and simulation practices.
+
+The argument is not simply:
+
+<pre>
+advanced computers are possible
+therefore we are simulated
+</pre>
+
+Its conclusion depends on assumptions about future capability, civilization survival, motivations, numbers of simulations, numbers of observers, and how an observer should reason about belonging to a reference class.
+
+== Bostrom's trilemma ==
+
+Bostrom's argument can be summarized as three alternatives:
+
+# Almost no civilizations like ours reach a sufficiently advanced posthuman stage.
+# Almost no such posthuman civilizations run large numbers of ancestor simulations.
+# If the first two are false, simulated observers with experiences like ours become so numerous that an observer using the relevant sampling principle should assign high probability to being simulated.<ref name="bostrom" />
+
+This is a conditional probabilistic argument.
+
+It does not show which of the three alternatives is true.
+
+== Observer counting ==
+
+A simplified version illustrates the logic.
+
+Let:
+
+* <math>N_R</math> = number of relevant nonsimulated observers;
+* <math>N_S</math> = number of relevant simulated observers.
+
+If an observer is treated as randomly sampled from the combined class, then
+
+<math>P(S)=\frac{N_S}{N_S+N_R}.</math>
+
+If <math>N_S\gg N_R</math>, this sampling model gives a large probability of being simulated.
+
+But the conclusion depends on more than arithmetic.
+
+One must justify:
+
+* which observers belong in the reference class;
+* whether simulated entities count as observers;
+* whether the sampling principle is appropriate;
+* how prior probabilities are assigned;
+* whether advanced simulations are physically possible;
+* how many such simulations would actually be run.
+
+These are substantive philosophical and empirical assumptions.
+
+== Reference-class problem ==
+
+An observer-counting argument needs a rule for deciding which observers are relevant.
+
+Possible classes could include:
+
+* all conscious observers;
+* all human-like observers;
+* all observers with experiences similar to ours;
+* all observers at a comparable historical stage.
+
+Different choices can change the inferred probability.
+
+Brian Weatherson criticized the simulation argument's use of an indifference principle and argued that several interpretations do not support the intended conclusion without additional assumptions.<ref name="weatherson">[https://doi.org/10.1111/1467-9213.00323 Weatherson, B. (2003), “Are You a Sim?”, ''The Philosophical Quarterly'' 53(212), 425–431.]</ref> Bostrom later replied to this criticism.<ref name="reply">[https://doi.org/10.1111/j.0031-8094.2005.00387.x Bostrom, N. (2005), “The Simulation Argument: Reply to Weatherson,” ''The Philosophical Quarterly'' 55(218), 90–97.]</ref>
+
+The debate shows that the probability is not produced by observer counts alone.
+
+== Computational feasibility ==
+
+The hypothesis requires some mechanism capable of generating the experienced world.
+
+That does not necessarily mean simulating every physical degree of freedom at maximal resolution.
+
+Possible proposals imagine:
+
+* coarse-grained simulation;
+* selective rendering;
+* simulation only of observer-relevant processes;
+* alternative physical substrates;
+* hierarchical or nested simulations.
+
+However, these proposals are speculative.
+
+Claims about feasibility require explicit assumptions about:
+
+* computational resources;
+* physical laws of the simulator's world;
+* required fidelity;
+* consciousness and substrate dependence;
+* error tolerance;
+* scale and duration.
+
+Our current computing capabilities do not establish that universe-scale conscious simulations are physically realizable.
+
+== Consciousness assumption ==
+
+Bostrom's argument requires simulated entities to count as observers with experiences comparable to ours.
+
+That depends on a philosophy of mind.
+
+If consciousness is computationally substrate-independent, a sufficiently appropriate computation might support conscious experience.
+
+If consciousness requires particular biological or physical properties not reproduced by the simulation, observer counting changes dramatically.
+
+There is no established scientific result showing that arbitrary high-fidelity simulations are conscious.
+
+Therefore the simulation argument inherits uncertainty from [[Consciousness]] research.
+
+== Nested simulations ==
+
+A simulated civilization might itself run simulations.
+
+This creates a possible hierarchy:
+
+<pre>
+base world
+→ simulation A
+   → simulation B
+      → simulation C
+</pre>
+
+Nested simulation does not automatically imply an infinite regress.
+
+Resource constraints, fidelity loss, or simulator policy may terminate nesting.
+
+The concept is logically possible under some assumptions, but no observation currently establishes that such a hierarchy exists.
+
+== Scientific simulations are different ==
+
+A scientific computer simulation is a model used to study a target system.
+
+For example, climate, fluid, or evolutionary simulations use equations and algorithms to generate outputs that can be compared with observations.
+
+The philosophy of scientific simulation distinguishes '''verification'''—whether the implementation solves the intended model adequately—from '''validation'''—whether the model is adequate for its intended target and purpose.<ref name="sep-sim">[https://plato.stanford.edu/entries/simulations-science/ Stanford Encyclopedia of Philosophy, “Computer Simulations in Science.”]</ref>
+
+That methodology does not establish that our universe is itself a simulation.
+
+The word “simulation” is shared, but the evidential questions differ.
+
+== Virtual reality is different ==
+
+[[Virtual reality]] is an engineered environment presented to users who normally remain embedded in a known external physical world.
+
+A simulated reality hypothesis is stronger: the observer may have no independent access to the simulator's level.
+
+A virtual environment can therefore be real as an experienced social or functional environment without implying that all physical reality is simulated.
+
+David Chalmers has argued that virtual worlds can constitute genuine realities for their inhabitants even when they are implemented computationally.<ref name="chalmers">[https://consc.net/reality/ Chalmers, D. J. (2022), ''Reality+: Virtual Worlds and the Problems of Philosophy''.]</ref>
+
+This is a philosophical position about reality and virtuality, not evidence that our world is simulated.
+
+== Empirical detectability ==
+
+A hypothesis becomes scientifically stronger when it makes observations that differ from alternatives.
+
+Suppose:
+
+<math>H_S</math> = simulated world,
+
+<math>H_B</math> = nonsimulated or base-level world.
+
+Evidence <math>E</math> discriminates between them only when
+
+<math>P(E|H_S)\neq P(E|H_B).</math>
+
+If every possible observation can be reproduced under both hypotheses, the evidence cannot distinguish them.
+
+This is an underdetermination problem.
+
+== Proposed “glitches” ==
+
+Popular claims often interpret unusual events, coincidences, memory errors, quantum phenomena, or unexplained observations as “glitches in the simulation.”
+
+Such claims are weak unless they provide:
+
+* a precise simulation model;
+* a prediction made in advance;
+* a measured anomaly;
+* an alternative nonsimulation prediction;
+* reproducible evidence.
+
+An unexplained observation is not automatically evidence for simulation.
+
+== Discreteness and physical limits ==
+
+Some arguments point to quantization, finite information bounds, or discrete mathematical descriptions in physics as signs of a computational substrate.
+
+This inference does not follow without additional premises.
+
+A physical theory can contain discrete quantities without being implemented by an external digital computer.
+
+Likewise, a continuous theory could in principle be simulated approximately.
+
+“Discrete” and “simulated” are different properties.
+
+== Laws of physics as “code” ==
+
+Describing physical laws as “code” is usually metaphorical.
+
+A mathematical regularity such as
+
+<math>F=ma</math>
+
+does not identify:
+
+* a programmer;
+* executable instructions;
+* a hardware substrate;
+* an external simulator.
+
+Scientific laws summarize or model regularities in nature. Converting them into evidence of software requires independent evidence that the software ontology is correct.
+
+== Bayesian reasoning ==
+
+Bayes' theorem gives
+
+<math>P(H_S|E)=\frac{P(E|H_S)P(H_S)}{P(E)}.</math>
+
+A large posterior probability requires a prior and likelihood model.
+
+If <math>H_S</math> is defined so flexibly that it can generate any observation, then <math>P(E|H_S)</math> may be high but the hypothesis can become difficult to test and its prior remains controversial.
+
+Bayesian notation does not remove philosophical uncertainty about model specification.
+
+== Falsifiability ==
+
+Some versions of the simulation hypothesis are deliberately constructed to be observationally indistinguishable from base reality.
+
+Those versions are difficult or impossible to falsify from inside the simulation.
+
+Other versions can be testable if they specify constraints such as:
+
+* finite spatial resolution;
+* resource-saving approximations;
+* detectable numerical artifacts;
+* simulator interventions.
+
+A failed test would rule out that specific implementation, not every possible simulation.
+
+Therefore broad claims should not be insulated from evidence by shifting to an unconstrained simulator whenever a prediction fails.
+
+== Explanatory regress ==
+
+Saying “our world is simulated” can relocate rather than solve explanatory questions.
+
+One can still ask:
+
+* What laws govern the simulator's world?
+* Why does that world exist?
+* Why does the simulator run this system?
+* What implements the simulator?
+
+The hypothesis does not by itself provide a final metaphysical explanation.
+
+== Relation to metaphysics ==
+
+[[Metaphysics]] asks what fundamentally exists and how reality is structured.
+
+Simulated reality raises questions about:
+
+* levels of reality;
+* substrate dependence;
+* identity;
+* causation;
+* possibility;
+* grounding.
+
+If simulated objects have stable causal relations inside their world, they may still be real in important senses even if implemented by a deeper substrate.
+
+This is a philosophical question distinct from whether our world is in fact simulated.
+
+== Relation to epistemology ==
+
+The hypothesis is a modern skeptical scenario.
+
+If a perfect simulation reproduces all of an observer's evidence, then the observer may lack evidence that discriminates simulation from base reality.
+
+But inability to rule out a possibility does not automatically make that possibility likely.
+
+Epistemology distinguishes:
+
+<pre>
+possible
+≠ evidentially supported
+≠ probable
+≠ established
+</pre>
+
+The simulation hypothesis is possible under some philosophical and technological assumptions, but its probability is not known.
+
+== Relation to artificial intelligence ==
+
+Advanced AI could be used by a hypothetical future civilization to build or operate simulations.
+
+That does not make current AI evidence for simulated reality.
+
+Likewise, a generative model that creates a convincing virtual environment demonstrates limited simulation capability, not the feasibility of reproducing conscious civilizations or fundamental physics at arbitrary scale.
+
+Technological extrapolation should state which scaling assumptions are being made.
+
+== Ethical implications ==
+
+If simulated beings were conscious, their moral status would raise serious ethical questions.
+
+A creator could influence:
+
+* environment;
+* memory;
+* mortality;
+* suffering;
+* resource access.
+
+These questions are conditional because the existence and consciousness of such simulations are unestablished.
+
+They are nevertheless legitimate topics in AI ethics and philosophy when framed explicitly as hypothetical.
+
+== Epistemic status ==
+
+No generally accepted empirical evidence currently establishes that our experienced universe is an artificial simulation.
+
+The simulation argument is a philosophical conditional argument, not an observation of a simulator.
+
+Claims about simulation should therefore distinguish:
+
+'''Logical possibility''' — a scenario is internally coherent under assumptions.
+
+'''Technological feasibility''' — a physical civilization could implement it.
+
+'''Anthropic probability''' — observer-counting assumptions assign it probability.
+
+'''Empirical evidence''' — observations discriminate it from alternatives.
+
+These levels are often conflated.
+
+== Related concepts ==
+
+Simulated reality intersects [[Metaphysics]], [[Epistemology]], [[Consciousness]], [[Probability]], [[Computation]], [[Scientific model]], and [[Virtual reality]]. Its strongest unresolved questions concern evidence, observer selection, substrate dependence, and testability.
+
+== References ==
+
+<references />
+
+* [https://doi.org/10.1111/1467-9213.00309 Bostrom (2003), original simulation argument.]
+* [https://doi.org/10.1111/1467-9213.00323 Weatherson (2003), critique of the indifference principle.]
+* [https://doi.org/10.1111/j.0031-8094.2005.00387.x Bostrom (2005), reply to Weatherson.]
+* [https://plato.stanford.edu/entries/simulations-science/ Stanford Encyclopedia of Philosophy, computer simulations in science.]
+* [https://consc.net/reality/ Chalmers (2022), ''Reality+''.]
+
+== Reading depth ==
+
+[[Simulated reality/Simple|Simple explanation]] · [[Simulated reality/Technical|Technical treatment]]
 
 [[Category:Philosophy]]
 [[Category:Computer science]]

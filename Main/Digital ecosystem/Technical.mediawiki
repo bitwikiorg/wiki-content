@@ -1,17 +1,394 @@
-A '''digital ecosystem''' is a collection of interacting digital technologies, services, organizations and users whose activities depend on one another. An ecosystem may include platforms, applications, devices, shared standards and participants that maintain or use them.
+{{Reading depth|base=Digital ecosystem|current=Technical}}
 
-== Architectural senses ==
-In platform studies the focus is on interdependent participants and complementary services; in computing, Briscoe and De Wilde proposed an ecosystem-oriented architecture combining service-oriented systems with distributed evolutionary search. Their particular architecture is one research model, not a required characteristic of every digital ecosystem.
+= Digital ecosystem — Technical =
 
-== Representation and interaction ==
-Represent dependencies using a directed graph in which an edge points from a consumer to a required service. Record version constraints and access policies as distinct relations. An outage may propagate along dependency paths, while redundancy can mitigate some failures if alternatives do not share the same underlying provider. A service-composition search can encode a sequence of compatible services, evaluate latency and correctness against a request, and mutate candidate compositions under interface constraints.
+A '''digital ecosystem''' is a socio-technical network of software components, services, data, infrastructure, organizations, complementors, users, standards, and governance mechanisms whose behavior is coupled through dependencies and exchange. Technical analysis therefore combines distributed-systems architecture with platform economics, interoperability, security, governance, and adaptive-system concepts.
 
-== Governance and evaluation ==
-Assess interoperability with contract tests, fault injection, version migration and measured switching costs. Compare distributed search against static service composition on representative tasks. Platform rules can facilitate compatibility while concentrating control; a graph of dependencies cannot establish fair governance. Avoid mapping biological fitness or reproduction onto digital participants unless the operational mechanism is explicitly defined.
+The broad term should be distinguished from the narrower '''Digital Business Ecosystem''' research program developed in Europe in the 2000s and from specific ecosystem-oriented evolutionary service architectures.<ref name="eu">[https://op.europa.eu/en/publication-detail/-/publication/53e45e55-4bd2-42a4-ad25-27b339b051e0 European Commission (2007), ''Digital Business Ecosystems''.]</ref>
+
+== Multiplex representation ==
+
+Represent the ecosystem as
+
+<math>\mathcal E=(V,E_T,E_D,E_G,E_F,E_I),</math>
+
+where vertices can be services, organizations, users, or devices and edge layers represent:
+
+* technical dependency <math>E_T</math>;
+* data flow <math>E_D</math>;
+* governance/control <math>E_G</math>;
+* financial exchange <math>E_F</math>;
+* identity/trust <math>E_I</math>.
+
+Collapsing these edge types destroys important distinctions.
+
+A service can be technically independent but financially dependent on one platform, or organizationally independent while sharing one identity provider.
+
+== Dependency graph ==
+
+Let directed edge <math>i\rightarrow j</math> mean component <math>i</math> requires <math>j</math>.
+
+Reachability identifies possible failure propagation.
+
+For component <math>v</math>, downstream dependency set is
+
+<math>D(v)=\{u:u\leadsto v\}.</math>
+
+Removing <math>v</math> can affect all <math>u\in D(v)</math> unless substitutes exist.
+
+A simple degree count is insufficient because hidden dependencies can occur through:
+
+* DNS;
+* certificate authorities;
+* package registries;
+* cloud regions;
+* identity providers;
+* shared libraries.
+
+Dependency inventories should therefore include transitive dependencies.
+
+== Reliability ==
+
+If service <math>i</math> requires independent components with availability <math>a_j</math>, serial availability is approximately
+
+<math>A_i=\prod_j a_j.</math>
+
+Independence is often false.
+
+Correlated infrastructure failures can dominate.
+
+Redundancy across two nominal providers does not improve resilience if both depend on one cloud region or upstream network.
+
+Reliability engineering should model common-cause failure explicitly.
+
+== Substitutability ==
+
+Let <math>S(v)</math> be alternative components able to replace dependency <math>v</math> while satisfying interface and policy constraints.
+
+Resilience improves when:
+
+* <math>|S(v)|>0</math>;
+* substitutes are operationally independent;
+* switching cost is acceptable;
+* data are portable.
+
+Nominal alternatives with incompatible schemas or prohibitive migration cost provide weak resilience.
+
+== Interoperability layers ==
+
+Interoperability can be decomposed into:
+
+# '''transport''' — can messages move?
+# '''syntax''' — can messages be parsed?
+# '''semantics''' — do fields mean the same thing?
+# '''behavior''' — do operations have compatible effects?
+# '''policy''' — are authorization and governance compatible?
+
+An API contract can satisfy syntax while violating behavioral expectations.
+
+Contract testing should therefore include semantics and failure behavior.
+
+== Schema evolution ==
+
+Let schema versions be <math>S_t</math> and <math>S_{t+1}</math>.
+
+Migration function
+
+<math>M:S_t\rightarrow S_{t+1}</math>
+
+should preserve required information.
+
+Backward compatibility can be tested through old clients against new services.
+
+Breaking schema changes impose ecosystem-wide coordination costs.
+
+Versioning policy is therefore a governance mechanism as well as a technical choice.
+
+== Platform architecture ==
+
+A platform ecosystem can be represented with platform <math>P</math>, complementors <math>C_i</math>, and users <math>U_j</math>.
+
+Platform value can exhibit indirect network effects:
+
+<math>V_U=f(|C|), \qquad V_C=g(|U|).</math>
+
+More users can attract developers; more complements can attract users.
+
+These relationships are empirical, not automatic.
+
+Congestion, low-quality complements, moderation costs, or security risks can offset benefits.
+
+== Platform governance ==
+
+Platform operator can control:
+
+* API admission;
+* app review;
+* ranking;
+* fee schedules;
+* data access;
+* identity;
+* dispute resolution.
+
+A governance graph can therefore differ sharply from a technical dependency graph.
+
+Decentralized deployment does not imply decentralized authority.
+
+== Switching cost and lock-in ==
+
+Let migration cost be
+
+<math>C_m=C_{data}+C_{rewrite}+C_{training}+C_{contract}+C_{network}.</math>
+
+Lock-in increases as <math>C_m</math> rises relative to expected benefit from switching.
+
+Open standards and data portability can reduce some components but not necessarily network effects or organizational retraining.
+
+Switching-cost measurement should include time and operational risk, not only license fees.
+
+== Data layer ==
+
+Data object <math>d</math> should carry provenance state
+
+<math>d=(source,time,schema,license,quality,retention).</math>
+
+Cross-ecosystem data exchange can fail when any of these are missing.
+
+Privacy and purpose constraints can prohibit reuse even when technical access exists.
+
+Data interoperability is therefore both a technical and governance problem.
+
+== Identity and trust ==
+
+Digital ecosystems require identities for users, organizations, services, and devices.
+
+Authentication proves control of credentials; authorization determines permitted action.
+
+Trust should be scoped.
+
+A service authenticated by provider <math>A</math> should not automatically receive privileges in unrelated subsystem <math>B</math>.
+
+Federated identity reduces repeated login friction but can create central dependency.
+
+== Security propagation ==
+
+Suppose vulnerability <math>v</math> affects package <math>p</math>.
+
+If dependency graph contains <math>n</math> downstream artifacts, exposure can spread far beyond the original package.
+
+Software bill of materials (SBOM) and dependency scanning support impact analysis.
+
+However, presence of a vulnerable component does not always imply exploitability.
+
+Risk assessment should include reachable code paths and configuration.
+
+== Supply-chain security ==
+
+Attack surfaces include:
+
+* compromised packages;
+* malicious updates;
+* build pipelines;
+* signing keys;
+* registries;
+* CI/CD systems.
+
+Controls include:
+
+* signed artifacts;
+* provenance attestations;
+* reproducible builds;
+* least privilege;
+* isolated build environments.
+
+Ecosystem security depends on weakest shared infrastructure.
+
+== Self-organization ==
+
+Self-organization means global structure emerges from local update rules without a central controller imposing the final arrangement.
+
+Let state vector be <math>x_t</math> and local rules
+
+<math>x_i(t+1)=F_i(x_i(t),N_i(t),e_i(t)).</math>
+
+The system is self-organizing only if macrostructure arises from these interactions.
+
+Distribution alone does not satisfy this definition.
+
+== Evolutionary service composition ==
+
+Briscoe and De Wilde proposed digital-ecosystem architectures combining distributed service-oriented systems with evolutionary optimization.<ref name="briscoe">[https://doi.org/10.1145/1315843.1315864 Briscoe, G. and De Wilde, P. (2006), “Digital ecosystems: evolving service-oriented architectures.”]</ref>
+
+Represent candidate service composition as genome
+
+<math>g=(s_1,s_2,\ldots,s_k).</math>
+
+Fitness could combine:
+
+<math>F(g)=w_1Q(g)-w_2L(g)-w_3C(g),</math>
+
+where <math>Q</math> is request satisfaction, <math>L</math> latency, and <math>C</math> cost.
+
+Mutation and recombination explore composition space.
+
+This is an engineered evolutionary algorithm, not biological evolution of services.
+
+== Distributed search ==
+
+Service discovery can be centralized or distributed.
+
+A distributed architecture can reduce central dependency but increases consistency and routing challenges.
+
+Compare architectures on:
+
+* discovery latency;
+* recall;
+* update propagation;
+* bandwidth;
+* resilience;
+* adversarial robustness.
+
+“Distributed” should not be treated as inherently superior.
+
+== Sustainability ==
+
+Technical sustainability includes maintainability.
+
+For component <math>i</math>, maintenance risk can depend on
+
+<math>R_i=F(bus\ factor,release\ activity,funding,dependencies,security).</math>
+
+A widely used package maintained by one person can be a system-level risk.
+
+Environmental sustainability should be measured separately through energy and material lifecycle.
+
+== Graceful degradation ==
+
+A resilient ecosystem can preserve core functions after partial failure.
+
+Let service utility under failure set <math>F</math> be
+
+<math>U(F).</math>
+
+Graceful degradation means <math>U(F)</math> declines progressively rather than collapsing for common failures.
+
+Chaos engineering and fault injection can test this behavior.
+
+== Concentration ==
+
+Let provider shares be <math>s_i</math>.
+
+Herfindahl–Hirschman concentration is
+
+<math>HHI=\sum_i s_i^2.</math>
+
+The metric can quantify market or infrastructure concentration, but interpretation depends on the relevant market and dependency layer.
+
+A diverse application layer can conceal concentrated cloud infrastructure.
+
+== Ecosystem fairness ==
+
+Possible measures include:
+
+* API access symmetry;
+* fee burden;
+* ranking exposure;
+* developer rejection rates;
+* portability;
+* accessibility;
+* geographic availability.
+
+Fairness is multidimensional and partly normative.
+
+Do not infer fairness from ecosystem size.
+
+== AI ecosystem architecture ==
+
+A modern AI ecosystem may contain:
+
+<pre>
+application
+→ agent framework
+→ model API
+→ model provider
+→ accelerator cloud
+→ hardware supply chain
+</pre>
+
+plus retrieval databases, data suppliers, evaluators, and content systems.
+
+This architecture creates transitive dependencies.
+
+A service advertising model diversity may still depend on one accelerator vendor or cloud region.
+
+== Model concentration and common-mode failure ==
+
+Suppose applications <math>A_1,\ldots,A_n</math> all depend on model <math>M</math>.
+
+A model defect creates correlated error term
+
+<math>\epsilon_i=\epsilon_M+\eta_i.</math>
+
+Application-level diversity does not remove shared-model risk.
+
+Dependency analysis should include epistemic as well as uptime dependencies.
+
+== Governance tests ==
+
+A digital ecosystem audit should inspect:
+
+* who can change interfaces;
+* who controls identity;
+* who ranks participants;
+* who can remove access;
+* whether changes are appealable;
+* how data can be exported;
+* whether standards are open.
+
+These are measurable governance properties.
+
+== Experimental evaluation ==
+
+A bounded ecosystem experiment can compare architectures under:
+
+* load;
+* component failure;
+* version change;
+* adversarial input;
+* migration;
+* participant entry/exit.
+
+Metrics should include both technical and socio-economic outcomes.
+
+An evolutionary architecture can be compared against static service composition on identical request distributions.
+
+== Ecological analogy limits ==
+
+Ecological vocabulary becomes misleading when:
+
+* firms are called species without a defined mapping;
+* market share is called biological fitness;
+* software copying is called reproduction;
+* intentional redesign is described as mutation;
+* platform governance is ignored as if selection were natural.
+
+The metaphor is useful only when it produces testable architectural insight.
+
+== Epistemic boundary ==
+
+A digital ecosystem is an established socio-technical concept.
+
+Specific claims about self-organization, sustainability, fairness, or evolutionary behavior require separate evidence.
+
+The word “ecosystem” does not certify those properties.
 
 == References ==
-* [https://doi.org/10.1145/1315843.1315864 Briscoe and De Wilde (2006), Digital ecosystems: evolving service-oriented architectures]
-* [https://arxiv.org/abs/1112.0204 Briscoe, Sadedin and De Wilde, Digital Ecosystems: Ecosystem-Oriented Architectures]
+
+<references />
+
+* [https://doi.org/10.1109/DEST.2007.372005 Boley, H. and Chang, E. (2007), “Digital Ecosystems: Principles and Semantics.”]
+* [https://arxiv.org/abs/1112.0204 Briscoe, G., Sadedin, S., and De Wilde, P., “Digital Ecosystems: Ecosystem-Oriented Architectures.”]
 
 == Reading depth ==
-[[Digital ecosystem/Simple|Simple explanation]]
+
+[[Digital ecosystem/Simple|Simple explanation]] · [[Digital ecosystem|Core article]]

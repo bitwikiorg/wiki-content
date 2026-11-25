@@ -22,6 +22,9 @@ class SemiconductorFabricationArticleTest(unittest.TestCase):
             self.assertIn("[[Semiconductor fabrication/Simple|Simple]]", source)
             self.assertIn("[[Semiconductor fabrication/Technical|Technical]]", source)
         self.assertIn("Semiconductor fabrication", core)
+        self.assertIn("{{Knowledge object", core)
+        self.assertIn("<references/>", core)
+        self.assertIn("== How a wafer becomes circuitry ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
 
     def test_illustrative_poisson_arithmetic(self):
         self.assertAlmostEqual(math.exp(-1.0 * 0.2), 0.818730753, places=8)

@@ -18,6 +18,7 @@ class FlashSourceTests(unittest.TestCase):
         self.assertIn("{{:Flash memory/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertNotIn("<onlyinclude>", core + tech)
         self.assertNotIn("{{Reading depth", core + simple + tech)
         self.assertIn("[[Flash memory/Technical|Technical]]", simple)

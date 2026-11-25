@@ -1,5 +1,5 @@
 = Flash memory — Simple =
-<onlyinclude>'''Flash memory''' is a kind of electronic memory that keeps stored data when power is switched off. It is used in memory cards, USB drives, phones, SSDs and some device firmware. Unlike ordinary working memory (DRAM), it does not need regular refresh to keep its bits.</onlyinclude>
+<onlyinclude>'''Flash memory''' is a kind of electronic memory that keeps stored data when power is switched off. It is used in memory cards, USB drives, phones, SSDs and some device firmware. Unlike ordinary working memory (DRAM), it does not need regular refresh to keep its bits.
 == How can it remember without power? ==
 Tiny semiconductor structures hold electrical charge in insulated regions. The charge changes how a cell behaves when read. The device can change that charge to store new information, but writing and erasing are not as flexible as changing a byte in RAM.
 == NAND and NOR ==
@@ -10,6 +10,9 @@ Repeated programming and erasing stress the storage structures. Charge can also 
 A NAND device may need to erase a whole block before reusing part of it. A storage controller can copy still-needed data elsewhere and erase obsolete blocks later. The computer's file-delete command, the controller's mapping changes and physical erasure are different events. This matters for data recovery, privacy and performance.
 == What does a standard guarantee? ==
 An interface standard defines how compatible devices and controllers communicate; it does not promise that every flash chip has identical endurance, retention or power-loss protection.<ref name="onfisimple">Open NAND Flash Interface Workgroup, [https://onfi.org/files/ONFI_6_0_Final.pdf ONFI 6.0 (18 December 2025)], NAND interface specification.</ref>
+
+</onlyinclude>
+
 '''Reading depth:''' [[Flash memory/Simple|Simple]] · [[Flash memory/Technical|Technical]].
 == References ==
 <references/>

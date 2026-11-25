@@ -28,7 +28,7 @@ class FlashSourceTests(unittest.TestCase):
 
     def test_references_and_math(self):
         for body in (self.read(), self.read("Simple"), self.read("Technical")):
-            self.assertEqual(body.count("<references/>"), 0 if body == self.read() else 1)
+            self.assertEqual(body.count("<references/>"), 1)
             self.assertEqual(body.count("<math"), body.count("</math>"))
             defined = re.findall(r'<ref name="([^"]+)"\s*>', body)
             self.assertEqual(len(defined), len(set(defined)))

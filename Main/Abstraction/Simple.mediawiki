@@ -1,0 +1,59 @@
+[[Abstraction/Simple|Simple]] · [[Abstraction/Technical|Technical]]
+
+= Abstraction — Simple =
+
+<onlyinclude>'''Abstraction''' is the practice of representing something while focusing on some features and leaving out others. A map represents a region without showing every tree; a scientific model represents selected behavior without reproducing every physical detail; a computer program can use a function without knowing all the machinery behind it. An abstraction is useful only if it preserves the information needed for its purpose, and hiding details can also hide important errors.<ref name="sepmodel">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/models-science/ ''Models in Science''], discussion of abstraction, idealization and scientific representation.</ref>
+
+== An everyday example ==
+
+Think of a subway map. It shows stations, routes and transfers clearly, but it does not draw every street or building at realistic distances.
+
+If your task is to choose where to transfer, the map may be excellent. If your task is to walk between two buildings, the same map can mislead you. It was designed to preserve one type of useful relationship, not every geographical fact.
+
+A good abstraction therefore answers the question: '''What has been simplified, and for which decision?'''
+
+== Abstraction in computing ==
+
+Computer systems use layers of abstraction. A programmer can call a function to sort records without knowing every machine instruction executed. A user can save a file without controlling each storage transistor.
+
+This separation helps people build complex systems by managing one level at a time. But the hidden details still exist. An algorithm that ignores memory usage may fail when data grows; an application that ignores network delays may become unreliable.
+
+Some computer-science methods use mathematically sound abstractions to check possible program behavior without running every possible execution. A sound analysis aims not to overlook the behaviors included in its model, although it may report some warnings that cannot happen in practice.<ref name="cousot">Patrick Cousot and Radhia Cousot, [https://doi.org/10.1145/512950.512973 “Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs”], POPL (1977), foundational mathematical analysis of program approximations.</ref>
+
+== Abstraction in science ==
+
+A scientific model might treat a gas as particles with simple interactions, a planet as a point mass, or a circuit element as an ideal resistor. The model can be useful even though reality is more complicated.
+
+It is important to distinguish leaving details out from making a deliberately unrealistic assumption. Both can be legitimate modeling choices when their limits are stated and checked against the intended observations.
+
+== Abstraction in reasoning ==
+
+People form categories and use concepts that represent many individual objects or events. The category "vehicle," for example, can help us reason about cars and buses without specifying every part of every vehicle.
+
+Different tasks require different distinctions. A useful category for driving rules may be too broad for a mechanic diagnosing a brake failure. Cognitive abstraction and software abstraction are related in purpose, but that does not mean their underlying mechanisms are physically identical.
+
+== When does abstraction go wrong? ==
+
+* It leaves out a factor that strongly changes the conclusion.
+* It combines cases that should be treated differently.
+* It hides an assumption or a responsibility boundary.
+* It is used outside the situation for which it was checked.
+* People mistake the simplified representation for the complete thing.
+
+For example, a performance chart averaged across thousands of users can conceal failures that affect one vulnerable group.
+
+== Abstraction versus other ideas ==
+
+[[Scientific model]] concerns representations used to explain, explore and predict. [[Logic]] studies formal consequence and reasoning. [[Computation]] can be described at many levels, from mathematical transformations to physical machines.
+
+[[Occam's razor/Simple|Occam's razor]] recommends avoiding unnecessary assumptions in explanations. It is not another word for abstraction: a short description can omit essential information, and a more detailed model can be the justified choice.
+
+</onlyinclude>
+
+== Continue reading ==
+
+[[Abstraction/Technical|Technical]] develops representation maps, preservation, interval abstract interpretation, precision losses, verification obligations and research limits.
+
+== References ==
+
+<references/>

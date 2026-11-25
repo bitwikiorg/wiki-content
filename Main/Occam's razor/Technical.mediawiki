@@ -1,0 +1,155 @@
+[[Occam's razor/Simple|Simple]] · [[Occam's razor/Technical|Technical]]
+
+= Occam's razor — Technical =
+
+'''Occam's razor''' (Ockham's razor) names a family of parsimony principles used in philosophical explanation, scientific theory choice and methodological economy. The usual recommendation is to avoid unnecessary assumptions or theoretical commitments, but this does not specify a unique measure of simplicity, a universally rational decision procedure or a guarantee of truth. The principle can function as a pragmatic rule for inquiry, a preference under a chosen evidential standard or a formal complexity tradeoff under an explicitly assumed mathematical model.
+
+The history and epistemic justification of simplicity are contested. William of Ockham is an important medieval figure associated with economy of metaphysical commitments, but related principles predate him; modern slogans and model-selection practices should not be quoted as verbatim statements from his works without primary-text evidence. Philosophical sources distinguish the historical doctrines from subsequent methodological reconstructions.<ref name="simplicity">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/simplicity/ ''Simplicity''], historical, methodological and epistemological defenses and criticisms of simplicity principles.</ref><ref name="ockham">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/ockham/ ''William of Ockham'']; Internet Encyclopedia of Philosophy, [https://iep.utm.edu/ockham/ ''William of Ockham''], medieval ontological economy, name and historical attribution.</ref>
+
+== Several distinct razors, not one axiom ==
+
+{| class="wikitable"
+! Principle or use !! What is compared !! Main ambiguity
+|-
+| Ontological parsimony || Kinds of entities or commitments posited by competing theories || What counts as an additional entity, and whose ontology is used?
+|-
+| Syntactic simplicity || Description length, rule count or logical form || Choice of language and coding conventions changes complexity
+|-
+| Parametric parsimony || Number and flexibility of tunable degrees of freedom || Parameter counts miss structural richness, priors and identifiability
+|-
+| Methodological economy || Investigative hypotheses and unnecessary assumptions || An easy first test is not an evidence-based final explanation
+|-
+| Predictive/model-selection criterion || Fit or expected prediction versus formal complexity penalty || Statistical objective and asymptotic assumptions vary
+|}
+
+A short mathematical expression can encode a complex algorithm; a longer explanation can require fewer unjustified assumptions. No raw word count or number of named variables suffices as a universal simplicity measure.
+
+=== Historical caution ===
+
+The maxim commonly rendered as avoiding a multiplication of entities beyond necessity has multiple historical antecedents and later reformulations. The name “Occam's razor” was popularized long after Ockham; it is safer to discuss the associated principle and its evolving interpretation than to present that English phrase or a specific Latin formulation as Ockham's verified quotation. Even when a medieval author favors parsimony, this does not imply endorsement of modern Bayesian priors, AIC or algorithmic compression.<ref name="ockham"/>
+
+== Evidence is not subordinate to simplicity ==
+
+Let competing scientific models <math>M_0,M_1</math> make distributions or predictions for observable data <math>D</math>. Saying that <math>M_0</math> is “simpler” is not enough to choose it: one must state the relevant evidence, the predictions and an epistemic decision rule. Simplicity might be justified by a cost of testing or by assumptions about expected predictive performance, but a model that demonstrably excludes observed results cannot be rescued merely by minimizing verbal complexity.
+
+Parsimony also does not resolve observational underdetermination automatically. Distinct mechanisms may make the same predictions over a finite observation range. Choosing the shorter among them can be a practical decision while remaining uncertain about the underlying ontology. Causal and explanatory questions frequently require interventions, independent measurements or discriminating predictions rather than a slogan.
+
+== Bayesian model comparison and evidence ==
+
+Under a Bayesian model selection framework, each model has prior weight <math>P(M_i)</math>, parameter vector <math>\theta_i</math> and within-model prior <math>p(\theta_i\mid M_i)</math>. Its marginal likelihood or evidence is
+
+<math display="block">p(D\mid M_i)=\int p(D\mid\theta_i,M_i)\,p(\theta_i\mid M_i)\,d\theta_i.</math>
+
+The '''Bayes factor''' comparing model <math>M_1</math> to <math>M_0</math> is
+
+<math display="block">BF_{10}=\frac{p(D\mid M_1)}{p(D\mid M_0)},\qquad\frac{P(M_1\mid D)}{P(M_0\mid D)}=BF_{10}\frac{P(M_1)}{P(M_0)}.</math>
+
+Marginal likelihood averages over a parameter prior instead of choosing the best fitting parameter after seeing data. A more flexible model can distribute prior predictive mass over outcomes that did not occur, producing an effective penalty relative to a constrained model. But such behavior depends on the prior, likelihood and data; model dimension by itself is not a theorem guaranteeing that the simpler model wins. An extremely concentrated or poorly chosen prior can reverse intuitions about “complexity.”
+
+=== Independently reproducible normal-mean comparison ===
+
+Construct the following fully specified hypothetical experiment: <math>X_1,\ldots,X_n</math> are independent <math>N(\theta,1)</math> measurements with known unit sampling variance, <math>n=10</math>. Compare
+
+<math display="block">M_0:\theta=0,\qquad M_1:\theta\sim N(0,1).</math>
+
+The alternative is a proper normal prior with unit variance, not an improper flat prior. The observations enter this simple model comparison through their sample mean <math>\bar X</math>; all other factors in the full-data Gaussian likelihood cancel in the Bayes factor. Integrating the normal prior analytically gives
+
+<math display="block">BF_{10}=\frac1{\sqrt{1+n}}\exp\left(\frac{n^2\bar X^{\,2}}{2(1+n)}\right).</math>
+
+With <math>n=10</math> and observed sample mean <math>\bar X=0.2</math>, the exponent is <math>4/22</math>, so
+
+<math display="block">BF_{10}=\frac{\exp(4/22)}{\sqrt{11}}\simeq0.36163,\qquad BF_{01}\simeq2.76525.</math>
+
+These model assumptions make the data about 2.77 times as probable under the point-null model as under the spread-out normal alternative. With '''equal prior model probabilities''', the posterior probability of <math>M_1</math> is <math>BF_{10}/(1+BF_{10})\simeq0.26559</math>. It is not a universal “probability that a hypothesis is true”: it is conditional on the two nominated models, priors, known variance and data summary.
+
+Now keep the models and sample size fixed but suppose the observed mean is <math>\bar X=1.0</math>. Then
+
+<math display="block">BF_{10}=\frac{\exp(100/22)}{\sqrt{11}}\simeq28.40334.</math>
+
+Under the equal prior model odds this favors <math>M_1</math> strongly, giving posterior probability about <math>0.96599</math>. The added flexibility has not been rejected merely for being more complex: the changed observations provided enough evidence to overcome the conditional marginal-likelihood penalty.
+
+{| class="wikitable"
+! Declared example !! <math>BF_{10}</math> !! <math>BF_{01}</math> !! <math>P(M_1\mid D)</math>, equal model priors
+|-
+| <math>\bar X=0.2</math> || 0.36163 || 2.76525 || 0.26559
+|-
+| <math>\bar X=1.0</math> || 28.40334 || 0.03521 || 0.96599
+|}
+
+This is a controlled mathematical teaching benchmark. It is neither an experiment on human reasoning nor a proof that point-null models are generally the correct ontological choice. Prior model odds other than 1:1 alter the posterior; a different scale for the normal alternative changes both Bayes factors.
+
+== Minimum description length ==
+
+Jorma Rissanen's minimum-description-length (MDL) research seeks compact encodings of model structure and data under a formal coding scheme. A schematic two-part codelength objective is
+
+<math display="block">L_{\mathrm{total}}(M,D)=L(M)+L(D\mid M).</math>
+
+The first term represents a description of the model, and the second represents the remaining data description under it. A model that merely memorizes every observation may fit training data but require a long model code; an excessively simple model may require a long residual description. In carefully designed statistical settings, the tradeoff motivates generalization and model identification.<ref name="rissanen">Jorma Rissanen, [https://doi.org/10.1016/0005-1098(78)90005-5 “Modeling by Shortest Data Description”], ''Automatica'' 14(5), 465–471 (1978), original minimum-description-length modeling framework.</ref>
+
+Codelength depends on encoding conventions, parameter precision and the chosen universal or reference model class. A very short description in an artificially selected programming language can conceal complexity in its interpreter. MDL is not equivalent to choosing the shortest sentence or erasing every seemingly redundant variable.
+
+== AIC and BIC are different formal tools ==
+
+For a fitted regular likelihood model with maximized log-likelihood <math>\ell(\hat\theta)</math> and <math>k</math> counted free parameters, common information criteria are
+
+<math display="block">AIC=2k-2\ell(\hat\theta),\qquad BIC=k\ln n-2\ell(\hat\theta).</math>
+
+For comparable likelihood formulations applied to the same data, lower criterion values are preferred under the respective method. Akaike introduced AIC to address predictive information loss; Schwarz's criterion arose from asymptotic Bayesian reasoning under specified regular conditions.<ref name="akaike">Hirotugu Akaike, [https://doi.org/10.1109/TAC.1974.1100705 “A New Look at the Statistical Model Identification”], ''IEEE Transactions on Automatic Control'' 19(6), 716–723 (1974), original model identification criterion.</ref><ref name="schwarz">Gideon Schwarz, [https://doi.org/10.1214/aos/1176344136 “Estimating the Dimension of a Model”], ''Annals of Statistics'' 6(2), 461–464 (1978), asymptotic model-dimension criterion.</ref>
+
+These expressions are not interchangeable. Their different penalties embody different goals and approximations. BIC does not exactly equal an arbitrary finite-sample Bayes factor, and AIC is not a universal guarantee of the best future prediction. Nonidentifiable parameters, singular models, small samples, strong dependence and misspecified likelihoods complicate both familiar textbook criteria.
+
+A simple data example illustrates the conditional nature of their difference. If two models are fitted on the same <math>n=100</math> observations and the second has one additional free parameter, AIC requires a log-likelihood improvement greater than 1 to prefer the larger model, whereas BIC requires an improvement greater than <math>\tfrac12\ln100\simeq2.3026</math>, all else equal. Neither threshold proves causation or sufficiency of either model.
+
+== Identifiability and prior sensitivity in model comparison ==
+
+The normal-mean benchmark above fixes the alternative prior variance to one. More generally, with <math>\theta\sim N(0,\tau^2)</math> and the same known sampling variance, direct integration gives
+
+<math display="block">BF_{10}(\tau)=\left(1+n\tau^2\right)^{-1/2}\exp\!\left(\frac{n^2\tau^2\bar X^2}{2(1+n\tau^2)}\right).</math>
+
+This is an algebraic extension of the stated hypothetical model, not a newly measured effect. Holding <math>n</math> and <math>\bar X</math> fixed while changing <math>\tau</math> changes the marginal likelihood, and for nonzero finite <math>\bar X</math> the Bayes factor approaches zero as <math>\tau\to\infty</math>. Thus an arbitrarily diffuse proper alternative prior can favor the point null despite an unchanged likelihood maximum. The phenomenon exposes prior sensitivity, not a universal preference for simple physical mechanisms. Report sensitivity over defensible prior scales and explain why the candidate model family is adequate before interpreting posterior odds.
+
+== Bias–variance, overfitting and complexity ==
+
+A highly flexible predictor may fit training data closely while generalizing poorly if its training set is small, unrepresentative or contaminated by noise. A simpler hypothesis class can restrict variance, but too much restriction can introduce systematic bias. The tradeoff depends on the data-generating process, sample size, loss, training procedure, regularization, model structure and evaluation distribution.
+
+Parameter count can be a weak proxy for effective complexity in overparameterized, regularized or singular learning systems. A researcher should use held-out evaluations or appropriate cross-validation, report uncertainty and respect dependencies among observations. Selecting a smaller model merely because a plot is aesthetically smoother is not a substitute for performance evidence.
+
+In philosophy, the empirical relevance of simplicity remains debated because the simplest adequate model might be a useful instrument even if its ontology is incorrect. Formal learning theory studies situations in which specific restricted inductive procedures have provable properties of efficient convergence, but such conditional theorems do not license every everyday appeal to the razor.<ref name="learning">Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/learning-formal/ ''Formal Learning Theory''], conditional Ockham results and stable belief under explicit hypothesis-space constraints.</ref>
+
+== Abstraction, evidence and causal interpretation ==
+
+An abstraction intentionally suppresses selected information while aiming to preserve relevant properties. A simpler theory may or may not be a sound abstraction of a more detailed explanation. The fact that a model contains fewer visible components does not show it preserves the mechanisms relevant to a causal intervention.
+
+Suppose one explanation attributes a failure to a single loose wire while another invokes interacting power, firmware and network causes. A wire check may be a cheap first test, but confirmed causal evidence for multiple independent pathways can make the multicausal model the only defensible explanation. Conversely, an elaborate causal diagram with unsupported arrows may not outperform a simpler well-tested explanation.
+
+The meaningful comparison is between empirically grounded predictions and commitments, rather than a contest of surface elegance. Consult [[Abstraction]], [[Scientific model]], [[Epistemology]], [[Reasoning]] and [[Validation]] for adjacent distinctions.
+
+== Epistemic and historical audit checklist ==
+
+A credible application of Occam's razor should disclose:
+
+* The competing explanations and what predictions distinguish them.
+* The intended type of simplicity—ontological, descriptive, parametric or methodological.
+* Any prior assumptions, coding conventions, penalty weights or candidate-model restrictions.
+* The evidence and evaluation criterion used to compare alternatives.
+* The cost of excluding mechanisms, interactions, rare events or affected populations.
+* Whether model selection is exploratory or supported by independent validation.
+* Whether a historical quotation, name or claim is actually supported by the cited source.
+
+In historical scholarship, distinguish direct medieval text from later paraphrase and contemporary formalization. In statistics, distinguish model evidence from posterior model probability and from the claim that a mechanism is true in nature. In artificial-agent development, a shorter prompt or explanation does not demonstrate a better underlying inference system without targeted evaluation.
+
+== Limits and research questions ==
+
+Open problems include defining complexity measures that match scientific goals, evaluating simplicity preferences in singular/high-dimensional learning, prior robustness in Bayesian model selection, causal discovery under observational equivalence and description-length inference with evolving representations. There is no domain-independent theorem that the simplest possible explanation must be correct.
+
+The razor is most useful when it makes hidden assumptions explicit and directs attention to discriminatory evidence. It is harmful when used to dismiss empirically necessary complexity or convert a historically nuanced methodological principle into a fabricated certainty.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* Stanford Encyclopedia of Philosophy, [https://plato.stanford.edu/entries/simplicity/ ''Simplicity''] and [https://plato.stanford.edu/entries/ockham/ ''William of Ockham''].
+* [https://doi.org/10.1016/0005-1098(78)90005-5 Rissanen (1978)], [https://doi.org/10.1109/TAC.1974.1100705 Akaike (1974)] and [https://doi.org/10.1214/aos/1176344136 Schwarz (1978)], distinct formal approaches.
+* [[Occam's razor/Simple|Simple]] · [[Abstraction]] · [[Scientific model]] · [[Epistemology]].

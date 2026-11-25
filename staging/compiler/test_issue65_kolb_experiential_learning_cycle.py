@@ -16,9 +16,13 @@ class KolbCycleSourceTest(unittest.TestCase):
         cls.simple = SIMPLE.read_text(encoding="utf-8")
         cls.tech = TECH.read_text(encoding="utf-8")
 
-    def test_three_source_surfaces_and_transclusion(self):
-        self.assertIn("{{:Main:" + TITLE + "/Simple}}", self.core)
-        self.assertIn("{{:Main:" + TITLE + "/Technical}}", self.core)
+    def test_two_localizations_and_transclusion(self):
+        self.assertIn("{{:" + TITLE + "/Simple}}", self.core)
+        self.assertNotIn("/Technical}}", self.core)
+        self.assertIn("{{Knowledge object", self.core)
+        self.assertIn("[["+TITLE+"/Technical|Technical]]", self.simple)
+        self.assertIn("[["+TITLE+"/Simple|Simple]]", self.tech)
+        self.assertIn("== The four modes ==", self.simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
         self.assertEqual(self.simple.count("<onlyinclude>"), 1)
         self.assertEqual(self.simple.count("</onlyinclude>"), 1)
         self.assertNotIn("<onlyinclude>", self.core)
@@ -36,7 +40,11 @@ class KolbCycleSourceTest(unittest.TestCase):
         declared = set(re.findall(r'<ref name="([^"]+)"', self.core + self.tech))
         used = set(re.findall(r'<ref name="([^"]+)"\s*/>', self.core + self.tech))
         self.assertTrue(used <= declared, used - declared)
-        self.assertIn("<references />", self.core)
+        self.assertIn("<references/>", self.core)
+        self.assertIn("<references/>", self.simple)
+        self.assertIn("<references/>", self.tech)
+        self.assertIn("10.1111/j.1539-6053.2009.01038.x", self.tech)
+        self.assertIn("style-by-method crossover", self.tech)
 
     def test_no_unsupported_empirical_guarantees(self):
         for forbidden in ("guaranteed to improve", "all learners must",

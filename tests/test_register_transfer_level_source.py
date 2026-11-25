@@ -15,6 +15,7 @@ class TestRegisterTransferLevel(unittest.TestCase):
         self.assertIn("{{:Register-transfer level/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("== Example: a counter ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertNotIn("<onlyinclude>", core)
         self.assertIn("[[Register-transfer level/Simple|Simple]]", technical)
         self.assertIn("[[Register-transfer level/Technical|Technical]]", simple)

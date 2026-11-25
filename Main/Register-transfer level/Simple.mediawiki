@@ -2,7 +2,7 @@
 ''Reader localizations:'' '''Simple''' · [[Register-transfer level/Technical|Technical]]
 = Register-transfer level — Simple =
 
-<onlyinclude>'''Register-transfer level''' ('''RTL''') is a way of describing how a digital circuit stores information and changes it. A register remembers bits; logic calculates what should happen next; a clock can determine when the new value is stored. RTL describes the circuit's intended behavior without specifying every transistor or wire.</onlyinclude>
+<onlyinclude>'''Register-transfer level''' ('''RTL''') is a way of describing how a digital circuit stores information and changes it. A register remembers bits; logic calculates what should happen next; a clock can determine when the new value is stored. RTL describes the circuit's intended behavior without specifying every transistor or wire.
 
 == Example: a counter ==
 Imagine a four-bit counter with a clock and an enable signal. On an enabled clock edge it counts up by one; when it reaches 15, the next increment wraps to 0. With enable off, the register keeps its value. The wraparound comes from the four-bit width, not from a universal property of counters.
@@ -16,3 +16,5 @@ Engineers can simulate the design, compare it with requirements, synthesize a ga
 == Sources ==
 * IEEE, ''IEEE Std 1800-2023'', https://standards.ieee.org/ieee/1800/7743/
 * OpenLane 2, ''Achieving Timing Closure'', https://openlane2.readthedocs.io/en/latest/usage/timing_closure/index.html
+</onlyinclude>
+

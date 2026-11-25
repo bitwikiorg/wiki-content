@@ -1374,6 +1374,18 @@
         "tests": "Regression source updated but not executed; V2/staging/CI not executed; complete citation audit outstanding",
         "gate": "PR #136 shared compatibility prerequisite; human scholarly review and merge approval required",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/101"
+      },
+      "final_validation_source_audit": {
+        "id": "A31",
+        "pr": 101,
+        "head": "7fa82fff6f0e04d4d9b86118ea06012435dca934",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue64_flash_memory.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1396,6 +1408,18 @@
         "tests": "Python regression updated for unittest discovery; execution not yet verified; CI, full citation and V2/staging validation remain.",
         "gate": "PR #136 and owner approval; no merge/publication.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/102"
+      },
+      "final_validation_source_audit": {
+        "id": "N001",
+        "pr": 102,
+        "head": "afdc4158d7e5f19d00fa9a2934e05e345f73aacf",
+        "findings": [
+          "category pages absent: Psychology, Statistics"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_generalization.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1418,6 +1442,16 @@
         "tests": "Updated Python regression not executed; V2/staging and source audit outstanding.",
         "gate": "PR #136 and owner approval; no merge/publication.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/103"
+      },
+      "final_validation_source_audit": {
+        "id": "N002",
+        "pr": 103,
+        "head": "d6f58b77a9278aca3f8907268a1cdafd76c6e5c2",
+        "findings": [],
+        "regression_paths": [
+          "staging/compiler/test_issue65_johari_window.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1440,6 +1474,16 @@
         "tests": "Python regression updated but not executed; V2/staging and full citation checks remain.",
         "gate": "PR #136 and owner approval; no merge/publication.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/104"
+      },
+      "final_validation_source_audit": {
+        "id": "N003",
+        "pr": 104,
+        "head": "35011dc595eca50d5ebda3bfb9fcaeba66b6faff",
+        "findings": [],
+        "regression_paths": [
+          "staging/compiler/test_issue65_kolb_experiential_learning_cycle.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1462,6 +1506,16 @@
         "tests": "Updated Python regression not executed; V2/staging and full citation audit outstanding.",
         "gate": "PR #136 and owner approval; no merge/publication.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/105"
+      },
+      "final_validation_source_audit": {
+        "id": "N004",
+        "pr": 105,
+        "head": "859d7a0bf15d87c4b5a30fa26fcab7cee4bf76b6",
+        "findings": [],
+        "regression_paths": [
+          "staging/compiler/test_issue65_nonviolent_communication.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1483,6 +1537,18 @@
         "tests": "Scoped Python test updated; execution and full V2, staging and semantic checks outstanding.",
         "gate": "PR #136 and owner approval; no merge/publication.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/106"
+      },
+      "final_validation_source_audit": {
+        "id": "N005",
+        "pr": 106,
+        "head": "c33b1492a602081f75a3c1185f07d3fff9fee32b",
+        "findings": [
+          "category pages absent: Decision making, Military studies"
+        ],
+        "regression_paths": [
+          "tests/test_ooda_loop.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1504,6 +1570,18 @@
         "tests": "Scoped Python test updated; execution and full V2/staging validation outstanding.",
         "gate": "PR #136 and owner approval; no merge/publication.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/107"
+      },
+      "final_validation_source_audit": {
+        "id": "N006",
+        "pr": 107,
+        "head": "b9f22667cdb044ef482c21fd41223f6d18eda009",
+        "findings": [
+          "category pages absent: Psychology, Education"
+        ],
+        "regression_paths": [
+          "tests/test_six_thinking_hats.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1525,6 +1603,18 @@
         "tests": "Scoped Python test updated; execution and full V2/staging validation outstanding.",
         "gate": "PR #136 and owner approval; no merge/publication.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/108"
+      },
+      "final_validation_source_audit": {
+        "id": "N007",
+        "pr": 108,
+        "head": "6642417116ca8e7852bc84d812ea6c20cb82d7e6",
+        "findings": [
+          "category pages absent: Management"
+        ],
+        "regression_paths": [
+          "tests/test_parkinsons_law_source.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1551,6 +1641,21 @@
         "tests": "Scoped regression source updated, not executed; V2/staging/CI and comprehensive citation audit not executed",
         "gate": "PR #136 compatibility prerequisite; human scholarly approval and explicit merge authorization required",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/109"
+      },
+      "final_validation_source_audit": {
+        "id": "N008",
+        "pr": 109,
+        "head": "45fd7d30abb146c64ab590ced7e0280d181b2897",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "legacy navigation remains",
+          "Simple transclusion appears lead-only",
+          "Knowledge object template absent; inspect alternative identity"
+        ],
+        "regression_paths": [
+          "tests/test_cache_memory_n008.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1572,6 +1677,19 @@
         "blockers": [
           "PR #136 two-way depth validation prerequisite"
         ]
+      },
+      "final_validation_source_audit": {
+        "id": "N009",
+        "pr": 110,
+        "head": "03fd49e08845422b36bb9a73b90a98b5c2b3c02f",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "tests/test_n009_hardware_description_language.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1593,6 +1711,19 @@
         "blockers": [
           "PR #136 two-way depth validation prerequisite"
         ]
+      },
+      "final_validation_source_audit": {
+        "id": "N010",
+        "pr": 111,
+        "head": "c1fbddc8f6281e84df0ade9f13922bcd7e68490d",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "tests/test_register_transfer_level_source.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1614,6 +1745,21 @@
         "blockers": [
           "PR #136 two-way depth validation prerequisite"
         ]
+      },
+      "final_validation_source_audit": {
+        "id": "N011",
+        "pr": 112,
+        "head": "f958638544ed421bdac3a89ddd15351862acc136",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Electronic design automation"
+        ],
+        "regression_paths": [
+          "tests/test_n011_electronic_design_automation.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {

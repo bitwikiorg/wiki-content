@@ -3,7 +3,7 @@
   "base_commit": "e26be703ce02e4396e46072141dedeaf472fdfc1",
   "inventory_method": "Direct exact-title fetches against main; recursive Git tree returned 2404 untruncated entries. Keyword code searches for the four authored subjects and Inforg returned no hits. The inventory is preliminary for remaining candidates; exact-title absence is not proof of absent related coverage.",
   "staged_branch": "content/knowledge-expansion-information-foundations-20261124",
-  "scope_note": "Five independent authored canonical hosts with two localizations each. Inforg and Infosphere retain separate canonical identities, with reciprocal semantic links as directed by the owner. Existing canonical articles unchanged. Other candidates require full alias, section, source and localization review; no candidate is to be consolidated, redirected, or otherwise removed from the requested article scope without explicit owner approval. No merge/deployment authorized.",
+  "scope_note": "Independent canonical subjects with two localizations; no consolidation, redirects, or exclusions without explicit owner approval. Existing coverage preserved pending review. This ledger tracks all 59 candidates.",
   "validation_note": "Commit and PR are the authoritative immutable evidence for staged source; PR workflow must be independently checked. Full local execution and live MediaWiki verification not performed.",
   "secondary_outline_research": {
     "status": "pending",
@@ -151,130 +151,223 @@
       "title": "Signal",
       "group": "Information science and information philosophy",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Signal",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://www.ocw.mit.edu/courses/res-6-dtsp-discrete-time-signal-processing/",
+        "https://doi.org/10.1002/j.1538-7305.1948.tb01338.x"
+      ],
+      "dependencies": [
+        "Information",
+        "Information theory",
+        "Digital signal processor",
+        "Measurement",
+        "Code"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "Code",
       "group": "Information science and information philosophy",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Code",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://crypto.stanford.edu/~blynn/pr/symbol.html",
+        "https://doi.org/10.1002/j.1538-7305.1948.tb01338.x"
+      ],
+      "dependencies": [
+        "Information",
+        "Information theory",
+        "Signal",
+        "Formal language",
+        "Programming language",
+        "Genetic inheritance"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "DIKW pyramid",
       "group": "Information science and information philosophy",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "DIKW pyramid",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://doi.org/10.1177/0165551506070706",
+        "https://doi.org/10.1177/0165551508094050",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6435353/"
+      ],
+      "dependencies": [
+        "Information",
+        "Knowledge",
+        "Information theory",
+        "Evidence",
+        "Knowledge management"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "Semiotics",
       "group": "Information science and information philosophy",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Semiotics",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://plato.stanford.edu/archives/sum2025/entries/peirce-semiotics/",
+        "https://plato.stanford.edu/entries/peirce/"
+      ],
+      "dependencies": [
+        "Semantics",
+        "Language",
+        "Pragmatics",
+        "Information",
+        "Semiosphere",
+        "Code"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "Semiosphere",
       "group": "Information science and information philosophy",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Semiosphere",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://ojs.utlib.ee/index.php/sss/article/view/SSS.2005.33.1.09",
+        "https://doi.org/10.12697/SSS.2025.53.1-2.12"
+      ],
+      "dependencies": [
+        "Semiotics",
+        "Language",
+        "Semantics",
+        "Information ecology",
+        "Infosphere"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "Ideosphere",
       "group": "Information science and information philosophy",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Ideosphere",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://plato.stanford.edu/entries/evolution-cultural/",
+        "https://global.oup.com/academic/product/the-selfish-gene-9780198788607"
+      ],
+      "dependencies": [
+        "Information ecology",
+        "Semiosphere",
+        "Infosphere",
+        "Knowledge",
+        "Emergence"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "Knowledge ecosystem",
       "group": "Knowledge ecosystems and collective intelligence",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Knowledge ecosystem",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://doi.org/10.1111/j.1467-9310.2011.00673.x",
+        "https://doi.org/10.1287/orsc.5.1.14"
+      ],
+      "dependencies": [
+        "Knowledge",
+        "Information ecology",
+        "Knowledge management",
+        "Dispersed knowledge"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "Knowledge management",
       "group": "Knowledge ecosystems and collective intelligence",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Knowledge management",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://doi.org/10.1287/orsc.5.1.14",
+        "https://doi.org/10.1093/oso/9780195111682.001.0001"
+      ],
+      "dependencies": [
+        "Knowledge",
+        "Knowledge ecosystem",
+        "Information ecology",
+        "Research data management",
+        "Knowledge representation"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "Knowledge market",
       "group": "Knowledge ecosystems and collective intelligence",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Knowledge market",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://www.econlib.org/library/Essays/hykKnw.html",
+        "https://www.nber.org/books-and-chapters/rate-and-direction-inventive-activity-economic-and-social-factors/economic-welfare-and-allocation-resources-invention"
+      ],
+      "dependencies": [
+        "Knowledge",
+        "Dispersed knowledge",
+        "Knowledge management",
+        "Incentive",
+        "Mechanism design",
+        "Public good"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {
       "title": "Dispersed knowledge",
       "group": "Knowledge ecosystems and collective intelligence",
       "base_exact_title": "404 not present",
-      "canonical_identity": null,
-      "editorial_disposition": "undetermined; alternate-title and scope audit pending",
-      "research_status": "pending",
-      "verified_source_urls": [],
-      "dependencies": [],
-      "branch": null,
-      "validation": "not run",
+      "canonical_identity": "Dispersed knowledge",
+      "editorial_disposition": "new independent canonical article",
+      "research_status": "source-linked Simple and Technical authored; independent source review pending",
+      "verified_source_urls": [
+        "https://www.econlib.org/library/Essays/hykKnw.html",
+        "https://doi.org/10.1017/CBO9780511817410.007"
+      ],
+      "dependencies": [
+        "Knowledge",
+        "Knowledge market",
+        "Collective action",
+        "Distributed cognition",
+        "Coordination problem"
+      ],
+      "branch": "content/knowledge-expansion-information-foundations-20261124",
+      "validation": "static source structure checked; PR workflow pending",
       "integration": "not merged"
     },
     {

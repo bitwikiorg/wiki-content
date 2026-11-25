@@ -1819,14 +1819,13 @@
       "final_validation_source_audit": {
         "id": "N014",
         "pr": 115,
-        "head": "fefe42861a79422705064845574a5fa479d25a7a",
-        "findings": [
-          "Simple transclusion appears lead-only"
-        ],
+        "head": "713a2a9446d60fd71f6fc660b3a83647f468560b",
+        "findings": [],
         "regression_paths": [
           "tests/test_operating_system_kernel_article.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple explanation, references, canonical metadata and scoped tests verified by committed source readback. Executable validation pending."
       }
     },
     {
@@ -1859,17 +1858,14 @@
       "final_validation_source_audit": {
         "id": "N015",
         "pr": 116,
-        "head": "a549b1578a5413584451838c8ff8fb16d53c0fe4",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "host has independent onlyinclude body",
-          "Knowledge object template absent; inspect alternative identity",
-          "category pages absent: Chemical elements, Semiconductor materials"
-        ],
+        "head": "25533c65b9e943ccf07ff7644bf84f77d2bc1f55",
+        "findings": [],
         "regression_paths": [
           "tests/test_n015_silicon.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple explanation, references, canonical metadata and scoped tests verified by committed source readback. Executable validation pending.",
+        "category_reconciliation": "Uncreated draft Chemical elements and Semiconductor materials categories mapped to existing Chemistry, Physics, Electronics; original category labels retained in ledger."
       }
     },
     {
@@ -1900,15 +1896,14 @@
       "final_validation_source_audit": {
         "id": "N016",
         "pr": 117,
-        "head": "3297eb947c61925ec9517f86e096b08e88032900",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "Knowledge object template absent; inspect alternative identity"
-        ],
+        "head": "0720640456a9927fbc0066b2e45befabc3463f4c",
+        "findings": [],
         "regression_paths": [
           "tests/test_semiconductor_fabrication_article.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple explanation, references, canonical metadata and scoped tests verified by committed source readback. Executable validation pending.",
+        "semantic_reconciliation": "Legacy unregistered Has domain annotation migrated to Domain via Knowledge object; exact Semiconductor engineering label preserved; three Related to targets preserved."
       }
     },
     {
@@ -2586,23 +2581,23 @@
     "articles_corrected_pending_validation": 65,
     "pairs_corrected_pending_validation": 33,
     "static_source_audits": 65,
-    "static_source_audits_with_findings": 25,
+    "static_source_audits_with_findings": 22,
     "static_source_audit_open_findings": [
       [
         "category pages absent",
-        14
-      ],
-      [
-        "Simple transclusion appears lead-only",
-        21
-      ],
-      [
-        "host has independent onlyinclude body",
         13
       ],
       [
-        "Knowledge object template absent; inspect alternative identity",
+        "Simple transclusion appears lead-only",
         18
+      ],
+      [
+        "Knowledge object template absent; inspect alternative identity",
+        16
+      ],
+      [
+        "host has independent onlyinclude body",
+        12
       ],
       [
         "Related to targets absent",

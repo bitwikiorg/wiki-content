@@ -2627,7 +2627,39 @@
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R33",
     "articles_corrected_pending_validation": 65,
-    "pairs_corrected_pending_validation": 33
+    "pairs_corrected_pending_validation": 33,
+    "static_source_audits": 65,
+    "static_source_audits_with_findings": 60,
+    "static_source_audit_open_findings": [
+      [
+        "Simple transclusion appears lead-only",
+        56
+      ],
+      [
+        "duplicate named refs 2",
+        1
+      ],
+      [
+        "localization carries identity/relations",
+        2
+      ],
+      [
+        "category pages absent",
+        17
+      ],
+      [
+        "Knowledge object template absent; inspect alternative identity",
+        21
+      ],
+      [
+        "host has independent onlyinclude body",
+        15
+      ],
+      [
+        "Related to targets absent",
+        1
+      ]
+    ]
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",
@@ -2644,12 +2676,528 @@
   "dependencies": {
     "shared_depth_validator": {
       "pr": "https://github.com/bitwikiorg/wiki-content/pull/136",
-      "status": "validated_awaiting_owner_merge_authorization",
+      "status": "validated_ready_for_owner_approval",
       "reason": "Current main V2 validator and substrate audit require Template:Reading depth for reading-depth page exemptions; two-localization sources intentionally use reciprocal links. CI for reviewed PRs cannot be green until compatible validator available in their base.",
       "ci": "GitHub Actions run 45525259151 completed success on current head; 14 localization tests and 9 editorial architecture tests actually executed and passed, Lua and V2 audit/deployment checks passed. Article heads remain unvalidated against updated infrastructure.",
       "head": "45d390c1a4b3b024ffb33920d95f683aa5585ee6",
       "workflow": "https://github.com/bitwikiorg/wiki-content/actions/runs/45525259151",
-      "approval": "Explicit owner merge authorization required. No merge performed."
+      "approval": "Explicit owner merge authorization required. No merge performed.",
+      "article_ci": "PR #91 exact final head failed runs 45524267793 and 45524267924 on old main substrate audit: directories without local documentation Main/Chronotype and Main/Hawthorne effect. No article acceptance inferred."
+    }
+  },
+  "backlog_reconciliation": {
+    "main_tree": "b0babecbeb1983c2231dde4c7592e89b5e411990",
+    "scope": "Exact canonical Main source titles and open authoring PR heads checked; alternate title/redirect/section coverage and live publication are not established.",
+    "issue_64": {
+      "url": "https://github.com/bitwikiorg/wiki-content/issues/64",
+      "staged_subjects": [
+        {
+          "id": "A01",
+          "title": "Semiconductor",
+          "pr": 81,
+          "head": "37d5f3eb4a162127831f1ad42c0e51574c20322b"
+        },
+        {
+          "id": "A08",
+          "title": "Diode",
+          "pr": 85,
+          "head": "7caf20e9f94f73167b93a0fbeaa9d4c09d1ec14e"
+        },
+        {
+          "id": "A09",
+          "title": "Transistor",
+          "pr": 85,
+          "head": "7caf20e9f94f73167b93a0fbeaa9d4c09d1ec14e"
+        },
+        {
+          "id": "A10",
+          "title": "Integrated circuit",
+          "pr": 86,
+          "head": "f7606fc2f876ab5c7c143072fe503c248aa864cf"
+        },
+        {
+          "id": "A11",
+          "title": "Logic gate",
+          "pr": 86,
+          "head": "f7606fc2f876ab5c7c143072fe503c248aa864cf"
+        },
+        {
+          "id": "A22",
+          "title": "Instruction set architecture",
+          "pr": 92,
+          "head": "983d650b35a69039a76ca9d115bb9795f517300b"
+        },
+        {
+          "id": "A23",
+          "title": "Microarchitecture",
+          "pr": 93,
+          "head": "9fc3fba2bc47d84070107defb03ac43fd5ffa1c3"
+        },
+        {
+          "id": "A24",
+          "title": "Central processing unit",
+          "pr": 94,
+          "head": "dd42f56adbf20830e1c0888b4694dfd57c9d8e62"
+        },
+        {
+          "id": "A25",
+          "title": "Graphics processing unit",
+          "pr": 95,
+          "head": "95d10e830a23539211b6ba186a521a29ba0d7a1f"
+        },
+        {
+          "id": "A26",
+          "title": "Computer memory",
+          "pr": 96,
+          "head": "188357e38144d9818532573a9050b6c05a47b643"
+        },
+        {
+          "id": "A27",
+          "title": "Firmware",
+          "pr": 97,
+          "head": "1c782b80178c733b93c17dea3b1612cfa75ad2b3"
+        },
+        {
+          "id": "A28",
+          "title": "Bootloader",
+          "pr": 98,
+          "head": "d66f2cb5a63f996a143a6a5d0962f0cd91b3abaa"
+        },
+        {
+          "id": "A29",
+          "title": "Device driver",
+          "pr": 99,
+          "head": "f7667e049893a5e17a0511c581fa568881a8fde4"
+        },
+        {
+          "id": "A30",
+          "title": "Dynamic random-access memory",
+          "pr": 100,
+          "head": "3d69544c2b8ffc3489dfec53e73231708afffd14"
+        },
+        {
+          "id": "A31",
+          "title": "Flash memory",
+          "pr": 101,
+          "head": "7fa82fff6f0e04d4d9b86118ea06012435dca934"
+        },
+        {
+          "id": "N008",
+          "title": "Cache memory",
+          "pr": 109,
+          "head": "c230443dd8287448f516d019d337be221ecf705c"
+        },
+        {
+          "id": "N009",
+          "title": "Hardware description language",
+          "pr": 110,
+          "head": "77aff31c3efbbd3788d3dae48766d45af56eedb8"
+        },
+        {
+          "id": "N010",
+          "title": "Register-transfer level",
+          "pr": 111,
+          "head": "8d71e36fbbf6ff8026ad041efe3a71cd06ce28f8"
+        },
+        {
+          "id": "N011",
+          "title": "Electronic design automation",
+          "pr": 112,
+          "head": "f958638544ed421bdac3a89ddd15351862acc136"
+        },
+        {
+          "id": "N012",
+          "title": "Field-programmable gate array",
+          "pr": 113,
+          "head": "23b881ffad903754c1a16e80971e366d4b338f5f"
+        },
+        {
+          "id": "N013",
+          "title": "Application-specific integrated circuit",
+          "pr": 114,
+          "head": "1d823e6ede2f5c232f52bddf713818e7d00b88fa"
+        },
+        {
+          "id": "N014",
+          "title": "Operating system kernel",
+          "pr": 115,
+          "head": "fefe42861a79422705064845574a5fa479d25a7a"
+        },
+        {
+          "id": "N015",
+          "title": "Silicon",
+          "pr": 116,
+          "head": "a549b1578a5413584451838c8ff8fb16d53c0fe4"
+        },
+        {
+          "id": "N016",
+          "title": "Semiconductor fabrication",
+          "pr": 117,
+          "head": "3297eb947c61925ec9517f86e096b08e88032900"
+        },
+        {
+          "id": "N017",
+          "title": "Photolithography",
+          "pr": 118,
+          "head": "f72f542bcdfabf5fb8768118934d1e3025d10ceb"
+        },
+        {
+          "id": "N018",
+          "title": "Thin-film deposition",
+          "pr": 119,
+          "head": "1ebe2c7ef008155e4a5c24806aa26e66ed6f4d2b"
+        },
+        {
+          "id": "N019",
+          "title": "Semiconductor etching",
+          "pr": 120,
+          "head": "f8b958e7959cabafd5060c810397f8084b2b39a0"
+        },
+        {
+          "id": "N020",
+          "title": "Semiconductor packaging",
+          "pr": 121,
+          "head": "8b137a62b3dfb206621fd227575e066ff14e6f27"
+        },
+        {
+          "id": "N021",
+          "title": "Semiconductor foundry",
+          "pr": 122,
+          "head": "a8837ee587022d08a8b4909defc8850a6d812284"
+        },
+        {
+          "id": "N022",
+          "title": "Neural processing unit",
+          "pr": 135,
+          "head": "5e3dcbaea1a468e110db741348804180a17e2c4d"
+        },
+        {
+          "id": "N023",
+          "title": "Digital signal processor",
+          "pr": 123,
+          "head": "c2d4450052e8ad52309e183a54f79d03c52f22f1"
+        },
+        {
+          "id": "N024",
+          "title": "High-bandwidth memory",
+          "pr": 124,
+          "head": "54a2ce9c6d1a60de820474cefc0d4bc7eaa615e9"
+        },
+        {
+          "id": "N025",
+          "title": "Chiplet",
+          "pr": 125,
+          "head": "0e71199c4c7dd44b0a3d22a493398264053fb3dc"
+        },
+        {
+          "id": "N026",
+          "title": "Memory controller",
+          "pr": 126,
+          "head": "7f945dd5533144ae16fa034b55ec40dfaf081477"
+        },
+        {
+          "id": "N027",
+          "title": "Computer bus",
+          "pr": 127,
+          "head": "2ab3041470c8366b3f16eb32472e410bff5612ce"
+        },
+        {
+          "id": "N028",
+          "title": "Network interface controller",
+          "pr": 128,
+          "head": "dc1fd92d0d76474dd3ada281f8f044978aef0fc0"
+        },
+        {
+          "id": "N029",
+          "title": "Power electronics",
+          "pr": 129,
+          "head": "e931a118ef67bf2c9235947bade7826925e57757"
+        },
+        {
+          "id": "N030",
+          "title": "Voltage regulator",
+          "pr": 130,
+          "head": "b9365c15f8f6a2fc349da6e1706dfb5cacd17fa1"
+        },
+        {
+          "id": "N031",
+          "title": "Parallel computing",
+          "pr": 131,
+          "head": "98d05d417f1718d0839ea7b7b32f6132e174a187"
+        },
+        {
+          "id": "N032",
+          "title": "Wafer testing",
+          "pr": 132,
+          "head": "03e94c4dd64493b5aad7ac1a2f1e6eb1a2d80254"
+        },
+        {
+          "id": "N033",
+          "title": "Semiconductor manufacturing yield",
+          "pr": 133,
+          "head": "79d5e5d7d72d3e06cf248714aca97bb773efbc7d"
+        },
+        {
+          "id": "N034",
+          "title": "Motherboard",
+          "pr": 134,
+          "head": "905c3f1df340966fe7fe7209757bcf76bddf4c18"
+        }
+      ],
+      "existing_foundations": [
+        {
+          "title": "Bit",
+          "exists": true
+        },
+        {
+          "title": "Information",
+          "exists": true
+        },
+        {
+          "title": "Information theory",
+          "exists": true
+        },
+        {
+          "title": "Computation",
+          "exists": true
+        },
+        {
+          "title": "Computer architecture",
+          "exists": true
+        },
+        {
+          "title": "Resistor",
+          "exists": true
+        }
+      ],
+      "neural_processing_unit": {
+        "disposition": "Authoring interruption resolved by existing PR #135; no exact canonical Main title currently on main; only one NPU subject in queue. Do not create a duplicate.",
+        "head": "5e3dcbaea1a468e110db741348804180a17e2c4d",
+        "remaining": "Canonical host duplication/category/identity review, test execution, integration, approval and live verification."
+      },
+      "other_candidate_seeds": "Research seed map is not an approved standalone-article inventory; uncovered seeds require separately justified parent/redirect/article dispositions; deferred from this 42-subject technical cohort, not asserted completed.",
+      "issue_status": "Open; not eligible for closure."
+    },
+    "issue_65": {
+      "url": "https://github.com/bitwikiorg/wiki-content/issues/65",
+      "standalone_staged": [
+        {
+          "id": "A02",
+          "title": "Dimensional analysis",
+          "pr": 82,
+          "head": "c06d3f0b2e33afb974587483bef024311cc97e1a"
+        },
+        {
+          "id": "A03",
+          "title": "Sensitivity analysis",
+          "pr": 82,
+          "head": "c06d3f0b2e33afb974587483bef024311cc97e1a"
+        },
+        {
+          "id": "A04",
+          "title": "Resilience",
+          "pr": 83,
+          "head": "234ea8115db347741da3063f0d80659b0474a21a"
+        },
+        {
+          "id": "A05",
+          "title": "Root cause analysis",
+          "pr": 83,
+          "head": "234ea8115db347741da3063f0d80659b0474a21a"
+        },
+        {
+          "id": "A06",
+          "title": "Optimization",
+          "pr": 84,
+          "head": "d90fea83ab6d903392e2d5b8741b5aac31612850"
+        },
+        {
+          "id": "A07",
+          "title": "Scaling",
+          "pr": 84,
+          "head": "d90fea83ab6d903392e2d5b8741b5aac31612850"
+        },
+        {
+          "id": "A12",
+          "title": "Abstraction",
+          "pr": 87,
+          "head": "3c9208f8954ba06ecba49cd971203013c7d55c84"
+        },
+        {
+          "id": "A13",
+          "title": "Occam's razor",
+          "pr": 87,
+          "head": "3c9208f8954ba06ecba49cd971203013c7d55c84"
+        },
+        {
+          "id": "A14",
+          "title": "Law of diminishing returns",
+          "pr": 88,
+          "head": "8f341a338c53b5e2a58655e2fb07117a2c34d58d"
+        },
+        {
+          "id": "A15",
+          "title": "Pareto principle",
+          "pr": 88,
+          "head": "8f341a338c53b5e2a58655e2fb07117a2c34d58d"
+        },
+        {
+          "id": "A16",
+          "title": "Mental simulation",
+          "pr": 89,
+          "head": "c9b057723cef48fc07e530622cd6fbd598a001be"
+        },
+        {
+          "id": "A17",
+          "title": "Spotlight effect",
+          "pr": 89,
+          "head": "c9b057723cef48fc07e530622cd6fbd598a001be"
+        },
+        {
+          "id": "A18",
+          "title": "Dunning–Kruger effect",
+          "pr": 90,
+          "head": "ef892f5ff5c805963425d1260fa4d23d23c0c0f1"
+        },
+        {
+          "id": "A19",
+          "title": "Halo effect",
+          "pr": 90,
+          "head": "ef892f5ff5c805963425d1260fa4d23d23c0c0f1"
+        },
+        {
+          "id": "A20",
+          "title": "Chronotype",
+          "pr": 91,
+          "head": "611dd0a492d71a6de5393e0fbea48b4fd00b830d"
+        },
+        {
+          "id": "A21",
+          "title": "Hawthorne effect",
+          "pr": 91,
+          "head": "611dd0a492d71a6de5393e0fbea48b4fd00b830d"
+        },
+        {
+          "id": "N001",
+          "title": "Generalization",
+          "pr": 102,
+          "head": "afdc4158d7e5f19d00fa9a2934e05e345f73aacf"
+        },
+        {
+          "id": "N002",
+          "title": "Johari window",
+          "pr": 103,
+          "head": "d6f58b77a9278aca3f8907268a1cdafd76c6e5c2"
+        },
+        {
+          "id": "N003",
+          "title": "Kolb's experiential learning cycle",
+          "pr": 104,
+          "head": "35011dc595eca50d5ebda3bfb9fcaeba66b6faff"
+        },
+        {
+          "id": "N004",
+          "title": "Nonviolent Communication",
+          "pr": 105,
+          "head": "859d7a0bf15d87c4b5a30fa26fcab7cee4bf76b6"
+        },
+        {
+          "id": "N005",
+          "title": "OODA loop",
+          "pr": 106,
+          "head": "c33b1492a602081f75a3c1185f07d3fff9fee32b"
+        },
+        {
+          "id": "N006",
+          "title": "Six Thinking Hats",
+          "pr": 107,
+          "head": "b9f22667cdb044ef482c21fd41223f6d18eda009"
+        },
+        {
+          "id": "N007",
+          "title": "Parkinson's law",
+          "pr": 108,
+          "head": "6642417116ca8e7852bc84d812ea6c20cb82d7e6"
+        }
+      ],
+      "existing": [
+        {
+          "title": "Robustness",
+          "exists": true,
+          "disposition": "Existing canonical identity; enrichment/crosslink audit remains."
+        },
+        {
+          "title": "Serial-position effect",
+          "exists": true,
+          "disposition": "Existing canonical identity for primacy/recency; enrichment/crosslink audit remains."
+        }
+      ],
+      "generalization": {
+        "existing_qualified_identity": true,
+        "new_broader_subject": "#102",
+        "disposition": "Cross-disciplinary subject distinguishes machine-learning sense; no duplicate qualified identity."
+      },
+      "section_or_redirect_dispositions": [
+        {
+          "item": "Rule of Three → rhetoric",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "Mehrabian 7–38–55 → corrective nonverbal communication discussion",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "DISC → instrument-specific psychometrics",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "What/So What/Now What → reflective practice",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "First Principles Thinking → epistemology",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "Leverage → mechanical advantage vs metaphor",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "Butterfly Effect → sensitive dependence/chaos",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "Circle of Influence → perceived control",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "SMART → goal setting",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "GROW → coaching",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "Chesterton's Fence → institutional reform",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        },
+        {
+          "item": "Lindy Effect → survival-analysis assumptions",
+          "status": "Original approved research placement recorded; actual parent section coverage or redirect not yet verified; not an independent article."
+        }
+      ],
+      "excluded": [
+        {
+          "title": "Tacitus Razor",
+          "reason": "Unsupported attribution; no independent scientific identity."
+        },
+        {
+          "title": "5×5 Rule",
+          "reason": "Unsupported independent scientific construct and provenance."
+        }
+      ],
+      "issue_status": "Open; 23 staged standalone candidates, 2 existing identities, 12 parent/redirect dispositions requiring coverage verification, 2 exclusions. No closure."
     }
   }
 }

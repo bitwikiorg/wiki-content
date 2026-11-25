@@ -9,7 +9,9 @@ A technical treatment should specify the state representation, neighborhood defi
 
 Boids is a constructive model of collective motion built from local steering rules. It provides a canonical example for [[Self-organization]] and contributes to research on [[Swarm intelligence]], while its flock-level coordination illustrates one narrow form of [[Collective intelligence]] without implying cognition in individual simulated agents.
 
-== Agent state ==
+== Motion model ==
+
+=== Agent state ===
 
 For boid <math>i</math>, let position and velocity be
 
@@ -27,7 +29,7 @@ A common update is
 
 where <math>a_i</math> is steering acceleration, <math>clip_v</math> imposes a speed limit, and <math>B</math> applies boundary handling.
 
-== Neighborhood definition ==
+=== Neighborhood definition ===
 
 Metric-radius neighborhood:
 
@@ -41,7 +43,7 @@ Alternative topological neighborhoods use the nearest <math>k</math> agents.
 
 Neighborhood choice strongly changes information topology and dynamics.
 
-== Separation ==
+=== Separation ===
 
 A simple separation force is
 
@@ -53,7 +55,7 @@ One common implementation uses inverse-distance or inverse-square weighting.
 
 The exact function is not fixed by Reynolds's conceptual model.
 
-== Alignment ==
+=== Alignment ===
 
 Mean neighbor velocity:
 
@@ -67,7 +69,7 @@ This reduces heading differences.
 
 If neighborhood is empty, the term is usually zero.
 
-== Cohesion ==
+=== Cohesion ===
 
 Local centroid:
 
@@ -81,7 +83,7 @@ This creates local attraction.
 
 Without separation, cohesion can collapse agents into unrealistically dense clusters.
 
-== Combined steering ==
+=== Combined steering ===
 
 A standard weighted combination is
 
@@ -99,7 +101,7 @@ Additional terms can encode:
 
 The steering vector is often clipped to a maximum acceleration.
 
-== Snapshot update ==
+=== Snapshot update ===
 
 To avoid order artifacts, compute every <math>a_i(t)</math> from the same snapshot
 
@@ -111,7 +113,7 @@ Sequential in-place updating instead makes later boids respond to already update
 
 That changes the dynamical system.
 
-== Numerical integration ==
+=== Numerical integration ===
 
 The simplest update is explicit Euler.
 
@@ -125,7 +127,7 @@ Large <math>\Delta t</math> can produce numerical instability or missed collisio
 
 Time step should therefore be reported and tested for convergence.
 
-== Speed limiting ==
+=== Speed limiting ===
 
 If desired velocity exceeds <math>v_{max}</math>:
 
@@ -135,7 +137,7 @@ A minimum speed may also be imposed in stylized flock simulations.
 
 Speed limits alter equilibrium structure and should be treated as part of the model.
 
-== Acceleration limiting ==
+=== Acceleration limiting ===
 
 For steering force <math>a</math>:
 
@@ -147,7 +149,9 @@ This prevents instantaneous heading changes.
 
 The ratio between <math>a_{max}</math> and <math>v_{max}</math> controls maneuverability.
 
-== Boundary conditions ==
+== Environment and steering extensions ==
+
+=== Boundary conditions ===
 
 Common choices:
 
@@ -163,7 +167,7 @@ Boundary behavior can generate artificial clustering or alignment.
 
 Results across boundaries should not be compared without qualification.
 
-== Obstacle avoidance ==
+=== Obstacle avoidance ===
 
 Obstacle response can use look-ahead ray or predicted collision point.
 
@@ -175,7 +179,7 @@ If <math>\hat x_i</math> intersects obstacle region, avoidance steering modifies
 
 Long look-ahead improves anticipation but can cause early evasive behavior.
 
-== Seek and flee ==
+=== Seek and flee ===
 
 For target <math>g</math>, desired direction is
 
@@ -189,7 +193,7 @@ Flee reverses the target direction.
 
 These behaviors are part of Reynolds's later general steering framework.
 
-== Wander ==
+=== Wander ===
 
 Wander adds structured stochastic steering rather than independent white noise each frame.
 
@@ -197,7 +201,9 @@ Correlated heading changes produce smoother exploratory motion.
 
 The stochastic process should be specified because it affects flock coherence.
 
-== Computational complexity ==
+== Computational implementation ==
+
+=== Computational complexity ===
 
 Naive neighbor search checks all unordered pairs:
 
@@ -209,7 +215,7 @@ For large <math>n</math>, neighbor discovery dominates steering arithmetic.
 
 Spatial indexing is therefore the primary optimization.
 
-== Uniform-grid hashing ==
+=== Uniform-grid hashing ===
 
 Partition space into cells of width comparable to interaction radius <math>R</math>.
 
@@ -225,7 +231,7 @@ per step.
 
 Worst-case complexity remains quadratic if all boids occupy one cell.
 
-== Quadtree and octree ==
+=== Quadtree and octree ===
 
 A quadtree in two dimensions or octree in three dimensions recursively partitions space.
 
@@ -235,7 +241,7 @@ Tree rebuild cost and pointer overhead matter.
 
 For highly dynamic uniform populations, a spatial hash can be faster.
 
-== GPU implementation ==
+=== GPU implementation ===
 
 Boid steering is highly parallel.
 
@@ -250,7 +256,9 @@ Challenges include:
 
 Naive all-pairs GPU implementations can still be useful for moderate populations because arithmetic is regular.
 
-== Polarization ==
+== Measurement and sensitivity ==
+
+=== Polarization ===
 
 Directional order:
 
@@ -262,7 +270,7 @@ Near zero indicates headings cancel.
 
 Zero-speed boids require an explicit convention.
 
-== Velocity variance ==
+=== Velocity variance ===
 
 Mean velocity:
 
@@ -276,7 +284,7 @@ Low dispersion indicates coherent motion.
 
 It does not ensure spatial cohesion.
 
-== Radius of gyration ==
+=== Radius of gyration ===
 
 Centroid:
 
@@ -290,7 +298,7 @@ This measures spatial spread.
 
 Periodic boundaries require unwrapped or circular-coordinate handling.
 
-== Nearest-neighbor distance ==
+=== Nearest-neighbor distance ===
 
 For each boid:
 
@@ -300,7 +308,7 @@ Distribution of <math>d_i</math> indicates crowding and collision risk.
 
 Mean alone can hide rare very close pairs.
 
-== Collision rate ==
+=== Collision rate ===
 
 Define collision threshold <math>r_c</math>.
 
@@ -310,7 +318,7 @@ Collision count:
 
 Report rate per boid or per unit simulated time for comparisons across population sizes.
 
-== Interaction graph ==
+=== Interaction graph ===
 
 Construct graph
 
@@ -327,7 +335,7 @@ Useful graph metrics include:
 
 Flock fragmentation can therefore be quantified topologically.
 
-== Connectivity and information flow ==
+=== Connectivity and information flow ===
 
 If the interaction graph is disconnected, local influence cannot immediately propagate between components.
 
@@ -335,7 +343,7 @@ Persistent or joint connectivity over time may still allow eventual coupling as 
 
 Static connectivity at one frame is therefore not sufficient to characterize information flow.
 
-== Parameter regimes ==
+=== Parameter regimes ===
 
 Changing <math>w_s,w_a,w_c,R,\Delta t</math> can yield:
 
@@ -347,7 +355,7 @@ Changing <math>w_s,w_a,w_c,R,\Delta t</math> can yield:
 
 Parameter sweeps should map regimes rather than report one attractive configuration.
 
-== Sensitivity analysis ==
+=== Sensitivity analysis ===
 
 For output metric <math>M</math> and parameter <math>\theta</math>, local sensitivity is
 
@@ -357,7 +365,9 @@ Numerical finite differences can estimate it.
 
 High sensitivity indicates fragile parameterization.
 
-== Noise model ==
+== Model variants and biological comparison ==
+
+=== Noise model ===
 
 Additive heading or steering noise:
 
@@ -367,7 +377,7 @@ Different noise distributions and correlation structures produce different order
 
 Noise should be reported explicitly rather than described only as “randomness.”
 
-== Reynolds versus Vicsek ==
+=== Reynolds versus Vicsek ===
 
 The Vicsek model uses constant-speed particles that align with local mean heading plus noise.
 
@@ -379,7 +389,7 @@ Boids instead combines separation, alignment, and cohesion with variable steerin
 
 The models address related collective-motion phenomena but are technically distinct.
 
-== Biological inference ==
+=== Biological inference ===
 
 Matching visual flock shape is weak evidence for biological mechanism.
 
@@ -393,7 +403,7 @@ A stronger biological validation compares:
 
 Real animals can use predictive and sensory processes absent from boids.
 
-== Topological interaction evidence ==
+=== Topological interaction evidence ===
 
 Empirical bird-flock studies have reported interaction patterns better described by a fixed number of nearest neighbors than by a fixed metric radius in some species and conditions.
 
@@ -401,7 +411,7 @@ This illustrates why biological data can motivate modifications to the canonical
 
 It does not invalidate boids as a computer-graphics model.
 
-== Predator response ==
+=== Predator response ===
 
 Predator avoidance can be modeled by repulsive or evasive fields.
 
@@ -414,7 +424,7 @@ A realistic biological model may require:
 
 Adding one flee vector is an engineering simplification.
 
-== Heterogeneous agents ==
+=== Heterogeneous agents ===
 
 Canonical boids often use identical parameters.
 
@@ -429,7 +439,7 @@ Heterogeneity can create leaders or subgroups without explicit leadership code.
 
 Experiments should distinguish designed heterogeneity from emergent role differentiation.
 
-== Leadership extensions ==
+=== Leadership extensions ===
 
 A subset of boids can receive target information.
 
@@ -439,7 +449,9 @@ This allows analysis of how informed minorities steer a collective.
 
 Such models are extensions beyond the minimal Reynolds setup.
 
-== Reproducibility checklist ==
+== Reproducibility and interpretation ==
+
+=== Reproducibility checklist ===
 
 Report:
 
@@ -458,7 +470,7 @@ Report:
 
 Without these, behavior is underdetermined.
 
-== Benchmarking implementations ==
+=== Benchmarking implementations ===
 
 Performance tests should separate:
 
@@ -471,7 +483,7 @@ Rendering can dominate interactive simulations but is not part of flock dynamics
 
 Benchmark compute separately from graphics when evaluating algorithmic scaling.
 
-== Emergent-algorithm interpretation ==
+=== Emergent-algorithm interpretation ===
 
 Boids qualifies as an [[Emergent algorithm]] in the informal local-to-global sense:
 
@@ -481,7 +493,7 @@ The exact dynamics remain fully determined by the update rule and parameters.
 
 Emergence is a description across levels, not a separate causal force.
 
-== Artificial-life boundary ==
+=== Artificial-life boundary ===
 
 Boids can look life-like.
 

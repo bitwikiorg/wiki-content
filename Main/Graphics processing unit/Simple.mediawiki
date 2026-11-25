@@ -2,7 +2,7 @@
 
 = Graphics processing unit — Simple =
 
-<onlyinclude>A '''graphics processing unit''' ('''GPU''') is a computing component designed to process many operations in parallel. GPUs first became important for drawing images and 3D scenes, but many also run scientific simulations, image processing and machine-learning calculations. A GPU can be built into a processor or supplied as a separate chip or card. Its advantage depends on the task: many independent calculations often suit it well, while small or strongly sequential tasks may run faster on a CPU.<ref name="cuda">NVIDIA, [https://docs.nvidia.com/cuda/archive/12.3.0/cuda-c-programming-guide/ ''CUDA C Programming Guide''], thread and memory hierarchy.</ref></onlyinclude>
+<onlyinclude>A '''graphics processing unit''' ('''GPU''') is a computing component designed to process many operations in parallel. GPUs first became important for drawing images and 3D scenes, but many also run scientific simulations, image processing and machine-learning calculations. A GPU can be built into a processor or supplied as a separate chip or card. Its advantage depends on the task: many independent calculations often suit it well, while small or strongly sequential tasks may run faster on a CPU.<ref name="cuda">NVIDIA, [https://docs.nvidia.com/cuda/archive/12.3.0/cuda-c-programming-guide/ ''CUDA C Programming Guide''], thread and memory hierarchy.</ref>
 
 == Why use a GPU? ==
 
@@ -31,6 +31,8 @@ A GPU is also not identical to a neural processing unit, a CPU, a programmable F
 == How to evaluate one ==
 
 Ask what program must run, which software supports the device, how much memory it requires, how accurate its results must be, and whether performance is limited by computation, data movement or latency. Benchmark the complete application rather than relying on a peak specification.
+
+</onlyinclude>
 
 == Read further ==
 

@@ -23,6 +23,7 @@ class GPUArticleTests(unittest.TestCase):
         self.assertIn("{{:" + TITLE + "/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         for body in (core, simple, tech):
             self.assertIn("<references/>", body)
         self.assertNotIn("{{Reading depth", core + simple + tech)

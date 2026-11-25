@@ -1,0 +1,68 @@
+[[Resilience/Simple|Simple]] · [[Resilience/Technical|Technical]]
+
+= Resilience — Simple =
+
+<onlyinclude>'''Resilience''' is a system's capacity to deal with disturbances while preserving or recovering important functions, and sometimes to adapt when conditions change. What "resilient" means depends on the system and the problem: a computer service may need to restore operation after an outage, while an ecosystem may need to avoid a lasting shift to a different state. Resilience is related to, but not always the same as, [[Robustness|robustness]].<ref name="woods">David D. Woods, [https://doi.org/10.1016/j.ress.2015.03.018 “Four concepts for resilience and the implications for the future of resilience engineering”], ''Reliability Engineering & System Safety'' 141, 5–9 (2015), distinctions among rebound, robustness, graceful extensibility and sustained adaptability.</ref>
+
+== A simple example ==
+
+Imagine two online services during a power interruption. The first remains online because its machines have backup power. The second goes offline but restores its essential functions quickly from another location.
+
+The first example emphasizes resistance to the disturbance. The second emphasizes recovery. Both may be described as resilient under a particular goal, but neither story alone shows what happens during a longer interruption, a different type of failure or a more expensive recovery.
+
+A useful assessment asks what service must be preserved, for whom, how much disruption is acceptable, how long recovery can take, and which future shocks matter.
+
+== Four common ideas ==
+
+Researchers use the word resilience in several overlapping senses. A widely cited analysis by David Woods distinguishes recovery after disturbance, the ability to withstand stresses, graceful extension of capability beyond normal operating conditions, and ongoing ability to adapt to future surprises.<ref name="woods"/>
+
+{| class="wikitable"
+! Aspect !! Plain-language question
+|-
+| Withstand || Can the system keep working while conditions worsen?
+|-
+| Absorb || How much damage or disruption can it tolerate?
+|-
+| Recover || How fast and how fully can it restore important functions?
+|-
+| Adapt || Can it reorganize so the next disturbance is less damaging?
+|}
+
+Not every field includes all four in its definition, and a system may perform well at one but poorly at another.
+
+== Ecology and systems engineering ==
+
+In ecology, C. S. Holling's influential 1973 paper emphasized persistence and how much disturbance a system can absorb without changing its fundamental relationships or state. Rapid return to equilibrium is not identical to persistence across large disturbances.<ref name="holling">C. S. Holling, [https://doi.org/10.1146/annurev.es.04.110173.000245 “Resilience and Stability of Ecological Systems”], ''Annual Review of Ecology and Systematics'' 4, 1–23 (1973).</ref>
+
+For engineering and security systems, resilience may involve redundancy, monitoring, graceful degradation, backup resources, recovery plans and learning from incidents. A resilient design also needs to avoid introducing new hazards by its own protective measures.<ref name="nist">NIST, [https://csrc.nist.gov/pubs/sp/800/160/v2/r1/final ''SP 800-160, Vol. 2, Rev. 1: Developing Cyber-Resilient Systems''] (2021), cyber-resiliency engineering principles and intended outcomes.</ref>
+
+== Measuring resilience ==
+
+A website operator might monitor how many requests are served during a disruption, how long restoration takes, and whether the service remains dependable afterwards. An ecological study might assess whether a disturbed ecosystem returns to its former composition or instead enters another relatively persistent state.
+
+There is no single measurement that captures every meaning. A recovery-time measure can miss how much harm occurred before recovery. A system with zero downtime during one test may still be vulnerable to an untested type of failure.
+
+== Resilience versus other system properties ==
+
+* [[Robustness]] usually focuses on maintaining a specified function under a defined disturbance.
+* [[Adaptation (systems)]] refers to changes in behavior or organization in response to conditions.
+* [[Feedback]] can enable recovery but may also amplify instability.
+* [[Root cause analysis/Simple|Root cause analysis]] investigates why an adverse event occurred and which changes might prevent recurrence.
+
+These subjects overlap without being interchangeable.
+
+== What resilience does not promise ==
+
+A system cannot be resilient to every possible failure with unlimited effectiveness. Recovery resources cost money and energy, redundancy can fail through shared dependencies, and changes that protect one group can transfer burdens to another.
+
+A useful resilience claim names the hazard, system boundary, essential function, time horizon and evidence. Without them, calling a system "resilient" is largely a slogan.
+
+</onlyinclude>
+
+== Continue reading ==
+
+[[Resilience/Technical|Technical]] develops dynamic-system stability and recovery metrics, alternative attractors, capacity under surprise, a verified service-recovery example and research measurement limits.
+
+== References ==
+
+<references/>

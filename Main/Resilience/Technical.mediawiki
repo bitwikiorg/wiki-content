@@ -1,0 +1,188 @@
+[[Resilience/Simple|Simple]] · [[Resilience/Technical|Technical]]
+
+= Resilience — Technical =
+
+'''Resilience''' denotes several related system properties concerning response to disturbance, persistence of valued functions, recovery and adaptive capacity. No one mathematical quantity captures every interpretation. A doctoral-level comparison must specify the state space, dynamics, disturbance envelope, valued outputs, time horizon, boundary and stakeholders. This Technical article develops engineering performance-trajectory metrics, nonlinear dynamical-system basins, stability margins, dependencies and the differing evidentiary requirements of ecological and socio-technical claims.
+
+C. S. Holling's influential 1973 analysis distinguishes persistence and disturbance absorption in ecological systems from engineering notions of equilibrium return. D. D. Woods (2015) explicitly distinguishes resilience as rebound, robustness, graceful extensibility and sustained adaptability; his taxonomy is evidence that the subject is plural, not a license to claim an ahistorical single definition.<ref name="holling">C. S. Holling, [https://doi.org/10.1146/annurev.es.04.110173.000245 “Resilience and Stability of Ecological Systems”], ''Annual Review of Ecology and Systematics'' 4, 1–23 (1973), original ecological framing.</ref><ref name="woods">David D. Woods, [https://doi.org/10.1016/j.ress.2015.03.018 “Four concepts for resilience and the implications for the future of resilience engineering”], ''Reliability Engineering & System Safety'' 141, 5–9 (2015), distinction among rebound, robustness, graceful extensibility and adaptation.</ref>
+
+== Defining a system and a disturbance ==
+
+Let the state <math>\mathbf x(t)\in\mathcal X</math> evolve according to an explicitly chosen dynamical model
+
+<math display="block">\dot{\mathbf x}(t)=f(\mathbf x(t),\mathbf u(t),\mathbf d(t),\theta),\qquad \mathbf y(t)=h(\mathbf x(t),\theta),</math>
+
+where <math>\mathbf u</math> denotes available control or recovery actions, <math>\mathbf d</math> a specified exogenous disturbance, <math>\theta</math> physical/organizational parameters and <math>\mathbf y</math> the observable output. This model is a '''representation''', not a claim that social institutions are literally smooth differential-equation systems. Discrete, stochastic, hybrid and agent-based models may be more appropriate depending on scale.
+
+An operational resilience claim must state:
+
+* '''System and functional boundary:''' which people, components, ecological relationships or services are relevant and who is excluded?
+* '''Adversity:''' what disturbance intensity, duration, spatial pattern, recurrence and dependence are considered?
+* '''Performance:''' which quality, safety, social and ecological outcomes must persist; what threshold is unacceptable?
+* '''Time:''' immediate response, recovery and any long-term adaptation, including irreversible changes?
+* '''Actions and costs:''' which resources, controls, tradeoffs or interventions are available?
+* '''Evidence:''' what is measured versus simulated, and how is model discrepancy assessed?
+
+Performance can be multi-dimensional. A service meeting an uptime threshold while violating a critical safety constraint is not acceptably resilient merely because a scalar availability score remains high. A narrow cost metric can conceal shifted burdens onto vulnerable communities or another part of a coupled ecosystem.
+
+== Robustness, recovery, reliability and adaptation ==
+
+'''Robustness''' is generally performance maintenance for a specified perturbation set. An illustrative formal requirement is <math>Q(t,\mathbf d)\ge q_{\min}</math> for every modeled disturbance <math>\mathbf d\in\mathcal D</math> and applicable time <math>t</math>. This is meaningful only after defining the set <math>\mathcal D</math>, performance <math>Q</math> and bound <math>q_{\min}</math>.
+
+'''Reliability''' often concerns probability of meeting a required function under specified conditions through a period, for example <math>R(t)=P(T_f>t)</math> for a time-to-failure random variable <math>T_f</math>. Some reliability models allow repair, but elementary survival functions do not encode all recovery trajectories or adaptation. '''Resilience''' may include a performance loss followed by restoration or a regime's capacity to absorb a large disturbance.
+
+'''Adaptation''' changes internal parameters, topology, resource allocation or behavior. Recovery to a former functional range does not necessarily mean returning to an identical internal state. An altered system can preserve function but transfer risks or incur long-term costs. This is why resilience, robustness, reliability and adaptation cannot be substituted by single-word synonymy.<ref name="woods"/>
+
+== Engineering performance curves and normalized functional loss ==
+
+A common engineering representation measures an essential system function <math>Q(t)</math> relative to a specified pre-event performance baseline <math>Q_0(t)</math>. For a '''normalized''' reference baseline <math>Q_0(t)=1</math> and <math>0\le Q(t)\le1</math> on a fixed interval <math>[0,T]</math>, define a functional-loss area and a corresponding score as
+
+<math display="block">L_Q=\int_0^T[1-Q(t)]\,dt,\qquad R_Q=1-\frac{L_Q}{T}=\frac1T\int_0^T Q(t)\,dt.</math>
+
+<math>L_Q</math> has units of time when <math>Q</math> is dimensionless, while <math>R_Q</math> is dimensionless. This score is one '''chosen functional-performance index''', not a general definition of ecological resilience, adaptive capacity or community equity. Engineering resilience curves and integrated functionality concepts are closely associated with Bruneau and collaborators' framework; later reviews emphasize that apparently straightforward curves conceal choices of targets, milestones, aggregation and event conditions.<ref name="bruneau">Michel Bruneau et al., [https://doi.org/10.1193/1.1623497 “A Framework to Quantitatively Assess and Enhance the Seismic Resilience of Communities”], ''Earthquake Spectra'' 19(4), 733–752 (2003), engineering/community performance measures.</ref><ref name="curves">[https://doi.org/10.1016/j.ress.2021.107926 “Infrastructure resilience curves: Performance measures and summary metrics”], ''Reliability Engineering & System Safety'' (2021), review of assumptions in resilience curves and scalar metrics.</ref>
+
+The integrand must be adjusted when baseline function changes seasonally, demand is unmet rather than served, performance can exceed baseline, or different groups receive different service. The integration horizon cannot be changed silently: the same outage appears less important in a longer arbitrary horizon even when its actual harm is unchanged.
+
+=== Independently checkable example: triangular recovery ===
+
+Suppose a hypothetical service experiences a sudden loss at <math>t=0</math> and retains 40% of baseline functionality. It recovers linearly to 100% over four hours and stays fully functional through an explicitly chosen ten-hour observation horizon:
+
+<math display="block">Q(t)=\begin{cases}0.4+0.15t,&0\le t\le4,\\1,&4<t\le10,\end{cases}</math>
+
+where <math>t</math> is measured in hours. Its maximum initial functional deficit is <math>1-0.4=0.6</math> (60 percentage points), and full functional restoration takes four hours. The area of the triangular loss segment is
+
+<math display="block">L_Q=\frac12(0.6)(4\ {\rm h})=1.2\ {\rm h},\qquad R_Q=1-\frac{1.2}{10}=0.88.</math>
+
+Equivalently, <math>\int_0^4(0.4+0.15t)\,dt+\int_4^{10}1\,dt=8.8\ {\rm h}</math> of baseline-equivalent service, so the normalized average is 0.88. The example defines its assumptions and units; no empirical dataset or claim about an actual system is attached.
+
+A different service with a constant <math>Q(t)=0.88</math> throughout the ten hours has '''the same''' <math>R_Q=0.88</math>, but it has neither the same shock magnitude nor recovery trajectory. This proves that the scalar score cannot uniquely identify resilience behavior. An engineer should also report restoration time, lowest function, unmet demand, safety thresholds and any affected groups.
+
+{| class="wikitable"
+! Quantity !! Triangular-recovery model !! Constant 88% model
+|-
+| Observation horizon || 10 hours || 10 hours
+|-
+| Minimum performance || 0.40 at t=0 || 0.88
+|-
+| Baseline recovery time || 4 hours || Not recovered during horizon
+|-
+| Integrated functional loss || 1.2 baseline-equivalent hours || 1.2 baseline-equivalent hours
+|-
+| Chosen normalized score || 0.88 || 0.88
+|}
+
+The resilience comparison depends on the objective. A clinical system cannot treat one hour below a lifesaving threshold as equivalent to continuous minor degradation merely because areas match.
+
+== Nonlinear stability, basins and ecological persistence ==
+
+In a nonlinear autonomous model <math>\dot x=f(x;\mu)</math>, an equilibrium <math>x^*</math> satisfies <math>f(x^*;\mu)=0</math>. Local asymptotic stability examines return after sufficiently small perturbations. Ecological resilience can instead concern '''which disturbances keep the system inside the basin of attraction of a valued regime'''. A basin is the set of states whose trajectories approach that attractor under the chosen autonomous dynamics; other attractors or absorbing states may exist.<ref name="holling"/>
+
+A 1-D illustrative saddle-node normal form is
+
+<math display="block">\dot x=\mu-x^2,\qquad \mu>0.</math>
+
+Its equilibria are <math>x_+=+\sqrt\mu</math> and <math>x_-=-\sqrt\mu</math>. Linearizing yields <math>f'(x_\pm)=-2x_\pm</math>, so <math>x_+</math> is locally asymptotically stable while <math>x_-</math> is unstable. Starting at <math>x_+</math>, a negative instantaneous shift must cross the unstable boundary <math>x_-</math> to leave the attraction basin in this idealized deterministic model. The state-space separation is
+
+<math display="block">\Delta x=x_+-x_-=2\sqrt\mu.</math>
+
+As <math>\mu\to0^+</math>, the separation shrinks. The local relaxation eigenvalue tends to zero and its positive time constant (in the model's time units) increases:
+
+<math display="block">\lambda=f'(x_+)=-2\sqrt\mu,\qquad \tau_{\rm local}=\frac1{2\sqrt\mu}.</math>
+
+This explicit toy model illustrates how shrinking disturbance margin and critical slowing down can appear together near a bifurcation. It does '''not''' mean every loss of resilience is a saddle-node bifurcation, every observable gives early warning, or trajectories outside the normal form's local validity are physically meaningful. Distances also depend on state-coordinate scaling, while physical perturbation thresholds must be defined in actual units. Scheffer and collaborators discuss early warning signals such as slower recovery and elevated autocorrelation under particular classes of approaching transitions, with significant observational qualifications.<ref name="scheffer">Marten Scheffer et al., [https://doi.org/10.1038/nature08227 “Early-warning signals for critical transitions”], ''Nature'' 461, 53–59 (2009), review of warning-signal conditions and limitations.</ref>
+
+### Stochastic disturbances and regime shifts
+
+With continuous environmental noise, a toy stochastic model may be written <math>dx=f(x;\mu)\,dt+\sigma\,dW_t</math>, where <math>W_t</math> is standard Brownian motion and <math>\sigma</math> sets noise amplitude. Even when the deterministic state lies within a basin, noise may cause rare threshold crossings. Their frequency depends on noise covariance, potential/barrier geometry, boundary conditions, nonlinear dynamics and timescale; a deterministic geometric margin is not a transition probability.
+
+Ecological observation also depends on which relationships or functions define the regime. A coral reef, for instance, may undergo community reorganization while some aggregate ecosystem functions persist; whether that constitutes failure or adaptation is not answered by one raw biomass number. Heterogeneous disturbances and adaptive dynamics can make stationary-attractor assumptions inadequate. Do not transfer the normal-form equations to an ecosystem without parameter estimation, structural validation and ecological field evidence.
+
+== Cyber-physical systems and network dependencies ==
+
+In an engineered network, a service or safety function depends on hardware, software, power, communications, supply chains, operators and potentially adversarial behavior. Redundancy is not meaningful if nominally separate backups share the same failure domain. Recovery mechanisms can also compete for the same scarce resources or create unstable feedback loops.
+
+NIST SP 800-160 Volume 2 Revision 1 treats cyber resiliency as part of systems security engineering, addressing the ability to anticipate, withstand, recover from and adapt to malicious conditions rather than merely blocking every intrusion.<ref name="nist">NIST, [https://csrc.nist.gov/pubs/sp/800/160/v2/r1/final ''SP 800-160, Vol. 2, Rev. 1: Developing Cyber-Resilient Systems''] (2021), cyber-resiliency engineering approach and techniques.</ref> The engineering requirements are scenario- and mission-specific. An availability target does not automatically provide integrity, confidentiality, safe operation or faithful state recovery.
+
+### Coupled perturbation model
+
+As a simple linearized discrete-time example of deviation from a desired operating state, write
+
+<math display="block">\mathbf e_{k+1}=A\mathbf e_k+B\mathbf d_k,\qquad A=\begin{pmatrix}0.5&0.1\\0&0.8\end{pmatrix}.</math>
+
+For the stated time-invariant, unforced finite-dimensional model, the eigenvalues are 0.5 and 0.8; <math>\rho(A)=0.8<1</math>, implying asymptotic decay of small deviations with no further input. This is a '''local linear stability conclusion'''. It does not establish acceptable transient peaks, physical safety constraints, finite recovery time under all loads, behavior with repeated disturbances or resilience of the actual service.
+
+A high-gain restoration controller can overshoot resource capacity, and queued recovery jobs can overload the infrastructure they aim to restore. Control feedback, actuator saturation and delays require a model beyond a static reliability diagram. For adversarial security, attackers may change their behavior in response to defenses; fixed-distribution disturbance assumptions are not sufficient.
+
+== Disaster and community resilience ==
+
+At community scale, functionality depends on interdependent electricity, water, transportation, communications, healthcare, housing and governance. A mean restoration curve can hide unequal impacts on neighborhoods or vulnerable populations. The National Research Council's 2012 report emphasizes preparation, absorption, recovery and adaptation, not a one-dimensional interpretation of recovery speed.<ref name="nas">National Research Council, [https://www.nationalacademies.org/read/13457/chapter/3 ''Disaster Resilience: A National Imperative''] (2012), cross-sector resilience, infrastructure and community preparedness.</ref>
+
+Quantitative analysis should identify whose service counts, whether functions can substitute for each other, how losses are weighted, and whether recovery shifts hazard to another group. A function restored to its former level may still leave structural vulnerabilities unchanged. Robustness, redundancy, resourcefulness and rapidity have been proposed as components in seismic/community analysis, but the correct prioritization depends on stakeholders, hazards and rights—not solely an optimization of area under a curve.<ref name="bruneau"/>
+
+== Study design, simulation and uncertainty ==
+
+For a computational or empirical resilience study, report:
+
+# '''Model or measurement target:''' precise system and functional definition, including any quality or safety constraints.
+# '''Hazard envelope:''' magnitude, duration, correlation, frequency and adaptivity of the disturbance source.
+# '''Baseline:''' performance reference, observation window and its sensitivity.
+# '''Response:''' sampled trajectory, functional loss, thresholds, restoration events, recurrence and recovery actions.
+# '''Dependencies:''' shared infrastructure, common-cause faults, resource bottlenecks, and how missing data are handled.
+# '''Uncertainty:''' variation across scenarios, input measurements and structural alternatives; report distributions or bounded uncertainty rather than one unsupported average.
+# '''Verification:''' unit tests, solver tolerances, convergence, explicit shock/recovery examples and reproducible data provenance.
+# '''Validation:''' comparison against independently observed performance, actual challenge tests, ecological field measurements or well-defined hazard experiments where ethical and feasible.
+
+For the triangular recovery benchmark above, a numerical implementation should recover <math>L_Q=1.2</math> baseline-equivalent hours and <math>R_Q=0.88</math>, and show how results change with the horizon <math>T</math>. For the saddle-node model, a calculation should recover equilibria <math>\pm\sqrt\mu</math>, their stability signs, separation <math>2\sqrt\mu</math> and slowing eigenvalue. These tests verify calculations, not empirical claims about any particular ecosystem or data center.
+
+### Recovery objectives versus measured outcomes
+
+Service contracts may define a recovery time objective (RTO) and a recovery point objective (RPO). The first concerns desired restoration time; the second concerns an acceptable age/amount of lost state under the convention used. Neither is automatically the observed actual recovery time or recovered-data correctness. A system may restore availability quickly while silently corrupting data or exposing unsafe operations.
+
+Testing should include challenge scenarios with common-cause failures, nonideal detection times, operator workload, partial service, restoration correctness, and cascading effects. A successful failover drill is one item of evidence, not a proof of resilience across every plausible disturbance.
+
+== Causal explanation and intervention ==
+
+Understanding why a system failed can inform what makes it resilient, but diagnosis and forward-looking response capacity are not identical. [[Root cause analysis/Technical|Root cause analysis]] reconstructs a particular adverse event with evidence and causal hypotheses. Resilience analysis asks how the system performs over a defined disturbance envelope, including recovery and adaptation. A system could have a well-understood cause of failure yet remain fragile; conversely, it could recover well from a fault whose microscopic cause remains unknown.
+
+A meaningful intervention contrast may compare response distributions before and after tested changes under the '''same declared disturbance set'''. If the service workload, adversary behavior or event reporting also changes, interpreting a better apparent score as a causal effect requires additional controls and assumptions. Correlation between added redundancy and fewer incidents is not sufficient on its own.
+
+== Cross-disciplinary boundaries and open research ==
+
+The same term spans ecology, cyber-physical engineering, psychology and institutional governance, but measurements and causal mechanisms do not transfer automatically. In biological systems, resilience may concern attractor basins, persistence or adaptive homeostasis; in engineered systems, validated safety constraints and service trajectories; in social systems, institutions, distributional consequences and real decision authority. A network's mathematical connectivity is not interchangeable with a population's wellbeing.
+
+Active research challenges include estimating regime boundaries from short noisy time series, forecasting rare cascading failures under dependent risks, resilience metrics with explicit unequal impact, reliable detection of early warning signals without false positives, control and adaptation under unknown hazards, and preventing defensive measures from becoming failure mechanisms themselves. These are open problem families, not an assurance that a single model captures all resilience.
+
+== Epistemic checklist ==
+
+Before citing a quantitative resilience claim, identify the author and disciplinary sense of resilience; the exact observable and numerical formula; system function, baseline and time horizon; perturbation class and distribution; calibration evidence; uncertainty and dependence; validation outside the fitting sample; possible regime changes; and the interests of stakeholders whose welfare the metric obscures or prioritizes.
+
+Never interpret a high scalar score, an untested model basin, a backup architecture diagram or a brand's promise as sufficient evidence that a system is broadly resilient. The correct conclusion is necessarily conditional on tested conditions and explicitly acknowledged limits.
+
+
+== Disciplinary scope and operational assessment ==
+
+{| class="wikitable"
+! Context !! Primary operational question !! Interpretive limitation
+|-
+| Ecological resilience || Can the system persist in a regime despite disturbance? || Rapid equilibrium return is not a universal criterion.
+|-
+| Engineering resilience || Can essential functions be maintained, restored or adapted after specified failures? || One successful failover does not establish protection against all hazards.
+|-
+| Cyber resiliency || Can the system anticipate, withstand, recover from and adapt to cyber adversity? || Prevention or uptime alone does not cover the NIST engineering scope.<ref name="nist_scope">NIST, [https://csrc.nist.gov/pubs/sp/800/160/v2/r1/final SP 800-160 Vol. 2 Rev. 1] (December 2021), cyber-resiliency engineering objectives.</ref>
+|-
+| Community and disaster resilience || Can essential services prepare, absorb, recover and adapt across coupled infrastructure and communities? || Aggregated service scores can conceal unequal distribution of harm.<ref name="nas_scope">National Research Council, [https://www.nationalacademies.org/read/13457/chapter/3 ''Disaster Resilience: A National Imperative''] (2012).</ref>
+|}
+
+A reproducible assessment records the disturbance distribution or adversarial scenario, timing and recurrence, functional thresholds, system boundaries, dependencies, stakeholder valuations and feasible response actions. Compare interventions under the same hazard envelope and observation horizon; include repeated disturbances, cascading dependencies, restoration costs and adaptation burdens when applicable. An observed absence of losses can reflect a mild test rather than strong resilience. Backup restoration validates one recovery path, not independence from shared-fate faults. These are evaluation requirements, not claims of a universal resilience score.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* [https://doi.org/10.1146/annurev.es.04.110173.000245 Holling (1973)], on ecological persistence and disturbance.
+* [https://doi.org/10.1016/j.ress.2015.03.018 Woods (2015)], on four senses of resilience engineering.
+* [https://doi.org/10.1193/1.1623497 Bruneau et al. (2003)], on engineering/community restoration metrics.
+* [https://csrc.nist.gov/pubs/sp/800/160/v2/r1/final NIST SP 800-160 Volume 2 Revision 1], on cyber-resilient systems.
+* [[Resilience/Simple|Simple overview]] · [[Resilience|canonical topic map]] · [[Robustness]] · [[Feedback]].

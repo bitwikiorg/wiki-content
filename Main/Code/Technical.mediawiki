@@ -1,17 +1,185 @@
-A '''code''' is a system of rules that associates symbols, messages or actions with other representations. Morse code represents letters with short and long signals; a computer character code assigns numbers to characters. The term also refers to instructions in programming and to the biological genetic code.
+{{Reading depth|base=Code|current=Technical}}
 
-== Formal coding model ==
-For an alphabet A and a code alphabet B, a variable-length code is a map <math>C:A\to B^*</math> assigning each source symbol a finite string. Extend C by concatenation to strings. Distinct codewords alone are insufficient for unique decodability: codes {0,01,1} allow 01 to denote one symbol or two. A prefix-free code guarantees instantaneous parsing. For binary uniquely decodable codes with lengths l_i, Kraft–McMillan requires <math>\sum_i2^{-l_i}\leq1</math>; for any integer lengths satisfying the inequality a prefix code exists.
+= Code — Technical =
 
-== Compression and error control ==
-For source probabilities p_i, the expected length is <math>L=\sum_i p_i l_i</math>. For binary uniquely decodable symbol codes L is bounded below by Shannon entropy; Huffman's algorithm repeatedly merges the two least probable symbols to obtain an optimal binary prefix tree under its assumptions. For a block code, minimum Hamming distance d permits detection of up to d−1 substitutions and correction of up to floor((d−1)/2) with nearest-neighbor decoding. Compression removes redundancy, whereas error control deliberately adds structured redundancy.
+A '''code''' is a rule-governed representation system. In formal coding theory, a code maps objects from a source alphabet or message set into codewords over another alphabet. In broader technical use, “code” can also denote character encodings, program text, cryptographic codebooks, biochemical codon mappings, identifier systems, and arithmetizations such as Gödel numbering. These share a family resemblance—systematic representation—but differ in mathematical structure, implementation, purpose, and semantics.
 
-== Scope and practical constraints ==
-Character encoding, cryptographic encryption, source code and genetic coding are distinct applications of the general correspondence concept. Source code expresses computation through a formal language; genetic coding maps nucleotide triplets to translation outcomes via molecular machinery and includes context-dependent exceptions. Neither is reducible to a prefix tree. Evaluate a code against its intended alphabet, channel, parsing rules and error model; efficient representation does not establish semantic accuracy.
+A rigorous analysis therefore begins by specifying the source objects, representation alphabet, encoding rule, decoding rule, admissible strings, error model, and intended criterion such as compression, reliability, interoperability, security, or identification.
+
+== Formal code model ==
+
+Let <math>S</math> be a finite source alphabet and <math>T</math> a finite code alphabet. A variable-length symbol code is a function
+
+<math>C:S\rightarrow T^*.</math>
+
+If <math>s_1s_2\ldots s_n\in S^*</math>, the natural extension by concatenation is
+
+<math>C^*(s_1s_2\ldots s_n)=C(s_1)C(s_2)\cdots C(s_n).</math>
+
+Injectivity of <math>C</math> on individual symbols is insufficient for unique decoding of concatenations. A code is '''uniquely decodable''' when <math>C^*</math> is injective. A '''prefix code''' satisfies the stronger condition that no codeword is a prefix of another codeword, permitting instantaneous left-to-right parsing.
+
+For a <math>D</math>-ary prefix code with lengths <math>l_i</math>, Kraft's inequality is
+
+<math>\sum_i D^{-l_i}\leq 1.</math>
+
+The Kraft–McMillan theorem shows that the same inequality is necessary for uniquely decodable codes and that any integer length set satisfying it can be realized by a prefix code.<ref name="ct">Cover, T. M. and Thomas, J. A. (2006), ''Elements of Information Theory'', 2nd ed., Wiley; [https://ocw.mit.edu/courses/6-441-information-theory-spring-2010/pages/readings/ MIT OCW 6.441 readings].</ref>
+
+== Source coding ==
+
+Let a discrete source emit symbols <math>x_i</math> with probabilities <math>p_i</math>. A <math>D</math>-ary code with lengths <math>l_i</math> has expected codeword length
+
+<math>L=\sum_i p_i l_i.</math>
+
+The source entropy in <math>D</math>-ary units is
+
+<math>H_D(X)=-\sum_i p_i\log_D p_i.</math>
+
+For uniquely decodable symbol codes, average length is bounded below by the source entropy. For an optimal binary Huffman code for a finite source distribution,
+
+<math>H_2(X)\leq L < H_2(X)+1.</math>
+
+Huffman's algorithm repeatedly combines the two least-probable symbols or subtrees and yields a minimum-expected-length binary prefix code under the standard symbol-by-symbol model.<ref name="huffman">[https://doi.org/10.1109/JRPROC.1952.273898 Huffman, D. A. (1952), “A Method for the Construction of Minimum-Redundancy Codes,” ''Proceedings of the IRE'' 40(9), 1098–1101.]</ref>
+
+This is only one source-coding setting. Arithmetic coding, dictionary methods, predictive coding, transform coding, and modern learned codecs use different structures. Lossless source coding permits exact reconstruction; lossy source coding accepts distortion and is governed by rate–distortion tradeoffs rather than by lossless entropy bounds alone.
+
+== Channel coding and minimum distance ==
+
+Error-control coding maps messages to a restricted set of valid codewords so that likely channel errors do not usually transform one valid codeword into another indistinguishable one.
+
+For a <math>q</math>-ary block code <math>\mathcal C\subseteq\Sigma^n</math>, Hamming distance is
+
+<math>d_H(x,y)=|\{i:x_i\neq y_i\}|.</math>
+
+The minimum distance is
+
+<math>d_{\min}=\min_{x\neq y\in\mathcal C}d_H(x,y).</math>
+
+A block code with minimum distance <math>d_{\min}</math> detects any pattern of up to <math>d_{\min}-1</math> substitutions. Under nearest-codeword decoding for substitution errors, it corrects any pattern of up to
+
+<math>t=\left\lfloor\frac{d_{\min}-1}{2}\right\rfloor</math>
+
+errors.<ref name="hamming">[https://doi.org/10.1002/j.1538-7305.1950.tb00463.x Hamming, R. W. (1950), “Error Detecting and Error Correcting Codes,” ''Bell System Technical Journal'' 29(2), 147–160.]</ref>
+
+For a binary linear <math>[n,k,d]</math> code, <math>k</math> information bits are mapped to <math>n</math> coded bits and the code rate is <math>R=k/n</math>. A parity-check matrix <math>H</math> permits syndrome computation
+
+<math>s=Hr^T</math>
+
+over the relevant finite field, where <math>r</math> is a received word. Syndrome decoding, belief propagation, list decoding, soft-decision decoding, and maximum-likelihood methods exploit different code structures and channel information.
+
+Minimum distance alone does not describe performance on all channels. Burst errors, erasures, insertions, deletions, fading, synchronization errors, and correlated noise require different models and often different codes or interleaving strategies.
+
+== Source-channel distinction ==
+
+Source coding and channel coding have opposite relationships to redundancy:
+
+* source coding seeks to remove predictable redundancy when efficient representation is the objective;
+* channel coding adds controlled redundancy so the decoder can distinguish likely corrupted codewords.
+
+Shannon's separation theorem gives conditions under which source and channel coding can be treated separately in an asymptotic communication model, but real systems may use joint designs because of finite block lengths, latency, complexity, unequal error protection, or application-specific distortion criteria.<ref name="shannon">[https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon, C. E. (1948), “A Mathematical Theory of Communication,” ''Bell System Technical Journal'' 27, 379–423 and 623–656.]</ref><ref name="mit">[https://ocw.mit.edu/courses/6-441-information-theory-spring-2010/ MIT OpenCourseWare, ''Information Theory'', 6.441.]</ref>
+
+== Codewords, synchronization and framing ==
+
+A decoder must know where codewords or blocks begin and end. Prefix codes solve this for concatenated source symbols by construction, but many systems rely on explicit framing, synchronization markers, packet lengths, comma symbols, or external timing.
+
+Synchronization errors can be more destructive than substitutions because an insertion or deletion shifts subsequent boundaries. Codes for insertion/deletion channels and self-synchronizing representations address different problems from ordinary Hamming-distance block codes.
+
+A practical code specification should therefore include framing and invalid-sequence behavior, not only the source-to-codeword table.
+
+== Character encoding systems ==
+
+Character encoding illustrates the layered nature of coding.
+
+The Unicode Standard separates:
+
+# an abstract character repertoire;
+# code points such as U+0041;
+# encoding forms that map scalar values to code units;
+# encoding schemes that serialize code units as bytes where relevant.
+
+UTF-8 is a variable-width encoding form using 8-bit code units. Unicode scalar values are represented by one to four bytes; ASCII code points map to the same single-byte values as ASCII.<ref name="unicode">[https://www.unicode.org/versions/Unicode17.0.0/ The Unicode Standard, Version 17.0.]</ref>
+
+A byte stream is not self-describing in the general case. Correct decoding can depend on protocol metadata, byte-order conventions, normalization, and error handling. Mojibake and invalid sequences are representation failures, not failures of natural-language semantics.
+
+Character encoding must also be distinguished from glyph rendering. A code point identifies an abstract character or related unit; fonts and shaping systems determine visual realization.
+
+== Programming-language source code ==
+
+NIST also uses “code” for computer instructions and data definitions expressed in a programming language or translator output.<ref name="nist-code">[https://csrc.nist.gov/glossary/term/code NIST Computer Security Resource Center, “code.”]</ref>
+
+Source code is governed by a [[Formal language]] and normally has lexical, syntactic, static-semantic, and dynamic-semantic structure defined by a [[Programming language]] specification or implementation. Compilation may map source text to intermediate representations, machine code, bytecode, or executable artifacts, but the program's semantics cannot be reduced to a source-coding length problem.
+
+This distinction matters because “coding” in software engineering and “coding” in information theory denote different activities despite shared historical vocabulary.
+
+== Genetic code as biochemical mapping ==
+
+The genetic code maps nucleotide codons interpreted during translation to amino-acid incorporation or termination outcomes. In the standard code, four RNA bases produce <math>4^3=64</math> triplet codons. These correspond to 20 standard amino acids plus stop signals, with multiple synonymous codons for many amino acids. NCBI documents numerous alternative translation tables, including mitochondrial and lineage-specific variants.<ref name="ncbi">[https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi NCBI, “The Genetic Codes,” updated September 23, 2024.]</ref>
+
+The mapping is physically implemented by tRNAs, aminoacyl-tRNA synthetases, ribosomes, release factors, and other molecular machinery. Translation also depends on reading frame, initiation, RNA processing, context, and regulation. Consequently, the genetic code is a genuine discrete correspondence within molecular biology, but information-theoretic or computer-code analogies must not erase the biochemical mechanism.
+
+[[Genetic inheritance]] includes replication, recombination, segregation, mutation, regulatory architecture, and other processes beyond codon translation.
+
+== Gödel numbering ==
+
+Gödel numbering provides an effective injection from the syntax of a formal theory into natural numbers. One approach assigns numbers to primitive symbols and then encodes finite sequences arithmetically. The details can vary as long as syntactic constructions and relations needed in the proof are effectively representable.
+
+This arithmetization allows metamathematical statements about formulas and proofs to be expressed inside arithmetic, enabling self-reference constructions used in incompleteness results.<ref name="goedel">[https://plato.stanford.edu/entries/goedel-incompleteness/sup1.html Stanford Encyclopedia of Philosophy, “Gödel Numbering.”]</ref>
+
+The lesson is not that mathematics is “secretly numerical code,” but that finite formal syntax can be effectively represented by numbers.
+
+== Encoding, encryption and cryptographic codebooks ==
+
+Encoding transforms representation. Encryption is a security transformation intended to conceal plaintext or otherwise participate in a cryptographic protocol. NIST defines encryption as transformation of data into ciphertext so the original meaning is concealed from unauthorized parties.<ref name="nist-encryption">[https://csrc.nist.gov/glossary/term/encryption NIST Computer Security Resource Center, “encryption.”]</ref>
+
+Historically, cryptographic '''codes''' and '''ciphers''' were distinguished. A codebook might map a whole word or phrase to a code group, while a cipher transforms symbols according to an algorithm and, typically, a key. Modern [[Cryptography]] encompasses much more than confidentiality, including integrity, authentication, digital signatures, and key establishment.
+
+Security must never be inferred merely because a representation is unfamiliar. Base64, UTF-8, compression, or proprietary binary formats are encodings, not encryption.
+
+== Identifiers and practical code systems ==
+
+Many real-world “codes” are identifier schemes rather than decodable representations. Postal codes, airport codes, product identifiers, medical classification codes, and equipment codes associate compact tokens with entities or categories maintained by an authority.
+
+Important design properties include namespace scope, uniqueness, persistence, collision handling, check digits, reserved values, versioning, and governance. An identifier may be opaque: its characters need not encode intrinsic properties of the entity.
+
+Other practical codes carry operational messages or accessibility representations, including Morse code, semaphore, Braille, signaling flags, and musical notation. Their syntax, channels, and decoding conventions vary substantially.
+
+== Semiotic and linguistic boundaries ==
+
+A code in the engineering sense uses defined correspondences. Natural language is a broader social and cognitive system whose meanings depend on convention, syntax, pragmatics, history, context, inference, and interaction. Describing language as a code can be useful for some representational questions but becomes misleading if it implies a fixed one-to-one dictionary between thoughts and symbols.
+
+[[Semiotics]] treats signs and sign processes at a broader theoretical level. A sign can acquire meaning through interpretive and social relations that are not equivalent to decoding a prefix code.
+
+Similarly, proposed “neural codes” in neuroscience are models of how neural activity relates to stimuli, actions, or latent variables. Establishing such a code requires empirical evidence about the mapping and decoding assumptions; the term does not imply that neurons literally implement an engineered symbolic codebook.
+
+== Evaluation and failure modes ==
+
+Code design should be evaluated against explicit requirements:
+
+* '''decodability:''' can valid messages be recovered without ambiguity?
+* '''rate or length:''' how many code symbols are required?
+* '''redundancy:''' is redundancy removed for compression or added for reliability?
+* '''distance and channel model:''' which errors are detectable or correctable?
+* '''synchronization:''' how are boundaries recovered?
+* '''complexity:''' what are encoding and decoding time, memory, and hardware costs?
+* '''interoperability:''' are alphabets, versions, byte order, and invalid inputs specified?
+* '''security:''' does the system provide cryptographic properties, or merely representation?
+* '''semantics:''' what does decoding recover, and what additional context is needed to interpret it?
+
+Common failures include ambiguous variable-length codes, mismatched character encodings, unhandled invalid byte sequences, decoder assumptions inconsistent with the channel, insufficient distance, synchronization loss, registry collisions, or use of “encoding” as security theater.
+
+== Epistemic limits ==
+
+A code can preserve, compress, protect, or correct representations without validating the underlying content. Perfect error correction can faithfully recover a false message. Lossless decoding can reproduce symbols whose meaning is unknown. A high-efficiency code does not demonstrate intelligence or understanding.
+
+Cross-disciplinary claims should therefore identify the actual mapping, mechanism, decoder, error process, and evidence. “Code” is a precise formal term in some contexts and a metaphor in others; scientific clarity depends on distinguishing the two.
 
 == References ==
-* [https://crypto.stanford.edu/~blynn/pr/symbol.html Stanford, Symbol Codes]
-* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]
+
+<references />
+
+* MacKay, D. J. C. (2003), ''Information Theory, Inference, and Learning Algorithms'', Cambridge University Press.
+* [https://www.unicode.org/faq/utf_bom.html Unicode Consortium, UTF encoding FAQ.]
+* [https://csrc.nist.gov/glossary/term/cryptography NIST Computer Security Resource Center, “cryptography.”]
 
 == Reading depth ==
-[[Code/Simple|Simple explanation]]
+
+[[Code/Simple|Simple explanation]] · [[Code|Core article]]

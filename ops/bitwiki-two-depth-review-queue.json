@@ -300,8 +300,8 @@
         "N004"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending",
-      "note": "N002 independently checkpointed; N004 pending."
+      "status": "corrected_pending_validation",
+      "note": "Both subjects independently checkpointed; executable validation pending."
     },
     {
       "pair_id": "R32",
@@ -1080,9 +1080,22 @@
       "title": "Nonviolent Communication",
       "pr_number": 105,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/105",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #105 commit 859d7a0bf15d87c4b5a30fa26fcab7cee4bf76b6 canonical Knowledge object and full Simple host, reciprocal depth links, primary field study and limitations of intervention evidence, safety context, unittest-discoverable test.",
+        "preservation_evidence": [
+          "Four training distinctions, empathic listening, worked dialogues, contextual voluntary requests, 2026 systematic review and 2024 scoping review retained.",
+          "Psychology and Cognitive science domains used; no unsupported page-level epistemic classification."
+        ],
+        "scientific_sources": [
+          "2026 systematic review PMID 43061492 verified abstract including outcome-specific GRADE ratings; Wacker/Dziobek PMID 27977228; 2024 scoping review DOI 10.1186/s12913-024-10753-2. Original Rosenberg/CNVC citations retained; full audit outstanding."
+        ],
+        "static_checks": "7/7 independent post-commit source assertions passed.",
+        "tests": "Updated Python regression not executed; V2/staging and full citation audit outstanding.",
+        "gate": "PR #136 and owner approval; no merge/publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/105"
+      }
     },
     {
       "id": "N005",
@@ -1733,16 +1746,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N002",
+    "last_checkpoint_article": "N004",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 4,
+    "articles_pending_or_incomplete": 3,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R30",
-    "articles_corrected_pending_validation": 61,
-    "pairs_corrected_pending_validation": 30
+    "last_reviewed_pair": "R31",
+    "articles_corrected_pending_validation": 62,
+    "pairs_corrected_pending_validation": 31
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

@@ -36,6 +36,7 @@ class Issue65QuantitativeMethodsTests(unittest.TestCase):
                     self.assertNotIn("[[Related to::", derivative)
                 self.assertEqual(simple.count("<onlyinclude>"), 1)
                 self.assertEqual(simple.count("</onlyinclude>"), 1)
+                self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
                 self.assertIn("{{:" + title + "/Simple}}", core)
                 rendered = expand_static_transclusions(
                     core, title, {title + "/Simple": simple}

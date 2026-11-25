@@ -290,8 +290,8 @@
         "N003"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending",
-      "note": "N001 independently checkpointed; N003 pending."
+      "status": "corrected_pending_validation",
+      "note": "Both subjects independently checkpointed, executable validation outstanding."
     },
     {
       "pair_id": "R31",
@@ -1044,9 +1044,22 @@
       "title": "Kolb's experiential learning cycle",
       "pr_number": 104,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/104",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #104 commit 35011dc595eca50d5ebda3bfb9fcaeba66b6faff canonical Knowledge object and Simple host, reciprocal localizations, removed Technical transclusion, added reference rendering and learning-style interaction design, scoped regression.",
+        "preservation_evidence": [
+          "Original four modes, two dimensions, sensor and clinical examples, inventory style names, historical influences, caveats, citations and education domain retained.",
+          "Legacy infobox replaced by canonical metadata; original 'Theoretical model' is not a registered epistemic status, so status omitted rather than inventing evidence, theoretical provenance retained. Cognitive science category verified on main; Education retained as unregistered domain for vocabulary review."
+        ],
+        "scientific_sources": [
+          "Kolb 1984 book bibliographic record and Kolb/Kolb DOI 10.5465/amle.2005.17268566; Yardley et al. PMID 22289008 and accessible text; Pashler et al. DOI 10.1111/j.1539-6053.2009.01038.x; original Coffield review retained, full audit outstanding."
+        ],
+        "static_checks": "8/8 independent post-write source assertions: exact head, host, reciprocal navigation, full Simple source, reference closure, evidence and regression coverage.",
+        "tests": "Python regression updated but not executed; V2/staging and full citation checks remain.",
+        "gate": "PR #136 and owner approval; no merge/publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/104"
+      }
     },
     {
       "id": "N004",
@@ -1706,16 +1719,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N001",
+    "last_checkpoint_article": "N003",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 6,
+    "articles_pending_or_incomplete": 5,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R29",
-    "articles_corrected_pending_validation": 59,
-    "pairs_corrected_pending_validation": 29
+    "last_reviewed_pair": "R30",
+    "articles_corrected_pending_validation": 60,
+    "pairs_corrected_pending_validation": 30
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

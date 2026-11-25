@@ -1781,6 +1781,21 @@
         "blockers": [
           "PR #136 two-way depth validation prerequisite"
         ]
+      },
+      "final_validation_source_audit": {
+        "id": "N012",
+        "pr": 113,
+        "head": "23b881ffad903754c1a16e80971e366d4b338f5f",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Programmable logic"
+        ],
+        "regression_paths": [
+          "tests/test_field_programmable_gate_array.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1806,6 +1821,19 @@
           "dependency": "PR #136"
         },
         "human_review_required": true
+      },
+      "final_validation_source_audit": {
+        "id": "N013",
+        "pr": 114,
+        "head": "1d823e6ede2f5c232f52bddf713818e7d00b88fa",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "category pages absent: Electrical engineering, Computer engineering"
+        ],
+        "regression_paths": [
+          "tests/test_article_n013_asic.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1831,6 +1859,18 @@
         "tests": "Updated pytest source; not executed. Linux access_ok version-specific source and Murray IEEE publisher abstract checked; full scholarly audit and CI not executed",
         "gate": "Shared PR #136 needed for V2 validation; human scholarly approval and merge authorization required",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/115"
+      },
+      "final_validation_source_audit": {
+        "id": "N014",
+        "pr": 115,
+        "head": "fefe42861a79422705064845574a5fa479d25a7a",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "tests/test_operating_system_kernel_article.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1859,6 +1899,21 @@
         "tests": "GitHub V2 validation and staging job failed on the old shared depth-audit rules; underlying compatibility issue confirmed by source inspection. New source test is in PR but not yet verified passing.",
         "gate": "Await backward-compatible validator PR #136 and CI rerun; independent scholarly/expert review and merge approval still required.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/116"
+      },
+      "final_validation_source_audit": {
+        "id": "N015",
+        "pr": 116,
+        "head": "a549b1578a5413584451838c8ff8fb16d53c0fe4",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Chemical elements, Semiconductor materials"
+        ],
+        "regression_paths": [
+          "tests/test_n015_silicon.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1885,6 +1940,19 @@
           "dependency": "PR #136"
         },
         "human_review_required": true
+      },
+      "final_validation_source_audit": {
+        "id": "N016",
+        "pr": 117,
+        "head": "3297eb947c61925ec9517f86e096b08e88032900",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "Knowledge object template absent; inspect alternative identity"
+        ],
+        "regression_paths": [
+          "tests/test_semiconductor_fabrication_article.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1911,6 +1979,20 @@
           "dependency": "PR #136"
         },
         "human_review_required": true
+      },
+      "final_validation_source_audit": {
+        "id": "N017",
+        "pr": 118,
+        "head": "f72f542bcdfabf5fb8768118934d1e3025d10ceb",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Semiconductor manufacturing, Microfabrication"
+        ],
+        "regression_paths": [
+          "tests/test_photolithography_n017.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1929,6 +2011,19 @@
           "Executable tests/CI and human scholarly review outstanding"
         ],
         "human_review_required": true
+      },
+      "final_validation_source_audit": {
+        "id": "N018",
+        "pr": 119,
+        "head": "1ebe2c7ef008155e4a5c24806aa26e66ed6f4d2b",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "Knowledge object template absent; inspect alternative identity"
+        ],
+        "regression_paths": [
+          "tests/test_thin_film_deposition_n018.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1947,6 +2042,19 @@
           "Executable tests/CI and full citation audit/human review outstanding"
         ],
         "human_review_required": true
+      },
+      "final_validation_source_audit": {
+        "id": "N019",
+        "pr": 120,
+        "head": "f8b958e7959cabafd5060c810397f8084b2b39a0",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "Knowledge object template absent; inspect alternative identity"
+        ],
+        "regression_paths": [
+          "tests/test_semiconductor_etching.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1966,6 +2074,20 @@
           "Human scholarly and PR review required"
         ],
         "review_gate": "No merge/deploy without human approval"
+      },
+      "final_validation_source_audit": {
+        "id": "N020",
+        "pr": 121,
+        "head": "8b137a62b3dfb206621fd227575e066ff14e6f27",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity"
+        ],
+        "regression_paths": [
+          "tests/test_semiconductor_packaging.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -1985,6 +2107,20 @@
           "Human scholarly and PR review required"
         ],
         "review_gate": "No merge/deploy without human approval"
+      },
+      "final_validation_source_audit": {
+        "id": "N021",
+        "pr": 122,
+        "head": "a8837ee587022d08a8b4909defc8850a6d812284",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity"
+        ],
+        "regression_paths": [
+          "tests/test_n021_semiconductor_foundry.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2025,6 +2161,21 @@
           "Human PR review and approval required"
         ],
         "review_gate": "No merge/deploy without human approval"
+      },
+      "final_validation_source_audit": {
+        "id": "N023",
+        "pr": 123,
+        "head": "c2d4450052e8ad52309e183a54f79d03c52f22f1",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Computer hardware, Digital signal processing"
+        ],
+        "regression_paths": [
+          "tests/test_digital_signal_processor_article.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -2048,6 +2199,21 @@
         ],
         "tests": "Four sequential GitHub writes succeeded; executable regression tests, CI, V2 and staging not executed; full scholarly citation audit outstanding.",
         "gate": "Shared two-way validation PR #136 pending; human review and merge authorization required."
+      },
+      "final_validation_source_audit": {
+        "id": "N024",
+        "pr": 124,
+        "head": "54a2ce9c6d1a60de820474cefc0d4bc7eaa615e9",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "host has independent onlyinclude body",
+          "Knowledge object template absent; inspect alternative identity",
+          "category pages absent: Computer hardware, Semiconductor memory"
+        ],
+        "regression_paths": [
+          "tests/test_n024_high_bandwidth_memory.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {

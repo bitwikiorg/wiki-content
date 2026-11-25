@@ -1,0 +1,159 @@
+'''Reading depth:''' [[Firmware/Simple|Simple]] · [[Firmware/Technical|Technical]]
+= Firmware — Technical =
+
+'''Firmware''' is software whose execution is closely coupled to the initialization, control, management or recovery of a particular hardware device or platform. It may be stored in nonvolatile memory, staged in volatile memory, loaded from a host, or distributed among multiple controllers. Its defining feature is its operational position at a hardware/software boundary, not an immutable storage medium. An embedded microcontroller program, PC platform firmware, storage-controller program and accelerator device image may all be called firmware while exhibiting very different architectures and threat models.
+
+== Definition and implementation boundaries ==
+
+In a conventional computer, distinguish the following layers by what each promises rather than by a universal boot order:
+
+{| class="wikitable"
+! Layer !! Contract !! What it does not imply
+|-
+| Hardware reset/boot mechanism || Establishes an initial processor execution context according to platform design || That the first code is a full operating system or standardized across processors
+|-
+| Platform firmware || Establishes hardware and early execution environment, potentially exposes firmware interfaces || That it must be UEFI or execute only before boot
+|-
+| Boot manager/loader || Selects, loads or hands control to the next image || That it always resides in the same flash device as platform firmware
+|-
+| OS kernel || Manages protected execution and shared machine resources || That it implements every peripheral's internal control loop
+|-
+| OS device driver || Mediates OS requests and device protocols, sometimes loading controller firmware || That the driver binary is the same as the device firmware
+|-
+| Device-controller firmware || Implements device-local functions, often on an embedded processor || That the host OS can inspect all device code or state
+|}
+
+The labels may overlap. Some microcontrollers run directly from internal flash with no operating system. Some accelerators use host-supplied firmware. A bootloader may be a component of the platform firmware distribution, while a UEFI driver is itself a preboot software component. A product's exact boot chain is determined by its documented hardware and firmware architecture, not by the vocabulary alone.
+
+== UEFI as a specific standardized interface ==
+
+The UEFI Forum's [https://uefi.org/specs/UEFI/2.11/02_Overview.html UEFI Specification 2.11] defines interfaces for firmware-provided boot and runtime services, EFI images and protocols. This is a useful rigorous example, not a universal definition of firmware. The standard specifies UEFI drivers, applications and OS loaders and the interfaces available to them.<ref name="uefi">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11'', Overview]; [https://uefi.org/specs/UEFI/2.11/07_Services_Boot_Services.html Boot Services]; [https://uefi.org/specs/UEFI/2.11/08_Services_Runtime_Services.html Runtime Services].</ref>
+
+=== Boot services and the ownership handoff ===
+
+Before the OS loader terminates boot services, UEFI Boot Services include memory allocation, event/timer facilities, handle/protocol discovery and image management. The OS loader prepares its own execution environment and calls <code>ExitBootServices()</code> with a valid memory-map key. After a successful handoff, the OS must not call Boot Services. The UEFI specification separately defines Runtime Services that remain available under prescribed addressing, memory and calling restrictions.<ref name="uefi"/>
+
+This distinction is sometimes blurred by the claim “firmware stops when the OS starts.” In a UEFI system, boot-service code is no longer available after the transition, but some runtime services persist. Independently, a storage or network controller may continue executing its own firmware throughout the host's uptime.
+
+A simplified abstract state machine for a UEFI loader is:
+
+<pre>
+BOOT_SERVICES_ACTIVE
+    |
+    | obtain final memory map and key
+    | ExitBootServices(ImageHandle, MapKey)
+    v
+RUNTIME_SERVICES_ONLY + OS_RESOURCE_OWNERSHIP
+</pre>
+
+The transition requires successful <code>ExitBootServices()</code>. If it fails, the loader remains in the preboot environment and must follow the specification's error-handling rules, including refreshing the memory map when appropriate. A real implementation must not treat an old memory-map key as valid after intervening allocations or map changes. The diagram is conceptual and omits processor-specific setup, runtime-memory mapping and error recovery.
+
+=== Runtime address and memory requirements ===
+
+UEFI Runtime Services include time and variable interfaces and other specified functions. Their memory must remain reserved appropriately. Where the OS uses the virtual-address-map mechanism, firmware runtime calls and pointers must obey the specification's mapping rules. “Runtime services” does not mean that arbitrary preboot drivers can continue running with unrestricted access after OS takeover.
+
+The UEFI driver model should not be confused with the operating system's own device-driver ABI. UEFI drivers can expose protocols to preboot components, while an OS driver can have completely different loading, isolation, scheduling and device-access semantics. The existence of both is evidence that “driver” names a role and environment, not one universally identical program type.
+
+== Persistent code and update storage ==
+
+Firmware can be implemented in mask ROM, programmable nonvolatile memory, SPI NOR flash, embedded flash, EEPROM, eMMC, or other storage depending on the platform. Some images are copied to RAM for execution, while others are fetched from persistent storage or downloaded by a host. A flash image can contain multiple regions with distinct ownership and update policies.
+
+For an update system, distinguish the '''source package''', '''staged candidate''', '''installed image''', '''selected boot image''' and '''currently executing image'''. These need not be the same bytes at the same moment. A robust design tracks version, target identity, authenticity and rollback policy separately from a simple “update complete” message.
+
+The persistence of firmware is not identical to persistence of an attacker. Persistence depends on the storage and trust boundaries the attacker can alter. An OS reinstall does not necessarily rewrite device firmware; conversely, a trusted firmware recovery process can replace a compromised image.
+
+== Integrity, authenticity and the threat model ==
+
+NIST SP 800-193, published in 2018, addresses platform-firmware resilience against potentially destructive attacks. Its framework distinguishes protection, detection and recovery, and identifies critical platform devices for which those capabilities are particularly important.<ref name="nist">A. R. Regenscheid, [https://doi.org/10.6028/NIST.SP.800-193 ''Platform Firmware Resiliency Guidelines''], NIST SP 800-193 (May 2018), especially sections 3–4.</ref>
+
+'''Authenticity''' means the candidate image can be associated with an authorized source under a trusted verification policy. '''Integrity''' means unauthorized alteration can be detected relative to a reference. '''Anti-rollback''' means an attacker cannot simply install an older but validly signed vulnerable image when the policy forbids it. '''Recovery''' means a platform can restore acceptable operation after a failure or corruption. These are different properties: a valid signature does not establish that a signed image is bug-free, and two valid slots do not prove that recovery is possible when the boot selector or trust anchor is compromised.
+
+Security analysis should identify the root of trust, verification keys and revocation mechanisms, write-protection boundaries, recovery media, update authorization, the adversary's access (remote, OS administrator, physical or supply-chain), and which devices remain trusted. Measured boot records state for later appraisal; verified boot enforces an authorization condition before executing a stage. The two concepts should not be conflated.
+
+=== An illustrative update state machine ===
+
+<pre>
+ACTIVE_A
+  | download candidate B
+  v
+STAGED_B
+  | authenticate, verify target, check policy
+  +-- fail --> ACTIVE_A
+  |
+  | install B into inactive slot; verify readback
+  v
+PENDING_B
+  | attempt boot and health validation
+  +-- fail --> RECOVER_A
+  |
+  +-- success --> COMMITTED_B
+</pre>
+
+This is an invented design pattern, not a claim that UEFI or NIST requires precisely this layout. It assumes two independently writable image slots and a sufficiently protected boot selector and recovery path. An implementation must specify which writes are atomic, what happens under interrupted power, how rollback is authorized, and how a compromised active OS is prevented from silently replacing recovery images.
+
+A useful safety invariant is that the update process must never invalidate the only known bootable image before another candidate has been durably written and authenticated. That invariant alone is insufficient when metadata can be torn, both slots share a failing flash device, or the update changes incompatible persistent data. Recovery must be tested under the actual platform's failure model.
+
+== Quantitative update reliability: explicitly conditional example ==
+
+Suppose a hypothetical updater performs <math>n=4</math> independent critical writes, each with an identical probability <math>p=0.001</math> of an interruption or failure, and '''any''' failed write causes the whole update to fail. Then, under these strong assumptions, the probability that all writes succeed is
+
+<math display="block">P(\mathrm{success})=(1-p)^n=(0.999)^4\approx0.996005996001.</math>
+
+The probability of at least one failed write is
+
+<math display="block">P(\mathrm{failure})=1-(1-p)^n\approx0.003994003999.</math>
+
+These numbers are not observed firmware-update failure rates. The independent-and-identical assumption is usually unrealistic for power loss, shared flash degradation and common-mode failures. Correlated failures require a different model; with a single shared power event, treating each write as independent can substantially misrepresent risk. Furthermore a failed write is not necessarily an unrecoverable device, and a successful write sequence is not necessarily a secure update. A reliability assessment must distinguish image-write success, post-update boot success, health validation and security policy satisfaction.
+
+== Reproducible validation and acceptance tests ==
+
+An engineering validation matrix should exercise both ordinary and adversarial transitions, with expected evidence for each:
+
+{| class="wikitable"
+! Scenario !! Expected property !! Evidence needed
+|-
+| Correct signed image, compatible hardware || Accepted only under policy and installed safely || Signature validation log, version/target check, successful boot and health test
+|-
+| Corrupted candidate image || Rejected before execution || Negative signature/hash test with trusted baseline
+|-
+| Wrong hardware target || Rejected before destructive installation || Device identity and image manifest mismatch test
+|-
+| Interrupted power at each update phase || Recoverable state or documented failure bound || Fault injection, reboot, slot metadata and recovery traces
+|-
+| Valid but prohibited old image || Anti-rollback policy enforced || Version-policy regression with old signed image
+|-
+| Corrupted active slot || Verified fallback where supported || Independent recovery-path test
+|-
+| Compromised operating system || Cannot bypass critical firmware trust policy within stated model || Privilege-boundary and flash-protection tests
+|}
+
+The matrix does not imply that every product implements dual slots or anti-rollback. For an actual device, the test specification must state which controls exist, the recovery authority and what residual risk remains. Tests run only in a simulator cannot prove resilience against physical fault injection or real power loss.
+
+== Performance, energy and interface constraints ==
+
+Firmware often has strict memory budgets, startup deadlines, interrupt-response requirements and hardware dependencies. For example, a controller loop may be bounded by worst-case execution time rather than average throughput. But no single universal latency or memory-size requirement follows from the label “firmware.” Hardware-specific timing and resource guarantees must be measured under the relevant workload, clock, temperature and device state.
+
+Firmware can include code in a secure execution environment, a management controller, or a peripheral microcontroller. Its attack surface includes host command interfaces, update parsers, persistent configuration, shared memory and inter-controller protocols. Trust should not be inferred merely because the program runs “below” the OS: privilege and isolation depend on hardware enforcement and firmware design.
+
+== Historical and terminological boundaries ==
+
+The term historically emphasizes software tightly bound to hardware, often difficult to change, but modern field-updatable implementations blur any fixed ROM-versus-software distinction. BIOS and UEFI are not synonyms for all firmware: BIOS describes a historical family of PC boot interfaces, whereas UEFI defines a modern standardized firmware interface; many embedded platforms use neither. Likewise CPU microcode, boot ROM, baseboard management-controller code and storage firmware have distinct update and trust models. A generic firmware article must not collapse them into a single execution domain.
+
+
+== Additional scope and preservation notes ==
+
+A single hardware product may contain several separately updatable firmware components, with different authorization and recovery boundaries. Firmware may execute at privileged boundaries and survive an ordinary operating-system reinstall, but neither persistence nor privilege is universal. An OS device driver may load firmware into a controller; the host driver and the device-executed program remain distinct software components. Firmware may operate without any general-purpose operating system. A successful signature check establishes neither behavioral safety nor supply-chain integrity; update analysis must also address device compatibility, interrupted power, rollback authorization and recovery.
+
+== Research and verification limits ==
+
+The UEFI documentation is normative for UEFI-conforming implementations, not evidence that every shipping device is compliant. NIST SP 800-193 is security guidance, not a certification of any particular product. The mathematical example is a declared hypothetical probability model, not a measurement. Empirical claims about update reliability, exploitability, recovery success or performance require platform-specific test evidence.
+
+This article's source and numerical checks can verify reference structure, the conceptual boundary between Boot Services and Runtime Services, and arithmetic under stated assumptions. They cannot execute UEFI firmware, verify flash-write atomicity, inspect a live platform's trust anchors, certify NIST conformance or establish the correctness of an OS driver's interaction with a controller. Such conclusions require independent firmware engineering review and target-hardware testing.
+
+== References ==
+<references/>
+
+== Further reading ==
+* UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11''] (normative UEFI interfaces).
+* NIST, [https://doi.org/10.6028/NIST.SP.800-193 ''Platform Firmware Resiliency Guidelines''] (2018).
+* [[Firmware/Simple|Simple explanation]] · [[Operating system]] · [[Computer architecture]] · [[Computer security]].

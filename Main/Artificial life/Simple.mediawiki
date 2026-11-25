@@ -1,16 +1,172 @@
-<onlyinclude>'''Artificial life''' (ALife) is an interdisciplinary field that studies life-like organization, adaptation and evolution through constructed systems. These may be computer simulations, robots or engineered chemical and biological systems.
+{{Reading depth|base=Artificial life|current=Simple}}
 
-== Explanation ==
-Rather than only observing existing organisms, researchers build simplified systems to investigate which mechanisms can produce features associated with life. A computer population may replicate and evolve, while a chemical model may explore how a self-maintaining boundary forms. Whether a particular artifact is itself alive depends on the definition and evidence.
+= Artificial life — Simple =
+
+'''Artificial life''' (ALife) is a field that studies life-like processes by building systems that can be observed and experimented on.
+
+Researchers may build:
+
+* computer simulations;
+* self-replicating programs;
+* robots;
+* artificial ecosystems;
+* chemical or protocell systems.
+
+The goal is not always to create a living thing. Often the goal is to understand how processes such as evolution, adaptation, self-organization, or reproduction can arise from simpler mechanisms.
+
+== History ==
+
+The modern field formed around a workshop organized by Christopher Langton in 1987. The proceedings helped establish artificial life as a distinct research community.<ref name="langton">[https://www.routledge.com/Artificial-Life-Proceedings-Of-An-Interdisciplinary-Workshop-On-The-Synthesis/Langton/p/book/9780429032769 Langton, C. G. (ed.) (1989), ''Artificial Life''.]</ref>
+
+A modern review describes ALife as research into “possible life,” extending biological questions beyond only the forms of life already known on Earth.<ref name="dorin">[https://doi.org/10.1162/artl_e_00435 Dorin, A. and Stepney, S. (2024), “What Is Artificial Life Today, and Where Should It Go?”]</ref>
+
+== Three common approaches ==
+
+'''Soft artificial life''' uses software.
+
+Examples include cellular automata, [[Digital organism|digital organisms]], artificial ecosystems, and evolutionary simulations.
+
+'''Hard artificial life''' uses physical machines such as robots.
+
+The machine's body, sensors, motors, energy, and physical environment become part of the experiment.
+
+'''Wet artificial life''' uses chemistry or biological materials.
+
+Researchers may study protocells, membranes, reaction networks, and other systems relevant to the origin or construction of life.
+
+These categories can overlap.
+
+== Digital organisms ==
+
+A digital organism is a program that reproduces inside a computational environment.
+
+Copies can contain mutations. If some variants reproduce more successfully than others, evolution can occur.
+
+Platforms such as Tierra and Avida let researchers record every mutation and lineage.
+
+Lenski and colleagues used Avida to study how a complex function evolved through a sequence of mutations.<ref name="lenski">[https://doi.org/10.1038/nature01568 Lenski, R. E. et al. (2003), “The evolutionary origin of complex features,” ''Nature'' 423, 139–144.]</ref>
+
+This makes digital evolution useful for controlled experiments.
+
+== Cellular automata ==
+
+[[Conway's Game of Life]] is a cellular automaton in which simple local rules produce complicated moving and interacting patterns.
+
+Some patterns can reproduce.
+
+That does not automatically make them biological organisms.
+
+The model is useful because it shows that complex organization can emerge from simple rules.
+
+== Robots ==
+
+Artificial-life robotics studies adaptive behavior in physical bodies.
+
+A robot may use simple local control rules rather than a detailed central plan.
+
+Groups of robots can also show collective behavior such as:
+
+* flocking;
+* task allocation;
+* exploration;
+* collective transport.
+
+Physical robots reveal constraints that software can ignore, including friction, sensor noise, power limits, and mechanical failure.
+
+== Protocells ==
+
+Wet ALife can investigate minimal chemical systems.
+
+A protocell may include:
+
+* a membrane;
+* internal reactions;
+* energy sources;
+* molecules that copy information;
+* growth and division.
+
+Researchers ask which combinations are needed for autonomous maintenance and evolution.
+
+[[Autopoiesis]] is one theory that focuses on whether a system produces and maintains the components and boundary that constitute it.
+
+== What counts as life? ==
+
+There is no single definition accepted in every field.
+
+Possible criteria include:
+
+* metabolism;
+* self-maintenance;
+* reproduction;
+* heredity;
+* evolution;
+* adaptation;
+* compartmentalization.
+
+An artificial system may satisfy some criteria and fail others.
+
+For that reason, scientists should describe what a system actually does instead of assuming that the word “life” settles the question.
+
+== Artificial life is not the same as AI ==
+
+[[Artificial intelligence]] usually focuses on capabilities such as prediction, reasoning, planning, language, or control.
+
+Artificial life focuses on processes associated with living organization.
+
+An AI system can be intelligent without reproducing.
+
+A digital organism can reproduce and evolve without being intelligent.
+
+The fields overlap, but they are not the same.
+
+== Open-ended evolution ==
+
+Researchers are interested in systems that continue producing important new adaptations instead of eventually repeating the same kinds of solutions.
+
+This is called '''open-ended evolution'''.
+
+It is difficult to achieve.
+
+A system can keep mutating for a long time without producing genuinely new organization.
+
+Researchers therefore need explicit measures of novelty, diversity, ecological interaction, and adaptation.
+
+== Limits of simulations ==
+
+An artificial-life model is designed by researchers.
+
+The result can depend on:
+
+* the rule set;
+* the mutation system;
+* the resources available;
+* the shape of the environment;
+* the fitness or reward function.
+
+A result inside a model does not automatically apply to natural biology.
+
+Scientists must identify which mechanism is general enough to transfer.
+
+== Consciousness ==
+
+A system can evolve, adapt, reproduce, or self-organize without being conscious.
+
+None of those properties by itself proves subjective experience.
+
+Artificial-life research should therefore separate measurable behavior from claims about consciousness.
 
 == Related concepts ==
-[[Digital organism]] · [[Autopoiesis]] · [[Conway's Game of Life]] · [[Biological computation]] · [[Emergence]]
 
-== Sources ==
-* [https://www.routledge.com/link/link/p/book/9780367002909 Langton (1989), Artificial Life: Proceedings of an Interdisciplinary Workshop]
-* [https://doi.org/10.1162/artl_e_00435 What Is Artificial Life Today, and Where Should It Go? (2024)]
-* [https://www.nature.com/articles/nature01568 Lenski et al. (2003), The evolutionary origin of complex features]
-</onlyinclude>
+[[Digital organism]] · [[Autopoiesis]] · [[Conway's Game of Life]] · [[Self-organization]] · [[Emergence]] · [[Evolution]] · [[Artificial intelligence]]
+
+== References ==
+
+<references />
+
+* [https://www.routledge.com/Artificial-Life-Proceedings-Of-An-Interdisciplinary-Workshop-On-The-Synthesis/Langton/p/book/9780429032769 Langton (ed.) (1989), foundational proceedings.]
+* [https://doi.org/10.1162/artl_e_00435 Dorin and Stepney (2024), contemporary review.]
+* [https://doi.org/10.1038/nature01568 Lenski et al. (2003), digital evolution experiment.]
 
 == Reading depth ==
-[[Artificial life/Technical|Technical treatment]]
+
+[[Artificial life|Core article]] · [[Artificial life/Technical|Technical treatment]]

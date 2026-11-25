@@ -21,6 +21,8 @@ class ASICArticleTest(unittest.TestCase):
                 self.assertIn("https://", data) if file.name != "Application-specific integrated circuit.mediawiki" else self.assertIn("{{Knowledge object", data)
         self.assertEqual((BASE / "Application-specific integrated circuit" / "Simple.mediawiki").read_text().count("<onlyinclude>"), 1)
         self.assertEqual((BASE / "Application-specific integrated circuit" / "Simple.mediawiki").read_text().count("</onlyinclude>"), 1)
+        simple = files[1].read_text(encoding="utf-8")
+        self.assertIn("== What does it take? ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
 
     def test_two_depth_navigation(self):
         core = (BASE / 'Application-specific integrated circuit.mediawiki').read_text(encoding='utf-8')

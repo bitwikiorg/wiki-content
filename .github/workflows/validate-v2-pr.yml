@@ -47,6 +47,11 @@ jobs:
       - name: Test legacy and two-localization reader contracts
         run: python -m unittest discover -s scripts -p 'test_two_depth_source_contract.py'
 
+      - name: Execute article and staging source regressions
+        run: |
+          python -m pip install pytest==8.4.2
+          python -m pytest -q -p no:cacheprovider tests staging/compiler
+
       - name: Validate Scribunto Lua 5.1 syntax
         if: always()
         run: |
@@ -183,7 +188,7 @@ jobs:
               (90, "08832870b1ceeb7fb05ca3b75dc80bf24fbc6e46"),
               (91, "611dd0a492d71a6de5393e0fbea48b4fd00b830d"),
               (92, "770df6ffe0e20fd7c00a37bd0aa8666e391a461c"),
-              (93, "52b890b5935e2e32a4bfb95682c9fbdf4c9b0b0c"),
+              (93, "9e59b947727c69dfaaf2ebca7d0d7da0f8c016ad"),
               (94, "796f644c31c95fa478176951e7ea7f11c7a161c8"),
               (95, "ad4cf5b98ec0b5607a8a08808e66981f8b4b9477"),
               (96, "649e12f97a781bdd270bc579aa962125b1031180"),
@@ -255,7 +260,7 @@ jobs:
       - name: Run article and staging regressions
         run: |
           python -m pip install pytest==8.4.2
-          python -m pytest -q tests staging/compiler
+          python -m pytest -q -p no:cacheprovider tests staging/compiler
       - name: Validate combined V2 architecture and semantic substrate
         if: always()
         run: |
@@ -266,6 +271,15 @@ jobs:
           python scripts/audit_workflow.py
           python scripts/audit_mainspace.py
           python scripts/deployment_plan.py --check
+      - name: Exercise combined editorial architecture and Scribunto
+        if: always()
+        run: |
+          python scripts/test_editorial_architecture.py
+          python -m unittest discover -s scripts -p 'test_two_depth_source_contract.py'
+          sudo apt-get update -qq
+          sudo apt-get install -y lua5.1
+          find Module -type f -name '*.lua' -print0 | xargs -0 -n1 luac5.1 -p
+          lua5.1 scripts/test_semantic_entry.lua
       - name: Build and audit combined staging projection
         if: always()
         run: |

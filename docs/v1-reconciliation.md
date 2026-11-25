@@ -61,17 +61,28 @@ The maturation register itself left these areas incomplete:
 
 These areas must be reconciled source-by-source or mechanism-by-mechanism before retirement.
 
+## Reconciliation result
+
+The source-by-source/content-level pass is now complete:
+
+- 162 / 162 V1 Main sources have an evidenced disposition;
+- 0 sources remain open;
+- 21 prototype/test sources are deliberately excluded;
+- 29 sources have useful substance explicitly incorporated;
+- 5 are already represented by current canon;
+- 83 are superseded by current canonical structures after direct comparison;
+- 12 obsolete mechanisms/sources are explicitly deprecated;
+- 12 are historical-only after direct review.
+
+Family reports under `docs/v1-reconciliation-*.md` preserve the comparison rationale. This completion means the '''knowledge-recovery gate''' is satisfied; it does not itself authorize deleting `archive-v1/`.
+
 ## Current ledger
 
 `docs/v1-reconciliation-ledger.json` is authoritative for issue #152.
 
 The prior `docs/v1-retirement-disposition.json` is retained only as evidence of the premature PR #155 decision and must not be used as a deletion gate.
 
-The corrected ledger starts conservatively:
-
-- test/prototype biology material: explicitly excluded;
-- a small set of clearly current subject fragments: incorporated/already represented;
-- all other sources: open reconciliation until direct comparison is completed.
+The corrected ledger now records the completed content-level outcomes. No source is retirement-ready merely because of a family label; each final disposition is backed by a source-level family report or explicit test/historical rationale.
 
 ## Working method
 
@@ -88,7 +99,7 @@ For every open V1 source:
 
 ## Retirement gate
 
-`archive-v1/` stays in the working tree until:
+Content reconciliation is complete, but `archive-v1/` stays in the working tree until:
 
 - every V1 source is retirement-ready under the rule above;
 - no useful non-deprecated signal remains only in the archive;

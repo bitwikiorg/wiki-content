@@ -4,7 +4,7 @@
   "repository": "bitwikiorg/wiki-content",
   "format": "MediaWiki wikitext + namespace-native source (Lua/CSS/JS where required)",
   "visibility": "public-only",
-  "status": "source-grounded V2 with active V1 reconciliation",
+  "status": "source-grounded V2 with V1 content reconciliation complete; archive retirement pending",
   "source_policy": "source-first; preserve authored language, implementation reality, revision history and provenance; distinguish documented design from deployed objects",
   "namespace_paths": {
     "Main": "Main/",
@@ -241,7 +241,10 @@
         "v1-deleted-unresolved.json"
       ],
       "policy": "historical migration evidence; retained while reconciliation remains open"
-    }
+    },
+    "v1_main_pages_reconciled": 162,
+    "v1_open_reconciliation_sources": 0,
+    "v1_reconciliation_complete": true
   },
   "operational_workflows": {
     "knowledge_requests": {
@@ -300,7 +303,7 @@
     "publish"
   ],
   "v1_history": {
-    "working_tree_status": "restored as active migration source under issue #152",
+    "working_tree_status": "retained after completed content reconciliation pending dependency/reference audit and owner-approved retirement",
     "source_path": "archive-v1/",
     "snapshot": "2026-08-18T17:20:10Z",
     "snapshot_commit": "3100db1d7807b752e41b6ccf7f88498982cfb2d4",
@@ -308,7 +311,7 @@
     "main_pages": 162,
     "revision_bodies": 606,
     "reconciliation_ledger": "docs/v1-reconciliation-ledger.json",
-    "retirement_status": "not authorized; PR #155 retirement disposition invalidated",
+    "retirement_status": "not yet authorized; content reconciliation complete, separate retirement review required",
     "invalidated_retirement_record": "docs/v1-retirement-disposition.json",
     "limitations": [
       "two historical file-binary references were unavailable and were never captured",

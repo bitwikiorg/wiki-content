@@ -44,8 +44,8 @@ class Issue65QuantitativeMethodsTests(unittest.TestCase):
                 self.assertIn("'''"+title+"'''", rendered)
                 self.assertNotIn("= " + title + " — Simple =", rendered)
                 self.assertNotIn("current=Simple", rendered)
-                self.assertNotIn("== What are dimensions? ==" if title == "Dimensional analysis"
-                                 else "== A simple example ==", rendered)
+                self.assertIn("== What are dimensions? ==" if title == "Dimensional analysis"
+                              else "== A simple example ==", rendered)
                 self.assertIn("{{#ask:", core)
                 self.assertNotIn("{{#ask:", simple)
                 self.assertNotIn("{{#ask:", technical)

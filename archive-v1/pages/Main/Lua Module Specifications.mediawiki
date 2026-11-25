@@ -1,0 +1,420 @@
+{{Infobox
+| title = BITwiki Lua Module Specifications
+| description = Complete Lua module specifications for template validation and SMW integration
+| type = specification
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| modified = 2026-02-13
+| ontology = entity_type: specification
+domain: smw-technical
+scope: lua-modules
+| workflow = state: Complete
+phase: Phase_1
+| tags = - lua
+- modules
+- validation
+- smw
+- templates
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema]]
+[[Category:Lua Modules]]
+[[Category:Technical Specifications]]
+
+
+= BITwiki Lua Module Specifications =
+
+== Overview
+
+This document specifies Lua modules for BITwiki template validation, epistemic status management, and SMW integration. These modules provide runtime validation, error handling, and semantic enrichment.
+
+== Module Architecture
+
+```
+Module:ValidatorBase          # Core validation framework
+├── Module:EpistemicValidator  # Epistemic status validation
+├── Module:PropertyValidator   # SMW property validation
+├── Module:TemplateValidator   # Template-specific validation
+└── Module:QueryHelper         # SMW query utilities
+```
+
+== Module:ValidatorBase
+
+=== Purpose
+Centralized validation framework providing common validation functions.
+
+=== Code
+
+```lua
+-- Module:ValidatorBase
+-- Provides base validation functions for BITwiki templates
+
+local p = {}
+
+-- Validation error levels
+local ERROR_LEVELS = {
+    CRITICAL = 4,    -- Prevents template rendering
+    HIGH = 3,        -- Shows warning, renders with defaults
+    MEDIUM = 2,      -- Logs warning, renders normally
+    LOW = 1,         -- Silent logging only
+    INFO = 0         -- Informational only
+}
+
+-- Epistemic status hierarchy
+local EPISTEMIC_HIERARCHY = {
+    Axiomatic = 1.0,
+    Established = 0.9,
+    Developing = 0.7,
+    Preliminary = 0.5,
+    Speculative = 0.3
+}
+
+-- Validate epistemic status
+function p.validateEpistemicStatus(status)
+    if EPISTEMIC_HIERARCHY[status] then
+        return true, EPISTEMIC_HIERARCHY[status]
+    else
+        return false, 0, "Invalid epistemic status: " .. tostring(status)
+    end
+end
+
+-- Validate confidence score
+function p.validateConfidence(confidence)
+    local num = tonumber(confidence)
+    if num and num >= 0 and num <= 1 then
+        return true, num
+    else
+        return false, 0, "Confidence must be between 0.0 and 1.0"
+    end
+end
+
+-- Validate required field
+function p.validateRequired(value, fieldName)
+    if value and value ~= "" then
+        return true, value
+    else
+        return false, nil, "Required field missing: " .. fieldName
+    end
+end
+
+-- Validate URL format
+function p.validateURL(url)
+    if url:match("^https?://") then
+        return true, url
+    else
+        return false, nil, "Invalid URL format: " .. url
+    end
+end
+
+-- Validate date format (ISO 8601)
+function p.validateDate(dateStr)
+    if dateStr:match("^%d%d%d%d%-%d%d%-%d%d$") then
+        return true, dateStr
+    else
+        return false, nil, "Invalid date format. Use YYYY-MM-DD"
+    end
+end
+
+-- Generate validation report
+function p.generateReport(errors, warnings)
+    local report = {}
+    table.insert(report, "{| class=\"wikitable\"")
+    table.insert(report, "! Level !! Message")
+    
+    for _, error in ipairs(errors) do
+        table.insert(report, string.format("|-\n| %s || %s", error.level, error.message))
+    end
+    
+    table.insert(report, "|}")
+    return table.concat(report, "\n")
+end
+
+return p
+```
+
+== Module:EpistemicValidator
+
+=== Purpose
+Validates epistemic metadata and enforces epistemic constraints.
+
+=== Code
+
+```lua
+-- Module:EpistemicValidator
+-- Validates epistemic status, confidence, and provenance
+
+local p = {}
+local ValidatorBase = require("Module:ValidatorBase")
+
+-- Epistemic status constraints
+local STATUS_CONSTRAINTS = {
+    Axiomatic = { minConfidence = 1.0, requiresEvidence = false },
+    Established = { minConfidence = 0.8, requiresEvidence = true },
+    Developing = { minConfidence = 0.6, requiresEvidence = true },
+    Preliminary = { minConfidence = 0.4, requiresEvidence = true },
+    Speculative = { minConfidence = 0.0, requiresEvidence = false }
+}
+
+-- Validate complete epistemic record
+function p.validateEpistemicRecord(args)
+    local errors = {}
+    local warnings = {}
+    
+    -- Validate status
+    local statusValid, statusValue, statusError = ValidatorBase.validateEpistemicStatus(args.epistemic_status)
+    if not statusValid then
+        table.insert(errors, { level = "CRITICAL", message = statusError })
+        return false, errors, warnings
+    end
+    
+    -- Validate confidence
+    local confValid, confValue, confError = ValidatorBase.validateConfidence(args.confidence)
+    if not confValid then
+        table.insert(errors, { level = "HIGH", message = confError })
+    else
+        -- Check confidence matches status constraints
+        local constraints = STATUS_CONSTRAINTS[args.epistemic_status]
+        if confValue < constraints.minConfidence then
+            table.insert(warnings, { 
+                level = "MEDIUM", 
+                message = string.format("Confidence %.2f below %s threshold (%.2f)", 
+                    confValue, args.epistemic_status, constraints.minConfidence)
+            })
+        end
+    end
+    
+    -- Check evidence requirement
+    local constraints = STATUS_CONSTRAINTS[args.epistemic_status]
+    if constraints.requiresEvidence and (not args.evidence or args.evidence == "") then
+        table.insert(errors, { 
+            level = "HIGH", 
+            message = args.epistemic_status .. " status requires evidence" 
+        })
+    end
+    
+    return #errors == 0, errors, warnings
+end
+
+-- Get epistemic display class
+function p.getEpistemicClass(status)
+    local classes = {
+        Axiomatic = "epistemic-axiomatic",
+        Established = "epistemic-established",
+        Developing = "epistemic-developing",
+        Preliminary = "epistemic-preliminary",
+        Speculative = "epistemic-speculative"
+    }
+    return classes[status] or "epistemic-unknown"
+end
+
+return p
+```
+
+== Module:TemplateValidator
+
+=== Purpose
+Template-specific validation logic for BITwiki infoboxes.
+
+=== Code
+
+```lua
+-- Module:TemplateValidator
+-- Template-specific validation for BITwiki
+
+local p = {}
+local ValidatorBase = require("Module:ValidatorBase")
+local EpistemicValidator = require("Module:EpistemicValidator")
+
+-- Infobox Concept validation rules
+local INFOBOX_CONCEPT_RULES = {
+    required = { "title", "type", "epistemic_status" },
+    recommended = { "description", "confidence", "author" },
+    optional = { "version", "created", "modified", "tags" },
+    typeConstraints = {
+        type = { "Concept", "Idea", "Implementation", "Project", "Framework" },
+        epistemic_status = { "Axiomatic", "Established", "Developing", "Preliminary", "Speculative" }
+    }
+}
+
+-- Validate Infobox Concept
+function p.validateInfoboxConcept(args)
+    local errors = {}
+    local warnings = {}
+    
+    -- Check required fields
+    for _, field in ipairs(INFOBOX_CONCEPT_RULES.required) do
+        local valid, _, err = ValidatorBase.validateRequired(args[field], field)
+        if not valid then
+            table.insert(errors, { level = "CRITICAL", message = err })
+        end
+    end
+    
+    -- Check type constraints
+    if args.type then
+        local validType = false
+        for _, allowed in ipairs(INFOBOX_CONCEPT_RULES.typeConstraints.type) do
+            if args.type == allowed then
+                validType = true
+                break
+            end
+        end
+        if not validType then
+            table.insert(errors, { 
+                level = "HIGH", 
+                message = "Invalid type: " .. args.type 
+            })
+        end
+    end
+    
+    -- Validate epistemic record
+    local epistemicValid, epistemicErrors, epistemicWarnings = EpistemicValidator.validateEpistemicRecord(args)
+    for _, err in ipairs(epistemicErrors) do
+        table.insert(errors, err)
+    end
+    for _, warn in ipairs(epistemicWarnings) do
+        table.insert(warnings, warn)
+    end
+    
+    return #errors == 0, errors, warnings
+end
+
+-- Generate validation banner
+function p.generateValidationBanner(errors, warnings)
+    if #errors == 0 and #warnings == 0 then
+        return ""
+    end
+    
+    local banner = {}
+    table.insert(banner, "<div class=\"validation-banner\">")
+    
+    if #errors > 0 then
+        table.insert(banner, "<div class=\"validation-errors\">")
+        table.insert(banner, "<strong>Validation Errors:</strong>")
+        table.insert(banner, "<ul>")
+        for _, err in ipairs(errors) do
+            table.insert(banner, "<li>" .. err.message .. "</li>")
+        end
+        table.insert(banner, "</ul></div>")
+    end
+    
+    if #warnings > 0 then
+        table.insert(banner, "<div class=\"validation-warnings\">")
+        table.insert(banner, "<strong>Warnings:</strong>")
+        table.insert(banner, "<ul>")
+        for _, warn in ipairs(warnings) do
+            table.insert(banner, "<li>" .. warn.message .. "</li>")
+        end
+        table.insert(banner, "</ul></div>")
+    end
+    
+    table.insert(banner, "</div>")
+    return table.concat(banner, "\n")
+end
+
+return p
+```
+
+== Module:QueryHelper
+
+=== Purpose
+SMW query utilities for dynamic content generation.
+
+=== Code
+
+```lua
+-- Module:QueryHelper
+-- SMW query utilities for BITwiki
+
+local p = {}
+
+-- Build epistemic filter query
+function p.buildEpistemicQuery(status, limit)
+    limit = limit or 50
+    local query = string.format(
+        "[[Has epistemic status::%s]]\n" ..
+        "|format=list\n" ..
+        "|limit=%d\n" ..
+        "|sort=Has confidence\n" ..
+        "|order=descending",
+        status, limit
+    )
+    return query
+end
+
+-- Build related concepts query
+function p.buildRelatedQuery(concept, relationship)
+    local query = string.format(
+        "[[%s]]\n" ..
+        "[[Has relationship::%s]]\n" ..
+        "|format=ul\n" ..
+        "|limit=20",
+        concept, relationship
+    )
+    return query
+end
+
+-- Build author attribution query
+function p.buildAuthorQuery(author, limit)
+    limit = limit or 100
+    local query = string.format(
+        "[[Has author::%s]]\n" ..
+        "|format=table\n" ..
+        "|limit=%d\n" ..
+        "|?Has epistemic status\n" ..
+        "|?Has confidence",
+        author, limit
+    )
+    return query
+end
+
+return p
+```
+
+== CSS Integration
+
+```css
+/* BITwiki Validation Styles */
+.validation-banner {
+    border: 1px solid #ddd;
+    margin: 1em 0;
+    padding: 0.5em;
+}
+
+.validation-errors {
+    background-color: #fee;
+    border-left: 4px solid #c00;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.validation-warnings {
+    background-color: #ffe;
+    border-left: 4px solid #cc0;
+    padding: 0.5em;
+}
+
+/* Epistemic status indicators */
+.epistemic-axiomatic { border-left: 4px solid #000; }
+.epistemic-established { border-left: 4px solid #0c0; }
+.epistemic-developing { border-left: 4px solid #00c; }
+.epistemic-preliminary { border-left: 4px solid #c80; }
+.epistemic-speculative { border-left: 4px solid #c0c; }
+```
+
+== Deployment Instructions
+
+# Create modules in MediaWiki: `Module:ValidatorBase`, `Module:EpistemicValidator`, etc.
+# Add CSS to `MediaWiki:Common.css`
+# Update templates to use `{{#invoke:TemplateValidator|validateInfoboxConcept|...}}`
+# Test with sample pages before full deployment
+
+== References
+* [[Template Validation Report v2]]
+* [[SMW Property Types Complete]]
+* [[BITwiki Ontology Index]]
+* MediaWiki Lua Reference: https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual

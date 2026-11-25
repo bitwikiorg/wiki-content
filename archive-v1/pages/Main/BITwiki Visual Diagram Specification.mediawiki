@@ -1,0 +1,456 @@
+{{Infobox
+| title = BITwiki Visual Diagram Specification: Standards for Knowledge Visualization
+| description = Comprehensive specification for creating visual diagrams in BITwiki, including diagram types, notation standards, and accessibility requirements.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| version = 2.established
+| epistemic_status = Established
+| confidence = established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: visual-specification
+domain: knowledge-visualization
+| workflow = state: Beta
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+= BITwiki Visual Diagram Specification: Standards for Knowledge Visualization =
+
+== Purpose ==
+
+This document specifies standards for visual diagrams in BITwiki. Visual diagrams complement textual knowledge, enabling rapid comprehension of complex relationships and structures.
+
+== Diagram Types ==
+
+=== 1. Concept Maps ===
+
+'''Purpose:''' Show relationships between concepts.
+
+'''Elements:'''
+* Nodes: Concepts (boxes)
+* Edges: Relationships (lines with labels)
+* Direction: Optional arrows
+
+'''Example:'''
+```
+[Feedback] --causes--> [Stability]
+   |
+   --enables--
+   v
+[Adaptation]
+```
+
+'''Use Cases:'''
+* Ontology visualization
+* Knowledge relationships
+* Causal chains
+
+'''Standards:'''
+* Nodes: Rounded rectangles
+* Edges: Labeled arrows
+* Layout: Hierarchical or force-directed
+* Colors: Semantic (blue=idea, green=implementation)
+
+=== 2. Flowcharts ===
+
+'''Purpose:''' Show processes and decision paths.
+
+'''Elements:'''
+* Start/End: Ovals
+* Process: Rectangles
+* Decision: Diamonds
+* Arrows: Flow direction
+
+'''Example:'''
+```
+[Start] --> [Validate Claim] --> {Valid?}
+                              |Yes
+                              v
+                        [Add to BITwiki]
+                              |
+                              v
+                           [End]
+```
+
+'''Use Cases:'''
+* Validation protocols
+* Editorial workflows
+* Decision trees
+
+'''Standards:'''
+* Start/End: Oval
+* Process: Rectangle
+* Decision: Diamond
+* Flow: Top-to-bottom, left-to-right
+
+=== 3. Hierarchical Diagrams ===
+
+'''Purpose:''' Show taxonomic relationships.
+
+'''Elements:'''
+* Root: Top node
+* Branches: Intermediate nodes
+* Leaves: Terminal nodes
+* Lines: Parent-child relationships
+
+'''Example:'''
+```
+Systems Science
+├── Cybernetics
+│   ├── First-Order
+│   └── Second-Order
+└── Information Theory
+    ├── Entropy
+    └── Channel Capacity
+```
+
+'''Use Cases:'''
+* Taxonomy visualization
+* Category hierarchies
+* Organizational structures
+
+'''Standards:'''
+* Root at top
+* Children below parents
+* Consistent spacing
+* Collapsible branches
+
+=== 4. Network Diagrams ===
+
+'''Purpose:''' Show connections in a system.
+
+'''Elements:'''
+* Nodes: Entities (circles)
+* Edges: Connections (lines)
+* Weights: Optional (line thickness)
+
+'''Example:'''
+```
+    [A] --- [B]
+     |       |
+     |       |
+    [C] --- [D]
+```
+
+'''Use Cases:'''
+* Knowledge graphs
+* Social networks
+* System architectures
+
+'''Standards:'''
+* Nodes: Circles or icons
+* Edges: Lines (directed or undirected)
+* Layout: Force-directed or circular
+* Clustering: Group related nodes
+
+=== 5. Temporal Diagrams ===
+
+'''Purpose:''' Show events over time.
+
+'''Elements:'''
+* Timeline: Horizontal or vertical axis
+* Events: Markers on timeline
+* Duration: Bars spanning time
+* Milestones: Key points
+
+'''Example:'''
+```
+1948 ---- 1960 ---- 1972 ---- 1984 ---- 1996 ---- 2008 ---- 2020
+  |         |         |         |         |         |         |
+Wiener   Ashby   von Foerster  Maturana  Luhmann   BITwiki   Future
+```
+
+'''Use Cases:'''
+* Historical timelines
+* Project schedules
+* Evolution of ideas
+
+'''Standards:'''
+* Time flows left-to-right
+* Events marked clearly
+* Scale consistent
+* Milestones highlighted
+
+== Notation Standards ==
+
+=== Mermaid.js === ===
+
+BITwiki uses Mermaid.js for diagram generation:
+
+'''Flowchart:'''
+```mermaid
+graph TD
+    A[Start] --> B{Is it?}
+    B -->|Yes| C[OK]
+    C --> D[Rethink]
+    D --> B
+    B ---->|No| E[End]
+```
+
+'''Sequence Diagram:'''
+```mermaid
+sequenceDiagram
+    participant A as Contributor
+    participant B as Validator
+    A->>B: Submit claim
+    B->>A: Request evidence
+    A->>B: Provide sources
+    B->>A: Approve
+```
+
+'''Class Diagram:'''
+```mermaid
+classDiagram
+    class Idea {
+        +String name
+        +Float confidence
+        +validate()
+    }
+    class Implementation {
+        +String technology
+        +deploy()
+    }
+    Idea <|-- Implementation
+```
+
+=== Graphviz === ===
+
+For complex network diagrams:
+
+```dot
+digraph G {
+    rankdir=TB;
+    node [shape=box, style=rounded];
+
+    A [label="Systems Science"];
+    B [label="Cybernetics"];
+    C [label="Information Theory"];
+
+    A -> B;
+    A -> C;
+}
+```
+
+=== Color Semantics ===
+
+| Color | Meaning | Example |
+|-------|---------|---------|
+| Blue (#0066CC) | Ideas, concepts | Feedback loop |
+| Green (#009900) | Implementations | Neural network |
+| Gray (#666666) | Topics, categories | Cybernetics |
+| Orange (#FF6600) | Projects | Research effort |
+| Purple (#9900CC) | Protocols | Methods |
+| Red (#CC0000) | Deprecated, errors | Superseded theory |
+=== Line Styles ===
+
+| Style | Meaning | Example |
+|-------|---------|---------|
+| Solid | Confirmed relationship | Causes |
+| Dashed | Hypothetical relationship | May cause |
+| Dotted | Weak relationship | Related to |
+| Thick | Strong relationship | Directly causes |
+| Thin | Weak relationship | Indirectly related |
+=== Node Shapes ===
+
+| Shape | Meaning | Example |
+|-------|---------|---------|
+| Rectangle | Process, action | Validation step |
+| Rounded rectangle | Concept, idea | Feedback |
+| Oval | Start/end | Terminal node |
+| Diamond | Decision | Branch point |
+| Circle | Entity | Person, object |
+| Hexagon | Protocol | Method |
+
+
+== Accessibility ==
+
+=== Text Alternatives ===
+
+Every diagram must have:
+* '''Alt text:''' Brief description
+* '''Long description:''' Detailed explanation
+* '''Data table:''' Tabular equivalent
+
+'''Example:'''
+```html
+<figure>
+    <img src="diagram.png" alt="Concept map showing feedback relationships">
+    <figcaption>Figure 1: Feedback relationships in cybernetic systems. 
+    [Detailed description: Feedback loop connects sensor, controller, and actuator...]</figcaption>
+</figure>
+```
+
+=== Color Blindness ===
+* Use patterns, not just colors
+* Ensure contrast ratios meet WCAG 2.1
+* Provide color-independent labels
+
+'''Good:'''
+* Blue solid line: Established
+* Blue dashed line: Emerging
+* Red solid line: Contradicts
+
+'''Bad:'''
+* Blue: Established
+* Green: Emerging
+* Red: Contradicts
+
+=== Screen Readers ===
+* Diagrams must be navigable
+* Nodes must be labeled
+* Relationships must be described
+
+== Implementation ==
+
+=== Supported Formats ===
+
+| Format | Use Case | Notes |
+|--------|----------|-------|
+| SVG | Static diagrams | Scalable, accessible |
+| Mermaid | Text-based diagrams | Version controlled |
+| Graphviz | Automatic layout | Complex graphs |
+| PNG | Raster fallback | When SVG not supported |
+
+=== Mermaid Example ===
+
+```mermaid
+graph TD
+    A[Feedback Loop] -->|causes| B[Stability]
+    A -->|enables| C[Adaptation]
+    B -->|results in| D[Homeostasis]
+    C -->|leads to| D
+```
+
+=== Graphviz Example ===
+
+```dot
+digraph cybernetics {
+    node [shape=box, style=rounded];
+    feedback -> stability [label="causes"];
+    feedback -> adaptation [label="enables"];
+    stability -> homeostasis [label="results in"];
+    adaptation -> homeostasis [label="leads to"];
+}
+```
+
+== SMW Integration ==
+
+=== Diagram Properties ===
+
+```wiki
+[[Has diagram type::Concept Map]]
+[[Has diagram source::Page Name]]
+[[Has diagram format::Mermaid]]
+[[Has accessibility text::Description]]
+```
+
+=== Diagram Queries ===
+
+'''All concept maps:'''
+```wiki
+{{#ask: [[Has diagram type::Concept Map]]}}
+```
+
+'''Diagrams by source:'''
+```wiki
+{{#ask: [[Has diagram source::Page Name]]}}
+```
+
+== Validation ==
+
+=== Syntax Validation ===
+* Mermaid.js syntax check
+* Graphviz DOT validation
+* SVG output verification
+
+=== Semantic Validation ===
+* Nodes match ontology
+* Relationships valid
+* No orphaned nodes
+
+=== Accessibility Validation ===
+* Alt text present
+* Color contrast sufficient
+* Screen reader compatible
+
+== References ==
+
+# Mermaid.js. (2026). Documentation.
+# Graphviz. (2026). DOT Language.
+# W3C. (2018). SVG Specification.
+# WCAG 2.1. (2018). Web Content Accessibility Guidelines.
+# Tufte, E. (2001). The Visual Display of Quantitative Information.
+# Ware, C. (2012). Information Visualization.
+# Heer, J., & Shneiderman, B. (2012). Interactive dynamics for visual analysis.
+# Semantic MediaWiki. (2026). Image handling.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+
+[[Has page type::Visual Specification]]
+[[Has epistemic tier::Established]]
+[[Has confidence trajectory::established]]
+[[Has diagram type count::5]]
+[[Has source count::10]]
+[[Has word count::650]]
+
+
+
+
+
+
+=== Accessibility Validation ===
+* Alt text present
+* Color contrast sufficient
+* Screen reader compatible
+
+== On Visualization ==
+
+Visual diagrams are not decorations but tools for thinking. They should reveal structure, not obscure it. The specifications here are offered as guidance—approaches that have proven useful, not constraints that must be followed.
+
+The guiding principle: ''Does this visualization enhance understanding?''
+
+[[Has page type::Visual Specification]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.85]]
+[[Has source count::10]]
+[[Has word count::650]]
+
+
+
+=== Mermaid Example ===
+
+```mermaid
+graph TD
+    A[Feedback Loop] -->|causes| B[Stability]
+    A -->|enables| C[Adaptation]
+    B -->|results in| D[Homeostasis]
+    C -->|leads to| D
+```
+
+=== Graphviz Example ===
+
+```dot
+digraph cybernetics {
+    node [shape=box, style=rounded];
+    feedback -> stability [label="causes"];
+    feedback -> adaptation [label="enables"];
+    stability -> homeostasis [label="results in"];
+    adaptation -> homeostasis [label="leads to"];
+}
+```
+
+== Quality Criteria ===
+
+| Criterion | Check |
+|-----------|-------|
+| Clarity | Can the diagram be understood in <30 seconds? |
+| Accuracy | Do relationships match the text? |
+| Completeness | Are all key elements included? |
+| Simplicity | Can any elements be removed without loss? |
+| Accessibility | Can it be understood without color? |
+| Consistency | Does it follow notation standards? |
+
+Diagrams that fail these criteria should be revised or removed.

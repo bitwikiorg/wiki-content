@@ -1,0 +1,3769 @@
+{
+  "schema_version": 2,
+  "issue": 152,
+  "status": "active_reconciliation",
+  "supersedes": "docs/v1-retirement-disposition.json schema_version 1 / PR #155 completion claim",
+  "governing_rule": "A V1 source is retirement-ready only after useful non-deprecated substance is proven incorporated, or the substance is explicitly deprecated/rejected/test-only/superseded/excluded with evidence. Family-level target mapping is not proof of incorporation.",
+  "snapshot": {
+    "captured": "2026-08-18T17:20:10Z",
+    "snapshot_commit": "3100db1d7807b752e41b6ccf7f88498982cfb2d4",
+    "snapshot_tree_path": "archive-v1/",
+    "public_pages": 186,
+    "main_pages": 162,
+    "revision_bodies": 606,
+    "archive_paths": 648
+  },
+  "prior_migration_analysis": {
+    "migration_pr": 2,
+    "migration_merge_commit": "5c98cad2e5c4679d1cac0db6bd421b4167856c32",
+    "role_counts": {
+      "book_matter_reusable": 52,
+      "canonical_subject_candidate": 2,
+      "architecture_system_source": 83,
+      "navigation_interface": 19,
+      "maintenance_validation_test": 6
+    },
+    "architecture_pages_classified": 83
+  },
+  "summary": {
+    "sources": 162,
+    "status_counts": {
+      "deliberately_excluded_test": 21,
+      "superseded": 83,
+      "incorporated": 29,
+      "deprecated": 12,
+      "historical_only": 12,
+      "already_represented": 5
+    },
+    "retirement_ready": 162,
+    "open": 0
+  },
+  "known_open_families": [
+    "epistemics and confidence trails",
+    "semantic properties",
+    "relationships and graph semantics",
+    "categories and navigation semantics",
+    "knowledge graph/visualization",
+    "modules/schema machinery",
+    "research objects",
+    "templates and Book Matter",
+    "transclusion",
+    "portals",
+    "human-AI lifecycle details",
+    "foundational/constitutional source-by-source reconciliation where unique authored substance remains"
+  ],
+  "pages": [
+    {
+      "title": "Applications",
+      "archived_path": "archive-v1/pages/Main/Applications.mediawiki",
+      "current_revid": 749,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Biochemical Mechanism",
+      "archived_path": "archive-v1/pages/Main/Biochemical Mechanism.mediawiki",
+      "current_revid": 758,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Bioluminescent Organisms",
+      "archived_path": "archive-v1/pages/Main/Bioluminescent Organisms.mediawiki",
+      "current_revid": 195,
+      "revision_count": 18,
+      "migration_role": "canonical_subject_candidate",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Bioluminescent Organisms/Applications",
+      "archived_path": "archive-v1/pages/Main/Bioluminescent Organisms%2FApplications.mediawiki",
+      "current_revid": 199,
+      "revision_count": 4,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Bioluminescent Organisms/Biochemical Mechanism",
+      "archived_path": "archive-v1/pages/Main/Bioluminescent Organisms%2FBiochemical Mechanism.mediawiki",
+      "current_revid": 197,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Bioluminescent Organisms/Examples",
+      "archived_path": "archive-v1/pages/Main/Bioluminescent Organisms%2FExamples.mediawiki",
+      "current_revid": 198,
+      "revision_count": 4,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Bioluminescent Organisms/Mechanism",
+      "archived_path": "archive-v1/pages/Main/Bioluminescent Organisms%2FMechanism.mediawiki",
+      "current_revid": 160,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Bioluminescent Organisms/Overview",
+      "archived_path": "archive-v1/pages/Main/Bioluminescent Organisms%2FOverview.mediawiki",
+      "current_revid": 196,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Bioluminescent Organisms/Related Theories",
+      "archived_path": "archive-v1/pages/Main/Bioluminescent Organisms%2FRelated Theories.mediawiki",
+      "current_revid": 200,
+      "revision_count": 4,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITCORE Manifesto",
+      "archived_path": "archive-v1/pages/Main/BITCORE Manifesto.mediawiki",
+      "current_revid": 662,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "foundational_constitutional_philosophy",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Manifesto.mediawiki"
+      ],
+      "reconciliation_evidence": "Current owner-approved Manifesto preserves and matures Post-Truth/Post-Scarcity/Post-Intelligence, hyper-realistic models, attention scarcity, distributed capability and holobiont analogy; it corrects operational-utility reductionism and adds Post-Fragmentation.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Architecture Overview",
+      "archived_path": "archive-v1/pages/Main/BITwiki Architecture Overview.mediawiki",
+      "current_revid": 663,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "system_architecture_boundary",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Ecosystem.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "reconciliation_evidence": "MediaWiki/SMW substrate, validation/performance concerns survive; historical versions, caches, custom extensions, auth/permission and scaling claims are not current deployment facts.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki BITHUB Boundary Specification",
+      "archived_path": "archive-v1/pages/Main/BITwiki BITHUB Boundary Specification.mediawiki",
+      "current_revid": 664,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "system_architecture_boundary",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Ecosystem.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Ecosystem.mediawiki",
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "reconciliation_evidence": "Canonical knowledge / interaction / cognition plane boundaries survive; old A2A/filesystem/memory/capability-matrix protocols are not current verified contracts.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Charter",
+      "archived_path": "archive-v1/pages/Main/BITwiki Charter.mediawiki",
+      "current_revid": 665,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "foundational_constitutional_philosophy",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Knowledge lifecycle.mediawiki"
+      ],
+      "reconciliation_evidence": "Durable humility, skepticism, provenance, pluralism, purposeful recursion and confidence-trail structure survive; five-tier epistemics, operational-coherence-as-truth, control formulas and monadic-AI metaphysics are not current doctrine.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Charter Revised",
+      "archived_path": "archive-v1/pages/Main/BITwiki Charter Revised.mediawiki",
+      "current_revid": 666,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "foundational_constitutional_philosophy",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
+      ],
+      "reconciliation_evidence": "Durable skepticism/humility/contextual evidence/provenance/accountable authority survive; AI-only authorship and fixed BITCORE/BITHUB workflow are not current constitutional commitments.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Claim Validation",
+      "archived_path": "archive-v1/pages/Main/BITwiki Claim Validation.mediawiki",
+      "current_revid": 667,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Provenance.mediawiki"
+      ],
+      "reconciliation_evidence": "Content-level comparison completed in docs/v1-reconciliation-epistemics.md. Durable validation logic is present in current canon; universal numeric confidence is explicitly not adopted.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Constitution",
+      "archived_path": "archive-v1/pages/Main/BITwiki Constitution.mediawiki",
+      "current_revid": 668,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "foundational_constitutional_philosophy",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Constitution.mediawiki"
+      ],
+      "reconciliation_evidence": "Current owner-approved Constitution is the single canonical founding instrument and preserves durable freedoms/fallibilism/provenance/accountable authority; old recursive/toroidal/five-tier/fixed-SMW constitutional machinery is superseded.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Deployment Guide",
+      "archived_path": "archive-v1/pages/Main/BITwiki Deployment Guide.mediawiki",
+      "current_revid": 669,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "deployment_integration_migration_operations",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki",
+        "BITwiki/Lua architecture.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "docs/deployment.md",
+        "BITwiki/MediaWiki substrate.mediawiki"
+      ],
+      "reconciliation_evidence": "Current deployment scripts/runbook supersede old fixed versions/commands/templates/cache assumptions with source-derived planning and runtime verification.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Entity Types",
+      "archived_path": "archive-v1/pages/Main/BITwiki Entity Types.mediawiki",
+      "current_revid": 670,
+      "revision_count": 4,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Ontology.mediawiki"
+      ],
+      "reconciliation_evidence": "Core/extended type distinctions survive in matured vocabulary; Topic/Idea overloading and automatic multi-type identity are superseded.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Entity Types.REVISED",
+      "archived_path": "archive-v1/pages/Main/BITwiki Entity Types.REVISED.mediawiki",
+      "current_revid": 671,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Ontology.mediawiki"
+      ],
+      "reconciliation_evidence": "Types-as-evolving-lenses principle and current reviewed type vocabulary are incorporated; automatic multi-type identity is not current default.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Epistemic Framework",
+      "archived_path": "archive-v1/pages/Main/BITwiki Epistemic Framework.mediawiki",
+      "current_revid": 672,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Uncertainty.mediawiki"
+      ],
+      "reconciliation_evidence": "Content-level comparison completed. Graduated/revisable standing survives; historical five-tier/numeric/committee mechanics are superseded.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Epistemic Status Taxonomy",
+      "archived_path": "archive-v1/pages/Main/BITwiki Epistemic Status Taxonomy.mediawiki",
+      "current_revid": 673,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic status.mediawiki"
+      ],
+      "reconciliation_evidence": "Historical five-tier/numeric taxonomy is replaced by the current six-value contextual standing vocabulary.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Epistemic Tiers",
+      "archived_path": "archive-v1/pages/Main/BITwiki Epistemic Tiers.mediawiki",
+      "current_revid": 258,
+      "revision_count": 2,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic status.mediawiki"
+      ],
+      "reconciliation_evidence": "Historical five-tier ladder is replaced by current six-value standing vocabulary; Verified/Axiomatic are not universal current tiers.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Epistemic Tiers/Confidence Levels",
+      "archived_path": "archive-v1/pages/Main/BITwiki Epistemic Tiers%2FConfidence Levels.mediawiki",
+      "current_revid": 253,
+      "revision_count": 1,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemics.mediawiki"
+      ],
+      "reconciliation_evidence": "Historical confidence fragment is replaced by current epistemic standing plus explicit rationale; no universal numeric/fixed confidence ladder.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Epistemic Tiers/Overview",
+      "archived_path": "archive-v1/pages/Main/BITwiki Epistemic Tiers%2FOverview.mediawiki",
+      "current_revid": 252,
+      "revision_count": 1,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Epistemic status.mediawiki"
+      ],
+      "reconciliation_evidence": "Provisionality and visible evidentiary standing survive; historical tier mechanics are superseded.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Epistemic Tiers/Theoretical Foundations",
+      "archived_path": "archive-v1/pages/Main/BITwiki Epistemic Tiers%2FTheoretical Foundations.mediawiki",
+      "current_revid": 257,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Four foundations.mediawiki"
+      ],
+      "reconciliation_evidence": "Method pluralism and situated/contextual concerns survive; fragment does not define a separate current tier system.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Epistemic Tiers/Tier Definitions",
+      "archived_path": "archive-v1/pages/Main/BITwiki Epistemic Tiers%2FTier Definitions.mediawiki",
+      "current_revid": 259,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "reconciliation_evidence": "Hypothetical/Emerging/Established survive in current vocabulary; Archived is historical/lifecycle provenance rather than a current epistemic tier and source-count/consensus thresholds are not standing rules.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Epistemics Performative",
+      "archived_path": "archive-v1/pages/Main/BITwiki Epistemics Performative.mediawiki",
+      "current_revid": 674,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Uncertainty.mediawiki"
+      ],
+      "reconciliation_evidence": "Core truth-as-convergence and L0-L3 performative self-validation mechanisms are not current epistemic standards; useful provisionality/revision ideas survive.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Evidence and Epistemics",
+      "archived_path": "archive-v1/pages/Main/BITwiki Evidence and Epistemics.mediawiki",
+      "current_revid": 677,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Claim validation.mediawiki"
+      ],
+      "reconciliation_evidence": "Durable concepts are split across current focused standards; mandatory claim-subobject and universal numeric-confidence designs are not current requirements.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Evidence Evaluation",
+      "archived_path": "archive-v1/pages/Main/BITwiki Evidence Evaluation.mediawiki",
+      "current_revid": 675,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Claim validation.mediawiki"
+      ],
+      "reconciliation_evidence": "Question-specific evidence evaluation, method fit, bias, independence, replication, contradiction and scope are current canon.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Evidence Framework",
+      "archived_path": "archive-v1/pages/Main/BITwiki Evidence Framework.mediawiki",
+      "current_revid": 752,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Evidence.mediawiki"
+      ],
+      "reconciliation_evidence": "Evidence/source distinction, evidence forms, directness, method quality, dependence, disagreement and absence-vs-evidence-of-absence are current canon.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Evidence Tiers",
+      "archived_path": "archive-v1/pages/Main/BITwiki Evidence Tiers.mediawiki",
+      "current_revid": 676,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Claim validation.mediawiki"
+      ],
+      "reconciliation_evidence": "Historical decision trees, numeric bands and Axiomatic/Verified hierarchy are replaced by contextual standing plus explicit rationale.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Expanded Entity Types",
+      "archived_path": "archive-v1/pages/Main/BITwiki Expanded Entity Types.mediawiki",
+      "current_revid": 678,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki"
+      ],
+      "reconciliation_evidence": "Person, Organization, Event, Publication, Location and Technology survive as current entity types.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Foundational Triad",
+      "archived_path": "archive-v1/pages/Main/BITwiki Foundational Triad.mediawiki",
+      "current_revid": 679,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "foundational_constitutional_philosophy",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Foundations.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Four Foundations deliberately replaces historical triads while preserving durable concerns about being, knowledge, value, agency/action and transparent/revisable knowledge architecture.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Glossary",
+      "archived_path": "archive-v1/pages/Main/BITwiki Glossary.mediawiki",
+      "current_revid": 680,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "navigation_portals_categories_visualization",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Glossary.mediawiki"
+      ],
+      "reconciliation_evidence": "Glossary function recovered as a new current navigation surface built from current canonical terminology rather than obsolete V1 confidence/governance/schema definitions.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Governance Framework",
+      "archived_path": "archive-v1/pages/Main/BITwiki Governance Framework.mediawiki",
+      "current_revid": 681,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "quality_governance_stewardship",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Editorial protocol.mediawiki",
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Constitution.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
+      ],
+      "reconciliation_evidence": "Transparent/reviewable/revisable decisions survive; distributed consensus, weighted convergence, steward voting/reputation metrics and no-veto governance are not current.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki How to Navigate",
+      "archived_path": "archive-v1/pages/Main/BITwiki How to Navigate.mediawiki",
+      "current_revid": 683,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "Main/Main Page.mediawiki"
+      ],
+      "reconciliation_evidence": "Hierarchical/lateral/query/cross-domain exploration survives; toroidal validation, confidence trajectories, old Idea/Topic types, Verified categories and nonexistent templates do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Integration Guide",
+      "archived_path": "archive-v1/pages/Main/BITwiki Integration Guide.mediawiki",
+      "current_revid": 684,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "deployment_integration_migration_operations",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki",
+        "BITwiki/Lua architecture.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Interoperability.mediawiki",
+        "BITwiki/Ecosystem.mediawiki"
+      ],
+      "reconciliation_evidence": "API/integration/auth/provenance/failure-boundary principles survive; historical OAuth/webhook/API-key/RDF/rate-limit capabilities are not claimed deployed.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Master Navigation",
+      "archived_path": "archive-v1/pages/Main/BITwiki Master Navigation.mediawiki",
+      "current_revid": 685,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki",
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "reconciliation_evidence": "Current navigation/orientation replaces old book-matter master index; confidence tables, Axiomatic queries, old workflow states and workspace paths are obsolete.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Ontology Alignment Matrix",
+      "archived_path": "archive-v1/pages/Main/BITwiki Ontology Alignment Matrix.mediawiki",
+      "current_revid": 686,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Interoperability.mediawiki",
+        "BITwiki/Ontology.mediawiki"
+      ],
+      "reconciliation_evidence": "Meaning-first mapping/context/loss principles are current; literal historical mapping tables and recursive/toroidal assumptions are not adopted automatically.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Ontology Index",
+      "archived_path": "archive-v1/pages/Main/BITwiki Ontology Index.mediawiki",
+      "current_revid": 687,
+      "revision_count": 4,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Relationships.mediawiki"
+      ],
+      "reconciliation_evidence": "Evolving types/properties/relations/validation survive; old Topic/Idea, confidence/source-count properties and processual crystallization examples are not current contract.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Ontology Performative",
+      "archived_path": "archive-v1/pages/Main/BITwiki Ontology Performative.mediawiki",
+      "current_revid": 688,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Ontology.mediawiki"
+      ],
+      "reconciliation_evidence": "Formless-manifold/attractor/sedimentation/dissolution performative ontology is not current operational schema; anti-reification/provisionality survive.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Page Types",
+      "archived_path": "archive-v1/pages/Main/BITwiki Page Types.mediawiki",
+      "current_revid": 689,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "reconciliation_evidence": "Types-as-emergent-useful-patterns survives; Topic is decomposed and Idea matures to Concept; one primary page identity plus relations replaces uncontrolled multi-type assignment.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Performance Budgets",
+      "archived_path": "archive-v1/pages/Main/BITwiki Performance Budgets.mediawiki",
+      "current_revid": 466,
+      "revision_count": 2,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "deployment_integration_migration_operations",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki",
+        "BITwiki/Lua architecture.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki"
+      ],
+      "reconciliation_evidence": "Parser limits, shallow composition, query reuse and explicit traversal constraints survive; historical numeric budgets/infrastructure assumptions are not current without measurement.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Property Dictionary",
+      "archived_path": "archive-v1/pages/Main/BITwiki Property Dictionary.mediawiki",
+      "current_revid": 690,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Relationships.mediawiki"
+      ],
+      "reconciliation_evidence": "Current property contracts/evidence-driven evolution preserve durable design; historical large catalog/numeric scores/undeployed fields are not an implementation backlog.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Provenance Model",
+      "archived_path": "archive-v1/pages/Main/BITwiki Provenance Model.mediawiki",
+      "current_revid": 691,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Provenance.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Provenance retains etymology/phylogeny analogy, origin, context, transmission, transformation, attribution, checking history and branching lineages.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Quality Bar",
+      "archived_path": "archive-v1/pages/Main/BITwiki Quality Bar.mediawiki",
+      "current_revid": 692,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "quality_governance_stewardship",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Editorial protocol.mediawiki",
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Constitution.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic audit.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "reconciliation_evidence": "Guardrails/specific failure modes survive; mandatory markers, old tiers, fixed workflow stages and blanket metadata rejection do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Quality Standards",
+      "archived_path": "archive-v1/pages/Main/BITwiki Quality Standards.mediawiki",
+      "current_revid": 693,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "quality_governance_stewardship",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Editorial protocol.mediawiki",
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Constitution.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic audit.mediawiki",
+        "BITwiki/Page format.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
+      ],
+      "reconciliation_evidence": "Multi-dimensional substantive quality review survives; weighted scores, Flesch targets, YAML/source-count/template universals do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Relationship Pattern Catalog",
+      "archived_path": "archive-v1/pages/Main/BITwiki Relationship Pattern Catalog.mediawiki",
+      "current_revid": 694,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Precise relation semantics, direction, scope and edge quality rules are current; automatic inverse/domain/range/transitivity assumptions are not presumed implemented.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Relationship Types",
+      "archived_path": "archive-v1/pages/Main/BITwiki Relationship Types.mediawiki",
+      "current_revid": 695,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Relationships.mediawiki"
+      ],
+      "reconciliation_evidence": "Current eight relations are reviewed floor; historical broader catalog remains future vocabulary only if recurring use and tests justify it.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Semantic Patterns",
+      "archived_path": "archive-v1/pages/Main/BITwiki Semantic Patterns.mediawiki",
+      "current_revid": 696,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Part-whole/dependency/provenance/anti-bloat/type-confusion signal is current; universal EAV, causal/temporal promotion and recursive self-validation are not adopted.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Source Hierarchy",
+      "archived_path": "archive-v1/pages/Main/BITwiki Source Hierarchy.mediawiki",
+      "current_revid": 755,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Sources.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Sources retains source kinds and contextual evaluation while explicitly rejecting a fixed truth hierarchy.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Source Types",
+      "archived_path": "archive-v1/pages/Main/BITwiki Source Types.mediawiki",
+      "current_revid": 697,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Sources.mediawiki"
+      ],
+      "reconciliation_evidence": "Useful source typology is consolidated in current Sources with source role made relative to the question.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Start Here",
+      "archived_path": "archive-v1/pages/Main/BITwiki Start Here.mediawiki",
+      "current_revid": 698,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki",
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Current onboarding surfaces replace old guide; every-claim status/confidence, toroidal validation, YAML markers and committee review are not current rules.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Steward Handbook",
+      "archived_path": "archive-v1/pages/Main/BITwiki Steward Handbook.mediawiki",
+      "current_revid": 699,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "quality_governance_stewardship",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Editorial protocol.mediawiki",
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Constitution.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
+      ],
+      "reconciliation_evidence": "Accountable stewardship survives; historical steward classes, appointment/term/escalation structure and numerical confidence authority are not constituted current processes.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Taxonomy Architecture",
+      "archived_path": "archive-v1/pages/Main/BITwiki Taxonomy Architecture.mediawiki",
+      "current_revid": 700,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Polyhierarchy, facets, porous boundaries, evolving categories and plural navigation survive; root-tree/primary-category/numeric-confidence rules are not current.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Transclusion Rules",
+      "archived_path": "archive-v1/pages/Main/BITwiki Transclusion Rules.mediawiki",
+      "current_revid": 701,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Transclusion.mediawiki",
+        "Help/Transclusion.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
+      ],
+      "reconciliation_evidence": "Current transclusion standard preserves reuse/provenance/context/dependency hygiene and corrects V1 section syntax, subpage, SMW-host and universal-DAG overclaims.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Uncertainty Markers",
+      "archived_path": "archive-v1/pages/Main/BITwiki Uncertainty Markers.mediawiki",
+      "current_revid": 702,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Uncertainty.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Uncertainty matures the marker system into explicit epistemic, methodological, conceptual, semantic and stochastic uncertainty.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki User Guide",
+      "archived_path": "archive-v1/pages/Main/BITwiki User Guide.mediawiki",
+      "current_revid": 703,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "deployment_integration_migration_operations",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki",
+        "BITwiki/Lua architecture.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Page format.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Current contributor/authoring/semantic guidance replaces old YAML, confidence-score, obsolete-template and open-editing assumptions.",
+      "retirement_ready": true
+    },
+    {
+      "title": "BITwiki Visual Diagram Specification",
+      "archived_path": "archive-v1/pages/Main/BITwiki Visual Diagram Specification.mediawiki",
+      "current_revid": 704,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Page format.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Visualization semantic fidelity, text equivalents, non-color-only encoding, provenance, validation and maintainability are incorporated in Page format; old color/runtime assumptions are not adopted.",
+      "retirement_ready": true
+    },
+    {
+      "title": "CATEGORY ARCHITECTURE",
+      "archived_path": "archive-v1/pages/Main/CATEGORY ARCHITECTURE.mediawiki",
+      "current_revid": 705,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "navigation_portals_categories_visualization",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Navigation and coverage research.mediawiki"
+      ],
+      "reconciliation_evidence": "Polyhierarchical browsing, Domain/category separation, roles/naming/query views survive; fixed root hierarchy, epistemic categories, agent workspaces and one-template-per-category do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Category List",
+      "archived_path": "archive-v1/pages/Main/Category List.mediawiki",
+      "current_revid": 706,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Category namespace/navigation rules replace hard-coded list; old entity-type/epistemic categories are not current taxonomy.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Charter",
+      "archived_path": "archive-v1/pages/Main/Charter.mediawiki",
+      "current_revid": 707,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "foundational_constitutional_philosophy",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Knowledge lifecycle.mediawiki"
+      ],
+      "reconciliation_evidence": "Distinctive H=1 Charter signal is critically incorporated: differentiated human/machine contribution, observer participation, autonomy, reusable fragments, provenance and failure conditions survive; literal organism/consciousness metaphysics do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Citation Pattern Integration Guide",
+      "archived_path": "archive-v1/pages/Main/Citation Pattern Integration Guide.mediawiki",
+      "current_revid": 708,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "reconciliation_evidence": "Citation correspondence/diversity/independence survive; unverified Grokpedia statistics, source tiers/density benchmarks and confidence-coded citation templates are not current standards.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component Implementation section",
+      "archived_path": "archive-v1/pages/Main/Component Implementation section.mediawiki",
+      "current_revid": 506,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki"
+      ],
+      "reconciliation_evidence": "Useful implementation concerns survive; historical semantic forms, automatic visualization/pathfinding and broad runtime claims were not verified.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component Knowledge graph section",
+      "archived_path": "archive-v1/pages/Main/Component Knowledge graph section.mediawiki",
+      "current_revid": 508,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Explicit graph semantics and graph/query views survive; old Idea/Implementation schema, pathfinding and assumed integrated visualization are not current contracts.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component List",
+      "archived_path": "archive-v1/pages/Main/Component List.mediawiki",
+      "current_revid": 709,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "reconciliation_evidence": "Useful portal/semantic/reuse/graph/implementation functions survive across current architecture rather than a fixed five-component model.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component Portals section",
+      "archived_path": "archive-v1/pages/Main/Component Portals section.mediawiki",
+      "current_revid": 512,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Navigation and coverage research.mediawiki"
+      ],
+      "reconciliation_evidence": "Portal orientation/scope/cross-links/maintenance survive; old four-domain portal model and compulsory subpage/navbox structure do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component Semantic section",
+      "archived_path": "archive-v1/pages/Main/Component Semantic section.mediawiki",
+      "current_revid": 514,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Explicit semantics/queries survive; old Has implementation/Implements idea, category-as-property, automatic categorization, semantic forms and assumed visualization are not current.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component Transclusion section",
+      "archived_path": "archive-v1/pages/Main/Component Transclusion section.mediawiki",
+      "current_revid": 516,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Book Matter.mediawiki"
+      ],
+      "reconciliation_evidence": "Reuse, source ownership, context, testing and dependency review survive; compulsory fragmentation and unsupported automatic semantics do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component:Implementation section",
+      "archived_path": "archive-v1/pages/Main/Component%3AImplementation section.mediawiki",
+      "current_revid": 212,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "reconciliation_evidence": "Parallel-format variant of Component Implementation; no independent durable signal beyond current architecture.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component:Knowledge graph section",
+      "archived_path": "archive-v1/pages/Main/Component%3AKnowledge graph section.mediawiki",
+      "current_revid": 211,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Parallel-format variant; no independent current knowledge beyond reconciled graph/navigation principles.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component:Portals section",
+      "archived_path": "archive-v1/pages/Main/Component%3APortals section.mediawiki",
+      "current_revid": 208,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Navigation and coverage research.mediawiki"
+      ],
+      "reconciliation_evidence": "Parallel-format variant of the old portal component.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component:Semantic section",
+      "archived_path": "archive-v1/pages/Main/Component%3ASemantic section.mediawiki",
+      "current_revid": 209,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Parallel-format variant of the old semantic component.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Component:Transclusion section",
+      "archived_path": "archive-v1/pages/Main/Component%3ATransclusion section.mediawiki",
+      "current_revid": 210,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Book Matter.mediawiki"
+      ],
+      "reconciliation_evidence": "Parallel-format variant of the old transclusion component.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Concept Catalog",
+      "archived_path": "archive-v1/pages/Main/Concept Catalog.mediawiki",
+      "current_revid": 710,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Glossary.mediawiki",
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki"
+      ],
+      "reconciliation_evidence": "Current canonical pages plus new Glossary replace old concept catalog; obsolete Axiomatic/numeric-confidence/decentralized-governance/swarm assumptions are not retained.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Constitutional index",
+      "archived_path": "archive-v1/pages/Main/Constitutional index.mediawiki",
+      "current_revid": 711,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "Main/Autopoiesis.mediawiki"
+      ],
+      "reconciliation_evidence": "Useful practice/institution/context/anti-consensus themes and autopoiesis are represented; signal-to-noise is not a universal quality metric, process metaphysics and old amendment/committee machinery are not current doctrine.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Constructs section",
+      "archived_path": "archive-v1/pages/Main/Constructs section.mediawiki",
+      "current_revid": 761,
+      "revision_count": 5,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki"
+      ],
+      "reconciliation_evidence": "Decorative Main-page placeholder containing empty-square links; no durable subject knowledge.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Content Migration Guide",
+      "archived_path": "archive-v1/pages/Main/Content Migration Guide.mediawiki",
+      "current_revid": 712,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "deployment_integration_migration_operations",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki",
+        "BITwiki/Lua architecture.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Source lineage.mediawiki",
+        "BITwiki/Provenance.mediawiki"
+      ],
+      "reconciliation_evidence": "License compatibility, attribution/provenance, source revalidation, deliberate transformation and post-migration validation are now explicitly incorporated into Contributing; mechanical conversion/automatic status mapping are not adopted.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Dependency Schema",
+      "archived_path": "archive-v1/pages/Main/Dependency Schema.mediawiki",
+      "current_revid": 713,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "reconciliation_evidence": "Depends on survives and shared-source/dependency review is current; universal persisted template dependency declarations and max-depth=5 are not current rules.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Doc",
+      "archived_path": "archive-v1/pages/Main/Doc.mediawiki",
+      "current_revid": 526,
+      "revision_count": 5,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Page format.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Historical Infobox Project documentation. Goal/status/lead/domain/deliverable fields remain design candidates, not a universal current structured contract without recurring consumers.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Emergence",
+      "archived_path": "archive-v1/pages/Main/Emergence.mediawiki",
+      "current_revid": 530,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "already-represented",
+      "canonical_targets": [
+        "Main/Emergence.mediawiki"
+      ],
+      "rationale": "Durable subject/method signal is represented or re-canonicalized in the current corpus; the historical fragment itself is not restored.",
+      "prior_premature_disposition": "already-represented",
+      "reconciliation_status": "already_represented",
+      "reconciliation_targets": [
+        "Main/Emergence.mediawiki"
+      ],
+      "reconciliation_evidence": "Current canonical Emergence article exists; V1 fragment remains source material for direct comparison.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Emergent Properties section",
+      "archived_path": "archive-v1/pages/Main/Emergent Properties section.mediawiki",
+      "current_revid": 764,
+      "revision_count": 5,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki",
+        "Main/Emergence.mediawiki"
+      ],
+      "reconciliation_evidence": "Decorative Main-page placeholder; no substantive account of emergence.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Empirical-validation",
+      "archived_path": "archive-v1/pages/Main/Empirical-validation.mediawiki",
+      "current_revid": 532,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "already-represented",
+      "canonical_targets": [
+        "Main/Empirical evidence.mediawiki",
+        "Main/Validation.mediawiki"
+      ],
+      "rationale": "Durable subject/method signal is represented or re-canonicalized in the current corpus; the historical fragment itself is not restored.",
+      "prior_premature_disposition": "already-represented",
+      "reconciliation_status": "already_represented",
+      "reconciliation_targets": [
+        "Main/Empirical evidence.mediawiki",
+        "Main/Validation.mediawiki"
+      ],
+      "reconciliation_evidence": "Current evidence/validation articles represent the durable subject signal.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Environmental Applications",
+      "archived_path": "archive-v1/pages/Main/Environmental Applications.mediawiki",
+      "current_revid": 765,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Epistemic Audit Framework",
+      "archived_path": "archive-v1/pages/Main/Epistemic Audit Framework.mediawiki",
+      "current_revid": 714,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Epistemic audit preserves targeted/sampled/longitudinal/system audits and correction-oriented substantive checks.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Epistemic Framework Synthesis.REVISED",
+      "archived_path": "archive-v1/pages/Main/Epistemic Framework Synthesis.REVISED.mediawiki",
+      "current_revid": 715,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Epistemic status.mediawiki"
+      ],
+      "reconciliation_evidence": "Graduated/fallibilist epistemics survives; historical comparative counts, five-tier mechanics, confidence ranges and committee workflow are not current verified architecture.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Epistemic Properties",
+      "archived_path": "archive-v1/pages/Main/Epistemic Properties.mediawiki",
+      "current_revid": 766,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Provenance.mediawiki"
+      ],
+      "reconciliation_evidence": "Current model separates standing/confidence rationale/evidence/source/verification/provenance/uncertainty; old combined fields/ranks are superseded.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Epistemics",
+      "archived_path": "archive-v1/pages/Main/Epistemics.mediawiki",
+      "current_revid": 716,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki"
+      ],
+      "reconciliation_evidence": "Historical dynamical/convergence theory of truth and self-referential L0-L3 validation are not adopted; current page uses evidence/reasons/methods/provenance/uncertainty/revision.",
+      "retirement_ready": true
+    },
+    {
+      "title": "EPV Framework",
+      "archived_path": "archive-v1/pages/Main/EPV Framework.mediawiki",
+      "current_revid": 763,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Provenance.mediawiki"
+      ],
+      "reconciliation_evidence": "EPV as mandatory foundational ontology and Was/Has naming law is not adopted; concrete event/relation/value/provenance needs evolve from demonstrated use.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Event Types",
+      "archived_path": "archive-v1/pages/Main/Event Types.mediawiki",
+      "current_revid": 767,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Provenance.mediawiki"
+      ],
+      "reconciliation_evidence": "Event remains a valid entity type, but EPV Creation/Modification/Relation/Observation taxonomy and Was-property family are not current schema; future event schema is use-driven.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Evidence epistemics index",
+      "archived_path": "archive-v1/pages/Main/Evidence epistemics index.mediawiki",
+      "current_revid": 717,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "reconciliation_evidence": "Current focused epistemics standards replace the composite index; six-status/rationale direction survives while five-tier/numeric variants and upgrade workflow are superseded.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Examples",
+      "archived_path": "archive-v1/pages/Main/Examples.mediawiki",
+      "current_revid": 768,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Featured Articles section",
+      "archived_path": "archive-v1/pages/Main/Featured Articles section.mediawiki",
+      "current_revid": 769,
+      "revision_count": 6,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki"
+      ],
+      "reconciliation_evidence": "Dated curation list of three links; no durable knowledge beyond historical homepage state.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Feedback-loop",
+      "archived_path": "archive-v1/pages/Main/Feedback-loop.mediawiki",
+      "current_revid": 548,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "already-represented",
+      "canonical_targets": [
+        "Main/Feedback.mediawiki"
+      ],
+      "rationale": "Durable subject/method signal is represented or re-canonicalized in the current corpus; the historical fragment itself is not restored.",
+      "prior_premature_disposition": "already-represented",
+      "reconciliation_status": "already_represented",
+      "reconciliation_targets": [
+        "Main/Feedback.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Feedback article represents the durable feedback concept; wording/claims still remain auditable against V1.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Fluorescent Coral Reefs",
+      "archived_path": "archive-v1/pages/Main/Fluorescent Coral Reefs.mediawiki",
+      "current_revid": 182,
+      "revision_count": 6,
+      "migration_role": "canonical_subject_candidate",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Fluorescent Coral Reefs/Environmental Applications",
+      "archived_path": "archive-v1/pages/Main/Fluorescent Coral Reefs%2FEnvironmental Applications.mediawiki",
+      "current_revid": 171,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Fluorescent Coral Reefs/Genetic Engineering",
+      "archived_path": "archive-v1/pages/Main/Fluorescent Coral Reefs%2FGenetic Engineering.mediawiki",
+      "current_revid": 170,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Fluorescent Coral Reefs/Implementation Challenges",
+      "archived_path": "archive-v1/pages/Main/Fluorescent Coral Reefs%2FImplementation Challenges.mediawiki",
+      "current_revid": 172,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Fluorescent Coral Reefs/Overview",
+      "archived_path": "archive-v1/pages/Main/Fluorescent Coral Reefs%2FOverview.mediawiki",
+      "current_revid": 169,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Genetic Engineering",
+      "archived_path": "archive-v1/pages/Main/Genetic Engineering.mediawiki",
+      "current_revid": 770,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Governance index",
+      "archived_path": "archive-v1/pages/Main/Governance index.mediawiki",
+      "current_revid": 721,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
+      ],
+      "reconciliation_evidence": "Transparent/accountable/revisable decisions survive; distributed collective-intelligence authority, Epistemic Committee, confidence governance and obsolete board/policy structures do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Governance Integration Coraline",
+      "archived_path": "archive-v1/pages/Main/Governance Integration Coraline.mediawiki",
+      "current_revid": 720,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "quality_governance_stewardship",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Editorial protocol.mediawiki",
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Constitution.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
+      ],
+      "reconciliation_evidence": "Provenance/uncertainty/revisability survive; weighted reputation, confidence-weighted governance, meta-stewards and distributed arbitration are not current mechanisms.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Homeostasis",
+      "archived_path": "archive-v1/pages/Main/Homeostasis.mediawiki",
+      "current_revid": 554,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "already-represented",
+      "canonical_targets": [
+        "Main/Homeostasis.mediawiki"
+      ],
+      "rationale": "Durable subject/method signal is represented or re-canonicalized in the current corpus; the historical fragment itself is not restored.",
+      "prior_premature_disposition": "already-represented",
+      "reconciliation_status": "already_represented",
+      "reconciliation_targets": [
+        "Main/Homeostasis.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Homeostasis article exists; V1 fragment remains auditable source material.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Implementation Challenges",
+      "archived_path": "archive-v1/pages/Main/Implementation Challenges.mediawiki",
+      "current_revid": 771,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Implementations section",
+      "archived_path": "archive-v1/pages/Main/Implementations section.mediawiki",
+      "current_revid": 772,
+      "revision_count": 4,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki"
+      ],
+      "reconciliation_evidence": "Empty-square Main-page placeholder; no substantive implementation knowledge.",
+      "retirement_ready": true
+    },
+    {
+      "title": "INDEX",
+      "archived_path": "archive-v1/pages/Main/INDEX.mediawiki",
+      "current_revid": 722,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "reconciliation_evidence": "Ontology-expansion deliverable index whose substantive source documents are individually reconciled; file counts/version/deployment examples add no independent current standard.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Infobox Concept",
+      "archived_path": "archive-v1/pages/Main/Infobox Concept.mediawiki",
+      "current_revid": 723,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "Template/Knowledge object.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Concept remains current, but mandatory definition/status/numeric-confidence/source-count template contract is obsolete; current identity interface is deliberately smaller.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Infobox Idea",
+      "archived_path": "archive-v1/pages/Main/Infobox Idea.mediawiki",
+      "current_revid": 724,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki",
+        "Template/Knowledge object.mediawiki"
+      ],
+      "reconciliation_evidence": "Idea broadly matures to Concept; separate Idea infobox/schema and confidence contract are not current architecture.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Infobox Implementation",
+      "archived_path": "archive-v1/pages/Main/Infobox Implementation.mediawiki",
+      "current_revid": 725,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki",
+        "Template/Knowledge object.mediawiki",
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Implementation remains current; historical specialized fields are use-driven future candidates, not automatically global properties.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Infobox Project",
+      "archived_path": "archive-v1/pages/Main/Infobox Project.mediawiki",
+      "current_revid": 726,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki",
+        "Template/Knowledge object.mediawiki",
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Project remains current; historical goal/lead/status/deliverable fields require demonstrated repeated structured use before becoming schema.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Knowledge Engine Patterns",
+      "archived_path": "archive-v1/pages/Main/Knowledge Engine Patterns.mediawiki",
+      "current_revid": 727,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "research_synthesis_knowledge_systems",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Comparative wiki research register.mediawiki",
+        "BITwiki/Research references.mediawiki",
+        "BITwiki/Navigation and coverage research.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Comparative wiki research register.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Useful research hypotheses are now explicitly preserved: toroidal return paths as navigation hypothesis (not truth validation), epistemic stratification matured into current epistemics, semantic fractalization retained as bounded design hypothesis. Unverified comparative counts and obsolete implementation prescriptions are not adopted.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Knowledge Graph Visualization",
+      "archived_path": "archive-v1/pages/Main/Knowledge Graph Visualization.mediawiki",
+      "current_revid": 728,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "navigation_portals_categories_visualization",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Page format.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Visualization semantic fidelity/accessibility/text equivalents/provenance/bounded views are current; confidence-coded layouts, D3/Graph code/custom result formats and assumed runtime support are not adopted.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Learn More section",
+      "archived_path": "archive-v1/pages/Main/Learn More section.mediawiki",
+      "current_revid": 143,
+      "revision_count": 9,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki",
+        "BITwiki/Contributing.mediawiki"
+      ],
+      "reconciliation_evidence": "Search/random/all-pages/GitHub/contribution routes survive in current entry surfaces; historical links/decorative template are obsolete.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Live Stats section",
+      "archived_path": "archive-v1/pages/Main/Live Stats section.mediawiki",
+      "current_revid": 773,
+      "revision_count": 5,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "reconciliation_evidence": "Raw activity counters can be display metrics, but calling all articles verified is false and scale/activity is not epistemic quality.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Lua Module Specifications",
+      "archived_path": "archive-v1/pages/Main/Lua Module Specifications.mediawiki",
+      "current_revid": 729,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki"
+      ],
+      "reconciliation_evidence": "Reusable validation/query architecture matured into current BITwiki Core/Compiler/runtime-schema modules; old status/confidence thresholds and module interfaces are obsolete.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Main Page",
+      "archived_path": "archive-v1/pages/Main/Main Page.mediawiki",
+      "current_revid": 142,
+      "revision_count": 6,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Main Page deliberately matures the original orientation/quick-access modular homepage while correcting stale portals/placeholders, verified-article counts and AI/modularity overclaims.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Main Page styled",
+      "archived_path": "archive-v1/pages/Main/Main Page styled.mediawiki",
+      "current_revid": 145,
+      "revision_count": 56,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki"
+      ],
+      "reconciliation_evidence": "Byte-identical historical presentation variant of V1 Main Page; superseded by current Main Page.",
+      "retirement_ready": true
+    },
+    {
+      "title": "MASTER INDEX",
+      "archived_path": "archive-v1/pages/Main/MASTER INDEX.mediawiki",
+      "current_revid": 730,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "reconciliation_evidence": "Hyperion/book-matter workspace inventory and phase/deployment receipt; substantive sources are reconciled and READY FOR DEPLOYMENT/quality percentages/task state are historical process claims.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Mechanism",
+      "archived_path": "archive-v1/pages/Main/Mechanism.mediawiki",
+      "current_revid": 774,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Ontology",
+      "archived_path": "archive-v1/pages/Main/Ontology.mediawiki",
+      "current_revid": 731,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Ontology.mediawiki"
+      ],
+      "reconciliation_evidence": "Historical attractor ontology is not current standard; provisionality and anti-reification concerns survive without H=1/processual metaphysics as executable schema.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Ontology Alignment Matrix.REVISED",
+      "archived_path": "archive-v1/pages/Main/Ontology Alignment Matrix.REVISED.mediawiki",
+      "current_revid": 732,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "reconciliation_evidence": "Current interoperability preserves valid mapping principles; unverified comparative counts/equivalences are not current evidence.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Ontology Alignment Specification",
+      "archived_path": "archive-v1/pages/Main/Ontology Alignment Specification.mediawiki",
+      "current_revid": 733,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "reconciliation_evidence": "Exact/close/broad/narrow/related mapping and context/version/provenance/loss principles survive; specific external mappings and operational API claims require separate evidence.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Ontology index",
+      "archived_path": "archive-v1/pages/Main/Ontology index.mediawiki",
+      "current_revid": 734,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Current ontology replaces historical EPV/composable-multi-type catalog; extra Event/Model/System/etc types remain use-driven candidates rather than automatic imports.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Overview",
+      "archived_path": "archive-v1/pages/Main/Overview.mediawiki",
+      "current_revid": 775,
+      "revision_count": 4,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Peer-review-protocol",
+      "archived_path": "archive-v1/pages/Main/Peer-review-protocol.mediawiki",
+      "current_revid": 586,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Editorial protocol.mediawiki",
+        "Main/Peer review.mediawiki"
+      ],
+      "rationale": "Durable subject/method signal is represented or re-canonicalized in the current corpus; the historical fragment itself is not restored.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "Main/Peer review.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "reconciliation_evidence": "COI disclosure, methodology/evidence review, documentation and dispute handling survive; mandatory Emerging→Established board review and old confidence categories do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Peer-review-summary",
+      "archived_path": "archive-v1/pages/Main/Peer-review-summary.mediawiki",
+      "current_revid": 588,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "already-represented",
+      "canonical_targets": [
+        "Main/Peer review.mediawiki"
+      ],
+      "rationale": "Durable subject/method signal is represented or re-canonicalized in the current corpus; the historical fragment itself is not restored.",
+      "prior_premature_disposition": "already-represented",
+      "reconciliation_status": "already_represented",
+      "reconciliation_targets": [
+        "Main/Peer review.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Peer review article represents the subject.",
+      "retirement_ready": true
+    },
+    {
+      "title": "PHASE3 DEPLOYMENT AUDIT",
+      "archived_path": "archive-v1/pages/Main/PHASE3 DEPLOYMENT AUDIT.mediawiki",
+      "current_revid": 735,
+      "revision_count": 3,
+      "migration_role": "maintenance_validation_test",
+      "architecture_family": null,
+      "final_disposition": "historical-only",
+      "canonical_targets": [],
+      "rationale": "Operational/test artifact retained only through immutable Git history.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "docs/deployment.md"
+      ],
+      "reconciliation_evidence": "Dated 2026-02 readiness receipt. It cannot establish current deployment; current deployment requires current source/runtime evidence.",
+      "retirement_ready": true
+    },
+    {
+      "title": "PHILOSOPHICAL FRAMEWORK SUMMARY",
+      "archived_path": "archive-v1/pages/Main/PHILOSOPHICAL FRAMEWORK SUMMARY.mediawiki",
+      "current_revid": 736,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "foundational_constitutional_philosophy",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Four foundations.mediawiki"
+      ],
+      "reconciliation_evidence": "Critical-rationalist/context-dependent fallibilism, methodological plurality, skepticism of authority/consensus, qualitative uncertainty and justification alternatives are current; utility is not adopted as a truth criterion.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Portal Architecture Specification",
+      "archived_path": "archive-v1/pages/Main/Portal Architecture Specification.mediawiki",
+      "current_revid": 737,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "navigation_portals_categories_visualization",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Navigation and coverage research.mediawiki"
+      ],
+      "reconciliation_evidence": "Progressive disclosure, cross-domain/polyhierarchical portals, related/parent distinctions, smaller query-supported portal sets and maintenance lessons survive; fixed portal taxonomy/tree/templates/LocalSettings/autoration/counts do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Portal List",
+      "archived_path": "archive-v1/pages/Main/Portal List.mediawiki",
+      "current_revid": 738,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Navigation and coverage research.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Portal namespace/navigation is authority; historical list primarily names proposed portals that were never established.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Projects section",
+      "archived_path": "archive-v1/pages/Main/Projects section.mediawiki",
+      "current_revid": 776,
+      "revision_count": 5,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki"
+      ],
+      "reconciliation_evidence": "Empty-square Main-page placeholder; no substantive project knowledge.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Property Definitions Index",
+      "archived_path": "archive-v1/pages/Main/Property Definitions Index.mediawiki",
+      "current_revid": 594,
+      "revision_count": 2,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Relationships.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Property namespace/standards define implemented floor; historical confidence/quality/source-count/template/category properties are proposed design, not current schema.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Property Types",
+      "archived_path": "archive-v1/pages/Main/Property Types.mediawiki",
+      "current_revid": 739,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki"
+      ],
+      "reconciliation_evidence": "SMW datatypes remain substrate capabilities; current concrete Property pages define actual use. Historical custom confidence/workflow metadata are not current schema.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Provenance Model",
+      "archived_path": "archive-v1/pages/Main/Provenance Model.mediawiki",
+      "current_revid": 777,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "epistemics_evidence_provenance",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Epistemics.mediawiki",
+        "BITwiki/Evidence.mediawiki",
+        "BITwiki/Sources.mediawiki",
+        "BITwiki/Claim validation.mediawiki",
+        "BITwiki/Provenance.mediawiki",
+        "BITwiki/Uncertainty.mediawiki",
+        "BITwiki/Epistemic status.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Provenance.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Provenance preserves PROV-O as conceptual model while explicitly not claiming implementation of every relation/property.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Quality Validation Framework",
+      "archived_path": "archive-v1/pages/Main/Quality Validation Framework.mediawiki",
+      "current_revid": 740,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "quality_governance_stewardship",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Editorial protocol.mediawiki",
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Constitution.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "deprecated",
+      "reconciliation_targets": [
+        "BITwiki/Epistemic audit.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
+      ],
+      "reconciliation_evidence": "Layered auditing survives; universal scoring, community confidence voting, fixed panels/classes/dashboards are not current authority.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Query Patterns",
+      "archived_path": "archive-v1/pages/Main/Query Patterns.mediawiki",
+      "current_revid": 741,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki"
+      ],
+      "reconciliation_evidence": "Generic SMW query techniques remain valid, but historical queries target obsolete properties/types/statuses; current queries must consume current canonical state.",
+      "retirement_ready": true
+    },
+    {
+      "title": "README",
+      "archived_path": "archive-v1/pages/Main/README.mediawiki",
+      "current_revid": 742,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "reconciliation_evidence": "TEMP-001/workspace completion receipt; useful validation recommendations are reconciled elsewhere, while paths/scores/status are process history.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Related Theories",
+      "archived_path": "archive-v1/pages/Main/Related Theories.mediawiki",
+      "current_revid": 778,
+      "revision_count": 3,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "deliberately-excluded",
+      "canonical_targets": [],
+      "rationale": "V1 prototype/test subject material; not current BITwiki canon. Any durable biological concept must be independently researched rather than restored from this test.",
+      "prior_premature_disposition": "deliberately-excluded",
+      "reconciliation_status": "deliberately_excluded_test",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "Owner clarified these V1 biology/project pages were prototype/test material and not a current BITwiki project. Any related current biology is independently researched.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Research Synthesis Index",
+      "archived_path": "archive-v1/pages/Main/Research Synthesis Index.mediawiki",
+      "current_revid": 744,
+      "revision_count": 3,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Comparative wiki research register.mediawiki",
+        "BITwiki/Research references.mediawiki"
+      ],
+      "reconciliation_evidence": "Durable comparative-research function/source-family lineage is preserved in active research register; old file counts, roadmap completion and governance/implementation recommendations require re-verification and are not adopted.",
+      "retirement_ready": true
+    },
+    {
+      "title": "REVISION SUMMARY",
+      "archived_path": "archive-v1/pages/Main/REVISION SUMMARY.mediawiki",
+      "current_revid": 743,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "foundational_constitutional_philosophy",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Manifesto.mediawiki",
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Four foundations.mediawiki",
+        "BITwiki/Human-AI symbiosis.mediawiki",
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "BITwiki/Source lineage.mediawiki"
+      ],
+      "reconciliation_evidence": "Direct review shows a revision/process receipt containing changed-file lists, constraints, workstream/agent notes and historical assertions; no independent current constitutional standard requires republication.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Schema matter index",
+      "archived_path": "archive-v1/pages/Main/Schema matter index.mediawiki",
+      "current_revid": 779,
+      "revision_count": 4,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki"
+      ],
+      "reconciliation_evidence": "Current focused standards replace schema index; enabling-not-rigid structure principle survives while old six-type/property/template/query catalogs do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Site notice",
+      "archived_path": "archive-v1/pages/Main/Site notice.mediawiki",
+      "current_revid": 141,
+      "revision_count": 2,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki",
+        "BITwiki/Epistemics.mediawiki"
+      ],
+      "reconciliation_evidence": "Durable warning about human-assisted AI, incompleteness and independent verification is represented more precisely in current Main Page Read Critically/footer and epistemics standards.",
+      "retirement_ready": true
+    },
+    {
+      "title": "SMW Property Definitions",
+      "archived_path": "archive-v1/pages/Main/SMW Property Definitions.mediawiki",
+      "current_revid": 745,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Relationships.mediawiki"
+      ],
+      "reconciliation_evidence": "Current implemented property floor and evidence-gated expansion supersede historical complete-catalog claims, inverse tables, scores and proposed workflow/governance/event fields.",
+      "retirement_ready": true
+    },
+    {
+      "title": "SMW Property Types Complete",
+      "archived_path": "archive-v1/pages/Main/SMW Property Types Complete.mediawiki",
+      "current_revid": 746,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki"
+      ],
+      "reconciliation_evidence": "Core SMW types survive; historical custom confidence/workflow/agent types and nonstandard declaration examples are not adopted.",
+      "retirement_ready": true
+    },
+    {
+      "title": "SMW Query Patterns Reference",
+      "archived_path": "archive-v1/pages/Main/SMW Query Patterns Reference.mediawiki",
+      "current_revid": 747,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "semantic_schema_smw_queries_modules",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki",
+        "BITwiki/Interoperability.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Type/domain/status/relationship query patterns survive conceptually; old confidence/Axiomatic/Verified/obsolete relation and unverified aggregation examples are not current contracts.",
+      "retirement_ready": true
+    },
+    {
+      "title": "SMW Template System",
+      "archived_path": "archive-v1/pages/Main/SMW Template System.mediawiki",
+      "current_revid": 748,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Template/Lua/SMW/Cargo responsibility separation is current architecture.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Start Exploring section",
+      "archived_path": "archive-v1/pages/Main/Start Exploring section.mediawiki",
+      "current_revid": 780,
+      "revision_count": 9,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "reconciliation_evidence": "Useful multi-entry-point navigation function is directly matured in current Main Page Start Exploring with current portal/navigation semantics.",
+      "retirement_ready": true
+    },
+    {
+      "title": "System Architecture",
+      "archived_path": "archive-v1/pages/Main/System Architecture.mediawiki",
+      "current_revid": 227,
+      "revision_count": 14,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "system_architecture_boundary",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Ecosystem.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Ecosystem.mediawiki",
+        "BITwiki/Knowledge lifecycle.mediawiki"
+      ],
+      "reconciliation_evidence": "Durable BIThub/BITwiki/BITCORE and publication-loop concepts survive; n8n/PM-agent/GitHub-canonical-route claims are not presumed deployed.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Systems-analysis",
+      "archived_path": "archive-v1/pages/Main/Systems-analysis.mediawiki",
+      "current_revid": 618,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "incorporated",
+      "canonical_targets": [
+        "Main/Systems analysis.mediawiki"
+      ],
+      "rationale": "Durable subject/method signal is represented or re-canonicalized in the current corpus; the historical fragment itself is not restored.",
+      "prior_premature_disposition": "incorporated",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "Main/Systems analysis.mediawiki"
+      ],
+      "reconciliation_evidence": "Re-researched canonical Systems analysis article added in PR #155; not a verbatim V1 restoration.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Template Catalog",
+      "archived_path": "archive-v1/pages/Main/Template Catalog.mediawiki",
+      "current_revid": 781,
+      "revision_count": 4,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Implemented-vs-wanted distinction and use-driven template families are current; historical catalog is not an implementation backlog.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Template Improvement Recommendations",
+      "archived_path": "archive-v1/pages/Main/Template Improvement Recommendations.mediawiki",
+      "current_revid": 753,
+      "revision_count": 3,
+      "migration_role": "maintenance_validation_test",
+      "architecture_family": null,
+      "final_disposition": "historical-only",
+      "canonical_targets": [],
+      "rationale": "Operational/test artifact retained only through immutable Git history.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Central Lua validation, validation-before-emission, centralized vocabularies, reduced duplication and regression testing are current; old module names/vocabularies are obsolete.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Template List",
+      "archived_path": "archive-v1/pages/Main/Template List.mediawiki",
+      "current_revid": 782,
+      "revision_count": 4,
+      "migration_role": "navigation_interface",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Organization.mediawiki"
+      ],
+      "rationale": "Historical navigation/interface surface superseded by current navigation architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Template namespace/standard is authority; historical list mixed nonexistent wanted templates, old section templates and obsolete confidence/Idea interfaces.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Template System Validation Framework",
+      "archived_path": "archive-v1/pages/Main/Template System Validation Framework.mediawiki",
+      "current_revid": 783,
+      "revision_count": 4,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Epistemic audit.mediawiki"
+      ],
+      "reconciliation_evidence": "Semantic integrity, validation-before-emission, transclusion hygiene, tests/docs/release checks survive; universal confidence/status/semantic-output requirements do not.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Template Usage Guide",
+      "archived_path": "archive-v1/pages/Main/Template Usage Guide.mediawiki",
+      "current_revid": 784,
+      "revision_count": 4,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "composition_templates_transclusion",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Page format.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Contributing.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Consistent patterns without rigidity survives; obsolete Idea/confidence/source-count/template-family guidance is replaced.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Template Validation Implementation",
+      "archived_path": "archive-v1/pages/Main/Template Validation Implementation.mediawiki",
+      "current_revid": 628,
+      "revision_count": 2,
+      "migration_role": "maintenance_validation_test",
+      "architecture_family": null,
+      "final_disposition": "historical-only",
+      "canonical_targets": [],
+      "rationale": "Operational/test artifact retained only through immutable Git history.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Old ParserFunction/TemplateStyles implementation and numeric-confidence fields are obsolete; current compiler preserves validation-before-emission/diagnostics.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Template Validation Lua Module",
+      "archived_path": "archive-v1/pages/Main/Template Validation Lua Module.mediawiki",
+      "current_revid": 759,
+      "revision_count": 3,
+      "migration_role": "maintenance_validation_test",
+      "architecture_family": null,
+      "final_disposition": "historical-only",
+      "canonical_targets": [],
+      "rationale": "Operational/test artifact retained only through immutable Git history.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki"
+      ],
+      "reconciliation_evidence": "ValidatorBase family matured into current BITwiki Core/Compiler/Structure/runtime-schema architecture; old confidence/source-count requirements are obsolete.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Template Validation Report",
+      "archived_path": "archive-v1/pages/Main/Template Validation Report.mediawiki",
+      "current_revid": 785,
+      "revision_count": 4,
+      "migration_role": "maintenance_validation_test",
+      "architecture_family": null,
+      "final_disposition": "historical-only",
+      "canonical_targets": [],
+      "rationale": "Operational/test artifact retained only through immutable Git history.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Old-template audit receipt; useful findings on duplication/weak validation/vocabulary drift/testing are already reflected in current architecture.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Test Page",
+      "archived_path": "archive-v1/pages/Main/Test Page.mediawiki",
+      "current_revid": 240,
+      "revision_count": 1,
+      "migration_role": "maintenance_validation_test",
+      "architecture_family": null,
+      "final_disposition": "historical-only",
+      "canonical_targets": [],
+      "rationale": "Operational/test artifact retained only through immutable Git history.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [],
+      "reconciliation_evidence": "One-line pywikibot test artifact; no durable knowledge or design requirement.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Validation rules",
+      "archived_path": "archive-v1/pages/Main/Validation rules.mediawiki",
+      "current_revid": 786,
+      "revision_count": 4,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "ontology_semantics_relationships",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Entity types.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Navigation.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Semantic properties.mediawiki",
+        "BITwiki/Relationships.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki"
+      ],
+      "reconciliation_evidence": "Current validators preserve bounded identity checks; historical required fields, numeric confidence, old vocabularies and blanket thresholds are superseded. Relation domain/range remains unimplemented future work.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Validation-procedure",
+      "archived_path": "archive-v1/pages/Main/Validation-procedure.mediawiki",
+      "current_revid": 634,
+      "revision_count": 2,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "incorporated",
+      "canonical_targets": [
+        "BITwiki/Claim validation.mediawiki",
+        "Main/Validation.mediawiki"
+      ],
+      "rationale": "Durable subject/method signal is represented or re-canonicalized in the current corpus; the historical fragment itself is not restored.",
+      "prior_premature_disposition": "incorporated",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Claim validation.mediawiki",
+        "Main/Validation.mediawiki"
+      ],
+      "reconciliation_evidence": "Current validation grammar/process represents the durable procedural signal, subject to direct source audit.",
+      "retirement_ready": true
+    },
+    {
+      "title": "What Makes Us Different section",
+      "archived_path": "archive-v1/pages/Main/What Makes Us Different section.mediawiki",
+      "current_revid": 787,
+      "revision_count": 6,
+      "migration_role": "book_matter_reusable",
+      "architecture_family": null,
+      "final_disposition": "superseded",
+      "canonical_targets": [
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "rationale": "Historical composition artifact; the reusable-content design signal survives in current Book Matter/transclusion architecture.",
+      "prior_premature_disposition": "superseded",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "Main/Main Page.mediawiki",
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "reconciliation_evidence": "Current Main Page preserves and corrects the comparison through coherent modular reuse, reading depths, evidence/provenance/uncertainty and accountable human/AI-assisted inquiry.",
+      "retirement_ready": true
+    },
+    {
+      "title": "Wiki Organization Guidelines",
+      "archived_path": "archive-v1/pages/Main/Wiki Organization Guidelines.mediawiki",
+      "current_revid": 213,
+      "revision_count": 3,
+      "migration_role": "architecture_system_source",
+      "architecture_family": "system_architecture_boundary",
+      "final_disposition": "historical-only",
+      "canonical_targets": [
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Ecosystem.mediawiki",
+        "BITwiki/MediaWiki substrate.mediawiki",
+        "BITwiki/Programmable knowledge substrate.mediawiki"
+      ],
+      "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
+      "prior_premature_disposition": "historical-only",
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Organization.mediawiki",
+        "BITwiki/Ontology.mediawiki",
+        "BITwiki/Navigation.mediawiki",
+        "BITwiki/Book Matter.mediawiki",
+        "BITwiki/Transclusion.mediawiki"
+      ],
+      "reconciliation_evidence": "Durable semantic organization, explicit relationships, reusable composition and navigation goals are current canon.",
+      "retirement_ready": true
+    }
+  ],
+  "completed_family_reconciliations": [
+    "epistemics_evidence_provenance",
+    "ontology_semantics_relationships",
+    "foundational_constitutional_philosophy",
+    "system_architecture_boundary",
+    "deployment_integration_migration_operations",
+    "quality_governance_stewardship",
+    "maintenance_validation_test",
+    "semantic_schema_smw_queries_modules",
+    "composition_templates_transclusion",
+    "navigation_portals_categories_visualization",
+    "navigation_interface",
+    "book_matter_reusable",
+    "research_synthesis_knowledge_systems"
+  ],
+  "family_reports": {
+    "epistemics_evidence_provenance": "docs/v1-reconciliation-epistemics.md",
+    "ontology_semantics_relationships": "docs/v1-reconciliation-ontology.md",
+    "foundational_constitutional_philosophy": "docs/v1-reconciliation-foundations.md",
+    "system_architecture_boundary": "docs/v1-reconciliation-system-deployment.md",
+    "deployment_integration_migration_operations": "docs/v1-reconciliation-system-deployment.md",
+    "quality_governance_stewardship": "docs/v1-reconciliation-governance-quality.md",
+    "maintenance_validation_test": "docs/v1-reconciliation-governance-quality.md",
+    "semantic_schema_smw_queries_modules": "docs/v1-reconciliation-schema.md",
+    "composition_templates_transclusion": "docs/v1-reconciliation-composition.md",
+    "navigation_portals_categories_visualization": "docs/v1-reconciliation-navigation-bookmatter.md",
+    "navigation_interface": "docs/v1-reconciliation-navigation-bookmatter.md",
+    "book_matter_reusable": "docs/v1-reconciliation-navigation-bookmatter.md",
+    "research_synthesis_knowledge_systems": "docs/v1-reconciliation-research-synthesis.md"
+  },
+  "reconciliation_complete": true,
+  "retirement_authorized": false,
+  "retirement_note": "Content-level reconciliation is complete, but archive retirement remains a separate reviewable change requiring dependency/reference audit and owner acceptance."
+}

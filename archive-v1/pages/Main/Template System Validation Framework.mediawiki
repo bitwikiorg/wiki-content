@@ -1,0 +1,367 @@
+{{Infobox
+| title = Template System Validation Framework: Ensuring SMW Integration Integrity
+| description = Comprehensive validation framework for BITwiki template systems, ensuring semantic integrity, epistemic consistency, and recursive knowledge graph compatibility.
+| type = validation-framework
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: validation-framework
+domain: template-systems
+| workflow = state: Active
+| sources = - "https://www.semantic-mediawiki.org/wiki/Help:Templates"
+- "https://www.mediawiki.org/wiki/Help:Templates"
+- "https://www.semantic-mediawiki.org/wiki/Help:Properties"
+- "https://www.mediawiki.org/wiki/Help:TemplateData"
+- "https://en.wikipedia.org/wiki/Wikipedia:Template_index"
+- "https://www.semantic-mediawiki.org/wiki/Help:Inline_queries"
+- "https://www.mediawiki.org/wiki/Help:Extension:ParserFunctions"
+- "https://www.semantic-mediawiki.org/wiki/Help:Concepts"
+- "https://www.mediawiki.org/wiki/Manual:Template_limits"
+- "https://www.semantic-mediawiki.org/wiki/Help:Error_handling"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Validation]]
+[[Category:BITwiki Templates]]
+[[Category:Hyperion Workspace]]
+<includeonly>
+
+= Template System Validation Framework: Ensuring SMW Integration Integrity =
+
+== Executive Summary
+
+BITwiki's template system serves as the interface between human-readable content and machine-queryable knowledge graphs. This framework establishes validation criteria ensuring templates enhance rather than hinder recursive knowledge development.
+
+'''Core Principle:''' Templates must be '''epistemically transparent''' and '''semantically queryable'''—every template invocation should contribute to the knowledge graph, not obscure it.
+
+----
+== 1. Validation Dimensions
+
+=== 1.1 Semantic Integrity
+
+Templates must correctly set and retrieve SMW properties:
+
+| Validation Check | Pass Criteria | Failure Mode |
+|------------------|---------------|--------------|
+| Property Setting | `[[Has property::value]]` renders correctly | Silent property failure |
+| Property Retrieval | `{{#show:Page|?Has property}}` returns value | Empty or wrong value |
+| Type Consistency | Values match [[Has type::...]] declaration | Type mismatch errors |
+| Multi-Value Support | `[[Has property::val1]],[[Has property::val2]]` works | Only last value stored |
+
+'''Test Pattern:'''
+```mediawiki
+{{#vardefine: test_value | {{#show: TestPage | ?Has test property }} }}
+{{#if: {{#var: test_value}} | PASS | FAIL }}
+```
+
+=== 1.2 Epistemic Transparency
+
+Templates must expose epistemic status, not hide it:
+
+| Validation Check | Pass Criteria | Failure Mode |
+|------------------|---------------|--------------|
+| Epistemic Marker | `{{EpistemicIcon|Established}}` displays | Icon missing |
+| Confidence Display | Confidence value visible to readers | Hidden in template |
+| Status Editable | Users can modify epistemic fields | Hardcoded status |
+| Provenance Chain | `[[Has author::...]]` traceable | Anonymous template output |
+
+'''Critical Rule:''' No template should output content without epistemic marking.
+
+=== 1.3 Transclusion Hygiene
+
+Templates must respect inclusion boundaries:
+
+| Validation Check | Pass Criteria | Failure Mode |
+|------------------|---------------|--------------|
+| Noinclude Tags | `{{Documentation}}` present | Documentation leaks |
+| Includeonly Content | Only intended content transcludes | Template code visible |
+| Category Isolation | Categories in `` blocks | Category pollution |
+| Parameter Sanitization | `{{{param|default}}}` has defaults | Broken transclusions |
+
+'''Validation Query:'''
+```bash
+grep -L "<noinclude>" *.wiki  # Find templates missing noinclude
+grep "\\[\\[Category:" *.wiki | grep -v "noinclude"  # Find category leaks
+```
+
+=== 1.4 Recursive Compatibility
+
+Templates must support recursive knowledge patterns:
+
+| Validation Check | Pass Criteria | Failure Mode |
+|------------------|---------------|--------------|
+| Self-Reference | Template can reference its own output | Infinite recursion |
+| Query Integration | `{{#ask:...}}` works inside template | Parser function conflicts |
+| Nested Templates | `{{TemplateA|{{TemplateB}}}}` resolves | Nested failure |
+| Dynamic Properties | `[[Has {{#var:prop}}::value]]` works | Property name literal |
+
+----
+== 2. Template Categories
+
+=== 2.1 Infobox Templates
+
+'''Purpose:''' Structured entity representation
+
+'''Validation Criteria:'''
+* All parameters map to SMW properties
+* Epistemic status field mandatory
+* Image handling with fallback
+* Mobile-responsive CSS
+
+'''Example: Infobox_Concept'''
+```mediawiki
+<includeonly>{{#if: {{{title|}}}
+| {{#set:
+  |Has entity type=Concept
+  |Has title={{{title}}}
+  |Has epistemic status={{{epistemic_status|Hypothetical}}}
+  |Has confidence={{{confidence|0.5}}}
+  |Has domain={{{domain|}}}
+  }}
+<div class="infobox concept">
+  <div class="infobox-header">
+    <span class="epistemic-marker">{{EpistemicIcon|{{{epistemic_status|Hypothetical}}}}}</span>
+    <span class="infobox-title">{{{title}}}</span>
+    <span class="confidence-badge">{{ConfidenceBar|{{{confidence|0.5}}}}}</span>
+  </div>
+  ...
+</div>
+| {{Error|Infobox_Concept requires title parameter}}
+}}</includeonly>
+<noinclude>{{Documentation}}[[Category:Infobox Templates]]
+```
+
+'''Validation Checklist:'''
+* [ ] All parameters have `{{#set:...}}` mappings
+* [ ] Epistemic status defaults to "Hypothetical"
+* [ ] Confidence defaults to 0.5
+* [ ] Error handling for missing required params
+* [ ] Documentation in ``
+
+=== 2.2 Epistemic Marker Templates
+
+'''Purpose:''' Visual and semantic epistemic classification
+
+'''Validation Criteria:'''
+* Icon displays correctly
+* Tooltip explains status
+* Screen reader accessible
+* Links to epistemic framework
+
+'''Example: EpistemicIcon'''
+```mediawiki
+<includeonly>{{#switch: {{{1|Hypothetical}}}
+| Axiomatic = <span class="epistemic axiomatic" title="Axiomatic: Self-evident or definitional (confidence 1.0)">⚡</span>
+| Established = <span class="epistemic established" title="Established: Well-supported by evidence (confidence 0.8-0.99)">✓</span>
+| Emerging = <span class="epistemic emerging" title="Emerging: Preliminary evidence exists (confidence 0.5-0.79)">~</span>
+| Hypothetical = <span class="epistemic hypothetical" title="Hypothetical: Speculative, needs testing (confidence 0.0-0.49)">?</span>
+| Contested = <span class="epistemic contested" title="Contested: Active disagreement (confidence varies)">!</span>
+| #default = <span class="epistemic unknown" title="Unknown: Status not specified">◌</span>
+}}</includeonly>
+```
+
+'''Validation Tests:'''
+* `{{EpistemicIcon|Established}}` → displays ✓
+* `{{EpistemicIcon}}` → defaults to ?
+* `{{EpistemicIcon|Invalid}}` → displays ◌
+
+=== 2.3 Query Templates
+
+'''Purpose:''' Reusable semantic queries
+
+'''Validation Criteria:'''
+* Query returns expected results
+* Empty result handling
+* Performance optimization (LIMIT, sort)
+* Parameterized queries
+
+'''Example: RelatedEntities'''
+```mediawiki
+<includeonly>{{#ask: [[Has related entity::{{FULLPAGENAME}}]]
+|?Has title
+|?Has epistemic status
+|?Has confidence
+|format=table
+|limit={{{limit|10}}}
+|sort=Has confidence
+|order=desc
+|intro=<div class="related-entities">
+|outro=</div>
+|default=<div class="no-related">No related entities found.</div>
+}}</includeonly>
+```
+
+'''Validation Tests:'''
+* Query executes without timeout
+* Results sorted by confidence
+* Empty result shows default message
+* Limit parameter respected
+
+=== 2.4 Navigation Templates
+
+'''Purpose:''' Cross-page knowledge navigation
+
+'''Validation Criteria:'''
+* All links valid
+* Dynamic generation via queries
+* Current page highlighting
+* Epistemic status indicators on links
+
+----
+== 3. Validation Procedures
+
+=== 3.1 Automated Testing
+
+'''Test Suite: Template Validator'''
+
+```python
+# Pseudo-code for template validation
+def validate_template(template_path):
+    results = {
+        'semantic_integrity': check_smw_properties(template_path),
+        'epistemic_transparency': check_epistemic_markers(template_path),
+        'transclusion_hygiene': check_noinclude_blocks(template_path),
+        'recursive_compatibility': check_nested_calls(template_path)
+    }
+    return results
+
+def check_smw_properties(path):
+    content = read_file(path)
+    # Check for [[Has ...::...]] patterns
+    property_sets = re.findall(r'\[\[Has \w+::', content)
+    # Check for {{#set:...}}
+    set_calls = re.findall(r'\{\{#set:', content)
+    return len(property_sets) + len(set_calls) > 0
+```
+
+'''Command Line Validation:'''
+```bash
+# Check all templates for SMW property setting
+find . -name "*.wiki" -exec grep -l "{{#set:" {} \;
+
+# Check for missing noinclude blocks
+find . -name "*.wiki" -exec sh -c 'grep -L "<noinclude>" "$1"' _ {} \;
+
+# Check for epistemic markers
+find . -name "*.wiki" -exec grep -l "EpistemicIcon\|epistemic" {} \;
+```
+
+=== 3.2 Manual Review
+
+'''Review Checklist per Template:'''
+
+| Aspect | Reviewer | Status |
+|--------|----------|--------|
+| Purpose clarity | Content reviewer | ☐ |
+| SMW integration | Technical reviewer | ☐ |
+| Epistemic marking | Epistemic reviewer | ☐ |
+| Documentation | Documentation reviewer | ☐ |
+| Mobile rendering | UX reviewer | ☐ |
+
+'''Review Questions:'''
+# Does this template have a clear, single purpose?
+# Does every output have epistemic marking?
+# Are all SMW properties correctly typed?
+# Is the documentation sufficient for new users?
+# Does it work on mobile devices?
+# Does it handle edge cases gracefully?
+
+=== 3.3 Integration Testing
+
+'''Test Scenarios:'''
+
+# '''Template Chain:''' `{{A|{{B|{{C}}}}}` - Nested template resolution
+# '''Query in Template:''' `{{Infobox|query={{#ask:...}}}}` - Dynamic content
+# '''Epistemic Cascade:''' Parent template inherits child epistemic status
+# '''Error Propagation:''' Missing parameter handling across template chain
+
+----
+== 4. Common Failure Modes
+
+=== 4.1 Silent Property Failure
+
+'''Symptom:''' Template renders but properties not set
+'''Cause:''' `[[Has property::value]]` inside conditional that evaluates false
+'''Fix:''' Ensure property setting outside conditionals or use `{{#set:...}}`
+
+=== 4.2 Category Pollution ===
+
+'''Symptom:''' Template pages appear in content categories
+'''Cause:''' `[[Category:...]]` outside `<noinclude>`
+'''Fix:''' Move all categories inside `<noinclude>` blocks
+
+=== 4.3 Epistemic Opacity ===
+
+'''Symptom:''' Content displays without confidence indicators
+'''Cause:''' Hardcoded epistemic status or missing marker template
+'''Fix:''' Mandatory `{{EpistemicIcon|...}}` in all output templates
+
+=== 4.4 Parser Function Conflicts ===
+
+'''Symptom:''' `{{#ask:...}}` returns error inside template
+'''Cause:''' Parser function nesting depth exceeded
+'''Fix:''' Simplify template logic or use `{{#vardefine:...}}` for intermediate results
+
+----
+== 5. Template Deprecation Protocol
+
+=== 5.1 Deprecation Criteria
+
+Templates should be deprecated when:
+* Functionality moved to other systems (e.g., BITHUB for agent templates)
+* Superseded by better implementations
+* Security vulnerabilities discovered
+* Performance issues unresolvable
+
+=== 5.2 Deprecation Process
+
+# '''Mark Deprecated:''' Add `{{Deprecated}}` template
+# '''Document Migration:''' Provide replacement instructions
+# '''Update References:''' Replace usages in existing pages
+# '''Archive:''' Move to `Category:Deprecated Templates`
+# '''Remove:''' After deprecation period (6 months)
+
+'''Example Deprecation:'''
+```mediawiki
+<noinclude>{{Deprecated|reason=Agent documentation moved to BITHUB|replacement=BITHUB:Agent_Documentation}}
+<includeonly>{{Error|This template is deprecated. Use [[BITHUB:Agent_Documentation]] instead.}}</includeonly>
+```
+
+----
+== 6. Performance Optimization
+
+=== 6.1 Query Optimization
+
+| Anti-Pattern | Optimization |
+|--------------|--------------|
+| Unbounded `{{#ask:...}}` | Add `|limit=50` |
+| Deep nesting | Flatten template calls |
+| Repeated queries | Use `{{#vardefine:...}}` |
+| Complex filters | Pre-compute with concepts |
+
+=== 6.2 Caching Strategy
+* Use `|cache=...` for expensive queries
+* Mark volatile content with `|no cache`
+* Leverage SMW's built-in query cache
+
+----
+== 7. Conclusion
+
+Template validation ensures BITwiki's knowledge infrastructure remains:
+* '''Semantically queryable:''' Every template contributes to the knowledge graph
+* '''Epistemically transparent:''' Confidence and status are always visible
+* '''Recursively compatible:''' Templates compose without breaking
+* '''Maintainable:''' Clear validation criteria enable systematic review
+
+'''Recommendation:''' Implement automated validation pipeline using the checks in Section 3.1. Require manual review for all new templates using Section 3.2 checklist.
+
+'''Next Steps:'''
+# Deploy Template Validator script to CI/CD
+# Audit existing templates against this framework
+# Deprecate non-compliant templates per Section 5
+# Train contributors on validation criteria
+
+</includeonly>

@@ -1,0 +1,490 @@
+{{Infobox
+| title = BITwiki Entity Typology: Evolving Classifications
+| description = Comprehensive entity typology for knowledge capture, designed as evolving artifacts. Merged from all versions including etymology, detailed examples, query patterns, and references.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| revised = 2026-02-18
+| version = 4.0.0-consolidated
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| revision_note = Consolidated merge of all versions: base + v1-7. Added etymology, phylogenetic notes, detailed SMW examples, query patterns, and references.
+| ontology = entity_type: evolving-typology
+domain: knowledge-classification
+| workflow = state: Active
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+= BITwiki Entity Typology: Evolving Classifications =
+
+== Purpose ==
+
+This document articulates entity typologies as ''knowledge artifacts''—structures that emerge from use, adapt to context, and evolve through application. Unlike rigid taxonomies that constrain thought, these types serve as generative scaffolds that enhance our substrate for understanding.
+
+The typology presented here is not exhaustive nor final. It represents a snapshot of current practice, offered as guidance rather than prescription. Types proliferate, merge, and speciate as knowledge domains develop.
+
+Extended entity types capture attribution, provenance, and contextual information. While core types organize knowledge content, extended types organize knowledge about that content—who created it, when, where, and how it was shared.
+
+== Entity Typology ==
+
+=== Person
+
+'''Etymology:''' From Latin ''persona''—the mask worn by actors, later the individual behind the mask.
+
+'''Definition:''' An individual human being.
+
+'''Purpose:''' Attribution, provenance, biographical information. Persons are the loci of knowledge creation and transmission.
+
+'''Properties:'''
+* '''Name''': Primary identifier (what we call them)
+* '''Temporal bounds''': Birth, death dates
+* '''Affiliations''': Institutional connections
+* '''Contributions''': What they brought forth
+* '''Expertise''': Domains of competence
+* '''Influences''': Intellectual predecessors
+
+'''SMW:'''
+```wiki
+[[Has entity type::Person]]
+[[Has name::Name]]
+[[Has birth date::YYYY-MM-DD]]
+[[Has death date::YYYY-MM-DD]]
+[[Has affiliation::Organization]]
+[[Has contribution::Contribution]]
+[[Has expertise::Domain]]
+[[Has influence::Person]]
+```
+
+'''Examples:'''
+* Norbert Wiener—mathematician who articulated cybernetics
+* Gregory Bateson—anthropologist who traced patterns in human and natural systems
+* Heinz von Foerster—physicist who formulated second-order cybernetics
+
+'''Detailed Example - Norbert Wiener:'''
+```wiki
+[[Has entity type::Person]]
+[[Has name::Norbert Wiener]]
+[[Has birth date::1894-11-26]]
+[[Has death date::1964-03-18]]
+[[Has affiliation::MIT]]
+[[Has contribution::Cybernetics (1948)]]
+[[Has contribution::Wiener filter]]
+[[Has expertise::Mathematics]]
+[[Has expertise::Cybernetics]]
+[[Has influence::Bertrand Russell]]
+```
+
+'''Query Examples:'''
+* "All contributions by MIT researchers 1940-1960"
+* "All people influenced by Gregory Bateson"
+* "All collaborations between cyberneticians and anthropologists"
+
+'''Phylogenetic Note:''' The Person type emerged from the need to attribute ideas to their originators, a practice dating to ancient citation traditions. It has since expanded to capture collaborative networks and institutional affiliations.
+
+=== Organization
+
+'''Etymology:''' From Greek ''organon''—tool, instrument, later a structured group with shared purpose.
+
+'''Definition:''' A structured group of people with shared purpose.
+
+'''Purpose:''' Institutional attribution, collaboration tracking, resource mapping. Organizations shape what knowledge gets produced, how it gets validated, and who has access to it.
+
+'''Properties:'''
+* '''Name''': Primary identifier
+* '''Type''': University, company, NGO, government, collective
+* '''Location''': Physical or virtual base
+* '''Members''': People affiliated
+* '''Outputs''': Publications, products, datasets
+* '''Mission''': Stated purpose
+* '''Founding date''': When established
+
+'''SMW:'''
+```wiki
+[[Has entity type::Organization]]
+[[Has name::Name]]
+[[Has type::University/Company/NGO]]
+[[Has location::Location]]
+[[Has member::Person]]
+[[Has output::Output]]
+[[Has mission::Mission statement]]
+[[Has founding date::YYYY-MM-DD]]
+```
+
+'''Examples:'''
+* MIT—institution where cybernetics took root
+* Santa Fe Institute—center for complexity research
+* BITCORE Collective—knowledge system development collective
+
+'''Detailed Example - Santa Fe Institute:'''
+```wiki
+[[Has entity type::Organization]]
+[[Has name::Santa Fe Institute]]
+[[Has type::Research Institute]]
+[[Has location::Santa Fe, New Mexico]]
+[[Has member::Murray Gell-Mann]]
+[[Has member::Stuart Kauffman]]
+[[Has output::Complexity science research]]
+[[Has mission::Study complex systems across disciplines]]
+[[Has founding date::1984]]
+```
+
+'''Query Examples:'''
+* "All organizations founded in the 1980s studying complexity"
+* "All outputs from interdisciplinary research institutes"
+* "All members of institutions that hosted Macy Conference participants"
+
+=== Event
+
+'''Etymology:''' From Latin ''eventus''—outcome, result, from ''evenire'' (to come out, happen).
+
+'''Definition:''' A time-bounded occurrence with participants and outcomes.
+
+'''Purpose:''' Historical tracking, temporal reasoning, causal analysis. Events mark when ideas emerged, when projects started and ended, when fields were established.
+
+'''Properties:'''
+* '''Name''': Primary identifier
+* '''Date/Time''': When it occurred
+* '''Location''': Where it occurred
+* '''Participants''': People and organizations involved
+* '''Outcomes''': Results and consequences
+* '''Significance''': Why it matters
+
+'''SMW:'''
+```wiki
+[[Has entity type::Event]]
+[[Has name::Name]]
+[[Has date::YYYY-MM-DD]]
+[[Has location::Location]]
+[[Has participant::Person]]
+[[Has participant::Organization]]
+[[Has outcome::Outcome]]
+[[Has significance::Significance]]
+```
+
+'''Examples:'''
+* Macy Conferences (1946-1953)—where cybernetics was forged through interdisciplinary dialogue
+* First AI Winter (1987-1993)—period of reduced funding and interest in AI research
+* BITwiki Launch (2025)—emergence of recursive knowledge system
+
+'''Detailed Example - Macy Conferences:'''
+```wiki
+[[Has entity type::Event]]
+[[Has name::Macy Conferences]]
+[[Has date::1946-1953]]
+[[Has location::New York City]]
+[[Has participant::Norbert Wiener]]
+[[Has participant::John von Neumann]]
+[[Has participant::Margaret Mead]]
+[[Has participant::Gregory Bateson]]
+[[Has outcome::Cybernetics established as field]]
+[[Has outcome::Interdisciplinary collaboration model]]
+[[Has significance::Foundational for systems sciences]]
+```
+
+'''Query Examples:'''
+* "All events in the 1940s with both mathematicians and anthropologists"
+* "All outcomes from conferences on feedback and control"
+* "All participants in events that established new fields"
+
+=== Publication
+
+'''Etymology:''' From Latin ''publicare''—to make public, from ''publicus'' (belonging to the people).
+
+'''Definition:''' A documented work made available to the public.
+
+'''Purpose:''' Citation, provenance, evidence assessment, knowledge transmission. Publications provide traceable sources for claims, enabling verification and assessment.
+
+'''Properties:'''
+* '''Title''': Primary identifier
+* '''Authors''': Creators
+* '''Date''': Publication date
+* '''Venue''': Journal, book, conference
+* '''DOI''': Persistent identifier
+* '''Citations''': Impact measure
+* '''Content type''': Paper, book, report
+
+'''SMW:'''
+```wiki
+[[Has entity type::Publication]]
+[[Has title::Title]]
+[[Has author::Person]]
+[[Has date::YYYY-MM-DD]]
+[[Has venue::Venue]]
+[[Has DOI::10.xxxx/xxxxx]]
+[[Has citation count::Number]]
+[[Has content type::Book/Paper/Report]]
+```
+
+'''Examples:'''
+* "Cybernetics: Or Control and Communication in the Animal and the Machine" (Wiener, 1948)
+* "Steps to an Ecology of Mind" (Bateson, 1972)
+* "The Tree of Knowledge" (Maturana & Varela, 1987)
+
+'''Detailed Example - "Cybernetics" (Wiener, 1948):'''
+```wiki
+[[Has entity type::Publication]]
+[[Has title::Cybernetics: Or Control and Communication in the Animal and the Machine]]
+[[Has author::Norbert Wiener]]
+[[Has date::1948]]
+[[Has venue::MIT Press]]
+[[Has DOI::10.7551/mitpress/11811.001.0001]]
+[[Has citation count::>50,000]]
+[[Has content type::Book]]
+[[Has significance::Founded cybernetics field]]
+```
+
+'''Query Examples:'''
+* "All publications from 1948 with >10,000 citations"
+* "All books by Macy Conference participants"
+* "All publications that founded new fields"
+
+=== Location
+
+'''Etymology:''' From Latin ''locus''—place, spot, position.
+
+'''Definition:''' A physical or virtual place.
+
+'''Purpose:''' Spatial reasoning, contextual information, geographic grounding. Where knowledge gets produced matters—institutions cluster geographically, conferences happen in specific places, servers have physical locations.
+
+'''Properties:'''
+* '''Name''': Primary identifier
+* '''Type''': City, institution, virtual space
+* '''Coordinates''': Geographic location
+* '''Contained in''': Larger containing location
+* '''Contains''': Sub-locations
+
+'''SMW:'''
+```wiki
+[[Has entity type::Location]]
+[[Has name::Name]]
+[[Has type::City/Country/Virtual]]
+[[Has coordinates::Lat,Long]]
+[[Contained in::Location]]
+[[Has contains::Location]]
+```
+
+'''Examples:'''
+* Cambridge, MA—locus of MIT and early cybernetics
+* The Internet—virtual space of distributed knowledge
+* Santa Fe, NM—location of complexity science institute
+
+'''Detailed Example - Cambridge, Massachusetts:'''
+```wiki
+[[Has entity type::Location]]
+[[Has name::Cambridge, Massachusetts]]
+[[Has type::City]]
+[[Has coordinates::42.3601°N, 71.0942°W]]
+[[Has contained in::Massachusetts]]
+[[Has contains::MIT]]
+[[Has contains::Harvard University]]
+[[Has significance::Major center for AI and cybernetics research]]
+```
+
+'''Query Examples:'''
+* "All organizations in Cambridge, MA studying AI"
+* "All events that occurred in New York City 1940-1960"
+* "All projects with participants from multiple continents"
+
+=== Technology
+
+'''Etymology:''' From Greek ''technologia''—systematic treatment, from ''techne'' (art, skill) + ''logia'' (study).
+
+'''Definition:''' A tool, technique, or system.
+
+'''Purpose:''' Implementation tracking, capability assessment, tool documentation.
+
+'''Properties:'''
+* '''Name''': Primary identifier
+* '''Type''': Software, hardware, method
+* '''Developer''': Creator
+* '''Release date''': When available
+* '''Capabilities''': What it can do
+* '''Limitations''': Constraints
+
+'''SMW:'''
+```wiki
+[[Has entity type::Technology]]
+[[Has name::Name]]
+[[Has type::Software/Hardware/Method]]
+[[Has developer::Person/Organization]]
+[[Has release date::YYYY-MM-DD]]
+[[Has capabilities::Capability]]
+[[Has limitations::Limitation]]
+```
+
+'''Examples:'''
+* Semantic MediaWiki—knowledge representation platform
+* Neural Networks—adaptive computational systems
+* Blockchain—distributed trust mechanism
+
+== Relationship Patterns ==
+
+=== Person ↔ Organization
+
+'''Relationships:'''
+* Person member of Organization
+* Organization has member Person
+* Person affiliated with Organization
+
+'''SMW:'''
+```wiki
+[[Has member::Person]]
+[[Member of::Organization]]
+[[Affiliated with::Organization]]
+```
+
+=== Person ↔ Publication
+
+'''Relationships:'''
+* Person author of Publication
+* Publication authored by Person
+
+'''SMW:'''
+```wiki
+[[Has author::Person]]
+[[Author of::Publication]]
+```
+
+=== Event ↔ Person
+
+'''Relationships:'''
+* Event has participant Person
+* Person participated in Event
+
+'''SMW:'''
+```wiki
+[[Has participant::Person]]
+[[Participated in::Event]]
+```
+
+=== Publication ↔ Idea
+
+'''Relationships:'''
+* Publication presents Idea
+* Idea presented in Publication
+
+'''SMW:'''
+```wiki
+[[Presents::Idea]]
+[[Presented in::Publication]]
+```
+
+=== Location ↔ Organization
+
+'''Relationships:'''
+* Location contains Organization
+* Organization located in Location
+
+'''SMW:'''
+```wiki
+[[Has contains::Organization]]
+[[Located in::Location]]
+```
+
+== Extended Type Usage ==
+
+Extended types connect to core types through relationships:
+* '''Person''' originates '''Idea'''
+* '''Organization''' hosts '''Project'''
+* '''Event''' produces '''Publication'''
+* '''Publication''' documents '''Idea'''
+* '''Location''' contains '''Organization'''
+* '''Technology''' implements '''Protocol'''
+
+These connections enable complex queries:
+* "All ideas originated by people who attended Macy Conferences"
+* "All projects hosted by organizations in Cambridge, MA"
+* "All publications documenting implementations of feedback systems"
+* "All technologies developed by organizations founded before 1950"
+
+== SMW Implementation ==
+
+=== Type Queries
+
+'''All persons:'''
+```wiki
+{{#ask: [[Has entity type::Person]]}}
+```
+
+'''All organizations:'''
+```wiki
+{{#ask: [[Has entity type::Organization]]}}
+```
+
+'''All events:'''
+```wiki
+{{#ask: [[Has entity type::Event]]}}
+```
+
+'''All publications:'''
+```wiki
+{{#ask: [[Has entity type::Publication]]}}
+```
+
+'''All locations:'''
+```wiki
+{{#ask: [[Has entity type::Location]]}}
+```
+
+'''All technologies:'''
+```wiki
+{{#ask: [[Has entity type::Technology]]}}
+```
+
+'''Publications by author:'''
+```wiki
+{{#ask: [[Has author::Person:Name]]}}
+```
+
+'''Events by date:'''
+```wiki
+{{#ask: [[Has entity type::Event]]
+[[Has date::>2025-01-01]]
+}}
+```
+
+'''Organizations by location:'''
+```wiki
+{{#ask: [[Has entity type::Organization]]
+[[Has location::Cambridge, Massachusetts]]
+}}
+```
+
+== On the Evolution of Types ==
+
+Types are not discovered but constructed—tools for thinking that emerge from practice. As knowledge domains expand, types proliferate, merge, and speciate. The typology presented here is a living document, subject to revision as our understanding deepens.
+
+The guiding question is not "Is this the correct type?" but rather "Does this type help us understand?" If a type constrains more than it enables, it should be reimagined or retired.
+
+Types evolve through several mechanisms:
+* '''Proliferation''': New types emerge to capture previously unrepresented phenomena
+* '''Merger''': Distinct types prove to capture the same underlying patterns
+* '''Speciation''': Existing types differentiate into more specific variants
+* '''Extinction''': Types fall into disuse when they no longer serve understanding
+
+== References ==
+
+# FOAF Vocabulary Specification. (2014).
+# Schema.org. (2026). Person, Organization.
+# Dublin Core. (2020). Creator, Publisher.
+# Semantic MediaWiki. (2026).
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+# Smith, B. (2003). Ontology.
+# W3C. (2014). RDF Schema 1.1.
+# OWL 2 Web Ontology Language. (2012).
+
+[[Has page type::Entity Typology]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.90]]
+[[Has confidence trajectory::established]]
+[[Has extended type count::6]]
+[[Has source count::10]]
+[[Has word count::~2500]]
+[[Has consolidation version::4.0.0]]
+[[Has merge date::2026-02-18]]

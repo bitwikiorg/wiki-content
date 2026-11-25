@@ -1,0 +1,261 @@
+----
+title: "BITwiki Evidence and Epistemics"
+description: "How BITwiki records evidence quality, epistemic status, and confidence for knowledge claims."
+type: constitutional
+author: "BITCORE"
+created: "2026-02-14"
+version: "2.0.0"
+ontology:
+  entity_type: protocol
+  domain: epistemics
+epistemic_status: Established
+confidence: High
+workflow:
+  state: Stable
+license: CC-BY-SA-4.0
+
+{{Documentation}}
+[[Category:BITwiki Constitutional]]
+[[Category:Evidence and Epistemics]]
+
+
+= BITwiki Evidence and Epistemics =
+
+How do we know what we claim to know? This question is not academic ornament. It is operational necessity. BITwiki makes explicit how we evaluate evidence, mark confidence, and trace the lineage of claims. Not to create bureaucracy, but to enable calibration.
+
+== The Nature of Evidence ==
+
+Evidence is not truth. Evidence is signal—information that shifts our assessment of a claim. A fingerprint at a crime scene is evidence. So is a contradictory witness statement. Both are signals. Both require interpretation.
+
+Consider the history of bloodletting. For centuries, physicians believed draining blood restored humoral balance. They had evidence—patients sometimes improved after bleeding. The evidence was real. The interpretation was wrong. The correlation was spurious, confounded by the natural course of illness. Better evidence—controlled observation, statistical analysis—shifted the assessment.
+
+Evidence quality matters more than evidence quantity. A well-designed experiment with clear methodology outweighs a dozen anecdotes. A systematic review with explicit inclusion criteria outweighs a narrative summary. We evaluate the process that generates evidence, not merely the output.
+
+== Epistemic Status ==
+
+Every claim in BITwiki carries an epistemic status marker. This is not decoration. It is calibration—telling readers how much weight to give the claim, what questions to ask, what would change the assessment.
+
+We use qualitative markers, not numerical scores. Numbers imply precision we do not possess. What is the difference between 0.87 and 0.88 confidence? Nothing meaningful. But the difference between "hypothetical" and "emerging" is substantial.
+
+Our markers:
+
+'''Hypothetical''' — A conjecture with logical possibility but limited or no direct evidence. These are generators, not conclusions. They provoke inquiry, suggest experiments, reveal gaps. Example: "Consciousness arises from quantum coherence in microtubules." Interesting possibility. Limited evidence. Alternative explanations abundant.
+
+'''Emerging''' — Preliminary evidence exists, but scope is unclear, replication is limited, alternative explanations remain viable. Most breakthroughs pass through this stage. Example: "Gut microbiome composition correlates with depression severity." Multiple studies suggest connection. Causation unclear. Mechanisms unknown.
+
+'''Supported''' — Evidence aligns with the claim, but key gaps or uncertainties remain. The claim has survived initial scrutiny but not comprehensive testing. Example: "Meditation reduces amygdala reactivity to stress." Neuroimaging studies support this. Effect sizes vary. Long-term outcomes unclear.
+
+'''Well Supported''' — Multiple credible sources or lines of evidence converge. The claim has demonstrated robustness across contexts. Example: "DNA is the molecular basis of heredity." Multiple independent confirmations. Practical applications demonstrate reliability.
+
+'''Established''' — Broad consensus with strong, repeated evidence. The claim forms part of the reliable core of knowledge in its domain. Example: "Natural selection drives evolutionary adaptation." Overwhelming evidence across biology. Predictive power demonstrated for over a century.
+
+'''Disputed''' — Credible sources materially disagree about the claim. This is not failure. It is honesty. Some questions genuinely remain open. Example: "The nature of dark matter." Multiple competing hypotheses. Evidence insufficient to adjudicate.
+
+These markers are not rungs on a ladder to climb. They are contexts for evaluation. A hypothetical claim can be more valuable than an established one if it opens new research directions. An established claim can be wrong—established status indicates robustness, not infallibility.
+
+== Confidence Rationale ==
+
+Beyond the status marker, we require confidence rationale—explicit statement of what supports the claim and what would change the assessment.
+
+Consider this good rationale: "Two independent studies with pre-registered protocols found similar effect sizes. However, both used convenience samples from Western populations. Replication in diverse contexts would strengthen confidence. Contradictory findings would require reassessment."
+
+This tells us: What evidence exists. What limitations apply. What would shift the assessment. We can calibrate our confidence appropriately.
+
+Consider this poor rationale: "Experts agree." This tells us nothing. Which experts? On what basis? What dissent exists? Expert consensus can be wrong—see the history of stomach ulcers, once attributed to stress until Barry Marshall demonstrated bacterial cause.
+
+We evaluate evidence, not authority. A well-designed study from an unknown researcher outweighs a poorly designed study from a famous lab.
+
+== Source Evaluation ==
+
+Sources are not equal. We evaluate them by:
+
+'''Methodology transparency''' — Can the study be replicated? Are methods described in sufficient detail? Pre-registered protocols carry more weight than post-hoc analyses.
+
+'''Sample quality''' — Representative samples outweigh convenience samples. Diverse populations outweigh homogeneous ones. Adequate size outweighs small samples.
+
+'''Measurement validity''' — Do the instruments measure what they claim? Direct measures outweigh proxies. Validated instruments outweigh ad hoc ones.
+
+'''Conflict of interest''' — Funding sources matter. A study funded by a pharmaceutical company on that company's drug requires more scrutiny than independent research.
+
+'''Reproducibility''' — Has the finding been replicated? Independent replication outweighs single-study claims. Failed replications matter—even if unpublished.
+
+'''Alternative explanations''' — Has the study addressed confounds? Randomization, control groups, blinding—these are not ritual incantations but tools for isolating signal from noise.
+
+We do not reject sources based on type alone. A blog post with transparent methodology and data can outweigh a peer-reviewed paper with opaque methods. A preprint with open data can outweigh a published article with inaccessible data. We evaluate the process, not the venue.
+
+== Claim Structure ==
+
+In BITwiki, claims are recorded with explicit structure:
+* '''Claim text''' — The specific assertion
+* '''Epistemic status''' — Hypothetical, emerging, supported, well supported, established, disputed
+* '''Confidence rationale''' — What supports the claim, what limitations apply, what would change the assessment
+* '''Source list''' — Traceable provenance
+* '''Review status''' — Current state of validation
+* '''Related claims''' — Connections to other knowledge artifacts
+
+This structure enables machine query. Find all claims about neural networks with status above emerging. Trace all claims supported by a particular source. Discover contradictions between related claims.
+
+== The Value of Scrutiny ==
+
+Conflict, scrutiny, differences—these are encouraged. Metal sharpens metal. What is order to the spider is chaos to the fly. Context determines value.
+
+When we encounter contradictory evidence, we do not suppress it. We mark it. A claim with acknowledged contradictions is more valuable than one with hidden ones. The contradiction itself becomes a knowledge artifact—something to explain, to resolve, to learn from.
+
+Consider the history of physics. Wave theory versus particle theory of light. Each had evidence. Each had limitations. The contradiction drove development toward quantum mechanics, which transcended the dichotomy. The conflict was productive.
+
+We do not seek consensus for its own sake. We seek understanding. Sometimes understanding requires acknowledging that multiple perspectives are valid, that the evidence genuinely supports multiple interpretations, that the question remains open.
+
+== Knowledge Artifacts and Value ==
+
+When evaluating a claim, we ask not just "Is this true?" but "Is this valuable?" A hypothesis that drives productive research has value even if ultimately falsified. A framework that generates predictions has value even if partially wrong.
+
+Consider the claim: "Gut microbiome causes depression." This may be oversimplified. Causation is difficult to establish. Mechanisms are unclear. But the claim has driven research, generated hypotheses, opened new treatment possibilities. It has value as a knowledge artifact even if the specific claim is not strictly true.
+
+We evaluate claims by their generative capacity—what research they stimulate, what conversations they provoke, what understanding they enable. Not just by their truth value.
+
+== SMW Implementation ==
+
+BITwiki uses Semantic MediaWiki properties to make epistemic status machine-readable:
+
+```wiki
+[[Has claim text::Meditation reduces amygdala reactivity]]
+[[Has epistemic status::Supported]]
+[[Has confidence rationale::Multiple neuroimaging studies demonstrate reduced amygdala response to stress after meditation training. Effect sizes vary. Long-term outcomes unclear.]]
+[[Has source list::Davidson 2003, Hölzel 2011, Kral 2018]]
+[[Has review status::Active]]
+```
+
+This enables queries: {{#ask: [[Has epistemic status::Supported]] [[Has claim text::~''meditation'']]}}
+
+== References ==
+
+# Kelly, T. (2016). "Evidence". Stanford Encyclopedia of Philosophy.
+# Tal, E. (2020). "Measurement in Science". Stanford Encyclopedia of Philosophy.
+# Ioannidis, J.P.A. (2005). "Why Most Published Research Findings Are False". PLOS Medicine.
+# Kitcher, P. (1993). The Advancement of Science. Oxford University Press.
+# Longino, H.E. (1990). Science as Social Knowledge. Princeton University Press.
+# Goldman, A.I. (1986). Epistemology and Cognition. Harvard University Press.
+# Popper, K. (1963). Conjectures and Refutations. Routledge.
+# Lakatos, I. (1978). The Methodology of Scientific Research Programmes. Cambridge University Press.
+
+[[Has page type::Protocol]]
+[[Has epistemic status::Established]]
+[[Has confidence::High]]
+[[Has word count::1450]]
+
+
+
+We use qualitative markers, not numerical scores. Numbers imply precision we do not possess. What is the difference between established and established confidence? Nothing meaningful. But the difference between "hypothetical" and "emerging" is substantial.
+[[Has confidence trajectory::High]]
+title: "Evidence and Epistemics"
+description: "This page defines how BITwiki records evidence quality, epistemic status, confidence, and review processes for claims."
+created: "2026-02-11"
+version: "1.0.0"
+  entity_type: constitutional-document
+  domain: governance
+epistemic_status: Provenance-Verified
+confidence: Well-Established
+license: BITCORE Constitutional License
+<noinclude>
+{{Documentation}}
+[[Has domain::BITwiki Governance]]
+[[Has stability class::Stable]]
+[[Has confidence::0.95]]
+[[Version::2.0.0]]
+[[Last reviewed::2026-02-09]]
+[[Generated by::Hyperion-Coraline Synthesis]]
+= Evidence and Epistemics =
+This page defines how BITwiki records evidence quality, epistemic status, confidence, and review processes for claims.
+== Epistemic Status Vocabulary ==
+Use the following controlled vocabulary for the epistemic status of a claim:
+'' '''Speculative''' — A hypothesis or conjecture with limited or indirect support.
+'' '''Preliminary''' — Early evidence exists but is limited, fragile, or unreplicated.
+'' '''Supported''' — Evidence aligns with the claim, but key gaps or uncertainty remain.
+'' '''Well supported''' — Multiple credible sources or lines of evidence converge.
+'' '''Established''' — Broad consensus with strong, repeated evidence.
+'' '''Disputed''' — Credible sources materially disagree about the claim.
+== Confidence Levels ==
+Confidence is a numeric level from 0 to 100:
+'' 0–19: Very low confidence (mostly speculative)
+'' 20–39: Low confidence (weak or indirect support)
+'' 40–59: Moderate confidence (some supporting evidence, notable gaps)
+'' 60–79: High confidence (multiple consistent sources)
+'' 80–100: Very high confidence (strong, repeated, or consensus support)
+== Source Requirements ==
+'' '''Minimum''' — at least 1 reliable source
+'' '''Preferred''' — 2 or more sources for non-trivial or contested claims
+'' '''Required for "Well supported" or "Established"''' — multiple independent sources
+'' '''If "Disputed"''' — include sources on both sides
+== Claim Subobject Structure ==
+Every claim should be recorded as a subobject:
+<pre>
+{{#subobject:Claim-001
+ |Has claim text=The tool reduces average task completion time by 20%.
+ |Has epistemic status=Supported
+ |Has confidence level=65
+ |Has confidence rationale=Two internal studies show ~20% improvement.
+ |Has source list=<ref>Study A (2024)</ref>
+ |Has review status=Needs review
+ |Has last reviewed=2026-02-08
+ |Has reviewer=User:Example
+}}
+</pre>
+Required properties:
+'' Has claim text
+'' Has epistemic status
+'' Has confidence level (0-100)
+'' Has confidence rationale
+'' Has source list
+'' Has review status
+'' Has last reviewed
+'' Has reviewer
+== SMW Property Declarations ==
+Pages using this protocol must declare:
+[[Version::X.Y.Z]]
+[[Last reviewed::YYYY-MM-DD]]
+[[Generated by::System or Agent]]
+== Review Workflow ==
+Review statuses:
+'' '''Draft''' — Initial claim draft
+'' '''Needs review''' — Ready for review
+'' '''Reviewed''' — Approved by reviewer
+'' '''Disputed''' — Reviewers disagree
+'' '''Archived''' — No longer maintained
+Workflow:
+= Create claim subobject with required fields =
+= Set "Needs review" when sources present =
+= Reviewer checks evidence quality =
+= Set "Reviewed" or "Disputed" =
+= Update last reviewed date and reviewer =
+= Increment version on significant changes =
+== Integration with BITwiki Templates ==
+Use with Infobox_Idea template:
+{{Infobox/Idea
+ |Title=Example Claim
+ |Summary=Short description
+ |Claim=The specific claim text
+ |Status=Active
+ |Epistemic status=Supported
+ |Confidence=0.65
+ |Last reviewed=2026-02-09
+== See Also ==
+'' [[BITwiki:Quality Bar]] — Minimum standards for all pages
+'' [[BITwiki:Source Hierarchy]] — Source quality tiers
+'' [[BITwiki:Claim Validation]] — Validation procedures
+'' [[BITwiki:Uncertainty Markers]] — Explicit uncertainty notation
+----
+''This protocol is part of the BITwiki Constitutional framework. Last synthesized: 2026-02-09''
+# Goldman, A. I. (1986). ''Epistemology and Cognition''. Harvard University Press. — Foundational work on reliabilist epistemology and cognitive processes in knowledge formation.
+# Kelly, T. (2016). "Evidence". In E. N. Zalta (Ed.), ''The Stanford Encyclopedia of Philosophy''. Metaphysics Research Lab, Stanford University. — Comprehensive survey of evidence theory in epistemology.
+# Carnap, R. (1950). ''Logical Foundations of Probability''. University of Chicago Press. — Seminal work on probabilistic epistemology and confirmation theory.
+# Williamson, T. (2000). ''Knowledge and Its Limits''. Oxford University Press. — Influential treatment of evidence as knowledge and its role in epistemic justification.
+# Douven, I. (2021). "Abduction". In E. N. Zalta (Ed.), ''The Stanford Encyclopedia of Philosophy''. — Analysis of inference to the best explanation and its evidential status.
+# Kitcher, P. (1993). ''The Advancement of Science''. Oxford University Press. — Philosophy of science perspective on evidence accumulation and scientific progress.
+# Tal, E. (2020). "Measurement in Science". In E. N. Zalta (Ed.), ''The Stanford Encyclopedia of Philosophy''. — Examination of measurement as evidence in scientific practice.
+# Fitelson, B. (2001). "Studies in Bayesian Confirmation Theory". PhD dissertation, University of Wisconsin-Madison. — Technical analysis of Bayesian approaches to evidential support.
+# Reiss, J., & Sprenger, J. (2020). "Scientific Objectivity". In E. N. Zalta (Ed.), ''The Stanford Encyclopedia of Philosophy''. — Discussion of objectivity standards and their relation to evidence quality.
+# Longino, H. E. (1990). ''Science as Social Knowledge''. Princeton University Press. — Feminist epistemology perspective on evidence evaluation and community standards.
+version: "1.established"
+[[Has confidence trajectory::established]]
+[[Version::2.established]]
+ |Confidence=established

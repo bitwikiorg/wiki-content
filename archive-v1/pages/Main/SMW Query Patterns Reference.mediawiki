@@ -1,0 +1,628 @@
+{{Infobox
+| title = SMW Query Patterns Reference: Machine-Readable Knowledge Retrieval
+| description = Comprehensive reference for Semantic MediaWiki query patterns enabling recursive knowledge graph traversal and epistemic filtering.
+| type = reference
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: technical-reference
+domain: smw-queries
+| workflow = state: Active
+| sources = - "https://www.semantic-mediawiki.org/wiki/Help:Inline_queries"
+- "https://www.semantic-mediawiki.org/wiki/Help:Selecting_pages"
+- "https://www.semantic-mediawiki.org/wiki/Help:Displaying_information"
+- "https://www.semantic-mediawiki.org/wiki/Help:Sorting"
+- "https://www.semantic-mediawiki.org/wiki/Help:Using_templates"
+- "https://www.semantic-mediawiki.org/wiki/Help:Concepts"
+- "https://www.semantic-mediawiki.org/wiki/Help:Search_operators"
+- "https://www.semantic-mediawiki.org/wiki/Help:Subqueries"
+- "https://www.semantic-mediawiki.org/wiki/Help:Aggregations"
+- "https://www.semantic-mediawiki.org/wiki/Help:Querying_for_epistemic_data"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Technical Reference]]
+[[Category:BITwiki SMW]]
+[[Category:Hyperion Workspace]]
+
+
+= SMW Query Patterns Reference: Machine-Readable Knowledge Retrieval =
+
+== Executive Summary
+
+This reference documents Semantic MediaWiki query patterns optimized for BITwiki's recursive knowledge architecture. All queries support epistemic filtering, confidence thresholds, and knowledge graph traversal.
+
+'''Prerequisite:''' Understanding of SMW properties defined in BITwiki_Property_Dictionary.
+
+----
+== 1. Basic Query Patterns
+
+=== 1.1 Entity Type Queries
+
+'''List all Concepts:'''
+```mediawiki
+{{#ask: [[Has entity type::Concept]]
+|?Has title
+|?Has epistemic status
+|?Has confidence
+|format=table
+|limit=50
+}}
+```
+
+'''List all Projects with confidence > 0.8:'''
+```mediawiki
+{{#ask: [[Has entity type::Project]] [[Has confidence::>0.8]]
+|?Has title
+|?Has confidence
+|?Has domain
+|format=table
+|sort=Has confidence
+|order=desc
+}}
+```
+
+'''List all Established entities:'''
+```mediawiki
+{{#ask: [[Has epistemic status::Established]]
+|?Has title
+|?Has entity type
+|?Has confidence
+|format=ul
+}}
+```
+
+=== 1.2 Domain-Based Queries
+
+'''All entities in Systems Science:'''
+```mediawiki
+{{#ask: [[Has domain::Systems science]]
+|?Has title
+|?Has entity type
+|?Has epistemic status
+|format=table
+}}
+```
+
+'''Cross-domain entities (multiple domains):'''
+```mediawiki
+{{#ask: [[Has domain::Systems science]] [[Has domain::Cybernetics]]
+|?Has title
+|?Has domain
+|format=table
+}}
+```
+
+=== 1.3 Temporal Queries
+
+'''Recently created entities:'''
+```mediawiki
+{{#ask: [[Has creation date::>2026-01-01]]
+|?Has title
+|?Has creation date
+|?Has author
+|format=table
+|sort=Has creation date
+|order=desc
+}}
+```
+
+'''Entities modified in last 30 days:'''
+```mediawiki
+{{#ask: [[Has modification date::>2026-01-13]]
+|?Has title
+|?Has modification date
+|format=table
+}}
+```
+
+----
+== 2. Epistemic Filtering Queries
+
+=== 2.1 Confidence Thresholds
+
+'''High-confidence claims (>0.9):'''
+```mediawiki
+{{#ask: [[Has confidence::>0.9]]
+|?Has title
+|?Has confidence
+|?Has epistemic status
+|format=table
+|sort=Has confidence
+|order=desc
+}}
+```
+
+'''Hypothetical claims (<0.5):'''
+```mediawiki
+{{#ask: [[Has confidence::<0.5]]
+|?Has title
+|?Has confidence
+|?Has epistemic status
+|format=table
+}}
+```
+
+'''Confidence range (0.7-0.9):'''
+```mediawiki
+{{#ask: [[Has confidence::>0.7]] [[Has confidence::<0.9]]
+|?Has title
+|?Has confidence
+|format=table
+}}
+```
+
+=== 2.2 Status-Based Filtering
+
+'''All Axiomatic statements:'''
+```mediawiki
+{{#ask: [[Has epistemic status::Axiomatic]]
+|?Has title
+|?Has entity type
+|format=ul
+}}
+```
+
+'''Emerging or Contested claims:'''
+```mediawiki
+{{#ask: [[Has epistemic status::Emerging]] OR [[Has epistemic status::Contested]]
+|?Has title
+|?Has epistemic status
+|?Has confidence
+|format=table
+}}
+```
+
+'''Established or Axiomatic (high confidence):'''
+```mediawiki
+{{#ask: [[Has epistemic status::Established]] OR [[Has epistemic status::Axiomatic]]
+|?Has title
+|?Has epistemic status
+|?Has confidence
+|format=table
+|sort=Has confidence
+|order=desc
+}}
+```
+
+=== 2.3 Provenance Queries
+
+'''Entities by specific author:'''
+```mediawiki
+{{#ask: [[Has author::Hyperion]]
+|?Has title
+|?Has creation date
+|?Has entity type
+|format=table
+}}
+```
+
+'''Entities with verified provenance:'''
+```mediawiki
+{{#ask: [[Has provenance type::Verified]]
+|?Has title
+|?Has provenance type
+|?Has verification method
+|format=table
+}}
+```
+
+----
+== 3. Relationship Queries
+
+=== 3.1 Direct Relationships
+
+'''Entities related to BITwiki_Constitution:'''
+```mediawiki
+{{#ask: [[Has related entity::BITwiki_Constitution]]
+|?Has title
+|?Has relationship type
+|format=table
+}}
+```
+
+'''Concepts that implement other concepts:'''
+```mediawiki
+{{#ask: [[Has relationship type::Implements]]
+|?Has title
+|?Has related entity
+|format=table
+}}
+```
+
+'''Entities with bidirectional relationships:'''
+```mediawiki
+{{#ask: [[Has related entity::+]]
+|?Has title
+|?Has related entity
+|?Has relationship type
+|format=table
+}}
+```
+
+=== 3.2 Hierarchical Queries
+
+'''Sub-concepts of Systems Science:'''
+```mediawiki
+{{#ask: [[Has parent concept::Systems science]]
+|?Has title
+|?Has parent concept
+|format=ul
+}}
+```
+
+'''All descendants (recursive):'''
+```mediawiki
+{{#ask: [[Has parent concept::Systems science]] OR [[Has parent concept.Subconcept::Systems science]]
+|?Has title
+|?Has parent concept
+|format=ul
+}}
+```
+
+=== 3.3 Network Traversal
+
+'''Two-hop relationships:'''
+```mediawiki
+{{#ask: [[Has related entity.Has related entity::BITwiki_Constitution]]
+|?Has title
+|format=ul
+}}
+```
+
+'''Common neighbors:'''
+```mediawiki
+{{#ask: [[Has related entity::Concept_A]] [[Has related entity::Concept_B]]
+|?Has title
+|format=ul
+}}
+```
+
+----
+== 4. Aggregation Queries
+
+=== 4.1 Counting
+
+'''Total entities by type:'''
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|?Has entity type
+|format=count
+}}
+```
+
+'''Count by epistemic status:'''
+```mediawiki
+{{#ask: [[Has epistemic status::+]]
+|?Has epistemic status
+|format=count
+}}
+```
+
+=== 4.2 Statistical Aggregations
+
+'''Average confidence by entity type:'''
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|?Has confidence
+|format=average
+}}
+```
+
+'''Maximum confidence:'''
+```mediawiki
+{{#ask: [[Has confidence::+]]
+|?Has confidence
+|format=max
+}}
+```
+
+'''Confidence distribution:'''
+```mediawiki
+{{#ask: [[Has confidence::+]]
+|?Has confidence
+|format=median
+}}
+```
+
+=== 4.3 Grouped Aggregations
+
+'''Entities grouped by domain:'''
+```mediawiki
+{{#ask: [[Has domain::+]]
+|?Has domain
+|?Has title
+|format=ul
+|group=Has domain
+}}
+```
+
+'''Average confidence by status:'''
+```mediawiki
+{{#ask: [[Has epistemic status::+]]
+|?Has epistemic status
+|?Has confidence
+|format=average
+|group=Has epistemic status
+}}
+```
+
+----
+== 5. Advanced Patterns
+
+=== 5.1 Subqueries
+
+'''Entities with high-confidence related entities:'''
+```mediawiki
+{{#ask: [[Has related entity::<q>[[Has confidence::>0.9]]</q>]]
+|?Has title
+|?Has related entity
+|format=table
+}}
+```
+
+'''Concepts related to Established projects:'''
+```mediawiki
+{{#ask: [[Has related entity::<q>[[Has entity type::Project]] [[Has epistemic status::Established]]</q>]]
+|?Has title
+|format=ul
+}}
+```
+
+=== 5.2 Concept Definitions
+
+'''Define "High-Confidence Concepts":'''
+```mediawiki
+{{#concept: High-Confidence Concepts
+|[[Has entity type::Concept]] [[Has confidence::>0.8]]
+}}
+```
+
+'''Use concept in query:'''
+```mediawiki
+{{#ask: [[Concept:High-Confidence Concepts]]
+|?Has title
+|?Has confidence
+|format=table
+}}
+```
+
+=== 5.3 Template-Based Display
+
+'''Use template for custom formatting:'''
+```mediawiki
+{{#ask: [[Has entity type::Concept]]
+|?Has title
+|?Has confidence
+|format=template
+|template=Concept_List_Item
+}}
+```
+
+'''Template:Concept_List_Item:'''
+```mediawiki
+<li>
+  <strong>{{{1}}}</strong>
+  <span class="confidence">(confidence: {{{2}}})</span>
+</li>
+```
+
+----
+== 6. Epistemic Audit Queries
+
+=== 6.1 Quality Assessment
+
+'''Entities missing epistemic markers:'''
+```mediawiki
+{{#ask: [[Has epistemic status::+]]
+|?Has title
+|?Has epistemic status
+|format=table
+}}
+```
+
+'''Entities with outdated confidence:'''
+```mediawiki
+{{#ask: [[Has confidence evaluation date::<2026-01-01]]
+|?Has title
+|?Has confidence
+|?Has confidence evaluation date
+|format=table
+}}
+```
+
+'''Entities requiring review:'''
+```mediawiki
+{{#ask: [[Has epistemic status::Hypothetical]] [[Has confidence::>0.7]]
+|?Has title
+|?Has epistemic status
+|?Has confidence
+|format=table
+}}
+```
+
+=== 6.2 Provenance Audit
+
+'''Entities with unverified sources:'''
+```mediawiki
+{{#ask: [[Has provenance type::Unverified]]
+|?Has title
+|?Has provenance type
+|format=table
+}}
+```
+
+'''Entities missing sources:'''
+```mediawiki
+{{#ask: [[Has source count::0]]
+|?Has title
+|format=ul
+}}
+```
+
+----
+== 7. Performance Optimization
+
+=== 7.1 Query Limits
+
+'''Always use limits for large result sets:'''
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|limit=100
+|format=table
+}}
+```
+
+'''Pagination:'''
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|limit=50
+|offset=50
+|format=table
+}}
+```
+
+=== 7.2 Sorting
+
+'''Sort by confidence descending:'''
+```mediawiki
+{{#ask: [[Has confidence::+]]
+|?Has confidence
+|sort=Has confidence
+|order=desc
+|format=table
+}}
+```
+
+'''Multiple sort keys:'''
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|?Has epistemic status
+|?Has confidence
+|sort=Has epistemic status,Has confidence
+|order=asc,desc
+|format=table
+}}
+```
+
+=== 7.3 Caching
+
+'''Cache expensive queries:'''
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|?Has confidence
+|format=average
+|cache=3600
+}}
+```
+
+----
+== 8. Query Templates
+
+=== 8.1 Reusable Query Templates
+
+'''Template:RelatedEntities:'''
+```mediawiki
+{{#ask: [[Has related entity::{{FULLPAGENAME}}]]
+|?Has title
+|?Has relationship type
+|?Has epistemic status
+|format=table
+|limit={{{limit|10}}}
+|intro=<h3>Related Entities</h3>
+|default=No related entities found.
+}}
+```
+
+'''Template:DomainIndex:'''
+```mediawiki
+{{#ask: [[Has domain::{{{1|}}}]]
+|?Has title
+|?Has entity type
+|?Has confidence
+|format=table
+|limit={{{limit|50}}}
+|sort=Has confidence
+|order=desc
+|intro=<h3>Entities in {{{1|}}}</h3>
+}}
+```
+
+=== 8.2 Parameterized Queries
+
+'''Template:EpistemicFilter:'''
+```mediawiki
+{{#ask: [[Has epistemic status::{{{status|Established}}}]] [[Has confidence::>{{{min_confidence|0.8}}}]]
+|?Has title
+|?Has confidence
+|format=table
+|limit={{{limit|20}}}
+}}
+```
+
+'''Usage:'''
+```mediawiki
+{{EpistemicFilter|status=Emerging|min_confidence=0.6|limit=10}}
+```
+
+----
+== 9. Common Query Patterns Summary
+
+| Pattern | Query | Use Case |
+|---------|-------|----------|
+| '''Type Filter''' | `[[Has entity type::Concept]]` | Entity classification |
+| '''Status Filter''' | `[[Has epistemic status::Established]]` | Quality filtering |
+| '''Confidence Threshold''' | `[[Has confidence::>0.8]]` | Reliability filtering |
+| '''Domain Filter''' | `[[Has domain::Systems science]]` | Subject filtering |
+| '''Temporal Filter''' | `[[Has creation date::>2026-01-01]]` | Recent content |
+| '''Relationship''' | `[[Has related entity::PageName]]` | Graph traversal |
+| '''Aggregation''' | `format=count` / `format=average` | Statistics |
+| '''Subquery''' | `<q>[[Has confidence::>0.9]]</q>` | Nested filtering |
+
+----
+== 10. Troubleshooting
+
+=== 10.1 Common Issues
+
+'''No results:'''
+* Check property names (case-sensitive)
+* Verify property has [[Has type::...]] declaration
+* Check for extra spaces in values
+
+'''Slow queries:'''
+* Add `|limit=` parameter
+* Use `|cache=` for repeated queries
+* Simplify subqueries
+
+'''Incorrect sorting:'''
+* Ensure property has appropriate type
+* Use `|order=asc` or `|order=desc`
+* Check for mixed data types
+
+=== 10.2 Debug Mode
+
+Enable query debugging:
+```mediawiki
+{{#ask: [[Has entity type::+]]
+|?Has title
+|format=debug
+}}
+```
+
+----
+== Conclusion
+
+These query patterns enable BITwiki's recursive knowledge architecture. Master them to:
+* Navigate the knowledge graph
+* Filter by epistemic quality
+* Aggregate for analysis
+* Audit for completeness
+
+'''Next Steps:'''
+* Create custom query templates for your domain
+* Build dashboards using query aggregations
+* Develop epistemic audit workflows
+* Contribute new patterns to this reference

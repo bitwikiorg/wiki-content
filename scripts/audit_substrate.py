@@ -190,13 +190,24 @@ def main() -> int:
         for path in (ROOT / "Template").glob("*.mediawiki")
     )
 
-    all_dirs = [
-        path
-        for path in ROOT.rglob("*")
-        if path.is_dir()
-        and ".git" not in path.parts
-        and "__pycache__" not in path.parts
-    ]
+    # Directory-documentation requirements apply to current source/deployment
+    # surfaces, not provenance archives, migration evidence, CI metadata, or docs.
+    # Keep this scope aligned with SOURCE_ROOTS so restoring archive-v1 for
+    # reconciliation cannot make historical internal directories look like
+    # undocumented current architecture.
+    all_dirs = []
+    for root_name in SOURCE_ROOTS:
+        root = ROOT / root_name
+        if not root.exists():
+            continue
+        all_dirs.append(root)
+        all_dirs.extend(
+            path
+            for path in root.rglob("*")
+            if path.is_dir()
+            and ".git" not in path.parts
+            and "__pycache__" not in path.parts
+        )
     reading_depth_directories = sorted(
         relative(path) for path in all_dirs if is_reading_depth_directory(path)
     )

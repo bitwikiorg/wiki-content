@@ -65,6 +65,22 @@ Some subjects warrant a glossary, timeline, mathematical formalism, datasets, di
 
 Sections should be substantial and useful. Combining two roles is often better than creating empty headings merely for structural uniformity.
 
+
+== Visualizations and diagrams ==
+
+A visualization is useful when it makes structure, sequence, comparison, dependency, spatial arrangement or another relationship easier to understand than prose alone. It is an explanatory surface, not an independent source of truth.
+
+* '''Match the semantics.''' Nodes, arrows, grouping, order and labels must represent claims the article can justify. A visual edge must not imply causation, hierarchy, identity or certainty when the underlying account supports only association.
+* '''Provide a text equivalent.''' Important information carried by a diagram should also be available through a caption, surrounding prose, table or other accessible text. Do not require vision or image interpretation to recover the article's essential claim.
+* '''Do not encode meaning by color alone.''' Use labels, shapes, line styles or other redundant cues where distinctions matter, and maintain readable contrast.
+* '''Keep source and transformation provenance.''' For generated diagrams, preserve the source text, data, query, code or revision needed to understand how the image was produced when that affects interpretation.
+* '''Validate the representation.''' Check syntax for machine-generated diagrams, verify that labels and relationships agree with the article, and review accessibility as part of editorial quality.
+* '''Prefer maintainable forms.''' Text-defined formats such as Mermaid or Graphviz can be useful when the deployment actually supports them and when source control improves reproducibility; their presence in historical V1 specifications does not establish current runtime support.
+
+A knowledge-graph or query visualization is a projection over recorded statements. Its layout, proximity or path structure does not create new semantic facts, and a visually prominent node is not automatically more important or better supported.
+
+See [[BITwiki:Navigation]] for graph and query views, [[BITwiki:Relationships]] for edge semantics, and [[BITwiki:Provenance]] for transformation lineage.
+
 == Claims and source discipline ==
 
 An article should distinguish observation, mathematical derivation, documented history, reasoned interpretation and speculative proposal. Where the inference matters, explain how the sources support it rather than attaching a bibliography that does not correspond to the prose.

@@ -1,0 +1,354 @@
+{{Infobox
+| title = BITwiki Entity Types: Evolving Knowledge Artifacts
+| description = Evolving typology of entity types in BITwiki, designed as guidance rather than fixed classification. Types emerge from practice and adapt to context.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| revised = 2026-02-14
+| version = 3.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| revision_note = Transformed from fixed 'six entity patterns' to evolving typology per human review feedback
+| ontology = entity_type: evolving-typology
+domain: entity-classification
+| workflow = state: Active
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+= BITwiki Entity Types: Evolving Knowledge Artifacts =
+
+== Purpose ==
+
+This document articulates an evolving typology of entity types. Rather than fixed categories, these types are offered as guidance—scaffolds that have emerged from practice and may transform as knowledge domains develop.
+
+Types are not discovered but constructed. They proliferate, merge, and speciate as our understanding deepens. The question is not "Is this the correct type?" but "Does this type help us understand?"
+
+
+
+= BITwiki Entity Types =
+
+== Types as Lenses, Not Boxes ==
+
+Traditional ontologies force entities into mutually exclusive categories. BITwiki takes a different approach: entity types are lenses for viewing knowledge artifacts from different angles.
+
+A blockchain system might be:
+* '''Implementation''' (of distributed consensus)
+* '''Project''' (ongoing development effort)
+* '''Protocol''' (rules for validation)
+* '''Dataset''' (transaction history)
+
+The appropriate lens depends on the question. "Who originated this?" → Project. "How does it work?" → Protocol. "What data does it contain?" → Dataset.
+
+== Core Entity Types ==
+
+The following types have emerged as useful distinctions in BITwiki's development:
+
+=== Topic: Subject Domains ===
+
+'''Definition:''' Subject matter with scope boundaries and relationships to other subjects.
+
+'''Characteristics:'''
+* Serves as navigational anchor
+* Admits multiple parents (polyhierarchy)
+* Has explicit scope boundaries
+* Contains ideas and implementations
+
+'''Example - Cybernetics:'''
+* Scope: Study of regulatory systems and information flows
+* Parents: Systems Science, Control Theory
+* Children: First-Order Cybernetics, Second-Order Cybernetics
+* Related: Information Theory, AI, Complex Systems
+
+'''SMW:'''
+```wiki
+[[Has entity type::Topic]]
+[[Has subtopic::Second-Order Cybernetics]]
+[[Has related topic::Information Theory]]
+[[Has domain boundary::Systems and their regulation]]
+```
+
+=== Idea: Abstract Concepts ===
+
+'''Definition:''' Conceptual content—hypotheses, theories, frameworks, models.
+
+'''Characteristics:'''
+* Independent of implementation
+* Subject to epistemic evaluation
+* Has origin and development history
+* May have multiple implementations
+
+'''Example - Feedback Loop:'''
+* Origin: Ancient concept, formalized 1948
+* Core claim: System output influences system input
+* Implementations: Thermostats, cruise control, market corrections
+* Refinements: Positive/negative feedback, feedforward
+
+'''SMW:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has originator::Norbert Wiener]]
+[[Has implementation::Thermostat]]
+[[Has epistemic status::Verified]]
+```
+
+=== Implementation: Concrete Realizations ===
+
+'''Definition:''' Physical or digital instantiation of an idea.
+
+'''Characteristics:'''
+* Observable and measurable
+* Specific rather than general
+* Performance varies by context
+* May implement multiple ideas
+
+'''Example - Transformer Architecture:'''
+* Implements: Attention mechanism, parallel processing
+* Performance: O(n²) complexity vs O(n) for RNNs
+* Context: Natural language processing
+* Variants: BERT, GPT, T5
+
+'''SMW:'''
+```wiki
+[[Has entity type::Implementation]]
+[[Implements::Attention Mechanism]]
+[[Has performance metric::O(n²) complexity]]
+[[Has date::2017]]
+```
+
+=== Project: Organized Efforts ===
+
+'''Definition:''' Time-bounded, resource-constrained effort toward defined goals.
+
+'''Characteristics:'''
+* Has timeline and milestones
+* Consumes resources
+* Produces outputs
+* Evaluable against goals
+
+'''Example - Apollo Program:'''
+* Goal: Land humans on Moon
+* Timeline: 1961-1972
+* Cost: $25.4 billion (1973 dollars)
+* Outputs: 6 lunar landings, 842 lbs samples, 12 astronauts
+
+'''SMW:'''
+```wiki
+[[Has entity type::Project]]
+[[Has goal::Lunar landing]]
+[[Has timeline::1961-1972]]
+[[Has status::Completed]]
+[[Has output::Lunar samples]]
+```
+
+=== Protocol: Prescribed Procedures ===
+
+'''Definition:''' Normative specification of how something should be done.
+
+'''Characteristics:'''
+* Prescriptive, not descriptive
+* Reproducible
+* Evaluable against outcomes
+* May be formal or informal
+
+'''Example - Scientific Method:'''
+* Steps: Observation → Hypothesis → Experiment → Analysis → Conclusion
+* Variants: Hypothetico-deductive, exploratory, computational
+* Evaluation: Track record of successful predictions
+
+'''SMW:'''
+```wiki
+[[Has entity type::Protocol]]
+[[Has step::Formulate hypothesis]]
+[[Has step::Design experiment]]
+[[Has outcome::Tested prediction]]
+```
+
+=== Dataset: Structured Information ===
+
+'''Definition:''' Collection of structured information with defined schema.
+
+'''Characteristics:'''
+* Explicit structure
+* Queryable
+* Versioned
+* Has provenance
+
+'''Example - MNIST:'''
+* Content: 70,000 handwritten digits
+* Structure: 28×28 pixel images, labels 0-9
+* Splits: 60,000 train, 10,000 test
+* Usage: Benchmark for digit recognition
+
+'''SMW:'''
+```wiki
+[[Has entity type::Dataset]]
+[[Has size::70,000 samples]]
+[[Has structure::28x28 grayscale images]]
+[[Has application::Digit recognition benchmark]]
+```
+
+== Extended Types ==
+
+=== Person
+
+'''Definition:''' Individual human being.
+
+'''Use:''' Attribution, provenance, biographical information.
+
+'''SMW:'''
+```wiki
+[[Has entity type::Person]]
+[[Has contribution::Contribution]]
+[[Has affiliation::Organization]]
+```
+
+=== Organization
+
+'''Definition:''' Structured group with shared purpose.
+
+'''Use:''' Institutional attribution, collaboration tracking.
+
+'''SMW:'''
+```wiki
+[[Has entity type::Organization]]
+[[Has member::Person]]
+[[Has output::Output]]
+```
+
+=== Event
+
+'''Definition:''' Time-bounded occurrence.
+
+'''Use:''' Historical tracking, temporal reasoning.
+
+'''SMW:'''
+```wiki
+[[Has entity type::Event]]
+[[Has date::Date]]
+[[Has location::Location]]
+[[Has participant::Person]]
+```
+
+=== Publication
+
+'''Definition:''' Documented work made available to the public.
+
+'''Use:''' Citation, provenance, evidence assessment.
+
+'''SMW:'''
+```wiki
+[[Has entity type::Publication]]
+[[Has author::Person]]
+[[Has date::Date]]
+[[Has DOI::DOI]]
+```
+
+== Type Relationships ==
+
+=== Hierarchical Relationships ===
+
+```
+Topic
+├── Subtopic
+│ └── Idea
+│ └── Implementation
+│ └── Project
+│ └── Dataset
+```
+
+=== Cross-Type Relationships ===
+
+| From | To | Relationship |
+|------|-----|--------------|
+| Idea | Implementation | "Implemented by" |
+| Project | Idea | "Investigates" |
+| Protocol | Project | "Governs" |
+| Dataset | Idea | "Supports" |
+| Person | Idea | "Originated" |
+
+== Type Selection Guidance ==
+
+=== When to Use Each Type ===
+
+'''Use Topic when:'''
+* Organizing broad subject areas
+* Creating navigation hierarchies
+* Grouping related content
+
+'''Use Idea when:'''
+* Describing abstract concepts
+* Theorizing about mechanisms
+* Connecting theory to practice
+
+'''Use Implementation when:'''
+* Describing concrete systems
+* Evaluating performance
+* Linking theory to application
+
+'''Use Project when:'''
+* Tracking organized efforts
+* Managing resources
+* Documenting outcomes
+
+'''Use Protocol when:'''
+* Prescribing procedures
+* Ensuring reproducibility
+* Standardizing practices
+
+'''Use Dataset when:'''
+* Referencing data collections
+* Enabling queries
+* Supporting evidence
+
+== SMW Implementation ==
+
+=== Type Declaration ===
+
+Every page should declare its entity type:
+
+```wiki
+[[Has entity type::Type]]
+```
+
+=== Type Queries ===
+
+'''All Ideas:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]}}
+```
+
+'''Ideas with High Confidence:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence score::>0.8]]
+}}
+```
+
+'''Implementations of a Specific Idea:'''
+```wiki
+{{#ask: [[Implements::Feedback Loop]]}}
+```
+
+== On the Evolution of Types ==
+
+Types are not final. They emerge from practice, transform through use, and may retire when no longer useful. This typology is a living document, subject to revision as our understanding evolves.
+
+The guiding principle: types should enhance our substrate, not limit it.
+
+[[Has page type::Evolving Typology]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.88]]
+[[Has source count::10]]
+[[Has word count::750]]
+
+
+
+== Type Flexibility ==
+
+Entities may carry multiple type assignments. A knowledge artifact is not "really" one type—it can be viewed through multiple lenses depending on context.
+
+This flexibility mirrors Schema.org's approach: a `Product` might also be a `CreativeWork` and an `Intangible`. The types are not mutually exclusive categories but overlapping perspectives.

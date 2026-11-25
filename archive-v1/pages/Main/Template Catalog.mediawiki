@@ -1,0 +1,437 @@
+{{Infobox
+| title = BITwiki Template Catalog: Complete Template Reference
+| description = Comprehensive catalog of all templates used in BITwiki—infoboxes, navigation templates, formatting templates, and epistemic markers. Templates are patterns for consistency, not constraints on creativity.
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-14
+| version = 2.2.0-consolidated
+| epistemic_status = Established
+| confidence = 0.92
+| license = CC-BY-SA-4.0
+| ontology = entity_type: template-catalog
+domain: template-reference
+| workflow = state: Production
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+<includeonly>
+
+= BITwiki Template Catalog: Complete Template Reference =
+
+== Etymology: The Shapes of Repetition ==
+
+''Template'' — from Latin ''templum'', temple, sanctuary, from ''temere'', to cut off, to mark out. A template is that which marks out the sacred space, that which defines the pattern. In craft, a template is the pattern from which copies are made—the form that shapes the material.
+
+''Catalog'' — from Greek ''katalogos'', a complete counting. This catalog gathers the templates that shape BITwiki—not to fix them but to make them findable.
+
+== Purpose: Templates as Pattern Languages ==
+
+This document catalogs all templates used in BITwiki. Templates ensure consistent formatting, enable semantic markup, and facilitate knowledge reuse across the ecosystem.
+
+Templates serve:
+'' '''Consistency''': Similar content has similar form
+'' '''Efficiency''': Reusable patterns reduce repetition
+'' '''Semantics''': Templates generate machine-readable markup
+'' '''Discovery''': Standard forms enable queries
+'' '''Maintainability''': Centralized patterns simplify updates
+'' '''Accessibility''': Structured markup improves screen reader compatibility
+
+They are not constraints. They are invitations to consistency.
+
+== Template Categories: Kinds of Patterns ==
+
+=== 1. Infobox Templates ===
+
+Infoboxes provide structured summaries at the top of pages, presenting key information in a standardized format.
+
+==== Template:Infobox Concept ====
+
+'' '''Purpose:''' Display concept information with structured metadata
+'' '''Parameters:''' 
+  '' `name` — Concept name (required)
+  '' `definition` — Brief definition
+  '' `originator` — Who originated the concept
+  '' `date` — When originated (ISO format)
+  '' `epistemic_status` — Hypothetical, Emerging, Established, Verified, Axiomatic
+  '' `confidence` — Confidence level (low, medium, high, very high)
+  '' `confidence_score` — Numeric confidence (0.0-1.0)
+'' '''Usage:''' `{{Infobox Concept|name=X|definition=Y}}`
+'' '''SMW:''' Generates `[[Has entity type::Concept]]`
+
+==== Template:Infobox Idea ====
+
+'' '''Purpose:''' Display idea information with theoretical context
+'' '''Parameters:'''
+  '' `name` — Idea name (required)
+  '' `definition` — Brief definition
+  '' `originator` — Who originated the idea
+  '' `date` — When originated (ISO format)
+  '' `field` — Domain or discipline
+  '' `implementations` — Related implementations
+  '' `epistemic_status` — Knowledge status
+  '' `confidence` — Confidence level
+  '' `confidence_score` — Numeric confidence (0.0-1.0)
+'' '''Usage:''' `{{Infobox Idea|name=X|definition=Y}}`
+'' '''SMW:''' Generates `[[Has entity type::Idea]]`
+
+==== Template:Infobox Implementation ====
+
+'' '''Purpose:''' Display implementation information
+'' '''Parameters:'''
+  '' `name` — Implementation name (required)
+  '' `description` — Brief description
+  '' `implements` — What idea/concept this implements
+  '' `technology` — Technology stack used
+  '' `developer` — Primary developer
+  '' `date` — Release date (ISO format)
+  '' `status` — Current status
+  '' `performance` — Performance metrics
+'' '''Usage:''' `{{Infobox Implementation|name=X|implements=Y}}`
+'' '''SMW:''' Generates `[[Has entity type::Implementation]]`
+
+==== Template:Infobox Project ====
+
+'' '''Purpose:''' Display project information
+'' '''Parameters:'''
+  '' `name` — Project name (required)
+  '' `description` — Brief description
+  '' `goal` — Project objective
+  '' `lead` — Project lead
+  '' `organization` — Owning organization
+  '' `timeline` — Project timeline
+  '' `status` — Current status
+  '' `budget` — Budget information
+  '' `team` — Team members
+  '' `outputs` — Deliverables
+'' '''Usage:''' `{{Infobox Project|name=X|goal=Y}}`
+'' '''SMW:''' Generates `[[Has entity type::Project]]`
+
+==== Template:Infobox Person ====
+
+'' '''Purpose:''' Display person information
+'' '''Parameters:'''
+  '' `name` — Person's name (required)
+  '' `birth_date` — Date of birth (ISO format)
+  '' `death_date` — Date of death (ISO format)
+  '' `affiliation` — Primary affiliation
+  '' `contributions` — Key contributions
+  '' `expertise` — Areas of expertise
+'' '''Usage:''' `{{Infobox Person|name=X|affiliation=Y}}`
+'' '''SMW:''' Generates `[[Has entity type::Person]]`
+
+==== Template:Infobox Organization ====
+
+'' '''Purpose:''' Display organization information
+'' '''Parameters:'''
+  '' `name` — Organization name (required)
+  '' `type` — Organization type
+  '' `location` — Primary location
+  '' `members` — Member count or list
+  '' `outputs` — Key outputs
+  '' `mission` — Mission statement
+'' '''Usage:''' `{{Infobox Organization|name=X|type=Y}}`
+'' '''SMW:''' Generates `[[Has entity type::Organization]]`
+
+==== Template:Infobox Publication ====
+
+'' '''Purpose:''' Display publication information
+'' '''Parameters:'''
+  '' `title` — Publication title (required)
+  '' `authors` — Author list
+  '' `date` — Publication date (ISO format)
+  '' `venue` — Publication venue
+  '' `doi` — Digital Object Identifier
+  '' `citations` — Citation count
+'' '''Usage:''' `{{Infobox Publication|title=X|authors=Y}}`
+'' '''SMW:''' Generates `[[Has entity type::Publication]]`
+
+=== 2. Navigation Templates ===
+
+Navigation templates help users move between related pages and discover connected content.
+
+==== Template:Navbox ====
+
+'' '''Purpose:''' Navigation box for related pages
+'' '''Parameters:'''
+  '' `title` — Box title
+  '' `list1`, `list2`, etc. — Content lists
+'' '''Usage:''' `{{Navbox|title=X|list1=A,B,C}}`
+
+==== Template:Sidebar ====
+
+'' '''Purpose:''' Sidebar navigation for persistent page links
+'' '''Parameters:'''
+  '' `title` — Sidebar title
+  '' `content` — Navigation content
+'' '''Usage:''' `{{Sidebar|title=X|content=Y}}`
+
+==== Template:Portal ====
+
+'' '''Purpose:''' Portal navigation for topic entry points
+'' '''Parameters:'''
+  '' `title` — Portal title
+  '' `image` — Portal image
+  '' `description` — Brief description
+  '' `links` — Key links
+'' '''Usage:''' `{{Portal|title=X|links=Y}}`
+
+=== 3. Formatting Templates ===
+
+Formatting templates provide consistent styling and layout control.
+
+==== Template:Documentation ====
+
+'' '''Purpose:''' Template documentation wrapper
+'' '''Usage:''' `{{Documentation}}`
+'' '''Note:''' Prevents documentation from appearing in transcluded content
+
+==== Template:Clear ====
+
+'' '''Purpose:''' Clear floats to restore normal flow
+'' '''Usage:''' `{{Clear}}`
+'' '''Use case:''' After floating elements like infoboxes
+
+==== Template:Main ====
+
+'' '''Purpose:''' Link to main article for summary sections
+'' '''Parameters:''' Article name
+'' '''Usage:''' `{{Main|Article Name}}`
+'' '''Output:''' "Main article: Article Name"
+
+==== Template:See also ====
+
+'' '''Purpose:''' Link to related articles
+'' '''Parameters:''' One or more article names
+'' '''Usage:''' `{{See also|Article1|Article2}}`
+
+=== 4. Epistemic Templates ===
+
+Epistemic templates mark the status of knowledge claims and signal confidence levels.
+
+==== Template:Epistemic Status ====
+
+'' '''Purpose:''' Display epistemic status of content
+'' '''Parameters:'''
+  '' `status` — One of: Hypothetical, Emerging, Established, Verified, Axiomatic
+'' '''Usage:''' `{{Epistemic Status|Established}}`
+'' '''Visual:''' Renders as colored badge indicating knowledge status
+
+==== Template:Confidence / Template:Confidence Score ====
+
+'' '''Purpose:''' Display confidence level
+'' '''Parameters (Confidence):'''
+  '' `level` — low, medium, high, very high
+'' '''Parameters (Confidence Score):'''
+  '' `score` — Numeric value 0.0-1.0
+'' '''Usage:''' `{{Confidence|high}}` or `{{Confidence Score|0.85}}`
+'' '''Note:''' Both variants supported for flexibility
+
+==== Template:Source Needed ====
+
+'' '''Purpose:''' Flag missing sources
+'' '''Usage:''' `{{Source Needed}}`
+'' '''Visual:''' Renders as warning flag
+
+==== Template:Citation Needed ====
+
+'' '''Purpose:''' Flag missing citations
+'' '''Usage:''' `{{Citation Needed}}`
+'' '''Visual:''' Renders as citation request
+
+== Template Selection Guide: Choosing Patterns ==
+
+=== For Concepts ===
+
+Use [[Template:Infobox Concept]] when:
+'' Describing abstract concepts
+'' Need concept-specific fields (originator, definition)
+'' Want automatic categorization as Concept
+
+=== For Ideas ===
+
+Use [[Template:Infobox Idea]] when:
+'' Describing theoretical ideas
+'' Linking to implementations
+'' Tracking epistemic status and confidence
+
+=== For Implementations ===
+
+Use [[Template:Infobox Implementation]] when:
+'' Describing concrete systems or code
+'' Linking to ideas they realize
+'' Tracking performance metrics
+
+=== For Projects ====
+
+Use [[Template:Infobox Project]] when:
+'' Describing organized efforts
+'' Tracking progress and status
+'' Documenting outcomes and deliverables
+
+=== For People ====
+
+Use [[Template:Infobox Person]] when:
+'' Documenting individuals
+'' Tracking affiliations and contributions
+'' Listing areas of expertise
+
+=== For Organizations ====
+
+Use [[Template:Infobox Organization]] when:
+'' Documenting institutions
+'' Tracking membership and outputs
+'' Stating mission and purpose
+
+=== For Publications ====
+
+Use [[Template:Infobox Publication]] when:
+'' Citing papers, books, articles
+'' Tracking authorship and venue
+'' Recording DOI and citations
+
+== SMW Integration: Machine Readability ==
+
+=== Automatic Properties ===
+
+Infobox templates automatically generate SMW properties:
+
+```wiki
+[[Has entity type::Idea]]
+[[Has name::Name]]
+[[Has confidence::high]]
+[[Has confidence score::0.85]]
+[[Has confidence trajectory::established]]
+```
+
+=== Querying Template Data ===
+
+Query data from templates using SMW ask syntax:
+
+```wiki
+{{#ask: [[Has entity type::Idea]]
+  [[Has confidence::high]]
+  |?Has name
+  |?Has confidence score
+  |format=table
+}}
+```
+
+=== Semantic Properties Generated ===
+
+All infobox templates generate these SMW properties:
+'' `[[Has entity type::Type]]` — The entity type
+'' `[[Has name::Name]]` — Entity name
+'' `[[Has epistemic status::Status]]` — Knowledge status
+'' `[[Has confidence::Level]]` — Textual confidence
+'' `[[Has confidence score::0.00]]` — Numeric confidence
+'' `[[Has confidence trajectory::Trajectory]]` — Confidence trend
+
+== Best Practices: Using Templates Well ==
+
+=== Practice 1: Use Appropriate Template ===
+
+Match template to content type:
+
+| Content Type | Template |
+|-------------|----------|
+| Abstract concepts | Infobox Concept |
+| Theoretical ideas | Infobox Idea |
+| Concrete systems | Infobox Implementation |
+| Organized efforts | Infobox Project |
+| Individuals | Infobox Person |
+| Institutions | Infobox Organization |
+| Papers, books | Infobox Publication |
+
+=== Practice 2: Complete Required Parameters ===
+
+Always provide required parameters:
+'' `name` — The primary identifier
+'' `epistemic_status` — Required for knowledge claims
+'' `confidence` or `confidence_score` — Required for assertions
+
+=== Practice 3: Use Consistent Formatting ===
+
+Follow parameter formatting standards:
+'' '''Text:''' Plain text, no markup in parameters
+'' '''Numbers:''' Use decimals for scores (0.0-1.0)
+'' '''Dates:''' ISO 8601 format (YYYY-MM-DD)
+'' '''Pages:''' Use wiki links `[[Page Name]]`
+'' '''Lists:''' Comma-separated for multiple values
+
+=== Practice 4: Update When Information Changes ===
+
+Keep templates current:
+'' Regular review of epistemic status
+'' Version tracking for significant changes
+'' Change documentation in edit summaries
+'' Update confidence scores as evidence accumulates
+
+=== Practice 5: Combine Templates Appropriately ===
+
+Templates work together:
+'' Use infobox + navbox for comprehensive coverage
+'' Add epistemic templates to mark uncertainty
+'' Combine with categories for discoverability
+
+== Template Quick Reference ==
+
+=== Infobox Templates (7) ===
+
+| Template | Purpose | Key Parameters |
+|----------|---------|----------------|
+| Infobox Concept | Abstract concepts | name, definition, originator |
+| Infobox Idea | Theoretical ideas | name, field, implementations |
+| Infobox Implementation | Concrete systems | name, implements, technology |
+| Infobox Project | Organized efforts | name, goal, status |
+| Infobox Person | Individuals | name, affiliation, expertise |
+| Infobox Organization | Institutions | name, type, mission |
+| Infobox Publication | Citations | title, authors, doi |
+
+=== Navigation Templates (3) ===
+
+| Template | Purpose | Use Case |
+|----------|---------|----------|
+| Navbox | Related pages | Bottom of articles |
+| Sidebar | Persistent nav | Side of pages |
+| Portal | Topic entry | Landing pages |
+
+=== Formatting Templates (4) ===
+
+| Template | Purpose | Usage |
+|----------|---------|-------|
+| Documentation | Template docs | `<noinclude>` wrapper |
+| Clear | Float clearing | After infoboxes |
+| Main | Main article link | Summary sections |
+| See also | Related links | Cross-references |
+
+=== Epistemic Templates (4) ===
+
+| Template | Purpose | Values |
+|----------|---------|--------|
+| Epistemic Status | Knowledge status | Hypothetical, Emerging, Established, Verified, Axiomatic |
+| Confidence | Textual confidence | low, medium, high, very high |
+| Confidence Score | Numeric confidence | 0.0-1.0 |
+| Source/Citation Needed | Missing references | Flag for attention |
+
+== References ==
+
+# Semantic MediaWiki. (2026). Template documentation. https://www.semantic-mediawiki.org/
+# MediaWiki. (2026). Template syntax. https://www.mediawiki.org/wiki/Help:Templates
+# BITwiki Template Usage Guide. (2026). BITCORE Internal Documentation.
+# BITwiki Ontology Index. (2026). Schema Reference.
+# BITwiki Constitution. (2026). Governance Framework.
+
+[[Has page type::Template Catalog]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.92]]
+[[Has template count::18]]
+[[Has template category count::4]]
+[[Has source count::5]]
+[[Has word count::~1200]]
+[[Has infobox template count::7]]
+[[Has navigation template count::3]]
+[[Has formatting template count::4]]
+[[Has epistemic template count::4]]
+
+</includeonly>

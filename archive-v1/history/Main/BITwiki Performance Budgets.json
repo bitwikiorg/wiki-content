@@ -1,0 +1,42 @@
+{
+  "title": "BITwiki Performance Budgets",
+  "namespace": 0,
+  "pageid": 117,
+  "revision_count": 2,
+  "revisions": [
+    {
+      "revid": 466,
+      "parentid": 294,
+      "minor": true,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:28:56Z",
+      "size": 2294,
+      "sha1": "4d75443c038afb85927797f3ffeee60add3e312d",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox\n| title = BITwiki Performance Budgets\n| description = Documented constraints for template expansion and query performance\n| type = front-matter\n| category = system-documentation\n}}\n\n= BITwiki Performance Budgets =\n\n== Hard Limits (MediaWiki Defaults) ==\n\n{| class=\"wikitable\"\n! Metric !! Default Limit !! BITwiki Recommended !! Exceeding Consequence\n|-\n| Template expansion depth || 40 levels || 3-4 levels || Parse failure\n|-\n| Post-expand include size (PEIS) || 2,097,152 bytes || 1,048,576 bytes (50%) || Hard failure\n|-\n| Expensive parser functions || 100 per page || 50 per page || Parse failure\n|-\n| {{#ask:}} result limit || unlimited || 50 || Performance degradation\n|}\n\n== Template-Specific Budgets ==\n\n{| class=\"wikitable\"\n! Template !! Max Nesting !! PEIS Budget !! Expensive Functions\n|-\n| Infobox Concept || 2 levels || 100KB || 5\n|-\n| Infobox Idea || 2 levels || 100KB || 5\n|-\n| Infobox Implementation || 2 levels || 100KB || 5\n|-\n| Infobox Project || 2 levels || 100KB || 5\n|-\n| Navbox Concepts || 3 levels || 200KB || 10\n|}\n\n== Fragment Budgets ==\n\n{| class=\"wikitable\"\n! Fragment Type !! Max Transclusions/Page !! PEIS Impact\n|-\n| L1 (Paragraphs) || 20 || ~5KB each\n|-\n| L2 (Sections) || 5 || ~20KB each\n|-\n| L3 (Templates) || 10 || Variable\n|}\n\n== Monitoring ==\n\nTrack via SMW properties:\n'' [[Has template depth::]]\n'' [[Has PEIS usage::]]\n'' [[Has expensive function count::]]\n\n== Optimization Strategies ==\n\n= Reduce Nesting: Flatten template call graphs =\n= Limit Queries: Always specify <code>|limit=</code> on {{#ask:}} =\n= Use Lua Modules: Move complex logic to Module: namespace =\n= Cache Results: Use concept caching for expensive queries =\n= Fragment Reuse: Prefer L1 fragments over full section transclusion =\n\n== Validation Rules ==\n\n'' All templates must document their depth/PEIS usage in /doc\n'' Pre-import checks must validate against budgets\n'' SMW queries must specify explicit limits\n* Circular dependencies are prohibited (see Dependency Schema)\n\n== Emergency Procedures ==\n\nIf PEIS exceeded:\n= Identify largest transclusion via Special:ExpandTemplates =\n= Replace with direct content or reduce fragment size =\n= Consider splitting page into subpages =\n\n[[Category:BITwiki Front Matter]]\n[[Category:System Documentation]]\n[[Category:Performance]]"
+        }
+      },
+      "comment": "BITCOREOS moved page [[BITwiki Performance Budgets final]] to [[BITwiki Performance Budgets]]: Removing 'final' suffix from title"
+    },
+    {
+      "revid": 294,
+      "parentid": 0,
+      "minor": false,
+      "user": "BITCOREOS",
+      "timestamp": "2026-02-24T01:03:58Z",
+      "size": 2294,
+      "sha1": "4d75443c038afb85927797f3ffeee60add3e312d",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "{{Infobox\n| title = BITwiki Performance Budgets\n| description = Documented constraints for template expansion and query performance\n| type = front-matter\n| category = system-documentation\n}}\n\n= BITwiki Performance Budgets =\n\n== Hard Limits (MediaWiki Defaults) ==\n\n{| class=\"wikitable\"\n! Metric !! Default Limit !! BITwiki Recommended !! Exceeding Consequence\n|-\n| Template expansion depth || 40 levels || 3-4 levels || Parse failure\n|-\n| Post-expand include size (PEIS) || 2,097,152 bytes || 1,048,576 bytes (50%) || Hard failure\n|-\n| Expensive parser functions || 100 per page || 50 per page || Parse failure\n|-\n| {{#ask:}} result limit || unlimited || 50 || Performance degradation\n|}\n\n== Template-Specific Budgets ==\n\n{| class=\"wikitable\"\n! Template !! Max Nesting !! PEIS Budget !! Expensive Functions\n|-\n| Infobox Concept || 2 levels || 100KB || 5\n|-\n| Infobox Idea || 2 levels || 100KB || 5\n|-\n| Infobox Implementation || 2 levels || 100KB || 5\n|-\n| Infobox Project || 2 levels || 100KB || 5\n|-\n| Navbox Concepts || 3 levels || 200KB || 10\n|}\n\n== Fragment Budgets ==\n\n{| class=\"wikitable\"\n! Fragment Type !! Max Transclusions/Page !! PEIS Impact\n|-\n| L1 (Paragraphs) || 20 || ~5KB each\n|-\n| L2 (Sections) || 5 || ~20KB each\n|-\n| L3 (Templates) || 10 || Variable\n|}\n\n== Monitoring ==\n\nTrack via SMW properties:\n'' [[Has template depth::]]\n'' [[Has PEIS usage::]]\n'' [[Has expensive function count::]]\n\n== Optimization Strategies ==\n\n= Reduce Nesting: Flatten template call graphs =\n= Limit Queries: Always specify <code>|limit=</code> on {{#ask:}} =\n= Use Lua Modules: Move complex logic to Module: namespace =\n= Cache Results: Use concept caching for expensive queries =\n= Fragment Reuse: Prefer L1 fragments over full section transclusion =\n\n== Validation Rules ==\n\n'' All templates must document their depth/PEIS usage in /doc\n'' Pre-import checks must validate against budgets\n'' SMW queries must specify explicit limits\n* Circular dependencies are prohibited (see Dependency Schema)\n\n== Emergency Procedures ==\n\nIf PEIS exceeded:\n= Identify largest transclusion via Special:ExpandTemplates =\n= Replace with direct content or reduce fragment size =\n= Consider splitting page into subpages =\n\n[[Category:BITwiki Front Matter]]\n[[Category:System Documentation]]\n[[Category:Performance]]"
+        }
+      },
+      "comment": "BITwiki content upload (35/148)"
+    }
+  ]
+}

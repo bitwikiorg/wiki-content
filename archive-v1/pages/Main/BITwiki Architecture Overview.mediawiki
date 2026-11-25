@@ -1,0 +1,518 @@
+{{Infobox
+| title = BITwiki Architecture Overview: System Design and Components
+| description = Comprehensive overview of BITwiki technical architecture including MediaWiki, SMW, extensions, and infrastructure.
+| type = architecture-overview
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: architecture-overview
+domain: system-architecture
+| workflow = state: Active
+| sources = - "https://www.mediawiki.org/wiki/Manual:Architecture"
+- "https://www.semantic-mediawiki.org/wiki/Help:Technical_Implementation"
+- "https://en.wikipedia.org/wiki/MediaWiki"
+- "https://en.wikipedia.org/wiki/Semantic_MediaWiki"
+- "https://www.mediawiki.org/wiki/Manual:Database_layout"
+- "https://www.mediawiki.org/wiki/Manual:Cache"
+- "https://www.mediawiki.org/wiki/Manual:Performance_tuning"
+- "https://en.wikipedia.org/wiki/LAMP_(software_bundle)"
+- "https://en.wikipedia.org/wiki/Load_balancing_(computing)"
+- "https://en.wikipedia.org/wiki/Content_delivery_network"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Architecture]]
+[[Category:BITwiki Front Matter]]
+[[Category:Hyperion Workspace]]
+
+
+= BITwiki Architecture Overview: System Design and Components =
+
+== Executive Summary
+
+BITwiki is built on MediaWiki with Semantic MediaWiki extensions, creating a recursive knowledge system with machine-readable semantics and explicit epistemic marking.
+
+'''Architecture Principles:'''
+* Open source foundation (MediaWiki)
+* Semantic layer (SMW)
+* Epistemic transparency
+* Recursive self-reference
+* Distributed scalability
+
+----
+== 1. System Architecture
+
+=== 1.1 High-Level Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        CLIENT LAYER                        │
+│  (Browsers, API Clients, Mobile Apps, External Systems)     │
+└─────────────────────────────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      WEB SERVER LAYER                       │
+│  (Apache/Nginx, SSL/TLS, Load Balancer, CDN)                │
+└─────────────────────────────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    APPLICATION LAYER                        │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
+│  │   MediaWiki  │  │     SMW      │  │  Extensions  │     │
+│  │   (Core)     │  │  (Semantic)  │  │  (BITwiki)   │     │
+│  └──────────────┘  └──────────────┘  └──────────────┘     │
+└─────────────────────────────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                      DATA LAYER                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
+│  │   MySQL/     │  │   SMW        │  │   Cache      │     │
+│  │   MariaDB    │  │   Tables     │  │   (Redis)    │     │
+│  └──────────────┘  └──────────────┘  └──────────────┘     │
+└─────────────────────────────────────────────────────────────┘
+```
+
+=== 1.2 Component Overview
+
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| '''Web Server''' | Apache/Nginx | HTTP handling, SSL, static files |
+| '''PHP''' | 8.1+ | Application logic |
+| '''Database''' | MySQL 8.0+ | Content storage |
+| '''SMW''' | 4.1+ | Semantic layer |
+| '''Cache''' | Redis/Memcached | Performance |
+| '''Search''' | Elasticsearch | Full-text search |
+| '''CDN''' | CloudFlare | Global distribution |
+
+----
+== 2. MediaWiki Core
+
+=== 2.1 Core Components
+
+'''Parser:'''
+* Converts wiki markup to HTML
+* Handles templates and magic words
+* Extension point for custom syntax
+
+'''Database Layer:'''
+* Abstraction for MySQL/PostgreSQL
+* Page content storage
+* Revision history
+* User management
+
+'''Skin System:'''
+* Vector (default)
+* Timeless
+* Custom BITwiki skin
+
+'''API:'''
+* REST API for external access
+* Action API for operations
+* Query API for data retrieval
+
+=== 2.2 Key Tables
+
+| Table | Purpose |
+|-------|---------|
+| `page` | Page metadata |
+| `revision` | Content revisions |
+| `text` | Page content (compressed) |
+| `user` | User accounts |
+| `categorylinks` | Category associations |
+| `templatelinks` | Template usage |
+| `pagelinks` | Internal links |
+| `externallinks` | External links |
+
+----
+== 3. Semantic MediaWiki
+
+=== 3.1 SMW Architecture
+
+'''Data Model:'''
+* Subjects (pages)
+* Properties (attributes)
+* Values (data)
+
+'''Storage:'''
+* Dedicated SMW tables
+* Property-value pairs
+* Type information
+* Query cache
+
+'''Query Engine:'''
+* SPARQL-like syntax
+* SQL generation
+* Result caching
+* Formatters
+
+=== 3.2 SMW Tables
+
+| Table | Purpose |
+|-------|---------|
+| `smw_object_ids` | Entity IDs |
+| `smw_property_ids` | Property IDs |
+| `smw_triples` | Subject-property-value |
+| `smw_query_links` | Query dependencies |
+| `smw_stats` | Usage statistics |
+
+=== 3.3 Property Types
+
+| Type | Storage | Example |
+|------|---------|---------|
+| Text | VARCHAR/TEXT | "Title" |
+| Number | FLOAT | 0.75 |
+| Date | DATETIME | 2026-02-13 |
+| Page | INT (page_id) | Linked page |
+| URL | VARCHAR | https://... |
+| Boolean | TINYINT | true/false |
+
+----
+== 4. BITwiki Extensions
+
+=== 4.1 Core Extensions
+
+'''Semantic Forms:'''
+* Structured data entry
+* Template-based forms
+* Validation
+
+'''Page Forms:'''
+* Create/edit forms
+* Autocompletion
+* Dropdowns
+
+'''Header Tabs:'''
+* Tabbed interface
+* Organized display
+* Navigation
+
+'''TemplateStyles:'''
+* CSS per template
+* Scoped styles
+* Responsive design
+
+=== 4.2 Custom Extensions
+
+'''Epistemic Markers:'''
+* Confidence display
+* Status indicators
+* Evidence tiers
+
+'''Quality Dashboard:'''
+* Metrics display
+* Validation status
+* Improvement suggestions
+
+'''Query Builder:'''
+* Visual query construction
+* SMW integration
+* Result preview
+
+=== 4.3 Extension Configuration
+
+'''LocalSettings.php:'''
+```php
+// SMW
+wfLoadExtension( 'SemanticMediaWiki' );
+enableSemantics( 'bitwiki.org' );
+
+// Forms
+wfLoadExtension( 'PageForms' );
+
+// Tabs
+wfLoadExtension( 'HeaderTabs' );
+
+// Styles
+wfLoadExtension( 'TemplateStyles' );
+
+// BITwiki custom
+wfLoadExtension( 'BITwikiEpistemic' );
+wfLoadExtension( 'BITwikiQuality' );
+```
+
+----
+== 5. Data Flow
+
+=== 5.1 Page Request Flow
+
+```
+1. HTTP Request → Web Server
+2. Web Server → PHP-FPM
+3. PHP → MediaWiki
+4. MediaWiki → Parser
+5. Parser → SMW (semantic data)
+6. SMW → Database
+7. Database → SMW
+8. SMW → Parser
+9. Parser → HTML
+10. HTML → Web Server
+11. Web Server → Client
+```
+
+=== 5.2 Edit Flow
+
+```
+1. User submits edit
+2. MediaWiki validates
+3. SMW extracts properties
+4. SMW updates triples
+5. Database stores revision
+6. Cache invalidated
+7. Search index updated
+8. Webhooks triggered
+```
+
+=== 5.3 Query Flow
+
+```
+1. Parse {{#ask: query}}
+2. Generate SQL
+3. Check cache
+4. Execute query
+5. Format results
+6. Cache results
+7. Return HTML
+```
+
+----
+== 6. Performance Optimization
+
+=== 6.1 Caching Strategy
+
+| Cache Type | Technology | Purpose |
+|------------|------------|---------|
+| '''OPcache''' | PHP | Bytecode cache |
+| '''Object Cache''' | Redis | SMW data |
+| '''Query Cache''' | SMW | Query results |
+| '''Page Cache''' | Varnish | Full pages |
+| '''CDN Cache''' | CloudFlare | Static assets |
+
+=== 6.2 Database Optimization
+
+'''Indexing:'''
+* Primary keys
+* Foreign keys
+* SMW property indexes
+* Full-text search
+
+'''Partitioning:'''
+* Archive tables
+* SMW data by date
+* Log tables
+
+'''Configuration:'''
+```sql
+-- SMW optimization
+OPTIMIZE TABLE smw_object_ids;
+OPTIMIZE TABLE smw_triples;
+
+-- Query cache
+SET GLOBAL query_cache_size = 268435456;
+SET GLOBAL query_cache_type = ON;
+```
+
+=== 6.3 PHP Optimization
+
+'''OPcache:'''
+```ini
+opcache.enable=1
+opcache.memory_consumption=256
+opcache.max_accelerated_files=10000
+opcache.revalidate_freq=60
+```
+
+'''MediaWiki:'''
+```php
+$wgMainCacheType = CACHE_MEMCACHED;
+$wgMemCachedServers = [ '127.0.0.1:11211' ];
+```
+
+----
+== 7. Security
+
+=== 7.1 Authentication
+
+'''Methods:'''
+* Local accounts
+* OAuth (Google, GitHub)
+* LDAP (enterprise)
+* API keys
+
+'''Configuration:'''
+```php
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['user']['edit'] = true;
+```
+
+=== 7.2 Authorization
+
+'''Roles:'''
+* Anonymous (read-only)
+* User (edit)
+* Steward (review)
+* Admin (configure)
+* BITCORE (governance)
+
+'''Permissions:'''
+```php
+$wgGroupPermissions['steward']['validate'] = true;
+$wgGroupPermissions['steward']['epistemic-review'] = true;
+```
+
+=== 7.3 Data Protection
+
+'''Encryption:'''
+* TLS 1.3 for transport
+* Database encryption at rest
+* API key hashing
+
+'''Privacy:'''
+* GDPR compliance
+* Data retention policies
+* User data export
+
+----
+== 8. Scalability
+
+=== 8.1 Horizontal Scaling
+
+'''Load Balancer:'''
+* Multiple web servers
+* Session sharing
+* Health checks
+
+'''Database:'''
+* Read replicas
+* Master-slave replication
+* Connection pooling
+
+'''Cache:'''
+* Distributed Redis
+* Consistent hashing
+* Cache warming
+
+=== 8.2 Vertical Scaling
+
+'''Resources:'''
+* CPU: More cores for PHP
+* Memory: More RAM for cache
+* Storage: SSD for database
+* Network: Higher bandwidth
+
+=== 8.3 Cloud Deployment
+
+'''Kubernetes:'''
+* Containerized MediaWiki
+* Auto-scaling
+* Rolling updates
+
+'''AWS/GCP/Azure:'''
+* Managed databases
+* Load balancers
+* Object storage
+
+----
+== 9. Monitoring
+
+=== 9.1 Metrics
+
+'''Performance:'''
+* Page load time
+* Query execution time
+* Cache hit rate
+* Database connections
+
+'''Health:'''
+* Error rates
+* Uptime
+* Disk space
+* Memory usage
+
+'''Business:'''
+* Active users
+* Edits per hour
+* Query volume
+* Content growth
+
+=== 9.2 Tools
+
+'''Application:'''
+* New Relic
+* Datadog
+* Prometheus
+
+'''Infrastructure:'''
+* Nagios
+* Zabbix
+* Grafana
+
+'''Logs:'''
+* ELK Stack
+* Splunk
+* Papertrail
+
+----
+== 10. Backup and Recovery
+
+=== 10.1 Backup Strategy
+
+'''Database:'''
+* Daily full backup
+* Hourly incremental
+* Offsite storage
+* Point-in-time recovery
+
+'''Files:'''
+* Weekly full backup
+* Daily incremental
+* Versioned storage
+* Cross-region replication
+
+'''SMW Data:'''
+* RDF export
+* Property definitions
+* Query logs
+
+=== 10.2 Recovery Procedures
+
+'''Database Recovery:'''
+```bash
+# Restore from backup
+mysql -u wikiuser -p wikidb < backup.sql
+
+# Rebuild SMW
+php extensions/SemanticMediaWiki/maintenance/rebuildData.php
+```
+
+'''Full Recovery:'''
+# Restore database
+# Restore files
+# Rebuild SMW
+# Clear caches
+# Verify functionality
+
+----
+== Conclusion
+
+BITwiki's architecture combines proven MediaWiki foundations with semantic extensions to create a recursive knowledge system. The design prioritizes epistemic transparency, performance, and scalability.
+
+'''Key Principles:'''
+* Open source foundation
+* Semantic data layer
+* Distributed scalability
+* Security by design
+* Performance optimized
+
+'''Next Steps:'''
+# Deploy infrastructure
+# Configure extensions
+# Optimize performance
+# Monitor metrics
+# Scale as needed

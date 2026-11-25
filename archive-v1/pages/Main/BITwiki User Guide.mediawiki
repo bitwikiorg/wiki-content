@@ -1,0 +1,661 @@
+{{Infobox
+| title = BITwiki User Guide: Creating and Editing Content
+| description = Comprehensive guide for BITwiki users covering content creation, editing workflows, epistemic marking, and quality standards.
+| type = user-guide
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: user-guide
+domain: user-documentation
+| workflow = state: Active
+| sources = - "https://www.mediawiki.org/wiki/Help:Contents"
+- "https://www.semantic-mediawiki.org/wiki/Help:User_manual"
+- "https://en.wikipedia.org/wiki/Help:Editing"
+- "https://en.wikipedia.org/wiki/Help:Cheatsheet"
+- "https://www.mediawiki.org/wiki/Help:Formatting"
+- "https://www.mediawiki.org/wiki/Help:Links"
+- "https://www.mediawiki.org/wiki/Help:Images"
+- "https://www.mediawiki.org/wiki/Help:Tables"
+- "https://www.semantic-mediawiki.org/wiki/Help:Semantic_search"
+- "https://www.mediawiki.org/wiki/Help:Categories"
+}}
+
+{{Documentation}}
+[[Category:BITwiki User Guide]]
+[[Category:BITwiki Front Matter]]
+[[Category:Hyperion Workspace]]
+
+
+= BITwiki User Guide: Creating and Editing Content =
+
+== Executive Summary
+
+This guide provides everything you need to create, edit, and maintain content in BITwiki. It covers basic editing, epistemic marking, template usage, and quality standards.
+
+'''Who This Guide Is For:'''
+* New contributors learning BITwiki
+* Experienced editors refining content
+* Stewards reviewing submissions
+* Anyone seeking to understand BITwiki's unique approach
+
+----
+== 1. Getting Started
+
+=== 1.1 Your First Edit
+
+'''Step 1: Create an Account'''
+# Click "Create account" in the top right
+# Choose a username (real names preferred)
+# Verify your email
+# Read the [[BITwiki_Constitution|Constitution]]
+
+'''Step 2: Find Content to Edit'''
+* Browse [[Special:AllPages|All Pages]]
+* Check [[BITwiki_Master_Navigation|Master Navigation]]
+* Look for pages marked [[:Category:Pages_Needing_Attention|Needs Attention]]
+
+'''Step 3: Make Your Edit'''
+# Click "Edit" on any page
+# Make your changes
+# Preview before saving
+# Add an edit summary
+# Save
+
+=== 1.2 Basic Editing
+
+'''Text Formatting:'''
+```mediawiki
+''Italic text''
+'''Bold text'''
+'''''Bold and italic'''''
+
+== Heading Level 2 ==
+=== Heading Level 3 ===
+==== Heading Level 4 ====
+
+* Bullet point
+* Another bullet
+** Indented bullet
+
+# Numbered list
+# Second item
+## Sub-item
+```
+
+'''Links:'''
+```mediawiki
+[[Page Name]]
+[[Page Name|Display Text]]
+[[Category:BITwiki]]
+[https://example.com External link]
+```
+
+'''Templates:'''
+```mediawiki
+{{Template Name}}
+{{Template Name|parameter=value}}
+```
+
+----
+== 2. Creating New Pages
+
+=== 2.1 Page Structure
+
+Every BITwiki page should include:
+
+# '''YAML Frontmatter''' (required)
+# '''Document Header''' (required)
+# '''Content Body'''
+# '''Categories''' (required)
+# '''See Also''' (optional)
+# '''References''' (if applicable)
+
+'''Example Structure:'''
+```mediawiki
+---
+title: "Page Title"
+description: "Brief description"
+type: concept
+author: "Your Name"
+created: "2026-02-13"
+version: "1.0.0"
+ontology:
+ entity_type: concept
+ domain: systems-science
+epistemic_status: Emerging
+confidence: Established
+workflow:
+ state: Active
+---
+
+{{Documentation}}
+[[Category:BITwiki]]
+[[Category:BITwiki Concepts]]
+
+
+= Page Title =
+
+{{Epistemic_Marker
+|confidence=Medium
+|evidence=Secondary sources
+|status=Under review
+}}
+
+== Introduction ==
+
+Content here...
+
+== Section 1 ==
+
+More content...
+
+== See Also ==
+* [[Related Page]]
+* [[Another Page]]
+
+== References ==
+<references />
+
+
+```
+
+=== 2.2 YAML Frontmatter
+
+'''Required Fields:'''
+
+| Field | Type | Description | Example |
+|-------|------|-------------|---------|
+| `title` | Text | Display title | "BITwiki Constitution" |
+| `description` | Text | Brief summary | "Foundational principles..." |
+| `type` | Text | Document type | concept, project, source |
+| `author` | Text | Creator | "Your Name" |
+| `created` | Date | Creation date | 2026-02-13 |
+| `version` | Text | Version | 1.0.0 |
+| `epistemic_status` | Text | Knowledge tier | Emerging |
+| `confidence` | Number | 0.0-1.0 | 0.75 |
+
+'''Optional Fields:'''
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `ontology` | Object | Entity type, domain |
+| `workflow` | Object | State, review date |
+| `license` | Text | License |
+| `sources` | List | References |
+
+'''Example:'''
+```yaml
+---
+title: "Recursive Systems"
+description: "Systems that reference themselves"
+type: concept
+author: "Your Name"
+created: "2026-02-13"
+version: "1.0.0"
+ontology:
+ entity_type: concept
+ domain: systems-science
+epistemic_status: Emerging
+confidence: Established
+workflow:
+ state: Active
+license: CC-BY-SA-4.0
+sources:
+ - "https://en.wikipedia.org/wiki/Recursion"
+---
+```
+
+=== 2.3 Choosing Page Names
+
+'''Naming Conventions:'''
+* Use Title Case: `BITwiki_Constitution` not `bitwiki constitution`
+* Be specific: `Recursive_Function` not `Recursion`
+* Use underscores for spaces
+* Include domain prefix for clarity: `Systems_Recursion`
+
+'''Avoid:'''
+* Ambiguous names
+* Overly long names (>50 characters)
+* Special characters except underscore
+* Names starting with numbers
+
+----
+== 3. Epistemic Marking
+
+=== 3.1 Understanding Epistemic Status
+
+| Status | Meaning | When to Use |
+|--------|---------|-------------|
+| '''Axiomatic''' | Self-evident, foundational | Core principles, definitions |
+| '''Established''' | Well-supported, consensus | Verified claims, proven theories |
+| '''Emerging''' | Promising but incomplete | New research, developing ideas |
+| '''Hypothetical''' | Speculative, unverified | Theories, predictions |
+| '''Contested''' | Disputed, multiple views | Debated topics, conflicting evidence |
+
+=== 3.2 Setting Confidence Scores
+
+'''Confidence Scale:'''
+
+| Score | Meaning | Evidence Required |
+|-------|---------|-------------------|
+| 0.95-1.0 | Virtually certain | Multiple primary sources, replication |
+| 0.80-0.94 | Highly confident | Primary sources, expert consensus |
+| 0.60-0.79 | Moderately confident | Secondary sources, partial evidence |
+| 0.40-0.59 | Tentative | Limited evidence, single source |
+| 0.20-0.39 | Uncertain | Anecdotal, preliminary |
+| 0.00-0.19 | Highly uncertain | Speculation, no evidence |
+
+'''Template Usage:'''
+```mediawiki
+{{Epistemic_Marker
+|confidence=High
+|evidence=Primary sources
+|status=Verified
+}}
+```
+
+=== 3.3 Evidence Tiers
+
+| Tier | Description | Examples |
+|------|-------------|----------|
+| '''T1''' | Primary sources | Raw data, experiments, direct observation |
+| '''T2''' | Peer-reviewed research | Journal articles, conference papers |
+| '''T3''' | Expert synthesis | Reviews, textbooks, expert opinions |
+| '''T4''' | Secondary sources | News articles, blogs, summaries |
+| '''T5''' | Tertiary sources | Encyclopedias, general references |
+
+'''Marking Evidence:'''
+```mediawiki
+This claim is supported by recent research.[1]
+
+== References ==
+[1] Smith, J. (2025). "Title of Study." ''Journal Name'', 10(2), 100-120. {{Evidence_Tier|T2}}
+```
+
+----
+== 4. Using Templates
+
+=== 4.1 Document Header Template
+
+'''Purpose:''' Standardize page metadata
+
+'''Usage:'''
+```mediawiki
+{{Document_Header
+|title=Page Title
+|type=Concept
+|author=Your Name
+|date=2026-02-13
+|confidence=0.75
+|status=Emerging
+}}
+```
+
+'''Result:'''
+* Adds epistemic marker
+* Sets SMW properties
+* Displays metadata box
+
+=== 4.2 Infobox Templates
+
+'''Infobox_Concept:'''
+```mediawiki
+{{Infobox_Concept
+|title=Recursive Systems
+|definition=Systems that reference themselves
+|examples=Fractals, Feedback loops
+|domain=Systems Science
+|confidence=0.80
+|status=Established
+}}
+```
+
+'''Infobox_Project:'''
+```mediawiki
+{{Infobox_Project
+|title=BITwiki Development
+|description=Building recursive knowledge infrastructure
+|status=Active
+|steward=Hyperion
+|confidence=0.90
+}}
+```
+
+=== 4.3 Epistemic Templates
+
+'''Epistemic_Marker:'''
+```mediawiki
+{{Epistemic_Marker
+|confidence=High
+|evidence=Primary sources
+|status=Verified
+}}
+```
+
+'''Uncertainty_Marker:'''
+```mediawiki
+{{Uncertainty_Marker
+|type=Measurement
+|value=10.5
+|uncertainty=±0.2
+|confidence=0.85
+}}
+```
+
+=== 4.4 Query Templates
+
+'''Related_Entities:'''
+```mediawiki
+{{Related_Entities
+|entity={{FULLPAGENAME}}
+|limit=10
+}}
+```
+
+'''Domain_Index:'''
+```mediawiki
+{{Domain_Index
+|domain=Systems Science
+|limit=20
+}}
+```
+
+----
+== 5. Semantic Markup
+
+=== 5.1 Basic Properties
+
+'''Setting Properties:'''
+```mediawiki
+[[Has title::Page Title]]
+[[Has author::Your Name]]
+[[Has confidence::0.75]]
+[[Has epistemic status::Emerging]]
+[[Has domain::Systems Science]]
+```
+
+'''Setting Multiple Values:'''
+```mediawiki
+[[Has domain::Systems Science]]
+[[Has domain::Cybernetics]]
+```
+
+=== 5.2 Property Types
+
+| Type | Syntax | Example |
+|------|--------|---------|
+| Text | `[[Property::Value]]` | `[[Has title::Title]]` |
+| Number | `[[Property::123]]` | `[[Has confidence::0.75]]` |
+| Date | `[[Property::2026-02-13]]` | `[[Has creation date::2026-02-13]]` |
+| Page | `[[Property::Page Name]]` | `[[Has author::User:Name]]` |
+| URL | `[[Property::https://...]]` | `[[Has URL::https://...]]` |
+
+=== 5.3 Inline Queries
+
+'''Basic Query:'''
+```mediawiki
+{{#ask: [[Has domain::Systems Science]]
+|?Has title
+|format=ul
+}}
+```
+
+'''Filtered Query:'''
+```mediawiki
+{{#ask: [[Has confidence::>0.8]]
+|?Has title
+|?Has confidence
+|format=table
+|sort=Has confidence
+|order=desc
+}}
+```
+
+'''Count Query:'''
+```mediawiki
+{{#ask: [[Has entity type::Concept]]
+|format=count
+}}
+```
+
+----
+== 6. Quality Standards
+
+=== 6.1 Content Requirements
+
+'''Every Page Must Have:'''
+* [ ] YAML frontmatter with all required fields
+* [ ] Epistemic marker or confidence indication
+* [ ] At least one category
+* [ ] Clear structure with headings
+* [ ] Proper citations for claims
+
+'''Every Page Should Have:'''
+* [ ] See Also section with related pages
+* [ ] References section if citing sources
+* [ ] External links where relevant
+* [ ] Images or diagrams if helpful
+
+=== 6.2 Writing Guidelines
+
+'''Be Clear:'''
+* Use simple language
+* Define technical terms
+* Provide examples
+* Avoid jargon
+
+'''Be Precise:'''
+* Use specific numbers
+* Cite sources
+* Distinguish fact from opinion
+* Mark uncertainty explicitly
+
+'''Be Recursive:'''
+* Link to related concepts
+* Show connections
+* Reference foundational principles
+* Acknowledge limitations
+
+=== 6.3 Common Mistakes
+
+| Mistake | Correction |
+|---------|------------|
+| Missing frontmatter | Add YAML frontmatter |
+| No confidence score | Add Epistemic_Marker |
+| Uncited claims | Add citations with Evidence_Tier |
+| Wrong epistemic status | Review status definitions |
+| No categories | Add at least one category |
+| Broken links | Check and fix links |
+
+----
+== 7. Advanced Features
+
+=== 7.1 Transclusion
+
+'''Include Content from Another Page:'''
+```mediawiki
+{{:Page Name}}
+```
+
+'''Include Specific Section:'''
+```mediawiki
+{{:Page Name#Section Name}}
+```
+
+'''Template Transclusion:'''
+```mediawiki
+
+This text won't appear when page is included
+
+
+This text only appears when included
+
+```
+
+=== 7.2 Subpages
+
+'''Create Subpage:'''
+```mediawiki
+[[Parent Page/Subpage]]
+```
+
+'''Automatic Links:'''
+Subpages automatically link to parent with breadcrumb navigation.
+
+=== 7.3 Redirects
+
+'''Create Redirect:'''
+```mediawiki
+#REDIRECT [[Target Page]]
+```
+
+'''Use For:'''
+* Alternative spellings
+* Abbreviations
+* Related terms
+* Moved pages
+
+=== 7.4 Magic Words
+
+| Word | Function | Example |
+|------|----------|---------|
+| `{{PAGENAME}}` | Current page name | BITwiki_User_Guide |
+| `{{FULLPAGENAME}}` | Full page name | BITwiki_User_Guide |
+| `{{REVISIONUSER}}` | Last editor | Hyperion |
+| `{{CURRENTTIMESTAMP}}` | Current time | 20260213110000 |
+| `{{NUMBEROFPAGES}}` | Total pages | 500 |
+
+----
+== 8. Collaboration
+
+=== 8.1 Edit Summaries
+
+'''Always provide edit summaries:'''
+* "Added epistemic marker"
+* "Fixed broken links"
+* "Updated confidence based on new evidence"
+* "Restructured for clarity"
+
+'''Good Summaries:'''
+* Describe what changed
+* Explain why
+* Reference issues if applicable
+
+=== 8.2 Talk Pages
+
+'''Use Talk Pages For:'''
+* Discussing major changes
+* Proposing new content
+* Resolving disputes
+* Asking questions
+
+'''Format:'''
+```mediawiki
+== Topic ==
+Your comment. [[User:BITCOREOS|BITCOREOS]] ([[User talk:BITCOREOS|talk]]) 01:04, 24 February 2026 (UTC)
+
+:Reply to comment. [[User:BITCOREOS|BITCOREOS]] ([[User talk:BITCOREOS|talk]]) 01:04, 24 February 2026 (UTC)
+```
+
+=== 8.3 Review Process
+
+'''Before Major Changes:'''
+# Discuss on talk page
+# Get consensus
+# Make changes
+# Request review
+
+'''After Changes:'''
+# Update epistemic status if needed
+# Adjust confidence if evidence changed
+# Notify relevant stewards
+# Update related pages
+
+----
+== 9. Troubleshooting
+
+=== 9.1 Common Issues
+
+'''SMW Properties Not Showing:'''
+* Check property syntax: `[[Property::Value]]`
+* Verify property exists in Property: namespace
+* Rebuild semantic data (ask steward)
+
+'''Template Errors:'''
+* Check parameter names
+* Verify template exists
+* Check for missing closing brackets
+
+'''Broken Links:'''
+* Check page exists
+* Verify spelling
+* Use Special:Search to find correct name
+
+=== 9.2 Getting Help
+
+'''Resources:'''
+* [[BITwiki_FAQ|FAQ]]
+* [[BITwiki_Master_Navigation|Master Navigation]]
+* [[Special:AllPages|All Pages]]
+* [[:Category:Help|Help Category]]
+
+'''Contact:'''
+* Talk pages for specific questions
+* Stewards for policy questions
+* [[BITwiki_Community_Portal|Community Portal]]
+
+----
+== 10. Quick Reference
+
+=== 10.1 Cheat Sheet
+
+```mediawiki
+=== Headings ===
+''Italic''  '''Bold'''
+[[Link]]  [[Link|Text]]
+[https://example.com External]
+
+* Bullet
+# Number
+
+{{Template}}
+{{Template|param=value}}
+
+[[Category:Name]]
+[[Has property::Value]]
+
+{{#ask: [[Property::Value]]
+|?Other property
+|format=table
+}}
+```
+
+=== 10.2 Epistemic Quick Reference
+
+| Status | Confidence | Evidence | Template |
+|--------|------------|----------|----------|
+| Axiomatic | 1.0 | Self-evident | `{{Epistemic_Marker|confidence=Certain|evidence=Axiomatic|status=Verified}}` |
+| Established | 0.8-0.99 | Primary | `{{Epistemic_Marker|confidence=High|evidence=Primary sources|status=Verified}}` |
+| Emerging | 0.5-0.79 | Secondary | `{{Epistemic_Marker|confidence=Medium|evidence=Secondary sources|status=Under review}}` |
+| Hypothetical | 0.0-0.49 | Tertiary | `{{Epistemic_Marker|confidence=Low|evidence=Preliminary|status=Unverified}}` |
+| Contested | Variable | Mixed | `{{Epistemic_Marker|confidence=Variable|evidence=Mixed|status=Disputed}}` |
+
+----
+== Conclusion
+
+BITwiki is a recursive knowledge system that requires explicit epistemic marking. By following these guidelines, you contribute to a knowledge base that is transparent, verifiable, and machine-readable.
+
+'''Remember:'''
+* Mark your confidence honestly
+* Cite your sources
+* Link to related concepts
+* Be open to revision
+
+'''Next Steps:'''
+# Create your first page
+# Join the community
+# Review the [[BITwiki_Constitution|Constitution]]
+# Explore [[BITwiki_Master_Navigation|Master Navigation]]

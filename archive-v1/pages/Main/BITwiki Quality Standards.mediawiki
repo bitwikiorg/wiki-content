@@ -1,0 +1,471 @@
+{{Infobox
+| title = BITwiki Quality Standards: Content Excellence Framework
+| description = Comprehensive quality standards for BITwiki content covering epistemic, structural, linguistic, and recursive dimensions.
+| type = quality-standards
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: quality-standards
+domain: quality-assurance
+| workflow = state: Active
+| sources = - "https://en.wikipedia.org/wiki/Quality_assurance"
+- "https://en.wikipedia.org/wiki/Content_analysis"
+- "https://en.wikipedia.org/wiki/Technical_writing"
+- "https://en.wikipedia.org/wiki/Information_quality"
+- "https://en.wikipedia.org/wiki/Readability"
+- "https://en.wikipedia.org/wiki/Peer_review"
+- "https://en.wikipedia.org/wiki/Style_guide"
+- "https://en.wikipedia.org/wiki/Academic_writing"
+- "https://en.wikipedia.org/wiki/Scientific_literature"
+- "https://en.wikipedia.org/wiki/Citation"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Quality]]
+[[Category:BITwiki Validation]]
+[[Category:Hyperion Workspace]]
+
+
+= BITwiki Quality Standards: Content Excellence Framework =
+
+== Executive Summary
+
+This document defines quality standards for BITwiki content across four dimensions: epistemic, structural, linguistic, and recursive. All content must meet these standards to be considered complete.
+
+'''Quality Dimensions:'''
+# '''Epistemic:''' Truth, evidence, confidence
+# '''Structural:''' Organization, completeness, SMW
+# '''Linguistic:''' Clarity, precision, style
+# '''Recursive:''' Self-reference, consistency, integration
+
+----
+== 1. Epistemic Quality
+
+=== 1.1 Truth Standards
+
+'''Accuracy:'''
+* Claims must be verifiable
+* Sources must support claims
+* No fabricated information
+* Corrections made promptly
+
+'''Precision:'''
+* Specific numbers, not vague quantities
+* Defined terms, not ambiguous language
+* Clear scope, not overgeneralization
+* Explicit limitations
+
+'''Objectivity:'''
+* Multiple perspectives represented
+* Bias acknowledged explicitly
+* Evidence over opinion
+* Falsification conditions stated
+
+=== 1.2 Evidence Standards
+
+| Tier | Requirement | Minimum Sources |
+|------|-------------|-----------------|
+| '''Axiomatic''' | Self-evident | 0 |
+| '''Established''' | Primary + consensus | 5+ (T1/T2) |
+| '''Emerging''' | Secondary sources | 3+ (T2/T3) |
+| '''Hypothetical''' | Limited evidence | 1+ (any) |
+| '''Contested''' | Multiple viewpoints | 2+ (conflicting) |
+
+'''Citation Requirements:'''
+* All empirical claims cited
+* Sources accessible (URLs, DOIs)
+* Evidence tiers marked
+* Full bibliographic information
+
+=== 1.3 Confidence Calibration
+
+'''Calibration Standards:'''
+
+| Stated | Expected Accuracy | Tolerance |
+|--------|-------------------|-----------|
+| 0.95-1.0 | 95-100% | ±3% |
+| 0.80-0.94 | 80-94% | ±7% |
+| 0.60-0.79 | 60-79% | ±10% |
+| 0.40-0.59 | 40-59% | ±15% |
+| <0.40 | <40% | ±20% |
+
+'''Red Flags:'''
+* Confidence >0.9 without primary sources
+* All claims by author >0.85
+* Confidence never changes
+* No falsification conditions
+
+----
+== 2. Structural Quality
+
+=== 2.1 Document Structure
+
+'''Required Elements:'''
+
+| Element | Required | Purpose |
+|---------|----------|---------|
+| YAML Frontmatter | Yes | Metadata, epistemic markers |
+| Document Header | Yes | Title, author, date |
+| Introduction | Yes | Context, scope |
+| Body Content | Yes | Main information |
+| See Also | Recommended | Related content |
+| References | If cited | Source attribution |
+| Categories | Yes | Organization |
+
+'''Section Requirements:'''
+* Logical flow
+* Clear headings
+* Appropriate depth
+* No orphan sections
+
+=== 2.2 YAML Frontmatter
+
+'''Required Fields:'''
+
+| Field | Type | Validation |
+|-------|------|------------|
+| `title` | Text | Non-empty, <100 chars |
+| `description` | Text | Non-empty, <500 chars |
+| `type` | Text | Valid entity type |
+| `author` | Text | Non-empty |
+| `created` | Date | ISO 8601 format |
+| `version` | Text | Semantic versioning |
+| `epistemic_status` | Text | Valid status |
+| `confidence` | Number | 0.0-1.0 |
+
+'''Optional Fields:'''
+* `ontology` (entity_type, domain)
+* `workflow` (state, review_date)
+* `license` (SPDX identifier)
+* `sources` (URL list)
+
+=== 2.3 SMW Integration
+
+'''Property Requirements:'''
+* `[[Has title::...]]` set
+* `[[Has entity type::...]]` set
+* `[[Has confidence::...]]` set
+* `[[Has epistemic status::...]]` set
+* `[[Has author::...]]` set
+* `[[Has creation date::...]]` set
+
+'''Query Requirements:'''
+* At least one inline query OR
+* Template that generates queries
+* Query results display correctly
+
+=== 2.4 Template Usage
+
+'''Required Templates:'''
+* `{{Document_Header}}` OR
+* `{{Epistemic_Marker}}` OR
+* Equivalent custom template
+
+'''Template Standards:'''
+* All parameters documented
+* No broken template calls
+* Proper nesting
+* Valid syntax
+
+----
+== 3. Linguistic Quality
+
+=== 3.1 Clarity Standards
+
+'''Readability:'''
+* Flesch Reading Ease: 40-60 (standard)
+* Flesch-Kincaid Grade: 10-14
+* Sentence length: <25 words average
+* Paragraph length: <150 words
+
+'''Accessibility:'''
+* Define technical terms
+* Explain acronyms
+* Use examples
+* Avoid jargon
+
+'''Structure:'''
+* Active voice preferred
+* Parallel structure
+* Logical progression
+* Clear transitions
+
+=== 3.2 Precision Standards
+
+'''Word Choice:'''
+* Specific over general
+* Concrete over abstract
+* Technical terms defined
+* No weasel words
+
+'''Quantification:'''
+* Numbers over "many"
+* Percentages over "most"
+* Ranges over "about"
+* Confidence intervals
+
+'''Scope:'''
+* Explicit boundaries
+* Clear limitations
+* No overgeneralization
+* Context provided
+
+=== 3.3 Style Standards
+
+'''Tone:'''
+* Neutral and objective
+* Professional
+* Respectful
+* Accessible
+
+'''Voice:'''
+* Active preferred
+* Third person
+* Consistent tense
+* Appropriate register
+
+'''Formatting:'''
+* Consistent headings
+* Proper punctuation
+* Standard spelling
+* Correct grammar
+
+----
+== 4. Recursive Quality
+
+=== 4.1 Self-Reference
+
+'''Internal Links:'''
+* Link to related concepts
+* Cross-reference definitions
+* Connect to principles
+* Reference constitution
+
+'''External Links:'''
+* Primary sources
+* Authoritative references
+* Accessible URLs
+* Stable links
+
+'''Navigation:'''
+* See Also section
+* Category membership
+* Template inclusion
+* Query results
+
+=== 4.2 Consistency
+
+'''Terminology:'''
+* Consistent definitions
+* Standardized terms
+* No contradictory usage
+* Glossary alignment
+
+'''Formatting:'''
+* Consistent templates
+* Standard structure
+* Uniform style
+* Predictable patterns
+
+'''Epistemics:'''
+* Consistent confidence
+* Appropriate status
+* Matching evidence
+* Logical progression
+
+=== 4.3 Integration
+
+'''Ontology Alignment:'''
+* Correct entity type
+* Appropriate domain
+* Valid relationships
+* Proper categorization
+
+'''System Integration:'''
+* SMW properties set
+* Queries functional
+* Templates render
+* Categories assigned
+
+'''Community Integration:'''
+* Follows conventions
+* Respects precedents
+* Compatible with existing
+* Extends knowledge base
+
+----
+== 5. Quality Metrics
+
+=== 5.1 Scoring System
+
+| Dimension | Weight | Max Score |
+|-----------|--------|-----------|
+| Epistemic | 30% | 30 |
+| Structural | 25% | 25 |
+| Linguistic | 25% | 25 |
+| Recursive | 20% | 20 |
+| '''Total''' | '''100%''' | '''100''' |
+
+'''Quality Levels:'''
+
+| Score | Level | Badge |
+|-------|-------|-------|
+| 95-100 | Exceptional | ⭐⭐⭐ |
+| 85-94 | Excellent | ⭐⭐ |
+| 75-84 | Good | ⭐ |
+| 60-74 | Adequate | ✅ |
+| 40-59 | Needs Work | 🔄 |
+| <40 | Incomplete | 📝 |
+
+=== 5.2 Automated Checks
+
+'''Epistemic:'''
+* Confidence score present
+* Status assigned
+* Sources cited
+* Falsification stated
+
+'''Structural:'''
+* YAML frontmatter valid
+* Required fields present
+* SMW properties set
+* Categories assigned
+
+'''Linguistic:'''
+* Readability score
+* Grammar check
+* Spell check
+* Link validation
+
+'''Recursive:'''
+* Internal links
+* Cross-references
+* Template usage
+* Query functionality
+
+=== 5.3 Manual Review
+
+'''Steward Review:'''
+* Content accuracy
+* Epistemic appropriateness
+* Structural completeness
+* Style consistency
+
+'''Peer Review:'''
+* Expert validation
+* Community feedback
+* Suggestion incorporation
+* Consensus building
+
+----
+== 6. Quality Improvement
+
+=== 6.1 Continuous Improvement
+
+'''Regular Review:'''
+* Annual quality audit
+* Confidence recalibration
+* Source verification
+* Link checking
+
+'''Version Control:'''
+* Track changes
+* Document rationale
+* Maintain history
+* Enable rollback
+
+'''Feedback Integration:'''
+* User suggestions
+* Error reports
+* Improvement requests
+* Community input
+
+=== 6.2 Remediation
+
+'''Minor Issues:'''
+* Fix immediately
+* Document in edit summary
+* No review required
+
+'''Major Issues:'''
+* Flag for review
+* Notify steward
+* Timeline for fix
+* Verification required
+
+'''Critical Issues:'''
+* Immediate attention
+* Content may be removed
+* Root cause analysis
+* Process improvement
+
+----
+== 7. Quality Assurance Process
+
+=== 7.1 Pre-Publication
+
+'''Author Checklist:'''
+* [ ] YAML frontmatter complete
+* [ ] Epistemic markers added
+* [ ] Sources cited
+* [ ] SMW properties set
+* [ ] Categories assigned
+* [ ] Links verified
+* [ ] Grammar checked
+* [ ] Readability acceptable
+
+'''Automated Validation:'''
+* YAML validation
+* SMW property check
+* Link validation
+* Template syntax check
+
+=== 7.2 Publication Review
+
+'''Steward Review:'''
+* Quality assessment
+* Epistemic validation
+* Structural review
+* Approval decision
+
+'''Community Review:'''
+* Open comment period
+* Feedback collection
+* Revision if needed
+* Final approval
+
+=== 7.3 Post-Publication
+
+'''Monitoring:'''
+* Quality metrics
+* User feedback
+* Error reports
+* Usage analytics
+
+'''Maintenance:'''
+* Regular updates
+* Confidence recalibration
+* Source verification
+* Link maintenance
+
+----
+== Conclusion
+
+Quality in BITwiki is multi-dimensional and continuous. These standards ensure content meets the highest epistemic and structural requirements while remaining accessible and useful.
+
+'''Key Principles:'''
+* Epistemic rigor
+* Structural completeness
+* Linguistic clarity
+* Recursive integration
+* Continuous improvement
+
+'''Next Steps:'''
+# Apply standards to all content
+# Implement automated checks
+# Train contributors
+# Monitor quality metrics
+# Iterate and improve

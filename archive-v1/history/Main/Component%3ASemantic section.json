@@ -1,0 +1,42 @@
+{
+  "title": "Component:Semantic section",
+  "namespace": 0,
+  "pageid": 58,
+  "revision_count": 2,
+  "revisions": [
+    {
+      "revid": 209,
+      "parentid": 203,
+      "minor": true,
+      "user": "BITCOREOS",
+      "timestamp": "2025-11-13T02:36:03Z",
+      "size": 1618,
+      "sha1": "947d1c542251142e9761ef8b32ecffe05da7bc5d",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "== Semantic Organization ==\n\nBITwiki leverages Semantic MediaWiki to create explicit relationships between pages, enabling dynamic navigation and knowledge discovery. This approach replaces traditional categorization with machine-readable semantic properties.\n\n=== Semantic Properties ===\n\nSemantic properties define relationships between wiki pages:\n* [[Has implementation::Page name]] - Links ideas to their implementations\n* [[Implements idea::Page name]] - Links implementations to their theoretical foundations\n* [[Related to::Page name]] - Creates general knowledge connections\n* [[Category::Domain name]] - Assigns pages to knowledge domains\n\n=== Semantic Queries ===\n\nSemantic queries dynamically generate content based on page properties:\n* {{#ask: [[Category:Ideas]] | ?Has implementation | format=table }}\n* {{#ask: [[Has implementation::+]] | ?Implements idea | format=list }}\n\n=== Knowledge Navigation ===\n\nSemantic properties enable powerful navigation features:\n* Dynamic lists of related content\n* Faceted browsing by properties\n* Automatic categorization based on relationships\n* Knowledge graph visualization\n\n=== Semantic Best Practices ===\n\nWhen adding semantic properties to pages:\n# Use consistent property naming conventions\n# Define clear relationships between concepts\n# Apply properties to all relevant pages\n# Regularly review and update semantic structures\n# Use semantic forms for consistent data entry\n\nThis semantic approach allows BITwiki to function as both a traditional knowledge base and a dynamic knowledge graph, connecting ideas to implementations through explicit relationships."
+        }
+      },
+      "comment": "Creating Semantic section component for Wiki Organization Guidelines"
+    },
+    {
+      "revid": 203,
+      "parentid": 0,
+      "minor": false,
+      "user": "BITCOREOS",
+      "timestamp": "2025-11-13T02:10:50Z",
+      "size": 761,
+      "sha1": "0d5e23f337581e7956bf7d41df59da0e7d924d15",
+      "slots": {
+        "main": {
+          "contentmodel": "wikitext",
+          "contentformat": "text/x-wiki",
+          "content": "<noinclude>\nThis is a transcludable component for the Semantic Organization section of Wiki Organization Guidelines.\n</noinclude>\n\n<!-- Semantic organization principles with semantic properties -->\n<div style=\"border: 1px solid #ccc; padding: 10px; margin: 10px 0;\">\n[[Category:Semantic Principles]]\n\n; Use semantic properties\n: Create explicit relationships between pages using semantic annotations\n\n; Replace categories\n: Use semantic classifications instead of traditional categories\n\n; Dynamic navigation\n: Create dynamic navigation through semantic queries\n\n; Faceted classification\n: Implement faceted classification systems for better content organization\n</div>\n\n<noinclude>\n[[Category:Wiki Components]]\n[[Category:Organization Components]]\n</noinclude>"
+        }
+      },
+      "comment": "Creating transcludable component for Semantic Organization section"
+    }
+  ]
+}

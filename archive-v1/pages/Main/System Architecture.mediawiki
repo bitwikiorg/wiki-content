@@ -1,0 +1,138 @@
+<div style="max-width:1280px; margin:0 auto; padding:0 24px;">
+
+<h1 style="text-align:center; font-size:2.5em; margin-bottom:0.5em; color:#2c3e50;">SYSTEM ARCHITECTURE</h1>
+
+<div style="display:flex; justify-content:center; margin:20px 0;">
+<div style="width:80px; height:80px; border:3px solid #3498db; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2em; font-weight:bold; color:#3498db;">Φ</div>
+<div style="height:3px; background:#3498db; width:100px; margin:0 10px; align-self:center;"></div>
+<div style="width:80px; height:80px; border:3px solid #e74c3c; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2em; font-weight:bold; color:#e74c3c;">∞</div>
+<div style="height:3px; background:#e74c3c; width:100px; margin:0 10px; align-self:center;"></div>
+<div style="width:80px; height:80px; border:3px solid #2ecc71; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2em; font-weight:bold; color:#2ecc71;">Δ</div>
+</div>
+
+<p style="text-align:center; font-size:1.2em; max-width:800px; margin:0 auto 2em;">BITCORE is a recursive knowledge operating system composed of two primary layers—BIThub for inference and BITwiki for structured knowledge—connected through automated refinement pipelines. This creates a bidirectional system where agents process information, generate outputs, and expand the global knowledge graph through continuous loops.</p>
+
+<!-- ====== OVERVIEW ====== -->
+<div style="border:1px solid #3498db; background:#f8faff; border-radius:12px; padding:14px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin:24px 0;">
+<h2 style="color:#2980b9; margin-top:0;">Architecture Overview</h2>
+<p>BITCORE consists of four operational components:</p>
+<ul>
+<li>BIThub (Discourse): Inference, agent execution, structured discussion</li>
+<li>BITwiki (MediaWiki + SMW): Long-term memory, semantic indexing</li>
+<li>n8n Automation Layer: Transformation, orchestration, refinement</li>
+<li>GitHub – Bit Index Tabulae: Canonical specifications for system modules</li>
+</ul>
+<p>These components operate together as a unified recursive system.</p>
+</div>
+
+<!-- ====== CORE SYSTEM LOOP ====== -->
+<div style="border:1px solid #16a085; background:#f9fff9; border-radius:12px; padding:14px; margin:24px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<h2 style="color:#16a085; margin-top:0;">Core System Loop</h2>
+<p>The system operates through a closed bidirectional cycle:</p>
+<ol>
+<li>Users initiate interactions through Workspaces or PM Agents</li>
+<li>BIThub activates Cores and Nodes for inference</li>
+<li>n8n refines, transforms, or chains outputs</li>
+<li>BITwiki stores structured results using semantic properties</li>
+<li>BIThub agents analyze or expand new information</li>
+<li>The cycle repeats, continuously enhancing the knowledge graph</li>
+</ol>
+</div>
+
+<!-- ====== PRIMARY COMPONENTS ====== -->
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; margin:24px 0;">
+<div style="border:1px solid #3498db; background:#f8faff; border-radius:12px; padding:14px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<h3 style="color:#2980b9; border-bottom:2px solid #3498db; padding-bottom:5px;">BIThub: Inference Layer</h3>
+<p>BIThub is the system’s active cognition environment. It contains predefined modules responsible for reasoning, execution, and expansion of knowledge.</p>
+
+<h4 style="color:#2980b9;">Workspaces</h4>
+<p>User-facing agent interfaces with preset prompts and UIs.<br>
+Examples include Llama-based, Qwen-based, or Venice-based agents.</p>
+
+<h4 style="color:#2980b9;">PM Agents</h4>
+<p>Private agents for individualized inference threads.</p>
+
+<h4 style="color:#2980b9;">Cores</h4>
+<p>High-cognition system pipelines.<br>
+Examples:</p>
+<ul>
+<li>Fractal Core: Multi-stage research</li>
+<li>Hegel Core: Dialectic reasoning</li>
+<li>Satoshi Core: Crypto analysis</li>
+</ul>
+<p>Cores transform a single topic into structured, multi-stage outputs.</p>
+
+<h4 style="color:#2980b9;">Nodes</h4>
+<p>Execution units with specialized behavior.<br>
+Examples:</p>
+<ul>
+<li>DEX Pool Sentinel – Liquidity and on-chain risk analysis</li>
+<li>Blockscan Analyst – Contract and transaction analysis</li>
+<li>Project Milestone Coach – Project structure evaluation</li>
+</ul>
+<p>Nodes process inputs into deterministic, machine-readable results.</p>
+</div>
+
+<div style="border:1px solid #2ecc71; background:#ffffff; border-radius:12px; padding:14px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<h3 style="color:#27ae60; border-bottom:2px solid #2ecc71; padding-bottom:5px;">BITwiki: Knowledge Layer</h3>
+<p>BITwiki functions as structured long-term memory for the system.</p>
+
+<h4 style="color:#27ae60;">Semantic MediaWiki</h4>
+<ul>
+<li>Templates</li>
+<li>Semantic properties</li>
+<li>Categories</li>
+<li>Transclusion modules</li>
+<li>Embedded semantic queries</li>
+</ul>
+<p>These elements convert agent outputs into machine-indexable knowledge.</p>
+
+<h4 style="color:#27ae60;">Knowledge Storage</h4>
+<p>Includes:</p>
+<ul>
+<li>Topics</li>
+<li>Concept meshes</li>
+<li>Implementation pages</li>
+<li>Indices</li>
+<li>Protocol outlines</li>
+<li>Structured facts</li>
+</ul>
+<p>All information stored here becomes accessible to agents and workflows.</p>
+</div>
+</div>
+
+<!-- ====== AUTOMATION LAYER ====== -->
+<div style="border:1px solid #e67e22; background:#fff9f6; border-radius:12px; padding:14px; margin:24px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<h2 style="color:#d35400; margin-top:0;">n8n Automation Layer</h2>
+<p>n8n coordinates refinement and operational tasks:</p>
+<ul>
+<li>Template population</li>
+<li>Workflow chaining</li>
+<li>Error correction</li>
+<li>Semantic updates</li>
+<li>Automated page synthesis</li>
+<li>Core orchestration</li>
+</ul>
+<p>n8n acts as the system’s execution and transformation layer.</p>
+</div>
+
+<!-- ====== CANONICAL SPECIFICATIONS ====== -->
+<div style="border:1px solid #9b59b6; background:#fdf6ff; border-radius:12px; padding:14px; margin:24px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<h2 style="color:#8e44ad; margin-top:0;">GitHub</h2>
+<p>All system definitions, including Bit Index Tabulae models, are maintained in GitHub. These specifications govern Cores, Nodes, semantic structures, categories, and operational rules.</p>
+<p>
+[https://github.com/bitwikiorg Github]
+</p>
+
+<!-- ====== UNIFIED SYSTEM FLOW ====== -->
+<div style="border:1px solid #8e44ad; background:#fdf6ff; border-radius:12px; padding:14px; margin:24px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<h2 style="color:#8e44ad; margin-top:0;">Unified System Flow</h2>
+<p>User → Workspace/PM Agent → BIThub → Core/Node → n8n → BITwiki → BIThub</p>
+<p>This loop forms the operational foundation of BITCORE, enabling continuous knowledge expansion and system recursion.</p>
+</div>
+
+</div>
+
+[[Category:System Architecture]]
+[[Category:Documentation]]
+[[Category:BITCORE]]

@@ -1,0 +1,222 @@
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+----
+title: "INDEX"
+description: "This directory contains the '''expanded ontology specifications''' for BITwiki, extending the core knowledge graph with 6 additional entity types, 12 re"
+type: index
+author: "BITCORE"
+created: "2026-02-11"
+version: "1.0.0"
+ontology:
+  entity_type: index-document
+  domain: navigation
+epistemic_status: Attribution-Traced
+confidence: Emerging
+workflow:
+  state: Beta
+license: CC-BY-SA-4.0
+----
+= BITwiki Ontology Expansion =
+
+== Overview ==
+
+This directory contains the '''expanded ontology specifications''' for BITwiki, extending the core knowledge graph with 12 composable entity types, 12 relationship patterns, and comprehensive epistemic frameworks.
+
+== Deliverables ==
+
+=== 1. Expanded Entity Types ===
+'''File:''' `BITwiki_Expanded_Entity_Types.wiki`
+
+Extended specifications for 12 composable entity types:
+
+| Entity Type | Description | Page Type |
+|-------------|-------------|-----------|
+| '''Concept''' | Abstract ideas, categories, mental constructs | Topic |
+| '''Process''' | Dynamic sequences, workflows, transformations | Topic |
+| '''System''' | Organized collections of interacting components | Topic |
+| '''Entity''' | Distinct objects or beings | Topic |
+| '''Agent''' | Entities capable of action/decision | Agent |
+| '''Artifact''' | Created objects that carry knowledge | Dataset |
+| '''Relationship''' | Connections between entities | Topic |
+| '''Event''' | Temporal occurrences with significance | Topic |
+| '''State''' | Conditions at a point in time | Topic |
+| '''Data''' | Structured information | Dataset |
+| '''Knowledge''' | Justified true beliefs or validated information | Topic |
+| '''Model''' | Simplified representations of phenomena | Topic |
+
+=== 2. Relationship Pattern Catalog ===
+'''File:''' `BITwiki_Relationship_Pattern_Catalog.wiki`
+
+Twelve core relationship patterns with SMW implementation:
+
+| Pattern | Domain → Range | Cardinality | Transitive |
+|---------|----------------|-------------|------------|
+| '''Depends On''' | Any → Any | many-to-many | Yes |
+| '''Implements''' | Impl/Proc → Concept | many-to-many | No |
+| '''Uses''' | Agent/Proc → Tool/Res | many-to-many | No |
+| '''Creates''' | Agent → Artifact | one-to-many | No |
+| '''Influences''' | Any → Any | many-to-many | Yes |
+| '''Part Of''' | Any → Any | many-to-many | Yes |
+| '''Precedes''' | Event/Proc → Event/Proc | many-to-many | Yes |
+| '''References''' | Any → Resource | many-to-many | No |
+| '''Supports''' | Data → Knowledge | many-to-many | No |
+| '''Contradicts''' | Data/Claim → Claim | many-to-many | No |
+| '''Extends''' | Any → Any | many-to-many | Yes |
+| '''Governs''' | Agent/Org → Proc/Prot | many-to-many | No |
+
+=== 3. Ontology Alignment Matrix ===
+'''File:''' `BITwiki_Ontology_Alignment_Matrix.wiki`
+
+Cross-domain synthesis mapping to major ontologies:
+* '''Schema.org''' → Web standards alignment
+* '''FOAF''' → Agent and social relationships
+* '''Dublin Core''' → Metadata properties
+* '''SKOS''' → Concept and taxonomy mapping
+* '''Wikidata''' → Entity and property alignment
+* '''BIBO''' → Bibliographic resources
+* '''PROV-O''' → Provenance and attribution
+
+=== 4. Epistemic Status Taxonomy ===
+'''File:''' `BITwiki_Epistemic_Status_Taxonomy.wiki`
+
+Six epistemic descriptors replacing numeric confidence scores:
+
+| Status | Meaning | Use Case |
+|--------|---------|----------|
+| '''Established''' | Widely validated, consensus | Foundational knowledge |
+| '''Developing''' | Active validation ongoing | Emerging research |
+| '''Preliminary''' | Initial evidence, needs review | Early findings |
+| '''Speculative''' | Hypothesis, limited evidence | Theoretical work |
+| '''Disputed''' | Active controversy | Contested claims |
+| '''Deprecated''' | Superseded or obsolete | Historical reference |
+
+Includes status transition workflows and claim-level epistemic tracking.
+
+=== 5. Visual Diagram Specification ===
+'''File:''' `BITwiki_Visual_Diagram_Specification.wiki`
+
+Six diagram types in Mermaid and DOT formats:
+
+# '''Entity Type Hierarchy''' - 12-type taxonomy
+# '''Core Relationship Patterns''' - 12-pattern network graph
+# '''Epistemic Status Flow''' - State machine transitions
+# '''Domain Alignment Network''' - Cross-domain mappings
+# '''Query Pattern Visualization''' - NL to SMW pipeline
+# '''EPV Framework''' - Event-Process-Value model
+
+All diagrams use valid Mermaid syntax with:
+* Underscores for entity names (MY_ENTITY)
+* Quoted multi-word labels ("depends on")
+* Proper cardinality notation
+
+== SMW Compatibility ==
+
+All specifications align with existing BITwiki SMW infrastructure:
+* ✅ Property types: Page, Text, Number, Date, URL, Boolean
+* ✅ Category syntax: `[[Category:...]]`
+* ✅ Property declarations: `[[Has type::...]]`
+* ✅ Query syntax: `{{#ask:...}}`
+* ✅ Subobjects: `{{#subobject:...}}`
+* ✅ Inverse properties: `[[Has inverse property::...]]`
+
+== Integration Points ==
+
+=== With Existing Ontology ===
+* Extends `BITwiki_Entity_Types.wiki` (12 composable types)
+* Enhances `BITwiki_Relationship_Types.wiki` (12 patterns)
+* Compatible with `BITwiki_Property_Types.wiki` (70+ properties)
+* Aligns with `BITwiki_Taxonomy_Architecture.wiki` (category hierarchy)
+
+=== With Research Synthesis ===
+* Maps to knowledge representation research
+* Maps to ontology engineering research
+* Maps to semantic web research
+* Maps to epistemology research
+
+== Usage ==
+
+=== Creating New Entity Instances ===
+
+```mediawiki
+{{Entity
+ |Type=Concept
+ |Name=Knowledge Graph
+ |Has definition=A network of entities and relationships
+ |Has domain=Knowledge Representation
+ |Has epistemic status=Established
+}}
+```
+
+=== Querying by Epistemic Status ===
+
+```mediawiki
+{{#ask: [[Has epistemic status::Established]] [[Has domain::Ontology]]
+ |?Has definition
+ |format=table
+}}
+```
+
+=== Visualizing Relationships ===
+
+<pre class="mermaid">
+graph TD
+    A[Agent] -->|"Creates"| C[Construct]
+    C -->|"Depends On"| I[Invariant]
+    I -->|"Used In"| P[Protocol]
+</pre>
+
+== File Statistics ==
+
+| File | Lines | Size | Description |
+|------|-------|------|-------------|
+| BITwiki_Expanded_Entity_Types.wiki | 450+ | 14KB | Entity definitions |
+| BITwiki_Relationship_Pattern_Catalog.wiki | 350+ | 11KB | Relationship patterns |
+| BITwiki_Ontology_Alignment_Matrix.wiki | 280+ | 9KB | Domain mappings |
+| BITwiki_Epistemic_Status_Taxonomy.wiki | 330+ | 10KB | Status framework |
+| BITwiki_Visual_Diagram_Specification.wiki | 260+ | 8KB | Visual diagrams |
+| '''Total''' | '''1,670+''' | '''52KB''' | '''Complete expansion''' |
+
+== Version Information ==
+* '''Version''': 2.0.0
+* '''Date''': 2026-02-10
+* '''Author''': Agent:Hyperion (BITCORE Research Swarm)
+* '''Status''': Revised per HUMAN_REVIEW.md directives
+* '''Compatibility''': BITwiki Ontology 2.0.0+
+
+== Key Changes in Version 2.0.0 ==
+
+=== Removed ===
+* ❌ Blockchain-specific entity types
+* ❌ Numeric confidence scores (0.0-1.0)
+* ❌ Domain-specific overfitting
+* ❌ Invalid mermaid syntax
+
+=== Added ===
+* ✅ 12 composable entity types
+* ✅ 6 epistemic descriptors
+* ✅ EPV framework implementation
+* ✅ Valid mermaid diagrams
+* ✅ Domain-neutral examples
+* ✅ Research citations
+
+=== Changed ===
+* 🔄 Rigid entity lists → Composable types
+* 🔄 Numeric scores → Qualitative descriptors
+* 🔄 Blockchain examples → Domain-neutral examples
+* 🔄 Noun properties → Verb-phrase properties
+
+== See Also ==
+* [[BITwiki:Ontology_Index]] - Complete ontology reference
+* [[BITwiki:Entity_Types]] - Core entity specifications
+* [[BITwiki:Relationship_Types]] - Relationship taxonomy
+* [[BITwiki:Property_Types]] - Property definitions
+* [[BITwiki:Semantic_Patterns]] - Design patterns
+* [[BITwiki:Taxonomy_Architecture]] - Category hierarchy
+
+== References ==
+* Wolfram Entity-Property-Value Model
+* Semantic MediaWiki Documentation
+* BITCORE Foundation Ontology Standards
+* FAIR Data Principles
+* SKOS Simple Knowledge Organization System

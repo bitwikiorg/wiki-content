@@ -1,0 +1,1013 @@
+{{Infobox
+| title = BITwiki Page Types: Emergent Knowledge Patterns
+| description = Comprehensive consolidation of BITwiki page type definitions—merging canonical classifications with emergent patterns. Types provide orientation without constraint, emerging from use and open to evolution.
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-12
+| revised = 2026-02-17
+| version = 3.1.0-consolidated
+| epistemic_status = Evolving
+| confidence = Well-Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: page-type-taxonomy
+domain: entity-classifications
+| confidence_score = 0.88
+| workflow = state: Established
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema Matter]]
+
+
+
+
+= BITwiki Page Types: Emergent Knowledge Patterns =
+
+'''Version:''' 3.1.0-consolidated  
+'''Status:''' Evolving  
+'''Epistemic Status:''' These patterns emerged from use. They are not rules.
+
+----
+== Etymology: The Shapes of Knowledge ==
+
+''Type'' — from Greek ''typos'' (τύπος), meaning impression, figure, model. From ''typtein'', to strike, to beat. A type is not a rigid category but an impression—a pattern that has emerged from repeated use, a figure that has stabilized through practice.
+
+''Entity'' — from Latin ''ens'', present participle of ''esse'', to be. That which has existence, that which stands out from the background of becoming. An entity is not a fixed thing but a temporary stabilization—a moment of clarity in the flow of process.
+
+----
+== Purpose: Why Types Matter ==
+
+Page types provide orientation in the knowledge field. They are not constraints but invitations—patterns that have proven useful, structures that facilitate navigation and discovery.
+
+Types enable:
+* '''Recognition''': Identifying what kind of thing we are encountering
+* '''Navigation''': Moving between related entities
+* '''Query''': Finding entities that share characteristics
+* '''Extension''': Creating new entities with known patterns
+
+They do not limit what can exist. They mark what has already found form.
+
+=== What Page Types Are
+
+Page types are patterns that have stabilized through repeated use. They are not categories imposed from above but regularities discovered through practice.
+
+Think of them as paths worn through a forest—not because someone planned them, but because many travelers found similar routes useful. The paths exist because people walk them. The types exist because editors use them.
+
+=== Why This Matters
+
+When we say "this is a Topic page" or "this is an Idea page," we are not applying a rigid classification. We are recognizing a pattern that has proven useful for organizing knowledge.
+
+The patterns can change. New patterns emerge. Old patterns transform. This document describes what has stabilized, not what must be.
+
+----
+== Minimum Criteria for Page Types
+
+Rather than fixed categories, BITwiki uses minimum criteria—characteristics that help recognize a pattern without constraining its expression.
+
+=== 1. Topic
+
+A Topic page anchors a broad subject area.
+
+'''Definition:''' A subject domain or field of knowledge.
+
+'''What it looks like:'''
+* Systems Science
+* Cybernetics
+* Artificial Intelligence
+* Epistemology
+
+'''Characteristics:'''
+* Broad conceptual area
+* Contains multiple ideas and implementations
+* Serves as organizational anchor
+* Hierarchical structure
+
+'''Minimum criteria:'''
+* Covers a broad conceptual area
+* Contains or connects to multiple sub-areas
+* Serves as an entry point for exploration
+
+'''Not required:'''
+* Fixed hierarchy depth
+* Specific number of subtopics
+* Exclusive categorization
+
+'''Properties:'''
+* Name
+* Description
+* Parent topic
+* Subtopics
+* Related topics
+
+'''SMW pattern:'''
+```wiki
+[[Has entity type::Topic]]
+[[Has subtopic::Subtopic]]
+[[Has related topic::Related Topic]]
+```
+
+'''Examples:'''
+* Systems Science
+* Cybernetics
+* Epistemology
+* Artificial Intelligence
+
+'''Usage:'''
+* Use for broad subject areas
+* Create hierarchical navigation
+* Group related content
+
+----
+=== 2. Idea
+
+An Idea page captures an abstract concept, theory, or mental construct.
+
+'''Definition:''' An abstract concept, theory, or mental construct.
+
+'''What it looks like:'''
+* Feedback Loop
+* Emergence
+* Recursion
+* Homeostasis
+
+'''Characteristics:'''
+* Abstract rather than concrete
+* Can be implemented in multiple ways
+* Subject to epistemic evaluation
+* Originates from thinkers
+
+'''Minimum criteria:'''
+* Abstract rather than concrete
+* Can be realized in multiple ways
+* Has identifiable origin or development
+
+'''Not required:'''
+* Specific epistemic status
+* Fixed number of implementations
+* Single originator
+
+'''Properties:'''
+* Name
+* Definition
+* Originator
+* Origin date
+* Field
+* Implementations
+* Epistemic status
+
+'''SMW pattern:'''
+```wiki
+[[Has entity type::Idea]]
+[[Has originator::Person]]
+[[Has implementation::Implementation]]
+[[Has epistemic status::Established]]
+```
+
+'''Examples:'''
+* Feedback Loop
+* Emergence
+* Recursion
+* Homeostasis
+
+'''Usage:'''
+* Use for abstract concepts
+* Link to implementations
+* Track epistemic status
+
+----
+=== 3. Implementation
+
+An Implementation page documents a concrete realization of an idea.
+
+'''Definition:''' A concrete realization of an idea.
+
+'''What it looks like:'''
+* Thermostat (implements feedback control)
+* Neural Network (implements learning)
+* Blockchain (implements distributed trust)
+* PID Controller (implements proportional-integral-derivative feedback)
+
+'''Characteristics:'''
+* Physical or digital instantiation
+* Specific rather than general
+* Observable and measurable
+* Performance can be evaluated
+
+'''Minimum criteria:'''
+* Concrete instantiation
+* Can be observed or measured
+* Connects to abstract idea(s)
+
+'''Not required:'''
+* Specific technology
+* Fixed performance metrics
+* Single implementing idea
+
+'''Properties:'''
+* Name
+* Description
+* Implements (idea)
+* Technology
+* Developer
+* Release date
+* Status
+* Performance metrics
+
+'''SMW pattern:'''
+```wiki
+[[Has entity type::Implementation]]
+[[Implements::Idea]]
+[[Has performance metric::Metric]]
+```
+
+'''Examples:'''
+* Thermostat (implements feedback)
+* Neural Network (implements learning)
+* Blockchain (implements distributed trust)
+
+'''Usage:'''
+* Use for concrete systems
+* Link to ideas
+* Track performance
+
+----
+=== 4. Project
+
+A Project page documents an organized effort with defined goals and resources.
+
+'''Definition:''' An organized effort with defined goals and resources.
+
+'''Characteristics:'''
+* Time-bounded
+* Resource-constrained
+* Goal-directed
+* Measurable outcomes
+
+'''Minimum criteria:'''
+* Organized effort
+* Defined goals
+* Documented outcomes or progress
+
+'''Not required:'''
+* Fixed timeline
+* Specific budget
+* Exclusive categorization
+
+'''Properties:'''
+* Name
+* Description
+* Goal
+* Lead
+* Organization
+* Timeline
+* Status
+* Budget
+* Team size
+* Outputs
+
+'''SMW pattern:'''
+```wiki
+[[Has entity type::Project]]
+[[Has goal::Goal]]
+[[Has timeline::Timeline]]
+[[Has status::Active]]
+```
+
+'''Examples:'''
+* BITwiki Development
+* Human Genome Project
+* Apollo Program
+
+'''Usage:'''
+* Use for organized efforts
+* Track progress
+* Document outcomes
+
+----
+=== 5. Protocol
+
+A Protocol page documents a prescribed procedure or set of rules.
+
+'''Definition:''' A prescribed procedure or set of rules.
+
+'''Characteristics:'''
+* Normative (prescriptive)
+* Reproducible
+* Evaluable against outcomes
+* Step-by-step
+
+'''Minimum criteria:'''
+* Prescribed procedure
+* Reproducible steps
+* Evaluable outcomes
+
+'''Not required:'''
+* Fixed compliance rate
+* Specific validation status
+* Exclusive categorization
+
+'''Properties:'''
+* Name
+* Description
+* Steps
+* Outcomes
+* Compliance rate
+* Validation status
+
+'''SMW pattern:'''
+```wiki
+[[Has entity type::Protocol]]
+[[Has step::Step]]
+[[Has outcome::Outcome]]
+[[Has compliance rate::Rate]]
+```
+
+'''Examples:'''
+* Scientific Method
+* Validation Protocol
+* Consensus Mechanism
+
+'''Usage:'''
+* Use for procedures
+* Ensure reproducibility
+* Track compliance
+
+----
+=== 6. Dataset
+
+A Dataset page documents a structured collection of data.
+
+'''Definition:''' A structured collection of data.
+
+'''Characteristics:'''
+* Structured format
+* Queryable
+* Versioned
+* Reusable
+
+'''Minimum criteria:'''
+* Structured format
+* Queryable
+* Documented source
+
+'''Not required:'''
+* Fixed size
+* Specific update frequency
+* Exclusive license
+
+'''Properties:'''
+* Name
+* Description
+* Size
+* Format
+* Update frequency
+* Source
+* License
+
+'''SMW pattern:'''
+```wiki
+[[Has entity type::Dataset]]
+[[Has size::Size]]
+[[Has format::Format]]
+[[Has update frequency::Frequency]]
+```
+
+'''Examples:'''
+* GenBank
+* Wikipedia Edit History
+* Climate Data
+
+'''Usage:'''
+* Use for data collections
+* Enable queries
+* Track provenance
+
+----
+=== 7. Event
+
+An Event page marks a specific occurrence in time.
+
+'''Definition:''' A specific occurrence in time with documented impact or significance.
+
+'''What it looks like:'''
+* 1956 Dartmouth Workshop (AI named)
+* 2008 Bitcoin Whitepaper
+* 2020 GPT-3 Release
+
+'''Characteristics:'''
+* Specific time or time range
+* Observable occurrence
+* Documented impact or significance
+
+'''Minimum criteria:'''
+* Specific time or time range
+* Observable occurrence
+* Documented impact or significance
+
+'''Not required:'''
+* Precise date
+* Single interpretation
+* Fixed scope
+
+'''Properties:'''
+* Name
+* Description
+* Date
+* Participants
+* Outcome
+* Significance
+
+'''SMW pattern:'''
+```wiki
+[[Has entity type::Event]]
+[[Has date::YYYY-MM-DD]]
+[[Has participant::Person or Organization]]
+[[Has outcome::Result]]
+```
+
+'''Examples:'''
+* 1956 Dartmouth Workshop (AI named)
+* 2008 Bitcoin Whitepaper
+* 2020 GPT-3 Release
+
+'''Usage:'''
+* Mark significant occurrences
+* Track historical development
+* Connect to outcomes
+
+----
+=== 8. Person
+
+A Person page documents an individual who contributed to knowledge.
+
+'''Definition:''' An individual who contributed to knowledge.
+
+'''What it looks like:'''
+* Norbert Wiener
+* Ada Lovelace
+* Satoshi Nakamoto
+
+'''Characteristics:'''
+* Identifiable individual
+* Documented contributions
+* Connection to knowledge domain
+
+'''Minimum criteria:'''
+* Identifiable individual
+* Documented contributions
+* Connection to knowledge domain
+
+'''Not required:'''
+* Biographical completeness
+* Fixed notability threshold
+* Exclusive categorization
+
+'''Properties:'''
+* Name
+* Description
+* Contributions
+* Field
+* Affiliations
+* Timeline
+
+'''SMW pattern:'''
+```wiki
+[[Has entity type::Person]]
+[[Has contribution::Idea or Implementation]]
+[[Has field::Domain]]
+```
+
+'''Examples:'''
+* Norbert Wiener
+* Ada Lovelace
+* Satoshi Nakamoto
+
+'''Usage:'''
+* Document contributors
+* Track intellectual lineage
+* Connect to ideas and implementations
+
+----
+== Patterns in Practice
+
+These examples show how types function in actual pages:
+
+=== Example 1: Systems Science (Topic)
+
+```markdown
+= Systems Science =
+
+Systems Science studies complex systems—networks of interacting components that produce emergent behaviors.
+
+[[Has entity type::Topic]]
+[[Has subtopic::Cybernetics]]
+[[Has subtopic::Systems Theory]]
+[[Has related topic::Complexity Science]]
+[[Has related topic::Network Theory]]
+
+== Core Ideas ==
+* [[Emergence]] — System properties not present in components
+* [[Feedback]] — Circular causal loops
+* [[Homeostasis]] — Self-regulating stability
+```
+
+This page functions as a Topic because it anchors a broad area and connects to sub-areas and related fields.
+
+----
+=== Example 2: Emergence (Idea)
+
+```markdown
+= Emergence =
+
+Emergence occurs when system-level properties arise from component interactions—properties not predictable from components alone.
+
+[[Has entity type::Idea]]
+[[Has originator::Multiple contributors]]
+[[Has field::Systems Science]]
+[[Has implementation::Ant Colony Behavior]]
+[[Has implementation::Consciousness]]
+[[Has epistemic status::Established]]
+
+== Implementations ==
+* [[Ant Colony Optimization]] — Algorithmic implementation
+* [[Neural Networks]] — Learning emergence
+* [[Traffic Patterns]] — Urban emergence
+```
+
+This page functions as an Idea because it captures an abstract concept with multiple realizations.
+
+----
+=== Example 3: Thermostat (Implementation)
+
+```markdown
+= Thermostat =
+
+A thermostat implements feedback control—measuring temperature and adjusting heating/cooling to maintain setpoint.
+
+[[Has entity type::Implementation]]
+[[Implements::Feedback Loop]]
+[[Implements::Homeostasis]]
+[[Has technology::Temperature Sensor]]
+[[Has technology::Control Circuit]]
+
+== How It Works ==
+1. Sensor measures current temperature
+2. Controller compares to setpoint
+3. Actuator adjusts heating/cooling
+4. Loop repeats
+
+== Performance ==
+* Response time: varies by design
+* Accuracy: depends on sensor precision
+* Stability: determined by control algorithm
+```
+
+This page functions as an Implementation because it documents a concrete system realizing abstract ideas.
+
+----
+=== Example 4: 1956 Dartmouth Workshop (Event)
+
+```markdown
+= 1956 Dartmouth Workshop =
+
+The workshop where the term "Artificial Intelligence" was coined and the field formally established.
+
+[[Has entity type::Event]]
+[[Has date::1956-08-31]]
+[[Has participant::John McCarthy]]
+[[Has participant::Marvin Minsky]]
+[[Has participant::Claude Shannon]]
+[[Has outcome::AI named as field]]
+[[Has outcome::Summer research proposal]]
+```
+
+This page functions as an Event because it marks a specific occurrence with documented impact.
+
+----
+=== Example 5: Norbert Wiener (Person)
+
+```markdown
+= Norbert Wiener =
+
+Mathematician and philosopher, founder of cybernetics.
+
+[[Has entity type::Person]]
+[[Has contribution::Cybernetics]]
+[[Has contribution::Feedback Theory]]
+[[Has field::Mathematics]]
+[[Has field::Systems Science]]
+[[Has implementation::Anti-aircraft predictor]]
+```
+
+This page functions as a Person because it documents an individual with contributions to knowledge.
+
+----
+== When Types Overlap
+
+Pages often fit multiple patterns. A person may also be an event (first to achieve something). An idea may also be an implementation (self-executing concept).
+
+This is not a problem. Types are not exclusive categories. They are recognition patterns—tools for navigation, not constraints on content.
+
+=== Example: Bitcoin
+
+Bitcoin functions as:
+* '''Idea''': Decentralized trust without central authority
+* '''Implementation''': The actual running network
+* '''Event''': Whitepaper publication, genesis block
+* '''Topic''': Cryptocurrency, distributed systems
+
+Multiple types apply. Use what serves the knowledge.
+
+----
+== Creating New Types
+
+New patterns emerge when existing types prove insufficient.
+
+'''Process:'''
+# Document the pattern in use (3+ examples)
+# Define minimum criteria
+# Create SMW template
+# Propose in discussion
+# Iterate based on feedback
+
+'''Criteria for new types:'''
+* Serves a distinct navigational need
+* Has multiple existing examples
+* Cannot be adequately served by existing types
+
+Types are not created by decree. They are recognized through use.
+
+----
+== Type Relationships: Webs of Connection ==
+
+=== Hierarchical ===
+
+```
+Topic
+└── Idea
+    └── Implementation
+        └── Project
+            └── Dataset
+```
+
+=== Cross-Type ===
+
+| From | Relationship | To |
+|------|--------------|-----|
+| Idea | implemented by | Implementation |
+| Project | investigates | Idea |
+| Protocol | governs | Project |
+| Dataset | supports | Idea |
+| Person | originates | Idea |
+| Event | marks | Implementation |
+| Event | involves | Person |
+
+----
+== Canonical Type Definitions ==
+
+These types have achieved stability through extensive use. They are not exhaustive; new types may emerge, and existing types may transform.
+
+=== Topic ===
+
+Definition: A subject domain or field of knowledge.
+
+Characteristics:
+* Broad conceptual area
+* Contains multiple ideas and implementations
+* Serves as organizational anchor
+* Hierarchical structure
+
+Properties:
+* Name
+* Description
+* Parent topic
+* Subtopics
+* Related topics
+
+SMW:
+```wiki
+[[Has entity type::Topic]]
+[[Has subtopic::Subtopic]]
+[[Has related topic::Related Topic]]
+```
+
+Examples:
+* Systems Science
+* Cybernetics
+* Epistemology
+* Artificial Intelligence
+
+Usage:
+* Use for broad subject areas
+* Create hierarchical navigation
+* Group related content
+
+=== Idea ===
+
+Definition: An abstract concept, theory, or mental construct.
+
+Characteristics:
+* Abstract rather than concrete
+* Can be implemented in multiple ways
+* Subject to epistemic evaluation
+* Originates from thinkers
+
+Properties:
+* Name
+* Definition
+* Originator
+* Origin date
+* Field
+* Implementations
+* Epistemic status
+
+SMW:
+```wiki
+[[Has entity type::Idea]]
+[[Has originator::Person]]
+[[Has implementation::Implementation]]
+[[Has epistemic status::Established]]
+```
+
+Examples:
+* Feedback Loop
+* Emergence
+* Recursion
+* Homeostasis
+
+Usage:
+* Use for abstract concepts
+* Link to implementations
+* Track epistemic status
+
+=== Implementation ===
+
+Definition: A concrete realization of an idea.
+
+Characteristics:
+* Physical or digital instantiation
+* Specific rather than general
+* Observable and measurable
+* Performance can be evaluated
+
+Properties:
+* Name
+* Description
+* Implements (idea)
+* Technology
+* Developer
+* Release date
+* Status
+* Performance metrics
+
+SMW:
+```wiki
+[[Has entity type::Implementation]]
+[[Implements::Idea]]
+[[Has performance metric::Metric]]
+```
+
+Examples:
+* Thermostat (implements feedback)
+* Neural Network (implements learning)
+* Blockchain (implements distributed trust)
+
+Usage:
+* Use for concrete systems
+* Link to ideas
+* Track performance
+
+=== Project ===
+
+Definition: An organized effort with defined goals and resources.
+
+Characteristics:
+* Time-bounded
+* Resource-constrained
+* Goal-directed
+* Measurable outcomes
+
+Properties:
+* Name
+* Description
+* Goal
+* Lead
+* Organization
+* Timeline
+* Status
+* Budget
+* Team size
+* Outputs
+
+SMW:
+```wiki
+[[Has entity type::Project]]
+[[Has goal::Goal]]
+[[Has timeline::Timeline]]
+[[Has status::Active]]
+```
+
+Examples:
+* BITwiki Development
+* Human Genome Project
+* Apollo Program
+
+Usage:
+* Use for organized efforts
+* Track progress
+* Document outcomes
+
+=== Protocol ===
+
+Definition: A prescribed procedure or set of rules.
+
+Characteristics:
+* Normative (prescriptive)
+* Reproducible
+* Evaluable against outcomes
+* Step-by-step
+
+Properties:
+* Name
+* Description
+* Steps
+* Outcomes
+* Compliance rate
+* Validation status
+
+SMW:
+```wiki
+[[Has entity type::Protocol]]
+[[Has step::Step]]
+[[Has outcome::Outcome]]
+[[Has compliance rate::Rate]]
+```
+
+Examples:
+* Scientific Method
+* Validation Protocol
+* Consensus Mechanism
+
+Usage:
+* Use for procedures
+* Ensure reproducibility
+* Track compliance
+
+=== Dataset ===
+
+Definition: A structured collection of data.
+
+Characteristics:
+* Structured format
+* Queryable
+* Versioned
+* Reusable
+
+Properties:
+* Name
+* Description
+* Size
+* Format
+* Update frequency
+* Source
+* License
+
+SMW:
+```wiki
+[[Has entity type::Dataset]]
+[[Has size::Size]]
+[[Has format::Format]]
+[[Has update frequency::Frequency]]
+```
+
+Examples:
+* GenBank
+* Wikipedia Edit History
+* Climate Data
+
+Usage:
+* Use for data collections
+* Enable queries
+* Track provenance
+
+== Type Selection: Guidelines, Not Rules ==
+
+=== When to Use Each Type ===
+
+'''Topic:'''
+* Organizing broad subject areas
+* Creating navigation hierarchies
+* Grouping related content
+
+'''Idea:'''
+* Describing abstract concepts
+* Theorizing about mechanisms
+* Connecting theory to practice
+
+'''Implementation:'''
+* Describing concrete systems
+* Evaluating performance
+* Linking theory to application
+
+'''Project:'''
+* Tracking organized efforts
+* Managing resources
+* Documenting outcomes
+
+'''Protocol:'''
+* Prescribing procedures
+* Ensuring reproducibility
+* Standardizing practices
+
+'''Dataset:'''
+* Referencing data collections
+* Enabling queries
+* Supporting evidence
+
+'''Event:'''
+* Marking specific occurrences
+* Tracking historical development
+* Connecting to outcomes
+
+'''Person:'''
+* Documenting contributors
+* Tracking intellectual lineage
+* Connecting to ideas and implementations
+
+----
+== SMW Implementation ==
+
+=== Type Declaration ===
+
+Every page should declare its type:
+
+```wiki
+[[Has entity type::Type]]
+```
+
+=== Type Queries ===
+
+'''All Ideas:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]}}
+```
+
+'''Ideas with High Confidence:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has confidence score::>0.8]]
+}}
+```
+
+'''Implementations of Idea:'''
+```wiki
+{{#ask: [[Implements::Feedback Loop]]}}
+```
+
+'''All Events:'''
+```wiki
+{{#ask: [[Has entity type::Event]]
+|?Has date
+|sort=Has date
+|order=descending}}
+```
+
+'''Contributions by Person:'''
+```wiki
+{{#ask: [[Has entity type::Idea]]
+[[Has originator::Norbert Wiener]]}}
+```
+
+----
+== Summary
+
+Page types in BITwiki:
+* '''Emerge from practice''', not imposed from above
+* '''Use minimum criteria''', not fixed definitions
+* '''Facilitate navigation''', not constrain content
+* '''Evolve over time''', not fixed permanently
+* '''Overlap freely''', not mutually exclusive
+
+The types described here have proven useful. They are not the only possible types. They are invitations to pattern, not rules to follow.
+
+----
+== References ==
+
+# Semantic MediaWiki. (2026). Entity types documentation.
+# Wikipedia. (2026). Ontology (information science).
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+# Smith, B. (2003). Ontology.
+# Guarino, N. (1998). Formal ontology and information systems.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# Kuhn, T.S. (1962). The Structure of Scientific Revolutions.
+# Lakatos, I. (1978). The Methodology of Scientific Research Programmes.
+# Feyerabend, P. (1975). Against Method.
+
+[[Has page type::Page Type Taxonomy]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.88]]
+[[Has confidence trajectory::Well-Established]]
+[[Has canonical type count::8]]
+[[Has source count::10]]
+[[Has word count::2500]]

@@ -1,0 +1,47 @@
+= Template:Infobox Project =
+
+== Purpose ==
+Display project information with lifecycle tracking and SMW property generation.
+
+== Parameters ==
+
+{| class="wikitable"
+! Parameter !! Type !! Required !! Description
+|-
+| name || string || Yes || Display name of project
+| description || string || Yes || Core description text
+| status || enum || Yes || Proposed, Planning, Active, On Hold, Completed, Cancelled
+| lead || string || No || Project lead person/entity
+| domain || string || No || Subject domain
+| start_date || string || No || Project start date
+| end_date || string || No || Project end date (if completed)
+| deliverables || string || No || Comma-separated list of deliverables
+| related_projects || string || No || Comma-separated list of related projects
+|}
+
+== Examples ==
+
+=== Basic Usage ===
+<pre>
+{{Infobox Project
+|name=BITWIKI Migration
+|description=Migrate content to MediaWiki/SMW
+|status=Active
+|lead=BITCORE
+}}
+</pre>
+
+== SMW Properties Generated ==
+'' [[Has entity type::Project]]
+'' [[Has name::]]
+'' [[Has description::]]
+'' [[Has status::]]
+'' [[Has lead::]] (if provided)
+'' [[Has start date::]] (if provided)
+'' [[Has end date::]] (if provided)
+
+== See Also ==
+'' [[Template:Infobox Implementation]]
+* [[Template:Infobox Idea]]
+
+[[Category:BITwiki Template Documentation]]

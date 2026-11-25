@@ -6,7 +6,7 @@ This page defines the authority and editorial lineage used to build BITwiki V2.
 
 For inherited BITwiki material:
 
-# '''Exact public V1 page/revision source''' preserved in immutable Git snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>; per-title retirement disposition is recorded in <code>docs/v1-retirement-disposition.json</code>.
+# '''Exact public V1 page/revision source''' available read-only under <code>archive-v1/</code> during issue #152 reconciliation and anchored to immutable snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>; active per-source status is recorded in <code>docs/v1-reconciliation-ledger.json</code>.
 # '''Current first-party public BITwiki / BIThub / BITCORE / GitHub material''' where it clarifies later doctrine or current operation.
 # '''Earlier public writings and historical design artifacts''' used to recover intellectual lineage.
 # '''Historical Notion/design material''' used as archaeology and provenance, not automatic current-state truth.
@@ -26,7 +26,7 @@ The archival snapshot of the former public V1 corpus was verified at capture tim
 
 The capture-time fidelity check was reported as matching the then-readable source. This is historical audit evidence, not a check reproduced in this repository checkout or proof of the current live deployment.
 
-This does '''not''' mean every body of every page ever deleted from V1 is publicly recoverable. The deletion log contains historical deletions whose bodies require privileged deleted-revision access or older backups. For reproducibility, see <code>scripts/verify_v1_fidelity.py</code> and <code>.github/workflows/verify-v1-fidelity.yml</code>. The generated fidelity-report JSON is not tracked here. The deletion records <code>v1-deleted-content-audit.json</code> and <code>v1-deleted-unresolved.json</code> are tracked.
+This does '''not''' mean every body of every page ever deleted from V1 is publicly recoverable. The deletion log contains historical deletions whose bodies require privileged deleted-revision access or older backups. The tracked deletion records <code>v1-deleted-content-audit.json</code> and <code>v1-deleted-unresolved.json</code> preserve that limitation. They do not establish recovery of inaccessible deleted bodies.
 
 == Editorial rule ==
 

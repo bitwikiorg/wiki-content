@@ -355,14 +355,13 @@
       "final_validation_source_audit": {
         "id": "A01",
         "pr": 81,
-        "head": "37d5f3eb4a162127831f1ad42c0e51574c20322b",
-        "findings": [
-          "Simple transclusion appears lead-only"
-        ],
+        "head": "c63719456e7cafa37d928bb61eb0603f6cbcb95c",
+        "findings": [],
         "regression_paths": [
           "scripts/test_editorial_architecture.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full explanatory Simple body transcluded; navigation and references stay outside; exact head/source and strengthened regression verified. No test execution claimed."
       }
     },
     {
@@ -463,14 +462,15 @@
       "final_validation_source_audit": {
         "id": "A04",
         "pr": 83,
-        "head": "234ea8115db347741da3063f0d80659b0474a21a",
+        "head": "01b14102d5b27b136e4fd94e244b153bd56b7af5",
         "findings": [
           "Simple transclusion appears lead-only"
         ],
         "regression_paths": [
           "staging/compiler/test_issue65_causal_resilience.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Reconciled current PR head after verifying only Root cause analysis reference changed."
       }
     },
     {
@@ -500,15 +500,15 @@
       "final_validation_source_audit": {
         "id": "A05",
         "pr": 83,
-        "head": "234ea8115db347741da3063f0d80659b0474a21a",
+        "head": "01b14102d5b27b136e4fd94e244b153bd56b7af5",
         "findings": [
-          "Simple transclusion appears lead-only",
-          "duplicate named refs 2"
+          "Simple transclusion appears lead-only"
         ],
         "regression_paths": [
           "staging/compiler/test_issue65_causal_resilience.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Verified current technical source has zero duplicate or unresolved named references."
       }
     },
     {
@@ -599,15 +599,13 @@
       "final_validation_source_audit": {
         "id": "A08",
         "pr": 85,
-        "head": "7caf20e9f94f73167b93a0fbeaa9d4c09d1ec14e",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "localization carries identity/relations"
-        ],
+        "head": "84ad0ef3895b1c8369b049c6001b007e1a7bddc7",
+        "findings": [],
         "regression_paths": [
           "staging/compiler/test_issue64_device_articles.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Verified full Simple transclusion and canonical semantic edges; no semantic relations in localizations; host reference list present."
       }
     },
     {
@@ -627,15 +625,13 @@
       "final_validation_source_audit": {
         "id": "A09",
         "pr": 85,
-        "head": "7caf20e9f94f73167b93a0fbeaa9d4c09d1ec14e",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "localization carries identity/relations"
-        ],
+        "head": "84ad0ef3895b1c8369b049c6001b007e1a7bddc7",
+        "findings": [],
         "regression_paths": [
           "staging/compiler/test_issue64_device_articles.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Verified full Simple transclusion and canonical semantic edges; no semantic relations in localizations; host reference list present."
       }
     },
     {
@@ -2629,19 +2625,11 @@
     "articles_corrected_pending_validation": 65,
     "pairs_corrected_pending_validation": 33,
     "static_source_audits": 65,
-    "static_source_audits_with_findings": 60,
+    "static_source_audits_with_findings": 57,
     "static_source_audit_open_findings": [
       [
         "Simple transclusion appears lead-only",
-        56
-      ],
-      [
-        "duplicate named refs 2",
-        1
-      ],
-      [
-        "localization carries identity/relations",
-        2
+        53
       ],
       [
         "category pages absent",

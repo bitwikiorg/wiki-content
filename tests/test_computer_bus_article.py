@@ -10,6 +10,8 @@ def test_two_depth_identity_and_navigation():
     assert "{{:Computer bus/Simple}}" in core
     assert "{{:Computer bus/Technical}}" not in core
     assert "|title=Computer bus" in core
+    assert "<references/>" in core
+    assert "== How it works ==" in simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0]
     assert "Reading depth|base=" not in core + simple + tech
     for source in (core, simple, tech):
         assert "[[Computer bus/Simple|Simple]]" in source

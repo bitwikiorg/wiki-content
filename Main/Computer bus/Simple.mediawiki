@@ -1,6 +1,6 @@
 = Computer bus — Simple =
 '''Reading depth:''' [[Computer bus/Simple|Simple]] · [[Computer bus/Technical|Technical]]
-<onlyinclude>A '''computer bus''' is a way for parts of a computer, or connected devices, to exchange information. It includes rules for where information goes, who can send it, and when it is accepted. Despite the name, modern buses do not always share one set of wires.</onlyinclude>
+<onlyinclude>A '''computer bus''' is a way for parts of a computer, or connected devices, to exchange information. It includes rules for where information goes, who can send it, and when it is accepted. Despite the name, modern buses do not always share one set of wires.
 
 == How it works ==
 A processor might request data from memory or a device. The connection must identify the destination, carry the request and response, and manage competing traffic. Older shared buses commonly used address lines (where), data lines (what), and control lines (when and how). Some reused the same wires for different purposes at different times. Modern connections often use packets on fast serial links.
@@ -11,6 +11,8 @@ A processor might request data from memory or a device. The connection must iden
 * '''On-chip connections''' carry messages among processor cores, memory controllers and other parts of a chip.
 
 A connector shape alone does not tell you which protocols it supports. Advertised link speed is not guaranteed file-copy speed: device limits, encoding, protocol overhead and other traffic reduce useful throughput.
+
+</onlyinclude>
 
 == References ==
 <references/>

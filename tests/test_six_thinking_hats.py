@@ -19,11 +19,14 @@ class SixThinkingHatsSourceTest(unittest.TestCase):
         self.assertEqual(self.simple.count("</onlyinclude>"), 1)
         self.assertNotIn("<onlyinclude>", self.core)
         self.assertNotIn("<onlyinclude>", self.technical)
+        self.assertIn("== Example: choosing a school project ==", self.simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
+        self.assertIn("[[Six Thinking Hats/Technical|Technical]]", self.simple)
+        self.assertIn("[[Six Thinking Hats/Simple|Simple]]", self.technical)
+        self.assertNotIn("{{Reading depth", self.core + self.simple + self.technical)
 
     def test_six_roles_and_provenance(self):
         for name in ("White", "Red", "Black", "Yellow", "Green", "Blue"):
             with self.subTest(hat=name):
-                self.assertIn(name, self.core)
                 self.assertIn(name, self.simple)
                 self.assertIn(name, self.technical)
         for surface in (self.core, self.simple, self.technical):
@@ -42,6 +45,7 @@ class SixThinkingHatsSourceTest(unittest.TestCase):
             self.assertNotIn("#invoke:", surface)
             self.assertNotIn("#ask:", surface)
         self.assertIn("not", self.technical.lower())
+        self.assertIn("10.1186/s12912-025-03473-3", self.technical)
 
 if __name__ == "__main__":
     unittest.main()

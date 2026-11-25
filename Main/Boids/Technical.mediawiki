@@ -2,7 +2,7 @@
 
 = Boids — Technical =
 
-'''Boids''' is Craig Reynolds's local steering model for simulating flocking-like collective motion. Each agent updates from a limited neighborhood rather than from a centralized global controller. The model is a canonical demonstration that simple local rules can generate coherent group-scale motion.
+'''Boids''' is Craig Reynolds's local steering model for simulating flocking-like collective motion.<ref name="reynolds">[https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools: A Distributed Behavioral Model,” ''SIGGRAPH '87'', 25–34.]</ref> Each agent updates from a limited neighborhood rather than from a centralized global controller. The model is a canonical demonstration that simple local rules can generate coherent group-scale motion.
 
 A technical treatment should specify the state representation, neighborhood definition, steering functions, integration method, update schedule, boundary conditions, and evaluation metrics.
 
@@ -379,7 +379,7 @@ Noise should be reported explicitly rather than described only as “randomness.
 
 === Reynolds versus Vicsek ===
 
-The Vicsek model uses constant-speed particles that align with local mean heading plus noise.
+The Vicsek model uses constant-speed particles that align with local mean heading plus noise.<ref name="vicsek">[https://doi.org/10.1103/PhysRevLett.75.1226 Vicsek, T. et al. (1995), “Novel Type of Phase Transition in a System of Self-Driven Particles,” ''Physical Review Letters'' 75, 1226–1229.]</ref>
 
 A typical angular update is
 
@@ -405,7 +405,7 @@ Real animals can use predictive and sensory processes absent from boids.
 
 === Topological interaction evidence ===
 
-Empirical bird-flock studies have reported interaction patterns better described by a fixed number of nearest neighbors than by a fixed metric radius in some species and conditions.
+Empirical reconstruction of starling flocks found interaction structure better described by a roughly fixed number of nearest neighbors than by a fixed metric radius in the studied flocks.<ref name="ballerini">[https://doi.org/10.1073/pnas.0711437105 Ballerini, M. et al. (2008), “Interaction ruling animal collective behavior depends on topological rather than metric distance: evidence from a field study,” ''PNAS'' 105(4), 1232–1237.]</ref>
 
 This illustrates why biological data can motivate modifications to the canonical boids neighborhood rule.
 
@@ -530,6 +530,8 @@ That second claim requires independent biological measurement.
 
 * [https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools.”]
 * [https://red3d.com/cwr/steer/ Reynolds, Steering Behaviors For Autonomous Characters.]
+* [https://doi.org/10.1103/PhysRevLett.75.1226 Vicsek et al. (1995), local-alignment collective-motion model.]
+* [https://doi.org/10.1073/pnas.0711437105 Ballerini et al. (2008), topological interaction evidence in starling flocks.]
 
 == Reading depth ==
 

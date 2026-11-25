@@ -1,0 +1,115 @@
+[[Pareto principle/Simple|Simple]] · [[Pareto principle/Technical|Technical]]
+
+= Pareto principle — Technical =
+
+The '''Pareto principle''', conventionally expressed as an 80/20 concentration heuristic, states that a minority of contributors may account for a majority of a measured outcome. It is not a theorem fixing the share at 80% for every system. Scientific use requires distinguishing three separate objects: Vilfredo Pareto's nineteenth-century observations of unequal income distributions, later managerial and quality-engineering “vital few” practices popularized by Joseph M. Juran, and the parametric Pareto probability distribution with a power-law upper tail. These are related historically but not logically equivalent.<ref name="history">[https://doi.org/10.1007/s12232-024-00458-7 ''Pareto and probability distributions''], ''International Review of Economics'' (2024), reconstruction of original nineteenth-century economic and statistical context.</ref><ref name="juran">Joseph M. Juran, [https://www.juran.com/wp-content/uploads/2021/03/The-Non-Pareto-Principle-1974.pdf ''The Non-Pareto Principle''] (1974), author's critique of the attribution and generalization from wealth distributions to quality and management.</ref>
+
+== An empirical concentration claim, not a universal causal law ==
+
+Suppose a study records nonnegative contributions <math>x_1,\ldots,x_n</math> under an explicit observation protocol. Sort the values in nonincreasing order <math>x_{(1)}\ge x_{(2)}\ge\cdots\ge x_{(n)}\ge0</math>. If <math>S=\sum_{i=1}^{n}x_i>0</math>, the share contributed by the largest <math>k</math> elements is
+
+<math display="block">C_n(k)=\frac{\sum_{i=1}^{k}x_{(i)}}{\sum_{i=1}^{n}x_i}.</math>
+
+The familiar statement “20% of contributors produce 80% of output” means <math>C_n(k)\approx0.8</math> when <math>k/n\approx0.2</math>, with a stated rounding/interpolation convention. It does not follow automatically from the sorting procedure. In every nonnegative dataset the top 20% share is at least approximately 20%, but the share can take many larger values.
+
+=== Independently specified five-category example ===
+
+Consider an invented dataset of five mutually exclusive defect categories whose event counts are <math>(80,5,5,5,5)</math>. Total count is 100, and the largest one category accounts for
+
+<math display="block">C_5(1)=80/100=0.80,\qquad 1/5=0.20.</math>
+
+This sample exactly exhibits 80/20 concentration. If the five categories instead have <math>(20,20,20,20,20)</math>, then <math>C_5(1)=0.20</math>, not 0.80. The difference does not indicate an inconsistent formula; it reflects different underlying observations.
+
+Both examples use event frequency as the metric. Sorting categories by financial loss, severity, time-to-repair or user impact can give a different ordering and different cumulative shares. Splitting one category into several subcategories can alter the chart. Category construction, missingness, exposure, time and denominators therefore belong in the methods description.
+
+A Pareto chart is descriptive: it shows how observations are distributed across defined categories. It is not evidence that changing the most frequent category's label will remove its cause, nor that the most frequent problem is necessarily the most dangerous. A shared root cause might produce incidents attributed to many different categories.
+
+== Statistical relation to inequality curves ==
+
+In distributional studies, the '''Lorenz curve''' <math>L(u)</math> commonly gives the fraction of total nonnegative output owned or received by the bottom fraction <math>u\in[0,1]</math> of the population, ranked in ascending order. When a population distribution has a finite positive mean, the fraction assigned to the highest fraction <math>p</math> is
+
+<math display="block">T(p)=1-L(1-p).</math>
+
+If <math>T(0.2)=0.8</math>, the bottom 80% has 20% of the measured total. The Lorenz curve is a representation of inequality; it is not itself a causal model. Different distributions may share one concentration ratio yet differ in tails, means, variability or other portions of the curve.
+
+The Gini coefficient for a nonnegative finite-mean distribution can be expressed as
+
+<math display="block">G=1-2\int_0^1 L(u)\,du.</math>
+
+It summarizes the whole Lorenz curve by an area, unlike a single 80/20 point. Two datasets can have identical <math>T(0.2)</math> but different Gini indices. Neither is a complete welfare measure because units, sample coverage, group identity and social context matter.
+
+== Deriving the 80/20 condition from a Pareto Type I model ==
+
+One mathematically specified heavy-tail family is Pareto Type I. Let <math>X</math> be nonnegative with minimum <math>x_m>0</math> and shape parameter <math>\alpha>0</math>. Its survival function for <math>x\ge x_m</math> is
+
+<math display="block">P(X\ge x)=\left(\frac{x_m}{x}\right)^\alpha.</math>
+
+The associated density for <math>x\ge x_m</math> is <math>f(x)=\alpha x_m^\alpha x^{-(\alpha+1)}</math>. The expected value is finite only when <math>\alpha>1</math>, then
+
+<math display="block">E[X]=\frac{\alpha x_m}{\alpha-1}.</math>
+
+If <math>0<\alpha\le1</math>, the theoretical mean diverges in this untruncated model, so population fractions of total mean must not be interpreted using the following finite-mean Lorenz expression.
+
+For <math>\alpha>1</math>, the Lorenz curve can be derived by integrating the quantile function <math>Q(u)=x_m(1-u)^{-1/\alpha}</math> from 0 to <math>u</math> and normalizing by the mean:
+
+<math display="block">L(u)=1-(1-u)^{(\alpha-1)/\alpha}.</math>
+
+Hence the top-<math>p</math> share is
+
+<math display="block">T(p)=p^{(\alpha-1)/\alpha}.</math>
+
+For the exact 80/20 condition <math>T(0.2)=0.8</math>, the exponent must be
+
+<math display="block">\frac{\alpha-1}{\alpha}=\frac{\ln(0.8)}{\ln(0.2)}\simeq0.1386469,</math>
+<math display="block">\alpha=\left[1-\frac{\ln(0.8)}{\ln(0.2)}\right]^{-1}\simeq1.160964.</math>
+
+Thus, under the precisely defined, infinite-population Pareto Type I distribution with finite mean, '''the exact 80/20 point occurs only for a particular shape parameter'''. Other valid values of <math>\alpha</math> imply other concentration ratios. The associated model-specific Gini coefficient is
+
+<math display="block">G=\frac1{2\alpha-1}\simeq0.75647.</math>
+
+These are independent analytic benchmarks, not estimates from a real economy. Finite samples fluctuate, lower incomes may not follow a Pareto upper-tail model, truncation can change moments, and survey design can distort measured inequality. A single 80/20 observation does not identify a global Pareto distribution; many non-Pareto distributions can exhibit the same one-point concentration.
+
+Research on Pareto's original work cautions against interpreting his observations as a universal exact 80/20 law. Modern physical and economic modeling also distinguishes a Pareto tail from a universal distribution across the full range of values.<ref name="boghosian">Bruce M. Boghosian, [https://doi.org/10.1103/PhysRevE.89.042804 ''Kinetics of Wealth and the Pareto Law''], ''Physical Review E'' 89, 042804 (2014), discusses Pareto tails and the contingent 80/20 relation.</ref><ref name="paretohistory">[https://www.aeaweb.org/articles?id=10.1257/jep.6.2.181 ''Retrospectives: Pareto's Law''], ''Journal of Economic Perspectives'' 6(2) (1992), historical development of the distribution and its controversies.</ref>
+
+== Quality engineering and Juran's extension ==
+
+A practical Pareto analysis should state whether ranked groups are mechanisms, symptoms or merely correlated indicators, specify a stable observation window and denominator, and audit sensitivity to splitting or combining categories. The historical origin of the name is not evidence that prioritizing the highest-frequency group maximizes net benefit: intervention cost, harm severity and counterfactual effect are separate quantities.
+
+
+In production and service reliability, a Pareto chart may sort defect types by event count, repair cost, safety impact or another chosen metric. Juran's “vital few” language describes a practical prioritization method. He did not demonstrate that all production systems have exactly the same 80/20 split; his own historical account explicitly distinguishes the broad managerial generalization from the original economic observation.<ref name="juran"/>
+
+An investigation may identify the categories where a large fraction of measured cost occurs. Corrective action then requires causal analysis: whether the event is reproducible, which process or component generates it, and whether intervening on that mechanism reduces future harm. Concentration is not a substitute for hazard analysis or validation.
+
+=== Uncertainty in measured shares ===
+
+Observed categories are noisy and sometimes misclassified. Sampling uncertainty affects ranks, totals and the share for a chosen top fraction. Resampling can provide an empirical uncertainty interval under an appropriate sampling design, but reusing the same ranked sample to claim prospective concentration can overfit. If a new category appears after the chart is compiled, the apparent “vital few” may change.
+
+Some defects co-occur or have shared causes. A sum of mutually exclusive incidents is different from a sum of overlapping indicator counts; double counting can inflate totals and alter rankings. If heavy-tailed magnitudes dominate, ordinary mean-based estimates may be unstable or undefined under the assumed distribution.
+
+== Pareto efficiency is a different concept ==
+
+A resource allocation is '''Pareto efficient''' relative to a set of feasible allocations and affected persons/objectives when no feasible change improves at least one person's outcome without worsening another's. This does not mean that 80% of value comes from 20% of people, nor that an efficient allocation is fair or socially desirable. The word “Pareto” does not supply a mathematical bridge between concentration and efficiency.
+
+Likewise a Pareto frontier in multiobjective optimization is a set of nondominated tradeoffs. It need not exhibit an 80/20 ratio. Confusing these meanings causes both mathematical and policy errors.
+
+== Practical protocol and reproducibility ==
+
+To use the principle responsibly, define the outcome units, time horizon, denominator and group membership; record data provenance; compute the full ranked shares rather than prespecifying 80/20; report confidence or variability; compare alternative category definitions; and distinguish correlation from causal effect. If taking action, separately evaluate expected benefit, cost, impact on rare severe cases and whether the intervention actually changes the outcome.
+
+For the mathematical Type I example, a reader can independently reproduce the chosen shape <math>\alpha=1.160964</math> and <math>G\simeq0.75647</math> by direct logs and arithmetic. These tests verify algebraic consequences under the stated model; they do not prove that real income, biological systems, software bugs or organizational productivity obey the model.
+
+In artificial-agent or inference-system engineering, finding that a small subset of failure categories accounts for many recorded errors does not justify ignoring failures elsewhere. Class imbalance, adversarial rare events, missing logs and safety-critical severity must be considered independently of aggregate frequency.
+
+== Conclusion and research boundary ==
+
+The Pareto principle is useful as a contingent concentration heuristic, particularly for deciding which data to inspect first. The 80/20 numbers are not a verified universal constant, a deterministic causal law or an alternative to measuring a real system. The original Pareto distribution has mathematically meaningful shape-dependent concentration properties, but its existence in a dataset requires empirical testing rather than a slogan.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* Juran, [https://www.juran.com/wp-content/uploads/2021/03/The-Non-Pareto-Principle-1974.pdf ''The Non-Pareto Principle'' (1974)].
+* [https://doi.org/10.1007/s12232-024-00458-7 ''Pareto and probability distributions'' (2024)].
+* [[Pareto principle|Canonical topic]] · [[Pareto principle/Simple|Simple reading]] · [[Causality]] · [[Scientific model]].

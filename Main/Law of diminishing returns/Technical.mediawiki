@@ -1,0 +1,135 @@
+[[Law of diminishing returns/Simple|Simple]] · [[Law of diminishing returns/Technical|Technical]]
+
+= Law of diminishing returns — Technical =
+
+The '''law of diminishing returns''' in production economics describes declining incremental output from increasing a chosen variable input while other productive inputs and the technology remain fixed. The relevant distinction is between the '''total product''' and the '''marginal product'''. A firm can experience diminishing yet positive marginal returns while total output still grows. Diminishing marginal returns to an individual input must also be distinguished from '''returns to scale''', which concern a coordinated change in all inputs.
+
+The principle is a standard conditional model of short-run production under fixed factors, not a theorem that every real-world process slows with additional workers, that technology cannot improve or that output must eventually decline in all industries. OpenStax's economics teaching materials formulate it in the short-run production setting, where a relevant factor such as capital is held fixed while a variable input changes.<ref name="openstax">OpenStax, [https://openstax.org/books/principles-economics-3e/pages/7-2-production-in-the-short-run ''Principles of Economics'', “Production in the Short Run”], marginal product, fixed capital and variable labor.</ref><ref name="cost">OpenStax, [https://openstax.org/books/principles-economics-3e/pages/7-3-costs-in-the-short-run ''Principles of Economics'', “Costs in the Short Run”], relationship between productivity, input cost and marginal cost under stated conditions.</ref>
+
+== Production functions and ceteris paribus ==
+
+Let a production technology be modeled by <math>Q=F(K,L,Z)</math>, where <math>Q</math> is output, <math>K</math> is capital, <math>L</math> labor and <math>Z</math> other relevant inputs or technology conditions. For a fixed level <math>K=\bar K</math> and <math>Z=\bar Z</math>, define the '''marginal product of labor''' as the partial derivative when it exists:
+
+<math display="block">MP_L=\left.\frac{\partial F}{\partial L}\right|_{K=\bar K,Z=\bar Z}.</math>
+
+The statement “positive, diminishing marginal product” over a specified range is
+
+<math display="block">MP_L>0,\qquad\left.\frac{\partial MP_L}{\partial L}\right|_{K,Z}=\frac{\partial^2F}{\partial L^2}<0.</math>
+
+These conditions mean the function is increasing and locally concave in <math>L</math> with the other factors fixed. In contrast, <math>MP_L<0</math> means an additional unit reduces total output in that range. A decline in <math>MP_L</math> alone is insufficient to establish <math>MP_L<0</math>.
+
+In discrete data, one may compute marginal differences <math>\Delta Q/\Delta L</math> rather than a derivative. If increments are large, a sequence of average differences need not identify the instantaneous derivative. Measurement uncertainty, indivisible equipment, training effects and labor quality also complicate attribution to the amount of input alone.
+
+== Worked model: Cobb–Douglas production with conditional scale ==
+
+Consider the illustrative production function
+
+<math display="block">Q(K,L)=10\sqrt{KL}=10K^{1/2}L^{1/2},\qquad K,L>0,</math>
+
+where <math>K,L</math> are dimensionless teaching input quantities and the coefficient 10 converts the inputs into the specified output units. This is a deliberately chosen model, not an estimate of an actual economy. Different input elasticities and technological conditions require re-estimation.
+
+The marginal products are
+
+<math display="block">MP_L=\frac{\partial Q}{\partial L}=5\sqrt{\frac K L},\qquad MP_K=\frac{\partial Q}{\partial K}=5\sqrt{\frac L K}.</math>
+
+Holding <math>K</math> fixed and differentiating again,
+
+<math display="block">\frac{\partial^2Q}{\partial L^2}=-\frac52\sqrt K\,L^{-3/2}<0,\qquad \frac{\partial^2Q}{\partial K^2}=-\frac52\sqrt L\,K^{-3/2}<0.</math>
+
+Thus both individual inputs have positive, diminishing marginal products everywhere in the positive domain. But the production function is homogeneous of degree one:
+
+<math display="block">Q(tK,tL)=10\sqrt{tK\,tL}=tQ(K,L),\qquad t>0.</math>
+
+It exhibits '''constant returns to scale''' when both inputs change proportionally. This is a direct counterexample to any claim that diminishing marginal product must imply decreasing returns to scale.
+
+=== Independently checkable numerical fixture ===
+
+For <math>K=4,L=4</math>, <math>Q=10\sqrt{16}=40</math>, and the marginal product of labor is <math>MP_L=5\sqrt{4/4}=5</math> output units per labor-unit. Holding <math>K=4</math> fixed and increasing labor to <math>L=9</math> produces
+
+<math display="block">Q(4,9)=10\sqrt{36}=60,\qquad MP_L(4,9)=5\sqrt{4/9}=\frac{10}{3}\simeq3.3333.</math>
+
+Total output rose from 40 to 60, but the instantaneous marginal product of labor fell from 5 to 3.3333. The average marginal increase between labor 4 and labor 9 is <math>(60-40)/(9-4)=4</math>, which is between the endpoint derivatives as expected for a smooth concave function.
+
+If both labor and capital instead double from <math>(4,4)</math> to <math>(8,8)</math>,
+
+<math display="block">Q(8,8)=10\sqrt{64}=80=2Q(4,4).</math>
+
+This same function simultaneously shows diminishing returns to more labor at fixed capital and constant returns to scale in all inputs. The conclusion depends on which variables change.
+
+{| class="wikitable"
+! Input scenario !! Output <math>Q</math> !! Labor marginal product <math>MP_L</math> !! Interpretation
+|-
+| K=4, L=4 || 40 || 5 || Reference
+|-
+| K=4, L=9 || 60 || 3.3333 || More labor, capital unchanged; diminishing marginal product
+|-
+| K=8, L=8 || 80 || 5 || Both inputs doubled; output doubled
+|}
+
+These values verify the mathematical model; they are not economic measurements.
+
+== Marginal products and returns to scale are distinct derivatives ==
+
+For a differentiable production function of several positive inputs <math>\mathbf x</math>, returns to scale concern <math>F(t\mathbf x)</math> as all inputs are scaled by <math>t</math>. Homogeneity of degree <math>r</math> means
+
+<math display="block">F(t\mathbf x)=t^r F(\mathbf x).</math>
+
+Then <math>r=1</math> yields constant returns, <math>r>1</math> increasing returns, and <math>0<r<1</math> decreasing returns within the model. Euler's homogeneous function theorem gives
+
+<math display="block">\sum_i x_i\frac{\partial F}{\partial x_i}=rF(\mathbf x).</math>
+
+The sign of a cross-input or own-input second derivative does not by itself determine the homogeneity degree. A general production function need not be homogeneous at all; its scale elasticity can vary across operating conditions.
+
+For Cobb–Douglas <math>Q=A K^\alpha L^\beta</math>, with <math>A>0</math>, the aggregate homogeneity degree is <math>\alpha+\beta</math>, while diminishing labor marginal product for fixed capital follows if <math>0<\beta<1</math> and other standard regularity conditions hold. Consequently <math>\beta<1</math> does not imply <math>\alpha+\beta<1</math>.
+
+== From marginal output to marginal cost ==
+
+Under a single variable input purchased at constant positive unit price <math>w</math> and a differentiable monotonic output relation <math>Q=Q(L)</math>, variable cost is <math>VC=wL(Q)</math>. By the chain rule,
+
+<math display="block">MC=\frac{dVC}{dQ}=\frac{w}{dQ/dL}=\frac{w}{MP_L}.</math>
+
+If <math>MP_L</math> is positive and declining while <math>w</math> remains fixed, marginal cost rises. This result relies on fixed input price, invertible local production relation, and other inputs and technology unchanged. In practice input prices, process changes, capital expansion and multiple production stages can invalidate a one-input simplification.<ref name="cost"/>
+
+A second derivative can make this explicit: <math>dMC/dL=-w(MP_L)'/(MP_L)^2>0</math> if <math>(MP_L)'<0</math> and <math>w>0</math>. The derivative with respect to output is then positive as long as <math>dQ/dL>0</math>. This is a local mathematical implication, not an assertion that every observed marginal cost curve increases monotonically.
+
+== Optimization and physical bottlenecks ==
+
+Diminishing returns informs resource allocation only with an objective. A firm might choose inputs to maximize profit <math>\pi=pQ(K,L)-wL-rK</math> with product price <math>p</math> and input prices <math>w,r</math>. Under interior conditions and differentiability, the labor first-order condition is <math>p\,MP_L=w</math>; feasibility, global optimality, market structure and additional constraints must be separately checked.
+
+For a service team or computer system, a bottleneck can arise when one capacity is fixed while demand or parallel workers increase. This analogy can be useful, but software queueing, distributed contention and latency are not literally an agricultural production function. The mathematical and empirical mechanism must be shown rather than inferred from a common phrase.
+
+A learning curve can cause increasing marginal returns over an early region. Economies of network scale can produce positive feedback or nonlinear returns. Technological change can shift the entire production function between periods. The standard law is therefore best understood as a conditional tendency within a chosen fixed-factor regime.
+
+== Empirical identification and confounding ==
+
+An intervention should specify consistent physical output units, fixed nonlabor inputs, observation period, training and worker selection, quality standards, management and environmental conditions. Without these controls, a before/after change is not a defensible estimate of the partial derivative. The related notions of resource analysis, scientific modeling and robustness are analogies, not evidence that economic marginal-product equations universally govern computation.
+
+
+Estimating marginal productivity from observed data is not simply measuring total output before and after adding workers. Labor and capital may be chosen jointly in anticipation of demand, while worker skill, management quality, weather, shift hours, input quality and equipment maintenance also vary. These variables can confound simple comparisons.
+
+A credible empirical study records the relevant production inputs, physical units, output quality, time period, technology state and sources of variation that permit identification of a marginal effect. Where feasible, controlled variation or an appropriate instrument/natural experiment can help. Otherwise reported derivatives may describe an associative regression rather than the causal outcome of deliberately adding one more unit.
+
+A fitted concave function is not a theorem that technology is concave. Extrapolation outside the measured region is especially risky: capacity expansion or a discrete process redesign may change the production regime.
+
+== Distinctions from marginal utility and diminishing returns to effort ==
+
+Diminishing marginal utility is a property of a consumer's preference representation under particular modeling assumptions and normalizations; it is not identical to a production function's second partial derivative. Applying the word “returns” to studying, training an AI model or building an organization requires specifying the outcome and the held-fixed inputs. Otherwise the phrase becomes a metaphor rather than a tested economic statement.
+
+For numerical optimization, a flattening reward curve can reflect a resource bottleneck, a saturation function, measurement ceiling or policy effect; these are competing mechanisms. A single curve cannot identify them without additional intervention and measurement.
+
+== Model verification and responsible use ==
+
+A complete technical analysis declares the function and units, which inputs are fixed, the time horizon, the relevant positive/negative marginal range, the method of measuring incremental output and the assumptions behind an economic interpretation. It separately reports individual marginal products and joint returns to scale.
+
+For the analytic benchmark, tests should reproduce <math>Q(4,4)=40</math>, <math>Q(4,9)=60</math>, <math>MP_L(4,4)=5</math>, <math>MP_L(4,9)=10/3</math>, <math>Q(8,8)=80</math>, and negative own-second derivatives. These source-level checks confirm mathematical consequences; they do not establish the universal accuracy of the invented production function.
+
+The law of diminishing returns is a useful bounded concept in production economics. It must not be used to conclude that every larger team becomes inefficient, that aggregate technological growth ends, or that everyone should stop investing once a marginal increment declines. The correct conclusion always depends on constraints, opportunity costs, empirical evidence and the distinction between partial and proportional scaling.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* OpenStax, [https://openstax.org/books/principles-economics-3e/pages/7-2-production-in-the-short-run ''Production in the Short Run''] and [https://openstax.org/books/principles-economics-3e/pages/7-3-costs-in-the-short-run ''Costs in the Short Run''].
+* [[Law of diminishing returns|Canonical topic]] · [[Law of diminishing returns/Simple|Simple explanation]] · [[Scientific model]] · [[Computational complexity]].

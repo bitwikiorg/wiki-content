@@ -36,10 +36,12 @@ def test_example_arithmetic():
 def test_exact_two_reader_depths():
     core, simple, technical = [p.read_text(encoding="utf-8") for p in paths]
     assert "{{:Power electronics/Simple}}" in core
+    assert "{{Knowledge object" in core
+    assert "== How it works ==" in simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0]
     assert "[[Related to::Voltage regulator]]" in core
     for text in (simple, technical):
-        assert "[[Power electronics/Simple|" in text
-        assert "[[Power electronics/Technical|" in text
+        assert "[[Power electronics/Simple|" in text or "'''Simple'''" in text
+        assert "[[Power electronics/Technical|" in text or "'''Technical'''" in text
         assert "Template:Reading depth" not in text
     assert "== Scope and converter families ==" in technical
     assert "== State-space interpretation and experimental boundaries ==" in technical

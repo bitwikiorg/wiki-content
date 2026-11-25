@@ -4,7 +4,7 @@
 
 <onlyinclude>
 A '''device driver''' is software that helps a computer or other system operate a particular device. The operating system can offer a common way to ask for data or send commands, while the driver knows how to communicate with the device. A driver may control a physical component, such as a network adapter, or a virtual device implemented by software. It is not always a separate program you install: some drivers are built into the operating system.<ref name="linuxsimple">Linux kernel documentation, [https://docs.kernel.org/driver-api/driver-model/binding.html Driver Binding], how systems associate devices and drivers.</ref>
-</onlyinclude>
+
 
 == A concrete example ==
 Imagine an application sending a file over a network. The application does not normally need to know the exact command format of every network adapter. The operating system and networking software prepare packets and request transmission. A network driver then communicates with a compatible adapter, possibly placing descriptors in a queue and notifying the device. Later the adapter or driver reports whether work completed. The exact steps depend on the hardware and operating system.
@@ -28,6 +28,9 @@ Some drivers execute in the operating-system kernel, where a serious bug can aff
 A device can be unplugged while an operation is running. A driver might receive an unexpected response, time out, exhaust memory or lose power during a transfer. Reliable drivers need to handle these situations without corrupting data or leaving the system in an unsafe state.
 
 A driver update is not the same thing as a hardware repair. Problems should be diagnosed with device information, system logs, compatibility documentation and reproducible tests rather than by guessing that every failure is caused by the driver.
+
+
+</onlyinclude>
 
 == Further reading ==
 The [[Device driver|canonical subject page]] preserves the subject identity. The [[Device driver/Technical|Technical article]] explains how device discovery, interrupts, DMA, queues and concurrency actually work. See also [[Operating system]] and [[Computer architecture]].

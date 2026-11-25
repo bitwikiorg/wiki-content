@@ -15,7 +15,10 @@ class DigitalSignalProcessorArticleTest(unittest.TestCase):
             self.assertEqual(text.count("<onlyinclude>"), 1)
             self.assertEqual(text.count("</onlyinclude>"), 1)
         core = files[0].read_text(encoding="utf-8")
-        self.assertIn("{{:Digital signal processor/Simple}}", core)
+        self.assertIn("<onlyinclude>{{:Digital signal processor/Simple}}</onlyinclude>", core)
+        self.assertIn("{{Knowledge object", core)
+        simple = files[1].read_text(encoding="utf-8")
+        self.assertIn("== How it works ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertNotIn("{{:Digital signal processor/Technical}}", core)
         self.assertIn("[[Digital signal processor/Technical|Technical]]", core)
 

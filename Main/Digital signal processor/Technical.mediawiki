@@ -3,6 +3,8 @@
 '''Reading depth:''' [[Digital signal processor/Simple|Simple]] · [[Digital signal processor/Technical|Technical]]
 
 == Computational workload ==
+A DSP is a programmable processor architecture; digital signal processing is the broader mathematical and engineering discipline. Typical workloads include filtering, transforms, modulation and control. Specialized addressing, parallel execution units and controlled data movement can reduce overhead for supported repetitive operations; the architecture does not guarantee predictable timing for arbitrary software.
+
 For an <math>L</math>-tap finite impulse response (FIR) filter, an output sample can be written
 :<math>y[n]=\sum_{k=0}^{L-1}h[k]x[n-k].</math>
 The direct form requires <math>L</math> products and <math>L-1</math> additions per output, assuming an initially zero accumulator or equivalent reduction. A MAC instruction or fused arithmetic datapath can perform the product and accumulation as a closely coupled operation. This is an operation count, not a guarantee of one output per <math>L</math> cycles: instruction issue, vector lanes, pipeline overlap, loads, and memory stalls determine realized throughput.

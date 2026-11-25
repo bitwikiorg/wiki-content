@@ -1,0 +1,26 @@
+= Computer bus — Technical =
+'''Reading depth:''' [[Computer bus/Simple|Simple]] · [[Computer bus/Technical|Technical]]
+<onlyinclude>A '''computer bus''' is an interconnection architecture whose signaling, transaction semantics, arbitration, flow control, timing and ordering rules coordinate transfers between hardware agents. A shared parallel bus is one implementation; serial switched fabrics generalize the function without sharing a single electrical medium.</onlyinclude>
+
+== Transaction semantics and implementation ==
+A useful abstract request is (initiator, target, operation, address, length, attributes), optionally followed by data and completion. This is a model, '''not''' a universal wire format. Address, data and control may use separate conductors, time-multiplexed phases or packet fields. Synchronous buses sample signals relative to clocks; asynchronous buses use handshakes. Posted writes need not return a data-bearing completion; non-posted transactions have protocol-defined response requirements.
+
+Shared-medium arbitration can use fixed priority (with possible starvation), round-robin (with conditional fairness), or other scheduling. Switched point-to-point fabrics can operate links concurrently, but downstream ports, credits, buffering and ordering impose bottlenecks. Coherence, cache consistency, isolation and deadlock freedom are separate architecture-dependent properties, not guaranteed by the word ''bus''.
+
+== Quantitative models ==
+For width W bits, frequency f cycles/s, and t full-width transfers/cycle, the ideal one-direction raw rate is R = W f t / 8 bytes/s. At W=64, f=100 MHz, t=1, R=800,000,000 B/s = 800 MB/s (decimal). With useful-transfer fraction u=0.70, illustrative payload R_useful = uR = 560 MB/s. These are hypothetical bounds, not measured performance; they assume no arbitration gaps, idle cycles, turnarounds, framing or partial-width transfers.
+
+For a serial link, separately account for signaling transfers per second (GT/s), bits per symbol, encoding/FEC, framing, packets, directionality, lane count and credit stalls. Summing two directions yields aggregate bidirectional capacity, '''not''' one-way payload rate. Latency can be decomposed into queueing, arbitration, serialization, propagation, switching and completion components; workloads and congestion determine the distribution rather than a universal constant.
+
+== Protocol families ==
+'''PCI Express''' uses packet-based, negotiated-lane, point-to-point serial links and switches. Transaction, data-link and physical functions are distinct; packet ordering and flow-control rules are specified by revision, not implied by the physical connector.<ref name="pcisig">PCI-SIG, [https://pcisig.com/what-pci-express-pcie-architecture PCI Express architecture].</ref><ref name="pcibase">PCI-SIG, [https://pcisig.com/specification-overview/pci-express-base PCI Express Base specification overview] (full normative text may require access).</ref>
+
+'''USB4''' dynamically shares high-speed external link capacity across device and display protocols; tunneling does not guarantee that every host, device or cable supports every feature or the highest rate. PCIe and USB4 are distinct architectures.<ref name="usbif">USB-IF, [https://www.usb.org/usb4 USB4 overview].</ref><ref name="usb4spec">USB-IF, [https://www.usb.org/document-library/usb4r-specification-v20 USB4 Specification v2.0], specification landing page dated 2 April 2026.</ref>
+
+'''SoC fabrics''' may use shared interconnects, crossbars, rings or networks-on-chip. Clock-domain crossings, coherency, QoS, virtual channels, routing, security and deadlock avoidance must be established for the particular implementation; no universal on-chip protocol is assumed here.
+
+== Verification and research ==
+To evaluate an implementation, document topology, revision, width, negotiated link state, traffic mix, transfer sizes, read/write ratio, contention, clock domains and buffer capacities. Measure one-way delivered payload, latency percentiles, fairness and energy per useful byte under controlled offered load; compare to the theoretical ceiling, record error counters and check whether DMA/IOMMU and ordering constraints hold. Electrical loading and skew challenge shared parallel buses; serial fabrics require signal-integrity, equalization and clock-recovery design. Novel architectures must test congestion, ordering, isolation and liveness, not infer correctness from bandwidth alone.
+
+== References ==
+<references/>

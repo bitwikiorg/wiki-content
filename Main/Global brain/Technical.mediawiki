@@ -1,17 +1,345 @@
-The '''global brain''' is a research hypothesis and metaphor in which globally connected humans, organizations and digital systems collectively process information in ways compared with a brain.
+{{Reading depth|base=Global brain|current=Technical}}
 
-== Research context ==
-Francis Heylighen and other researchers developed global-brain research around distributed communication, self-organization and networked problem-solving. The concept has historical parallels with the noosphere but places emphasis on the mechanisms of information exchange and coordination. Different formulations range from a design vision to strong claims about emergent global cognition; these should not be treated as one established theory.
+= Global brain — Technical =
 
-== Functional modeling ==
-A bounded model represents participants as nodes and communication as directed, time-dependent edges. Tasks propagate along permitted paths; nodes contribute evidence, decisions or computation. Compare distributed routing with centralized coordination using task success, delay, communication cost and resilience to node loss. A highly connected topology alone does not guarantee effective information aggregation; incentives, correlated errors and unequal access matter.
+The '''global brain''' is a hypothetical systems-level construct in which globally interconnected humans, institutions, information resources, and computational agents collectively perform functions analogous to memory, routing, learning, coordination, and problem solving. The construct ranges from weak engineering metaphors to strong claims of planetary cognition.
 
-== Testability and limits ==
-Claims about a particular global service can be assessed using observable performance and controlled changes in connectivity. Stronger claims that the entire planet constitutes a unified cognitive or conscious agent require independent operational criteria and evidence; neither large network size nor analogies to neural networks suffice. Governance, competing interests, fragmentation and infrastructure concentration limit the explanatory reach of the metaphor.
+A rigorous technical treatment must decompose the metaphor into testable functions rather than infer brainhood from network size.
+
+== Functional decomposition ==
+
+Represent a global information system as dynamic multiplex network
+
+<math>G_t=(V,E_t^c,E_t^k,E_t^a,E_t^r,\ldots),</math>
+
+where vertices can include people, organizations, documents, services, and agents, while edge layers can represent:
+
+* communication <math>E^c</math>;
+* knowledge reference <math>E^k</math>;
+* authority <math>E^a</math>;
+* resource exchange <math>E^r</math>.
+
+A “global brain” claim should identify which functions emerge from this structure and how performance is measured.
+
+== Brain analogy versus mechanistic identity ==
+
+Biological brains contain neurons connected by electrochemical synapses with specialized anatomy, developmental constraints, metabolic support, and strongly recurrent dynamics.
+
+Internet nodes and human organizations have different substrates and timescales.
+
+Therefore mappings such as
+
+<pre>
+web page ↔ neuron
+hyperlink ↔ synapse
+Internet ↔ nervous system
+</pre>
+
+are analogies.
+
+They can suggest algorithms but do not establish mechanistic equivalence.
+
+== Historical computational models ==
+
+Mayer-Kress and Barczys examined the idea of a global brain emerging from worldwide computing networks.<ref name="mayer">[https://doi.org/10.1080/01972243.1995.9960177 Mayer-Kress, G. and Barczys, C. (1995), “The global brain as an emergent structure from the worldwide computing network, and its implications for modeling,” ''The Information Society'' 11(1).]</ref>
+
+Heylighen and Bollen proposed algorithms by which frequently useful Web links could be strengthened, producing adaptive associative structure.<ref name="heylighen-bollen">[https://www.organism.earth/library/document/world-wide-web-as-super-brain Heylighen, F. and Bollen, J. (1996), “The World-Wide Web as a Super-Brain: From Metaphor to Model.”]</ref>
+
+Later global-brain work has investigated challenge propagation, distributed intelligence, matching, and adaptive networks.
+
+These models establish research programs, not proof that the full planetary network meets a biological or cognitive definition of brain.
+
+== Adaptive link model ==
+
+A simplified adaptive network can assign weight <math>w_{ij}(t)</math> to relation from node <math>i</math> to <math>j</math>.
+
+Successful use can reinforce it:
+
+<math>w_{ij}(t+1)=w_{ij}(t)+\eta r_{ij}(t)-\lambda w_{ij}(t),</math>
+
+where <math>r_{ij}</math> is observed usefulness, <math>\eta</math> learning rate, and <math>\lambda</math> decay.
+
+Such reinforcement can create associative pathways.
+
+The model resembles Hebbian intuition at an abstract level, but the learning signal, topology, and node dynamics are different from neural tissue.
+
+== Challenge propagation ==
+
+Let challenge <math>q</math> originate at node <math>s</math> and required expertise be <math>e(q)</math>.
+
+The routing problem is to find path
+
+<math>\pi=(v_0=s,v_1,\ldots,v_k)</math>
+
+to a capable node while minimizing cost
+
+<math>C(\pi)=\sum_{(i,j)\in\pi}(d_{ij}+c_{ij}+r_{ij}),</math>
+
+where terms can represent delay, communication cost, and risk.
+
+A learning network can update routing probabilities from successful resolutions.
+
+This formalizes one plausible global-brain function without asserting a global mind.
+
+== Associative retrieval ==
+
+For query vector <math>q</math> and resource representations <math>x_i</math>, retrieval may rank by similarity
+
+<math>s_i=sim(q,x_i).</math>
+
+Click-through, task completion, or expert feedback can update ranking.
+
+Search engines already perform large-scale adaptive retrieval.
+
+Calling this “memory” is functionally reasonable but incomplete: ranking systems also reflect commercial objectives, adversarial optimization, and platform governance.
+
+== Distributed memory ==
+
+Let information item <math>k</math> have replicas on nodes <math>R(k)</math>.
+
+Availability under independent node failure probability <math>p</math> is
+
+<math>P_{avail}=1-p^{|R(k)|}.</math>
+
+Real failures are not independent; correlated outages, censorship, protocol obsolescence, or legal removal can affect many replicas simultaneously.
+
+Global memory therefore requires geographic, organizational, and technical diversity.
+
+== Collective problem solving ==
+
+Suppose agents hold partial capabilities <math>C_i</math>.
+
+A global coordination system attempts
+
+<math>y=F(q,C_1,\ldots,C_n,\Gamma).</math>
+
+Performance should be compared with:
+
+* best single participant;
+* random routing;
+* centralized expert routing;
+* static search;
+* nonadaptive network.
+
+Only comparative performance demonstrates benefit.
+
+== Information routing and attention ==
+
+The limiting resource in global networks is often attention rather than raw information.
+
+Let incoming information rate be <math>\lambda</math> and processing capacity <math>\mu</math>.
+
+When <math>\lambda>\mu</math>, queues or filtering are required.
+
+Recommendation and ranking allocate attention, making their objectives politically and epistemically consequential.
+
+An intelligent network must manage overload without suppressing important minority evidence.
+
+== Exploration–exploitation tradeoff ==
+
+Routing only to historically successful nodes exploits known expertise but can prevent discovery.
+
+Let selection probability use softmax
+
+<math>P(i\mid q)=\frac{e^{\beta s_i}}{\sum_j e^{\beta s_j}}.</math>
+
+Large <math>\beta</math> concentrates traffic on top-ranked nodes. Smaller <math>\beta</math> increases exploration.
+
+Over-exploitation can create rich-get-richer dynamics and lock-in.
+
+A global-brain architecture needs deliberate novelty mechanisms.
+
+== Stigmergy ==
+
+Stigmergy coordinates agents through traces left in a shared environment.
+
+Examples in digital systems include:
+
+* edit histories;
+* links;
+* ratings;
+* issue trackers;
+* shared artifacts.
+
+Agents respond to the evolving environment rather than requiring direct bilateral communication.
+
+Stigmergy can scale coordination but is vulnerable to manipulation and path dependence.
+
+== Self-organization and objective functions ==
+
+A network can self-organize without optimizing any socially desired objective.
+
+Suppose local agents update to maximize individual utilities <math>U_i</math>.
+
+System-level welfare <math>W</math> may satisfy
+
+<math>W\neq\sum_i U_i</math>
+
+when externalities, distribution, or public goods matter.
+
+Emergent coordination must therefore be evaluated against explicit system outcomes.
+
+== Global-brain intelligence metric ==
+
+A defensible intelligence claim requires task distribution <math>\mathcal T</math> and performance metric
+
+<math>I_G=E_{T\sim\mathcal T}[P(G,T)].</math>
+
+This is a task-defined operational measure.
+
+It does not produce a universal intelligence quotient for the planet.
+
+Different task distributions can rank architectures differently.
+
+== Resilience ==
+
+A planetary network should be evaluated under perturbation.
+
+Remove node subset <math>R\subset V</math> and measure degradation
+
+<math>\Delta P=P(G)-P(G\setminus R).</math>
+
+Random failures and targeted attacks should be analyzed separately.
+
+High-degree central hubs can improve efficiency while creating vulnerability.
+
+== Fragmentation and modularity ==
+
+A modular network can preserve local autonomy and specialized knowledge.
+
+Too much modularity can create isolated information bubbles.
+
+Community structure can be measured using modularity or related graph metrics, but a high numerical value is not inherently good or bad.
+
+The desired structure depends on balancing local specialization with cross-boundary communication.
+
+== Diversity ==
+
+Collective intelligence benefits when errors and information sources are not perfectly correlated.
+
+If estimates share correlation <math>\rho</math>, aggregation benefit decreases as <math>\rho</math> increases.
+
+Global platforms that homogenize sources can therefore reduce epistemic diversity despite increasing connectivity.
+
+Recommendation systems should be evaluated for both relevance and source dependence.
+
+== Governance layer ==
+
+Global infrastructure has owners and operators.
+
+Governance variables include:
+
+* protocol control;
+* platform moderation;
+* identity;
+* access;
+* censorship;
+* auditability;
+* data ownership;
+* interoperability.
+
+A global-brain model that omits governance falsely treats technical links as socially neutral.
+
+== Surveillance and autonomy ==
+
+Centralized sensing can improve coordination while increasing surveillance.
+
+Optimization objective <math>J</math> should therefore include more than efficiency:
+
+<math>J=\alpha P-\beta C-\gamma R_{privacy}-\delta R_{concentration}.</math>
+
+Weights are normative choices, not scientific constants.
+
+The need to choose them shows why “more integrated” is not automatically “better.”
+
+== Artificial agents ==
+
+AI agents can act as routers, summarizers, planners, translators, and generators.
+
+They change system dynamics because one model can serve millions of users.
+
+Let shared model error be <math>\epsilon_M</math> and local error <math>\eta_i</math>:
+
+<math>\epsilon_i=\epsilon_M+\eta_i.</math>
+
+Apparent population size does not imply independent cognition.
+
+Model diversity, provenance, and independent validation become important system properties.
+
+== Consciousness boundary ==
+
+No accepted criterion shows that task-level distributed intelligence implies phenomenal consciousness.
+
+A global network could exhibit:
+
+* memory;
+* adaptation;
+* routing;
+* prediction;
+* coordination;
+
+without there being evidence of one subjective point of view.
+
+The inference from function to consciousness remains philosophically and scientifically unresolved.
+
+== Comparative architecture ==
+
+Global-brain proposals should be compared with less speculative frameworks.
+
+A [[Knowledge ecosystem]] can represent actors, resources, and governance.
+
+A [[Multi-agent system]] can formalize interacting computational agents.
+
+[[Collective intelligence]] can quantify group performance.
+
+The global-brain label is justified only when the planetary-scale integration hypothesis adds explanatory or predictive value.
+
+== Experimental program ==
+
+A research program can test components through:
+
+# bounded network simulation;
+# online field experiments;
+# routing benchmarks;
+# distributed search tasks;
+# resilience tests;
+# diversity interventions;
+# human–AI team experiments.
+
+Predefine performance metrics and baselines.
+
+Avoid interpreting successful subcomponents as proof of the entire global-brain hypothesis.
+
+== Failure modes ==
+
+Potential system failures include:
+
+* misinformation cascades;
+* algorithmic monopoly;
+* common-model dependence;
+* surveillance;
+* manipulation;
+* infrastructure outages;
+* censorship;
+* fragmentation;
+* attention capture;
+* optimization toward commercial rather than epistemic objectives.
+
+== Epistemic conclusion ==
+
+The global-brain hypothesis contains a productive engineering core: global networks can be studied as adaptive distributed information-processing systems.
+
+Its stronger ontological claims remain unverified.
+
+The proper research strategy is to decompose the metaphor into measurable functions and reject inferences that are supported only by resemblance to biological brains.
 
 == References ==
-* [https://researchportal.vub.be/en/publications/the-gbi-vision-past-present-and-future-context-of-global-brain-re/ Heylighen (2011), The GBI Vision: past, present and future context of global brain research]
-* [https://pmc.ncbi.nlm.nih.gov/articles/PMC8166150/ Riedl et al. (2021), Quantifying collective intelligence in human groups]
+
+<references />
+
+* [https://researchportal.vub.be/en/publications/conceptions-of-a-global-brain/ Heylighen, F. (2012), “Conceptions of a Global Brain.”]
+* [https://doi.org/10.1016/j.techfore.2016.02.004 Heylighen, F. (2017), “Towards an intelligent network for matching offer and demand: From the sharing economy to the global brain.”]
 
 == Reading depth ==
-[[Global brain/Simple|Simple explanation]]
+
+[[Global brain/Simple|Simple explanation]] · [[Global brain|Core article]]

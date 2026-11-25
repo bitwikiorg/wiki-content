@@ -31,6 +31,7 @@ class Issue65CausalResilienceTests(unittest.TestCase):
                 self.assertIn("{{:" + title + "/Simple}}", core)
                 self.assertEqual(simple.count("<onlyinclude>"), 1)
                 self.assertEqual(simple.count("</onlyinclude>"), 1)
+                self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
                 for derivative in (simple, tech):
                     self.assertNotIn("{{Knowledge object", derivative)
                     self.assertNotIn("[[Related to::", derivative)

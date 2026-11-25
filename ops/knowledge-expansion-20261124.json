@@ -3,7 +3,7 @@
   "base_commit": "e26be703ce02e4396e46072141dedeaf472fdfc1",
   "inventory_method": "Direct exact-title fetches against main; recursive Git tree returned 2404 untruncated entries. Keyword code searches for the four authored subjects and Inforg returned no hits. The inventory is preliminary for remaining candidates; exact-title absence is not proof of absent related coverage.",
   "staged_branch": "content/knowledge-expansion-information-foundations-20261124",
-  "scope_note": "Four authored canonical hosts with two localizations each; Inforg redirected to its dedicated Infosphere section. Existing canonical articles unchanged. Other candidates require full alias, section, source and localization review. No merge/deployment authorized.",
+  "scope_note": "Five independent authored canonical hosts with two localizations each. Inforg and Infosphere retain separate canonical identities, with reciprocal semantic links as directed by the owner. Existing canonical articles unchanged. Other candidates require full alias, section, source and localization review; no candidate is to be consolidated, redirected, or otherwise removed from the requested article scope without explicit owner approval. No merge/deployment authorized.",
   "validation_note": "Commit and PR are the authoritative immutable evidence for staged source; PR workflow must be independently checked. Full local execution and live MediaWiki verification not performed.",
   "secondary_outline_research": {
     "status": "pending",
@@ -114,7 +114,8 @@
         "Information ecology",
         "Knowledge",
         "Intelligent agent",
-        "Artificial intelligence"
+        "Artificial intelligence",
+        "Inforg"
       ],
       "branch": "content/knowledge-expansion-information-foundations-20261124",
       "validation": "static source checks in authoring; GitHub PR workflow pending",
@@ -124,17 +125,26 @@
       "title": "Inforg",
       "group": "Information science and information philosophy",
       "base_exact_title": "404 not present",
-      "canonical_identity": "Infosphere#Inforgs",
-      "editorial_disposition": "subordinate concept and redirect",
-      "research_status": "researched with Infosphere; scope decision provisional",
+      "canonical_identity": "Inforg",
+      "editorial_disposition": "new independent canonical article (owner-directed correction)",
+      "research_status": "standalone Simple and Technical drafts authored; independent editorial review pending",
       "verified_source_urls": [
-        "https://doi.org/10.1080/01972240601059094"
+        "https://doi.org/10.1080/01972240601059094",
+        "https://doi.org/10.1111/j.1467-9973.2008.00573.x",
+        "https://www.oii.ox.ac.uk/research/publications/the-fourth-revolution/",
+        "https://www.nybooks.com/articles/2014/10/09/what-your-computer-cant-know/",
+        "https://www.nybooks.com/articles/2014/12/18/information-desk/",
+        "https://academic.oup.com/book/35378"
       ],
       "dependencies": [
-        "Infosphere"
+        "Infosphere",
+        "Information",
+        "Intelligent agent",
+        "Cognition",
+        "Artificial intelligence"
       ],
       "branch": "content/knowledge-expansion-information-foundations-20261124",
-      "validation": "static source checks in authoring; GitHub PR workflow pending",
+      "validation": "static structure checked; GitHub PR workflow pending",
       "integration": "not merged"
     },
     {

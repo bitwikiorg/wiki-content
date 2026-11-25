@@ -1,7 +1,7 @@
 '''Reading depth:''' [[Firmware/Simple|Simple]] · [[Firmware/Technical|Technical]]
 = Firmware — Simple =
 
-<onlyinclude>'''Firmware''' is software designed to work closely with a particular electronic device or hardware platform. It can initialize components, control built-in functions, or provide an interface for other software. Unlike a general application, firmware often needs to work before an [[Operating system]] starts or without one at all. Firmware is not necessarily permanent, stored only in ROM, or immune to updates.<ref name="uefi">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11'', Overview], platform firmware, boot environment and services.</ref></onlyinclude>
+<onlyinclude>'''Firmware''' is software designed to work closely with a particular electronic device or hardware platform. It can initialize components, control built-in functions, or provide an interface for other software. Unlike a general application, firmware often needs to work before an [[Operating system]] starts or without one at all. Firmware is not necessarily permanent, stored only in ROM, or immune to updates.<ref name="uefi">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11'', Overview], platform firmware, boot environment and services.</ref>
 
 == Where do we encounter firmware? ==
 
@@ -50,6 +50,8 @@ Digital signatures and hardware roots of trust can help, but a signature alone d
 == A common misconception ==
 
 “Firmware is software burned into a chip forever” is historically suggestive but technically unreliable. Modern firmware can be stored in rewritable nonvolatile memory, copied into RAM, downloaded by a host driver or updated over a network. The useful distinction is its close responsibility for a particular device's operation.
+
+</onlyinclude>
 
 == Further reading ==
 

@@ -28,6 +28,7 @@ class FirmwareArticleTests(unittest.TestCase):
         self.assertIn("{{:Firmware/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertNotIn("{{Reading depth", core + simple + tech)
         for text in (core, simple, tech):
             self.assertIn("[[Firmware/Simple|Simple]]", text)

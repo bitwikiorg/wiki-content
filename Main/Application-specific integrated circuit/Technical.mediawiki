@@ -1,0 +1,34 @@
+'''Reading depth:''' [[Application-specific integrated circuit/Simple|Simple]] · [[Application-specific integrated circuit/Technical|Technical]]
+= Application-specific integrated circuit: technical treatment =
+
+== Scope and architecture ==
+ASIC denotes an application-targeted manufactured integrated circuit, not a single design methodology. Standard-cell digital ASICs map a logical netlist onto a characterized cell library; full-custom designs may optimize transistor topology and geometry directly. Mixed-signal chips combine analog and digital blocks. Structured ASICs reduce some customization by predefining portions of the fabric. A dedicated accelerator with embedded programmable cores can still be an ASIC.
+
+== Design styles and process interface ==
+Standard-cell implementations map characterized logic cells; full-custom circuits optimize transistor-level structures, often for analog, memory or performance-critical blocks. Structured ASICs customize predefined fabrics or layers. Process design kits (PDKs) and characterized cell libraries bridge circuit intent and foundry constraints. Embedded programmable processors and configuration registers do not turn a manufactured ASIC into an FPGA.
+
+== Digital implementation and verification ==
+A representative standard-cell path is specification → microarchitecture → RTL → simulation/formal verification → technology-mapped synthesis → floorplan and power grid → placement → clock-tree synthesis → routing → extraction → static timing and physical signoff → mask data → fabrication and test. These stages iterate rather than constitute an irreversible one-way pipeline. OpenROAD documents an RTL-to-GDS flow, but its successful execution is not evidence of foundry signoff or a functioning manufactured die.
+
+Functional verification checks specified behavior; equivalence checks transformations; static timing analysis examines constrained paths under modeled corners; design-rule checking and layout-versus-schematic comparison assess physical consistency. Coverage gaps, analog effects, process variation, packaging, and field conditions can still invalidate a design.
+
+== Power, performance and area ==
+Dynamic switching power is often approximated by <math>P_{dynamic}=\alpha C V^2 f</math>, where α is switching activity, C effective switched capacitance, V supply voltage and f clock frequency. Leakage and short-circuit power are additional components. This simplified relation does not independently predict complete chip power or allow universal ASIC-versus-FPGA ratios. Timing closure trades cell size, buffering, voltage, wire parasitics and congestion against area and energy.
+
+== Cost model and break-even ==
+For a deliberately simplified comparison, let ASIC total cost be <math>C_A(N)=F_A+N u_A</math> and alternative cost <math>C_B(N)=F_B+N u_B</math>, where F denotes fixed non-recurring costs, u the per-unit delivered cost and N production volume. If <math>F_A>F_B</math> and <math>u_A<u_B</math>, the break-even quantity is <math>N^*=(F_A-F_B)/(u_B-u_A)</math>. Hypothetical illustration: ASIC fixed cost $1,000,000 and unit cost $8; alternative fixed cost $20,000 and unit cost $28. Then <math>N^*=980000/20=49000</math> units. At 49,000 units, both models yield $1,392,000. This is an algebraic example, not an industry quotation or forecast. Real estimates must incorporate yields, wafer starts, package/test costs, engineering schedule, redesign risk, financing, and demand uncertainty.
+
+== Fabrication and yield ==
+A manufactured die's unit economics depend on wafer area utilization, defect distribution, process maturity and screening criteria. Larger die area may reduce gross die per wafer and good-die yield; simple area-based or Poisson yield models require explicit defect-density and independence assumptions. Process node labels alone cannot determine cost or performance. Mask data and a qualified manufacturing process remain distinct from EDA source files.
+
+== Constraints and comparative claims ==
+An FPGA trades configurable fabric and routing overhead for post-manufacture flexibility. An ASIC can achieve better PPA for a particular design, but advanced-node masks, verification, IP licensing and schedule risk can dominate economics. The IEEE Agile-X study describes one particular structured/mask-less fabrication platform; its reported cost/time ratios cannot be generalized to ordinary production ASICs.
+
+== Provenance and limitations ==
+The DAC 2019 OpenROAD paper and project documentation substantiate digital implementation stages, not universal commercial tapeout qualification. Cambridge teaching material illustrates NRE and yield accounting, not current market prices. IEEE TVLSI 2025 provides a platform-specific experimental comparison. No physical implementation, signoff, silicon characterization, or expert review was performed for this article.
+
+== References ==
+* Ajayi et al. (2019), “Toward an Open-Source Digital Flow: First Learnings from the OpenROAD Project,” ''DAC 2019'', doi:10.1145/3316781.3326334. [https://doi.org/10.1145/3316781.3326334 Publisher record].
+* OpenROAD Project, [https://openroad-flow-scripts.readthedocs.io/en/latest/tutorials/FlowTutorial.html OpenROAD Flow Scripts tutorial], design-flow implementation documentation (accessed 2026-11-21).
+* University of Cambridge, [https://www.cl.cam.ac.uk/research/srg/han/ACS-P35/obj-2.2/zhpb6c4869bc.html ASIC costing], educational costing model (accessed 2026-11-21).
+* T. Kuroda et al., “Agile-X: A Structured-ASIC Created With a Mask-Less Lithography System Enabling Low-Cost and Agile Chip Fabrication,” ''IEEE Transactions on Very Large Scale Integration (VLSI) Systems'' 33(3), 746–756 (2025). doi:10.1109/TVLSI.2024.3486239. [https://doi.org/10.1109/TVLSI.2024.3486239 DOI].

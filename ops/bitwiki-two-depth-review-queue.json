@@ -2024,16 +2024,13 @@
       "final_validation_source_audit": {
         "id": "N020",
         "pr": 121,
-        "head": "8b137a62b3dfb206621fd227575e066ff14e6f27",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "host has independent onlyinclude body",
-          "Knowledge object template absent; inspect alternative identity"
-        ],
+        "head": "b910281f45abc6d4cfe782a531868e470f2c5d62",
+        "findings": [],
         "regression_paths": [
           "tests/test_semiconductor_packaging.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple source and canonical composition-only wrapper verified; metadata and existing categories supplied; updated scoped test read back, execution pending."
       }
     },
     {
@@ -2057,16 +2054,13 @@
       "final_validation_source_audit": {
         "id": "N021",
         "pr": 122,
-        "head": "a8837ee587022d08a8b4909defc8850a6d812284",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "host has independent onlyinclude body",
-          "Knowledge object template absent; inspect alternative identity"
-        ],
+        "head": "5aed5e86819ad3688c0a73a6feb634262330260d",
+        "findings": [],
         "regression_paths": [
           "tests/test_n021_semiconductor_foundry.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple source and canonical composition-only wrapper verified; metadata and existing categories supplied; updated scoped test read back, execution pending."
       }
     },
     {
@@ -2126,17 +2120,14 @@
       "final_validation_source_audit": {
         "id": "N023",
         "pr": 123,
-        "head": "c2d4450052e8ad52309e183a54f79d03c52f22f1",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "host has independent onlyinclude body",
-          "Knowledge object template absent; inspect alternative identity",
-          "category pages absent: Computer hardware, Digital signal processing"
-        ],
+        "head": "db20e612a358796794fd7bab892e8c64b7ee207e",
+        "findings": [],
         "regression_paths": [
           "tests/test_digital_signal_processor_article.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple source and canonical composition-only wrapper verified; metadata and existing categories supplied; updated scoped test read back, execution pending.",
+        "category_reconciliation": "Uncreated Computer hardware and Digital signal processing categories mapped to registered Computer science, Electronics, Engineering; distinct processor-vs-discipline scope and original host technical details moved to Technical; semantic links retained."
       }
     },
     {
@@ -2576,23 +2567,23 @@
     "articles_corrected_pending_validation": 65,
     "pairs_corrected_pending_validation": 33,
     "static_source_audits": 65,
-    "static_source_audits_with_findings": 19,
+    "static_source_audits_with_findings": 16,
     "static_source_audit_open_findings": [
       [
         "category pages absent",
-        12
+        11
       ],
       [
         "Simple transclusion appears lead-only",
-        15
-      ],
-      [
-        "host has independent onlyinclude body",
         12
       ],
       [
+        "host has independent onlyinclude body",
+        9
+      ],
+      [
         "Knowledge object template absent; inspect alternative identity",
-        13
+        10
       ],
       [
         "Related to targets absent",

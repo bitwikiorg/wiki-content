@@ -1934,16 +1934,14 @@
       "final_validation_source_audit": {
         "id": "N017",
         "pr": 118,
-        "head": "f72f542bcdfabf5fb8768118934d1e3025d10ceb",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "Knowledge object template absent; inspect alternative identity",
-          "category pages absent: Semiconductor manufacturing, Microfabrication"
-        ],
+        "head": "7d041eb4f261a7a377be13e9a084b60f289760a1",
+        "findings": [],
         "regression_paths": [
           "tests/test_photolithography_n017.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple explanation and source rendering, canonical metadata and related edges verified by committed source readback; scoped tests updated, execution pending.",
+        "category_reconciliation": "Uncreated draft Semiconductor manufacturing and Microfabrication categories mapped to existing Engineering and Electronics; original labels recorded here."
       }
     },
     {
@@ -1966,15 +1964,13 @@
       "final_validation_source_audit": {
         "id": "N018",
         "pr": 119,
-        "head": "1ebe2c7ef008155e4a5c24806aa26e66ed6f4d2b",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "Knowledge object template absent; inspect alternative identity"
-        ],
+        "head": "00ae9989b6e84ccb04710d08da1a0175f76ed493",
+        "findings": [],
         "regression_paths": [
           "tests/test_thin_film_deposition_n018.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple explanation and source rendering, canonical metadata and related edges verified by committed source readback; scoped tests updated, execution pending."
       }
     },
     {
@@ -1997,15 +1993,14 @@
       "final_validation_source_audit": {
         "id": "N019",
         "pr": 120,
-        "head": "f8b958e7959cabafd5060c810397f8084b2b39a0",
-        "findings": [
-          "Simple transclusion appears lead-only",
-          "Knowledge object template absent; inspect alternative identity"
-        ],
+        "head": "723c391f95443938c27d20946195acf1d94f22fe",
+        "findings": [],
         "regression_paths": [
           "tests/test_semiconductor_etching.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "composition_reconciliation": "Full Simple explanation and source rendering, canonical metadata and related edges verified by committed source readback; scoped tests updated, execution pending.",
+        "semantic_reconciliation": "Legacy Has page type::Topic Article removed as unsupported property; Method identity supplied through Knowledge object; original relationships retained."
       }
     },
     {
@@ -2581,23 +2576,23 @@
     "articles_corrected_pending_validation": 65,
     "pairs_corrected_pending_validation": 33,
     "static_source_audits": 65,
-    "static_source_audits_with_findings": 22,
+    "static_source_audits_with_findings": 19,
     "static_source_audit_open_findings": [
       [
         "category pages absent",
-        13
+        12
       ],
       [
         "Simple transclusion appears lead-only",
-        18
-      ],
-      [
-        "Knowledge object template absent; inspect alternative identity",
-        16
+        15
       ],
       [
         "host has independent onlyinclude body",
         12
+      ],
+      [
+        "Knowledge object template absent; inspect alternative identity",
+        13
       ],
       [
         "Related to targets absent",

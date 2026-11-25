@@ -1380,14 +1380,13 @@
       "final_validation_source_audit": {
         "id": "N001",
         "pr": 102,
-        "head": "afdc4158d7e5f19d00fa9a2934e05e345f73aacf",
-        "findings": [
-          "category pages absent: Psychology, Statistics"
-        ],
+        "head": "810b0982edc04c4979cef528222618fbb8eb018d",
+        "findings": [],
         "regression_paths": [
           "staging/compiler/test_issue65_generalization.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "category_reconciliation": "Original domain labels retained exactly in Knowledge object; missing category pages mapped to extant broader categories: category pages absent: Psychology, Statistics; now [[Category:Philosophy]], [[Category:Cognitive science]], [[Category:Mathematics]]"
       }
     },
     {
@@ -1509,14 +1508,13 @@
       "final_validation_source_audit": {
         "id": "N005",
         "pr": 106,
-        "head": "c33b1492a602081f75a3c1185f07d3fff9fee32b",
-        "findings": [
-          "category pages absent: Decision making, Military studies"
-        ],
+        "head": "23bcab969493049e696532d38b0de3d352894375",
+        "findings": [],
         "regression_paths": [
           "tests/test_ooda_loop.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "category_reconciliation": "Original domain labels retained exactly in Knowledge object; missing category pages mapped to extant broader categories: category pages absent: Decision making, Military studies; now [[Category:Decision theory]], [[Category:Systems science]]"
       }
     },
     {
@@ -1542,14 +1540,13 @@
       "final_validation_source_audit": {
         "id": "N006",
         "pr": 107,
-        "head": "b9f22667cdb044ef482c21fd41223f6d18eda009",
-        "findings": [
-          "category pages absent: Psychology, Education"
-        ],
+        "head": "70492dcc044d4dcc92315216e673f1cbab79a1b2",
+        "findings": [],
         "regression_paths": [
           "tests/test_six_thinking_hats.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "category_reconciliation": "Original domain labels retained exactly in Knowledge object; missing category pages mapped to extant broader categories: category pages absent: Psychology, Education; now [[Category:Cognitive science]], [[Category:Decision theory]]"
       }
     },
     {
@@ -1575,14 +1572,13 @@
       "final_validation_source_audit": {
         "id": "N007",
         "pr": 108,
-        "head": "6642417116ca8e7852bc84d812ea6c20cb82d7e6",
-        "findings": [
-          "category pages absent: Management"
-        ],
+        "head": "61cdf87c3ff7901fbbcf5b9462d59b702cc2523d",
+        "findings": [],
         "regression_paths": [
           "tests/test_parkinsons_law_source.py"
         ],
-        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation.",
+        "category_reconciliation": "Original domain labels retained exactly in Knowledge object; missing category pages mapped to extant broader categories: category pages absent: Management; now [[Category:Systems science]]"
       }
     },
     {
@@ -2537,13 +2533,8 @@
     "articles_corrected_pending_validation": 65,
     "pairs_corrected_pending_validation": 33,
     "static_source_audits": 65,
-    "static_source_audits_with_findings": 4,
-    "static_source_audit_open_findings": [
-      [
-        "category pages absent",
-        4
-      ]
-    ]
+    "static_source_audits_with_findings": 0,
+    "static_source_audit_open_findings": []
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

@@ -280,7 +280,8 @@
         "A21"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "pending",
+      "note": "Chronotype A20 independently checkpointed; Hawthorne A21 remains pending."
     },
     {
       "pair_id": "R30",
@@ -711,9 +712,25 @@
       "title": "Chronotype",
       "pr_number": 91,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/91",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #91 commit bbea83b27f947b406b82e43a339e85623cbccb75: canonical host composes full Simple explanation; explicit reciprocal depth navigation; expanded Technical with original social-jetlag source, conditional MSFsc formula, DLMO and two-process model; updated shared scoped regression while leaving Hawthorne legacy assertions until its independent correction.",
+        "preservation_evidence": [
+          "Canonical metadata, three SMW relation targets, incoming query, categories and title preserved.",
+          "Core measurement taxonomy and Horne–Östberg / Roenneberg original references retained in Technical; non-equivalence of subjective preference, behavioral timing and physiological phase preserved.",
+          "Original Simple and Technical content including cosinor, midpoint and circular examples retained; developmental claim sourced and correction example added."
+        ],
+        "scientific_sources": [
+          "Horne and Östberg 1976 PMID 1027738; Roenneberg et al. 2003 PMID 12568247; epidemiology PMID 16461986 (abstracts verified)",
+          "Wittmann et al. 2006 PMID 16687322; Roenneberg et al. 2019 DOI 10.3390/biology8030054 (formula and eligibility cross-checked against MCTQ implementation documentation)",
+          "Daan et al. 1984 PMID 6696142; Benloucif et al. 2008 PMID 18350967; Roenneberg et al. 2004 PMID 15620633 (abstracts/available source text verified)"
+        ],
+        "static_checks": "8/8 executed post-write connector-source assertions: identity, reciprocal navigation, legacy removal, full Simple transclusion source, named-ref integrity, math pairing, correction arithmetic and regression presence; PR head independently verified.",
+        "tests": "Scoped Python test updated, not executed. Local Git clone failed DNS; lua5.1 unavailable. No workflow run returned yet for exact commit. Full citation/technical, V2/staging and live parser validation outstanding.",
+        "gate": "PR #136 compatibility and owner approval required; no merge/publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/91"
+      }
     },
     {
       "id": "A21",
@@ -1659,15 +1676,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A19",
+    "last_checkpoint_article": "A20",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 9,
+    "articles_pending_or_incomplete": 8,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R28",
-    "articles_corrected_pending_validation": 56,
+    "articles_corrected_pending_validation": 57,
     "pairs_corrected_pending_validation": 28
   },
   "hard_rules": [

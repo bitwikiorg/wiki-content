@@ -20,6 +20,8 @@ on:
       - 'manifest.json'
       - '.gitignore'
       - 'scripts/**'
+      - 'tests/**'
+      - 'staging/compiler/**'
       - '.github/workflows/validate-v2-pr.yml'
 
 permissions:
@@ -141,4 +143,145 @@ jobs:
             v1-classification-usage.json
             v1-page-role-matrix.json
             v1-architecture-family-matrix.json
+          if-no-files-found: warn
+
+  # Temporary pre-merge validation of the pinned editorial cohort.
+  # This job creates no commits, performs no git merge and cannot deploy.
+  editorial-cohort:
+    if: github.event.pull_request.number == 136
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Materialize exact article sources into a disposable worktree
+        shell: bash
+        run: |
+          python - <<'PY'
+          import subprocess
+          from pathlib import Path
+          import os
+          def git(*args):
+              return subprocess.check_output(["git", *args])
+          base = "b0babecbeb1983c2231dde4c7592e89b5e411990"
+          if git("rev-parse", "HEAD^1").decode().strip() != base:
+              raise SystemExit("base revision changed; regenerate evidence")
+          pins = [
+              (81, "c63719456e7cafa37d928bb61eb0603f6cbcb95c"),
+              (82, "9b853b1206bc8993adef5829cbabfd8045fecae4"),
+              (83, "9aebcc73ee58656a6208e97c918e10a912375f97"),
+              (84, "5dc8f1e77e716998cd7ac30e1c9c0a8f154b9a71"),
+              (85, "84ad0ef3895b1c8369b049c6001b007e1a7bddc7"),
+              (86, "bffdd762a9e5f957c3564dc569d86041191fbc45"),
+              (87, "edbb2a40228caabc2757431d26a2db4343df8747"),
+              (88, "8f38d8c6f433180c2317929317619a8c15c61ca9"),
+              (89, "e2382673624f6407490d9a77194586c9e36500ca"),
+              (90, "08832870b1ceeb7fb05ca3b75dc80bf24fbc6e46"),
+              (91, "611dd0a492d71a6de5393e0fbea48b4fd00b830d"),
+              (92, "770df6ffe0e20fd7c00a37bd0aa8666e391a461c"),
+              (93, "52b890b5935e2e32a4bfb95682c9fbdf4c9b0b0c"),
+              (94, "796f644c31c95fa478176951e7ea7f11c7a161c8"),
+              (95, "ad4cf5b98ec0b5607a8a08808e66981f8b4b9477"),
+              (96, "649e12f97a781bdd270bc579aa962125b1031180"),
+              (97, "c6cf6f1858391fd75e00381461d96726034e299c"),
+              (98, "300eca2bb820abda7ca1b3651302dd19971b807f"),
+              (99, "f5d08980b1739d87eb1bc8a974fac234f67f091f"),
+              (100, "036914a31ef8811ef79d5ac1eea782fcb8922688"),
+              (101, "5f829c1a5c13d6ab4085404633abb04d672d5d13"),
+              (102, "810b0982edc04c4979cef528222618fbb8eb018d"),
+              (103, "d6f58b77a9278aca3f8907268a1cdafd76c6e5c2"),
+              (104, "35011dc595eca50d5ebda3bfb9fcaeba66b6faff"),
+              (105, "859d7a0bf15d87c4b5a30fa26fcab7cee4bf76b6"),
+              (106, "23bcab969493049e696532d38b0de3d352894375"),
+              (107, "70492dcc044d4dcc92315216e673f1cbab79a1b2"),
+              (108, "61cdf87c3ff7901fbbcf5b9462d59b702cc2523d"),
+              (109, "dc3e404f62347f670476fe4fcfee8a03f23c0615"),
+              (110, "8ac7b1d382ad8c790c89e49b42a9b005273e378b"),
+              (111, "d83627ace423df03df5043f62a6f13b6bcb404e5"),
+              (112, "3e6bc82fb1ad48a75046733b49387da621df35b0"),
+              (113, "34e80b7bff42de7fb1f94f3ba97dea98e8a947f6"),
+              (114, "39383ec8e2a65d424f00c349018328d9bd9b509a"),
+              (115, "713a2a9446d60fd71f6fc660b3a83647f468560b"),
+              (116, "25533c65b9e943ccf07ff7644bf84f77d2bc1f55"),
+              (117, "0720640456a9927fbc0066b2e45befabc3463f4c"),
+              (118, "7d041eb4f261a7a377be13e9a084b60f289760a1"),
+              (119, "00ae9989b6e84ccb04710d08da1a0175f76ed493"),
+              (120, "723c391f95443938c27d20946195acf1d94f22fe"),
+              (121, "b910281f45abc6d4cfe782a531868e470f2c5d62"),
+              (122, "5aed5e86819ad3688c0a73a6feb634262330260d"),
+              (123, "db20e612a358796794fd7bab892e8c64b7ee207e"),
+              (124, "d1303fbd58b2c06e07d61b0f13911df1b5d8a5d6"),
+              (125, "3cd3ad65992add0c1e91974615b1f30c9dd5b3e7"),
+              (126, "975bf6f6fada908b4b49997d3bb495097265d141"),
+              (127, "d8d07a778b814af54befde27fed58a8bf3049753"),
+              (128, "b47d66b75cc2b642a4701d9a2bd3e98ee7321645"),
+              (129, "136f766f41b6cf7a768a64b4e60797c9d7eb032b"),
+              (130, "3d196b62ca7d6536517053ae13e1aac01bc7363b"),
+              (131, "b00a8064585554a63c3ccf3ceb0a059a49c3c97d"),
+              (132, "11589bc17d9672425a5619ff2d3b569c777ce046"),
+              (133, "b59fe0635feb57b72d48c34f5665107058266490"),
+              (134, "f5ac53c5bb500c881f20ca35d72b79b7e06ac8aa"),
+              (135, "28c2c90e2579432ea2d465b9e1262790cb7473cb"),
+          ]
+          git("fetch", "--no-tags", "origin", *[f"+refs/pull/{n}/head:refs/editorial-audit/{n}" for n, _ in pins])
+          seen = set()
+          for n, sha in pins:
+              actual = git("rev-parse", f"refs/editorial-audit/{n}").decode().strip()
+              if actual != sha:
+                  raise SystemExit(f"PR {n} changed: {actual} != {sha}")
+              common = git("merge-base", base, sha).decode().strip()
+              records = git("diff", "--name-status", "-z", common, sha).decode().split("\0")
+              records = [s for s in records if s]
+              if len(records) % 2:
+                  raise SystemExit(f"unexpected diff record for PR {n}")
+              for status, path in zip(records[::2], records[1::2]):
+                  if status not in {"A", "M"} or not path.startswith(("Main/", "Module/", "tests/", "staging/compiler/", "scripts/test_")):
+                      raise SystemExit(f"unexpected change {n}: {status} {path}")
+                  if path in seen:
+                      raise SystemExit(f"overlap {n}: {path}")
+                  seen.add(path)
+                  if status == "A" and Path(path).exists():
+                      raise SystemExit(f"existing path collision {n}: {path}")
+                  if status == "M" and git("diff", "--name-only", common, "HEAD", "--", path).strip():
+                      raise SystemExit(f"modified base collision {n}: {path}")
+                  git("checkout", sha, "--", path)
+              print(f"PR {n}: {sha}, {len(records)//2} paths", flush=True)
+          print(f"Verified {len(pins)} pinned PR heads; materialized {len(seen)} paths without merging.")
+          PY
+      - name: Run article and staging regressions
+        run: |
+          python -m pip install pytest==8.4.2
+          python -m pytest -q tests staging/compiler
+      - name: Validate combined V2 architecture and semantic substrate
+        if: always()
+        run: |
+          set -e
+          python scripts/validate_v2.py
+          python scripts/audit_runtime_schema.py
+          python scripts/audit_substrate.py
+          python scripts/audit_workflow.py
+          python scripts/audit_mainspace.py
+          python scripts/deployment_plan.py --check
+      - name: Build and audit combined staging projection
+        if: always()
+        run: |
+          node --check staging/frontend/app.js
+          python staging/compiler/build.py
+          python scripts/audit_staging_readiness.py
+      - name: Upload combined validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-cohort-validation
+          path: |
+            v2-validation.json
+            v2-runtime-schema-audit.json
+            v2-substrate-audit.json
+            v2-workflow-audit.json
+            v2-mainspace-audit.json
+            v2-staging-readiness.json
           if-no-files-found: warn

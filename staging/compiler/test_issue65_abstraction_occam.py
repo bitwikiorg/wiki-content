@@ -42,6 +42,7 @@ class Issue65AbstractionOccamTests(unittest.TestCase):
                     self.assertNotIn("{{#ask:", derivative)
                 self.assertEqual(simple.count("<onlyinclude>"), 1)
                 self.assertEqual(simple.count("</onlyinclude>"), 1)
+                self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
                 self.assertIn("{{:" + title + "/Simple}}", core)
                 self.assertIn("{{#ask:", core)
                 self.assertGreaterEqual(len(simple.split()), 560)

@@ -310,7 +310,8 @@
         "N006"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "pending",
+      "note": "N005 independently checkpointed; N006 pending."
     },
     {
       "pair_id": "R33",
@@ -1102,9 +1103,21 @@
       "title": "OODA loop",
       "pr_number": 106,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/106",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #106 commit c33b1492a602081f75a3c1185f07d3fff9fee32b; canonical host transcludes complete Simple; reciprocal navigation; publisher erratum and feedback/implicit guidance distinguished.",
+        "preservation_evidence": [
+          "Original knowledge object, categories, Boyd and doctrine sources, outage example and model limitations retained across two localizations."
+        ],
+        "scientific_sources": [
+          "Boyd 1995, Air University Press 2018, corrected appendix p.384 diagram directly inspected."
+        ],
+        "static_checks": "7/7 post-commit source assertions passed; PR head independently verified.",
+        "tests": "Scoped Python test updated; execution and full V2, staging and semantic checks outstanding.",
+        "gate": "PR #136 and owner approval; no merge/publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/106"
+      }
     },
     {
       "id": "N006",
@@ -1746,15 +1759,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N004",
+    "last_checkpoint_article": "N005",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 3,
+    "articles_pending_or_incomplete": 2,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R31",
-    "articles_corrected_pending_validation": 62,
+    "articles_corrected_pending_validation": 63,
     "pairs_corrected_pending_validation": 31
   },
   "hard_rules": [

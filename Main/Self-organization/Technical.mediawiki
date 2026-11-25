@@ -28,6 +28,19 @@ No one mechanism defines all self-organization.
 == External constraints ==
 Boundary conditions and external forcing can shape the space of possible self-organized states without specifying the exact resulting pattern.
 
+
+== Local alignment and order parameters ==
+A simplified alignment system updates each agent's heading using the direction of a local weighted sum of neighboring headings plus noise. For N moving agents with unit headings u_i, a polarization order parameter is <math>\Phi=\left\|N^{-1}\sum_i u_i\right\|</math>, bounded between zero and one. Large Φ denotes aligned motion in this model, not organization in every scientific sense. Reynolds's Boids combines alignment with separation and cohesion; external confinement and speed constraints can alter patterns.
+
+== Pattern formation and stability ==
+A reaction–diffusion system may be written <math>\partial_t u=D_u\nabla^2u+f(u,v)</math> and <math>\partial_t v=D_v\nabla^2v+g(u,v)</math>. With appropriate reaction kinetics and diffusion coefficients, spatial perturbations of a homogeneous state can grow even if the corresponding well-mixed equilibrium is stable. This is one mechanism for spontaneous pattern formation, not a necessary mechanism for all self-organization. Analyze stability, boundary conditions and driving explicitly.
+
+== Distinguishing mechanisms ==
+Self-organized criticality additionally concerns driven systems with critical-like scaling; autopoiesis additionally concerns recursively maintained component production and boundaries. Neither follows from the existence of a visible pattern. To investigate a decentralized mechanism, remove or perturb selected local interactions, compare global observables with null and centrally controlled models, and repeat across seeds or experimental replicates. External energy or resources can be essential even when the pattern is not centrally specified.
+
 == References ==
 * Mitchell.
 * complex-systems/self-organization literature.
+* [https://doi.org/10.1145/37401.37406 Reynolds (1987), Flocks, herds and schools]
+* [https://academic.oup.com/book/51004 Mitchell (2009), Complexity: A Guided Tour]
+* [https://pubmed.ncbi.nlm.nih.gov/4407425/ Varela, Maturana and Uribe (1974), Autopoiesis]

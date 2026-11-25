@@ -1,0 +1,21 @@
+'''Organoid intelligence''' (OI) is an emerging biocomputing research program investigating whether laboratory-grown neural tissue, especially three-dimensional brain organoids, can serve as components of information-processing systems.
+
+== Research agenda and evidence ==
+Smirnova et al. (2023) outlined OI as an interdisciplinary program linking stem-cell-derived brain organoids, biointerfaces, data analysis and learning research. Cai et al. (2023) reported Brainoware, a brain-organoid reservoir-computing system interfaced through a high-density multielectrode array, with experimental speech-recognition and nonlinear prediction tasks. These demonstrations concern specific hybrid systems and tasks; they do not establish general intelligence, comparable human cognition or superior end-to-end efficiency.
+
+== Computational architecture ==
+A reservoir computer transforms input u_t into a high-dimensional state r_t using internal dynamics. A trained readout may estimate <math>\hat y_t=W_{out}r_t+b</math>. In a biohybrid system, electrical stimulation encodes inputs and recorded neural activity supplies features; external electronics and software may handle preprocessing, decoding and learning. Separate adaptation within neural tissue from fitting an external readout. A stable physical response may be useful without constituting learning in a psychological sense.
+
+== Validation and engineering constraints ==
+Compare against software and non-adaptive reservoir baselines under matched data and compute budgets. Use held-out stimuli, control for drift and repeated-trial dependence, and test whether changes persist when external decoder adaptation is held constant. Relevant constraints include organoid variability, maturation, oxygen and nutrient diffusion, signal stability, interface damage, scalability and lifecycle energy accounting. Independent biological replicates and transparent reporting of failed preparations are important.
+
+== Ethics and open questions ==
+Human-derived tissue entails appropriate consent and institutional oversight. Increasing network complexity raises questions about morally relevant capacities, but neither neural activity nor task learning alone demonstrates consciousness or sentience. Ethical review should track the actual experimental system and emerging evidence. OI is distinct from conventional silicon AI, cultured-neuron experiments generally and fully embodied biological organisms.
+
+== References ==
+* [https://doi.org/10.3389/fsci.2023.1017235 Smirnova et al. (2023), Organoid intelligence: the new frontier in biocomputing]
+* [https://doi.org/10.1038/s41928-023-01069-w Cai et al. (2023), Brain organoid reservoir computing for artificial intelligence]
+* [https://www.nature.com/articles/s44222-024-00200-6 Smirnova et al. (2024), Biocomputing with organoid intelligence]
+
+== Reading depth ==
+[[Organoid intelligence/Simple|Simple explanation]]

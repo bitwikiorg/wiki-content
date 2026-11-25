@@ -1,0 +1,17 @@
+'''Connectivity''' in graph theory concerns whether vertices can be reached from one another along paths and how robust those connections are to removal of vertices or edges.
+
+== Definitions and theorems ==
+A nonempty undirected graph is connected if every pair of vertices has a path. Connected components are maximal connected subgraphs partitioning its vertices. For a directed graph, strong connectivity requires directed paths both ways between every pair, while weak connectivity ignores edge directions. Vertex connectivity κ(G) is the minimum number of vertices whose removal disconnects the graph or leaves a single vertex, with standard conventions for complete graphs; edge connectivity λ(G) is the minimum disconnecting edge cut. For a connected simple graph with at least two vertices, <math>\kappa(G)\leq\lambda(G)\leq\delta(G)</math>, where δ is minimum degree. Menger's theorem links minimum separating cuts to maximum collections of disjoint paths, with the nonadjacent endpoint condition for the vertex version.
+
+== Algorithms ==
+Breadth-first or depth-first search discovers an undirected component in O(|V|+|E|) time with adjacency lists. Repeating from unvisited vertices finds all components. Strongly connected components can be obtained by Tarjan's or Kosaraju's algorithm in linear time. A network-flow formulation can compute suitable minimum cuts; vertex capacities can be modeled by splitting vertices. Use explicit conventions for isolated vertices and empty graphs.
+
+== Applications and boundaries ==
+Connectivity matters for decentralized communication, transport and knowledge graphs. A connected graph can still have high latency, bottlenecks, unreliable links or unequal access. Topological paths are not evidence that information is actually transmitted; directed, temporal or weighted models may be needed. Robustness against random failures differs from robustness against targeted removal.
+
+== References ==
+* [https://link.springer.com/book/10.1007/978-3-662-53622-3 Diestel, Graph Theory, connectivity chapter]
+* [https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.components.connected_components.html NetworkX, connected_components documentation]
+
+== Reading depth ==
+[[Connectivity (graph theory)/Simple|Simple explanation]]

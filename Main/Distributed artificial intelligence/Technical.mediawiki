@@ -1,0 +1,17 @@
+'''Distributed artificial intelligence''' (DAI) studies how multiple computational entities coordinate intelligent activity, including reasoning, planning, learning and distributed problem solving.
+
+== Scope and origins ==
+Bond and Gasser's 1988 collection documented research in distributed problem solving and interacting agents. Distributed problem solving emphasizes division and coordination of an overall problem; multi-agent systems may additionally include agents with separate goals. DAI is not simply running a neural network across multiple processors, although distributed computation can support DAI.
+
+== Formal coordination ==
+Represent agents i with local observations o_i, internal states s_i, actions a_i and messages m_i. A joint policy can depend on shared history or decentralized local histories, depending on the information structure. If agents share a task objective, partition the task, allocate work, reconcile partial results and test the combined output. If goals differ, negotiation and incentive design become relevant. Communication may be asynchronous, lossy or delayed; agreement on a value is not identical to agreement on its truth.
+
+== Evaluation and failure modes ==
+Compare centralized, independent and coordinated solutions with equal compute and information access. Record correctness, communication cost, latency, duplication, robustness to node failures and degradation under misleading messages. For artificial agents, preserve task ownership, message provenance and independent validation. Parallel work can amplify common model errors, and decentralization does not guarantee autonomy, security or intelligence.
+
+== References ==
+* [https://shop.elsevier.com/books/readings-in-distributed-artificial-intelligence/bond/978-0-934613-63-7 Bond and Gasser (1988), Readings in Distributed Artificial Intelligence]
+* [https://aima.cs.berkeley.edu/global-index.html Russell and Norvig, Artificial Intelligence: A Modern Approach]
+
+== Reading depth ==
+[[Distributed artificial intelligence/Simple|Simple explanation]]

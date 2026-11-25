@@ -1,0 +1,28 @@
+'''Boids''' is Craig Reynolds's computer model for simulating flocking-like motion using locally interacting virtual individuals. It was introduced in 1987 for computer animation.
+
+== Local steering model ==
+Reynolds's model uses local perception and three qualitative tendencies: separation, alignment and cohesion. One simplified implementation for position x_i, velocity v_i and neighbor set N_i constructs separation from weighted vectors away from close neighbors, alignment from mean neighbor velocity minus v_i, and cohesion from mean neighbor position minus x_i. The weighted sum is a steering acceleration capped at a specified magnitude. Update all agents from the same previous state to avoid order artifacts.
+
+<pre>
+for each boid i in snapshot:
+  neighbors = boids within radius R excluding i
+  if neighbors are nonempty:
+    a = w_s * separation(i) + w_a * alignment(i) + w_c * cohesion(i)
+  else: a = zero
+  next_velocity[i] = limit_speed(v[i] + dt * limit_acceleration(a))
+  next_position[i] = boundary(x[i] + dt * next_velocity[i])
+replace all states simultaneously
+</pre>
+
+== Measurement and complexity ==
+An all-pairs neighbor search costs O(n²) per step. A spatial grid or tree can reduce candidate checks under appropriate density assumptions. Report seeds, population, timestep, boundary conditions, radius, speed caps and weights. Quantify polarization as the norm of the mean unit velocity, nearest-neighbor distances, collision rate and component sizes; handle zero-velocity agents explicitly.
+
+== Limitations ==
+The model reproduces selected visual patterns, not necessarily the physiology, evolutionary function or cognitive processes of flocking animals. Rules and parameter values can yield dispersed, oscillatory or unstable groups. Swarm intelligence is a broader family; Boids is a particular simulation and steering model, not a general optimization algorithm.
+
+== References ==
+* [https://doi.org/10.1145/37401.37406 Reynolds (1987), Flocks, Herds, and Schools: A Distributed Behavioral Model]
+* [https://red3d.com/cwr/papers/1987/boids.html Reynolds, author-hosted paper and background]
+
+== Reading depth ==
+[[Boids/Simple|Simple explanation]]

@@ -31,7 +31,20 @@ A system can have centralized training, centralized coordination, decentralized 
 
 “Multi-agent” does not imply absence of an orchestrator.
 
+
+== Formal interaction models ==
+A stochastic game specifies a state, joint action, transition law and reward for each agent. In a cooperative decentralized partially observable decision process, agents share a team objective but may observe different information and select actions from their local histories. Shared rewards do not eliminate coordination difficulties: distinct agents may have incomplete information about each other's state, and joint action spaces grow as the product of individual action-set sizes. Competitive systems need separate incentive and equilibrium analyses. A message protocol may coordinate policy execution without making all internal states common knowledge.
+
+== Coordination and topology ==
+Communication graphs specify who can exchange messages, while task dependencies specify which results are required by other tasks. These relations are not interchangeable. For a fixed connected undirected graph, local averaging may reach consensus under appropriate weights; changing topology, delays and faults alter the guarantees. Agreement may still be wrong if every agent shares a mistaken premise. Mechanisms for delegation should specify ownership, dependencies, completion conditions and validation rather than infer work from messages claiming completion.
+
+== Evaluation and system safety ==
+Use task-matched single-agent, independent-agent and coordinated-agent baselines with equal resource budgets. Record success, cost, latency, redundant work, communication, correlated failures and recovery under controlled perturbations. Test contradictory messages and unavailable dependencies in a bounded environment. Centralized orchestration may improve accountability but can create a bottleneck; decentralized control may improve fault tolerance but complicate verification. No topology alone establishes reliable or safe collective behavior.
+
 == References ==
 * Wooldridge.
 * Shoham & Leyton-Brown.
 * multi-agent planning/control/game-theory literature.
+* [https://shop.elsevier.com/books/readings-in-distributed-artificial-intelligence/bond/978-0-934613-63-7 Bond and Gasser (1988), Readings in Distributed Artificial Intelligence]
+* [https://www.masfoundations.org/ Shoham and Leyton-Brown, Multiagent Systems]
+* [https://aima.cs.berkeley.edu/global-index.html Russell and Norvig, Artificial Intelligence: A Modern Approach]

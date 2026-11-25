@@ -1,0 +1,17 @@
+A '''signal''' is a varying quantity or sequence used to represent, convey or observe something. A microphone voltage represents changes in air pressure; a sequence of bits may represent a message. A signal need not be intentionally sent: an instrument can observe a natural process.
+
+== Mathematical representation ==
+A continuous-time signal is commonly modeled as <math>x:\mathbb R\to\mathbb R</math> or a complex-valued/vector function; a discrete-time signal is <math>x[n]</math> indexed by integers. A sampled record <math>x[n]=x(nT_s)</math> can still have continuous-valued amplitude. Quantization maps amplitudes to a finite or countable set and introduces representation error. Energy and power definitions depend on the physical or mathematical convention: for a finite-energy sequence <math>E=\sum_n|x[n]|^2</math> is a squared-norm quantity, not necessarily joules.
+
+== Sampling, systems and inference ==
+For an ideally band-limited continuous-time signal with highest frequency B, uniform sampling above 2B permits reconstruction under ideal assumptions. Real signals are not perfectly band-limited, so anti-alias filtering and finite acquisition windows matter. A linear time-invariant discrete-time system produces convolution <math>y[n]=\sum_k h[k]x[n-k]</math>. For example, a three-point moving average suppresses some rapid variation but also blurs transients. Compare its frequency response and step response instead of calling every reduction of variation noise removal.
+
+== Evaluation and limits ==
+An additive model y=x+w is useful only if the noise model is justified. Signal-to-noise ratio requires a specified signal and noise power; correlated disturbances and clipping violate common assumptions. Communication signals, biological signals and semantic signs overlap in examples but have distinct explanatory levels. Shannon information measures probabilities, not the meaning or truth of a signal. Document sensor calibration, bandwidth, sample rate and uncertainty before interpreting observed variation.
+
+== References ==
+* [https://www.ocw.mit.edu/courses/res-6-dtsp-discrete-time-signal-processing/ MIT OpenCourseWare, Oppenheim and Schafer, Discrete-Time Signal Processing]
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]
+
+== Reading depth ==
+[[Signal/Simple|Simple explanation]]

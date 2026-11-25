@@ -31,7 +31,20 @@ expected consequences
 
 Rationality does not imply perfect prediction.
 
+
+== Sequential decision-making ==
+A fully observed Markov decision process specifies states S, actions A, a transition kernel P(s'|s,a), reward r(s,a) and a discount γ in [0,1). A policy π(a|s) induces a distribution over trajectories and can be evaluated by <math>V^\pi(s)=\mathbb E_\pi[\sum_{t=0}^\infty\gamma^t r(s_t,a_t)\mid s_0=s]</math> under suitable boundedness assumptions. When observations are incomplete, a belief over latent states or a history-dependent policy may be necessary. Not every intelligent agent is implemented as a Markov decision process; the formalism illustrates a particular decision problem.
+
+== Architectural and operational boundaries ==
+An agent may combine a state estimator, planner, policy, external tools and memory. Separate the objective from permissions and action constraints: a plan may be feasible computationally but outside an authorized action space. In tool-using agents, maintain explicit action schemas, verify consequential outcomes, distinguish observed state from predicted state, and handle failed or ambiguous actions. Goals and policies need not be self-originated. A software service can satisfy the functional agent model without consciousness, bodily autonomy or independent legal authority.
+
+== Evaluation ==
+Compare policies under fixed task distributions and resource budgets. Report completion, constraint violations, recovery, communication and unintended effects as well as reward. Test partial observability and environmental changes, and distinguish training performance from deployment reliability. An inforg is a philosophical account of informational connectedness, not a formal agent class.
+
 == References ==
 * Russell & Norvig.
 * Wooldridge.
 * agent architectures and rational-agent literature.
+* [https://doi.org/10.1017/S0269888900008122 Wooldridge and Jennings (1995), Intelligent agents: theory and practice]
+* [https://aima.cs.berkeley.edu/global-index.html Russell and Norvig, Artificial Intelligence: A Modern Approach]
+* [https://mitpress.mit.edu/9780262039246/reinforcement-learning/ Sutton and Barto, Reinforcement Learning, second edition]

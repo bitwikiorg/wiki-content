@@ -1,0 +1,35 @@
+This '''list of artificial intelligence algorithms''' organizes representative computational methods used for search, reasoning, learning, planning and decision-making. It is a navigational reference, not a claim that all listed methods are interchangeable or uniquely belong to AI.
+
+== Algorithm inventory by function ==
+{| class="wikitable"
+! Family !! Representative algorithms !! Typical problem and qualification
+|-
+| Search || Breadth-first search, depth-first search, uniform-cost search, A*, beam search || Reachability or cost-minimizing paths; completeness and optimality depend on conditions
+|-
+| Constraint reasoning || Backtracking, arc consistency (AC-3), DPLL/CDCL || Satisfiability and constraint problems; worst-case complexity remains high
+|-
+| Planning and games || STRIPS-style search, minimax, alpha–beta pruning, Monte Carlo tree search || Action sequences or adversarial decisions; state models and budgets matter
+|-
+| Probabilistic inference || Variable elimination, belief propagation, Gibbs sampling, particle filtering || Marginals and latent-state estimates; exactness and approximation depend on structure
+|-
+| Supervised learning || Linear/logistic regression, decision trees, random forests, support vector machines, k-nearest neighbors || Fit predictors from labeled samples
+|-
+| Unsupervised learning || k-means, hierarchical clustering, PCA, expectation-maximization || Discover or represent structure; results depend on model and scale
+|-
+| Neural optimization || Backpropagation, stochastic gradient descent, Adam || Optimize differentiable models; backpropagation computes gradients, not the optimizer itself
+|-
+| Reinforcement learning || Dynamic programming, Monte Carlo methods, SARSA, Q-learning, policy gradient || Estimate or improve policies under sequential rewards
+|-
+| Population search || Genetic algorithms, particle swarm optimization, ant colony optimization || Stochastic search under bounded evaluation budgets
+|}
+
+== Choosing and evaluating methods ==
+Record the objective, input and output types, assumptions, complexity, data needs and failure modes. A* with a consistent admissible heuristic has different guarantees from beam search; Q-learning convergence in finite tabular settings assumes sufficient exploration and appropriate learning rates. Compare implementation performance under matched resource budgets. For learned predictors, prevent train/test leakage; for search, report path cost, expanded states and memory. This inventory is deliberately representative rather than exhaustive; individual methods warrant separately sourced treatments.
+
+== References ==
+* [https://aima.cs.berkeley.edu/global-index.html Russell and Norvig, Artificial Intelligence: A Modern Approach, fourth edition]
+* [https://mitpress.mit.edu/9780262039246/reinforcement-learning/ Sutton and Barto, Reinforcement Learning, second edition]
+* [https://scikit-learn.org/stable/getting_started scikit-learn, Getting Started]
+
+== Reading depth ==
+[[List of artificial intelligence algorithms/Simple|Simple explanation]]

@@ -29,7 +29,20 @@ No single capability test defines the entire field.
 
 AI includes narrow task systems, general-purpose models, agents, robots, planning systems, and multi-agent systems.
 
+
+== Formal problem classes ==
+A search problem specifies states, transitions, goal tests and possibly costs. A supervised learning problem specifies input–target examples and a loss, and estimates a predictor from finite samples. A sequential decision problem specifies actions, transition dynamics, observations and utility or reward. These formulations overlap in applications but differ in assumptions and guarantees. A symbolic planner may search a state graph without a trained model; a classifier may predict a label without a planning policy; a hybrid system may combine both. The outline and algorithm index organize these families without equating them.
+
+== Evaluation and deployment ==
+For a classifier, use held-out observations drawn from a declared target population and report calibration, error types and uncertainty as appropriate. For a planning agent, measure task completion, constraint violations, cost and recovery from unexpected transitions. For a generative model, distinguish factual accuracy from fluent output and evaluate provenance and failure rates on representative tasks. The evaluation target is the complete deployed system, including preprocessing, tools and human oversight, not just a model checkpoint. Distribution shift, leakage, correlated failures and incentives can make benchmark scores misleading.
+
+== Functional and biological boundaries ==
+Distributed AI and swarm intelligence study coordination and local interactions; organoid intelligence investigates a biohybrid computing substrate. These are not equivalent to a claim of human-like consciousness. AI capability is measured relative to tasks, and no particular benchmark score establishes general competence beyond its tested setting.
+
 == References ==
 * Russell & Norvig.
 * Nilsson.
 * standard AI research literature.
+* [https://aima.cs.berkeley.edu/global-index.html Russell and Norvig, Artificial Intelligence: A Modern Approach, fourth edition]
+* [https://scikit-learn.org/stable/model_selection scikit-learn, Model selection and evaluation]
+* [https://doi.org/10.3389/fsci.2023.1017235 Smirnova et al. (2023), Organoid intelligence]

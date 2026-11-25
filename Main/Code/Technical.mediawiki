@@ -1,0 +1,17 @@
+A '''code''' is a system of rules that associates symbols, messages or actions with other representations. Morse code represents letters with short and long signals; a computer character code assigns numbers to characters. The term also refers to instructions in programming and to the biological genetic code.
+
+== Formal coding model ==
+For an alphabet A and a code alphabet B, a variable-length code is a map <math>C:A\to B^*</math> assigning each source symbol a finite string. Extend C by concatenation to strings. Distinct codewords alone are insufficient for unique decodability: codes {0,01,1} allow 01 to denote one symbol or two. A prefix-free code guarantees instantaneous parsing. For binary uniquely decodable codes with lengths l_i, Kraft–McMillan requires <math>\sum_i2^{-l_i}\leq1</math>; for any integer lengths satisfying the inequality a prefix code exists.
+
+== Compression and error control ==
+For source probabilities p_i, the expected length is <math>L=\sum_i p_i l_i</math>. For binary uniquely decodable symbol codes L is bounded below by Shannon entropy; Huffman's algorithm repeatedly merges the two least probable symbols to obtain an optimal binary prefix tree under its assumptions. For a block code, minimum Hamming distance d permits detection of up to d−1 substitutions and correction of up to floor((d−1)/2) with nearest-neighbor decoding. Compression removes redundancy, whereas error control deliberately adds structured redundancy.
+
+== Scope and practical constraints ==
+Character encoding, cryptographic encryption, source code and genetic coding are distinct applications of the general correspondence concept. Source code expresses computation through a formal language; genetic coding maps nucleotide triplets to translation outcomes via molecular machinery and includes context-dependent exceptions. Neither is reducible to a prefix tree. Evaluate a code against its intended alphabet, channel, parsing rules and error model; efficient representation does not establish semantic accuracy.
+
+== References ==
+* [https://crypto.stanford.edu/~blynn/pr/symbol.html Stanford, Symbol Codes]
+* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]
+
+== Reading depth ==
+[[Code/Simple|Simple explanation]]

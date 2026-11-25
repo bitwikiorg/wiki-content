@@ -300,7 +300,8 @@
         "N004"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending"
+      "status": "pending",
+      "note": "N002 independently checkpointed; N004 pending."
     },
     {
       "pair_id": "R32",
@@ -1035,9 +1036,22 @@
       "title": "Johari window",
       "pr_number": 103,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/103",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #103 commit d6f58b77a9278aca3f8907268a1cdafd76c6e5c2 canonical Knowledge object and full Simple host, reciprocal depth links, author provenance, self–other agreement evidence distinction and unittest-discoverable tests.",
+        "preservation_evidence": [
+          "Four quadrants, contextual binary restatement, disclosure/feedback examples, ethical limits and original references retained.",
+          "Psychology domain retained; Cognitive science category verified; broad Established status omitted rather than implying validated empirical model."
+        ],
+        "scientific_sources": [
+          "Luft/Ingham 1955 bibliographic record, Luft's subsequent author account reproduced at University of Michigan, APA dictionary, Vazire 2010 PMID 20085401 (original study abstract). Original 1955 full text not retrieved."
+        ],
+        "static_checks": "7/7 independent post-commit source assertions passed.",
+        "tests": "Updated Python regression not executed; V2/staging and source audit outstanding.",
+        "gate": "PR #136 and owner approval; no merge/publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/103"
+      }
     },
     {
       "id": "N003",
@@ -1719,15 +1733,15 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N003",
+    "last_checkpoint_article": "N002",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 5,
+    "articles_pending_or_incomplete": 4,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
     "last_reviewed_pair": "R30",
-    "articles_corrected_pending_validation": 60,
+    "articles_corrected_pending_validation": 61,
     "pairs_corrected_pending_validation": 30
   },
   "hard_rules": [

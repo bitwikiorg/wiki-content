@@ -1,18 +1,495 @@
-A '''cyborg''' (cybernetic organism) is an organism integrated with technological components that support or modify its functions. The term was introduced by Manfred Clynes and Nathan Kline in 1960 in the context of space travel.
+{{Reading depth|base=Cyborg|current=Technical}}
 
-== Origins and interpretations ==
-Clynes and Kline's 1960 article considered technological alterations that could help humans adapt to space without requiring continual conscious regulation. The engineering idea draws on cybernetic feedback and homeostatic regulation. Donna Haraway's later cyborg metaphor interrogates conventional distinctions between human, animal and machine in social and cultural analysis. These interpretations serve different purposes and should not be treated as competing specifications of one biomedical device.
+= Cyborg — Technical =
 
-== Control and interface engineering ==
-An illustrative closed-loop biohybrid system observes a physiological variable y, compares it with a target r and applies a bounded intervention u through an actuator. A controller may depend on error e=r−y, measured history and safety limits. Device delay, sensor noise, physiological variation and actuator saturation influence stability. Open-loop prostheses and assistive systems can integrate technology with organisms without implementing the same feedback architecture; identify the actual coupling.
+A '''cyborg''' is a living organism functionally integrated with engineered components such that biological and technological processes jointly realize a capability, regulatory loop, or adaptive behavior. The concept originates in cybernetics and therefore benefits from analysis in terms of sensing, control, actuation, feedback, communication, embodiment, and adaptation rather than visual resemblance to machines.
 
-== Evaluation and ethical boundaries ==
-Assess performance under specified clinical or engineering conditions, including reliability, failure handling, biocompatibility, power supply, cybersecurity and user control. A functional benefit must be demonstrated by appropriate evidence, not inferred from the label cyborg. A person using an assistive device retains their own identity and autonomy; access, consent and privacy matter. An inforg concerns informational connectedness without necessarily requiring bodily integration, while organoid intelligence concerns experimental tissue–computational interfaces. Technological augmentation does not by itself establish increased intelligence or consciousness.
+Clynes and Kline coined “cyborg” in 1960 while discussing technological modification of physiological regulation for spaceflight.<ref name="clynes">[https://www.fermatslibrary.com/s/cyborgs-and-space Clynes, M. E. and Kline, N. S. (1960), “Cyborgs and Space,” ''Astronautics''.]</ref>
+
+== System decomposition ==
+
+Represent the biological subsystem by state <math>x_b</math> and engineered subsystem by <math>x_d</math>.
+
+A coupled system can be written
+
+<math>\dot x_b=f_b(x_b,u_d,e,w_b),</math>
+
+<math>\dot x_d=f_d(x_d,y_b,c,w_d),</math>
+
+where:
+
+* <math>u_d</math> is device action on the organism;
+* <math>y_b</math> is sensed biological output;
+* <math>e</math> is external environment;
+* <math>c</math> is controller or configuration state;
+* <math>w_b,w_d</math> are disturbances.
+
+Cyborg integration becomes technically meaningful when the cross-couplings <math>u_d\to x_b</math> and/or <math>y_b\to x_d</math> are functionally important.
+
+== Open-loop and closed-loop systems ==
+
+An open-loop device applies an action without measuring the immediate controlled output.
+
+A closed-loop device computes action from feedback:
+
+<math>e(t)=r(t)-y(t),</math>
+
+<math>u(t)=K(e_{\le t},z_t),</math>
+
+where <math>r</math> is target, <math>y</math> measured output, and <math>z_t</math> auxiliary state.
+
+Closed-loop systems can adapt to biological variation but introduce control-stability and sensing risks.
+
+A device can be a cyborg component without closed-loop control, but the cybernetic interpretation is strongest when organism and device form a feedback system.
+
+== State estimation ==
+
+Physiological state is often only partially observable.
+
+Let
+
+<math>y_t=H x_t+v_t</math>
+
+be noisy measurement.
+
+A controller may estimate latent state
+
+<math>\hat x_t=\mathcal F(y_{0:t},u_{0:t-1}).</math>
+
+Errors in <math>\hat x_t</math> can produce unsafe actions.
+
+Therefore estimator uncertainty should influence control limits rather than being hidden behind a point estimate.
+
+== Safety-constrained control ==
+
+A biomedical controller can optimize performance while enforcing safe action set <math>\mathcal U_{safe}</math>:
+
+<math>u_t=\arg\max_{u\in\mathcal U_{safe}}J(u\mid \hat x_t).</math>
+
+Safety constraints can include:
+
+* maximum stimulation amplitude;
+* charge density;
+* actuator force;
+* thermal limits;
+* rate of change;
+* anatomical constraints.
+
+Optimization outside these constraints is clinically irrelevant even if task performance improves.
+
+== Cochlear-implant architecture ==
+
+A cochlear implant includes an external microphone and processor plus an implanted receiver/stimulator and electrode array. The system transforms acoustic information into electrical stimulation delivered inside the cochlea.<ref name="fda-cochlear">[https://www.fda.gov/medical-devices/cochlear-implants/what-cochlear-implant U.S. Food and Drug Administration, “What is a Cochlear Implant?”]</ref>
+
+Conceptually:
+
+<math>s(t)\xrightarrow{A}f(t)\xrightarrow{Q}p\xrightarrow{E}u\xrightarrow{N}\text{neural response},</math>
+
+where:
+
+* <math>A</math> is acoustic analysis;
+* <math>Q</math> selects or quantizes features;
+* <math>p</math> is a stimulation pattern;
+* <math>E</math> maps pattern to electrode commands;
+* <math>N</math> is the biological auditory pathway.
+
+The mapping is engineered and lossy. Clinical benefit depends on neural survival, electrode placement, coding strategy, adaptation, and rehabilitation.
+
+== Neural decoding ==
+
+For a motor BCI, recorded feature vector <math>z_t</math> may be decoded to intended velocity
+
+<math>\hat v_t=Wz_t+b.</math>
+
+More complex decoders can use nonlinear or recurrent models.
+
+Evaluation should distinguish:
+
+* offline decoding accuracy;
+* online closed-loop performance;
+* task completion time;
+* error rate;
+* user workload;
+* long-term calibration burden.
+
+High offline accuracy does not guarantee usable embodied control.
+
+== Neural encoding ==
+
+A sensory neuroprosthesis must solve the inverse problem: what stimulation pattern should produce useful neural information?
+
+Let desired perceptual variable be <math>s_t</math>. Encoder
+
+<math>u_t=E(s_t;\theta)</math>
+
+generates stimulation.
+
+The biological response is nonlinear and history dependent:
+
+<math>r_{t+1}=F(r_t,u_t).</math>
+
+A successful encoder is judged by behavioral discrimination and functional benefit, not merely by evoked electrical activity.
+
+== Bidirectional interfaces ==
+
+A bidirectional interface combines decoding and encoding:
+
+<pre>
+neural activity → decoder → machine action
+environment/device state → encoder → neural stimulation
+</pre>
+
+This creates a closed perception–action loop.
+
+Such systems can support prosthetic control with artificial sensory feedback.
+
+Latency matters because delayed feedback can destabilize control or increase cognitive workload.
+
+== Co-adaptation ==
+
+Human and algorithm can learn simultaneously.
+
+Let decoder parameters be <math>\theta_t</math> and biological strategy <math>h_t</math>:
+
+<math>\theta_{t+1}=G(\theta_t,h_t,D_t),</math>
+
+<math>h_{t+1}=F(h_t,\theta_t,D_t).</math>
+
+This creates a nonstationary learning problem.
+
+Rapid decoder updates can prevent the user from learning a stable mapping; a fully fixed decoder can fail to track physiological drift.
+
+Adaptive schedules should therefore balance machine adaptation with human learning.
+
+== Embodiment ==
+
+A prosthesis becomes part of an action loop when control, sensory feedback, and body dynamics interact.
+
+Embodiment cannot be inferred from implantation alone.
+
+Metrics can include:
+
+* reaction time;
+* proprioceptive localization;
+* ownership reports;
+* automaticity;
+* compensatory motion;
+* performance under distraction.
+
+Subjective embodiment and mechanical integration are distinct outcomes.
+
+== Interface bandwidth ==
+
+A neural interface has finite effective information rate.
+
+If channel input is <math>X</math> and output <math>Y</math>, mutual information
+
+<math>I(X;Y)</math>
+
+can characterize distinguishability under an appropriate probabilistic model.
+
+Raw electrode sample rate is not equivalent to useful information bandwidth.
+
+Correlated channels, noise, neural adaptation, and decoder limitations reduce effective throughput.
+
+== Signal quality ==
+
+For neural recording, a simple signal-to-noise ratio can be
+
+<math>SNR=10\log_{10}\frac{P_s}{P_n}.</math>
+
+But task performance can remain stable despite lower SNR if features are redundant, and high SNR can be useless if signals do not encode the intended variable.
+
+Signal metrics must therefore be linked to functional outcomes.
+
+== Chronic interface stability ==
+
+Implanted electrodes face long-term biological and material changes.
+
+Possible mechanisms include:
+
+* micromotion;
+* inflammatory response;
+* gliosis or fibrosis;
+* electrode corrosion;
+* insulation damage;
+* encapsulation;
+* neuronal loss near the interface.
+
+Signal drift can require recalibration.
+
+Longitudinal reporting should include both successful sessions and loss of channels.
+
+== Power budget ==
+
+For implanted device components <math>i</math> with power <math>P_i</math>,
+
+<math>P_{total}=\sum_i P_i.</math>
+
+Battery lifetime approximately scales as
+
+<math>T\approx\frac{E_{battery}}{\bar P_{total}}</math>
+
+subject to discharge chemistry and safety margins.
+
+Power constrains sampling, telemetry, computation, and stimulation.
+
+Wireless power reduces battery dependence but introduces coupling efficiency and heating constraints.
+
+== Thermal safety ==
+
+Heat from electronics and wireless power transfer can damage tissue.
+
+A rough bioheat analysis considers conduction, perfusion, metabolic heat, and device dissipation.
+
+Thermal limits should be evaluated under worst-case sustained operation, not only average use.
+
+== Biocompatibility ==
+
+Implant materials must be evaluated for:
+
+* cytotoxicity;
+* corrosion;
+* mechanical mismatch;
+* particle shedding;
+* inflammatory response;
+* sterilization compatibility.
+
+The correct test depends on tissue contact type and duration.
+
+A material acceptable for a temporary skin electrode may be inappropriate for chronic neural implantation.
+
+== Reliability engineering ==
+
+A safety-critical cyborg device needs explicit fault models.
+
+For component reliabilities <math>R_i(t)</math>, a simple independent series system has
+
+<math>R_{sys}(t)=\prod_i R_i(t).</math>
+
+Real systems violate independence, but the equation illustrates how many critical components can reduce total reliability.
+
+Redundancy, diagnostics, safe fallback, and graceful degradation can improve resilience.
+
+== Cybersecurity threat model ==
+
+Connected implants expand the attack surface.
+
+Assets can include:
+
+* control commands;
+* firmware;
+* cryptographic keys;
+* physiological data;
+* update mechanisms;
+* cloud services.
+
+Threats include unauthorized access, unsafe commands, denial of service, malicious updates, and data exfiltration.
+
+The FDA recommends cybersecurity risk management across the medical-device lifecycle and current premarket documentation for devices with cybersecurity risk.<ref name="fda-cyber">[https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cybersecurity-medical-devices-quality-management-system-considerations-and-content-premarket U.S. Food and Drug Administration (2026), medical-device cybersecurity guidance.]</ref>
+
+== Security–safety coupling ==
+
+For ordinary software, compromise can primarily damage confidentiality or availability.
+
+For a cyber-physical implant,
+
+<math>cybersecurity\ failure \rightarrow physical\ hazard.</math>
+
+Risk analysis should therefore link threat scenarios to patient harm.
+
+Examples include:
+
+* stimulation outside safe bounds;
+* disabled therapy;
+* corrupted calibration;
+* loss of emergency access.
+
+Security controls must also avoid blocking legitimate clinical intervention.
+
+== Privacy and neural data ==
+
+Neural data can encode intended movements, attention-related signals, physiological state, or responses to stimuli.
+
+Privacy analysis should specify:
+
+* raw versus processed data;
+* local versus cloud processing;
+* retention;
+* access controls;
+* secondary use;
+* re-identification risk.
+
+Claims of “thought reading” should be avoided unless the decoded variable and validation conditions actually justify them.
+
+== Human factors ==
+
+A technically correct device can fail because of poor interaction design.
+
+Human-factors testing should consider:
+
+* setup burden;
+* alarms;
+* charging;
+* mode confusion;
+* accessibility;
+* caregiver roles;
+* emergency procedures.
+
+For implanted devices, maintenance burden can directly determine real-world efficacy.
+
+== Clinical evidence ==
+
+A cyborg technology intended for health benefit should be evaluated with appropriate clinical endpoints.
+
+Possible outcomes include:
+
+* task performance;
+* quality of life;
+* adverse events;
+* device survival;
+* functional independence;
+* patient-reported outcomes.
+
+Laboratory demonstrations establish feasibility, not clinical effectiveness.
+
+== Restoration versus enhancement ==
+
+Define baseline distribution <math>B</math> for a target function and post-device distribution <math>D</math>.
+
+Improvement can be quantified by effect size
+
+<math>d=\frac{\mu_D-\mu_B}{s_p}.</math>
+
+Whether an improvement counts as restoration or enhancement depends on the reference population and normative context.
+
+The engineering result should be reported independently of that label.
+
+== User autonomy ==
+
+A cybernetic system can have several controllers:
+
+* the user;
+* clinician;
+* manufacturer;
+* automated algorithm;
+* remote service.
+
+Authority should be explicit.
+
+A control matrix can map each actor to permissions over:
+
+* activation;
+* parameter changes;
+* firmware;
+* data;
+* emergency override.
+
+Unclear authority creates both safety and ethical risk.
+
+== Cultural cyborg concept ==
+
+Donna Haraway's “Cyborg Manifesto” used the cyborg as a political and philosophical figure for destabilizing traditional dualisms and analyzing technology, identity, and power.<ref name="haraway">[https://doi.org/10.5749/minnesota/9780816650477.003.0001 Haraway, D. J., “A Cyborg Manifesto.”]</ref>
+
+This intellectual tradition is not reducible to biomedical engineering.
+
+A technical article should distinguish:
+
+'''material integration''' — measurable organism–device coupling;
+
+'''analytical metaphor''' — the cyborg as a conceptual tool in cultural theory.
+
+Both are legitimate subjects, but evidence for one does not establish claims in the other.
+
+== Boundary cases ==
+
+Possible boundary cases include:
+
+'''Wearables''' — can create continuous feedback but are removable and external.
+
+'''Smartphones''' — cognitively integrated in daily life but normally outside the narrow biomedical definition.
+
+'''Exoskeletons''' — physically coupled, sometimes controlled by biological signals, but typically removable.
+
+'''Pacemakers''' — implanted and physiologically functional, although many operate with limited user interaction.
+
+'''Organoid computers''' — biological–electronic hybrids but not whole-organism assistive systems.
+
+Rather than forcing one taxonomy, report the dimensions of integration.
+
+== Cyborg versus robot ==
+
+A robot can be modeled entirely as engineered state <math>x_r</math>.
+
+A cyborg includes biological state <math>x_b</math> that is causally integrated with device state.
+
+Thus visual appearance is irrelevant to the distinction.
+
+== Cyborg versus AI ==
+
+An AI component may optimize decoding, stimulation, or control.
+
+But
+
+<pre>
+AI-controlled device ≠ cyborg by itself
+cyborg system ≠ intelligent system by itself
+</pre>
+
+The first requires a living organism and integration. The second requires independent evidence of cognitive capability.
+
+== Consciousness boundary ==
+
+For human users, device integration changes sensory, motor, or regulatory function without creating a new scientific basis for consciousness attribution.
+
+For nonhuman biohybrid systems, integration alone does not establish sentience.
+
+No validated equation maps interface bandwidth, feedback complexity, or number of electrodes to subjective experience.
+
+== Experimental reporting ==
+
+A rigorous study should report:
+
+* participant or organism characteristics;
+* device architecture;
+* interface type;
+* calibration;
+* training;
+* algorithm version;
+* latency;
+* safety limits;
+* adverse events;
+* baseline comparator;
+* uncertainty;
+* duration.
+
+For adaptive systems, log software and parameter changes through time.
+
+== Research directions ==
+
+Key technical directions include:
+
+* stable chronic neural recording;
+* high-specificity sensory feedback;
+* adaptive closed-loop stimulation;
+* minimally invasive interfaces;
+* high-bandwidth decoding;
+* secure wireless implants;
+* long-lived power systems;
+* biocompatible flexible electronics;
+* user-controlled adaptive systems.
+
+The central scientific problem is reliable co-functioning of biological and engineered subsystems over meaningful time scales.
 
 == References ==
-* [https://www.fermatslibrary.com/s/cyborgs-and-space Clynes and Kline (1960), Cyborgs and Space]
-* [https://www.ncbi.nlm.nih.gov/books/NBK571741/ Reclaiming the cyborg, historical and ethical analysis]
-* [https://academic.oup.com/book/11095/chapter-abstract/159519374 Science Fictions and Cyber Myths, discussion of Clynes, Kline and Haraway]
+
+<references />
+
+* [https://www.fermatslibrary.com/s/cyborgs-and-space Clynes and Kline (1960).]
+* [https://www.fda.gov/medical-devices/cochlear-implants/what-cochlear-implant FDA, cochlear implant overview.]
+* [https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cybersecurity-medical-devices-quality-management-system-considerations-and-content-premarket FDA (2026), medical-device cybersecurity guidance.]
+* [https://doi.org/10.5749/minnesota/9780816650477.003.0001 Haraway, “A Cyborg Manifesto.”]
 
 == Reading depth ==
-[[Cyborg/Simple|Simple explanation]]
+
+[[Cyborg/Simple|Simple explanation]] · [[Cyborg|Core article]]

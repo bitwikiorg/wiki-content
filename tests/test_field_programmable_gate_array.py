@@ -22,6 +22,9 @@ def test_fpga_technical_math():
 def test_fpga_two_depth_semantics():
     core, simple, technical = [p.read_text(encoding='utf-8') for p in PATHS]
     assert '{{:Field-programmable gate array/Simple}}' in core
+    assert '{{Knowledge object' in core
+    assert '<onlyinclude>{{:Field-programmable gate array/Simple}}</onlyinclude>' in core
+    assert '== ' in simple.split('<onlyinclude>', 1)[1].split('</onlyinclude>', 1)[0]
     assert '== Architecture ==' not in core
     assert 'one slice per CLB' in technical
     assert 'CARRY8' in technical

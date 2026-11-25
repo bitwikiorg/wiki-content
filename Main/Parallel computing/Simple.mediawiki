@@ -1,4 +1,4 @@
-<onlyinclude>'''Parallel computing''' means splitting a computational job so that several processors or cores can work on parts of it at the same time. It can finish work sooner, but only when the parts can cooperate without spending too much time waiting or exchanging information.</onlyinclude>
+<onlyinclude>'''Parallel computing''' means splitting a computational job so that several processors or cores can work on parts of it at the same time. It can finish work sooner, but only when the parts can cooperate without spending too much time waiting or exchanging information.
 
 == How it works ==
 Imagine processing a million independent photographs. Several workers can each process a different group. But when one worker needs another's results before continuing, coordination can slow the job.
@@ -14,6 +14,8 @@ Doubling processors rarely halves elapsed time: some work must remain sequential
 
 == Distinctions ==
 Data parallelism performs related work on different pieces of data; task parallelism runs different activities. Concurrency means tasks can make progress independently, but does not necessarily mean they execute simultaneously. Parallel computing is not the same as scaling, which describes how a system changes as resources or workload change. Speedup can also increase energy use or cost.
+
+</onlyinclude>
 
 == Technical treatment ==
 [[Parallel computing/Technical|Technical article]]

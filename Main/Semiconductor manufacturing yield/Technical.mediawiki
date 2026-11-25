@@ -1,0 +1,33 @@
+<onlyinclude>'''Semiconductor manufacturing yield''' is a stage-specific empirical pass fraction; statistical yield models relate this fraction to defect mechanisms, critical area and process variation, but cannot substitute for wafer-map and electrical-test observations.</onlyinclude>
+
+'''Reading depth:''' [[Semiconductor manufacturing yield/Simple|Simple]] · [[Semiconductor manufacturing yield/Technical|Technical]]
+
+== Definitions and estimands ==
+For <math>n</math> eligible tested dies and <math>g</math> passing dies, <math>\hat Y=g/n</math>. This estimator is meaningful only with a declared sampling frame, acceptance criterion and test stage. Wafer-sort yield, assembly yield, final-test yield, parametric yield and bin-specific yield have different denominators. Multiplying stage yields is justified only when they are properly defined as conditional probabilities along the same manufacturing flow.
+
+== Independent-defect model ==
+Let <math>N</math> count fatal defects in a die's effective critical area <math>A_c</math>. Under a homogeneous Poisson process with density <math>D_0</math>, <math>N\sim\operatorname{Poisson}(\lambda)</math>, <math>\lambda=A_cD_0</math>, and <math>Y=P(N=0)=e^{-\lambda}</math>. Both <math>A_c</math> and <math>D_0</math> must use consistent area units. Effective critical area can depend on defect size, location, layer and failure mechanism; geometric die area is only a rough proxy.
+
+== Overdispersion and clustering ==
+If the Poisson rate varies between locations according to a gamma distribution with mean <math>\lambda</math> and shape <math>\alpha>0</math>, averaging the zero-defect probability gives the negative-binomial model
+:<math>Y_{NB}=(1+\lambda/\alpha)^{-\alpha}.</math>
+As <math>\alpha\to\infty</math>, <math>Y_{NB}\to e^{-\lambda}</math>. For a fixed mean rate, smaller <math>\alpha</math> implies more heterogeneity and a larger zero-defect fraction, because defects concentrate in some locations. This does not imply clustering improves an actual process: changing clustering can also change the mean rate and systematic failures.
+
+== Worked example (illustrative, not fab data) ==
+Assume <math>A_c=1\ \mathrm{cm}^2</math>, <math>D_0=0.2\ \mathrm{cm}^{-2}</math>, hence <math>\lambda=0.2</math>. Poisson yield is <math>e^{-0.2}=0.81873</math>; for <math>\alpha=2</math>, clustered-model yield is <math>(1+0.2/2)^{-2}=0.82645</math>. If <math>N_g=500</math>, expected good dies are approximately 409.37 and 413.22 respectively. Expected counts are not measured counts.
+
+== Spatial variation, tests and economics ==
+Observed wafer maps may show radial gradients, edge effects, tool signatures or local clusters. Spatial regression and zero-inflated models can fit these patterns better than one homogeneous rate, but require representative data and out-of-sample validation. Electrical binning captures speed, leakage and power constraints that a zero-fatal-defect model does not. A simplified processed-wafer cost per expected good die is <math>C_w/(N_gY)</math>; it omits test and package costs, multi-bin revenue, rework and correlated wafer-level loss. Gross die count itself depends on wafer geometry, edge exclusion, scribe streets and placement.
+
+== Model identification and experimental validation ==
+The gamma-mixture result follows by integrating <math>E[e^{-\Lambda}]</math> for <math>\Lambda\sim\mathrm{Gamma}(\alpha,\lambda/\alpha)</math>, with the second argument the scale. Its variance is <math>\lambda^2/\alpha</math>; the corresponding defect-count variance is <math>\lambda+\lambda^2/\alpha</math>. Different defect-rate distributions can share the same mean and zero fraction, so a measured pass rate alone cannot identify the clustering mechanism. For comparison, zero-inflated Poisson models allow a structural-zero component; generalized-Poisson and hurdle models represent different count-generating assumptions, not interchangeable physical explanations.
+
+A credible model comparison should report the defect-inspection detection threshold, die-level spatial coordinates, critical-area extraction assumptions, test-bin definition, wafer/lot stratification, held-out-wafer predictive error and uncertainty intervals. Use spatially separated or lot-held-out validation when wafer-map dependence makes random die-level splitting optimistic. The 2007 Bae–Hwang–Kuo study evaluates Poisson, negative-binomial and zero-inflated Poisson regressions with spatial covariates; the 2020 IEEE study additionally examines generalized-Poisson and hurdle-at-zero families. Neither establishes a universal best model across processes.
+
+== Limitations and provenance ==
+The Poisson expression follows from the zero-count probability of a homogeneous process. The gamma-mixture result is the standard clustered-defect extension, not a universal calibration. Bae et al. show why spatial covariates matter; Stapper reports empirical process-monitoring applications. All numerical parameters above are hypothetical and should not be read as production measurements.
+
+== References ==
+* C. H. Stapper, ''LSI Yield Modeling and Process Monitoring'', ''IBM Journal of Research and Development''. [https://bitsavers.org/pdf/ibm/IBM_Journal_of_Research_and_Development/441/stapper.pdf Full text]
+* S. J. Bae, J. Y. Hwang and W. Kuo (2007), ''Yield prediction via spatial modeling of clustered defect counts across a wafer map'', ''IIE Transactions'' 39:1073–1083. [https://doi.org/10.1080/07408170701275335 DOI]
+* T. Yuan, S. J. Bae and Y. Kuo (2020), ''Statistical Models of Overdispersed Spatial Defects for Predicting the Yield of Integrated Circuits'', ''IEEE Transactions on Reliability'' 69 (2020):510–521. [https://doi.org/10.1109/TR.2019.2943925 DOI]

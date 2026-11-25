@@ -1810,9 +1810,12 @@
   "dependencies": {
     "shared_depth_validator": {
       "pr": "https://github.com/bitwikiorg/wiki-content/pull/136",
-      "status": "draft_review_pending",
+      "status": "validated_awaiting_owner_merge_authorization",
       "reason": "Current main V2 validator and substrate audit require Template:Reading depth for reading-depth page exemptions; two-localization sources intentionally use reciprocal links. CI for reviewed PRs cannot be green until compatible validator available in their base.",
-      "ci": "PR #136 GitHub 'Validate BITwiki V2 PR' completed success on dfc2c8027ba386e217ec32b9a973ad971708d0fd (verified 2026-11-22); does NOT validate article PRs against merged infrastructure."
+      "ci": "GitHub Actions run 45525259151 completed success on current head; 14 localization tests and 9 editorial architecture tests actually executed and passed, Lua and V2 audit/deployment checks passed. Article heads remain unvalidated against updated infrastructure.",
+      "head": "45d390c1a4b3b024ffb33920d95f683aa5585ee6",
+      "workflow": "https://github.com/bitwikiorg/wiki-content/actions/runs/45525259151",
+      "approval": "Explicit owner merge authorization required. No merge performed."
     }
   }
 }

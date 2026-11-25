@@ -2,13 +2,361 @@
  |title=Digital ecosystem
  |entity_type=Concept
  |domain=Computer science, Technology, Systems science, Engineering
- |provenance=Briscoe and De Wilde (2006); Briscoe
+ |status=Established
+ |provenance=Nachira, Dini and Nicolai (2000s); Briscoe and De Wilde (2006); Boley and Chang (2007); platform-ecosystem research
 }}
-<onlyinclude>{{:Digital ecosystem/Simple}}</onlyinclude>
+{{Reading depth|base=Digital ecosystem|current=Core}}
 
-'''Reading depth:''' [[Digital ecosystem/Simple|Simple]] · [[Digital ecosystem/Technical|Technical]]
+= Digital ecosystem =
+
+A '''digital ecosystem''' is an interconnected socio-technical system in which digital platforms, software services, data, devices, organizations, developers, users, standards, and infrastructure depend on one another and jointly create or deliver functionality. The term is used broadly in computing and business, and more narrowly in research on distributed, adaptive, or self-organizing digital architectures inspired by natural ecosystems.
+
+A digital ecosystem is therefore more than a collection of software products. Ecosystem behavior arises when changes to one participant or layer affect others through technical, economic, organizational, or governance dependencies.
+
+== Concept and history ==
+
+The ecosystem metaphor entered computing and business through several lines of development.
+
+Business-ecosystem theory emphasized networks of firms, suppliers, customers, and complementary products.
+
+European research programs in the early 2000s developed the concept of the '''Digital Business Ecosystem''', combining business networks with distributed digital infrastructure intended especially to support small and medium enterprises.<ref name="eu">[https://op.europa.eu/en/publication-detail/-/publication/53e45e55-4bd2-42a4-ad25-27b339b051e0 European Commission (2007), ''Digital Business Ecosystems'', edited by Dini, Nachira and Nicolai.]</ref>
+
+Briscoe and De Wilde proposed ecosystem-oriented service architectures using distributed evolutionary mechanisms for discovering and composing services.<ref name="briscoe">[https://doi.org/10.1145/1315843.1315864 Briscoe, G. and De Wilde, P. (2006), “Digital ecosystems: evolving service-oriented architectures.”]</ref>
+
+Boley and Chang developed semantic and conceptual models of digital ecosystems in the emerging IEEE DEST research community.<ref name="boley">[https://doi.org/10.1109/DEST.2007.372005 Boley, H. and Chang, E. (2007), “Digital Ecosystems: Principles and Semantics.”]</ref>
+
+Modern use is broader and includes platform, cloud, application, financial, media, health, education, and public-service ecosystems.
+
+== Components ==
+
+A digital ecosystem can include:
+
+'''Platforms''' — operating systems, marketplaces, cloud systems, social platforms, or shared application environments.
+
+'''Applications and services''' — software components that provide capabilities.
+
+'''Data''' — records, content, models, metadata, and shared datasets.
+
+'''Interfaces''' — APIs, protocols, schemas, file formats, and SDKs.
+
+'''Infrastructure''' — networks, compute, storage, identity, payment, and security services.
+
+'''Organizations''' — platform operators, vendors, regulators, standards bodies, and institutions.
+
+'''Developers and complementors''' — actors building services or extensions.
+
+'''Users''' — individuals or organizations whose behavior and needs shape the system.
+
+A system's architecture depends on both technical interfaces and social rules.
+
+== Technical dependencies ==
+
+Digital components rarely operate independently.
+
+An application can depend on:
+
+* an operating system;
+* cloud compute;
+* authentication;
+* a payment service;
+* third-party APIs;
+* DNS;
+* package repositories.
+
+A failure in one dependency can propagate through many apparently separate applications.
+
+Dependency analysis is therefore central to ecosystem resilience.
+
+== Interoperability ==
+
+[[Interoperability]] allows systems controlled by different actors to exchange data or invoke functions reliably.
+
+It depends on several layers:
+
+* transport protocols;
+* syntactic formats;
+* semantic agreement;
+* identity and authorization;
+* version compatibility;
+* operational policy.
+
+Two systems can use the same JSON syntax while assigning different meanings to the same field.
+
+Interoperability therefore requires more than technical connectivity.
+
+== Platforms and complementors ==
+
+Many digital ecosystems are organized around a platform that provides core functions and interfaces for complementary products.
+
+Examples include:
+
+* smartphone operating systems and applications;
+* cloud platforms and hosted services;
+* payment networks and merchants;
+* game consoles and developers;
+* data platforms and analytics tools.
+
+Platform architecture can lower entry barriers by providing common infrastructure.
+
+It can also concentrate control over admission, ranking, pricing, data access, and technical standards.
+
+== Network effects ==
+
+Some digital ecosystems exhibit network effects.
+
+A service can become more valuable as the number of compatible users or complementors grows.
+
+However, network effects should be measured rather than assumed.
+
+Growth can also produce:
+
+* congestion;
+* moderation cost;
+* security exposure;
+* low-quality complements;
+* lock-in.
+
+More participants are not automatically better.
+
+== Openness ==
+
+Digital ecosystems vary in openness.
+
+Openness can concern:
+
+* source code;
+* APIs;
+* data;
+* standards;
+* participation;
+* governance;
+* portability.
+
+An ecosystem may be open at one layer and closed at another.
+
+For example, an open API can still be controlled unilaterally by one platform.
+
+The important question is which rights and interfaces are actually available.
+
+== Self-organization ==
+
+Early digital-ecosystem research often emphasized self-organization inspired by ecology.
+
+In software systems, self-organization can mean that service composition, routing, reputation, or resource allocation adapts from local interactions without one central planner.
+
+A system is not self-organizing merely because it is distributed.
+
+The update rules, feedback, and emergent structure must be specified.
+
+== Evolutionary computation ==
+
+Some ecosystem-oriented architectures use evolutionary algorithms.
+
+Candidate service compositions can be represented as populations.
+
+Variation operators generate alternatives; fitness functions evaluate how well they satisfy user requests; selection preserves better candidates.
+
+This is a computational design inspired by biological evolution.
+
+The software services themselves are not biological organisms.
+
+== Data flows ==
+
+Data are a major ecosystem resource.
+
+Flows can include:
+
+* user-generated content;
+* telemetry;
+* transactions;
+* model outputs;
+* shared databases;
+* identity information.
+
+Data governance must define:
+
+* ownership or control;
+* permitted uses;
+* retention;
+* privacy;
+* provenance;
+* portability.
+
+A data-rich ecosystem can still be poorly governed.
+
+== Security ==
+
+Ecosystem security is a supply-chain problem.
+
+A vulnerability in one shared library, identity provider, package repository, or cloud service can affect many downstream systems.
+
+Security therefore requires:
+
+* dependency inventory;
+* software bills of materials;
+* patching;
+* authentication;
+* least privilege;
+* incident coordination;
+* supplier assessment.
+
+Trust should not propagate automatically across ecosystem edges.
+
+== Resilience ==
+
+A resilient digital ecosystem can continue functioning despite failures.
+
+Relevant properties include:
+
+* redundancy;
+* substitutability;
+* geographic distribution;
+* multi-provider support;
+* backup and restore;
+* open standards;
+* graceful degradation.
+
+Nominal redundancy is ineffective if all alternatives depend on the same hidden infrastructure.
+
+== Lock-in and switching costs ==
+
+Ecosystem participants can become dependent on platform-specific interfaces, data formats, identity systems, or commercial terms.
+
+Switching cost can include:
+
+* data migration;
+* retraining;
+* software rewriting;
+* contract termination;
+* loss of network relationships.
+
+High switching cost gives platform operators additional power.
+
+Portability and standards can reduce lock-in.
+
+== Governance ==
+
+Governance determines:
+
+* who may participate;
+* which APIs are available;
+* how disputes are resolved;
+* which content is permitted;
+* how fees are set;
+* how standards change.
+
+Technical architecture and governance interact.
+
+An ecosystem can be decentralized in software topology while centralized in rule-making.
+
+== Sustainability ==
+
+“Sustainability” in digital-ecosystem literature can mean continued economic and organizational viability, not only environmental sustainability.
+
+Long-lived systems need:
+
+* maintainers;
+* funding;
+* upgrade paths;
+* security support;
+* backward compatibility;
+* institutional continuity.
+
+Environmental sustainability adds energy use, hardware lifecycle, and material impacts.
+
+These meanings should be distinguished.
+
+== Fairness and inclusion ==
+
+Ecosystem design can distribute opportunities and risks unevenly.
+
+Questions include:
+
+* Can small developers compete?
+* Can users move their data?
+* Are ranking systems transparent?
+* Are accessibility requirements met?
+* Does one provider control critical infrastructure?
+
+Fairness does not emerge automatically from self-organization.
+
+== Digital ecosystem versus distributed system ==
+
+A [[Distributed system]] is primarily a computational system whose components coordinate over a network.
+
+A digital ecosystem includes organizational and economic actors, governance, users, and complementary technologies.
+
+A distributed database can be one component inside a digital ecosystem.
+
+== Digital ecosystem versus software ecosystem ==
+
+A software ecosystem focuses on relationships around software platforms, packages, developers, and organizations.
+
+Digital ecosystem is broader and can include devices, data, financial services, users, physical infrastructure, and institutions.
+
+== Digital ecosystem versus knowledge ecosystem ==
+
+A [[Knowledge ecosystem]] is organized around knowledge creation, search, exchange, and use.
+
+A digital ecosystem is organized around digitally mediated interaction and interdependence.
+
+A single system can be both.
+
+== AI ecosystems ==
+
+Modern digital ecosystems increasingly include:
+
+* foundation models;
+* model APIs;
+* vector databases;
+* agent frameworks;
+* evaluation systems;
+* data providers;
+* accelerators;
+* cloud infrastructure.
+
+This creates new dependencies.
+
+Several applications may appear independent while relying on the same model provider or training corpus.
+
+Resilience and epistemic diversity therefore require dependency tracing.
+
+== Evaluation ==
+
+A digital ecosystem should be evaluated according to purpose.
+
+Metrics can include:
+
+* service availability;
+* latency;
+* interoperability;
+* participant diversity;
+* switching cost;
+* dependency concentration;
+* incident recovery;
+* security failures;
+* innovation rate;
+* user outcomes;
+* environmental cost.
+
+No single “ecosystem health” number captures all dimensions.
+
+== Limits of ecological analogy ==
+
+Digital ecosystems differ fundamentally from biological ecosystems.
+
+Software components are designed, copied, deleted, and governed intentionally.
+
+Firms negotiate contracts.
+
+Standards bodies change interfaces.
+
+Users have goals and legal rights.
+
+Ecological terms such as species, niche, selection, fitness, and evolution can be useful only when their operational meaning is defined.
 
 == Semantic relationships ==
+
 * [[Related to::Knowledge ecosystem]]
 * [[Related to::Distributed system]]
 * [[Related to::Interoperability]]
@@ -16,16 +364,9 @@
 * [[Related to::Multi-agent system]]
 * [[Related to::Self-organization]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Digital ecosystem]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Technology]]

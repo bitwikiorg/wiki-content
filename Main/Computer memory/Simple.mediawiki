@@ -1,0 +1,61 @@
+[[Computer memory/Simple|Simple]] · [[Computer memory/Technical|Technical]]
+= Computer memory — Simple =
+
+<onlyinclude>'''Computer memory''' is the hardware and associated addressing machinery used to hold information that a computer can read or change. Programs need memory for instructions, working data and results. Different memory technologies have different capacities, speeds, energy requirements and ways of retaining information when power is removed. In everyday computing, “RAM” usually means the main working memory; in computer architecture the broader term also includes processor registers, caches and other addressable storage technologies.<ref name="nvidia">NVIDIA, [https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html ''CUDA Programming Guide'', Programming Model], distinction between host/device DRAM, registers, caches and shared memory.</ref>
+
+== What happens when a program runs? ==
+
+Imagine editing a photograph. The image file may be saved on a drive, but the application normally loads working data into main memory. The processor reads instructions and image values, performs calculations, and writes changed results. The application must save changes to persistent storage if they should survive the session.
+
+A computer can also keep frequently reused information in smaller, faster caches near the processor. This can reduce time spent waiting for main memory, although the improvement depends on which data are reused.
+
+== RAM is not the same as storage ==
+
+{| class="wikitable"
+! Example !! Typical purpose !! Usually retains data without power?
+|-
+| Processor register || Very small, directly operated-on state || No
+|-
+| Cache || Reuse recently or nearby accessed data || No
+|-
+| Main RAM || Active programs and working data || No, for ordinary volatile DRAM
+|-
+| Flash-based SSD || Persistent files and installed programs || Yes, subject to device limits
+|}
+
+These are roles and common implementations, not a strict law that every device follows. Some systems use nonvolatile main memory, battery-backed memory, or memory-mapped persistent devices.
+
+== What are DRAM and SRAM? ==
+
+'''Dynamic random-access memory''' (DRAM) typically stores each bit using charge in a tiny capacitor, with supporting transistors. Its contents need periodic refresh. DRAM is widely used for main memory because it offers high density.
+
+'''Static random-access memory''' (SRAM) generally uses a transistor-based bistable circuit that retains its bit while power is applied; it does not require the same periodic charge refresh as DRAM. SRAM is often used for fast on-chip caches, although its cells take more silicon area.
+
+“Random access” means an address can be selected without having to read all preceding positions in sequence. It does not promise identical real-world latency for every access or that every memory technology behaves alike.
+
+== What makes memory fast? ==
+
+Speed is not a single number. '''Latency''' is the time before requested data becomes usable. '''Bandwidth''' is the rate at which data can be transferred. Capacity measures how much data can be held. A fast connection may still take time to start a transfer, and a low-latency cache may be too small to hold an entire dataset.
+
+Memory speed also depends on how the program accesses data. Reading nearby values repeatedly can be efficient; accessing widely separated locations may require more transfers or cause cache misses.
+
+== What is virtual memory? ==
+
+An operating system commonly gives programs virtual addresses. The system translates those addresses to physical memory or manages cases where a page is not currently resident. This protects address spaces and helps allocate memory flexibly. A virtual address is not necessarily a literal position on a RAM chip.
+
+== Does GPU memory work the same way? ==
+
+GPUs have their own memory organization. Depending on the device and programming system, they can expose global device memory, on-chip shared memory, registers and caches. A term like “local memory” in CUDA describes a thread-private address space and does not always mean physically nearby, fast on-chip storage.<ref name="cuda">NVIDIA, [https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/02-basics/writing-cuda-kernels.html ''CUDA Programming Guide'', Memory Types, Scopes and Lifetimes], explicit distinction between logical memory spaces and physical locations.</ref>
+
+== What can go wrong? ==
+
+A memory system can fail because of a defective component, data corruption, overheating, incorrect software addressing or concurrent programs accessing shared data without proper synchronization. Error-correcting memory can detect and correct specified classes of bit errors, but does not prevent all failures or replace backups.
+
+</onlyinclude>
+
+== Continue reading ==
+
+[[Computer memory/Technical|Technical]] develops access-time and bandwidth models, DRAM refresh, cache locality, address translation and reliability limits.
+
+== References ==
+<references/>

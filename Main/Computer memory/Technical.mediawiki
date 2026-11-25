@@ -1,0 +1,132 @@
+[[Computer memory/Simple|Simple]] · [[Computer memory/Technical|Technical]]
+= Computer memory — Technical =
+
+'''Computer memory''' comprises physical devices, addressable state and architectural mechanisms by which a computer retains and retrieves instructions, data and intermediate results. A computer-memory system is not a single homogeneous array: it combines semiconductor cells, buses, controllers, translation structures, caches, coherence protocols and software-visible memory semantics. This technical treatment distinguishes '''physical storage''' from '''addressing and protection''', '''performance hierarchy''' and '''consistency/durability guarantees'''. It does not equate digital memory with human [[Memory|cognitive memory]].
+
+This article focuses on mainstream volatile SRAM/DRAM-based computing and nonvolatile flash as an adjacent storage technology. Some architectures use persistent RAM, scratchpads, near-memory compute or unified CPU/GPU memory; their contracts differ. A universal latency or power number for any class would be misleading. The NVIDIA CUDA programming model provides a concrete documented example of how memory spaces, scope and physical placement differ across architectures.<ref name="nvidia">NVIDIA, [https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html ''CUDA Programming Guide'', Programming Model: GPU Memory], distinguishes CPU and GPU DRAM, registers, shared memory, caches and unified-memory abstractions.</ref><ref name="cuda">NVIDIA, [https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/02-basics/writing-cuda-kernels.html ''CUDA Programming Guide'', Memory Types, Scopes and Lifetimes], vendor-specific semantics for global, local, shared and register spaces.</ref>
+
+== Architectural identity and historical context ==
+
+A stored-program computer holds instructions and data in memory accessible to its processor, but the hardware implementation need not use the same cell technology for all locations. Early computing used delay lines, cathode-ray storage and magnetic cores. Semiconductor SRAM and DRAM subsequently enabled high-density integrated memories; later flash technologies provided electronically rewritable nonvolatile storage. Historical firsts depend on whether one means a concept, prototype, commercial component or mass deployment; this article does not assign an unsupported single inventor to “computer memory.”
+
+'''Random access''' in SRAM and DRAM means individual addressed locations can be selected without serially traversing preceding records. It is not the claim that every address has precisely identical observed latency: bank conflicts, row-buffer state, refresh, queuing, NUMA placement and cache state all matter.
+
+A register file can be a physically separate multiported circuit, an SRAM-based array or another implementation. A cache is an architectural function, not necessarily one cell technology. Similarly, a programming model's “shared memory” may describe an explicitly managed on-chip space rather than globally shared system RAM.
+
+== Physical bit cells and retention ==
+
+=== SRAM ===
+
+A conventional six-transistor (6T) CMOS SRAM cell uses two cross-coupled inverters to hold a bistable state, with access transistors controlled by a word line and bit lines used for read/write. The stable state requires supply power. Unlike conventional DRAM, the cell does not depend on scheduled refresh of a tiny storage capacitor, but leakage, process variation, soft errors, read disturb and write margins still constrain design.
+
+The six-transistor structure is an important common implementation, not a definition of all SRAM. Variants use additional transistors to decouple reads, improve noise margin or support multiple ports. SRAM's relatively large cell area and peripheral circuitry limit density compared with commodity DRAM, making it attractive for small, latency-sensitive caches rather than arbitrary bulk storage.
+
+=== DRAM ===
+
+A conventional one-transistor/one-capacitor (1T1C) DRAM cell stores a bit as charge on a capacitor accessed through a transistor. Charge leaks; stored information requires refresh before it becomes unreliable. Reading a cell is typically destructive to the stored charge and must be followed by restoration. Real DRAM devices organize cells into rows, columns, banks and bank groups, with row activation, sense amplifiers and precharge operations.
+
+Timing parameters such as row-to-column delay, precharge time and row cycle time constrain commands; quoting only a nominal data rate omits access latency. Row-buffer hits can be faster than requests that require precharge and activation. Controllers also arbitrate among requests, refresh, thermal limits and power states.
+
+A DRAM refresh interval is a device/environment requirement, not a guarantee that every cell is physically rewritten at the same moment. Temperature, retention variability, aging and mitigation against disturbance mechanisms matter. DRAM “random access” does not mean there is no performance consequence from a poor address sequence.
+
+=== Flash memory and persistent storage ===
+
+Flash memory retains charge in engineered floating-gate or charge-trap structures without a continuous supply, but program and erase operations have finite endurance and occur with asymmetric granularities. NAND flash commonly supports page-based programming and block-based erase rather than unrestricted byte-by-byte overwriting. Controllers perform mapping, wear leveling, error correction and garbage collection.
+
+A flash-based SSD is therefore not simply “slow RAM.” It exposes a storage interface with a different persistence contract, failure model and software stack. A completed application write may not be durable until the appropriate filesystem and device-level ordering and flush requirements are met. The hardware's nonvolatility alone is not a guarantee that a database transaction survives power loss.
+
+== Memory hierarchy, locality and cache behavior ==
+
+Modern systems use a hierarchy of registers, one or more cache levels, main memory and storage. Small fast levels reduce average access cost when recently used or nearby data are requested again. '''Temporal locality''' means reuse of the same data over time; '''spatial locality''' means nearby addresses are often accessed together. Neither is universal: streaming datasets, random pointer chasing and adversarial patterns may defeat caching.
+
+For a deliberately simplified two-level model with cache hit probability <math>h</math>, hit access time <math>t_h</math>, and an additional miss penalty <math>t_m</math> paid only on misses, expected memory-access time is
+
+<math display="block">E[T]=t_h+(1-h)t_m.</math>
+
+This equation assumes one access class, stable probabilities, no overlapping misses and a penalty measured in addition to the initial lookup. It is not a universal measured CPU latency law.
+
+=== Recomputable hypothetical cache fixture ===
+
+Assume an illustrative cache with hit time 1 ns, hit probability 0.95 and additional miss penalty 80 ns. Then
+
+<math display="block">E[T]=1+(1-0.95)\times80=5\ {\rm ns}.</math>
+
+If hit probability falls to 0.90 with all other assumptions unchanged, <math>E[T]=1+0.10\times80=9\ {\rm ns}</math>. A five-percentage-point reduction in hits changes this idealized average from 5 ns to 9 ns, not from 1 ns to 1.05 ns. These are invented parameters to test the formula, not hardware benchmark results.
+
+For nested cache levels, one must specify whether miss rates are '''local''' (conditioned on reaching a level) or '''global''' (fraction of all original accesses). A local L2 miss rate cannot be added as if it were an unconditional probability.
+
+A simplified L1/L2/main-memory model with hit time <math>t_1</math>, L1 miss rate <math>m_1</math>, additional L2 access time <math>t_2</math>, local L2 miss rate <math>m_2</math> and additional main-memory penalty <math>t_M</math> is
+
+<math display="block">E[T]=t_1+m_1(t_2+m_2t_M).</math>
+
+For invented <math>t_1=1</math> ns, <math>m_1=0.10</math>, <math>t_2=5</math> ns, <math>m_2=0.20</math> and <math>t_M=80</math> ns, the expected time is <math>1+0.1(5+0.2\times80)=3.1</math> ns. This is a sequential model; nonblocking caches and out-of-order processors can overlap requests, so wall-clock execution time is not simply access count times this expectation.
+
+=== Associativity and replacement ===
+
+A cache divides storage into blocks or lines and maps memory addresses to candidate sets. A direct-mapped cache offers one location per set, while a set-associative cache offers multiple ways. Replacement policies approximate recency or other predictors under hardware constraints; a least-recently-used policy is not universally optimal.
+
+Compulsory misses occur on first encounters, capacity misses reflect insufficient storage, and conflict misses arise from mapping collisions. In real multicore systems, coherence invalidations and prefetching complicate this taxonomy. Cache size alone does not determine performance; line size, associativity, workload, replacement, prefetch and coherence all contribute.
+
+== Bandwidth, latency and transfer arithmetic ==
+
+Latency measures the time until data is available after a request; bandwidth measures transfer rate under a defined traffic pattern. Peak interface bandwidth is not sustained application bandwidth. The latter can be reduced by command overhead, refresh, contention, transaction alignment, read/write turnaround, NUMA hops, and insufficient outstanding requests.
+
+For a transfer of <math>B</math> bytes at sustained bandwidth <math>R</math> bytes/s with startup cost <math>t_0</math>, a simple lower-bound transfer model is
+
+<math display="block">t_{\mathrm{transfer}}\ge t_0+\frac{B}{R},</math>
+
+when startup and transfer phases do not overlap. With an invented payload of <math>B=256</math> MiB and an effective rate of <math>R=16</math> GiB/s, the pure transfer component is
+
+<math display="block">\frac{256\times2^{20}}{16\times2^{30}}=\frac1{64}\ {\rm s}=15.625\ {\rm ms}.</math>
+
+The calculation uses binary units and an assumed effective rate, not a claim about a particular RAM module or GPU. Actual execution can include data movement in both directions, allocation, synchronization, page migration and additional kernel work.
+
+Little's law, <math>L=\lambda W</math>, can help reason about outstanding memory operations in a stable system when requests and residence times are defined consistently. It does not by itself establish the maximum sustainable bandwidth or prove that an application can issue enough independent accesses to hide latency.
+
+== Virtual addresses, page tables and translation ==
+
+A program commonly operates on '''virtual addresses'''. A memory management unit (MMU) and page tables translate them into physical addresses, subject to permissions and other attributes. Translation lookaside buffers (TLBs) cache recent translations. A TLB miss can trigger a page-table walk; a page fault can require operating-system intervention and possibly disk I/O, depending on its cause.
+
+Virtual memory should not be confused with a swap file. An address space can be virtualized even when every active page is resident in DRAM. Similarly, a virtual address being valid does not mean its physical location is contiguous with another nearby virtual address.
+
+For a hypothetical system with 4 KiB pages, a 64 KiB contiguous virtual region spans <math>64/4=16</math> pages when page-aligned. If the region begins at an arbitrary offset, it may span 17 pages. Page size alone says nothing about how many page-table levels a given ISA uses or whether huge pages are supported.
+
+The operating system's allocation policy, processor ISA, IOMMU and device mappings define the actual access and protection rules. CPU and GPU memory spaces may be separate or managed through unified virtual-memory mechanisms; the programming model and hardware capability determine whether an address is accessible from a particular processor.<ref name="nvidia"/>
+
+== Parallelism, coherence and memory consistency ==
+
+Multiple processors or cores can cache copies of the same address. A '''cache-coherence''' mechanism coordinates ownership and visibility of modifications at the granularity specified by the architecture. Coherence is not the same as a global ordering rule for all accesses to all addresses.
+
+A '''memory consistency model''' specifies which observations of loads and stores are permitted under concurrency. A language-level data race can remain undefined or invalid even on coherent hardware; synchronization must follow the programming-language and device contracts. An atomic read–modify–write operation is not automatically a full ordering barrier for unrelated accesses.
+
+GPUs introduce additional scopes: registers can be private to a thread, shared memory accessible within a thread block, and global memory accessible across blocks under the API's rules. In CUDA, the name “local memory” means a thread-private logical address space but can reside in device memory, so it is not necessarily low-latency on-chip SRAM.<ref name="cuda"/>
+
+Cache-coherent shared memory and explicit message passing are different ways to organize systems. Neither eliminates the cost of moving data; synchronization, false sharing and NUMA placement can dominate performance. A single coherence protocol description must not be generalized to all accelerators or all distributed systems.
+
+== Reliability, error detection and security ==
+
+Stored bits can be corrupted by manufacturing defects, aging, electrical disturbances, radiation-induced soft errors or controller faults. Parity detects some classes of corruption; error-correcting codes (ECC) can detect and correct specific error patterns depending on the code, word size and implementation. A common single-error-correcting, double-error-detecting code does not guarantee recovery from arbitrary multi-bit faults.
+
+Memory scrubbing periodically reads and checks memory to limit accumulation of latent errors, but its effectiveness depends on error statistics, coverage and operating policy. Persistent storage additionally faces wear, retention drift, interrupted writes and controller metadata failure. Backups and end-to-end integrity checks address failure classes that on-die ECC alone cannot solve.
+
+Security issues include unauthorized address access, information leakage through shared caches, speculative-execution side channels, remanence, direct-memory-access permissions and row disturbance. Protection requires correctly configured hardware, operating-system isolation, firmware and software, not merely a memory technology choice.
+
+== Measurement, modeling and limitations ==
+
+A useful benchmark reports platform, processor and memory model, operating frequency, page size, working-set size, access stride, read/write ratio, thread count, placement and whether cache flushing or warming was performed. One should distinguish measured latency from throughput and compare peak versus sustained bandwidth under the actual access pattern.
+
+Microbenchmarks can be distorted by compiler optimization, prefetching, turbo/power states, TLB misses, page placement and synchronization. A measurement on one system does not establish an invariant DRAM, SRAM or flash latency for all devices.
+
+The worked cache and transfer examples are analytic fixtures with explicit hypothetical inputs. Their purpose is to verify units, conditional probabilities and scaling. They cannot establish that a particular CPU/GPU implements those cache parameters, that a workload has a given hit rate, or that a given storage product meets its advertised durability.
+
+== Architectural qualifications preserved from the canonical overview ==
+Memory is a family of devices and abstractions, not a single semiconductor cell. Registers, caches, main memory and persistent storage occupy different functional layers; flash SSDs expose block operations and durability contracts unlike volatile working RAM. Virtual address translation, cache coherence and language-level memory ordering must not be conflated with physical bit storage. CPU and GPU memory domains and their access paths can differ. Technology choice depends on working set, bandwidth, latency, power, fault model, thermal limits and cost. Higher raw bandwidth does not guarantee faster applications under dependencies, contention or synchronization. Integrity mechanisms such as parity, ECC, scrubbing and recovery require explicit fault assumptions; persistence requires power-loss and flush semantics.
+
+== Research boundary and further reading ==
+
+The subject spans materials, circuit design, architecture, operating systems and programming models. The next independent candidates should be judged against this article's scope: a dedicated '''memory hierarchy''' article may add rigorous cache design and coherence, while a '''DRAM''' article could cover refresh scheduling, disturbance, sensing and physical layout. Neither should be created solely because its title appears in a seed map; each needs original technical sources, independently useful scope and an overlap check.
+
+For architecture and operating-system context, see [[Computer architecture]], [[Operating system]] and [[Information]]. For the vendor-specific GPU example, see the official NVIDIA CUDA documentation cited above. For physical devices and fabrication, semiconductor-device literature is required; programming-model documentation alone does not prove transistor-level cell behavior.
+
+== References ==
+<references/>

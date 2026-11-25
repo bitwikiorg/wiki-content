@@ -33,7 +33,7 @@ Templates are the public wikitext-facing contract. Lua is the deterministic comp
 <code>Template:Knowledge object</code> demonstrates this split: it exposes the authoring contract, invokes <code>Module:Structure</code>, and that wrapper delegates normalization/type checking to <code>Module:BITwiki/Compiler</code> using the runtime schema projection.
 
 == What V1 actually implemented ==
-The read-only V1 migration archive under <code>archive-v1/</code> contains:
+The exhaustive public V1 archive contains:
 * 9 Template namespace pages;
 * 162 used category names;
 * 0 authored Category namespace pages;
@@ -86,9 +86,9 @@ This category is therefore evidence of a '''template-system documentation family
 V2 separates those functions:
 * the exact seven-member V1 category membership remains recoverable at snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>, path <code>archive-v1/categories/members/Category%3ABITwiki Templates.json</code>;
 * actual V1 Template namespace implementation remains recoverable at snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>, path <code>archive-v1/templates/index.json</code>;
-* the four Main-namespace Infobox pages remain source/design artifacts until reconciled against <code>Template:Infobox</code> and the V2 semantic model;
-* <code>SMW Template System</code> informs semantic/template architecture;
-* <code>Template System Validation Framework</code> informs validation and release checks;
+* the four historical Main-namespace Infobox design pages have been reconciled under issue #152: their useful entity-specific fields remain design evidence, but they do not establish four current template contracts. V2 keeps <code>Template:Knowledge object</code> deliberately small and adds specialized structured fields only when repeated articles/queries demonstrate a stable need;
+* <code>SMW Template System</code> has been reconciled into the current Template → Lua → SMW/Cargo separation;
+* <code>Template System Validation Framework</code> has been reconciled into current validation/release rules; its mandatory confidence/status mechanics are not current requirements;
 * [[Category List]] informs the historical classification model; current classification follows the V2 category rules below.
 
 Do not infer Template namespace membership from a page being categorized <code>BITwiki Templates</code>.
@@ -173,7 +173,7 @@ Before a V2 deployment is considered clean:
 # verify semantic properties and category membership after template migrations;
 # verify Lua module dependency order and actual Scribunto behavior for invoked modules;
 # verify redirects/transclusions after every rename;
-# never deploy <code>archive-v1/</code> as current V2 content; it is a reconciliation/provenance source until issue #152 is genuinely complete.
+# never deploy the historical V1 snapshot at commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code> as current V2 content.
 
 See [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], [[BITwiki:MediaWiki substrate]], [[BITwiki:Transclusion]], and [[BITwiki:Contributing]].
 

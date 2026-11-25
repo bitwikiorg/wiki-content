@@ -2,13 +2,440 @@
  |title=Distributed artificial intelligence
  |entity_type=Concept
  |domain=Computer science, Systems science, Mathematics, Engineering
- |provenance=Bond and Gasser (1988); Russell and Norvig
+ |status=Established
+ |provenance=Smith (1980); Bond and Gasser (1988); multi-agent systems and distributed problem solving
 }}
-<onlyinclude>{{:Distributed artificial intelligence/Simple}}</onlyinclude>
+{{Reading depth|base=Distributed artificial intelligence|current=Core}}
 
-'''Reading depth:''' [[Distributed artificial intelligence/Simple|Simple]] · [[Distributed artificial intelligence/Technical|Technical]]
+= Distributed artificial intelligence =
+
+'''Distributed artificial intelligence''' (DAI) is the study and engineering of artificial-intelligence systems in which reasoning, knowledge, control, planning, learning, or problem solving are distributed across multiple computational entities. Rather than assuming one centralized agent possesses all observations and makes all decisions, DAI studies how several agents or problem solvers coordinate under distributed information and control.
+
+Historically, DAI developed through two overlapping traditions:
+
+* '''distributed problem solving''' — several cooperative problem solvers divide and integrate parts of one larger problem;
+* '''multi-agent systems''' — multiple autonomous agents interact while pursuing shared, partially aligned, or conflicting goals.
+
+The field therefore combines ideas from [[Artificial intelligence]], [[Distributed system|distributed systems]], game theory, optimization, control, and communication.
+
+== Historical development ==
+
+Early DAI research emerged in the 1970s and 1980s as researchers explored how artificial-intelligence tasks could be decomposed across networked computers.
+
+Reid Smith's 1980 '''Contract Net Protocol''' provided an influential model of distributed task allocation through negotiation between nodes with tasks and nodes able to execute them.<ref name="contract">[https://doi.org/10.1109/TC.1980.1675516 Smith, R. G. (1980), “The Contract Net Protocol: High-Level Communication and Control in a Distributed Problem Solver,” ''IEEE Transactions on Computers'' C-29(12), 1104–1113.]</ref>
+
+Bond and Gasser's 1988 ''Readings in Distributed Artificial Intelligence'' helped consolidate a field concerned with distributed problem solving, cooperation, communication, and interacting intelligent agents.
+
+Later research increasingly used the term '''multi-agent system''' for autonomous interacting agents.
+
+== Distributed problem solving ==
+
+In distributed problem solving, one task is decomposed into subtasks.
+
+A typical workflow is:
+
+<pre>
+global problem
+→ decompose
+→ assign subtasks
+→ solve locally
+→ communicate partial results
+→ reconcile
+→ global solution
+</pre>
+
+The potential advantages include:
+
+* parallelism;
+* access to local knowledge;
+* fault tolerance;
+* reduced central bottlenecks.
+
+The costs include:
+
+* communication;
+* duplicate work;
+* inconsistent partial solutions;
+* coordination overhead.
+
+Distribution is valuable only when these costs are lower than the benefits.
+
+== Multi-agent systems ==
+
+A [[Multi-agent system]] contains multiple agents able to perceive, decide, and act.
+
+Agents can be:
+
+* cooperative;
+* competitive;
+* mixed-motive.
+
+They can interact directly through messages or indirectly through a shared environment.
+
+A warehouse-robot fleet, for example, may have a common objective while each robot has local state and physical constraints.
+
+An automated market can contain agents with competing objectives.
+
+== Autonomy ==
+
+Agent autonomy means that an agent selects at least some actions based on its own local state, policy, or goals rather than receiving every action from one central controller.
+
+Autonomy is a spectrum.
+
+A robot with a local collision-avoidance controller but centrally assigned destinations has partial autonomy.
+
+The label should therefore identify which decisions are actually decentralized.
+
+== Local knowledge ==
+
+DAI is motivated partly by [[Dispersed knowledge]].
+
+Agent <math>i</math> may observe only local information.
+
+Examples include:
+
+* nearby obstacles;
+* local sensor readings;
+* private preferences;
+* local computational state.
+
+Centralizing all information can be expensive, slow, legally restricted, or impossible.
+
+DAI studies what coordination is possible without full central knowledge.
+
+== Task decomposition ==
+
+A good decomposition minimizes unnecessary coupling.
+
+If subtasks are independent, they can run in parallel with little communication.
+
+If every local decision affects every other agent, distribution can create heavy coordination overhead.
+
+Decomposition therefore depends on problem structure rather than simply splitting the dataset into equal pieces.
+
+== Task allocation ==
+
+After decomposition, work must be assigned.
+
+Allocation can use:
+
+* fixed roles;
+* central scheduling;
+* auctions;
+* negotiation;
+* contract-net protocols;
+* market mechanisms.
+
+The best method depends on whether agents know their own capabilities, whether tasks arrive dynamically, and whether agents share objectives.
+
+== Contract Net Protocol ==
+
+In the Contract Net Protocol, a manager announces a task.
+
+Potential contractors evaluate it and submit bids.
+
+The manager awards the task to a suitable contractor.
+
+The protocol distributes resource allocation through negotiation rather than requiring one node to know the capabilities and workload of every other node.<ref name="contract" />
+
+The mechanism inspired later agent communication and market-based coordination systems.
+
+== Cooperation ==
+
+Cooperative agents share a system objective.
+
+They may coordinate by:
+
+* exchanging observations;
+* assigning roles;
+* sharing plans;
+* merging partial solutions;
+* maintaining common state.
+
+Cooperation does not eliminate conflict.
+
+Two agents can compete for the same resource while still sharing a global goal.
+
+== Negotiation ==
+
+When agents have different preferences or constraints, coordination can require negotiation.
+
+Agents may exchange:
+
+* offers;
+* counteroffers;
+* commitments;
+* constraints.
+
+Negotiation protocols need rules for:
+
+* who proposes;
+* when agreement is reached;
+* what happens on failure.
+
+A successful agreement is not necessarily globally optimal.
+
+== Auctions and markets ==
+
+Auctions provide decentralized resource-allocation mechanisms.
+
+Agents can bid for:
+
+* tasks;
+* computation;
+* bandwidth;
+* routes;
+* physical resources.
+
+Market-based mechanisms can scale well when valuations are meaningful.
+
+Strategic agents can misreport values unless the mechanism creates appropriate incentives.
+
+== Communication ==
+
+Communication is a resource.
+
+Messages consume:
+
+* bandwidth;
+* energy;
+* time;
+* attention or processing.
+
+A centralized algorithm that requires every agent to transmit its full state can be infeasible.
+
+DAI therefore studies communication-efficient coordination.
+
+More communication is not always better.
+
+== Asynchrony ==
+
+Distributed agents do not necessarily operate in lockstep.
+
+Messages can be:
+
+* delayed;
+* duplicated;
+* reordered;
+* lost.
+
+Agents may act on stale information.
+
+Protocols must therefore specify what consistency is required.
+
+Strong synchronization can simplify reasoning but increase latency.
+
+== Consensus ==
+
+Some tasks require agents to agree on a value or state.
+
+Consensus algorithms iteratively reduce disagreement.
+
+Consensus can support:
+
+* shared estimates;
+* formation control;
+* replicated state.
+
+Agreement alone does not prove the agreed value is correct.
+
+Agents can converge on a shared error.
+
+== Distributed constraint optimization ==
+
+A '''distributed constraint optimization problem''' (DCOP) distributes variables and constraints among agents.
+
+The agents coordinate assignments to optimize a global objective while preserving decentralized control and often local information.
+
+DCOPs have been applied to scheduling, sensor networks, smart grids, and multi-agent resource allocation.<ref name="dcop">[https://jair.org/index.php/jair/article/view/11146 Fioretto, F., Pontelli, E., and Yeoh, W. (2018), “Distributed Constraint Optimization Problems and Applications: A Survey,” ''Journal of Artificial Intelligence Research'' 61, 623–698.]</ref>
+
+== Partial observability ==
+
+An agent may not know the complete system state.
+
+Decentralized partially observable decision problems model agents that act using local observation histories.
+
+This makes optimal coordination much harder because agents must reason about both environmental uncertainty and what other agents may know.
+
+For even small finite-horizon decentralized decision models, optimal planning can have extremely high worst-case computational complexity.<ref name="decpomdp">[https://doi.org/10.1287/moor.27.4.819.297 Bernstein, D. S., Givan, R., Immerman, N., and Zilberstein, S. (2002), “The Complexity of Decentralized Control of Markov Decision Processes,” ''Mathematics of Operations Research'' 27(4), 819–840.]</ref>
+
+== Multi-agent learning ==
+
+Agents can learn individually or jointly.
+
+Multi-agent reinforcement learning adds challenges because one agent's environment includes other learning agents.
+
+The environment can therefore appear nonstationary.
+
+Agents may need to learn:
+
+* coordination conventions;
+* opponent strategies;
+* communication policies;
+* division of labor.
+
+Learning performance should be tested under changing partners and conditions, not only against the training population.
+
+== Blackboard systems ==
+
+A blackboard architecture uses a shared data structure where specialized knowledge sources post partial results.
+
+This provides a form of distributed problem solving with centralized shared memory.
+
+It differs from fully decentralized agent communication.
+
+The architecture is useful when specialists need a common evolving workspace.
+
+== Stigmergy ==
+
+Agents can also coordinate indirectly through changes to a shared environment.
+
+This is called '''stigmergy'''.
+
+Examples include:
+
+* digital markers;
+* shared maps;
+* pheromone-inspired variables.
+
+Stigmergic coordination can reduce explicit messaging.
+
+It also makes interpretation dependent on the shared environment's update rules.
+
+== Fault tolerance ==
+
+Distribution can increase resilience because one node can fail without stopping the entire system.
+
+This requires:
+
+* redundant capability;
+* failure detection;
+* task reassignment;
+* replicated critical state.
+
+A distributed architecture with one essential coordinator still has a central point of failure.
+
+== Security ==
+
+DAI creates distributed attack surfaces.
+
+Agents can receive:
+
+* false messages;
+* malicious tasks;
+* manipulated observations.
+
+Security therefore involves:
+
+* authentication;
+* authorization;
+* message integrity;
+* trust;
+* Byzantine or adversarial robustness.
+
+A message from another agent should not be trusted solely because it is part of the same system.
+
+== Coordination versus truth ==
+
+Several agents agreeing with one another is not independent verification if they share:
+
+* the same model;
+* the same training data;
+* the same upstream source.
+
+DAI architectures need provenance and independent checking for epistemic tasks.
+
+Consensus is a coordination property.
+
+Truth is an external property.
+
+== Distributed AI versus distributed computing ==
+
+A [[Distributed system]] distributes computation or data.
+
+DAI additionally involves artificial-intelligence functions such as:
+
+* planning;
+* reasoning;
+* learning;
+* negotiation;
+* autonomous decision.
+
+Running one neural network across several GPUs is distributed computing.
+
+It is not necessarily distributed artificial intelligence in the multi-agent or distributed-problem-solving sense.
+
+== Distributed AI versus federated learning ==
+
+Federated learning distributes model training across clients while retaining data locally.
+
+It is one form of distributed machine learning.
+
+It becomes DAI in a broader sense when clients are modeled as autonomous agents with local decisions, goals, or coordination.
+
+The terms should not be treated as synonyms.
+
+== Human–AI systems ==
+
+Distributed intelligence systems can include humans and artificial agents.
+
+Examples include:
+
+* human operators supervising robot teams;
+* software agents routing tasks to experts;
+* collaborative human–AI planning.
+
+The evaluation should attribute performance to the complete system rather than to the AI alone.
+
+== Applications ==
+
+DAI methods appear in:
+
+* multi-robot coordination;
+* logistics;
+* sensor networks;
+* smart grids;
+* traffic control;
+* distributed planning;
+* automated markets;
+* network management;
+* simulation.
+
+Different applications impose different communication and safety requirements.
+
+== Evaluation ==
+
+A distributed architecture should be compared with relevant baselines.
+
+Metrics include:
+
+* solution quality;
+* latency;
+* communication cost;
+* computation;
+* robustness;
+* scalability;
+* fairness;
+* fault tolerance.
+
+A distributed approach that uses ten times the compute should not be called superior solely because it finishes sooner.
+
+== Epistemic boundary ==
+
+Distribution does not guarantee intelligence, autonomy, decentralization, security, or robustness.
+
+A valid DAI claim should specify:
+
+* which decisions are distributed;
+* what each agent observes;
+* what agents communicate;
+* what goals they have;
+* how partial results are reconciled.
+
+Only then can coordination performance be evaluated.
 
 == Semantic relationships ==
+
 * [[Related to::Artificial intelligence]]
 * [[Related to::Multi-agent system]]
 * [[Related to::Distributed system]]
@@ -16,16 +443,9 @@
 * [[Related to::Dispersed knowledge]]
 * [[Related to::Collective intelligence]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Distributed artificial intelligence]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Systems science]]

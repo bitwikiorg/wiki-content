@@ -1,17 +1,336 @@
-A '''knowledge ecosystem''' is a network of people, organizations, tools, practices and resources through which knowledge is produced, shared, evaluated and reused. It emphasizes interactions across boundaries rather than a single organization's collection of documents.
+{{Reading depth|base=Knowledge ecosystem|current=Technical}}
 
-== Ecosystem perspective ==
-Knowledge ecosystem research examines interdependent actors with partially aligned interests and shared knowledge resources. Van der Borgh, Cloodt and Romme (2012) analyze value creation in a knowledge-based ecosystem through a field study. This evidence is contextual rather than a proof of a universal organizational structure. A knowledge ecosystem differs from a business ecosystem primarily in the analytical emphasis on knowledge generation and circulation, though actual systems may serve both.
+= Knowledge ecosystem — Technical =
 
-== Modeling and governance ==
-Represent a bounded ecosystem as a multiplex graph with actor nodes and resource nodes. Distinguish contribution, access, citation, collaboration and funding edges; absence of an observed edge is not proof of no relationship. Measure source traceability, diversity of independent contributors, reuse, correction latency and access disparities for specified tasks. Governance determines which contributions become canonical, how conflicts are resolved and how rights or responsibilities are allocated.
+A '''knowledge ecosystem''' is a multi-actor system organized around the production, search, validation, transfer, recombination, preservation, and application of knowledge. The ecosystem perspective is useful where no single organization owns all relevant resources or controls all knowledge processes.
 
-== Empirical design ==
-Compare documented collaboration networks and research outputs before and after a change in sharing policy. Account for funding changes, field-specific publication practices and selection bias. A densely connected network may repeat errors or exclude outsiders; connectivity is not epistemic quality. An ecosystem can support collective intelligence without guaranteeing that the group performs better than its members. Reproducible evaluation requires explicit boundaries and outcome criteria.
+The concept belongs to a wider family of ecosystem approaches in management and innovation research. A technical analysis should specify the system boundary, actors, knowledge objects, infrastructure, interaction mechanisms, governance, incentives, and measurable outcomes rather than using “ecosystem” as a synonym for any network.<ref name="jarvi">[https://doi.org/10.1016/j.respol.2018.05.007 Järvi, K., Almpanopoulou, A., and Ritala, P. (2018), “Organization of knowledge ecosystems: Prefigurative and partial forms,” ''Research Policy'' 47(8), 1523–1537.]</ref>
+
+== Analytical boundary ==
+
+Let a bounded knowledge ecosystem be represented as
+
+<math>\mathcal E=(A,K,I,G,P),</math>
+
+where:
+
+* <math>A</math> is a set of actors;
+* <math>K</math> is a set of knowledge resources or claims;
+* <math>I</math> is infrastructure;
+* <math>G</math> is governance and institutional rules;
+* <math>P</math> is a set of knowledge processes.
+
+This tuple is not a canonical theory of knowledge ecosystems. It is an explicit analytical decomposition that makes the research boundary testable.
+
+A study must explain which participants and resources are inside <math>\mathcal E</math>, which external flows are observed, and why that boundary matches the research question.
+
+== Actors and roles ==
+
+Actors can be modeled as heterogeneous rather than interchangeable nodes. Define a role function
+
+<math>r:A\rightarrow 2^R</math>
+
+that can assign several roles to one actor, such as:
+
+* producer;
+* user;
+* curator;
+* validator;
+* funder;
+* infrastructure provider;
+* regulator;
+* broker;
+* educator;
+* maintainer.
+
+Role multiplicity matters. A university can produce research, train participants, host infrastructure, and regulate access simultaneously.
+
+Power asymmetry can be represented separately through control over resources, standards, funding, or admission.
+
+== Knowledge objects and epistemic state ==
+
+Knowledge resources may include claims, models, datasets, software, procedures, standards, documentation, and tacit competencies.
+
+For explicit resources, useful metadata include:
+
+<math>k=(c,s,p,v,u,t),</math>
+
+where <math>c</math> is content or claim identity, <math>s</math> source, <math>p</math> provenance, <math>v</math> version, <math>u</math> uncertainty or epistemic qualification, and <math>t</math> time.
+
+This representation emphasizes that a repository entry is not self-validating. Two records can contain identical text while differing materially in provenance or evidential standing.
+
+== Multiplex network representation ==
+
+A knowledge ecosystem can be represented as a multiplex graph
+
+<math>G=(V,E_c,E_f,E_a,E_r,E_s,\ldots),</math>
+
+where vertices can include actors and resources and edge layers can encode:
+
+* collaboration <math>E_c</math>;
+* funding <math>E_f</math>;
+* authorship <math>E_a</math>;
+* reuse <math>E_r</math>;
+* semantic or citation relations <math>E_s</math>.
+
+Collapsing all edge types into one adjacency matrix can destroy important causal distinctions.
+
+A citation edge is not a collaboration edge. Funding does not imply endorsement. Reuse does not imply correctness.
+
+== Knowledge-search organization ==
+
+Järvi and colleagues characterize knowledge ecosystems around joint knowledge search and distinguish organizing forms according to the nature of participation and coordination.<ref name="jarvi" />
+
+Let a search problem be <math>q</math> and each actor hold partial capability <math>C_i</math>. Collective search seeks a solution
+
+<math>x^*=F(q,C_1,C_2,\ldots,C_n,\Gamma),</math>
+
+where <math>\Gamma</math> represents communication and coordination structure.
+
+The expression highlights a systems property: outcome quality depends not only on individual capabilities but also on which capabilities are connected, discoverable, and combinable.
+
+== Search costs and discovery ==
+
+Distributed knowledge creates search costs.
+
+For a user <math>u</math> and query <math>q</math>, expected discovery utility can be represented as
+
+<math>U(q,u)=V(R_{q,u})-C_s(q,u),</math>
+
+where <math>V</math> is the value of retrieved relevant resources and <math>C_s</math> is search cost.
+
+Metadata, indexing, persistent identifiers, recommendation systems, expert directories, and shared vocabularies can reduce <math>C_s</math>. Poor discoverability can make high-quality knowledge practically unavailable.
+
+However, algorithmic search can concentrate attention and create visibility bias. Ranking quality is therefore part of ecosystem governance.
+
+== Knowledge transfer ==
+
+Transfer is not simple copying. A representation must be interpretable by the recipient.
+
+A simplified transfer condition is
+
+<math>T_{ij}=F(K_i,A_j,L_{ij},C_{ij}),</math>
+
+where <math>K_i</math> is source knowledge, <math>A_j</math> recipient absorptive capability, <math>L_{ij}</math> shared language or interface, and <math>C_{ij}</math> context.
+
+Tacit knowledge can require demonstration, shared practice, mentorship, or personnel movement rather than document transmission.
+
+This is one reason knowledge ecosystems include social structures as well as databases.
+
+== Creation and recombination ==
+
+Novel knowledge can emerge through combination of previously separated resources.
+
+Suppose actor <math>a</math> can access resources <math>K_a</math>. A crude opportunity set for pairwise recombination scales with
+
+<math>\binom{|K_a|}{2},</math>
+
+but most combinations are useless. Search, expertise, and evaluation determine which combinations are plausible.
+
+Increasing access expands the combinatorial search space while also increasing filtering cost.
+
+Innovation therefore depends on both openness and selection mechanisms.
+
+== Validation and correction ==
+
+A knowledge ecosystem requires epistemic control mechanisms.
+
+For a claim <math>c</math>, define an evidence state
+
+<math>E(c)=\{e_1,e_2,\ldots,e_m\}</math>
+
+with provenance and independence relationships. Ecosystem evaluation should distinguish:
+
+* number of supporting items;
+* independence of evidence;
+* methodological quality;
+* contradictory evidence;
+* replication;
+* uncertainty;
+* update history.
+
+Counting citations or endorsements without dependence structure can create false confidence.
+
+A useful operational metric is '''correction latency''':
+
+<math>L_c=t_{correction}-t_{verified\ error}.</math>
+
+Shorter correction latency can indicate responsive governance, but only if verified errors are actually detected.
+
+== Openness as a design parameter ==
+
+Let <math>o\in[0,1]</math> represent a conceptual openness parameter. Increasing <math>o</math> may improve diversity and external access but also raise:
+
+* verification load;
+* coordination cost;
+* intellectual-property conflict;
+* moderation demand;
+* attack surface.
+
+The relation between openness and performance is therefore not assumed monotonic.
+
+Empirical work on knowledge development has identified interactions between structure and openness in specific regional knowledge ecosystems.<ref name="mechanisms">[https://doi.org/10.1108/JKM-11-2021-0814 “Mechanisms of knowledge development in a knowledge ecosystem,” ''Journal of Knowledge Management'' 26(11), 2022.]</ref>
+
+== Governance ==
+
+Governance can be represented as a set of rules
+
+<math>G=\{g_{entry},g_{review},g_{access},g_{conflict},g_{version},g_{exit}\}.</math>
+
+These rules determine:
+
+* entry and participation;
+* review and acceptance;
+* data or resource access;
+* dispute resolution;
+* version control;
+* retirement or removal.
+
+Good governance need not be centralized. Open-source projects, standards organizations, scientific communities, and decentralized networks can distribute authority while preserving explicit procedures.
+
+The key requirement is traceable responsibility.
+
+== Incentive compatibility ==
+
+Participants respond to incentives. Let actor utility be
+
+<math>U_i=\alpha_i C_i+\beta_i R_i+\gamma_i M_i-\delta_i K_i,</math>
+
+where components might represent contribution value, reputation, monetary reward, and participation cost.
+
+This is schematic, but it shows why ecosystem goals and participant incentives can diverge.
+
+Publication-count incentives can encourage quantity over reliability. Proprietary incentives can suppress sharing. Engagement optimization can reward sensational content.
+
+Knowledge quality therefore depends partly on mechanism design.
+
+== Diversity and independence ==
+
+Participant diversity can increase the range of hypotheses and expertise, but raw demographic or topical diversity is not identical to independence of evidence.
+
+If <math>n</math> contributors all derive conclusions from the same dataset or model, their errors can be highly correlated.
+
+For estimates with equal variance <math>\sigma^2</math> and pairwise error correlation <math>\rho</math>, the variance of their mean is
+
+<math>\operatorname{Var}(\bar X)=\frac{\sigma^2}{n}[1+(n-1)\rho].</math>
+
+When <math>\rho</math> is large, adding nominally separate contributors gives little error reduction.
+
+Ecosystem health should therefore monitor dependency and provenance, not just contributor count.
+
+== Resilience ==
+
+Knowledge ecosystems can be analyzed for resilience to actor loss or infrastructure failure.
+
+Potential indicators include:
+
+* number of independent maintainers;
+* repository mirrors;
+* archival redundancy;
+* standard portability;
+* concentration of funding;
+* dependency on proprietary services;
+* succession mechanisms;
+* recoverability of provenance.
+
+A system with one indispensable repository or expert has a single point of failure even if its collaboration graph appears dense.
+
+== Ecosystem-type distinctions ==
+
+Systematic review literature distinguishes business, innovation, entrepreneurial, and knowledge ecosystems by boundaries and goals.<ref name="cobben">[https://doi.org/10.1016/j.jbusres.2021.12.046 Cobben, D. et al. (2022), “Ecosystem types: A systematic review on boundaries and goals,” ''Journal of Business Research'' 142, 138–164.]</ref>
+
+A useful diagnostic is:
+
+* '''knowledge ecosystem''' — joint knowledge search, creation, or development;
+* '''innovation ecosystem''' — coordinated innovation and complementary value creation;
+* '''business ecosystem''' — system-level commercial value and interdependent offerings;
+* '''entrepreneurial ecosystem''' — conditions supporting entrepreneurial activity.
+
+Real cases can instantiate several at once.
+
+== Scholarly ecosystem metrics ==
+
+For scientific ecosystems, useful measures include:
+
+* open-data availability;
+* software reproducibility;
+* replication rate;
+* retraction and correction handling;
+* provenance completeness;
+* preprint-to-publication paths;
+* review diversity;
+* field-normalized citation;
+* negative-result retention;
+* participation and access inequality.
+
+No single metric should become the objective because Goodhart-like incentive effects can distort behavior.
+
+== Artificial knowledge agents ==
+
+Artificial agents introduce new node types.
+
+Possible roles include:
+
+* retrieval;
+* synthesis;
+* translation;
+* code execution;
+* formal verification;
+* anomaly detection;
+* hypothesis generation;
+* workflow orchestration.
+
+Each role requires separate evaluation.
+
+For a model-generated claim <math>c</math>, provenance should record source evidence, model/version, transformation, tool outputs, reviewer decisions, and later corrections. Without this lineage, AI can increase the speed of error propagation.
+
+Shared foundation models also create correlated failure modes across apparently independent agents.
+
+== Failure modes ==
+
+Technical failure patterns include:
+
+* high connectivity with correlated errors;
+* authority concentration;
+* inaccessible provenance;
+* stale knowledge;
+* incompatible identifiers;
+* metric gaming;
+* algorithmic visibility bias;
+* duplicated but non-independent evidence;
+* loss of tacit knowledge through staff turnover;
+* fragmentation into mutually unintelligible communities;
+* unmaintained infrastructure.
+
+== Evaluation design ==
+
+A causal evaluation of an ecosystem intervention should define a pre-specified outcome.
+
+For example, after introducing an open repository, one could measure:
+
+* discovery time;
+* reuse rate;
+* cross-institution collaboration;
+* replication;
+* correction time;
+* participation distribution.
+
+A before–after comparison must account for secular trends, funding changes, field growth, and selection bias. Controlled or quasi-experimental designs are preferable when feasible.
+
+== Epistemic boundary ==
+
+A knowledge ecosystem is an organizational and systems concept. It does not imply that the ecosystem itself is conscious, intelligent, or a unitary knower.
+
+Collective epistemic performance is an empirical property that must be measured against appropriate individual or baseline systems.
 
 == References ==
-* [https://doi.org/10.1111/j.1467-9310.2011.00673.x van der Borgh, Cloodt and Romme (2012), Value creation by knowledge-based ecosystems]
-* [https://doi.org/10.1287/orsc.5.1.14 Nonaka (1994), A Dynamic Theory of Organizational Knowledge Creation]
+
+<references />
+
+* [https://doi.org/10.1111/j.1467-9310.2011.00673.x van der Borgh, M., Cloodt, M., and Romme, A. G. L. (2012), “Value creation by knowledge-based ecosystems.”]
+* [https://doi.org/10.3389/frma.2021.751553 “The Scholarly Knowledge Ecosystem: Challenges and Opportunities for the Field of Information” (2021).]
+* [https://www.oecd.org/en/publications/oecd-sme-and-entrepreneurship-outlook-2023_342b8564-en/full-report/component-10.html OECD (2023), “Knowledge and innovation networks for SMEs and start-ups.”]
 
 == Reading depth ==
-[[Knowledge ecosystem/Simple|Simple explanation]]
+
+[[Knowledge ecosystem/Simple|Simple explanation]] · [[Knowledge ecosystem|Core article]]

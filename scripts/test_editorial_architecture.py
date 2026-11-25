@@ -207,7 +207,7 @@ class SourceContractTests(unittest.TestCase):
 
         rendered = preview(simple)
         self.assertIn("A '''semiconductor''' is a material", rendered)
-        self.assertNotIn("== How does it work? ==", rendered)
+        self.assertIn("== How does it work? ==", rendered)
         self.assertNotIn("= Semiconductor — Simple =", rendered)
         self.assertNotIn("current=Simple", rendered)
         changed = simple.replace(

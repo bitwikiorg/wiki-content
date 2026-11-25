@@ -1,0 +1,27 @@
+'''Reading depth:''' [[Chiplet/Simple|Simple]] · [[Chiplet/Technical|Technical]]
+<onlyinclude>'''Chiplet-based integration''' partitions a system into multiple separately manufactured dies and connects them at package scale. Its feasibility depends jointly on functional partitioning, die-to-die communication, test coverage, manufacturing yield and package-level electrical and thermal constraints.</onlyinclude>
+
+== Scope and integration topologies ==
+Chiplets are modular die-level components, not synonyms for 2.5D or 3D integration. Dies can use the same or different fabrication processes, and can be arranged side by side on substrates, bridges or interposers, or vertically stacked. Architecture must consider reuse, manufacturing yield, bandwidth, latency, power delivery, thermal coupling, assembly and test cost jointly.
+
+== Architectural partitioning ==
+Partition boundaries determine which transactions traverse the package rather than on-die wires. The designer must budget link bandwidth, serialization, protocol overhead, latency, clock-domain crossing, coherence (where applicable), and power. Separating I/O and compute onto different process nodes can reduce the area fabricated at the most expensive node, but extra interfaces and package complexity can offset the savings.
+
+== Interconnect and packaging ==
+UCIe 1.0 specifies an industry die-to-die interface framework for standard and advanced packaging; it is not a guarantee of plug-and-play compatibility across arbitrary chiplets. The 2022 IEEE UCIe paper describes physical, channel, protocol and packaging design. The 2024 Nature Electronics work investigates a proposed 3D extension at shrinking bump pitches; its measured or modeled results should not be generalized to every package. Side-by-side organic-substrate, bridge and interposer implementations differ in routing density, reach and power. Vertical stacking adds thermal and bonding constraints.
+
+== Yield and cost: illustrative model ==
+Under an idealized independent random-defect Poisson model, die yield is <math>Y(A)=e^{-DA}</math>, where <math>D</math> is defects per unit area and <math>A</math> is die area. For an illustrative <math>D=0.005\,\mathrm{mm}^{-2}</math>, a 200 mm² monolithic die has <math>Y=e^{-1}\approx0.3679</math>. Each of four 50 mm² dies has <math>Y=e^{-0.25}\approx0.7788</math>. If four unscreened dies are assembled with independent defects, their joint survival probability is <math>(e^{-0.25})^4=e^{-1}\approx0.3679</math>: partitioning alone does not improve the probability that all four random dies are good. The economic opportunity arises from screening, selecting known-good dies, die counts per wafer, reuse and process-node choices. Real yield additionally depends on defect clustering, edge losses, assembly yield, test escape rates and correlated failures. This example is not a product forecast.
+
+== Design and verification limits ==
+Die-level functional verification does not replace link compliance, power-integrity, thermal, package-assembly and post-assembly testing. Inter-die links create new fault surfaces. Partition optimization is workload- and technology-dependent: a chiplet system may perform worse or cost more than a monolithic design.
+
+== Interface and system-level validation ==
+UCIe defines specified die-to-die interface layers and revision-dependent compliance provisions; it does not ensure arbitrary vendor chiplets are plug-and-play at the power, clock, coherency, security, firmware or package levels. The [https://www.uciexpress.org/specifications/ucie-3-0 UCIe Consortium specifications] document revisions. Validate channel loss, training, signal integrity, thermal coupling, assembly yield and test escape rates for the intended implementation.
+
+== Sources and provenance =
+* [https://eps.ieee.org/technology/heterogeneous-integration-roadmap/ IEEE Electronics Packaging Society, Heterogeneous Integration Roadmap], industry roadmap and terminology.
+* [https://doi.org/10.1109/TCPMT.2022.3207195 Das Sharma et al. (2022), IEEE Transactions on Components, Packaging and Manufacturing Technology, DOI 10.1109/TCPMT.2022.3207195], original UCIe architecture.
+* [https://doi.org/10.1038/s41928-024-01126-y Das Sharma et al. (2024), Nature Electronics 7, 244–254], 3D interconnect research.
+* [https://doi.org/10.1109/EPTC62800.2024.10909747 ''Trade-off Between Chiplet Dimensions and Packaging Parameters'' (2024 IEEE EPTC)], partitioning and cost tradeoffs.
+* [https://doi.org/10.1109/MDAT.2026.3706448 ''Testing of Chiplet-Based Packages'' (2026), IEEE Design & Test], testing challenges.

@@ -1,0 +1,47 @@
+<onlyinclude>'''Neural processing units''' specialize computation and data movement for supported neural-network operators. Their performance is determined jointly by arithmetic parallelism, on-chip data reuse, off-chip bandwidth, numerical representation, operator coverage, and the software toolchain; peak advertised operations per second alone is insufficient to predict inference latency or energy use.</onlyinclude>
+
+'''Reading depth:''' [[Neural processing unit/Simple|Simple]] · [[Neural processing unit/Technical|Technical]]
+
+== Workload and arithmetic ==
+A dense layer with <math>N</math> inputs and <math>M</math> outputs can be written
+:<math>y_j=b_j+\sum_{i=1}^{N}W_{ji}x_i,\quad j=1,\ldots,M.</math>
+For each output, a sequential evaluation performs <math>N</math> multiplications and, when accumulated from its bias, <math>N</math> additions. Specialized datapaths exploit parallel multiply–accumulate (MAC) units or matrix/tensor execution. An illustrative layer with 32 inputs and 16 outputs contains <math>32\times16=512</math> weight–activation products, or 512 MAC steps if accumulation begins with the bias. Under a conventional ''two arithmetic operations per MAC'' throughput convention, this is 1,024 nominal operations. These are workload counts, not measured cycles, latency or throughput.
+
+Convolutional layers can reuse each input activation and filter coefficient many times; dense, convolutional, attention and other operators differ substantially in shape and data-access patterns. Hardware that accelerates one operation does not necessarily accelerate every part of a neural network.<ref name="sze">Vivienne Sze, Yu-Hsin Chen, Tien-Ju Yang and Joel S. Emer, ''Efficient Processing of Deep Neural Networks: A Tutorial and Survey'', ''Proceedings of the IEEE'' 105(12), 2295–2329 (2017), doi:10.1109/JPROC.2017.2761740, https://dspace.mit.edu/entities/publication/97f40a24-e38f-48e6-901c-2608a590862f</ref>
+
+== Dataflow and memory hierarchy ==
+A multiply–accumulate array can have high theoretical throughput while waiting for weights, activations, or partial sums. Local registers and SRAM can reduce transfers to external memory, at the cost of constrained capacity. Dataflow choices determine which values remain near processing elements and which move among units: weight-stationary, output-stationary, and row-stationary schemes represent different reuse strategies, not interchangeable performance promises.<ref name="sze"/> Actual data movement also depends on tiling, DMA scheduling, cache or scratchpad structure, tensor shape and synchronization.
+
+Arm's Ethos-U integration guidance describes a host Cortex-M CPU working with an NPU, shared on-chip SRAM for input and output feature maps, and mechanisms for moving data through the system. These details document a concrete embedded family and do not define all NPUs.<ref name="arm">Arm, ''ML Developers Guide for Cortex-M Processors and Ethos-U NPU'', “Ethos-U system integration”, https://support.arm.com/documentation/109267/latest/Arm-Ethos-U-NPU/Ethos-U-system-integration</ref>
+
+== Numerical precision ==
+Many embedded NPUs emphasize quantized integer arithmetic, while other neural accelerators support floating-point formats. Activation and weight formats, accumulation width, scaling, rounding, saturation, and supported operator constraints are implementation-specific. Lower precision may reduce storage and arithmetic cost but can change numerical results and model accuracy. Quantization-aware training or post-training calibration can help, yet accuracy must be evaluated for the actual model and input distribution; neither low precision nor the NPU label establishes acceptable accuracy.<ref name="sze"/><ref name="arm"/>
+
+== Software execution path ==
+A typical deployment exports a trained model, selects or quantizes supported representations, compiles or partitions the operator graph, allocates tensors, and schedules accelerator commands through a runtime or driver. Unsupported layers can execute on the host CPU or another backend. Reformatting tensors, transferring data, and synchronizing between backends can overwhelm the benefit of acceleration on small graphs. The supported operator set and software version must be checked for the specific NPU rather than inferred from generic descriptions.<ref name="arm"/>
+
+== Comparison with other processors ==
+* '''CPU:''' comparatively general-purpose execution and system control, including application logic and fallbacks; may have vector or matrix extensions.
+* '''GPU:''' broadly programmable parallel computation, including neural-network kernels; actual features depend on the model and software stack.
+* '''DSP:''' specializes repetitive numerical processing of sampled signals; can also execute some neural-network operations.
+* '''NPU:''' prioritizes specified neural-network operator classes and their data movement, sometimes with narrower programming and precision support.
+
+These are architectural emphases, not mutually exclusive chip categories. A single system-on-chip can contain all four.
+
+== Throughput, bandwidth and evaluation model ==
+For a supported kernel, let <math>F</math> denote the number of counted arithmetic operations, <math>Q</math> the bytes transferred at the selected memory boundary, <math>P_{\mathrm{peak}}</math> the attainable arithmetic rate under the chosen precision, and <math>B</math> sustained bandwidth at that boundary. A simple roofline bound is
+:<math>T_{\mathrm{kernel}}\geq\max\left(\frac{F}{P_{\mathrm{peak}}},\frac{Q}{B}\right).</math>
+This lower bound excludes launch overhead, synchronization, unsupported operators, host fallback, thermal throttling, and pipeline inefficiency; it is not a measured latency prediction. Arithmetic intensity <math>F/Q</math> must specify whether traffic is measured at SRAM, cache, or external DRAM. Reuse and tiling change <math>Q</math>, while graph partitioning may introduce transfers not present in the isolated kernel model. An end-to-end comparison should measure those costs separately.
+
+For experimental reproducibility, report the exact model revision, tensor shapes, operator partition, compilation/runtime versions, batch size, numerical formats, quantization calibration set, accuracy metric, memory traffic where measurable, warm-up protocol, sustained power and thermal conditions. Distinguish a modeled performance bound from profiler observations and application-level results.
+
+== Scope and open problems ==
+An NPU can be an on-chip block or a separate accelerator; a CPU generally retains system-control responsibilities and may execute unsupported operators. CPU, GPU, DSP and NPU categories overlap in supported arithmetic, and the meaningful distinction is each implementation's instruction/operator coverage, memory organization and software stack. Research questions include scheduling sparse or irregular operators without excessive metadata traffic, managing dynamic model shapes, and quantifying the energy cost of memory transfers versus arithmetic. These are design questions, not established universal performance rankings.
+
+== Evidence, metrics and limitations ==
+Jouppi and colleagues reported a 2017 datacenter tensor accelerator with a 65,536-element 8-bit MAC matrix unit and 28 MiB of software-managed on-chip memory. That primary-source system study illustrates specialization and data locality, but its benchmark results cannot be generalized to all NPUs, contemporary applications, or different manufacturing processes.<ref name="jouppi">Norman P. Jouppi et al., ''In-Datacenter Performance Analysis of a Tensor Processing Unit'', ISCA (2017), https://research.google/pubs/in-datacenter-performance-analysis-of-a-tensor-processing-unit/</ref>
+
+Meaningful evaluation reports a stated model, batch size, precision and accuracy target, memory footprint, end-to-end latency (including fallback and transfers), sustained throughput, and measured energy or power in the stated thermal envelope. A peak TOPS figure is not a proof of application-level speed or energy efficiency. This article describes architectural mechanisms, not a tested comparison or recommendation of particular NPU products.
+
+== References ==
+<references/>

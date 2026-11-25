@@ -1,0 +1,41 @@
+'''Reading depth:''' [[Bootloader/Simple|Simple]] · [[Bootloader/Technical|Technical]]
+= Bootloader — Simple =
+
+<onlyinclude>A '''bootloader''' is software that helps a computer or electronic device start its next program, often an operating system. It finds or receives the program, prepares it to run, and transfers control. Some devices use several bootloaders in sequence; others start an embedded application directly. The bootloader is not necessarily the same thing as the firmware, the operating system, or a driver.<ref name="uefisimple">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/02_Overview.html ''UEFI Specification 2.11'', Overview], boot manager, UEFI OS loaders and boot services.</ref>
+
+== Why does a computer need one? ==
+A processor must begin executing instructions from a location defined by its platform. At that early point, the normal operating-system services are not yet available. Some initial code must identify a suitable program to run next, prepare enough of the hardware or memory environment, and pass control to it.
+
+On a typical UEFI computer, platform firmware establishes a boot environment and a firmware boot manager selects a boot option. A UEFI OS loader then performs the steps required to launch an operating system. These are distinct roles, even when the user sees only one startup screen.
+
+Imagine a library opening in the morning. One worker unlocks the building, another chooses which room will open first, and a third prepares that room for visitors. The analogy is limited: in a real computer, each stage follows exact machine instructions and platform contracts, not human judgment.
+
+== What can it load? ==
+A bootloader might start a Linux kernel, another OS, a diagnostic environment, a recovery image, a second-stage loader or a program on an embedded device. It may read a local disk, use firmware services to access a file, or receive data over a network. Not every bootloader can do all of these.
+
+Some loaders offer a menu so a person can choose an operating system or recovery mode. Others run automatically without any display. A device can have an immutable ROM stage followed by an updateable stage, allowing limited early code to load a more capable program.
+
+== How is it different from firmware? ==
+'''Firmware''' is software closely associated with hardware, such as platform initialization code or a controller program. A '''bootloader''' is software defined by its task of loading and handing off to another program. A bootloader can be part of firmware, but these are not identical categories.
+
+An '''operating system''' manages processes, memory, files and devices after it has started. A bootloader usually stops controlling the machine after handing off, although specific boot arrangements can be more complex. A '''device driver''' manages a device's operations; a loader may use drivers without itself being a general-purpose driver.
+
+== What can go wrong? ==
+A loader might be unable to find a valid image, encounter corrupted storage, choose the wrong boot entry, lack sufficient memory, or try to start code intended for another processor or boot protocol. A recovery loader or alternative boot entry can help if it was designed and tested in advance.
+
+On a UEFI system, firmware selects boot options using variables such as <code>BootOrder</code> and an optional one-time <code>BootNext</code>. This selection does not guarantee that the selected image will run successfully.<ref name="bootorder">UEFI Forum, [https://uefi.org/specs/UEFI/2.11/03_Boot_Manager.html ''UEFI 2.11'', Boot Manager], load-option processing.</ref>
+
+Security matters because a malicious boot stage can execute before the operating system's usual defenses are active. Image verification can reduce particular risks, but a verified image can still contain bugs, and verification depends on a trustworthy chain of earlier components.
+
+== Does every computer boot the same way? ==
+No. Older PCs may follow BIOS-era disk boot conventions; modern PCs often use UEFI. Phones, microcontrollers and other embedded devices can have quite different hardware-defined starting points. A Linux kernel has documented architecture-specific boot requirements, so an x86 bootloader cannot simply assume that the same rules apply to every ARM or RISC-V system.<ref name="linuxintro">Linux kernel, [https://www.kernel.org/doc/html/latest/arch/x86/boot.html ''The Linux/x86 Boot Protocol''], historical and versioned kernel boot conventions.</ref>
+
+The practical question is always: which component is currently executing, what exact next image is being loaded, and what state must exist when control is transferred?
+
+</onlyinclude>
+
+== Continue reading ==
+[[Bootloader/Technical|Technical]] examines the handoff protocols, boot-time memory maps, trust decisions, and validation of failure/recovery paths.
+
+== References ==
+<references/>

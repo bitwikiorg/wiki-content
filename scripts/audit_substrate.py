@@ -13,6 +13,8 @@ import re
 from collections import Counter
 from pathlib import Path
 
+from validate_v2 import is_reading_depth_derivative
+
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "manifest.json"
@@ -106,19 +108,12 @@ def is_reading_depth_directory(path: Path) -> bool:
         return False
     if any(item.name not in READING_DEPTH_FILENAMES for item in entries):
         return False
-    for item in entries:
-        text = item.read_text(encoding="utf-8")
-        if "{{Reading depth" in text:
-            continue  # legacy three-depth source convention
-        role = item.stem
-        other = "Technical" if role == "Simple" else "Simple"
-        if not (
-            "''Reader localizations:''" in text
-            and f"'''{role}'''" in text
-            and f"[[{rel.name}/{other}|{other}]]" in text
-        ):
-            return False
-    return True
+    return all(
+        is_reading_depth_derivative(
+            item.relative_to(ROOT), item.read_text(encoding="utf-8"), root=ROOT
+        )
+        for item in entries
+    )
 
 
 def source_files() -> list[Path]:

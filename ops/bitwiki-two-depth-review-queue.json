@@ -319,7 +319,8 @@
         "N007"
       ],
       "reason": "Unpaired final subject; do not fabricate another article",
-      "status": "pending"
+      "status": "corrected_pending_validation",
+      "note": "N007 independently checkpointed; final validation outstanding."
     }
   ],
   "articles": [
@@ -1145,9 +1146,21 @@
       "title": "Parkinson's law",
       "pr_number": 108,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/108",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #108 commit 6642417116ca8e7852bc84d812ea6c20cb82d7e6; canonical host transcludes complete Simple; reciprocal navigation; added behavioral and organizational studies and differentiated alternative mechanisms.",
+        "preservation_evidence": [
+          "1955 satire, deadline and bureaucratic hypotheses, historical comparisons, accounting identity and limits retained."
+        ],
+        "scientific_sources": [
+          "Parkinson historical reprint; Bryan and Locke (1967) publisher abstract; 1993 Journal of Public Economics study abstract; Breton and Wintrobe (1979) publisher record."
+        ],
+        "static_checks": "8/8 post-commit source assertions passed; PR head independently verified.",
+        "tests": "Scoped Python test updated; execution and full V2/staging validation outstanding.",
+        "gate": "PR #136 and owner approval; no merge/publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/108"
+      }
     },
     {
       "id": "N008",
@@ -1771,16 +1784,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N006",
+    "last_checkpoint_article": "N007",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 1,
+    "articles_pending_or_incomplete": 0,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R32",
-    "articles_corrected_pending_validation": 64,
-    "pairs_corrected_pending_validation": 32
+    "last_reviewed_pair": "R33",
+    "articles_corrected_pending_validation": 65,
+    "pairs_corrected_pending_validation": 33
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

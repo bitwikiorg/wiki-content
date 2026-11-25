@@ -8,7 +8,8 @@ def read(suffix):
 def test_navigation_and_semantic_host():
     core, simple, technical = (read(s) for s in ("", "/Simple", "/Technical"))
     assert "{{:Semiconductor manufacturing yield/Simple}}" in core
-    assert "[[Category:Semiconductor manufacturing]]" in core
+    assert "[[Category:Engineering]]" in core
+    assert "== Why chips fail ==" in simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0]
     for text in (core, simple, technical):
         assert text.count("<onlyinclude>") == text.count("</onlyinclude>") == 1
         assert "[[Semiconductor manufacturing yield/Simple|Simple]]" in text

@@ -1,6 +1,6 @@
 {{Source status|status=Simple authoritative localization|note=Accessible teaching surface; overview owned here.}}
 = Cache memory — Simple =
-<onlyinclude>A '''cache''' is a small, fast place where a computer keeps copies of information it expects to use again. When the information is already there, the processor can often retrieve it sooner than by asking a more distant memory level.</onlyinclude>
+<onlyinclude>A '''cache''' is a small, fast place where a computer keeps copies of information it expects to use again. When the information is already there, the processor can often retrieve it sooner than by asking a more distant memory level.
 
 == An everyday analogy ==
 Imagine keeping frequently used reference books on your desk instead of returning to a library shelf each time. A desk is faster to reach but holds fewer books. Choosing which books stay on the desk resembles a cache's replacement policy. Unlike a desk, a computer cache also tracks precisely which memory addresses its copies represent.
@@ -17,10 +17,12 @@ Some addresses compete for the same limited slots even when other slots are empt
 == What a cache cannot promise ==
 A cache does not make every access faster: misses cost time, and extra cache circuitry consumes energy. Actual performance depends on the program's access pattern and the processor design.
 
+== Reference ==
+* Hill and Smith (1989), [https://doi.org/10.1109/12.40842 “Evaluating Associativity in CPU Caches”].
+</onlyinclude>
+
 == Continue reading ==
 ''Reader localizations:'' '''Simple''' · [[Cache memory/Technical|Technical]]
 
 [[Cache memory/Technical|Technical details]] · [[Computer memory|Memory hierarchy]] · [[Computer architecture|Computer architecture]]
 
-== Reference ==
-* Hill and Smith (1989), [https://doi.org/10.1109/12.40842 “Evaluating Associativity in CPU Caches”].

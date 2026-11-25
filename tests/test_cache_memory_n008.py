@@ -23,7 +23,9 @@ class CacheMemorySourceTest(unittest.TestCase):
         self.assertEqual(core.count("{{:Cache memory/Simple}}"), 1)
         self.assertIn("[[Cache memory/Technical|Technical]]", simple)
         self.assertIn("[[Cache memory/Simple|Simple]]", technical)
-            self.assertNotIn("{{#ask:", s)
+        self.assertNotIn("{{#ask:", simple + technical)
+        self.assertIn("{{Knowledge object", core)
+        self.assertIn("== What happens on a request? ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
 
     def test_reference_and_math_integrity(self):
         s = (BASE / TITLE / "Technical.mediawiki").read_text(encoding="utf-8")

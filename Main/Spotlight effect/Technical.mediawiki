@@ -1,0 +1,139 @@
+= Spotlight effect — Technical =
+
+The '''spotlight effect''' is an experimentally studied tendency to overestimate the noticeability of one's appearance, actions or behavior to other people. A person's own experiences are unusually accessible to them; observers may attend to other information. The phenomenon is a comparison between judgments about others' attention and observable attention, not the metaphysical claim that other minds are inaccessible or the social claim that nobody cares about anyone else.
+
+Gilovich, Medvec and Savitsky's 2000 experiments investigated overestimation of salience in social judgment and advanced an anchoring-and-adjustment account. Related work distinguishes the “illusion of transparency,” in which a person overestimates the extent to which private feelings or thoughts are externally detectable. Subsequent investigations examined the salience of variability in one's actions and appearance.<ref name="original">Thomas Gilovich, Victoria H. Medvec and Kenneth Savitsky, [https://doi.org/10.1037/0022-3514.78.2.211 “The Spotlight Effect in Social Judgment: An Egocentric Bias in Estimates of the Salience of One's Own Actions and Appearance”], ''Journal of Personality and Social Psychology'' 78(2), 211–222 (2000), original multi-study experimental work.</ref><ref name="overview">Thomas Gilovich and Kenneth Savitsky, [https://doi.org/10.1111/1467-8721.00039 “The Spotlight Effect and the Illusion of Transparency”], ''Current Directions in Psychological Science'' 8(6) (1999), scope and interpretation.</ref><ref name="revisited">Thomas Gilovich, Justin Kruger and Victoria Husted Medvec, [https://doi.org/10.1006/jesp.2001.1490 “The Spotlight Effect Revisited: Overestimating the Manifest Variability of Our Actions and Appearance”], ''Journal of Experimental Social Psychology'' (2002), related experimental account.</ref>
+
+== Operational definition and research design ==
+
+A defensible definition requires at least two comparable observables: a focal participant's predicted extent of being noticed and measured observer recognition under the same task conditions. Let <math>q_i</math> denote the participant's estimate of the fraction of eligible observers who would notice their target appearance or action, and <math>\hat p_i</math> the observed fraction for that participant's designated audience.
+
+An individual calibration gap can be defined as
+
+<math display="block">d_i=q_i-\hat p_i.</math>
+
+Positive values indicate overestimation for that observation; negative values indicate underestimation. A sample mean <math>\bar d=n^{-1}\sum_i d_i</math> summarizes the participants tested, under a consistent measurement design. It is not automatically the population-wide effect, and its uncertainty is affected by observers clustered around participants, stimulus differences and selection.
+
+For a simple study, random assignment might vary whether an unusual item is worn, its salience or participants' access to information about observers' attention. A prediction must be recorded before observers report what they noticed to avoid hindsight bias. Observer coding should be blinded to participant estimates where possible.
+
+The key comparison should not confuse the observer's awareness of the person's existence, attention to the target detail and ability to identify the target later. These are related but distinct outcome variables. The prompt used to elicit predictions also matters: a participant asked about embarrassment may report a different quantity from one asked about accurate visual recognition.
+
+== Anchoring and adjustment as an explanation ==
+
+A proposed mechanism is that participants begin with the exceptional availability of their own appearance or action and insufficiently adjust for the observer's competing attentional demands. This is an explanatory hypothesis of judgment under the original experimental conditions, not a universal algorithm with a verified constant coefficient.
+
+A schematic model might write
+
+<math display="block">q_i=a_i+\delta_i,\qquad p_i=p(a_i,s_i,c_i),</math>
+
+where <math>a_i</math> is focal salience to the actor, <math>\delta_i</math> represents context-dependent adjustment and <math>s_i,c_i</math> denote stimulus and social context. This is a descriptive decomposition only. No evidence establishes that the equations are a mechanistic law of thought or that adjustments must always be insufficient.
+
+Alternative explanations include selection into conspicuous situations, limited knowledge of observer instructions, unequal visual access, memory errors and differing interpretations of “notice.” A strong causal conclusion requires experimentally separating candidate mechanisms rather than merely showing <math>\bar d>0</math>.
+
+== Independent numerical fixture: one hypothetical observation setting ==
+
+Imagine a participant expects 60% of 20 eligible observers to notice a marked shirt, <math>q=0.60</math>. Suppose 6 of those 20 observers actually report noticing in a controlled but invented experiment, yielding
+
+<math display="block">\hat p=\frac{6}{20}=0.30,\qquad d=q-\hat p=0.60-0.30=0.30.</math>
+
+The participant's estimate is 30 percentage points above the observed fraction. This is a '''single hypothetical case''', not a published effect size and not evidence about every participant. The observation's binomial standard-error approximation, '''if''' observers are independent and identically distributed with probability 0.30, is
+
+<math display="block">SE(\hat p)\approx\sqrt{\frac{0.30(0.70)}{20}}\simeq0.1025.</math>
+
+That standard-error expression is conditional on independent exchangeable observers. It does not account for participant-level variation, shared context or actual observation process. It would be inappropriate to treat it as a complete confidence interval for the population spotlight effect.
+
+=== Proper-scoring interpretation ===
+
+Suppose each observer's independent binary noticeability <math>Y_j\in\{0,1\}</math> is evaluated by a forecast <math>q=0.60</math>. The sample mean Brier score is
+
+<math display="block">\overline{BS}(q)=\frac1{20}\sum_{j=1}^{20}(q-Y_j)^2=\frac{6(0.4)^2+14(0.6)^2}{20}=0.30.</math>
+
+A forecast equal to the observed base rate <math>q=\hat p=0.30</math> gives
+
+<math display="block">\overline{BS}(0.30)=\frac{6(0.7)^2+14(0.3)^2}{20}=0.21.</math>
+
+The difference <math>0.30-0.21=0.09</math> equals <math>(0.60-0.30)^2</math>, the squared miscalibration relative to this sample's empirical proportion. This equality is a consequence of squared-error algebra, not experimental proof of a specific social-cognitive mechanism. In-sample comparison to the empirical event rate is an optimistic benchmark; independent out-of-sample evaluation is preferable for predictive claims.
+
+{| class="wikitable"
+! Defined example quantity !! Result
+|-
+| Participant predicted notice fraction || 0.60
+|-
+| Observed fraction || 6/20 = 0.30
+|-
+| Prediction minus observed share || +0.30
+|-
+| Brier score at participant forecast || 0.30
+|-
+| Brier score at empirical base rate || 0.21
+|-
+| In-sample Brier difference || 0.09
+|}
+
+A mean gap from this synthetic case is not the published average in the original work. Researchers should not repeat a numerical result across articles as if it had come from real participants.
+
+== Within-person, between-person and group-level claims ==
+
+A study of social judgment can show a positive mean group gap while some participants accurately predict attention or underestimate it. An average may be dominated by unusual items, observer tasks or social settings. A repeated-measures design with multiple participants and multiple observer groups can estimate variability at both levels, for example using a hierarchical model,
+
+<math display="block">Y_{ij}\sim\operatorname{Bernoulli}(p_{ij}),\qquad\operatorname{logit}(p_{ij})=\beta_0+u_i+\beta_s s_{ij}+\cdots,</math>
+
+where <math>u_i</math> captures participant-level heterogeneity and <math>s_{ij}</math> could represent item salience. This is a possible statistical model, not a claim that the original published researchers used this exact specification.
+
+Observer reports may be noisy. A “did you notice?” question can cue memory or change what counts as recognition; multiple-choice identification can have chance-level success. Researchers must separate genuine noticeability from demand or guesswork and predefine whether false positives count.
+
+### Statistical uncertainty and design effects
+
+If a participant interacts with 20 observers who all share the same experience, they are not 20 independent replications of the participant-level bias. Clustering reduces effective sample size relative to naïve independent-observer calculations. Randomization across stimuli, observer instructions and participant conditions is needed to isolate the influence of salience or perspective-taking interventions.
+
+Confidence intervals should be constructed on the actual sampling hierarchy, and measurement reliability assessed for both participant predictions and observer outcomes. Different studies might use absolute counts, percentages, recognition tasks or hypothetical questions; these measures cannot be automatically pooled into one universal “spotlight effect size.”
+
+== Contrast with related constructs ==
+
+The illusion of transparency refers to the perceived visibility of private internal states, such as nervousness. The spotlight effect focuses on the perceived salience of externally visible attributes or actions. Both can involve egocentric estimation, but they do not have identical dependent variables or necessarily identical mechanisms.<ref name="overview"/>
+
+Social anxiety includes clinical symptom dimensions, avoidance patterns and functional impairment, none of which is required for the spotlight effect's basic experimental definition. A person showing positive <math>d_i</math> in a laboratory task cannot be diagnosed on that basis.
+
+The effect is also not equivalent to pluralistic ignorance, self-serving bias, confirmation bias or the halo effect. Similar-looking social judgments should be differentiated by how each is measured and its historically documented experimental paradigm.
+
+== Alternative explanations, boundary conditions and replication ==
+
+The spotlight effect can vary with audience familiarity, cultural conventions, participant age, group membership, event conspicuousness, actual norms and whether the observation is expected. A conspicuous violation may be accurately noticed by most observers. Real social evaluations sometimes produce serious consequences, so the finding must not be converted into advice that all public mistakes are harmless.
+
+Replications should match the original operational definitions, pre-register exclusions, verify manipulation checks and test measurement invariance across contexts. Direct replication and conceptual extension answer different questions; if a new paradigm gives a different result, investigators should ask whether the audience, cue salience or self-focused attention was changed.
+
+The scientific status of an effect is best expressed as evidence for a family of context-sensitive judgmental tendencies, not a universal constant. A negative result in one well-powered design may constrain the effect's scope without retroactively proving the original work was fabricated; equally, one famous demonstration is not a license to skip independent verification.
+
+== Artificial-agent and design analogies ==
+
+An artificial agent estimating how closely its output will be scrutinized is performing a computational prediction task. It may exhibit calibration errors if its model of reviewers is wrong. That functional analogy does not establish the same social-psychological anchoring mechanism found in human participants.
+
+A suitable engineering experiment would measure agent predictions of observer behavior against human or automated reviewer outcomes, controlling task type and evaluation knowledge. It must not assign a human “spotlight effect” label solely because an agent produced an overconfident sentence.
+
+Human-centered interface design can use the broader lesson that internal salience to the actor differs from external attention. But actionable design should be grounded in measured user behavior and system outcomes rather than assumed bias prevalence.
+
+== Reproducibility requirements ==
+
+Report recruitment, audience exposure, stimulus-selection rules, prediction timing, observer measurement protocol, analysis unit, clustering, exclusion rules, mean calibration gap and uncertainty. Distinguish self-report from independently verified observer recognition.
+
+The synthetic fixture above should reproduce <math>\hat p=0.30</math>, gap <math>d=0.30</math>, Brier scores 0.30 and 0.21, and difference 0.09. Mathematical verification is separate from empirical effect validation.
+
+The spotlight effect is a useful concept in social judgment, with original experimental support and important limits. Its epistemic value lies in testable discrepancy between perceived and observed noticeability—not in treating other people's attention as always negligible.
+
+== Reading depth ==
+
+''Reader localizations:'' [[Spotlight effect/Simple|Simple]] · '''Technical'''
+
+== Preserved canonical qualifications ==
+
+The core research synopsis emphasizes that noticeability studies require a consistent denominator of eligible observers and independent observation measures. Individual prediction error and group mean bias differ. Sampling only people who remember embarrassing mistakes introduces selection bias; conspicuous or socially consequential events may be noticed at or above expectations. Researchers must distinguish anchoring, memory bias, actual social attention and measurement artifacts. The original experiments do not support a population-wide constant effect size or a clinical diagnosis.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* [https://doi.org/10.1037/0022-3514.78.2.211 Gilovich, Medvec and Savitsky (2000)], original experimental report.
+* [https://doi.org/10.1111/1467-8721.00039 Gilovich and Savitsky (1999)], spotlight effect versus illusion of transparency.
+* [[Spotlight effect/Simple|Simple]] · [[Cognition]] · [[Metacognition]].

@@ -16,6 +16,7 @@ class ThinFilmDepositionTests(unittest.TestCase):
         self.assertNotIn("{{:Thin-film deposition/Technical}}", core)
         self.assertIn("[[Thin-film deposition/Technical|Technical explanation]]", core)
         self.assertNotIn("== References ==", core)
+        self.assertIn("{{Knowledge object", core)
         for depth in ("Simple", "Technical"):
             source = (BASE / f"Thin-film deposition/{depth}.mediawiki").read_text()
             self.assertEqual(source.count("<onlyinclude>"), 1)
@@ -24,6 +25,7 @@ class ThinFilmDepositionTests(unittest.TestCase):
     def test_distinct_scopes_and_provenance(self):
         simple = (BASE / "Thin-film deposition/Simple.mediawiki").read_text()
         technical = (BASE / "Thin-film deposition/Technical.mediawiki").read_text()
+        self.assertIn("== How it works ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         for term in ("PVD", "CVD", "ALD"):
             self.assertIn(term, simple)
             self.assertIn(term, technical)

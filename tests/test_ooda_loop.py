@@ -42,8 +42,10 @@ class OODALoopArticleTest(unittest.TestCase):
         for content in self.texts:
             self.assertIn("<references/>", content)
             self.assertIn("1995", content)
-            names = re.findall(r'<ref name="([^"]+)"', content)
+            names = re.findall(r'<ref name="([^"]+)"\s*>', content)
+            uses = re.findall(r'<ref name="([^"]+)"\s*/>', content)
             self.assertEqual(len(names), len(set(names)))
+            self.assertFalse(set(uses) - set(names), "undefined named reference")
         self.assertIn("Boyd_Errata_page384.pdf", self.texts[2])
         self.assertIn("implicit guidance", self.texts[2].lower())
         self.assertIn("not a deterministic four-step", self.texts[2])

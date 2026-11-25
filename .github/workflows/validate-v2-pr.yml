@@ -176,7 +176,7 @@ jobs:
           if git("rev-parse", "HEAD^1").decode().strip() != base:
               raise SystemExit("base revision changed; regenerate evidence")
           pins = [
-              (81, "fe18eb0a0939bdd46e9c5221fdf2c06073e4010c"),
+              (81, "d3c58809f03338a6ad32d2526c47631feeea87bf"),
               (82, "15165897fba6de02ffe2aa6cdaf0f1b3e797fe67"),
               (83, "9aebcc73ee58656a6208e97c918e10a912375f97"),
               (84, "5dc8f1e77e716998cd7ac30e1c9c0a8f154b9a71"),

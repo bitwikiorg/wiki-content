@@ -2,29 +2,343 @@
  |title=Open-source software
  |entity_type=Concept
  |domain=Computer science, Technology, Engineering
- |provenance=Open Source Initiative; GNU General Public License version 3; Apache License version 2.0
+ |status=Established
+ |provenance=Open Source Initiative; Free Software Foundation; GNU GPLv3; Apache License 2.0; OpenSSF
 }}
-<onlyinclude>{{:Open-source software/Simple}}</onlyinclude>
+{{Reading depth|base=Open-source software|current=Core}}
 
-'''Reading depth:''' [[Open-source software/Simple|Simple]] · [[Open-source software/Technical|Technical]]
+= Open-source software =
+
+'''Open-source software''' (OSS) is software distributed under a license that grants users rights to inspect, use, modify, and redistribute the software and its source code under specified conditions. Open source is therefore a legal and governance property of software distribution, not merely the fact that source code can be viewed.
+
+The Open Source Initiative's Open Source Definition (OSD) requires more than source availability. Among its criteria are free redistribution, availability of source code in the preferred form for modification, permission for derived works, nondiscrimination against persons or fields of endeavor, and license terms that do not depend on one particular product or technology.<ref name="osi">[https://opensource.org/osd Open Source Initiative, “The Open Source Definition.”]</ref>
+
+Open-source software can be developed by volunteers, companies, governments, foundations, universities, or mixed communities. It can be sold commercially. Commercial use is compatible with the OSD.<ref name="osi-faq">[https://opensource.org/faq Open Source Initiative, “Frequently Answered Questions.”]</ref>
+
+== Open source and free software ==
+
+The free-software and open-source movements overlap substantially in the software they regard as freely usable and modifiable, but they emphasize different values.
+
+The Free Software Foundation defines free software around four essential user freedoms: to run the program for any purpose, study and modify it, redistribute copies, and distribute modified versions.<ref name="fsf">[https://www.gnu.org/philosophy/free-sw.html GNU Project, “The Free Software Definition.”]</ref>
+
+The term '''open source''' was adopted in 1998 partly to emphasize a development and licensing model rather than the ethical framing associated with “free software.”
+
+Many licenses satisfy both the OSD and the Free Software Definition. The terms are therefore often compatible in practice while remaining historically and philosophically distinct.
+
+Neither “free software” nor “open source” means that the software must have zero price.
+
+== Source code and preferred form for modification ==
+
+Source code is the form in which a developer normally makes changes to a program.
+
+The OSD requires that source code be available and that deliberately obfuscated code not be substituted for the genuine preferred form for modification.<ref name="osi" />
+
+This matters because a nominally readable artifact can still be practically unusable for modification if the actual build system, generated sources, model files, or other required components are withheld.
+
+Open-source evaluation should therefore distinguish:
+
+* license rights;
+* source availability;
+* build reproducibility;
+* documentation;
+* practical maintainability.
+
+A project can satisfy the legal definition while being difficult to build or modify.
+
+== Licensing families ==
+
+Open-source licenses grant broad rights but differ in conditions.
+
+=== Permissive licenses ===
+
+Permissive licenses generally allow broad reuse, including incorporation into proprietary products, subject to conditions such as retaining notices or disclaimers.
+
+Examples include:
+
+* MIT License;
+* BSD licenses;
+* Apache License 2.0.
+
+Apache License 2.0 also includes an explicit patent license from contributors for patent claims necessarily infringed by their contributions, subject to the license's terms.<ref name="apache">[https://www.apache.org/licenses/LICENSE-2.0.html Apache Software Foundation, ''Apache License, Version 2.0''.]</ref>
+
+=== Copyleft licenses ===
+
+Copyleft licenses permit use, study, modification, and redistribution while requiring certain distributed derivative or combined works to remain under compatible reciprocal licensing conditions.
+
+The GNU General Public License (GPL) is the best-known family.
+
+Copyleft is not a prohibition on commercial use. A company can sell GPL-licensed software, support, hosting, or related services.
+
+The exact obligations depend on the license text and the way the software is modified, linked, conveyed, or distributed.
+
+== License compatibility ==
+
+Combining open-source components can create license-compatibility questions.
+
+Compatibility depends on:
+
+* which licenses apply;
+* whether code is combined into one derivative work;
+* whether distribution occurs;
+* whether additional restrictions are imposed;
+* whether patent or notice clauses conflict.
+
+“Open source” is therefore not one universal license.
+
+A project should maintain a machine-readable inventory of component licenses and seek qualified legal review for consequential licensing questions.
+
+== Governance is separate from licensing ==
+
+An open-source license defines legal rights.
+
+'''Project governance''' determines how the project is actually managed.
+
+Governance can specify:
+
+* who can merge changes;
+* how maintainers are selected;
+* which technical decisions require consensus;
+* how conflicts are resolved;
+* how releases are approved;
+* how security reports are handled.
+
+A project can be open source while accepting contributions only through a tightly controlled maintainer process.
+
+Conversely, a publicly collaborative project can distribute software under a non-open license.
+
+Licensing and governance should not be conflated.
+
+== Contribution models ==
+
+Open-source projects use several contribution structures.
+
+Examples include:
+
+* benevolent-dictator or lead-maintainer models;
+* maintainer committees;
+* foundation governance;
+* corporate stewardship;
+* meritocratic or reputation-based roles;
+* formal technical steering committees.
+
+Contributions may require:
+
+* code review;
+* tests;
+* signed commits;
+* contributor license agreements;
+* developer certificates of origin;
+* style and security checks.
+
+Open contribution does not mean unconditional acceptance.
+
+== Forks ==
+
+Because open-source licenses permit redistribution and modification, communities can create a '''fork''' and continue development independently.
+
+Forkability creates an exit option when participants disagree about technical direction or governance.
+
+However, a legal right to fork does not guarantee practical independence.
+
+A fork may still depend on:
+
+* trademarks;
+* infrastructure;
+* contributor communities;
+* package registries;
+* proprietary services;
+* data unavailable under the same license.
+
+Forkability therefore has both legal and operational dimensions.
+
+== Version control and review ==
+
+Modern OSS development commonly uses [[Version control]] systems to preserve history, coordinate parallel work, and review changes.
+
+Repositories may expose:
+
+* commits;
+* branches;
+* pull requests;
+* issues;
+* tests;
+* release tags;
+* changelogs.
+
+Public history can improve auditability.
+
+It does not guarantee that anyone has actually reviewed the code carefully.
+
+== Security ==
+
+Open-source software is neither inherently secure nor inherently insecure.
+
+Source availability creates opportunities for inspection, testing, reproducible builds, and distributed review.
+
+Security still depends on:
+
+* code quality;
+* maintainer capacity;
+* vulnerability handling;
+* dependency hygiene;
+* release integrity;
+* build security;
+* user patching.
+
+The Open Source Security Foundation publishes guidance on secure development, source-code management, vulnerability disclosure, dependency evaluation, and software supply-chain practices.<ref name="openssf">[https://openssf.org/resources/guides/ Open Source Security Foundation, “Guides.”]</ref>
+
+The slogan that “many eyes make bugs shallow” is conditional: eyes must actually inspect the relevant code and have enough expertise and incentive to detect defects.
+
+== Software supply chain ==
+
+Modern applications can depend on hundreds or thousands of open-source components.
+
+A vulnerability in one transitive dependency can affect many downstream products.
+
+Important controls include:
+
+* dependency inventories;
+* software bills of materials;
+* signed releases;
+* provenance attestations;
+* vulnerability scanning;
+* reproducible builds;
+* coordinated disclosure;
+* timely updates.
+
+Open licensing does not remove supply-chain risk.
+
+== Reproducible builds ==
+
+A reproducible build produces identical or verifiably equivalent artifacts from the same source, build instructions, and environment.
+
+Reproducibility helps verify that a distributed binary corresponds to published source.
+
+It does not prove the source itself is secure or correct.
+
+Reproducible builds are therefore an integrity mechanism, not a complete security guarantee.
+
+== Sustainability ==
+
+Many critical open-source projects are maintained by small teams or individual volunteers despite widespread downstream use.
+
+Sustainability risks include:
+
+* maintainer burnout;
+* insufficient funding;
+* abandoned dependencies;
+* weak succession;
+* high support load;
+* security obligations without resources.
+
+A project's popularity does not establish maintenance capacity.
+
+Organizations adopting OSS should evaluate maintainer activity, release cadence, governance, security response, and dependency concentration rather than relying only on repository stars or download counts.
+
+== Commercial models ==
+
+Open-source businesses use many revenue models:
+
+* support and consulting;
+* managed hosting;
+* cloud services;
+* subscriptions;
+* enterprise features;
+* dual licensing;
+* training;
+* certification.
+
+The software can remain open source while commercial services are sold around it.
+
+Some products use “source-available” licenses that permit viewing or some modification but restrict particular uses. Such licenses may not satisfy the OSD and should not be labeled open source merely because source is visible.
+
+== Open standards and interoperability ==
+
+[[Interoperability]] can be improved when open-source implementations use public protocols and formats.
+
+But open source and open standards are distinct.
+
+An open-source project can implement a proprietary protocol.
+
+A proprietary product can implement an open standard.
+
+Open-source ecosystems often benefit from standards because they reduce dependency on one implementation.
+
+== Open science ==
+
+[[Open science]] includes practices such as open publications, open data, open methods, and open-source research software.
+
+Publishing analysis code under an open-source license improves inspectability and reuse, but scientific reproducibility also requires data, environment, dependency, and methodological information.
+
+Open-source code alone does not make a study reproducible.
+
+== Legal rights versus operational control ==
+
+An important distinction is:
+
+<pre>
+legal freedom
+≠ practical ability
+</pre>
+
+Users may have a legal right to modify software but still face barriers from undocumented hardware, unavailable services, proprietary data, cryptographic signing restrictions, or obsolete toolchains.
+
+Evaluation should therefore consider both license rights and actual system architecture.
+
+== Evaluation before adoption ==
+
+Before depending on an OSS project, assess:
+
+* license and compatibility;
+* maintainer activity;
+* release provenance;
+* supported versions;
+* test coverage;
+* vulnerability history;
+* disclosure process;
+* dependency graph;
+* build reproducibility;
+* documentation;
+* governance;
+* succession risk;
+* portability.
+
+The correct threshold depends on the consequence of failure.
+
+== Artificial intelligence and open source ==
+
+AI systems have complicated the meaning of “open source” because a model can involve code, weights, training data, architecture, and training procedures with different licenses and access conditions.
+
+Traditional OSD criteria were written for software source code.
+
+Claims that an AI model is “open source” should therefore identify exactly which artifacts and rights are provided rather than borrowing the label from ordinary software.
+
+== Epistemic boundary ==
+
+Open-source licensing grants users rights and enables inspection, modification, and redistribution.
+
+It does not guarantee:
+
+* security;
+* correctness;
+* quality;
+* sustainability;
+* fairness;
+* decentralization.
+
+Those properties require separate evidence.
 
 == Semantic relationships ==
+
 * [[Related to::Software]]
 * [[Related to::Version control]]
 * [[Related to::Open science]]
 * [[Related to::Interoperability]]
 * [[Related to::Digital ecosystem]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Open-source software]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Technology]]

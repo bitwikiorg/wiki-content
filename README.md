@@ -10,7 +10,7 @@ This repository includes the reviewed deployment projection for BITwiki's public
 - **GitHub Pages staging:** https://bitwikiorg.github.io/wiki-content/
 - **BIThub:** https://hub.bitwiki.org/
 - **Canonical branch:** `main`
-- **V1 migration source:** `archive-v1/` is restored read-only while issue #152 performs content-level reconciliation; see [`docs/v1-reconciliation.md`](docs/v1-reconciliation.md)
+- **V1 migration source:** content reconciliation is complete; `archive-v1/` remains read-only pending the separate retirement operation. See [`docs/v1-reconciliation.md`](docs/v1-reconciliation.md) and [`docs/v1-retirement-dependency-audit.md`](docs/v1-retirement-dependency-audit.md).
 
 > `main` is the integrated repository source of truth. Filesystem folders project MediaWiki/runtime surfaces; they are not themselves the ontology.
 
@@ -229,7 +229,7 @@ V1
 → integrate into V2
 ```
 
-`archive-v1/` is a read-only migration/provenance source while issue #152 remains open. It is not deployable V2 source or current architecture. Retirement is gated on the content-level reconciliation standard in `docs/v1-reconciliation.md`; Git recoverability alone is not proof of successful migration.
+`archive-v1/` is a read-only migration/provenance source retained after completion of the content-level reconciliation. It is not deployable V2 source or current architecture. The remaining retirement work is documented in `docs/v1-retirement-dependency-audit.md`; Git recoverability alone was not treated as proof of successful migration.
 
 ---
 

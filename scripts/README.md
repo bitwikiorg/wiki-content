@@ -20,6 +20,8 @@ These scripts are **executable governance over repository source**: they make ar
 | `classify_v1_page_roles.py` | V1 page-role evidence before migration/ontology decisions |
 | `classify_v1_architecture_families.py` | V1 architecture-source maturation classification |
 
+The V1 inventory/classification chain is now historical migration tooling: content reconciliation is complete, and these scripts remain only while `archive-v1/` is retained pending the separate retirement change. They are not current runtime/deployment authority.
+
 GitHub Actions also parses every source-controlled `Module/**/*.lua` with a Lua 5.1 compiler before accepting the module source as syntactically valid Scribunto-era Lua.
 
 ## Deployment contract

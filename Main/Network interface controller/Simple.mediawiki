@@ -1,0 +1,14 @@
+= Network interface controller — Simple =
+'''Reading depth:''' [[Network interface controller/Simple|Simple]] · [[Network interface controller/Technical|Technical]]
+<onlyinclude>A '''network interface controller''' (NIC), also called a network adapter, is hardware that lets a computer send and receive data over a network. An Ethernet NIC handles frames on a wired connection and passes received information to the operating system. It may be built into a motherboard or installed as a card.
+
+== What it does ==
+When an application sends information, the operating system and its '''driver''' (control software) arrange for the NIC to transmit it. For incoming data, the NIC receives frames and places them where the computer can process them. Some NICs have several queues so multiple processor cores can help with traffic.
+
+== What it is not ==
+A NIC is not the driver, a router or the whole [[Computer network]]. The hardware may contain firmware and a separate or integrated electrical signaling component. Some adapters accelerate tasks such as checking packets or splitting large messages; not all support the same features. A 10-gigabit-rated link cannot guarantee a particular file-transfer speed: packet overhead, congestion, other devices and CPU work all matter.
+
+== References ==
+* IEEE, [https://standards.ieee.org/ieee/802.3/10422/ IEEE 802.3-2022 Ethernet standard].
+* Linux kernel, [https://docs.kernel.org/networking/napi.html NAPI documentation].
+</onlyinclude>

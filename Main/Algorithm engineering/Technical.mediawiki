@@ -1,0 +1,17 @@
+'''Algorithm engineering''' is a research and development approach that combines algorithm design, mathematical analysis, implementation and empirical evaluation in a repeated cycle.
+
+== Methodology ==
+Sanders describes algorithm engineering as a feedback cycle of design, analysis, implementation and experimentation. The theoretical model guides hypotheses, while implementation and measurements expose assumptions about memory hierarchy, input distribution and constant factors. New findings can motivate revised models and algorithms. This differs from treating a benchmark as a substitute for correctness proofs.
+
+== Experimental design ==
+Specify the problem, baseline, input generator or dataset, versioned implementation, compiler flags, machine configuration and measurement procedure. For sorting, include random, nearly sorted, reverse-sorted and duplicate-heavy inputs; verify outputs against an independent reference. Separate algorithmic work counts from elapsed time and memory allocation. Repeated runs with randomized order can reduce sensitivity to thermal or background effects; report distributions and confidence intervals where suitable.
+
+== Interpretation ==
+A theoretical bound such as O(n log n) describes growth under a defined computational model, not a measured time in seconds. Cache misses, branch prediction, vectorization and communication can dominate at practical scales. Compare resource budgets fairly, disclose tuning and avoid optimizing only for the test set. Reproducible artifacts and sensitivity analysis make results inspectable; benchmark speed alone does not establish safety, maintainability or correctness.
+
+== References ==
+* [https://doi.org/10.1007/978-3-642-03456-5_22 Sanders (2009), Algorithm Engineering – An Attempt at a Definition]
+* [https://doi.org/10.1137/1.9781611972900.6 Sanders (2010), Algorithm Engineering using sorting as an example]
+
+== Reading depth ==
+[[Algorithm engineering/Simple|Simple explanation]]

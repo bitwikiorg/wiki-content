@@ -1,0 +1,22 @@
+This '''outline of machine learning''' maps the principal learning settings, model families, mathematical foundations, evaluation practices and deployment concerns in machine learning.
+
+== Learning settings and foundations ==
+* Foundations: [[Probability]], [[Probability distribution]], [[Optimization]], linear algebra, statistics, loss functions and regularization.
+* Supervised learning: regression, classification, calibrated probabilities, trees, kernel methods, ensembles and neural networks.
+* Unsupervised learning: clustering, dimensionality reduction, density estimation, mixture models and anomaly detection.
+* Self-supervised and semi-supervised learning: objectives derived from data structure, use of limited labels, representation learning.
+* Reinforcement learning: Markov decision processes, value functions, policy optimization, exploration, offline and model-based learning.
+* Deep learning: feedforward networks, convolution, recurrent models, attention and transformer architectures; optimization via gradients.
+* Data and evaluation: [[Training set]], [[Validation set]], [[Test set]], cross-validation, [[Overfitting]], [[Underfitting]], [[Bias–variance tradeoff]], [[Data leakage (machine learning)]], [[Distribution shift]].
+* Deployment: monitoring, drift, robustness, privacy, reproducible training and lifecycle management.
+
+== Formal organizing principle ==
+Many supervised methods minimize empirical risk <math>\hat R(f)=n^{-1}\sum_i\ell(f(x_i),y_i)</math> plus a regularizer. Low training risk is not equivalent to low population risk; use a sampling design and independent evaluation appropriate to deployment. Unsupervised objectives and sequential rewards differ from supervised loss. Metrics such as accuracy, calibration, expected cost and cumulative reward measure different outcomes. Do not tune on the final test set. This is a map of concepts and evaluation practices rather than an exhaustive method inventory.
+
+== References ==
+* [https://scikit-learn.org/stable/getting_started scikit-learn, Getting Started]
+* [https://scikit-learn.org/stable/model_selection scikit-learn, Model selection and evaluation]
+* [https://mitpress.mit.edu/9780262039246/reinforcement-learning/ Sutton and Barto, Reinforcement Learning, second edition]
+
+== Reading depth ==
+[[Outline of machine learning/Simple|Simple explanation]]

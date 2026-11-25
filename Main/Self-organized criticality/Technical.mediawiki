@@ -1,0 +1,27 @@
+'''Self-organized criticality''' (SOC) describes a proposed class of dynamical systems that evolve toward critical-like, scale-free behavior without precise external tuning of a control parameter.
+
+== Canonical sandpile model ==
+Bak, Tang and Wiesenfeld (1987, 1988) proposed SOC to explain scale-invariant correlations in driven dissipative systems. On a finite square lattice, let h_i be an integer height. Add one grain at a random site after the previous avalanche stops. If h_i≥4, subtract four and send one grain to each nearest neighbor; grains leaving open boundaries are lost. Repeat until all sites are stable. Drive and relaxation are separated in time, and the boundary provides dissipation.
+
+<pre>
+repeat for N additions:
+  choose a site uniformly; increase its height by 1
+  while any site has height >= 4:
+    topple that site; distribute grains to neighbors
+    discard grains crossing the boundary
+  record number of topplings and duration under a defined schedule
+</pre>
+
+== Scaling and model tests ==
+A candidate avalanche-size distribution may have a form <math>P(s;L)\sim s^{-\tau}F(s/L^D)</math>, where L is system size and F represents a cutoff. Estimating τ requires a specified range, uncertainty, goodness-of-fit and comparison with alternatives such as lognormal or truncated distributions. Apparent straight lines on log-log plots are insufficient evidence. Check finite-size scaling, time-scale separation and stationarity, not just the tail shape.
+
+== Distinctions and limitations ==
+Self-organization is a broader concept, and emergence need not involve criticality. The behavior of real granular material depends on friction, particle shapes and drive. Experiments and models can deviate from SOC; a power law alone does not establish its mechanism. Apply the framework to neural, ecological or social processes only when system dynamics and competing explanations are independently assessed.
+
+== References ==
+* [https://doi.org/10.1103/PhysRevLett.59.381 Bak, Tang and Wiesenfeld (1987), Self-organized criticality: An explanation of the 1/f noise]
+* [https://doi.org/10.1103/PhysRevA.38.364 Bak, Tang and Wiesenfeld (1988), Self-organized criticality]
+* [https://journals.aps.org/pre/abstract/10.1103/PhysRevE.66.051306 Breakdown of self-organized criticality in sandpiles]
+
+== Reading depth ==
+[[Self-organized criticality/Simple|Simple explanation]]

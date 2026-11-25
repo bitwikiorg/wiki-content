@@ -1,0 +1,17 @@
+An '''emergent algorithm''' is an informal term for a computational procedure in which coordinated large-scale behavior arises from interactions among local rules or components, rather than being specified as a centralized sequence of every global action.
+
+== Definition and scope ==
+The term is not a single standardized algorithm class. Distinguish an explicitly designed local rule that produces an emergent outcome, an algorithm learned by optimization, and an unanticipated strategy observed in a complex system. The first is exemplified by local particle-system algorithms and distributed simulations; the latter cases require different evidence.
+
+== Example: local consensus ==
+On a fixed connected undirected graph, let each node hold scalar x_i. A synchronous averaging rule is <math>x_i(t+1)=x_i(t)+\alpha\sum_{j\in N_i}(x_j(t)-x_i(t))</math>. For 0<α<1/d_max, the update is doubly stochastic with positive diagonal, preserving the mean and converging to consensus under the stated conditions. The global agreement arises from repeated local interactions. If the graph is disconnected, only component-level agreement is generally obtained. This is an illustrative distributed algorithm, not a definition of emergence.
+
+== Design and verification ==
+Specify topology, update schedule, information access, initial conditions and global acceptance criteria. Prove invariants or convergence when possible; otherwise use simulation over independent seeds and stress tests. Evaluate sensitivity to perturbations, communication delays and adversarial or failed nodes. Visual order alone does not demonstrate correctness, scalability or useful adaptation. An emergent pattern may be unintended and harmful.
+
+== References ==
+* [https://labs.engineering.asu.edu/sops/emergence Arizona State University, Self-Organizing Particle Systems: Emergence]
+* [https://doi.org/10.1145/37401.37406 Reynolds (1987), Flocks, herds and schools]
+
+== Reading depth ==
+[[Emergent algorithm/Simple|Simple explanation]]

@@ -20,10 +20,14 @@ def test_photolithography_source_surfaces():
         assert "[[Photolithography/Technical|Technical]]" in text
         if path.name == "Photolithography.mediawiki":
             assert "{{:Photolithography/Simple}}" in text
+            assert "{{Knowledge object" in text
+            assert "<references/>" in text
             assert "{{:Photolithography/Technical}}" not in text
             assert "[[Related to::Semiconductor fabrication]]" in text
         else:
             assert "<references/>" in text
+        if path.name == "Simple.mediawiki":
+            assert "==How it works==" in text.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0]
         assert len(text) > (150 if path.name == "Photolithography.mediawiki" else 500)
 
 def test_illustrative_rayleigh_arithmetic():

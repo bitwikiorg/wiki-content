@@ -1,17 +1,421 @@
-A '''digital organism''' is an artificial-life entity represented by executable instructions or another computational structure that can participate in a simulated process of replication, variation and evolution.
+{{Reading depth|base=Digital organism|current=Technical}}
 
-== Experimental architecture ==
-Avida is an influential platform in which instruction sequences execute in a virtual environment, reproduce with mutation and compete under resource and scheduling rules. Genotype denotes the inherited instruction sequence; phenotype refers to operational properties such as execution, replication or task performance. The simulator supplies an instruction set, memory, resource allocation and mutation mechanisms. These are part of the experimental environment and must be reported.
+= Digital organism — Technical =
 
-== Evolutionary dynamics ==
-In a simple discrete-generation model with genotype frequencies p_i, relative reproduction weights w_i and mutation matrix Q_ij, <math>p_j'=\sum_i p_iw_i Q_{ij}/\sum_i p_iw_i</math>, assuming each row of Q sums to one. This idealization omits spatial effects, asynchronous execution and stochastic drift. Digital experiments can vary mutation rates and environmental rewards independently, record ancestry, and reconstruct the effect of intermediate variants. Lenski et al. (2003) examined the evolution of complex computational features in digital populations, including trajectories involving initially disadvantageous mutations.
+A '''digital organism''' is an executable hereditary entity whose replication, mutation, and reproductive success occur inside a computational environment. Digital organisms provide experimentally controllable systems for studying Darwinian dynamics with complete access to genotype, phenotype, ancestry, and environment.
 
-== Reproducibility and limits ==
-Record platform version, instruction set, population size, resource model, initialization, mutation policy and seeds. Compare replicate trajectories and controls with task rewards or mutation disabled; do not infer inevitability from one successful run. Digital experiments offer inspectable lineage and controlled conditions but their conclusions depend on the implemented environment. Self-copying behavior does not by itself establish biochemical metabolism, autopoietic self-production or subjective experience. Findings may inform evolutionary hypotheses without making digital and biological organisms interchangeable.
+== Genome ==
+
+Represent genome as instruction sequence:
+
+<math>g=(i_1,\ldots,i_L).</math>
+
+Virtual CPU executes:
+
+<math>\phi=Exec(g,E),</math>
+
+where <math>E</math> is digital environment.
+
+Phenotype can include replication speed, computed functions, interactions, and resource use.
+
+== Replication ==
+
+A self-replicator performs an algorithm that creates descendant memory and copies hereditary instructions.
+
+Let replication operator be
+
+<math>g'=R(g,\xi),</math>
+
+where <math>\xi</math> captures mutation events.
+
+External file duplication by the experimenter is not equivalent to organism-controlled replication.
+
+== Mutation probability ==
+
+With independent per-site substitution rate <math>\mu</math> and length <math>L</math>:
+
+<math>P(no\ substitution)=(1-\mu)^L.</math>
+
+Expected substitutions:
+
+<math>E[K]=L\mu.</math>
+
+Insertions and deletions make genome length variable.
+
+The actual simulator may implement mutation during copying, division, or both.
+
+== Population state ==
+
+Let genotype frequencies be
+
+<math>x_i(t)</math>
+
+with
+
+<math>\sum_i x_i=1.</math>
+
+Selection changes frequencies according to reproductive success.
+
+A deterministic approximation is the replicator equation:
+
+<math>\dot x_i=x_i(f_i-\bar f).</math>
+
+Finite digital populations also experience drift.
+
+== Fitness measurement ==
+
+Absolute fitness can be measured through expected descendants per unit time.
+
+Relative fitness:
+
+<math>w_i=f_i/\bar f.</math>
+
+Environment matters.
+
+A genotype can be highly fit under one task reward and poor under another.
+
+There is no context-free digital fitness.
+
+== Resource accounting ==
+
+Let total CPU resource be <math>C</math>.
+
+Organism <math>i</math> receives allocation <math>c_i</math> with:
+
+<math>\sum_i c_i\le C.</math>
+
+Competition for finite CPU or spatial resources creates reproductive tradeoffs.
+
+Unlimited independent resources can eliminate important ecological interactions.
+
+== Tierra architecture ==
+
+Tierra uses a shared virtual memory and CPU scheduler.
+
+Self-replicating machine-code-like programs copy themselves.
+
+Mutations produce variants.
+
+Competition for memory and execution enables selection.
+
+Parasitic programs evolved that exploited replication code from other organisms.
+
+This was historically important because ecological interactions emerged from executable behavior rather than explicit “parasite” labels.
+
+== Avida architecture ==
+
+Avida gives each organism a virtual CPU and genome.
+
+Instruction execution can perform logic functions rewarded with additional computational resources.
+
+Replication creates mutated descendants.
+
+The system supports full lineage tracking.<ref name="avida">Ofria, C. and Wilke, C. O. (2004), “Avida: A Software Platform for Research in Computational Evolutionary Biology,” ''Artificial Life'' 10(2), 191–229.</ref>
+
+== Reward landscape ==
+
+Let task set be <math>T_j</math>.
+
+Performing task <math>j</math> multiplies execution resource by reward <math>r_j</math>.
+
+This changes fitness landscape.
+
+Reward schedules are experimental treatments.
+
+They should not be interpreted as natural environmental laws.
+
+== Lineage tree ==
+
+Each organism has parent identifier.
+
+Ancestry can be reconstructed exactly.
+
+For lineage <math>L=(g_0,g_1,\ldots,g_k)</math>, every mutational step can be tested by replaying genotypes.
+
+This makes causal reconstruction unusually strong.
+
+== Knockout analysis ==
+
+To determine whether instruction region contributes to phenotype, modify or delete it.
+
+Effect:
+
+<math>\Delta P=P(g)-P(g_{knockout}).</math>
+
+This identifies functional dependence under the tested environment.
+
+Epistasis means contributions need not add linearly.
+
+== Epistasis ==
+
+For mutations A and B:
+
+<math>\epsilon=W_{AB}-W_A-W_B+W_0</math>
+
+under an additive fitness scale.
+
+Nonzero <math>\epsilon</math> indicates interaction.
+
+Digital organisms allow complete mapping for small genomes.
+
+== Neutral networks ==
+
+Genotypes with equivalent phenotype form a neutral network in sequence space.
+
+Population can drift across this network without immediate fitness change.
+
+Different locations can have different mutational neighborhoods.
+
+Neutral drift can therefore alter future evolvability.
+
+== Mutational robustness ==
+
+Define fraction of single mutations preserving viability:
+
+<math>R(g)=\frac{|\{g':d(g,g')=1,\ viable(g')\}|}{|N_1(g)|}.</math>
+
+This is one operational robustness measure.
+
+Robustness can evolve under high mutation rates.
+
+== Evolvability ==
+
+One measure:
+
+<math>E(g)=P(\Delta fitness>0\mid one\ mutation).</math>
+
+Alternative measures use phenotypic novelty.
+
+Evolvability is not a universal scalar.
+
+It depends on environment and mutation operator.
+
+== Population bottlenecks ==
+
+Reducing population to <math>N_b</math> increases drift.
+
+Repeated bottlenecks can reduce diversity.
+
+Digital systems allow exact replication of bottleneck treatments across many populations.
+
+This supports causal tests of population-genetic predictions.
+
+== Clonal interference ==
+
+In large asexual populations, several beneficial mutations can arise in different lineages.
+
+They compete.
+
+This can slow fixation and create complex lineage dynamics.
+
+Digital populations are useful for observing the entire competition.
+
+== Muller-style processes ==
+
+Deleterious mutations can accumulate in finite asexual populations under some conditions.
+
+Digital experiments can manipulate recombination, population size, and mutation rate to test theory.
+
+Generalization to biology depends on mapping platform assumptions.
+
+== Ecology ==
+
+Let interactions affect fitness:
+
+<math>f_i=f_i(X),</math>
+
+where <math>X</math> is population composition.
+
+Frequency-dependent fitness produces ecological dynamics.
+
+A parasite can be advantageous only while hosts are common.
+
+This can maintain polymorphism or cycles.
+
+== Coevolution ==
+
+Genotype in one lineage changes selective conditions for another.
+
+Digital systems can produce arms races.
+
+Continuous phenotypic change does not necessarily mean increasing complexity.
+
+Relative adaptation can occur in cycles.
+
+== Spatial digital evolution ==
+
+If organisms occupy grid positions, interactions are local.
+
+Spatial structure can preserve diversity and slow selective sweeps.
+
+Well-mixed and spatial experiments should be distinguished.
+
+Migration rate is an important parameter.
+
+== Digital speciation ==
+
+Species concepts can be difficult in asexual digital organisms.
+
+Possible definitions use:
+
+* ancestry;
+* ecological niche;
+* phenotype clusters;
+* genetic distance.
+
+Researchers should state the operational species criterion rather than import biological terminology uncritically.
+
+== Complexity ==
+
+Genome length:
+
+<math>L</math>
+
+is a poor standalone measure.
+
+Functional information can be estimated by knockout dependencies or fraction of sequence space retaining phenotype.
+
+Complexity claims should specify the metric.
+
+== Information-theoretic measures ==
+
+Entropy of genotype distribution:
+
+<math>H=-\sum_i p_i\log p_i.</math>
+
+High diversity entropy does not imply organismal complexity.
+
+Population diversity and individual complexity are distinct.
+
+== Open-endedness ==
+
+An open-ended system should continue generating meaningful novelty over expanding timescales.
+
+Possible observables:
+
+* new phenotypic categories;
+* expanding ecological niches;
+* increasing dependency structure.
+
+A fixed reward list caps one dimension of novelty.
+
+Thus platform design strongly constrains open-endedness.
+
+== Experimental replication ==
+
+Use independent populations from same ancestor:
+
+<math>P_1,\ldots,P_n.</math>
+
+Random seeds define stochastic realizations.
+
+Treatment effect should be estimated across populations, not across many organisms sampled from one population.
+
+Population is often the experimental unit.
+
+== Replay from ancestors ==
+
+Take ancestor <math>g_t</math> and restart many populations.
+
+This estimates whether later innovation was contingent on rare mutations or likely from that state.
+
+Digital evolution permits exact historical replay unavailable in most natural evolution.
+
+== Determinism and random number generators ==
+
+Given identical seed and deterministic simulator, evolution can be exactly replayed.
+
+Changing RNG implementation can alter trajectories.
+
+Archive RNG algorithm and seed for strict reproducibility.
+
+== Version dependence ==
+
+Simulator updates can alter:
+
+* instruction semantics;
+* mutation placement;
+* scheduler;
+* rewards.
+
+A published result should cite exact code version or commit.
+
+Long-term digital experiments are sensitive to hidden implementation changes.
+
+== Computational cost ==
+
+If population size <math>N</math>, average genome execution <math>C_g</math>, and generations <math>G</math>, work scales approximately with:
+
+<math>O(NGC_g)</math>
+
+subject to scheduler and event details.
+
+Parallelization can accelerate independent replicate populations readily.
+
+Within-population parallelism can alter timing semantics if not carefully designed.
+
+== Viruses and malware distinction ==
+
+A self-replicating digital entity can resemble malware technically.
+
+Research digital organisms should remain sandboxed.
+
+No evolutionary experiment requires uncontrolled propagation on real networks.
+
+Experimental purpose and containment are part of the distinction.
+
+== Digital organism and artificial agent ==
+
+Agent policy:
+
+<math>a=\pi(o)</math>
+
+does not imply heredity.
+
+Digital organism heredity and reproduction do not imply planning.
+
+A system can combine both, but the constructs should remain separate.
+
+== Biological validity ==
+
+Digital evolution captures abstract mechanisms:
+
+* heredity;
+* variation;
+* selection.
+
+It usually abstracts away:
+
+* biochemical energetics;
+* multicellular development;
+* molecular constraints;
+* organismal physiology.
+
+The right question is which evolutionary proposition depends only on the captured mechanisms.
+
+== Life-status boundary ==
+
+Whether digital organisms are literally alive is philosophical and definitional.
+
+They clearly satisfy some life criteria.
+
+They clearly lack others.
+
+Scientific articles should state the criterion rather than presenting the label as settled ontology.
+
+== Consciousness boundary ==
+
+No property in the standard digital-evolution framework—replication, selection, adaptation, complexity—constitutes evidence of subjective experience by itself.
+
+Consciousness requires separate theory and measurement.
 
 == References ==
-* [https://www.nature.com/articles/nature01568 Lenski, Ofria, Pennock and Adami (2003), The evolutionary origin of complex features]
-* [https://pubmed.ncbi.nlm.nih.gov/12736677/ Lenski et al., PubMed record]
+
+<references />
+
+* Ray, T. S. (1991), “An Approach to the Synthesis of Life.”
+* Ofria and Wilke (2004), Avida platform.
 
 == Reading depth ==
-[[Digital organism/Simple|Simple explanation]]
+
+[[Digital organism/Simple|Simple explanation]] · [[Digital organism|Core article]]

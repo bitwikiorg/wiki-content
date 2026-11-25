@@ -1,4 +1,4 @@
-{{Reading depth|base=Generalization|current=Technical}}
+''Reader localizations:'' [[Generalization/Simple|Simple]] · '''Technical'''
 = Generalization: Technical =
 == Definition and epistemic structure ==
 Generalization is an inference or transfer from a source domain of observations, training, or study conditions to a target domain not exhaustively represented in that source. The term has distinct disciplinary uses. It does not name one universal algorithm, psychological mechanism, or validity test.
@@ -6,14 +6,14 @@ Generalization is an inference or transfer from a source domain of observations,
 A disciplined claim identifies (i) the source domain and observation process, (ii) the proposition or capability transferred, (iii) the target domain, (iv) assumptions about relevant invariances, and (v) evidence capable of falsifying or narrowing the extension.
 
 == Inductive inference ==
-Classical enumerative induction moves from observed instances of a predicate relationship to a wider claim. Its conclusion is not deductively entailed by the observations: observing many instances of a regularity does not exclude an unobserved counterexample. Hume's problem of induction concerns the non-circular justification of such ampliative reasoning. Contemporary accounts include probabilistic confirmation and other forms of non-deductive inference; generalization is therefore neither identical to all induction nor restricted to universal laws.<ref name="sep-induction">[https://plato.stanford.edu/entries/induction-problem/ Stanford Encyclopedia of Philosophy, ''The Problem of Induction''].</ref>
+Classical enumerative induction moves from observed instances of a predicate relationship to a wider claim. Its conclusion is not deductively entailed by the observations: observing many instances of a regularity does not exclude an unobserved counterexample. Hume's problem of induction concerns the non-circular justification of such ampliative reasoning. In section IV of his 1748 ''Enquiry'', Hume distinguishes relations of ideas from matters of fact and challenges the justification of extrapolation from past experience.<ref name="hume">David Hume, [https://luminarium.org/renascence-editions/hume/hume4.html ''An Enquiry Concerning Human Understanding'', section IV] (1748).</ref> See [[Inductive reasoning]]. Contemporary accounts include probabilistic confirmation and other forms of non-deductive inference; generalization is therefore neither identical to all induction nor restricted to universal laws.<ref name="sep-induction">[https://plato.stanford.edu/entries/induction-problem/ Stanford Encyclopedia of Philosophy, ''The Problem of Induction''].</ref>
 
 A claim about a bounded population differs from an unrestricted universal claim. The number of observations alone does not settle evidential strength: selection mechanisms, measurement error, dependence among cases, and plausible counterexamples matter.
 
 == Psychological transfer ==
 In educational psychology, transfer is the use of prior learning in a new task or context. Transfer may be positive, negative, delayed, or absent under a particular assessment. The National Research Council synthesis emphasizes prior knowledge, understanding, contrasting examples, multiple learning contexts, and assessment of subsequent learning rather than only immediate one-shot performance.<ref name="nrc-transfer">National Research Council (2000), ''How People Learn: Brain, Mind, Experience, and School'', expanded edition, [https://www.nationalacademies.org/read/9853/chapter/6 chapter on learning and transfer]. National Academies Press.</ref><ref name="nrc-synthesis">National Research Council (2000), ''How People Learn'', [https://www.nationalacademies.org/read/9853/chapter/15 synthesis of transfer findings].</ref>
 
-Near and far transfer are useful descriptive distinctions, but the distance between tasks is not a single objective scalar shared across studies. Similar surface features can mask different underlying structures, and superficially different tasks can share a relevant principle. Evidence that instruction improved performance on a practiced task does not by itself establish far transfer.
+Barnett and Ceci proposed a multidimensional taxonomy distinguishing the content transferred from changes in the context of application; it helps compare studies without assuming a universal measure of transfer.<ref name="barnett">S. M. Barnett and S. J. Ceci, [https://pubmed.ncbi.nlm.nih.gov/12081085/ When and where do we apply what we learn? A taxonomy for far transfer], ''Psychological Bulletin'' 128, 612–637 (2002).</ref> Near and far transfer are useful descriptive distinctions, but the distance between tasks is not a single objective scalar shared across studies. Similar surface features can mask different underlying structures, and superficially different tasks can share a relevant principle. Evidence that instruction improved performance on a practiced task does not by itself establish far transfer.
 
 == Statistical and causal generalization ==
 Research findings can concern a source sample, a source population, or a distinct target population. These are different estimands. Random sampling can support inference from a sample to its sampling population under specified assumptions; it does not automatically license transfer to a population selected through different mechanisms. Random assignment supports certain within-study causal comparisons but does not by itself establish external validity.
@@ -23,6 +23,11 @@ For an illustrative target-population mean, if the target is partitioned into mu
 This is a decomposition, not an automatic transport formula. Estimating the target mean from source data requires relevant conditional outcome relations to be transportable, target composition to be known, and sufficient overlap between source and target groups. For causal effects, additional identification assumptions are required. If a target group is absent from the source, its conditional outcome cannot be recovered from source observations without extra evidence or modeling assumptions.
 
 For a purely hypothetical calculation, suppose two target groups have proportions 0.25 and 0.75, with applicable conditional means 10 and 18. The target mean is <math>0.25(10)+0.75(18)=16</math>. This arithmetic verifies only the identity given those inputs, not the applicability of source-derived conditional means to a new population.
+
+=== Causal transport ===
+If S marks participation in a source randomized trial and T a target population, a target average treatment effect may be standardized as
+<math display="block">\tau_T=\sum_g P_T(G=g)\left[E(Y\mid A=1,G=g,S=1)-E(Y\mid A=0,G=g,S=1)\right].</math>
+This requires well-defined treatments, consistency, conditional causal exchangeability within the source trial, sufficient treatment and population overlap, and invariance of the conditional treatment effect across source and target strata. Differential measurement, interference, unmeasured effect modifiers and changes in causal mechanisms can defeat this estimator. Selection diagrams provide a more general formal language for reasoning about transportability; not all target effects are identifiable from available source data.<ref name="transport">E. Bareinboim and J. Pearl, [https://doi.org/10.1073/pnas.1510507113 Causal inference and the data-fusion problem], ''PNAS'' 113, 7345–7352 (2016).</ref>
 
 == Failure modes and evaluation ==
 * '''Selection bias:''' observed cases are not representative of the intended target.
@@ -35,10 +40,15 @@ For a purely hypothetical calculation, suppose two target groups have proportion
 Useful evaluation specifies the target in advance, compares relevant groups or contexts, tests plausible effect modifiers, reports uncertainty, and seeks counterexamples. A successful transfer in one domain is not evidence for transfer across all domains.
 
 == Relationship to machine learning ==
-[[Generalization (machine learning)]] studies predictive performance beyond fitting examples, including test design, distribution assumptions, and overfitting. Statistical external validity, cognitive transfer, and philosophical induction are not reducible to machine-learning test accuracy. In particular, an analogy between human reasoning and AI agents is not evidence of a shared implementation mechanism.
+[[Generalization (machine learning)]] studies predictive performance beyond fitting examples, including test design, distribution assumptions, and overfitting. For a fixed predictor f and loss L, target predictive risk is <math>R_T(f)=E_{(X,Y)\sim P_T}[L(f(X),Y)]</math>. A held-out source sample estimates source risk, not necessarily target risk. Under covariate shift, the marginal input distribution changes while the conditional label distribution remains invariant; importance weighting by <math>p_T(x)/p_S(x)</math> can estimate target risk under overlap and suitable sampling assumptions. It does not repair arbitrary conditional distribution changes or unsupported regions.<ref name="shift">M. Sugiyama, M. Krauledat and K.-R. Müller, [https://www.jmlr.org/papers/v8/sugiyama07a.html Covariate Shift Adaptation by Importance Weighted Cross Validation], ''Journal of Machine Learning Research'' 8, 985–1005 (2007).</ref>
+
+Statistical external validity, cognitive transfer, and philosophical induction are not reducible to machine-learning test accuracy. In particular, an analogy between human reasoning and AI agents is not evidence of a shared implementation mechanism.
 
 == Evidence boundaries ==
 The SEP entry is a philosophical synthesis, not an empirical trial. The National Research Council review synthesizes educational research but does not imply that any specific transfer intervention works universally. The numerical standardization example is hypothetical and makes no empirical claim.
+
+== Further reading ==
+* [[Generalization|Canonical subject]] · [[Generalization/Simple|Simple]]
 
 == References ==
 <references/>

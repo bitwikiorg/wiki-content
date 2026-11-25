@@ -1,17 +1,409 @@
-A '''knowledge market''' is an arrangement through which people or organizations exchange access to information, expertise, research or other knowledge-related resources. Exchange may involve money, reputation, reciprocal assistance or institutional incentives.
+{{Reading depth|base=Knowledge market|current=Technical}}
 
-== Economic characteristics ==
-Knowledge-related goods may have high creation costs and low marginal copying costs. Access can be restricted by contracts, intellectual-property rights or technology even when copying itself is inexpensive. A buyer may have difficulty judging an answer before acquiring it, while a seller may not be able to fully disclose its value without transferring it. Asymmetric information, search costs and non-rivalry complicate straightforward commodity-market analogies.
+= Knowledge market — Technical =
 
-== Coordination mechanisms ==
-Hayek's analysis of dispersed knowledge explains why coordination must make use of local information. A knowledge market may use price, reputation, peer evaluation, matching and intermediaries. For an illustrative exchange, trade is feasible when the buyer's expected value minus search and verification cost exceeds the seller's reservation cost, with a mutually acceptable price. This simple model omits strategic behavior, uncertain quality and benefits to third parties. Reputation systems can help but are vulnerable to collusion or popularity bias.
+A '''knowledge market''' is an exchange and matching mechanism for knowledge, expertise, or knowledge-based assets. It connects demand for answers, methods, data, intellectual property, or skilled problem solving with suppliers able to provide them. Unlike a conventional commodity market, a knowledge market must handle unusual properties of knowledge: uncertain quality, asymmetric information, low marginal copying cost, non-rival use, difficult excludability, tacit components, and external benefits.
 
-== Measurement and design ==
-Evaluate match quality using externally scored answers, repeat demand, resolution time and access inequality. Separate seller incentives from evidence standards; pay for a verified outcome or review rather than merely for confident prose where appropriate. Knowledge commons and open science may use non-price coordination and are not reducible to markets. A functioning exchange mechanism is not a guarantee of truth, fair access or social welfare.
+A technical treatment therefore separates three questions:
+
+# How are buyers and sellers matched?
+# What incentives support exchange?
+# How is epistemic quality independently verified?
+
+A mechanism can solve the first two while failing the third.
+
+== Basic bilateral exchange model ==
+
+Let a buyer value a correct answer at <math>V</math>. Let <math>q</math> denote the buyer's subjective probability that the offered knowledge is correct and applicable. Let <math>p</math> be price, <math>c_s</math> search cost, and <math>c_v</math> expected verification cost.
+
+A simplified buyer payoff is
+
+<math>U_B=qV-p-c_s-c_v.</math>
+
+Let the seller incur production or transfer cost <math>c_t</math>. A simplified seller payoff is
+
+<math>U_S=p-c_t.</math>
+
+Trade is individually rational when
+
+<math>qV-c_s-c_v \ge p \ge c_t.</math>
+
+This model is deliberately incomplete. It assumes a scalar value, omits bargaining, strategic misrepresentation, externalities, repeated interactions, legal constraints, and heterogeneous quality.
+
+Its main use is to expose the importance of search and verification costs. A knowledge exchange can fail even when the underlying answer would be valuable because participants cannot find one another or cannot evaluate quality economically.
+
+== The disclosure problem ==
+
+Knowledge has an information paradox: the buyer often needs to see the content to know its value, but complete disclosure can transfer the knowledge before payment.<ref name="arrow">[https://www.nber.org/books-and-chapters/rate-and-direction-inventive-activity-economic-and-social-factors/economic-welfare-and-allocation-resources-invention Arrow, K. J. (1962), “Economic Welfare and the Allocation of Resources for Invention.”]</ref>
+
+Mechanisms for reducing this problem include:
+
+* credentials;
+* previews;
+* abstracts;
+* staged disclosure;
+* non-disclosure agreements;
+* escrow;
+* warranties;
+* outcome-contingent payment;
+* trusted intermediaries;
+* reputation.
+
+Each transfers risk differently. None proves quality in advance.
+
+== Adverse selection ==
+
+Suppose sellers privately know quality <math>q_i</math> but buyers observe only a market-average expectation <math>\bar q</math>. Buyers may offer price
+
+<math>p=V\bar q.</math>
+
+High-quality sellers whose reservation value exceeds <math>p</math> can leave the market, reducing <math>\bar q</math> and causing further exit. This is a knowledge-market version of adverse selection.
+
+Possible countermeasures include certification, verifiable track records, third-party review, signaling through costly credentials, trials, or warranties.
+
+The design should test whether the signal actually predicts performance. A credential can become a status marker without maintaining predictive validity.
+
+== Moral hazard ==
+
+After contracting, a seller may exert less effort than promised if effort is difficult to observe.
+
+Let answer quality be <math>q(e)</math>, increasing with effort <math>e</math>, and seller cost be <math>c(e)</math>. A fixed payment gives weak marginal incentive for effort when future reputation or contract renewal is negligible.
+
+Outcome-based payment can improve alignment but introduces its own problems:
+
+* outcomes may be delayed;
+* outcomes may depend on the buyer's implementation;
+* metrics can be gamed;
+* difficult cases can be avoided.
+
+Knowledge work often requires multidimensional quality measures rather than one performance scalar.
+
+== Reputation systems ==
+
+In repeated markets, reputation can reduce uncertainty.
+
+Let seller <math>i</math> have observed outcomes <math>y_{i1},\ldots,y_{in}</math>. A naive reputation score might be
+
+<math>R_i=\frac{1}{n}\sum_j y_{ij}.</math>
+
+This is inadequate when case difficulty differs or reviews are strategically selected.
+
+Better reputation systems can adjust for:
+
+* task difficulty;
+* sample size;
+* recency;
+* verified outcomes;
+* reviewer reliability;
+* conflicts of interest.
+
+Reputation remains vulnerable to collusion, sybil identities, popularity bias, and path dependence.
+
+High reputation is evidence about past evaluated performance, not proof of a current claim.
+
+== Search and matching ==
+
+Let buyers <math>B=\{b_1,\ldots,b_m\}</math> and sellers <math>S=\{s_1,\ldots,s_n\}</math> be connected through a compatibility score
+
+<math>M_{ij}=F(d_i,e_j,a_j,p_j,c_{ij}),</math>
+
+where <math>d_i</math> is demand, <math>e_j</math> expertise, <math>a_j</math> availability, <math>p_j</math> price, and <math>c_{ij}</math> communication or contextual fit.
+
+A platform can optimize a matching objective such as
+
+<math>\max_X \sum_{i,j}X_{ij}M_{ij}</math>
+
+subject to capacity or budget constraints.
+
+This formulation makes clear that matching quality depends on how expertise and demand are represented. Embedding similarity or keyword overlap can be useful but can also confuse adjacent topics or ignore tacit expertise.
+
+== Brokers and intermediaries ==
+
+Knowledge brokers reduce search, interpretation, and trust costs.
+
+Functions include:
+
+* translating a vague problem into a searchable request;
+* identifying candidate experts;
+* verifying credentials;
+* protecting confidential information;
+* structuring contracts;
+* evaluating deliverables;
+* transferring knowledge across organizational boundaries.
+
+Technology-transfer offices, expert-network firms, research librarians, platform operators, and internal knowledge stewards can all perform brokerage functions.
+
+Broker concentration creates governance risk if one intermediary controls visibility or access.
+
+== Internal knowledge markets ==
+
+Internal markets address a recurring organizational problem: local expertise exists but is difficult to discover or lacks incentives for transfer.
+
+A pull-based internal system can expose requests <math>Q=\{q_i\}</math> to employees and let qualified contributors respond.
+
+Possible incentive components include
+
+<math>U_i=\alpha P_i+\beta R_i+\gamma H_i-\delta C_i,</math>
+
+where <math>P_i</math> is direct payment or points, <math>R_i</math> reputation, <math>H_i</math> helping or mission utility, and <math>C_i</math> contribution cost.
+
+Designers should not assume that increasing <math>\alpha</math> always increases useful participation. Extrinsic incentives can crowd out intrinsic motivation or attract low-effort contributions.<ref name="serrat">[https://link.springer.com/chapter/10.1007/978-981-10-0983-9_110 Serrat, O. (2017), “On Internal Knowledge Markets.”]</ref>
+
+Empirical research has examined alignment between incentives, heterogeneous expertise, and IT support in organizational knowledge markets.<ref name="alignment">[https://doi.org/10.1108/02635571211255048 “Knowledge market in organizations: incentive alignment and IT support,” ''Industrial Management & Data Systems'' 112(7), 2012.]</ref>
+
+== Internal-market failure ==
+
+Internal knowledge markets can fail because:
+
+* participants lack time;
+* organizational culture rewards hoarding;
+* questions are poorly specified;
+* experts are difficult to identify;
+* rewards are misaligned;
+* answer quality is not verified;
+* knowledge is too tacit for platform exchange;
+* users distrust the mechanism.
+
+Brydon and Vining analyze why internal knowledge markets can fail and emphasize that knowledge exchange is not reducible to installing a marketplace interface.<ref name="failure">[https://doi.org/10.1016/j.im.2006.09.001 Brydon, M. and Vining, A. R. (2006), “Understanding the failure of internal knowledge markets,” ''Information & Management'' 43(8), 964–974.]</ref>
+
+== Non-rivalry ==
+
+For many explicit knowledge goods, use by one participant does not materially reduce availability to another:
+
+<math>MC_{copy}\approx 0</math>
+
+for additional digital copies after creation.
+
+This creates a gap between social value and private revenue. Restricting access may be necessary for a seller to capture value, yet broad access can increase total social benefit.
+
+The tension helps explain intellectual-property systems, public research funding, open-source production, and subscription models.
+
+== Excludability and intellectual property ==
+
+Knowledge can be made excludable through:
+
+* secrecy;
+* contracts;
+* technical access controls;
+* patents;
+* copyright over particular expressions;
+* database rights in some jurisdictions;
+* licensing.
+
+These mechanisms have different legal scope. Ownership of a document is not ownership of every idea it contains.
+
+Patent systems exchange limited exclusion rights for disclosure under legal conditions, while trade secrets preserve secrecy but can be independently rediscovered.
+
+Market design should distinguish the underlying knowledge from the legal asset being transacted.
+
+== Public goods and externalities ==
+
+Some knowledge has public-good characteristics because use is non-rival and exclusion is difficult or socially costly.
+
+If creating knowledge costs <math>F</math> and many beneficiaries receive value <math>v_i</math>, private production may be underprovided when the producer can capture only a small fraction of
+
+<math>\sum_i v_i.</math>
+
+Public funding, prizes, philanthropy, compulsory disclosure, or commons-based production can address this gap.
+
+Knowledge can also create negative externalities—for example, security vulnerabilities or hazardous know-how—so maximal dissemination is not universally optimal.
+
+== Markets versus commons ==
+
+A market allocates through exchange and prices or price-like incentives.
+
+A commons uses shared governance over resources. Open-source projects, scientific communities, and collaborative knowledge bases often combine:
+
+* open access;
+* contribution norms;
+* reputation;
+* volunteer labor;
+* public or philanthropic funding;
+* governance rules.
+
+The choice between market and commons is not binary. Hybrid institutions are common.
+
+A knowledge-market article should not redefine every voluntary exchange as a market because doing so removes useful institutional distinctions.
+
+== Challenge and prize mechanisms ==
+
+Innovation prizes and challenge platforms broadcast a problem and reward successful solutions.
+
+If <math>N</math> independent solvers each have probability <math>p</math> of finding an acceptable solution, a simple independence model gives
+
+<math>P(success)=1-(1-p)^N.</math>
+
+The independence assumption is often unrealistic because solvers share methods and information.
+
+Prizes can expand the search space but may waste duplicated effort and bias participation toward actors able to bear unreimbursed costs.
+
+== Prediction markets ==
+
+Prediction markets trade contracts tied to uncertain outcomes. A contract price may aggregate beliefs about an event probability under particular market assumptions.
+
+This differs from buying expertise or knowledge assets.
+
+Prediction markets can be embedded in a knowledge system, but
+
+<pre>
+prediction market ≠ knowledge market
+</pre>
+
+in the general organizational sense.
+
+== Epistemic verification layer ==
+
+A knowledge market requires a separate validation layer.
+
+For an answer <math>a</math>, define evidence state
+
+<math>E(a)=\{sources,methods,tests,provenance,conflicts\}.</math>
+
+Market variables such as price <math>p(a)</math> or demand <math>d(a)</math> are not substitutes for <math>E(a)</math>.
+
+A high price can reflect scarcity, status, legal restrictions, or buyer wealth. A high transaction count can reflect popularity or low cost.
+
+Verification can use:
+
+* replication;
+* independent review;
+* benchmark tasks;
+* observed outcomes;
+* formal proof;
+* source auditing;
+* correction history.
+
+The appropriate method depends on the knowledge claim.
+
+== Mechanism-design concerns ==
+
+A mechanism should be evaluated for strategic incentives.
+
+Participants may:
+
+* exaggerate expertise;
+* split identities;
+* collude on ratings;
+* copy existing answers;
+* withhold useful context;
+* submit easy answers to maximize score;
+* strategically reveal information;
+* create artificial scarcity.
+
+A mechanism is not incentive compatible merely because participation is voluntary.
+
+[[Mechanism design]] can formalize strategic behavior, but epistemic truth remains an external property requiring validation.
+
+== Access and distribution ==
+
+Let willingness to pay be <math>w_i</math>. A pure price allocation grants access when
+
+<math>w_i\ge p.</math>
+
+This allocates by willingness and ability to pay, not by social need.
+
+For public-interest knowledge, designers may introduce:
+
+* subsidies;
+* free tiers;
+* public funding;
+* libraries;
+* compulsory access;
+* open licensing.
+
+Efficiency and equity should be measured separately.
+
+== Knowledge-market performance ==
+
+A multidimensional scorecard can include:
+
+{| class="wikitable"
+! Dimension !! Example measure
+|-
+| Matching || time to qualified match
+|-
+| Quality || independently scored correctness
+|-
+| Verification || fraction with inspectable evidence
+|-
+| Efficiency || resolution cost and time
+|-
+| Participation || active qualified buyers/sellers
+|-
+| Concentration || share controlled by top intermediaries
+|-
+| Equity || access by income, geography, organization size
+|-
+| Correction || time from verified error to corrected record
+|}
+
+Optimizing one dimension can harm another.
+
+== Artificial intelligence ==
+
+AI lowers the marginal cost of supplying plausible answers.
+
+Let human expert cost be <math>c_h</math> and model generation cost <math>c_m</math>, often with <math>c_m\ll c_h</math>. A platform can therefore experience a large supply increase.
+
+But answer supply and verified knowledge supply are different quantities.
+
+Risks include:
+
+* hallucinated claims;
+* copied model outputs sold as independent expertise;
+* correlated errors across sellers using the same model;
+* unclear intellectual-property provenance;
+* reduced incentives for human experts;
+* difficulty assigning liability.
+
+Platforms should record model identity/version, retrieved sources, human contribution, and verification steps.
+
+Ten answers generated from one model are not ten independent confirmations.
+
+== Relation to dispersed knowledge ==
+
+[[Dispersed knowledge]] explains why useful knowledge is distributed among actors and difficult to centralize.
+
+A knowledge market is one possible coordination mechanism for locating and exchanging that distributed knowledge. It does not guarantee that all relevant knowledge becomes priced or tradable.
+
+== Relation to knowledge management ==
+
+[[Knowledge management]] includes creation, retention, governance, validation, and application.
+
+An internal knowledge market is one KM mechanism for matching questions and expertise. It should not replace canonical repositories, review, training, or succession planning.
+
+== Failure modes ==
+
+Common failures include:
+
+* high transaction volume with low correctness;
+* adverse selection;
+* weak verification;
+* reputation manipulation;
+* incentive crowd-out;
+* expert monopolies;
+* excessive brokerage fees;
+* confidentiality leakage;
+* unequal access;
+* model-generated answer flooding;
+* marketizing knowledge that is better treated as a public good or commons.
+
+== Epistemic boundary ==
+
+A knowledge market is a coordination mechanism, not a truth machine.
+
+Prices can aggregate scarcity and preferences. Reputation can summarize past evaluation. Neither establishes the validity of a proposition.
+
+Scientific, technical, legal, medical, and other consequential knowledge still require domain-appropriate evidence and review.
 
 == References ==
-* [https://www.econlib.org/library/Essays/hykKnw.html Hayek (1945), The Use of Knowledge in Society]
-* [https://www.nber.org/books-and-chapters/rate-and-direction-inventive-activity-economic-and-social-factors/economic-welfare-and-allocation-resources-invention Arrow (1962), Economic Welfare and the Allocation of Resources for Invention]
+
+<references />
+
+* [https://doi.org/10.1787/5k44wzw9q5zv-en OECD (2013), ''Knowledge Networks and Markets''.]
+* [https://www.econlib.org/library/Essays/hykKnw.html Hayek, F. A. (1945), “The Use of Knowledge in Society.”]
+* [https://doi.org/10.1016/S0268-4012(03)00056-2 Desouza, K. C. and Awazu, Y. (2003), work on knowledge management and internal knowledge markets.]
 
 == Reading depth ==
-[[Knowledge market/Simple|Simple explanation]]
+
+[[Knowledge market/Simple|Simple explanation]] · [[Knowledge market|Core article]]

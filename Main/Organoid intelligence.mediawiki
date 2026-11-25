@@ -1,34 +1,382 @@
 {{Knowledge object
  |title=Organoid intelligence
  |entity_type=Concept
- |domain=Biology, Cognitive science, Computer science, Medicine, Engineering
- |provenance=Smirnova et al. (2023); Cai et al. (2023); Smirnova et al. (2024)
+ |domain=Biology, Computer science, Cognitive science, Engineering
+ |status=Supported
+ |provenance=Smirnova et al. (2023); organoid biocomputing and Brainoware research
 }}
-<onlyinclude>{{:Organoid intelligence/Simple}}</onlyinclude>
+{{Reading depth|base=Organoid intelligence|current=Core}}
 
-'''Reading depth:''' [[Organoid intelligence/Simple|Simple]] · [[Organoid intelligence/Technical|Technical]]
+= Organoid intelligence =
+
+'''Organoid intelligence''' (OI) is an emerging research program that investigates whether neural organoids—three-dimensional cultures containing neural cell types and circuit-like activity—can be interfaced with computers and used for adaptive information processing or biological computing. The term was formalized by researchers including Lena Smirnova, Thomas Hartung, and colleagues in 2023 as a multidisciplinary program combining brain organoids, electrophysiology, bioengineering, machine learning, and ethics.<ref name="oi">[https://www.frontiersin.org/journals/science/articles/10.3389/fsci.2023.1017235/full Smirnova, L. et al. (2023), “Organoid intelligence (OI): the new frontier in biocomputing and intelligence-in-a-dish,” ''Frontiers in Science'' 1:1017235.]</ref>
+
+The field is at an early stage. Experimental systems have demonstrated neural responses, plasticity, and limited task-relevant computation. These results do not establish human-like intelligence, sentience, consciousness, understanding, or a miniature brain equivalent to a human nervous system.
+
+== Neural organoids ==
+
+A neural organoid is a three-dimensional cell culture derived from stem cells and differentiated toward neural tissue.
+
+Depending on protocol, organoids can contain:
+
+* neurons;
+* glial cells;
+* progenitor cells;
+* layered or regional organization;
+* spontaneous electrical activity.
+
+Organoids model selected aspects of nervous-system development and physiology.
+
+They lack many features of an intact human brain, including full vascularization, normal sensory organs, normal body coupling, and the complete developmental environment.
+
+== Why use organoids for computing? ==
+
+Biological neural tissue has properties attractive for computation:
+
+* high connectivity;
+* plasticity;
+* low-energy signaling;
+* parallel processing;
+* adaptive dynamics.
+
+OI asks whether some of these properties can be harnessed as a computational substrate.
+
+The motivation is not that organoids already possess sophisticated cognition.
+
+The research question is whether their dynamics can perform useful information transformations when coupled to input and output interfaces.
+
+== Biological computing ==
+
+A biological-computing system can use living cells as part of the information-processing mechanism.
+
+In OI, an experimental loop may contain:
+
+<pre>
+computer-generated stimulus
+→ electrode interface
+→ organoid neural activity
+→ recorded response
+→ decoder / learning algorithm
+→ updated stimulus
+</pre>
+
+The organoid is therefore one component of a hybrid biological–electronic system.
+
+Performance should be attributed to the full system rather than to the organoid alone.
+
+== Electrophysiological interface ==
+
+Multi-electrode arrays (MEAs) can stimulate and record extracellular electrical activity.
+
+Researchers can deliver patterned electrical input and measure:
+
+* spikes;
+* bursts;
+* network responses;
+* changes over repeated stimulation.
+
+Advanced interfaces aim for high spatial and temporal resolution.
+
+The interface itself shapes which neural activity can be observed and controlled.
+
+== Plasticity ==
+
+Neural tissue can change its response after repeated activity.
+
+Plasticity can involve:
+
+* synaptic strengthening;
+* synaptic weakening;
+* changes in excitability;
+* network reorganization.
+
+OI experiments seek to exploit such changes for adaptive computation.
+
+Plasticity is necessary for many forms of learning but does not by itself demonstrate intelligence.
+
+== Brainoware ==
+
+A 2023 ''Nature Electronics'' study introduced '''Brainoware''', a hybrid system using a brain organoid as a physical reservoir in reservoir computing.<ref name="brainoware">[https://www.nature.com/articles/s41928-023-01069-w Cai, H. et al. (2023), “Brain organoid reservoir computing for artificial intelligence,” ''Nature Electronics'' 6, 1032–1039.]</ref>
+
+The system transformed electrical inputs into high-dimensional neural responses.
+
+A conventional readout algorithm was trained on those responses.
+
+The researchers demonstrated tasks including:
+
+* nonlinear equation prediction;
+* speech recognition from transformed audio inputs.
+
+This is evidence that organoid dynamics can serve as a computational reservoir.
+
+It is not evidence that the organoid understood speech.
+
+== Reservoir computing ==
+
+Reservoir computing uses a complex dynamical system to transform inputs into a rich state space.
+
+Only the output layer usually needs to be trained.
+
+The reservoir can be:
+
+* a recurrent neural network;
+* an optical system;
+* a physical material;
+* biological neural tissue.
+
+In Brainoware, the organoid acted as the physical reservoir.
+
+This distinction matters because task learning was distributed between biological dynamics and conventional computational readout.
+
+== Training and learning ==
+
+The word '''learning''' can refer to different processes.
+
+In OI, researchers should distinguish:
+
+* biological plasticity inside the organoid;
+* training of an external decoder;
+* adaptation of stimulation protocols;
+* combined closed-loop learning.
+
+If only the external readout changes, it is misleading to attribute all task learning to the organoid.
+
+== Closed-loop systems ==
+
+A closed-loop experiment uses recorded activity to change later stimulation.
+
+For example:
+
+<pre>
+stimulus
+→ response
+→ performance estimate
+→ feedback
+→ new stimulus
+</pre>
+
+Closed-loop training can test whether neural activity changes in task-relevant ways.
+
+A strong claim requires controls showing that improvement is not caused solely by changes in the external software.
+
+== Organoid maturity ==
+
+Current organoids are developmentally limited.
+
+Challenges include:
+
+* incomplete maturation;
+* variable cell composition;
+* lack of normal vascular systems;
+* diffusion limits for oxygen and nutrients;
+* batch-to-batch variability.
+
+These limitations affect both biological modeling and computational reproducibility.
+
+== Vascularization ==
+
+Larger tissues need oxygen and nutrient delivery.
+
+Without adequate vascularization or perfusion, central regions can experience hypoxia or cell death.
+
+Bioengineering approaches include:
+
+* vascular-like co-culture;
+* perfusion systems;
+* microfluidics.
+
+Improved tissue health could support larger and more stable computational networks.
+
+== Reproducibility ==
+
+Biological systems vary.
+
+Two organoids derived from similar protocols can differ in:
+
+* size;
+* cell composition;
+* connectivity;
+* developmental state;
+* spontaneous activity.
+
+This creates a major engineering challenge.
+
+A computing platform normally requires predictable behavior or calibration procedures that compensate for variability.
+
+== Scaling ==
+
+OI researchers have proposed increasing organoid size, interface density, and network complexity.
+
+Scaling is not simply adding more cells.
+
+Larger systems create problems in:
+
+* nutrient supply;
+* recording coverage;
+* stimulation specificity;
+* thermal and chemical stability;
+* reproducibility.
+
+Claims that scaling will automatically create higher intelligence are speculative.
+
+== Energy efficiency ==
+
+Brains are highly energy-efficient relative to many artificial computing systems on some cognitive tasks.
+
+This motivates interest in biological computing.
+
+However, meaningful energy comparisons must include the entire experimental infrastructure:
+
+* incubators;
+* pumps;
+* amplifiers;
+* computers;
+* environmental control.
+
+The metabolic consumption of the organoid alone is not the energy cost of an OI system.
+
+== Benchmarking ==
+
+OI needs standardized benchmarks.
+
+Possible measures include:
+
+* classification accuracy;
+* prediction error;
+* adaptation rate;
+* memory capacity;
+* response stability;
+* energy use;
+* lifetime;
+* reproducibility across organoids.
+
+Benchmarks should compare OI systems with conventional alternatives under equal task and resource conditions.
+
+== Intelligence terminology ==
+
+“Intelligence” in organoid intelligence is a research-program label.
+
+A system demonstrating one classification task does not establish general intelligence.
+
+The term should therefore be tied to operational performance rather than assumed cognitive status.
+
+An organoid can provide useful computation without possessing beliefs, understanding, goals, or self-awareness.
+
+== Consciousness and sentience ==
+
+There is currently no established evidence that present OI organoids are conscious or sentient.
+
+Spontaneous neural oscillations, synchronized firing, or complex electrical activity are not sufficient indicators of conscious experience.
+
+An intact brain's conscious states depend on architecture and biological context far beyond the mere presence of active neurons.
+
+Claims of organoid consciousness require independent criteria and should not be inferred from activity complexity.
+
+== Ethical issues ==
+
+OI raises ethical questions because neural tissue is living human-derived material and future systems may become more complex.
+
+Issues include:
+
+* donor consent;
+* cell provenance;
+* privacy of genomic information;
+* animal chimeras where relevant;
+* moral status;
+* humane experimental boundaries;
+* criteria for stopping experiments.
+
+The 2023 OI framework explicitly called for an embedded ethics approach rather than waiting for technical capability to advance first.<ref name="oi" />
+
+== Donor consent ==
+
+Consent for ordinary cell research may not cover every future use.
+
+OI can involve:
+
+* long-term neural cultures;
+* computational applications;
+* genetic manipulation;
+* commercialization.
+
+Consent processes should explain foreseeable categories of use and governance where possible.
+
+== Brain organoid versus brain ==
+
+A brain organoid is not a miniature complete human brain.
+
+It lacks the full:
+
+* anatomy;
+* sensory input;
+* motor output;
+* endocrine system;
+* vascular system;
+* developmental history.
+
+The term “mini-brain” can be misleading and should be avoided in technical communication.
+
+== OI versus artificial intelligence ==
+
+[[Artificial intelligence]] typically uses nonliving computational substrates.
+
+OI uses living neural tissue as part of computation.
+
+The systems can interact.
+
+For example, AI algorithms can decode organoid activity or design stimulation.
+
+OI should therefore be viewed as hybrid biocomputing rather than as a replacement category for all AI.
+
+== OI versus brain–computer interface ==
+
+A conventional brain–computer interface connects an intact nervous system to a device.
+
+OI connects cultured neural tissue to computational hardware.
+
+The interface techniques can overlap, but there is no human user whose intact brain is being decoded.
+
+== Medical research ==
+
+Brain organoids are widely used for developmental and disease modeling.
+
+Those uses are distinct from OI.
+
+An organoid can be valuable for studying neurodevelopment without being used as a computing substrate.
+
+OI is defined by the information-processing objective and interface.
+
+== Epistemic boundary ==
+
+Current evidence supports:
+
+* viable neural organoids with electrophysiological activity;
+* task-relevant neural dynamics;
+* hybrid organoid–computer systems with limited computational performance.
+
+Current evidence does **not** establish:
+
+* general intelligence;
+* human-like cognition;
+* consciousness;
+* sentience;
+* autonomous goals.
+
+Those stronger claims require separate evidence.
 
 == Semantic relationships ==
-* [[Related to::Biological computation]]
-* [[Related to::Artificial intelligence]]
-* [[Related to::Sensory processing]]
-* [[Related to::Learning]]
-* [[Related to::Cyborg]]
-* [[Related to::Consciousness]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Organoid intelligence]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+* [[Related to::Artificial intelligence]]
+* [[Related to::Brain]]
+* [[Related to::Neural network]]
+* [[Related to::Artificial life]]
+* [[Related to::Cognition]]
+
+== References ==
+
+<references />
 
 [[Category:Biology]]
-[[Category:Cognitive science]]
 [[Category:Computer science]]
-[[Category:Medicine]]
+[[Category:Cognitive science]]
 [[Category:Engineering]]

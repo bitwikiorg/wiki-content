@@ -11,6 +11,8 @@ class MemoryControllerArticleTest(unittest.TestCase):
     def test_two_depth_navigation_and_transclusion(self):
         core, simple, technical = (p.read_text(encoding="utf-8") for p in (CORE, SIMPLE, TECH))
         self.assertIn("{{:Memory controller/Simple}}", core)
+        self.assertIn("{{Knowledge object", core)
+        self.assertIn("== Why it matters ==", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
         for source in (simple, technical):
             self.assertEqual(source.count("<onlyinclude>"), 1)
             self.assertEqual(source.count("</onlyinclude>"), 1)

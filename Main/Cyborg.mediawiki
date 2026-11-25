@@ -2,30 +2,418 @@
  |title=Cyborg
  |entity_type=Concept
  |domain=Technology, Biology, Engineering, Philosophy, Medicine
- |provenance=Clynes and Kline (1960); Reclaiming the cyborg; Science Fictions and Cyber Myths
+ |status=Established
+ |provenance=Clynes and Kline (1960); cybernetics; biomedical engineering; Haraway (1985)
 }}
-<onlyinclude>{{:Cyborg/Simple}}</onlyinclude>
+{{Reading depth|base=Cyborg|current=Core}}
 
-'''Reading depth:''' [[Cyborg/Simple|Simple]] · [[Cyborg/Technical|Technical]]
+= Cyborg =
 
-== Semantic relationships ==
-* [[Related to::Organoid intelligence]]
-* [[Related to::Inforg]]
-* [[Related to::Feedback]]
-* [[Related to::Homeostasis]]
-* [[Related to::Human-computer interaction]]
-* [[Related to::Artificial life]]
+A '''cyborg'''—short for '''cybernetic organism'''—is a living organism whose functioning is integrated with technological components in a way that restores, regulates, extends, or modifies biological capabilities. The concept is broader than a humanoid machine and narrower, in its engineering sense, than ordinary use of tools.
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Cyborg]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+Manfred Clynes and Nathan Kline coined the term in 1960 while discussing how technological and physiological modifications might allow humans to operate in environments such as space without requiring constant conscious control.<ref name="clynes">[https://www.fermatslibrary.com/s/cyborgs-and-space Clynes, M. E. and Kline, N. S. (1960), “Cyborgs and Space,” ''Astronautics'', September 1960, 26–27, 74–76.]</ref>
+
+Modern examples of organism–technology integration include cochlear implants, cardiac rhythm devices, implanted neurostimulators, prosthetic systems with neural or muscular interfaces, and experimental brain–computer interfaces. Whether every assistive device makes its user a “cyborg” depends on the definition being used. The scientifically useful question is therefore not the label alone but the architecture and degree of coupling between organism and device.
+
+== Cybernetic origin ==
+
+The word combines '''cybernetic''' and '''organism'''.
+
+Cybernetics studies regulation, communication, and feedback in animals and machines. In a closed-loop system, a measured state is compared with a desired state and an intervention is adjusted accordingly.
+
+A minimal control loop is:
+
+<pre>
+organism → sensor → controller → actuator → organism
+              ↑                      |
+              └────── feedback ──────┘
+</pre>
+
+Clynes and Kline were interested in technological systems that could become part of bodily regulation rather than requiring continual conscious operation.<ref name="clynes" />
+
+Not every cyborg system is closed-loop, however. Some prostheses provide open-loop assistance, and some implants continuously stimulate according to programmed parameters.
+
+== Restoration and augmentation ==
+
+Cyborg technologies can be grouped by purpose.
+
+'''Restorative systems''' attempt to replace or support a lost or impaired biological function.
+
+'''Augmentative systems''' add a capability or extend performance beyond an ordinary biological baseline.
+
+The distinction is not always sharp. A device that restores one function can also create capabilities that differ from natural physiology.
+
+Ethically and medically, the value of a device should be evaluated by outcomes, safety, and user goals rather than by whether it is categorized as restoration or enhancement.
+
+== Cochlear implants ==
+
+A cochlear implant is an implanted electronic hearing device.
+
+The external system receives sound and processes it. The implanted receiver and electrode array deliver electrical stimulation inside the cochlea near the auditory nerve. The U.S. Food and Drug Administration describes cochlear implants as devices intended to produce useful hearing sensations by electrically stimulating nerves in the inner ear.<ref name="fda-cochlear">[https://www.fda.gov/medical-devices/cochlear-implants/what-cochlear-implant U.S. Food and Drug Administration, “What is a Cochlear Implant?”]</ref>
+
+A simplified pathway is:
+
+<pre>
+sound
+→ microphone
+→ signal processor
+→ transmitter
+→ implanted receiver
+→ electrode array
+→ auditory nerve
+→ nervous system
+</pre>
+
+This is a clear example of technological information being translated into neural stimulation.
+
+It does not restore identical natural hearing; it provides an engineered representation that the nervous system learns to interpret.
+
+== Neurostimulation ==
+
+Implanted neurostimulators deliver electrical stimulation to neural tissue.
+
+Depending on the device and indication, stimulation may be:
+
+* continuous;
+* scheduled;
+* manually triggered;
+* adjusted from measured biological signals.
+
+A closed-loop neurostimulator can measure a biomarker and modify stimulation in response.
+
+Such systems illustrate a key property of cybernetic integration: information flows in both directions between organism and device.
+
+== Prosthetic integration ==
+
+A conventional prosthetic limb can be mechanically useful without a direct biological signal interface.
+
+More tightly integrated systems can use:
+
+* electromyographic signals from muscles;
+* implanted electrodes;
+* peripheral-nerve interfaces;
+* brain–computer interfaces;
+* haptic or electrical sensory feedback.
+
+The degree of cyborg integration therefore varies along several dimensions rather than forming a simple yes/no category.
+
+== Dimensions of integration ==
+
+Useful dimensions include:
+
+'''Physical integration''' — external, wearable, attached, implanted, or tissue-integrated.
+
+'''Information integration''' — one-way sensing, one-way stimulation, or bidirectional exchange.
+
+'''Control integration''' — manual, algorithmic, adaptive, or closed-loop control.
+
+'''Functional dependence''' — optional enhancement versus function necessary for ordinary activity.
+
+'''Persistence''' — temporary, removable, long-term, or permanent.
+
+'''Agency''' — how much control the user retains over activation, configuration, data, and removal.
+
+A smartphone may be cognitively important but is not normally classified as a cyborg component in a narrow biomedical definition because it is not integrated into bodily regulation. Broader philosophical accounts may draw the boundary differently.
+
+== Brain–computer interfaces ==
+
+A brain–computer interface (BCI) records neural activity and maps it to an external command, or stimulates neural tissue to deliver information.
+
+A decoding system can be represented as
+
+<math>\hat a_t=D(z_{t-k:t}),</math>
+
+where <math>z</math> is recorded neural activity and <math>\hat a_t</math> an intended action or control signal.
+
+A bidirectional BCI also includes an encoding map
+
+<math>u_t=E(s_t),</math>
+
+where external state <math>s_t</math> is transformed into stimulation <math>u_t</math> delivered to the nervous system.
+
+BCIs can therefore couple biological and artificial information-processing loops.
+
+== Adaptation and co-adaptation ==
+
+The human user and device can both adapt.
+
+A machine-learning decoder may update its parameters while the user learns to generate more controllable neural or muscular signals.
+
+Let user state be <math>h_t</math> and device state <math>d_t</math>:
+
+<math>h_{t+1}=F(h_t,d_t,e_t),</math>
+
+<math>d_{t+1}=G(d_t,h_t,e_t).</math>
+
+Performance can emerge from co-adaptation rather than from either subsystem alone.
+
+This complicates evaluation: a better outcome can reflect biological learning, algorithmic adaptation, or both.
+
+== Sensory substitution and sensory extension ==
+
+Technology can map information from one sensory domain into another.
+
+Examples include systems that translate visual or spatial data into sound, touch, or electrical stimulation.
+
+A sensory extension can also provide information not normally available through human receptors.
+
+The important scientific questions are:
+
+* what information is encoded;
+* how much bandwidth reaches the nervous system;
+* what training is required;
+* whether perception becomes automatic;
+* how stable the learned mapping remains.
+
+Using an unusual sensor does not itself imply new conscious qualia or superior cognition.
+
+== Homeostasis and regulation ==
+
+The original cyborg concept emphasized modifying bodily regulation.
+
+Suppose physiological variable <math>y(t)</math> has target <math>r(t)</math>. A controller can compute
+
+<math>e(t)=r(t)-y(t)</math>
+
+and select intervention
+
+<math>u(t)=K(e(t),x_t),</math>
+
+subject to safety constraints.
+
+Real biomedical systems must account for:
+
+* sensor noise;
+* time delay;
+* actuator saturation;
+* physiological variability;
+* model uncertainty;
+* failure modes.
+
+A closed-loop design must remain safe even when measurements are wrong or communication fails.
+
+== Power and energy ==
+
+Integrated devices need energy.
+
+Sources can include:
+
+* implanted batteries;
+* rechargeable systems;
+* inductive power transfer;
+* energy harvesting;
+* external power.
+
+Energy constraints affect device lifetime, heat generation, size, communication, and maintenance.
+
+A highly capable implanted system can still be impractical if it requires frequent surgery for battery replacement or creates unsafe thermal loads.
+
+== Biocompatibility ==
+
+Implanted systems interact with tissue.
+
+Engineering problems include:
+
+* inflammation;
+* fibrotic encapsulation;
+* infection;
+* electrode degradation;
+* mechanical mismatch;
+* corrosion;
+* tissue damage.
+
+An interface that works acutely may lose signal quality over months or years.
+
+Long-term cyborg integration therefore depends on materials science and tissue response as much as on software.
+
+== Reliability and fail-safe design ==
+
+For a device supporting critical physiology, reliability is part of biological safety.
+
+A risk analysis should consider:
+
+* sensor failure;
+* actuator failure;
+* power loss;
+* software error;
+* communication loss;
+* calibration drift;
+* unintended stimulation;
+* user-interface error.
+
+Systems should define safe states and recovery procedures.
+
+The required reliability depends on the consequence of failure.
+
+== Cybersecurity ==
+
+Network-connected or software-enabled medical devices can introduce cybersecurity risk.
+
+The FDA's current medical-device cybersecurity guidance treats resilience to cybersecurity threats as part of product design and lifecycle risk management for relevant devices.<ref name="fda-cyber">[https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cybersecurity-medical-devices-quality-management-system-considerations-and-content-premarket U.S. Food and Drug Administration (2026), “Cybersecurity in Medical Devices: Quality Management System Considerations and Content of Premarket Submissions.”]</ref>
+
+For an integrated medical device, security failures can have physical consequences.
+
+Relevant protections include:
+
+* authentication;
+* secure updates;
+* vulnerability management;
+* least-privilege access;
+* logging;
+* recovery mechanisms;
+* protection against unsafe commands.
+
+Cybersecurity is therefore part of safety engineering, not merely information technology.
+
+== Privacy ==
+
+Neural, physiological, and behavioral devices can generate highly personal data.
+
+Privacy questions include:
+
+* what data are collected;
+* who owns or controls them;
+* whether raw signals leave the device;
+* secondary use for model training;
+* cloud dependencies;
+* retention;
+* deletion;
+* disclosure to employers, insurers, governments, or other parties.
+
+A system can function technically while violating acceptable privacy expectations.
+
+== User autonomy ==
+
+Cyborg integration raises questions of control.
+
+Users may need meaningful authority over:
+
+* activation;
+* settings;
+* updates;
+* data sharing;
+* maintenance;
+* removal.
+
+For adaptive or remotely managed systems, responsibility should be explicit when the device changes behavior.
+
+A design that improves one functional outcome while reducing user control can create a genuine ethical tradeoff.
+
+== Identity and embodiment ==
+
+People can incorporate tools and prostheses into body schema and everyday action.
+
+This does not imply that identity is determined by hardware.
+
+Different users can experience the same device differently.
+
+Research and clinical practice should avoid treating a person primarily as a technological system. The cyborg concept describes integration, not a replacement of personhood.
+
+== Cultural and philosophical cyborg ==
+
+The term has also developed a major cultural and philosophical meaning.
+
+Donna Haraway's 1985 “Cyborg Manifesto” used the cyborg as a figure for challenging boundaries such as human/machine, organism/technology, and natural/artificial in feminist and political theory.<ref name="haraway">[https://doi.org/10.5749/minnesota/9780816650477.003.0001 Haraway, D. J., “A Cyborg Manifesto,” later collected in ''Manifestly Haraway''.]</ref>
+
+This use is conceptually important but differs from an engineering specification.
+
+A cultural claim that modern humans are “already cyborgs” can be metaphorical even when no implanted or cybernetic device is involved.
+
+== Cyborg versus robot ==
+
+A robot is an engineered machine.
+
+A cyborg contains a living organism integrated with technology.
+
+An android is a robot designed to resemble a human.
+
+A humanoid robot can therefore look human without being a cyborg, while a person with an implanted electronic device can be cyborg-like without looking robotic.
+
+== Cyborg versus inforg ==
+
+An [[Inforg]] is an informational entity or agent conceptualized within an information environment.
+
+A cyborg requires organism–technology integration in the engineering sense.
+
+An inforg need not have a biological body or implanted components.
+
+The concepts intersect only in broader philosophical accounts.
+
+== Cyborg versus organoid intelligence ==
+
+[[Organoid intelligence]] uses cultured neural tissue within an experimental computing system.
+
+A biohybrid organoid computer combines biological and engineered components and can therefore be cyborg-like in a very broad sense, but its research purpose, biological organization, and ethical context differ from a human or animal cybernetic implant.
+
+The categories should not be collapsed.
+
+== Enhancement claims ==
+
+Enhancement should be measured relative to a defined baseline.
+
+A device can improve:
+
+* strength;
+* hearing discrimination;
+* communication rate;
+* sensory access;
+* memory support;
+* motor control.
+
+Improvement on one metric can introduce costs on another.
+
+Claims should report:
+
+* comparison group;
+* task;
+* training time;
+* reliability;
+* adverse effects;
+* maintenance burden.
+
+The word “superhuman” is not a scientific measurement.
+
+== Intelligence and consciousness ==
+
+Technology can increase access to information or improve task performance without increasing general intelligence.
+
+Likewise, implanted technology does not create or prove consciousness.
+
+For a human user, consciousness is not inferred from the device; the person already has an independent biological and behavioral basis for conscious-state attribution.
+
+For artificial or hybrid systems, organism–machine coupling alone provides no sufficient criterion for subjective experience.
+
+== Research frontier ==
+
+Current and emerging research includes:
+
+* higher-bandwidth neural interfaces;
+* closed-loop neurostimulation;
+* sensory neuroprostheses;
+* bidirectional prosthetic limbs;
+* adaptive rehabilitation systems;
+* long-lived implant materials;
+* secure wireless implants;
+* noninvasive and minimally invasive interfaces.
+
+Progress depends on engineering, clinical evidence, user-centered design, ethics, and long-term safety.
+
+== Related concepts ==
+
+Cyborg technology intersects [[Feedback]], [[Homeostasis]], [[Human-computer interaction]], [[Sensory processing]], [[Artificial intelligence]], [[Organoid intelligence]], and biomedical engineering. The unifying issue is functional coupling between living organization and engineered systems.
+
+== References ==
+
+<references />
+
+* [https://www.fermatslibrary.com/s/cyborgs-and-space Clynes and Kline (1960), “Cyborgs and Space.”]
+* [https://www.fda.gov/medical-devices/cochlear-implants/what-cochlear-implant FDA, cochlear implant overview.]
+* [https://www.fda.gov/regulatory-information/search-fda-guidance-documents/cybersecurity-medical-devices-quality-management-system-considerations-and-content-premarket FDA (2026), medical-device cybersecurity guidance.]
+* [https://doi.org/10.5749/minnesota/9780816650477.003.0001 Haraway, “A Cyborg Manifesto.”]
+
+== Reading depth ==
+
+[[Cyborg/Simple|Simple explanation]] · [[Cyborg/Technical|Technical treatment]]
 
 [[Category:Technology]]
 [[Category:Biology]]

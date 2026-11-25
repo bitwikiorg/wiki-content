@@ -50,6 +50,9 @@ class NewSemiconductorDevicesTests(unittest.TestCase):
                 self.assertIn("'''" + title.lower() + "'''", preview)
                 self.assertNotIn("= " + title + " — Simple =", preview)
                 self.assertNotIn("current=Simple", preview)
+                self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
+                self.assertIn("<references/>", core)
+                self.assertIn("[[Related to::", core)
                 changed = simple.replace("'''" + title.lower() + "'''", "'''tested " + title.lower() + "'''", 1)
                 self.assertNotEqual(simple, changed)
                 self.assertIn("'''tested " + title.lower() + "'''",
@@ -79,7 +82,7 @@ class NewSemiconductorDevicesTests(unittest.TestCase):
                         target = (Path(ns, rest + ".mediawiki") if sep and ns in NAMESPACES
                                   else Path("Main", raw + ".mediawiki"))
                         self.assertTrue((ROOT / target).is_file(), msg=f"Missing link: {title}{suffix} -> {raw}")
-            # Only the Simple lead is transcluded, so guard named-ref collisions
+            # All explanatory Simple content is transcluded; guard named-ref collisions
             lead = simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0]
             refs_core = set(re.findall(r'<ref name="([^"]+)">', core))
             refs_lead = set(re.findall(r'<ref name="([^"]+)">', lead))

@@ -1,15 +1,201 @@
-<onlyinclude>'''Distributed artificial intelligence''' (DAI) studies how multiple computational entities coordinate intelligent activity, including reasoning, planning, learning and distributed problem solving.
+{{Reading depth|base=Distributed artificial intelligence|current=Simple}}
 
-== Explanation ==
-Several autonomous robots may share observations and divide a mapping task rather than send all decisions to a single computer. Distribution creates opportunities for parallelism and local knowledge but adds communication, synchronization and conflict-resolution problems.
+= Distributed artificial intelligence — Simple =
+
+'''Distributed artificial intelligence''' (DAI) studies AI systems in which several computers or agents share intelligent work.
+
+Instead of one central system doing everything, different agents can:
+
+* observe different parts of the environment;
+* solve different parts of a problem;
+* communicate;
+* negotiate;
+* divide tasks;
+* combine results.
+
+This is useful when information or control is naturally spread across several places.
+
+== Distributed problem solving ==
+
+One early form of DAI is '''distributed problem solving'''.
+
+A large problem is divided into smaller parts:
+
+<pre>
+large problem
+→ split into subtasks
+→ several agents work
+→ combine results
+</pre>
+
+This can make work faster when the subtasks can be solved mostly independently.
+
+If every subtask depends on every other one, communication can become more expensive than the parallelism is worth.
+
+== Multi-agent systems ==
+
+A [[Multi-agent system]] contains several agents that can make at least some decisions independently.
+
+Agents may:
+
+* cooperate;
+* compete;
+* have partly different goals.
+
+A fleet of warehouse robots might share a delivery goal while each robot decides how to avoid nearby obstacles.
+
+An automated marketplace can contain agents with conflicting goals.
+
+== Task allocation ==
+
+A distributed system needs to decide who does what.
+
+One historical method is the '''Contract Net Protocol'''.<ref name="contract">[https://doi.org/10.1109/TC.1980.1675516 Smith, R. G. (1980), “The Contract Net Protocol.”]</ref>
+
+A manager agent announces a task.
+
+Other agents can bid.
+
+The manager selects a contractor.
+
+This allows task assignment without one computer permanently controlling every resource.
+
+== Local knowledge ==
+
+Different agents may know different things.
+
+One robot may see an obstacle that others cannot see.
+
+One software agent may control a private database.
+
+This is related to [[Dispersed knowledge]].
+
+The system has to coordinate without assuming every agent knows the full state.
+
+== Communication costs something ==
+
+Agents can exchange messages, but messages require:
+
+* bandwidth;
+* time;
+* energy;
+* processing.
+
+Sending every observation to every agent can become inefficient.
+
+DAI therefore asks what information really needs to be shared.
+
+== Messages can be late ==
+
+Distributed agents do not always update at exactly the same time.
+
+A message can arrive late or be lost.
+
+An agent may act using old information.
+
+Protocols have to decide how much synchronization is necessary.
+
+== Consensus ==
+
+Sometimes agents need to agree on a value.
+
+They may repeatedly exchange estimates until they converge.
+
+Agreement is useful for coordination.
+
+But:
+
+<pre>
+agreement
+does not automatically mean
+the agreed answer is true
+</pre>
+
+All agents can share the same mistake.
+
+== Distributed constraint optimization ==
+
+In a distributed constraint optimization problem, different agents control different variables.
+
+They cooperate to find assignments that satisfy constraints and optimize an overall objective.
+
+This is used in scheduling, smart grids, sensor networks, and resource allocation.<ref name="dcop">[https://jair.org/index.php/jair/article/view/11146 Fioretto, Pontelli and Yeoh (2018), “Distributed Constraint Optimization Problems and Applications.”]</ref>
+
+== Partial observability ==
+
+Agents may see only part of the state.
+
+That makes planning difficult.
+
+Each agent has to act using its own history while accounting for what other agents might know.
+
+Optimal decentralized planning can be computationally much harder than centralized planning.<ref name="decpomdp">[https://doi.org/10.1287/moor.27.4.819.297 Bernstein et al. (2002), “The Complexity of Decentralized Control of Markov Decision Processes.”]</ref>
+
+== Multi-agent learning ==
+
+Agents can also learn.
+
+One agent may change its behavior while another is learning at the same time.
+
+This makes the environment look unstable.
+
+Agents may have to learn:
+
+* communication;
+* cooperation;
+* competition;
+* roles;
+* conventions.
+
+A strategy that works only with the same training partners may fail with new agents.
+
+== Fault tolerance ==
+
+Distribution can make a system more robust.
+
+If one agent fails, another may take over.
+
+But this only works if the system actually has redundancy.
+
+A “distributed” system with one essential central coordinator still has a single point of failure.
+
+== Security ==
+
+Agents can send incorrect or malicious messages.
+
+A secure system needs:
+
+* authenticated identities;
+* authorization;
+* message integrity;
+* validation.
+
+Being another agent in the system is not enough reason to trust a message.
+
+== DAI is not just distributed computing ==
+
+A neural network trained across several GPUs is distributed computing.
+
+It is not necessarily distributed artificial intelligence in the classic DAI sense.
+
+DAI usually focuses on distributed reasoning, planning, learning, autonomy, or coordination among agents.
+
+== Artificial agents can share the same error ==
+
+Several AI agents may appear independent while using the same underlying model.
+
+If that model is wrong, all agents can repeat the same error.
+
+Ten agreeing agents are not ten independent confirmations.
 
 == Related concepts ==
+
 [[Artificial intelligence]] · [[Multi-agent system]] · [[Distributed system]] · [[Intelligent agent]] · [[Dispersed knowledge]] · [[Collective intelligence]]
 
 == Sources ==
-* [https://shop.elsevier.com/books/readings-in-distributed-artificial-intelligence/bond/978-0-934613-63-7 Bond and Gasser (1988), Readings in Distributed Artificial Intelligence]
-* [https://aima.cs.berkeley.edu/global-index.html Russell and Norvig, Artificial Intelligence: A Modern Approach]
-</onlyinclude>
+
+<references />
 
 == Reading depth ==
-[[Distributed artificial intelligence/Technical|Technical treatment]]
+
+[[Distributed artificial intelligence|Core article]] · [[Distributed artificial intelligence/Technical|Technical treatment]]

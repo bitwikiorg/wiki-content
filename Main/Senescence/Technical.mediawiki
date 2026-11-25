@@ -1,17 +1,244 @@
-'''Senescence''' is age-associated deterioration in biological function, or, in cellular biology, a distinct state in which a cell typically stops dividing persistently while remaining metabolically active. These meanings are related but are not identical.
+{{Reading depth|base=Senescence|current=Technical}}
 
-== Organismal versus cellular processes ==
-Organismal senescence concerns changes in survival, reproductive performance or physiological function with age. Patterns differ among species and populations, and age-associated mortality can reflect environmental as well as intrinsic factors. Cellular senescence is a stress-associated state characterized by durable proliferative arrest and context-dependent molecular and secretory changes. It differs from transient quiescence, terminal differentiation and cell death, although distinguishing states can require multiple measurements.
+= Senescence — Technical =
 
-== Cellular mechanisms and markers ==
-DNA damage, telomere dysfunction, oncogenic signaling and other stresses can induce senescence-associated programs. The p53–p21 and p16–RB pathways participate in arrest in many contexts, but no single marker is universal. Senescent cells may develop a senescence-associated secretory phenotype (SASP), whose composition varies by cell type, induction and time. Gorgoulis et al. (2019) provide consensus guidance emphasizing combinations of features rather than diagnosis from one biomarker. SA-β-gal activity, proliferation measures, arrest-pathway markers and secretory features should be interpreted together with controls.
+'''Senescence''' spans two analytically distinct scales: organismal senescence, in which age changes survival, reproduction, or physiological performance, and cellular senescence, a durable cell-state transition characterized by proliferative arrest and context-dependent molecular remodeling. A rigorous account must not reduce one scale to the other.
 
-== Population and experimental analysis ==
-An illustrative mortality model is the Gompertz hazard <math>\mu(a)=\mu_0e^{\gamma a}</math>, with age a and fitted parameters. It is a model for some adult-age mortality patterns, not a universal biological law or a cellular mechanism. In cell experiments, distinguish a persistent arrest from a temporary response using longitudinal observation, appropriate control populations and independent markers. Tissue studies must account for heterogeneity and sampling. The 2023 hallmarks-of-aging framework includes cellular senescence among multiple interacting hallmarks; it does not imply that eliminating all senescent cells is safe or sufficient to reverse aging. Therapeutic claims require evidence from the relevant organisms and clinical contexts.
+== Organismal and actuarial senescence ==
+
+Let <math>T</math> be age at death and <math>S(a)=P(T>a)</math> the survival function. The age-specific hazard is
+
+<math>\mu(a)=\lim_{\Delta a\to0}\frac{P(a\le T<a+\Delta a\mid T\ge a)}{\Delta a}.</math>
+
+A common descriptive model for adult mortality is the Gompertz form
+
+<math>\mu(a)=\mu_0e^{\gamma a},</math>
+
+where <math>\mu_0</math> is a baseline parameter and <math>\gamma</math> describes exponential increase with age. Gompertzian behavior is empirically useful for many populations but is not universal across species or the full life course.<ref name="gompertz">[https://pubmed.ncbi.nlm.nih.gov/9074828/ Olshansky, S. J. and Carnes, B. A. (1997), “Ever since Gompertz,” ''Demography'' 34, 1–15.]</ref>
+
+Actuarial senescence concerns mortality. Reproductive senescence and physiological senescence can follow different trajectories.
+
+== Evolutionary explanations ==
+
+The declining force of natural selection with age motivates several classical theories.
+
+'''Mutation accumulation''' predicts that deleterious alleles with effects concentrated late in life can persist because fewer individuals survive to experience those effects and because late effects contribute less to reproductive success.
+
+'''Antagonistic pleiotropy''' predicts that an allele can be favored if its early-life benefit exceeds its late-life cost in inclusive fitness.
+
+'''Disposable soma''' theory models maintenance as a resource-allocation problem: investment in repair competes with reproduction and other fitness-relevant functions.
+
+These mechanisms are not mutually exclusive. Their predictions should be tested against genetic variation, age-specific fitness effects, comparative life histories, and experimental manipulation.
+
+== Cellular senescence as a state ==
+
+Cellular senescence is a stable or highly persistent proliferative arrest accompanied by molecular and phenotypic changes. It is distinct from:
+
+* reversible quiescence;
+* terminal differentiation;
+* apoptosis;
+* necrosis;
+* generic cellular stress.
+
+Campisi and d’Adda di Fagagna review DNA damage, dysfunctional telomeres, oncogenic signaling, chromatin disruption, and strong mitogenic signals as important senescence-inducing stresses, with p53 and retinoblastoma pathways central in many contexts.<ref name="campisi">[https://doi.org/10.1038/nrm2233 Campisi, J. and d’Adda di Fagagna, F. (2007), “Cellular senescence: when bad things happen to good cells,” ''Nature Reviews Molecular Cell Biology'' 8, 729–740.]</ref>
+
+== Cell-cycle arrest pathways ==
+
+A simplified DNA-damage route is
+
+<pre>
+damage → ATM/ATR signaling → p53 activation → p21 → cyclin-CDK inhibition → RB-mediated arrest
+</pre>
+
+Another common route involves
+
+<pre>
+stress → p16INK4a → CDK4/6 inhibition → hypophosphorylated RB → arrest
+</pre>
+
+These are network motifs, not universal signatures. Different cell types and triggers can use different pathway combinations.
+
+== Telomere-associated senescence ==
+
+Repeated division can shorten telomeres in cells lacking sufficient telomerase. Critically short or dysfunctional telomeres can be recognized as persistent DNA damage and activate checkpoint pathways.
+
+Telomere shortening should not be treated as a universal clock because:
+
+* rates vary among tissues and individuals;
+* some cells divide infrequently;
+* telomerase activity differs among cell types and species;
+* non-telomeric stresses can induce senescence.
+
+== Senescence-associated secretory phenotype ==
+
+Many senescent cells alter secretion of cytokines, chemokines, growth factors, proteases, and extracellular-matrix regulators. This collection is often called the '''senescence-associated secretory phenotype''' (SASP).
+
+SASP composition depends on:
+
+* cell type;
+* senescence inducer;
+* time since induction;
+* tissue environment;
+* signaling state.
+
+Therefore “the SASP” is not one invariant molecular signature.
+
+Secreted factors can support wound repair or immune clearance in some contexts and chronic inflammation, tissue remodeling, or tumor-promoting environments in others.
+
+== Identification and biomarkers ==
+
+No single marker uniquely identifies all senescent cells. The International Cell Senescence Association consensus emphasizes multi-parameter assessment.<ref name="gorgoulis">[https://doi.org/10.1016/j.cell.2019.10.005 Gorgoulis, V. et al. (2019), “Cellular Senescence: Defining a Path Forward,” ''Cell'' 179, 813–827.]</ref>
+
+A defensible panel can combine:
+
+* persistent loss of DNA synthesis or cell division;
+* SA-β-galactosidase activity;
+* p16<sup>INK4a</sup> or p21 where biologically appropriate;
+* DNA-damage foci;
+* lamin/chromatin alterations;
+* morphology;
+* secretory factors;
+* exclusion of apoptosis and transient quiescence.
+
+Marker interpretation must be tissue- and context-specific.
+
+== Experimental design ==
+
+A cell-culture experiment should distinguish induction from maintenance.
+
+Let proliferation rate be <math>r(t)</math>. A transient arrest has
+
+<math>r(t)\to r_0>0</math>
+
+after recovery, whereas a durable senescent state remains near zero under conditions that permit control cells to proliferate.
+
+Longitudinal assays are stronger than one time point.
+
+Essential controls can include:
+
+* proliferating cells;
+* quiescent cells;
+* differentiated cells where relevant;
+* apoptosis controls;
+* multiple independent senescence triggers;
+* rescue or pathway perturbation experiments.
+
+== Tissue-level measurement ==
+
+Tissue senescence is heterogeneous. Bulk measurement can confound cell abundance with per-cell expression.
+
+Single-cell or spatial assays can improve localization, but dissociation, dropout, and marker ambiguity remain. Sampling must account for tissue region, age, disease state, sex where relevant, and treatment history.
+
+A high fraction of p16-positive cells is not automatically equivalent to a high burden of functionally senescent cells.
+
+== Hallmarks of aging ==
+
+The 2023 hallmarks framework identifies twelve interacting processes: genomic instability, telomere attrition, epigenetic alterations, loss of proteostasis, disabled macroautophagy, deregulated nutrient sensing, mitochondrial dysfunction, cellular senescence, stem-cell exhaustion, altered intercellular communication, chronic inflammation, and dysbiosis.<ref name="hallmarks">[https://doi.org/10.1016/j.cell.2022.11.001 López-Otín, C. et al. (2023), “Hallmarks of Aging: An Expanding Universe,” ''Cell'' 186, 243–278.]</ref>
+
+The framework is mechanistic organization, not a claim that twelve independent causes explain every phenotype. Causal relations among hallmarks can be bidirectional and tissue-specific.
+
+== Causal inference ==
+
+Association with age does not prove contribution to aging.
+
+For candidate mechanism <math>M</math> and phenotype <math>Y</math>, stronger causal evidence comes from interventions that alter <math>M</math> while controlling relevant confounders and then measure <math>Y</math> prospectively.
+
+Useful designs include:
+
+* genetic induction or suppression;
+* pharmacological perturbation with off-target controls;
+* transplantation;
+* lineage tracing;
+* longitudinal sampling;
+* randomized intervention where feasible.
+
+Rescue experiments are especially informative when they restore a phenotype after a targeted perturbation.
+
+== Senolytics and senomorphics ==
+
+'''Senolytics''' are interventions intended to preferentially eliminate senescent cells.
+
+'''Senomorphics''' aim to alter harmful senescence-associated phenotypes without necessarily killing the cells.
+
+Preclinical efficacy is not equivalent to clinical benefit. Evaluation must include:
+
+* target engagement;
+* specificity;
+* tissue distribution;
+* toxicity;
+* functional outcomes;
+* durability;
+* effects on wound healing and tumor suppression.
+
+Because senescence can have beneficial roles, indiscriminate removal is not automatically desirable.
+
+== Epigenetic clocks ==
+
+DNA-methylation models can predict chronological age or age-associated outcomes. If a model estimates age
+
+<math>\hat a=f(m_1,\ldots,m_p),</math>
+
+where <math>m_i</math> are methylation features, prediction error is not itself a mechanistic measure of aging.
+
+A treatment that changes <math>\hat a</math> has changed a biomarker. Establishing rejuvenation requires independent functional and clinical evidence.
+
+== Comparative biology ==
+
+Species differ dramatically in life span and senescence pattern. Comparative work can test whether mechanisms generalize across taxa.
+
+However, cross-species correlations can be confounded by body size, ecology, phylogeny, temperature, reproductive strategy, and laboratory conditions. Phylogenetically informed analyses are required when species are the statistical units.
+
+== Distinguishing aging from disease ==
+
+Age increases risk for many diseases, but aging and disease are not synonyms.
+
+A mechanism can:
+
+* contribute broadly to age-related decline;
+* contribute only to one pathology;
+* be a consequence rather than a cause;
+* be adaptive in one context and harmful in another.
+
+Clinical endpoints should therefore be specified rather than replaced by a generic claim of “anti-aging.”
+
+== Failure modes ==
+
+Common errors include:
+
+'''Single-marker classification''' — declaring a cell senescent from one marker.
+
+'''Scale collapse''' — treating cellular senescence as synonymous with organismal aging.
+
+'''Clock reification''' — assuming a predictive age biomarker is the causal aging process.
+
+'''Cross-sectional causality''' — inferring mechanism from older-versus-younger differences alone.
+
+'''Universalization''' — assuming one species, tissue, or cell type supplies a universal aging law.
+
+'''Therapeutic overreach''' — treating a preclinical biomarker change as established life extension or clinical rejuvenation.
+
+== Open questions ==
+
+Major research problems include:
+
+* which senescent-cell subtypes are causal in specific diseases;
+* how senescence states change over time;
+* how immune clearance alters senescent-cell persistence;
+* which hallmarks are upstream or downstream in particular tissues;
+* how aging mechanisms differ across species;
+* how to validate interventions with meaningful functional endpoints.
+
+Senescence is therefore best understood as a set of age-dependent organismal patterns and context-dependent cellular programs connected by causal pathways that must be tested rather than assumed.
 
 == References ==
-* [https://doi.org/10.1016/j.cell.2019.10.005 Gorgoulis et al. (2019), Cellular Senescence: Defining a Path Forward]
-* [https://pubmed.ncbi.nlm.nih.gov/36599349/ López-Otín et al. (2023), Hallmarks of aging: An expanding universe]
+
+<references />
+
+* [https://doi.org/10.1016/j.cell.2019.10.005 Gorgoulis et al. (2019), cellular-senescence consensus.]
+* [https://doi.org/10.1016/j.cell.2022.11.001 López-Otín et al. (2023), Hallmarks of Aging.]
+* [https://doi.org/10.1038/nrm2233 Campisi and d’Adda di Fagagna (2007), cellular senescence review.]
+* [https://pubmed.ncbi.nlm.nih.gov/9074828/ Olshansky and Carnes (1997), Gompertz mortality review.]
 
 == Reading depth ==
-[[Senescence/Simple|Simple explanation]]
+
+[[Senescence/Simple|Simple explanation]] · [[Senescence|Core article]]

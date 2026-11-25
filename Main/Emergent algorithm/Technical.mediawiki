@@ -1,17 +1,524 @@
-An '''emergent algorithm''' is an informal term for a computational procedure in which coordinated large-scale behavior arises from interactions among local rules or components, rather than being specified as a centralized sequence of every global action.
+{{Reading depth|base=Emergent algorithm|current=Technical}}
 
-== Definition and scope ==
-The term is not a single standardized algorithm class. Distinguish an explicitly designed local rule that produces an emergent outcome, an algorithm learned by optimization, and an unanticipated strategy observed in a complex system. The first is exemplified by local particle-system algorithms and distributed simulations; the latter cases require different evidence.
+= Emergent algorithm — Technical =
 
-== Example: local consensus ==
-On a fixed connected undirected graph, let each node hold scalar x_i. A synchronous averaging rule is <math>x_i(t+1)=x_i(t)+\alpha\sum_{j\in N_i}(x_j(t)-x_i(t))</math>. For 0<α<1/d_max, the update is doubly stochastic with positive diagonal, preserving the mean and converging to consensus under the stated conditions. The global agreement arises from repeated local interactions. If the graph is disconnected, only component-level agreement is generally obtained. This is an illustrative distributed algorithm, not a definition of emergence.
+An '''emergent algorithm''' is an informal class label for local or distributed computational procedures whose repeated interactions generate a system-level computation, pattern, or organization not explicitly controlled step by step by a central process. The term is most useful when local state, local update rules, scheduler assumptions, and a global acceptance property are all specified.
 
-== Design and verification ==
-Specify topology, update schedule, information access, initial conditions and global acceptance criteria. Prove invariants or convergence when possible; otherwise use simulation over independent seeds and stress tests. Evaluate sensitivity to perturbations, communication delays and adversarial or failed nodes. Visual order alone does not demonstrate correctness, scalability or useful adaptation. An emergent pattern may be unintended and harmful.
+It is not a standardized complexity-theory or algorithm-design category. Technical rigor therefore comes from the concrete model, not from the adjective “emergent.”
+
+
+An emergent algorithm obtains system-level computation from local interactions rather than a single centralized procedure. Its behavior therefore depends on [[Emergence]] and [[Self-organization]], while [[Swarm intelligence]] supplies important examples and [[Algorithm engineering]] provides methods for evaluating whether the resulting computation is efficient and robust.
+
+== Local state machine model ==
+
+Let agents be
+
+<math>A=\{1,\ldots,n\}.</math>
+
+Agent <math>i</math> has local state <math>x_i\in X</math> and observes neighborhood <math>N_i</math>.
+
+Update:
+
+<math>x_i' = F(x_i,\{x_j:j\in N_i\},\xi_i),</math>
+
+where <math>\xi_i</math> is optional randomness.
+
+Global configuration is
+
+<math>X=(x_1,\ldots,x_n).</math>
+
+Desired macroproperty is predicate
+
+<math>G(X)=1.</math>
+
+The algorithmic problem is to establish when local transitions cause the global system to reach configurations satisfying <math>G</math>.
+
+== Transition system ==
+
+Define global transition relation
+
+<math>X\rightarrow X'</math>
+
+whenever one legal local activation changes the configuration.
+
+Correctness can be stated over all allowed executions:
+
+<math>X_0\in I\Rightarrow \exists t:G(X_t)</math>
+
+for liveness, plus
+
+<math>G(X_t)\Rightarrow G(X_{t'})</math>
+
+for appropriate closure or stability claims.
+
+The exact quantifiers depend on scheduler and randomness.
+
+== Scheduler ==
+
+A distributed local algorithm requires an activation model.
+
+Possible schedulers:
+
+* synchronous;
+* sequential asynchronous;
+* fair asynchronous;
+* adversarial fair.
+
+A proof under synchronous rounds need not survive arbitrary asynchronous interleavings.
+
+Scheduler assumptions are part of the theorem.
+
+== Fairness ==
+
+A scheduler is fair if enabled components are eventually activated according to a defined criterion.
+
+Without fairness, an adversarial scheduler can starve one agent forever.
+
+Some convergence results therefore require:
+
+<math>P(agent\ i\ eventually\ activated)=1</math>
+
+or deterministic fairness.
+
+The property should be explicit.
+
+== Invariants ==
+
+Invariant <math>I(X)</math> satisfies:
+
+<math>I(X_0)=1</math>
+
+and
+
+<math>I(X)\land X\rightarrow X'\Rightarrow I(X').</math>
+
+Then <math>I</math> holds for every reachable configuration.
+
+Typical invariants include:
+
+* connectivity;
+* collision avoidance;
+* conserved count;
+* legal geometry.
+
+Induction over local transitions provides a strong proof method.
+
+== Potential functions ==
+
+Convergence can sometimes be shown using potential
+
+<math>\Phi:X\rightarrow\mathbb R.</math>
+
+If every nonterminal transition satisfies
+
+<math>\Phi(X')<\Phi(X),</math>
+
+and <math>\Phi</math> is bounded below, infinite descent is impossible.
+
+Potential functions turn local progress into a global convergence proof.
+
+== Consensus example ==
+
+Let connected undirected graph have node values <math>x_i(t)</math>.
+
+Local averaging:
+
+<math>x_i(t+1)=x_i(t)+\alpha\sum_{j\in N_i}(x_j(t)-x_i(t)).</math>
+
+In vector form:
+
+<math>x(t+1)=(I-\alpha L)x(t),</math>
+
+where <math>L</math> is graph Laplacian.
+
+For suitable <math>\alpha</math>, repeated local averaging converges to consensus.
+
+If graph and weights preserve total sum, consensus value equals initial mean.
+
+== Spectral convergence ==
+
+Let averaging matrix be <math>W</math>.
+
+Convergence rate is governed by magnitude of second-largest eigenvalue:
+
+<math>\|x(t)-\bar x\mathbf1\|\le |\lambda_2(W)|^t C.</math>
+
+Smaller <math>|\lambda_2|</math> generally means faster mixing.
+
+Thus global convergence can be derived from local topology.
+
+== Disconnected graph boundary ==
+
+If graph has disconnected components, local averaging cannot create information flow between them.
+
+The system converges at best to separate component consensus.
+
+This illustrates an important principle:
+
+<pre>
+global property requires global connectivity assumptions
+</pre>
+
+Local rule alone is insufficient.
+
+== Cellular automaton model ==
+
+A cellular automaton has lattice sites <math>i</math> with state <math>x_i(t)</math> and update
+
+<math>x_i(t+1)=f(x_{N_i}(t)).</math>
+
+One uniform local rule can generate complex global structures.
+
+[[Conway's Game of Life]] is a two-dimensional binary example.
+
+Complexity can emerge even when <math>f</math> is deterministic and simple.
+
+== Prediction difficulty ==
+
+Simple local specification does not imply easy global prediction.
+
+Some cellular automata support universal computation.
+
+For such systems, predicting arbitrary long-term behavior can encode general computational problems.
+
+Emergence is therefore compatible with exact deterministic rules and computational irreducibility.
+
+== Boids formalization ==
+
+For boid <math>i</math>, local force:
+
+<math>F_i=w_sF_{sep}+w_aF_{align}+w_cF_{coh}.</math>
+
+Then
+
+<math>v_i(t+1)=clip(v_i(t)+F_i),</math>
+
+<math>p_i(t+1)=p_i(t)+v_i(t+1).</math>
+
+Global flock coherence can be measured by order parameter
+
+<math>\Phi=\frac1n\left\|\sum_i\frac{v_i}{\|v_i\|}\right\|.</math>
+
+Thus the emergent property can be quantified rather than judged only visually.
+
+== Amoebot model ==
+
+The amoebot model represents particles on a geometric lattice.
+
+Particles have:
+
+* constant-size local memory;
+* local communication;
+* expansion/contraction movement;
+* asynchronous activation.
+
+The model supports provable distributed algorithms for programmable matter.<ref name="amoebot">[https://labs.engineering.asu.edu/sops/amoebot/ Arizona State University, “Computing by Programmable Particles.”]</ref>
+
+The restricted local model makes global proofs meaningful.
+
+== Leader election ==
+
+Anonymous identical particles can sometimes elect a unique leader when geometry or symmetry conditions permit.
+
+A leader-election algorithm demonstrates how global asymmetry can emerge from local computation.
+
+But deterministic leader election can be impossible in fully symmetric anonymous configurations.
+
+Randomization or additional structure may be necessary.
+
+== Shape formation ==
+
+Let target shape class be <math>\mathcal S</math>.
+
+Goal:
+
+<math>P(X_t\in\mathcal S)\rightarrow1</math>
+
+or deterministic eventual membership.
+
+Local movement must often preserve connectivity while changing geometry.
+
+Proof therefore combines invariant and convergence arguments.
+
+== Stochastic compression ==
+
+Cannon, Daymude, Randall, and Richa studied a Markov-chain local algorithm for particle compression.<ref name="compression">[https://jdaymude.github.io/publication/cannon2016-compression/ Cannon, S. et al. (2016), “A Markov Chain Algorithm for Compression in Self-Organizing Particle Systems.”]</ref>
+
+Let global configurations form state space <math>\Omega</math>.
+
+Local random transitions define Markov chain with stationary distribution
+
+<math>\pi(X)\propto \lambda^{E(X)},</math>
+
+where a bias parameter favors more compressed structures through local geometric statistics.
+
+Theoretical analysis shows concentration on low-perimeter states for parameter ranges under model assumptions.
+
+== Detailed balance ==
+
+For reversible Markov chain, detailed balance:
+
+<math>\pi(x)P(x,y)=\pi(y)P(y,x).</math>
+
+This proves <math>\pi</math> is stationary.
+
+Emergent stochastic behavior can therefore have rigorous global distributional analysis.
+
+== Mixing time ==
+
+Stationary concentration is not enough.
+
+A chain could take impractically long to approach stationarity.
+
+Mixing time
+
+<math>t_{mix}(\epsilon)=\min\{t:\max_x\|P^t(x,\cdot)-\pi\|_{TV}\le\epsilon\}</math>
+
+measures convergence speed.
+
+Engineering claims should address runtime, not only asymptotic stationary properties.
+
+== Fault tolerance ==
+
+Suppose each local unit fails independently with probability <math>p</math>.
+
+Global success probability
+
+<math>P_{success}(p,n)</math>
+
+should be measured or bounded.
+
+Locality can increase tolerance to isolated faults.
+
+Connectivity loss can create phase-like failure when enough nodes disappear.
+
+Robustness requires a specified fault model.
+
+== Randomized local algorithms ==
+
+Randomness can break symmetry and support exploration.
+
+For randomized algorithm, correctness can be:
+
+* Las Vegas — always correct, random runtime;
+* Monte Carlo — bounded runtime, small error probability.
+
+Emergent stochastic systems may not fit these categories exactly, but error probability and runtime should still be stated.
+
+== Metastability ==
+
+A system can remain for long periods in a suboptimal configuration before escaping.
+
+Such metastable states can look converged in finite simulations.
+
+Multiple run lengths and theoretical analysis are needed.
+
+Visual stability is not proof of convergence.
+
+== Phase transitions ==
+
+Local interaction systems can show sharp macroscopic changes as parameters vary.
+
+Order parameter <math>M(\theta)</math> may change rapidly near critical <math>\theta_c</math>.
+
+This can be useful for design but also creates sensitivity.
+
+Parameters tuned near transitions should be stress-tested.
+
+== Emergent algorithm versus self-stabilization ==
+
+A self-stabilizing distributed algorithm guarantees convergence to legitimate state from arbitrary state under stated conditions.
+
+This is stronger and more formal than simply showing emergence.
+
+Some emergent algorithms are self-stabilizing.
+
+Others require restricted initial conditions.
+
+== Emergent algorithm versus evolutionary algorithm ==
+
+Evolutionary algorithm operates on population of candidate solutions with selection and variation.
+
+The computation can be centrally orchestrated.
+
+Emergent algorithm focuses on local interactions producing macrofunction.
+
+An evolutionary process can itself be distributed and emergent, but the concepts remain distinct.
+
+== Emergent algorithm versus learned policy ==
+
+A learned policy <math>\pi_\theta</math> can be discovered through optimization.
+
+If one centralized neural network executes <math>\pi_\theta</math>, the behavior can be surprising but not local-emergent in the relevant sense.
+
+If many agents execute local learned policies and generate a macrobehavior, both learning and emergence may be present.
+
+Separate the two sources.
+
+== Emergent strategy ==
+
+Multi-agent learning may produce conventions not explicitly rewarded.
+
+To claim emergent strategy, define:
+
+* strategy pattern;
+* baseline;
+* reproducibility;
+* conditions of appearance.
+
+A one-run anecdote is weak evidence.
+
+== Formal verification ==
+
+Model checking can verify finite-state emergent algorithms.
+
+Properties can include:
+
+* safety — forbidden state never reached;
+* liveness — desired event eventually occurs;
+* fairness;
+* deadlock freedom.
+
+State explosion can limit scale.
+
+Symmetry reduction and abstraction can help.
+
+== Runtime complexity ==
+
+Local algorithms can use asynchronous rounds.
+
+If each agent activated at least once per round, convergence in <math>T(n)</math> rounds can be analyzed.
+
+Physical wall-clock runtime also depends on parallelism.
+
+Round complexity and total work should both be reported.
+
+== Message complexity ==
+
+If agents exchange messages, total message count <math>M(n)</math> is important.
+
+An algorithm with constant local memory can still produce <math>O(n^2)</math> messages.
+
+Emergent design does not imply communication efficiency.
+
+== Memory complexity ==
+
+Amoebot-style models often restrict each particle to <math>O(1)</math> memory.
+
+The collective can nevertheless store larger values through distributed structures.
+
+Porter and Richa demonstrated distributed counters and collaborative computation using constant-memory particles.<ref name="collab">[https://labs.engineering.asu.edu/sops/collaborative-computation Arizona State University, “Collaborative Computation in Self-Organizing Particle Systems.”]</ref>
+
+This is a concrete example of macro-computation exceeding individual capacity.
+
+== Distributed memory ==
+
+If <math>n</math> agents each hold <math>b</math> bits, total physical storage is <math>nb</math> bits.
+
+But usable collective memory depends on:
+
+* organization;
+* access;
+* communication;
+* fault tolerance.
+
+Capacity alone does not guarantee efficient retrieval.
+
+== Simulation methodology ==
+
+A robust simulation reports:
+
+* model version;
+* initial-state generator;
+* random seed;
+* scheduler;
+* population size;
+* boundary conditions;
+* stopping rule.
+
+Run across many seeds and initial conditions.
+
+Record failure modes, not only successful trajectories.
+
+== Physical implementation ==
+
+A local algorithm deployed to robots encounters:
+
+* noisy sensing;
+* actuator uncertainty;
+* communication dropout;
+* finite battery;
+* collision.
+
+A theoretical model may assume perfect local state.
+
+Simulation-to-reality validation should quantify which assumptions break.
+
+== Safety envelope ==
+
+If global objective is <math>G</math> and safety constraint <math>S(X)=1</math>, optimization should solve:
+
+<math>reach\ G\ subject\ to\ S(X_t)=1\ \forall t.</math>
+
+A system that reaches the target but violates safety during transients is not acceptable.
+
+Safety should not be treated as emergent hope.
+
+== Interpretability ==
+
+Local rules are often simple.
+
+Global dynamics can still be hard to explain.
+
+Interpretability should include:
+
+* sensitivity to parameters;
+* causal local interactions;
+* basin structure;
+* failure modes.
+
+A simple rule does not automatically make global behavior transparent.
+
+== Engineering acceptance criteria ==
+
+For a proposed emergent algorithm, state:
+
+{| class="wikitable"
+! Item !! Required question
+|-
+| Model || What can each unit observe and store?
+|-
+| Scheduler || How are updates ordered?
+|-
+| Global target || What counts as success?
+|-
+| Invariants || What must never break?
+|-
+| Convergence || Under which conditions is success reached?
+|-
+| Complexity || How do time, messages, and memory scale?
+|-
+| Robustness || Which failures are tolerated?
+|}
+
+This is more informative than the label “emergent.”
+
+== Epistemic boundary ==
+
+Emergence is a relationship between levels of description.
+
+It is not a causal force.
+
+The scientific explanation of an emergent algorithm remains the concrete local rules, interactions, stochastic processes, topology, and proof or measurement connecting them to the global behavior.
 
 == References ==
-* [https://labs.engineering.asu.edu/sops/emergence Arizona State University, Self-Organizing Particle Systems: Emergence]
-* [https://doi.org/10.1145/37401.37406 Reynolds (1987), Flocks, herds and schools]
+
+<references />
+
+* [https://labs.engineering.asu.edu/sops/emergence Arizona State University, SOPS Emergence.]
+* [https://labs.engineering.asu.edu/sops/amoebot-ba/ Amoebot model overview.]
+* [https://doi.org/10.4230/LIPIcs.DISC.2023.27 Kostitsyna, Peters and Speckmann (2023), programmable-matter reconfiguration.]
 
 == Reading depth ==
-[[Emergent algorithm/Simple|Simple explanation]]
+
+[[Emergent algorithm/Simple|Simple explanation]] · [[Emergent algorithm|Core article]]

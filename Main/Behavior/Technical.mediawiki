@@ -1,17 +1,533 @@
-'''Behavior''' refers to actions or patterns of activity of an organism or system in relation to internal and external conditions. In biology and psychology, examples include movement, communication, foraging, learning and deliberate inaction.
+{{Reading depth|base=Behavior|current=Technical}}
 
-== Scope and definitions ==
-Levitis, Lidicker and Freund (2009) documented substantial disagreement among behavioral biologists and proposed a definition focused on coordinated organism-level responses, distinguishing them from developmental changes. Definitions may differ for cellular activity, collective behavior and software-system behavior. Define the unit of analysis rather than assume all activity counts as behavior in the same sense.
+= Behavior — Technical =
 
-== Mechanism and explanation ==
-Behavior can be studied at several levels: proximate sensory and physiological mechanisms, developmental history, adaptive function and evolutionary history. An observed action does not by itself reveal its function or subjective motivation. A stimulus–response description may be sufficient for prediction in a controlled task but inadequate when internal state, learning or context changes.
+'''Behavior''' is a system-level pattern of activity used in biology, psychology, neuroscience, ethology, behavior analysis, and engineering. The concept is scientifically central but definitionally heterogeneous. A technical analysis should therefore specify the unit, boundary, temporal scale, observability, and operational criteria before measurement.
 
-== Experimental methods ==
-Use an ethogram with explicit categories, observation intervals and criteria for ambiguous events. Record frequency, duration, latency or sequence as appropriate; account for sampling, observer bias and individual dependence. For example, compare foraging choices under randomized resource conditions and model repeated observations within animals. Separately measure physiological variables if attributing behavior to a mechanism. Computational agents can have operationally specified actions, but behavioral similarity alone is not evidence of biological or conscious equivalence.
+Levitis, Lidicker and Freund found substantial disagreement among behavioral biologists and proposed a definition centered on internally coordinated actions or inactions of whole organisms or groups in response to internal or external stimuli, excluding changes more readily treated as development.<ref name="levitis">[https://pmc.ncbi.nlm.nih.gov/articles/PMC2760923/ Levitis, D. A., Lidicker, W. Z. Jr., and Freund, G. (2009), “Behavioural biologists don't agree on what constitutes behaviour.”]</ref>
+
+
+A technical account of behavior connects observable action to [[Sensory processing]], internal state, and environmental contingencies rather than reducing behavior to any one level. Learning and [[Memory]] can alter response probabilities, while [[Adaptation (systems)]] provides a broader systems vocabulary for changes that improve performance under specified conditions.
+
+== State-space representation ==
+
+Let organism state at time <math>t</math> be
+
+<math>x_t=(x_t^{internal},x_t^{external}).</math>
+
+Behavioral action can be represented as
+
+<math>a_t=\pi(x_t,h_t),</math>
+
+where <math>h_t</math> is relevant history and <math>\pi</math> a behavioral policy.
+
+The next state becomes
+
+<math>x_{t+1}=F(x_t,a_t,\epsilon_t),</math>
+
+where <math>\epsilon_t</math> represents uncontrolled environmental variation.
+
+This formulation makes behavior dynamic and reciprocal: actions alter future conditions.
+
+== Operational definition ==
+
+Suppose the researcher studies “aggression.”
+
+A usable operational definition might identify events such as:
+
+* bite;
+* charge;
+* threat display;
+* chase.
+
+Without explicit criteria, observers can import subjective judgments.
+
+Operational definitions should state:
+
+* onset;
+* offset;
+* inclusion;
+* exclusion;
+* ambiguous cases.
+
+== Unit of analysis ==
+
+Behavior can be defined at several levels:
+
+* individual organism;
+* dyad;
+* group;
+* colony;
+* artificial agent.
+
+Mixing levels creates category errors.
+
+A neural spike is usually not classified as the organism's behavior.
+
+A flock turn can be a group-level behavioral pattern even though no bird individually executes “the flock turn.”
+
+The unit must be explicit.
+
+== Temporal scale ==
+
+Behavior can be sampled across milliseconds, seconds, hours, seasons, or lifetimes.
+
+Observed variable depends on time resolution.
+
+At fine scale, locomotion may be a sequence of motor events.
+
+At coarse scale, the same episode is “migration.”
+
+A behavioral ontology should therefore define temporal granularity.
+
+== Tinbergen framework ==
+
+Tinbergen distinguished four biological questions:<ref name="tinbergen">[https://doi.org/10.1111/j.1439-0310.1963.tb01161.x Tinbergen, N. (1963), “On aims and methods of Ethology.”]</ref>
+
+{| class="wikitable"
+! Question !! Target
+|-
+| Mechanism || Immediate causal processes
+|-
+| Ontogeny || Development across the lifetime
+|-
+| Function || Consequences for survival or reproduction
+|-
+| Phylogeny || Evolutionary history
+|}
+
+These explanatory dimensions should not be substituted for one another.
+
+== Proximate mechanism ==
+
+A mechanistic model can include sensory input <math>s_t</math>, internal state <math>z_t</math>, neural transformation <math>N</math>, and motor output <math>a_t</math>:
+
+<math>a_t=N(s_t,z_t).</math>
+
+Mechanism can be probed through:
+
+* lesions;
+* stimulation;
+* pharmacology;
+* electrophysiology;
+* imaging;
+* genetic manipulation.
+
+Behavior alone rarely identifies mechanism uniquely.
+
+== Development ==
+
+Let behavioral parameter <math>\theta(t)</math> vary with age.
+
+A developmental model might be
+
+<math>\theta(t)=F(genotype,experience,environment,t).</math>
+
+Developmental explanation includes maturation, learning, hormonal change, and environmental history.
+
+Cross-sectional age differences are weaker evidence than longitudinal developmental observation because cohorts can differ.
+
+== Function ==
+
+A functional hypothesis predicts consequences for fitness.
+
+If behavior <math>a</math> changes expected reproductive success,
+
+<math>\Delta W=E[W\mid a]-E[W\mid a'],</math>
+
+then functional analysis asks whether <math>\Delta W</math> is positive under the relevant ecological context.
+
+Observed prevalence is not proof of adaptation.
+
+Drift, constraint, pleiotropy, or historical mismatch can also explain traits.
+
+== Phylogeny ==
+
+Comparative behavioral evolution requires accounting for shared ancestry.
+
+Species are not independent observations.
+
+Phylogenetic comparative methods model covariance induced by evolutionary history.
+
+A behavioral correlation across species can disappear after phylogenetic correction.
+
+== Innate–learned decomposition ==
+
+The binary distinction is often misleading.
+
+Phenotype can be represented schematically as
+
+<math>B=F(G,E,G\times E,D),</math>
+
+where <math>G</math> is genetic variation, <math>E</math> environmental variation, and <math>D</math> developmental history.
+
+“Genetic” does not mean fixed.
+
+“Environmental” does not mean freely learned.
+
+The interaction can be nonlinear.
+
+== Reaction norms ==
+
+For genotype <math>g</math>, behavioral phenotype across environment <math>e</math> can be written
+
+<math>B_g(e).</math>
+
+Different genotypes can have different reaction norms.
+
+This formalizes context-dependent expression rather than assigning one fixed behavioral value to a genotype.
+
+== Learning curves ==
+
+Performance over trials can be modeled, for example, as
+
+<math>P(n)=P_{\infty}-(P_{\infty}-P_0)e^{-kn}.</math>
+
+Such a curve describes change but does not identify the learning mechanism.
+
+Alternative models should be compared.
+
+Learning can also produce nonmonotonic performance.
+
+== Reinforcement learning analogy ==
+
+Behavior analysis and computational reinforcement learning both study consequences of actions, but the frameworks are not identical.
+
+A computational agent may update action value:
+
+<math>Q(s,a)\leftarrow Q(s,a)+\alpha[r+\gamma\max_{a'}Q(s',a')-Q(s,a)].</math>
+
+Animal learning can be compared with such models.
+
+A good fit does not prove the nervous system literally implements the algorithm.
+
+== Ethogram design ==
+
+Let behavioral categories be
+
+<math>C=\{c_1,\ldots,c_k\}.</math>
+
+Categories should be:
+
+* operationally defined;
+* mutually interpretable;
+* sufficient for the research question;
+* feasible to observe.
+
+Mutual exclusivity is not always required because an organism can simultaneously locomote and vocalize.
+
+The coding scheme should specify whether overlap is allowed.
+
+== Frequency ==
+
+For observation duration <math>T</math>, event rate is
+
+<math>\lambda=N/T.</math>
+
+Counts can be modeled with Poisson or negative-binomial models when assumptions fit.
+
+Overdispersion suggests heterogeneity or temporal clustering.
+
+== Duration ==
+
+For episodes with durations <math>d_i</math>:
+
+<math>\bar d=\frac{1}{n}\sum_i d_i.</math>
+
+Total time allocation can be expressed
+
+<math>p_c=\frac{T_c}{T}.</math>
+
+Duration distributions are often skewed, so medians or survival models can be more appropriate than means.
+
+== Latency ==
+
+Latency from stimulus to response is a time-to-event variable.
+
+Censoring occurs when no response appears before observation ends.
+
+Survival analysis can handle such censoring better than assigning arbitrary maximum latency values.
+
+== Sequence analysis ==
+
+Let behavioral sequence be
+
+<math>S=(b_1,b_2,\ldots,b_T).</math>
+
+Transition probabilities can be estimated:
+
+<math>P_{ij}=P(b_{t+1}=j\mid b_t=i).</math>
+
+Markov models can characterize local sequence structure.
+
+Higher-order history may be needed if behavior depends on more than the previous state.
+
+== Hidden-state models ==
+
+Observed behavior can arise from latent states.
+
+A hidden Markov model includes latent state <math>z_t</math>, transition probability
+
+<math>P(z_t\mid z_{t-1})</math>,
+
+and emission probability
+
+<math>P(b_t\mid z_t).</math>
+
+This can model unobserved states such as foraging mode or vigilance.
+
+The latent state is a model construct, not a directly observed mental state.
+
+== Sampling schemes ==
+
+Common schemes include:
+
+'''Focal sampling''' — follow one individual.
+
+'''Scan sampling''' — record states across many individuals at intervals.
+
+'''All-occurrence sampling''' — record every occurrence of selected rare behavior.
+
+Sampling design changes detectability.
+
+Rare short events are systematically underestimated by coarse scan intervals.
+
+== Detection probability ==
+
+Let true event probability be <math>p</math> and detection probability be <math>d</math>.
+
+Observed event probability is roughly
+
+<math>p_{obs}=pd.</math>
+
+Comparisons across habitats or treatments are biased when <math>d</math> differs.
+
+Observation conditions should be standardized or modeled.
+
+== Inter-rater reliability ==
+
+For categorical coding, Cohen's kappa is
+
+<math>\kappa=\frac{p_o-p_e}{1-p_e},</math>
+
+where <math>p_o</math> is observed agreement and <math>p_e</math> expected chance agreement.
+
+Kappa has prevalence-related limitations.
+
+Reliability statistics should be interpreted with raw agreement and category frequencies.
+
+== Observer bias ==
+
+Observer expectations can influence coding.
+
+Controls include:
+
+* blinded condition labels;
+* automated scoring;
+* preregistered categories;
+* independent coders;
+* randomized video order.
+
+Automated classifiers can also be biased.
+
+They require validation against representative ground truth.
+
+== Repeated measures ==
+
+Behavioral observations from one individual are not independent.
+
+If animal <math>i</math> contributes repeated observations <math>y_{ij}</math>, a mixed model can include individual random effect:
+
+<math>y_{ij}=\beta_0+\beta_1x_{ij}+u_i+\epsilon_{ij}.</math>
+
+Ignoring repeated structure creates pseudoreplication and inflated precision.
+
+== Social dependence ==
+
+Members of one group can influence each other.
+
+Treating every group member as independent can underestimate uncertainty.
+
+Hierarchical models can include group-level random effects or explicit network dependence.
+
+== Social network analysis ==
+
+Let animals be nodes and interactions edges.
+
+Weighted adjacency
+
+<math>A_{ij}</math>
+
+can encode interaction frequency.
+
+Centrality metrics describe network structure.
+
+High centrality does not automatically imply dominance, influence, or fitness.
+
+Those interpretations require separate validation.
+
+== Collective behavior ==
+
+Local interaction rules can generate group patterns.
+
+A generic model:
+
+<math>v_i(t+1)=F(v_i(t),N_i(t),environment).</math>
+
+Flocking can arise from attraction, alignment, and repulsion rules.
+
+Emergent group pattern does not imply centralized control.
+
+== Decision thresholds ==
+
+A behavioral response can follow threshold model
+
+<math>a=1\quad if\quad z>\theta.</math>
+
+Observed response probability depends both on sensory evidence <math>z</math> and decision criterion <math>\theta</math>.
+
+Therefore a behavioral detection threshold is not identical to a sensory receptor threshold.
+
+This distinction is central to psychophysics.
+
+== Signal detection theory ==
+
+In a detection task, behavior can be decomposed into sensitivity and criterion.
+
+Sensitivity:
+
+<math>d'=Z(H)-Z(F),</math>
+
+where <math>H</math> is hit rate and <math>F</math> false-alarm rate.
+
+Two observers can have equal sensory sensitivity but different response biases.
+
+Behavior alone must be interpreted through the decision model.
+
+== Homeostatic control ==
+
+Behavior can regulate internal variables.
+
+Let deviation from set region be
+
+<math>e_t=x^*-x_t.</math>
+
+Behavioral action can reduce error:
+
+<math>a_t=K e_t.</math>
+
+Real biological regulation can involve multiple set regions, predictive control, learning, and allostasis.
+
+The control-theoretic analogy should not be treated as a complete physiological model.
+
+== Behavioral ecology ==
+
+Behavioral ecology links behavior to ecological fitness consequences.
+
+Optimization models can predict strategies under assumptions about:
+
+* resource distribution;
+* predation;
+* competition;
+* energetic cost.
+
+Observed deviation from optimum can reveal constraints, incorrect assumptions, or changing environments.
+
+Optimality is hypothesis, not presumption.
+
+== Human behavior models ==
+
+Human behavior research must account for:
+
+* social norms;
+* institutions;
+* culture;
+* language;
+* strategic interaction;
+* explicit beliefs.
+
+A simple biological stimulus-response model can be insufficient.
+
+Human experiments also require consent, privacy protection, and appropriate ethical review.
+
+== Digital behavioral data ==
+
+Digital traces such as clicks, location history, or platform activity can measure behavior at scale.
+
+They are platform-mediated samples.
+
+Missing users, ranking algorithms, interface design, and logging rules alter the observed behavior.
+
+Digital exhaust is not neutral observation.
+
+== Computational agents ==
+
+An artificial agent can be defined by state <math>s</math>, action set <math>A</math>, policy <math>\pi(a\mid s)</math>, and transition dynamics.
+
+Its behavior is operationally measurable.
+
+Similarity to biological behavioral statistics does not establish shared cognition or consciousness.
+
+== Mechanistic underdetermination ==
+
+Let two mechanisms <math>M_1</math> and <math>M_2</math> produce identical behavioral distribution:
+
+<math>P(B\mid M_1)=P(B\mid M_2).</math>
+
+Behavioral data alone cannot distinguish them.
+
+Additional neural, physiological, perturbational, or developmental evidence is needed.
+
+== Anthropomorphism ==
+
+Anthropomorphism attributes human-like mental states from superficial behavioral resemblance.
+
+It can generate useful hypotheses but should not serve as evidence.
+
+A rigorous interpretation asks what alternative mechanism could produce the same observable action.
+
+== Replication and generalization ==
+
+Behavior depends on context.
+
+A result should be tested across:
+
+* individuals;
+* environments;
+* populations;
+* experimenters;
+* time.
+
+Laboratory reproducibility does not guarantee ecological validity.
+
+Field observation does not guarantee causal identification.
+
+Both methods can complement one another.
+
+== Epistemic boundary ==
+
+Behavior is an observation target, not a transparent window into mechanism, function, or subjective experience.
+
+A defensible chain is:
+
+<pre>
+operational definition
+→ reliable observation
+→ appropriate statistical model
+→ causal or comparative evidence
+→ bounded interpretation
+</pre>
+
+The stronger the inference beyond direct action, the more independent evidence is required.
 
 == References ==
-* [https://pmc.ncbi.nlm.nih.gov/articles/PMC2760923/ Levitis et al. (2009), Behavioural biologists don't agree on what constitutes behaviour]
-* [https://pmc.ncbi.nlm.nih.gov/articles/PMC5147444/ What Counts as Behavior? The Molar Multiscale View]
+
+<references />
+
+* [https://dictionary.apa.org/behavior APA Dictionary of Psychology, “behavior.”]
+* [https://pmc.ncbi.nlm.nih.gov/articles/PMC5147444/ Baum, W. M. (2013/2016), “What Counts as Behavior? The Molar Multiscale View.”]
+* [https://doi.org/10.2502/janip.73.1.1 Matsui, H. (2023), “What is behavior? Inconsistency of the basic concept between scholars.”]
 
 == Reading depth ==
-[[Behavior/Simple|Simple explanation]]
+
+[[Behavior/Simple|Simple explanation]] · [[Behavior|Core article]]

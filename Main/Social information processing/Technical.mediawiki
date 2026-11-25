@@ -1,18 +1,473 @@
-'''Social information processing''' refers to how people notice, interpret and use information about other people and social situations. It also names distinct theories in developmental psychology and computer-mediated communication.
+{{Reading depth|base=Social information processing|current=Technical}}
 
-== Developmental social cognition ==
-Crick and Dodge (1994) reformulated a model of social information processing involving encoding cues, interpreting them, clarifying goals, accessing or constructing responses, deciding among responses and enacting behavior. The model helps organize research on social adjustment and aggression, without implying a fixed conscious sequence in every encounter. Hostile-attribution measures require attention to context and developmental variation.
+= Social information processing — Technical =
 
-== Computer-mediated communication ==
-Walther's 1992 social information processing theory addresses relational development under communication-channel constraints. Reduced nonverbal cues do not necessarily prevent interpersonal impressions; participants may adapt their communication over time. Time available, channel affordances, motivation and expectations matter. This is not the same model as Crick and Dodge's account of children's social adjustment.
+'''Social information processing''' (SIP) is a polysemous term used by several independently developed theories. A technical treatment must separate at least three traditions: organizational attitude formation, developmental social-cognitive processing, and computer-mediated relational communication.
 
-== Experimental design and boundaries ==
-Use standardized ambiguous scenarios and independently scored interpretations to examine cue attribution, then assess prospective behavior. For communication studies, vary modality and interaction duration while matching tasks and prior familiarity; measure relational judgments and observable coordination. Separate interpretation accuracy from self-reported confidence. Neither theory establishes that an AI reproducing text patterns experiences social cognition; engineered cue processing can be evaluated through task-specific predictions.
+The theories share a broad interest in how socially available information changes later cognition or behavior, but they use different units, variables, and causal models.
+
+
+Social information processing examines how information from other agents changes judgment, belief, or behavior. It therefore connects [[Information]] to [[Intersubjectivity]] and [[Group cognition]], while larger-scale aggregation mechanisms can contribute to [[Collective intelligence]] without guaranteeing accurate outcomes.
+
+== Three-model decomposition ==
+
+Let the three traditions be:
+
+<math>SIP=\{SIP_O,SIP_D,SIP_C\},</math>
+
+where:
+
+* <math>SIP_O</math> = organizational Salancik–Pfeffer model;
+* <math>SIP_D</math> = developmental Crick–Dodge model;
+* <math>SIP_C</math> = computer-mediated communication Walther model.
+
+No general transformation maps the internal states of one framework directly onto another.
+
+The shared acronym should therefore be treated as lexical overlap, not theoretical identity.
+
+== Organizational SIP ==
+
+Salancik and Pfeffer's model explains job attitudes through social context, past behavior, and information selectively available in the workplace.<ref name="sp">[https://pubmed.ncbi.nlm.nih.gov/10307892/ Salancik, G. R. and Pfeffer, J. (1978), “A Social Information Processing Approach to Job Attitudes and Task Design,” ''Administrative Science Quarterly'' 23(2), 224–253.]</ref>
+
+Let worker <math>i</math> report attitude
+
+<math>A_i=F(T_i,S_i,B_i,X_i),</math>
+
+where:
+
+* <math>T_i</math> = objective task conditions;
+* <math>S_i</math> = social cues;
+* <math>B_i</math> = prior behavior and commitments;
+* <math>X_i</math> = person-specific variables.
+
+The theoretical contribution is that <math>S_i</math> and <math>B_i</math> materially shape interpretation rather than attitudes being read directly from stable internal needs.
+
+== Social cue manipulation ==
+
+A clean experiment can hold task constant while varying peer descriptions.
+
+Randomize participants to:
+
+* positive social-information condition;
+* negative social-information condition;
+* neutral control.
+
+Measure later judgments of:
+
+* task interest;
+* complexity;
+* autonomy;
+* satisfaction.
+
+If task is identical, between-condition differences estimate causal effects of the social-information manipulation under the experiment's assumptions.
+
+Demand characteristics remain a possible confound.
+
+== Attention mechanism ==
+
+Social cues can change which task features become salient.
+
+Let task attributes be vector
+
+<math>\mathbf x=(x_1,\ldots,x_k).</math>
+
+Perceived job evaluation can be modeled:
+
+<math>J=\sum_j w_jx_j.</math>
+
+Social context can change weights <math>w_j</math> without changing the objective attributes <math>x_j</math>.
+
+This formalizes selective attention rather than assuming social information creates the physical task.
+
+== Self-perception and commitment ==
+
+Prior behavior can influence later stated attitude.
+
+Let voluntary action be <math>b_t</math> and later attitude <math>a_{t+1}</math>:
+
+<math>a_{t+1}=G(a_t,b_t,s_t).</math>
+
+The interpretation is related to self-perception and commitment processes.
+
+A causal study must distinguish behavioral self-inference from simple stable preference causing both earlier behavior and later attitude.
+
+== Organizational boundaries ==
+
+Salancik–Pfeffer SIP does not imply that all work attitudes are socially constructed.
+
+Objective features can impose strong constraints.
+
+A dangerous job remains dangerous regardless of coworker framing.
+
+A strong study estimates incremental social-context effects rather than replacing material conditions with discourse.
+
+== Developmental SIP architecture ==
+
+Crick and Dodge's reformulated developmental model includes six processing components:<ref name="crick">[https://doi.org/10.1037/0033-2909.115.1.74 Crick, N. R. and Dodge, K. A. (1994), “A review and reformulation of social information-processing mechanisms in children's social adjustment,” ''Psychological Bulletin'' 115(1), 74–101.]</ref>
+
+# cue encoding;
+# cue interpretation;
+# goal clarification;
+# response access or construction;
+# response decision;
+# behavioral enactment.
+
+The sequence is heuristic.
+
+Processing can be recurrent and partially parallel.
+
+== Cue encoding ==
+
+Let social scene contain cue set
+
+<math>C=\{c_1,\ldots,c_n\}.</math>
+
+Attention process selects subset
+
+<math>C'=A(C,h,z),</math>
+
+where <math>h</math> is prior history and <math>z</math> current state.
+
+Encoding bias can occur when relevant benign or contextual cues are systematically omitted.
+
+Observed interpretation errors can therefore originate before attribution.
+
+== Interpretation ==
+
+Given encoded cues <math>C'</math>, the individual estimates latent social state <math>H</math>, such as hostile versus accidental intent.
+
+Bayesian representation:
+
+<math>P(H\mid C')\propto P(C'\mid H)P(H).</math>
+
+A hostile prior can increase posterior hostility under ambiguous evidence.
+
+This is a formal analogy, not a claim that children perform explicit Bayesian calculation.
+
+== Hostile attribution bias ==
+
+For ambiguous scenarios <math>s_1,\ldots,s_n</math>, define hostile interpretation indicator <math>h_i\in\{0,1\}</math>.
+
+Bias score:
+
+<math>HAB=\frac{1}{n}\sum_i h_i.</math>
+
+Higher scores can predict aggressive responses in relevant populations.
+
+Interpretation depends on vignette design, age, culture, and actual threat history.
+
+A high HAB score is not a diagnosis.
+
+== Goal selection ==
+
+Let available social goals be
+
+<math>G=\{g_1,\ldots,g_m\}.</math>
+
+Current goal is selected:
+
+<math>g^*=F(C',H,emotion,history).</math>
+
+Possible goals may prioritize:
+
+* affiliation;
+* status;
+* retaliation;
+* safety;
+* fairness.
+
+Goal structure changes later response evaluation.
+
+== Response generation ==
+
+Response repertoire:
+
+<math>R=\{r_1,\ldots,r_k\}.</math>
+
+The accessible subset <math>R'</math> depends on learning and memory.
+
+Limited repertoires can generate maladaptive choices even when interpretation is accurate.
+
+Interventions can teach alternative strategies, increasing <math>|R'|</math>.
+
+== Response evaluation ==
+
+For candidate response <math>r_j</math>, expected utility:
+
+<math>U(r_j)=\sum_o P(o\mid r_j)V(o)-C(r_j).</math>
+
+Children need not consciously calculate this expression.
+
+The model represents expected outcomes, values, efficacy, and costs.
+
+Biased outcome expectation can make aggression appear instrumentally attractive.
+
+== Enactment ==
+
+Selected response <math>r^*</math> is converted to observed behavior <math>b</math> through motor and social competence:
+
+<math>b=E(r^*,skill,state,environment).</math>
+
+Selection and enactment are therefore distinct.
+
+A prosocial intention can fail through poor communication skill.
+
+== Database structures ==
+
+Crick and Dodge describe memory structures carrying:
+
+* schemas;
+* social rules;
+* acquired knowledge;
+* past experiences.
+
+These influence every processing step.
+
+The model is recursive because outcomes update the knowledge base and future expectations.
+
+== Emotion integration ==
+
+Later SIP extensions emphasize emotion.
+
+Current affect <math>e_t</math> can change:
+
+* cue attention;
+* interpretation;
+* goal priority;
+* response threshold.
+
+A complete model should therefore avoid treating social processing as emotion-free symbolic computation.
+
+== Longitudinal testing ==
+
+To distinguish cause from consequence, measure SIP variables at <math>t_1</math> and behavior at <math>t_2</math> while controlling prior behavior.
+
+Model:
+
+<math>B_{t2}=\beta_0+\beta_1 SIP_{t1}+\beta_2B_{t1}+\epsilon.</math>
+
+This supports prospective association.
+
+Randomized intervention is stronger for causal claims.
+
+== Context specificity ==
+
+A child can show hostile interpretation in one context but not another.
+
+Multilevel model:
+
+<math>y_{ij}=\beta_0+u_i+v_j+\epsilon_{ij},</math>
+
+where <math>u_i</math> is person effect and <math>v_j</math> scenario effect.
+
+This separates stable individual tendency from stimulus-specific ambiguity.
+
+== Walther's CMC SIP ==
+
+Walther's SIP theory explains relational communication in computer-mediated channels with reduced nonverbal cues.<ref name="walther">[https://doi.org/10.1177/009365092019001003 Walther, J. B. (1992), “Interpersonal Effects in Computer-Mediated Interaction: A Relational Perspective.”]</ref>
+
+The core mechanism is adaptation to available cues plus accumulation of social information over time.
+
+Reduced cue bandwidth changes rate and form of relational information transfer rather than necessarily preventing relationship formation.
+
+== Cue bandwidth ==
+
+Let channel transmit social cue rate <math>r_c</math>.
+
+Accumulated interpersonal information over time <math>t</math> can be represented:
+
+<math>I(t)=\int_0^t r_c(\tau)d\tau.</math>
+
+If text channel has lower instantaneous <math>r_c</math> than face-to-face interaction, equivalent accumulated information can require longer interaction.
+
+This formalization captures the temporal logic of SIP.
+
+It is not Walther's original equation.
+
+== Message accumulation ==
+
+Relationship impression <math>R_t</math> updates with messages:
+
+<math>R_{t+1}=F(R_t,m_t,c_t).</math>
+
+Each message can carry lexical, stylistic, timing, and self-disclosure cues.
+
+A low-cue channel can still support rich relational inference when enough messages accumulate.
+
+== Experimental evidence ==
+
+Walther and Burgoon's study compared zero-history groups communicating by asynchronous computer conferencing or face-to-face interaction over multiple tasks and weeks.<ref name="wb">[https://doi.org/10.1111/j.1468-2958.1992.tb00295.x Walther, J. B. and Burgoon, J. K. (1992), “Relational Communication in Computer-Mediated Interaction.”]</ref>
+
+Computer-mediated groups became more positive on several relational dimensions and later approximated face-to-face groups.
+
+The result challenged simple cues-filtered-out theories.
+
+It does not imply equivalence across every medium or task.
+
+== Channel affordances ==
+
+Modern channels can be represented by affordance vector
+
+<math>A_c=(sync,video,audio,persistence,editability,visibility).</math>
+
+SIP predictions should condition on <math>A_c</math>.
+
+A text chat, video call, social-network profile, and asynchronous forum expose different social information.
+
+The generic category “CMC” is too coarse for many modern experiments.
+
+== Time versus number of messages ==
+
+Elapsed time and message count are different.
+
+A pair exchanging 500 messages in one day may accumulate more social information than a pair exchanging ten messages over one month.
+
+Experimental designs should separate:
+
+* clock time;
+* interaction count;
+* total words;
+* turn count.
+
+Otherwise “time” effects can actually be exposure effects.
+
+== Selective self-presentation ==
+
+Later hyperpersonal theory emphasizes sender control over self-presentation.
+
+Asynchronous text allows editing before transmission.
+
+Let displayed self <math>S_d</math> be selected subset of available self-information <math>S</math>:
+
+<math>S_d=Select(S,goal,medium).</math>
+
+Receivers can form idealized impressions from selectively presented cues.
+
+This mechanism depends on channel and motivation.
+
+== Feedback loops ==
+
+If receiver idealizes sender, the receiver may respond more positively.
+
+Sender then receives reinforcing feedback.
+
+A loop:
+
+<pre>
+selective presentation
+→ positive impression
+→ positive feedback
+→ stronger presentation / relationship
+</pre>
+
+can amplify relational intensity.
+
+This is one route to hyperpersonal communication.
+
+It is conditional rather than inevitable.
+
+== Platform algorithms ==
+
+Modern platforms insert an algorithmic layer:
+
+<math>visible\ social\ information=F(user\ content,ranking,moderation,recommendation).</math>
+
+Users respond not to the complete social environment but to a filtered one.
+
+This creates socially processed information that is itself machine-mediated.
+
+Original SIP theory did not anticipate this infrastructure.
+
+== Cross-tradition comparison ==
+
+The three theories can be represented as:
+
+{| class="wikitable"
+! Framework !! Input !! Process !! Output
+|-
+| Organizational || Social workplace cues, past behavior || Attention and interpretation || Attitudes / task perceptions
+|-
+| Developmental || Social cues and memory structures || Encode, interpret, goal, responses, selection || Social behavior
+|-
+| CMC || Channel-limited social cues over time || Adaptation and accumulation || Impressions / relationships
+|}
+
+The similarity is structural only.
+
+Each framework requires domain-specific evidence.
+
+== General social cognition ==
+
+A generic social-information processor can be modeled:
+
+<math>y=F(x_{social},memory,goal,context).</math>
+
+This is a broad architecture, not one named theory.
+
+Using the phrase generically should be explicit to avoid false attribution to Crick–Dodge or Walther.
+
+== Measurement validity ==
+
+Each construct requires specific measures.
+
+For developmental SIP:
+
+* cue recall;
+* attribution;
+* goal selection;
+* response generation;
+* response evaluation.
+
+For CMC SIP:
+
+* relational communication;
+* impression development;
+* message accumulation;
+* channel affordances.
+
+For organizational SIP:
+
+* social cue exposure;
+* task perceptions;
+* attitudes.
+
+One measurement instrument cannot substitute across all traditions.
+
+== Artificial social agents ==
+
+Artificial agent can implement:
+
+<math>a_t=\pi(cues_t,memory_t,goal_t).</math>
+
+It can also adapt communication style to channel affordances.
+
+These functions are computationally real.
+
+They do not establish that the agent experiences social meaning subjectively.
+
+Evaluation should separate task competence from phenomenal claims.
+
+== Epistemic boundary ==
+
+The central technical safeguard is terminological precision.
+
+A paper claiming a “social information processing effect” must specify:
+
+# which theory;
+# which inputs;
+# which processing construct;
+# which outcome;
+# which population and context.
+
+Without these details, the label hides rather than explains the mechanism.
 
 == References ==
-* [https://doi.org/10.1037/0033-2909.115.1.74 Crick and Dodge (1994), A review and reformulation of social information-processing mechanisms]
-* [https://doi.org/10.1177/009365092019001003 Walther (1992), Interpersonal Effects in Computer-Mediated Interaction]
-* [https://doi.org/10.1111/j.1468-2958.1992.tb00295.x Walther (1992), Relational Communication in Computer-Mediated Interaction]
+
+<references />
+
+* [https://doi.org/10.1002/9781118540190.wbeic192 Walther, J. B. (2015), encyclopedia review of Social Information Processing Theory in CMC.]
+* [https://doi.org/10.1111/j.1467-8624.1994.tb00823.x Dodge, K. A. and Price, J. M. (1994), social information processing and competent behavior in children.]
 
 == Reading depth ==
-[[Social information processing/Simple|Simple explanation]]
+
+[[Social information processing/Simple|Simple explanation]] · [[Social information processing|Core article]]

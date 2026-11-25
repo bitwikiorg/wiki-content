@@ -1,15 +1,193 @@
-<onlyinclude>'''Boids''' is Craig Reynolds's computer model for simulating flocking-like motion using locally interacting virtual individuals. It was introduced in 1987 for computer animation.
+{{Reading depth|base=Boids|current=Simple}}
 
-== Explanation ==
-Each simulated individual steers away from close neighbors, tends to align its movement with nearby individuals and moves toward the local group. Together these rules can create flock-like motion without a central leader. The simulation does not reproduce every feature of real bird behavior.
+= Boids — Simple =
+
+'''Boids''' is Craig Reynolds's 1987 computer model for simulating flocking-like movement with many simple virtual agents.
+
+Each boid reacts only to nearby boids.
+
+There is no single controller telling the whole flock exactly where to move.
+
+The group pattern emerges from local steering rules.<ref name="reynolds">[https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools: A Distributed Behavioral Model.”]</ref>
+
+== The three famous rules ==
+
+Boids is usually explained with three tendencies:
+
+'''Separation''' — move away from neighbors that are too close.
+
+'''Alignment''' — turn toward the average direction of nearby neighbors.
+
+'''Cohesion''' — move toward the local center of nearby neighbors.
+
+These rules work together.
+
+Without separation, boids can collide.
+
+Without cohesion, the group can disperse.
+
+Without alignment, headings can remain disorganized.
+
+== Local neighborhoods ==
+
+A boid normally does not examine the entire flock.
+
+It may respond only to neighbors:
+
+* inside a fixed radius;
+* inside a field of view;
+* among the nearest few agents.
+
+The neighborhood rule changes the result.
+
+A dense swarm can contain many neighbors inside one radius, while a sparse swarm contains few.
+
+== No central leader is required ==
+
+The basic model does not require a leader.
+
+Each boid applies the same local rules.
+
+Large-scale flock motion emerges from those repeated local interactions.
+
+A leader can be added as an extension, but it is not part of the minimal flocking idea.
+
+== Update order matters ==
+
+A simulation usually proceeds in time steps.
+
+For each step:
+
+# find neighbors;
+# calculate steering;
+# update velocity;
+# update position.
+
+A careful implementation computes all steering from the same previous state and then updates all boids together.
+
+If boid 1 moves before boid 2 is evaluated, the result can depend on loop order.
+
+== Speed and steering limits ==
+
+Most boids simulations limit:
+
+* maximum speed;
+* maximum steering force or acceleration.
+
+Without a speed limit, repeated steering can make agents move unrealistically fast.
+
+A steering limit creates smoother turns.
+
+These are simulation choices, not laws of bird biology.
+
+== Boundaries ==
+
+A simulated world needs boundary rules.
+
+Common choices include:
+
+* wrap around to the opposite side;
+* bounce from walls;
+* steer away from edges;
+* use open space.
+
+Boundary choice can change flock shape.
+
+Researchers should report it.
+
+== Obstacles and goals ==
+
+More complex boids can also:
+
+* avoid obstacles;
+* seek a target;
+* flee from danger;
+* follow a path;
+* wander.
+
+Reynolds later developed a broader library of steering behaviors around these ideas.
+
+Flocking is only one part of that framework.
+
+== Performance ==
+
+A simple implementation compares every boid with every other boid.
+
+For <math>n</math> boids, this can require roughly <math>O(n^2)</math> neighbor checks per step.
+
+Spatial grids or trees can reduce the number of candidate neighbors and make large simulations faster.
+
+== Measuring the flock ==
+
+A flock should not be judged only by appearance.
+
+Researchers can measure:
+
+* directional alignment;
+* average distance between neighbors;
+* number of collisions;
+* flock diameter;
+* number of separate groups.
+
+One common alignment measure is called '''polarization'''.
+
+A flock can be strongly aligned but still split into several separate clusters.
+
+== Noise ==
+
+Random noise can make a flock look more natural and can test robustness.
+
+Small noise may preserve coherent motion.
+
+Large noise can break the flock apart.
+
+Noise level is therefore another model parameter.
+
+== Boids is not the same as real flocking ==
+
+Real birds and fish use real sensory systems and are affected by:
+
+* vision;
+* aerodynamics or water flow;
+* predators;
+* individual goals;
+* fatigue;
+* learning.
+
+The boids model reproduces selected flock-like patterns.
+
+It does not prove that real animals use exactly three rules.
+
+== Boids and swarm intelligence ==
+
+[[Swarm intelligence]] is much broader.
+
+It includes ant-colony optimization, robot swarms, particle swarm optimization, and other decentralized systems.
+
+Boids is specifically a model of collective movement.
+
+== Boids and emergence ==
+
+Boids is a classic example of [[Emergence]] and [[Self-organization]].
+
+The programmer writes the local rules.
+
+The exact group trajectory is not scripted in advance.
+
+That does not mean the behavior is mysterious or undesigned.
+
+The local rules are the mechanism.
 
 == Related concepts ==
+
 [[Swarm intelligence]] · [[Emergence]] · [[Self-organization]] · [[Emergent algorithm]] · [[Behavior]]
 
 == Sources ==
-* [https://doi.org/10.1145/37401.37406 Reynolds (1987), Flocks, Herds, and Schools: A Distributed Behavioral Model]
-* [https://red3d.com/cwr/papers/1987/boids.html Reynolds, author-hosted paper and background]
-</onlyinclude>
+
+<references />
+
+* [https://red3d.com/cwr/papers/1987/boids.html Reynolds, author-hosted paper and background.]
 
 == Reading depth ==
-[[Boids/Technical|Technical treatment]]
+
+[[Boids|Core article]] · [[Boids/Technical|Technical treatment]]

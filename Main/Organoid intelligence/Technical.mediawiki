@@ -1,21 +1,238 @@
-'''Organoid intelligence''' (OI) is an emerging biocomputing research program investigating whether laboratory-grown neural tissue, especially three-dimensional brain organoids, can serve as components of information-processing systems.
+{{Reading depth|base=Organoid intelligence|current=Technical}}
 
-== Research agenda and evidence ==
-Smirnova et al. (2023) outlined OI as an interdisciplinary program linking stem-cell-derived brain organoids, biointerfaces, data analysis and learning research. Cai et al. (2023) reported Brainoware, a brain-organoid reservoir-computing system interfaced through a high-density multielectrode array, with experimental speech-recognition and nonlinear prediction tasks. These demonstrations concern specific hybrid systems and tasks; they do not establish general intelligence, comparable human cognition or superior end-to-end efficiency.
+= Organoid intelligence — Technical =
 
-== Computational architecture ==
-A reservoir computer transforms input u_t into a high-dimensional state r_t using internal dynamics. A trained readout may estimate <math>\hat y_t=W_{out}r_t+b</math>. In a biohybrid system, electrical stimulation encodes inputs and recorded neural activity supplies features; external electronics and software may handle preprocessing, decoding and learning. Separate adaptation within neural tissue from fitting an external readout. A stable physical response may be useful without constituting learning in a psychological sense.
+'''Organoid intelligence''' (OI) is an emerging program in biohybrid computing that studies whether stem-cell-derived neural organoids can participate in adaptive information processing when coupled to stimulation, recording, and external computation. The scientific object is the complete experimental system: tissue, culture conditions, interface, encoding protocol, decoder, training procedure, controls, and benchmark.
 
-== Validation and engineering constraints ==
-Compare against software and non-adaptive reservoir baselines under matched data and compute budgets. Use held-out stimuli, control for drift and repeated-trial dependence, and test whether changes persist when external decoder adaptation is held constant. Relevant constraints include organoid variability, maturation, oxygen and nutrient diffusion, signal stability, interface damage, scalability and lifecycle energy accounting. Independent biological replicates and transparent reporting of failed preparations are important.
+Smirnova et al. formalized OI as a multidisciplinary program linking organoid biology, electrophysiology, bioengineering, machine learning, and ethics.<ref name="smirnova">[https://doi.org/10.3389/fsci.2023.1017235 Smirnova, L. et al. (2023), “Organoid intelligence (OI): the new frontier in biocomputing and intelligence-in-a-dish,” ''Frontiers in Science'' 1:1017235.]</ref> The field remains early-stage. Existing experiments establish specific forms of neural dynamics and task-relevant computation; they do not establish general intelligence or consciousness.
 
-== Ethics and open questions ==
-Human-derived tissue entails appropriate consent and institutional oversight. Increasing network complexity raises questions about morally relevant capacities, but neither neural activity nor task learning alone demonstrates consciousness or sentience. Ethical review should track the actual experimental system and emerging evidence. OI is distinct from conventional silicon AI, cultured-neuron experiments generally and fully embodied biological organisms.
+
+Organoid intelligence combines living neural tissue with engineered stimulation, recording, and decoding, placing it at the intersection of [[Artificial intelligence]] and biological computation. Its task-relevant neural dynamics draw on principles studied in [[Sensory processing]], while claims about [[Consciousness]] require separate evidence and cannot be inferred from successful reservoir-computing performance.
+
+== Biological substrate ==
+
+Neural organoids are three-dimensional cultures differentiated from pluripotent stem cells toward neural lineages. Depending on protocol and maturation, they can contain neurons, progenitors, glial populations, synaptic networks, and region-like organization.
+
+The biological state is not fixed. Relevant variables include:
+
+* cell-type composition;
+* developmental age;
+* synaptic density;
+* spontaneous firing patterns;
+* oxygen and nutrient gradients;
+* culture medium;
+* temperature and gas control;
+* electrode coupling;
+* tissue damage and remodeling.
+
+Between-organoid variability is therefore part of the computational problem rather than merely laboratory noise.
+
+== Biointerface ==
+
+A computing experiment requires a bidirectional mapping between electronic and biological variables.
+
+Let an external input be <math>x_t</math>. An encoder maps it to a stimulation pattern
+
+<math>u_t = E(x_t).</math>
+
+The organoid and interface evolve according to an unknown nonlinear dynamical process
+
+<math>r_{t+1}=F(r_t,u_t,	heta_t,eta_t),</math>
+
+where <math>r_t</math> is the latent biological state, <math>\theta_t</math> represents slowly changing tissue parameters, and <math>\eta_t</math> includes biological and measurement noise.
+
+Electrodes produce an observation
+
+<math>z_t=H(r_t)+\epsilon_t.</math>
+
+A decoder or readout then computes
+
+<math>\hat y_t = D(z_{t-k:t};w).</math>
+
+This decomposition prevents a common attribution error: performance belongs to the coupled system unless an experiment isolates the contribution of the tissue.
+
+== Reservoir-computing interpretation ==
+
+Reservoir computing uses a high-dimensional dynamical substrate whose recurrent dynamics transform inputs into states from which a comparatively simple output mapping can be trained.
+
+Useful reservoir properties include:
+
+* nonlinear response;
+* fading memory;
+* separation of input histories;
+* sufficiently stable dynamics;
+* measurable state variables.
+
+Brainoware used a brain organoid connected to a high-density multielectrode array. Spatiotemporal electrical stimulation supplied inputs, while recorded activity was used in a reservoir-computing framework. The study reported nonlinear dynamics, fading-memory behavior, changes in functional connectivity during training, speech-recognition experiments, and nonlinear equation prediction.<ref name="cai">[https://doi.org/10.1038/s41928-023-01069-w Cai, H. et al. (2023), “Brain organoid reservoir computing for artificial intelligence,” ''Nature Electronics'' 6, 1032–1039.]</ref>
+
+The experiment demonstrates a task-relevant biohybrid reservoir. It does not show that the organoid independently implements the full input-to-output algorithm.
+
+== Learning and plasticity ==
+
+“Learning” can refer to several distinct processes:
+
+# synaptic or network plasticity in the tissue;
+# persistent changes in evoked responses;
+# changes in the external decoder;
+# selection of stimulation parameters;
+# statistical improvement caused by repeated exposure.
+
+These mechanisms must be distinguished experimentally.
+
+A simple before/after performance change,
+
+<math>\Delta P=P_{post}-P_{pre},</math>
+
+is insufficient to localize learning. Controls should freeze the external readout when testing biological adaptation and, conversely, use a stable or replayed reservoir when evaluating decoder learning.
+
+Evidence for tissue-level adaptation is strengthened by persistence, stimulus specificity, dose-response behavior, reversibility tests, electrophysiological correlates, and replication across independent organoids.
+
+== Experimental design ==
+
+A defensible OI benchmark should specify:
+
+* biological replicate count;
+* organoid age and differentiation protocol;
+* exclusion criteria;
+* electrode geometry and sampling rate;
+* stimulation amplitude, waveform, and timing;
+* preprocessing and artifact rejection;
+* train/validation/test partitioning;
+* decoder architecture and fitted parameters;
+* baseline systems;
+* uncertainty intervals;
+* failed preparations.
+
+Repeated measurements from one organoid are not independent biological replicates. Train/test leakage is especially easy when temporally adjacent responses are autocorrelated.
+
+== Baselines ==
+
+Relevant baselines can include:
+
+* a linear readout applied directly to encoded inputs;
+* a fixed random reservoir;
+* a conventional software reservoir;
+* a non-neural physical reservoir;
+* shuffled or time-scrambled neural responses;
+* an untrained organoid;
+* decoder-only adaptation.
+
+The correct comparison depends on the scientific claim.
+
+For example, a claim of superior energy efficiency requires measuring the complete system, including incubators, pumps, acquisition electronics, stimulation hardware, data processing, and tissue maintenance. Neuronal signaling efficiency alone is not an end-to-end energy benchmark.
+
+== Reproducibility and drift ==
+
+Living substrates change over time. Let a performance-relevant parameter vector be <math>\theta(t)</math>. Drift can be summarized by a distance
+
+<math>d(\theta(t_1),\theta(t_2)).</math>
+
+A useful computing platform needs either sufficiently slow drift or calibration methods that maintain performance despite drift.
+
+Research should report within-organoid stability and between-organoid variation separately. Biological variability may become computational diversity, but only if the system can exploit it reproducibly.
+
+== Scalability ==
+
+Scaling OI involves more than making larger organoids.
+
+Constraints include:
+
+* diffusion limits for oxygen and nutrients;
+* vascularization or perfusion;
+* electrode density;
+* signal-to-noise ratio;
+* stimulation specificity;
+* wiring and I/O bandwidth;
+* closed-loop latency;
+* long-term tissue health;
+* batch reproducibility.
+
+Increasing cell count without increasing reliable observability and controllability can decrease effective computational access.
+
+== Relation to artificial intelligence ==
+
+OI and conventional [[Artificial intelligence]] intersect but are not synonymous.
+
+A silicon machine-learning system can learn without biological tissue. An organoid can exhibit plasticity without performing a useful artificial-intelligence task. A biohybrid system may combine a biological reservoir with conventional optimization and digital preprocessing.
+
+The scientific question is not whether tissue is “intelligent” by label, but which measurable computational functions arise under specified conditions.
+
+== Relation to neuroscience ==
+
+OI experiments can also act as perturbational neuroscience platforms. Closed-loop stimulation and recording may help characterize:
+
+* neural dynamics;
+* memory timescales;
+* plasticity;
+* state dependence;
+* network responses to pharmacological perturbation.
+
+However, organoids omit many features of intact nervous systems, including normal sensory organs, vascular systems, endocrine context, immune interactions, and full-body embodiment.
+
+Results should therefore not be generalized directly to human cognition.
+
+== Consciousness and sentience ==
+
+Electrical activity, oscillations, complexity, or task learning are not sufficient criteria for subjective experience.
+
+A consciousness claim would require a defensible theory linking measured properties to conscious state plus evidence that discriminates that theory from alternatives. No current OI task result supplies such evidence.
+
+The appropriate epistemic position is therefore neither “conscious” nor “certainly non-conscious,” but explicit uncertainty tied to measurable capacities and the limitations of available theories.
+
+== Ethics and governance ==
+
+Research involving human-derived cells requires appropriate consent, provenance, biosafety, and institutional oversight.
+
+Additional governance questions include:
+
+* what future capacities should trigger enhanced review;
+* whether donors were informed about computational uses;
+* handling genetic and clinical information;
+* acceptable stimulation and endpoint criteria;
+* ownership and commercialization;
+* transparency about anthropomorphic claims.
+
+Ethical safeguards should be capability-sensitive and revisable as evidence changes.
+
+== Failure modes ==
+
+Common interpretive failures include:
+
+'''Anthropomorphic inflation''' — equating classification performance with human-like cognition.
+
+'''Attribution error''' — crediting the organoid for computation actually performed by external software.
+
+'''Baseline failure''' — reporting accuracy without a matched conventional comparator.
+
+'''Pseudoreplication''' — treating many recordings from one organoid as many biological replicates.
+
+'''Energy-boundary error''' — comparing neuronal energy use with whole-system power consumption of a digital baseline.
+
+'''Consciousness inference''' — inferring subjective experience from neural activity alone.
+
+== Research frontier ==
+
+Priority questions include:
+
+* standardized organoid and interface benchmarks;
+* causal localization of adaptation;
+* stable long-term closed-loop control;
+* scalable perfusion and I/O;
+* reproducible manufacturing;
+* interpretable mappings between stimulation and state;
+* lifecycle energy and material accounting;
+* ethical thresholds based on demonstrated capacities.
+
+OI is best treated as experimental biohybrid engineering with unusually important biological and ethical constraints, not as evidence that laboratory tissue has already acquired human-like intelligence.
 
 == References ==
-* [https://doi.org/10.3389/fsci.2023.1017235 Smirnova et al. (2023), Organoid intelligence: the new frontier in biocomputing]
-* [https://doi.org/10.1038/s41928-023-01069-w Cai et al. (2023), Brain organoid reservoir computing for artificial intelligence]
-* [https://www.nature.com/articles/s44222-024-00200-6 Smirnova et al. (2024), Biocomputing with organoid intelligence]
+
+<references />
+
+* [https://doi.org/10.3389/fsci.2023.1017235 Smirnova et al. (2023), organoid intelligence research program.]
+* [https://doi.org/10.1038/s41928-023-01069-w Cai et al. (2023), Brainoware.]
+* [https://www.nature.com/articles/s41928-023-01096-7 Smirnova, Caffo and Johnson (2023), reservoir computing with brain organoids.]
 
 == Reading depth ==
-[[Organoid intelligence/Simple|Simple explanation]]
+
+[[Organoid intelligence/Simple|Simple explanation]] · [[Organoid intelligence|Core article]]

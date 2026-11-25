@@ -1,15 +1,194 @@
-<onlyinclude>An '''emergent algorithm''' is an informal term for a computational procedure in which coordinated large-scale behavior arises from interactions among local rules or components, rather than being specified as a centralized sequence of every global action.
+{{Reading depth|base=Emergent algorithm|current=Simple}}
 
-== Explanation ==
-A flocking simulation can generate a coherent moving group even though each simulated individual responds only to nearby individuals. Designers specify the local rules, while the resulting global behavior is studied or exploited. The term does not imply that the procedure was created without design.
+= Emergent algorithm — Simple =
+
+An '''emergent algorithm''' is an informal name for a computational procedure where simple local rules produce a larger system-wide behavior.
+
+The designer programs the local rules.
+
+The global pattern appears through repeated interaction.
+
+For example:
+
+* simulated birds follow nearby neighbors and form a flock;
+* network nodes repeatedly average local values and reach agreement;
+* simple particles move locally and form a larger shape;
+* cellular automata create complex patterns from simple cell rules.
+
+== Emergent does not mean undesigned ==
+
+An emergent algorithm can be carefully engineered.
+
+The designer chooses:
+
+* what each agent can observe;
+* what state it stores;
+* how it updates;
+* how agents interact.
+
+What is not directly scripted is every step of the global outcome.
+
+So:
+
+<pre>
+emergent
+does not mean
+created without design
+</pre>
+
+== Local rules and global behavior ==
+
+A centralized algorithm might keep a complete global state.
+
+An emergent algorithm can use many local components.
+
+Each component might know only:
+
+* its own state;
+* nearby neighbors;
+* a small amount of shared information.
+
+Repeated local updates can still create system-wide organization.
+
+== Flocking ==
+
+Craig Reynolds's boids model is a classic example.<ref name="reynolds">[https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools.”]</ref>
+
+Each boid uses local steering rules.
+
+No boid controls the whole flock.
+
+The flock-like motion emerges from their interaction.
+
+== Consensus ==
+
+Imagine every node in a network starts with a number.
+
+Each node repeatedly adjusts its number toward the values of nearby nodes.
+
+Under the right network and update conditions, all nodes can converge to the same value.
+
+The global agreement is produced by local updates.
+
+== Cellular automata ==
+
+A cellular automaton contains cells that update from nearby cells.
+
+[[Conway's Game of Life]] uses one simple rule for every cell.
+
+Repeated updates can create moving, repeating, or computational structures that were not directly programmed as separate objects.
+
+== Self-organizing particles ==
+
+Researchers at Arizona State University study programmable matter made of simple particle-like units with local communication.
+
+They design algorithms for tasks such as:
+
+* leader election;
+* shape formation;
+* coating;
+* compression.<ref name="sops">[https://labs.engineering.asu.edu/sops/amoebot/ Arizona State University, Self-Organizing Particle Systems.]</ref>
+
+The hard part is proving that local actions produce the correct global result.
+
+== Randomness can help ==
+
+Some emergent algorithms deliberately use random choices.
+
+Randomness can help a system explore different possibilities instead of getting stuck.
+
+Researchers can analyze the probability that the system reaches or spends time in desirable configurations.
+
+Random does not mean uncontrolled.
+
+== Invariants ==
+
+An '''invariant''' is something that must remain true throughout the algorithm.
+
+Examples:
+
+* all particles remain connected;
+* the number of agents stays constant;
+* robots never enter a forbidden region.
+
+A proof of an invariant is much stronger than showing a few successful simulations.
+
+== Convergence ==
+
+Researchers also ask whether the system reaches its target.
+
+Possible outcomes include:
+
+* always converges;
+* converges only from certain starting states;
+* converges with high probability;
+* never settles but stays inside an acceptable region.
+
+The exact claim should be stated.
+
+== Simulation is useful but not enough ==
+
+Emergent systems can behave differently from different starting conditions.
+
+A good simulation tests:
+
+* many random seeds;
+* several system sizes;
+* failures;
+* delays;
+* unusual initial states.
+
+One attractive animation does not prove correctness.
+
+== Emergent behavior versus emergent algorithm ==
+
+A system can produce unexpected behavior by accident.
+
+That is '''emergent behavior'''.
+
+An emergent algorithm is a stronger idea: local computational rules are being used to produce a global function or organized outcome.
+
+== Evolutionary algorithms are different ==
+
+An evolutionary algorithm uses selection and variation to search for solutions.
+
+An emergent algorithm does not have to use evolution.
+
+It can be designed directly.
+
+The concepts can overlap, but they are not synonyms.
+
+== Learned behavior is also different ==
+
+A machine-learning system can discover a surprising strategy.
+
+That does not automatically make it an emergent algorithm.
+
+The important question is whether a global behavior is produced through interacting local components.
+
+== Emergence can fail ==
+
+Local rules can create bad outcomes:
+
+* congestion;
+* oscillation;
+* fragmentation;
+* runaway feedback.
+
+“Emergent” does not mean “good.”
+
+The system still needs safety and performance testing.
 
 == Related concepts ==
+
 [[Algorithm]] · [[Emergence]] · [[Self-organization]] · [[Swarm intelligence]] · [[Boids]] · [[Conway's Game of Life]]
 
 == Sources ==
-* [https://labs.engineering.asu.edu/sops/emergence Arizona State University, Self-Organizing Particle Systems: Emergence]
-* [https://doi.org/10.1145/37401.37406 Reynolds (1987), Flocks, herds and schools]
-</onlyinclude>
+
+<references />
+
+* [https://labs.engineering.asu.edu/sops/emergence Arizona State University, Self-Organizing Particle Systems: Emergence.]
 
 == Reading depth ==
-[[Emergent algorithm/Technical|Technical treatment]]
+
+[[Emergent algorithm|Core article]] · [[Emergent algorithm/Technical|Technical treatment]]

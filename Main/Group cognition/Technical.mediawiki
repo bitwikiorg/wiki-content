@@ -1,17 +1,561 @@
-'''Group cognition''' concerns the cognitive processes that occur through interaction within a group. Participants may construct shared meanings, solve problems or maintain common representations through conversation and joint activity.
+{{Reading depth|base=Group cognition|current=Technical}}
 
-== Unit of analysis ==
-Gerry Stahl's ''Group Cognition'' (2006) argues that small-group collaborative meaning-making can be studied at the interaction level. A group's sequence of utterances, diagrams and revisions can exhibit problem-solving structure not adequately described by isolated individual test scores. The approach complements individual cognitive studies rather than denying individual mechanisms.
+= Group cognition — Technical =
 
-== Empirical methods ==
-Collect time-stamped conversation and artifact histories; identify episodes in which a proposal is introduced, challenged, reformulated or adopted. Define coding rules and compare analyst agreement. Examine how shared artifacts stabilize referents and how misunderstandings are repaired. For a mathematical collaboration, trace which contributions enable later derivations rather than attribute every success to the most vocal participant.
+'''Group cognition''' is the organization of cognitive activity through interactions among multiple agents. It includes shared representations, distributed expertise, transactive memory, communication dynamics, grounding, coordination, collaborative knowledge construction, and the use of shared artifacts.
 
-== Distinction from collective intelligence ==
-Collective intelligence often evaluates group-level performance, while group cognition analyzes how group meaning and reasoning develop. A group can exhibit rich interaction yet perform poorly; an independent estimate aggregator can perform well with minimal group interaction. Distributed cognition includes wider coordination across artifacts and settings. For AI groups, trace message dependencies, reasoning artifacts and errors, but do not infer subjective collective experience from coordinated outputs.
+A technical account should distinguish:
+
+* individual cognition inside members;
+* shared knowledge structures;
+* distributed specialized knowledge;
+* interaction processes;
+* group-level outputs.
+
+These levels are related but not identical.
+
+
+Group cognition concerns cognitive organization at the level of interacting participants and should be distinguished from the broader performance construct of [[Collective intelligence]]. It can be analyzed using [[Distributed cognition]] when representations are spread across people and artifacts, while [[Intersubjectivity]] and [[Social information processing]] help explain how shared interpretations are formed and revised.
+
+== Team-state representation ==
+
+Let team contain members
+
+<math>A=\{a_1,\ldots,a_n\}.</math>
+
+Member <math>i</math> has internal state <math>x_i(t)</math>.
+
+Group interaction network is
+
+<math>G_t=(A,E_t).</math>
+
+Team-level state can include
+
+<math>X_t=(x_1(t),\ldots,x_n(t),M_t,C_t),</math>
+
+where <math>M_t</math> represents shared artifacts or external memory and <math>C_t</math> context.
+
+Group cognition concerns the coupled dynamics:
+
+<math>X_{t+1}=F(X_t,input_t).</math>
+
+No assumption of a single group brain is required.
+
+== Shared mental models ==
+
+Let each member have task model <math>M_i</math>.
+
+Sharedness can be operationalized through pairwise similarity:
+
+<math>S_{ij}=sim(M_i,M_j).</math>
+
+Group sharedness might be summarized:
+
+<math>\bar S=\frac{2}{n(n-1)}\sum_{i<j}S_{ij}.</math>
+
+High <math>\bar S</math> means members have similar representations.
+
+It says nothing about accuracy.
+
+Let external criterion model be <math>M^*</math>.
+
+Accuracy:
+
+<math>A_i=sim(M_i,M^*).</math>
+
+A group can have:
+
+* high sharedness, high accuracy;
+* high sharedness, low accuracy;
+* low sharedness, high complementary expertise.
+
+These cases should not be conflated.
+
+== Shared-mental-model domains ==
+
+Shared models can concern:
+
+* task;
+* equipment;
+* team roles;
+* interaction procedures.
+
+Similarity can be useful where members must predict one another rapidly.
+
+Empirical work links shared mental models to coordination under some high-workload conditions.<ref name="smm">[https://doi.org/10.1518/001872099779577273 Stout, R. J. et al. (1999), “Planning, Shared Mental Models, and Coordinated Performance.”]</ref>
+
+Causal effects depend on task and measurement.
+
+== Transactive memory system ==
+
+Let knowledge domain set be <math>D</math>.
+
+Expertise map is
+
+<math>E:D\rightarrow2^A.</math>
+
+A functioning transactive memory system requires that members know enough of <math>E</math> to route questions correctly.
+
+Routing accuracy for query domain <math>d</math> can be
+
+<math>R(d)=P(selected\ member\ is\ qualified\mid d).</math>
+
+Team memory capacity can exceed individual memory because members specialize.
+
+The cost is dependence on coordination and availability.
+
+== Specialization ==
+
+Suppose total knowledge demand is <math>K</math>.
+
+Redundant model stores much of <math>K</math> in every member.
+
+Specialized model partitions:
+
+<math>K=K_1\cup K_2\cup\ldots\cup K_n.</math>
+
+Specialization increases capacity but introduces routing risk.
+
+If the member holding <math>K_i</math> is unavailable and no backup exists, group capability can collapse locally.
+
+== Credibility ==
+
+Transactive memory also depends on trust in expertise.
+
+Let estimated credibility of member <math>i</math> be <math>c_i</math>.
+
+If <math>c_i</math> is too low, valid expertise may be ignored.
+
+If <math>c_i</math> is too high, errors can propagate unchecked.
+
+Calibrated trust is better than maximal trust.
+
+== Grounding model ==
+
+Speaker produces utterance <math>u_t</math>.
+
+Listener forms interpretation <math>\hat m_t</math>.
+
+Grounding action <math>g_t</math> updates shared state:
+
+<math>C_{t+1}=G(C_t,u_t,g_t).</math>
+
+Possible grounding signals include:
+
+* acknowledgment;
+* paraphrase;
+* clarification request;
+* successful task action.
+
+The required evidence of understanding depends on consequence.
+
+A casual conversation tolerates more ambiguity than surgery or aviation.
+
+== Common-ground error ==
+
+Suppose speaker assumes proposition <math>p</math> is shared:
+
+<math>Bel_S(Bel_L(p))=1.</math>
+
+If listener does not actually know <math>p</math>, coordination can fail.
+
+Common-ground errors are second-order belief failures.
+
+Explicit checks can reduce them.
+
+== Interactive team cognition ==
+
+Cooke et al. argue team cognition is interaction itself rather than only static knowledge similarity.<ref name="itc">[https://doi.org/10.1111/cogs.12009 Cooke, N. J. et al. (2013), “Interactive Team Cognition.”]</ref>
+
+This motivates time-series measurement.
+
+Let communication signal between members be <math>u_{ij}(t)</math>.
+
+The research target becomes patterns of adaptation and coordination over time rather than only pre/post questionnaires.
+
+== Coordination dynamics ==
+
+Team task includes coupled actions <math>a_i(t)</math>.
+
+Coordination error can be represented:
+
+<math>E_c(t)=\sum_{(i,j)}w_{ij}|a_i(t)-g_{ij}(a_j(t))|.</math>
+
+The function <math>g_{ij}</math> encodes required relationship among roles.
+
+Low coordination error is desirable only relative to correct task goals.
+
+Perfect synchronization can be wrong if the team follows a mistaken plan.
+
+== Cross-correlation ==
+
+Temporal coupling can be analyzed with cross-correlation:
+
+<math>R_{xy}(\tau)=E[x(t)y(t+\tau)].</math>
+
+A lag can reveal leader-follower dynamics.
+
+Correlation does not prove causal influence.
+
+External task events can drive both streams.
+
+== Entropy of participation ==
+
+Let speaking proportion of member <math>i</math> be <math>p_i</math>.
+
+Participation entropy:
+
+<math>H=-\sum_i p_i\log p_i.</math>
+
+Higher entropy indicates more even participation.
+
+Even speaking time is not automatically optimal.
+
+Expertise may legitimately require unequal contribution.
+
+The metric is descriptive.
+
+== Information centralization ==
+
+Communication graph centralization can reveal dependence on one member.
+
+High centralization can improve speed if the central coordinator is capable.
+
+It creates bottlenecks and single-point failure.
+
+Appropriate structure depends on task decomposability and uncertainty.
+
+== Hidden-profile model ==
+
+Let shared evidence be <math>E_s</math> and unique evidence held by member <math>i</math> be <math>E_i</math>.
+
+Correct decision may require:
+
+<math>E^*=E_s\cup\bigcup_i E_i.</math>
+
+If discussion disproportionately samples <math>E_s</math>, the group fails despite collective possession of <math>E^*</math>.
+
+Interventions can require members to report unique evidence before preferences.
+
+== Information sampling bias ==
+
+If probability of discussing item <math>e</math> increases with number of members who know it:
+
+<math>P(discuss\ e)\propto k_e,</math>
+
+shared information receives structural advantage.
+
+This can produce poor decisions without irrational individuals.
+
+The failure lies in group-level sampling.
+
+== Collaborative knowledge-building trace ==
+
+Let artifact state be <math>D_t</math>.
+
+Interaction updates it:
+
+<math>D_{t+1}=Edit(D_t,u_t).</math>
+
+Version history permits reconstruction of:
+
+* proposal;
+* challenge;
+* revision;
+* synthesis.
+
+This supports process-level attribution.
+
+A final document alone loses cognitive history.
+
+== Sequential discourse coding ==
+
+Conversation can be coded into categories:
+
+<math>C_t\in\{proposal,question,evidence,challenge,repair,agreement\}.</math>
+
+Transition matrix
+
+<math>P_{ij}=P(C_{t+1}=j\mid C_t=i)</math>
+
+can reveal recurrent interaction patterns.
+
+Coding validity requires clear categories and inter-rater reliability.
+
+== Discourse network analysis ==
+
+Claims and participants can form bipartite graph.
+
+Edges indicate:
+
+* supports;
+* challenges;
+* introduces.
+
+This separates conversational centrality from simple message count.
+
+A participant who posts rarely can introduce a decisive concept.
+
+== Shared artifacts ==
+
+Artifact <math>A_t</math> can function as external state visible to all members.
+
+Benefits include:
+
+* persistence;
+* reduced memory load;
+* common reference;
+* asynchronous access.
+
+But artifacts can also create anchoring.
+
+Once a diagram or plan becomes canonical, alternatives can be ignored.
+
+Revision history helps retain rejected alternatives and rationale.
+
+== Team situation awareness ==
+
+Let environmental state be <math>s_t</math>.
+
+Each member maintains partial estimate <math>\hat s_i(t)</math>.
+
+Team-level awareness does not require
+
+<math>\hat s_1=\hat s_2=\ldots=\hat s_n.</math>
+
+Role-specific awareness can be optimal if information is routed when needed.
+
+The important property is functional compatibility.
+
+== Shared versus distributed situation awareness ==
+
+Shared model emphasizes common state.
+
+Distributed model emphasizes complementary state.
+
+For complex teams, forcing every member to receive every update creates overload.
+
+Information architecture should match role relevance.
+
+== Measurement taxonomy ==
+
+Wildman, Salas, and Scott reviewed methods for measuring team cognition across constructs including mental models, transactive memory, team situation awareness, and cognitive processes.<ref name="measurement">[https://pubmed.ncbi.nlm.nih.gov/25141596/ Wildman, J. L., Salas, E., and Scott, C. P. R. (2014), “Measuring cognition in teams: a cross-domain review.”]</ref>
+
+Methods include:
+
+* concept mapping;
+* questionnaires;
+* recall;
+* communication analysis;
+* observation;
+* network analysis;
+* process measures.
+
+Measurement choice should follow theory.
+
+A shared-mental-model questionnaire cannot directly test interactive-team-cognition dynamics.
+
+== Performance relation ==
+
+Let group cognition measure be <math>C</math> and task performance <math>P</math>.
+
+A correlation
+
+<math>Corr(C,P)>0</math>
+
+does not establish causation.
+
+Possible confounders include:
+
+* expertise;
+* prior team experience;
+* leadership;
+* task difficulty.
+
+Training experiments and longitudinal designs strengthen causal inference.
+
+== Team learning ==
+
+Groups can adapt their coordination policy over repeated tasks.
+
+Let team policy be <math>\pi_t</math>.
+
+Feedback updates:
+
+<math>\pi_{t+1}=U(\pi_t,outcome_t).</math>
+
+Team learning can occur even when individual technical expertise is unchanged.
+
+The group learns how to coordinate.
+
+== Team turnover ==
+
+Replacing member changes expertise and relational knowledge.
+
+A transactive-memory system can degrade because others no longer know who knows what.
+
+Onboarding should therefore update both task knowledge and expertise-routing knowledge.
+
+== Common ground and compression ==
+
+Established common ground reduces communication length.
+
+If shared context <math>C</math> is rich, message can omit information recoverable from <math>C</math>.
+
+This makes communication efficient.
+
+It also creates fragility when assumptions diverge.
+
+High-performance teams often use compressed language that outsiders cannot interpret.
+
+== Conflict ==
+
+Task conflict can increase exploration if managed constructively.
+
+Relationship conflict can reduce information sharing.
+
+A nonlinear relation is plausible:
+
+<pre>
+too little disagreement → unchallenged errors
+moderate task disagreement → exploration
+excessive conflict → coordination failure
+</pre>
+
+This is a hypothesis requiring task-specific evidence.
+
+== Psychological safety ==
+
+Members must be willing to report uncertainty and dissent.
+
+If social cost of contradiction is high, unique evidence can remain unspoken.
+
+Psychological safety is therefore an enabling condition for some group-cognitive processes, not itself cognition.
+
+== Leadership ==
+
+Leader can alter network structure by:
+
+* asking specific members;
+* summarizing;
+* assigning tasks;
+* inviting dissent;
+* controlling agenda.
+
+Recent systematic review shows team cognition and collective leadership can influence one another bidirectionally.<ref name="leadership">[https://pubmed.ncbi.nlm.nih.gov/40819470/ systematic review, 2025.]</ref>
+
+Temporal designs are needed to infer direction.
+
+== Collective intelligence distinction ==
+
+Collective intelligence measure can be written
+
+<math>I_G=E[P(T)].</math>
+
+Group cognition describes process <math>F</math> producing that performance.
+
+Thus:
+
+<math>P=F(group\ cognition,individual\ skill,task,resources).</math>
+
+High performance can result from simple independent aggregation with little interaction.
+
+Rich interaction can also produce poor performance.
+
+== Distributed cognition distinction ==
+
+Distributed cognition expands system boundary to artifacts and environment.
+
+Group cognition can be modeled inside that larger distributed system.
+
+The terminology overlaps.
+
+Researchers should define the unit rather than debate labels abstractly.
+
+== Human–AI shared mental models ==
+
+Let human belief about AI capability be <math>\hat C_{AI}</math> and actual capability be <math>C_{AI}</math>.
+
+Calibration error:
+
+<math>E=|\hat C_{AI}-C_{AI}|.</math>
+
+Overestimation produces overtrust.
+
+Underestimation wastes capability.
+
+Human–AI coordination requires calibrated capability models, not maximal trust.
+
+== AI agents and common model dependence ==
+
+Multiple AI agents may share foundation model <math>M</math>.
+
+Error decomposition:
+
+<math>\epsilon_i=\epsilon_M+\eta_i.</math>
+
+Outputs can look independent while sharing <math>\epsilon_M</math>.
+
+Group-cognition architectures should track model lineage.
+
+== Multi-agent communication ==
+
+Agent messages can form dependency DAG.
+
+For final claim <math>c</math>, provenance should identify which upstream observations contributed.
+
+Without provenance, several agents can circularly repeat one hallucination until it appears consensual.
+
+Consensus is not independent verification.
+
+== Group consciousness boundary ==
+
+No accepted inference establishes:
+
+<pre>
+group interaction
+→ group cognition
+→ group consciousness
+</pre>
+
+Group cognition can be defined functionally without phenomenal claims.
+
+A team can coordinate, remember, and solve problems while subjective experience remains individual.
+
+== Experimental protocol ==
+
+A strong group-cognition study should define:
+
+# team;
+# task;
+# information distribution;
+# communication medium;
+# interaction measure;
+# cognitive construct;
+# performance outcome;
+# baseline;
+# temporal scale.
+
+Manipulations can alter communication topology, shared information, role structure, or tool availability.
+
+== Epistemic boundary ==
+
+Group cognition is best established by tracing actual cognitive transformations across interaction.
+
+Do not infer group cognition solely from co-membership or final performance.
+
+Do not infer a group mind from coordinated behavior.
+
+The explanatory value lies in identifying how the interaction system performs cognitive work that cannot be described adequately by isolated individuals.
 
 == References ==
-* [https://mitpress.mit.edu/9780262195393/group-cognition/ Stahl (2006), Group Cognition: Computer Support for Building Collaborative Knowledge]
-* [https://pubmed.ncbi.nlm.nih.gov/20929725/ Woolley et al. (2010), Evidence for a collective intelligence factor]
+
+<references />
+
+* [https://mitpress.mit.edu/9780262195393/group-cognition/ Stahl, G. (2006), ''Group Cognition''.]
+* [https://doi.org/10.1111/cogs.12009 Cooke et al. (2013), “Interactive Team Cognition.”]
+* [https://pubmed.ncbi.nlm.nih.gov/12940401/ Lewis, K. (2003), transactive memory systems.]
 
 == Reading depth ==
-[[Group cognition/Simple|Simple explanation]]
+
+[[Group cognition/Simple|Simple explanation]] · [[Group cognition|Core article]]

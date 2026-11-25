@@ -2,29 +2,388 @@
  |title=Artificial life
  |entity_type=Concept
  |domain=Biology, Computer science, Systems science, Engineering
- |provenance=Langton (1989); What Is Artificial Life Today; Lenski et al. (2003)
+ |status=Established
+ |provenance=Langton (1987/1989); Dorin and Stepney (2024); Lenski et al. (2003)
 }}
-<onlyinclude>{{:Artificial life/Simple}}</onlyinclude>
+{{Reading depth|base=Artificial life|current=Core}}
 
-'''Reading depth:''' [[Artificial life/Simple|Simple]] · [[Artificial life/Technical|Technical]]
+= Artificial life =
 
-== Semantic relationships ==
-* [[Related to::Digital organism]]
-* [[Related to::Autopoiesis]]
-* [[Related to::Conway's Game of Life]]
-* [[Related to::Biological computation]]
-* [[Related to::Emergence]]
+'''Artificial life''' (ALife) is an interdisciplinary field that studies the principles of living systems by constructing, simulating, and experimenting with systems that exhibit selected life-like properties. Its research objects include software populations, robots, synthetic or protocellular chemical systems, evolutionary models, cellular automata, and other artificial systems capable of processes such as self-replication, adaptation, development, collective behavior, or self-maintenance.
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Artificial life]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+The modern field coalesced around a workshop organized by Christopher Langton at Los Alamos in 1987 and the resulting proceedings.<ref name="langton">[https://www.routledge.com/Artificial-Life-Proceedings-Of-An-Interdisciplinary-Workshop-On-The-Synthesis/Langton/p/book/9780429032769 Langton, C. G. (ed.) (1989), ''Artificial Life: Proceedings of an Interdisciplinary Workshop on the Synthesis and Simulation of Living Systems''.]</ref> A contemporary review describes ALife as a field concerned with “possible life” and emphasizes its continuing diversity across computational, robotic, and biochemical approaches.<ref name="dorin">[https://doi.org/10.1162/artl_e_00435 Dorin, A. and Stepney, S. (2024), “What Is Artificial Life Today, and Where Should It Go?”, ''Artificial Life'' 30(1), 1–15.]</ref>
+
+Artificial life is related to [[Artificial intelligence]] but has a different primary question. AI generally asks how systems can perform tasks associated with intelligence. ALife asks how organization, adaptation, evolution, autonomy, reproduction, and other features associated with life can arise in constructed systems.
+
+== Intellectual roots and research agenda ==
+
+The field's intellectual roots predate the name “artificial life.” John von Neumann's work on self-reproducing automata supplied a foundational formal model of machine reproduction and cellular automata; historical analysis in the ALife literature treats this work as a major precursor to the field.<ref name="marchal">[https://doi.org/10.1162/106454698568567 Marchal, P. (1998), “John von Neumann: the founding father of artificial life,” ''Artificial Life'' 4(3), 229–235.]</ref>
+
+The research agenda also includes explicitly unresolved foundational problems. Bedau and colleagues organized fourteen major ALife challenges around the transition from nonliving to living organization, evolutionary potential, and relations among life, mind, and culture.<ref name="bedau">[https://doi.org/10.1162/106454600300103683 Bedau, M. A. et al. (2000), “Open Problems in Artificial Life,” ''Artificial Life'' 6(4), 363–376.]</ref> These are research problems rather than established capabilities; their persistence is one reason ALife should not be described as having already synthesized unrestricted artificial life.
+
+== Constructive methodology ==
+
+ALife is often called a constructive science because researchers build systems and observe what follows from specified mechanisms.
+
+The general pattern is:
+
+<pre>
+mechanisms + environment + initial conditions
+→ dynamics
+→ observable organization
+</pre>
+
+Construction allows causal interventions that are often difficult in natural organisms.
+
+Researchers can change:
+
+* mutation rates;
+* local interaction rules;
+* resource distributions;
+* body morphology;
+* developmental rules;
+* communication topology;
+* environmental variability.
+
+The resulting behavior can reveal whether a proposed mechanism is sufficient to generate a phenomenon under the model's assumptions.
+
+Sufficiency in a model is not the same as establishing that natural organisms use the same mechanism.
+
+== Soft, hard, and wet artificial life ==
+
+A traditional classification distinguishes three overlapping approaches.
+
+'''Soft ALife''' studies life-like processes in software. Examples include [[Automaton (computation)|cellular automata]], [[Digital organism|digital organisms]], artificial chemistries, evolutionary simulations, and agent-based ecosystems.
+
+'''Hard ALife''' uses embodied machines such as robots. The body, sensors, actuators, energy constraints, and physical environment become part of the dynamics.
+
+'''Wet ALife''' uses chemical or biological materials to construct life-like systems, including protocell research, synthetic reaction networks, and self-assembling compartments.
+
+The boundaries are not strict. A wet-lab experiment may depend on digital control; a robot may use evolved software; and a software model may represent biochemical mechanisms.
+
+== Cellular automata ==
+
+Cellular automata demonstrate how simple local update rules can generate complex global patterns.
+
+[[Conway's Game of Life]] is a famous example. It supports moving and self-reproducing patterns in a two-dimensional grid despite having very simple local rules.
+
+Such patterns are valuable for studying emergence and computation, but a pattern in a cellular automaton should not be assumed biologically alive. It exists under externally specified rules and computational infrastructure.
+
+== Digital evolution ==
+
+[[Digital organism|Digital organisms]] are executable programs that reproduce, mutate, and compete inside an artificial environment.
+
+Platforms such as Tierra and Avida make evolutionary history directly observable. Researchers can preserve every genotype, replay ancestral states, alter individual mutations, and run replicated populations.
+
+Lenski et al. used Avida to study the evolutionary origin of a complex logic function and reconstruct the sequence of mutations involved.<ref name="lenski">[https://doi.org/10.1038/nature01568 Lenski, R. E. et al. (2003), “The evolutionary origin of complex features,” ''Nature'' 423, 139–144.]</ref>
+
+This is evidence about evolution in the digital system. Generalization to biology depends on whether the relevant causal structure is shared.
+
+== Evolutionary robotics ==
+
+In evolutionary robotics, a population of controllers, morphologies, or both can be varied and selected according to performance.
+
+A simple evolutionary loop is:
+
+<pre>
+generate variants
+→ evaluate embodied behavior
+→ select
+→ reproduce with variation
+→ repeat
+</pre>
+
+Physical embodiment introduces constraints absent from pure simulation:
+
+* friction;
+* actuator limits;
+* sensor noise;
+* energy use;
+* material failure;
+* latency;
+* environmental uncertainty.
+
+A controller that performs well in simulation may fail on a real robot because the simulation does not capture these factors accurately. This is commonly called a simulation-to-reality gap.
+
+== Artificial chemistries ==
+
+Artificial chemistries model populations of interacting symbolic or chemical-like entities with reaction rules.
+
+They can investigate:
+
+* autocatalysis;
+* metabolic organization;
+* molecular recognition;
+* compartmentalization;
+* replication;
+* evolutionary transitions.
+
+A symbolic reaction system can reveal possible organizational mechanisms, but chemical feasibility requires independent thermodynamic and kinetic evidence.
+
+== Protocells and wet ALife ==
+
+Wet ALife overlaps with synthetic biology and origin-of-life research.
+
+A protocell experiment may combine:
+
+* a membrane or compartment;
+* internal reactions;
+* energy coupling;
+* template replication;
+* growth;
+* division.
+
+One goal is to determine which combinations are sufficient for autonomous maintenance and evolution.
+
+[[Autopoiesis]] is relevant because it asks whether a system recursively produces the components and boundary that constitute it. Replication alone and self-maintenance alone are different properties.
+
+== Self-replication ==
+
+Self-replication can be defined operationally as a system causing production of another system with relevant inherited organization.
+
+A simple digital mapping is
+
+<math>g' = R(g,\xi),</math>
+
+where <math>g</math> is the parent representation and <math>\xi</math> includes variation.
+
+Replication does not by itself establish life.
+
+Examples of replication or copying also occur in crystals, computer malware, molecular templates, and manufacturing systems.
+
+The scientific question is which additional properties accompany replication.
+
+== Evolution ==
+
+Darwinian evolution requires at minimum:
+
+* reproduction;
+* heritable variation;
+* differential reproductive success.
+
+For type frequencies <math>x_i</math> with fitness <math>f_i</math>, a deterministic approximation is
+
+<math>\dot x_i=x_i(f_i-\bar f).</math>
+
+Artificial systems allow direct manipulation of inheritance, mutation, selection, and environmental structure.
+
+They are therefore valuable for testing general evolutionary mechanisms.
+
+== Open-ended evolution ==
+
+A major ALife research goal is '''open-ended evolution''': continued production of novel, adaptive, and organizationally significant forms rather than convergence on a fixed repertoire.
+
+Long runtime is not sufficient.
+
+A system can keep generating small mutations while producing no new adaptive organization.
+
+Evaluation may consider:
+
+* sustained novelty;
+* ecological diversification;
+* new levels of organization;
+* new functional dependencies;
+* changing niches;
+* unbounded or expanding phenotypic possibilities.
+
+Most artificial evolutionary systems eventually encounter limits imposed by fixed representations, reward functions, or environments.
+
+== Emergence ==
+
+[[Emergence]] describes macro-level patterns arising from interactions among components.
+
+ALife provides experimental settings in which emergent patterns can be generated and perturbed.
+
+Examples include:
+
+* flocking;
+* spatial segregation;
+* parasitism;
+* cooperation;
+* collective transport;
+* developmental patterning.
+
+Calling a pattern emergent does not explain it. A scientific account should identify the local interactions, feedback loops, constraints, and parameter ranges that produce the pattern.
+
+== Self-organization ==
+
+[[Self-organization]] occurs when ordered structure arises or persists through local interaction without centralized control.
+
+It is common in ALife but not sufficient for life.
+
+A crystal self-organizes. A flock self-organizes. Neither necessarily satisfies requirements for metabolism, reproduction, or autonomous self-maintenance.
+
+== Information and heredity ==
+
+Artificial life often separates hereditary information from the physical implementation.
+
+A digital organism can have a genome of instructions. A robot can inherit a controller. A protocell can use nucleic-acid or other molecular templates.
+
+This makes it possible to ask which evolutionary results depend on:
+
+* representation;
+* mutation operator;
+* genotype–phenotype mapping;
+* developmental process;
+* environment.
+
+The answers are important because an artificial representation can create biases that do not exist in biological genetics.
+
+== Adaptation ==
+
+An artificial population is adapted relative to an environment and performance criterion.
+
+A measured increase in fitness
+
+<math>\Delta \bar f > 0</math>
+
+shows improvement under that criterion.
+
+It does not establish general intelligence, biological viability, or open-ended evolution.
+
+Researchers should distinguish adaptation to an externally designed objective from emergence of new ecological functions.
+
+== Definitions of life ==
+
+No universally accepted definition of life applies cleanly to all biological and artificial cases.
+
+Candidate criteria include:
+
+* compartmentalization;
+* metabolism;
+* homeostasis;
+* reproduction;
+* heredity;
+* Darwinian evolution;
+* autonomy;
+* autopoietic self-production;
+* adaptive response.
+
+A system can satisfy some and not others.
+
+ALife therefore often treats “life” as an empirical and theoretical research question rather than a binary label fixed in advance.
+
+== Simulation versus realization ==
+
+A central philosophical distinction is whether an artificial system merely simulates a life process or physically realizes it.
+
+A weather simulation does not become wet, but a digital evolutionary system can instantiate abstract processes such as heredity and selection in a literal computational sense.
+
+The answer depends on which property is under discussion.
+
+For each claim, identify the level:
+
+'''Representational simulation''' — the system represents another process.
+
+'''Formal realization''' — the system instantiates an abstract organization or algorithm.
+
+'''Physical realization''' — the system exhibits the relevant material process.
+
+These levels should not be conflated.
+
+== Validation ==
+
+A computational ALife model must be both technically correct and scientifically relevant.
+
+'''Verification''' asks whether the implementation correctly realizes the intended rules.
+
+'''Validation''' asks whether the model is adequate for the scientific inference being made.
+
+A model can be perfectly verified yet biologically irrelevant if its assumptions omit the mechanism under investigation.
+
+Useful practices include:
+
+* code tests;
+* parameter sensitivity analysis;
+* replicated random seeds;
+* comparison with analytical limiting cases;
+* empirical comparison where appropriate;
+* ablation experiments;
+* explicit uncertainty reporting.
+
+== Relation to artificial intelligence ==
+
+AI and ALife overlap in evolutionary computation, autonomous agents, multi-agent systems, robotics, and adaptive behavior.
+
+But:
+
+<pre>
+intelligent performance ≠ life
+life-like organization ≠ intelligence
+</pre>
+
+An AI model can classify images without reproducing or maintaining itself. A digital organism can evolve without solving cognitively demanding tasks.
+
+Claims about one domain should not be transferred to the other without mechanism-specific evidence.
+
+== Consciousness ==
+
+No ALife property by itself establishes consciousness.
+
+Self-replication, adaptation, emergence, autonomy, and even complex behavior are objective functional properties.
+
+Subjective experience is a separate explanatory problem.
+
+Researchers should not infer consciousness from:
+
+* population complexity;
+* evolved behavior;
+* neural analogy;
+* self-maintenance;
+* computational sophistication.
+
+A consciousness claim requires independent theory and evidence.
+
+== Applications ==
+
+ALife methods contribute to:
+
+* evolutionary computation;
+* optimization;
+* swarm and collective robotics;
+* synthetic biology;
+* origin-of-life research;
+* ecological modeling;
+* distributed systems;
+* generative design;
+* theoretical biology.
+
+Applications do not all aim to create literal life. Many use life-inspired mechanisms because they are useful engineering abstractions.
+
+== Research limitations ==
+
+Artificial systems are shaped by researcher choices.
+
+Important sources of bias include:
+
+* fixed instruction sets;
+* designed reward functions;
+* arbitrary spatial geometry;
+* unrealistic mutation processes;
+* simplified energetics;
+* limited environmental diversity;
+* simulation artifacts.
+
+A result becomes more general when it persists across alternative implementations and follows from a clearly identified mechanism rather than one platform-specific feature.
+
+== Related concepts ==
+
+Artificial life connects [[Related to::Digital organism|digital organisms]], [[Related to::Autopoiesis|autopoiesis]], [[Related to::Conway's Game of Life|Conway's Game of Life]], [[Related to::Biological computation|biological computation]], and [[Related to::Emergence|emergence]]. It also overlaps with [[Self-organization]], evolution, [[Swarm intelligence]], and [[Artificial intelligence]] without being reducible to any one of them.
+
+== References ==
+
+<references />
+
+* [https://www.routledge.com/Artificial-Life-Proceedings-Of-An-Interdisciplinary-Workshop-On-The-Synthesis/Langton/p/book/9780429032769 Langton (ed.) (1989), foundational ALife proceedings.]
+* [https://doi.org/10.1162/artl_e_00435 Dorin and Stepney (2024), review of the modern ALife field.]
+* [https://doi.org/10.1038/nature01568 Lenski et al. (2003), experimental digital evolution.]
+* [https://doi.org/10.1162/106454604773563612 Ofria and Wilke (2004), Avida platform.]
+* [https://doi.org/10.1162/106454698568567 Marchal (1998), von Neumann as an ALife precursor.]
+* [https://doi.org/10.1162/106454600300103683 Bedau et al. (2000), fourteen open problems in artificial life.]
+
+== Reading depth ==
+
+[[Artificial life/Simple|Simple explanation]] · [[Artificial life/Technical|Technical treatment]]
 
 [[Category:Biology]]
 [[Category:Computer science]]

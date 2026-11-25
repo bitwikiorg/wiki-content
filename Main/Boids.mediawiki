@@ -2,29 +2,392 @@
  |title=Boids
  |entity_type=Concept
  |domain=Computer science, Mathematics, Systems science, Biology
- |provenance=Reynolds (1987); Reynolds
+ |status=Established
+ |provenance=Reynolds (1987); Reynolds steering-behavior work
 }}
-<onlyinclude>{{:Boids/Simple}}</onlyinclude>
+{{Reading depth|base=Boids|current=Core}}
 
-'''Reading depth:''' [[Boids/Simple|Simple]] · [[Boids/Technical|Technical]]
+= Boids =
+
+'''Boids''' is Craig Reynolds's 1987 computer model for simulating flocking-like collective motion using locally interacting virtual agents. Each simulated individual—called a '''boid'''—steers using information about nearby boids rather than following a central leader or a precomputed global trajectory.
+
+Reynolds introduced the model for computer graphics to create realistic-looking flocks, herds, and schools while avoiding explicit scripting of every group movement.<ref name="reynolds">[https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools: A Distributed Behavioral Model,” ''Computer Graphics'' 21(4), 25–34.]</ref>
+
+The model is important in [[Swarm intelligence]], [[Emergence]], artificial life, and animation because simple local steering can generate coherent group patterns. It is not a complete model of real bird, fish, or herd behavior.
+
+== The three commonly summarized rules ==
+
+Boids is commonly explained through three local steering tendencies.
+
+'''Separation''' — steer away from nearby agents to avoid crowding.
+
+'''Alignment''' — steer toward the average heading or velocity of nearby agents.
+
+'''Cohesion''' — steer toward the local center of nearby agents.
+
+The original Reynolds system also included broader steering and environmental behaviors, but these three rules became the canonical minimal description.
+
+== Separation ==
+
+Separation produces short-range repulsion.
+
+Without separation, agents can collapse onto the same position.
+
+The rule is often weighted more strongly for closer neighbors.
+
+This creates a local exclusion region while still allowing the flock to remain cohesive.
+
+The exact force law is an implementation choice rather than a fixed part of the conceptual model.
+
+== Alignment ==
+
+Alignment adjusts one boid's velocity toward the average velocity of its neighbors.
+
+This produces directional coordination.
+
+If alignment is too strong, the flock can become rigid.
+
+If too weak, individuals can move incoherently.
+
+Alignment depends on which neighbors are visible to the agent.
+
+== Cohesion ==
+
+Cohesion moves a boid toward the local center of neighboring positions.
+
+It prevents indefinite dispersion.
+
+Cohesion competes with separation.
+
+The flock remains together because attraction operates at larger local distances while repulsion dominates at short distances.
+
+== Local perception ==
+
+A boid normally responds to a neighborhood rather than the whole population.
+
+Neighborhoods can be defined by:
+
+* fixed metric radius;
+* nearest <math>k</math> neighbors;
+* field of view;
+* topological adjacency.
+
+This choice changes the dynamics.
+
+A metric neighborhood can contain many agents at high density and few at low density.
+
+A fixed-neighbor neighborhood keeps information load more stable.
+
+== No central leader ==
+
+The canonical boids model does not require one leader directing the group.
+
+Every boid applies similar local rules.
+
+Global motion emerges from their coupled updates.
+
+A leader can be added as an extension, but leadership is not required for basic flock formation.
+
+== Emergence ==
+
+Boids is a standard example of [[Emergence]].
+
+The programmer specifies local rules.
+
+The programmer does not explicitly script:
+
+* every flock shape;
+* every turn;
+* every local split;
+* every rejoining event.
+
+These macro-patterns arise from repeated local interaction.
+
+“Emergent” does not mean unexplained; the steering rules are the mechanism.
+
+== Self-organization ==
+
+The flock is also an example of [[Self-organization]] because coordinated structure forms without central control.
+
+Self-organization can fail.
+
+Poorly chosen parameters can produce:
+
+* dispersal;
+* oscillation;
+* collision;
+* unstable clusters.
+
+The existence of local rules does not guarantee useful organization.
+
+== Time stepping ==
+
+A simulation repeatedly:
+
+# computes neighbors;
+# computes steering;
+# updates velocity;
+# updates position.
+
+Update order matters.
+
+If one boid is updated and immediately affects the next boid in the same time step, results can depend on loop order.
+
+Many implementations compute all steering from a snapshot and then update all agents together.
+
+== Speed limits ==
+
+Boids often use maximum speed.
+
+Without a speed cap, repeated steering can accelerate agents indefinitely.
+
+Similarly, maximum acceleration or steering force can make turns smoother and physically more plausible.
+
+These limits are simulation parameters, not biological laws.
+
+== Boundary conditions ==
+
+The simulation world needs boundary rules.
+
+Common choices include:
+
+* wraparound torus;
+* reflective walls;
+* steering away from boundaries;
+* open space.
+
+Boundary choice can create artificial patterns.
+
+A torus removes walls but allows agents leaving one side to reappear on the opposite side.
+
+Results should report the boundary model.
+
+== Obstacles ==
+
+Obstacle avoidance can be added as another local steering behavior.
+
+A boid can sense predicted collisions and steer around objects.
+
+Combining obstacle avoidance with flocking requires priority or weighting.
+
+If cohesion overwhelms obstacle avoidance, collisions occur.
+
+If avoidance dominates, the flock can fragment.
+
+== Goals and path following ==
+
+Reynolds later generalized steering behaviors to include:
+
+* seek;
+* flee;
+* pursue;
+* evade;
+* wander;
+* path following;
+* obstacle avoidance.
+
+These behaviors can be combined with flocking.
+
+Boids should therefore be understood as part of a broader steering-behavior framework.
+
+== Neighborhood search ==
+
+A naive implementation checks every pair of boids.
+
+For <math>n</math> agents, this costs approximately:
+
+<math>O(n^2)</math>
+
+neighbor comparisons per step.
+
+This becomes expensive for large populations.
+
+Spatial indexing can reduce candidate neighbor checks.
+
+== Spatial grids ==
+
+A uniform grid partitions space into cells.
+
+A boid only checks its own cell and nearby cells.
+
+When interaction radius and density are bounded, this can reduce practical cost toward linear scaling with population.
+
+Performance depends on cell size and spatial distribution.
+
+== Spatial trees ==
+
+Quadtrees, octrees, or related spatial trees can organize agents hierarchically.
+
+They are useful when density is nonuniform.
+
+Tree construction and query overhead can outweigh gains for small swarms.
+
+The data structure is an engineering choice.
+
+== Quantifying flocking ==
+
+Visual appearance is subjective.
+
+Useful quantitative measures include:
+
+* polarization;
+* nearest-neighbor distance;
+* collision rate;
+* group diameter;
+* number of connected components;
+* velocity variance.
+
+Metrics allow parameter comparisons and reproducible evaluation.
+
+== Polarization ==
+
+Polarization measures directional alignment.
+
+If each boid has unit heading <math>\hat v_i</math>:
+
+<math>\Phi=\frac{1}{n}\left\|\sum_i\hat v_i\right\|.</math>
+
+<math>\Phi=1</math> indicates perfect alignment.
+
+Values near zero indicate disordered headings.
+
+High polarization does not necessarily mean the flock is spatially cohesive.
+
+== Cohesion metrics ==
+
+Spatial cohesion can be measured by:
+
+* mean distance to centroid;
+* maximum diameter;
+* cluster count.
+
+A flock can be highly aligned while split into distant subgroups.
+
+Multiple metrics are therefore preferable.
+
+== Connectivity ==
+
+Define a graph where boids are connected when within interaction range.
+
+[[Connectivity (graph theory)]] then measures whether information could propagate through local neighborhoods.
+
+A flock can fragment when the interaction graph disconnects.
+
+This gives a precise bridge between geometry and collective dynamics.
+
+== Noise ==
+
+Noise can be added to:
+
+* heading;
+* position;
+* sensing;
+* steering.
+
+Small noise can produce natural-looking variation.
+
+Large noise can destroy coherent flocking.
+
+Studying the order-disorder transition connects boids-like models with statistical-physics flocking models.
+
+== Reynolds boids versus Vicsek model ==
+
+The Vicsek model is a separate minimal model of collective motion emphasizing noisy alignment at constant speed.
+
+Boids combines several steering tendencies and originated in computer graphics.
+
+The models should not be conflated.
+
+The Vicsek model is often more suitable for analytical statistical-physics questions.
+
+== Biological flocking ==
+
+Real animals use:
+
+* vision;
+* hearing;
+* sensory delay;
+* aerodynamic or hydrodynamic interactions;
+* individual preferences;
+* anti-predator behavior.
+
+Real bird flocking can depend on a fixed number of nearest neighbors rather than a simple metric radius in some empirical studies.
+
+Therefore the boids rules are abstractions.
+
+== Swarm intelligence ==
+
+[[Swarm intelligence]] is broader.
+
+It includes optimization, insect-inspired coordination, robotics, and other decentralized systems.
+
+Boids is specifically a model of collective motion.
+
+It is not a general-purpose optimization method.
+
+== Emergent algorithms ==
+
+Boids can be described as an [[Emergent algorithm]] because local update rules generate a global pattern.
+
+However, the term emergent algorithm is informal.
+
+The precise boids model is defined by its state variables, neighborhood rule, steering functions, and update schedule.
+
+== Artificial life ==
+
+Boids influenced [[Artificial life]] by showing how life-like collective behavior could emerge from simple simulated agents.
+
+Life-like appearance should not be confused with biological life.
+
+Boids do not reproduce, metabolize, evolve, or possess cells.
+
+== Computer animation ==
+
+The original goal was animation.
+
+Distributed control allowed groups to turn and avoid obstacles without manually scripting every individual trajectory.
+
+This made large groups easier to animate.
+
+Modern crowd and flock simulations often use more complex steering, physics, and planning.
+
+== Reproducibility ==
+
+A boids experiment should report:
+
+* number of agents;
+* initial positions;
+* initial velocities;
+* perception radius;
+* field of view;
+* rule weights;
+* acceleration limit;
+* speed limit;
+* timestep;
+* boundary conditions;
+* random seed.
+
+Without these parameters, two “boids” simulations can behave very differently.
+
+== Epistemic boundary ==
+
+Boids demonstrates that local rules are sufficient to generate certain flock-like visual and quantitative patterns.
+
+It does not prove that real animals use exactly those rules.
+
+Matching appearance is weaker than matching measured trajectories, neighbor relations, sensory constraints, and perturbation responses.
 
 == Semantic relationships ==
+
 * [[Related to::Swarm intelligence]]
 * [[Related to::Emergence]]
 * [[Related to::Self-organization]]
 * [[Related to::Emergent algorithm]]
 * [[Related to::Behavior]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Boids]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Mathematics]]

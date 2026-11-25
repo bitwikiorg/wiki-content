@@ -2,29 +2,452 @@
  |title=Open-source intelligence
  |entity_type=Concept
  |domain=Computer science, Science, Systems science
- |provenance=United Nations; Berkeley Human Rights Center
+ |status=Established
+ |provenance=U.S. intelligence doctrine and statute; Berkeley Protocol; NATO and defense OSINT practice
 }}
-<onlyinclude>{{:Open-source intelligence/Simple}}</onlyinclude>
+{{Reading depth|base=Open-source intelligence|current=Core}}
 
-'''Reading depth:''' [[Open-source intelligence/Simple|Simple]] · [[Open-source intelligence/Technical|Technical]]
+= Open-source intelligence =
+
+'''Open-source intelligence''' (OSINT) is intelligence produced from publicly available or lawfully accessible open information to answer a defined intelligence requirement. It is not simply “information found on the Internet,” nor is it equivalent to collecting links, searching social media, or using open-source software.
+
+A long-standing U.S. statutory formulation defines OSINT as intelligence produced from publicly available information that is collected, exploited, and disseminated in a timely manner to an appropriate audience for the purpose of addressing a specific intelligence requirement.<ref name="uscode">[https://uscode.house.gov/us/usc/119-136/t50/s3038/ U.S. Code, Department of Defense Strategy for Open-source Intelligence note.]</ref>
+
+The key distinction is therefore:
+
+<pre>
+publicly available information
+→ collection and validation
+→ analysis
+→ intelligence judgment
+→ dissemination for a requirement
+</pre>
+
+The source may be open; the intelligence work still requires method, provenance, uncertainty assessment, and lawful handling.
+
+== Publicly available information ==
+
+Publicly available information (PAI) can include material that is:
+
+* published or broadcast;
+* available on request;
+* publicly accessible online;
+* available by subscription or purchase;
+* observable at public places or events.
+
+Defense Intelligence Agency guidance distinguishes PAI from the OSINT product created by collecting, assessing, and reporting such information for intelligence requirements.<ref name="dia">[https://www.dia.mil/About/Open-Source-Intelligence/ Defense Intelligence Agency, “Open-Source Intelligence.”]</ref>
+
+A newspaper article is PAI.
+
+A geolocated, temporally validated assessment combining that article with imagery, records, and independent observations to answer an intelligence question can be OSINT.
+
+== Open source does not mean free of cost ==
+
+“Open” in OSINT refers to accessibility, not necessarily zero price.
+
+Commercial databases, satellite imagery, corporate registries, subscription archives, and data services may be accessible to members of the public or commercial customers while requiring payment.
+
+The relevant question is whether the information is lawfully obtainable through open or commercial channels under the governing definition and authority.
+
+== Intelligence requirement ==
+
+Professional OSINT begins with a question.
+
+A requirement should define:
+
+* what is being asked;
+* why the answer matters;
+* geographic and temporal scope;
+* confidence needed;
+* decision deadline;
+* collection constraints.
+
+Without a requirement, analysts can accumulate large amounts of data without producing useful intelligence.
+
+Requirement-driven collection also limits unnecessary data gathering.
+
+== Collection planning ==
+
+A collection plan identifies potential sources before conclusions are formed.
+
+Source classes can include:
+
+* government publications;
+* public corporate records;
+* academic literature;
+* news media;
+* social media;
+* photographs and video;
+* maps;
+* satellite and aerial imagery;
+* vessel and aircraft tracking data;
+* public procurement records;
+* archives;
+* commercial databases.
+
+The analyst should ask what evidence would support, weaken, or falsify each hypothesis.
+
+Collecting only confirmatory material creates confirmation bias.
+
+== Source provenance ==
+
+Provenance records where information came from and how it was obtained.
+
+Useful provenance fields include:
+
+* original source;
+* author or uploader if known;
+* URL or identifier;
+* publication or upload time;
+* collection time;
+* archive location;
+* file hash;
+* transformation history.
+
+A screenshot without provenance is weaker than a preserved original with metadata and traceable handling.
+
+Provenance supports later verification and correction.
+
+== Source versus information reliability ==
+
+Two questions should remain separate:
+
+# Is the source reliable?
+# Is this particular piece of information credible?
+
+A historically reliable organization can publish an incorrect report.
+
+An anonymous source can publish authentic evidence.
+
+Analysts should therefore evaluate the item, not substitute source reputation for verification.
+
+== Independent corroboration ==
+
+Multiple reports are not independent if they copy one original claim.
+
+Suppose five news articles repeat one unverified social-media post.
+
+That is one underlying observation plus four republications, not five independent confirmations.
+
+Analysts should trace claims backward toward primary evidence and identify dependency among sources.
+
+Independent corroboration is strongest when different evidence channels converge without sharing the same origin.
+
+== Geolocation ==
+
+Visual evidence can sometimes be geolocated by matching features such as:
+
+* road geometry;
+* building shape;
+* terrain;
+* skylines;
+* signage;
+* utility infrastructure;
+* shadows;
+* satellite imagery.
+
+A location claim should record which features were matched and which alternatives were considered.
+
+One visual similarity is not enough for a high-confidence conclusion.
+
+== Chronolocation ==
+
+Chronolocation attempts to establish when an event occurred.
+
+Evidence can include:
+
+* upload metadata;
+* shadows and solar position;
+* weather;
+* vegetation;
+* construction state;
+* event schedules;
+* known before-and-after imagery;
+* contemporaneous posts.
+
+Platform timestamps can be misleading because of time zones, reposting, editing, or archival delay.
+
+A publication time is not automatically the event time.
+
+== Image and video verification ==
+
+Digital media can be altered, mislabeled, reposted, or stripped of metadata.
+
+Verification can examine:
+
+* earliest known upload;
+* metadata;
+* visual landmarks;
+* frame consistency;
+* prior appearances;
+* compression history;
+* weather and lighting;
+* corroborating imagery.
+
+A cryptographic hash can prove that a preserved file has not changed since hashing.
+
+It cannot prove that the file depicts what the uploader claims.
+
+== Satellite imagery ==
+
+Satellite imagery can support:
+
+* change detection;
+* infrastructure analysis;
+* damage assessment;
+* movement tracking;
+* environmental monitoring.
+
+Analysts must account for:
+
+* acquisition date;
+* spatial resolution;
+* cloud cover;
+* viewing angle;
+* sensor type;
+* georegistration;
+* image processing.
+
+Absence of a visible object can result from sensor or timing limitations.
+
+== Social media ==
+
+Social media provides rapid observation but creates major verification problems.
+
+Posts can be:
+
+* fabricated;
+* automated;
+* coordinated;
+* selectively edited;
+* reposted without context;
+* deleted;
+* geotagged incorrectly.
+
+Follower count and virality are not evidence of truth.
+
+Analysts should preserve the original context and avoid treating engagement metrics as credibility scores.
+
+== Search-engine and platform bias ==
+
+Search results are ranked by algorithms.
+
+What an analyst sees depends on:
+
+* language;
+* location;
+* personalization;
+* indexing;
+* platform policy;
+* query wording;
+* commercial ranking.
+
+Search visibility therefore does not equal real-world prevalence.
+
+Important evidence can also be absent from indexed platforms.
+
+== Verification and falsification ==
+
+Strong OSINT analysis seeks disconfirming evidence.
+
+For hypothesis <math>H</math>, the analyst should ask:
+
+* What evidence would be expected if <math>H</math> were true?
+* What evidence would be expected if <math>H</math> were false?
+* Which alternative explanation fits the observations?
+* Which assumptions remain untested?
+
+The objective is not to build the most persuasive story.
+
+It is to determine which explanation best survives the available evidence.
+
+== Confidence ==
+
+Confidence should reflect the quality and independence of evidence, not rhetorical certainty.
+
+A useful assessment distinguishes:
+
+* observation;
+* inference;
+* assumption;
+* confidence.
+
+For example:
+
+<pre>
+Observation: imagery shows three vehicles.
+Inference: they are likely military logistics vehicles.
+Assumption: the imagery date is correctly established.
+Confidence: moderate.
+</pre>
+
+This structure prevents inferred claims from being repeated later as raw observations.
+
+== Digital open-source investigations ==
+
+OSINT overlaps with journalism, human-rights investigations, legal fact-finding, and academic research.
+
+The Berkeley Protocol on Digital Open Source Investigations provides professional standards for identifying, collecting, preserving, verifying, and analyzing digital open-source information in international criminal, humanitarian, and human-rights investigations.<ref name="berkeley">[https://humanrights.berkeley.edu/publications/berkeley-protocol-on-digital-open-source-investigations/ Human Rights Center and OHCHR, ''Berkeley Protocol on Digital Open Source Investigations''.]</ref>
+
+The Protocol emphasizes legality, methodology, data minimization, preservation, safety, and ethical handling.
+
+Its evidentiary purpose should not be conflated with every form of military, commercial, journalistic, or academic OSINT.
+
+== Evidence preservation ==
+
+When material may later be disputed or removed, preservation should record:
+
+* original content;
+* URL;
+* timestamp;
+* capture method;
+* file hash;
+* metadata;
+* handling history.
+
+Preservation protects the integrity of the record.
+
+It does not transform weak evidence into strong evidence.
+
+== Privacy ==
+
+Public accessibility does not eliminate privacy interests.
+
+A person may publish information for a limited social context without anticipating permanent aggregation, profiling, or exposure.
+
+OSINT practice should therefore consider:
+
+* necessity;
+* proportionality;
+* data minimization;
+* retention;
+* downstream harm;
+* legal authority.
+
+The fact that information can be collected does not establish that it should be collected or republished.
+
+== Safety ==
+
+Open-source investigators can expose:
+
+* victims;
+* witnesses;
+* journalists;
+* activists;
+* military personnel;
+* uninvolved civilians.
+
+Publishing exact locations, identities, or routines can create physical risk.
+
+Investigators should minimize unnecessary exposure and separate analytical need from public disclosure.
+
+== Researcher security ==
+
+OSINT work can expose investigators to:
+
+* phishing;
+* malware;
+* tracking;
+* harassment;
+* doxxing;
+* disturbing content.
+
+Professional workflows may use isolated environments, controlled identities, secure storage, and role-specific access.
+
+Safety includes psychosocial effects from repeated exposure to graphic material.
+
+== Managed attribution ==
+
+Some professional intelligence work uses managed attribution to control what a source website can infer about the collector.
+
+This can include technical separation of research environments and organizational identity.
+
+Such methods are governed by legal and institutional authorities.
+
+OSINT does not authorize deceptive or unauthorized access merely because the objective is intelligence.
+
+== Automation ==
+
+Automation can assist with:
+
+* translation;
+* entity extraction;
+* image matching;
+* deduplication;
+* geospatial search;
+* archiving;
+* anomaly detection.
+
+Automated output should be treated as a candidate result requiring validation.
+
+Machine-generated labels can reproduce training-data bias or hallucinate relationships.
+
+== Artificial intelligence ==
+
+Large language and multimodal models can summarize large source sets and suggest hypotheses.
+
+Risks include:
+
+* fabricated citations;
+* false geolocation;
+* merged identities;
+* unsupported inference;
+* loss of source boundaries.
+
+AI-assisted OSINT should preserve source-level provenance so every material assertion can be traced back to evidence.
+
+== Operational security versus transparency ==
+
+OSINT values traceability, but intelligence organizations may need to protect collection methods, analyst identity, or operational context.
+
+This creates a tension between reproducibility and operational security.
+
+A product can preserve internal provenance without publishing every collection detail publicly.
+
+== OSINT and all-source intelligence ==
+
+OSINT can complement classified or restricted intelligence disciplines.
+
+Public evidence can:
+
+* fill gaps;
+* independently confirm classified reporting;
+* provide contextual background;
+* support dissemination to audiences without clearances.
+
+Open-source intelligence should not be treated as inherently inferior or inherently superior to classified collection.
+
+Source quality and relevance determine value.
+
+== OSINT and open-source software ==
+
+[[Open-source software]] is unrelated to the intelligence meaning of “open source.”
+
+Open-source software concerns software licensing and source-code rights.
+
+OSINT concerns intelligence derived from publicly or commercially accessible information.
+
+OSINT tools can themselves be proprietary or open-source software.
+
+== Epistemic boundary ==
+
+OSINT is a methodology for producing intelligence from accessible information.
+
+It does not make public claims automatically reliable.
+
+The decisive work lies in requirement definition, source evaluation, provenance, corroboration, falsification, uncertainty management, ethical handling, and transparent separation of observation from inference.
 
 == Semantic relationships ==
+
 * [[Related to::Information]]
 * [[Related to::Evidence]]
 * [[Related to::Provenance]]
 * [[Related to::Verification]]
 * [[Related to::Open-source software]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Open-source intelligence]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Science]]

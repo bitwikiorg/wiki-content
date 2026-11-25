@@ -1,27 +1,400 @@
-'''Self-organized criticality''' (SOC) describes a proposed class of dynamical systems that evolve toward critical-like, scale-free behavior without precise external tuning of a control parameter.
+{{Reading depth|base=Self-organized criticality|current=Technical}}
 
-== Canonical sandpile model ==
-Bak, Tang and Wiesenfeld (1987, 1988) proposed SOC to explain scale-invariant correlations in driven dissipative systems. On a finite square lattice, let h_i be an integer height. Add one grain at a random site after the previous avalanche stops. If h_i≥4, subtract four and send one grain to each nearest neighbor; grains leaving open boundaries are lost. Repeat until all sites are stable. Drive and relaxation are separated in time, and the boundary provides dissipation.
+= Self-organized criticality — Technical =
+
+'''Self-organized criticality''' (SOC) is a framework for driven dissipative systems that approach scale-invariant critical-like dynamics through internal evolution rather than by externally tuning an ordinary control parameter to a critical value. Its model systems can be analyzed rigorously, but empirical SOC claims require more than observing heavy-tailed events.
+
+
+Self-organized criticality is a proposed mechanism within [[Complex system|complex systems]] in which driven dissipative dynamics can approach scale-free regimes without external tuning of a conventional control parameter. It must be distinguished from generic [[Self-organization]] and from [[Emergence]] more broadly, because power-law event statistics alone do not establish the specific critical mechanism.
+
+== BTW sandpile ==
+
+On a finite square lattice, let site <math>i</math> have integer height <math>z_i</math>. Slow drive adds one grain,
+
+<math>z_i\leftarrow z_i+1.</math>
+
+If
+
+<math>z_i\ge z_c=4,</math>
+
+the site topples,
+
+<math>z_i\leftarrow z_i-4,</math>
+
+and each nearest neighbor receives one grain. Grains leaving open boundaries are dissipated. The avalanche ends when all sites are stable.
+
+Bak, Tang, and Wiesenfeld developed this canonical construction in 1987–1988.<ref name="btw">[https://doi.org/10.1103/PhysRevLett.59.381 Bak, Tang and Wiesenfeld (1987), “Self-Organized Criticality: An Explanation of 1/f Noise.”]</ref>
+
+== Abelian property ==
+
+In the standard BTW model, the final stable configuration and number of topplings do not depend on the order in which unstable sites are relaxed, under the usual finite-lattice rules.
+
+This Abelian property simplifies analysis.
+
+It should not be assumed for arbitrary threshold systems.
+
+== Drive and relaxation ==
+
+Canonical SOC separates time scales:
+
+<math>t_{drive}\gg t_{relax}.</math>
+
+A new grain is added only after the preceding avalanche terminates.
+
+Finite-rate drive can cause avalanches to overlap and can alter scaling.
+
+The driving protocol is therefore part of the model.
+
+== Stationarity ==
+
+After a transient, mean input balances mean dissipation:
+
+<math>\langle I\rangle=\langle D\rangle.</math>
+
+Measurements intended to characterize the stationary state should exclude or separately analyze the transient.
+
+A nonstationary trend can create apparent long-range correlations without criticality.
+
+== Avalanche observables ==
+
+For avalanche <math>a</math>, define quantities such as:
+
+* size <math>s_a</math> — total topplings;
+* area <math>A_a</math> — distinct sites toppled;
+* duration <math>T_a</math>;
+* spatial radius <math>R_a</math>.
+
+These observables need not share the same exponent.
+
+Update convention can especially affect duration.
+
+== Finite-size scaling ==
+
+A common scaling ansatz is
+
+<math>P(s;L)=s^{-\tau_s}F(s/L^{D_s}),</math>
+
+where <math>L</math> is system size and <math>F</math> gives the finite-size cutoff.
+
+The characteristic cutoff scales as
+
+<math>s_c(L)\sim L^{D_s}.</math>
+
+Evidence for SOC is stronger when the cutoff grows systematically with <math>L</math> and rescaled distributions collapse.
+
+== Data collapse ==
+
+Under the scaling hypothesis, plotting
+
+<math>s^{\tau_s}P(s;L)</math>
+
+against
+
+<math>s/L^{D_s}</math>
+
+should approximately collapse different system sizes onto a common curve.
+
+Visual collapse alone is insufficient; exponent uncertainty and quantitative goodness of collapse should be reported.
+
+== Moment scaling ==
+
+Moments
+
+<math>\langle s^q\rangle=\int s^qP(s;L)\,ds</math>
+
+can scale as
+
+<math>\langle s^q\rangle\sim L^{\sigma(q)}.</math>
+
+Moment analysis can estimate exponent combinations and identify departures from simple scaling.
+
+== Power-law estimation ==
+
+For continuous observations <math>s_i\ge s_{min}</math>, a simple maximum-likelihood estimator is
+
+<math>\hat\alpha=1+n\left[\sum_i\ln(s_i/s_{min})\right]^{-1}.</math>
+
+Discrete avalanche sizes require the discrete likelihood.
+
+The lower cutoff should be estimated or justified rather than chosen for visual appearance.
+
+== Alternative distributions ==
+
+Compare the power-law model with plausible alternatives:
+
+* lognormal;
+* exponential;
+* stretched exponential;
+* truncated power law.
+
+Likelihood-based comparisons and simulation-based goodness-of-fit are preferable to least-squares fitting on log-log axes.
+
+Therefore:
 
 <pre>
-repeat for N additions:
-  choose a site uniformly; increase its height by 1
-  while any site has height >= 4:
-    topple that site; distribute grains to neighbors
-    discard grains crossing the boundary
-  record number of topplings and duration under a defined schedule
+straight line on log-log axes
+≠ proof of a power law
+≠ proof of SOC
 </pre>
 
-== Scaling and model tests ==
-A candidate avalanche-size distribution may have a form <math>P(s;L)\sim s^{-\tau}F(s/L^D)</math>, where L is system size and F represents a cutoff. Estimating τ requires a specified range, uncertainty, goodness-of-fit and comparison with alternatives such as lognormal or truncated distributions. Apparent straight lines on log-log plots are insufficient evidence. Check finite-size scaling, time-scale separation and stationarity, not just the tail shape.
+== Correlations ==
 
-== Distinctions and limitations ==
-Self-organization is a broader concept, and emergence need not involve criticality. The behavior of real granular material depends on friction, particle shapes and drive. Experiments and models can deviate from SOC; a power law alone does not establish its mechanism. Apply the framework to neural, ecological or social processes only when system dynamics and competing explanations are independently assessed.
+A candidate critical system can also show long-range correlations.
+
+Spatial correlation:
+
+<math>C(r)=\langle x_i x_{i+r}\rangle-\langle x\rangle^2.</math>
+
+At criticality, decay can be algebraic over a scaling range rather than characterized by one short correlation length.
+
+Direct correlation measurements strengthen evidence beyond event histograms.
+
+== Power spectra ==
+
+The original SOC proposal associated critical dynamics with flicker-like spectra,
+
+<math>S(f)\propto f^{-\beta}.</math>
+
+Many non-SOC mechanisms also produce <math>1/f</math>-type noise.
+
+A spectral exponent therefore does not identify the mechanism.
+
+== Conservation and dissipation ==
+
+In the BTW bulk, toppling is locally conservative.
+
+Dissipation occurs at the open boundary.
+
+Conservation, slow driving, and dissipation are important for many SOC universality classes.
+
+Changing bulk conservation can change or eliminate the critical regime.
+
+== Universality ==
+
+Critical models can share exponents despite microscopic differences.
+
+SOC models can belong to different universality classes depending on:
+
+* conservation;
+* stochasticity;
+* symmetry;
+* dimensionality.
+
+The deterministic BTW and stochastic sandpile families need not have identical exponent structure.
+
+== Branching-process approximation ==
+
+Avalanche propagation can be approximated through branching ratio
+
+<math>\sigma=E[number\ of\ descendants\ per\ active\ site].</math>
+
+Subcritical systems have <math>\sigma<1</math>, critical systems <math>\sigma=1</math>, and supercritical systems <math>\sigma>1</math> in the simplified branching framework.
+
+This is an analogy and reduced model, not proof that the original system is a branching process.
+
+== Real granular systems ==
+
+Real sand and rice involve:
+
+* friction;
+* inertia;
+* particle shape;
+* packing;
+* rolling.
+
+Frette et al. found scale-free-like avalanche behavior for elongated rice grains but not for less elongated grains, demonstrating that granular behavior depends on dissipation mechanism and particle properties.<ref name="rice">[https://doi.org/10.1038/379049a0 Frette, V. et al. (1996), “Avalanche dynamics in a pile of rice,” ''Nature'' 379, 49–52.]</ref>
+
+== Finite-scale false positives ==
+
+Vieira developed models that show nearly SOC-like behavior at small sizes while large characteristic avalanches dominate as system size increases.<ref name="vieira">[https://doi.org/10.1103/PhysRevE.66.051306 Vieira, M. de S. (2002), “Breakdown of self-organized criticality in sandpiles.”]</ref>
+
+This shows why one finite system size can give misleading evidence.
+
+Asymptotic behavior matters.
+
+== Measurement window ==
+
+Empirical systems are observed for finite time.
+
+Rare large events may be absent from a short sample.
+
+Tail exponents can drift as additional data accumulate.
+
+Uncertainty should include temporal sampling.
+
+== Avalanche detection threshold ==
+
+Continuous observations are often converted into events using thresholds or temporal bins.
+
+Changing the threshold can merge or split avalanches.
+
+Sensitivity analysis should therefore report how the inferred scaling changes with event-definition parameters.
+
+== Neural avalanches ==
+
+Neural criticality studies often define avalanches from population activity.
+
+Results depend on:
+
+* electrode coverage;
+* threshold;
+* bin width;
+* sampling rate;
+* subsampling.
+
+Critical neural dynamics and self-organized criticality are not synonyms.
+
+A system can be maintained near a critical point by explicit regulatory mechanisms rather than BTW-style self-organization.
+
+== Subsampling ==
+
+If the full system contains <math>N</math> units but only <math>n\ll N</math> are observed, event distributions can be distorted.
+
+A measurement model should simulate the effect of subsampling before interpreting exponents.
+
+== Earthquake applications ==
+
+Earthquake catalogs show scale-free features such as magnitude-frequency relations.
+
+SOC models can reproduce avalanche-like stress release.
+
+However, tectonic loading, friction, spatial heterogeneity, and fault mechanics must be modeled explicitly.
+
+One power-law statistic cannot identify SOC.
+
+== Solar-flare applications ==
+
+Solar-flare energies have motivated avalanche models.
+
+A defensible model should predict more than the event-energy histogram, such as:
+
+* waiting-time behavior;
+* spatial structure;
+* correlations;
+* system-size effects.
+
+Otherwise many mechanisms remain compatible with the data.
+
+== Self-tuning versus SOC ==
+
+A system can remain near criticality through explicit feedback.
+
+For example,
+
+<math>\dot\theta=-k(O-O^*)</math>
+
+regulates control parameter <math>\theta</math> toward a target observable <math>O^*</math>.
+
+This is self-tuning criticality but not necessarily canonical SOC.
+
+Mechanisms should be named precisely.
+
+== Absorbing-state perspective ==
+
+Some SOC models can be related to an underlying absorbing-state phase transition.
+
+Slow drive and dissipation can cause the driven system to remain near the critical point of a corresponding fixed-energy model.
+
+This provides a more formal route to self-tuning in specific model families.
+
+The mapping is not universal.
+
+== Simulation protocol ==
+
+A reproducible BTW simulation should report:
+
+<pre>
+initialize stable lattice
+burn in for specified number of grain additions
+for each measured addition:
+    add one grain
+    relax completely
+    record size, area, duration
+repeat across several lattice sizes and seeds
+</pre>
+
+Record boundary conditions and toppling schedule.
+
+== Efficient implementation ==
+
+A queue of unstable sites avoids rescanning the full lattice after each toppling.
+
+Runtime then scales more closely with avalanche activity.
+
+Implementation optimization should preserve the exact model dynamics.
+
+== Synchronous versus sequential updates ==
+
+The BTW Abelian property preserves stable outcome under legal toppling order, but avalanche duration can differ depending on whether topplings are grouped in parallel waves or executed sequentially.
+
+Therefore temporal observables require a stated update convention.
+
+== Dependence between avalanches ==
+
+Successive avalanches can be correlated.
+
+Treating all events as IID can underestimate statistical uncertainty.
+
+Block bootstrap or correlation-aware methods can be appropriate.
+
+== Falsification criteria ==
+
+Evidence against a proposed SOC mechanism can include:
+
+* a characteristic event scale that does not grow with system size;
+* failure of finite-size collapse;
+* nonstationarity;
+* required fine tuning;
+* better-supported alternative dynamics.
+
+A scientific SOC claim should specify what result would count against it.
+
+== SOC versus self-organization ==
+
+[[Self-organization]] is broader.
+
+A Turing pattern or synchronized oscillator can self-organize without criticality.
+
+SOC adds the claim of critical-like scale invariance and a self-organizing route toward it.
+
+== SOC versus emergence ==
+
+[[Emergence]] is broader still.
+
+Emergent macrobehavior does not imply criticality.
+
+The terms should never be treated as interchangeable labels for complexity.
+
+== Cross-domain checklist ==
+
+Before applying SOC to a new domain, identify:
+
+# drive;
+# dissipation;
+# local threshold or instability mechanism;
+# time-scale structure;
+# stationary regime;
+# system-size scaling;
+# alternative models.
+
+If these cannot be specified, the use of SOC may be metaphorical rather than mechanistic.
+
+== Epistemic boundary ==
+
+SOC is a well-developed model framework.
+
+Whether a particular empirical system is self-organized critical is a separate hypothesis.
+
+No single signature—power law, avalanche, fractal structure, or <math>1/f</math> spectrum—is sufficient by itself.
 
 == References ==
-* [https://doi.org/10.1103/PhysRevLett.59.381 Bak, Tang and Wiesenfeld (1987), Self-organized criticality: An explanation of the 1/f noise]
-* [https://doi.org/10.1103/PhysRevA.38.364 Bak, Tang and Wiesenfeld (1988), Self-organized criticality]
-* [https://journals.aps.org/pre/abstract/10.1103/PhysRevE.66.051306 Breakdown of self-organized criticality in sandpiles]
+
+<references />
+
+* [https://doi.org/10.1103/PhysRevA.38.364 Bak, Tang and Wiesenfeld (1988), “Self-organized criticality.”]
+* [https://doi.org/10.1038/379049a0 Frette et al. (1996), rice-pile experiment.]
+* [https://doi.org/10.1103/PhysRevE.66.051306 Vieira (2002), breakdown study.]
 
 == Reading depth ==
-[[Self-organized criticality/Simple|Simple explanation]]
+
+[[Self-organized criticality/Simple|Simple explanation]] · [[Self-organized criticality|Core article]]

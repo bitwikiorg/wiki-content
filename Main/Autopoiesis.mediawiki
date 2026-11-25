@@ -2,30 +2,260 @@
  |title=Autopoiesis
  |entity_type=Concept
  |domain=Biology, Systems science, Philosophy, Computer science
- |provenance=Varela; Maturana (1975); Formal model of autopoiesis (1977)
+ |status=Supported
+ |provenance=Varela, Maturana and Uribe (1974); Maturana (1975)
 }}
-<onlyinclude>{{:Autopoiesis/Simple}}</onlyinclude>
+{{Reading depth|base=Autopoiesis|current=Core}}
 
-'''Reading depth:''' [[Autopoiesis/Simple|Simple]] · [[Autopoiesis/Technical|Technical]]
+= Autopoiesis =
 
-== Semantic relationships ==
-* [[Related to::Metabolism]]
-* [[Related to::Homeostasis]]
-* [[Related to::Cell membrane]]
-* [[Related to::Self-organization]]
-* [[Related to::Artificial life]]
-* [[Related to::System boundary]]
+'''Autopoiesis''' is a theory of living organization developed by Humberto Maturana and Francisco Varela. It characterizes an autonomous living system as a network of processes that continuously produces the components that, through their interactions, regenerate the same network and constitute the boundary that distinguishes the system as a unity.
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Autopoiesis]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+Varela, Maturana and Uribe introduced an explicit characterization and a minimal computer model in 1974.<ref name="vmu">[https://doi.org/10.1016/0303-2647(74)90031-8 Varela, F. G., Maturana, H. R. and Uribe, R. (1974), “Autopoiesis: The organization of living systems, its characterization and a model,” ''BioSystems'' 5(4), 187–196.]</ref> Maturana subsequently emphasized autonomy and recursive self-production as the central organizational claim.<ref name="maturana">[https://doi.org/10.1016/S0020-7373(75)80015-0 Maturana, H. R. (1975), “The organization of the living: A theory of the living organization,” ''International Journal of Man-Machine Studies'' 7(3), 313–332.]</ref>
+
+Autopoiesis is not a synonym for [[Self-organization]], [[Homeostasis]], reproduction, or metabolism. Those processes may occur in an autopoietic system, but the theory concerns how a system's component-producing processes recursively constitute the system itself.
+
+== Core organization ==
+
+A system is autopoietic in a specified physical domain when its processes form a closed network of production in the organizational sense:
+
+* processes produce or transform components;
+* produced components participate in regenerating the process network;
+* some produced components constitute or maintain the system boundary;
+* the boundary localizes the network as a distinguishable unity;
+* the organization persists despite turnover of particular material components.
+
+The claim is therefore relational. No single molecule, membrane, enzyme, or reaction is “autopoietic” in isolation.
+
+A cell provides the canonical biological intuition. Metabolic processes synthesize proteins, lipids and other components; membrane components help maintain an enclosing boundary; transport across that boundary supplies matter and energy required for the reactions; and the resulting network continually replaces many of its own constituents.
+
+== Organizational closure is not thermodynamic closure ==
+
+The word '''closure''' can be misleading.
+
+An autopoietic organism is not expected to be closed to matter or energy. Living cells exchange nutrients, gases, metabolites, heat, and waste with their environment.
+
+Autopoietic closure instead concerns the organization of dependencies among component-producing processes.
+
+A simplified distinction is:
+
+<pre>
+thermodynamic openness:
+environment ↔ matter/energy ↔ system
+
+organizational closure:
+system processes → components → constraints/boundary → system processes
+</pre>
+
+External fluxes are compatible with organizational autonomy.
+
+== Boundary production ==
+
+Boundary formation is central to the original formulation because it turns a reaction network into a localized unity.
+
+For a cellular system, the membrane does more than occupy an edge. It regulates transport, creates concentration differences, supports electrochemical gradients, and helps define which processes belong to the system.
+
+A pre-existing container supplied permanently by an experimenter does not by itself demonstrate autopoiesis. The relevant question is whether the system's own process network produces and maintains the constraints required for its continued organization.
+
+== Production network ==
+
+A useful abstract representation separates components <math>C</math> and productive processes <math>R</math>.
+
+A process <math>r_j\in R</math> transforms inputs into outputs. A directed bipartite graph can represent dependencies:
+
+<pre>
+components → processes → components
+</pre>
+
+The graph is autopoietically relevant only if the produced components recursively support the productive network and its boundary.
+
+For a chemical implementation,
+
+<math>\dot c=S,v(c)+J(c,e),</math>
+
+where <math>c</math> is a vector of internal concentrations, <math>S</math> a stoichiometric matrix, <math>v</math> reaction rates, and <math>J</math> exchange across the boundary with environment <math>e</math>.
+
+A stable solution to this equation is not sufficient evidence of autopoiesis. Stability can occur in nonliving chemical systems. The organizational criterion concerns how the reactions and constraints are generated.
+
+== Autopoiesis and metabolism ==
+
+[[Metabolism]] describes networks of chemical transformations supporting material and energetic organization.
+
+Autopoiesis focuses on the recursive production of the system's components and boundary.
+
+A metabolic reaction can be externally maintained without forming an autonomous unity. Conversely, an autopoietic account of a real cell must ultimately be compatible with the chemistry and energy flows that make component production possible.
+
+The concepts overlap but are not interchangeable.
+
+== Autopoiesis and homeostasis ==
+
+[[Homeostasis]] is regulation that keeps selected variables within viable ranges.
+
+A thermostat can regulate temperature but does not produce the components that constitute the thermostat.
+
+An autopoietic cell may use homeostatic regulation, but regulation alone does not establish self-production.
+
+== Autopoiesis and self-organization ==
+
+[[Self-organization]] is the emergence or maintenance of ordered structure through local interactions without centralized control.
+
+Examples such as vortices, crystallization, and reaction-diffusion patterns can self-organize without producing a persistent autonomous component network.
+
+Autopoiesis is therefore a stronger and more specific organizational proposal.
+
+== Autopoiesis and reproduction ==
+
+The original theory deliberately distinguishes living organization from reproduction.
+
+An individual system can be autopoietic even if it does not reproduce. Reproduction matters for lineage formation and evolution, but the organization of an individual living unity must already exist before reproduction can copy or partition it.
+
+This distinction prevents a sterile organism from being classified as nonliving solely because it cannot reproduce.
+
+== Structural coupling ==
+
+An autopoietic system is continually perturbed by its environment.
+
+If repeated interactions induce compatible changes in both system and environment, the history of those interactions can be described as '''structural coupling'''.
+
+The concept emphasizes that autonomy is not environmental isolation.
+
+For empirical use, structural coupling should be translated into measurable variables such as altered reaction networks, transport properties, behavior, or regulatory responses rather than treated as a free-standing metaphor.
+
+== Minimal models ==
+
+The 1974 paper presented a computational model intended to demonstrate a minimal organization satisfying the proposed criteria.<ref name="vmu" />
+
+Minimal models are useful because they separate the organizational claim from the molecular complexity of modern cells.
+
+A model can test whether local production rules yield:
+
+* a self-maintained boundary;
+* component turnover;
+* recovery after perturbation;
+* continued organization under material exchange.
+
+However, a formal or cellular-automaton realization shows that a rule system has autopoietic organization under the model's definitions. It does not by itself show that the model is alive in every biological sense.
+
+== Experimental operationalization ==
+
+A laboratory claim of autopoiesis should identify concrete mechanisms.
+
+For a protocell, relevant questions include:
+
+* Are boundary components synthesized by reactions within the system?
+* Are catalysts or templates regenerated?
+* Does transport supply necessary precursors without externally reconstructing the system?
+* Does the system maintain organization through component turnover?
+* What happens after a bounded perturbation?
+* Which external interventions are required continuously?
+
+A strong test uses ablation or perturbation. If a supposedly self-produced component is removed, the predicted organizational failure and recovery pathway should be measurable.
+
+== Origin-of-life research ==
+
+Autopoiesis is relevant to origin-of-life research because it focuses attention on the transition from a collection of reactions to a self-maintaining bounded organization.
+
+It does not solve the origin of life by definition.
+
+Questions remain about how prebiotic chemistry could generate:
+
+* catalytic closure;
+* membrane growth;
+* controlled transport;
+* energy coupling;
+* heredity;
+* evolvability.
+
+Autopoiesis addresses organizational autonomy, while origin-of-life theories must additionally explain plausible chemistry and historical transitions.
+
+== Artificial life ==
+
+[[Artificial life]] research can implement autopoietic ideas in software, robotics, or chemical systems.
+
+A simulation can instantiate a formal closure relation without physically producing its hardware. A robot can maintain batteries or replace modules without synthesizing all of its own components. A chemical protocell can physically create membrane molecules but depend on externally supplied feedstock.
+
+These cases are useful precisely because they expose different notions of autonomy.
+
+The label should follow explicit criteria rather than resemblance to organisms.
+
+== Artificial agents ==
+
+Applying autopoiesis to an [[Intelligent agent]] requires care.
+
+An AI system that rewrites its code is not automatically autopoietic. Relevant questions include whether it produces and maintains the components and constraints that constitute its operational identity, whether those components form a recursively closed production network, and what physical or computational boundary defines the unity.
+
+Most deployed software depends on externally managed processors, storage, networks, power, deployment systems, and human maintenance. Calling such systems autopoietic without specifying the production network turns a technical concept into metaphor.
+
+== Social systems ==
+
+Autopoietic terminology has been extended to social and organizational theory.
+
+Niklas Luhmann developed the best-known sociological extension in the 1980s, treating communication rather than biological components as the recursively reproduced element of social systems.<ref name="luhmann-social">[https://pubmed.ncbi.nlm.nih.gov/11038137/ Vanderstraeten, R. (2000), “Autopoiesis and socialization: on Luhmann's reconceptualization of communication and socialization,” ''British Journal of Sociology'' 51(3), 581–598.]</ref> This is a theoretical transfer of the concept, not evidence that societies are biologically autopoietic.
+
+These extensions can be philosophically productive, but they do not inherit biological evidence automatically.
+
+A social application must specify:
+
+* what counts as a component;
+* what processes produce components;
+* what constitutes the boundary;
+* how organizational closure is tested.
+
+If these mappings are only analogies, they should be labeled as such.
+
+== Cognition and enaction ==
+
+Autopoiesis also influenced the enactive tradition in cognitive science. Varela, Thompson, and Rosch's ''The Embodied Mind'' introduced enaction as an approach in which cognition is grounded in embodied action and organism–environment interaction.<ref name="embodied-mind">[https://mitpress.mit.edu/9780262220422/the-embodied-mind/ Varela, F. J., Thompson, E. and Rosch, E. (1991), ''The Embodied Mind: Cognitive Science and Human Experience'', MIT Press.]</ref>
+
+This influence does not make autopoiesis and cognition synonymous. Claims about perception, learning, meaning, or consciousness require additional mechanisms and evidence.
+
+== Relation to definitions of life ==
+
+There is no single universally accepted definition of life.
+
+Autopoiesis prioritizes autonomous self-production. Other definitions emphasize combinations of:
+
+* metabolism;
+* reproduction;
+* Darwinian evolution;
+* heredity;
+* compartmentalization;
+* adaptive regulation.
+
+A system can satisfy one family of criteria and fail another.
+
+Autopoiesis should therefore be treated as an influential theory of living organization, not as a universally settled diagnostic test.
+
+== Epistemic limits ==
+
+Three levels should be distinguished:
+
+'''Original theoretical claim''' — living systems can be characterized by autopoietic organization.
+
+'''Formal realization''' — specified models can satisfy formalized autopoietic criteria.
+
+'''Empirical biological claim''' — a real system exhibits the required component-production and boundary-maintenance mechanisms.
+
+Evidence at one level does not automatically prove the others.
+
+The theory remains influential in systems biology, theoretical biology, cognition, philosophy of biology, and artificial-life research, while its extensions beyond cellular organization require independent justification.
+
+== Related concepts ==
+
+Autopoiesis connects [[Related to::Metabolism|metabolism]], [[Related to::Homeostasis|homeostasis]], [[Related to::Cell membrane|cell membranes]], [[Related to::Self-organization|self-organization]], [[Related to::System boundary|system boundaries]], and [[Related to::Artificial life|artificial life]]. Its distinctive claim is recursive self-production of the organization that constitutes the system; [[Emergence]] is related but does not by itself establish autopoiesis.
+
+== References ==
+
+<references />
+
+* [https://doi.org/10.1016/0303-2647(74)90031-8 Varela, Maturana and Uribe (1974), original characterization and model.]
+* [https://doi.org/10.1016/S0020-7373(75)80015-0 Maturana (1975), theory of living organization.]
+* [https://pubmed.ncbi.nlm.nih.gov/11038137/ Vanderstraeten (2000), Luhmann's sociological extension of autopoiesis.]
+* [https://mitpress.mit.edu/9780262220422/the-embodied-mind/ Varela, Thompson and Rosch (1991), enaction and embodied cognition.]
+
+== Reading depth ==
+
+[[Autopoiesis/Simple|Simple explanation]] · [[Autopoiesis/Technical|Technical treatment]]
 
 [[Category:Biology]]
 [[Category:Systems science]]

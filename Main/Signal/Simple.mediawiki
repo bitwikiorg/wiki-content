@@ -1,15 +1,57 @@
-<onlyinclude>A '''signal''' is a varying quantity or sequence used to represent, convey or observe something. A microphone voltage represents changes in air pressure; a sequence of bits may represent a message. A signal need not be intentionally sent: an instrument can observe a natural process.
+{{Reading depth|base=Signal|current=Simple}}
 
-== Explanation ==
-Signals may be continuous in time, sampled at discrete times, or encoded into discrete values. Sampling and quantization are distinct operations. Noise, distortion and the characteristics of the measurement device affect what a receiver can recover. A measured pattern is not automatically meaningful or causal.
+= Signal — Simple =
 
-== Related concepts ==
-[[Information]] · [[Information theory]] · [[Digital signal processor]] · [[Measurement]] · [[Code]]
+A '''signal''' is something that changes in a way that can be measured or used to represent something else. A microphone creates an electrical signal that follows changes in sound pressure. A temperature sensor creates a signal that changes with temperature. A digital communication system uses signals to carry encoded symbols.
+
+A signal does not always require a sender. Scientists can record a naturally changing quantity—such as voltage, light intensity, motion, or pressure—and treat the measurements as a signal. The signal is a representation of the phenomenon, not the phenomenon itself. This is why [[Measurement]], calibration, units, and uncertainty matter.
+
+== Continuous, sampled and digital signals ==
+
+A signal can vary continuously or be recorded only at particular points.
+
+A continuous-time signal has a value throughout a time interval. A sampled signal records values at separate times. For example, a computer may measure a microphone voltage thousands of times each second.
+
+'''Sampling''' and '''quantization''' are different:
+
+* sampling chooses ''when'' or ''where'' a value is recorded;
+* quantization limits ''which values'' can be represented.
+
+Digital systems normally use both ideas, but “digital” is not simply another word for “sampled.” The physical voltage or light that carries digital symbols is still a continuous physical process.<ref name="mit-signals">[https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/ MIT OpenCourseWare, ''Signals and Systems'', 6.003.]</ref>
+
+If a continuous signal is sampled too slowly, high-frequency changes can appear as different, lower-frequency changes. This is called aliasing. Under ideal assumptions, a band-limited signal can be reconstructed when the sampling rate is greater than twice its highest frequency.<ref name="mit-sampling">[https://ocw.mit.edu/courses/2-161-signal-processing-continuous-and-discrete-fall-2008/80ec6fb9bd027f30adcdc16577e8ab16_samplingdft.pdf MIT OpenCourseWare, ''Sampling and the Discrete Fourier Transform''.]</ref>
+
+== Noise and processing ==
+
+Real signals are affected by noise, distortion, limited sensor range, interference, and imperfect measurement. Signal processing uses mathematical and computational methods to filter, transform, estimate, compress, detect, or recover useful structure.
+
+For example, a filter can reduce some unwanted frequency components, but it can also remove part of the desired signal. A processing step should therefore be evaluated against the goal and assumptions rather than described as automatically “cleaning” the data.
+
+Specialized hardware such as a [[Digital signal processor]] can perform these operations efficiently.
+
+== Signals and information ==
+
+A signal can carry [[Information]], but the signal is not identical to its meaning. In [[Information theory]], Claude Shannon developed mathematical methods for describing communication, uncertainty, channels, and noise.<ref name="shannon">[https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon, C. E. (1948), “A Mathematical Theory of Communication.”]</ref> Shannon information does not determine whether a message is true or meaningful.
+
+A [[Code]] is a rule for mapping symbols or messages into representations. The same information can be encoded in many different physical signals.
+
+== Common examples ==
+
+* sound recorded by a microphone;
+* brightness and color values in an image;
+* position or motion measured by a sensor;
+* radio or optical signals used for communication;
+* electrical activity measured in biological tissue;
+* temperature, pressure, or chemical measurements recorded by scientific instruments.
+
+The mathematics used for these signals can be similar even when the underlying physical processes are very different.
 
 == Sources ==
-* [https://www.ocw.mit.edu/courses/res-6-dtsp-discrete-time-signal-processing/ MIT OpenCourseWare, Oppenheim and Schafer, Discrete-Time Signal Processing]
-* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]
-</onlyinclude>
+
+<references />
+
+'''Further reading:''' Oppenheim, A. V., Willsky, A. S., and Nawab, S. H., ''Signals and Systems'', 2nd ed.; Oppenheim, A. V. and Schafer, R. W., ''Discrete-Time Signal Processing''.
 
 == Reading depth ==
-[[Signal/Technical|Technical treatment]]
+
+[[Signal|Core article]] · [[Signal/Technical|Technical treatment]]

@@ -2,29 +2,280 @@
  |title=Knowledge management
  |entity_type=Concept
  |domain=Systems science, Computer science, Engineering
- |provenance=Nonaka (1994); Davenport and Prusak (1997)
+ |status=Established
+ |provenance=Nonaka (1994); Alavi and Leidner (2001); ISO 30401:2018; organizational knowledge-management literature
 }}
-<onlyinclude>{{:Knowledge management/Simple}}</onlyinclude>
+{{Reading depth|base=Knowledge management|current=Core}}
 
-'''Reading depth:''' [[Knowledge management/Simple|Simple]] · [[Knowledge management/Technical|Technical]]
+= Knowledge management =
+
+'''Knowledge management''' (KM) is the organized practice of creating, acquiring, locating, sharing, preserving, evaluating, updating, and applying [[Knowledge]] within an organization or community. It combines people, organizational processes, governance, culture, and technology. Knowledge management is therefore broader than document storage, search, or an information-technology system.
+
+A widely cited information-systems review describes knowledge-management systems as systems intended to support knowledge creation, transfer, and application while emphasizing that organizational knowledge is complex and multifaceted.<ref name="alavi">[https://aisel.aisnet.org/misq/vol25/iss1/6/ Alavi, M. and Leidner, D. E. (2001), “Review: Knowledge Management and Knowledge Management Systems: Conceptual Foundations and Research Issues,” ''MIS Quarterly'' 25(1), 107–136.]</ref>
+
+== Purpose ==
+
+Organizations use knowledge management to reduce repeated work, preserve expertise, coordinate decisions, improve learning, transfer effective practices, support innovation, and make relevant knowledge available when it is needed.
+
+Typical problems include:
+
+* experts leaving without transferring critical know-how;
+* teams solving the same problem independently;
+* contradictory procedures circulating simultaneously;
+* important knowledge being difficult to find;
+* outdated documents being mistaken for current guidance;
+* lessons from failures not being preserved;
+* specialized knowledge remaining isolated in organizational silos.
+
+The objective is not to maximize the number of stored documents. It is to improve the availability and responsible use of knowledge for defined tasks.
+
+== Knowledge versus information ==
+
+KM systems frequently store information artifacts—documents, records, datasets, code, diagrams, or discussions. Those artifacts are not identical to knowledge.
+
+A procedure can be documented but misunderstood. A database can contain accurate records that a user cannot interpret. A report can preserve a conclusion after the conditions that made it valid have changed.
+
+Knowledge management must therefore connect explicit resources with context, provenance, expertise, interpretation, and mechanisms for validation.
+
+This distinction also separates KM from purely technical [[Knowledge representation]]. A representation can encode structured assertions without establishing that those assertions are true or useful.
+
+== Explicit and tacit knowledge ==
+
+A common distinction separates '''explicit knowledge''', which can be articulated in documents or formal representations, from '''tacit knowledge''', which is difficult to express fully and may be embodied in skill, perception, experience, or practice.
+
+Examples of explicit resources include:
+
+* manuals;
+* source code;
+* datasets;
+* standards;
+* checklists;
+* research reports.
+
+Tacit elements can include:
+
+* recognizing a subtle failure pattern;
+* adjusting a laboratory procedure through experience;
+* negotiating effectively with a particular stakeholder;
+* skilled physical technique.
+
+Not all tacit knowledge can be converted cleanly into text. Training, observation, mentorship, simulation, and communities of practice may therefore be necessary.
+
+== Knowledge creation and the SECI model ==
+
+Ikujiro Nonaka's influential theory of organizational knowledge creation describes interactions between tacit and explicit knowledge through four modes commonly summarized as '''SECI''': socialization, externalization, combination, and internalization.<ref name="nonaka">[https://doi.org/10.1287/orsc.5.1.14 Nonaka, I. (1994), “A Dynamic Theory of Organizational Knowledge Creation,” ''Organization Science'' 5(1), 14–37.]</ref>
+
+The model has been highly influential in KM, but it should not be presented as an experimentally established universal law. Critics have questioned its treatment of tacit knowledge, empirical grounding, universality, and the assumption that knowledge can be converted among forms as the model suggests.<ref name="gourlay">[https://doi.org/10.1111/j.1467-6486.2006.00637.x Gourlay, S. (2006), “Conceptualizing Knowledge Creation: A Critique of Nonaka's Theory,” ''Journal of Management Studies'' 43(7), 1415–1436.]</ref>
+
+SECI is therefore best treated as one analytical framework among several.
+
+== Core knowledge processes ==
+
+A practical KM lifecycle can include:
+
+'''Creation''' — generating new methods, explanations, decisions, or expertise.
+
+'''Acquisition''' — obtaining relevant knowledge from external or internal sources.
+
+'''Capture''' — making useful aspects of knowledge persistent through records, examples, demonstrations, or structured representations.
+
+'''Organization''' — assigning metadata, categories, identifiers, links, and ownership.
+
+'''Discovery''' — enabling users to locate relevant resources or experts.
+
+'''Sharing''' — transferring knowledge through documents, conversation, training, communities, or collaboration.
+
+'''Application''' — using knowledge in decisions and work.
+
+'''Validation''' — checking evidence, scope, authority, or performance.
+
+'''Maintenance''' — updating content when conditions change.
+
+'''Retention''' — preserving critical knowledge through staff turnover or system change.
+
+'''Retirement''' — removing or clearly marking obsolete material.
+
+These processes interact rather than forming a strict one-way pipeline.
+
+== Codification and personalization strategies ==
+
+Two widely discussed KM strategies are '''codification''' and '''personalization'''.
+
+Codification emphasizes explicit capture in documents, databases, templates, or reusable artifacts. It is effective when knowledge can be standardized and repeatedly applied.
+
+Personalization emphasizes connecting people to people. Expert directories, mentoring, communities of practice, consultations, and collaborative problem solving are useful when context and tacit expertise dominate.
+
+Most real organizations require both.
+
+Over-codification can create large repositories of stale or low-value material. Over-reliance on personalization can create bottlenecks around experts and make knowledge disappear when people leave.
+
+== Communities of practice ==
+
+Communities of practice are groups whose members develop shared knowledge through sustained participation in a domain or practice. They can transfer tacit knowledge, create common vocabulary, mentor newcomers, and surface problems that formal repositories miss.
+
+Community knowledge is not automatically correct. Communities can also reinforce local conventions or groupthink. External evidence and cross-community review remain important.
+
+== Knowledge-management systems ==
+
+A '''knowledge-management system''' (KMS) is technical and organizational infrastructure supporting KM processes.
+
+Capabilities can include:
+
+* document and content management;
+* search and retrieval;
+* expert directories;
+* taxonomies and ontologies;
+* wikis and collaborative editing;
+* workflow and review;
+* version control;
+* discussion and question-answering;
+* recommendation;
+* knowledge graphs;
+* provenance tracking;
+* analytics;
+* access control.
+
+Technology should support the intended knowledge process rather than define it.
+
+A powerful search engine cannot compensate for absent review, poor metadata, or missing expertise.
+
+== Governance ==
+
+A maintained knowledge base needs explicit ownership and lifecycle rules.
+
+Governance should define:
+
+* who can create or approve content;
+* how evidence and provenance are recorded;
+* how conflicts are resolved;
+* which versions are canonical;
+* when review is triggered;
+* who can access restricted material;
+* how obsolete knowledge is retired;
+* how corrections are propagated.
+
+Without governance, repositories tend to accumulate duplicate and contradictory material.
+
+== Standards ==
+
+ISO 30401:2018 specifies requirements and guidance for establishing, implementing, maintaining, reviewing, and improving organizational knowledge-management systems.<ref name="iso">[https://www.iso.org/standard/68683.html ISO 30401:2018, ''Knowledge management systems — Requirements''.]</ref>
+
+A management-system standard provides an organizational framework; certification or compliance does not prove that every stored claim is correct.
+
+== Culture and incentives ==
+
+Knowledge sharing depends on organizational incentives and trust.
+
+People may withhold knowledge because sharing threatens status, takes time, exposes mistakes, or conflicts with confidentiality obligations. Conversely, poorly designed incentives for “contribution counts” can flood repositories with redundant content.
+
+Effective KM aligns recognition, responsibility, and workflow so that maintaining shared knowledge is part of useful work rather than an unrelated reporting burden.
+
+== Measurement and evaluation ==
+
+Weak KM metrics include raw document count, page views, or number of contributors. These measure activity, not necessarily usefulness.
+
+Task-centered measures can include:
+
+* time to find a correct answer;
+* successful reuse;
+* reduced repeated incidents;
+* application accuracy;
+* update latency;
+* stale-answer rate;
+* expert bottlenecks;
+* onboarding time;
+* correction time;
+* user confidence calibrated against correctness.
+
+Evaluation should use representative tasks and independent outcome review.
+
+== Security, privacy and intellectual property ==
+
+Knowledge sharing has limits.
+
+Organizations may need to protect:
+
+* personal data;
+* trade secrets;
+* security-sensitive procedures;
+* regulated information;
+* contractual material;
+* unpublished research.
+
+Access control should be fine-grained enough to protect legitimate restrictions without unnecessarily isolating knowledge.
+
+Retention can also create risk when outdated confidential material persists indefinitely.
+
+== Organizational memory and succession ==
+
+KM supports organizational memory by preserving decisions, rationale, procedures, incidents, and lessons.
+
+A useful decision record contains not just the final answer but the assumptions, evidence, alternatives, date, and conditions under which the decision was made.
+
+This allows future users to determine whether the reasoning still applies.
+
+Succession planning should identify knowledge that exists mainly in a small number of individuals and create transfer mechanisms before departure.
+
+== Knowledge management and knowledge ecosystems ==
+
+[[Knowledge management]] usually emphasizes deliberate practices within an organization or bounded community.
+
+A [[Knowledge ecosystem]] emphasizes interdependent producers and users of knowledge across organizational boundaries.
+
+The two overlap. An organization participates in broader knowledge ecosystems while managing its own internal knowledge processes.
+
+== Research data management ==
+
+[[Research data management]] focuses specifically on research data across collection, documentation, storage, preservation, access, and reuse. It is an important component of scientific KM but does not encompass all research knowledge, such as tacit laboratory skill, theory, software maintenance, or peer judgment.
+
+== Artificial intelligence in KM ==
+
+AI systems can support:
+
+* semantic search;
+* summarization;
+* classification;
+* extraction;
+* question answering;
+* duplicate detection;
+* recommendation;
+* drafting;
+* anomaly detection.
+
+They also create new risks.
+
+Generated text can introduce unsupported claims; retrieval can omit relevant evidence; model outputs can appear authoritative without provenance; many users can receive correlated errors from the same model.
+
+AI-assisted KM should therefore preserve source links, model/version information, uncertainty, human review where appropriate, and a distinction between retrieved evidence and generated synthesis.
+
+== Failure modes ==
+
+Common failures include:
+
+* treating document storage as knowledge management;
+* capturing knowledge without maintaining it;
+* incentives that reward volume over quality;
+* duplicate or contradictory canonical sources;
+* search without provenance;
+* expert bottlenecks;
+* inaccessible knowledge silos;
+* excessive permissions;
+* over-codifying tacit practice;
+* assuming one knowledge-creation theory is universal;
+* losing rationale while preserving only final decisions;
+* automating synthesis without validation.
 
 == Semantic relationships ==
+
 * [[Related to::Knowledge]]
 * [[Related to::Knowledge ecosystem]]
 * [[Related to::Information ecology]]
 * [[Related to::Research data management]]
 * [[Related to::Knowledge representation]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Knowledge management]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Systems science]]
 [[Category:Computer science]]

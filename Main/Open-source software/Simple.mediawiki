@@ -1,16 +1,147 @@
-<onlyinclude>'''Open-source software''' is software distributed under a license that permits users to inspect, use, modify and redistribute its source code under defined conditions.
+{{Reading depth|base=Open-source software|current=Simple}}
 
-== Explanation ==
-Open source is not simply software whose code can be viewed. The license must grant specified freedoms. Projects can be maintained by volunteers, companies or mixed communities, and open-source software may be sold. Different licenses impose different conditions when modifications are distributed.
+= Open-source software — Simple =
+
+'''Open-source software''' is software released under a license that lets people use, study, modify, and redistribute the program and its source code under defined conditions.
+
+Open source is not the same as “the source code can be viewed.” The license has to grant the required rights.
+
+The Open Source Initiative maintains the Open Source Definition, which includes rules such as free redistribution, availability of source code, permission for derived works, and no discrimination against people or fields of use.<ref name="osi">[https://opensource.org/osd Open Source Initiative, “The Open Source Definition.”]</ref>
+
+Open-source software can also be sold commercially.<ref name="osi-faq">[https://opensource.org/faq Open Source Initiative, “Frequently Answered Questions.”]</ref>
+
+== Open source and free software ==
+
+The Free Software Foundation uses the term '''free software''' for software that gives users four freedoms:
+
+* run the program for any purpose;
+* study and change it;
+* redistribute copies;
+* distribute modified versions.<ref name="fsf">[https://www.gnu.org/philosophy/free-sw.html GNU Project, “The Free Software Definition.”]</ref>
+
+Many programs are both free software and open-source software.
+
+The two movements overlap strongly, but they developed with different emphasis. Free-software writing focuses heavily on user freedom; open-source writing often emphasizes licensing and collaborative development.
+
+“Free” does not mean the software must cost zero dollars.
+
+== Licenses are different ==
+
+Open source is not one license.
+
+'''Permissive licenses''' such as MIT, BSD, and Apache-2.0 allow broad reuse with relatively limited conditions.
+
+'''Copyleft licenses''' such as the GNU GPL allow reuse and modification but require certain distributed derivative works to remain under compatible reciprocal terms.
+
+Apache License 2.0 also contains an explicit patent license from contributors, subject to the license conditions.<ref name="apache">[https://www.apache.org/licenses/LICENSE-2.0.html Apache Software Foundation, ''Apache License, Version 2.0''.]</ref>
+
+Exact legal obligations depend on the license and how software is used or distributed.
+
+== Open source does not mean open governance ==
+
+A project can be open source even if only a small maintainer group decides what changes enter the official version.
+
+The license controls what users are legally allowed to do.
+
+Project governance controls questions such as:
+
+* Who can merge changes?
+* How are maintainers chosen?
+* How are releases approved?
+* How are disagreements resolved?
+
+These are separate issues.
+
+== Forks ==
+
+Open-source licenses normally allow people to make modified versions.
+
+A community can therefore '''fork''' a project if it disagrees with the existing direction.
+
+But a fork may still depend on trademarks, infrastructure, data, or a developer community controlled by the original project.
+
+The legal right to fork does not guarantee that maintaining a fork is easy.
+
+== Security ==
+
+Open source is not automatically secure.
+
+Public source code makes inspection possible, but somebody still has to inspect it and fix problems.
+
+OpenSSF recommends evaluating dependencies for maintenance activity, maintainer diversity, known vulnerabilities, testing, repository security, secure defaults, and vulnerability-reporting procedures.<ref name="openssf">[https://best.openssf.org/Concise-Guide-for-Evaluating-Open-Source-Software.html OpenSSF, “Concise Guide for Evaluating Open Source Software.”]</ref>
+
+A widely used package can still be poorly maintained.
+
+== Supply-chain risk ==
+
+Modern software often depends on many packages.
+
+A vulnerable or malicious dependency can affect many downstream applications.
+
+Important safeguards include:
+
+* tracking dependencies;
+* updating components;
+* checking release authenticity;
+* using signed artifacts where possible;
+* maintaining software bills of materials;
+* testing and vulnerability scanning.
+
+== Open source and commercial business ==
+
+Companies can build businesses around open-source software.
+
+They may sell:
+
+* support;
+* hosting;
+* enterprise services;
+* training;
+* consulting;
+* subscriptions.
+
+Some products show their source but use licenses that restrict particular commercial or competitive uses. Those are often described as '''source available''', not open source.
+
+== Open source and open standards ==
+
+[[Interoperability]] can improve when software supports open standards.
+
+But open-source software and open standards are different things.
+
+An open-source program can implement a closed protocol.
+
+A proprietary program can implement an open standard.
+
+== Open science ==
+
+[[Open science]] often uses open-source software so researchers can inspect and reuse analysis code.
+
+But open-source code alone does not make a scientific result reproducible. Data, dependencies, environment, and methods also matter.
+
+== What to check before adopting a project ==
+
+Useful questions include:
+
+* Is the license clear?
+* Is the project actively maintained?
+* Are releases recent?
+* Are security reports handled?
+* Are dependencies known?
+* Can the project be built?
+* Is documentation usable?
+* Is there more than one maintainer?
+* Can data and workflows move elsewhere?
+
+Popularity is not enough.
 
 == Related concepts ==
+
 [[Software]] · [[Version control]] · [[Open science]] · [[Interoperability]] · [[Digital ecosystem]]
 
 == Sources ==
-* [https://opensource.org/osd Open Source Initiative, The Open Source Definition]
-* [https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License version 3]
-* [https://www.apache.org/licenses/LICENSE-2.0 Apache License version 2.0]
-</onlyinclude>
+
+<references />
 
 == Reading depth ==
-[[Open-source software/Technical|Technical treatment]]
+
+[[Open-source software|Core article]] · [[Open-source software/Technical|Technical treatment]]

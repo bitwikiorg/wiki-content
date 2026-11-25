@@ -1,15 +1,129 @@
-<onlyinclude>A '''digital ecosystem''' is a collection of interacting digital technologies, services, organizations and users whose activities depend on one another. An ecosystem may include platforms, applications, devices, shared standards and participants that maintain or use them.
+{{Reading depth|base=Digital ecosystem|current=Simple}}
 
-== Explanation ==
-A mobile application ecosystem includes device makers, developers, users, service providers and rules for distributing applications. Changing a platform interface can affect many otherwise separate systems. Some researchers also use the term for decentralized evolutionary software architectures.
+= Digital ecosystem — Simple =
+
+A '''digital ecosystem''' is a network of digital technologies, services, organizations, developers, users, data, and infrastructure that depend on one another.
+
+A smartphone ecosystem, for example, can include:
+
+* the operating system;
+* application developers;
+* an app store;
+* payment services;
+* device manufacturers;
+* cloud services;
+* users.
+
+Changing one important part can affect many others.
+
+== Why call it an ecosystem? ==
+
+The word is borrowed from biology because the participants interact, compete, cooperate, adapt, and depend on shared resources.
+
+The comparison is useful, but digital systems are not biological ecosystems.
+
+Software is designed intentionally. Companies set rules. Users make choices. Platforms can change APIs overnight.
+
+Biological words such as “species” or “fitness” should therefore be treated as analogies unless they are given precise technical meanings.
+
+== History ==
+
+European researchers developed the idea of a '''Digital Business Ecosystem''' in the early 2000s to combine business networks with distributed digital infrastructure.<ref name="eu">[https://op.europa.eu/en/publication-detail/-/publication/53e45e55-4bd2-42a4-ad25-27b339b051e0 European Commission (2007), ''Digital Business Ecosystems''.]</ref>
+
+Other researchers explored decentralized software ecosystems in which services could be discovered and combined automatically.<ref name="briscoe">[https://doi.org/10.1145/1315843.1315864 Briscoe and De Wilde (2006), “Digital ecosystems: evolving service-oriented architectures.”]</ref>
+
+Today the term is used much more broadly.
+
+== Interoperability ==
+
+Digital ecosystems work better when different components can communicate.
+
+[[Interoperability]] can depend on:
+
+* APIs;
+* protocols;
+* data formats;
+* shared identifiers;
+* compatible versions;
+* common meanings.
+
+Two systems can both use the same file format and still misunderstand what the fields mean.
+
+== Dependencies and failure ==
+
+A service can depend on many hidden components.
+
+An online application may need:
+
+<pre>
+Internet
+→ DNS
+→ cloud hosting
+→ identity service
+→ database
+→ payment API
+</pre>
+
+If one shared dependency fails, many services can fail together.
+
+Good ecosystem design therefore tracks dependencies and avoids unnecessary single points of failure.
+
+== Platforms and power ==
+
+A platform can make it easier for developers and users to interact.
+
+But platform operators may control:
+
+* who can participate;
+* fees;
+* ranking;
+* APIs;
+* data access;
+* moderation.
+
+A technically distributed ecosystem can still have centralized governance.
+
+== Openness ==
+
+An ecosystem can be open in different ways.
+
+It might have open-source software but closed data. It might have public APIs but restrictive business rules.
+
+“Open ecosystem” should therefore specify what is actually open.
+
+== Security ==
+
+A vulnerability in one shared library or service can spread risk across the ecosystem.
+
+Security requires:
+
+* patching;
+* identity controls;
+* dependency tracking;
+* backups;
+* supplier review;
+* incident response.
+
+Trusting one component should not automatically mean trusting everything connected to it.
+
+== Artificial intelligence ==
+
+AI ecosystems can include model providers, cloud services, data sources, agent frameworks, applications, and users.
+
+Many apparently independent applications may depend on the same model provider.
+
+That creates concentration and shared-failure risks.
 
 == Related concepts ==
+
 [[Knowledge ecosystem]] · [[Distributed system]] · [[Interoperability]] · [[Online platform]] · [[Multi-agent system]] · [[Self-organization]]
 
 == Sources ==
-* [https://doi.org/10.1145/1315843.1315864 Briscoe and De Wilde (2006), Digital ecosystems: evolving service-oriented architectures]
-* [https://arxiv.org/abs/1112.0204 Briscoe, Sadedin and De Wilde, Digital Ecosystems: Ecosystem-Oriented Architectures]
-</onlyinclude>
+
+<references />
+
+* [https://doi.org/10.1109/DEST.2007.372005 Boley and Chang (2007), “Digital Ecosystems: Principles and Semantics.”]
 
 == Reading depth ==
-[[Digital ecosystem/Technical|Technical treatment]]
+
+[[Digital ecosystem|Core article]] · [[Digital ecosystem/Technical|Technical treatment]]

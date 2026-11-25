@@ -1,18 +1,555 @@
-'''Artificial life''' (ALife) is an interdisciplinary field that studies life-like organization, adaptation and evolution through constructed systems. These may be computer simulations, robots or engineered chemical and biological systems.
+{{Reading depth|base=Artificial life|current=Technical}}
 
-== Historical scope ==
-Christopher Langton's 1987 workshop and 1989 proceedings helped establish artificial life as a research field. Its constructive approach complements biological observation: researchers build systems with specified rules to test whether properties such as replication, adaptation or collective organization can arise. Software-based, hardware-based and biochemical approaches are often called soft, hard and wet artificial life, respectively; boundaries can overlap.
+= Artificial life — Technical =
 
-== Experimental mechanisms ==
-A digital evolutionary model specifies heritable representations, reproduction, variation and competition for limited resources. A robot experiment specifies sensors, actuators, control rules and available energy. A biochemical model specifies reaction and transport kinetics and conditions for maintenance. Test mechanisms by perturbing or ablating them and comparing appropriate controls. A simulation of replication is not the same experimental object as a physically replicating chemical system.
+'''Artificial life''' (ALife) is the constructive study of living organization and life-like processes through computational, robotic, chemical, and hybrid systems. The field asks which mechanisms are sufficient for phenomena such as replication, heredity, adaptation, development, collective organization, self-maintenance, and evolutionary innovation.
 
-== Open-endedness and definitions ==
-Increasing task fitness alone does not imply open-ended evolution. Evaluate diversity, novelty, persistence and ecological interaction over specified time horizons, distinguishing new structures from changes in labels or trivial combinatorial variants. A program may rely on a host scheduler and external electricity, while a biochemical system relies on environmental nutrients; compare the actual maintenance mechanisms, not superficial dependence. Autopoiesis, reproduction and evolution capture different properties, and no single definition of life is universally accepted. Artificial life is distinct from conventional AI, which primarily targets computational capabilities rather than the organization of life, although their methods intersect.
+The contemporary field traces its institutional formation to Christopher Langton's 1987 Los Alamos workshop and the subsequent proceedings.<ref name="langton">[https://www.routledge.com/Artificial-Life-Proceedings-Of-An-Interdisciplinary-Workshop-On-The-Synthesis/Langton/p/book/9780429032769 Langton, C. G. (ed.) (1989), ''Artificial Life: Proceedings of an Interdisciplinary Workshop on the Synthesis and Simulation of Living Systems''.]</ref> Dorin and Stepney's 2024 review emphasizes both the historical “possible life” framing and the breadth of current ALife research.<ref name="dorin">[https://doi.org/10.1162/artl_e_00435 Dorin, A. and Stepney, S. (2024), “What Is Artificial Life Today, and Where Should It Go?”, ''Artificial Life'' 30(1), 1–15.]</ref>
+
+== Constructive epistemology ==
+
+ALife uses construction as a method of explanation.
+
+Suppose hypothesis <math>H</math> claims mechanism <math>M</math> is sufficient for phenomenon <math>P</math> under conditions <math>C</math>.
+
+A constructive test implements
+
+<math>S=I(M,C)</math>
+
+and evaluates whether
+
+<math>P(S)</math>
+
+occurs robustly.
+
+A successful implementation demonstrates sufficiency relative to the implementation assumptions.
+
+It does not establish:
+
+* that <math>M</math> is necessary;
+* that biological systems use <math>M</math>;
+* that omitted physical details are irrelevant;
+* that the implementation itself is alive under every definition.
+
+Construction therefore narrows explanatory possibilities but does not eliminate the need for empirical validation.
+
+== Soft ALife ==
+
+Soft ALife uses digital computation.
+
+Major classes include:
+
+* cellular automata;
+* agent-based systems;
+* artificial chemistries;
+* evolutionary algorithms;
+* [[Digital organism|digital organisms]];
+* artificial ecologies;
+* developmental simulations.
+
+Digital systems provide complete state observability in principle, repeatable initial conditions, controllable mutation, and fast experimental replication.
+
+Their central limitation is that representational choices become part of the laws of the artificial world.
+
+== State-transition systems ==
+
+A generic soft-ALife model can be written
+
+<math>x_{t+1}=F(x_t,e_t;\theta),</math>
+
+where <math>x_t</math> is system state, <math>e_t</math> environment, and <math>\theta</math> model rules or parameters.
+
+Emergent claims concern macro-observable
+
+<math>y_t=G(x_t)</math>
+
+that was not explicitly encoded as a macro-level trajectory.
+
+The fact that <math>F</math> is simple does not imply that <math>G(x_t)</math> is predictable without simulation.
+
+== Cellular automata ==
+
+A cellular automaton consists of:
+
+* lattice or graph <math>L</math>;
+* finite state set <math>Q</math>;
+* neighborhood relation <math>N</math>;
+* local update rule <math>f</math>.
+
+For site <math>i</math>,
+
+<math>x_i(t+1)=f(\{x_j(t):j\in N(i)\}).</math>
+
+[[Conway's Game of Life]] shows that local rules can support moving structures, computation, and self-reproducing constructions.
+
+The scientific lesson is about consequences of local interaction rules, not that every persistent pattern satisfies biological definitions of life.
+
+== Artificial chemistries ==
+
+An artificial chemistry can be represented by
+
+<math>\mathcal C=(M,R,A),</math>
+
+where <math>M</math> is a set of molecule-like entities, <math>R</math> reaction rules, and <math>A</math> an algorithm controlling encounters or reaction kinetics.
+
+Research questions include:
+
+* autocatalytic closure;
+* reaction-network growth;
+* compositional heredity;
+* molecular recognition;
+* compartmentalization;
+* evolvability.
+
+Symbolic chemistries expose organizational principles, but physically realizable chemistry additionally requires mass balance, energy coupling, kinetics, and thermodynamic plausibility.
+
+== Digital evolution ==
+
+Let organism <math>i</math> carry hereditary program <math>g_i</math>. Replication produces
+
+<math>g_i'=R(g_i,\xi),</math>
+
+where <math>\xi</math> is mutation.
+
+If expected reproductive success is <math>f_i</math>, genotype frequencies can be approximated by
+
+<math>\dot x_i=x_i(f_i-\bar f).</math>
+
+Digital systems can explicitly implement:
+
+* substitutions;
+* insertions/deletions;
+* recombination;
+* spatial competition;
+* resource limitation;
+* task rewards.
+
+Avida was designed as an experimental platform for self-replicating and evolving programs.<ref name="avida">[https://doi.org/10.1162/106454604773563612 Ofria, C. and Wilke, C. O. (2004), “Avida: A Software Platform for Research in Computational Evolutionary Biology,” ''Artificial Life'' 10(2), 191–229.]</ref>
+
+Lenski et al. used archived digital lineages and genotype reconstruction to study historical contingency in the origin of a complex function.<ref name="lenski">[https://doi.org/10.1038/nature01568 Lenski, R. E. et al. (2003), “The evolutionary origin of complex features,” ''Nature'' 423, 139–144.]</ref>
+
+== Evolutionary experiments ==
+
+A replicated digital-evolution design can randomize populations across treatments:
+
+<math>P_{k,0}=P_0</math>
+
+for replicate <math>k</math>, then apply environment <math>E_A</math> or <math>E_B</math>.
+
+Outcomes can include:
+
+* adaptation rate;
+* fixation probability;
+* diversity;
+* ecological network structure;
+* mutational robustness;
+* complexity metrics.
+
+Random seeds are experimental replicates only when each run evolves independently after initialization.
+
+Multiple measurements from one trajectory are not independent populations.
+
+== Hard ALife ==
+
+Hard ALife uses embodied artificial systems.
+
+Robot dynamics can be represented as
+
+<math>s_{t+1}=F(s_t,a_t,w_t),</math>
+
+<math>o_t=H(s_t)+\epsilon_t,</math>
+
+<math>a_t=\pi(o_{le t};\theta).</math>
+
+Here <math>s_t</math> is physical state, <math>a_t</math> actuation, <math>w_t</math> environmental disturbance, <math>o_t</math> sensor observation, and <math>\pi</math> controller.
+
+Embodiment introduces physical constraints:
+
+* friction;
+* inertia;
+* material compliance;
+* wear;
+* energy consumption;
+* finite communication range;
+* sensor noise.
+
+These constraints can qualitatively change evolutionary or adaptive dynamics.
+
+== Simulation-to-reality gap ==
+
+If controller <math>\pi</math> is optimized under simulator distribution <math>P_{sim}</math> but deployed under <math>P_{real}</math>, performance can fail when
+
+<math>P_{sim}(x)\neq P_{real}(x)</math>
+
+in behaviorally relevant regions.
+
+Methods such as domain randomization attempt to train across a distribution of simulated conditions.
+
+The remaining gap is an empirical property, not something established by simulator complexity alone.
+
+== Wet ALife ==
+
+Wet ALife uses material systems whose chemistry is part of the phenomenon.
+
+Protocell architectures can combine:
+
+* amphiphilic compartments;
+* catalytic networks;
+* template molecules;
+* energy sources;
+* transport;
+* growth;
+* division.
+
+A minimal reaction-compartment model can couple concentrations <math>c</math> and membrane state <math>b</math>:
+
+<math>\dot c=S,v(c)+J(c,b,e),</math>
+
+<math>\dot b=F_b(c,b,e).</math>
+
+A self-maintaining compartment requires more than temporary persistence: the reactions must contribute to sustaining the constraints under which the reactions continue.
+
+This is where [[Autopoiesis]] and ALife overlap.
+
+== Autocatalysis ==
+
+For reaction
+
+<math>A+B\rightarrow 2B,</math>
+
+<math>B</math> is autocatalytic.
+
+Autocatalysis supports growth but is not equivalent to life.
+
+A complete life-like system may require coupling among:
+
+* catalytic production;
+* boundary maintenance;
+* energy transduction;
+* heredity;
+* variation;
+* selection.
+
+ALife helps test which combinations are sufficient for which observed properties.
+
+== Self-replication ==
+
+Replication quality can be described through mutation probability.
+
+For genome length <math>L</math> and independent per-site error rate <math>\mu</math>,
+
+<math>P(\text{error-free copy})=(1-\mu)^L.</math>
+
+High error rates can destroy hereditary information; very low rates can reduce exploration.
+
+The appropriate regime depends on representation, selection, and population dynamics.
+
+== Quasispecies perspective ==
+
+For mutation-selection matrix <math>QW</math>, genotype frequencies can be written
+
+<math>x(t+1)=\frac{QW x(t)}{\mathbf 1^TQW x(t)}.</math>
+
+This framework illustrates how heredity depends jointly on replication fidelity and selection.
+
+It can be useful in digital and chemical ALife, but the model assumptions must match the implemented system.
+
+== Genotype–phenotype maps ==
+
+Let genotype <math>g</math> map to phenotype <math>\phi</math> through developmental process
+
+<math>\phi=D(g,e).</math>
+
+Evolutionary accessibility depends on the topology of this map.
+
+Two representations with identical search-space size can have different:
+
+* neutrality;
+* robustness;
+* modularity;
+* evolvability.
+
+Claims about evolutionary behavior therefore cannot be separated from representation design.
+
+== Development ==
+
+ALife development models study how local rules generate morphology.
+
+A developmental system can include:
+
+* gene-regulatory networks;
+* cell division;
+* signaling;
+* mechanical interaction;
+* environmental cues.
+
+Development creates indirect genotype–phenotype mappings and can generate modularity or constraints absent from direct encodings.
+
+== Morphogenesis ==
+
+Reaction-diffusion models are one family of morphogenetic mechanism:
+
+<math>\partial_t u=D_u\nabla^2u+f(u,v),</math>
+
+<math>\partial_t v=D_v\nabla^2v+g(u,v).</math>
+
+Pattern formation is a mechanistic example of self-organization.
+
+It is not by itself evidence for autonomous life.
+
+== Collective behavior ==
+
+Agent <math>i</math> can update motion using local neighbors:
+
+<math>v_i(t+1)=F(v_i(t),\{x_j,v_j:j\in N_i\}).</math>
+
+Models such as [[Boids]] show that alignment, cohesion, and separation rules can generate flock-like patterns.
+
+ALife uses such systems to study distributed organization.
+
+Collective order does not imply collective consciousness.
+
+== Emergence and causal analysis ==
+
+A macro-pattern <math>M</math> should be tied to micro-mechanisms through intervention.
+
+If removing interaction rule <math>r_k</math> changes macro-statistic <math>m</math> by
+
+<math>\Delta m=m_{full}-m_{-r_k},</math>
+
+then ablation provides evidence that <math>r_k</math> contributes to the pattern.
+
+This is stronger than visual resemblance.
+
+Sensitivity analysis across parameters tests robustness.
+
+== Open-ended evolution ==
+
+Open-ended evolution is not captured by a single accepted metric.
+
+Potential indicators include:
+
+* continual appearance of novel phenotypes;
+* expanding ecological interactions;
+* new levels of individuality;
+* persistent adaptive innovation;
+* creation of new niches.
+
+A bounded state space can in principle generate extremely long nonrepeating trajectories while still lacking meaningful open-endedness.
+
+Novelty must therefore be defined relative to scientifically relevant features.
+
+== Complexity measures ==
+
+Candidate complexity metrics include:
+
+'''Genome length''' — easy to measure but confounds functional and neutral material.
+
+'''Functional instruction count''' — estimated by knockout or mutational analysis.
+
+'''Algorithmic complexity''' — theoretically principled but generally incomputable exactly.
+
+'''Network complexity''' — depends on graph representation.
+
+'''Phenotypic repertoire''' — counts distinguishable functions.
+
+No metric should be treated as universally authoritative.
+
+== Ecological structure ==
+
+Let interaction coefficient <math>a_{ij}</math> describe effect of type <math>j</math> on <math>i</math>.
+
+A generalized Lotka–Volterra abstraction is
+
+<math>\dot x_i=x_i\left(r_i+\sum_j a_{ij}x_j\right).</math>
+
+Artificial ecologies can generate competition, mutualism, exploitation, or frequency dependence.
+
+However, fitting this model to an ALife system is a coarse-graining choice and should be validated against the actual interaction rules.
+
+== Major transitions ==
+
+ALife can investigate transitions in individuality, such as lower-level replicators forming higher-level cooperative units.
+
+A genuine transition requires more than spatial clustering.
+
+Researchers should test:
+
+* reproductive coupling;
+* conflict mediation;
+* division of labor;
+* inheritance at the higher level;
+* differential fitness among higher-level units.
+
+These criteria connect ALife to evolutionary theory.
+
+== Verification ==
+
+Code verification asks whether implementation matches specification.
+
+Useful methods include:
+
+* unit tests for update rules;
+* conservation tests where applicable;
+* deterministic replay;
+* seed control;
+* invariants;
+* comparison against analytically solvable cases.
+
+A simulation bug can create an apparent emergent phenomenon.
+
+Verification is therefore part of scientific validity, not merely software hygiene.
+
+== Validation ==
+
+Validation asks whether the model supports inference about a target system.
+
+If <math>M</math> is the model and <math>T</math> the target, evidence for transfer depends on correspondence between causal structures relevant to claim <math>C</math>.
+
+A useful question is:
+
+<pre>
+Which omitted mechanisms could reverse the conclusion?
+</pre>
+
+Validation can involve:
+
+* comparison with biological data;
+* robustness across model classes;
+* parameter calibration;
+* predictive tests;
+* independent replication.
+
+== Counterfactual experiments ==
+
+One advantage of ALife is direct counterfactual intervention.
+
+For archived genotype <math>g</math>, compare phenotype
+
+<math>P(g,E)</math>
+
+with mutant
+
+<math>P(g',E)</math>
+
+or changed environment
+
+<math>P(g,E').</math>
+
+Historical pathways can be replayed under alternatives.
+
+This makes digital evolution particularly strong for questions about contingency and epistasis.
+
+== Life criteria ==
+
+Operational life criteria can be represented as feature vector
+
+<math>\ell=(m,r,h,e,a,b,\ldots),</math>
+
+where components might encode metabolism, replication, heredity, evolution, autonomy, and boundedness.
+
+Different theories weight these dimensions differently.
+
+A binary declaration
+
+<math>Alive(S)\in\{0,1\}</math>
+
+therefore hides theoretical choices unless the criterion is stated.
+
+== Simulation and realization ==
+
+A key philosophical issue is which properties are substrate-independent.
+
+Selection can be formally realized whenever heritable variants differ in reproductive success.
+
+Biochemical metabolism, by contrast, is materially specific.
+
+Thus a digital system may literally evolve while only simulating chemistry.
+
+Claims should be property-specific rather than asking whether the entire system is “real” or “simulated.”
+
+== Relation to AI ==
+
+ALife and [[Artificial intelligence]] share methods but optimize different explanatory goals.
+
+AI often evaluates task performance:
+
+<math>J(\pi)=E[R\mid\pi].</math>
+
+ALife often evaluates population or organizational dynamics over time.
+
+Evolutionary computation can optimize an AI controller, but optimization success does not establish life.
+
+Likewise, reproduction and adaptation do not establish reasoning capability.
+
+== Consciousness boundary ==
+
+No established mapping exists from ALife complexity metric to subjective experience.
+
+Therefore claims such as
+
+<math>complexity>C\Rightarrow consciousness</math>
+
+lack a validated threshold.
+
+Researchers can measure behavior, recurrence, adaptation, integration, or information flow without treating those quantities as direct proof of sentience.
+
+== Reproducibility ==
+
+A computational ALife publication should preserve:
+
+* source code and version;
+* dependency versions;
+* model specification;
+* random seeds;
+* initial conditions;
+* parameter files;
+* analysis scripts;
+* raw or regenerable outputs;
+* experiment metadata.
+
+Wet and robotic ALife require additional documentation of materials, fabrication, calibration, and environmental conditions.
+
+== Engineering applications ==
+
+ALife-inspired methods are used in:
+
+* evolutionary optimization;
+* distributed robotics;
+* adaptive control;
+* generative engineering;
+* artificial ecosystems;
+* self-organizing networks.
+
+Engineering usefulness is evidence of functional utility, not evidence that the engineered system is biologically alive.
+
+== Research frontier ==
+
+Bedau and colleagues' fourteen open problems remain a useful historical benchmark for evaluating progress because they separate demonstrations on individual platforms from unresolved questions about origins, open-ended evolution, artificial chemistry, evolutionary learning, ecosystems, and links between life, mind, and culture.<ref name="bedau-open">[https://doi.org/10.1162/106454600300103683 Bedau, M. A. et al. (2000), “Open Problems in Artificial Life,” ''Artificial Life'' 6(4), 363–376.]</ref>
+
+Open problems include:
+
+* open-ended evolution;
+* scalable artificial ecologies;
+* origin of heredity;
+* autonomy and self-maintenance;
+* evolvable embodiment;
+* artificial major transitions;
+* measurable emergence;
+* cross-platform reproducibility;
+* bridging soft, hard, and wet systems.
+
+The strongest ALife work identifies mechanisms, builds systems that instantiate them, tests causal consequences, and states clearly where inference stops.
 
 == References ==
-* [https://www.routledge.com/link/link/p/book/9780367002909 Langton (1989), Artificial Life: Proceedings of an Interdisciplinary Workshop]
-* [https://doi.org/10.1162/artl_e_00435 What Is Artificial Life Today, and Where Should It Go? (2024)]
-* [https://www.nature.com/articles/nature01568 Lenski et al. (2003), The evolutionary origin of complex features]
+
+<references />
+
+* [https://www.routledge.com/Artificial-Life-Proceedings-Of-An-Interdisciplinary-Workshop-On-The-Synthesis/Langton/p/book/9780429032769 Langton (ed.) (1989).]
+* [https://doi.org/10.1162/artl_e_00435 Dorin and Stepney (2024).]
+* [https://doi.org/10.1038/nature01568 Lenski et al. (2003).]
+* [https://doi.org/10.1162/106454604773563612 Ofria and Wilke (2004).]
 
 == Reading depth ==
-[[Artificial life/Simple|Simple explanation]]
+
+[[Artificial life/Simple|Simple explanation]] · [[Artificial life|Core article]]

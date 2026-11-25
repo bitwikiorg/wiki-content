@@ -1,16 +1,80 @@
-<onlyinclude>'''Organoid intelligence''' (OI) is an emerging biocomputing research program investigating whether laboratory-grown neural tissue, especially three-dimensional brain organoids, can serve as components of information-processing systems.
+{{Reading depth|base=Organoid intelligence|current=Simple}}
 
-== Explanation ==
-Scientists can deliver signals to neural tissue and record its responses using interfaces such as electrode arrays. A computer may interpret the recorded patterns to carry out a defined task. Research has demonstrated limited experimental tasks, but organoids are not miniature complete human brains, and task performance does not establish consciousness.
+= Organoid intelligence — Simple =
+
+'''Organoid intelligence''' (OI) is an emerging research program that investigates whether laboratory-grown neural tissue can be used as part of a computing system.
+
+The main experimental objects are '''neural organoids''': three-dimensional cultures grown from stem cells and differentiated toward neural tissue. They can contain neurons and supporting cells, develop spontaneous electrical activity, and respond to stimulation. They are simplified biological models, not miniature complete human brains.
+
+== How a biohybrid computer works ==
+
+A typical experimental system combines several parts:
+
+* a neural organoid;
+* electrodes or another interface that delivers stimulation;
+* sensors that record electrical activity;
+* software that encodes inputs and interprets outputs;
+* an external computer that performs preprocessing, training, or readout.
+
+This is therefore a '''biohybrid''' system. The organoid does not perform every stage of the computation by itself.
+
+In the 2023 Brainoware experiment, researchers interfaced a brain organoid with a high-density multielectrode array. Spatiotemporal electrical stimulation supplied inputs and recorded activity served as a reservoir state for tasks including speech recognition and nonlinear equation prediction.<ref name="cai">[https://doi.org/10.1038/s41928-023-01069-w Cai, H. et al. (2023), “Brain organoid reservoir computing for artificial intelligence,” ''Nature Electronics'' 6, 1032–1039.]</ref>
+
+== Reservoir computing ==
+
+Reservoir computing uses a complex dynamical system to transform an input into a richer internal state. A comparatively simple readout is then trained to map that state to an output.
+
+An organoid can act as part of the reservoir because its neural activity is nonlinear and depends on recent stimulation. The useful computation is distributed across the biological tissue, the interface, and the external decoder.
+
+This matters when evaluating claims about “learning.” Improved task performance may result from:
+
+* changes in the neural tissue;
+* adaptation of the external software;
+* both of these;
+* or experimental drift.
+
+A rigorous experiment must separate these possibilities.
+
+== Why researchers study it ==
+
+OI research asks whether living neural networks can provide useful forms of adaptive computation and whether such systems can illuminate neural information processing.
+
+The broader research program proposed by Smirnova and colleagues combines brain organoids, electrophysiology, bioengineering, data science, machine learning, and ethics.<ref name="smirnova">[https://doi.org/10.3389/fsci.2023.1017235 Smirnova, L. et al. (2023), “Organoid intelligence (OI): the new frontier in biocomputing and intelligence-in-a-dish,” ''Frontiers in Science'' 1:1017235.]</ref>
+
+Potential advantages are hypotheses to be tested, not established properties of all organoid computers. Useful comparisons must include accuracy, training requirements, reliability, physical footprint, energy used by the complete supporting system, and reproducibility.
+
+== Major limitations ==
+
+Current organoids vary substantially between preparations. Important engineering problems include:
+
+* maturation and long-term stability;
+* oxygen and nutrient delivery;
+* electrode coverage and signal quality;
+* tissue damage during repeated stimulation;
+* reproducibility between biological samples;
+* standard benchmarks;
+* scaling input and output bandwidth.
+
+A demonstration on one task does not establish general intelligence.
+
+== Consciousness and ethics ==
+
+Neural activity, plasticity, or successful task performance does '''not''' by itself demonstrate consciousness, sentience, understanding, or human-like cognition.
+
+Human-derived tissue also raises questions about donor consent, governance, experimental oversight, data provenance, and possible future morally relevant capacities. Ethical assessment should track the actual biological system and the evidence available rather than assuming either that organoids are conscious or that consciousness is impossible.
 
 == Related concepts ==
-[[Biological computation]] · [[Artificial intelligence]] · [[Sensory processing]] · [[Learning]] · [[Cyborg]] · [[Consciousness]]
 
-== Sources ==
-* [https://doi.org/10.3389/fsci.2023.1017235 Smirnova et al. (2023), Organoid intelligence: the new frontier in biocomputing]
-* [https://doi.org/10.1038/s41928-023-01069-w Cai et al. (2023), Brain organoid reservoir computing for artificial intelligence]
-* [https://www.nature.com/articles/s44222-024-00200-6 Smirnova et al. (2024), Biocomputing with organoid intelligence]
-</onlyinclude>
+OI intersects with [[Artificial intelligence]], [[Biological computation]], [[Sensory processing]], [[Learning]], [[Consciousness]], and [[Cyborg|biohybrid technological systems]], but it is not identical to any of them.
+
+== References ==
+
+<references />
+
+* [https://doi.org/10.3389/fsci.2023.1017235 Smirnova et al. (2023), organoid intelligence research program.]
+* [https://doi.org/10.1038/s41928-023-01069-w Cai et al. (2023), Brainoware.]
+* [https://www.nature.com/articles/s41928-023-01096-7 Smirnova, Caffo and Johnson (2023), “Reservoir computing with brain organoids,” ''Nature Electronics'' 6, 943–944.]
 
 == Reading depth ==
-[[Organoid intelligence/Technical|Technical treatment]]
+
+[[Organoid intelligence|Core article]] · [[Organoid intelligence/Technical|Technical treatment]]

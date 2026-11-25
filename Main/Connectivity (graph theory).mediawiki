@@ -2,29 +2,378 @@
  |title=Connectivity (graph theory)
  |entity_type=Concept
  |domain=Mathematics, Computer science, Systems science, Engineering
- |provenance=Diestel; NetworkX
+ |status=Established
+ |provenance=Whitney; Menger; Diestel; graph algorithms literature
 }}
-<onlyinclude>{{:Connectivity (graph theory)/Simple}}</onlyinclude>
+{{Reading depth|base=Connectivity (graph theory)|current=Core}}
 
-'''Reading depth:''' [[Connectivity (graph theory)/Simple|Simple]] · [[Connectivity (graph theory)/Technical|Technical]]
+= Connectivity (graph theory) =
+
+'''Connectivity''' in graph theory describes whether vertices of a graph can be reached from one another through paths and how resistant that reachability is to removal of vertices or edges. It is a foundational property of networks because it distinguishes one connected structure from separate components and provides formal measures of vulnerability and redundancy.
+
+For an undirected graph <math>G=(V,E)</math>, the graph is connected when every pair of vertices is joined by a path. For directed graphs, connectivity requires additional distinctions because reachability can depend on direction.
+
+== Paths and reachability ==
+
+A '''path''' is a sequence of vertices connected by edges.
+
+In an undirected graph, if a path exists from <math>u</math> to <math>v</math>, then the same edges can be traversed in reverse.
+
+In a directed graph, a directed path from <math>u</math> to <math>v</math> does not imply a path from <math>v</math> to <math>u</math>.
+
+Connectivity is therefore fundamentally a reachability relation.
+
+== Connected graph ==
+
+A nonempty undirected graph is connected if
+
+<math>\forall u,v\in V,\quad u\leadsto v.</math>
+
+If at least one pair has no path between them, the graph is disconnected.
+
+A connected graph can still be poorly connected in a practical sense. One narrow bridge can make the whole graph formally connected while leaving it fragile.
+
+== Connected components ==
+
+A '''connected component''' is a maximal connected subgraph.
+
+The connected components partition the vertex set:
+
+<math>V=C_1\cup C_2\cup\cdots\cup C_k,</math>
+
+with the components pairwise disjoint.
+
+A graph is connected exactly when it has one connected component.
+
+Isolated vertices form one-vertex components under standard conventions.
+
+== Strong connectivity ==
+
+A directed graph is '''strongly connected''' when every ordered pair of vertices is mutually reachable:
+
+<math>u\leadsto v</math>
+
+and
+
+<math>v\leadsto u.</math>
+
+Strongly connected components are maximal subgraphs satisfying this property.
+
+They partition the vertices of any directed graph.
+
+== Weak connectivity ==
+
+A directed graph is '''weakly connected''' if the undirected graph formed by ignoring edge directions is connected.
+
+Weak connectivity is much less demanding than strong connectivity.
+
+A one-way hierarchy can be weakly connected while containing no directed cycle and no mutual reachability between many pairs.
+
+== Semiconnectivity ==
+
+A directed graph is '''semiconnected''' if for every pair <math>u,v</math>, there is a directed path from <math>u</math> to <math>v</math> or from <math>v</math> to <math>u</math>.
+
+This is intermediate between weak and strong connectivity.
+
+It is useful in some ordering and dependency problems.
+
+== Articulation vertices ==
+
+An '''articulation vertex''' or cut vertex is a vertex whose removal increases the number of connected components.
+
+Such a vertex is a structural single point of failure.
+
+A transport or communication network can be connected but highly vulnerable if key articulation points exist.
+
+== Bridges ==
+
+A '''bridge''' or cut edge is an edge whose removal increases the number of connected components.
+
+Bridges are the edge analog of articulation vertices.
+
+A tree has every edge as a bridge.
+
+Networks with cycles can provide alternate routes and thereby reduce bridge dependence.
+
+== Vertex connectivity ==
+
+The '''vertex connectivity''' <math>\kappa(G)</math> is the minimum number of vertices whose removal disconnects the graph or reduces it to a trivial graph, under standard conventions.
+
+A graph is <math>k</math>-vertex-connected if at least <math>k</math> vertices must be removed to disconnect it.
+
+Higher vertex connectivity indicates greater resilience to node loss in the topological model.
+
+== Edge connectivity ==
+
+The '''edge connectivity''' <math>\lambda(G)</math> is the minimum number of edges whose removal disconnects a connected graph.
+
+A graph is <math>k</math>-edge-connected if fewer than <math>k</math> edge removals cannot disconnect it.
+
+For connected simple graphs with at least two vertices,
+
+<math>\kappa(G)\le\lambda(G)\le\delta(G),</math>
+
+where <math>\delta(G)</math> is the minimum vertex degree.<ref name="diestel">[https://link.springer.com/book/10.1007/978-3-662-53622-3 Diestel, R., ''Graph Theory'', 5th ed., Springer.]</ref>
+
+== Menger's theorem ==
+
+Menger's theorem links cut size with disjoint paths.
+
+Informally, the minimum number of vertices needed to separate two nonadjacent vertices equals the maximum number of internally vertex-disjoint paths between them.
+
+An analogous edge version equates minimum edge cut size with the maximum number of edge-disjoint paths.
+
+This is one of the central structural results connecting resilience and path redundancy.
+
+== Local versus global connectivity ==
+
+'''Local connectivity''' can refer to the minimum separator between a particular pair of vertices.
+
+'''Global connectivity''' minimizes over the graph.
+
+A network can have high connectivity in one region and a weak bottleneck elsewhere.
+
+One global number can therefore hide heterogeneous vulnerability.
+
+== Blocks ==
+
+A '''block''' is a maximal subgraph without an articulation vertex, subject to standard definitions that include certain bridge or isolated cases.
+
+Block decomposition reveals robust regions linked through vulnerable articulation points.
+
+It is useful for understanding network structure beyond a simple connected/disconnected label.
+
+== Trees ==
+
+A tree is a connected acyclic undirected graph.
+
+Between any two vertices there is exactly one simple path.
+
+Therefore every edge is a bridge.
+
+Trees provide connectivity with the minimum number of edges, <math>|V|-1</math>, but no path redundancy.
+
+== Cycles and redundancy ==
+
+Cycles provide alternative paths.
+
+If an edge lies on a cycle, that edge is not a bridge.
+
+Redundant paths improve topological resilience.
+
+However, redundancy can still share common vertices or infrastructure and therefore fail under correlated failures.
+
+== Breadth-first search ==
+
+Breadth-first search (BFS) explores a graph layer by layer.
+
+Starting from one vertex, BFS reaches exactly the vertices in its connected component in an undirected graph.
+
+With adjacency lists, runtime is
+
+<math>O(|V|+|E|).</math>
+
+Running BFS from each not-yet-visited vertex identifies all connected components.
+
+== Depth-first search ==
+
+Depth-first search (DFS) also finds connected components in linear time.
+
+DFS has additional structural uses.
+
+A single DFS can identify:
+
+* articulation vertices;
+* bridges;
+* biconnected components.
+
+The algorithm uses discovery times and low-link information to detect whether subtrees have alternate connections to earlier vertices.
+
+== Strongly connected component algorithms ==
+
+Strongly connected components can be found in
+
+<math>O(|V|+|E|)</math>
+
+time using algorithms such as:
+
+* Tarjan's algorithm;
+* Kosaraju–Sharir algorithm;
+* path-based SCC algorithms.
+
+Contracting each SCC into one node produces a directed acyclic graph.
+
+This condensation graph summarizes reachability among strongly connected regions.
+
+== Minimum cuts ==
+
+A cut partitions vertices into two sets.
+
+The edges crossing the partition form an edge cut.
+
+Minimum-cut algorithms find small separating sets.
+
+For edge connectivity between designated vertices, max-flow/min-cut methods can be used when capacities are assigned appropriately.
+
+Global minimum cut can be computed with specialized algorithms.
+
+== Vertex cuts through transformation ==
+
+Vertex-capacity problems can be converted to edge-capacity problems by splitting each vertex into input and output copies joined by an edge representing vertex capacity.
+
+This permits some vertex-connectivity questions to be solved using flow algorithms.
+
+Care is needed with terminals and graph conventions.
+
+== Dynamic connectivity ==
+
+In a dynamic graph, edges or vertices are inserted and deleted over time.
+
+Recomputing components from scratch after every update can be inefficient.
+
+Dynamic-connectivity data structures maintain connectivity under updates.
+
+The difficulty depends on whether updates are:
+
+* insertion-only;
+* deletion-only;
+* fully dynamic.
+
+== Temporal connectivity ==
+
+In a temporal graph, edges exist only at certain times.
+
+A static aggregated graph can appear connected even when no time-respecting path exists.
+
+For communication or transport, edge order can matter.
+
+Temporal reachability should therefore replace static connectivity when timing is essential.
+
+== Weighted networks ==
+
+Connectivity normally ignores edge weights.
+
+A graph can be connected through an edge with extremely high cost, latency, or low capacity.
+
+Practical network analysis may require:
+
+* shortest paths;
+* capacity;
+* reliability;
+* flow.
+
+Topological connectivity is only one layer.
+
+== Reliability ==
+
+If edges fail probabilistically, network reliability asks for probability the graph remains connected.
+
+Exact reliability computation can be difficult.
+
+Monte Carlo simulation is often used for large networks.
+
+Independent-failure assumptions can be unrealistic when many edges share physical infrastructure.
+
+== Random failures and targeted attacks ==
+
+Random node deletion and targeted removal can have very different effects.
+
+A network robust to random failure may be fragile when high-centrality articulation or hub nodes are attacked.
+
+Robustness claims should specify the removal model.
+
+== Percolation ==
+
+Percolation theory studies how large connected components appear or disappear as nodes or edges are occupied probabilistically.
+
+A giant connected component can emerge above a threshold in large random networks.
+
+Percolation provides a statistical connection between graph connectivity and phase-transition behavior.
+
+Real network thresholds depend on topology and correlations.
+
+== Connectivity and degree ==
+
+High degree can support connectivity but does not guarantee it.
+
+A graph can contain two dense clusters with no edge between them.
+
+Average degree therefore cannot substitute for component analysis.
+
+Likewise, minimum degree provides only a bound on connectivity.
+
+== Connectivity and latency ==
+
+Connected means reachable, not fast.
+
+A path can contain many hops.
+
+Diameter and shortest-path distributions measure distance.
+
+Communication systems need both connectivity and acceptable latency.
+
+== Connectivity and bandwidth ==
+
+A graph can be connected through one low-capacity link.
+
+Topological reachability says nothing about throughput.
+
+Flow and capacity models are needed when resource volume matters.
+
+== Knowledge graphs ==
+
+In a [[Knowledge graph]], connectivity can describe structural paths among entities.
+
+A path between two concepts does not imply that the relationship is meaningful, causal, or epistemically valid.
+
+Graph structure should not be overinterpreted.
+
+== Computer networks ==
+
+In a [[Computer network]], connectivity can refer to physical or logical paths.
+
+Actual communication also depends on:
+
+* routing;
+* permissions;
+* protocol compatibility;
+* failures.
+
+A connected physical graph can still be operationally partitioned.
+
+== Multi-agent systems ==
+
+A [[Multi-agent system]] often uses a communication graph.
+
+Connectivity conditions can determine whether agents can reach consensus or coordinate.
+
+Time-varying agent networks may require joint connectivity over intervals rather than connectivity at each instant.
+
+== Epistemic boundary ==
+
+Graph connectivity is a precise topological property.
+
+It does not establish:
+
+* communication quality;
+* causal influence;
+* social trust;
+* information flow;
+* semantic relatedness.
+
+Applications should state which graph the connectivity claim refers to and whether direction, time, capacity, or reliability must also be modeled.
 
 == Semantic relationships ==
+
 * [[Related to::Network]]
 * [[Related to::Computer network]]
 * [[Related to::Distributed system]]
 * [[Related to::Knowledge graph]]
 * [[Related to::Multi-agent system]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Connectivity (graph theory)]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Mathematics]]
 [[Category:Computer science]]

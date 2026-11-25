@@ -1,15 +1,62 @@
-<onlyinclude>A '''code''' is a system of rules that associates symbols, messages or actions with other representations. Morse code represents letters with short and long signals; a computer character code assigns numbers to characters. The term also refers to instructions in programming and to the biological genetic code.
+{{Reading depth|base=Code|current=Simple}}
 
-== Explanation ==
-Codes may help transmit messages, compress data, detect errors or specify actions. A code is not necessarily secret: encryption uses additional cryptographic rules and keys to protect information. Understanding the code is different from knowing whether a decoded statement is true.
+= Code — Simple =
 
-== Related concepts ==
-[[Information]] · [[Information theory]] · [[Signal]] · [[Formal language]] · [[Programming language]] · [[Genetic inheritance]]
+A '''code''' is a set of rules for representing one thing with another. Letters can be represented by Morse-code patterns, text characters can be represented by numbers and bytes, and a message can be transformed into codewords for storage or transmission.
+
+To use a code, there is usually an '''encoding''' step and a '''decoding''' step. Encoding changes a source representation into the code's representation. Decoding uses the rules of the code to recover or interpret what the code symbols stand for.
+
+A code is different from the physical [[Signal]] carrying it. The same Morse-code pattern can be sent with light, sound, radio, or electrical pulses.
+
+== Why codes are used ==
+
+Different codes solve different problems.
+
+* '''Representation:''' character encodings represent written characters inside computers.
+* '''Compression:''' some codes use shorter representations for more common data.
+* '''Error control:''' some codes add redundancy so damaged data can be detected or corrected.
+* '''Identification:''' postal codes, airport codes, and product codes identify things within a system.
+* '''Programming:''' source code expresses instructions in a [[Programming language]].
+* '''Biology:''' the genetic code relates RNA codons to amino acids or stop signals during protein synthesis.
+
+These uses are related by the idea of representation, but they are not the same mechanism.
+
+== Compression and error correction ==
+
+In [[Information theory]], coding is central to efficient and reliable communication.<ref name="mit-it">[https://ocw.mit.edu/courses/6-441-information-theory-spring-2010/ MIT OpenCourseWare, ''Information Theory'', 6.441.]</ref>
+
+A compression code tries to represent data using fewer symbols when possible. Huffman coding, for example, assigns shorter codewords to more probable source symbols under its standard assumptions.<ref name="huffman">[https://doi.org/10.1109/JRPROC.1952.273898 Huffman, D. A. (1952), “A Method for the Construction of Minimum-Redundancy Codes.”]</ref>
+
+An error-correcting code does almost the opposite: it deliberately adds structured redundancy. That redundancy can allow a receiver to detect or correct some changes caused by a noisy channel or damaged storage.<ref name="hamming">[https://doi.org/10.1002/j.1538-7305.1950.tb00463.x Hamming, R. W. (1950), “Error Detecting and Error Correcting Codes.”]</ref>
+
+== Character encoding ==
+
+Computers need agreed rules for representing text. Unicode assigns code points to characters and defines encodings such as UTF-8, UTF-16, and UTF-32. UTF-8 represents Unicode using sequences of one to four bytes and preserves the ordinary ASCII byte values for ASCII characters.<ref name="unicode">[https://www.unicode.org/faq/utf_bom.html Unicode Consortium, “UTF-8, UTF-16, UTF-32 & BOM.”]</ref>
+
+The bytes alone are not the meaning of the text. Software must know how the bytes are encoded and how the resulting characters are interpreted.
+
+== Genetic code ==
+
+The genetic code is a biological use of the word “code.” During translation, groups of three RNA nucleotides called codons correspond to amino acids or stop signals. The standard code has 64 codons, and variants exist in some organisms and organelles.<ref name="ncbi">[https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi NCBI, “The Genetic Codes.”]</ref>
+
+This does not mean a cell works like a simple computer lookup table. Translation depends on molecular machinery and biological context. [[Genetic inheritance]] is much broader than the codon-to-amino-acid mapping.
+
+== Code is not encryption ==
+
+Encoding and encryption are not the same thing. Ordinary encoding changes representation so information can be processed or communicated. Encryption is a cryptographic transformation intended to protect information from unauthorized access.<ref name="nist">[https://csrc.nist.gov/glossary/term/encryption NIST, “encryption.”]</ref>
+
+A UTF-8 file is encoded, but it is not secret. [[Cryptography]] uses additional algorithms, keys, and protocols for security.
+
+== Codes and meaning ==
+
+A code can tell you how symbols correspond, but it does not tell you whether the decoded statement is true. The same [[Information]] can also be represented using different codes.
+
+Natural language involves signs and conventions, but it is much richer than a simple engineered codebook. Language includes ambiguity, context, social use, and changing meanings. [[Semiotics]] studies signs and meaning more broadly.
 
 == Sources ==
-* [https://crypto.stanford.edu/~blynn/pr/symbol.html Stanford, Symbol Codes]
-* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]
-</onlyinclude>
+
+<references />
 
 == Reading depth ==
-[[Code/Technical|Technical treatment]]
+
+[[Code|Core article]] · [[Code/Technical|Technical treatment]]

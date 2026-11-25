@@ -1,15 +1,180 @@
-<onlyinclude>'''Swarm intelligence''' describes collective problem solving or coordinated behavior arising from interactions among many relatively simple individuals. Researchers study natural examples and engineer algorithms inspired by them.
+{{Reading depth|base=Swarm intelligence|current=Simple}}
 
-== Explanation ==
-Ants can collectively establish routes through local interactions, while simulated particles can cooperate to search a difficult optimization space. There need not be a single individual that controls every action. Not every coordinated group or distributed program is a swarm.
+= Swarm intelligence — Simple =
+
+'''Swarm intelligence''' is coordinated problem solving that emerges from many relatively simple agents interacting with each other or with a shared environment.
+
+There may be no single agent controlling the whole system.
+
+Natural examples include:
+
+* ants finding food;
+* bees choosing nest sites;
+* birds flocking;
+* fish schooling.
+
+Engineers have used similar ideas to design optimization algorithms and robot swarms.
+
+== Local rules can create global patterns ==
+
+A swarm agent often reacts only to nearby information.
+
+A simulated bird might:
+
+* avoid crowding;
+* match nearby direction;
+* move toward nearby flock members.
+
+Craig Reynolds showed in 1987 that simple local rules could generate convincing flock-like motion in a computer model called [[Boids]].<ref name="reynolds">[https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools.”]</ref>
+
+No boid receives a complete global flight plan.
+
+== Self-organization ==
+
+Swarm behavior is often a form of [[Self-organization]].
+
+System-wide order can appear through repeated local interactions.
+
+Common ingredients include:
+
+* positive feedback;
+* negative feedback;
+* randomness;
+* local communication.
+
+Positive feedback strengthens successful patterns.
+
+Negative feedback prevents one pattern from dominating forever.
+
+Randomness helps the swarm explore alternatives.
+
+== Stigmergy ==
+
+'''Stigmergy''' is coordination through changes to the environment.
+
+Ants can leave pheromone trails.
+
+Other ants respond to those trails.
+
+The trail becomes a shared memory outside any one ant.
+
+Artificial systems can use virtual pheromones or shared maps in the same way.
+
+== Particle swarm optimization ==
+
+'''Particle swarm optimization''' (PSO) is an optimization method introduced by James Kennedy and Russell Eberhart.<ref name="pso">[https://doi.org/10.1109/ICNN.1995.488968 Kennedy and Eberhart (1995), “Particle swarm optimization.”]</ref>
+
+A group of particles searches for a good solution.
+
+Each particle remembers:
+
+* its own best solution;
+* a good solution found by neighbors or the swarm.
+
+The particles move through the search space using those signals.
+
+The particles are mathematical search points, not real animals.
+
+== Ant colony optimization ==
+
+'''Ant colony optimization''' uses artificial ants that build candidate solutions.
+
+They leave virtual pheromone on useful choices.
+
+Later ants become more likely to follow stronger pheromone paths.
+
+Pheromone slowly evaporates, which prevents old information from remaining dominant forever.
+
+The method was developed for difficult combinatorial optimization problems.<ref name="aco">[https://doi.org/10.1109/3477.484436 Dorigo, Maniezzo and Colorni (1996), “Ant system.”]</ref>
+
+== Different swarm algorithms work differently ==
+
+PSO and ant colony optimization are both swarm-inspired, but their mechanisms are different.
+
+PSO moves numerical particles.
+
+ACO constructs solutions using pheromone-guided choices.
+
+Boids simulate local movement rules.
+
+They should not be described as one algorithm with different names.
+
+== Swarm robotics ==
+
+A robot swarm can use local coordination for:
+
+* exploration;
+* mapping;
+* monitoring;
+* moving objects.
+
+Real robots create problems not present in software simulation:
+
+* batteries run out;
+* robots collide;
+* sensors are noisy;
+* radio links fail;
+* positions are uncertain.
+
+A swarm that works in simulation may fail physically.
+
+== Robustness ==
+
+Swarms can be robust because the system does not depend on one individual.
+
+If one ant or robot fails, the others may continue.
+
+But a swarm using one central computer is still vulnerable to that central computer.
+
+Decentralized appearance does not guarantee real fault tolerance.
+
+== Swarms can make mistakes together ==
+
+Positive feedback can amplify errors.
+
+If early agents accidentally favor a poor path, later agents may reinforce it.
+
+Optimization swarms can also get stuck around a bad solution.
+
+Good designs preserve exploration and allow old information to decay.
+
+== More agents are not always better ==
+
+A larger swarm can improve coverage.
+
+It can also create:
+
+* congestion;
+* communication problems;
+* collisions;
+* duplicated work.
+
+Scalability must be tested rather than assumed.
+
+== Swarm intelligence and collective intelligence ==
+
+[[Collective intelligence]] is a broader idea.
+
+Humans solving a problem together can show collective intelligence without behaving like a swarm.
+
+Swarm intelligence usually emphasizes many agents, local rules, and decentralized coordination.
+
+== Swarm intelligence and consciousness ==
+
+A coordinated swarm is not automatically conscious.
+
+Ants, robots, or artificial agents can produce organized collective behavior without evidence of one shared subjective mind.
 
 == Related concepts ==
+
 [[Distributed artificial intelligence]] · [[Collective intelligence]] · [[Multi-agent system]] · [[Self-organization]] · [[Boids]] · [[Optimization]]
 
 == Sources ==
-* [https://doi.org/10.1007/s11721-007-0002-0 Kennedy and Poli et al., Particle swarm optimization review (2007)]
-* [https://doi.org/10.1145/37401.37406 Reynolds (1987), Flocks, herds and schools]
-</onlyinclude>
+
+<references />
+
+* [https://doi.org/10.1093/oso/9780195131581.001.0001 Bonabeau, Dorigo and Theraulaz (1999), ''Swarm Intelligence''.]
 
 == Reading depth ==
-[[Swarm intelligence/Technical|Technical treatment]]
+
+[[Swarm intelligence|Core article]] · [[Swarm intelligence/Technical|Technical treatment]]

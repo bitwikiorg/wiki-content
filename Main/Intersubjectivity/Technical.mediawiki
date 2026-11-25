@@ -1,17 +1,598 @@
-'''Intersubjectivity''' concerns relations between subjects through which experiences, meanings or aspects of a shared world become mutually intelligible. It appears in phenomenology, social theory and research on interaction.
+{{Reading depth|base=Intersubjectivity|current=Technical}}
 
-== Philosophical foundations ==
-Husserl's investigations of intersubjectivity address the experience of others, empathy, embodiment and the constitution of a world understood as accessible beyond one's own perspective. This is a phenomenological and philosophical inquiry, not a hypothesis that can be settled simply by measuring agreement. Later sociological and interactional approaches emphasize shared practices, norms and meaning-making.
+= Intersubjectivity — Technical =
 
-== Interaction and empirical questions ==
-Observable phenomena include joint attention, turn-taking, perspective taking and conversational repair. In a referential communication experiment, participants coordinate descriptions of unfamiliar objects; researchers can measure identification accuracy, correction episodes and changes in descriptions over repeated trials. Such measures operationalize particular aspects of shared understanding rather than directly measure another person's subjective experience.
+'''Intersubjectivity''' is the structured relation among subjective perspectives through which agents recognize one another, coordinate reference, establish common ground, repair misunderstanding, and participate in a world treated as mutually accessible. The term spans phenomenology, developmental psychology, linguistics, social cognition, and interaction research.
 
-== Distinctions and limits ==
-Common ground concerns information treated as mutually available in interaction; theory of mind studies attribution of mental states; intersubjectivity has broader philosophical questions about relations among subjects and shared worlds. Agreement can arise through conformity or shared error. Public evidence and independent verification remain necessary to evaluate truth. Synchronization among computational agents does not by itself establish intersubjective experience in the phenomenological sense.
+A technical treatment must separate phenomenological claims about subjectivity from operational measures of coordination.
+
+
+Intersubjectivity provides a framework for analyzing shared or mutually oriented meaning without assuming that individuals literally share one mind. It intersects with [[Group cognition]] and [[Social information processing]] through coordination of perspectives, and with [[Consciousness]] only where claims concern subjective experience rather than observable interaction alone.
+
+== Minimal relational model ==
+
+Let subject <math>A</math> have perspective <math>P_A</math> and subject <math>B</math> have perspective <math>P_B</math>.
+
+Intersubjectivity does not require
+
+<math>P_A=P_B.</math>
+
+Instead, there must be some relation
+
+<math>R(P_A,P_B,C)</math>
+
+mediated by context <math>C</math> such that each perspective becomes relevant to the other's understanding or action.
+
+The relation may involve:
+
+* shared reference;
+* mutual attention;
+* reciprocal prediction;
+* communication;
+* affective coordination;
+* norm-governed interaction.
+
+== Perspective nonidentity ==
+
+A central property is that perspectives remain distinct.
+
+If two participants had literally identical perspectives, there would be no inter-perspectival relation to explain.
+
+Intersubjectivity therefore concerns coordinated difference rather than collapse into one subject.
+
+This is important when distinguishing shared understanding from group-mind metaphors.
+
+== Phenomenological problem ==
+
+Husserl's account asks how another embodied subject is experienced as more than an object and how a world can be constituted as objectively accessible to many subjects.<ref name="husserl">[https://plato.stanford.edu/entries/husserl/ Stanford Encyclopedia of Philosophy, “Edmund Husserl.”]</ref>
+
+This is not reducible to a behavioral experiment.
+
+Empirical measures can study observable correlates of reciprocal awareness, but they do not settle every phenomenological question.
+
+== Second-order representation ==
+
+A simple epistemic model represents what one participant believes about another.
+
+Let:
+
+<math>B_A(p)</math>
+
+mean A believes proposition <math>p</math>, and
+
+<math>B_A B_B(p)</math>
+
+mean A believes that B believes <math>p</math>.
+
+Second-order structure can support coordination.
+
+But full infinite mutual knowledge is not required for ordinary interaction.
+
+Humans often operate with bounded approximations.
+
+== Mutual knowledge hierarchy ==
+
+A strong common-knowledge condition for proposition <math>p</math> is:
+
+<pre>
+A knows p
+B knows p
+A knows that B knows p
+B knows that A knows p
+A knows that B knows that A knows p
+...
+</pre>
+
+This infinite hierarchy is a formal ideal.
+
+Real interaction uses conventions, visible context, prior conversation, and grounding as practical substitutes.
+
+== Common ground ==
+
+Represent common-ground set at time <math>t</math> as
+
+<math>C_t.</math>
+
+A conversational contribution <math>u_t</math> proposes an update:
+
+<math>C_{t+1}=Update(C_t,u_t,g_t),</math>
+
+where <math>g_t</math> is grounding evidence such as acknowledgment, repair, or successful action.
+
+The update need not mean both participants hold identical mental representations.
+
+It means the interaction treats some content as sufficiently shared for current purposes.
+
+== Grounding criterion ==
+
+Let <math>\theta</math> be evidence threshold required before a contribution is accepted as understood.
+
+Low-risk conversation may use small <math>\theta</math>.
+
+Safety-critical interaction may require explicit readback or confirmation.
+
+Thus grounding standard can be modeled as task-dependent:
+
+<math>\theta=F(risk,cost,time).</math>
+
+This explains why communication protocols differ across contexts.
+
+== Conversational repair ==
+
+Let interpretation error occur when listener infers <math>m'</math> instead of intended <math>m</math>.
+
+Repair process:
+
+<math>m' \xrightarrow{clarification} \hat m.</math>
+
+Repair rate and success can be measured.
+
+High repair frequency may indicate difficult communication, but successful repair can also demonstrate robust intersubjective coordination.
+
+Absence of repair does not guarantee understanding.
+
+== Referential communication game ==
+
+Suppose speaker sees target object <math>o\in O</math>.
+
+Speaker sends message <math>m</math>.
+
+Listener selects
+
+<math>\hat o=D(m,C).</math>
+
+Communication accuracy is
+
+<math>A=P(\hat o=o).</math>
+
+Across repeated interactions, dyads often create shorter conventional labels.
+
+Description length <math>L_t</math> can decrease while accuracy remains high.
+
+This provides an operational model of developing shared reference.
+
+== Lexical entrainment ==
+
+Partners often converge on expressions.
+
+Let probability participant B reuses A's term <math>w</math> be
+
+<math>P_B(w\mid A\ used\ w).</math>
+
+Increased reuse is lexical alignment.
+
+Alignment can improve coordination.
+
+It does not imply identical concepts.
+
+People can reuse terminology strategically while retaining different interpretations.
+
+== Dialogical analysis ==
+
+Gillespie and Cornish argue that intersubjectivity concerns relations among perspectives and outline methods including comparative self-report, behavior observation, analysis of talk, and ethnographic engagement.<ref name="dialogical">[https://doi.org/10.1111/j.1468-5914.2009.00419.x Gillespie, A. and Cornish, F. (2010), “Intersubjectivity: Towards a Dialogical Analysis.”]</ref>
+
+Different methods access different properties:
+
+* self-report accesses expressed perspective;
+* observation accesses interaction behavior;
+* conversation analysis accesses perspective relations in discourse;
+* ethnography accesses situated social practice.
+
+No method directly observes another's phenomenal state.
+
+== Primary intersubjectivity ==
+
+Early infant–caregiver interaction can be analyzed as dyadic coupling.
+
+Let infant state be <math>x_I(t)</math> and caregiver state <math>x_C(t)</math>.
+
+Interaction:
+
+<math>x_I(t+1)=F_I(x_I(t),x_C(t)),</math>
+
+<math>x_C(t+1)=F_C(x_C(t),x_I(t)).</math>
+
+Reciprocal dependence can be estimated from temporal data.
+
+Coupling demonstrates interaction structure.
+
+It does not establish what the infant consciously experiences.
+
+== Temporal contingency ==
+
+Infant-caregiver interaction includes contingent timing.
+
+For event streams <math>I(t)</math> and <math>C(t)</math>, cross-correlation
+
+<math>R_{IC}(\tau)</math>
+
+can reveal whether one partner's behavior systematically follows the other's at lag <math>\tau</math>.
+
+High correlation can result from common external drivers.
+
+Causal claims require stronger designs.
+
+== Still-face paradigm ==
+
+In the still-face paradigm, a caregiver temporarily stops normal contingent interaction.
+
+Infants often show changes in gaze, affect, and behavior.
+
+The paradigm demonstrates sensitivity to disrupted social contingency.
+
+Interpretation should distinguish observed behavioral response from stronger claims about infant mental representation.
+
+== Secondary intersubjectivity ==
+
+Secondary intersubjectivity introduces a shared third referent <math>O</math>.
+
+The relational structure becomes triadic:
+
+<math>R(A,B,O).</math>
+
+Developmental evidence includes:
+
+* pointing;
+* gaze alternation;
+* showing;
+* coordinated object engagement.
+
+Terrace, Bigelow, and Beebe review primary and secondary intersubjectivity in relation to language development.<ref name="terrace">[https://pmc.ncbi.nlm.nih.gov/articles/PMC9116197/ Terrace, H. S., Bigelow, A. E., and Beebe, B. (2022), “Intersubjectivity and the Emergence of Words.”]</ref>
+
+== Joint attention criteria ==
+
+A minimal same-target condition is:
+
+<math>Attend_A(O)=1,\quad Attend_B(O)=1.</math>
+
+Joint attention requires more than that coincidence.
+
+A stronger condition includes awareness of the other's attention:
+
+<math>Attend_A(B\rightarrow O)=1</math>
+
+and/or reciprocal monitoring.
+
+Operational indicators include gaze alternation or communicative pointing.
+
+Researchers should state which criterion they use.
+
+== Gaze following ==
+
+Gaze following can be modeled as:
+
+<math>Direction_B=Direction_A.</math>
+
+This can result from orienting mechanisms without explicit representation of shared attention.
+
+Therefore gaze following is evidence relevant to joint attention but is not synonymous with it.
+
+== Pointing ==
+
+Pointing can serve:
+
+* imperative function — requesting an object;
+* declarative function — sharing attention or interest.
+
+Interpretation depends on behavioral context.
+
+A pointing gesture should not be assigned one fixed mental meaning without corroborating evidence.
+
+== Shared intentionality ==
+
+A joint-action model can define shared goal <math>g</math> and role policies:
+
+<math>a_A=\pi_A(g,s),</math>
+
+<math>a_B=\pi_B(g,s).</math>
+
+Behavioral coordination under one goal is compatible with shared intentionality.
+
+Stronger claims require evidence that each partner represents or commits to the joint goal.
+
+Simultaneous goal-directed behavior alone is insufficient.
+
+== Coordination games ==
+
+Game theory can formalize interdependent action.
+
+Suppose two agents choose among conventions.
+
+Payoff is high when choices match.
+
+Repeated interaction can produce equilibrium convention.
+
+This models coordination and convention formation.
+
+It does not establish phenomenological intersubjectivity.
+
+== Intersubjective agreement ==
+
+Let beliefs be <math>b_A,b_B\in\{0,1\}</math>.
+
+Agreement indicator:
+
+<math>I(b_A=b_B).</math>
+
+High agreement can result from:
+
+* shared evidence;
+* copying;
+* coercion;
+* common bias;
+* independent convergence.
+
+Agreement therefore underdetermines its cause and epistemic value.
+
+== Synchrony ==
+
+Behavioral synchrony can be quantified using:
+
+* cross-correlation;
+* phase locking;
+* recurrence;
+* mutual information.
+
+For phases <math>\phi_A,\phi_B</math>, phase-locking value:
+
+<math>PLV=\left|\frac{1}{N}\sum_{k=1}^{N}e^{i(\phi_A(k)-\phi_B(k))}\right|.</math>
+
+High PLV indicates temporal coupling.
+
+It does not indicate shared meaning or conscious unity.
+
+== Physiological synchrony ==
+
+Heart rate, skin conductance, respiration, or neural signals can covary during interaction.
+
+Possible causes include:
+
+* common stimulus;
+* shared activity;
+* mutual regulation;
+* coincidental trend.
+
+Analyses should remove common environmental drivers before interpreting coupling as interpersonal regulation.
+
+== Hyperscanning ==
+
+'''Hyperscanning''' records neural activity from multiple people simultaneously.
+
+Methods include EEG, fNIRS, and fMRI variants.
+
+Inter-brain correlation can reflect:
+
+* common sensory input;
+* shared motor timing;
+* communication;
+* true interaction-related coupling.
+
+Experimental controls are essential.
+
+Inter-brain synchrony is not direct evidence of shared consciousness.
+
+== Theory of mind distinction ==
+
+Theory-of-mind experiments often ask participant A to infer B's belief.
+
+This can be represented:
+
+<math>\hat b_B=F(observation).</math>
+
+Intersubjectivity can instead concern reciprocal interaction:
+
+<math>A\leftrightarrow B.</math>
+
+One can infer another's belief without interacting with them.
+
+One can interact successfully without explicit belief attribution.
+
+The constructs overlap but differ.
+
+== Empathy distinction ==
+
+Empathy may involve representation or sharing of another's affective state.
+
+Intersubjective coordination can occur with little emotional resonance.
+
+A technical discussion among experts can be highly intersubjective in reference and reasoning while emotionally neutral.
+
+== Common-ground experiments ==
+
+Experimental manipulation can vary whether information is:
+
+* mutually visible;
+* privately known;
+* verbally established.
+
+Researchers then measure reference choice or communication efficiency.
+
+This tests how speakers track presumed partner knowledge.
+
+Failure to use partner-specific information can indicate limits on common-ground processing.
+
+== Perspective taking ==
+
+Visual perspective-taking tasks ask participants to distinguish self and other viewpoints.
+
+Performance can be influenced by:
+
+* spatial transformation;
+* inhibition;
+* task complexity;
+* social cues.
+
+A perspective-taking effect does not uniquely identify one theory of intersubjectivity.
+
+== Developmental evidence ==
+
+Infant measures include:
+
+* gaze;
+* pointing;
+* imitation;
+* vocal exchange;
+* affect;
+* anticipatory action.
+
+Because infants cannot provide verbal reports, interpretation relies heavily on behavioral inference.
+
+Claims should be proportionate to the observable evidence.
+
+== Cultural variability ==
+
+Interaction norms vary across cultures.
+
+Differences can include:
+
+* eye contact;
+* turn-taking;
+* pointing;
+* caregiver-infant interaction;
+* conversational directness.
+
+A behavior interpreted as evidence of intersubjectivity in one cultural setting may have different normative meaning elsewhere.
+
+Cross-cultural validation is therefore necessary.
+
+== Language and indexicals ==
+
+Expressions such as “I,” “you,” “here,” and “now” depend on interactional perspective.
+
+Reference function can be represented:
+
+<math>Ref(expression,context,speaker,hearer).</math>
+
+Language encodes perspective relationships.
+
+Interpretation requires role and context.
+
+== Norms and institutional reality ==
+
+Institutional facts can depend on shared recognition.
+
+A token can function as money because a community treats it according to public rules and practices.
+
+This form of intersubjective validity is social.
+
+It should not be confused with physical truth.
+
+A socially valid contract can exist even if participants hold false scientific beliefs.
+
+== Scientific objectivity ==
+
+Science uses intersubjective procedures such as:
+
+* public methods;
+* replicable measurement;
+* shared standards;
+* peer criticism.
+
+The goal is not mere consensus.
+
+It is to make evidence accessible to independent scrutiny.
+
+Objectivity is strengthened by procedures that allow perspectives to challenge one another.
+
+== Relationship-level unit ==
+
+For dyad <math>D=(A,B)</math>, some variables belong to the relation rather than either individual alone:
+
+* communication efficiency;
+* mutual adaptation;
+* repair success;
+* shared convention.
+
+This motivates relationship-level analysis.
+
+It does not imply the dyad is one subject.
+
+== Computational agents ==
+
+Two artificial agents can maintain shared state <math>S_c</math> and update it through protocol:
+
+<math>S_c(t+1)=F(S_c(t),m_A,m_B).</math>
+
+They can also coordinate reference and repair messages.
+
+These are functional analogues of some interactional mechanisms.
+
+Whether either agent is a subject with phenomenal experience is not established by protocol success.
+
+== Multi-agent consensus ==
+
+Consensus algorithm can drive agent states toward common value:
+
+<math>x_i(t+1)=\sum_j w_{ij}x_j(t).</math>
+
+Convergence:
+
+<math>x_i\rightarrow x^*</math>
+
+demonstrates agreement.
+
+It does not establish intersubjectivity in the phenomenological sense.
+
+== Measurement validity ==
+
+A measure <math>M</math> is valid for intersubjective construct <math>C</math> only if evidence supports mapping:
+
+<math>M\rightarrow C.</math>
+
+Synchrony, agreement, joint gaze, and lexical alignment each capture one possible dimension.
+
+No one indicator should be treated as the entire construct.
+
+== Epistemic limitation ==
+
+Another subject's first-person experience is not directly observable from a third-person measurement.
+
+Researchers infer relations among subjects through:
+
+* behavior;
+* language;
+* report;
+* physiology;
+* social practice.
+
+This is not a defect unique to intersubjectivity; it is a methodological boundary.
+
+The correct response is to keep observation and interpretation distinct.
+
+== Experimental protocol ==
+
+A rigorous study should specify:
+
+# which meaning of intersubjectivity is targeted;
+# unit of analysis;
+# observable indicator;
+# alternative explanations;
+# temporal scale;
+# cultural context;
+# uncertainty.
+
+Do not combine philosophical, developmental, and interactional claims without explaining the bridge.
+
+== Epistemic boundary ==
+
+The technical conclusion is layered:
+
+'''Observable:''' coordination, gaze, repair, lexical alignment, synchrony, and task success.
+
+'''Inferential:''' shared reference, perspective tracking, common ground, or shared intention.
+
+'''Phenomenological:''' lived relation among subjects and shared-world constitution.
+
+Evidence becomes less direct as inference moves upward.
 
 == References ==
-* [https://plato.stanford.edu/entries/husserl/ Stanford Encyclopedia of Philosophy, Edmund Husserl]
-* [https://mitpress.mit.edu/9780262195393/group-cognition/ Stahl (2006), Group Cognition]
+
+<references />
+
+* [https://plato.stanford.edu/entries/phenomenology/ Stanford Encyclopedia of Philosophy, “Phenomenology.”]
+* [https://doi.org/10.1007/s11097-016-9469-8 De Jaegher, H. et al. (2017), work on embodied intersubjectivity.]
+* [https://doi.org/10.1111/1469-7610.00701 Trevarthen, C. and Aitken, K. J. (2001), “Infant intersubjectivity: research, theory, and clinical applications.”]
 
 == Reading depth ==
-[[Intersubjectivity/Simple|Simple explanation]]
+
+[[Intersubjectivity/Simple|Simple explanation]] · [[Intersubjectivity|Core article]]

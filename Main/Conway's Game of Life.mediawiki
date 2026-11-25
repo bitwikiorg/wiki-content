@@ -2,29 +2,364 @@
  |title=Conway's Game of Life
  |entity_type=Concept
  |domain=Computer science, Mathematics, Systems science
- |provenance=Scientific American; Wolfram MathWorld
+ |status=Established
+ |provenance=Conway; Gardner (1970); cellular-automata and computation literature
 }}
-<onlyinclude>{{:Conway's Game of Life/Simple}}</onlyinclude>
+{{Reading depth|base=Conway's Game of Life|current=Core}}
 
-'''Reading depth:''' [[Conway's Game of Life/Simple|Simple]] · [[Conway's Game of Life/Technical|Technical]]
+= Conway's Game of Life =
+
+'''Conway's Game of Life''' is a two-dimensional binary cellular automaton devised by mathematician John Horton Conway and introduced to a wide audience by Martin Gardner in the October 1970 issue of ''Scientific American''.<ref name="gardner">[https://www.scientificamerican.com/article/mathematical-games-1970-10/ Gardner, M. (1970), “Mathematical Games: The fantastic combinations of John Conway's new solitaire game ‘life’,” ''Scientific American'' 223(4), 120–123.]</ref>
+
+Life evolves on a square lattice of cells. Each cell is either live or dead. All cells update simultaneously from the eight cells in their Moore neighborhood. The rule is commonly written '''B3/S23''': a dead cell is born when exactly three neighbors are live, and a live cell survives when two or three neighbors are live.
+
+Despite its name, Life is a mathematical dynamical system. Its cells are not biological organisms.
+
+== Formal rule ==
+
+Let
+
+<math>x_t(i,j)\in\{0,1\}</math>
+
+be the state of cell <math>(i,j)</math> at generation <math>t</math>.
+
+Let
+
+<math>n_t(i,j)=\sum_{(a,b)\in N(i,j)}x_t(a,b)</math>
+
+be the number of live cells among the eight nearest neighbors.
+
+Then:
+
+<math>x_{t+1}(i,j)=1</math>
+
+iff either:
+
+* <math>x_t(i,j)=0</math> and <math>n_t(i,j)=3</math>; or
+* <math>x_t(i,j)=1</math> and <math>n_t(i,j)\in\{2,3\}</math>.
+
+Otherwise the next state is dead.
+
+The update is synchronous.
+
+== Birth and survival notation ==
+
+Life's rulestring is:
+
+<pre>
+B3/S23
+</pre>
+
+'''B3''' means birth with exactly three live neighbors.
+
+'''S23''' means survival with two or three live neighbors.
+
+Many other Life-like cellular automata use the same notation with different neighbor counts.
+
+== Infinite lattice and simulations ==
+
+The mathematical Game of Life is normally defined on an infinite square lattice.
+
+Computer simulations must use a finite representation.
+
+Possible implementations include:
+
+* a finite rectangle with dead exterior cells;
+* periodic wraparound boundaries;
+* dynamically expanding sparse storage.
+
+Boundary conditions can alter pattern behavior.
+
+A glider on a torus can eventually wrap around and interact with itself, which does not happen in the same way on an infinite empty lattice.
+
+== Initial configuration ==
+
+The initial set of live cells is the '''seed'''.
+
+The deterministic update rule then determines every later generation.
+
+For a fixed infinite-lattice seed, there is no additional randomness in standard Life.
+
+Different seeds can produce dramatically different long-term behavior.
+
+== Still lifes ==
+
+A '''still life''' is a finite pattern unchanged by one generation of Life.
+
+Examples include:
+
+* block;
+* beehive;
+* loaf;
+* boat.
+
+A 2×2 block is the simplest familiar still life.
+
+Each live cell has enough neighbors to survive and every adjacent dead cell avoids exactly three live neighbors that would cause unwanted births.
+
+== Oscillators ==
+
+An '''oscillator''' returns to its original configuration after a finite period.
+
+The '''blinker''' has period 2.
+
+Three adjacent live cells alternate between horizontal and vertical arrangements.
+
+Other oscillators have much longer periods.
+
+The period is the smallest positive number of generations after which the pattern repeats exactly.
+
+== Spaceships ==
+
+A '''spaceship''' returns to its original shape after a finite number of generations translated by a nonzero displacement.
+
+The '''glider''' is the best-known example.
+
+A glider repeats after four generations shifted one cell diagonally in both coordinates.
+
+Spaceships demonstrate persistent moving structure in a translation-invariant local rule.
+
+== Glider gun ==
+
+A '''gun''' is a finite pattern that periodically emits spaceships while remaining bounded in its core behavior.
+
+Bill Gosper and collaborators discovered the first glider gun in 1970.
+
+This discovery disproved Conway's early conjecture that no finite initial pattern could grow without bound.
+
+A glider gun emits gliders indefinitely, so the total population and occupied region can grow without limit.
+
+== Puffers, rakes, and breeders ==
+
+Life contains several classes of unbounded-growth patterns.
+
+'''Puffers''' move while leaving debris.
+
+'''Rakes''' move while emitting spaceships.
+
+'''Breeders''' construct objects that themselves produce additional growing structures.
+
+These patterns show that unlimited growth can arise from finite seeds.
+
+== Methuselahs ==
+
+A '''methuselah''' is a small initial pattern that evolves for many generations before settling into stable or periodic debris.
+
+The R-pentomino is a famous example.
+
+Methuselahs illustrate how small seeds can generate long transients.
+
+Long transient behavior should not be confused with nonperiodic behavior forever.
+
+== Population and bounding box ==
+
+Useful observables include:
+
+* number of live cells;
+* bounding-box dimensions;
+* number of connected objects;
+* growth rate.
+
+Population alone does not characterize structure.
+
+Two patterns with equal live-cell counts can have completely different dynamics.
+
+== Emergence ==
+
+Life is a canonical example of [[Emergence]].
+
+The update rule specifies only local births and survivals.
+
+Higher-level objects such as gliders, guns, oscillators, and computational circuits are not separate primitives in the rule.
+
+They are recurring configurations of cell states.
+
+This does not make them inexplicable: their behavior can be derived from repeated application of B3/S23.
+
+== Self-organization ==
+
+Some Life patterns form stable or moving structures from less organized seeds.
+
+This motivates discussion of [[Self-organization]].
+
+However, standard Life does not adapt toward a goal and contains no built-in fitness or learning mechanism.
+
+Self-organization should therefore be used descriptively rather than as evidence of agency.
+
+== Computation ==
+
+Life can implement logical operations using streams of gliders and other engineered structures.
+
+Collisions can route, suppress, or generate patterns.
+
+With suitable constructions, these mechanisms can represent logic gates, memory, and universal computation.
+
+Paul Rendell constructed explicit Turing-machine implementations in Life and presents a detailed universality proof.<ref name="rendell">[https://link.springer.com/book/10.1007/978-3-319-19842-2 Rendell, P. (2016), ''Turing Machine Universality of the Game of Life'', Springer.]</ref>
+
+== Turing completeness ==
+
+[[Turing completeness]] means that, given a suitable encoding and unbounded resources, Life can simulate any computation performable by a Turing machine.
+
+This is an existential statement.
+
+It does not mean that arbitrary Life patterns are useful programs or that Life is computationally efficient.
+
+A universal construction can be enormous and slow relative to conventional hardware.
+
+== Logical universality versus physical universality ==
+
+Universal computation is sometimes implemented through glider streams representing bits or signals.
+
+The Life universe remains governed only by local cell updates.
+
+The computation is encoded in initial conditions and interpreted through higher-level pattern behavior.
+
+This illustrates how universal computation can arise from a simple cellular-automaton rule.
+
+== Undecidability ==
+
+Universal computation implies that some general questions about Life configurations are undecidable.
+
+If arbitrary Turing-machine computations can be encoded in Life, then a general procedure deciding whether every encoded computation eventually halts would solve the halting problem.
+
+Specific Life instances can still be analyzed or simulated.
+
+Undecidability concerns a universal algorithm for all possible cases.
+
+== Garden of Eden configurations ==
+
+A '''Garden of Eden''' pattern is a configuration with no predecessor under the Life rule.
+
+No earlier generation evolves into it.
+
+Such configurations demonstrate that the global update map is not surjective.
+
+The concept is distinct from still life or extinction.
+
+== Finite boards ==
+
+A finite Life board has only finitely many global states.
+
+For <math>N</math> cells, there are
+
+<math>2^N</math>
+
+possible configurations.
+
+A deterministic finite-state system must eventually enter a previously visited state.
+
+Therefore every finite-board trajectory eventually becomes periodic, including the special case of a fixed point.
+
+This result does not imply that the infinite-lattice system is periodic.
+
+== Sparse simulation ==
+
+On a mostly empty infinite plane, storing every dead cell is wasteful.
+
+A sparse implementation can store only live cells.
+
+To compute the next generation, it counts neighbors for live cells and their nearby candidate birth sites.
+
+All cells with nonzero chance of changing must be considered.
+
+== Hashlife ==
+
+'''Hashlife''' is an advanced algorithm for accelerating Life and related cellular automata by memoizing hierarchical regions and skipping repeated evolution.
+
+It can advance highly regular patterns by enormous numbers of generations efficiently.
+
+Its performance depends on repeated spatial and temporal structure.
+
+Hashlife is not uniformly faster for every chaotic or small pattern.
+
+== Verification patterns ==
+
+Several small patterns are useful implementation tests:
+
+'''Block''' — remains unchanged.
+
+'''Blinker''' — period 2.
+
+'''Glider''' — repeats after four generations translated diagonally.
+
+A correct implementation should reproduce these away from boundaries.
+
+These tests also detect the common bug of updating cells in place rather than synchronously.
+
+== In-place update error ==
+
+If changed cells immediately affect later cells during the same generation, the simulation no longer implements standard Life.
+
+Correct computation conceptually uses:
+
+<pre>
+next = rule(current)
+current = next
+</pre>
+
+or an equivalent method preserving simultaneous state transition.
+
+== Pattern catalogs ==
+
+A large research and hobbyist community has cataloged enormous numbers of Life patterns, oscillators, spaceships, guns, logical constructions, and growth phenomena.
+
+Catalog evidence is valuable for known constructions.
+
+Claims about mathematical universality or undecidability should still be grounded in formal arguments rather than pattern popularity.
+
+== Life-like cellular automata ==
+
+Life belongs to the family of outer-totalistic two-state cellular automata on the Moore neighborhood.
+
+Other rules can be written in B/S notation.
+
+Small rule changes can produce qualitatively different dynamics.
+
+Therefore observations about B3/S23 should not automatically be generalized to all cellular automata.
+
+== Biological analogy ==
+
+Gardner's original presentation emphasized analogies to birth, death, and populations.<ref name="gardner" />
+
+The analogy is useful pedagogically.
+
+Life cells lack:
+
+* metabolism;
+* biochemical heredity;
+* cells in the biological sense;
+* evolution by natural selection in the base rule;
+* subjective experience.
+
+Life is not evidence that biological life can be reduced to B3/S23.
+
+== Artificial life ==
+
+Life influenced [[Artificial life]] because it demonstrates complex, persistent, and computational structures in an artificial rule-based world.
+
+Artificial-life researchers use cellular automata among many other models.
+
+Life is one historically important substrate, not a complete theory of living systems.
+
+== Epistemic boundary ==
+
+Conway's Game of Life establishes that a deterministic local rule can support rich emergent structure and universal computation.
+
+It does not establish that complexity, computation, biological life, intelligence, or consciousness are equivalent.
+
+Each stronger claim requires separate definitions and evidence.
 
 == Semantic relationships ==
+
 * [[Related to::Automaton (computation)]]
 * [[Related to::Computation]]
 * [[Related to::Turing completeness]]
 * [[Related to::Emergence]]
 * [[Related to::Self-organization]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Conway's Game of Life]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Mathematics]]

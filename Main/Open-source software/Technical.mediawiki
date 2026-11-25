@@ -1,18 +1,592 @@
-'''Open-source software''' is software distributed under a license that permits users to inspect, use, modify and redistribute its source code under defined conditions.
+{{Reading depth|base=Open-source software|current=Technical}}
 
-== Licensing and governance ==
-The Open Source Initiative's Open Source Definition requires more than source availability, including redistribution and permission for derived works without discrimination against persons or fields of endeavor. Permissive licenses such as MIT and Apache-2.0 generally allow broad reuse subject to conditions; copyleft licenses such as GPLv3 impose reciprocal conditions on certain distributions of covered derivatives. Exact obligations depend on the license and how software is combined and distributed; do not infer them solely from the project label.
+= Open-source software — Technical =
 
-== Engineering lifecycle ==
-Open repositories can support transparent issue tracking, code review, reproducible builds and public release history. A project may still accept contributions only after maintainer review. Separate licensing from governance, release integrity and dependency security. An openly licensed dependency can contain vulnerabilities or unreviewed changes; source availability creates an opportunity for inspection, not proof that inspection occurred.
+'''Open-source software''' is software distributed under a license satisfying defined legal criteria for source availability, modification, redistribution, derived works, and nondiscriminatory use. Technical evaluation must therefore separate four layers:
 
-== Evaluation and adoption ==
-Evaluate release provenance, tests, maintainer responsiveness, supported versions, dependency licenses and security disclosures. Reproducible builds can compare artifacts from independent build environments. Assess sustainability through maintenance capacity rather than stars alone. Open-source software differs from open data, open access and open standards, which concern different artifacts and rights.
+# '''license rights''' — what users are legally permitted to do;
+# '''governance''' — who controls the official project;
+# '''engineering quality''' — how the software is developed and maintained;
+# '''supply-chain trust''' — whether distributed artifacts and dependencies are authentic and secure.
+
+The Open Source Definition (OSD) supplies the licensing baseline. It explicitly requires more than source-code visibility.<ref name="osi">[https://opensource.org/osd Open Source Initiative, “The Open Source Definition.”]</ref>
+
+
+Open-source software development combines the production of [[Code]] with coordination, review, and distributed maintenance. Its engineering practice therefore intersects with [[Algorithm engineering]] and [[Knowledge management]], while its contributor and dependency networks can also be studied as a [[Knowledge ecosystem]].
+
+== Formal rights model ==
+
+Let software artifact <math>S</math> be distributed under license <math>L</math>.
+
+A simplified rights set is
+
+<math>R_L=\{run,inspect,modify,redistribute,redistribute\_modified\}.</math>
+
+A source-visible license may expose source while withholding one or more required rights.
+
+Therefore:
+
+<pre>
+source visible ≠ open source
+</pre>
+
+under the OSD.
+
+Licensing also imposes obligations <math>O_L</math>, such as preserving notices, providing corresponding source under specified conditions, or retaining license text.
+
+An adopter must evaluate both <math>R_L</math> and <math>O_L</math>.
+
+== Open Source Definition ==
+
+The OSD includes ten criteria covering:
+
+* free redistribution;
+* source code;
+* derived works;
+* integrity of the author's source code;
+* nondiscrimination against persons or groups;
+* nondiscrimination against fields of endeavor;
+* distribution of license;
+* license not specific to a product;
+* license not restricting other software;
+* technology neutrality.<ref name="osi" />
+
+These criteria are licensing rules, not a software-development methodology.
+
+An OSS project can use centralized development and still satisfy them.
+
+== Free software comparison ==
+
+The Free Software Foundation defines free software through four essential freedoms: run, study/change, redistribute, and distribute modified versions.<ref name="fsf">[https://www.gnu.org/philosophy/free-sw.html GNU Project, “The Free Software Definition.”]</ref>
+
+The practical license sets overlap heavily.
+
+The philosophical distinction matters historically:
+
+* free-software discourse treats user freedom as the primary ethical objective;
+* open-source discourse has commonly emphasized licensing, development practice, and practical collaboration.
+
+The categories should not be treated as exact synonyms in historical analysis.
+
+== License taxonomy ==
+
+Let license policy be represented by tuple
+
+<math>L=(R,O,P,C),</math>
+
+where:
+
+* <math>R</math> = granted rights;
+* <math>O</math> = redistribution obligations;
+* <math>P</math> = patent terms;
+* <math>C</math> = compatibility constraints.
+
+=== Permissive licenses ===
+
+Permissive licenses generally have broad <math>R</math> and relatively small <math>O</math>.
+
+Typical obligations include preserving copyright and license notices.
+
+Apache-2.0 additionally includes an explicit contributor patent grant for patent claims necessarily infringed by contributed code, with termination conditions for specified patent litigation.<ref name="apache">[https://www.apache.org/licenses/LICENSE-2.0.html Apache Software Foundation, ''Apache License, Version 2.0''.]</ref>
+
+=== Copyleft ===
+
+Copyleft adds reciprocal obligations when covered derivative or combined works are conveyed.
+
+A simplified relationship is:
+
+<pre>
+receive freedoms
+→ distribute covered derivative
+→ preserve required freedoms
+</pre>
+
+The exact boundary of a derivative work, linking treatment, source obligations, and network use depends on the license.
+
+Weak and strong copyleft licenses differ in the scope of reciprocity.
+
+== Compatibility graph ==
+
+License compatibility can be modeled as directed graph
+
+<math>G_L=(V_L,E_L)</math>
+
+where an edge <math>L_i\rightarrow L_j</math> indicates that code under <math>L_i</math> can be incorporated into a work distributed under <math>L_j</math> under the relevant conditions.
+
+Compatibility is directional.
+
+If <math>L_i\rightarrow L_j</math>, the reverse need not hold.
+
+The graph also depends on:
+
+* version;
+* optional clauses;
+* linking;
+* distribution model;
+* patent provisions.
+
+Automated scanners can identify licenses but cannot resolve every legal interpretation.
+
+== SPDX and machine-readable licensing ==
+
+SPDX identifiers provide standardized short names for licenses and support machine-readable software inventories.
+
+A package manifest can record
+
+<math>component=(name,version,license,source,hash).</math>
+
+Machine-readable metadata improves compliance and supply-chain analysis.
+
+It does not guarantee that the declared license matches every file.
+
+File-level review may still be required.
+
+== Governance model ==
+
+Represent project governance as
+
+<math>G=(M,R,D,A),</math>
+
+where:
+
+* <math>M</math> = maintainers;
+* <math>R</math> = roles;
+* <math>D</math> = decision procedures;
+* <math>A</math> = authority boundaries.
+
+Possible structures include:
+
+* single lead maintainer;
+* maintainer council;
+* foundation board;
+* technical steering committee;
+* corporate control.
+
+Governance influences project risk independently of license.
+
+A permissively licensed project can still have a single maintainer with exclusive release authority.
+
+== Contribution pipeline ==
+
+A mature contribution flow may be:
+
+<pre>
+issue / proposal
+→ branch
+→ tests
+→ review
+→ security checks
+→ merge
+→ release
+</pre>
+
+Acceptance criteria can include:
+
+* unit and integration tests;
+* static analysis;
+* style checks;
+* compatibility review;
+* security review;
+* documentation.
+
+Public pull requests create inspectable history.
+
+They do not establish that review quality is high.
+
+== Maintainer concentration ==
+
+Let contribution or review share of maintainer <math>i</math> be <math>s_i</math>.
+
+A concentration measure is
+
+<math>HHI=\sum_i s_i^2.</math>
+
+High concentration can indicate single-maintainer dependency.
+
+However, raw commit counts are imperfect because release authority, issue triage, security response, and architectural knowledge may be concentrated differently.
+
+A stronger audit maps distinct critical roles.
+
+== Bus factor ==
+
+The bus factor is the number of people whose loss would seriously impair project continuity.
+
+A qualitative bus factor of one is a major continuity risk.
+
+It should be estimated from:
+
+* code ownership;
+* release credentials;
+* infrastructure access;
+* domain knowledge;
+* security processes.
+
+Contributor count alone can overstate resilience.
+
+== Forkability ==
+
+Legal forkability follows from license rights.
+
+Operational forkability depends on external resources.
+
+Define practical fork cost
+
+<math>C_f=C_{code}+C_{infra}+C_{trademark}+C_{community}+C_{data}+C_{distribution}.</math>
+
+If proprietary data or infrastructure dominate <math>C_f</math>, open-source licensing may provide weak practical independence.
+
+Forkability should therefore be evaluated empirically.
+
+== Security threat model ==
+
+Open-source projects face ordinary software threats plus ecosystem threats:
+
+* compromised maintainer credentials;
+* malicious commits;
+* dependency confusion;
+* typosquatting;
+* compromised build systems;
+* malicious package releases;
+* abandoned dependencies;
+* social engineering.
+
+OpenSSF guidance recommends checking maintenance, authenticity, repository security, security policy, dependency practices, secure defaults, tests, audits, and vulnerability response before adoption.<ref name="openssf">[https://best.openssf.org/Concise-Guide-for-Evaluating-Open-Source-Software.html OpenSSF, “Concise Guide for Evaluating Open Source Software.”]</ref>
+
+== Dependency graph ==
+
+Let dependency graph be
+
+<math>G_D=(V,E)</math>,
+
+with edge <math>a\rightarrow b</math> meaning component <math>a</math> depends on <math>b</math>.
+
+Transitive closure identifies hidden dependencies.
+
+Attack surface can increase with dependency count, but raw count alone is not a risk metric.
+
+A small critical dependency can matter more than many low-risk ones.
+
+Assess:
+
+* privilege;
+* reachability;
+* update mechanism;
+* maintainer trust;
+* known vulnerabilities.
+
+== Software bill of materials ==
+
+An SBOM records components and versions.
+
+A minimal component record includes:
+
+<math>c=(name,version,supplier,license,identifier).</math>
+
+SBOMs support vulnerability impact analysis and licensing review.
+
+They do not prove that the build actually used the declared components unless tied to build provenance.
+
+== Provenance ==
+
+Software provenance records how an artifact was produced.
+
+A provenance graph may include:
+
+* source commit;
+* dependencies;
+* build environment;
+* build command;
+* builder identity;
+* artifact hash;
+* signing key.
+
+Provenance improves traceability.
+
+A signed malicious artifact remains malicious, so provenance must be paired with trust and review.
+
+== Reproducible builds ==
+
+Let build function be
+
+<math>B(S,E)\rightarrow A,</math>
+
+where <math>S</math> is source, <math>E</math> environment, and <math>A</math> artifact.
+
+A reproducible build aims for
+
+<math>B(S,E_1)=B(S,E_2)</math>
+
+for independently controlled compatible environments, usually evaluated through cryptographic hashes.
+
+Reproducibility detects some build tampering and nondeterminism.
+
+It does not validate source correctness.
+
+== Release authenticity ==
+
+Users should verify they obtained an authorized release rather than a malicious fork or typosquatted package.
+
+Possible controls include:
+
+* signed tags;
+* signed packages;
+* trusted repository namespace;
+* hash verification;
+* provenance attestations.
+
+Package-name similarity should not be treated as identity.
+
+== Vulnerability management ==
+
+A project should provide a private vulnerability-reporting path for undisclosed issues.
+
+Workflow:
+
+<pre>
+private report
+→ triage
+→ fix
+→ coordinated release
+→ advisory
+→ downstream update
+</pre>
+
+Publishing a zero-day immediately can expose downstream users before a patch is available.
+
+Security policy should identify supported versions and response expectations.
+
+== Patch latency ==
+
+Define patch latency
+
+<math>L_p=t_{fixed\ release}-t_{confirmed\ vulnerability}.</math>
+
+Lower latency is generally desirable.
+
+But a rushed patch can introduce regressions.
+
+Measure both response time and fix quality.
+
+== Dependency update friction ==
+
+Outdated dependencies can persist because of breaking API changes.
+
+Let migration cost from version <math>v</math> to <math>v+1</math> be <math>C_m</math>.
+
+High <math>C_m</math> delays security updates.
+
+Stable interfaces and migration tooling can therefore improve supply-chain security.
+
+== "Many eyes" condition ==
+
+Suppose defect <math>d</math> is visible to <math>n</math> reviewers, each independently detecting it with probability <math>p_i</math>.
+
+Detection probability is
+
+<math>P(detected)=1-\prod_i(1-p_i).</math>
+
+The expression shows why visibility alone is insufficient.
+
+If reviewers do not inspect the relevant code or <math>p_i\approx0</math>, many nominal observers provide little assurance.
+
+Independence is also unrealistic when reviewers share tools or assumptions.
+
+== Testing ==
+
+A healthy OSS project can use:
+
+* unit tests;
+* integration tests;
+* fuzzing;
+* property tests;
+* static analysis;
+* dynamic analysis.
+
+Coverage percentage is not sufficient.
+
+A test suite can cover lines without testing meaningful security properties.
+
+Evaluate test quality against failure modes.
+
+== Sustainability ==
+
+Maintenance capacity is a system resource.
+
+Let maintenance demand be <math>D_m</math> and available maintainer capacity <math>C_m</math>.
+
+When
+
+<math>D_m>C_m</math>,
+
+backlogs increase.
+
+Possible outcomes:
+
+* delayed releases;
+* unresolved security issues;
+* burnout;
+* reduced review quality.
+
+Funding and contributor growth can increase capacity, but coordination costs also rise.
+
+== Funding models ==
+
+OSS funding sources include:
+
+* corporate sponsorship;
+* foundations;
+* donations;
+* public grants;
+* support contracts;
+* hosted services;
+* commercial dual licensing.
+
+Funding does not automatically control governance, though it can influence priorities.
+
+Projects should disclose major institutional dependencies.
+
+== Dual licensing ==
+
+A copyright holder may offer the same code under multiple licenses.
+
+Example model:
+
+<pre>
+open-source license
++
+commercial license with different obligations
+</pre>
+
+Dual licensing requires sufficient copyright control or contributor agreements.
+
+Community contributions can complicate relicensing if rights are distributed among many authors.
+
+== Source-available licenses ==
+
+Source-available licenses expose source but restrict rights such as production use, commercial competition, redistribution, or service offering.
+
+Those restrictions can place the license outside the OSD.
+
+Therefore:
+
+<pre>
+source available ≠ open source
+</pre>
+
+unless the license independently satisfies the definition.
+
+== Open standards ==
+
+An open standard and open-source implementation solve different coordination problems.
+
+A standard defines interfaces or formats.
+
+OSS supplies an implementation.
+
+Interoperability is strongest when:
+
+* standards are public;
+* multiple independent implementations exist;
+* conformance tests are available.
+
+One open-source implementation alone can still become a de facto monopoly.
+
+== Open science reproducibility ==
+
+For computational research, reproducibility can require:
+
+<math>R=(code,data,environment,parameters,workflow).</math>
+
+Open-source code exposes only one component.
+
+Missing data or dependency versions can prevent reproduction.
+
+Research repositories should preserve environment manifests and exact revisions.
+
+== Adoption risk scoring ==
+
+A project-evaluation function can be written
+
+<math>Risk=w_1S+w_2M+w_3D+w_4L+w_5G,</math>
+
+where:
+
+* <math>S</math> = security risk;
+* <math>M</math> = maintenance risk;
+* <math>D</math> = dependency risk;
+* <math>L</math> = licensing risk;
+* <math>G</math> = governance risk.
+
+Weights should reflect application consequence.
+
+A low-risk command-line utility and a safety-critical library require different thresholds.
+
+== AI-generated contributions ==
+
+AI code assistants create new OSS governance questions:
+
+* provenance of generated code;
+* license contamination risk;
+* security quality;
+* attribution;
+* review load.
+
+Generated contributions should be reviewed under the same or stronger engineering controls as human-authored code.
+
+Automation can increase submission volume faster than maintainer capacity.
+
+== Open-source AI boundary ==
+
+Software-oriented definitions assume source code is the preferred form for modification.
+
+A machine-learning model may depend on:
+
+* code;
+* weights;
+* training data;
+* data-processing pipeline;
+* architecture;
+* hyperparameters.
+
+Releasing only weights or only inference code may not provide the same modifiability as releasing all relevant artifacts.
+
+Claims of “open-source AI” therefore require a definition tailored to AI artifacts rather than casual analogy to ordinary OSS.
+
+== Evaluation protocol ==
+
+Before adopting a dependency:
+
+# identify authoritative upstream;
+# verify license;
+# inspect maintenance activity;
+# map direct and transitive dependencies;
+# evaluate security process;
+# test build and integration;
+# verify latest supported release;
+# inspect vulnerability history;
+# assess governance and bus factor;
+# define update and exit plan.
+
+OpenSSF's evaluation guidance specifically recommends checking authenticity, maintenance, security, testing, licensing, adoption, and practical behavior.<ref name="openssf" />
+
+== Epistemic boundary ==
+
+Open-source status is a licensing classification.
+
+It does not imply a quality ranking.
+
+A proprietary project can be secure and well maintained; an open-source project can be abandoned or vulnerable.
+
+The value of open source lies in rights and possibilities for inspection, modification, redistribution, independent maintenance, and collaboration. Whether those possibilities are realized is an empirical engineering and governance question.
 
 == References ==
-* [https://opensource.org/osd Open Source Initiative, The Open Source Definition]
-* [https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License version 3]
-* [https://www.apache.org/licenses/LICENSE-2.0 Apache License version 2.0]
+
+<references />
+
+* [https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License version 3.]
+* [https://www.apache.org/legal/apply-license Apache Software Foundation, guidance on applying Apache-2.0.]
+* [https://openssf.org/resources/guides/ OpenSSF security and project-evaluation guides.]
 
 == Reading depth ==
-[[Open-source software/Simple|Simple explanation]]
+
+[[Open-source software/Simple|Simple explanation]] · [[Open-source software|Core article]]

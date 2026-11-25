@@ -2,29 +2,350 @@
  |title=Self-organized criticality
  |entity_type=Concept
  |domain=Physics, Mathematics, Systems science, Computer science
- |provenance=Bak; Bak; Breakdown of self-organized criticality in sandpiles
+ |status=Supported
+ |provenance=Bak, Tang and Wiesenfeld (1987, 1988); Frette et al. (1996); critical-phenomena literature
 }}
-<onlyinclude>{{:Self-organized criticality/Simple}}</onlyinclude>
+{{Reading depth|base=Self-organized criticality|current=Core}}
 
-'''Reading depth:''' [[Self-organized criticality/Simple|Simple]] · [[Self-organized criticality/Technical|Technical]]
+= Self-organized criticality =
+
+'''Self-organized criticality''' (SOC) is a proposed class of behavior in driven, dissipative dynamical systems that evolve toward a critical-like state without precise external tuning of an ordinary control parameter. Near such a state, events can occur across many scales and statistical observables may show scale invariance, long-range correlations, or avalanche distributions without one characteristic event size.
+
+Per Bak, Chao Tang, and Kurt Wiesenfeld introduced the concept in 1987 and developed it in 1988 as a possible explanation for scale-free structure and <math>1/f</math>-like noise in spatially extended systems.<ref name="btw1987">[https://doi.org/10.1103/PhysRevLett.59.381 Bak, P., Tang, C., and Wiesenfeld, K. (1987), “Self-Organized Criticality: An Explanation of 1/f Noise,” ''Physical Review Letters'' 59, 381–384.]</ref><ref name="btw1988">[https://doi.org/10.1103/PhysRevA.38.364 Bak, P., Tang, C., and Wiesenfeld, K. (1988), “Self-organized criticality,” ''Physical Review A'' 38, 364–374.]</ref>
+
+SOC is influential but should be applied carefully. Power laws, bursty events, or complex behavior by themselves do not establish a self-organized critical mechanism.
+
+== Criticality ==
+
+In equilibrium statistical physics, critical points occur at phase transitions where correlation lengths become large and systems can display scale invariance.
+
+Classic examples require tuning a control parameter such as temperature toward a critical value.
+
+SOC proposes a different route.
+
+The internal dynamics of some slowly driven dissipative systems can move them toward a critical-like regime without an experimenter repeatedly adjusting an external parameter to the critical point.
+
+== Driven dissipative systems ==
+
+Canonical SOC models contain:
+
+* external drive;
+* local thresholds;
+* relaxation or redistribution;
+* dissipation;
+* many interacting degrees of freedom.
+
+The drive adds energy or material slowly.
+
+Threshold crossings trigger cascades.
+
+Dissipation prevents indefinite accumulation.
+
+The separation between slow drive and fast relaxation is important in many models.
+
+== Bak–Tang–Wiesenfeld sandpile ==
+
+The best-known SOC model is a cellular-automaton sandpile.
+
+Each lattice site holds an integer height.
+
+Grains are added slowly.
+
+When a site exceeds a threshold, it topples and redistributes grains to neighbors.
+
+This can trigger neighboring sites to topple.
+
+The cascade continues until all sites are stable.
+
+Grains reaching open boundaries leave the system, providing dissipation.
+
+== Avalanche ==
+
+An '''avalanche''' is the chain of activity triggered by one drive event.
+
+Avalanche quantities can include:
+
+* size — number of topplings;
+* area — number of distinct sites involved;
+* duration;
+* released energy.
+
+SOC predicts broad event-size distributions over ranges that grow with system size.
+
+The details depend on model and definition.
+
+== Scale invariance ==
+
+A scale-free distribution has no single characteristic event scale over the relevant range.
+
+A simple candidate form is
+
+<math>P(s)\propto s^{-\tau}.</math>
+
+Finite systems cannot support an infinite pure power law.
+
+Large events are cut off by finite system size.
+
+Therefore realistic analysis uses finite-size scaling rather than fitting one line to a log-log plot.
+
+== Finite-size scaling ==
+
+A common form is
+
+<math>P(s;L)\sim s^{-\tau}F(s/L^D),</math>
+
+where:
+
+* <math>L</math> is system size;
+* <math>\tau</math> is an avalanche exponent;
+* <math>D</math> controls the cutoff scale;
+* <math>F</math> is a scaling function.
+
+If data from different system sizes collapse after rescaling, the evidence for scaling is much stronger than a single apparent heavy tail.
+
+== Power laws are not sufficient ==
+
+Many mechanisms produce heavy-tailed distributions.
+
+Possible alternatives include:
+
+* lognormal processes;
+* multiplicative growth;
+* mixtures of exponentials;
+* preferential attachment;
+* thresholded noise.
+
+Therefore:
+
+<pre>
+power law
+≠ self-organized criticality
+</pre>
+
+A SOC claim needs evidence about the generating dynamics.
+
+== Statistical fitting ==
+
+Power-law fitting should specify:
+
+* lower cutoff;
+* exponent estimate;
+* uncertainty;
+* goodness of fit;
+* comparison with alternatives.
+
+Least-squares fitting on log-log axes can produce biased estimates.
+
+Finite sample size can make a non-power-law distribution appear straight over a short range.
+
+== Stationarity ==
+
+SOC models often approach a statistically stationary driven state.
+
+After transient behavior, average inflow is balanced by dissipation.
+
+Measurements should exclude or separately analyze the transient.
+
+A changing trend can create apparent long-range correlations that do not reflect criticality.
+
+== Time-scale separation ==
+
+The standard sandpile picture adds one grain only after the previous avalanche ends.
+
+This separates:
+
+* slow drive;
+* fast relaxation.
+
+Real systems can be driven continuously.
+
+Avalanches can overlap.
+
+When time-scale separation fails, the canonical SOC mechanism can change or disappear.
+
+== Conservation and dissipation ==
+
+Bulk redistribution in many sandpile models is locally conservative.
+
+Dissipation occurs at boundaries.
+
+This structure helps produce long-range cascades.
+
+Nonconservative models can also show critical-like behavior, but the mechanism and universality class can differ.
+
+Conservation should therefore be stated rather than assumed.
+
+== Universality ==
+
+Critical systems can share exponents even when microscopic details differ.
+
+This is called universality.
+
+SOC research has sought analogous universality classes.
+
+However, not all driven threshold systems share one set of exponents.
+
+Update rules, dimensionality, conservation, disorder, and stochasticity matter.
+
+== Real sandpiles ==
+
+The sandpile is an analogy as well as a model.
+
+Real granular materials involve:
+
+* friction;
+* particle shape;
+* inertia;
+* rolling;
+* packing.
+
+They do not automatically behave like the BTW cellular automaton.
+
+Frette and colleagues found SOC-like avalanche behavior in elongated rice grains but not in less elongated grains, showing that granular criticality depends on dissipation details rather than being universally insensitive to material properties.<ref name="rice">[https://doi.org/10.1038/379049a0 Frette, V. et al. (1996), “Avalanche dynamics in a pile of rice,” ''Nature'' 379, 49–52.]</ref>
+
+== Breakdown in granular systems ==
+
+Models can reproduce near-SOC behavior at small scale and large characteristic avalanches at larger scale.
+
+Vieira's 2002 analysis explicitly examined breakdown of SOC-like behavior in sandpile models designed to resemble experimental granular systems.<ref name="breakdown">[https://doi.org/10.1103/PhysRevE.66.051306 Vieira, M. de S. (2002), “Breakdown of self-organized criticality in sandpiles,” ''Physical Review E'' 66, 051306.]</ref>
+
+This reinforces the need to distinguish idealized SOC from actual granular dynamics.
+
+== <math>1/f</math> noise ==
+
+The original SOC papers connected critical dynamics with flicker or <math>1/f</math> noise.
+
+A power spectrum can have approximate form
+
+<math>S(f)\propto f^{-\beta}.</math>
+
+Many other mechanisms can also generate <math>1/f</math>-like spectra.
+
+Spectral slope alone is therefore not evidence of SOC.
+
+== Earthquakes ==
+
+Earthquake distributions and fault models have motivated SOC analogies.
+
+Seismicity shows scale-free features such as Gutenberg–Richter magnitude statistics.
+
+But earthquake physics includes:
+
+* stress transfer;
+* friction;
+* fault geometry;
+* tectonic loading.
+
+A power law in earthquake size does not by itself identify SOC as the mechanism.
+
+== Solar activity ==
+
+Avalanche models have been applied to solar flares and magnetospheric phenomena.
+
+Such applications can be useful when they generate testable predictions.
+
+The physical driving, dissipation, and coupling should be mapped explicitly rather than inferred from burst statistics alone.
+
+== Neural systems ==
+
+Neural avalanches have been interpreted through criticality and SOC frameworks.
+
+Evidence includes scale-free-like event distributions in some preparations.
+
+Competing explanations and sampling effects remain important.
+
+Neural criticality is not synonymous with SOC.
+
+A system can be near a critical point because of regulatory tuning rather than self-organization in the BTW sense.
+
+== Ecology and social systems ==
+
+SOC has also been proposed for ecological, economic, and social processes.
+
+These applications require exceptional caution.
+
+Adaptive agents, institutions, strategic behavior, and nonstationary environments can violate the assumptions of simple driven threshold models.
+
+Metaphorical similarity to avalanches is not enough.
+
+== SOC and self-organization ==
+
+[[Self-organization]] is broader than SOC.
+
+A system can self-organize into:
+
+* patterns;
+* oscillations;
+* synchronized states;
+
+without being critical.
+
+SOC is a specific hypothesis about self-organization toward a critical-like state.
+
+== SOC and emergence ==
+
+[[Emergence]] is also broader.
+
+All SOC models exhibit emergent system-level statistics.
+
+Not all emergent systems are critical.
+
+The concepts should not be used interchangeably.
+
+== Simulation requirements ==
+
+A credible SOC simulation should report:
+
+* lattice size;
+* boundary conditions;
+* driving rule;
+* toppling rule;
+* update order;
+* avalanche definition;
+* transient removal;
+* random seeds.
+
+Results should be repeated across sizes.
+
+Scaling exponents can depend on implementation details.
+
+== Experimental test ==
+
+A strong empirical SOC test asks:
+
+# Is the system driven and dissipative?
+# Does it approach a stationary state?
+# Is there evidence of scale invariance across increasing system sizes?
+# Are temporal and spatial correlations consistent with criticality?
+# Does a plausible self-tuning mechanism exist?
+# Do alternative models fit equally well?
+
+This is stronger than checking one event histogram.
+
+== Epistemic status ==
+
+SOC is an established theoretical framework with rigorously studied models and important experimental examples.
+
+Its application to any particular real-world system is a separate empirical claim.
+
+The correct stance is therefore:
+
+<pre>
+SOC exists as a model class
+but a power law does not prove a real system is SOC
+</pre>
 
 == Semantic relationships ==
+
 * [[Related to::Self-organization]]
 * [[Related to::Complex system]]
 * [[Related to::Emergence]]
 * [[Related to::Conway's Game of Life]]
 * [[Related to::Scaling]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Self-organized criticality]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Physics]]
 [[Category:Mathematics]]

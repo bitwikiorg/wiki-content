@@ -1,17 +1,503 @@
-'''Situated cognition''' is a family of approaches that emphasize how thinking and learning depend on the activity, environment, body and social context in which they occur.
+{{Reading depth|base=Situated cognition|current=Technical}}
 
-== Theoretical origins ==
-Brown, Collins and Duguid (1989) argued that knowledge is partly constituted by the activity and culture in which it is developed and used, with implications for cognitive apprenticeship. Later reviews describe several overlapping situated approaches: embodied, enacted, social and distributed cognition. They differ in how strongly they reject internal representations or extend cognition beyond the individual.
+= Situated cognition — Technical =
 
-== Operational hypotheses ==
-Contrast performance under authentic and decontextualized tasks while matching content, prior experience and incentives. Vary access to relevant tools or social support; measure both immediate performance and transfer to a new context. A context effect may arise from retrieval cues, affordances, familiarity or collaboration. Distinguish these explanations rather than treat an effect as proof of an entire theoretical framework.
+'''Situated cognition''' is a family of theories in which cognitive activity is analyzed as context-sensitive and dynamically coupled to bodily action, material environments, social interaction, tools, and cultural practice. The family includes situated learning, embodied cognition, enactivism, distributed cognition, ecological psychology, and related interactionist traditions.
 
-== Applications and boundaries ==
-Educational design may include authentic practice, modeling, scaffolding and gradual transfer. Robotics can exploit environmental structure to reduce internal computation, but this does not establish human-like cognition. Situated cognition concerns the significance of context; distributed cognition more specifically studies coordination across people and artifacts, and embodied cognition emphasizes bodily processes. The distinctions are analytical, with overlap among traditions.
+Roth and Jornet characterize the situated cognition hypothesis as a set of interlocking theses: cognition is embodied, social, distributed, enacted, and often works without representation.<ref name="roth">[https://doi.org/10.1002/wcs.1242 Roth, W.-M. and Jornet, A. (2013), “Situated cognition,” ''WIREs Cognitive Science'' 4(5), 463–478.]</ref>
+
+The theses should be tested separately rather than treated as one indivisible theory.
+
+
+Situated cognition treats cognitive activity as dependent on ongoing relations among agent, task, body, and environment. It overlaps with [[Distributed cognition]] when cognitive work extends across people and artifacts, with [[Sensory processing]] through perception–action coupling, and with [[Intersubjectivity]] when shared situations depend on mutual understanding.
+
+== Formal context dependence ==
+
+Classical context-free model:
+
+<math>y=f(x).</math>
+
+Situated model:
+
+<math>y=f(x,c,b,h,s),</math>
+
+where:
+
+* <math>c</math> = environmental context;
+* <math>b</math> = bodily state;
+* <math>h</math> = interaction history;
+* <math>s</math> = social structure.
+
+The basic empirical claim is that these variables explain meaningful variance in cognition or performance.
+
+The stronger theoretical claim is that some of them are constitutive components rather than merely causal inputs.
+
+== Causal versus constitutive dependence ==
+
+Suppose notebook <math>N</math> helps person solve task.
+
+A weak claim:
+
+<math>N\rightarrow performance.</math>
+
+The notebook causally affects cognition.
+
+A stronger distributed claim:
+
+<pre>
+person + notebook
+constitute one cognitive system
+for this task
+</pre>
+
+The distinction concerns system boundaries.
+
+Evidence that removing the notebook impairs performance establishes causal dependence, not automatically constitutive inclusion.
+
+== Situation as task structure ==
+
+Let nominal problem be <math>P</math>.
+
+Real cognitive task is
+
+<math>T=F(P,tools,conventions,goals,environment).</math>
+
+Changing tools or social rules can change the computational structure of <math>T</math> even if the abstract problem statement is unchanged.
+
+A navigation problem with GPS is computationally different from navigation using dead reckoning.
+
+== Situated action ==
+
+Suchman's analysis emphasizes that plans guide action but do not fully determine moment-to-moment behavior.
+
+A reactive formulation is
+
+<math>a_t=\pi(g,x_t,h_t),</math>
+
+where <math>g</math> is goal and <math>x_t</math> the current local situation.
+
+Action is continuously updated from feedback.
+
+A fixed plan model instead approximates:
+
+<math>a_{1:T}=Plan(g,x_0).</math>
+
+Real activity often lies between these extremes.
+
+== Affordances ==
+
+Let agent capabilities be <math>C_A</math> and environmental properties <math>E</math>.
+
+Affordance set can be represented as
+
+<math>\mathcal A=F(C_A,E).</math>
+
+A stairway affords climbing for some agents but not others.
+
+Affordances are relational rather than purely environmental.
+
+Experimental study can manipulate either environment or agent capability.
+
+== Cognitive offloading ==
+
+Agents often externalize memory or computation.
+
+Suppose internal memory cost for task is <math>C_i</math> and external tool use cost is <math>C_e</math>.
+
+Offloading is advantageous when
+
+<math>C_e<C_i</math>
+
+subject to reliability and access.
+
+Examples:
+
+* notes;
+* calculators;
+* calendars;
+* diagrams;
+* search engines.
+
+Offloading can improve immediate performance while changing what is internally learned.
+
+== External representations ==
+
+External representation <math>R_e</math> can change problem complexity.
+
+For example, arranging objects spatially can make a constraint visible without explicit symbolic calculation.
+
+The cognitive process becomes:
+
+<math>state_{internal} \leftrightarrow R_e \leftrightarrow action.</math>
+
+This recurrent loop is central to many situated accounts.
+
+== Distributed computation ==
+
+Let agents <math>A_i</math> and artifacts <math>O_j</math> each perform transformations.
+
+A distributed process can be modeled as graph
+
+<math>G=(V,E),</math>
+
+where vertices are people or artifacts and edges transmit representational states.
+
+System-level output depends on sequence of transformations.
+
+No single node must contain the complete procedure.
+
+== Navigation example ==
+
+In a navigation team:
+
+* one person observes position;
+* another reads chart;
+* instruments stabilize measurements;
+* procedures coordinate updates.
+
+The computation is distributed across roles and artifacts.
+
+This does not imply the ship is conscious.
+
+Distributed cognition concerns organization of cognitive work.
+
+== Situated learning ==
+
+Let competence be <math>K_t</math> and participation state <math>P_t</math>.
+
+Situated learning models can treat learning as change in participation:
+
+<math>P_{t+1}=F(P_t,community,activity,feedback).</math>
+
+Knowledge acquisition is then partly social-role change rather than only accumulation of internal propositions.
+
+This framework is especially useful for apprenticeship and professional training.
+
+== Legitimate peripheral participation ==
+
+Newcomer begins with low-risk tasks near the edge of practice.
+
+Over time:
+
+<pre>
+observe
+→ assist
+→ perform partial tasks
+→ perform central tasks
+→ mentor others
+</pre>
+
+Participation provides access to tools, language, norms, and expert feedback.
+
+The trajectory is not guaranteed; exclusion and power can block movement.
+
+== Transfer model ==
+
+Let learning context be <math>C_1</math> and target context <math>C_2</math>.
+
+Transfer performance can depend on representational similarity:
+
+<math>T=F(K,S(C_1,C_2),cues,practice).</math>
+
+Situated theories predict transfer decreases when relevant cues and practices differ.
+
+Explicit abstraction and varied practice can increase invariance across contexts.
+
+== Near and far transfer ==
+
+'''Near transfer''' occurs between similar tasks.
+
+'''Far transfer''' occurs across substantially different contexts.
+
+Far transfer is generally harder.
+
+A claim that authentic learning improves transfer should specify which target contexts are tested.
+
+Authenticity can improve one context while narrowing performance elsewhere.
+
+== Multiple-context training ==
+
+Suppose skill is learned in contexts
+
+<math>C=\{C_1,\ldots,C_n\}.</math>
+
+Variation can help learner infer invariant structure.
+
+This provides one way to reconcile situated learning with abstraction.
+
+Abstraction can emerge from comparison across situated experiences rather than preceding them.
+
+== Retrieval cues ==
+
+Context effects can arise from memory retrieval.
+
+Let probability of recall be
+
+<math>P(R)=F(overlap(C_{learn},C_{test})).</math>
+
+This classical context-dependent-memory mechanism can explain some situated effects without stronger claims about extended cognition.
+
+Experiments should distinguish retrieval-cue explanations from constitutive-context explanations.
+
+== Familiarity confound ==
+
+Authentic tasks can be easier because participants are more familiar.
+
+If performance difference is
+
+<math>\Delta P=P_{auth}-P_{abstract},</math>
+
+the effect may decompose into:
+
+<math>\Delta P=\Delta familiarity+\Delta tools+\Delta motivation+\Delta structure.</math>
+
+A strong experiment manipulates these components separately.
+
+== Social scaffolding ==
+
+Let learner capability be <math>C_L</math> and task difficulty <math>D</math>.
+
+Scaffolding <math>S</math> can enable success when
+
+<math>C_L<D\le C_L+S.</math>
+
+Effective scaffolding decreases as independent skill grows.
+
+Permanent assistance can improve performance without producing learning.
+
+Transfer tests therefore matter.
+
+== Cognitive apprenticeship ==
+
+Cognitive apprenticeship commonly includes:
+
+* modeling;
+* coaching;
+* scaffolding;
+* articulation;
+* reflection;
+* exploration.
+
+A rigorous evaluation should compare components, not treat the package as one mechanism.
+
+Outcome measures can include:
+
+* immediate performance;
+* retention;
+* transfer;
+* strategy explanation.
+
+== Situated language ==
+
+Indexicals illustrate context dependence.
+
+Meaning of “here” can be represented as
+
+<math>reference=F(expression,speaker,time,location).</math>
+
+The lexical item alone underdetermines reference.
+
+Situated cognition extends this general lesson to action and reasoning.
+
+== Enactivist coupling ==
+
+Let agent state <math>x_t</math> and environment <math>e_t</math> evolve:
+
+<math>x_{t+1}=F(x_t,e_t),</math>
+
+<math>e_{t+1}=G(e_t,x_t).</math>
+
+Agent and environment form a coupled dynamical system.
+
+This does not prove that the combined system should always be called cognitive.
+
+The boundary remains theoretical.
+
+== Dynamical systems approach ==
+
+Behavior can be described by continuous dynamics:
+
+<math>\dot x=F(x,u,e).</math>
+
+Attractors can represent stable action patterns.
+
+Dynamical models can explain coordination without discrete symbolic rules.
+
+But symbolic and dynamical descriptions are not always mutually exclusive.
+
+Different explanatory levels can coexist.
+
+== Representation debate ==
+
+A representational model posits internal state <math>r</math> standing for relevant external variables.
+
+Anti-representational situated models attempt to explain behavior through direct coupling and control.
+
+Empirical discrimination requires tasks where representation generates different predictions.
+
+A robot solving one reactive task without representation does not establish a universal cognitive principle.
+
+== Extended cognition ==
+
+A stronger thesis proposes that external artifacts can become proper parts of a cognitive system when coupling is reliable and functionally integrated.
+
+Candidate criteria include:
+
+* automatic availability;
+* reliable access;
+* habitual use;
+* transparent interaction.
+
+These criteria are philosophically debated.
+
+They are not equivalent to mere causal influence.
+
+== Predictive processing relation ==
+
+Predictive-processing models are often internalist but deeply context-sensitive.
+
+They can incorporate action and body through active inference.
+
+This shows that context sensitivity does not logically require rejection of internal representation.
+
+Situated and representational approaches can overlap.
+
+== Robotics ==
+
+Behavior-based robotics can implement:
+
+<math>a_t=\pi(s_t)</math>
+
+with minimal world model.
+
+Layered reactive controllers can generate robust behavior in real time.
+
+Benefits include:
+
+* low latency;
+* reduced model complexity;
+* direct sensorimotor coupling.
+
+Limitations include:
+
+* long-horizon planning;
+* counterfactual reasoning;
+* hidden-state inference.
+
+Hybrid architectures combine reactive and model-based control.
+
+== Human–computer interaction ==
+
+Workflows should be studied in natural context.
+
+Ethnographic observation can reveal:
+
+* interruptions;
+* workarounds;
+* informal coordination;
+* tool switching;
+* hidden dependencies.
+
+Laboratory usability tests can miss these effects.
+
+Field studies sacrifice experimental control.
+
+Mixed methods provide stronger inference.
+
+== Learning analytics ==
+
+Digital learning systems collect traces such as clicks and completion times.
+
+Situated interpretation requires context.
+
+A long pause can mean:
+
+* confusion;
+* reflection;
+* interruption;
+* offline work.
+
+Behavior logs do not directly encode cognition.
+
+== Context generalization ==
+
+Machine-learning systems face analogous distribution shift.
+
+Training distribution <math>P_{train}(x)</math> can differ from deployment distribution <math>P_{test}(x)</math>.
+
+Situated AI design can explicitly represent environment and tool context.
+
+The analogy is useful but human context includes social meaning not captured by statistical distribution alone.
+
+== Tool-augmented artificial agents ==
+
+Let agent policy depend on internal model <math>M</math> and tools <math>T</math>:
+
+<math>a=\pi(x,M,T).</math>
+
+Tool access can dramatically change capability.
+
+The correct evaluation compares:
+
+* model alone;
+* model + retrieval;
+* model + tools;
+* humans with same tools.
+
+Capability should be attributed to the actual system configuration.
+
+== Social interaction ==
+
+Interactive cognition can involve joint state:
+
+<math>x_t=(x_t^A,x_t^B).</math>
+
+Each participant acts partly in response to the other.
+
+Individual-level analysis can miss reciprocal causation.
+
+Conversation analysis and joint-action experiments capture temporal coupling.
+
+== Cultural practices ==
+
+Task structure depends on learned conventions.
+
+A legal document, scientific graph, or programming repository becomes usable through community-specific skills.
+
+Culture therefore supplies action possibilities and interpretive rules.
+
+This does not mean physical reality is determined by culture.
+
+== Empirical research program ==
+
+For situated hypothesis:
+
+# define cognitive outcome;
+# define context variable;
+# manipulate or compare contexts;
+# control familiarity and difficulty;
+# measure transfer;
+# identify mechanism;
+# test alternative explanations.
+
+The experiment should distinguish “context matters” from stronger boundary claims.
+
+== Epistemic status ==
+
+Evidence strongly supports context-sensitive cognition.
+
+Evidence for specific embodied, distributed, extended, or anti-representational theses varies by task and definition.
+
+The correct scientific unit is the particular hypothesis, not the slogan “cognition is situated.”
 
 == References ==
-* [https://doi.org/10.3102/0013189X018001032 Brown, Collins and Duguid (1989), Situated Cognition and the Culture of Learning]
-* [https://pubmed.ncbi.nlm.nih.gov/26304240/ Situated cognition, interdisciplinary review]
+
+<references />
+
+* [https://doi.org/10.3102/0013189X018001032 Brown, Collins and Duguid (1989), “Situated Cognition and the Culture of Learning.”]
+* Suchman, L. A. (1987), ''Plans and Situated Actions''.
+* Lave, J. and Wenger, E. (1991), ''Situated Learning''.
 
 == Reading depth ==
-[[Situated cognition/Simple|Simple explanation]]
+
+[[Situated cognition/Simple|Simple explanation]] · [[Situated cognition|Core article]]

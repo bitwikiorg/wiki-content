@@ -1,17 +1,550 @@
-'''Sensory processing''' is the transformation and organization of signals from sensory receptors and neural pathways. It allows organisms to respond to features such as light, sound, touch, body position and chemicals.
+{{Reading depth|base=Sensory processing|current=Technical}}
 
-== Transduction and coding ==
-Sensory receptors respond to particular forms of physical or chemical stimulation. Mechanoreceptors respond to deformation, photoreceptors to light and chemoreceptors to chemical conditions. Transduction mechanisms convert stimulation into graded cellular responses or downstream spike activity. Receptive fields describe regions or stimulus dimensions influencing a neuron's response. Adaptation can alter sensitivity over time; coding depends on the sensory modality, stimulus and circuit.
+= Sensory processing — Technical =
 
-== Computational and physiological analysis ==
-A simple tuning model expresses firing rate r as a function of stimulus x and context c. Measure repeated trials to estimate response distributions rather than equate a single spike count with the stimulus. Signal detection theory distinguishes sensitivity from decision criterion: under equal-variance Gaussian assumptions <math>d'=\Phi^{-1}(H)-\Phi^{-1}(F)</math> for hit rate H and false-alarm rate F. These behavioral estimates do not identify the specific neural circuit without additional evidence.
+'''Sensory processing''' is the transformation of physical or chemical variables into neural activity and the subsequent coding, transmission, integration, adaptation, and interpretation of that activity by nervous systems. The field spans receptor biophysics, neural coding, systems neuroscience, psychophysics, multisensory integration, attention, perception, and sensorimotor control.
 
-== Integration and limitations ==
-Neural responses may depend on prior context, attention and signals from other modalities. Psychophysics, electrophysiology and imaging provide complementary measurements with different resolution and confounds. Distinguish neural transduction, conscious perception and clinically assessed sensory difficulties; broad behavioral labels are not diagnoses. In engineered systems, sensors and signal processors can perform analogous transformations without implying that they experience sensations.
+A rigorous account distinguishes:
+
+<pre>
+stimulus
+→ transduction
+→ neural representation
+→ decision / behavior
+→ perception
+</pre>
+
+These levels interact but are not interchangeable.
+
+
+Sensory processing begins with physical or chemical [[Signal|signals]] and converts them into neural activity from which organisms can guide [[Behavior]]. The relationship to [[Information]] depends on the coding model being used, and sensory representations should not be conflated with [[Consciousness]], because substantial processing can occur without reported awareness.
+
+== Stimulus and transduction ==
+
+Let physical or chemical stimulus be <math>s(t)</math>.
+
+A receptor implements a nonlinear transformation
+
+<math>r(t)=T[s(t),z(t)]+\eta(t),</math>
+
+where <math>z(t)</math> represents receptor state and <math>\eta(t)</math> internal variability.
+
+The transduction function can involve:
+
+* photon absorption;
+* mechanically gated channels;
+* ligand binding;
+* temperature-sensitive channels;
+* electrochemical gradients.
+
+Different receptor classes therefore implement different transformations.
+
+== Receptor potential and spikes ==
+
+Many receptors generate a graded receptor potential <math>V_r</math>.
+
+Spike generation then maps membrane state into action potentials.
+
+One simplified model is
+
+<math>\lambda(t)=f(V_r(t)),</math>
+
+where <math>\lambda(t)</math> is instantaneous firing intensity.
+
+The transformation is stochastic.
+
+A single spike is not a deterministic symbol for one stimulus value.
+
+== Dynamic range ==
+
+Neural responses saturate.
+
+A sigmoidal response model is
+
+<math>r(s)=r_{min}+\frac{r_{max}-r_{min}}{1+e^{-k(s-s_0)}}.</math>
+
+Sensitivity is highest near the steep region.
+
+Adaptation can shift <math>s_0</math> or change gain <math>k</math> so the system remains responsive over changing stimulus ranges.
+
+== Weber fraction ==
+
+For some stimulus domains, just-noticeable difference approximately scales with baseline magnitude:
+
+<math>\frac{\Delta I}{I}=k.</math>
+
+This is Weber's law.
+
+It is an approximation that holds over limited ranges and modalities.
+
+The Weber fraction <math>k</math> depends on task and sensory dimension.
+
+== Fechner relation ==
+
+Under assumptions linking Weber's law to accumulated just-noticeable differences, perceived magnitude can be approximated by
+
+<math>S=k\log\frac{I}{I_0}.</math>
+
+This historical psychophysical relation is not universal.
+
+Other modalities and ranges are better described by power laws or probabilistic models.
+
+== Stevens power law ==
+
+A common descriptive relation is
+
+<math>\psi=kI^a,</math>
+
+where exponent <math>a</math> varies across stimulus dimensions.
+
+Psychophysical laws are empirical approximations.
+
+Their fitted parameters depend on measurement method.
+
+== Receptive field ==
+
+For neuron <math>i</math>, receptive field can be represented as set
+
+<math>R_i=\{x: stimulus\ at\ x\ changes\ response_i\}.</math>
+
+In linear approximation, response can be modeled as
+
+<math>r_i=\int w_i(x)s(x)dx.</math>
+
+Real neurons can have nonlinear, context-dependent receptive fields.
+
+The linear model remains useful for estimating first-order sensitivity.
+
+== Center–surround organization ==
+
+Some sensory neurons have antagonistic receptive fields.
+
+A simplified difference-of-Gaussians model is
+
+<math>w(x)=K_c e^{-x^2/2\sigma_c^2}-K_s e^{-x^2/2\sigma_s^2}.</math>
+
+Such organization emphasizes spatial contrast rather than absolute intensity.
+
+This is prominent in retinal and early visual processing.
+
+== Tuning curves ==
+
+A neuron selective for stimulus parameter <math>\theta</math> can have tuning curve
+
+<math>r(\theta)=r_0+A\exp[\kappa\cos(\theta-\theta_0)].</math>
+
+A von Mises form is useful for circular variables such as orientation or direction.
+
+Tuning width and preferred value characterize selectivity.
+
+One tuning curve does not establish perceptual importance.
+
+== Population coding ==
+
+Let population response be
+
+<math>\mathbf r=(r_1,\ldots,r_n).</math>
+
+Estimator
+
+<math>\hat s=g(\mathbf r)</math>
+
+can recover stimulus variable from population pattern.
+
+Population decoding performance provides an upper bound on information available to an idealized decoder under the chosen model.
+
+It does not prove that downstream neurons use that exact decoder.
+
+== Fisher information ==
+
+For likelihood <math>p(\mathbf r\mid s)</math>, Fisher information is
+
+<math>J(s)=E\left[\left(\frac{\partial}{\partial s}\log p(\mathbf r\mid s)\right)^2\right].</math>
+
+Under regularity conditions, estimator variance is bounded by the Cramér–Rao relation:
+
+<math>Var(\hat s)\ge 1/J(s).</math>
+
+This links neural response statistics to theoretical discrimination precision.
+
+The bound need not be achieved by biological behavior.
+
+== Mutual information ==
+
+Mutual information between stimulus <math>S</math> and response <math>R</math> is
+
+<math>I(S;R)=\sum_{s,r}p(s,r)\log\frac{p(s,r)}{p(s)p(r)}.</math>
+
+It quantifies statistical dependence.
+
+It does not identify semantics or subjective content.
+
+Estimation from limited neural data can be biased.
+
+== Temporal coding ==
+
+Spike timing can carry information beyond mean rate.
+
+Possible representations include:
+
+* latency;
+* phase locking;
+* interspike intervals;
+* synchrony;
+* temporal sequences.
+
+Auditory systems can preserve fine timing with sub-millisecond precision in specialized pathways.
+
+Other sensory computations integrate over much longer windows.
+
+== Spike-train models ==
+
+A Poisson model represents spike count <math>N</math> over interval <math>T</math> as
+
+<math>P(N=n)=\frac{(\lambda T)^n e^{-\lambda T}}{n!}.</math>
+
+Real neurons often violate Poisson assumptions through refractoriness, bursting, adaptation, and correlated network activity.
+
+Use the model as baseline, not default truth.
+
+== Neural variability ==
+
+Fano factor is
+
+<math>F=\frac{Var(N)}{E[N]}.</math>
+
+Poisson count statistics give <math>F=1</math>.
+
+Observed values can differ substantially.
+
+Variability can depend on behavioral state, stimulus, cortical area, and timescale.
+
+== Correlated noise ==
+
+For neurons <math>i,j</math>, noise correlation is
+
+<math>\rho_{ij}=Corr(r_i-E[r_i\mid s],r_j-E[r_j\mid s]).</math>
+
+Correlated noise can limit population information because averaging no longer removes shared error efficiently.
+
+Its effect depends on relationship between correlation structure and tuning.
+
+== Topographic maps ==
+
+Sensory surfaces are often mapped into neural coordinates.
+
+Examples:
+
+* retinotopy;
+* somatotopy;
+* tonotopy.
+
+A map can be warped.
+
+Cortical magnification allocates disproportionate tissue to behaviorally important regions such as foveal vision or fingertips.
+
+Topography reflects computational priorities, not physical scale alone.
+
+== Lateral inhibition ==
+
+Neighboring pathways can inhibit one another.
+
+A simplified discrete model:
+
+<math>y_i=x_i-\alpha(x_{i-1}+x_{i+1}).</math>
+
+This sharpens spatial contrast under some conditions.
+
+Excessive simplification should be avoided because real inhibitory circuits are recurrent and state-dependent.
+
+== Adaptation ==
+
+Let response gain depend on stimulus distribution parameters <math>\theta_t</math>.
+
+Adaptive coding can update:
+
+<math>\theta_{t+1}=\theta_t+\eta G(s_t,\theta_t).</math>
+
+The system trades off rapid adjustment against stable encoding.
+
+Młynarski and Hermundstad formalized this adaptation tradeoff from an efficient-coding perspective.<ref name="adaptive">[https://doi.org/10.1038/s41593-021-00846-0 Młynarski, W. and Hermundstad, A. M. (2021), “Efficient and adaptive sensory codes,” ''Nature Neuroscience'' 24, 998–1009.]</ref>
+
+== Efficient coding ==
+
+Efficient-coding hypotheses propose that sensory systems allocate limited neural resources to represent environmentally useful variation.
+
+For input distribution <math>p(s)</math>, code can be optimized under constraints such as:
+
+* firing cost;
+* noise;
+* dynamic range;
+* reconstruction error.
+
+Efficient coding is a normative hypothesis.
+
+Observed neural codes can deviate because of developmental, metabolic, task, or evolutionary constraints.
+
+== Predictive coding ==
+
+Predictive-coding models represent sensory responses partly as prediction errors.
+
+A simplified hierarchy:
+
+<math>e=s-\hat s.</math>
+
+Higher levels generate predictions <math>\hat s</math>; lower levels communicate mismatch <math>e</math>.
+
+Predictive coding is influential but is a family of models rather than a single established neural algorithm.
+
+Specific circuit claims require direct experimental evidence.
+
+== Signal detection theory ==
+
+Let internal response to noise be
+
+<math>X_N\sim N(\mu_N,\sigma)</math>
+
+and signal-plus-noise be
+
+<math>X_S\sim N(\mu_S,\sigma).</math>
+
+Sensitivity:
+
+<math>d'=\frac{\mu_S-\mu_N}{\sigma}.</math>
+
+Behaviorally:
+
+<math>d'=Z(H)-Z(F),</math>
+
+where <math>H</math> is hit rate and <math>F</math> false-alarm rate.
+
+Criterion can shift without changing <math>d'</math>.
+
+This separates sensory discriminability from response bias.
+
+== ROC curves ==
+
+Changing decision threshold generates receiver-operating-characteristic curve.
+
+Area under curve quantifies discrimination independent of one chosen criterion.
+
+ROC analysis is useful for both behavioral and neural decoding.
+
+AUC does not identify the underlying mechanism.
+
+== Multisensory integration ==
+
+Suppose two independent sensory estimates have variances <math>\sigma_1^2</math> and <math>\sigma_2^2</math>.
+
+Minimum-variance linear integration weights them approximately by reliability:
+
+<math>w_1=\frac{1/\sigma_1^2}{1/\sigma_1^2+1/\sigma_2^2},</math>
+
+<math>w_2=1-w_1.</math>
+
+Combined variance is
+
+<math>\sigma_c^2=\frac{1}{1/\sigma_1^2+1/\sigma_2^2}.</math>
+
+Human behavior approximates reliability weighting in some multisensory tasks.
+
+It is not universal.
+
+== Causal inference in multisensory perception ==
+
+Before combining cues, the system can infer whether they share one cause.
+
+For visual and auditory observations <math>v,a</math>:
+
+<math>P(C=1\mid v,a)</math>
+
+can determine how strongly the cues are integrated.
+
+Large spatial or temporal discrepancies reduce common-cause probability.
+
+This explains why multisensory integration is context-sensitive.
+
+== Thalamocortical processing ==
+
+The thalamus is not a simple relay.
+
+Sensory pathways interact with thalamic circuits, cortical feedback, and state-dependent modulation.
+
+Recent reviews emphasize modality-specific thalamocortical wiring and transthalamic contributions to perception.<ref name="thalamus">[https://doi.org/10.1038/s41583-025-00945-y Guillamón-Vivancos et al. (2025), “Sensory modality-specific wiring of thalamocortical circuits,” ''Nature Reviews Neuroscience''.]</ref>
+
+Circuit interpretation should therefore avoid linear “receptor → relay → cortex” oversimplification.
+
+== Attention ==
+
+Attentional modulation can change response magnitude, variability, and effective information transmission.
+
+A simple gain model:
+
+<math>r_{att}=g r_{base}.</math>
+
+Real effects can alter tuning, correlations, and decision weighting.
+
+Attention operates at multiple processing stages.
+
+== Top-down modulation ==
+
+Sensory responses depend on:
+
+* expectation;
+* task;
+* learning;
+* motor preparation;
+* internal state.
+
+This does not mean perception is arbitrary.
+
+Bottom-up constraints and top-down modulation interact.
+
+== Perceptual decision-making ==
+
+A sequential sampling model integrates noisy evidence:
+
+<math>dx=\mu dt+\sigma dW_t.</math>
+
+Decision occurs when accumulated evidence reaches boundary <math>\pm B</math>.
+
+Drift-diffusion models explain accuracy and reaction-time distributions in many simple tasks.
+
+A behavioral fit does not identify one unique neural implementation.
+
+== Sensory-motor feedback ==
+
+Active sensing couples movement to input.
+
+For control policy <math>a_t</math>:
+
+<math>s_{t+1}=F(environment,a_t).</math>
+
+Eye movements, whisking, sniffing, head movements, and touch all alter future sensory input.
+
+Passive-stimulus experiments capture only part of natural sensory processing.
+
+== Perceptual learning ==
+
+Training can improve discrimination.
+
+Possible mechanisms include:
+
+* reweighting existing signals;
+* altered tuning;
+* decision learning;
+* attention.
+
+Behavioral improvement should not automatically be attributed to sensory cortex plasticity without neural evidence.
+
+== Development ==
+
+Sensory circuits develop through genetic programs, spontaneous activity, and experience.
+
+Critical or sensitive periods exist for some systems.
+
+Developmental deprivation can alter cortical maps.
+
+Plasticity remains possible in adults but differs by system and task.
+
+== Clinical lesion inference ==
+
+Neurological lesions can dissociate processing stages.
+
+Loss of sensation can result from damage to receptor, nerve, spinal cord, thalamus, or cortex.
+
+Clinical localization combines pattern of deficit with neuroanatomy.
+
+A symptom label alone does not specify lesion level.
+
+== Imaging limitations ==
+
+fMRI measures hemodynamic signals correlated with neural activity.
+
+EEG and MEG measure electrical or magnetic population signals.
+
+Neither directly records single-neuron spiking in routine human studies.
+
+Spatial and temporal resolution differ.
+
+Inference should match modality limitations.
+
+== Single-neuron recording limitations ==
+
+A recorded neuron is a sample from a large population.
+
+Selection bias can occur because some cells are easier to isolate.
+
+A few well-tuned neurons do not establish the full population code.
+
+Population recordings and causal perturbations strengthen inference.
+
+== Engineered sensors ==
+
+An engineered sensor implements transduction and signal processing analogous at a functional level to biological systems.
+
+For device:
+
+<math>y=T(x)+\eta.</math>
+
+Calibration estimates <math>T</math> and noise.
+
+Engineered systems can perform multimodal fusion and adaptive filtering.
+
+These operations do not establish phenomenal sensation.
+
+== Conscious awareness boundary ==
+
+Neural encoding and subjective awareness are different scientific targets.
+
+A stimulus can alter neural activity without entering reportable awareness.
+
+Conversely, conscious percepts can be influenced by expectation and internal dynamics.
+
+Evidence of sensory discrimination should not be presented as direct evidence of consciousness.
+
+== Reproducible sensory experiment ==
+
+A strong sensory experiment reports:
+
+# calibrated stimulus;
+# timing;
+# participant or organism state;
+# trial count;
+# response definition;
+# randomization;
+# exclusion criteria;
+# analysis model;
+# uncertainty.
+
+Psychophysical, electrophysiological, and imaging measurements should be aligned temporally and conceptually when combined.
+
+== Epistemic boundary ==
+
+Sensory processing research spans multiple transformations.
+
+A defensible inference preserves the chain:
+
+<pre>
+physical stimulus
+→ receptor transduction
+→ neural activity
+→ population representation
+→ decision
+→ behavior / report
+→ perceptual claim
+</pre>
+
+Evidence at one level does not automatically establish every later level.
 
 == References ==
-* [https://www.ncbi.nlm.nih.gov/books/NBK10955/ Purves et al., Neuroscience, Part II: Sensation and Sensory Processing]
-* [https://www.ocw.mit.edu/courses/res-6-dtsp-discrete-time-signal-processing/ MIT OpenCourseWare, Discrete-Time Signal Processing]
+
+<references />
+
+* [https://www.ncbi.nlm.nih.gov/books/NBK10955/ Purves et al., ''Neuroscience'', Sensation and Sensory Processing.]
+* [https://www.ncbi.nlm.nih.gov/books/NBK92848/ Murray and Wallace, eds., ''The Neural Bases of Multisensory Processes''.]
+* [https://neurology.mhmedical.com/Content.aspx?bookId=1049&sectionId=59138649 Kandel et al., ''Principles of Neural Science'', Sensory Coding.]
 
 == Reading depth ==
-[[Sensory processing/Simple|Simple explanation]]
+
+[[Sensory processing/Simple|Simple explanation]] · [[Sensory processing|Core article]]

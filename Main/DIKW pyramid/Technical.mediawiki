@@ -1,18 +1,213 @@
-The '''DIKW pyramid''' is a conceptual model that distinguishes data, information, knowledge and wisdom. It often depicts data as the bottom layer and wisdom as the top. The diagram is used to discuss how recorded observations can become useful for understanding and decisions.
+{{Reading depth|base=DIKW pyramid|current=Technical}}
 
-== Intellectual history ==
-Ackoff's 1989 account is a prominent formulation. Rowley's 2007 review compared definitions and transformations across textbooks and found varying accounts; Frické (2009) criticized the pyramid's assumptions and offered alternative conceptions. It is a pedagogical and management framework, not a law of cognition.
+= DIKW pyramid — Technical =
 
-== Distinguishing transformations ==
-A possible workflow is observation → record → contextual interpretation → justified claim → decision. Each arrow requires assumptions: units, measurement validity, background knowledge, evidence, goals and values. A database record may already encode a theory, while a domain expert can recognize a pattern before formal data collection. Knowledge-how may be tacit and is not necessarily produced by aggregating records. Wisdom is a normative and practical concept rather than a computable monotonic quantity.
+The '''DIKW pyramid''' is a family of hierarchical models relating data, information, knowledge, and wisdom. It has substantial historical importance in information science and [[Knowledge management]], but it does not constitute a unified formal theory. Different authors supply incompatible definitions, transformations, additional layers, and graphical forms. Its technical analysis therefore concerns the model's conceptual structure, epistemological assumptions, operational use, and limitations rather than a single accepted mathematical mechanism.<ref name="rowley">[https://doi.org/10.1177/0165551506070706 Rowley, J. (2007), “The wisdom hierarchy: representations of the DIKW hierarchy,” ''Journal of Information Science'' 33(2), 163–180.]</ref>
 
-== Evaluation in an information system ==
-For an environmental monitoring workflow, document the sensor calibration, metadata, processing code, inferential model and uncertainty separately from the action decision. Test the accuracy of reported observations, predictive validity of explanations and consequences of the decision against independent benchmarks. Such checks can improve a workflow but do not test whether there is a single universal DIKW ordering. No quantitative conversion from Shannon bits to wisdom follows from the diagram.
+== Historical formulations ==
+
+Russell Ackoff's influential 1989 paper proposed five categories of mental content:
+
+<pre>
+data → information → knowledge → understanding → wisdom
+</pre>
+
+Ackoff associated data with symbols, information with processed data answering descriptive questions, knowledge with application or know-how, understanding with explanation, and wisdom with evaluated understanding and value judgment.<ref name="ackoff">[https://www.researchgate.net/profile/Rob-Keller/post/Original_paper_of_From_data_to_wisdom_by_Ackoff_1989/attachment/63f67d8997e2867d5081d0de/AS%3A11431281121841684%401677098376991/download/Ackoff89.pdf Ackoff, R. L. (1989), “From Data to Wisdom,” ''Journal of Applied Systems Analysis'' 16, 3–9.]</ref>
+
+This is not identical to the later four-letter DIKW shorthand. Other formulations by Zeleny and subsequent information-systems authors relate the levels to distinctions such as know-what, know-how, and know-why. Some omit wisdom; some add understanding, enlightenment, evidence, or other stages. The familiar triangular pyramid is a retrospective graphical convention rather than a uniquely authored canonical diagram.
+
+Rowley's 2007 literature review is important precisely because it showed that the hierarchy was widely reproduced without consensus over either level definitions or the transformations connecting them.<ref name="rowley" />
+
+== Formalizing a DIKW claim ==
+
+A DIKW model can be represented abstractly as an ordered set of representational states
+
+<math>D \rightarrow I \rightarrow K \rightarrow W,</math>
+
+with transformations
+
+<math>f:D\rightarrow I,\quad g:I\rightarrow K,\quad h:K\rightarrow W.</math>
+
+The notation exposes the model's central problem: unless the domains and functions are operationally specified, the arrows are merely labels. A claim that “context converts data into information,” for example, must define context, the input representation, the output representation, and criteria for successful conversion.
+
+For realistic inquiry, transformations are rarely functions of the lower layer alone. A more plausible expression is
+
+<math>I=f(D,C,Q,M),</math>
+
+where <math>C</math> is context, <math>Q</math> a question or task, and <math>M</math> an interpretive model. Likewise, a knowledge claim may depend on information, prior knowledge <math>K_0</math>, [[Evidence]] <math>E</math>, inferential rules <math>R</math>, and uncertainty <math>U</math>:
+
+<math>K'=g(I,K_0,E,R,U).</math>
+
+This does not define knowledge philosophically; it demonstrates why a simple unary ascent is under-specified.
+
+== Data are not theory-free ==
+
+DIKW diagrams often place “raw data” at the base, implying a neutral starting point. Scientific data are usually already products of representational choices.
+
+A measurement record depends on:
+
+* which variable was selected;
+* an operational definition;
+* a measurement scale and units;
+* sensor or observer characteristics;
+* sampling design;
+* calibration;
+* preprocessing;
+* missing-data rules;
+* metadata and provenance.
+
+Thus [[Measurement]] involves prior conceptual and technical commitments. A voltage sample becomes a temperature estimate only through a calibration model; a questionnaire response depends on item construction and coding; a database field presupposes a schema.
+
+This creates a feedback relation:
+
+<pre>
+prior knowledge/theory → measurement design → data
+          ↑                              ↓
+        revision ← interpretation/testing
+</pre>
+
+The result is incompatible with a strict view in which knowledge arises only after data in a one-way sequence.
+
+== Information: semantic and mathematical meanings ==
+
+In many DIKW accounts, information is “processed,” “organized,” “contextualized,” or “meaningful” data. These descriptions mix structural, functional, and semantic criteria.
+
+[[Information theory]] uses a different framework. For a discrete random variable <math>X</math> with distribution <math>p(x)</math>, Shannon entropy is
+
+<math>H(X)=-\sum_x p(x)\log p(x).</math>
+
+This is a property of a probability distribution. It does not quantify truth, relevance, explanation, understanding, or wisdom. Shannon explicitly bracketed semantic aspects in his engineering theory of communication.
+
+Therefore no legitimate general equation converts an increase in Shannon information into an increase in DIKW knowledge or wisdom.
+
+== Knowledge and evidence ==
+
+DIKW often defines knowledge in terms of information being internalized, applied, connected, or transformed into know-how. Such definitions may be useful operationally but do not resolve the epistemological problems studied under [[Knowledge]] and [[Epistemology]].
+
+A processed dataset can support a false conclusion because of confounding, measurement bias, model misspecification, selection effects, or statistical error. Reliable knowledge claims generally require relationships among:
+
+* evidence quality;
+* inference;
+* background assumptions;
+* reproducibility or replication where applicable;
+* explanatory alternatives;
+* calibrated [[Uncertainty]];
+* defeasibility and revision.
+
+This motivates DIKW variants that insert evidence between information and knowledge. A 2019 health-informatics proposal, for example, uses data–information–evidence–knowledge (DIEK) and emphasizes relevance, robustness, repeatability, and reproducibility.<ref name="diek">[https://pmc.ncbi.nlm.nih.gov/articles/PMC6435353/ “Data, Information, Evidence, and Knowledge: A Proposal for Health Informatics and Data Science” (2019).]</ref>
+
+The modification is not a universally accepted replacement, but it makes an epistemically important omission explicit.
+
+== Wisdom and normativity ==
+
+Wisdom is difficult to operationalize because it is typically normative. Proposed definitions involve sound judgment, long-range consequences, values, ethical discrimination, practical experience, or choosing appropriate ends rather than merely selecting efficient means.
+
+A decision procedure can be written schematically as
+
+<math>a^*=\arg\max_a E[U(a)\mid I],</math>
+
+where <math>U</math> is a utility function and <math>I</math> represents available information. But optimizing a specified utility function does not establish wisdom: the choice of goals, utility representation, affected parties, uncertainty model, and moral constraints remains external to the optimization.
+
+This is why machine optimization, predictive accuracy, and data volume should not be relabeled as wisdom without additional criteria.
+
+== Frické's critique ==
+
+Frické's 2009 critique argues that the standard knowledge pyramid is methodologically undesirable and rests on problematic operationalist and inductivist assumptions.<ref name="fricke2009">[https://doi.org/10.1177/0165551508094050 Frické, M. (2009), “The knowledge pyramid: a critique of the DIKW hierarchy,” ''Journal of Information Science'' 35(2), 131–142.]</ref>
+
+A central objection is that knowledge does not emerge through a purely bottom-up generalization from neutral data. Scientific inquiry normally begins with problems, conjectures, conceptual frameworks, and background knowledge. Evidence is selected and interpreted relative to those structures. A universal ascent from data to information to knowledge therefore reverses or suppresses important causal and epistemic dependencies.
+
+Frické's 2019 review further examines the hierarchy's history, later developments, criticisms, and rebuttals, concluding that the standard pyramid is generally unsatisfactory as a theoretical framework while remaining historically important.<ref name="fricke2019">[https://doi.org/10.5771/0943-7444-2019-1-33 Frické, M. (2019), “The Knowledge Pyramid: the DIKW Hierarchy,” ''Knowledge Organization'' 46(1), 33–46.]</ref>
+
+== Category and observer dependence ==
+
+DIKW classifications can shift with task and observer. Consider a stored equation or laboratory result. It can function as:
+
+* a byte sequence at the storage layer;
+* data for a parsing program;
+* information for a researcher who knows its provenance;
+* part of a body of knowledge if appropriately justified;
+* an input into a decision without itself constituting wisdom.
+
+This does not mean every distinction is arbitrary. It means the classification often depends on function, context, agent, and epistemic relation rather than solely on intrinsic features of the representation.
+
+A robust information architecture should therefore record provenance and role explicitly instead of assuming that the same object acquires a universally higher ontological status after processing.
+
+== Evaluation of DIKW-based systems ==
+
+A system claiming to implement DIKW should expose testable criteria for each layer.
+
+{| class="wikitable"
+! Claimed layer !! Operational questions
+|-
+| Data || What is observed or recorded? With what schema, units, provenance, calibration, and error?
+|-
+| Information || What transformation or contextualization is performed? For which task or recipient?
+|-
+| Knowledge || What claims or competencies result? How are they tested, justified, revised, and bounded?
+|-
+| Wisdom || What decisions are improved? According to which goals, values, consequences, and comparison baseline?
+|}
+
+Evaluation should measure actual performance rather than infer capability from labels. For example, a predictive model can be tested on held-out data; an explanatory model can be compared against alternatives; a decision rule can be evaluated for expected outcomes and robustness. A box labeled “knowledge” in an architecture diagram supplies no such evidence.
+
+== DIKW and artificial intelligence ==
+
+Applying DIKW to artificial agents is especially prone to anthropomorphic inflation.
+
+A computational pipeline may perform:
+
+<pre>
+sensor input
+→ structured records
+→ feature extraction
+→ statistical inference
+→ action selection
+</pre>
+
+These are real operations, but calling them data, information, knowledge, and wisdom adds conceptual claims that require independent justification.
+
+Possible measurable criteria include:
+
+* representational fidelity;
+* predictive calibration;
+* transfer to novel conditions;
+* causal intervention performance;
+* retrieval accuracy;
+* consistency under contradiction;
+* uncertainty calibration;
+* decision quality under explicit objectives;
+* robustness to distribution shift.
+
+None of these measures alone demonstrates wisdom, consciousness, or human-like understanding. The appropriate terminology depends on the capabilities actually established.
+
+== Knowledge-management use ==
+
+In [[Knowledge management]], DIKW can be useful as a diagnostic vocabulary if it prevents organizations from equating storage with understanding. A repository may contain records without making them discoverable; a dashboard may summarize information without establishing causal knowledge; an expert procedure may embody know-how without being fully expressible in documents.
+
+However, the same framework can become harmful when it encourages organizations to believe that adding processing stages automatically raises the epistemic quality of outputs. Governance should track source quality, provenance, versioning, review, uncertainty, and decision accountability independently of DIKW labels.
+
+== Alternative structures ==
+
+Alternatives to a strict pyramid include:
+
+* cyclic models in which knowledge guides data collection;
+* network models connecting evidence, models, claims, and decisions;
+* epistemic workflows emphasizing hypothesis testing and revision;
+* data–information–evidence–knowledge variants;
+* separate descriptive and normative layers rather than a single hierarchy.
+
+These alternatives should themselves be judged by explanatory and practical utility rather than treated as replacements merely because they are more complex.
+
+== Appropriate interpretation ==
+
+DIKW is most defensible as a heuristic that reminds analysts that recorded symbols, interpreted content, justified competence, and practical judgment are not identical. It becomes much less defensible when interpreted as a universal causal law, a quantitative scale, a cognitive architecture, or a proof that processing data necessarily creates knowledge.
+
+The burden of explanation lies in the arrows between the labels.
 
 == References ==
-* [https://doi.org/10.1177/0165551506070706 Rowley (2007), The wisdom hierarchy: representations of the DIKW hierarchy]
-* [https://doi.org/10.1177/0165551508094050 Frické (2009), The knowledge pyramid: a critique of the DIKW hierarchy]
-* [https://pmc.ncbi.nlm.nih.gov/articles/PMC6435353/ Data, Information, Evidence, and Knowledge (2019)]
+
+<references />
 
 == Reading depth ==
-[[DIKW pyramid/Simple|Simple explanation]]
+
+[[DIKW pyramid/Simple|Simple explanation]] · [[DIKW pyramid|Core article]]

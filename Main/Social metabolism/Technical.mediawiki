@@ -1,17 +1,348 @@
-'''Social metabolism''' (or societal metabolism) examines the flows of materials and energy between human societies and their environments. It includes extraction, production, consumption, accumulation and waste.
+{{Reading depth|base=Social metabolism|current=Technical}}
 
-== Intellectual history ==
-Fischer-Kowalski's 1998 review traces applications of metabolic thinking to societies and material-flow analysis. Fischer-Kowalski and Hüttler survey research across scales and flow types. Modern societal-metabolism analysis specifies a socioeconomic system boundary rather than treating society literally as a biological cell.
+= Social metabolism — Technical =
 
-== Material and energy accounting ==
-For a fixed material and consistent time interval, mass balance gives <math>\Delta S=I-O</math>, where S is stock and I and O are boundary inputs and outputs. If 100 tonnes enter and 75 tonnes leave, stock increases by 25 tonnes, assuming the accounting includes every relevant flow and transformation for the defined conserved quantity. Economy-wide accounts distinguish domestic extraction, imports, exports and changes in stock. Energy accounting requires explicit units and boundaries; energy quality and conversion efficiency cannot be inferred from total mass.
+'''Social metabolism''' is the quantitative and conceptual analysis of material and energy throughput supporting the biophysical reproduction of human societies. It provides a common framework for material-flow analysis, socioeconomic stock-flow accounting, energetic metabolism, and related social-ecological research.
 
-== Applications and limits ==
-Material-flow analysis, life-cycle assessment and input–output models answer different questions. Territorial accounting can miss impacts embodied in imports, while consumption-based accounting depends on supply-chain data. A reduction in material use per unit of output does not guarantee reduction in absolute consumption. Document uncertainty, stock lifetimes and classification rules. Physical throughput does not by itself explain social institutions, inequality or environmental justice.
+Unlike purely metaphorical uses of metabolism, technical social-metabolism analysis defines physical system boundaries and applies conservation constraints.
+
+
+Social metabolism extends the accounting logic of [[Metabolism]] from organisms to societal material and energy throughput, but the analogy is not an identity claim. Its system-level dynamics connect to [[Energy]], [[Complex system|complex systems]], and environmental feedback, which must be measured as physical flows rather than inferred from metaphor.
+
+== General stock-flow model ==
+
+Let socioeconomic system <math>S</math> contain stocks <math>\mathbf K(t)</math> and exchange material flows with environment and rest of world.
+
+For conserved material <math>m</math>:
+
+<math>\frac{dK_m}{dt}=I_m(t)-O_m(t).</math>
+
+In discrete accounting period <math>\Delta t</math>:
+
+<math>\Delta K_m=I_m-O_m.</math>
+
+Inputs can include domestic extraction, imports, and secondary materials crossing the boundary. Outputs can include exports, emissions, waste, and dissipative losses.
+
+Internal recycling does not cross the system boundary and should not be double counted as new input.
+
+== Economy-wide material-flow accounting ==
+
+For a national economy, define:
+
+<math>DE</math> = domestic extraction,
+
+<math>IMP</math> = imports,
+
+<math>EXP</math> = exports.
+
+Direct material input is
+
+<math>DMI=DE+IMP.</math>
+
+Domestic material consumption is
+
+<math>DMC=DE+IMP-EXP.</math>
+
+Physical trade balance is
+
+<math>PTB=IMP-EXP.</math>
+
+Net additions to stock estimate materials retained in buildings, infrastructure, and durable goods after accounting for relevant outputs.
+
+Eurostat's economy-wide material-flow accounts follow environmental-economic accounting conventions and the residence principle.<ref name="eurostat">[https://ec.europa.eu/eurostat/cache/metadata/EN/env_ac_mfa_simsmf_ie.htm Eurostat, “Material flow accounts,” metadata updated 21 April 2026.]</ref>
+
+== Direct versus upstream flows ==
+
+DMC is a direct territorial indicator. Suppose a country imports one tonne of refined metal whose production required several tonnes of ore and overburden abroad. Only the imported product mass enters direct national accounting.
+
+Raw-material-equivalent and material-footprint methods estimate upstream extraction embodied in trade.
+
+A simplified footprint relation is
+
+<math>MF=f(I-A)^{-1}y,</math>
+
+where <math>A</math> is an input-output coefficient matrix, <math>(I-A)^{-1}</math> the Leontief inverse, <math>y</math> final demand, and <math>f</math> an environmental extension measuring raw-material use per unit output.
+
+These estimates depend on sector resolution, trade data, concordance tables, and other modeling assumptions.
+
+== Stocks and residence time ==
+
+Let inflow to a durable stock be <math>I(t)</math> and the lifetime distribution be <math>p(\tau)</math>. Expected outflow can be represented as
+
+<math>O(t)=\int_0^\infty I(t-\tau)p(\tau)d\tau.</math>
+
+This relationship matters for infrastructure. Rapid construction creates future demolition and replacement flows even if new construction later stabilizes.
+
+Dynamic material-flow analysis uses lifetime distributions to estimate future scrap, recycling potential, maintenance demand, and replacement needs.
+
+== Mass-balance validation ==
+
+For each material category:
+
+<math>Residual=I-O-\Delta S.</math>
+
+A nonzero residual can indicate missing flows, measurement error, inconsistent classification, or timing mismatch.
+
+Residuals should be investigated and reported rather than silently forced to zero.
+
+== Energy accounting ==
+
+Energy metabolism should distinguish primary, final, and useful energy.
+
+A simplified conversion chain is
+
+<math>E_u=\eta_u\eta_fE_p,</math>
+
+where <math>E_p</math> is primary energy, <math>\eta_f</math> conversion to final energy, and <math>\eta_u</math> conversion to useful energy.
+
+Energy services lie farther downstream: mobility, thermal comfort, illumination, computation, and mechanical work.
+
+Comparing societies using primary energy alone can conceal differences in conversion efficiency and service structure.
+
+== Exergy ==
+
+Exergy measures the maximum useful work obtainable as a system comes into equilibrium with a specified environment.
+
+Energy is conserved, but exergy is destroyed by irreversible processes.
+
+Exergy can therefore distinguish energy quality more explicitly than total joules alone, especially when comparing electricity, high-temperature heat, and low-temperature heat.
+
+== Socio-metabolic regimes ==
+
+Social-ecological transition research distinguishes broad regimes based on dominant resource bases and energy systems.
+
+A stylized sequence is:
+
+<pre>
+hunter-gatherer
+→ agrarian biomass regime
+→ industrial fossil/mineral regime
+</pre>
+
+Indicators can include energy use per capita, material use per capita, land requirement, population density, and physical stock accumulation.
+
+These categories are analytical simplifications rather than universal stages.
+
+== MEFA ==
+
+Material and Energy Flow Analysis integrates physical throughput at socioeconomic scale.
+
+Standard accounts commonly distinguish material groups such as:
+
+* biomass;
+* metal ores;
+* nonmetallic minerals;
+* fossil energy carriers.
+
+Cross-country comparison requires harmonized definitions and conversion factors.
+
+High aggregation improves comparability but can hide material-specific toxicity, scarcity, and ecological consequences.
+
+== MuSIASEM ==
+
+Multi-Scale Integrated Analysis of Societal and Ecosystem Metabolism links metabolic variables across hierarchical scales.
+
+A common relation compares energy throughput <math>E</math> with human activity <math>HA</math>:
+
+<math>EMR=E/HA,</math>
+
+where <math>EMR</math> is an energy metabolic rate for a sector or activity.
+
+Different sectors can have very different metabolic rates. MuSIASEM therefore analyzes time allocation, energy use, land use, and economic function across scales instead of reducing the system to one national intensity.
+
+Aggregation consistency across scales is a major methodological challenge.
+
+== Human appropriation of net primary production ==
+
+Human appropriation of net primary production (HANPP) links social metabolism to ecosystem productivity.
+
+A common decomposition is
+
+<math>HANPP=\Delta NPP_{LC}+NPP_h,</math>
+
+where <math>\Delta NPP_{LC}</math> is the change in net primary production associated with land conversion and <math>NPP_h</math> is harvested biomass.
+
+Methodological definitions vary, so comparisons require consistent accounting conventions.
+
+== Urban metabolism ==
+
+For urban boundary <math>B</math>, metabolism can inventory
+
+<math>F=\{water,food,fuel,electricity,materials,waste,emissions\}.</math>
+
+Per-capita indicator for flow <math>i</math> is
+
+<math>f_i=F_i/P.</math>
+
+Administrative boundaries can separate city consumption from power generation, agriculture, mining, or waste treatment outside the city. Territorial accounts can therefore underestimate upstream and downstream pressures.
+
+Consumption-based methods broaden the boundary but add model uncertainty.
+
+== Carbon metabolism ==
+
+Fossil carbon input <math>C_f</math> can be partitioned among atmospheric emissions, other outputs, and stocks:
+
+<math>C_f=C_{CO2}+C_{other}+\Delta S_C.</math>
+
+When carbon is fully oxidized to carbon dioxide, mass conversion uses molecular-weight ratio <math>44/12</math>.
+
+Carbon-cycle accounting should be reconciled carefully with material-flow and greenhouse-gas inventory conventions.
+
+[[Carbon cycle]] analysis connects social throughput to Earth-system processes, but carbon is only one dimension of total material pressure.
+
+== Input-output extension ==
+
+Environmental input-output analysis uses technical coefficient matrix <math>A</math>. Total production required for final demand <math>y</math> is
+
+<math>x=(I-A)^{-1}y.</math>
+
+If <math>f</math> is resource use per unit output, a consumption footprint is
+
+<math>r=f(I-A)^{-1}y.</math>
+
+This traces indirect supply-chain requirements.
+
+Sector aggregation can blur heterogeneous technologies, and monetary coefficients can behave poorly when prices change sharply.
+
+== Material-flow analysis versus life-cycle assessment ==
+
+Material-flow analysis asks:
+
+<pre>
+where do materials flow and accumulate?
+</pre>
+
+Life-cycle assessment asks:
+
+<pre>
+what environmental impacts are associated with a functional unit across its life cycle?
+</pre>
+
+MFA can reveal system-scale mass throughput without characterizing toxicity or ecosystem damage.
+
+LCA can compare impacts for products or services without providing a complete regional mass balance.
+
+The methods are complementary.
+
+== Resource productivity and decoupling ==
+
+Resource productivity can be represented as
+
+<math>RP=GDP/DMC.</math>
+
+Growth in <math>RP</math> means direct material use per unit of measured economic output has fallen.
+
+'''Relative decoupling''' occurs when resource use grows more slowly than economic output.
+
+'''Absolute decoupling''' requires total relevant pressure to decline while output remains stable or grows.
+
+A credible claim should also check consumption-based footprints and environmental impact measures rather than relying on DMC alone.
+
+== Decomposition identities ==
+
+Total material use can be decomposed schematically:
+
+<math>M=P\times\frac{GDP}{P}\times\frac{M}{GDP},</math>
+
+where <math>P</math> is population.
+
+Changes can therefore be accounted for through population, affluence, and material intensity.
+
+This is an identity, not proof that those factors operate independently.
+
+== Rebound ==
+
+Suppose an efficiency improvement predicts engineering resource savings <math>S_e</math>, while observed savings are <math>S_a</math>.
+
+A rebound fraction can be written
+
+<math>R=1-\frac{S_a}{S_e}.</math>
+
+Definitions vary by context.
+
+A rebound below 100% preserves some savings; values above 100% are sometimes described as backfire.
+
+Magnitude must be estimated empirically.
+
+== Circularity ==
+
+Let secondary material input be <math>S</math> and total input be <math>I</math>. A simple circular-input share is
+
+<math>c=S/I.</math>
+
+This metric alone is insufficient because materials can degrade, become contaminated, remain locked in long-lived stocks, or be lost during recycling. Recycling also requires energy.
+
+Mass balance places hard limits on circularity in growing systems: stock expansion requires net material additions.
+
+== Uncertainty propagation ==
+
+If derived output is
+
+<math>Y=f(X_1,\ldots,X_n),</math>
+
+first-order uncertainty can be approximated as
+
+<math>\operatorname{Var}(Y)\approx\nabla f^T\Sigma\nabla f.</math>
+
+Uncertainty sources include trade misclassification, informal extraction, material composition, stock lifetime assumptions, and input-output coefficients.
+
+Reported precision should match the underlying data quality.
+
+== Environmental impacts ==
+
+Physical throughput is a pressure indicator, not a complete impact measure.
+
+Impact depends on material identity, location, toxicity, extraction technique, ecosystem sensitivity, and emission pathway.
+
+One tonne of sand and one tonne of mercury are not environmentally equivalent.
+
+Mass aggregation is useful for scale, not toxicity weighting.
+
+== Metabolic rift ==
+
+Marxian ecological literature uses '''metabolic rift''' for socially mediated disruptions in ecological cycles.
+
+The concept can guide historical and political-economic analysis.
+
+It is not a mass-balance equation and should not be treated as interchangeable with economy-wide MFA.
+
+A study invoking metabolic rift should identify the ecological flow and institutional mechanism being claimed.
+
+== Distribution and environmental justice ==
+
+Physical accounts can be joined with social data.
+
+Let environmental burden <math>B_i</math> and benefit <math>V_i</math> be assigned across social groups <math>i</math>.
+
+Aggregate balance can conceal unequal distributions of <math>B_i</math> and <math>V_i</math>.
+
+Environmental-justice conclusions therefore require spatial and social disaggregation.
+
+== Scenario modeling ==
+
+Future social-metabolism scenarios can vary population, urbanization, infrastructure, technology, recycling, and energy systems.
+
+Stock-flow consistency must be enforced.
+
+A scenario cannot assume material-intensive infrastructure appears without corresponding inflows, nor can it assume full recycling where stock growth or thermodynamic losses prevent it.
+
+== Epistemic boundary ==
+
+Social metabolism supplies strong physical constraints and measurable indicators.
+
+It does not explain social behavior solely from physical flows.
+
+A complete account can require economics, institutions, culture, politics, and ecology.
+
+The metabolism framework is strongest when tied to explicit stocks, flows, boundaries, and conservation laws rather than organismic metaphor.
 
 == References ==
-* [https://doi.org/10.1162/jiec.1998.2.1.61 Fischer-Kowalski (1998), Society's Metabolism, Part I]
-* [https://doi.org/10.1162/jiec.1998.2.4.107 Fischer-Kowalski and Hüttler (1998), Society's Metabolism, Part II]
+
+<references />
+
+* [https://doi.org/10.1162/jiec.1998.2.1.61 Fischer-Kowalski, M. (1998), “Society's Metabolism,” Part I.]
+* [https://doi.org/10.1162/jiec.1998.2.4.107 Fischer-Kowalski and Hüttler (1998), “Society's Metabolism,” Part II.]
 
 == Reading depth ==
-[[Social metabolism/Simple|Simple explanation]]
+
+[[Social metabolism/Simple|Simple explanation]] · [[Social metabolism|Core article]]

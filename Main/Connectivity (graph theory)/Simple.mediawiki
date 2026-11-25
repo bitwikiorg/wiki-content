@@ -1,15 +1,151 @@
-<onlyinclude>'''Connectivity''' in graph theory concerns whether vertices can be reached from one another along paths and how robust those connections are to removal of vertices or edges.
+{{Reading depth|base=Connectivity (graph theory)|current=Simple}}
 
-== Explanation ==
-A road network is connected if every place can be reached from every other along its roads, assuming two-way travel. A bridge that is the only connection between two parts can disconnect the graph if removed. Directed networks require additional distinctions because a route may work in only one direction.
+= Connectivity (graph theory) — Simple =
+
+'''Connectivity''' in graph theory asks whether vertices in a graph can reach one another through paths.
+
+Imagine a road map.
+
+If every town can reach every other town using the roads, the graph is connected.
+
+If one group of towns has no road path to another group, the graph is disconnected.
+
+== Connected components ==
+
+A '''connected component''' is one maximal connected part of a graph.
+
+If a network has three separate islands of connected vertices, it has three connected components.
+
+An isolated vertex counts as its own component.
+
+== Directed graphs are different ==
+
+In a directed graph, edges have arrows.
+
+A path from A to B does not necessarily mean there is a path back from B to A.
+
+A directed graph is '''strongly connected''' when every vertex can reach every other vertex in both directions.
+
+It is '''weakly connected''' when it becomes connected after ignoring the arrow directions.
+
+== Articulation points ==
+
+An '''articulation vertex''' is a vertex whose removal disconnects the graph.
+
+It is a single point of failure.
+
+For example, one airport might be the only connection between two regional flight networks.
+
+Removing it separates the network.
+
+== Bridges ==
+
+A '''bridge''' is an edge whose removal disconnects the graph.
+
+A bridge can be thought of as the only road between two regions.
+
+Trees are connected graphs with no cycles.
+
+Every edge of a tree is therefore a bridge.
+
+== Redundant paths ==
+
+Cycles create alternative routes.
+
+If one edge on a cycle fails, another path may still connect the same regions.
+
+This makes the graph more robust.
+
+But several routes can still share the same vulnerable vertex.
+
+== Vertex connectivity ==
+
+'''Vertex connectivity''' asks:
+
+<pre>
+What is the smallest number of vertices that must be removed to disconnect the graph?
+</pre>
+
+A graph that requires several vertex removals before disconnection is more robust to node failure than one with an articulation point.
+
+== Edge connectivity ==
+
+'''Edge connectivity''' asks the same question for edges.
+
+For a connected simple graph,
+
+<math>\kappa(G)\le\lambda(G)\le\delta(G),</math>
+
+where <math>\kappa</math> is vertex connectivity, <math>\lambda</math> edge connectivity, and <math>\delta</math> minimum degree.<ref name="diestel">[https://link.springer.com/book/10.1007/978-3-662-53622-3 Diestel, ''Graph Theory''.]</ref>
+
+== Menger's theorem ==
+
+Menger's theorem connects two ideas:
+
+* minimum cuts;
+* maximum numbers of disjoint paths.
+
+Roughly, if many independent paths connect two vertices, many vertices or edges must be removed to separate them.
+
+This gives a mathematical link between redundancy and robustness.
+
+== Finding connected components ==
+
+Breadth-first search and depth-first search can find the connected component containing a starting vertex.
+
+With adjacency lists, they run in:
+
+<math>O(|V|+|E|).</math>
+
+Repeating from unvisited vertices finds all components.
+
+== Strongly connected components ==
+
+Directed graphs need different algorithms for strongly connected components.
+
+Tarjan's and Kosaraju's algorithms can find them in linear time.
+
+If every strongly connected component is collapsed into one node, the result is a directed acyclic graph.
+
+== Connected does not mean fast ==
+
+A network can be connected but still have:
+
+* very long paths;
+* bottlenecks;
+* slow links;
+* low bandwidth.
+
+Connectivity only says that a path exists.
+
+Other graph measures are needed for distance and capacity.
+
+== Connected does not mean reliable ==
+
+A network can be connected because of one fragile bridge.
+
+Random failures and targeted failures can affect the network differently.
+
+Robustness claims should say which kind of failure is being studied.
+
+== Time can matter ==
+
+A communication link may exist only at certain times.
+
+If we combine all links into one static graph, the network can look connected even though no usable sequence of links exists at the right times.
+
+Temporal networks therefore need time-respecting paths.
 
 == Related concepts ==
+
 [[Network]] · [[Computer network]] · [[Distributed system]] · [[Knowledge graph]] · [[Multi-agent system]]
 
 == Sources ==
-* [https://link.springer.com/book/10.1007/978-3-662-53622-3 Diestel, Graph Theory, connectivity chapter]
-* [https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.components.connected_components.html NetworkX, connected_components documentation]
-</onlyinclude>
+
+<references />
+
+* [https://networkx.org/documentation/stable/reference/algorithms/components.html NetworkX, connectivity algorithms.]
 
 == Reading depth ==
-[[Connectivity (graph theory)/Technical|Technical treatment]]
+
+[[Connectivity (graph theory)|Core article]] · [[Connectivity (graph theory)/Technical|Technical treatment]]

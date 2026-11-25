@@ -1,15 +1,194 @@
-<onlyinclude>'''Conway's Game of Life''' is a two-dimensional cellular automaton devised by John Horton Conway and publicized by Martin Gardner in 1970. A grid of cells repeatedly changes between live and dead states according to fixed local rules.
+{{Reading depth|base=Conway's Game of Life|current=Simple}}
 
-== Explanation ==
-A live cell survives with two or three live neighbors; a dead cell becomes live with exactly three. All other cells become or remain dead. Starting patterns may disappear, stay unchanged, repeat or move across the grid. Despite its name, the cells are mathematical states, not biological organisms.
+= Conway's Game of Life — Simple =
+
+'''Conway's Game of Life''' is a two-dimensional cellular automaton invented by mathematician John Conway.
+
+It uses a grid of cells.
+
+Each cell is either:
+
+* alive;
+* dead.
+
+Every cell looks at its eight surrounding neighbors and updates at the same time.
+
+Martin Gardner introduced the game to a large audience in ''Scientific American'' in 1970.<ref name="gardner">[https://www.scientificamerican.com/article/mathematical-games-1970-10/ Gardner, M. (1970), “The fantastic combinations of John Conway's new solitaire game ‘life’.”]</ref>
+
+== The rule ==
+
+The standard rule is written:
+
+<pre>
+B3/S23
+</pre>
+
+That means:
+
+* a dead cell becomes alive if it has exactly 3 live neighbors;
+* a live cell stays alive if it has 2 or 3 live neighbors;
+* otherwise the cell is dead in the next generation.
+
+All cells update together.
+
+== Why simultaneous updating matters ==
+
+Suppose one cell changes first.
+
+If later cells immediately use that new state, the result depends on update order.
+
+That is not standard Life.
+
+A correct implementation uses the previous generation to calculate the entire next generation.
+
+== Still lifes ==
+
+Some patterns do not change.
+
+These are called '''still lifes'''.
+
+A 2×2 block is a simple example.
+
+Every live cell has three live neighbors and survives.
+
+No surrounding dead cell has exactly three neighbors in a way that changes the pattern.
+
+== Oscillators ==
+
+An '''oscillator''' repeats after several generations.
+
+The '''blinker''' has three live cells in a row.
+
+It alternates:
+
+<pre>
+horizontal
+→ vertical
+→ horizontal
+</pre>
+
+Its period is 2.
+
+== Spaceships ==
+
+A '''spaceship''' repeats its shape after moving.
+
+The most famous spaceship is the '''glider'''.
+
+After four generations, a glider has the same shape but has moved diagonally.
+
+This lets Life patterns transmit moving structures across the grid.
+
+== Glider guns ==
+
+A '''glider gun''' repeatedly produces new gliders.
+
+Bill Gosper and collaborators discovered the first one in 1970.
+
+Because the gun can emit gliders forever, a finite initial pattern can produce unbounded growth.
+
+This was an important early discovery about Life.
+
+== Small patterns can have long histories ==
+
+Some tiny starting patterns change for many generations before settling down.
+
+These are often called '''methuselahs'''.
+
+The R-pentomino is a famous example.
+
+A long transient does not necessarily mean the pattern will remain unpredictable forever.
+
+== Complex patterns from simple rules ==
+
+Life is a classic example of [[Emergence]].
+
+The rule only talks about neighboring cells.
+
+It does not contain special instructions for:
+
+* gliders;
+* oscillators;
+* guns;
+* logic gates.
+
+Those structures arise from combinations of cells obeying the same local rule.
+
+== Universal computation ==
+
+Life can be used to build logical circuits.
+
+Gliders and other patterns can represent signals.
+
+With enough structure, Life can simulate a Turing machine.
+
+That makes it [[Turing completeness|Turing complete]].<ref name="rendell">[https://link.springer.com/book/10.1007/978-3-319-19842-2 Rendell, P. (2016), ''Turing Machine Universality of the Game of Life''.]</ref>
+
+This does not mean Life is a practical replacement for ordinary computers.
+
+The constructions can be huge and slow.
+
+== Finite boards always repeat eventually ==
+
+A finite board with <math>N</math> cells has only
+
+<math>2^N</math>
+
+possible states.
+
+If the update is deterministic, eventually one state must repeat.
+
+After that, the future repeats too.
+
+So every finite-board Life simulation eventually enters a cycle.
+
+The ordinary mathematical Game of Life uses an infinite grid, so this argument does not apply to the whole infinite plane.
+
+== Efficient simulation ==
+
+A naive simulator can store every cell in a rectangle.
+
+For very sparse patterns, it is more efficient to store only live cells and nearby candidate cells.
+
+Advanced simulators can use algorithms such as '''Hashlife''' to skip large repeated regions of evolution.
+
+== Boundary conditions matter ==
+
+A computer simulation must decide what happens at the edges.
+
+Possible choices include:
+
+* dead cells outside the board;
+* wraparound edges;
+* an expanding sparse world.
+
+These choices can change the result.
+
+A glider on a wraparound board may eventually return from the opposite side.
+
+== Life is not biological life ==
+
+The words “birth,” “death,” and “life” are analogies.
+
+Life cells do not have:
+
+* metabolism;
+* DNA;
+* real reproduction;
+* consciousness.
+
+The Game of Life is a mathematical system that produces life-like patterns.
+
+It is not itself a biological organism.
 
 == Related concepts ==
+
 [[Automaton (computation)]] · [[Computation]] · [[Turing completeness]] · [[Emergence]] · [[Self-organization]]
 
 == Sources ==
-* [https://www.scientificamerican.com/article/not-just-fun-and-games/ Scientific American, Not Just Fun and Games (history)]
-* [https://mathworld.wolfram.com/GameofLife.html Wolfram MathWorld, Game of Life]
-</onlyinclude>
+
+<references />
 
 == Reading depth ==
-[[Conway's Game of Life/Technical|Technical treatment]]
+
+[[Conway's Game of Life|Core article]] · [[Conway's Game of Life/Technical|Technical treatment]]

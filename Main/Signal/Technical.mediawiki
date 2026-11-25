@@ -1,17 +1,219 @@
-A '''signal''' is a varying quantity or sequence used to represent, convey or observe something. A microphone voltage represents changes in air pressure; a sequence of bits may represent a message. A signal need not be intentionally sent: an instrument can observe a natural process.
+{{Reading depth|base=Signal|current=Technical}}
 
-== Mathematical representation ==
-A continuous-time signal is commonly modeled as <math>x:\mathbb R\to\mathbb R</math> or a complex-valued/vector function; a discrete-time signal is <math>x[n]</math> indexed by integers. A sampled record <math>x[n]=x(nT_s)</math> can still have continuous-valued amplitude. Quantization maps amplitudes to a finite or countable set and introduces representation error. Energy and power definitions depend on the physical or mathematical convention: for a finite-energy sequence <math>E=\sum_n|x[n]|^2</math> is a squared-norm quantity, not necessarily joules.
+= Signal — Technical =
 
-== Sampling, systems and inference ==
-For an ideally band-limited continuous-time signal with highest frequency B, uniform sampling above 2B permits reconstruction under ideal assumptions. Real signals are not perfectly band-limited, so anti-alias filtering and finite acquisition windows matter. A linear time-invariant discrete-time system produces convolution <math>y[n]=\sum_k h[k]x[n-k]</math>. For example, a three-point moving average suppresses some rapid variation but also blurs transients. Compare its frequency response and step response instead of calling every reduction of variation noise removal.
+In signal theory, a '''signal''' is modeled as a mapping from an independent-variable domain into a value space. A general representation is
 
-== Evaluation and limits ==
-An additive model y=x+w is useful only if the noise model is justified. Signal-to-noise ratio requires a specified signal and noise power; correlated disturbances and clipping violate common assumptions. Communication signals, biological signals and semantic signs overlap in examples but have distinct explanatory levels. Shannon information measures probabilities, not the meaning or truth of a signal. Document sensor calibration, bandwidth, sample rate and uncertainty before interpreting observed variation.
+<math>x:\mathcal D\rightarrow\mathcal V,</math>
+
+where <math>\mathcal D</math> may be continuous or discrete and may contain one or several dimensions, while <math>\mathcal V</math> may be scalar, complex, vector-valued, tensor-valued, or symbolic. This abstraction separates the mathematical representation from the physical mechanism that generated it and makes it possible to analyze electrical, acoustic, optical, mechanical, biological, spatial, and computational signals using common tools.<ref name="ow">Oppenheim, A. V., Willsky, A. S., and Nawab, S. H. (1997), ''Signals and Systems'', 2nd ed., Prentice Hall; [https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/pages/readings/ MIT OCW 6.003 readings].</ref>
+
+The signal model must not be confused with the measured phenomenon. An acquisition system maps physical state into a representation, and the mapping may include transduction, filtering, amplification, sampling, quantization, synchronization, coding, compression, and calibration. [[Measurement]] uncertainty and model error therefore remain part of the interpretation.
+
+== Signal domains and dimensionality ==
+
+A continuous-time signal is conventionally written <math>x(t)</math>, <math>t\in\mathbb R</math>. A discrete-time signal is written <math>x[n]</math>, <math>n\in\mathbb Z</math>. More generally:
+
+* a one-dimensional spatial profile may be <math>x(r)</math>;
+* an image may be <math>x(u,v)</math>;
+* a video may be <math>x(u,v,t)</math>;
+* a multichannel sensor record may be <math>\mathbf{x}[n]\in\mathbb R^m</math>;
+* complex-valued signals are common in modulation and spectral analysis.
+
+Continuous or discrete domain and continuous or discrete range are independent properties. A sampled voltage sequence can be discrete in time but continuous in amplitude before quantization. Conversely, a symbolic state may take values in a finite alphabet while evolving in continuous physical time.
+
+Generalized functions such as the Dirac impulse are also used in continuous-time system theory. They are distributions rather than ordinary pointwise functions, but they provide a compact way to represent sampling operations and impulse responses.
+
+== Signal classifications ==
+
+=== Deterministic and stochastic models ===
+
+A deterministic model specifies <math>x(t)</math> or <math>x[n]</math> directly. A stochastic signal is typically modeled as one realization of a random process <math>X(t,\omega)</math> or <math>X[n,\omega]</math>, where <math>\omega</math> indexes outcomes.
+
+For a wide-sense stationary discrete-time process, the mean is constant and autocorrelation depends only on lag:
+
+<math>\mu_X=E[X[n]],</math>
+
+<math>R_X[k]=E[X[n]X^*[n-k]].</math>
+
+The corresponding autocovariance is <math>C_X[k]=R_X[k]-|\mu_X|^2</math>. Under appropriate conditions, the power spectral density is the discrete-time Fourier transform of the autocorrelation sequence. Stationarity is a modeling assumption and must be tested or justified; many biological, environmental, economic, and engineered signals are nonstationary.
+
+=== Periodic and aperiodic ===
+
+A continuous-time signal is periodic if a <math>T_0>0</math> exists such that
+
+<math>x(t+T_0)=x(t)</math>
+
+for all <math>t</math>. A discrete-time signal is periodic if there is an integer <math>N_0>0</math> with
+
+<math>x[n+N_0]=x[n].</math>
+
+A continuous sinusoid is periodic for any nonzero frequency. A discrete-time sinusoid is periodic only when its normalized frequency has the appropriate rational relationship to <math>2\pi</math>.
+
+=== Even and odd components ===
+
+For a signal defined on a symmetric domain,
+
+<math>x_e(t)=\frac{1}{2}[x(t)+x(-t)],</math>
+
+<math>x_o(t)=\frac{1}{2}[x(t)-x(-t)],</math>
+
+so that <math>x=x_e+x_o</math>. Similar expressions apply in discrete time. Symmetry can simplify transform and system calculations.
+
+=== Energy and power ===
+
+For continuous time, a conventional mathematical signal energy is
+
+<math>E_x=\int_{-\infty}^{\infty}|x(t)|^2\,dt.</math>
+
+For discrete time,
+
+<math>E_x=\sum_{n=-\infty}^{\infty}|x[n]|^2.</math>
+
+Average power may be defined by the appropriate long-time limit, for example
+
+<math>P_x=\lim_{T\rightarrow\infty}\frac{1}{2T}\int_{-T}^{T}|x(t)|^2\,dt.</math>
+
+A nonzero finite-energy signal has zero long-term average power under these definitions, while an ideal nonzero periodic signal normally has infinite energy and finite average power. These squared-norm definitions are not automatically physical joules or watts; physical units depend on the quantity and impedance or other normalization used.
+
+== Linear systems and convolution ==
+
+A system is an operator <math>\mathcal S</math> mapping input signals to outputs:
+
+<math>y=\mathcal S\{x\}.</math>
+
+Linearity requires superposition, and time invariance requires that shifting an input shifts the output by the same amount. A linear time-invariant (LTI) system is fully characterized, within the usual signal classes, by its impulse response <math>h</math>. In continuous time,
+
+<math>y(t)=\int_{-\infty}^{\infty}h(\tau)x(t-\tau)\,d\tau,</math>
+
+and in discrete time,
+
+<math>y[n]=\sum_{k=-\infty}^{\infty}h[k]x[n-k].</math>
+
+This convolution representation underlies filtering, communications, instrumentation, and control. Real systems may be nonlinear, time-varying, stochastic, adaptive, or state-dependent; LTI methods are powerful because of their tractable structure, not because every physical system is LTI.<ref name="ow" />
+
+== Fourier representation and spectra ==
+
+A continuous-time Fourier transform pair is conventionally written
+
+<math>X(\omega)=\int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt,</math>
+
+<math>x(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}X(\omega)e^{j\omega t}\,d\omega,</math>
+
+when the required conditions or generalized interpretation hold.
+
+For an LTI system, convolution in time corresponds to multiplication in frequency:
+
+<math>Y(\omega)=H(\omega)X(\omega).</math>
+
+The frequency response <math>H(\omega)</math> therefore describes the amplitude and phase applied to sinusoidal components. Fourier series are appropriate for periodic signals; the discrete-time Fourier transform describes sequences; the discrete Fourier transform (DFT) represents a finite set of samples and is normally computed efficiently using a fast Fourier transform (FFT) algorithm.
+
+A finite DFT record is not the same object as the spectrum of an infinite-duration process. Windowing, finite record length, spectral leakage, frequency resolution, detrending, and sampling-clock error can materially affect spectral estimates.
+
+== Sampling and reconstruction ==
+
+Periodic sampling of an analog signal <math>x_a(t)</math> with period <math>T_s</math> gives
+
+<math>x[n]=x_a(nT_s), \qquad f_s=\frac{1}{T_s}.</math>
+
+For a signal band-limited to <math>|f|<B</math>, ideal uniform sampling at <math>f_s>2B</math> permits unique reconstruction from the samples under the sampling theorem.<ref name="mit-sampling">[https://ocw.mit.edu/courses/2-161-signal-processing-continuous-and-discrete-fall-2008/80ec6fb9bd027f30adcdc16577e8ab16_samplingdft.pdf MIT OpenCourseWare, ''Sampling and the Discrete Fourier Transform''.]</ref><ref name="shannon1949">[https://doi.org/10.1109/JRPROC.1949.232969 Shannon, C. E. (1949), “Communication in the Presence of Noise,” ''Proceedings of the IRE'' 37(1), 10–21.]</ref>
+
+Sampling replicates the continuous-time spectrum at multiples of the sampling frequency. If replicas overlap, distinct continuous-time frequencies can map to the same discrete-time frequency. This '''aliasing''' cannot generally be removed from the samples alone because the ambiguity is created at acquisition. Practical analog-to-digital conversion therefore uses an anti-alias filter before sampling and selects a sampling rate based on signal bandwidth, transition bands, clock stability, implementation constraints, and desired margin.
+
+The phrase “Nyquist rate” is conventionally associated with twice the highest frequency of a strictly band-limited signal, but practical engineering should state the actual bandwidth assumptions rather than treating <math>2B</math> as a universal sufficient sampling rate for arbitrary signals.
+
+== Quantization and numerical representation ==
+
+Sampling discretizes the independent variable; quantization discretizes the range. A uniform scalar quantizer with step size <math>\Delta</math> maps intervals of amplitudes to reconstruction levels. If a quantization error is modeled as uniformly distributed and independent of the input, its variance is <math>\Delta^2/12</math>, but that approximation requires conditions and can fail for deterministic, low-amplitude, correlated, or overloaded inputs.
+
+A <math>b</math>-bit converter supplies at most <math>2^b</math> output codes in a basic scalar representation. Effective resolution can be lower because of thermal noise, nonlinearity, missing codes, reference instability, clock jitter, and front-end limitations. Clipping or overload is a nonlinear loss of information and should not be treated as ordinary small quantization noise.
+
+Fixed-point and floating-point digital implementations introduce additional numerical effects. Word length, scaling, rounding, coefficient quantization, overflow behavior, and accumulation precision can alter filter responses and stability. A [[Digital signal processor]] is designed to execute such operations efficiently but does not remove these numerical constraints.
+
+== Noise, distortion and estimation ==
+
+A common observation model is
+
+<math>y[n]=x[n]+w[n],</math>
+
+where <math>w</math> is additive noise. White Gaussian noise is analytically convenient, but real disturbances may have colored spectra, impulsive tails, temporal dependence, nonstationarity, multiplicative coupling, or correlation with <math>x</math>. Instrument drift, clipping, timing error, interference, and model mismatch are different error mechanisms.
+
+Signal-to-noise ratio may be written schematically as
+
+<math>\mathrm{SNR}=10\log_{10}\left(\frac{P_s}{P_n}\right)\ \mathrm{dB},</math>
+
+when signal and noise powers are well defined over the same bandwidth and reference conditions. Reporting an SNR without those definitions can be misleading.
+
+Statistical estimation attempts to infer parameters, states, or latent signals from observations using an explicit probabilistic model. Optimality is always relative to assumptions and a loss criterion. Filtering can suppress components judged unlikely or unwanted, but it can also attenuate valid transients or introduce phase delay. Validation should therefore compare recovered quantities against known references, simulations, held-out measurements, or independent instruments where possible.
+
+== Communication and information ==
+
+A communication chain can be idealized as a source, encoder/modulator, transmitted signal, channel, receiver/detector, decoder, and destination. A [[Code]] maps messages or source symbols into representations suitable for storage or transmission. The waveform carrying the representation is the physical signal.
+
+Shannon's [[Information theory]] formalizes uncertainty and the limits of reliable communication using probability distributions and channel models.<ref name="shannon1948">[https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon, C. E. (1948), “A Mathematical Theory of Communication,” ''Bell System Technical Journal'' 27, 379–423 and 623–656.]</ref> For a discrete random variable <math>X</math> with probabilities <math>p(x)</math>, Shannon entropy is
+
+<math>H(X)=-\sum_x p(x)\log_2 p(x).</math>
+
+This [[Entropy]] measures average uncertainty under the distribution; it is not a measure of semantic truth, importance, understanding, or consciousness.
+
+For an idealized additive white Gaussian-noise channel of bandwidth <math>B</math> and received signal-to-noise ratio <math>S/N</math>, Shannon's capacity expression is
+
+<math>C=B\log_2(1+S/N)</math>
+
+bits per second. The formula depends on the AWGN channel assumptions and should not be applied indiscriminately to arbitrary networks or measurements.
+
+== Multidimensional and multichannel signals ==
+
+Many practical signals have multiple dimensions or channels. Images are spatial signals; video adds time; antenna arrays sample electromagnetic fields across space; multilead physiological recordings produce vector time series; hyperspectral instruments add wavelength dimensions.
+
+Multidimensional processing can exploit spatial correlation, temporal correlation, geometry, or cross-channel structure. At the same time, apparent relationships between channels can arise from common sensors, shared preprocessing, synchronization error, or volume conduction. Channel count alone does not imply independent information.
+
+== Measurement chain and epistemic constraints ==
+
+A rigorous analysis distinguishes at least six layers:
+
+# '''Phenomenon:''' the physical, biological, social, or engineered process of interest.
+# '''Transduction:''' how the phenomenon affects a sensor or communication medium.
+# '''Acquisition:''' amplification, filtering, sampling, timing, quantization, and storage.
+# '''Representation:''' units, coordinates, coding, data structures, and metadata.
+# '''Processing and model:''' algorithms, transforms, statistical assumptions, and parameters.
+# '''Interpretation:''' the scientific, engineering, or semantic conclusion drawn from the processed signal.
+
+Failure to distinguish these layers creates common errors. A peak in a spectrum can be an artifact of windowing or interference. A correlation can reflect shared preprocessing rather than causal coupling. A classifier output can exploit acquisition-specific confounds. Denoising can erase rare but real events. A visually smooth reconstruction can be wrong.
+
+Consequential work should preserve acquisition metadata, calibration history, preprocessing parameters, software versions, uncertainty estimates, and original raw data when feasible. Reproducibility requires enough information to reconstruct the signal-processing chain, not merely the final figure.
+
+== Computational and engineering constraints ==
+
+Digital signal-processing implementations trade accuracy, latency, memory, throughput, energy consumption, and hardware cost. Important constraints include:
+
+* sampling-clock accuracy and synchronization;
+* analog front-end bandwidth and dynamic range;
+* finite buffer size and streaming latency;
+* fixed- versus floating-point arithmetic;
+* filter order and numerical conditioning;
+* real-time deadlines;
+* missing or irregular samples;
+* sensor dropout and packet loss;
+* reproducibility of preprocessing and parameter choices.
+
+The mathematically optimal algorithm under one criterion may be unsuitable under real-time or power constraints. Conversely, a computationally efficient implementation may approximate an ideal transform or filter. Engineering claims should specify which criterion is optimized.
+
+== Boundaries with related concepts ==
+
+A signal may instantiate [[Information]], but signal, data, message, information, and meaning are not interchangeable. A signal is a representation varying over a domain; data are recorded or encoded observations; a message is a communicative object; information-theoretic quantities describe distributions and channels; semantic interpretation depends on a model and context.
+
+Likewise, not every varying quantity is a communicative signal in biology or social science, even though it can be treated mathematically as a signal. When importing signal-theoretic language into another discipline, the analysis should specify what is measured, what carries causal influence, what receives it, and which mathematical assumptions are justified.
 
 == References ==
-* [https://www.ocw.mit.edu/courses/res-6-dtsp-discrete-time-signal-processing/ MIT OpenCourseWare, Oppenheim and Schafer, Discrete-Time Signal Processing]
-* [https://doi.org/10.1002/j.1538-7305.1948.tb01338.x Shannon (1948), A Mathematical Theory of Communication]
+
+<references />
+
+* Oppenheim, A. V. and Schafer, R. W., ''Discrete-Time Signal Processing'', 3rd ed., Pearson, 2010.
+* Proakis, J. G. and Manolakis, D. G., ''Digital Signal Processing: Principles, Algorithms, and Applications'', 4th ed., Pearson, 2007.
+* [https://signalprocessingsociety.org/our-story/signal-processing-101 IEEE Signal Processing Society, “Signal Processing 101.”]
+* [https://doi.org/10.1109/T-AIEE.1928.5055024 Nyquist, H. (1928), “Certain Topics in Telegraph Transmission Theory,” ''Transactions of the AIEE'' 47(2), 617–644.]
 
 == Reading depth ==
-[[Signal/Simple|Simple explanation]]
+
+[[Signal/Simple|Simple explanation]] · [[Signal|Core article]]

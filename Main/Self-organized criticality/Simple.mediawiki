@@ -1,16 +1,129 @@
-<onlyinclude>'''Self-organized criticality''' (SOC) describes a proposed class of dynamical systems that evolve toward critical-like, scale-free behavior without precise external tuning of a control parameter.
+{{Reading depth|base=Self-organized criticality|current=Simple}}
 
-== Explanation ==
-A simplified sandpile model receives grains slowly. When a pile at one site exceeds a threshold, it redistributes grains and may trigger a cascade. Cascades can range from small to large. Real sandpiles do not necessarily follow the same statistics.
+= Self-organized criticality — Simple =
+
+'''Self-organized criticality''' (SOC) is the idea that some slowly driven systems can organize themselves into a critical-like state where events occur across many different sizes.
+
+The classic example is a mathematical sandpile.
+
+Grains are added slowly.
+
+When one site becomes too high, it topples and can trigger neighboring sites.
+
+One added grain can therefore cause:
+
+* no avalanche;
+* a tiny avalanche;
+* a very large avalanche.
+
+Per Bak, Chao Tang, and Kurt Wiesenfeld introduced the SOC idea in 1987 and 1988.<ref name="btw">[https://doi.org/10.1103/PhysRevLett.59.381 Bak, Tang and Wiesenfeld (1987), “Self-Organized Criticality.”]</ref>
+
+== Criticality ==
+
+At a critical point, systems can show behavior over many scales instead of one typical scale.
+
+Ordinary critical points often require tuning a parameter such as temperature.
+
+SOC proposes that some driven and dissipative systems can move toward a critical-like state through their own dynamics.
+
+== Slow driving and fast avalanches ==
+
+In the standard sandpile model, one grain is added only after the previous avalanche has stopped.
+
+That creates two time scales:
+
+* slow driving;
+* fast relaxation.
+
+This separation is an important part of the classic model.
+
+Real systems do not always satisfy it.
+
+== Power laws ==
+
+Avalanche sizes are often tested for a power-law-like distribution:
+
+<math>P(s)\propto s^{-\tau}.</math>
+
+This means small events are common and large events are rarer, without one obvious typical avalanche size over the scaling range.
+
+But a power law alone does not prove SOC.
+
+Other processes can also produce heavy tails.
+
+== Real sand is not the mathematical sandpile ==
+
+Real granular material depends on:
+
+* friction;
+* grain shape;
+* packing;
+* inertia.
+
+Experiments with rice found SOC-like behavior for elongated grains but not for less elongated grains.<ref name="rice">[https://doi.org/10.1038/379049a0 Frette et al. (1996), “Avalanche dynamics in a pile of rice.”]</ref>
+
+This shows that details of the physical system matter.
+
+== What should researchers test? ==
+
+A stronger SOC claim checks:
+
+* slow drive and dissipation;
+* stationarity;
+* event-size scaling;
+* several system sizes;
+* finite-size effects;
+* alternative statistical models.
+
+A straight-looking line on a log-log graph is not enough.
+
+== <math>1/f</math> noise ==
+
+The original papers connected SOC with <math>1/f</math>-type noise.
+
+But many mechanisms can generate similar spectra.
+
+Seeing <math>1/f</math> noise is therefore not proof of SOC.
+
+== Other applications ==
+
+SOC ideas have been applied to:
+
+* earthquakes;
+* solar flares;
+* neural activity;
+* ecology;
+* social systems.
+
+These applications need mechanism-specific evidence.
+
+An “avalanche-like” pattern in data does not automatically mean the underlying process is a sandpile-like self-organized critical system.
+
+== SOC and self-organization ==
+
+[[Self-organization]] is broader.
+
+A system can self-organize without being near a critical point.
+
+SOC is one particular proposed form of self-organization.
+
+== SOC and emergence ==
+
+[[Emergence]] is also broader.
+
+A system can have emergent patterns without scale-free critical behavior.
 
 == Related concepts ==
+
 [[Self-organization]] · [[Complex system]] · [[Emergence]] · [[Conway's Game of Life]] · [[Scaling]]
 
 == Sources ==
-* [https://doi.org/10.1103/PhysRevLett.59.381 Bak, Tang and Wiesenfeld (1987), Self-organized criticality: An explanation of the 1/f noise]
-* [https://doi.org/10.1103/PhysRevA.38.364 Bak, Tang and Wiesenfeld (1988), Self-organized criticality]
-* [https://journals.aps.org/pre/abstract/10.1103/PhysRevE.66.051306 Breakdown of self-organized criticality in sandpiles]
-</onlyinclude>
+
+<references />
+
+* [https://doi.org/10.1103/PhysRevA.38.364 Bak, Tang and Wiesenfeld (1988), “Self-organized criticality.”]
+* [https://doi.org/10.1103/PhysRevE.66.051306 Vieira (2002), “Breakdown of self-organized criticality in sandpiles.”]
 
 == Reading depth ==
-[[Self-organized criticality/Technical|Technical treatment]]
+
+[[Self-organized criticality|Core article]] · [[Self-organized criticality/Technical|Technical treatment]]

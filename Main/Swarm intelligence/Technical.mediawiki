@@ -1,17 +1,536 @@
-'''Swarm intelligence''' describes collective problem solving or coordinated behavior arising from interactions among many relatively simple individuals. Researchers study natural examples and engineer algorithms inspired by them.
+{{Reading depth|base=Swarm intelligence|current=Technical}}
 
-== Computational mechanisms ==
-In particle swarm optimization (PSO), particles have positions x_i and velocities v_i; personal best p_i and neighborhood best g_i guide motion. A common update is <math>v_i\leftarrow\omega v_i+c_1r_1(p_i-x_i)+c_2r_2(g_i-x_i)</math>, followed by x_i ← x_i+v_i. The r variables are sampled independently in common implementations. Ant colony optimization instead uses probabilistic construction guided by heuristic desirability and a shared, evaporating pheromone-like state. These algorithms use different mechanisms and assumptions.
+= Swarm intelligence — Technical =
 
-== Reproducible comparison ==
-For a bounded optimization problem, initialize particles using recorded random seeds, evaluate the objective, update best positions and velocities, handle boundary violations explicitly and stop at a fixed evaluation budget. Compare best objective, median performance and failure rates across independent runs against random search and appropriate deterministic baselines. Tune parameters on separate instances; a favorable benchmark does not imply universal superiority.
+'''Swarm intelligence''' studies decentralized collective computation and behavior arising from interactions among populations of agents. Technical swarm systems are defined by update rules, information topology, feedback, stochasticity, and system-level objective rather than by biological metaphor alone.
 
-== Biological and engineering limits ==
-Natural collective behavior includes sensory, ecological and evolutionary mechanisms beyond algorithm analogies. Swarm robotics faces communication range, localization error, collision risk, energy budgets and physical failures. Local rules can produce stagnation, congestion or synchronization of errors. Collective performance does not establish consciousness or human-like reasoning.
+Natural social insects, flocking animals, optimization particles, artificial ants, and robot swarms instantiate different mechanisms. A rigorous analysis should therefore specify the local rule and collective performance measure explicitly.
+
+
+Swarm intelligence studies coordinated problem solving that emerges from decentralized interaction among many agents. It is a special case of mechanisms related to [[Self-organization]], overlaps with [[Collective intelligence]], and is often implemented as a [[Multi-agent system]]; models such as [[Boids]] illustrate collective motion but are not themselves general-purpose swarm optimizers.
+
+== Generic swarm model ==
+
+Let agents be
+
+<math>A=\{1,\ldots,n\}.</math>
+
+Agent <math>i</math> has state <math>x_i(t)</math> and local neighborhood <math>N_i(t)</math>.
+
+Update rule:
+
+<math>x_i(t+1)=F_i(x_i(t),\{x_j(t):j\in N_i(t)\},e(t),\xi_i(t)),</math>
+
+where <math>e(t)</math> is environmental state and <math>\xi_i(t)</math> stochastic input.
+
+Global behavior is an emergent property of the coupled system.
+
+== Locality ==
+
+In a local swarm,
+
+<math>|N_i(t)|\ll n</math>
+
+for most agents.
+
+This limits communication and can improve scalability.
+
+It also restricts information propagation.
+
+A local error can remain isolated or spread depending on network topology and feedback.
+
+== Interaction topology ==
+
+Represent swarm communication as graph
+
+<math>G_t=(V,E_t).</math>
+
+Edges can arise from:
+
+* spatial proximity;
+* communication radius;
+* fixed network links;
+* nearest-neighbor rules.
+
+Topology can change over time.
+
+Connectivity is important for consensus and coherent collective motion.
+
+== Self-organization ==
+
+Let macrostate <math>M(t)</math> be a function of agent states:
+
+<math>M(t)=\Phi(x_1(t),\ldots,x_n(t)).</math>
+
+Self-organization occurs when structured <math>M(t)</math> develops from local dynamics without a central controller directly specifying the macrostate.
+
+This definition does not imply the structure is useful.
+
+Usefulness requires an external task criterion.
+
+== Positive feedback ==
+
+Positive feedback increases probability of repeating successful paths or states.
+
+If environmental trace has strength <math>p</math>:
+
+<math>p_{t+1}=p_t+\Delta p.</math>
+
+Agents respond more strongly as <math>p</math> increases.
+
+Positive feedback accelerates convergence.
+
+It also increases risk of lock-in.
+
+== Negative feedback ==
+
+Decay or inhibition limits amplification.
+
+Pheromone evaporation:
+
+<math>p_{t+1}=(1-\rho)p_t+\Delta p_t,</math>
+
+where <math>0<\rho<1</math>.
+
+Without decay, old paths can dominate indefinitely.
+
+Negative feedback preserves responsiveness to changing conditions.
+
+== Stigmergy ==
+
+A stigmergic environment maintains external state <math>E_t</math>.
+
+Agent changes environment:
+
+<math>E_{t+1}=G(E_t,a_i).</math>
+
+Other agents observe <math>E_{t+1}</math>.
+
+Communication is indirect.
+
+This architecture provides distributed memory.
+
+Latency and persistence of traces determine how quickly the swarm adapts.
+
+== Ant foraging abstraction ==
+
+Suppose ant chooses edge <math>(i,j)</math> with pheromone <math>\tau_{ij}</math> and heuristic desirability <math>\eta_{ij}</math>.
+
+Transition probability:
+
+<math>P_{ij}=\frac{\tau_{ij}^{\alpha}\eta_{ij}^{\beta}}{\sum_{k\in N_i}\tau_{ik}^{\alpha}\eta_{ik}^{\beta}}.</math>
+
+Parameters <math>\alpha</math> and <math>\beta</math> weight learned trail and local heuristic.
+
+This is a canonical artificial-ant construction.
+
+Real ants use more complex sensory and ecological mechanisms.
+
+== Ant System update ==
+
+After solution construction:
+
+<math>\tau_{ij}\leftarrow(1-\rho)\tau_{ij}+\sum_k\Delta\tau_{ij}^{(k)}.</math>
+
+Pheromone deposited by ant <math>k</math> can be inversely proportional to solution cost.
+
+Better solutions receive stronger reinforcement.
+
+Dorigo, Maniezzo, and Colorni formalized Ant System for combinatorial optimization.<ref name="aco">[https://doi.org/10.1109/3477.484436 Dorigo, M., Maniezzo, V., and Colorni, A. (1996), “Ant system: optimization by a colony of cooperating agents.”]</ref>
+
+== ACO exploration–exploitation ==
+
+Large <math>\alpha</math> increases reliance on accumulated pheromone.
+
+Large <math>\beta</math> increases greedy use of heuristic information.
+
+High reinforcement can cause premature convergence.
+
+Evaporation and random choice preserve exploration.
+
+Parameter effects depend on problem.
+
+== Particle swarm optimization ==
+
+For particle <math>i</math> with position <math>x_i</math>, velocity <math>v_i</math>, personal best <math>p_i</math>, and neighborhood/global best <math>g_i</math>:
+
+<math>v_i(t+1)=\omega v_i(t)+c_1r_1[p_i-x_i(t)]+c_2r_2[g_i-x_i(t)],</math>
+
+<math>x_i(t+1)=x_i(t)+v_i(t+1).</math>
+
+Kennedy and Eberhart introduced PSO in 1995.<ref name="pso">[https://doi.org/10.1109/ICNN.1995.488968 Kennedy, J. and Eberhart, R. (1995), “Particle swarm optimization.”]</ref>
+
+Random variables <math>r_1,r_2</math> are commonly sampled independently for components or updates, depending on implementation.
+
+== Inertia ==
+
+Parameter <math>\omega</math> controls persistence of velocity.
+
+High inertia can encourage exploration.
+
+Low inertia can encourage local refinement.
+
+The interpretation is approximate because interaction with acceleration coefficients and topology matters.
+
+Parameter schedules are often used.
+
+== Personal and social acceleration ==
+
+Coefficient <math>c_1</math> weights attraction to personal experience.
+
+Coefficient <math>c_2</math> weights social information.
+
+If social acceleration dominates, particles can collapse quickly around a current best.
+
+If personal acceleration dominates, search can fragment.
+
+Balance depends on objective landscape.
+
+== PSO stability ==
+
+PSO trajectories can diverge for poorly chosen parameters.
+
+Stability analysis treats the stochastic update as a dynamical system.
+
+Constriction factors and bounded velocities are common control strategies.
+
+Clerc and Kennedy analyzed explosion, stability, and convergence properties of particle swarms.<ref name="stability">[https://doi.org/10.1109/4235.985692 Clerc, M. and Kennedy, J. (2002), “The particle swarm—explosion, stability, and convergence in a multidimensional complex space.”]</ref>
+
+== Neighborhood topology in PSO ==
+
+Global-best PSO uses one swarm-wide best.
+
+Local-best PSO uses neighborhood best.
+
+Global topology can converge rapidly but lose diversity.
+
+Local topology slows information spread and can preserve exploration.
+
+Topology is therefore an optimization parameter.
+
+== Boundary handling ==
+
+If particle leaves feasible domain, options include:
+
+* clipping;
+* reflection;
+* wrapping;
+* resampling;
+* penalty.
+
+Boundary handling can materially affect performance.
+
+Benchmark reports should specify the rule.
+
+== Boids ==
+
+Reynolds's boid model represents each agent with position <math>p_i</math> and velocity <math>v_i</math>.
+
+Steering can combine:
+
+<math>F_i=w_sF_{sep}+w_aF_{align}+w_cF_{coh}.</math>
+
+'''Separation''' avoids crowding.
+
+'''Alignment''' matches local velocity.
+
+'''Cohesion''' moves toward local center.
+
+Reynolds showed these distributed local rules produce flock-like aggregate motion.<ref name="reynolds">[https://doi.org/10.1145/37401.37406 Reynolds, C. W. (1987), “Flocks, Herds, and Schools.”]</ref>
+
+== Separation ==
+
+A simple repulsion term:
+
+<math>F_{sep}=\sum_{j\in N_i}\frac{p_i-p_j}{\|p_i-p_j\|^2}.</math>
+
+Strong weighting at short distance reduces collisions.
+
+Real implementations use bounded or smoothed forces.
+
+== Alignment ==
+
+Local mean velocity:
+
+<math>\bar v_i=\frac{1}{|N_i|}\sum_{j\in N_i}v_j.</math>
+
+Alignment force:
+
+<math>F_{align}=\bar v_i-v_i.</math>
+
+This tends to synchronize headings.
+
+== Cohesion ==
+
+Local centroid:
+
+<math>c_i=\frac{1}{|N_i|}\sum_{j\in N_i}p_j.</math>
+
+Cohesion:
+
+<math>F_{coh}=c_i-p_i.</math>
+
+This keeps groups together.
+
+The three-rule summary is a common simplification of Reynolds-style flocking.
+
+== Order parameter ==
+
+Collective alignment can be measured:
+
+<math>\Phi=\frac{1}{n}\left\|\sum_i\frac{v_i}{\|v_i\|}\right\|.</math>
+
+<math>\Phi\approx1</math> indicates aligned motion.
+
+<math>\Phi\approx0</math> indicates disordered headings.
+
+An order parameter quantifies flock coherence but not task success.
+
+== Density and collision ==
+
+Swarm density affects interactions.
+
+High density increases communication and local information but can produce:
+
+* collisions;
+* congestion;
+* correlated behavior.
+
+Low density reduces interference but can disconnect the network.
+
+Optimal density is task-specific.
+
+== Swarm robotics ==
+
+Robot <math>i</math> can use local sensors and communication:
+
+<math>a_i=\pi(o_i,N_i,m_i).</math>
+
+Swarm robotics aims for scalable decentralized coordination under embodiment.
+
+Physical tests should include:
+
+* sensor noise;
+* actuator error;
+* battery depletion;
+* communication dropout;
+* robot loss.
+
+Simulation-to-reality gaps can be severe.
+
+== Coverage control ==
+
+For environmental coverage, robots seek positions minimizing spatial cost:
+
+<math>J=\int_Q\min_i\|q-p_i\|^2\phi(q)dq.</math>
+
+Distributed Lloyd-like updates move robots toward local Voronoi centroids.
+
+This is a swarm-style distributed control problem.
+
+Global optimality is not guaranteed.
+
+== Collective transport ==
+
+Several robots can move an object larger than one robot can handle.
+
+Coordination requires:
+
+* force alignment;
+* shared direction;
+* obstacle avoidance.
+
+Simple local force feedback can produce collective transport.
+
+The system may fail when agents push against one another.
+
+== Task allocation in insect-inspired swarms ==
+
+Response-threshold model:
+
+<math>P(task\ j)=\frac{s_j^n}{s_j^n+\theta_{ij}^n},</math>
+
+where <math>s_j</math> is task stimulus and <math>\theta_{ij}</math> agent threshold.
+
+Agents with lower thresholds respond sooner.
+
+This can produce decentralized division of labor.
+
+The model is an abstraction, not a universal insect mechanism.
+
+== Quorum responses ==
+
+Collectives can switch behavior when support exceeds threshold.
+
+If <math>N_c\ge q</math>, transition occurs.
+
+Quorum sensing can improve decision reliability by requiring accumulated evidence.
+
+Threshold too low produces premature decisions.
+
+Threshold too high delays action.
+
+== Nest-site selection ==
+
+Honeybee-inspired models use scouts exploring alternatives and recruitment dynamics.
+
+Quality-sensitive recruitment plus quorum can support collective choice.
+
+The mechanism illustrates distributed decision making.
+
+Biological details should be separated from algorithmic analogues.
+
+== Robustness metric ==
+
+Let baseline performance be <math>P_0</math> and performance after failure fraction <math>f</math> be <math>P(f)</math>.
+
+Robustness curve:
+
+<math>R(f)=P(f)/P_0.</math>
+
+A robust swarm declines gradually under random agent loss.
+
+Targeted loss of key communication nodes can reveal hidden centralization.
+
+== Scalability metric ==
+
+Let population size be <math>n</math>.
+
+Measure:
+
+* performance <math>P(n)</math>;
+* communication <math>C(n)</math>;
+* collision rate <math>K(n)</math>.
+
+A scalable system maintains useful <math>P(n)</math> without superlinear operational costs overwhelming gains.
+
+Adding agents beyond saturation can reduce performance.
+
+== Diversity ==
+
+Optimization population diversity can be measured:
+
+<math>D=\frac{1}{n}\sum_i\|x_i-\bar x\|.</math>
+
+Low diversity can signal convergence or stagnation.
+
+High diversity can signal exploration or failure to converge.
+
+Interpretation depends on phase of search.
+
+== Premature convergence ==
+
+If all agents follow one early leader:
+
+<math>x_i\rightarrow x_{local}</math>
+
+where <math>x_{local}</math> is suboptimal.
+
+Countermeasures include:
+
+* local neighborhoods;
+* random restarts;
+* adaptive parameters;
+* multiple sub-swarms.
+
+No method eliminates the possibility universally.
+
+== Dynamic environments ==
+
+If objective changes over time:
+
+<math>f_t(x),</math>
+
+the swarm must track moving optimum.
+
+Memory can help but stale memory can hurt.
+
+Evaporation and diversity are especially important.
+
+Performance should measure adaptation lag.
+
+== Benchmarking optimization swarms ==
+
+A fair benchmark fixes:
+
+* objective evaluations;
+* stopping criterion;
+* parameter tuning budget;
+* random seeds distribution.
+
+Report:
+
+* median;
+* variance;
+* best/worst;
+* failure rate.
+
+Compare against:
+
+* random search;
+* deterministic optimizers;
+* other metaheuristics.
+
+A single best run is weak evidence.
+
+== No-free-lunch boundary ==
+
+No optimizer dominates across all possible objective functions under broad no-free-lunch assumptions.
+
+Swarm algorithms are useful because many real problems have exploitable structure.
+
+Universal superiority claims are unjustified.
+
+== Collective intelligence distinction ==
+
+Swarm intelligence usually relies on local decentralized interactions among many agents.
+
+A human committee with explicit deliberation can show [[Collective intelligence]] without swarm architecture.
+
+The taxonomy should reflect mechanism, not merely group size.
+
+== DAI distinction ==
+
+[[Distributed artificial intelligence]] is broader.
+
+DAI includes:
+
+* negotiation;
+* planning;
+* autonomous agents;
+* distributed problem solving.
+
+Swarm intelligence is one decentralized design regime within DAI.
+
+== Consciousness boundary ==
+
+A swarm can optimize, select, move, and adapt collectively.
+
+None of those functions establishes a unified conscious subject.
+
+System-level behavior and phenomenal consciousness are different claims.
+
+== Epistemic boundary ==
+
+The scientific value of swarm intelligence comes from decomposable mechanisms:
+
+* local rule;
+* feedback;
+* topology;
+* stochasticity;
+* environmental memory;
+* performance metric.
+
+“Emergence” should never substitute for specifying how the behavior is generated.
 
 == References ==
-* [https://doi.org/10.1007/s11721-007-0002-0 Kennedy and Poli et al., Particle swarm optimization review (2007)]
-* [https://doi.org/10.1145/37401.37406 Reynolds (1987), Flocks, herds and schools]
+
+<references />
+
+* [https://doi.org/10.1093/oso/9780195131581.001.0001 Bonabeau, Dorigo and Theraulaz (1999), ''Swarm Intelligence''.]
+* [https://doi.org/10.1109/ICNN.1995.488968 Kennedy and Eberhart (1995), PSO.]
+* [https://doi.org/10.1109/3477.484436 Dorigo, Maniezzo and Colorni (1996), Ant System.]
 
 == Reading depth ==
-[[Swarm intelligence/Simple|Simple explanation]]
+
+[[Swarm intelligence/Simple|Simple explanation]] · [[Swarm intelligence|Core article]]

@@ -1,18 +1,541 @@
-'''Metaphysics''' is a branch of philosophy investigating fundamental questions about what exists and the nature and structure of reality. Topics include identity, causation, time, possibility, properties and relations.
+{{Reading depth|base=Metaphysics|current=Technical}}
 
-== History and scope ==
-The term is historically associated with Aristotle's writings collected under the title ''Metaphysics'', including inquiry into being and first principles. Its scope expanded and changed across subsequent philosophical traditions. Ontology concerns what entities and categories exist; modern metaphysics also investigates modality, persistence, causation, grounding, composition and time. No universally accepted demarcation separates all metaphysical questions from every other philosophical field.
+= Metaphysics — Technical =
 
-== Central problems ==
-Ontology asks whether a theory commits us to objects, properties, relations or abstract entities. Identity and persistence concern conditions under which an entity remains the same through change. Modal metaphysics concerns necessity and possibility; logical consistency, physical possibility and metaphysical possibility are distinct notions. The metaphysics of causation investigates what causal relations are, whereas empirical causal inquiry investigates particular effects and mechanisms. Grounding concerns proposed noncausal dependence or explanation; its nature and explanatory role remain contested.
+'''Metaphysics''' studies the fundamental categories, modal structure, identity conditions, dependence relations, and explanatory organization of reality. Contemporary metaphysics uses formal logic, possible-world semantics, mereology, theories of grounding, theories of causation, and scientifically informed ontology.
 
-== Methods and epistemic boundaries ==
-Arguments can be evaluated for validity, premise plausibility, explanatory power, coherence with other commitments and compatibility with relevant evidence. Formal logic may make a proposed theory explicit but cannot establish the truth of its premises by notation alone. Thought experiments can expose conceptual tensions without independently demonstrating physical possibilities. Scientific theories constrain some metaphysical accounts, while empirical underdetermination may leave competing interpretations open. Distinguish the question of what exists from the epistemological question of what justifies belief that it exists. Speculative propositions, including simulated reality hypotheses, require their own evidentiary assessment.
+Formal tools clarify claims but do not by themselves determine which metaphysical interpretation is correct.
+
+
+Technical metaphysics intersects with [[Epistemology]] when evaluating how ontological claims are justified, and with [[Scientific model|scientific models]] when empirical theories constrain candidate ontologies. Problems involving [[Consciousness]] and [[Simulated reality]] illustrate the need to separate formal possibility, empirical constraint, and metaphysical interpretation.
+
+== Ontological commitment ==
+
+A first-order theory can be written:
+
+<math>\exists x\,F(x).</math>
+
+On a Quinean approach, a theory is ontologically committed to entities required as values of its bound variables under its best regimented formulation.
+
+This criterion is influential but disputed.
+
+Alternative approaches distinguish quantification from metaphysical existence or allow different modes of being.
+
+== Quantifier variance ==
+
+Some metametaphysical views suggest that apparently substantive disputes arise from different meanings of existential quantifiers or category schemes.
+
+If two theories use:
+
+<math>\exists_1</math>
+
+and
+
+<math>\exists_2</math>
+
+with different inferential roles, disagreement can partly be verbal.
+
+Other philosophers argue that there is a privileged ontological question.
+
+This is a metametaphysical dispute.
+
+== Identity ==
+
+Classical identity is reflexive, symmetric, and transitive:
+
+<math>x=x,</math>
+
+<math>x=y\Rightarrow y=x,</math>
+
+<math>x=y\land y=z\Rightarrow x=z.</math>
+
+Leibniz's law:
+
+<math>x=y\Rightarrow\forall P(P(x)\leftrightarrow P(y)).</math>
+
+Apparent counterexamples generally motivate analysis of which predicates express genuine properties and how temporal indexicals work.
+
+== Indiscernibility of identicals versus identity of indiscernibles ==
+
+'''Indiscernibility of identicals''' follows from identity.
+
+'''Identity of indiscernibles''' claims:
+
+<math>\forall P(P(x)\leftrightarrow P(y))\Rightarrow x=y.</math>
+
+The converse is philosophically controversial.
+
+Perfectly symmetrical possible worlds create classic challenges.
+
+== Persistence ==
+
+Let object <math>o</math> exist at times <math>t_1,t_2</math>.
+
+Endurantism treats the same whole object as present at both times.
+
+Perdurantism represents object as temporal aggregate:
+
+<math>o=\bigcup_t o_t.</math>
+
+Here <math>o_t</math> are temporal parts.
+
+Stage theory treats ordinary objects as instantaneous stages linked by counterpart-like relations.
+
+== Constitution ==
+
+A statue and lump of clay can occupy the same region while apparently having different persistence conditions.
+
+Constitution theories ask whether they are:
+
+* one object under different descriptions;
+* two coincident objects;
+* one fundamental object plus derivative structure.
+
+The puzzle tests identity and modal properties.
+
+== Mereology ==
+
+Primitive parthood:
+
+<math>P(x,y).</math>
+
+Standard mereology often assumes:
+
+Reflexivity:
+
+<math>P(x,x).</math>
+
+Antisymmetry:
+
+<math>P(x,y)\land P(y,x)\Rightarrow x=y.</math>
+
+Transitivity:
+
+<math>P(x,y)\land P(y,z)\Rightarrow P(x,z).</math>
+
+Some systems use proper parthood instead.
+
+== Fusion ==
+
+A fusion of set <math>S</math> is an object whose parts exactly overlap the members of <math>S</math> according to the chosen mereological definition.
+
+'''Unrestricted composition''' claims every collection has a fusion.
+
+Restricted composition theories deny this.
+
+The special composition question asks when parts compose an object.
+
+== Modal logic ==
+
+Modal operators:
+
+<math>\Box p</math> = necessarily <math>p</math>;
+
+<math>\Diamond p</math> = possibly <math>p</math>.
+
+Standard duality:
+
+<math>\Diamond p\equiv\neg\Box\neg p.</math>
+
+Kripke semantics evaluates propositions at worlds connected by accessibility relation <math>R</math>.
+
+== Kripke frame ==
+
+A frame is
+
+<math>\langle W,R\rangle.</math>
+
+Model adds valuation <math>V</math>.
+
+Necessity:
+
+<math>M,w\models\Box p</math>
+
+iff
+
+<math>M,v\models p</math>
+
+for every <math>v</math> with <math>wRv</math>.
+
+Different frame properties generate different modal logics.
+
+== S5 ==
+
+S5 modal logic can be modeled with universal equivalence-like accessibility.
+
+In metaphysical modality, S5 is often used because if something is possibly necessary, it is necessary:
+
+<math>\Diamond\Box p\rightarrow\Box p.</math>
+
+Whether S5 correctly captures metaphysical modality is a substantive question.
+
+== Possible-world ontology ==
+
+Possible-world semantics does not fix the ontology of worlds.
+
+Options include:
+
+'''Modal realism''' — worlds are concrete and equally real.
+
+'''Ersatzism''' — worlds are abstract representations.
+
+'''Primitive modality''' — possible-world talk is derivative from primitive modal facts.
+
+Formal semantics and metaphysical interpretation should be separated.
+
+== Actualism ==
+
+Actualism holds that everything that exists is actual, even if modal truth is represented through abstract structures or properties.
+
+This creates challenges for quantification over merely possible individuals.
+
+Different actualist theories use:
+
+* essences;
+* world-stories;
+* abstract representations.
+
+== Essence ==
+
+Modal account might say:
+
+<math>P</math> is essential to <math>x</math> if
+
+<math>\Box(E(x)\rightarrow P(x)).</math>
+
+But Fine-style theories argue essence is more fundamental than necessity.
+
+A proposition can be necessary without belonging to an object's essence.
+
+Thus essence and modality need not reduce to each other.
+
+== Grounding ==
+
+Grounding is often represented:
+
+<math>\Gamma\prec\phi</math>
+
+meaning facts <math>\Gamma</math> ground fact <math>\phi</math>.
+
+Proposed properties include:
+
+* irreflexivity;
+* transitivity;
+* asymmetry;
+* well-foundedness.
+
+Each is controversial in some theories.<ref name="grounding">[https://plato.stanford.edu/entries/grounding/ Stanford Encyclopedia of Philosophy, “Metaphysical Grounding.”]</ref>
+
+== Full and partial grounding ==
+
+Full grounding provides a complete metaphysical basis for a fact.
+
+Partial grounding contributes only part.
+
+If fact <math>A</math> and <math>B</math> jointly ground <math>C</math>:
+
+<math>A,B\prec C.</math>
+
+Neither may be sufficient alone.
+
+This resembles explanatory dependence but is not ordinary causation.
+
+== Grounding versus causation ==
+
+Causation is typically diachronic or productive.
+
+Grounding is often synchronic or constitutive.
+
+Example:
+
+* fire causes smoke;
+* facts about members ground a fact about the set.
+
+This distinction is theoretical rather than universally accepted.
+
+== Fundamentality ==
+
+A fact is fundamental if it is ungrounded in the relevant sense.
+
+A hierarchy can be represented as DAG:
+
+<math>F_0\rightarrow F_1\rightarrow\cdots.</math>
+
+If grounding cycles exist, this simple hierarchy fails.
+
+Debates over infinite descent and circular grounding remain active.
+
+== Supervenience ==
+
+Set of properties <math>A</math> supervenes on <math>B</math> if no two possible situations differ in <math>A</math> without differing in <math>B</math>.
+
+Formally:
+
+<math>B(x)=B(y)\Rightarrow A(x)=A(y)</math>
+
+at the appropriate modal level.
+
+Supervenience states covariance, not explanation.
+
+It does not by itself identify grounding or causation.
+
+== Physicalism ==
+
+One formulation of physicalism claims all facts supervene on physical facts.
+
+Stronger formulations require grounding or realization.
+
+The exact physical base is difficult to specify when physics changes.
+
+Therefore “everything is physical” needs formal clarification.
+
+== Emergence ==
+
+Weak emergence can mean macro-properties are derivable only through complex computation.
+
+Strong emergence can claim novel fundamental causal powers.
+
+These positions differ dramatically.
+
+An empirically surprising macro-pattern does not automatically establish strong metaphysical emergence.
+
+== Causation: counterfactual approach ==
+
+A simple counterfactual condition:
+
+<math>C\Box\!\!\rightarrow E</math>
+
+reads: if <math>C</math> were the case, <math>E</math> would be.
+
+Causal dependence is often represented by:
+
+<math>\neg C\Box\!\!\rightarrow\neg E.</math>
+
+Preemption and overdetermination create problems for simple counterfactual theories.
+
+== Interventionism ==
+
+Interventionist causation asks whether changing <math>X</math> under an appropriate intervention changes <math>Y</math>.
+
+Structural equation:
+
+<math>Y=f(X,U).</math>
+
+An intervention replaces the normal equation for <math>X</math>.
+
+This framework is scientifically powerful.
+
+Whether it provides a complete metaphysics of causation remains debated.
+
+== Causal powers ==
+
+Powers theories treat properties as dispositional.
+
+Fragility is a tendency to break under appropriate stimulus.
+
+The manifestation can fail because of masking conditions.
+
+Dispositions therefore are not simply observed regularities.
+
+== Laws of nature ==
+
+Humean best-system theory identifies laws with axioms of the optimal balance of simplicity and strength summarizing the total mosaic.
+
+Governing-law theories treat laws as modally stronger entities that constrain behavior.
+
+Dispositional theories ground laws in powers.
+
+Empirical physics underdetermines some of these interpretations.
+
+== Time ontology ==
+
+Presentism:
+
+<math>Exists(x)\Rightarrow Present(x).</math>
+
+Eternalism allows entities at past and future times to exist.
+
+Growing-block theory includes past and present but not future.
+
+Relativity creates challenges for global presentism because simultaneity is frame-dependent.
+
+Different presentist responses exist.
+
+== A-theory and B-theory ==
+
+A-theories treat tense or temporal passage as metaphysically fundamental.
+
+B-theories treat earlier/later relations as fundamental without objective passage.
+
+Psychological experience of passage does not itself decide the metaphysical question.
+
+Physics and phenomenology provide constraints from different directions.
+
+== Space ontology ==
+
+Substantivalism treats spacetime as entity.
+
+Relationism treats spatial facts as relations among material objects or events.
+
+General relativity gives spacetime dynamical structure, strengthening some substantivalist motivations while raising gauge-equivalence questions.
+
+Modern debate is more nuanced than Newton versus Leibniz alone.
+
+== Universals ==
+
+Realist model:
+
+<math>Instantiates(a,Redness).</math>
+
+Nominalists replace the universal with resemblance classes, predicates, or other structures.
+
+Trope theory instead posits particular property instances:
+
+<math>redness_a\neq redness_b.</math>
+
+The empirical fact that objects resemble does not uniquely choose among these ontologies.
+
+== Natural kinds ==
+
+Essentialist natural-kind model assigns property set <math>E_K</math> necessary for kind membership.
+
+Biological species often resist simple intrinsic essences because of variation and evolutionary history.
+
+Homeostatic-property-cluster and lineage accounts provide alternatives.
+
+Scientific categories constrain metaphysical theories.
+
+== Abstract objects ==
+
+Mathematical Platonism quantifies over abstract entities.
+
+Nominalist programs attempt to reconstruct science without such commitments.
+
+Structuralism treats positions in structures as primary.
+
+No purely mathematical theorem settles which ontology of mathematics is correct.
+
+== Social ontology ==
+
+Social entity <math>S</math> may depend on collective rules or practices:
+
+<math>S=F(agents,institutions,norms).</math>
+
+Dependence does not imply unreality.
+
+A corporation can be socially constituted while entering causal and legal relations.
+
+The metaphysics of social entities asks what their persistence and identity conditions are.
+
+== Metaphysics of science ==
+
+Scientific theories imply candidate ontologies:
+
+* particles;
+* fields;
+* spacetime;
+* wave functions;
+* genes;
+* species.
+
+Philosophers compare interpretations using:
+
+* empirical equivalence;
+* explanatory power;
+* coherence;
+* simplicity.
+
+When two interpretations make identical empirical predictions, metaphysical criteria can drive preference without yielding decisive proof.
+
+== Underdetermination ==
+
+Evidence <math>E</math> underdetermines theories <math>T_1,T_2</math> when both fit:
+
+<math>P(E|T_1)\approx P(E|T_2).</math>
+
+Metaphysical interpretation often occurs under such underdetermination.
+
+This should increase epistemic humility rather than license arbitrary speculation.
+
+== Thought experiments ==
+
+A thought experiment specifies hypothetical conditions and tests consequences of principles.
+
+Its evidential force depends on:
+
+* conceptual clarity;
+* background assumptions;
+* robustness of intuition.
+
+Thought experiments about empirical psychology are weaker when actual empirical data are available.
+
+== Reflective equilibrium ==
+
+One method balances:
+
+* particular judgments;
+* general principles;
+* background theory.
+
+Revise until coherence improves.
+
+This is a methodological ideal, not a guarantee of truth.
+
+Different starting judgments can yield different equilibria.
+
+== Theoretical virtues ==
+
+Metaphysical theories are often judged by:
+
+* simplicity;
+* explanatory scope;
+* unification;
+* fit with science;
+* avoidance of ad hoc structure.
+
+These virtues can conflict.
+
+There is no universally agreed weighting function.
+
+== Metametaphysics ==
+
+Metametaphysical questions include:
+
+* Is existence univocal?
+* Are ontology disputes merely verbal?
+* What is the role of quantifier choice?
+* How much weight should intuition carry?
+* Can grounding be empirically constrained?
+
+This is a second-order inquiry into metaphysical method.
+
+== Naturalized metaphysics ==
+
+Naturalized approaches give strong priority to current science.
+
+Metaphysical categories should reflect successful scientific theories rather than common-sense intuition alone.
+
+Critics argue science still requires interpretation and cannot eliminate all first-order metaphysical questions.
+
+== Epistemic boundary ==
+
+A responsible metaphysical claim distinguishes:
+
+'''Logical consequence''' — what follows from assumptions.
+
+'''Empirical constraint''' — what science rules in or out.
+
+'''Metaphysical interpretation''' — how remaining structure is understood.
+
+Confusing these levels can make a philosophical choice look experimentally established.
 
 == References ==
-* [https://plato.stanford.edu/entries/metaphysics/ Stanford Encyclopedia of Philosophy, Metaphysics]
-* [https://plato.stanford.edu/entries/metaphysical-explanation/ Stanford Encyclopedia of Philosophy, Metaphysical Explanation]
-* [https://plato.stanford.edu/entries/modality-epistemology/ Stanford Encyclopedia of Philosophy, The Epistemology of Modality]
+
+<references />
+
+* [https://plato.stanford.edu/entries/metaphysics/ Stanford Encyclopedia of Philosophy, “Metaphysics.”]
+* [https://plato.stanford.edu/entries/grounding/ Stanford Encyclopedia of Philosophy, “Metaphysical Grounding.”]
 
 == Reading depth ==
-[[Metaphysics/Simple|Simple explanation]]
+
+[[Metaphysics/Simple|Simple explanation]] · [[Metaphysics|Core article]]

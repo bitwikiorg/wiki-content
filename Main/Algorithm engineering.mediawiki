@@ -2,29 +2,460 @@
  |title=Algorithm engineering
  |entity_type=Concept
  |domain=Computer science, Mathematics, Engineering
- |provenance=Sanders (2009); Sanders (2010)
+ |status=Established
+ |provenance=Sanders (2009, 2010); ALENEX and experimental-algorithmics literature
 }}
-<onlyinclude>{{:Algorithm engineering/Simple}}</onlyinclude>
+{{Reading depth|base=Algorithm engineering|current=Core}}
 
-'''Reading depth:''' [[Algorithm engineering/Simple|Simple]] · [[Algorithm engineering/Technical|Technical]]
+= Algorithm engineering =
+
+'''Algorithm engineering''' is a methodology for developing efficient algorithms through a repeated cycle of design, mathematical analysis, implementation, experimental evaluation, and redesign. It treats theoretical algorithmics and empirical performance measurement as complementary parts of one research process.
+
+Peter Sanders describes algorithm engineering as a feedback cycle in which implementation and experiments reveal weaknesses in theoretical models and design assumptions, while analysis explains observed behavior and guides improved implementations.<ref name="sanders2009">[https://doi.org/10.1007/978-3-642-03456-5_22 Sanders, P. (2009), “Algorithm Engineering – An Attempt at a Definition.”]</ref>
+
+Important supporting elements include realistic machine models, algorithm libraries, representative benchmarks, reproducible implementations, and strong connection to applications.
+
+== The engineering cycle ==
+
+A typical cycle is:
+
+<pre>
+problem
+→ model
+→ design
+→ analysis
+→ implementation
+→ experiment
+→ interpretation
+→ revised model or design
+</pre>
+
+The cycle can repeat many times.
+
+A theoretical insight may improve implementation.
+
+A benchmark result may expose a cache bottleneck not represented in the original model.
+
+A production workload may reveal that the chosen benchmark distribution was unrealistic.
+
+Algorithm engineering treats these discoveries as part of the research process.
+
+== Problem specification ==
+
+Before designing an algorithm, define the computational problem precisely.
+
+Specify:
+
+* valid inputs;
+* required outputs;
+* correctness conditions;
+* constraints;
+* objective;
+* acceptable approximations.
+
+An algorithm can be fast while solving the wrong problem.
+
+Problem definition therefore precedes performance optimization.
+
+== Computational models ==
+
+Theory requires a model of computation.
+
+Common models include:
+
+* random-access machine;
+* comparison model;
+* external-memory model;
+* parallel models;
+* distributed models.
+
+Each emphasizes different costs.
+
+A RAM model may treat memory access as constant time.
+
+Real hardware has:
+
+* caches;
+* memory latency;
+* vector units;
+* branch prediction.
+
+Algorithm engineering asks when the theoretical model remains predictive and when a more realistic model is needed.
+
+== Asymptotic analysis ==
+
+Asymptotic complexity describes how resource use grows with input size.
+
+For example, comparison sorting has familiar <math>O(n\log n)</math> algorithms.
+
+Asymptotic notation suppresses:
+
+* constant factors;
+* cache behavior;
+* instruction mix;
+* implementation overhead.
+
+Two algorithms with the same asymptotic complexity can differ greatly at practical scales.
+
+Asymptotic analysis remains essential because measured speed at one size does not predict scaling automatically.
+
+== Worst case and typical case ==
+
+Worst-case analysis provides guarantees.
+
+Typical workloads may behave differently.
+
+Algorithm engineering often evaluates:
+
+* worst-case inputs;
+* random inputs;
+* structured real-world inputs;
+* adversarial inputs.
+
+An algorithm optimized for average data can still need a fallback for pathological cases.
+
+Benchmark design should reflect actual deployment risk.
+
+== Implementation ==
+
+Implementation translates an abstract algorithm into executable software.
+
+Performance can depend on:
+
+* memory layout;
+* data structures;
+* compiler;
+* language;
+* vectorization;
+* concurrency;
+* system calls.
+
+An implementation is therefore part of the experimental object.
+
+A slow implementation does not necessarily refute the algorithmic idea.
+
+A highly optimized implementation can also obscure which design choice produced the gain.
+
+== Constant factors ==
+
+Suppose two algorithms take approximately
+
+<math>T_A(n)=a n\log n</math>
+
+and
+
+<math>T_B(n)=b n\log n.</math>
+
+If <math>a\ll b</math>, A can dominate across the relevant range even though the asymptotic class is identical.
+
+Engineering aims to identify these constants and their causes.
+
+== Crossover points ==
+
+An algorithm with better asymptotic complexity can be slower for small inputs.
+
+If
+
+<math>T_A(n)=an^2</math>
+
+and
+
+<math>T_B(n)=bn\log n</math>
+
+with <math>b\gg a</math>, there is a crossover size above which B becomes faster.
+
+Hybrid algorithms exploit this.
+
+Many production systems use one method for small subproblems and another for large ones.
+
+== Memory hierarchy ==
+
+Modern processors have multiple levels of memory.
+
+Cache misses can dominate runtime.
+
+An algorithm with more arithmetic but better locality can outperform one with fewer theoretical operations.
+
+Cache-aware and cache-oblivious algorithms address this explicitly.
+
+Measured performance should record hardware and memory configuration.
+
+== Parallelism ==
+
+Parallel algorithms add new costs:
+
+* synchronization;
+* communication;
+* load imbalance;
+* contention.
+
+Speedup is
+
+<math>S_p=T_1/T_p.</math>
+
+Efficiency is
+
+<math>E_p=S_p/p.</math>
+
+Perfect linear speedup is rare.
+
+A fair comparison reports total computational resources as well as wall-clock time.
+
+== Input distributions ==
+
+Algorithm behavior can depend strongly on input.
+
+Sorting benchmarks might include:
+
+* random permutations;
+* nearly sorted arrays;
+* reverse order;
+* duplicate-heavy data;
+* skewed keys;
+* real records.
+
+Testing only uniform random inputs can hide important weaknesses.
+
+Input generators should be versioned and documented.
+
+== Benchmark suites ==
+
+A benchmark suite should represent the target problem family.
+
+Good suites contain:
+
+* multiple sizes;
+* diverse structures;
+* hard cases;
+* real-world examples.
+
+The benchmark should not be tuned after seeing results without disclosure.
+
+Otherwise researchers can overfit the algorithm to the test set.
+
+== Baselines ==
+
+Performance claims require appropriate baselines.
+
+Compare against:
+
+* established algorithms;
+* simple reference methods;
+* current state of the art;
+* ablated versions.
+
+A new method outperforming an intentionally weak baseline provides little evidence.
+
+Baseline implementations should receive comparable optimization effort.
+
+== Correctness testing ==
+
+Benchmark speed is meaningless if outputs are wrong.
+
+Correctness checks can use:
+
+* independent reference implementation;
+* property-based testing;
+* assertions;
+* formal verification;
+* known solutions.
+
+For randomized algorithms, test many seeds.
+
+For approximate algorithms, verify objective quality and constraints.
+
+== Experimental reproducibility ==
+
+A reproducible experiment records:
+
+* source revision;
+* build instructions;
+* compiler version;
+* flags;
+* machine configuration;
+* operating system;
+* input data;
+* random seeds;
+* measurement commands.
+
+This is part of [[Reproducible computational research]].
+
+A performance number without environment metadata can be difficult to interpret.
+
+== Measurement noise ==
+
+Wall-clock timing varies because of:
+
+* background processes;
+* CPU frequency changes;
+* thermal throttling;
+* cache state;
+* operating-system scheduling.
+
+Experiments should use repeated runs.
+
+Randomizing run order can reduce systematic drift.
+
+Report distributions rather than only the fastest run.
+
+== Statistical interpretation ==
+
+For repeated measurements, useful summaries include:
+
+* median;
+* mean;
+* quantiles;
+* confidence intervals.
+
+The best statistic depends on the noise distribution.
+
+Tiny statistically detectable differences may be practically irrelevant.
+
+Effect size matters.
+
+== Tuning ==
+
+Algorithms often contain parameters.
+
+Tuning on the same benchmark used for final evaluation creates optimistic bias.
+
+Better procedure:
+
+<pre>
+training/tuning instances
+→ parameter choice
+→ separate evaluation instances
+</pre>
+
+All compared methods should receive fair tuning budgets.
+
+== Energy efficiency ==
+
+Runtime is not the only engineering objective.
+
+Metrics can include:
+
+* energy;
+* memory;
+* communication;
+* hardware cost.
+
+Sanders explicitly notes advanced hardware and energy efficiency as algorithm-engineering concerns.<ref name="sanders2010">[https://doi.org/10.1137/1.9781611972900.6 Sanders, P. (2010), “Algorithm Engineering – An Attempt at a Definition Using Sorting as an Example.”]</ref>
+
+The fastest algorithm may not be the most energy efficient.
+
+== Robustness ==
+
+An engineered algorithm should be tested outside ideal conditions.
+
+Stress tests can vary:
+
+* data size;
+* skew;
+* faults;
+* resource limits;
+* concurrency.
+
+Robustness matters especially when algorithm performance influences critical systems.
+
+== Libraries ==
+
+Algorithm libraries preserve reusable implementations.
+
+A library should expose:
+
+* clear interfaces;
+* complexity expectations;
+* parameter defaults;
+* tests;
+* supported platforms.
+
+Libraries also make experimental comparisons easier because strong implementations become accessible to other researchers.
+
+== Application coupling ==
+
+Algorithm engineering benefits from real applications.
+
+Application constraints reveal which metrics matter.
+
+For route planning, query latency may matter more than preprocessing time.
+
+For batch analytics, throughput may dominate.
+
+A theoretically elegant algorithm can be unsuitable if it optimizes the wrong resource.
+
+== Profiling ==
+
+Profilers identify where time is spent.
+
+Possible bottlenecks include:
+
+* memory;
+* branch misprediction;
+* synchronization;
+* I/O.
+
+Profiling prevents optimization based only on intuition.
+
+It also helps separate algorithmic improvements from implementation artifacts.
+
+== Algorithm portfolios ==
+
+No one algorithm is best on every instance.
+
+A portfolio chooses among several methods based on input features.
+
+This is an engineering response to heterogeneous problem distributions.
+
+Portfolio selection itself becomes an algorithmic problem.
+
+== Reproducibility versus portability ==
+
+Reproducing the same result on identical hardware is one goal.
+
+Portable performance across architectures is another.
+
+An algorithm tuned for one processor may degrade on another.
+
+Evaluation should distinguish these claims.
+
+== Algorithm engineering versus software engineering ==
+
+Algorithm engineering focuses on efficient algorithmic methods and their empirical/theoretical validation.
+
+Software engineering covers broader concerns such as:
+
+* requirements;
+* architecture;
+* maintenance;
+* testing;
+* deployment.
+
+A high-performance algorithm can still be embedded in poorly engineered software.
+
+The fields overlap but are not identical.
+
+== Epistemic boundary ==
+
+Algorithm engineering does not replace proof with benchmarking.
+
+Correctness and asymptotic analysis answer questions experiments cannot settle universally.
+
+Experiments answer questions simplified models may miss.
+
+The strongest results connect both.
 
 == Semantic relationships ==
+
 * [[Related to::Algorithm]]
 * [[Related to::Computational complexity]]
 * [[Related to::Optimization]]
 * [[Related to::Reproducible computational research]]
 * [[Related to::Computer architecture]]
 
-== Incoming semantic relationships ==
-{{#ask:
- [[Related to::Algorithm engineering]]
- |?Entity type
- |?Domain
- |format=table
- |mainlabel=Related knowledge object
- |limit=30
- |default=''No incoming semantic relationships are recorded.''
-}}
+== References ==
+
+<references />
 
 [[Category:Computer science]]
 [[Category:Mathematics]]

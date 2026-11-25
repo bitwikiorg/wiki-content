@@ -1,17 +1,535 @@
-'''Algorithm engineering''' is a research and development approach that combines algorithm design, mathematical analysis, implementation and empirical evaluation in a repeated cycle.
+{{Reading depth|base=Algorithm engineering|current=Technical}}
 
-== Methodology ==
-Sanders describes algorithm engineering as a feedback cycle of design, analysis, implementation and experimentation. The theoretical model guides hypotheses, while implementation and measurements expose assumptions about memory hierarchy, input distribution and constant factors. New findings can motivate revised models and algorithms. This differs from treating a benchmark as a substitute for correctness proofs.
+= Algorithm engineering — Technical =
 
-== Experimental design ==
-Specify the problem, baseline, input generator or dataset, versioned implementation, compiler flags, machine configuration and measurement procedure. For sorting, include random, nearly sorted, reverse-sorted and duplicate-heavy inputs; verify outputs against an independent reference. Separate algorithmic work counts from elapsed time and memory allocation. Repeated runs with randomized order can reduce sensitivity to thermal or background effects; report distributions and confidence intervals where suitable.
+'''Algorithm engineering''' is an iterative methodology combining formal algorithm design and analysis with implementation, controlled experimentation, realistic machine models, benchmark construction, and application feedback. The objective is not merely to obtain a good asymptotic bound or a fast program, but to develop algorithms whose theoretical properties and measured behavior are both understood.
 
-== Interpretation ==
-A theoretical bound such as O(n log n) describes growth under a defined computational model, not a measured time in seconds. Cache misses, branch prediction, vectorization and communication can dominate at practical scales. Compare resource budgets fairly, disclose tuning and avoid optimizing only for the test set. Reproducible artifacts and sensitivity analysis make results inspectable; benchmark speed alone does not establish safety, maintainability or correctness.
+Sanders defines the central process as a feedback cycle among design, analysis, implementation, and experimental evaluation.<ref name="sanders">[https://doi.org/10.1007/978-3-642-03456-5_22 Sanders, P. (2009), “Algorithm Engineering – An Attempt at a Definition.”]</ref>
+
+
+Algorithm engineering connects abstract [[Algorithm|algorithms]] to executable [[Code]], measured performance, and implementation constraints. It complements theoretical complexity analysis by testing behavior on real machines and data, while [[Emergent algorithm|emergent algorithms]] and [[Distributed artificial intelligence]] introduce additional concerns such as decentralized execution and system-level behavior.
+
+== Algorithm-engineering cycle ==
+
+Let a candidate algorithm be <math>A_k</math> and experimental/theoretical evidence be <math>E_k</math>.
+
+Iteration:
+
+<math>A_{k+1}=Update(A_k,E_k).</math>
+
+Evidence can reveal:
+
+* model mismatch;
+* implementation bottleneck;
+* unexpected input sensitivity;
+* incorrect assumptions.
+
+The update may change the algorithm, data structure, machine model, or benchmark.
+
+== Analytical foundations ==
+
+=== Correctness layer ===
+
+For input domain <math>X</math> and specification <math>S(x)</math>, correctness requires:
+
+<math>\forall x\in X:\ A(x)\models S(x).</math>
+
+Empirical testing samples inputs.
+
+It cannot prove universal correctness except for finite exhaustive domains.
+
+Formal proof, property checking, and testing therefore serve different roles.
+
+=== Cost model ===
+
+Theoretical runtime can be written
+
+<math>T(n)=C_{ops}(n)</math>
+
+under an abstract operation-count model.
+
+Measured runtime is closer to:
+
+<math>T_{real}=F(ops,memory,branches,parallelism,I/O,hardware).</math>
+
+Algorithm engineering studies the relationship between these models.
+
+=== Asymptotic analysis ===
+
+Suppose:
+
+<math>T_A(n)=an\log n+bn</math>
+
+and
+
+<math>T_B(n)=cn\log n+dn.</math>
+
+Both are <math>O(n\log n)</math>.
+
+Practical ordering depends on coefficients and hardware.
+
+Asymptotics provide scaling structure but not exact crossover points.
+
+=== Crossover analysis ===
+
+Solve
+
+<math>T_A(n^*)=T_B(n^*)</math>
+
+to estimate crossover size <math>n^*</math>.
+
+Empirical crossover may differ because cost coefficients change with cache level or parallelization.
+
+Piecewise performance models can be more realistic.
+
+=== Roofline-style reasoning ===
+
+Performance can be bounded by compute throughput and memory bandwidth.
+
+Arithmetic intensity:
+
+<math>I=\frac{operations}{bytes\ transferred}.</math>
+
+Attainable performance is constrained roughly by:
+
+<math>P\le\min(P_{peak},B\cdot I),</math>
+
+where <math>B</math> is memory bandwidth.
+
+This explains why reducing operation count does not always improve runtime.
+
+=== Cache complexity ===
+
+External-memory/cache models count block transfers.
+
+For cache block size <math>B</math>, sequential scan of <math>n</math> items uses
+
+<math>O(n/B)</math>
+
+block transfers.
+
+A theoretically optimal RAM algorithm can perform poorly if memory access is random.
+
+Cache-aware design can dominate practical performance for large data.
+
+=== Branch behavior ===
+
+Conditional branches can incur misprediction cost.
+
+Branchless implementations can trade extra arithmetic for predictable execution.
+
+Benchmark interpretation should identify whether gains arise from algorithmic structure or microarchitecture.
+
+=== Vectorization ===
+
+SIMD executes multiple data operations per instruction.
+
+An algorithm with regular memory layout can exploit vector lanes.
+
+Irregular pointer structures may prevent effective vectorization.
+
+Source-level algorithm choices can therefore affect hardware utilization.
+
+=== Parallel speedup ===
+
+Speedup:
+
+<math>S_p=T_1/T_p.</math>
+
+Parallel efficiency:
+
+<math>E_p=S_p/p.</math>
+
+Amdahl-style bound with serial fraction <math>f</math>:
+
+<math>S_p\le\frac{1}{f+(1-f)/p}.</math>
+
+Synchronization and bandwidth can reduce practical speedup further.
+
+=== Strong and weak scaling ===
+
+'''Strong scaling''' fixes total problem size while increasing processors.
+
+'''Weak scaling''' increases problem size with processors.
+
+Both should be reported for parallel algorithms because they answer different questions.
+
+=== Load balance ===
+
+Let processor workloads be <math>w_i</math>.
+
+Imbalance:
+
+<math>I=\frac{\max_iw_i}{\bar w}.</math>
+
+Large imbalance leaves processors idle.
+
+Dynamic scheduling can improve balance at the cost of coordination overhead.
+
+== Experimental design and statistics ==
+
+=== Experimental hypothesis ===
+
+A benchmark should test a stated hypothesis.
+
+Example:
+
+<pre>
+H: cache-aware partitioning reduces runtime for n larger than LLC capacity.
+</pre>
+
+Then manipulate input size and collect memory-performance counters.
+
+This is stronger than measuring many implementations without a question.
+
+=== Input generator ===
+
+A synthetic input generator defines distribution
+
+<math>x\sim P_\theta.</math>
+
+Parameters <math>\theta</math> should be documented.
+
+If the real workload distribution <math>Q</math> differs from <math>P_\theta</math>, benchmark conclusions may not transfer.
+
+Use both synthetic and real instances where possible.
+
+=== Benchmark leakage ===
+
+Repeatedly tuning against benchmark set <math>B</math> causes overfitting.
+
+Split instances:
+
+<math>B=B_{tune}\cup B_{test}</math>
+
+with no adaptive use of <math>B_{test}</math> before final evaluation.
+
+For long-lived competitions, hidden tests are stronger.
+
+=== Baseline normalization ===
+
+Let runtime ratio be
+
+<math>R=T_{baseline}/T_{new}.</math>
+
+A speedup claim should specify:
+
+* exact baseline version;
+* optimization flags;
+* hardware;
+* tuning.
+
+Weak or outdated baselines inflate <math>R</math> artificially.
+
+=== Randomized algorithms ===
+
+For randomized runtime <math>T</math>, report distribution over independent seeds.
+
+Useful summaries:
+
+<math>median(T)</math>, quantiles, and failure probability.
+
+A single seed cannot characterize stochastic performance.
+
+=== Confidence intervals ===
+
+For mean runtime estimate <math>\bar T</math>, uncertainty can be summarized using a confidence interval when assumptions are appropriate.
+
+Bootstrap intervals are useful for non-normal measurements.
+
+The interval describes sampling uncertainty, not all systematic bias.
+
+=== Effect size ===
+
+Suppose algorithm A is 0.5% faster with tiny p-value after thousands of runs.
+
+The effect may be operationally irrelevant.
+
+Report absolute and relative differences, not significance alone.
+
+=== Multiple comparisons ===
+
+Testing many algorithms, parameters, and datasets increases false-positive risk.
+
+Predefined evaluation plans and correction procedures improve credibility.
+
+Exploratory benchmark findings should be labeled exploratory.
+
+== Measurement and resource effects ==
+
+=== Warm-up effects ===
+
+Managed runtimes and CPUs can have warm-up behavior:
+
+* JIT compilation;
+* cache warming;
+* frequency scaling.
+
+Discarding or retaining warm-up trials must be justified and documented.
+
+Benchmark harnesses should isolate initialization from steady-state work.
+
+=== Timer resolution ===
+
+Very short operations approach timer noise.
+
+Batch many operations:
+
+<math>T_{avg}=T_{batch}/k.</math>
+
+Ensure batching does not alter caching or optimization behavior.
+
+Use appropriate monotonic high-resolution clocks.
+
+=== CPU affinity ===
+
+OS migration between cores can introduce variance.
+
+Pinning processes can improve measurement stability.
+
+But pinning may make benchmark less representative of real deployment.
+
+Experimental control and ecological validity trade off.
+
+=== Thermal effects ===
+
+Long benchmark sequences can heat hardware and trigger throttling.
+
+Randomized order and temperature monitoring can detect drift.
+
+Reporting only early or best runs can bias results.
+
+=== Energy measurement ===
+
+Energy:
+
+<math>E=\int_0^TP(t)dt.</math>
+
+Faster execution can use higher power but lower total energy.
+
+Report both runtime and energy when energy efficiency matters.
+
+Hardware power counters have measurement limitations.
+
+=== Memory footprint ===
+
+Peak memory <math>M_{peak}</math> can determine whether an algorithm fits in RAM.
+
+An algorithm with lower runtime but 10× memory can be unusable.
+
+Track:
+
+* resident set;
+* allocations;
+* temporary buffers.
+
+Memory hierarchy can interact with total footprint.
+
+=== I/O complexity ===
+
+For external data, storage bandwidth dominates.
+
+Separate:
+
+* cold-cache;
+* warm-cache;
+* preprocessing.
+
+A benchmark reading data already cached in memory can dramatically overestimate production throughput.
+
+=== Numerical accuracy ===
+
+Algorithms using floating point may trade speed for accuracy.
+
+Compare error:
+
+<math>E=\|\hat y-y^*\|.</math>
+
+Performance should be reported at comparable accuracy.
+
+A faster approximate solver with much worse error is not a direct replacement.
+
+== Algorithmic tradeoffs ==
+
+=== Approximation algorithms ===
+
+For minimization, approximation ratio:
+
+<math>\rho=A(I)/OPT(I).</math>
+
+Empirical quality can be better than worst-case guarantee.
+
+Report both theoretical bound and observed gap.
+
+Do not infer a stronger guarantee from benchmark behavior.
+
+=== Anytime algorithms ===
+
+Anytime algorithm improves solution with runtime.
+
+Quality curve:
+
+<math>Q(t).</math>
+
+Compare under equal time budgets.
+
+Final-quality-only comparisons can hide differences in early usable solutions.
+
+=== Multiobjective engineering ===
+
+Algorithms can trade:
+
+* runtime;
+* memory;
+* energy;
+* quality.
+
+A Pareto frontier identifies nondominated choices.
+
+One scalar score requires explicit weights reflecting application priorities.
+
+== Profiling, testing, and reproducibility ==
+
+=== Profiling ===
+
+Let function-level cost shares be <math>p_i</math> with
+
+<math>\sum_ip_i=1.</math>
+
+Optimization should target dominant costs.
+
+After optimization, bottleneck can move.
+
+Repeated profiling supports the engineering cycle.
+
+=== Hardware counters ===
+
+Counters can measure:
+
+* instructions;
+* cycles;
+* cache misses;
+* branch misses.
+
+Derived metrics such as IPC help diagnose performance.
+
+Counters can be multiplexed or model-specific; their uncertainty should be acknowledged.
+
+=== Reproducible artifact ===
+
+A strong artifact includes:
+
+* versioned source;
+* container/environment;
+* datasets;
+* scripts;
+* expected outputs;
+* result-processing code.
+
+Containers improve repeatability but do not completely fix hardware differences.
+
+=== Correctness oracle ===
+
+For testing, independent oracle <math>O(x)</math> can check:
+
+<math>A(x)=O(x).</math>
+
+If both implementations share the same bug or code, independence is reduced.
+
+Property-based invariants can complement reference outputs.
+
+=== Differential testing ===
+
+Run several independent implementations on same input.
+
+Disagreement flags possible defects.
+
+Consensus does not prove correctness.
+
+But differential testing is efficient for finding inconsistencies.
+
+=== Fuzz testing ===
+
+Random or coverage-guided fuzzing explores unusual inputs.
+
+Useful for parsers, graph algorithms, and data structures.
+
+A crash reveals a bug.
+
+Absence of crashes does not prove safety.
+
+=== Adversarial inputs ===
+
+Worst-case constructions can reveal vulnerabilities hidden by random tests.
+
+Hash tables, quicksort variants, graph heuristics, and compression algorithms can all have adversarial cases.
+
+Benchmark suites should include them when plausible in deployment.
+
+== Engineering practice ==
+
+=== Algorithm libraries ===
+
+Libraries make engineered algorithms reusable.
+
+Design concerns include:
+
+* generic interfaces;
+* parameter defaults;
+* safety;
+* documentation;
+* backward compatibility.
+
+A theoretically fast algorithm that is difficult to use correctly may have limited practical value.
+
+=== Portfolio selection ===
+
+Let algorithms <math>A_1,\ldots,A_k</math> and instance features <math>\phi(x)</math>.
+
+Selector:
+
+<math>j^*=g(\phi(x)).</math>
+
+Portfolio methods exploit instance heterogeneity.
+
+Selector overhead and misclassification must be included in performance.
+
+=== Application feedback ===
+
+Real deployment creates new evidence:
+
+* workload shifts;
+* failures;
+* user latency;
+* hardware changes.
+
+Algorithm engineering should continue after publication when application data reveal model mismatch.
+
+=== Reproducible computational research ===
+
+[[Reproducible computational research]] supplies practices for preserving code, data, environment, and workflow.
+
+Algorithm engineering adds an explicit optimization and modeling cycle.
+
+Reproducibility is a necessary condition for reliable empirical comparison, not sufficient proof of generality.
+
+== Epistemic boundary ==
+
+Theoretical analysis establishes properties under models.
+
+Experiments establish measured behavior under sampled conditions.
+
+Implementation exposes architecture-specific effects.
+
+Algorithm engineering is powerful precisely because it does not confuse these evidentiary levels.
 
 == References ==
-* [https://doi.org/10.1007/978-3-642-03456-5_22 Sanders (2009), Algorithm Engineering – An Attempt at a Definition]
-* [https://doi.org/10.1137/1.9781611972900.6 Sanders (2010), Algorithm Engineering using sorting as an example]
+
+<references />
+
+* [https://doi.org/10.1137/1.9781611972900.6 Sanders, P. (2010), algorithm engineering using sorting.]
+* [https://ae.iti.kit.edu/english/1577.php KIT Algorithm Engineering publication page.]
 
 == Reading depth ==
-[[Algorithm engineering/Simple|Simple explanation]]
+
+[[Algorithm engineering/Simple|Simple explanation]] · [[Algorithm engineering|Core article]]

@@ -1,15 +1,191 @@
-<onlyinclude>'''Algorithm engineering''' is a research and development approach that combines algorithm design, mathematical analysis, implementation and empirical evaluation in a repeated cycle.
+{{Reading depth|base=Algorithm engineering|current=Simple}}
 
-== Explanation ==
-Two sorting algorithms may have the same asymptotic time complexity but behave differently on actual hardware or input distributions. Algorithm engineering investigates such differences and improves designs using theory and measured evidence.
+= Algorithm engineering — Simple =
+
+'''Algorithm engineering''' is the practice of improving algorithms by combining theory, implementation, and experiments.
+
+The basic cycle is:
+
+<pre>
+design
+→ analyze
+→ implement
+→ benchmark
+→ learn
+→ redesign
+</pre>
+
+Peter Sanders describes algorithm engineering as exactly this kind of feedback process.<ref name="sanders">[https://doi.org/10.1007/978-3-642-03456-5_22 Sanders, P. (2009), “Algorithm Engineering – An Attempt at a Definition.”]</ref>
+
+== Theory and experiments work together ==
+
+Theoretical analysis can tell us how an algorithm scales.
+
+Experiments can show what happens on real machines.
+
+Neither replaces the other.
+
+For example, two sorting algorithms might both take approximately <math>O(n\log n)</math> time but still have very different real performance because of:
+
+* memory access;
+* cache misses;
+* branch prediction;
+* implementation overhead.
+
+Algorithm engineering studies those differences.
+
+== Start with the exact problem ==
+
+Before optimizing anything, define:
+
+* valid inputs;
+* required output;
+* correctness rules;
+* resource limits.
+
+A very fast algorithm is useless if it solves the wrong problem.
+
+== Asymptotic complexity still matters ==
+
+Big-O notation describes how resource use grows as input gets larger.
+
+It does not tell us the exact number of seconds.
+
+An algorithm with worse Big-O behavior can still be faster for small inputs.
+
+This creates a '''crossover point''' where another algorithm becomes better as <math>n</math> grows.
+
+Production systems often use hybrid algorithms for this reason.
+
+== Real hardware matters ==
+
+Modern CPUs have:
+
+* caches;
+* vector instructions;
+* multiple cores;
+* branch predictors.
+
+An algorithm with fewer mathematical operations can be slower if it accesses memory badly.
+
+Algorithm engineering therefore measures performance on actual hardware.
+
+== Inputs matter ==
+
+An algorithm can perform differently on different data.
+
+A sorting benchmark should not test only random data.
+
+It may also include:
+
+* nearly sorted data;
+* reverse-sorted data;
+* many duplicate values;
+* real datasets.
+
+Testing only one convenient distribution can produce misleading results.
+
+== Baselines matter ==
+
+A new algorithm should be compared with strong existing methods.
+
+Beating a deliberately weak baseline does not show much.
+
+Fair comparison means:
+
+* similar optimization effort;
+* same hardware;
+* same input;
+* same resource limits.
+
+== Correctness comes first ==
+
+A benchmark should verify the answer.
+
+For sorting, check that:
+
+* the output is sorted;
+* no items were lost;
+* no items were added.
+
+For optimization, check constraints and objective value.
+
+Fast wrong answers are not algorithmic improvements.
+
+== Repeated measurements ==
+
+Runtime changes from run to run.
+
+Background programs, CPU temperature, and system scheduling can affect timing.
+
+Good experiments therefore run several times and report distributions.
+
+Reporting only the fastest run can be misleading.
+
+== Reproducibility ==
+
+A reproducible benchmark records:
+
+* source-code version;
+* compiler;
+* compiler flags;
+* hardware;
+* operating system;
+* input data;
+* random seeds.
+
+This allows another researcher to understand or repeat the result.
+
+== Parameter tuning ==
+
+Algorithms often have parameters.
+
+If parameters are tuned on the same test data used for the final result, the algorithm can overfit the benchmark.
+
+A better design uses:
+
+* one set for tuning;
+* a separate set for final evaluation.
+
+== More than speed ==
+
+Algorithm engineering can also measure:
+
+* memory;
+* energy;
+* communication;
+* preprocessing time;
+* latency;
+* throughput.
+
+The right metric depends on the application.
+
+== Applications guide design ==
+
+A route-planning system might need very fast queries even if preprocessing takes hours.
+
+A small embedded device might care more about memory and energy.
+
+There is no single best algorithm outside a use case.
+
+== Algorithm engineering versus software engineering ==
+
+Algorithm engineering focuses on algorithm performance and validation.
+
+Software engineering covers broader concerns such as maintainability, architecture, deployment, and requirements.
+
+Good software often needs both.
 
 == Related concepts ==
+
 [[Algorithm]] · [[Computational complexity]] · [[Optimization]] · [[Reproducible computational research]] · [[Computer architecture]]
 
 == Sources ==
-* [https://doi.org/10.1007/978-3-642-03456-5_22 Sanders (2009), Algorithm Engineering – An Attempt at a Definition]
-* [https://doi.org/10.1137/1.9781611972900.6 Sanders (2010), Algorithm Engineering using sorting as an example]
-</onlyinclude>
+
+<references />
+
+* [https://doi.org/10.1137/1.9781611972900.6 Sanders (2010), algorithm engineering using sorting.]
 
 == Reading depth ==
-[[Algorithm engineering/Technical|Technical treatment]]
+
+[[Algorithm engineering|Core article]] · [[Algorithm engineering/Technical|Technical treatment]]

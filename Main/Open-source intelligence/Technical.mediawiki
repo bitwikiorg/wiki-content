@@ -1,17 +1,556 @@
-'''Open-source intelligence''' (OSINT) is the collection and analysis of publicly or commercially accessible information to answer a defined intelligence question. It differs from covert acquisition and from merely collecting links.
+{{Reading depth|base=Open-source intelligence|current=Technical}}
 
-== Collection and analysis ==
-Define a legitimate question, scope and source criteria. Collect lawfully accessible material, preserve its provenance and distinguish original evidence from republications. Assess source independence, temporal relevance, context and possible manipulation. The Berkeley Protocol provides professional guidance for digital open-source investigations, particularly international human rights and criminal-law contexts; its specific legal purpose should not be conflated with all intelligence work.
+= Open-source intelligence — Technical =
 
-== Verification and uncertainty ==
-A reproducible record may include original URL, capture timestamp, checksum of a preserved copy and a documented chain of handling. A checksum confirms byte integrity, not authenticity or truth. Compare independently sourced evidence and seek disconfirming observations. Multiple accounts repeating one initial report are not independent corroboration. Make alternative explanations explicit and mark unresolved provenance.
+'''Open-source intelligence''' (OSINT) is intelligence produced from publicly or commercially accessible information through a requirement-driven process of collection, preservation, validation, analysis, and dissemination. It is not a synonym for web research, search-engine use, or public-information retrieval.
 
-== Ethics and practical boundaries ==
-Public accessibility does not eliminate privacy, safety, consent or legal constraints. Minimize unnecessary collection of personal information, restrict sensitive evidence access and avoid unauthorized access. Analysts should distinguish an evidentiary finding from a confidence judgment and explain what could change their conclusion. The protocol's recommendations for evidence preservation do not authorize unrestricted surveillance.
+A technical OSINT workflow should separate source availability, collection provenance, evidentiary evaluation, and intelligence judgment.
+
+
+Open-source intelligence transforms publicly obtainable [[Information]] into assessed intelligence through collection, verification, synthesis, and contextual judgment. The workflow draws on [[Signal]] evaluation and [[Knowledge management]], while collaborative analyst teams can exhibit mechanisms studied under [[Collective intelligence]].
+
+== Requirement model ==
+
+Let an intelligence requirement be
+
+<math>Q=(q,s,t,d,c),</math>
+
+where <math>q</math> is the substantive question, <math>s</math> scope, <math>t</math> the relevant time window, <math>d</math> the decision deadline, and <math>c</math> collection constraints.
+
+Collection without a requirement risks becoming unbounded accumulation.
+
+A requirement should define which evidence would materially change the decision.
+
+== Public information versus intelligence ==
+
+Let raw accessible information be <math>P</math> and the intelligence product be <math>I</math>. A simplified process is
+
+<math>I=F(P,Q,V,A),</math>
+
+where <math>Q</math> is the requirement, <math>V</math> verification, and <math>A</math> analysis.
+
+Thus:
+
+<pre>
+publicly available information
+≠ finished OSINT product
+</pre>
+
+unless the information is transformed through a defined intelligence process.
+
+== Collection planning ==
+
+For competing hypotheses <math>H_1,\ldots,H_k</math>, define evidence targets
+
+<math>E_j=\{e_{j1},e_{j2},\ldots\}.</math>
+
+Collection planning should include confirming and disconfirming observations.
+
+Otherwise analysts can collect only material compatible with an initial narrative.
+
+== Source dependency graph ==
+
+Represent sources as graph
+
+<math>G=(V,E),</math>
+
+where edge <math>s_i\rightarrow s_j</math> means <math>s_j</math> materially derives from <math>s_i</math>.
+
+If ten reports all descend from one original post, their effective independence is closer to one underlying source than ten.
+
+Corroboration should therefore weight independent origin.
+
+== Correlated evidence ==
+
+Suppose evidence items have pairwise error correlation <math>\rho</math>.
+
+Agreement provides less additional confidence as <math>\rho</math> rises.
+
+Shared source dependence, common databases, coordinated propaganda, or platform amplification can create correlated error.
+
+“Multiple sources” should mean epistemically independent sources where possible.
+
+== Bayesian updating ==
+
+For hypothesis <math>H</math> and evidence <math>E</math>:
+
+<math>P(H\mid E)=\frac{P(E\mid H)P(H)}{P(E)}.</math>
+
+The framework forces analysts to ask how likely the evidence is under both the favored hypothesis and alternatives.
+
+Exact probabilities are not always available, but likelihood comparison remains useful qualitatively.
+
+== Competing hypotheses ==
+
+For hypotheses <math>H_1,\ldots,H_k</math> and evidence <math>E_i</math>, compatibility can be represented as
+
+<math>L_{ij}=P(E_i\mid H_j).</math>
+
+This exposes which observations discriminate among explanations and which are compatible with all of them.
+
+Analysts should identify what evidence could falsify the preferred hypothesis.
+
+== Observation–inference separation ==
+
+Represent a claim as
+
+<math>C=(O,I,A,U),</math>
+
+where <math>O</math> is direct observation, <math>I</math> inference, <math>A</math> assumptions, and <math>U</math> uncertainty.
+
+This prevents transformations such as:
+
+<pre>
+"vehicle appears military"
+→ "military unit present"
+→ "deployment confirmed"
+</pre>
+
+without preserving the inferential steps.
+
+== Provenance record ==
+
+For digital evidence object <math>x</math>, store
+
+<math>P_x=(url,source,t_c,t_p,hash,method,archive,transform).</math>
+
+Here <math>t_c</math> is collection time and <math>t_p</math> publication or upload time.
+
+A strong provenance record supports later reconstruction of source context.
+
+== Cryptographic hashes ==
+
+Let
+
+<math>h=H(x)</math>
+
+be a cryptographic hash of preserved file <math>x</math>.
+
+If later copy <math>x'</math> produces the same hash, byte-level integrity since hashing is supported.
+
+Hash equality does not establish authenticity, provenance before collection, or truth of the depicted event.
+
+== Evidence preservation ==
+
+Evidence can disappear from platforms.
+
+A preservation workflow can capture:
+
+* original media;
+* source page;
+* URL;
+* timestamp;
+* metadata;
+* archive copy;
+* checksum;
+* handling notes.
+
+A screenshot alone can omit metadata and surrounding context.
+
+The Berkeley Protocol treats preservation as part of professional digital open-source investigation.<ref name="berkeley">[https://humanrights.berkeley.edu/publications/berkeley-protocol-on-digital-open-source-investigations/ Human Rights Center and OHCHR, ''Berkeley Protocol on Digital Open Source Investigations''.]</ref>
+
+== Geolocation ==
+
+Let candidate locations be <math>L=\{l_1,\ldots,l_n\}</math> and observed features <math>F=\{f_1,\ldots,f_m\}</math>.
+
+A conceptual score is
+
+<math>S(l_j)=\sum_i w_i match(f_i,l_j).</math>
+
+Useful features include:
+
+* road geometry;
+* building shape;
+* terrain;
+* signage;
+* utility infrastructure;
+* vegetation;
+* horizon;
+* satellite imagery.
+
+High confidence should rest on several independent features rather than one visual resemblance.
+
+== Chronolocation ==
+
+Event time <math>t_e</math> is distinct from upload time <math>t_u</math>.
+
+Evidence for <math>t_e</math> can include:
+
+* metadata;
+* sun and shadow geometry;
+* weather;
+* construction state;
+* scheduled events;
+* first appearance;
+* satellite chronology.
+
+Metadata can be stripped or falsified.
+
+Chronolocation should combine independent indicators.
+
+== Shadow analysis ==
+
+Given a known location and object geometry, solar position can constrain time.
+
+A simplified relation is
+
+<math>\tan(\alpha)=\frac{h}{l},</math>
+
+where <math>\alpha</math> is solar elevation, <math>h</math> object height, and <math>l</math> shadow length.
+
+Error sources include unknown height, sloped ground, camera distortion, and uncertain orientation.
+
+Shadow analysis should support, not replace, broader verification.
+
+== Image forensics ==
+
+Image verification can inspect:
+
+* reverse-image history;
+* metadata;
+* compression artifacts;
+* inconsistent lighting;
+* clone regions;
+* generative artifacts;
+* earliest known publication.
+
+Forensic tools produce indicators rather than final truth judgments.
+
+Platform recompression can create artifacts that resemble manipulation.
+
+== Video verification ==
+
+Video analysis can use:
+
+* keyframe extraction;
+* audio comparison;
+* metadata;
+* frame consistency;
+* object tracking;
+* geolocation;
+* chronolocation.
+
+Edited clips can omit decisive context before or after the visible event.
+
+The clip's narrative framing should therefore be evaluated separately from the visible observations.
+
+== Satellite imagery ==
+
+For image <math>I(x,y,t)</math>, a basic change image is
+
+<math>D(x,y)=I(x,y,t_2)-I(x,y,t_1).</math>
+
+Real analysis must account for sensor type, atmosphere, view angle, registration, illumination, and spatial resolution.
+
+A detected change does not identify its cause by itself.
+
+== Radar and multispectral sources ==
+
+Synthetic-aperture radar can acquire imagery through clouds and at night.
+
+Multispectral sensors can distinguish spectral properties not visible in ordinary photography.
+
+Interpretation requires sensor-specific expertise.
+
+Bands, products, and processing levels are not interchangeable.
+
+== Vessel and aircraft tracking ==
+
+AIS and ADS-B data can reveal vessel and aircraft movement.
+
+Transponders can be disabled, spoofed, absent, or misconfigured.
+
+Tracking records should be corroborated with imagery, radar, port records, or other evidence for consequential claims.
+
+== Entity resolution ==
+
+OSINT frequently asks whether two records refer to the same entity.
+
+Let records have features
+
+<math>f=(name,address,email,phone,identifier,time).</math>
+
+A model can estimate
+
+<math>P(entity_i=entity_j\mid f).</math>
+
+False merges are dangerous.
+
+Common names, recycled phone numbers, shared addresses, and transliteration differences can cause identity errors.
+
+High-stakes identification requires strong corroboration.
+
+== Language and translation ==
+
+Translation can alter meaning through:
+
+* named-entity transliteration;
+* idiom;
+* dialect;
+* military terminology;
+* sarcasm;
+* ambiguous grammar.
+
+Machine translation is useful for triage but should not be treated as authoritative for consequential interpretation without language expertise.
+
+== Social-media graph analysis ==
+
+Represent accounts as nodes and interactions as edges.
+
+Network analysis can identify clusters, central nodes, temporal patterns, or diffusion paths.
+
+But:
+
+<pre>
+network proximity ≠ organizational affiliation
+</pre>
+
+and
+
+<pre>
+similar posting time ≠ coordinated control
+</pre>
+
+without additional evidence.
+
+== Bot detection ==
+
+Automated-account classifiers use behavioral and content features.
+
+No classifier is perfect.
+
+Thresholds can produce false positives among highly active humans, scheduled organizational accounts, or unusual users.
+
+Claims about automation or coordination should therefore be probabilistic and independently checked.
+
+== Search reproducibility ==
+
+A reproducible search log should record:
+
+* exact query;
+* engine;
+* time;
+* language;
+* filters;
+* account state;
+* location assumptions.
+
+Search results are dynamic and can be personalized.
+
+The same query later may not return the same evidence set.
+
+== Search bias ==
+
+Search ranking can be represented as
+
+<math>R=F(q,user,location,index,time).</math>
+
+Evidence visibility is partly platform-generated.
+
+Absence from search results is therefore weak evidence of real-world absence.
+
+Analysts should diversify engines and source classes.
+
+== Commercially available information ==
+
+Commercial sources can include:
+
+* satellite imagery;
+* corporate registries;
+* financial databases;
+* geospatial products;
+* advertising data.
+
+Commercial availability does not eliminate privacy or legal concerns.
+
+Institutional programs should define acquisition, retention, and dissemination policy.
+
+== Privacy minimization ==
+
+Let collected data be <math>D</math> and the requirement-relevant subset be <math>D_Q</math>.
+
+Data minimization aims for
+
+<math>D_{retained}\approx D_Q</math>
+
+rather than retaining everything technically obtainable.
+
+This reduces privacy, legal, and security exposure.
+
+== Collection risk ==
+
+A simplified operational risk measure is
+
+<math>R=P(detection)\times Impact.</math>
+
+Relevant consequences can include analyst exposure, system compromise, harm to sources, legal violation, or alerting a target.
+
+Professional collection plans should define acceptable risk before interacting with sensitive environments.
+
+== Managed attribution ==
+
+Managed attribution controls outward indicators such as:
+
+* IP address;
+* browser fingerprint;
+* account identity;
+* organizational metadata.
+
+The purpose is to avoid exposing unnecessary collector information.
+
+It does not authorize bypassing access controls or violating law.
+
+== Cybersecurity ==
+
+OSINT researchers can encounter hostile documents, URLs, advertisements, and media.
+
+Controls can include:
+
+* isolated virtual machines;
+* disposable environments;
+* network segmentation;
+* content sanitization;
+* disabled active content.
+
+Collection is also a cybersecurity problem.
+
+== Psychological safety ==
+
+Repeated exposure to violent or abusive imagery can cause harm.
+
+Operational safeguards can include:
+
+* workload rotation;
+* content warnings;
+* opt-out procedures;
+* supervisor monitoring;
+* mental-health support.
+
+Professional methodology includes investigator wellbeing.
+
+== Dissemination model ==
+
+An intelligence product should record:
+
+* requirement;
+* key judgments;
+* evidence;
+* confidence;
+* alternatives;
+* information gaps;
+* date;
+* handling restrictions.
+
+Timeliness matters.
+
+An accurate answer delivered after the decision can have little operational value.
+
+== Confidence calibration ==
+
+For probability assessments <math>p_i</math> and resolved binary outcomes <math>y_i\in\{0,1\}</math>, calibration can be measured with Brier score:
+
+<math>BS=\frac{1}{n}\sum_i(p_i-y_i)^2.</math>
+
+Historical scoring can reveal whether confidence language corresponds to observed accuracy.
+
+== Failure modes ==
+
+Common failures include:
+
+* confirmation bias;
+* circular reporting;
+* source dependency;
+* confusing upload time with event time;
+* geolocation from weak resemblance;
+* entity conflation;
+* automation overtrust;
+* missing provenance;
+* privacy overcollection;
+* failure to test alternatives.
+
+These are process failures that can be audited.
+
+== AI-assisted OSINT ==
+
+Large language and multimodal models can assist with:
+
+* translation;
+* entity extraction;
+* summarization;
+* clustering;
+* visual search;
+* hypothesis generation.
+
+For every generated claim <math>c</math>, preserve source set
+
+<math>S(c)=\{s_1,\ldots,s_k\}.</math>
+
+If <math>S(c)=\emptyset</math>, the claim is unsupported synthesis.
+
+AI output must not sever provenance.
+
+== Generative media ==
+
+Synthetic media increases verification cost.
+
+Detection tools can fail after recompression, model changes, or adversarial modification.
+
+Authentication should therefore combine:
+
+* provenance;
+* source history;
+* geolocation;
+* chronology;
+* independent evidence.
+
+A detector score alone is not proof.
+
+== Berkeley Protocol boundary ==
+
+The Berkeley Protocol provides rigorous methods for digital open-source investigations involving international crimes, human rights, and humanitarian law.<ref name="berkeley" />
+
+Its preservation, verification, safety, and ethics principles are broadly useful.
+
+Its specific legal and evidentiary framework should not be assumed to govern every military, corporate, journalistic, or academic OSINT activity.
+
+== All-source integration ==
+
+Let evidence streams be
+
+<math>E=E_{open}\cup E_{restricted}.</math>
+
+Open and restricted intelligence can complement each other.
+
+Agreement across independent streams can raise confidence; disagreement should remain visible.
+
+Classification level is not a reliability score.
+
+== Epistemic boundary ==
+
+OSINT is not reliable merely because it uses open information.
+
+Its defensible chain is:
+
+<pre>
+requirement
+→ lawful collection
+→ provenance
+→ verification
+→ alternative analysis
+→ confidence
+→ dissemination
+</pre>
+
+Breaking any link can turn abundant information into weak intelligence.
 
 == References ==
-* [https://digitallibrary.un.org/record/3973652 United Nations, Berkeley Protocol on Digital Open Source Investigations]
-* [https://humanrights.berkeley.edu/publications/power-and-humility-in-open-source-investigations/ Berkeley Human Rights Center, Power and Humility in Open Source Investigations]
+
+<references />
+
+* [https://www.dia.mil/About/Open-Source-Intelligence/ Defense Intelligence Agency, “Open-Source Intelligence.”]
+* [https://www.ncia.nato.int/business/procurement/current-opportunities/424330-3 NATO Communications and Information Agency, OSINT capability description.]
+* [https://humanrights.berkeley.edu/publications/power-and-humility-in-open-source-investigations/ Koenig, Peake and Falcón (2026), “Power and Humility in Open Source Investigations.”]
 
 == Reading depth ==
-[[Open-source intelligence/Simple|Simple explanation]]
+
+[[Open-source intelligence/Simple|Simple explanation]] · [[Open-source intelligence|Core article]]

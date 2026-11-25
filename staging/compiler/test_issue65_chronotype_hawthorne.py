@@ -17,7 +17,7 @@ def src(t):
     return (ROOT/"Main"/(t+".mediawiki")).read_text(encoding="utf-8")
 
 class ChronotypeHawthorneTests(unittest.TestCase):
-    def test_three_depths_and_epistemic_identity(self):
+    def test_depth_navigation_and_epistemic_identity(self):
         for title,status in (("Chronotype","Well-supported"),("Hawthorne effect","Disputed")):
             with self.subTest(title=title):
                 core,simple,tech=(src(title+s) for s in ("","/Simple","/Technical"))
@@ -29,7 +29,13 @@ class ChronotypeHawthorneTests(unittest.TestCase):
                 self.assertEqual(simple.count("<onlyinclude>"),1)
                 self.assertEqual(simple.count("</onlyinclude>"),1)
                 for body,depth in ((core,"Core"),(simple,"Simple"),(tech,"Technical")):
-                    self.assertIn("{{Reading depth|base="+title+"|current="+depth+"}}",body)
+                    if title == "Chronotype":
+                        self.assertNotIn("{{Reading depth", body)
+                        if depth != "Core":
+                            other = "Technical" if depth == "Simple" else "Simple"
+                            self.assertIn("[["+title+"/"+other+"|"+other+"]]", body)
+                    else:
+                        self.assertIn("{{Reading depth|base="+title+"|current="+depth+"}}",body)
                     self.assertIn("<references/>",body)
                 for body in (simple,tech):
                     self.assertNotIn("{{Knowledge object",body)
@@ -39,6 +45,11 @@ class ChronotypeHawthorneTests(unittest.TestCase):
                 label="chronotype" if title=="Chronotype" else "Hawthorne effect"
                 self.assertIn("'''"+label+"'''",expanded)
                 self.assertNotIn("current=Simple",expanded)
+                if title == "Chronotype":
+                    self.assertIn("== Why does it matter? ==", expanded)
+                    self.assertNotIn("Reader localizations:", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
+                    self.assertNotIn("== Core measurement families ==", core)
+                    self.assertIn("[[Chronotype/Technical|Technical]]", core)
                 self.assertGreater(len(simple.split()),500)
                 self.assertGreater(len(tech.split()),1500)
 
@@ -83,7 +94,13 @@ class ChronotypeHawthorneTests(unittest.TestCase):
         my=sum(math.sin(a) for a in angles)
         circ=(math.atan2(my,mx)*24/(2*math.pi))%24
         self.assertTrue(min(circ,24-circ)<1e-9)
+        weekly=(5*6+2*9)/7
+        self.assertAlmostEqual(weekly,48/7)
+        corrected=5.5-(9-weekly)/2
+        self.assertAlmostEqual(corrected,31/7)
         tech=src("Chronotype/Technical")
+        for needle in ("MSF_{sc}", "SD_{week}", "16687322", "6696142", "18350967", "alarm constrains"):
+            self.assertIn(needle,tech)
         for needle in ("10.1177/0748730402239679","1027738","03{:}00","05{:}00","12 hours later"):
             self.assertIn(needle,tech)
 

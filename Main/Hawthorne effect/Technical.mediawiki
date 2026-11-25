@@ -1,4 +1,4 @@
-{{Reading depth|base=Hawthorne effect|current=Technical}}
+''Reader localizations:'' [[Hawthorne effect/Simple|Simple]] · '''Technical'''
 
 = Hawthorne effect — Technical =
 
@@ -14,7 +14,7 @@ Three hypotheses are frequently combined under the name:
 * '''Specific experimental reactivity:''' participants alter behavior because they know that an outcome is being observed or recorded.
 * '''Broad participation effects:''' recruitment, consent, additional feedback, extra contact, novel procedures, demand characteristics and attention can change behavior under some protocols.
 
-These are different treatments and potential mechanisms. Even if modern randomized experiments demonstrate reactivity under particular conditions, this does not retroactively prove the familiar explanation of the original plant studies. Conversely, weak original Hawthorne evidence does not imply that all modern observation-related behavior is imaginary.
+These are different treatments and potential mechanisms. Demand characteristics specifically concern cues about the experimental situation and participants' inferences about the investigator's expectations; participants may comply with, oppose or ignore those expectations. Awareness of observation need not entail such an inference. Orne's original methodological account describes this distinction as a problem for interpreting psychological experiments.<ref name="orne">M. T. Orne, [https://doi.org/10.1037/h0043424 On the social psychology of the psychological experiment: With particular reference to demand characteristics and their implications], ''American Psychologist'' 17, 776–783 (1962).</ref> Even if modern randomized experiments demonstrate reactivity under particular conditions, this does not retroactively prove the familiar explanation of the original plant studies. Conversely, weak original Hawthorne evidence does not imply that all modern observation-related behavior is imaginary.
 
 A useful epistemic status for the named effect reflects contestation of unified historical and mechanistic claims, while leaving open specific well-defined research-participation effects supported by appropriate experiments.
 
@@ -32,7 +32,7 @@ Observed comparisons such as <math>E[Y\mid A=1]-E[Y\mid A=0]</math> can be confo
 
 == Reanalysis of the original Hawthorne records ==
 
-The plant's experimental history should not be retold as a simple sequence in which productivity rose regardless of lighting because workers liked attention. Different studies had different purposes and co-occurring changes. Recovered archival illumination records have been reanalyzed and do not supply a uniform universal response that can be cleanly attributed to watching workers.<ref name="reanalysis"/>
+The plant's experimental history should not be retold as a simple sequence in which productivity rose regardless of lighting because workers liked attention. Different studies had different purposes and co-occurring changes. Izawa and colleagues found evidence of a lighting–output relationship in one initial treatment sequence, but did not reproduce it across the other sequences or experiments.<ref name="reanalysis"/> Levitt and List independently reanalyzed the recovered illumination records and found that the familiar claim of increased output following arbitrary lighting changes was not borne out, although they detected suggestive evidence of subtler responses to experimental changes.<ref name="levitt">S. D. Levitt and J. A. List, [https://doi.org/10.1257/app.3.1.224 Was There Really a Hawthorne Effect at the Hawthorne Plant? An Analysis of the Original Illumination Experiments], ''American Economic Journal: Applied Economics'' 3(1), 224–238 (2011).</ref> Neither analysis isolates awareness of observation from the changing conditions of the original experiments.
 
 Retrospective analysis also suffers historical-data limitations: missing protocol details, unknown allocation mechanisms, selective record survival, measurement changes and the inability to rerun the original intervention. Reconstructed trends can challenge a simplistic narrative without identifying one true mechanism for every archival observation.
 
@@ -40,7 +40,7 @@ The correct historiographic distinction is between (a) what the original documen
 
 == Modern participation research ==
 
-The 2014 systematic review explored multiple definitions and study designs, concluding that the broad label does not identify one straightforward, consistently measured effect. Some participation-related changes have empirical support, but magnitude, direction and conditions vary substantially.<ref name="systematic"/>
+The 2014 systematic review by McCambridge, Witton and Elbourne included 19 studies (eight randomized, five quasi-experimental and six observational) across differing measurement and participation interventions, concluding that the broad label does not identify one straightforward, consistently measured effect. Some participation-related changes have empirical support, but magnitude, direction and conditions vary substantially.<ref name="systematic"/>
 
 An additional systematic review/meta-analysis in primary care described research-participation effects as a complex set of interacting phenomena in that domain, not a transferable constant applicable to every manufacturing or cognitive study.<ref name="primarycare">[https://pubmed.ncbi.nlm.nih.gov/36425097/ “Defining and evaluating the Hawthorne effect in primary care: a systematic review and meta-analysis”], review of heterogeneous clinical participation designs.</ref>
 
@@ -62,7 +62,7 @@ The '''difference-in-differences''' estimator is
 
 <math display="block">\widehat\tau_{\rm DID}=(112-100)-(100-95)=12-5=7.</math>
 
-This yields seven output units per period as the estimated differential change in the toy data. It is not a published “Hawthorne effect” magnitude. Its causal interpretation requires assumptions including the relevant parallel-trends counterfactual, no important group-specific concurrent intervention, suitable composition stability and appropriate handling of spillovers.
+This yields seven output units per period as the estimated differential change in the toy data. It is not a published “Hawthorne effect” magnitude. Its causal interpretation requires assumptions including the relevant parallel-trends counterfactual, no important group-specific concurrent intervention, suitable composition stability, absence of anticipatory treatment effects and appropriate handling of spillovers. Under those assumptions and parallel untreated trends, the two-period estimator targets the average effect for the treated group, not automatically the population-average effect defined earlier.<ref name="did">J. Roth, P. H. C. Sant’Anna, A. Bilinski and J. Poe, [https://doi.org/10.1016/j.jeconom.2023.03.008 What's trending in difference-in-differences? A synthesis of the recent econometrics literature], ''Journal of Econometrics'' 235, 2218–2244 (2023).</ref>
 
 If the treated group was also assigned new equipment or changed management, the seven units could include those effects. If the comparison group also knew that it was being measured, the contrast may identify the added feedback protocol rather than observation awareness itself. If groups were chosen based on previous unusually low output, regression toward the mean may also bias a simple before–after comparison.
 
@@ -76,7 +76,7 @@ Blind outcome assessment helps reduce observer measurement bias, but a trial on 
 
 A monitoring intervention may improve a safety-relevant metric or may lead participants to optimize the recorded measure at the expense of unrecorded quality. Predeclared outcomes and negative controls can help reveal metric gaming and displacement.
 
-### Reactivity versus measurement error
+=== Reactivity versus measurement error ===
 
 A measured output change may occur without an underlying behavior change if the observation system becomes more sensitive or classification rules change. Likewise, people might change reporting rather than action. Distinguish these mechanisms through independent measurements, calibration, audits and, where possible, unobtrusive or external corroboration.
 
@@ -102,7 +102,7 @@ When several mechanisms remain consistent with the observations, report the unce
 
 Cognitive science may investigate attention and demand characteristics. Systems engineering may examine measurement overhead, incentives and feedback loops. These related topics share concerns about observer–system coupling, but they do not thereby share a psychological mechanism.
 
-For an AI assistant, benchmark awareness or evaluation prompts can alter outputs. Such distribution shifts may be measurable. Calling them human Hawthorne effects is an analogy until a specific computational intervention and outcome mechanism are established. Evaluation contamination, prompt sensitivity and human scorer effects should be examined separately.
+For an AI system, a change in evaluation prompts may produce a measurable output distribution shift; whether it does is an empirical question for the specific system, not established by the human studies reviewed here. Calling them human Hawthorne effects is an analogy until a specific computational intervention and outcome mechanism are established. Evaluation contamination, prompt sensitivity and human scorer effects should be examined separately.
 
 The appropriate links include [[Scientific model]], [[Reproducibility]], [[Cognition]] and [[Uncertainty]], not an invented universal law of observation.
 
@@ -122,4 +122,4 @@ A useful encyclopedia entry preserves what is established: research participatio
 
 * [https://doi.org/10.1177/0018720811417968 Historical illumination reanalysis (2011)].
 * [https://pmc.ncbi.nlm.nih.gov/articles/PMC3969247/ Systematic review of research participation effects (2014)].
-* [[Hawthorne effect|Core]] · [[Hawthorne effect/Simple|Simple]] · [[Scientific model]] · [[Reproducibility]].
+* [[Hawthorne effect|Canonical subject]] · [[Hawthorne effect/Simple|Simple]] · [[Scientific model]] · [[Reproducibility]].

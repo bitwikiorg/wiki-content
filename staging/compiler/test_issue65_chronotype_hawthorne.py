@@ -29,13 +29,10 @@ class ChronotypeHawthorneTests(unittest.TestCase):
                 self.assertEqual(simple.count("<onlyinclude>"),1)
                 self.assertEqual(simple.count("</onlyinclude>"),1)
                 for body,depth in ((core,"Core"),(simple,"Simple"),(tech,"Technical")):
-                    if title == "Chronotype":
-                        self.assertNotIn("{{Reading depth", body)
-                        if depth != "Core":
-                            other = "Technical" if depth == "Simple" else "Simple"
-                            self.assertIn("[["+title+"/"+other+"|"+other+"]]", body)
-                    else:
-                        self.assertIn("{{Reading depth|base="+title+"|current="+depth+"}}",body)
+                    self.assertNotIn("{{Reading depth", body)
+                    if depth != "Core":
+                        other = "Technical" if depth == "Simple" else "Simple"
+                        self.assertIn("[["+title+"/"+other+"|"+other+"]]", body)
                     self.assertIn("<references/>",body)
                 for body in (simple,tech):
                     self.assertNotIn("{{Knowledge object",body)
@@ -45,11 +42,11 @@ class ChronotypeHawthorneTests(unittest.TestCase):
                 label="chronotype" if title=="Chronotype" else "Hawthorne effect"
                 self.assertIn("'''"+label+"'''",expanded)
                 self.assertNotIn("current=Simple",expanded)
-                if title == "Chronotype":
-                    self.assertIn("== Why does it matter? ==", expanded)
-                    self.assertNotIn("Reader localizations:", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
-                    self.assertNotIn("== Core measurement families ==", core)
-                    self.assertIn("[[Chronotype/Technical|Technical]]", core)
+                self.assertIn("== Why does it matter? ==", expanded)
+                self.assertNotIn("Reader localizations:", simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0])
+                self.assertNotIn("== Core measurement families ==", core)
+                self.assertNotIn("== Three claims that must be separated ==", core)
+                self.assertIn("[["+title+"/Technical|Technical]]", core)
                 self.assertGreater(len(simple.split()),500)
                 self.assertGreater(len(tech.split()),1500)
 
@@ -116,6 +113,9 @@ class ChronotypeHawthorneTests(unittest.TestCase):
         for needle in ("10.1177/0018720811417968","PMC3969247",
                        "12-5=7","parallel-trends","not a published"):
             self.assertIn(needle,tech)
+        for needle in ("10.1257/app.3.1.224", "10.1037/h0043424", "10.1016/j.jeconom.2023.03.008", "anticipatory treatment effects", "average effect for the treated group"):
+            self.assertIn(needle,tech)
+        self.assertNotIn("### Reactivity",tech)
         self.assertIn("inconsistent",src("Hawthorne effect/Simple").lower())
 
 

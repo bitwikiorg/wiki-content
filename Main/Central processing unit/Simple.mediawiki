@@ -1,0 +1,41 @@
+'''Reading depth:''' '''Simple''' · [[Central processing unit/Technical|Technical]]
+
+= Central processing unit — Simple =
+
+<onlyinclude>A '''central processing unit''' ('''CPU''') is a programmable computing component that executes instructions, transforms data and coordinates control of a computer system. A CPU is commonly implemented as one or more processor cores within a chip, but a CPU is not synonymous with the whole computer, a physical package, a motherboard, or a particular number of cores. The instructions it can execute are specified by an '''instruction set architecture''' (ISA); the circuits and execution mechanisms used to implement them are its '''microarchitecture'''.<ref name="intel">Intel, [https://www.intel.com/content/www/us/en/content-details/789583/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html ''Intel 64 and IA-32 Architectures Software Developer's Manual''], Volumes 1–3, processor execution, instruction semantics, memory, interrupts and multiprocessor support.</ref><ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I''], versioned unprivileged architecture reference.</ref>
+
+== What does a CPU do? ==
+
+A program consists of instructions and data. A CPU obtains instructions from the memory system, interprets their meaning, performs the specified operations and makes results visible according to its architectural rules. Arithmetic, comparisons, branches, data transfers and interaction with privileged system software are common responsibilities.
+
+For example, a program might load two integers, add them, store a result and branch depending on a comparison. The CPU's work is not literally a single rigid sequence of fetch–decode–execute stages in every design: advanced implementations can overlap, reorder or speculatively perform internal operations while preserving required architectural results.
+
+== A CPU is not just a clock speed ==
+
+Performance depends on the workload, the instructions it executes, how many cycles each task needs, clock frequency, available memory bandwidth, cache behavior, parallelism and power or thermal limits. A higher advertised frequency does not guarantee faster completion.
+
+A core can execute an instruction stream; a multicore chip has multiple cores that can execute independent streams. A hardware thread is a software-visible execution context, not necessarily a separate physical core. A CPU socket or package can contain several cores and additional components such as cache and memory or input/output controllers.
+
+== CPU, GPU and accelerator ==
+
+A CPU is usually designed for general-purpose program execution and operating-system responsibilities, while a graphics processing unit (GPU) emphasizes throughput across many parallel operations. The distinction is architectural and workload-dependent, not a claim that GPUs cannot run general computations or CPUs cannot execute vector instructions. Specialized accelerators can coexist with CPUs.
+
+== Where does the CPU fit? ==
+
+The CPU interacts with memory, peripheral controllers, an operating system, firmware and software. The ISA describes a software-visible contract; microarchitecture describes the implementation; and the complete system architecture specifies interactions with other components.
+
+An instruction set may be implemented by multiple processor families with very different performance and energy use. Conversely, the same physical chip can include several heterogeneous processors, and its advertised brand name does not specify every hardware feature.
+
+== Security and limitations ==
+
+Modern CPUs include privileged execution modes, memory protection mechanisms and exception handling. These features help operating systems isolate tasks, but correctness and security also depend on firmware, system configuration and microarchitectural side channels. A CPU can execute architecturally correct instructions and still expose timing information through caches or speculative execution.
+
+</onlyinclude>
+
+== Continue reading ==
+
+[[Central processing unit/Technical|Technical]] defines the system boundary and execution model. [[Central processing unit/Technical|Technical]] analyzes architectural state, execution performance, concurrency, memory consistency, interrupts and a worked performance comparison.
+
+== References ==
+
+<references/>

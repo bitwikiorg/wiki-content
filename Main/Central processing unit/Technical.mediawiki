@@ -1,0 +1,133 @@
+'''Reading depth:''' [[Central processing unit/Simple|Simple]] · '''Technical'''
+
+= Central processing unit — Technical =
+
+A '''central processing unit''' (CPU) is a programmable execution engine, conventionally responsible for general-purpose instructions and system-control functions. The term names a role and a class of hardware, not one fixed circuit topology. A CPU may be a single core, a set of cores in a package, or an integrated part of a larger system-on-chip (SoC). Its precise boundary depends on the context: a CPU core's execution resources differ from the package's shared caches, memory controllers and I/O interfaces.
+
+Two separate specifications govern reasoning about it: the '''instruction set architecture''' (ISA), which defines software-visible instruction and state semantics, and the '''microarchitecture''', which implements the contract using datapaths, control logic, scheduling, storage and physical timing. The ISA does not determine pipeline depth, branch prediction, clock speed or energy use. RISC-V explicitly aims to permit multiple microarchitectures to implement the same ISA; Intel's manuals separately describe software-visible execution, system programming, interrupts, multiprocessor features and model-specific mechanisms.<ref name="riscvtech">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], official release; architecture semantics and permitted memory outcomes.</ref><ref name="inteltech">Intel, [https://www.intel.com/content/www/us/en/content-details/789583/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html ''Intel 64 and IA-32 Architectures Software Developer's Manual''], Volumes 1–3, architecture, instructions, system programming and multiprocessor execution.</ref>
+
+== Architectural execution state ==
+
+For a simple single-hart sequential machine, an abstract state can be represented as <math>S=(PC,R,M,P)</math>, with program counter <math>PC</math>, architectural registers <math>R</math>, accessible memory <math>M</math> and privilege/exception state <math>P</math>. A legal instruction transition is <math>S\rightarrow S'</math> according to the relevant ISA and execution environment. Real multiprocessors have concurrency, exceptions, memory models and device effects that are not faithfully captured by one global sequential transition function.
+
+A CPU implementation can hold physical register files, rename maps, reorder buffers, decoded micro-operations, predictor histories, translation lookaside buffers and caches. These are implementation state, not necessarily directly addressable ISA registers. Architectural compatibility requires permitted visible outcomes, not identical internal operations or timings.
+
+An instruction's meaning is defined by the exact ISA variant and mode. For instance, an integer addition can be modulo <math>2^{32}</math> for a 32-bit destination in an appropriate architecture, but overflow flags, exceptions and extension behavior differ by ISA. Generalizations such as “all CPUs trap on overflow” or “all CPUs have 64-bit registers” are false.
+
+== Fetch, decode, execution and retirement ==
+
+A pedagogical processor may fetch an instruction, decode its opcode and operands, execute a function, access memory and write a result. These conceptual phases are useful, but they are not a universal five-stage implementation. A simple microcontroller can be in-order with few pipeline stages, while a high-performance core can translate instructions into internal operations, issue independent operations out of order and retire them in a constrained architectural order.
+
+Instruction throughput and instruction latency differ. A pipelined CPU may finish several instructions per cycle across multiple execution units while an individual dependency chain takes many cycles. A CPU's nominal core count is not a measure of retired instruction throughput without workload and resource assumptions.
+
+Out-of-order execution preserves required data dependencies; register renaming resolves false name dependencies but cannot remove true dataflow dependencies. Branch prediction and speculative execution reduce average stalls when predictions are useful but can cause wasted work and timing side channels.
+
+== Performance accounting and a reproducible comparison ==
+
+For a fixed-frequency interval, let <math>I</math> be the number of retired instructions, <math>C</math> the elapsed core cycles and <math>f</math> cycles per second. Define <math>CPI=C/I</math> for <math>I>0</math>. Then
+
+<math display="block">t=\frac{C}{f}=\frac{I\,CPI}{f}.</math>
+
+This is an accounting identity, not a universal prediction. It requires defining the measured interval, frequency, instructions and whether stalls or throttling occur. A program's instruction count can differ between ISAs, compiler flags and implementations; frequency may change during execution.
+
+Consider two invented, single-core, fixed-frequency systems running the '''same specified work''' under independently stipulated instruction counts and average CPIs:
+
+{| class="wikitable"
+! System !! Retired instructions !! Average CPI !! Clock frequency !! Predicted elapsed time
+|-
+| A || 2.0 billion || 1.5 || 3.0 GHz || 1.00 s
+|-
+| B || 1.5 billion || 2.0 || 4.0 GHz || 0.75 s
+|}
+
+For A, <math>t_A=(2.0\times10^9)(1.5)/(3.0\times10^9)=1.00\,s</math>. For B, <math>t_B=(1.5\times10^9)(2.0)/(4.0\times10^9)=0.75\,s</math>. B finishes this hypothetical work 25% sooner by elapsed time, with speedup <math>t_A/t_B=4/3\simeq1.333</math>. The higher clock alone does not explain the result: B also executes fewer instructions, and its CPI is higher. These values are model fixtures, not measured processor benchmarks.
+
+Amdahl's law illustrates another boundary. If a fraction <math>p</math> of a fixed serial baseline is parallelizable and that fraction runs with ideal speedup <math>N</math>, total speedup is
+
+<math display="block">\mathrm{Speedup}(N)=\frac{1}{(1-p)+p/N}.</math>
+
+For <math>p=0.8</math> and <math>N=4</math>, the idealized result is <math>1/(0.2+0.2)=2.5</math>, not fourfold. The model ignores scheduling overhead, synchronization, contention and workload changes. It is a limit under assumptions, not a promise that four physical cores always yield 2.5×.
+
+== Cores, hardware threads and simultaneous multithreading ==
+
+A physical core contains execution resources that can be shared or partitioned between hardware contexts. In simultaneous multithreading (SMT), a core may expose multiple logical processors and issue instructions from more than one context to shared units. The operating system sees execution contexts, but two logical processors on one core are not equivalent to two dedicated cores. Contention and scheduling policies can reduce or improve throughput depending on the workload.
+
+A multicore CPU contains multiple cores that may share last-level caches, coherent interconnects, power budgets and memory controllers. Performance and correctness depend on communication and memory ordering, not merely arithmetic parallelism. A processor package might contain a GPU or specialized accelerator; these do not become CPU cores simply by sharing a die.
+
+== Memory hierarchy, virtual memory and coherence ==
+
+A core accesses architectural addresses using the platform's memory and privilege rules. Translation mechanisms can map virtual addresses to physical addresses, enforce access permissions and cache translations. Caches hold copies of memory data to reduce average access latency, but not every access is a cache hit; devices and memory-mapped I/O may require special ordering and attributes.
+
+Coherence and consistency are distinct. '''Coherence''' addresses how accesses to a given memory location relate across caches/cores, whereas '''memory consistency''' constrains the allowed ordering of operations across locations and threads. A coherent cache hierarchy does not imply that all memory operations appear in a single total sequential order. Correct lock-free code requires the target ISA and language memory-model semantics, not assumptions based on source-code line order.<ref name="riscvtech"/><ref name="inteltech"/>
+
+Atomic operations, barriers and fences provide particular synchronization and ordering guarantees according to the architecture. The exact strength differs by ISA and instruction variant. Treating a compiler barrier as a universal hardware fence or a cache flush as a memory-consistency substitute is incorrect.
+
+== Privilege, interrupts and exceptions ==
+
+An operating system kernel uses architecture-defined mechanisms for privilege separation, interrupt handling, address translation and scheduling. Exceptions can be synchronous to an instruction, such as a page fault or illegal opcode; external interrupts generally arise asynchronously with respect to the executing instruction stream. Precise delivery and restart rules depend on the ISA, implementation and execution mode.
+
+The CPU does not itself implement every operating-system service. It provides instructions and privileged mechanisms that the OS, firmware and other software use. A device driver is software that manages a device interface; it is not an ISA and not a separate CPU. Firmware may initialize the platform and hand control to boot software, but a CPU's runtime behavior is not reducible to a BIOS.
+
+== Power, thermals and measurement ==
+
+Dynamic switching energy in a simplified CMOS approximation depends on switched capacitance, voltage and activity. A common engineering approximation is
+
+<math display="block">P_{\mathrm{dynamic}}\approx\alpha C_{\mathrm{sw}}V^2f,</math>
+
+where <math>\alpha</math> represents an activity factor under a specified capacitance convention, <math>C_{\mathrm{sw}}</math> switched capacitance, <math>V</math> supply voltage and <math>f</math> switching frequency. Leakage, short-circuit currents, voltage regulators, memory and other system components require additional accounting. The expression does not make power a fixed linear function of clock frequency in actual systems because voltage, activity and leakage can change.
+
+Thermal throttling can lower sustained frequency. Thus short synthetic tests, steady-state workloads, CPU-only power and wall-plug energy answer different questions. Comparisons should record workload, compiler, OS, memory configuration, frequency behavior, ambient conditions and measurement uncertainty.
+
+== Architectural correctness versus microarchitectural security ==
+
+Architecturally permitted outputs do not guarantee confidentiality. Speculative execution may alter caches and timing even if speculative register results are discarded. The Spectre research demonstrated classes of speculative-execution information leaks and motivates separating functional correctness from microarchitectural side-channel properties.<ref name="spectre">Paul Kocher et al., [https://spectreattack.com/spectre.pdf ''Spectre Attacks: Exploiting Speculative Execution''] (2018), original research on speculative execution and side channels.</ref>
+
+Security assessment must consider isolation boundaries, branch and data dependencies, mitigations, firmware and OS state, timing measurements and attacker capabilities. A single “secure CPU” label is insufficient to certify all software and deployment contexts.
+
+== Distinctions, evidence and limits ==
+
+The CPU is not identical to the instruction set, the chip package, the full computer, a GPU or a hardware thread. A device can have multiple CPU cores with heterogeneous microarchitectures. A virtual CPU may represent scheduled access to underlying physical resources rather than a dedicated core.
+
+Architecture manuals are normative references for the behavior of a particular ISA or vendor family. They do not establish performance for every manufactured chip, nor do they replace measurements. Benchmark comparisons must use reproducible workloads, calibrated counters, error bars where relevant and documented system configurations. The analytic examples above establish conditional algebra only.
+
+== Additional preserved canonical context ==
+
+The following system-level distinctions and source qualifications were retained from the original canonical account during two-depth localization. They supplement the technical model above.
+
+A '''central processing unit''' (CPU) is a general-purpose programmable processor, often organized into one or more cores, that executes a defined instruction architecture and provides computational and control services to a computer system. The CPU is a functional role and hardware design class; it is not interchangeable with the entire system-on-chip, a chip package, a particular ISA or the microarchitectural details of a given core.
+
+== Boundaries and organization ==
+
+{| class="wikitable"
+! Concept !! Distinct role
+|-
+| [[Computer architecture]] || System-level organization of processors, memory and interfaces
+|-
+| Instruction set architecture || Programmer-visible operations and state, independent of any one implementation
+|-
+| Microarchitecture || Datapaths, pipelines, scheduling, caches and other implementation mechanisms
+|-
+| [[Operating system]] || Software that manages scheduling, protection and hardware access
+|-
+| [[Compiler]] || Translates programs into target instructions, subject to language and ABI semantics
+|}
+
+The ISA/microarchitecture distinction is documented by the official RISC-V ISA reference, which explicitly avoids fixing microarchitectural details, and by Intel's separate architectural and system-programming documentation.<ref name="riscvcorelegacy">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''Unprivileged ISA''], official architecture specification.</ref><ref name="intelcorelegacy">Intel, [https://www.intel.com/content/www/us/en/content-details/789583/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html ''Intel 64 and IA-32 Software Developer's Manual''], processor architecture, instruction semantics and system programming.</ref>
+
+A CPU core can expose one or more hardware execution contexts; simultaneous multithreading is not the same as multiple independent physical cores. A processor package can also contain non-CPU functions. An integrated GPU, memory controller or accelerator is not automatically a CPU core.
+
+== Performance, correctness and security ==
+
+CPU throughput and task latency depend on instruction count, cycles per instruction, frequency, memory stalls and parallel execution. CPU performance comparisons require the same workload, measurement method and operating conditions. Instruction-set compatibility does not imply equivalent speed, energy consumption or side-channel resistance.
+
+Instruction retirement, memory ordering, exceptions and interrupts are governed by the relevant architectural and platform rules. Internal speculation can affect observable timing even when retired architectural results are correct.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* Intel, [https://www.intel.com/content/www/us/en/content-details/789583/intel-64-and-ia-32-architectures-software-developer-s-manual-combined-volumes-1-2a-2b-2c-2d-3a-3b-3c-3d-and-4.html ''Intel 64 and IA-32 Software Developer's Manual''].
+* RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''RISC-V Unprivileged Architecture''].
+* [[Central processing unit|Canonical article]] · [[Central processing unit/Simple|Simple explanation]] · [[Computer architecture]].

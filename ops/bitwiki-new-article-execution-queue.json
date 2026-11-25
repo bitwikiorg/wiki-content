@@ -1,0 +1,633 @@
+{
+  "schema": "bitwiki-new-article-queue/v1",
+  "instructions": "OWNER-APPROVED HOURLY EXECUTION ONLY. Planning/selection was completed manually before schedule. The scheduler reads this file, takes next pending item, writes the specified article using its scope and source leads, validates, PRs, and updates only queue status/checkpoint fields. It must not browse issues, audit the entire wiki, build/rebuild the plan, invent new candidates or modify this queue's scope/ordering.",
+  "repository": "bitwikiorg/wiki-content",
+  "canonical_base": "main",
+  "execution_branch": "automation/bitwiki-new-article-queue-v1",
+  "source_issues": [
+    64,
+    65
+  ],
+  "excluded_issue": 66,
+  "editorial_mode": "Core+Simple+Technical for phase 1 (owner will separately decide and authorize consolidation to two reader-facing depths after drafting)",
+  "state": {
+    "last_completed_id": "N022",
+    "last_pr": 135,
+    "run_count": 34
+  },
+  "counts": {
+    "drafted": 34,
+    "pending": 0,
+    "blocked": 0
+  },
+  "drafted_existing_review_prs": [
+    {
+      "title": "Semiconductor",
+      "pr": 81,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Dimensional analysis",
+      "pr": 82,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Sensitivity analysis",
+      "pr": 82,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Resilience",
+      "pr": 83,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Root cause analysis",
+      "pr": 83,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Optimization",
+      "pr": 84,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Scaling",
+      "pr": 84,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Diode",
+      "pr": 85,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Transistor",
+      "pr": 85,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Integrated circuit",
+      "pr": 86,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Logic gate",
+      "pr": 86,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Abstraction",
+      "pr": 87,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Occam's razor",
+      "pr": 87,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Law of diminishing returns",
+      "pr": 88,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Pareto principle",
+      "pr": 88,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Mental simulation",
+      "pr": 89,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Spotlight effect",
+      "pr": 89,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Dunning–Kruger effect",
+      "pr": 90,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Halo effect",
+      "pr": 90,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Chronotype",
+      "pr": 91,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Hawthorne effect",
+      "pr": 91,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Instruction set architecture",
+      "pr": 92,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Microarchitecture",
+      "pr": 93,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Central processing unit",
+      "pr": 94,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Graphics processing unit",
+      "pr": 95,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Computer memory",
+      "pr": 96,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Firmware",
+      "pr": 97,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Bootloader",
+      "pr": 98,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Device driver",
+      "pr": 99,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Dynamic random-access memory",
+      "pr": 100,
+      "status": "drafted_review_pending"
+    },
+    {
+      "title": "Flash memory",
+      "pr": 101,
+      "status": "drafted_review_pending"
+    }
+  ],
+  "queue": [
+    {
+      "id": "N001",
+      "title": "Generalization",
+      "issue": 65,
+      "scope": "Cross-disciplinary generalization in inductive reasoning, human learning transfer and statistical inference; explicitly differentiate existing Generalization (machine learning) without duplicating its technical content.",
+      "source_leads": "SEP induction; psychology of transfer; statistical external validity",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/102",
+      "note": "Four additions-only files; source-level pytest regression authored but not executed; V2/staging/CI and MediaWiki runtime unverified; expert review pending. SEP induction and NRC How People Learn sources; hypothetical 0.25*10+0.75*18=16 checked."
+    },
+    {
+      "id": "N002",
+      "title": "Johari window",
+      "issue": 65,
+      "scope": "Historically attributed Luft–Ingham interpersonal awareness diagram; describe quadrants and limitations without claiming validated fixed personality parts.",
+      "source_leads": "Luft and Ingham 1955 original proceedings; APA Dictionary of Psychology",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/103",
+      "note": "4 additions-only files; source-level pytest authored, not executed; V2/staging/CI/runtime unverified. Luft–Ingham 1955 bibliographic record and APA Dictionary 2018 checked; original proceedings full text unavailable; peer review pending."
+    },
+    {
+      "id": "N003",
+      "title": "Kolb's experiential learning cycle",
+      "issue": 65,
+      "scope": "Kolb's 1984 experiential learning theory and cycle; differentiate from disputed learning-style assignments and evidence of instructional efficacy.",
+      "source_leads": "David Kolb Experiential Learning 1984; peer-reviewed critical reviews",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 104,
+      "note": "https://github.com/bitwikiorg/wiki-content/pull/104; four additions-only files. Scoped regression test authored but not executed; V2/staging/CI and live rendering unverified; original 1984 book full text not inspected."
+    },
+    {
+      "id": "N004",
+      "title": "Nonviolent Communication",
+      "issue": 65,
+      "scope": "Rosenberg's named communication framework, concrete steps and applied training, with qualified empirical evaluation and without conflating intervention claims with proven outcomes.",
+      "source_leads": "Marshall Rosenberg Nonviolent Communication; independent intervention evaluations",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/105",
+      "note": "4 additions-only files; official Rosenberg/CNVC sources and 2026 systematic review cited. Scoped pytest authored, not executed; V2/staging/CI/runtime unverified. Editorial/empirical peer review pending."
+    },
+    {
+      "id": "N005",
+      "title": "OODA loop",
+      "issue": 65,
+      "scope": "Boyd's orientation-centered feedback/decision model and evolution; not simplistic mandatory serial four-state machine; military and organizational applications must be qualified.",
+      "source_leads": "John Boyd The Essence of Winning and Losing 1995; US Marine Corps archival Boyd material",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 106,
+      "note": "https://github.com/bitwikiorg/wiki-content/pull/106 — Core/Simple/Technical + scoped unittest; source citations verified against Boyd 1995/Air University Press 2018 and USMC MCDP 1-3. CI/V2/staging/test execution/live rendering not yet verified; scientific review pending."
+    },
+    {
+      "id": "N006",
+      "title": "Six Thinking Hats",
+      "issue": 65,
+      "scope": "de Bono's 1985 structured deliberation method; descriptive procedural treatment, evidence limits; no claim that six hats correspond to brain modules.",
+      "source_leads": "Edward de Bono Six Thinking Hats 1985; independent facilitation evaluations",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/107",
+      "note": "Four additions-only files (Core/Simple/Technical/scoped unittest); 1985 de Bono source and three educational evaluations cited with design limits. 34+35=69 arithmetic verified. Test authored but execution, V2/staging CI, MediaWiki runtime and expert review unverified."
+    },
+    {
+      "id": "N007",
+      "title": "Parkinson's law",
+      "issue": 65,
+      "scope": "1955 historical satirical organizational observation and subsequent uses; no universal quantitative duration law.",
+      "source_leads": "C Northcote Parkinson The Economist 19 Nov 1955 original essay",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/108",
+      "note": "Four additions-only files; main exact-title lookup absent. Historical 1955 reprint and Breton/Wintrobe 1979 DOI cited; original Economist issue not directly inspected. Scoped unittest authored but not executed; V2/staging/CI and live rendering unverified; peer review required."
+    },
+    {
+      "id": "N008",
+      "title": "Cache memory",
+      "issue": 64,
+      "scope": "Hardware caching as a distinct subject: cache mapping, associativity, replacement, miss classification, inclusive/exclusive hierarchies, write policies, coherence and AMAT; avoid duplicating Computer memory #96.",
+      "source_leads": "Patterson & Hennessy; Intel optimization manual; cache-coherence research",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/109",
+      "note": "Four additions-only files; Hill & Smith 1989 and Hill 1987 primary research. Hypothetical 128 sets, set 13, tag 9 and 3 ns AMAT independently checked. Source-level unittest authored but not executed; V2/staging CI, runtime and expert review unverified."
+    },
+    {
+      "id": "N009",
+      "title": "Hardware description language",
+      "issue": 64,
+      "scope": "HDL semantics and use across simulation, synthesis and verification; contrasting VHDL, Verilog and SystemVerilog, avoiding confusion with general programming languages.",
+      "source_leads": "IEEE 1076 VHDL; IEEE 1800 SystemVerilog",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 110,
+      "note": "https://github.com/bitwikiorg/wiki-content/pull/110 — 4 additions-only files; IEEE 1076-2019 and 1800-2023; arithmetic counter checked; scoped regression authored but not executed; V2/staging CI and runtime rendering not verified at checkpoint; peer review required."
+    },
+    {
+      "id": "N010",
+      "title": "Register-transfer level",
+      "issue": 64,
+      "scope": "RTL abstraction: synchronous state transfers, clocked semantics, combinational logic, synthesizability and verification; distinct from HDL as a language and EDA as tool ecosystem.",
+      "source_leads": "IEEE 1800; academic digital design textbooks; OpenROAD flow",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/111",
+      "note": "Four additions-only files; IEEE 1800-2023 standard, Google Verilog style guide, OpenLane timing documentation. Counter 14→15→0 and hold arithmetic checked; scoped unittest authored, not executed. GitHub Actions runs/statuses empty at checkpoint; V2/staging, MediaWiki runtime and expert review unverified."
+    },
+    {
+      "id": "N011",
+      "title": "Electronic design automation",
+      "issue": 64,
+      "scope": "EDA ecosystem and verified ASIC/FPGA flow from specification to synthesis, placement, routing, timing closure and verification; distinguish software tools from physical manufacturing.",
+      "source_leads": "IEEE/ACM Design Automation Conference research; OpenROAD documentation",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/112",
+      "note": "Four additions-only files; DAC 2019 OpenROAD, official OpenROAD and Yosys sources. Three source surfaces fetched and onlyinclude/provenance checks passed; 0.35 ns hypothetical timing arithmetic checked. Scoped pytest authored but not executed; V2/staging CI, runtime rendering and expert review unverified. PR created as draft."
+    },
+    {
+      "id": "N012",
+      "title": "Field-programmable gate array",
+      "issue": 64,
+      "scope": "FPGA configurable fabric, LUTs, routing, block RAM, DSP slices, partial reconfiguration, design tradeoffs; distinct from custom ASIC and GPU.",
+      "source_leads": "AMD Xilinx device user guides; Intel FPGA documentation",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 113,
+      "note": "https://github.com/bitwikiorg/wiki-content/pull/113 — four additions-only files; AMD UG574/UG573 primary documentation; scoped pytest authored, execution and V2/staging CI not verified at checkpoint; MediaWiki rendering and expert review outstanding."
+    },
+    {
+      "id": "N013",
+      "title": "Application-specific integrated circuit",
+      "issue": 64,
+      "scope": "ASIC design/manufacture tradeoffs, standard cells and custom design, NRE, performance/power/area and mask/verification constraints; not interchangeable with FPGA.",
+      "source_leads": "OpenROAD digital flow; IEEE VLSI design research",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/114",
+      "note": "Four additions-only files; DAC 2019 OpenROAD, OpenROAD Flow, Cambridge ASIC costing, IEEE TVLSI 2025. Break-even arithmetic verified (49,000 units; $1,392,000 both models). Scoped unittest authored but not executed. GitHub workflow runs/statuses empty at checkpoint; V2/staging, MediaWiki runtime and expert review unverified. Draft PR."
+    },
+    {
+      "id": "N014",
+      "title": "Operating system kernel",
+      "issue": 64,
+      "scope": "Kernel responsibilities and isolation, scheduling, memory management, syscalls, interrupts and device mediation; distinct from the existing Operating system article.",
+      "source_leads": "Linux kernel documentation; OS design literature",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/115",
+      "note": "Four additions-only files; Linux kernel documentation and seL4 2009/2013 research. All four files fetched; three balanced onlyinclude leads; references and 80% arithmetic checked. Scoped pytest authored but not executed; V2/staging CI, MediaWiki rendering and expert review unverified. Draft PR #115."
+    },
+    {
+      "id": "N015",
+      "title": "Silicon",
+      "issue": 64,
+      "scope": "Element and semiconductor material science: crystal structure, band properties, doping, oxidation, manufacturing and applications; distinct from generic Semiconductor PR #81.",
+      "source_leads": "NIST Chemistry WebBook; solid-state physics references; SEMI sources",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 116,
+      "note": "https://github.com/bitwikiorg/wiki-content/pull/116 — four additions-only files; retrieved files and onlyinclude pairs checked; independent lattice density calculation passed; regression test authored not executed; V2/staging CI, rendering and expert review unverified."
+    },
+    {
+      "id": "N016",
+      "title": "Semiconductor fabrication",
+      "issue": 64,
+      "scope": "Wafer-fab workflow from substrate to films, pattern transfer, doping, interconnect, process control and yield; distinguish equipment, technology node and device physics.",
+      "source_leads": "SEMI manufacturing references; process technology textbooks",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/117",
+      "note": "Four additions-only files, SIA/ASML/NIST research; committed files retrieved, transclusions and balanced onlyinclude checked, Poisson arithmetic verified. Scoped Python regression authored but not executed; V2/staging CI, live MediaWiki rendering, expert review unverified. Draft PR."
+    },
+    {
+      "id": "N017",
+      "title": "Photolithography",
+      "issue": 64,
+      "scope": "Pattern transfer with masks/resists/optical or EUV exposure, imaging/resolution assumptions, overlay and process limits; distinct from entire fabrication flow.",
+      "source_leads": "ASML lithography technical resources; optical lithography literature",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/118",
+      "note": "Four additions-only files fetched and source-owned onlyinclude/reference structure verified; Rayleigh CD and DOF ratios independently checked. Scoped pytest authored but not executed; V2/staging CI, MediaWiki rendering, expert review unverified. Draft PR #118."
+    },
+    {
+      "id": "N018",
+      "title": "Thin-film deposition",
+      "issue": 64,
+      "scope": "CVD, PVD and ALD techniques, thickness/uniformity, chemical transport and process control; distinguish film growth from etching and lithography.",
+      "source_leads": "AVS vacuum science; peer-reviewed CVD/ALD reviews",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 119,
+      "note": "https://github.com/bitwikiorg/wiki-content/pull/119; four committed files re-fetched; static transclusion/provenance checks and GPC arithmetic passed; Python regression not executed; V2/staging CI, MediaWiki rendering, expert review unverified."
+    },
+    {
+      "id": "N019",
+      "title": "Semiconductor etching",
+      "issue": 64,
+      "scope": "Wet and plasma etch mechanisms, selectivity, anisotropy and damage, with bounded process models; distinct from photolithography.",
+      "source_leads": "Journal of Vacuum Science and Technology; semiconductor process texts",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/120",
+      "note": "Four additions-only files committed and fetched; source-owned onlyinclude/transclusion and DOI checks passed; example arithmetic checked. Scoped Python unittest authored but not executed; V2/staging CI, live MediaWiki rendering, and expert review unverified. Draft PR #120."
+    },
+    {
+      "id": "N020",
+      "title": "Semiconductor packaging",
+      "issue": 64,
+      "scope": "Package-level electrical/thermal/mechanical integration, interposers, 2.5D/3D integration and testing; distinguish wafer fabrication from chip packaging.",
+      "source_leads": "IEEE Heterogeneous Integration Roadmap; JEDEC packaging standards",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/121",
+      "note": "Four additions-only files retrieved; three balanced onlyinclude pairs and thermal arithmetic checked. Scoped pytest authored, not executed; V2/staging, runtime and expert review unverified."
+    },
+    {
+      "id": "N021",
+      "title": "Semiconductor foundry",
+      "issue": 64,
+      "scope": "Contract manufacturing, process design kits, wafer sourcing, fabless/foundry interface, capital and yield economics; distinguish a foundry from fabless design.",
+      "source_leads": "TSMC public technology materials; SEMI ecosystem reports",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 122,
+      "note": "Draft PR https://github.com/bitwikiorg/wiki-content/pull/122; 4 additions-only files, 3 article surfaces and scoped unittest. Main exact-title absent. Static lead/provenance review and example arithmetic checked; unittest execution, V2/staging CI, MediaWiki rendering, expert review unverified."
+    },
+    {
+      "id": "N022",
+      "title": "Neural processing unit",
+      "issue": 64,
+      "scope": "Domain-specific neural-network accelerators, compute/memory dataflow, inference precision and software stack; distinguish CPU/GPU/DSP.",
+      "source_leads": "Arm Ethos technical documentation; peer-reviewed ML accelerator surveys",
+      "status": "drafted",
+      "attempts": 2,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/135",
+      "note": "Manual recovery 2026-11-22: added Core, Simple, Technical and scoped Python regression in PR #135. Source-level checks and illustrative MAC arithmetic verified; Python unittest/V2-staging/CI/MediaWiki rendering/expert review remain unverified. No merge or deployment."
+    },
+    {
+      "id": "N023",
+      "title": "Digital signal processor",
+      "issue": 64,
+      "scope": "DSP processor architecture for sampled-signal workloads, MAC units, fixed vs floating point, circular buffers, latency and energy tradeoffs.",
+      "source_leads": "IEEE signal processing literature; TI DSP architecture manuals",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/123",
+      "note": "Draft PR #123; four additions-only files (88 additions, 0 deletions). TI SPRU733A/SPRABF2; fetched all files and balanced onlyinclude checked; FIR arithmetic checked. Scoped unittest authored not executed; combined status empty, V2/staging, live MediaWiki and expert review unverified."
+    },
+    {
+      "id": "N024",
+      "title": "High-bandwidth memory",
+      "issue": 64,
+      "scope": "Stacked DRAM, wide-interface bandwidth, TSVs and packaging; distinguish generic DRAM #100 and broader Computer memory #96.",
+      "source_leads": "JEDEC JESD235 HBM specifications; JEDEC updates",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/124",
+      "note": "Draft PR #124: 4 additions-only files (89 additions, 0 deletions). JEDEC JESD235A/B releases and AMD PG276; 307.2 GB/s and 1228.8 GB/s theoretical arithmetic checked. Scoped unittest authored, not executed; V2/staging CI, MediaWiki rendering, expert review unverified."
+    },
+    {
+      "id": "N025",
+      "title": "Chiplet",
+      "issue": 64,
+      "scope": "Multi-die design, interconnect, partitioning, packaging, power and yield tradeoffs; not a synonym for 3D packaging.",
+      "source_leads": "UCIe specification; IEEE heterogeneous integration",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/125",
+      "note": "Draft PR #125: 4 additions-only files (83 additions, 0 deletions). IEEE HIR, UCIe 2022, Nature Electronics 2024, IEEE EPTC 2024 and IEEE Design & Test 2026. Four files fetched, onlyinclude checked, Poisson example independently verified. Scoped pytest authored but not executed; V2/staging CI, live MediaWiki and expert review unverified."
+    },
+    {
+      "id": "N026",
+      "title": "Memory controller",
+      "issue": 64,
+      "scope": "Command scheduling, arbitration, DRAM timings, refresh and ECC interfaces; distinct from DRAM device article #100 and memory overview #96.",
+      "source_leads": "JEDEC DDR5 JESD79 family; memory-controller research",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/126",
+      "note": "Draft PR #126; four additions-only files (84 additions, 0 deletions). JEDEC JESD79-5 §4.13 and Mutlu/Moscibroda MICRO 2007; scoped unittest authored but not executed; V2/staging CI, live MediaWiki rendering and expert review unverified; JEDEC source via third-party mirror."
+    },
+    {
+      "id": "N027",
+      "title": "Computer bus",
+      "issue": 64,
+      "scope": "Address/data/control transfers, arbitration, timing, protocol and modern PCIe/USB/SoC fabric distinctions; not a generic network article.",
+      "source_leads": "PCI-SIG PCIe specifications; USB-IF specs",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/127",
+      "note": "Draft PR #127; four additions-only files (75 additions, zero deletions). PCI-SIG and USB-IF primary sources; all four files retrieved; balanced source-owned onlyinclude verified; 800 MB/s and 560 MB/s hypothetical arithmetic checked. Scoped Python test committed but not executed; combined commit statuses empty; V2/staging CI, live MediaWiki rendering and expert review unverified."
+    },
+    {
+      "id": "N028",
+      "title": "Network interface controller",
+      "issue": 64,
+      "scope": "NIC hardware/firmware, DMA queues, offloads and OS interfaces; separate from generic Computer network and Device driver PR #99.",
+      "source_leads": "Linux networking driver docs; IEEE 802.3",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/128",
+      "note": "Draft PR #128; four additions-only files, 101 additions and zero deletions. IEEE 802.3-2022 and Linux NAPI/DMA docs; re-fetched three surfaces; balanced onlyinclude, transclusions, provenance and throughput arithmetic checks passed in JS. Python regression committed but not executed; PR-triggered workflow runs empty, V2/staging and live MediaWiki rendering and expert review unverified."
+    },
+    {
+      "id": "N029",
+      "title": "Power electronics",
+      "issue": 64,
+      "scope": "Power conversion, MOSFET/IGBT switches, topology design, loss/thermal/safety constraints; separate from device physics in Transistor PR #85.",
+      "source_leads": "IEEE Power Electronics Society literature; application notes with model assumptions",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 129,
+      "note": "Draft PR https://github.com/bitwikiorg/wiki-content/pull/129; 4 additions-only files, 101 additions/0 deletions; retrieved files and verified one onlyinclude pair per article, 0.6 A ripple and 92.31% efficiency arithmetic. Python regression not executed; no PR-triggered GitHub Actions runs returned; V2/staging, MediaWiki rendering and expert review unverified."
+    },
+    {
+      "id": "N030",
+      "title": "Voltage regulator",
+      "issue": 64,
+      "scope": "Linear and switching voltage regulation, feedback stability, ripple, efficiency and thermal limits; a specialized hardware/power subject.",
+      "source_leads": "Texas Instruments power-management design references; IEEE control literature",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 130,
+      "note": "https://github.com/bitwikiorg/wiki-content/pull/130; 4 additions-only files, 80 additions/0 deletions; exact-title check passed; numerical examples manually verified; regression test authored not executed; V2/staging CI, MediaWiki rendering and expert review unverified."
+    },
+    {
+      "id": "N031",
+      "title": "Parallel computing",
+      "issue": 64,
+      "scope": "Models and tradeoffs in concurrency and parallelism, scaling, synchronization, shared vs distributed memory; do not duplicate Scaling PR #84.",
+      "source_leads": "OpenMP specification; MPI standard; original Amdahl and Gustafson analyses",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/131",
+      "note": "Draft PR #131; four additions-only files (89 additions, 0 deletions). OpenMP 5.2, MPI Forum standards, Amdahl 1967 and Gustafson 1988. Exact-title main checks absent; four branch files fetched, source-owned onlyinclude balanced; 80/17 arithmetic verified. Scoped Python regression authored but not executed; V2/staging CI, MediaWiki runtime and expert review unverified."
+    },
+    {
+      "id": "N032",
+      "title": "Wafer testing",
+      "issue": 64,
+      "scope": "Probe-level semiconductor electrical testing, defect screening, parametric variation and yield disposition; separate from packaged system test.",
+      "source_leads": "SEMI wafer test standards; IEEE test literature",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 132,
+      "note": "https://github.com/bitwikiorg/wiki-content/pull/132; 4 additions-only files, 71 additions/0 deletions; source/transclusion structure and 84% calculation manually reviewed; scoped pytest not executed; no PR-triggered GitHub Actions runs found; V2/staging, live MediaWiki and expert review unverified. SEMI G78 cited as superseded."
+    },
+    {
+      "id": "N033",
+      "title": "Semiconductor manufacturing yield",
+      "issue": 64,
+      "scope": "Defect-density/wafer-yield modeling, spatial variation, binning and economic consequences; model assumptions and counterexamples.",
+      "source_leads": "Foundational yield-model literature; SEMI process-control reports",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": 133,
+      "note": "PR https://github.com/bitwikiorg/wiki-content/pull/133; 4 additions-only files (84 lines, zero deletions); three source surfaces verified with one onlyinclude pair each; Poisson/NB arithmetic independently checked; scoped Python regression committed but not executed; V2/staging, live rendering and expert review unverified."
+    },
+    {
+      "id": "N034",
+      "title": "Motherboard",
+      "issue": 64,
+      "scope": "Mainboard function, power delivery, sockets, firmware interfaces and interconnect standards; distinguish Computer architecture theory and specific CPU devices.",
+      "source_leads": "ATX design guides; PCI-SIG/JEDEC platform interface standards",
+      "status": "drafted",
+      "attempts": 1,
+      "pr": "https://github.com/bitwikiorg/wiki-content/pull/134",
+      "note": "Draft PR #134; four additions-only files, 86 additions/0 deletions. Intel ATX 3.0, PCI-SIG and UEFI primary sources. Three article files re-fetched, balanced onlyinclude and power arithmetic checked; scoped Python unittest authored but not executed. No PR-triggered workflow runs at check; V2/staging, MediaWiki rendering and expert review unverified."
+    }
+  ],
+  "dispositions": [
+    {
+      "title": "Memory hierarchy",
+      "issue": 64,
+      "decision": "section",
+      "reason": "Existing Computer architecture plus draft Computer memory #96 already treat hierarchy as a systems abstraction; revisit only in second, existing-content workflow"
+    },
+    {
+      "title": "Cache coherence",
+      "issue": 64,
+      "decision": "section",
+      "reason": "Included in the Cache memory assignment and Computer memory #96; avoid two simultaneous identities"
+    },
+    {
+      "title": "Software compiler",
+      "issue": 64,
+      "decision": "existing",
+      "reason": "Existing Main/Compiler"
+    },
+    {
+      "title": "Operating system",
+      "issue": 64,
+      "decision": "existing",
+      "reason": "Existing Main/Operating system; kernel is a separate queued subject"
+    },
+    {
+      "title": "Computer architecture",
+      "issue": 64,
+      "decision": "existing",
+      "reason": "Existing Main/Computer architecture"
+    },
+    {
+      "title": "Bit and information theory",
+      "issue": 64,
+      "decision": "existing",
+      "reason": "Existing Main/Bit, Main/Information and Main/Information theory"
+    },
+    {
+      "title": "Robustness",
+      "issue": 65,
+      "decision": "existing",
+      "reason": "Existing Main/Robustness"
+    },
+    {
+      "title": "Serial-position effect",
+      "issue": 65,
+      "decision": "existing",
+      "reason": "Existing Main/Serial-position effect"
+    },
+    {
+      "title": "Tacitus Razor",
+      "issue": 65,
+      "decision": "exclude",
+      "reason": "Unsupported named concept and attribution per issue #65"
+    },
+    {
+      "title": "5x5 Rule",
+      "issue": 65,
+      "decision": "exclude",
+      "reason": "Unverified independent scientific status per issue #65"
+    },
+    {
+      "title": "SMART goals and Mehrabian 7-38-55",
+      "issue": 65,
+      "decision": "section",
+      "reason": "Within goal-setting and communication parent topics as editorial intake already decided"
+    },
+    {
+      "title": "Other #64 examples",
+      "issue": 64,
+      "decision": "covered_or_not_presumed",
+      "reason": "Issue #64 includes broad research seeds, not automatic independent-page authorizations; retained under issue for later editorial intake, outside this fixed approved queue"
+    }
+  ],
+  "authority": "New article files and tests in review branches, source research, CI, unmerged review PRs only. No existing Main edits, merge, publishing, issue closure, schema/template changes, or second workflow.",
+  "stop_rule": "On queue exhaustion (every item drafted or blocked), report exact PRs and blocked items and pause task ID 6affa2c4aae48191ae593055ee0a20ac. Do not claim issue #64's broad seeds all published.",
+  "safety": "On a claimed item recovered after crash, check ONLY that title's own exact PR/file before changing status; never blindly recreate a draft. If blocked, record the concrete missing input and advance to next pending. No full audit."
+}

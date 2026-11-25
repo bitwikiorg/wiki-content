@@ -10,9 +10,13 @@ An NPU can form part of a phone, small embedded device, or larger computer syste
 == What it is not ==
 NPU is a class of accelerators, not a universal instruction set or precision standard. An NPU is not a replacement for every CPU or GPU task. It may support only certain neural-network layers, data formats, or model sizes. Software can send unsupported operations to the CPU or another processor. An NPU does not guarantee that a model is accurate, private, fast, or energy-efficient in every application.
 
+An early example of a design that reduces data movement is Eyeriss, a convolutional-network accelerator. Its results describe a specific chip and workload, not all NPUs.
+
 == Sources ==
 * [https://support.arm.com/documentation/109267/latest/Arm-Ethos-U-NPU/Ethos-U-system-integration Arm, ''Ethos-U system integration''].
 * [https://dspace.mit.edu/entities/publication/97f40a24-e38f-48e6-901c-2608a590862f Sze et al. (2017), neural-network accelerator survey].
+* [https://doi.org/10.1109/JSSC.2016.2616357 Chen et al. (2017), Eyeriss accelerator study].
+* [https://support.arm.com/compute-ip/ethos-u85 Arm, Ethos-U85 product specifications].
 </onlyinclude>
 
 '''Reading depth:''' [[Neural processing unit/Simple|Simple]] · [[Neural processing unit/Technical|Technical]]

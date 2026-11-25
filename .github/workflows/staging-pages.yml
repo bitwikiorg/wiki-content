@@ -17,6 +17,7 @@ on:
       - 'manifest.json'
       - 'bitwiki-runtime-schema.json'
       - 'staging/**'
+      - 'tests/**'
       - 'scripts/**'
       - '.github/workflows/staging-pages.yml'
   pull_request:
@@ -34,6 +35,8 @@ on:
       - 'manifest.json'
       - 'bitwiki-runtime-schema.json'
       - 'staging/**'
+      - 'tests/**'
+      - 'scripts/**'
       - '.github/workflows/staging-pages.yml'
   workflow_dispatch:
 
@@ -43,7 +46,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: bitwiki-staging-pages
+  group: bitwiki-staging-pages-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:

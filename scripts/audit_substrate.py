@@ -13,6 +13,8 @@ import re
 from collections import Counter
 from pathlib import Path
 
+from validate_v2 import is_reading_depth_derivative
+
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "manifest.json"
@@ -83,11 +85,12 @@ def is_reading_depth_directory(path: Path) -> bool:
     """Recognize Main/<Title>/ transport directories for reader-depth pages.
 
     These directories project MediaWiki slash titles such as Title/Simple and
-    Title/Technical. They are not architectural modules and therefore do not
-    require a local README when:
-      * the sibling Core page Main/<Title>.mediawiki exists;
+    Title/Technical. They are not architectural modules and do not require a
+    local README when:
+      * the sibling canonical Main/<Title>.mediawiki exists;
       * every file is an approved depth filename;
-      * every depth file actually transcludes Template:Reading depth; and
+      * each surface uses either the legacy Reading depth template or explicit
+        reciprocal two-localization navigation; and
       * there are no nested directories.
     """
     main_root = ROOT / "Main"
@@ -105,11 +108,12 @@ def is_reading_depth_directory(path: Path) -> bool:
         return False
     if any(item.name not in READING_DEPTH_FILENAMES for item in entries):
         return False
-    for item in entries:
-        text = item.read_text(encoding="utf-8")
-        if "{{Reading depth" not in text:
-            return False
-    return True
+    return all(
+        is_reading_depth_derivative(
+            item.relative_to(ROOT), item.read_text(encoding="utf-8"), root=ROOT
+        )
+        for item in entries
+    )
 
 
 def source_files() -> list[Path]:

@@ -20,6 +20,8 @@ on:
       - 'manifest.json'
       - '.gitignore'
       - 'scripts/**'
+      - 'tests/**'
+      - 'staging/compiler/**'
       - '.github/workflows/validate-v2-pr.yml'
 
 permissions:
@@ -41,6 +43,14 @@ jobs:
 
       - name: Validate deployable MediaWiki structure and identity semantics
         run: python scripts/validate_v2.py
+
+      - name: Test legacy and two-localization reader contracts
+        run: python -m unittest discover -s scripts -p 'test_two_depth_source_contract.py'
+
+      - name: Execute article and staging source regressions
+        run: |
+          python -m pip install pytest==8.4.2
+          python -m pytest -q -p no:cacheprovider tests staging/compiler
 
       - name: Validate Scribunto Lua 5.1 syntax
         if: always()

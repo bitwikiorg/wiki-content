@@ -119,19 +119,70 @@ def split_domains(domain_text: str) -> list[str]:
     return [title(item) for item in domain_text.split(",") if title(item)]
 
 
-def is_reading_depth_derivative(path: Path, text: str) -> bool:
-    """Return True for Simple/Technical reader surfaces derived from a Core Main page.
+def is_depth_path(path: Path) -> bool:
+    return (
+        len(path.parts) == 3 and path.parts[0] == "Main"
+        and path.name in {"Simple.mediawiki", "Technical.mediawiki"}
+    )
 
-    These pages intentionally do not duplicate the Core page's Knowledge object
-    identity or domain category membership. They remain deployable Main-space
-    titles and use Template:Reading depth for navigation.
+
+DEPTH_LINK = re.compile(r"\[\[([^\[\]|#]+)/(Simple|Technical|Core)(?:\|[^\[\]]+)?\]\]")
+
+
+def has_two_depth_navigation(text: str, base: str, role: str) -> bool:
+    """Recognize explicit navigation, not commented examples or prose fragments.
+
+    Accept the existing editorial styles: a standalone cross-link, a pair
+    of links, or a reader-localizations label with the current role marked.
     """
-    if path.parts[0] != "Main" or len(path.relative_to("Main").parts) < 2:
+    other = "Technical" if role == "Simple" else "Simple"
+    text = executable_text(text)
+    text = re.sub(r"<onlyinclude\b[^>]*>.*?</onlyinclude\s*>", "", text, flags=re.I | re.S)
+    for line in text.splitlines():
+        links = list(DEPTH_LINK.finditer(line))
+        if not links or not any(m.group(1) == base and m.group(2) == other for m in links):
+            continue
+        if any(m.group(1) != base or m.group(2) not in {role, other} for m in links):
+            continue
+        # A navigation row is standalone; ordinary prose references are not
+        # sufficient. Accept labels, separators, emphasis and list markers.
+        residue = DEPTH_LINK.sub("", line).strip()
+        residue = re.sub(r"^[-*#:; ]+", "", residue).strip()
+        residue = re.sub(r"^'{2,3}[^']{1,70}:'{2,3}\s*", "", residue).strip()
+        residue = residue.replace("'''Simple'''", "").replace("'''Technical'''", "")
+        if re.fullmatch(r"[\s·|/—–.,;:-]*", residue):
+            return True
+    return False
+
+
+def is_reading_depth_derivative(path: Path, text: str, root: Path = ROOT) -> bool:
+    """Recognize legacy and new reader-localization contracts."""
+    if not is_depth_path(path):
         return False
+    base = path.parts[1]
+    role = path.stem
+    other = "Technical" if role == "Simple" else "Simple"
+    canonical = root / "Main" / f"{base}.mediawiki"
+    if not canonical.is_file():
+        return False
+    text = executable_text(text)
     params = template_params(text, "Reading depth")
-    if not params:
+    if params is not None:
+        return params.get("current") == role and params.get("base") == base
+    sibling = root / "Main" / base / f"{other}.mediawiki"
+    if not sibling.is_file():
         return False
-    return params.get("current") in {"Simple", "Technical"}
+    sibling_text = executable_text(sibling.read_text(encoding="utf-8"))
+    if template_params(sibling_text, "Reading depth") is not None:
+        return False
+    host = executable_text(canonical.read_text(encoding="utf-8"))
+    if not re.search(r"\{\{\s*:" + re.escape(base) + r"/Simple\s*\}\}", host):
+        return False
+    if not any(m.group(1) == base and m.group(2) == "Technical" for m in DEPTH_LINK.finditer(host)):
+        return False
+    return has_two_depth_navigation(text, base, role) and has_two_depth_navigation(
+        sibling_text, base, other
+    )
 
 
 def is_magic_word_or_parser_prefix(template: str) -> bool:
@@ -260,7 +311,15 @@ def main() -> None:
         d for d in required_domains if d not in exemplar_domains
     ]
 
+    malformed_depth_sources = [
+        str(path) for path in files("Main")
+        if is_depth_path(path) and not is_reading_depth_derivative(
+            path, path.read_text(encoding="utf-8")
+        )
+    ]
+
     report = {
+        "malformed_reading_depth_sources": malformed_depth_sources,
         "deployable_wikitext_files": len(all_files),
         "wikitext_roots": WIKITEXT_ROOTS,
         "reference_scan_roots": sorted(REFERENCE_SCAN_ROOTS),
@@ -315,6 +374,7 @@ def main() -> None:
 
     report["valid"] = not any([
         missing_templates,
+        malformed_depth_sources,
         missing_domain_categories,
         missing_domain_portals,
         missing_domain_exemplar_domains,

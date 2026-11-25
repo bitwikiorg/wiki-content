@@ -1,6 +1,6 @@
 <onlyinclude>A '''voltage regulator''' is a power-conditioning feedback system whose small-signal dynamics, conversion losses and operating constraints determine whether a specified rail remains within tolerance under disturbances.</onlyinclude>
 
-''Reading depth: [[Voltage regulator/Simple|Simple]] · [[Voltage regulator/Technical|Technical]].''
+''Reader localizations:'' [[Voltage regulator/Simple|Simple]] · '''Technical'''
 
 == Regulation and control ==
 For a conventional negative-feedback regulator, the sensed voltage is ''V''<sub>FB</sub> = β''V''<sub>out</sub>. In steady state with sufficiently high loop gain, ''V''<sub>out</sub> ≈ ''V''<sub>ref</sub>/β. Finite gain, reference error, offsets and load-dependent impedance cause deviations. Stability depends on the open-loop transfer function and compensation; a DC setpoint calculation cannot establish phase margin or load-step behavior. Real switching controllers may use voltage-mode, current-mode or hysteretic control with distinct dynamics.

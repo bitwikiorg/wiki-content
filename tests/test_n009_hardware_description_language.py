@@ -28,12 +28,13 @@ class HardwareDescriptionLanguageSourceTests(unittest.TestCase):
     def test_source_owned_transclusion(self):
         self.assertEqual(self.simple.count("<onlyinclude>"), 1)
         self.assertEqual(self.simple.count("</onlyinclude>"), 1)
+        self.assertIn("== Three different jobs ==", self.simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertIn("{{:Hardware description language/Simple}}", self.core)
         self.assertNotIn("<onlyinclude>", self.core)
 
     def test_citations_and_refs(self):
         for surface in (self.core, self.simple, self.technical):
-            self.assertIn("<references/>", surface) if surface != self.core else self.assertNotIn("<references/>", surface)
+            self.assertIn("<references/>", surface)
             names = re.findall(r'<ref name="([^"]+)"', surface)
             self.assertEqual(len(names), len(set(names)), "duplicate reference declaration")
         self.assertIn("standards.ieee.org/ieee/1076/5179/", self.technical)

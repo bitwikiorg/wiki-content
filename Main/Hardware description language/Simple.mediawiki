@@ -1,6 +1,6 @@
 ''Reader localizations:'' '''Simple''' · [[Hardware description language/Technical|Technical]]
 = Hardware description language — Simple =
-<onlyinclude>'''A hardware description language (HDL)''' is a way to describe what an electronic circuit contains and how its signals behave. Engineers use HDLs to explore a design in simulation, check it, and—when the description uses supported constructs—turn it into a circuit implementation.</onlyinclude>
+<onlyinclude>'''A hardware description language (HDL)''' is a way to describe what an electronic circuit contains and how its signals behave. Engineers use HDLs to explore a design in simulation, check it, and—when the description uses supported constructs—turn it into a circuit implementation.
 
 == Why use one? ==
 Imagine designing a digital counter. Instead of wiring every component immediately, an engineer can describe a register that holds a number and a rule that updates it at a clock edge. A simulator can then test sequences of clock pulses and resets before physical hardware exists.
@@ -20,6 +20,7 @@ Not every valid HDL statement can be synthesized. A testbench can use timing del
 
 == What an HDL cannot guarantee ==
 A simulation can miss untested scenarios. A synthesizable design can still fail timing, use too much power, or be functionally incorrect. Tool settings and target technology matter.
+</onlyinclude>
 
 == Sources ==
 <references/>

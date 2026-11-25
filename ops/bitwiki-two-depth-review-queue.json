@@ -280,8 +280,8 @@
         "A21"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending",
-      "note": "Chronotype A20 independently checkpointed; Hawthorne A21 remains pending."
+      "status": "corrected_pending_validation",
+      "note": "Both subjects independently checkpointed; PR #91 source checks passed, executable regression and final validation outstanding."
     },
     {
       "pair_id": "R30",
@@ -737,9 +737,25 @@
       "title": "Hawthorne effect",
       "pr_number": 91,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/91",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #91 commit 611dd0a492d71a6de5393e0fbea48b4fd00b830d: canonical host now transcludes full Simple, explicit reciprocal navigation, historical competing reanalyses, demand characteristics, DID estimand and assumptions, wikitext heading correction and scoped regression.",
+        "preservation_evidence": [
+          "Canonical metadata, four original SMW relationships, categories, incoming query and identity retained.",
+          "Three historic/modern hypotheses, heterogeneous mechanisms, original references, measurement and DID example retained in the two localizations.",
+          "Human behavioral claims kept distinct from AI evaluation and engineering instrumentation."
+        ],
+        "scientific_sources": [
+          "Izawa et al. 2011 PMID 22046725 and Levitt/List 2011 DOI 10.1257/app.3.1.224 (publisher/abstract evidence)",
+          "2006 critique PMID 17091208; McCambridge et al. 2014 PMID 24275499; primary care review PMID 36425097 (abstract and accessible review text)",
+          "Orne 1962 DOI 10.1037/h0043424; Roth et al. 2023 DOI 10.1016/j.jeconom.2023.03.008"
+        ],
+        "static_checks": "10/10 post-write connector source checks including exact PR head, identity, nav, transclusion, named refs, math, DID arithmetic, heading and regression presence.",
+        "tests": "Scoped Python regression updated but not executed locally; staging workflow 45524267793 queued on exact commit; V2 and full citation audit outstanding.",
+        "gate": "PR #136 compatibility and human approval required; no merge or publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/91"
+      }
     },
     {
       "id": "A22",
@@ -1676,16 +1692,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "A20",
+    "last_checkpoint_article": "A21",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 8,
+    "articles_pending_or_incomplete": 7,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R28",
-    "articles_corrected_pending_validation": 57,
-    "pairs_corrected_pending_validation": 28
+    "last_reviewed_pair": "R29",
+    "articles_corrected_pending_validation": 58,
+    "pairs_corrected_pending_validation": 29
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

@@ -1,0 +1,78 @@
+{{Source status|status=Issue 152 independently researched canonicalization|note=Replaces the short V1 Systems-analysis methodology fragment with a current sourced article.}}
+{{Knowledge object
+ |title=Systems analysis
+ |entity_type=Method
+ |domain=Systems science, Engineering
+ |status=Established
+ |provenance=V2 public corpus; V1 durable signal independently re-researched during archive retirement
+}}
+{{Reading depth|base=Systems analysis|current=Core}}
+
+= Systems analysis =
+
+== Overview ==
+'''Systems analysis''' is the systematic examination of a system, problem situation, or candidate solution in order to understand its components, relationships, behavior, constraints, alternatives, and consequences.
+
+In systems engineering, system analysis supports technical decision-making by defining assessment criteria, evaluating candidate architectures or solutions, comparing alternatives, and examining performance, cost, risk, and other lifecycle considerations.
+
+The term is broader than simply decomposing a system into parts. Depending on the field and problem, analysis may include models, simulations, trade studies, causal structures, feedback, uncertainty, stakeholder criteria, and boundary choices.
+
+== Analytical boundary ==
+Every systems analysis depends on a [[Related to::System boundary|system boundary]].
+
+The analyst must specify what is inside the system of interest, what belongs to the environment, which interfaces cross the boundary, which time horizon is relevant, and which outcomes count.
+
+Changing those choices can change the apparent problem and the preferred solution.
+
+== Components and relationships ==
+A useful analysis identifies relevant components but also examines how they interact.
+
+Important questions include:
+
+* Which components are necessary to explain the behavior of interest?
+* Which relationships are causal, informational, material, organizational, or merely correlational?
+* Which interfaces connect the system to its environment?
+* Which dependencies create bottlenecks or common failure modes?
+
+A component inventory without relationships is not a systems explanation.
+
+== Feedback and dynamics ==
+[[Related to::Feedback|Feedback]], delay, accumulation, nonlinear response, and changing state can make system behavior differ from what static decomposition predicts.
+
+Where dynamics matter, analysis may use differential equations, discrete-event simulation, agent-based models, control models, network models, or other representations appropriate to the problem.
+
+The model must remain tied to its assumptions and domain of validity.
+
+== Alternatives and trade studies ==
+For engineered systems, analysis often compares candidate solutions against explicit criteria.
+
+A trade study may consider:
+
+* required behavior and performance;
+* cost and schedule;
+* safety, security, reliability, and maintainability;
+* technical and programmatic risk;
+* stakeholder preferences and constraints;
+* uncertainty and sensitivity to assumptions.
+
+A numerical score does not remove judgment. Weighting criteria, selecting models, and defining acceptable risk are themselves decisions that should remain inspectable.
+
+== Emergence and limits of decomposition ==
+In a [[Complex system|complex system]], behavior can depend strongly on interactions among components. Analysis should therefore test whether subsystem-level explanations are sufficient or whether collective dynamics, feedback, adaptation, or emergent behavior must be modeled explicitly.
+
+Likewise, a model that reproduces one observed outcome may fail outside its calibration range. Validation, sensitivity analysis, independent data, and alternative models help expose these limits.
+
+== Relation to systems engineering and systems thinking ==
+Systems analysis is one activity within the wider systems approach.
+
+'''Systems engineering''' uses analysis throughout the lifecycle to support requirements, architecture, verification, validation, risk management, and technical decisions.
+
+'''Systems thinking''' more broadly emphasizes wholes, relationships, boundaries, context, feedback, and multiple perspectives. Some problem situations cannot be reduced to a single well-defined objective function or engineering trade study.
+
+== References ==
+* SEBoK. [https://sebokwiki.org/wiki/System_Analysis ''System Analysis''] — systems-engineering analysis, trade studies, effectiveness, cost, and risk.
+* SEBoK. [https://sebokwiki.org/wiki/Systems_Analysis_Approach ''Analysis and Selection between Alternative Solutions''] — use of assessment criteria and iterative trade studies.
+* INCOSE. [https://www.incose.org/docs/default-source/professional-development-portal/isecf.pdf ''Systems Engineering Competency Framework''] — systems modeling and analysis as support for lifecycle understanding and decision-making.
+
+[[Category:Systems science]]
+[[Category:Engineering]]

@@ -10,7 +10,7 @@ This repository includes the reviewed deployment projection for BITwiki's public
 - **GitHub Pages staging:** https://bitwikiorg.github.io/wiki-content/
 - **BIThub:** https://hub.bitwiki.org/
 - **Canonical branch:** `main`
-- **V1 lineage:** preserved under `archive-v1/`
+- **V1 lineage:** preserved in immutable Git history at snapshot commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4`; retirement/disposition is documented in [`docs/v1-retirement.md`](docs/v1-retirement.md)
 
 > `main` is the integrated repository source of truth. Filesystem folders project MediaWiki/runtime surfaces; they are not themselves the ontology.
 
@@ -117,7 +117,6 @@ wiki-content/
 ├── MediaWiki/     public runtime/interface configuration pages
 ├── Help/          stable user-facing workflow documentation
 ├── Portal/        Portal:* navigation title projection; not a confirmed namespace
-├── archive-v1/    preserved public V1 provenance and migration evidence
 ├── scripts/       archival, validation, audit, inventory, and migration tooling
 ├── docs/          non-deployable maintainer deployment runbook
 ├── ops/           non-deployable operational records (still visible in public GitHub)
@@ -189,7 +188,7 @@ The prior public Cargo-backed queue has been retired from source-controlled Medi
 | Operational request records (not wiki source) | [`ops/knowledge-requests.json`](ops/knowledge-requests.json) |
 | Deployment runbook (not wiki source) | [`docs/deployment.md`](docs/deployment.md) |
 | Runtime mapping manifest | [`manifest.json`](manifest.json) |
-| V1 archive | [`archive-v1/README.md`](archive-v1/README.md) |
+| V1 historical provenance | [`docs/v1-retirement.md`](docs/v1-retirement.md) · immutable snapshot `3100db1d7807b752e41b6ccf7f88498982cfb2d4` |
 
 ---
 
@@ -204,8 +203,6 @@ python scripts/audit_substrate.py
 python scripts/audit_workflow.py
 python scripts/audit_mainspace.py
 python scripts/inventory_corpus.py
-python scripts/classify_v1_page_roles.py
-python scripts/classify_v1_architecture_families.py
 find Module -type f -name '*.lua' -print0 | xargs -0 -n1 luac5.1 -p
 ```
 
@@ -229,7 +226,7 @@ V1
 → integrate into V2
 ```
 
-`archive-v1/` is read-only historical evidence, not deployable V2 source and not an alternate current architecture.
+The V1 working-tree archive was retired after recovery/disposition under issue #152. The exact public snapshot remains recoverable at commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4`; it is historical evidence, not deployable V2 source or current architecture.
 
 ---
 

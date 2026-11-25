@@ -4,7 +4,7 @@
   "repository": "bitwikiorg/wiki-content",
   "format": "MediaWiki wikitext + namespace-native source (Lua/CSS/JS where required)",
   "visibility": "public-only",
-  "status": "source-grounded V2 with exhaustive public V1 provenance archive",
+  "status": "source-grounded V2 with immutable historical V1 provenance",
   "source_policy": "source-first; preserve authored language, implementation reality, revision history and provenance; distinguish documented design from deployed objects",
   "namespace_paths": {
     "Main": "Main/",
@@ -23,27 +23,109 @@
   },
   "mediawiki_substrate": {
     "authority": "live/captured MediaWiki siteinfo, not repository folder names",
-    "siteinfo_snapshot": "archive-v1/siteinfo.json",
     "namespace_info": "https://bitwiki.org/Special:NamespaceInfo",
     "version_info": "https://bitwiki.org/Special:Version",
     "source_control_mappings": {
-      "Main": {"path": "Main/", "kind": "namespace", "content_model": "wikitext"},
-      "BITwiki": {"path": "BITwiki/", "kind": "namespace", "content_model": "wikitext", "canonical_name": "Project"},
-      "Template": {"path": "Template/", "kind": "namespace", "content_model": "wikitext"},
-      "Property": {"path": "Property/", "kind": "namespace", "content_model": "wikitext", "extension": "SemanticMediaWiki"},
-      "Category": {"path": "Category/", "kind": "namespace", "content_model": "wikitext"},
-      "Concept": {"path": "Concept/", "kind": "namespace", "content_model": "wikitext", "extension": "SemanticMediaWiki"},
-      "smw/schema": {"path": "SMWSchema/", "kind": "namespace", "content_model": "smw/schema", "extension": "SemanticMediaWiki", "filename_encoding": "URL-encode colon in namespace-local title"},
-      "Module": {"path": "Module/", "kind": "namespace", "content_model": "Scribunto/Lua", "extension": "Scribunto"},
-      "MediaWiki": {"path": "MediaWiki/", "kind": "namespace", "content_model": "page-specific (wikitext/CSS/JS)"},
-      "Help": {"path": "Help/", "kind": "namespace", "content_model": "wikitext"},
-      "Portal": {"path": "Portal/", "kind": "title projection", "content_model": "wikitext", "namespace_configured_in_snapshot": false}
+      "Main": {
+        "path": "Main/",
+        "kind": "namespace",
+        "content_model": "wikitext"
+      },
+      "BITwiki": {
+        "path": "BITwiki/",
+        "kind": "namespace",
+        "content_model": "wikitext",
+        "canonical_name": "Project"
+      },
+      "Template": {
+        "path": "Template/",
+        "kind": "namespace",
+        "content_model": "wikitext"
+      },
+      "Property": {
+        "path": "Property/",
+        "kind": "namespace",
+        "content_model": "wikitext",
+        "extension": "SemanticMediaWiki"
+      },
+      "Category": {
+        "path": "Category/",
+        "kind": "namespace",
+        "content_model": "wikitext"
+      },
+      "Concept": {
+        "path": "Concept/",
+        "kind": "namespace",
+        "content_model": "wikitext",
+        "extension": "SemanticMediaWiki"
+      },
+      "smw/schema": {
+        "path": "SMWSchema/",
+        "kind": "namespace",
+        "content_model": "smw/schema",
+        "extension": "SemanticMediaWiki",
+        "filename_encoding": "URL-encode colon in namespace-local title"
+      },
+      "Module": {
+        "path": "Module/",
+        "kind": "namespace",
+        "content_model": "Scribunto/Lua",
+        "extension": "Scribunto"
+      },
+      "MediaWiki": {
+        "path": "MediaWiki/",
+        "kind": "namespace",
+        "content_model": "page-specific (wikitext/CSS/JS)"
+      },
+      "Help": {
+        "path": "Help/",
+        "kind": "namespace",
+        "content_model": "wikitext"
+      },
+      "Portal": {
+        "path": "Portal/",
+        "kind": "title projection",
+        "content_model": "wikitext",
+        "namespace_configured_in_snapshot": false
+      }
     },
-    "runtime_namespaces_not_deployed_from_this_corpus": ["Talk", "User", "User talk", "BITwiki talk", "File", "File talk", "MediaWiki talk", "Template talk", "Help talk", "Category talk", "Property talk", "Concept talk", "smw/schema talk", "Module talk"],
-    "capabilities_in_active_use": ["Semantic MediaWiki properties", "Semantic MediaWiki #ask", "MediaWiki templates/transclusion", "Scribunto compiler/type validation"],
-    "capabilities_installed_but_use_case_gated": ["SMW subobjects", "additional SMW Concepts", "Network graph views", "FacetedSearch/Drilldown", "Cargo operational workflows"],
-    "capabilities_not_assumed_or_requires_deployment": ["native structured SMW access from Lua via SemanticScribunto"],
-    "substrate_audit": {"generator": "scripts/audit_substrate.py", "output": "v2-substrate-audit.json", "distribution": "CI artifact; untracked"},
+    "runtime_namespaces_not_deployed_from_this_corpus": [
+      "Talk",
+      "User",
+      "User talk",
+      "BITwiki talk",
+      "File",
+      "File talk",
+      "MediaWiki talk",
+      "Template talk",
+      "Help talk",
+      "Category talk",
+      "Property talk",
+      "Concept talk",
+      "smw/schema talk",
+      "Module talk"
+    ],
+    "capabilities_in_active_use": [
+      "Semantic MediaWiki properties",
+      "Semantic MediaWiki #ask",
+      "MediaWiki templates/transclusion",
+      "Scribunto compiler/type validation"
+    ],
+    "capabilities_installed_but_use_case_gated": [
+      "SMW subobjects",
+      "additional SMW Concepts",
+      "Network graph views",
+      "FacetedSearch/Drilldown",
+      "Cargo operational workflows"
+    ],
+    "capabilities_not_assumed_or_requires_deployment": [
+      "native structured SMW access from Lua via SemanticScribunto"
+    ],
+    "substrate_audit": {
+      "generator": "scripts/audit_substrate.py",
+      "output": "v2-substrate-audit.json",
+      "distribution": "CI artifact; untracked"
+    },
     "deployment_contract": {
       "scope_authority": "mediawiki_substrate.source_control_mappings",
       "planner": "scripts/deployment_plan.py",
@@ -61,14 +143,24 @@
     "architecture_page": "BITwiki/Programmable knowledge substrate.mediawiki",
     "lua_standard": "BITwiki/Lua architecture.mediawiki",
     "authoring_syntax": "MediaWiki wikitext and Templates",
-    "structured_state": ["Semantic MediaWiki", "Cargo"],
+    "structured_state": [
+      "Semantic MediaWiki",
+      "Cargo"
+    ],
     "compiler_runtime": "Scribunto/Lua",
     "compiler_module_family": "Module:BITwiki/*",
     "public_validation_wrapper": "Module:Structure",
     "runtime_schema_authority": "bitwiki-runtime-schema.json",
     "runtime_schema_projection": "Module/BITwiki/Data/Schema.lua",
     "runtime_schema_audit": "scripts/audit_runtime_schema.py",
-    "compiler_passes": ["normalize", "type-check", "resolve wiki-resident state", "derive bounded explicit rules", "project", "diagnose"],
+    "compiler_passes": [
+      "normalize",
+      "type-check",
+      "resolve wiki-resident state",
+      "derive bounded explicit rules",
+      "project",
+      "diagnose"
+    ],
     "inference_default": "derived display/diagnostic only; no hidden persistent assertions",
     "transport_boundary": "Scribunto is not the network/API bridge between MediaWiki and BIThub/Discourse"
   },
@@ -80,36 +172,6 @@
     "authority_invariant": "BIThub may project and propose against canonical BITwiki state but does not become a competing semantic source of truth",
     "round_trip_invariant": "cross-system writes preserve actor/process identity, provenance, review state, and the target MediaWiki/SMW/Cargo contract"
   },
-  "v1_archive": {
-    "path": "archive-v1/",
-    "generator": "scripts/archive_v1.py",
-    "workflow": ".github/workflows/archive-v1.yml",
-    "refresh_policy": "workflow builds a candidate artifact; integration into the versioned archive requires reviewed repository change",
-    "run_status_output": "archive-v1-run-status.json",
-    "run_status_distribution": "CI artifact; untracked",
-    "snapshot": "2026-08-18T17:20:10Z",
-    "api_endpoint": "https://bitwiki.org/w/api.php",
-    "api_calls": 598,
-    "nonnegative_namespaces": 24,
-    "public_pages": 186,
-    "revision_bodies": 606,
-    "main_pages": 162,
-    "templates": 9,
-    "used_categories": 162,
-    "created_category_pages": 0,
-    "property_pages": 4,
-    "smw_schema_pages": 3,
-    "mediawiki_pages": 6,
-    "file_description_pages": 2,
-    "file_binary_revision_records": 2,
-    "file_binaries_captured": 0,
-    "file_binary_references_unavailable": 2,
-    "concept_pages": 0,
-    "module_pages": 0,
-    "continuation_exhaustive": true,
-    "harvest_verified": true,
-    "warnings": []
-  },
   "v2_validation": {
     "generator": "scripts/validate_v2.py",
     "output": "v2-validation.json",
@@ -118,7 +180,12 @@
     "domain_exemplar_coverage_required": true,
     "semantic_identity_validation": true,
     "knowledge_object_fields_required": [],
-    "knowledge_object_fields_optional": ["entity_type", "domain", "status", "provenance"],
+    "knowledge_object_fields_optional": [
+      "entity_type",
+      "domain",
+      "status",
+      "provenance"
+    ],
     "unregistered_type_domain_policy": "review-only; not a corpus admission failure",
     "invalid_explicit_epistemic_status_policy": "error",
     "runtime_schema_audit": {
@@ -137,11 +204,19 @@
   "navigation": {
     "recursive_portal_title_projections": true,
     "polyhierarchical_portal_navigation": true,
-    "canonical_focused_portal_titles": ["Portal:Bioinformatics", "Portal:Python"],
+    "canonical_focused_portal_titles": [
+      "Portal:Bioinformatics",
+      "Portal:Python"
+    ],
     "legacy_slash_paths_are_redirects": true,
     "portal_hierarchy_is_ontology": false,
     "portal_namespace_configured_in_snapshot": false,
-    "depth_localization": ["Simple orientation", "Core understanding", "Technical depth", "Frontier / research"]
+    "depth_localization": [
+      "Simple orientation",
+      "Core understanding",
+      "Technical depth",
+      "Frontier / research"
+    ]
   },
   "research_surfaces": {
     "references": "BITwiki/Research references.mediawiki",
@@ -151,14 +226,18 @@
   },
   "migration_evidence": {
     "corpus_inventory": "scripts/inventory_corpus.py",
-    "page_role_classifier": "scripts/classify_v1_page_roles.py",
-    "architecture_family_classifier": "scripts/classify_v1_architecture_families.py",
-    "v1_main_pages_classified": 162,
+    "v1_retirement_disposition": "docs/v1-retirement-disposition.json",
+    "v1_snapshot_commit": "3100db1d7807b752e41b6ccf7f88498982cfb2d4",
+    "v1_migration_analysis_commit": "5c98cad2e5c4679d1cac0db6bd421b4167856c32",
+    "v1_main_pages_dispositioned": 162,
     "v1_architecture_sources_classified": 83,
     "preserved_deleted_content_snapshot": {
       "captured": "2026-08-18",
-      "files": ["v1-deleted-content-audit.json", "v1-deleted-unresolved.json"],
-      "policy": "historical migration evidence; retained but no longer overwritten by automation"
+      "files": [
+        "v1-deleted-content-audit.json",
+        "v1-deleted-unresolved.json"
+      ],
+      "policy": "historical migration evidence retained after working-tree archive retirement"
     }
   },
   "operational_workflows": {
@@ -169,8 +248,16 @@
       "audit": "scripts/audit_workflow.py",
       "audit_output": "v2-workflow-audit.json",
       "audit_distribution": "CI artifact; untracked",
-      "active_statuses": ["requested", "researching", "drafting", "review"],
-      "terminal_statuses": ["satisfied", "declined"],
+      "active_statuses": [
+        "requested",
+        "researching",
+        "drafting",
+        "review"
+      ],
+      "terminal_statuses": [
+        "satisfied",
+        "declined"
+      ],
       "invariant": "an active request must not already exist as a canonical Main page"
     }
   },
@@ -186,17 +273,42 @@
       "v2-workflow-audit.json",
       "v2-mainspace-audit.json",
       "v2-deployment-plan.json",
-      "v2-corpus-inventory.json",
-      "v1-classification-usage.json",
-      "v1-page-role-matrix.json",
-      "v1-architecture-family-matrix.json",
-      "v1-fidelity-audit.json",
-      "archive-v1-run-status.json"
+      "v2-corpus-inventory.json"
     ],
     "preserved_historical_exceptions": [
       "v1-deleted-content-audit.json",
       "v1-deleted-unresolved.json"
     ]
   },
-  "canonicalization_loop": ["recover source", "preserve raw signal", "compare revisions", "distinguish design intent from implementation", "research and cross-check", "distill redundancy", "revise", "verify", "canonicalize", "transclude and relate", "publish"]
+  "canonicalization_loop": [
+    "recover source",
+    "preserve raw signal",
+    "compare revisions",
+    "distinguish design intent from implementation",
+    "research and cross-check",
+    "distill redundancy",
+    "revise",
+    "verify",
+    "canonicalize",
+    "transclude and relate",
+    "publish"
+  ],
+  "v1_history": {
+    "working_tree_status": "retired after issue #152 recovery/disposition",
+    "snapshot": "2026-08-18T17:20:10Z",
+    "snapshot_commit": "3100db1d7807b752e41b6ccf7f88498982cfb2d4",
+    "snapshot_tree_path": "archive-v1/",
+    "snapshot_url": "https://github.com/bitwikiorg/wiki-content/tree/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1",
+    "public_pages": 186,
+    "main_pages": 162,
+    "revision_bodies": 606,
+    "archive_paths": 648,
+    "migration_analysis_commit": "5c98cad2e5c4679d1cac0db6bd421b4167856c32",
+    "retirement_disposition": "docs/v1-retirement-disposition.json",
+    "retirement_notes": "docs/v1-retirement.md",
+    "limitations": [
+      "two historical file-binary references were unavailable and were never captured",
+      "deleted pre-snapshot revision bodies were not anonymously recoverable; preserved deleted-content audits document the limitation"
+    ]
+  }
 }

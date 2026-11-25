@@ -4,9 +4,9 @@
 
 ## Authority and preflight
 
-- Reconcile target wiki `Special:NamespaceInfo`, `Special:Version`, installed extensions, site state, and `archive-v1/siteinfo.json` before acting. A repository folder is a title projection, not a configured MediaWiki namespace.
+- Reconcile target wiki `Special:NamespaceInfo`, `Special:Version`, installed extensions, and current site state before acting. A repository folder is a title projection, not a configured MediaWiki namespace.
 - `manifest.json` owns mapped source folders; `scripts/deployment_plan.py` recursively discovers deployable files, titles, models, dependency order and explicitly declared checkpoints.
-- `archive-v1/` is read-only historical provenance. Do not turn missing source files into delete operations on the live wiki.
+- Historical V1 provenance is Git-only after issue #152; the exact snapshot remains at commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4`. Never turn absence from current source into a live-wiki delete operation.
 - Source CI, generated reports, dry runs and staging previews do **not** establish a deployed or approved MediaWiki revision.
 
 ## Verify source before publication

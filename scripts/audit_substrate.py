@@ -2,8 +2,8 @@
 """Audit actual use of BITwiki's MediaWiki/SMW runtime substrate.
 
 The report is intentionally descriptive. It counts executable primitives in
-source-controlled surfaces and compares repository mappings with captured live
-MediaWiki site information and the live-template inventory.
+source-controlled surfaces and checks repository mappings. Remote MediaWiki
+runtime state is verified separately against the live instance.
 """
 
 from __future__ import annotations
@@ -18,8 +18,6 @@ from validate_v2 import is_reading_depth_derivative
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "manifest.json"
-SITEINFO = ROOT / "archive-v1" / "siteinfo.json"
-LIVE_TEMPLATES = ROOT / "archive-v1" / "templates" / "index.json"
 OUTPUT = ROOT / "v2-substrate-audit.json"
 
 SOURCE_ROOTS = (
@@ -136,9 +134,6 @@ def namespace_name(item: dict) -> str:
 
 def main() -> int:
     manifest = read_json(MANIFEST)
-    siteinfo = read_json(SITEINFO)
-    template_index = read_json(LIVE_TEMPLATES)
-
     files = source_files()
     primitive_counts = Counter()
     primitive_files: dict[str, list[str]] = {name: [] for name in PATTERNS}
@@ -162,26 +157,12 @@ def main() -> int:
         for prop in SEMANTIC_ANNOTATION.findall(text):
             property_counts[prop.strip()] += 1
 
-    namespace_records = [
-        item
-        for item in siteinfo["query"]["namespaces"].values()
-        if item.get("id", -1) >= 0
-    ]
-    configured_namespaces = sorted(
-        {namespace_name(item) for item in namespace_records if namespace_name(item)},
-        key=str.casefold,
-    )
-    extensions = sorted(
-        {
-            item.get("name", "")
-            for item in siteinfo["query"].get("extensions", [])
-            if item.get("name")
-        },
-        key=str.casefold,
-    )
-
     substrate = manifest.get("mediawiki_substrate", {})
     mappings = substrate.get("source_control_mappings", {})
+    configured_namespaces = sorted(
+        name for name, spec in mappings.items() if spec.get("kind") == "namespace"
+    )
+    extensions = []
     mapped_paths = {spec["path"] for spec in mappings.values() if spec.get("path")}
     missing_mapped_roots = sorted(
         path
@@ -204,19 +185,9 @@ def main() -> int:
         set(title_projections) & set(configured_namespaces)
     )
 
-    live_template_records = template_index.get("records", [])
-    declared_live_template_count = template_index.get("count")
-    live_template_titles = sorted(item["title"] for item in live_template_records)
-    live_template_usage = {
-        item["title"]: item.get("transclusion_count", 0)
-        for item in live_template_records
-    }
     source_controlled_template_titles = sorted(
         f"Template:{path.stem}"
         for path in (ROOT / "Template").glob("*.mediawiki")
-    )
-    missing_live_templates = sorted(
-        set(live_template_titles) - set(source_controlled_template_titles)
     )
 
     all_dirs = [
@@ -252,20 +223,6 @@ def main() -> int:
     critical = []
     if missing_mapped_roots:
         critical.append("Mapped source roots missing: " + ", ".join(missing_mapped_roots))
-    if declared_live_template_count != len(live_template_records):
-        critical.append(
-            "Live template inventory count mismatch: index declares "
-            f"{declared_live_template_count}, records contain {len(live_template_records)}."
-        )
-    if declared_live_template_count and not live_template_titles:
-        critical.append(
-            "Live template inventory declares templates but no template titles were parsed."
-        )
-    if missing_live_templates:
-        critical.append(
-            "Current live templates absent from Template/: "
-            + ", ".join(missing_live_templates)
-        )
     if missing_directory_docs:
         critical.append(
             "Directories without local documentation (README.md or approved equivalent): "
@@ -283,9 +240,10 @@ def main() -> int:
             "Measure actual use of MediaWiki, Semantic MediaWiki, Scribunto, Cargo "
             "and transclusion primitives instead of inferring architecture from prose."
         ),
-        "siteinfo_snapshot": str(SITEINFO.relative_to(ROOT)),
-        "configured_namespaces": configured_namespaces,
-        "installed_extensions": extensions,
+        "runtime_namespace_authority": substrate.get("namespace_info"),
+        "runtime_version_authority": substrate.get("version_info"),
+        "runtime_verification_note": "Current remote namespace/extension/template state must be verified against the live MediaWiki; no historical V1 snapshot is treated as current runtime authority.",
+        "source_mapped_namespaces": configured_namespaces,
         "source_control_mappings": mappings,
         "configured_but_unmapped": configured_but_unmapped,
         "title_projections": title_projections,
@@ -304,14 +262,7 @@ def main() -> int:
                 key=lambda item: (-item[1], item[0].casefold()),
             )
         ),
-        "live_template_inventory_declared_count": declared_live_template_count,
-        "live_template_records_count": len(live_template_records),
-        "live_template_titles": live_template_titles,
-        "live_template_transclusion_counts": dict(
-            sorted(live_template_usage.items(), key=lambda item: item[0].casefold())
-        ),
         "source_controlled_template_titles": source_controlled_template_titles,
-        "missing_live_templates": missing_live_templates,
         "missing_mapped_roots": missing_mapped_roots,
         "directory_documentation_files": list(DIRECTORY_DOC_FILES),
         "reading_depth_directories": reading_depth_directories,

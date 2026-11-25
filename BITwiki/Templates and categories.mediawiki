@@ -84,8 +84,8 @@ The V1 category named <code>BITwiki Templates</code> had seven members, but none
 This category is therefore evidence of a '''template-system documentation family''', not an inventory of implemented templates.
 
 V2 separates those functions:
-* the exact seven-member V1 category membership remains preserved in <code>archive-v1/categories/members/Category%3ABITwiki Templates.json</code>;
-* actual V1 Template namespace implementation is preserved in <code>archive-v1/templates/index.json</code>;
+* the exact seven-member V1 category membership remains recoverable at snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>, path <code>archive-v1/categories/members/Category%3ABITwiki Templates.json</code>;
+* actual V1 Template namespace implementation remains recoverable at snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>, path <code>archive-v1/templates/index.json</code>;
 * the four Main-namespace Infobox pages remain source/design artifacts until reconciled against <code>Template:Infobox</code> and the V2 semantic model;
 * <code>SMW Template System</code> informs semantic/template architecture;
 * <code>Template System Validation Framework</code> informs validation and release checks;
@@ -118,7 +118,7 @@ Category pages are indexes, not directories. A page may belong to multiple categ
 
 A category may include SMW/query/Lua-computed views, but those are projections over canonical state. Category membership does not silently create Entity type, Domain, or relationship assertions.
 
-For historical V1 category memberships, inspect <code>archive-v1/categories/index.json</code> and its archived member lists; apply the current V2 rules above.
+For historical V1 category memberships, inspect <code>archive-v1/categories/index.json</code> and member lists at immutable snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>; apply the current V2 rules above.
 
 == State and rendering invariants ==
 
@@ -164,16 +164,16 @@ archive exact source + complete revision history
 
 == Release checks ==
 Before a V2 deployment is considered clean:
-# compare every live Template page against <code>archive-v1/templates/index.json</code>;
+# verify current Template pages against the current live wiki; consult the immutable V1 template inventory only when tracing historical lineage;
 # do not delete <code>Template:Infobox</code> while legacy callers remain;
 # review all 59 V1 wanted templates as design-intent evidence, not an automatic implementation backlog;
 # review [[Special:UncategorizedTemplates]], [[Special:UnusedTemplates]] and [[Special:WantedTemplates]];
-# review all category memberships against <code>archive-v1/categories/index.json</code>;
+# verify current category memberships against current source/live state; consult the immutable V1 category inventory only for historical comparison;
 # review [[Special:Categories]], [[Special:WantedCategories]] and [[Special:UncategorizedPages]];
 # verify semantic properties and category membership after template migrations;
 # verify Lua module dependency order and actual Scribunto behavior for invoked modules;
 # verify redirects/transclusions after every rename;
-# do not deploy <code>archive-v1/</code> as live V2 content.
+# never deploy the historical V1 snapshot at commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code> as current V2 content.
 
 See [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], [[BITwiki:MediaWiki substrate]], [[BITwiki:Transclusion]], and [[BITwiki:Contributing]].
 

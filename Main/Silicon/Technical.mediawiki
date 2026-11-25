@@ -1,0 +1,81 @@
+<onlyinclude>'''Silicon''' is a tetrahedrally bonded group-IV semiconductor with the diamond-cubic lattice. The indirect nature of its fundamental gap, controllable impurity ionization and technologically useful Si/SiO₂ interface jointly explain its central role in microelectronics; none of these properties alone guarantees device performance.</onlyinclude>
+
+''Reader localizations:'' [[Silicon/Simple|Simple]] · '''Technical'''
+
+== Crystal and bands ==
+The conventional cubic cell of diamond-structure Si contains eight atoms. With lattice constant a ≈ 5.431 Å at room temperature, its crystallographic atomic density is n = 8/a³. Converting a = 5.431 × 10⁻⁸ cm yields n ≈ 4.99 × 10²² atoms cm⁻³. This is a lattice-site density, not a free-carrier concentration. The indirect fundamental gap is about 1.12 eV at 300 K; the lowest optical transitions without phonon assistance occur at higher energies.<ref name="byu">[https://www.cleanroom.byu.edu/Semiconductor-Constants BYU Cleanroom, ''Semiconductor Constants''] (silicon lattice and band data).</ref>
+
+== Carrier statistics and doping ==
+For nondegenerate, thermally equilibrated silicon under the usual effective-density-of-states approximation,
+: <math>n p = n_i^2</math>
+where n and p are electron and hole densities, and n_i is the intrinsic concentration at the specified temperature. For fully ionized, uncompensated donors with N_D much larger than n_i, n ≈ N_D and p ≈ n_i²/N_D. The approximations fail or require modification under strong degeneracy, incomplete ionization, substantial compensation, or nonequilibrium illumination/injection. Dopants introduce electrically active levels; their incorporation, activation and diffusion are process-dependent.
+
+== Oxidation and interface physics ==
+Deal and Grove modeled thermal oxide thickness x through
+: <math>x^2 + A x = B(t + \tau)</math>
+with linear and parabolic kinetic coefficients A and B and a time offset τ representing initial oxide conditions.<ref name="dg">B. E. Deal and A. S. Grove, [https://doi.org/10.1063/1.1713945 ''General Relationship for the Thermal Oxidation of Silicon''], ''J. Appl. Phys.'' 36 (1965), 3770–3778.</ref>
+At small x relative to A, the model predicts approximately linear growth; at large x relative to A, parabolic diffusion-limited growth. Coefficients depend on temperature, oxidant, pressure, orientation and process conditions; the equation must not be used as a universal recipe. Investigations of ultrathin films document deviations from the classical model.<ref name="thin">[https://doi.org/10.1155/2016/7545632 ''A Self-Consistent Model for Thermal Oxidation of Silicon at Low Oxide Thickness''] (2016).</ref>
+
+== Device and process distinctions ==
+Single-crystal bulk silicon is a substrate; doped regions and junctions are device structures; SiO₂ is an oxide; polysilicon and amorphous silicon have different order and transport. Silicon's indirect gap makes it comparatively inefficient for direct light emission. Interface traps, defects, strain, impurity concentrations and thermal history all affect measured behavior.
+
+== Quantitative verification ==
+With a = 5.431 × 10⁻⁸ cm: a³ ≈ 1.6017 × 10⁻²² cm³, hence 8/a³ ≈ 4.995 × 10²² cm⁻³. This illustrative calculation assumes an ideal conventional diamond-cubic cell, not measured density of a particular wafer.
+
+== Reciprocal-space structure and temperature-dependent gap ==
+The indirect gap is not merely a label: in bulk unstrained Si, the lowest conduction-band minima occur in six equivalent valleys along the cubic axis directions, while the valence-band maximum lies near the Brillouin-zone center. Effective mass and mobility are direction- and band-dependent; an isotropic single-valley model misses transport anisotropy, strain-driven valley splitting and confinement effects. The six-valley approximation is a bulk band-edge model, not a statement about every silicon nanostructure.<ref name="lundstrom">Mark Lundstrom, ''Semiconductor Fundamentals'', Purdue University, [https://courses.edx.org/asset-v1%3APurdueX%2B69502x%2B1T2023%2Btype%40asset%2Bblock/Semiconductor_Fundamentals_v1_reduced_file_size.pdf open course text], electronic structure and transport foundations.</ref>
+
+The fundamental gap depends on temperature, strain, isotopic composition and measurement convention. A widely used empirical temperature parameterization is the ''Varshni'' expression:
+:<math>E_g(T)=E_g(0)-\frac{\alpha T^2}{T+\beta}.</math>
+Here <math>\alpha</math> and <math>\beta</math> are fitted parameters, not universal constants. Parameters must match the stated silicon phase, temperature range and type of gap; extrapolation to cryogenic or strongly strained operation requires validation.<ref name="varshni">Y. P. Varshni, [https://doi.org/10.1016/0031-8914(67)90062-6 ''Temperature dependence of the energy gap in semiconductors''], ''Physica'' 34, 149–154 (1967).</ref> An indirect gap requires phonon participation for important interband optical transitions, explaining the difference between band-gap energy and a naive optical absorption threshold.
+
+== Equilibrium, charge neutrality and dopant activation ==
+A bulk silicon model must solve carrier statistics jointly with ionized donor and acceptor populations. In the nondegenerate equilibrium approximation:
+:<math>np=n_i^2,\qquad p-n+N_D^+-N_A^-=0.</math>
+The second condition is bulk electroneutrality, not an equation that holds pointwise inside a depleted junction or near an interface. Under nearly complete ionization with negligible compensation and <math>N_D\gg n_i</math>, <math>n\simeq N_D</math> and <math>p\simeq n_i^2/N_D</math>. For a declared illustrative <math>N_D=10^{16}\ \mathrm{cm}^{-3}</math> and <math>n_i=10^{10}\ \mathrm{cm}^{-3}</math>, the model gives <math>p\simeq10^4\ \mathrm{cm}^{-3}</math>. Neither chosen input is an independently measured property of a particular wafer. Strong degeneracy, freeze-out, compensation, incomplete activation and nonequilibrium injection require different treatments.<ref name="lundstrom"/>
+
+Boron and phosphorus atoms are examples of acceptors and donors, but a total chemical concentration from secondary-ion mass spectrometry is not automatically an electrically active carrier density. Implant damage, diffusion, anneal history, clustering, defects and solubility constrain activation. The relevant manufacturing comparison should separately report chemical, substitutional and electrically active populations.
+
+== Carrier transport and energy dissipation ==
+In a low-field continuum approximation the bulk electrical conductivity is
+:<math>\sigma=q(n\mu_n+p\mu_p),</math>
+where mobilities <math>\mu_n,\mu_p</math> are defined for the temperature, carrier density, electric field and sample conditions. For a nondegenerate thermal-equilibrium Einstein approximation, <math>D/\mu=k_BT/q</math>. Neither relation implies a material-independent mobility. At high field, carrier heating, scattering and velocity saturation challenge constant-mobility drift descriptions; at nanometre scales, interfaces and ballistic or quantum effects can dominate.<ref name="jacoboni">C. Jacoboni, C. Canali, G. Ottaviani and A. Alberigi Quaranta, [https://www.sciencedirect.com/science/article/abs/pii/0038110177900545 ''A review of some charge transport properties of silicon''], ''Solid-State Electronics'' 20(2), 77–89 (1977), review of measured field- and temperature-dependent transport.</ref>
+
+A meaningful silicon device comparison must distinguish intrinsic lattice behavior from measured wafer behavior and surface-channel behavior. It needs conductivity versus contact resistance, mobility versus carrier density, switching delay versus interconnect delay, and dissipated heat versus usable computation. A high bulk mobility value alone does not establish favorable application energy per operation.
+
+== Oxide growth, MOS interface and scaling ==
+The earlier Deal–Grove law is a model of thermal oxide growth under particular diffusion/reaction conditions, not a rule for all deposition processes or ultrathin gate stacks. For an ideal oxide layer of thickness <math>t_{ox}</math>, the geometric capacitance per area is
+:<math>\frac{C_{ox}}{A}\simeq\frac{\epsilon_{ox}}{t_{ox}}.</math>
+Actual gate stacks include semiconductor depletion/inversion, interface charge, quantum confinement, frequency-dependent traps and sometimes high-permittivity layers. The capacitance formula is an isolated dielectric approximation, not a complete MOSFET switching model. Thermal oxidation's technologically important Si/SiO₂ boundary must be characterized by interface-state density, fixed charge, leakage, breakdown and long-term stability under specified stress.<ref name="dg"/><ref name="thin"/>
+
+Scaling transistor geometry changes surface-to-volume ratio, short-channel electrostatics, gate leakage and parasitic resistances. The apparent benefit of a smaller device must be tested against variability, interconnect, contacts, leakage, thermal limits and memory movement at the circuit and system level. Silicon's stable native oxide is a major fabrication advantage, but its relevance to a modern stack depends on process technology rather than a claim that every advanced transistor uses a pure SiO₂ gate dielectric.
+
+== Experimental and computational reproducibility ==
+{| class="wikitable"
+! Question !! Direct evidence !! Inference requiring assumptions
+|-
+| What crystal and orientation? || X-ray diffraction, electron microscopy, calibrated lattice measurement || Strain or phase based on a structural model
+|-
+| What chemical dopant profile? || SIMS or calibrated elemental analysis || Electrical activation or free-carrier density
+|-
+| What carriers and mobility? || Hall voltage, conductivity, geometry and field/temperature sweeps || Hall carrier density and mobility under a justified single-carrier/Hall-factor model
+|-
+| What Si/oxide interface quality? || Frequency- and bias-dependent capacitance, conductance and leakage || Interface-trap density or oxide charge from an explicit extraction method
+|-
+| What transport regime? || I–V, temperature and length scaling, contact de-embedding || Diffusive, quasiballistic or tunnelling transport from validated competing models
+|}
+
+A reproducible research record specifies material form (single-crystal, polycrystalline or amorphous), crystallographic orientation, isotope/impurity composition when important, process and thermal history, geometry, contacts, instrument calibration, measurement uncertainty, source datasets and fitting procedure. Numerical results should include mesh and boundary conditions, parameter sensitivity, charge/current conservation and convergence. An agreement between a fitted model and its own calibration data is not independent validation.
+
+== Research directions for new computing paradigms ==
+Silicon provides material and device constraints, not a computation model. To evaluate a candidate new computing architecture built with silicon technology, trace the inference from '''material parameters → device observables → circuit primitives → architecture → workload-level metrics'''. For example, a claimed low-energy switching mechanism should establish the physical device operation, its variability, energy delivered at the terminals, retention or noise margin, circuit overhead, data movement, and an end-to-end workload comparison at equivalent accuracy and environmental conditions.
+
+Several research directions call for different physical models rather than simple transistor shrinkage: nonvolatile or analog state devices in silicon-compatible processes, photonic components and heterogeneous integration, cryogenic or spin-based devices, three-dimensional integration and advanced interconnects. These are categories for investigation, not claims that silicon alone provides an efficient implementation. Researchers must specify what uses silicon, what uses another material, what remains hypothetical, and what has actually been fabricated or measured.
+
+A careful hypothesis separates '''physical possibility''' from '''engineering competitiveness''': one can test whether a switch works at a given temperature and field while separately measuring reproducibility, endurance, yield, interconnect overhead and scalable system performance. A PhD-level proposal is only as strong as its independently tested boundary conditions and falsifiable comparisons.
+
+== Key limitations and source provenance ==
+The lattice-density calculation is exact within the ideal eight-site conventional cell and assumed lattice constant; the listed gap is an approximate 300 K reference. The mass-action and conductivity formulas depend on regimes described above. Deal and Grove (1965) established a historical oxide-growth model; Varshni (1967) proposed an empirical temperature trend; Jacoboni et al. (1977) summarized silicon charge transport measurements. The original sources do not by themselves establish performance of a modern gate-all-around process, specialized computing accelerator, commercial wafer or new computational paradigm.
+
+== References ==
+<references />

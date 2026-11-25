@@ -13,6 +13,8 @@ def test_two_reader_localizations_and_canonical_host():
     assert "{{:Silicon/Simple}}" in root
     assert "[[Silicon/Technical|Technical]]" in root
     assert "[[Related to::Semiconductor]]" in root
+    assert "{{Knowledge object" in root
+    assert "== Why silicon is useful ==" in simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0]
     assert "== Structure and electronic properties ==" not in root  # no third prose treatment
     for text in (root, simple, technical):
         assert text.count("<onlyinclude>") == 1

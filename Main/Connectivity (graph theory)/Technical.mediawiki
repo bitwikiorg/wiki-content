@@ -10,7 +10,9 @@ Let graph be
 
 For undirected <math>G</math>, vertices <math>u,v</math> are connected when a path exists between them.
 
-== Equivalence relation ==
+== Undirected connectivity ==
+
+=== Equivalence relation ===
 
 In an undirected graph, define
 
@@ -24,7 +26,7 @@ Its equivalence classes are exactly the connected components.
 
 Thus component decomposition is mathematically canonical.
 
-== Component count ==
+=== Component count ===
 
 Let
 
@@ -40,7 +42,7 @@ Removing vertices or edges can increase <math>c(G)</math>.
 
 Cut definitions use this change.
 
-== Articulation vertex ==
+=== Articulation vertex ===
 
 Vertex <math>v</math> is an articulation vertex if
 
@@ -50,7 +52,7 @@ For connected <math>G</math>, removing an articulation vertex disconnects the gr
 
 The definition can be adapted carefully for trivial graphs.
 
-== Bridge ==
+=== Bridge ===
 
 Edge <math>e</math> is a bridge if
 
@@ -60,7 +62,7 @@ An edge is a bridge iff it belongs to no cycle in an undirected graph.
 
 This gives a useful structural characterization.
 
-== Vertex connectivity ==
+=== Vertex connectivity ===
 
 For noncomplete connected graph,
 
@@ -72,7 +74,7 @@ For complete graph <math>K_n</math>, standard convention gives
 
 A graph is <math>k</math>-connected when <math>\kappa(G)\ge k</math>.
 
-== Edge connectivity ==
+=== Edge connectivity ===
 
 For connected graph,
 
@@ -86,7 +88,7 @@ For connected simple graph:
 
 where <math>\delta(G)</math> is minimum degree.<ref name="diestel">[https://link.springer.com/book/10.1007/978-3-662-53622-3 Diestel, R., ''Graph Theory'', 5th ed.]</ref>
 
-== Local vertex connectivity ==
+=== Local vertex connectivity ===
 
 For distinct nonadjacent <math>u,v</math>, let
 
@@ -98,7 +100,7 @@ Menger's theorem states that this equals the maximum number of pairwise internal
 
 The nonadjacency qualification avoids endpoint subtleties in the simplest form.
 
-== Local edge connectivity ==
+=== Local edge connectivity ===
 
 Similarly,
 
@@ -111,7 +113,7 @@ equals both:
 
 This is the edge version of Menger's theorem.
 
-== Max-flow connection ==
+=== Max-flow connection ===
 
 Assign unit capacity to edges.
 
@@ -121,7 +123,7 @@ Maximum <math>u-v</math> flow then gives edge-disjoint path count under integral
 
 This connects connectivity to flow algorithms.
 
-== Vertex splitting ==
+=== Vertex splitting ===
 
 To model vertex capacities, replace vertex <math>v</math> by:
 
@@ -133,7 +135,7 @@ Original incident edges connect through the split representation.
 
 Max-flow/min-cut can then solve local vertex-cut problems with appropriate terminal treatment.
 
-== Block decomposition ==
+=== Block decomposition ===
 
 A biconnected component or block is a maximal subgraph that cannot be disconnected by deleting one internal vertex, under standard conventions.
 
@@ -141,7 +143,7 @@ Blocks and articulation vertices form a block-cut tree for connected graphs.
 
 This tree exposes the articulation structure of the original graph.
 
-== DFS low-link algorithm ==
+=== DFS low-link algorithm ===
 
 During DFS, assign discovery time <math>disc[v]</math>.
 
@@ -163,7 +165,7 @@ If
 
 then edge <math>(v,w)</math> is a bridge.
 
-== DFS complexity ==
+=== DFS complexity ===
 
 With adjacency lists, DFS processes each vertex and edge a constant number of times:
 
@@ -171,7 +173,7 @@ With adjacency lists, DFS processes each vertex and edge a constant number of ti
 
 Articulation points and bridges can therefore be found in linear time.
 
-== Connected components by BFS ==
+=== Connected components by BFS ===
 
 Algorithm:
 
@@ -190,7 +192,9 @@ Runtime is
 
 Memory is <math>O(|V|)</math> plus graph storage.
 
-== Directed reachability ==
+== Directed connectivity ==
+
+=== Directed reachability ===
 
 For digraph <math>D=(V,A)</math>, reachability relation is not symmetric.
 
@@ -204,7 +208,7 @@ Strong connectivity requires:
 
 <math>\forall u,v,\ u\leadsto v\land v\leadsto u.</math>
 
-== Strongly connected components ==
+=== Strongly connected components ===
 
 Relation
 
@@ -218,7 +222,7 @@ Contract each SCC to one vertex.
 
 The resulting condensation graph is a DAG.
 
-== Kosaraju–Sharir algorithm ==
+=== Kosaraju–Sharir algorithm ===
 
 A standard form:
 
@@ -233,7 +237,7 @@ Runtime:
 
 The method requires storing or generating the reversed graph.
 
-== Tarjan SCC algorithm ==
+=== Tarjan SCC algorithm ===
 
 Tarjan's algorithm uses one DFS and low-link information with a stack.
 
@@ -243,7 +247,7 @@ Runtime and space are linear.
 
 This is often preferable when explicit graph reversal is inconvenient.
 
-== Weak connectivity ==
+=== Weak connectivity ===
 
 Let <math>U(D)</math> be underlying undirected graph obtained by forgetting directions.
 
@@ -251,7 +255,7 @@ Digraph <math>D</math> is weakly connected iff <math>U(D)</math> is connected.
 
 Weak connectivity does not imply useful directed communication in both directions.
 
-== Semiconnectivity ==
+=== Semiconnectivity ===
 
 A digraph is semiconnected if for every <math>u,v</math>:
 
@@ -265,7 +269,9 @@ The property can be tested using the SCC condensation DAG.
 
 A DAG is semiconnected when it has a topological ordering in which every consecutive pair has an edge-path relation.
 
-== Global edge cut ==
+== Cuts and dynamic connectivity ==
+
+=== Global edge cut ===
 
 For partition <math>S,V\setminus S</math>, edge cut:
 
@@ -279,7 +285,7 @@ over nontrivial <math>S</math>.
 
 Weighted version minimizes capacity sum.
 
-== Stoer–Wagner ==
+=== Stoer–Wagner ===
 
 For undirected weighted graphs, the Stoer–Wagner algorithm computes global minimum cut in polynomial time.
 
@@ -287,13 +293,13 @@ Other specialized algorithms offer different complexity tradeoffs.
 
 Connectivity theory interacts strongly with algorithm engineering in large graphs.
 
-== Gomory–Hu tree ==
+=== Gomory–Hu tree ===
 
 For undirected capacitated graph, Gomory–Hu tree compactly represents all pairwise minimum cut values using only <math>|V|-1</math> flow computations in the classical construction.
 
 The tree does not preserve every original edge; it preserves pairwise cut information.
 
-== Dynamic connectivity ==
+=== Dynamic connectivity ===
 
 A dynamic graph supports updates.
 
@@ -307,7 +313,7 @@ Insertion-only connectivity can be maintained efficiently using disjoint-set uni
 
 Fully dynamic connectivity is harder.
 
-== Disjoint-set union ==
+=== Disjoint-set union ===
 
 Union–find maintains components under edge insertions.
 
@@ -324,7 +330,9 @@ per operation, where <math>\alpha</math> is inverse Ackermann function.
 
 It does not support arbitrary deletions directly.
 
-== Temporal graph ==
+== Temporal and weighted connectivity ==
+
+=== Temporal graph ===
 
 Let temporal edge be
 
@@ -340,7 +348,7 @@ does not guarantee temporal reachability.
 
 This distinction matters in contact networks and intermittent communication.
 
-== Joint connectivity ==
+=== Joint connectivity ===
 
 In dynamic multi-agent networks, each instantaneous graph may be disconnected.
 
@@ -350,7 +358,7 @@ This is often called joint or uniform connectivity, depending on the formal cond
 
 Time-varying topology therefore requires temporal assumptions.
 
-== Weighted graph caveat ==
+=== Weighted graph caveat ===
 
 Topological connectivity ignores weights.
 
@@ -362,7 +370,9 @@ Operationally, the bottleneck can make the network nearly unusable.
 
 Use flow or conductance when capacity matters.
 
-== Algebraic connectivity ==
+== Spectral and expansion measures ==
+
+=== Algebraic connectivity ===
 
 For undirected graph Laplacian <math>L=D-A</math>, eigenvalues satisfy
 
@@ -376,7 +386,7 @@ The graph is connected iff
 
 It measures a spectral form of connectedness and influences consensus rates.
 
-== Fiedler vector ==
+=== Fiedler vector ===
 
 Eigenvector associated with <math>\lambda_2</math> can reveal a natural graph partition.
 
@@ -386,7 +396,7 @@ Algebraic connectivity is not identical to vertex connectivity.
 
 It captures different structure.
 
-== Conductance ==
+=== Conductance ===
 
 For volume <math>vol(S)</math>, graph conductance:
 
@@ -398,7 +408,7 @@ A graph can be connected yet have very low conductance.
 
 This affects random-walk mixing and diffusion.
 
-== Expansion ==
+=== Expansion ===
 
 Expander graphs combine sparse degree with strong connectivity properties.
 
@@ -412,7 +422,9 @@ Expansion is stronger than mere connectivity.
 
 Applications include networks, coding, and pseudorandomness.
 
-== Random graph threshold ==
+== Random graphs and robustness ==
+
+=== Random graph threshold ===
 
 In Erdős–Rényi <math>G(n,p)</math>, a sharp connectivity threshold occurs near
 
@@ -422,7 +434,7 @@ More precisely, around <math>(\log n+c)/n</math>, connectivity probability has a
 
 This shows how global connectivity can emerge statistically from random local edges.
 
-== Giant component ==
+=== Giant component ===
 
 A giant connected component appears in <math>G(n,p)</math> at a lower average-degree threshold than full connectivity.
 
@@ -435,7 +447,7 @@ giant component
 
 A network can have one component containing most vertices while leaving many isolated vertices.
 
-== Percolation robustness ==
+=== Percolation robustness ===
 
 Randomly retaining edges with probability <math>p</math> creates bond-percolation model.
 
@@ -445,7 +457,7 @@ Percolation thresholds depend on topology.
 
 Real failures can be correlated, violating independent deletion assumptions.
 
-== Network reliability ==
+=== Network reliability ===
 
 If edges fail independently with probabilities <math>q_e</math>, all-terminal reliability is
 
@@ -457,7 +469,7 @@ Monte Carlo estimation can sample failure states.
 
 Confidence intervals should be reported.
 
-== Targeted robustness ==
+=== Targeted robustness ===
 
 Targeted deletion can rank vertices by:
 
@@ -469,7 +481,7 @@ A scale-free-like network can be robust to random deletion but fragile to target
 
 This depends on actual topology and correlation.
 
-== Diameter ==
+=== Diameter ===
 
 Diameter:
 
@@ -481,7 +493,7 @@ A path graph has diameter <math>n-1</math>.
 
 Thus connectivity alone says nothing about compactness.
 
-== Average path length ==
+=== Average path length ===
 
 Mean shortest-path distance gives another efficiency measure.
 
@@ -489,7 +501,9 @@ It is defined only within connected pairs or requires a convention for disconnec
 
 Report the convention.
 
-== Effective connectivity in applications ==
+== Applications ==
+
+=== Effective connectivity in applications ===
 
 Operational connectivity can depend on thresholded constraints.
 
@@ -505,7 +519,7 @@ Then analyze connectivity of the filtered graph.
 
 This translates application requirements into graph structure.
 
-== Knowledge graphs ==
+=== Knowledge graphs ===
 
 A [[Knowledge graph]] may be topologically connected because generic relations link many entities.
 
@@ -515,7 +529,7 @@ Graph paths can contain weak or irrelevant relation types.
 
 Semantic path quality requires relation-aware analysis.
 
-== Computer networks ==
+=== Computer networks ===
 
 A [[Computer network]] graph can be physically connected while routing policy blocks traffic.
 
@@ -527,7 +541,7 @@ Model layers separately:
 
 Connectivity is layer-specific.
 
-== Distributed systems ==
+=== Distributed systems ===
 
 A [[Distributed system]] may require connectivity to replicate state or reach quorum.
 
@@ -535,7 +549,7 @@ Network partition creates consistency and availability tradeoffs.
 
 Graph connectivity is a structural prerequisite, not a complete distributed-systems theory.
 
-== Multi-agent consensus ==
+=== Multi-agent consensus ===
 
 For agent graph with Laplacian <math>L</math>:
 

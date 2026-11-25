@@ -23,6 +23,7 @@ class MicroarchitectureTests(unittest.TestCase):
         self.assertIn("{{:" + TITLE + "/Simple}}", core)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertNotIn("{{Knowledge object", simple+tech)
         self.assertNotIn("[[Related to::", simple+tech)
         for body, depth in ((core,"Core"),(simple,"Simple"),(tech,"Technical")):

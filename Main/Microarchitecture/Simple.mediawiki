@@ -2,7 +2,7 @@
 
 = Microarchitecture — Simple =
 
-<onlyinclude>A '''microarchitecture''' is the internal design a processor uses to carry out the instructions defined by its instruction set architecture (ISA). The ISA describes what software can observe; the microarchitecture determines how the processor performs the work, including its pipelines, execution units, caches, scheduling, and branch prediction. Two processors can execute compatible programs while having very different speed, power use, and internal organization.<ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], versioned programmer-visible ISA specification.</ref><ref name="boom">Berkeley Architecture Research, [https://docs.boom-core.org/en/latest/ ''The Berkeley Out-of-Order Machine (BOOM) Documentation''], publicly documented superscalar out-of-order RISC-V processor implementation.</ref></onlyinclude>
+<onlyinclude>A '''microarchitecture''' is the internal design a processor uses to carry out the instructions defined by its instruction set architecture (ISA). The ISA describes what software can observe; the microarchitecture determines how the processor performs the work, including its pipelines, execution units, caches, scheduling, and branch prediction. Two processors can execute compatible programs while having very different speed, power use, and internal organization.<ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], versioned programmer-visible ISA specification.</ref><ref name="boom">Berkeley Architecture Research, [https://docs.boom-core.org/en/latest/ ''The Berkeley Out-of-Order Machine (BOOM) Documentation''], publicly documented superscalar out-of-order RISC-V processor implementation.</ref>
 
 == Instructions and implementation ==
 
@@ -35,6 +35,8 @@ For example, if a task takes 2 billion cycles on one processor running at 2 GHz,
 Speculative execution may temporarily perform operations before it is certain they are needed. Even when incorrect speculative results are discarded architecturally, microarchitectural traces such as cache state can sometimes leak information through timing. Spectre research demonstrated important examples of this distinction.<ref name="spectre">Paul Kocher et al., [https://spectreattack.com/spectre.pdf ''Spectre Attacks: Exploiting Speculative Execution''] (2018), original attack analysis.</ref>
 
 A correct ISA implementation, fast benchmark result, and secure implementation are different claims requiring different tests.
+
+</onlyinclude>
 
 == Continue reading ==
 '''Reading versions:''' [[Microarchitecture/Simple|Simple]] · [[Microarchitecture/Technical|Technical]]

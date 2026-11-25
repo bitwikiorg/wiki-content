@@ -28,6 +28,7 @@ class CognitiveBiasIntakeTests(unittest.TestCase):
                 self.assertIn("{{:"+title+"/Simple}}",core)
                 self.assertEqual(simple.count("<onlyinclude>"),1)
                 self.assertEqual(simple.count("</onlyinclude>"),1)
+                self.assertIn("== ", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
                 for body in (core,simple,tech):
                     self.assertNotIn("{{Reading depth|",body)
                     self.assertIn("[["+title+"/Simple|Simple]]",body)

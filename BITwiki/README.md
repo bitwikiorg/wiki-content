@@ -72,4 +72,4 @@ The specification, implementation, structured state, and interface projections s
 
 When architecture changes, update the canonical `BITwiki:*` standard **and** the nearest repository README that a maintainer will encounter while working in the affected surface. READMEs summarize local operational consequences; these wiki pages carry the deeper project semantics and rationale.
 
-Historical V1 material remains read-only under `archive-v1/` while issue #152 reconciles its useful substance into current canon. The active ledger is `docs/v1-reconciliation-ledger.json`; the PR #155 retirement disposition is invalidated and must not be used as a deletion gate.
+Historical V1 material remains read-only under `archive-v1/` after completion of issue #152's content-level reconciliation. The authoritative ledger is `docs/v1-reconciliation-ledger.json`; the PR #155 retirement disposition remains invalidated. Final working-tree retirement is a separate operation documented in `docs/v1-retirement-dependency-audit.md`.

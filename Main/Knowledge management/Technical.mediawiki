@@ -1,17 +1,392 @@
-'''Knowledge management''' is the organized practice of creating, locating, sharing, retaining and applying knowledge in an organization or community. It includes people, processes and technology rather than merely storing documents.
+{{Reading depth|base=Knowledge management|current=Technical}}
 
-== Knowledge forms and processes ==
-Explicit artifacts include manuals, datasets, code and records; tacit knowledge includes skills and context that are difficult to articulate. Nonaka's 1994 organizational knowledge-creation model describes interactions between tacit and explicit knowledge. Its proposed modes of socialization, externalization, combination and internalization are an influential analytical framework, not exhaustive or automatic conversions. Information retrieval alone cannot guarantee comprehension or justified belief.
+= Knowledge management — Technical =
 
-== Architecture and lifecycle ==
-A maintained system needs defined ownership, identifiers, provenance, access controls, version history, search, review and retirement mechanisms. Separate assertions from discussions, evidence from conclusions and proposed updates from accepted records. For a recurring incident, a case record can preserve the observed symptoms, diagnostic evidence and applicable environment; a generalized procedure should be derived only after checking transfer conditions. Document review triggers and escalation for conflicting versions.
+'''Knowledge management''' (KM) is the design and operation of socio-technical processes for creating, acquiring, representing, locating, transferring, validating, retaining, updating, and applying organizational knowledge. A technical KM architecture must integrate information systems with governance, incentives, organizational structure, epistemic quality control, and human expertise.
 
-== Evaluation ==
-Use a stratified set of real tasks to assess retrieval success, correctness of application, time to resolution, update latency and stale-answer rate. Compare against a baseline with independent outcome review. Participation counts and document volume are weak proxies for knowledge usefulness; incentives may generate redundant records. Privacy, intellectual property, unequal access and loss of tacit skills remain constraints. Knowledge management coordinates practices inside a knowledge ecosystem but is not synonymous with the ecosystem itself.
+Alavi and Leidner's influential review organizes organizational KM around creation, storage/retrieval, transfer, and application while emphasizing that information technology supports rather than defines those processes.<ref name="alavi">[https://aisel.aisnet.org/misq/vol25/iss1/6/ Alavi, M. and Leidner, D. E. (2001), “Review: Knowledge Management and Knowledge Management Systems: Conceptual Foundations and Research Issues,” ''MIS Quarterly'' 25(1), 107–136.]</ref>
+
+== Knowledge lifecycle model ==
+
+A practical lifecycle can be represented as a directed state graph
+
+<pre>
+create/acquire
+    ↓
+capture → organize → discover
+    ↓                  ↓
+validate ← apply ← share
+    ↓
+maintain → revise → retire
+    ↘
+     retain
+</pre>
+
+This is not a universal cognitive model. It is a workflow decomposition.
+
+For each knowledge object <math>k</math>, maintain state such as
+
+<math>k=(id,c,p,e,v,s,o,a,r,t),</math>
+
+where:
+
+* <math>c</math> is content;
+* <math>p</math> provenance;
+* <math>e</math> evidence;
+* <math>v</math> version;
+* <math>s</math> epistemic or review status;
+* <math>o</math> owner;
+* <math>a</math> access policy;
+* <math>r</math> review rule;
+* <math>t</math> temporal metadata.
+
+A text blob without this context is difficult to maintain responsibly.
+
+== Tacit and explicit knowledge ==
+
+The explicit/tacit distinction is useful but should not be treated as a binary physical taxonomy.
+
+Let <math>a(k)</math> denote the degree to which some aspect of competence can be articulated in a transferable representation under a specified context. Articulability can vary by audience, notation, training, and task.
+
+A skilled practice may combine:
+
+* explicit rules;
+* perceptual discrimination;
+* motor skill;
+* contextual judgment;
+* social coordination.
+
+Attempting to convert all of it into documentation can produce incomplete or misleading representations.
+
+Therefore KM should choose among documentation, demonstration, simulation, apprenticeship, expert consultation, and repeated practice according to the type of knowledge.
+
+== SECI model ==
+
+Nonaka's SECI framework proposes four knowledge-conversion modes:
+
+* '''socialization''' — tacit to tacit;
+* '''externalization''' — tacit to explicit;
+* '''combination''' — explicit to explicit;
+* '''internalization''' — explicit to tacit.<ref name="nonaka">[https://doi.org/10.1287/orsc.5.1.14 Nonaka, I. (1994), “A Dynamic Theory of Organizational Knowledge Creation,” ''Organization Science'' 5(1), 14–37.]</ref>
+
+The model is influential but controversial.
+
+Gourlay argues that important aspects of the empirical basis and conversion claims are weak and that some purported modes can be explained more simply.<ref name="gourlay">[https://doi.org/10.1111/j.1467-6486.2006.00637.x Gourlay, S. (2006), “Conceptualizing Knowledge Creation: A Critique of Nonaka's Theory,” ''Journal of Management Studies'' 43(7), 1415–1436.]</ref>
+
+Therefore a KM design should not assume that every tacit skill can be externalized or that every explicit document becomes tacit competence through reading.
+
+Evaluate the actual learning mechanism.
+
+== Codification architecture ==
+
+A codification strategy externalizes reusable artifacts into persistent systems.
+
+A knowledge object should ideally include:
+
+<pre>
+identity
+scope
+content
+provenance
+evidence
+version
+owner
+dependencies
+review date
+supersedes/superseded-by
+access policy
+</pre>
+
+Persistent identifiers allow references to survive title changes. Version history prevents silent replacement. Dependency links identify downstream material requiring review after a change.
+
+Search requires metadata, indexing, and vocabulary management.
+
+Codification works best where tasks recur and knowledge can be represented sufficiently explicitly.
+
+== Personalization architecture ==
+
+A personalization strategy routes questions to people or communities.
+
+Represent expertise routing as a bipartite graph
+
+<math>G=(U,D,E),</math>
+
+where <math>U</math> is users, <math>D</math> knowledge domains, and an edge <math>(u,d)</math> includes evidence of expertise, availability, and recency.
+
+Routing quality depends on more than self-declared skill. Potential evidence includes validated work, peer endorsement, role history, contribution records, or successful prior assistance.
+
+Personalization creates risks of bottlenecks and single points of failure. Critical expertise should have succession plans.
+
+== Search and retrieval ==
+
+For a query <math>q</math>, retrieval produces a ranked set <math>R_q</math>.
+
+Evaluation should distinguish:
+
+* recall — relevant knowledge omitted;
+* precision — irrelevant material included;
+* authority — source suitability;
+* freshness — current applicability;
+* provenance — traceability;
+* diversity — independent perspectives.
+
+A semantically similar document can still be obsolete or inappropriate.
+
+Retrieval systems should therefore combine text relevance with lifecycle and authority metadata.
+
+== Knowledge application ==
+
+KM succeeds only when knowledge can be applied appropriately.
+
+For a recommendation <math>r</math> and task context <math>x</math>, the key question is not simply whether <math>r</math> was retrieved but whether
+
+<math>Applicable(r,x)=1</math>
+
+under the documented scope conditions.
+
+A troubleshooting procedure validated on one software version can fail on another. A laboratory protocol can depend on equipment.
+
+Scope metadata is part of knowledge quality.
+
+== Provenance graph ==
+
+Knowledge provenance can be represented as a directed or versioned graph in which nodes include:
+
+* claims;
+* evidence;
+* source documents;
+* transformations;
+* reviewers;
+* decisions.
+
+Edges can indicate:
+
+* derived from;
+* supports;
+* contradicts;
+* reviewed by;
+* supersedes.
+
+This makes it possible to ask why a knowledge object is trusted and which items require reevaluation when evidence changes.
+
+Provenance should not be confused with truth. It makes reasoning inspectable.
+
+== Conflict management ==
+
+KM systems should expect disagreement.
+
+When two sources conflict, avoid silently selecting one. Record:
+
+* competing claims;
+* source and date;
+* evidence;
+* scope;
+* reviewer decision;
+* unresolved uncertainty.
+
+A conflict-resolution workflow can produce statuses such as:
+
+<pre>
+unreviewed → under review → accepted
+                     ↘ disputed
+                     ↘ superseded
+</pre>
+
+The status vocabulary should match actual governance authority.
+
+== Review triggers ==
+
+Periodic review alone is insufficient.
+
+Event-driven triggers can include:
+
+* dependency update;
+* new contradictory evidence;
+* software release;
+* regulatory change;
+* repeated user failure;
+* incident;
+* source retraction;
+* owner departure.
+
+If knowledge item <math>k_i</math> depends on <math>k_j</math>, an update to <math>k_j</math> should enqueue <math>k_i</math> for impact review.
+
+== Organizational memory ==
+
+Organizational memory includes more than final documentation.
+
+Decision records should preserve
+
+<math>D=(problem,context,options,evidence,decision,rationale,outcome).</math>
+
+Preserving rationale supports later reevaluation when context changes.
+
+Incident records should separate observation from diagnosis and diagnosis from generalized procedure. Otherwise a one-off workaround can become institutionalized as false “best practice.”
+
+== Incentives ==
+
+Suppose contribution behavior responds to a reward function
+
+<math>R=\alpha N+\beta Q+\gamma U,</math>
+
+where <math>N</math> is quantity, <math>Q</math> quality, and <math>U</math> downstream usefulness.
+
+If the organization measures only <math>N</math>, contributors can maximize the metric by creating redundant low-value records.
+
+KM metrics are therefore mechanism-design choices.
+
+Quality and usefulness are harder to measure but necessary.
+
+== Communities of practice ==
+
+Communities of practice support shared language, tacit skill, mentoring, and local problem solving.
+
+A technical KM architecture can link community discussions to canonical artifacts without automatically turning every conversation into accepted knowledge.
+
+Useful separation:
+
+<pre>
+discussion/proposal
+        ↓ review
+canonical knowledge
+        ↓ feedback
+observed application
+</pre>
+
+This preserves exploratory conversation while protecting the canonical layer.
+
+== Knowledge-management systems ==
+
+A KMS may integrate:
+
+* content repository;
+* search index;
+* ontology/taxonomy;
+* identity;
+* permissions;
+* workflow;
+* expert routing;
+* version control;
+* collaboration;
+* knowledge graph;
+* analytics;
+* notification;
+* archival storage.
+
+Nonfunctional requirements include availability, auditability, confidentiality, integrity, interoperability, and long-term preservation.
+
+A system should also export data in durable formats to reduce vendor lock-in.
+
+== Standardization ==
+
+ISO 30401:2018 specifies requirements for a knowledge-management system and covers establishment, implementation, maintenance, review, and improvement.<ref name="iso">[https://www.iso.org/standard/68683.html ISO 30401:2018, ''Knowledge management systems — Requirements''.]</ref>
+
+Standards can improve process consistency, but process compliance is not equivalent to epistemic accuracy.
+
+Independent content verification remains necessary.
+
+== Evaluation metrics ==
+
+For a representative task set <math>T</math>, possible measures include:
+
+'''Retrieval success'''
+<math>P(relevant\ accepted\ resource\ found\mid t).</math>
+
+'''Application correctness'''
+<math>\frac{\text{correct applications}}{\text{evaluated applications}}.</math>
+
+'''Staleness rate'''
+<math>\frac{\text{obsolete retrieved items}}{\text{retrieved items}}.</math>
+
+'''Correction latency'''
+<math>L_c=t_{corrected}-t_{error\ confirmed}.</math>
+
+'''Expert concentration'''
+fraction of critical domains with only one qualified expert.
+
+'''Reuse'''
+validated downstream uses per maintained object.
+
+Metrics should be segmented by task type and user group.
+
+== Security and privacy ==
+
+Apply least privilege to sensitive knowledge.
+
+Access control can depend on
+
+<math>Permit(u,k,a,c),</math>
+
+where <math>u</math> is user, <math>k</math> knowledge object, <math>a</math> action, and <math>c</math> context.
+
+Sensitive knowledge may require:
+
+* encryption;
+* audit logs;
+* legal retention rules;
+* purpose limitation;
+* compartmentalization;
+* redaction.
+
+Over-restriction creates knowledge silos; under-restriction creates security and privacy risk.
+
+== AI-assisted KM ==
+
+Artificial systems can perform retrieval, extraction, classification, summarization, translation, contradiction detection, and draft synthesis.
+
+A safe provenance record for generated knowledge should preserve:
+
+<pre>
+input/query
+retrieved sources
+model + version
+tools
+generated transformation
+human/automated checks
+final editorial decision
+</pre>
+
+Do not collapse retrieved source material and model-generated inference into one unmarked answer.
+
+Shared model dependence also creates correlated error. Ten agents using the same model are not ten independent reviewers.
+
+== Relation to knowledge ecosystem ==
+
+A [[Knowledge ecosystem]] is a broader multi-actor environment. KM is deliberate management practice.
+
+An organization can have a mature KM program while participating in an unhealthy external ecosystem, or vice versa.
+
+== Relation to research data management ==
+
+[[Research data management]] provides specialized lifecycle controls for scientific data. Technical KM integrates such data with methods, software, claims, decisions, and expertise.
+
+== Failure analysis ==
+
+Common technical failure modes include:
+
+* canonical content without ownership;
+* stale search indexes;
+* duplicate identities;
+* missing source provenance;
+* inaccessible tacit expertise;
+* unreviewed generated content;
+* metrics rewarding volume;
+* unrestricted permissions;
+* brittle taxonomies;
+* undocumented dependencies;
+* silent overwrites;
+* expert single points of failure.
+
+== Epistemic boundary ==
+
+Knowledge management can improve the conditions under which reliable knowledge is found and maintained. It cannot manufacture truth by process alone.
+
+A well-governed repository can still contain a mistaken consensus; verification remains domain-specific.
 
 == References ==
-* [https://doi.org/10.1287/orsc.5.1.14 Nonaka (1994), A Dynamic Theory of Organizational Knowledge Creation]
-* [https://doi.org/10.1093/oso/9780195111682.001.0001 Davenport and Prusak (1997), Information Ecology]
+
+<references />
 
 == Reading depth ==
-[[Knowledge management/Simple|Simple explanation]]
+
+[[Knowledge management/Simple|Simple explanation]] · [[Knowledge management|Core article]]

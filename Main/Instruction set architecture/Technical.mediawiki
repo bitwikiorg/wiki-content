@@ -1,0 +1,126 @@
+'''Reading versions:''' [[Instruction set architecture/Simple|Simple]] · [[Instruction set architecture/Technical|Technical]]
+
+= Instruction set architecture — Technical =
+
+An '''instruction set architecture''' (ISA) is a specification of an abstract machine that can be implemented by processors and targeted by software tools. It defines observable effects of machine instructions and related machine-state behavior under stated environmental assumptions. ISA specifications are normative contracts; they do not uniquely determine pipeline depth, cache topology, execution width, power, area, cost, clock frequency or performance.
+
+The primary case study below is the RISC-V RV32I base integer architecture, documented by RISC-V International in the official unprivileged ISA manual (version 20260120). The Arm A-profile architecture provides an independent family of architectural manuals and compatibility requirements. These examples are not exhaustive of ISA design: instruction encoding and memory models vary across architectures and revisions.<ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], official release 20260120. See RV32I base instructions, instruction formats, memory access, and RVWMO sections.</ref><ref name="arm">Arm, [https://support.arm.com/documentation/ddi0487/md/251-chdhfbec ''Arm Architecture Reference Manual for A-profile architecture''], ARM DDI 0487, versioned reference. The HTML preview explicitly identifies its PDF as authoritative in case of discrepancy.</ref>
+
+== Architectural state and semantics ==
+
+A useful formal model defines a state <math>S</math> containing architecturally visible registers, the program counter, memory state and any modeled privilege or control registers. An instruction <math>i</math> has a transition relation
+
+<math display="block">S\xrightarrow{i}S'</math>
+
+for executions allowed by the ISA and its environment. A deterministic instruction in a simplified sequential model can be written as a partial function <math>\delta_i:S\rightharpoonup S</math>; partiality accounts for invalid encodings, faults and conditions where the chosen semantics do not define an ordinary next state. Real concurrent systems may require a relation over events rather than a single globally sequential state.
+
+Architectural registers are those software can name according to the ISA. A processor can maintain additional physical registers, reorder buffers and speculative states without making them part of the programmer-visible ISA. An implementation is compatible when its observable committed effects meet the relevant architectural rules, subject to declared extensions, platform and privilege contracts.
+
+A binary is a sequence of encoded instructions and data interpreted in a particular environment. Instruction encodings map bit patterns to operations and operands; instruction semantics map those decoded operations to state effects. Both are necessary for a machine-code compatibility contract. A disassembler can decode an instruction without predicting its runtime timing.
+
+== Instruction-set design choices ==
+
+Common ISA choices include register-register versus register-memory arithmetic, instruction length, immediate-field sizes, register count, addressing modes, endianness, integer overflow semantics, floating-point behavior, atomic operations, and privilege or exception handling. The available choices form tradeoffs, not a single universal optimum.
+
+A base ISA and its optional extensions require explicit feature negotiation. RISC-V RV32I defines a 32-bit integer base, while additional ratified extensions cover features such as integer multiplication, atomic operations, floating-point and compressed instruction encodings. A binary using an optional instruction is not automatically portable to every implementation of the base ISA.<ref name="riscv"/>
+
+The architecture's extension names and ratification states must be checked against a versioned official manual, not a mutable draft or an unsupported online summary. In particular, a proposed extension's presence in a draft does not establish that deployed chips implement it.
+
+== Worked RV32I R-type encoding ==
+
+In RV32I, the R-type instruction format consists of seven ordered bit fields (most significant to least significant):
+
+{| class="wikitable"
+! Bits !! Field !! Width
+|-
+| 31–25 || funct7 || 7
+|-
+| 24–20 || rs2 || 5
+|-
+| 19–15 || rs1 || 5
+|-
+| 14–12 || funct3 || 3
+|-
+| 11–7 || rd || 5
+|-
+| 6–0 || opcode || 7
+|}
+
+The widths sum to <math>7+5+5+3+5+7=32</math> bits. The bit fields can be assembled into an unsigned instruction word by
+
+<math display="block">I=(f_7\ll25)\;|\;(r_2\ll20)\;|\;(r_1\ll15)\;|\;(f_3\ll12)\;|\;(r_d\ll7)\;|\;o,</math>
+
+where <math>\ll</math> means logical left shift, <math>|</math> bitwise OR, and the fields are constrained to their specified widths. This expression is a bit-placement rule, not a mathematical model of a processor's power or performance.
+
+For the example instruction '''add x5, x6, x7''', the RV32I ADD fields are <math>funct7=0</math>, <math>rs2=7</math>, <math>rs1=6</math>, <math>funct3=0</math>, <math>rd=5</math> and <math>opcode=0x33</math>. Therefore
+
+<math display="block">I=(7\ll20)\;|\;(6\ll15)\;|\;(5\ll7)\;|\;0x33=\texttt{0x007302B3}.</math>
+
+An independent decoder can recover the fields using masks and shifts:
+
+<math display="block">rd=(I\gg7)\mathbin{\&}31=5,\quad rs1=(I\gg15)\mathbin{\&}31=6,\quad rs2=(I\gg20)\mathbin{\&}31=7.</math>
+
+This example is an illustrative RV32I encoding under the specified base ISA. It is not a claim that every architecture uses 32-bit fixed-width instructions. RISC-V systems with compressed instructions can use additional instruction lengths. The bytes of a machine-code file also depend on its endianness conventions; a hexadecimal instruction word is not a universal byte-order specification.
+
+=== Architectural arithmetic check ===
+
+Assume a simplified RV32I state where <math>x_6=0xFFFFFFFF</math> and <math>x_7=2</math>. The integer ADD result in <math>x_5</math> is the low 32 bits of the sum:
+
+<math display="block">x_5=(0xFFFFFFFF+2)\bmod 2^{32}=1.</math>
+
+RISC-V integer ADD does not raise an arithmetic overflow exception for this wraparound; signed overflow interpretation is separate from the defined 32-bit result.<ref name="riscv"/> If an emulator instead returns a 33-bit value or raises a signed-overflow trap for this instruction, it violates the example's specified base semantics.
+
+A program can observe the result in the architectural destination register, not how many internal micro-operations were needed. This makes ISA-level functional testing different from performance benchmarking.
+
+== ISA versus ABI versus operating system ==
+
+An ISA specifies what machine instructions do. An application binary interface (ABI) specifies how separately compiled code interoperates, including calling conventions, stack use, object formats and symbol rules. An operating system specifies further services such as system calls and process management. These are layered contracts, and they can evolve independently.
+
+For example, an executable can use a valid instruction sequence but still be incompatible with the host because it expects a different operating-system system-call interface or binary-loader format. Conversely, a compiler may emit a binary for an ISA extension not supported by the intended processor. ISA-level compliance is necessary for native instruction execution but insufficient for complete application portability.
+
+The distinction is particularly important for heterogeneous accelerators. A GPU instruction model or compute API may expose execution behavior that differs from a general-purpose CPU ISA, and an API is not necessarily itself the hardware ISA. The precise supported interfaces must be identified.
+
+== Memory ordering and concurrent execution ==
+
+A single-thread instruction transition is not a complete model of a multiprocessor. A memory consistency model constrains which combinations of memory observations are allowed across threads. The RISC-V unprivileged specification includes RVWMO (the RISC-V weak memory ordering model), and also specifies ordering mechanisms and optional extensions. A compiler and processor must honor the applicable rules for synchronization to be correct.<ref name="riscv"/>
+
+It is incorrect to assume that instructions from different cores are observed in one universal wall-clock order just because each core executes a documented ISA. A relaxed model can permit outcomes that a simple interleaving model excludes, while properly placed synchronization restricts the allowed executions.
+
+A litmus test consists of a short concurrent program and a set of outcomes. To assess an implementation, compare observed outcomes against those permitted by the exact memory model and its version, rather than assuming that a single sequential simulator is an adequate reference for all concurrent behavior.
+
+Cache coherence and memory consistency are also different: coherence concerns behavior for a particular memory location across caches, while consistency concerns ordering relations between memory operations more broadly. Neither is identical to the instruction decoder.
+
+== Exceptions, privilege and architectural environments ==
+
+Architectural exception behavior can involve faults, traps, interrupts and transitions between privilege levels. ISA families may split unprivileged and privileged architecture into separate documents. An application-level ISA alone does not describe all machine startup, interrupt routing, virtual memory or device-access requirements.
+
+A processor can support the base instruction set but not the complete environment expected by a given operating system. Compatibility statements therefore need to name the ISA version, privilege architecture, implemented extensions, platform and ABI.
+
+The machine-code interface is also not a promise of side-channel security. Timing variation, caches and speculative execution can expose microarchitectural information despite architecturally correct instruction results. Security evaluation must consider actual hardware and software implementation, not only the abstract instruction semantics.
+
+== Verification and conformance ==
+
+ISA conformance testing can include decoding tests, arithmetic edge cases, instruction-trap behavior, memory ordering litmus tests and privilege-specific cases. Differential testing against a trusted reference simulator can find discrepancies, but a simulator and hardware might share bugs or interpret underspecified behavior differently. Formal instruction semantics and proofs can establish properties within explicit models, but they do not automatically verify physical timing, fault tolerance or system integration.
+
+The ADD fixture above has two independently testable claims: encoding <math>0x007302B3</math> decodes to registers 5, 6 and 7 with the ADD operation, and the result of adding <math>0xFFFFFFFF</math> and 2 is 1 modulo <math>2^{32}</math>. A regression should compute these facts rather than merely check that the article contains the expected hexadecimal string.
+
+No benchmark or claimed speedup is inferred from the example. Cycle counts and latency depend on microarchitecture, clocking, cache behavior, scheduling, instruction dependencies and operating conditions. Even identical ISA binaries can run at different speeds on compliant processors.
+
+== Research boundaries ==
+
+A compiler, ABI, loader and operating-system service interface form distinct compatibility contracts. Architecturally compliant processors can still differ in timing, power, and microarchitectural side channels; each requires implementation-specific evidence.
+
+
+ISA evolution creates compatibility questions across versions and extensions; backward compatibility is a documented property of specific designs, not an automatic law. Binary translation and emulation can provide functionality across different ISAs with performance and semantic constraints. A single ISA may be implemented in microcontrollers, application processors and simulators, but suitability depends on the full hardware/software system.
+
+The appropriate evidence hierarchy is a versioned normative ISA manual for instruction semantics, an ABI specification for binary conventions, an operating-system reference for system services and implementation-specific measurements for performance or security claims. This separation prevents a software-visible architectural fact from being misrepresented as a claim about any particular semiconductor device.
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html official unprivileged ISA specification], version 20260120.
+* Arm, [https://support.arm.com/documentation/ddi0487/md/251-chdhfbec architecture reference manual].
+* [[Instruction set architecture/Simple|Simple introduction]] · [[Instruction set architecture/Simple|Simple reading]] · [[Computer architecture]] · [[Compiler]] · [[Operating system]].

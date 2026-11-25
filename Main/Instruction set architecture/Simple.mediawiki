@@ -1,0 +1,41 @@
+'''Reading versions:''' [[Instruction set architecture/Simple|Simple]] · [[Instruction set architecture/Technical|Technical]]
+
+= Instruction set architecture — Simple =
+
+<onlyinclude>An '''instruction set architecture''' ('''ISA''') is the set of rules that defines how a processor presents itself to machine-code software. It specifies what instructions mean, which registers programs can use, and other visible behaviors such as how memory is addressed. An ISA is not the same thing as a particular processor chip or the internal circuits used to build one.<ref name="riscv">RISC-V International, [https://docs.riscv.org/reference/isa/unpriv/unpriv-index.html ''The RISC-V Instruction Set Manual, Volume I: Unprivileged Architecture''], official release version 20260120, including the base integer instruction set and its extensions.</ref>
+
+== Instructions are a shared language ==
+
+A compiler can translate a program into instructions for a particular ISA. A compatible processor executes those instructions according to their defined meanings. For example, an instruction might add two values stored in registers and put the result into a third register. Different processor models may perform that addition with different internal hardware, but they must agree on the software-visible result within the applicable specification.
+
+A program built for one ISA does not necessarily run directly on another. Translation, emulation or recompilation may be required, and compatibility can depend on the operating system and supported extensions too.
+
+== What does an ISA specify? ==
+
+An ISA typically defines instructions and their binary encodings, architectural registers, data types, addressing behavior, control flow and rules for accessing memory. The broader architectural contract can also include exceptions, privilege and memory ordering, sometimes in separate specifications.
+
+For example, RISC-V has a documented base integer ISA and optional extensions. An application using a particular extension cannot assume every RISC-V implementation supports it.<ref name="riscv"/>
+
+== ISA versus microarchitecture ==
+
+The ISA is the contract. A '''microarchitecture''' is one implementation of that contract: the pipelines, execution units, internal scheduling, branch prediction and caches. Two processors can share an ISA yet have different performance, energy use and cost.
+
+Think of an ISA as the rules of a board game, while microarchitecture is the machinery used to follow those rules. The analogy has limits: hardware also interacts with memory systems, devices and privileged software.
+
+== Where does software fit? ==
+
+A [[Compiler]] chooses machine instructions supported by its target ISA. An [[Operating system]] also depends on processor features and privileged architectural interfaces. The ISA is one layer connecting [[Software]] to [[Computer architecture]]; it is not a complete specification of the whole computer.
+
+== How can compatibility fail? ==
+
+Programs can fail because they use unsupported instructions, assume a different binary format or calling convention, depend on incompatible operating-system services, or rely on behavior that the ISA does not promise. The ISA, the application binary interface (ABI) and the operating-system interface are related but distinct contracts.
+
+</onlyinclude>
+
+== Continue reading ==
+'''Reading versions:''' [[Instruction set architecture/Simple|Simple]] · [[Instruction set architecture/Technical|Technical]]
+
+
+== References ==
+
+<references/>

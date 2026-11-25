@@ -47,7 +47,7 @@ normalized record + diagnostics
 
 ## Live V1 compatibility templates
 
-This directory also contains the nine templates confirmed by the live V1 fidelity inventory so runtime dependencies are not hidden only inside `archive-v1/`.
+This directory carries the current source-controlled template set. Historical V1 template evidence remains available through the immutable V1 snapshot; current runtime state must be verified against the live wiki.
 
 | Template | Captured callers | Disposition |
 |---|---:|---|
@@ -63,7 +63,7 @@ This directory also contains the nine templates confirmed by the live V1 fidelit
 
 Their presence here preserves migration/runtime fidelity; it **does not make them the V2 visual or composition standard**.
 
-Evidence: `archive-v1/templates/index.json`, `archive-v1/templates/usage/`, `archive-v1/pages/Template/`, and `archive-v1/history/Template/`.
+Historical evidence: commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4`, paths `archive-v1/templates/`, `archive-v1/pages/Template/`, and `archive-v1/history/Template/`.
 
 ## Design rules
 

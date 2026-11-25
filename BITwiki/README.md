@@ -72,4 +72,4 @@ The specification, implementation, structured state, and interface projections s
 
 When architecture changes, update the canonical `BITwiki:*` standard **and** the nearest repository README that a maintainer will encounter while working in the affected surface. READMEs summarize local operational consequences; these wiki pages carry the deeper project semantics and rationale.
 
-Historical V1 material is evidence under `archive-v1/` and should not be silently rewritten to match current V2 behavior.
+Historical V1 material remains evidence in immutable Git history at snapshot commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4`; its per-title disposition is recorded in `docs/v1-retirement-disposition.json`. It must not be silently rewritten to match current V2 behavior.

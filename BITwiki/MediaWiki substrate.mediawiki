@@ -4,7 +4,7 @@
 
 BITwiki V2 is implemented on MediaWiki. The repository must therefore model the wiki that actually exists rather than allowing convenient filesystem folders to become an invented architecture.
 
-The authoritative runtime signals are [[Special:NamespaceInfo]], [[Special:Version]], the MediaWiki API site information captured in <code>archive-v1/siteinfo.json</code>, and live fidelity checks. Repository structure is a source-control projection of those surfaces; it is not itself the ontology.
+The authoritative current runtime signals are [[Special:NamespaceInfo]], [[Special:Version]], the live MediaWiki API, and explicit live verification. Repository structure is a source-control projection of those surfaces; a historical snapshot is provenance, not current runtime authority.
 
 MediaWiki is also BITwiki's programmable knowledge execution substrate. Authored wikitext, Semantic MediaWiki graph state, Cargo operational state, and Scribunto/Lua computation compose into page, graph, diagnostic, machine-facing, and BIThub-consumable projections. See [[BITwiki:Programmable knowledge substrate]].
 
@@ -169,7 +169,7 @@ This recovery does '''not''' declare every V1 visual template part of the V2 des
 * New V2 templates such as <code>Template:Knowledge object</code> are the canonical path for new V2 knowledge objects.
 * A live compatibility template may be retired only after its callers and rendered behavior have been verified.
 
-See <code>Template/README.md</code> and <code>archive-v1/templates/</code>.
+See <code>Template/README.md</code>. Historical V1 template evidence remains at immutable snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>.
 
 == Lua: compiler/type-system/inference-and-projection layer ==
 
@@ -322,11 +322,11 @@ Exact deployment remains additive and non-destructive. Cross-service BIThub/Disc
 
 * [[Special:NamespaceInfo]] — live namespace configuration.
 * [[Special:Version]] — installed extension/runtime surface.
-* <code>archive-v1/siteinfo.json</code> — captured MediaWiki API site information.
+* [https://github.com/bitwikiorg/wiki-content/blob/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1/siteinfo.json V1 <code>siteinfo.json</code>] — historical MediaWiki API site information captured 2026-08-18; not current runtime authority.
 * <code>v1-fidelity-audit.json</code> — live-versus-archive public fidelity audit.
-* <code>archive-v1/templates/index.json</code> — live template inventory and usage counts.
-* <code>archive-v1/pages/Main/Lua Module Specifications.mediawiki</code> — V1 Lua architecture design lineage.
-* <code>archive-v1/pages/Main/Template Validation Lua Module.mediawiki</code> — V1 validation-module design lineage.
+* [https://github.com/bitwikiorg/wiki-content/blob/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1/templates/index.json V1 template inventory] — historical template inventory and usage counts.
+* [https://github.com/bitwikiorg/wiki-content/blob/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1/pages/Main/Lua%20Module%20Specifications.mediawiki V1 Lua Module Specifications] — historical architecture design lineage.
+* [https://github.com/bitwikiorg/wiki-content/blob/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1/pages/Main/Template%20Validation%20Lua%20Module.mediawiki V1 Template Validation Lua Module] — historical validation-module design lineage.
 * [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
 * [https://www.mediawiki.org/wiki/Extension:Cargo MediaWiki — Cargo]
 * [https://www.semantic-mediawiki.org/wiki/Help:Concepts Semantic MediaWiki — Concepts]

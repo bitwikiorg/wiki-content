@@ -2,7 +2,7 @@
 
 Source for MediaWiki `Module:*` pages executed by Scribunto/Lua.
 
-The captured live V1 corpus had the Module namespace configured but **zero live Module pages**. V1 nevertheless contains substantial Lua design specifications under `archive-v1/pages/Main/`. Those documents are design lineage, not proof that the proposed modules were deployed.
+The captured live V1 corpus had the Module namespace configured but **zero live Module pages**. V1 nevertheless contains substantial Lua design specifications in the immutable snapshot at commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4` under `archive-v1/pages/Main/`. Those documents are design lineage, not proof that the proposed modules were deployed.
 
 ## V2 role
 

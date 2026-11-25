@@ -16,6 +16,8 @@ class SemiconductorEtchingTest(unittest.TestCase):
         self.assertIn("[[Semiconductor etching/Technical|Technical explanation]]", core)
         self.assertIn("[[Semiconductor etching/Technical|Read the technical explanation]]", simple)
         self.assertIn("[[Semiconductor etching/Simple|Read the simple explanation]]", technical)
+        self.assertIn("{{Knowledge object", core)
+        self.assertIn("== How it works ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         for text in (simple, technical):
             self.assertEqual(text.count("<onlyinclude>"), 1)
             self.assertEqual(text.count("</onlyinclude>"), 1)

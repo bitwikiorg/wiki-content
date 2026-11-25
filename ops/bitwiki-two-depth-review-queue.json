@@ -351,6 +351,18 @@
         "tests": "Source-level checks executed; GitHub V2/staging CI underway/not confirmed passed. Updated Python unit test not independently executed here.",
         "gate": "New two-localization format requires backwards-compatible shared validator PR #136. Existing main validator expects old Template:Reading depth. Human scholarly review and PR merge authorization remain outstanding.",
         "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/81"
+      },
+      "final_validation_source_audit": {
+        "id": "A01",
+        "pr": 81,
+        "head": "37d5f3eb4a162127831f1ad42c0e51574c20322b",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "scripts/test_editorial_architecture.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -374,6 +386,18 @@
         ],
         "tests": "Source transformations checked; test file updated but not executed; CI/V2/staging unverified; PR #136 remains prerequisite.",
         "gate": "Shared PR #136 and independent human approval; no merge."
+      },
+      "final_validation_source_audit": {
+        "id": "A02",
+        "pr": 82,
+        "head": "c06d3f0b2e33afb974587483bef024311cc97e1a",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_methods.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -397,6 +421,18 @@
         ],
         "tests": "Scoped regression source updated, not executed; source/math examples inspected; V2/CI/staging not executed; PR #136 required.",
         "gate": "Human approval and PR #136 shared validator; no merge."
+      },
+      "final_validation_source_audit": {
+        "id": "A03",
+        "pr": 82,
+        "head": "c06d3f0b2e33afb974587483bef024311cc97e1a",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_methods.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -423,6 +459,18 @@
         ],
         "tests": "Post-write GitHub source checks 9/9 passed: identity, two paths, transclusion, SMW, local named refs and math tag balance. Scoped Python regression file updated, NOT executed. CI/V2/staging and complete scholarly citation audits NOT executed. PR #136 remains shared dependency.",
         "gate": "Corrected_pending_validation: PR #136 merge/update prerequisite; executable regression, V2/CI and human scholarly review before merge."
+      },
+      "final_validation_source_audit": {
+        "id": "A04",
+        "pr": 83,
+        "head": "234ea8115db347741da3063f0d80659b0474a21a",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_causal_resilience.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -448,6 +496,19 @@
         ],
         "tests": "Post-write GitHub source checks 9/9 passed: identity, two paths, transclusion, SMW, local named refs and math tag balance. Scoped Python regression file updated, NOT executed. CI/V2/staging and complete scholarly citation audits NOT executed. PR #136 remains shared dependency.",
         "gate": "Corrected_pending_validation: PR #136 merge/update prerequisite; executable regression, V2/CI and human scholarly review before merge."
+      },
+      "final_validation_source_audit": {
+        "id": "A05",
+        "pr": 83,
+        "head": "234ea8115db347741da3063f0d80659b0474a21a",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "duplicate named refs 2"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_causal_resilience.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -470,6 +531,19 @@
         ],
         "tests": "Source preservation/link/navigation assertions checked in executor; Python regression source updated but not executed; V2/CI/staging and full claim-level citation audit not executed.",
         "gate": "PR #136 two-depth validator prerequisite; executable checks and independent human scholarly/merge review outstanding."
+      },
+      "final_validation_source_audit": {
+        "id": "A06",
+        "pr": 84,
+        "head": "d2840d7848a8fdde1dbf384af0fa0615de65e6a4",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_scaling_optimization.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -493,6 +567,19 @@
         ],
         "tests": "Source preservation/link/navigation assertions checked in executor; Python regression source updated but not executed; V2/CI/staging and full claim-level citation audit not executed.",
         "gate": "PR #136 two-depth validator prerequisite; executable checks and independent human scholarly/merge review outstanding."
+      },
+      "final_validation_source_audit": {
+        "id": "A07",
+        "pr": 84,
+        "head": "d2840d7848a8fdde1dbf384af0fa0615de65e6a4",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_scaling_optimization.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -508,6 +595,19 @@
         "changes": "Canonical host reduced to identity, Simple inclusion and incoming semantic query; original unique Core mechanisms, model limitations, measurement notes, numerical equation and links retained in Technical appendix with renamed references; reciprocal two-way navigation.",
         "validation": "Executed GitHub source checks: 8/8 each article (16/16 across R02); article-specific test source updated. Python unit tests and GitHub CI NOT executed. Shared #136 pending.",
         "gate": "Human scientific review and CI after article-specific tests and #136."
+      },
+      "final_validation_source_audit": {
+        "id": "A08",
+        "pr": 85,
+        "head": "7caf20e9f94f73167b93a0fbeaa9d4c09d1ec14e",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "localization carries identity/relations"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue64_device_articles.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -523,6 +623,19 @@
         "changes": "Canonical identity and incoming semantic query retained; Core's unique BJT/MOS mechanism comparison, historical provenance, applications, semantic links and cited caveats preserved in Technical; two-way Simple/Technical navigation. Shared PR #85 article-specific regression test updated.",
         "validation": "Executed GitHub source checks: 8/8 each article (16/16) for canonical identity, Simple inclusion, reciprocal links, absence of third-depth navigation/body, Core preservation, unique named refs, reference closure and Math tag balance. Python unit tests and GitHub CI NOT executed; shared #136 compatibility prerequisite remains.",
         "gate": "Scientific reference-by-reference review, Python tests and green CI after #136; human approval required."
+      },
+      "final_validation_source_audit": {
+        "id": "A09",
+        "pr": 85,
+        "head": "7caf20e9f94f73167b93a0fbeaa9d4c09d1ec14e",
+        "findings": [
+          "Simple transclusion appears lead-only",
+          "localization carries identity/relations"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue64_device_articles.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -539,6 +652,19 @@
         "evidence": "Shannon 1938 IEEE DOI 10.1109/EE.1938.6431064 and Dennard et al. 1974 IEEE DOI 10.1109/JSSC.1974.1050511 independently checked against publisher records. Full reference-by-reference scholarly audit incomplete.",
         "validation": "Executed source-level checks: 11/11 assertions per article after semantic correction (identity, transclusion, reciprocal navigation, two-depth convention, preservation, named-reference closure, Math tag balance, categories, incoming SMW, derivative semantic ownership). Numerical regression source exists and was updated but Python test NOT executed; GitHub CI NOT confirmed. Existing shared PR #136 required for V2 compatibility.",
         "gate": "Corrected pending #136 merge/rebase, executable article tests, CI, full scientific reference audit and human approval. Do not merge."
+      },
+      "final_validation_source_audit": {
+        "id": "A10",
+        "pr": 86,
+        "head": "e96b26ad3e47b1955e1b1842902d60b22d74e5f7",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue64_logic_ic.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -555,6 +681,19 @@
         "evidence": "Shannon 1938 IEEE DOI 10.1109/EE.1938.6431064 and Dennard et al. 1974 IEEE DOI 10.1109/JSSC.1974.1050511 independently checked against publisher records. Full reference-by-reference scholarly audit incomplete.",
         "validation": "Executed source-level checks: 11/11 assertions per article after semantic correction (identity, transclusion, reciprocal navigation, two-depth convention, preservation, named-reference closure, Math tag balance, categories, incoming SMW, derivative semantic ownership). Numerical regression source exists and was updated but Python test NOT executed; GitHub CI NOT confirmed. Existing shared PR #136 required for V2 compatibility.",
         "gate": "Corrected pending #136 merge/rebase, executable article tests, CI, full scientific reference audit and human approval. Do not merge."
+      },
+      "final_validation_source_audit": {
+        "id": "A11",
+        "pr": 86,
+        "head": "e96b26ad3e47b1955e1b1842902d60b22d74e5f7",
+        "findings": [
+          "navigation not accepted by PR136 strict contract",
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue64_logic_ic.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -573,6 +712,18 @@
           "Shared two-depth V2 dependency PR #136"
         ],
         "human_review_required": true
+      },
+      "final_validation_source_audit": {
+        "id": "A12",
+        "pr": 87,
+        "head": "3c9208f8954ba06ecba49cd971203013c7d55c84",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_abstraction_occam.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -592,6 +743,18 @@
           "Shared two-depth V2 dependency PR #136"
         ],
         "human_review_required": true
+      },
+      "final_validation_source_audit": {
+        "id": "A13",
+        "pr": 87,
+        "head": "3c9208f8954ba06ecba49cd971203013c7d55c84",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_abstraction_occam.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -611,6 +774,18 @@
         "preservation": "All unique Core distinctions retained in Technical or existing Simple; canonical metadata, relationships, incoming SMW query and categories retained on host.",
         "tests": "Post-write read-back source assertions 9/9 PASS (metadata, SMW, transclusion, reciprocal links, no legacy navigation, math tag balance, references); scoped regression updated but NOT executed; CI, V2, staging and full citation audit not executed. PR #136 shared prerequisite.",
         "gate": "PR #136 and human approval; no merge."
+      },
+      "final_validation_source_audit": {
+        "id": "A14",
+        "pr": 88,
+        "head": "8f341a338c53b5e2a58655e2fb07117a2c34d58d",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_pareto_returns.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {
@@ -630,6 +805,18 @@
         "preservation": "Core-only context rehomed into Technical; canonical metadata, categories, SMW relationship and incoming query retained; Simple lead transcluded.",
         "tests": "Post-write read-back source assertions 9/9 PASS (metadata, SMW, transclusion, reciprocal links, no legacy navigation, math tag balance, references); scoped regression updated but NOT executed; CI, V2, staging and full citation audit not executed. PR #136 shared prerequisite.",
         "gate": "PR #136 and human approval; no merge."
+      },
+      "final_validation_source_audit": {
+        "id": "A15",
+        "pr": 88,
+        "head": "8f341a338c53b5e2a58655e2fb07117a2c34d58d",
+        "findings": [
+          "Simple transclusion appears lead-only"
+        ],
+        "regression_paths": [
+          "staging/compiler/test_issue65_pareto_returns.py"
+        ],
+        "scope": "Static source patch audit on exact PR head, not full scientific or executable validation."
       }
     },
     {

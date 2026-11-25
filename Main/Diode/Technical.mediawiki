@@ -1,0 +1,193 @@
+[[Diode/Simple|Simple explanation]]
+
+= Diode — Technical =
+
+A '''diode''' is an electronic device with a typically asymmetric nonlinear terminal current–voltage relationship. Semiconductor p–n junctions, metal–semiconductor Schottky contacts, engineered reverse-breakdown structures, LEDs and photodiodes are physically distinct realizations. The mathematical diode symbol is a circuit abstraction; an experimentally measured device also has temperature, geometry, storage, contact, parasitic and breakdown dependencies.
+
+The basic p–n device can be studied with Fermi–Dirac occupation, carrier continuity, drift–diffusion, electrostatics and recombination. At advanced depth, the central task is to specify which effects are assumed negligible and when ideal junction laws should be replaced by device-specific measured or numerical models. William Shockley's 1949 work developed the theoretical p–n junction and transistor framework; MIT's microelectronic-device course independently treats junction, Schottky, MOS and bipolar behavior and nonideal effects.<ref name="shockley">William Shockley, [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors”], ''Bell System Technical Journal'' 28, 435–489 (1949), original p–n junction theory.</ref><ref name="mit">MIT OpenCourseWare 6.720J, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ ''Integrated Microelectronic Devices'' lecture notes], specific lectures on equilibrium junctions, diode characteristics, Schottky contacts, junction dynamics, MOSFETs and BJTs.</ref>
+
+== Semiconductor junction formation ==
+
+Consider uniformly doped p- and n-type regions of the same semiconductor meeting at an abrupt metallurgical interface. Prior to contact, their carrier concentrations and local electrochemical potentials differ. Carrier diffusion and the consequent space charge establish an internal electrostatic field that balances diffusion at equilibrium. The measured terminal voltage of an unpowered external circuit is not simply the internal built-in voltage because contact potentials and electrochemical equilibrium must be treated consistently.
+
+In the depletion approximation with completely ionized uniform dopants, negligible mobile charge within the space-charge region and one-dimensional geometry, net charge density is approximated by
+
+<math display="block">\rho(x)\simeq\begin{cases}-qN_A,&-x_p<x<0,\\+qN_D,&0<x<x_n,\\0,&\text{elsewhere outside depletion.}\end{cases}</math>
+
+The n- and p-side depletion extents obey charge neutrality <math>N_Ax_p=N_Dx_n</math> when no additional fixed interface charge is present. Poisson's equation and the electrostatic potential lead to an equilibrium built-in potential and total depletion width:
+
+<math display="block">V_{\mathrm{bi}}=\frac{k_BT}{q}\ln\left(\frac{N_AN_D}{n_i^2}\right),</math>
+<math display="block">W=x_p+x_n\simeq\sqrt{\frac{2\epsilon_s}{q}\left(\frac1{N_A}+\frac1{N_D}\right)(V_{\mathrm{bi}}-V_a)}.</math>
+
+The density <math>n_i</math> must correspond to the actual semiconductor and temperature. These formulas require a nondegenerate Boltzmann-statistics approximation, full ionization, abrupt junction, uniform bulk doping and depletion approximation. Strongly degenerate doping, interface polarization or traps, quantum confinement, nonuniform junction profiles and high injection can change both quantities. The formula is not a universal circuit law.
+
+== Forward current from minority-carrier transport ==
+
+In the ideal Shockley diffusion picture, forward bias injects excess minority carriers into quasi-neutral regions. For low-level injection, constant diffusion coefficients and lifetimes, sufficiently long neutral regions and negligible depletion-region recombination, the resulting terminal current is
+
+<math display="block">I=I_S\left[\exp\left(\frac{qV_j}{k_BT}\right)-1\right],</math>
+
+where <math>V_j</math> is the junction voltage, not necessarily the measured terminal voltage when contacts or series resistance matter. The reverse-saturation current under an ideal long-base model is
+
+<math display="block">I_S\simeq qA n_i^2\left(\frac{D_p}{L_pN_D}+\frac{D_n}{L_nN_A}\right),</math>
+
+with junction area <math>A</math>, carrier diffusion coefficients <math>D_n,D_p</math> and minority-carrier diffusion lengths <math>L_n,L_p</math>. This expression reveals why ideal saturation current is sensitive to intrinsic concentration, geometry, transport parameters and temperature; it does not make <math>I_S</math> a fixed material constant.
+
+In real devices a measured-fit ideality factor <math>n_{\mathrm{id}}</math> may be introduced over a limited bias regime:
+
+<math display="block">I\approx I_S\left[\exp\left(\frac{qV_j}{n_{\mathrm{id}}k_BT}\right)-1\right].</math>
+
+An ideality factor near one is often associated with diffusion-dominated low-injection transport; near two can arise from certain depletion-region trap-assisted recombination limits. Neither number is a universal identity test, and multiple processes, series resistance, leakage or thermal gradients may make a single fitted factor inadequate.<ref name="srh">W. Shockley and W. T. Read, [https://doi.org/10.1103/PhysRev.87.835 “Statistics of the Recombinations of Holes and Electrons”], ''Physical Review'' 87, 835–842 (1952), trap-assisted recombination framework.</ref>
+
+If series resistance <math>R_s</math> matters, the implicit terminal model is <math>V_{\mathrm{term}}=V_j+IR_s</math>. Parallel leakage paths add shunt terms. High-current conductivity modulation, high injection, carrier heating and thermal runaway require extensions beyond the low-injection equation.
+
+== Independent numerical benchmark: ideal forward junction ==
+
+Assume <math>T=300\ \mathrm K</math>, ideality factor one, junction saturation current <math>I_S=10^{-12}\ \mathrm A</math> and applied '''junction''' voltage <math>V_j=0.500\ \mathrm V</math>, with no parasitic resistance or self-heating. Using exact SI values of Boltzmann's constant and elementary charge,
+
+<math display="block">V_T=\frac{k_BT}{q}\simeq0.025852\ \mathrm V,</math>
+<math display="block">I=10^{-12}\left(e^{0.5/V_T}-1\right)\simeq2.50975\times10^{-4}\ \mathrm A=0.251\ \mathrm{mA}.</math>
+
+The small-signal junction conductance at fixed temperature is
+
+<math display="block">g_d=\frac{dI}{dV_j}=\frac{I+I_S}{V_T}\simeq9.708\times10^{-3}\ \mathrm S,\qquad r_d=g_d^{-1}\simeq103.0\ \Omega.</math>
+
+All values are '''calculations for arbitrary declared ideal-model parameters''', not measurements of a specified silicon diode. A fitted value of <math>I_S</math> from a real device could differ by many orders of magnitude depending on geometry and materials. Changing the assumed temperature requires recalculating its transport and recombination parameters, not merely changing <math>V_T</math> while pretending <math>I_S</math> remains a true physical constant.
+
+=== Second benchmark: symmetric abrupt depletion model ===
+
+With silicon-like illustrative <math>\epsilon_s=11.7\epsilon_0</math>, <math>N_A=N_D=10^{16}\ \mathrm{cm^{-3}}</math>, <math>n_i=10^{10}\ \mathrm{cm^{-3}}</math>, <math>T=300\ \mathrm K</math> and zero external bias, the ideal depletion formula gives <math>V_{\mathrm{bi}}\simeq0.7143\ \mathrm V</math> and <math>W\simeq0.4298\ \mu\mathrm m</math>. These are separate electrostatic benchmark values and should not be confused with the 0.500 V forward-current example's arbitrary diode current scale.
+
+The depletion capacitance per unit area in this symmetric 1D approximation is <math>C_j/A\simeq\epsilon_s/W\simeq2.4102\times10^{-4}\ \mathrm{F\,m^{-2}}</math>, and the triangular-model peak-field magnitude is <math>E_{\max}\simeq2V_{\mathrm{bi}}/W\simeq3.32\times10^6\ \mathrm{V\,m^{-1}}</math>. Material properties and complete circuit contact physics are not determined by these estimates.
+
+== Stored charge, capacitance and switching ==
+
+A p–n diode is a dynamic charge-storage device. Its small-signal behavior may contain depletion capacitance and diffusion capacitance:
+
+<math display="block">C_j=\frac{dQ_{\mathrm{depl}}}{dV_j},\qquad C_d=\frac{dQ_{\mathrm{stored}}}{dV_j}.</math>
+
+Under a simple charge-control assumption with forward excess carrier charge <math>Q_{\mathrm{stored}}\approx\tau_F I_F</math>, with approximately constant effective forward transit/storage parameter <math>\tau_F</math>, one finds <math>C_d\approx\tau_Fg_d</math>. The approximation assumes the same regime for charge and current; real carrier lifetimes and spatial profiles vary with injection and bias.
+
+When a forward-biased junction is switched into reverse bias, stored minority charge can cause transient reverse current before the device regains blocking ability. Reverse-recovery measures depend on the current waveform, bias, injected charge, lifetime-control process, and test conditions; one time number is not a universal intrinsic diode constant.
+
+A Schottky barrier diode often shows reduced minority-carrier storage compared with a comparable p–n device, but may exhibit significant leakage and junction capacitance. Different materials, power classes and operating temperatures can reverse simple tradeoff rankings. The choice of device is an engineering optimization over conduction loss, switching loss, leakage, thermal constraints and cost.
+
+== Metal–semiconductor barriers and Schottky transport ==
+
+For an idealized rectifying metal–semiconductor contact, thermionic-emission theory can produce a current-density relation
+
+<math display="block">J\simeq A^{**}T^2\exp\left(-\frac{q\Phi_B}{k_BT}\right)\left[\exp\left(\frac{qV_j}{n_{\mathrm{id}}k_BT}\right)-1\right],</math>
+
+where <math>A^{**}</math> is an effective Richardson constant and <math>\Phi_B</math> is an effective barrier expressed in volts in the exponent shown. Barrier inhomogeneity, interface states, image-force lowering, tunnelling, Fermi-level pinning and series resistance invalidate a universal textbook thermionic expression. The electron-affinity rule for an ideal contact is a first-pass alignment assumption, not a guaranteed experimental barrier.
+
+Rectifying contacts and ohmic contacts are distinguished by their current response and intended function, not by the mere presence of metal touching a semiconductor. The relevant transport may become tunnelling dominated when the near-interface doping and barrier width are altered.<ref name="mit"/>
+
+== Reverse bias, Zener tunnelling and avalanche ==
+
+With reverse bias, depletion-region fields increase while the ideal diffusion current saturates; real leakage may originate from generation, surface paths, defects and tunnelling. At sufficiently high reverse fields, breakdown mechanisms include:
+
+* '''Band-to-band tunnelling''', often associated with the Zener mechanism in heavily doped, narrow depletion regions.
+* '''Impact ionization and avalanche multiplication''', in which energetic carriers create additional carriers.
+* '''Premature localized breakdown''', at defects or geometry-dependent field concentrations, which can be destructive.
+
+The mechanisms may coexist and depend strongly on doping, material band structure, field distribution, temperature and geometry. Some voltage-reference and transient-protection devices are specifically designed to operate in controlled reverse breakdown within rated current, energy and thermal constraints. A bare statement that "reverse breakdown destroys all diodes" is false; a bare statement that "breakdown is always safe" is equally false.
+
+Avalanche photodiodes exploit multiplication to enhance signal under carefully controlled voltage and noise conditions. The stochastic multiplication process introduces excess noise, so gain does not yield unlimited signal quality.
+
+== Optoelectronic diode functions ==
+
+In LEDs, carrier injection can produce radiative recombination and light whose spectrum depends on electronic transitions, confinement, composition and optical extraction. A direct band gap helps certain transitions, but internal radiative efficiency, trapping, nonradiative recombination, carrier overflow, packaging and photon extraction control external efficiency. No material is guaranteed to be an efficient LED solely because it has a direct gap.
+
+Photodiodes convert incident photon absorption into carrier populations and electrical signal. A simplified terminal relation can be written <math>I(V)=I_{\mathrm{dark}}(V)-I_{\mathrm{photo}}</math> under a specified sign convention; the photon-to-current responsivity depends on wavelength, quantum efficiency and elementary charge. For ideal one-electron-per-collected-photon conversion at photon energy <math>h\nu</math>,
+
+<math display="block">\mathcal R(\lambda)=\eta\frac{q}{h\nu}=\eta\frac{q\lambda}{hc},</math>
+
+with collection quantum efficiency <math>\eta</math>. Real devices have spectral absorption windows, dark noise, temporal response and possible gain. A photodiode's electrical response cannot be inferred from the Shockley equation alone without illumination and generation/collection physics.
+
+== Temperature, breakdown, noise and material selection ==
+
+Semiconductor transport parameters, intrinsic concentration, trap kinetics, band structure, leakage and contact resistance depend on temperature. For a fixed forward current, many silicon p–n diodes have decreasing terminal voltage with increasing temperature over a specified regime, but no universal millivolt-per-degree constant applies to every bias and diode type.
+
+Wide-bandgap power diodes and SiC Schottky devices may tolerate different blocking fields, temperatures and switching conditions than ordinary silicon rectifiers, but actual losses depend on fabricated structure and packages. A fair comparison controls rated voltage, current, thermal conditions, switching waveform and circuit topology.
+
+Noise can include shot, thermal, generation–recombination and multiplication contributions. The simple low-frequency shot-noise current spectral density <math>S_i\simeq2qI</math> in A<sup>2</sup>/Hz has a limited independent-carrier Poisson-event model; it is not automatically the total observed spectral density in a real diode.
+
+== Experimental characterization and model identification ==
+
+A credible diode study specifies device material and structure, junction area, package, calibration, temperature, bias polarity, sweep rate, source-measure compliance, contact correction and instrumentation bandwidth. Measurement families include:
+
+{| class="wikitable"
+! Method !! Observable !! Inference and caution
+|-
+| Forward/reverse I–V || Current versus voltage and temperature || Ideality, saturation scale, leakage, breakdown; beware series resistance, heating and dynamic traps
+|-
+| C–V and frequency sweep || Differential capacitance versus bias/frequency || Junction profiles and trap response; require appropriate one-sided or abrupt assumptions
+|-
+| Pulsed I–V || Response under low duty cycle || Can reduce self-heating but may reveal transient trap and storage behavior
+|-
+| Switching/reverse recovery || Time-resolved current/voltage || Stored-charge or barrier effects, circuit-dependent parasitics
+|-
+| Optical responsivity / emission || Spectral current or radiance || Quantum efficiency, absorption, recombination and extraction with optical calibration
+|}
+
+A single semilog I–V line can suggest a local ideality factor but cannot uniquely identify a microscopic recombination mechanism. Independent lifetime, defect, temperature and geometry measurements may be needed. A useful device model states the regime where each parameter is meaningful and reports residual patterns and independent validation samples.
+
+== Research and validation protocol ==
+
+A reproducible diode study should (1) establish calibrated transport and electrostatic parameter sources; (2) identify the physical barrier and junction geometry; (3) solve the Poisson and carrier continuity system with documented contact/illumination conditions; (4) distinguish ideal analytic benchmark predictions from calibrated TCAD; (5) verify conservation of charge and current; (6) report mesh/time-step convergence and bounded numerical tolerances; and (7) compare against independent I–V, C–V, leakage, recovery and temperature observations.
+
+The two numerical examples in this article are verification fixtures, not material calibration. A doctoral reader should assess the chain between an observable and its physical interpretation rather than count equations or references.
+
+== Research boundaries ==
+
+The general diode model is a starting point, not an exhaustive treatment of silicon power diodes, Schottky barrier theory, LED microcavities, advanced photodiodes, epitaxial defects, or single-photon devices. Specialized models may require quantum transport, tunnelling theory, full optical simulations or field-dependent trap kinetics.
+
+The essential discipline is identifying when a two-terminal component can be represented by a simple constitutive law and when the geometry, operating frequency, illumination or material physics forces a more complete treatment.
+
+== Additional engineering synthesis preserved from canonical article ==
+
+== Core mechanisms and functions ==
+
+{| class="wikitable"
+! Device family !! Junction or process !! Engineering significance
+|-
+| Semiconductor p–n diode || Charge redistribution, depletion field and minority-carrier injection || Rectification, junction capacitance and stored-charge dynamics
+|-
+| Metal–semiconductor Schottky diode || Majority-carrier transport over/through contact barrier || Switching speed, forward voltage and leakage tradeoffs
+|-
+| Avalanche/Zener-rated junction || Field-dependent reverse carrier multiplication or tunnelling || Reverse voltage control within specified power and temperature ratings
+|-
+| Light-emitting diode || Electron–hole recombination and photon emission || Optoelectronic energy conversion
+|-
+| Photodiode || Photon absorption and carrier collection || Optical sensing and signal conversion
+|}
+
+A general diode article should not be confused with the underlying electronic structure of semiconductor materials as a whole, nor with the specialized designs of individual power or optoelectronic components.
+
+== The circuit and physical model are different ==
+
+In the idealized low-level-injection diffusion model of a p–n junction, current is often approximated by
+
+<math display="block">I=I_S\left[\exp\left(\frac{qV}{k_BT}\right)-1\right],</math>
+
+with an effective reverse-saturation current scale <math>I_S</math>, elementary charge <math>q</math>, temperature <math>T</math> and Boltzmann constant <math>k_B</math>. This is not the complete behavior of real semiconductor diodes: series resistance, recombination, high injection, breakdown, parasitic capacitances and temperature effects change the terminal characteristic.<ref name="core_shockley_core">William Shockley, [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x “The Theory of p-n Junctions in Semiconductors and p-n Junction Transistors”], ''Bell System Technical Journal'' 28, 435–489 (1949), original analytical junction treatment.</ref><ref name="core_mit_core">MIT OpenCourseWare, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ ''Integrated Microelectronic Devices''], p–n junction and Schottky contact lecture sequence, including nonideal dynamics.</ref>
+
+Different diode mechanisms demand different models; fitting one exponential to every diode is not sound physical inference. A measured I–V curve should record polarity, temperature, sweep speed, compliance limits and possible self-heating or hysteresis.
+
+== Physical design and validation ==
+
+Design considerations include forward voltage and loss at a specified operating current; maximum repetitive reverse voltage; switching/recovery time; reverse leakage; junction or depletion capacitance; peak surge current; thermal resistance; package limitations and intended frequency. Voltage alone is not enough: maximum current, power dissipation and transient energy also constrain safe operation.
+
+Diodes are connected to [[Voltage|voltage]], [[Electric current|electric current]], [[Resistor|resistive circuit elements]] and [[Energy conversion|energy conversion]]. The [[Transistor|transistor]] is a related but distinct controllable electronic device. These links are explicit general semantic relationships, not declarations of subcomponent identity.
+
+
+
+== References ==
+
+<references/>
+
+== Further reading ==
+
+* [https://doi.org/10.1002/j.1538-7305.1949.tb03645.x Shockley (1949)], original junction theory.
+* [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ MIT 6.720J], junction, Schottky and diode dynamics.
+* [[Diode/Simple|Simple]] ·  · [[Electric current]] · [[Voltage]] · [[Energy conversion]].

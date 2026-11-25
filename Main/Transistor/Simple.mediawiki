@@ -1,0 +1,63 @@
+[[Transistor/Technical|Technical explanation]]
+
+= Transistor — Simple =
+
+<onlyinclude>A '''transistor''' is an electronic device that uses an electrical signal or control terminal to influence the flow of current through another part of a circuit. Transistors can act as switches, amplifiers and current-control devices. They are among the fundamental building blocks of computers, communication equipment, sensors and power electronics. Different transistor families use different physical mechanisms, so their electrical behavior and limits are not interchangeable.<ref name="mit">MIT OpenCourseWare, [https://ocw.mit.edu/courses/6-720j-integrated-microelectronic-devices-spring-2007/pages/lecture-notes/ ''Integrated Microelectronic Devices''], MOSFET and bipolar junction transistor lecture sequence.</ref>
+
+== How can a small signal control a larger one? ==
+
+Imagine a switch that controls an electric lamp. A transistor can perform a similar role electronically. A control signal changes how current flows between its other terminals, making it possible to turn equipment on and off rapidly.
+
+A transistor can also operate between its fully-off and fully-on states. In a suitable circuit, a small variation at its control input can produce a larger variation in voltage, current or power in another circuit path. That is amplification.
+
+Amplification does not create energy: the increased output signal power comes from a power supply, not from the small control signal alone.
+
+== Two major families ==
+
+{| class="wikitable"
+! Kind !! Control and operation
+|-
+| Bipolar junction transistor (BJT) || Uses carrier injection across junctions; base current or base–emitter voltage can control collector current in its active operating region
+|-
+| Metal–oxide–semiconductor field-effect transistor (MOSFET) || Gate voltage changes the conductivity of a channel between source and drain, with a gate insulated from the semiconductor channel in conventional MOS devices
+|}
+
+BJTs have emitter, base and collector terminals. MOSFETs have source, drain and gate, and often a body terminal. The device family and orientation matter when interpreting a symbol or measuring voltages.
+
+== What does a transistor do inside a computer? ==
+
+Many digital circuits use complementary MOS transistors arranged in networks. When their control voltages change, current paths charge or discharge circuit nodes, allowing physical circuits to represent logical states.
+
+A processor contains many such switching elements, along with wiring, memory cells and other structures. The number of transistors does not by itself determine a computer's speed or intelligence: architecture, power, interconnect and software also matter.
+
+== What does a transistor do in an amplifier? ==
+
+An amplifier circuit biases a transistor at an operating point where a change in input causes a controlled change in output. A transistor alone is not a complete audio or radio amplifier. Resistors, power supplies, capacitors, matching networks and other components may be needed.
+
+Amplifier performance is described using measures such as gain, bandwidth, noise, distortion, power consumption and stability. No real transistor can amplify arbitrarily large signals at every frequency.
+
+== Where did transistors come from? ==
+
+John Bardeen and Walter Brattain reported the point-contact transistor in 1948 after experimental work at Bell Labs in 1947. William Shockley developed junction-transistor theory. The development of the metal–oxide–semiconductor transistor by Mohamed Atalla and Dawon Kahng around 1960 made another major family of integrated electronic devices possible.<ref name="bardeen">John Bardeen and Walter H. Brattain, [https://doi.org/10.1103/PhysRev.74.230 “The Transistor, A Semi-Conductor Triode”], ''Physical Review'' 74, 230–231 (1948), original report.</ref><ref name="moshistory">Computer History Museum, [https://www.computerhistory.org/siliconengine/metal-oxide-semiconductor-mos-transistor-demonstrated/ ''1960: Metal Oxide Semiconductor (MOS) Transistor Demonstrated''], historical account of the Atalla–Kahng MOS device.</ref>
+
+The historical point-contact transistor, a modern silicon MOSFET and a high-power industrial transistor are not physically identical designs.
+
+== Is a transistor the same as a diode? ==
+
+No. A [[Diode/Simple|diode]] usually has two main terminals and a strongly direction-dependent current–voltage response. A transistor uses a control signal to affect another conduction path. Some transistor structures contain internal semiconductor junctions that exhibit diode-like behavior, but one cannot model every transistor as a pair of independent diodes.
+
+== Limitations and safety ==
+
+Transistors have maximum voltage, current, temperature and energy limits. Switching transitions dissipate energy, and power devices can require heat sinks, protective circuits and carefully designed drivers. A small control voltage does not authorize unrestricted current through a component.
+
+Reliable design requires checking datasheets, operating conditions and the surrounding circuit. [[Voltage]], [[Electric current]], [[Resistor]] and [[Computer architecture]] are related concepts.
+
+</onlyinclude>
+
+== Continue reading ==
+
+[[Transistor/Technical|Technical]] explains carrier transport, transistor models and engineering constraints.
+
+== References ==
+
+<references/>

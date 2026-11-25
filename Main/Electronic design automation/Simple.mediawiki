@@ -1,0 +1,25 @@
+''Reading depth:'' [[Electronic design automation/Simple|Simple]] · [[Electronic design automation/Technical|Technical]]
+
+<onlyinclude>'''Electronic design automation''' (EDA) means using software to help engineers design and check electronic circuits before they are built.
+
+== What does it do? ==
+EDA also helps engineers design programmable hardware, such as FPGAs. It does not manufacture the chips itself.
+
+Imagine designing a chip with millions of tiny switches. EDA software helps translate a description of what the circuit should do into a connected layout of logic elements and wires. Other tools simulate the design, check whether signals arrive on time, and detect layout problems.
+
+== A typical chip-design journey ==
+# Describe the intended circuit and its behavior.
+# Test the description using simulation and other verification methods.
+# Convert it into logic gates and registers (synthesis).
+# Arrange the elements and connect their wires (placement and routing).
+# Check timing and physical design rules, revise, and repeat.
+
+The steps overlap: engineers repeatedly return to earlier stages when a check fails. FPGA designs follow a related but different path because the device's circuitry is configurable.
+
+== What it cannot promise ==
+A completed software flow is not proof that a chip will work under every condition. Physical manufacturing, packaging, electrical testing, and production yield are separate concerns.
+
+== Further reading ==
+* [https://openroad.readthedocs.io/en/latest/main/README.html OpenROAD: digital physical-design flow]
+* [https://yosyshq.readthedocs.io/projects/yosys/en/0.47/appendix/primer.html Yosys: circuit synthesis primer]
+</onlyinclude>

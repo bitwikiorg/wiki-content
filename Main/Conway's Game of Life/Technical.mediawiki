@@ -1,24 +1,525 @@
-'''Conway's Game of Life''' is a two-dimensional cellular automaton devised by John Horton Conway and publicized by Martin Gardner in 1970. A grid of cells repeatedly changes between live and dead states according to fixed local rules.
+{{Reading depth|base=Conway's Game of Life|current=Technical}}
 
-== Formal rule ==
-Let x_t(i,j)∈{0,1} and let n_t(i,j) be the sum of the eight surrounding cell states. The synchronous update is x_(t+1)=1 when n_t=3, or when x_t=1 and n_t=2; otherwise it is zero. The standard rule is B3/S23 on the infinite square lattice. A finite simulation must specify dead, periodic or other boundary conditions, which can alter outcomes.
+= Conway's Game of Life — Technical =
 
-<pre>
-for each cell (i,j) in current grid:
-  n = sum of 8 neighbor values from current grid
-  next[i,j] = (n == 3) or (current[i,j] and n == 2)
-current = next
-</pre>
+'''Conway's Game of Life''' is the outer-totalistic cellular automaton B3/S23 on the two-dimensional square lattice with the Moore neighborhood. It is deterministic, translation invariant, synchronous, and computationally universal.
 
-== Patterns and reproducibility ==
-A 2×2 live block in an otherwise empty grid is a still life. Three adjacent horizontal live cells form a blinker: one generation later they are vertical, and after another generation horizontal. A glider repeats its shape after four generations displaced diagonally. Test these patterns away from boundaries to verify simultaneous updates. Sparse implementations can evaluate only live cells and their adjacent candidates, provided all potentially born cells are included.
+The model is technically simple enough to specify in a few equations yet rich enough to support persistent moving structures, unbounded growth, logical computation, and undecidable prediction problems.
 
-== Computation and limits ==
-Life supports engineered logic and universal computation under idealized constructions; this is an existential result about suitable initial configurations, not a guarantee that arbitrary patterns compute usefully. Finite grids with fixed finite state necessarily eventually repeat. Long-lived complexity illustrates emergence from simple rules without demonstrating biological life, purposeful agency or consciousness.
+== Configuration space ==
+
+Let the lattice be
+
+<math>\mathbb Z^2.</math>
+
+A configuration at generation <math>t</math> is
+
+<math>x_t:\mathbb Z^2\rightarrow\{0,1\}.</math>
+
+A cell is live when <math>x_t(p)=1</math> and dead when <math>x_t(p)=0</math>.
+
+For finite seeds, only finitely many cells are initially live, but later support can become unbounded.
+
+== Moore neighborhood ==
+
+For cell <math>p=(i,j)</math>, the Moore neighborhood is
+
+<math>N(p)=\{(i+a,j+b):a,b\in\{-1,0,1\},(a,b)\neq(0,0)\}.</math>
+
+It contains exactly eight cells.
+
+Neighbor count:
+
+<math>n_t(p)=\sum_{q\in N(p)}x_t(q).</math>
+
+== Transition function ==
+
+The Life transition is
+
+<math>x_{t+1}(p)=
+\begin{cases}
+1,&x_t(p)=1\land n_t(p)\in\{2,3\},\\
+1,&x_t(p)=0\land n_t(p)=3,\\
+0,&\text{otherwise}.
+\end{cases}</math>
+
+The global map
+
+<math>F:\{0,1\}^{\mathbb Z^2}\rightarrow\{0,1\}^{\mathbb Z^2}</math>
+
+applies this local rule synchronously to every lattice site.
+
+== Outer-totalistic property ==
+
+The update depends only on:
+
+* current state of the center cell;
+* total number of live neighbors.
+
+It does not depend on which particular neighbors are alive.
+
+This makes Life outer-totalistic.
+
+The rulestring B3/S23 compactly encodes the two conditions.
+
+== Synchronous semantics ==
+
+All next states are functions of <math>x_t</math>.
+
+They are not computed from partially updated <math>x_{t+1}</math>.
+
+An in-place sequential implementation generally defines a different automaton.
+
+Double buffering or equivalent snapshot semantics is required.
+
+== Translation invariance ==
+
+Let <math>T_a</math> translate a configuration by vector <math>a\in\mathbb Z^2</math>.
+
+Life satisfies
+
+<math>F(T_a x)=T_aF(x).</math>
+
+The rule is the same everywhere.
+
+This symmetry underlies the notion of spaceships.
+
+== Still life ==
+
+A finite configuration <math>x</math> is a still life when
+
+<math>F(x)=x.</math>
+
+The block is the simplest common example.
+
+Still-life verification reduces to checking the local rule on the finite live region plus its one-cell boundary.
+
+== Oscillator ==
+
+A pattern has period <math>p>0</math> when
+
+<math>F^p(x)=x</math>
+
+and no smaller positive exponent has the property.
+
+A blinker has period 2.
+
+Oscillators can be classified by period, population, bounding box, and symmetries.
+
+== Spaceship ==
+
+Pattern <math>x</math> is a spaceship when
+
+<math>F^p(x)=T_d x</math>
+
+for some period <math>p>0</math> and nonzero displacement <math>d</math>.
+
+Velocity is
+
+<math>v=d/p</math>
+
+in lattice cells per generation.
+
+The glider has displacement <math>(1,1)</math> every four generations.
+
+== Speed limits ==
+
+Information cannot propagate arbitrarily fast because local updates depend only on adjacent cells.
+
+The maximum orthogonal propagation speed is conventionally called <math>c</math>: one cell per generation.
+
+Diagonal propagation has corresponding geometric constraints.
+
+Life spaceships move below these causal limits.
+
+== Glider phase ==
+
+A glider has four temporal phases.
+
+After four updates:
+
+<math>F^4(g)=T_{(1,1)}g.</math>
+
+Its average diagonal speed is
+
+<math>c/4</math>
+
+in standard Life terminology.
+
+Phase matters when arranging glider collisions.
+
+== Guns ==
+
+A gun is bounded machinery that emits spaceships periodically.
+
+If gun core has period <math>p</math> and emits one glider each cycle, live-cell population outside the core can grow without bound.
+
+The Gosper glider gun was the first known finite pattern proving unbounded growth in Life.
+
+== Linear growth ==
+
+A glider gun yields at least linear unbounded growth in occupied extent or cumulative emitted population over time.
+
+More elaborate breeders can produce faster polynomial growth.
+
+Life also supports patterns whose population grows indefinitely under several mechanisms.
+
+== Pattern collisions ==
+
+Life computation uses deterministic collisions among moving patterns.
+
+A collision can produce:
+
+* annihilation;
+* reflection;
+* new moving objects;
+* stable debris.
+
+Collision behavior depends on phase and relative position.
+
+This permits construction of logic.
+
+== Logic gates ==
+
+Logical bits can be represented by presence or absence of gliders in synchronized streams.
+
+Collisions can implement Boolean operations and routing.
+
+A universal set of gates plus memory permits arbitrary digital computation.
+
+The implementation is highly spatial and timing dependent.
+
+== Memory ==
+
+Stable or oscillatory patterns can store state.
+
+Glider streams can write or read such structures.
+
+Memory need not be a special primitive of the cellular automaton; it is implemented as a persistent pattern.
+
+== Universal Turing machines ==
+
+Life can simulate universal Turing machines.
+
+Rendell provides detailed constructions in which Life patterns implement the tape, state transition, and head behavior required for Turing computation.<ref name="rendell">[https://link.springer.com/book/10.1007/978-3-319-19842-2 Rendell, P. (2016), ''Turing Machine Universality of the Game of Life''.]</ref>
+
+This establishes Turing universality constructively.
+
+== Computational universality and efficiency ==
+
+Universality means expressiveness, not efficiency.
+
+If a conventional machine performs <math>T</math> logical steps, a Life simulation can require large spatial structures and many generations per logical step.
+
+Universality therefore does not imply practical computational competitiveness.
+
+== Undecidability ==
+
+Because Life can emulate arbitrary Turing machines, general prediction problems inherit undecidability.
+
+Suppose an algorithm could decide for every finite Life encoding whether a designated event corresponding to machine halting ever occurs.
+
+That would solve the halting problem.
+
+Therefore no such universal decider exists.
+
+This does not prevent solving particular instances.
+
+== Mortality-type problems ==
+
+Questions such as whether all activity eventually disappears or whether a particular pattern is ever produced can encode difficult or undecidable computation depending on the exact formalization.
+
+A statement of undecidability should specify the problem definition.
+
+Simulation for finite time is not a decision procedure for eventual behavior.
+
+== Garden of Eden ==
+
+A configuration <math>y</math> is a Garden of Eden if
+
+<math>\nexists x:F(x)=y.</math>
+
+It has no predecessor.
+
+For finite-support patterns, predecessor search is a constraint-satisfaction problem over the pattern and its surrounding region.
+
+Garden-of-Eden existence shows <math>F</math> is not surjective.
+
+== Preimage problem ==
+
+Given configuration <math>y</math>, find <math>x</math> with
+
+<math>F(x)=y.</math>
+
+Local constraints overlap, so predecessor cells cannot generally be chosen independently.
+
+SAT, constraint programming, or exhaustive search can be used for bounded regions.
+
+== Finite-board dynamics ==
+
+A board with <math>N</math> binary cells has state space size
+
+<math>2^N.</math>
+
+The deterministic map from this finite set to itself implies every orbit consists of:
+
+* a finite transient;
+* followed by a periodic cycle.
+
+This follows from the pigeonhole principle.
+
+== Toroidal boards ==
+
+Periodic boundary conditions identify opposite edges.
+
+The topology becomes a discrete torus.
+
+Patterns can interact with their own wrapped copies.
+
+Consequently, a glider may become periodic on a torus even though it translates forever on the infinite plane.
+
+== Dead boundaries ==
+
+A fixed finite rectangle with permanently dead exterior cells introduces absorbing edges.
+
+Patterns reaching the boundary can be destroyed or distorted.
+
+Results are not equivalent to infinite-plane Life.
+
+== Naive dense simulation ==
+
+For an <math>H\times W</math> board, naive update checks eight neighbors per cell:
+
+<math>O(HW)</math>
+
+time per generation.
+
+Memory is
+
+<math>O(HW)</math>.
+
+Double buffering requires two boards or equivalent state staging.
+
+== Convolution implementation ==
+
+Neighbor counts can be computed using convolution kernel
+
+<math>K=
+\begin{bmatrix}
+1&1&1\\
+1&0&1\\
+1&1&1
+\end{bmatrix}.</math>
+
+Then apply B3/S23 as a vectorized Boolean rule.
+
+This is efficient in array languages and on GPUs.
+
+Boundary semantics must still be defined.
+
+== Sparse simulation ==
+
+For finite sparse patterns, maintain set <math>L_t</math> of live cells.
+
+Only cells in
+
+<math>C_t=L_t\cup\bigcup_{p\in L_t}N(p)</math>
+
+can be live in the next generation.
+
+Count neighbor contributions for <math>C_t</math> and construct <math>L_{t+1}</math>.
+
+Cost is proportional to active region rather than infinite empty space.
+
+== Hashlife ==
+
+Hashlife represents the universe as a hash-consed quadtree.
+
+Identical subregions share one representation.
+
+Memoized evolution allows repeated structures to be advanced by exponentially large time steps.
+
+The method exploits both spatial repetition and temporal regularity.
+
+Highly irregular patterns can provide less reuse.
+
+== Quadtree representation ==
+
+A square region is recursively divided into four quadrants.
+
+Canonicalized nodes are indexed by child identities.
+
+If two regions have identical subtrees, they can share a node.
+
+This provides compression and memoization.
+
+== Population counting ==
+
+For finite-support configuration:
+
+<math>P_t=\sum_{p\in\mathbb Z^2}x_t(p).</math>
+
+A glider has constant population 5.
+
+A gun core plus emitted gliders produces growing total population depending on collisions and spacing.
+
+Population time series can reveal periodicity or growth but not full structure.
+
+== Bounding box ==
+
+For finite live set <math>L_t</math>, define width and height from coordinate extrema.
+
+Bounding-box growth is useful for identifying spaceships and unbounded expansion.
+
+Sparse outliers can dominate the measure.
+
+Other spatial metrics may be useful.
+
+== Period detection ==
+
+For bounded finite-state region, hash configurations.
+
+If hash matches a previous generation, verify equality and compute period.
+
+For moving patterns, translation-normalized canonicalization can detect spaceship periodicity.
+
+Hash collisions should be checked by full comparison.
+
+== Pattern canonicalization ==
+
+For finite pattern, translate minimum coordinates to origin.
+
+Optionally account for rotations and reflections.
+
+Canonical forms support database lookup and duplicate detection.
+
+Symmetry conventions should be documented.
+
+== Testing a simulator ==
+
+Minimal regression suite:
+
+* block remains fixed;
+* blinker has period 2;
+* glider translates by <math>(1,1)</math> after 4 generations;
+* known oscillator repeats at expected period.
+
+These tests catch many indexing and synchronous-update errors.
+
+== Random soups ==
+
+A random initial configuration can set each cell live independently with probability <math>p</math> over a finite region.
+
+Different densities yield different transients and debris.
+
+A “random soup” result depends strongly on:
+
+* region size;
+* density;
+* boundary;
+* random seed.
+
+These must be reported.
+
+== Mean-field approximation ==
+
+If cell states are assumed independent with live probability <math>p_t</math>, a mean-field update is
+
+<math>p_{t+1}=(1-p_t)\binom83p_t^3(1-p_t)^5
++p_t\left[\binom82p_t^2(1-p_t)^6+\binom83p_t^3(1-p_t)^5\right].</math>
+
+This approximation ignores spatial correlations.
+
+Real Life dynamics rapidly develops correlations, so mean field is qualitative.
+
+== Entropy and complexity measures ==
+
+One can measure local density, block entropy, mutual information, or compressibility.
+
+No single scalar captures “complexity.”
+
+A random configuration can have high entropy but little coherent structure.
+
+A glider can have low entropy and high functional significance.
+
+== Wolfram-style classes ==
+
+Life is often compared with class-IV cellular automata: systems displaying long-lived localized structures and a mixture of order and disorder.
+
+This classification is qualitative.
+
+It should not be treated as a rigorous theorem about every seed.
+
+== Rule-space comparison ==
+
+Life-like rules vary birth set <math>B</math> and survival set <math>S</math> within neighbor counts 0–8.
+
+There are
+
+<math>2^9\times2^9=2^{18}</math>
+
+possible outer-totalistic two-state Moore-neighborhood B/S rules if all birth and survival subsets are allowed.
+
+B3/S23 occupies one point in this rule space.
+
+== Artificial-life interpretation ==
+
+Life demonstrates artificial persistence, reproduction-like constructions, and open-ended pattern discovery in a formal substrate.
+
+Base Life does not provide biological metabolism or evolution.
+
+Evolutionary experiments require additional population, mutation, replication, and selection frameworks.
+
+== Emergence boundary ==
+
+Higher-level Life objects are legitimate explanatory abstractions because they support stable predictions.
+
+Saying “the glider moved” is more compact than listing every cell transition.
+
+But the glider has no separate causal law beyond the cellular dynamics unless the higher-level model is defined as an effective description.
+
+== Biological boundary ==
+
+Conway's “Life” terminology is metaphorical.
+
+The automaton does not establish a universal definition of biological life.
+
+Claims about origins of life, cognition, or consciousness require additional mechanisms and evidence.
+
+== Reproducibility checklist ==
+
+A Life experiment should specify:
+
+# exact B/S rule;
+# lattice topology;
+# boundary condition;
+# initial pattern;
+# coordinate convention;
+# generation count;
+# implementation;
+# any pattern-detection normalization.
+
+Standard B3/S23 on the infinite plane is the reference model.
+
+== Epistemic boundary ==
+
+The strongest established claims are mathematical:
+
+* deterministic local dynamics;
+* persistent and moving finite patterns;
+* unbounded growth from finite seeds;
+* computational universality;
+* undecidable general prediction questions.
+
+These do not imply biological life or subjective experience.
 
 == References ==
-* [https://www.scientificamerican.com/article/not-just-fun-and-games/ Scientific American, Not Just Fun and Games (history)]
-* [https://mathworld.wolfram.com/GameofLife.html Wolfram MathWorld, Game of Life]
+
+<references />
+
+* [https://www.scientificamerican.com/article/mathematical-games-1970-10/ Gardner (1970), original popular introduction.]
+* [https://link.springer.com/book/10.1007/978-3-319-19842-2 Rendell (2016), constructive universality.]
 
 == Reading depth ==
-[[Conway's Game of Life/Simple|Simple explanation]]
+
+[[Conway's Game of Life/Simple|Simple explanation]] · [[Conway's Game of Life|Core article]]

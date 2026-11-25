@@ -34,9 +34,9 @@ For a wide-sense stationary discrete-time process, the mean is constant and auto
 
 <math>\mu_X=E[X[n]],</math>
 
-<math>R_X[k]=E[(X[n]-\mu_X)(X[n-k]-\mu_X)^*].</math>
+<math>R_X[k]=E[X[n]X^*[n-k]].</math>
 
-Under appropriate conditions, the power spectral density is the discrete-time Fourier transform of the autocorrelation sequence. Stationarity is a modeling assumption and must be tested or justified; many biological, environmental, economic, and engineered signals are nonstationary.
+The corresponding autocovariance is <math>C_X[k]=R_X[k]-|\mu_X|^2</math>. Under appropriate conditions, the power spectral density is the discrete-time Fourier transform of the autocorrelation sequence. Stationarity is a modeling assumption and must be tested or justified; many biological, environmental, economic, and engineered signals are nonstationary.
 
 === Periodic and aperiodic ===
 

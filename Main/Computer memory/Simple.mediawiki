@@ -1,7 +1,7 @@
 [[Computer memory/Simple|Simple]] · [[Computer memory/Technical|Technical]]
 = Computer memory — Simple =
 
-<onlyinclude>'''Computer memory''' is the hardware and associated addressing machinery used to hold information that a computer can read or change. Programs need memory for instructions, working data and results. Different memory technologies have different capacities, speeds, energy requirements and ways of retaining information when power is removed. In everyday computing, “RAM” usually means the main working memory; in computer architecture the broader term also includes processor registers, caches and other addressable storage technologies.<ref name="nvidia">NVIDIA, [https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html ''CUDA Programming Guide'', Programming Model], distinction between host/device DRAM, registers, caches and shared memory.</ref></onlyinclude>
+<onlyinclude>'''Computer memory''' is the hardware and associated addressing machinery used to hold information that a computer can read or change. Programs need memory for instructions, working data and results. Different memory technologies have different capacities, speeds, energy requirements and ways of retaining information when power is removed. In everyday computing, “RAM” usually means the main working memory; in computer architecture the broader term also includes processor registers, caches and other addressable storage technologies.<ref name="nvidia">NVIDIA, [https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html ''CUDA Programming Guide'', Programming Model], distinction between host/device DRAM, registers, caches and shared memory.</ref>
 
 == What happens when a program runs? ==
 
@@ -50,6 +50,8 @@ GPUs have their own memory organization. Depending on the device and programming
 == What can go wrong? ==
 
 A memory system can fail because of a defective component, data corruption, overheating, incorrect software addressing or concurrent programs accessing shared data without proper synchronization. Error-correcting memory can detect and correct specified classes of bit errors, but does not prevent all failures or replace backups.
+
+</onlyinclude>
 
 == Continue reading ==
 

@@ -25,6 +25,7 @@ class ComputerMemoryArticleTests(unittest.TestCase):
         self.assertIn("{{#ask:", self.core)
         self.assertEqual(self.simple.count("<onlyinclude>"), 1)
         self.assertEqual(self.simple.count("</onlyinclude>"), 1)
+        self.assertIn("== ", self.simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertIn("'''Computer memory'''", self.simple)
         for body in (self.core,self.simple,self.technical):
             self.assertNotIn("{{Reading depth",body)

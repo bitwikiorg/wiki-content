@@ -8,6 +8,7 @@ def test_two_depth_identity_and_navigation():
     core, simple, technical = (read(s) for s in ("", "/Simple", "/Technical"))
     assert "{{:Wafer testing/Simple}}" in core
     assert core.count("<onlyinclude>") == core.count("</onlyinclude>") == 1
+    assert "== How testing works ==" in simple.split("<onlyinclude>")[1].split("</onlyinclude>")[0]
     for text in (core, simple, technical):
         assert "[[Wafer testing/Simple|Simple]]" in text
         assert "[[Wafer testing/Technical|Technical]]" in text

@@ -310,8 +310,8 @@
         "N006"
       ],
       "reason": "Related topic or shared editorial benchmark; compare without manufacturing conceptual equivalence",
-      "status": "pending",
-      "note": "N005 independently checkpointed; N006 pending."
+      "status": "corrected_pending_validation",
+      "note": "N005 and N006 independently checkpointed; final validation outstanding."
     },
     {
       "pair_id": "R33",
@@ -1124,9 +1124,21 @@
       "title": "Six Thinking Hats",
       "pr_number": 107,
       "pr_url": "https://github.com/bitwikiorg/wiki-content/pull/107",
-      "status": "pending",
-      "attempts": 0,
-      "review": null
+      "status": "corrected_pending_validation",
+      "attempts": 1,
+      "review": {
+        "changed": "PR #107 commit b9f22667cdb044ef482c21fd41223f6d18eda009; canonical host transcludes complete Simple; reciprocal navigation; added independent controlled study with limitations.",
+        "preservation_evidence": [
+          "Six roles, epistemic hazards, classroom and hospital examples, pre-existing empirical comparisons, references and related links retained."
+        ],
+        "scientific_sources": [
+          "de Bono (1985), Elsayed and Abbas (2021) study abstract; Elbilgahy and Alanazi (2025); Soylu et al. (2025), full text and design inspected."
+        ],
+        "static_checks": "8/8 post-commit source assertions passed; PR head independently verified.",
+        "tests": "Scoped Python test updated; execution and full V2/staging validation outstanding.",
+        "gate": "PR #136 and owner approval; no merge/publication.",
+        "review_pr": "https://github.com/bitwikiorg/wiki-content/pull/107"
+      }
     },
     {
       "id": "N007",
@@ -1759,16 +1771,16 @@
   ],
   "state": {
     "last_completed_pair": null,
-    "last_checkpoint_article": "N005",
+    "last_checkpoint_article": "N006",
     "run_count": 19,
     "pairs_fully_reviewed": 0,
     "articles_ready_for_human_review": 0,
-    "articles_pending_or_incomplete": 2,
+    "articles_pending_or_incomplete": 1,
     "articles_blocked": 0,
     "merges_done_by_this_task": 0,
-    "last_reviewed_pair": "R31",
-    "articles_corrected_pending_validation": 63,
-    "pairs_corrected_pending_validation": 31
+    "last_reviewed_pair": "R32",
+    "articles_corrected_pending_validation": 64,
+    "pairs_corrected_pending_validation": 32
   },
   "hard_rules": [
     "Read only this queue and the two assigned PRs plus exact source dependencies; do not rediscover the source backlog or enumerate all PRs.",

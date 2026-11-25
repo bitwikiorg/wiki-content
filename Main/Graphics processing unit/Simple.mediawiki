@@ -1,0 +1,43 @@
+'''Reading depth:''' '''Simple''' · [[Graphics processing unit/Technical|Technical]]
+
+= Graphics processing unit — Simple =
+
+<onlyinclude>A '''graphics processing unit''' ('''GPU''') is a computing component designed to process many operations in parallel. GPUs first became important for drawing images and 3D scenes, but many also run scientific simulations, image processing and machine-learning calculations. A GPU can be built into a processor or supplied as a separate chip or card. Its advantage depends on the task: many independent calculations often suit it well, while small or strongly sequential tasks may run faster on a CPU.<ref name="cuda">NVIDIA, [https://docs.nvidia.com/cuda/archive/12.3.0/cuda-c-programming-guide/ ''CUDA C Programming Guide''], thread and memory hierarchy.</ref>
+
+== Why use a GPU? ==
+
+Imagine coloring a large image. Each pixel can often be computed using similar operations, so many pixels can be processed together. By contrast, a task where every next step depends on the previous result may not have enough independent work to keep a large parallel machine busy.
+
+A CPU and GPU can cooperate. The CPU runs application and system logic; software submits suitable batches of work to the GPU; results may be copied back or used directly for display. Moving data between different memory spaces can take time.
+
+== Graphics and general computing ==
+
+In graphics, programmable shaders and specialized hardware help transform geometry, shade surfaces and compose images. In general-purpose computing, programs called '''kernels''' process arrays, matrices and other data. A kernel is not the same thing as an operating-system kernel.
+
+The terms '''thread''', '''block''' and '''warp''' or '''wavefront''' describe how some GPU programming systems organize parallel work. They do not mean a GPU has a separate physical processor for every logical thread. For example, NVIDIA CUDA commonly groups 32 threads into a warp; AMD HIP wavefront widths depend on the hardware architecture.<ref name="hip">AMD, [https://rocm.docs.amd.com/projects/HIP/en/docs-6.3.0/understand/programming_model.html ''HIP programming model''], architecture-dependent execution groups.</ref>
+
+== Why can a GPU be slow? ==
+
+Not every program is parallel. GPU performance can suffer when threads follow different branches, wait for data, move too much information between CPU and GPU, or compete for limited memory. Very small tasks may spend more time starting work than doing it.
+
+More GPU cores, memory or peak operations per second do not guarantee better performance. Programs must be measured under their actual workload and precision requirements.
+
+== Is a GPU the same as a graphics card? ==
+
+No. A graphics card is a physical assembly that can contain a GPU chip, memory, power circuitry, cooling and display connectors. An integrated GPU may share a chip or package with a CPU. Some data-center GPUs do not connect directly to a monitor.
+
+A GPU is also not identical to a neural processing unit, a CPU, a programmable FPGA or an ASIC. These device categories can overlap in function but have different design and programming tradeoffs.
+
+== How to evaluate one ==
+
+Ask what program must run, which software supports the device, how much memory it requires, how accurate its results must be, and whether performance is limited by computation, data movement or latency. Benchmark the complete application rather than relying on a peak specification.
+
+</onlyinclude>
+
+== Read further ==
+
+[[Graphics processing unit/Technical|Technical]] explains the hardware/software stack and relations to computing. [[Graphics processing unit/Technical|Technical]] analyzes execution groups, occupancy, memory traffic and measured speedup assumptions.
+
+== References ==
+
+<references/>

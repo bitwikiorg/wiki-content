@@ -1,0 +1,591 @@
+{{Infobox
+| title = Content Migration Guide: Importing External Knowledge
+| description = Guide for migrating content from Wikipedia, Grokpedia, academic databases, and other sources into BITwiki with proper epistemic marking.
+| type = migration-guide
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: migration-guide
+domain: content-migration
+| workflow = state: Active
+| sources = - "https://www.mediawiki.org/wiki/Help:Import"
+- "https://www.mediawiki.org/wiki/Manual:Importing_XML_dumps"
+- "https://en.wikipedia.org/wiki/Wikipedia:Copying_text_from_other_sources"
+- "https://en.wikipedia.org/wiki/Wikipedia:Close_paraphrasing"
+- "https://www.semantic-mediawiki.org/wiki/Help:Import_vocabulary"
+- "https://en.wikipedia.org/wiki/Wikipedia:Translation"
+- "https://en.wikipedia.org/wiki/Wikipedia:Non-free_content"
+- "https://creativecommons.org/licenses/by-sa/4.0/"
+- "https://en.wikipedia.org/wiki/Wikipedia:Reusing_Wikipedia_content"
+- "https://www.mediawiki.org/wiki/Extension:DataTransfer"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Migration]]
+[[Category:BITwiki Front Matter]]
+[[Category:Hyperion Workspace]]
+
+
+= Content Migration Guide: Importing External Knowledge =
+
+== Executive Summary
+
+This guide provides procedures for migrating content from external sources into BITwiki while maintaining epistemic integrity, proper attribution, and SMW compatibility.
+
+'''Supported Sources:'''
+* Wikipedia (CC BY-SA compatible)
+* Grokpedia (check license)
+* Academic databases (check access)
+* Other wikis (license-dependent)
+* Original research (with epistemic marking)
+
+----
+== 1. Pre-Migration Assessment
+
+=== 1.1 License Compatibility
+
+| Source | License | Compatible | Notes |
+|--------|---------|------------|-------|
+| Wikipedia | CC BY-SA 4.0 | ✅ Yes | Attribution required |
+| Grokpedia | Varies | ⚠️ Check | Verify per article |
+| H+pedia | CC BY-SA 3.0 | ✅ Yes | Attribution required |
+| RationalWiki | CC BY-SA 3.0 | ✅ Yes | Attribution required |
+| Academic papers | Varies | ⚠️ Check | Usually not compatible |
+| Personal notes | N/A | ✅ Yes | Original content |
+
+'''License Requirements:'''
+* CC BY-SA: Attribution + ShareAlike
+* CC BY: Attribution only
+* Public Domain: No restrictions
+* Proprietary: Not compatible
+
+=== 1.2 Content Quality Assessment
+
+'''Before Migration:'''
+* [ ] Verify source reliability
+* [ ] Check epistemic status at source
+* [ ] Assess confidence level
+* [ ] Identify primary sources
+* [ ] Note any disputes or controversies
+
+'''Red Flags:'''
+* Unsourced claims
+* Edit wars at source
+* Outdated information
+* Biased language
+* Circular references
+
+=== 1.3 Epistemic Mapping
+
+'''Map Source Status to BITwiki:'''
+
+| Source Status | BITwiki Status | Confidence |
+|---------------|----------------|------------|
+| Featured Article | Established | 0.85-0.95 |
+| Good Article | Established | 0.75-0.85 |
+| B-Class | Emerging | 0.60-0.75 |
+| C-Class | Emerging | 0.50-0.65 |
+| Start/Stub | Hypothetical | 0.30-0.50 |
+| Disputed | Contested | Variable |
+
+----
+== 2. Migration Workflows
+
+=== 2.1 Wikipedia Migration
+
+'''Step 1: Export from Wikipedia'''
+```bash
+# Use Special:Export
+# Or API
+https://en.wikipedia.org/w/api.php?action=query&titles=Page_Title&export=1
+```
+
+'''Step 2: Transform Content'''
+```python
+# Convert Wikipedia markup to BITwiki format
+# Add YAML frontmatter
+# Insert epistemic markers
+# Update categories
+```
+
+'''Step 3: Epistemic Marking'''
+```mediawiki
+---
+title: "Page Title"
+description: "Migrated from Wikipedia"
+type: concept
+author: "Wikipedia Contributors"
+created: "2026-02-13"
+version: "1.0.0"
+ontology:
+ entity_type: concept
+ domain: [domain]
+epistemic_status: Emerging
+confidence: Established
+workflow:
+ state: Active
+sources:
+ - "https://en.wikipedia.org/wiki/Page_Title"
+license: "CC-BY-SA-4.0"
+---
+
+{{Documentation}}
+[[Category:BITwiki]]
+[[Category:Migrated Content]]
+[[Category:Wikipedia Source]]
+
+
+= Page Title =
+
+{{Epistemic_Marker
+|confidence=Medium
+|evidence=Wikipedia (B-Class)
+|status=Under review
+}}
+
+{{Migrated_From
+|source=Wikipedia
+|url=https://en.wikipedia.org/wiki/Page_Title
+|date=2026-02-13
+|license=CC-BY-SA-4.0
+}}
+
+[Original Wikipedia content]
+
+== References ==
+<references />
+
+== External Links ==
+* [https://en.wikipedia.org/wiki/Page_Title Wikipedia article]
+
+
+```
+
+'''Step 4: Import to BITwiki'''
+```bash
+php maintenance/importTextFile.php \
+  --title "Page_Title" \
+  --overwrite \
+  migrated_content.wiki
+```
+
+=== 2.2 Grokpedia Migration
+
+'''Step 1: Verify License'''
+* Check Grokpedia terms of service
+* Verify per-article license
+* Document license in migration
+
+'''Step 2: Extract Content'''
+```bash
+# Manual extraction or API if available
+# Grokpedia may not have export API
+```
+
+'''Step 3: Transform and Mark'''
+```mediawiki
+{{Migrated_From
+|source=Grokpedia
+|url=https://grokipedia.com/article/...
+|date=2026-02-13
+|license=[Check and document]
+}}
+
+{{Epistemic_Marker
+|confidence=Medium
+|evidence=AI-synthesized
+|status=Under review
+}}
+```
+
+'''Note:''' Grokpedia content may require additional verification due to AI generation.
+
+=== 2.3 Academic Database Migration
+
+'''Step 1: Check Access Rights'''
+* Verify institutional access
+* Check publisher permissions
+* Document fair use rationale
+
+'''Step 2: Extract and Summarize'''
+* Do not copy full text (copyright)
+* Create original summary
+* Cite with DOI
+* Link to source
+
+'''Step 3: Create BITwiki Article'''
+```mediawiki
+---
+title: "Research Summary: [Title]"
+type: source
+author: "[Your Name]"
+created: "2026-02-13"
+epistemic_status: Established
+confidence: Established
+sources:
+ - "[DOI or citation]"
+---
+
+= Research Summary: [Title] =
+
+{{Infobox_Source
+|title=[Original Title]
+|author=[Authors]
+|date=[Publication Date]
+|type=Journal Article
+|doi=[DOI]
+|tier=T2
+}}
+
+[Original summary, not copied text]
+
+== Key Findings ==
+- Finding 1
+- Finding 2
+
+== BITwiki Relevance ==
+[How this relates to BITwiki concepts]
+
+== References ==
+[1] [Full citation with DOI]
+```
+
+=== 2.4 Bulk Migration
+
+'''Using XML Import:'''
+```bash
+# Export from source
+# Transform with script
+# Import to BITwiki
+
+php maintenance/importDump.php export.xml
+```
+
+'''Using Data Transfer Extension:'''
+```bash
+# Enable Extension:DataTransfer
+# Use Special:ImportData
+# Map fields to SMW properties
+```
+
+----
+== 3. Content Transformation
+
+=== 3.1 Markup Conversion
+
+'''Wikipedia → BITwiki:'''
+
+| Wikipedia | BITwiki | Notes |
+|-----------|---------|-------|
+| `{{Infobox ...}}` | `{{Infobox_Entity|...}}` | Convert to BITwiki infobox |
+| `[[Category:...]]` | `[[Category:BITwiki ...]]` | Add BITwiki prefix |
+| `{{Citation needed}}` | `{{Epistemic_Marker|...}}` | Add uncertainty marker |
+| `{{Disputed}}` | `[[Has epistemic status::Contested]]` | Set status |
+| `{{Primary source}}` | `{{Evidence_Tier|T1}}` | Mark evidence tier |
+
+'''Template Conversion:'''
+```python
+def convert_wikipedia_to_bitwiki(text):
+    # Convert infoboxes
+    text = re.sub(r'\{\{Infobox (\w+)', r'{{Infobox_Entity', text)
+    
+    # Convert categories
+    text = re.sub(r'\[\[Category:(\w+)', r'[[Category:BITwiki \1', text)
+    
+    # Add epistemic markers
+    text = add_epistemic_markers(text)
+    
+    # Add YAML frontmatter
+    text = add_yaml_frontmatter(text)
+    
+    return text
+```
+
+=== 3.2 Epistemic Enhancement
+
+'''Add Missing Markers:'''
+* Confidence scores
+* Evidence tiers
+* Falsification conditions
+* Uncertainty markers
+
+'''Example:'''
+```mediawiki
+Original: "Systems science is the study of systems."
+
+Enhanced: "Systems science is the study of systems.{{Citation needed|confidence=Medium}}"
+
+With marker: "Systems science is the study of systems.{{Epistemic_Marker|confidence=Medium|evidence=Secondary sources|status=Under review}}"
+```
+
+=== 3.3 SMW Property Addition
+
+'''Add Semantic Markup:'''
+```mediawiki
+[[Has title::Page Title]]
+[[Has domain::Systems Science]]
+[[Has confidence::0.75]]
+[[Has epistemic status::Emerging]]
+[[Was derived from::Wikipedia]]
+[[Has source URL::https://en.wikipedia.org/wiki/Page_Title]]
+```
+
+----
+== 4. Quality Assurance
+
+=== 4.1 Post-Migration Checklist
+* [ ] YAML frontmatter complete
+* [ ] Epistemic markers added
+* [ ] SMW properties set
+* [ ] Categories assigned
+* [ ] Attribution included
+* [ ] License documented
+* [ ] Links verified
+* [ ] References formatted
+* [ ] See Also section added
+* [ ] External links included
+
+=== 4.2 Validation
+
+'''Epistemic Validation:'''
+```bash
+php maintenance/runEpistemicAudit.php \
+  --page "Migrated_Page" \
+  --output validation.json
+```
+
+'''Link Check:'''
+```bash
+php maintenance/checkBrokenLinks.php \
+  --page "Migrated_Page"
+```
+
+'''SMW Verification:'''
+```mediawiki
+{{#ask: [[Migrated_Page]]
+|?Has title
+|?Has confidence
+|?Has epistemic status
+|format=table
+}}
+```
+
+=== 4.3 Review Process
+
+'''Steward Review:'''
+# Submit for review
+# Address feedback
+# Update epistemic status
+# Finalize
+
+'''Community Review:'''
+* Post on Community Portal
+* Request feedback
+* Incorporate suggestions
+* Update confidence
+
+----
+== 5. Special Cases
+
+=== 5.1 Disputed Content
+
+'''Migration Strategy:'''
+* Preserve multiple viewpoints
+* Mark as Contested
+* Include dispute summary
+* Link to discussion
+
+'''Template:'''
+```mediawiki
+{{Contested_Content
+|issue=Description of dispute
+|viewpoints=Viewpoint 1; Viewpoint 2
+|status=Ongoing
+}}
+```
+
+=== 5.2 Outdated Content
+
+'''Migration Strategy:'''
+* Mark as Historical
+* Add update date
+* Link to current version
+* Note changes
+
+'''Template:'''
+```mediawiki
+{{Historical_Content
+|as_of=2025-01-01
+|current_version=Link to updated content
+|changes=Summary of changes
+}}
+```
+
+=== 5.3 Non-English Sources
+
+'''Migration Strategy:'''
+* Translate to English
+* Preserve original title
+* Link to original
+* Note translation
+
+'''Template:'''
+```mediawiki
+{{Translated_From
+|original_title=[Original Title]
+|language=[Language]
+|translator=[Your Name]
+|source_url=[URL]
+}}
+```
+
+----
+== 6. Automation
+
+=== 6.1 Migration Scripts
+
+'''Python Migration Tool:'''
+```python
+#!/usr/bin/env python3
+"""BITwiki Migration Tool"""
+
+import requests
+import re
+import yaml
+
+class BITwikiMigrator:
+    def __init__(self, source, target):
+        self.source = source
+        self.target = target
+    
+    def fetch_wikipedia(self, title):
+        """Fetch article from Wikipedia"""
+        url = f"https://en.wikipedia.org/w/api.php"
+        params = {
+            'action': 'query',
+            'titles': title,
+            'prop': 'revisions',
+            'rvslots': 'main',
+            'rvprop': 'content',
+            'format': 'json'
+        }
+        response = requests.get(url, params=params)
+        return response.json()
+    
+    def transform_content(self, content, source_info):
+        """Transform to BITwiki format"""
+        # Add YAML frontmatter
+        frontmatter = {
+            'title': source_info['title'],
+            'description': f"Migrated from {source_info['source']}",
+            'type': 'concept',
+            'author': source_info['author'],
+            'created': datetime.now().isoformat(),
+            'epistemic_status': 'Emerging',
+            'confidence': 0.70,
+            'sources': [source_info['url']],
+            'license': source_info['license']
+        }
+        
+        yaml_text = yaml.dump(frontmatter, default_flow_style=False)
+        
+        # Convert markup
+        content = self.convert_markup(content)
+        
+        # Add epistemic marker
+        marker = "{{Epistemic_Marker|confidence=Medium|evidence=Secondary sources|status=Under review}}"
+        
+        return f"---\n{yaml_text}---\n\n{marker}\n\n{content}"
+    
+    def convert_markup(self, content):
+        """Convert source markup to BITwiki"""
+        # Convert infoboxes
+        content = re.sub(r'\{\{Infobox', '{{Infobox_Entity', content)
+        
+        # Convert categories
+        content = re.sub(r'\[\[Category:', '[[Category:BITwiki ', content)
+        
+        return content
+    
+    def upload_to_bitwiki(self, title, content):
+        """Upload to BITwiki"""
+        # Use MediaWiki API
+        pass
+
+# Usage
+migrator = BITwikiMigrator('wikipedia', 'bitwiki')
+content = migrator.fetch_wikipedia('Systems_science')
+transformed = migrator.transform_content(content, {
+    'title': 'Systems Science',
+    'source': 'Wikipedia',
+    'author': 'Wikipedia Contributors',
+    'url': 'https://en.wikipedia.org/wiki/Systems_science',
+    'license': 'CC-BY-SA-4.0'
+})
+```
+
+=== 6.2 Batch Processing
+
+'''Batch Migration Script:'''
+```bash
+#!/bin/bash
+# migrate_batch.sh
+
+PAGES="Systems_science Cybernetics Recursion"
+
+for page in $PAGES; do
+    echo "Migrating: $page"
+    python migrate.py --source wikipedia --title "$page"
+done
+```
+
+----
+== 7. Troubleshooting
+
+=== 7.1 Common Issues
+
+'''Import Fails:'''
+* Check file encoding (must be UTF-8)
+* Verify XML format
+* Check for illegal characters
+* Review import limits
+
+'''SMW Properties Not Set:'''
+* Verify Property: pages exist
+* Check property syntax
+* Rebuild semantic data
+
+'''Links Broken:'''
+* Update internal links
+* Check external link format
+* Verify page names
+
+=== 7.2 Getting Help
+
+'''Resources:'''
+* [[BITwiki_Migration_Guide|This Guide]]
+* [[BITwiki_User_Guide|User Guide]]
+* [[Special:Import|Import Page]]
+* [[BITwiki_Community_Portal|Community Portal]]
+
+----
+== Conclusion
+
+Content migration requires careful attention to epistemic integrity, licensing, and quality. By following these procedures, you ensure BITwiki maintains its standards while expanding its knowledge base.
+
+'''Key Principles:'''
+* Verify licenses before migration
+* Mark epistemic status honestly
+* Attribute sources properly
+* Enhance with SMW properties
+* Validate after migration
+
+'''Next Steps:'''
+# Assess content for migration
+# Verify licenses
+# Transform and enhance
+# Import and validate
+# Request review

@@ -1,0 +1,345 @@
+{{Infobox
+| title = Citation Pattern Integration Guide
+| description = Integration of Grokpedia citation pattern research into BITwiki's Evidence-Epistemics framework. Analysis of 95 Grokpedia articles reveals consistent citation practices that inform BITwiki's source hierarchy and quality benchmarks.
+| type = guide
+| author = BITCORE
+| created = 2026-02-11
+| version = 2.0.0
+| epistemic_status = Attribution-Traced
+| confidence = Emerging
+| license = CC-BY-SA-4.0
+| ontology = entity_type: guide-document
+domain: research-integration
+| workflow = state: Beta
+}}
+
+= Citation Pattern Integration Guide =
+== From Grokpedia Research to BITwiki Evidence-Epistemics ==
+
+'''Version:''' 2.0 | '''Date:''' 2026-02-12 | '''Source:''' Grokpedia Research (95 articles analyzed)
+
+----
+== Executive Summary ==
+
+This guide integrates Grokpedia citation pattern research into BITwiki's Evidence-Epistemics framework. Analysis of Grokpedia articles reveals consistent citation practices that inform BITwiki's source hierarchy and quality benchmarks.
+
+=== Key Research Findings ===
+
+| Metric | Grokpedia Pattern | BITwiki Adaptation |
+|--------|-------------------|-------------------|
+| Citation Distribution | 12.6% high (>200), 40% medium, 47.4% low | Tiered quality expectations |
+| Internal Link Density | 4.6 per 1000 chars | Maintain contextual linking |
+| Universal Sections | References (100%), See Also (94%), External Links (91%) | Mandatory sections |
+
+----
+== 1. Citation System Architecture ==
+
+=== 1.1 Numeric Citation Format ===
+
+'''Grokpedia Pattern:'''
+```
+Text with claim[1] and another claim[2].
+```
+
+'''BITwiki Implementation:'''
+```
+BITwiki uses standard Wikipedia-style numeric citations with semantic enhancements:
+
+Text with established claim[[BITwiki_Source_Hierarchy.wiki#Tier_1|1]] and 
+preliminary finding[[BITwiki_Source_Hierarchy.wiki#Tier_3|2]].
+```
+
+'''Key Characteristics:'''
+* Sequential numbering within articles
+* Superscript formatting
+* Linked to References section
+* Consistent across all article types
+* Enhanced with epistemic tier indicators
+
+=== 1.2 Citation Quality Indicators ===
+
+Rather than arbitrary density requirements, BITwiki evaluates citations by:
+
+| Quality Dimension | Indicator | Assessment |
+|-------------------|-----------|------------|
+| Source Diversity | Multiple independent sources | Preferred over single-source dependency |
+| Epistemic Tier | Tier 1-5 classification | Higher tiers for exceptional claims |
+| Temporal Coverage | Historical vs current | Context-appropriate sourcing |
+| Verification Status | Auditable references | Traceable to origin |
+
+----
+== 2. Section Structure Integration ==
+
+=== 2.1 Header Hierarchy Standards ===
+
+'''Grokpedia Analysis:'''
+| Level | Count | Percentage |
+|-------|-------|------------|
+| H2 | 682 | 67.2% |
+| H3 | 1172 | 27.6% |
+| H4 | 0 | 5.2% |
+
+'''BITwiki Implementation:'''
+```
+Article Structure:
+├── H1: Article Title (1)
+├── H2: Major Sections (10-15)
+│ ├── H3: Subsections (3-5 per H2)
+│ │ └── H4: Detailed points (optional)
+```
+
+'''Structural Guidance:'''
+| Metric | Target |
+|--------|--------|
+| Total Sections | Context-dependent |
+| H2 Sections | Primary divisions |
+| H3 Sections | Subordinate divisions |
+| H4 Sections | Granular detail (as needed) |
+
+=== 2.2 Universal Section Requirements ===
+
+'''Mandatory Sections:'''
+# '''References''' - Standard citation list with epistemic markers
+# '''See Also''' - Internal link suggestions (context-appropriate quantity)
+# '''External Links''' - Outbound resources (curated selection)
+
+'''Common Content Sections:'''
+
+| Section | Frequency | BITwiki Priority |
+|---------|-----------|------------------|
+| History | 70.5% | High |
+| Overview | 56.8% | High |
+| Specifications | 50.5% | High (technical) |
+| Design | 47.4% | Medium |
+| Development | 44.2% | Medium |
+| Applications | 40.0% | High |
+| Variants | 36.8% | Low |
+| Performance | 33.7% | Medium |
+
+----
+== 3. Source Hierarchy Integration ==
+
+=== 3.1 Tier 1: Established Sources (Highest Confidence) ===
+
+'''Grokpedia Pattern:''' Academic papers, official documentation, primary sources
+
+'''BITwiki Implementation:'''
+```
+Tier 1 Sources (Confidence: 80-100%):
+├── Peer-reviewed research (reputable journals)
+├── Official protocol documentation
+├── Primary source materials
+├── Expert consensus statements
+└── Government data/statistics
+
+Citation Format: [[BITwiki_Source_Hierarchy.wiki#Tier_1|1]]
+```
+
+'''Requirements:'''
+* Multiple independent sources preferred
+* Methodology transparent
+* Peer review verified
+* Conflicts of interest disclosed
+
+=== 3.2 Tier 2: Well-Supported Sources ===
+
+'''Grokpedia Pattern:''' Quality journalism, expert blogs, technical reviews
+
+'''BITwiki Implementation:'''
+```
+Tier 2 Sources (Confidence: 60-79%):
+├── Quality journalism (fact-checked)
+├── Expert-authored publications
+├── Think tank reports (transparent methodology)
+├── Industry reports (conflicts noted)
+└── Technical documentation
+
+Citation Format: [[BITwiki_Source_Hierarchy.wiki#Tier_2|2]]
+```
+
+=== 3.3 Tier 3-5: Lower Confidence Sources ===
+
+| Tier | Confidence | Source Types | Usage |
+|------|------------|--------------|-------|
+| Tier 3 | 40-59% | Community sources, forums | Context only |
+| Tier 4 | 20-39% | Opinion pieces, blogs | Labeled as opinion |
+| Tier 5 | 0-19% | Unverified claims | Flag for review |
+
+----
+== 4. Internal Linking Patterns ==
+
+=== 4.1 Link Density Standards ===
+
+'''Grokpedia Metric:''' 4.6 links per 1000 characters
+
+'''BITwiki Implementation:'''
+```
+Target: Contextual internal linking
+Guidance: Link first mention of key concepts
+Maximum: Avoid clutter through editorial judgment
+```
+
+'''Link Distribution:'''
+| Link Type | Purpose |
+|-----------|---------|
+| Concept Links | Define key concepts |
+| Entity Links | Reference organizations, people |
+| Protocol Links | Technical specifications |
+| Event Links | Historical context |
+
+=== 4.2 Link Quality Guidelines ===
+
+'''Required:'''
+* First mention of key concept must be linked
+* Links to existing BITwiki articles preferred
+* External links for source verification
+* Semantic relationship indicated
+
+'''Prohibited:'''
+* Over-linking (same term multiple times)
+* Broken links (validate quarterly)
+* Circular references
+* Orphaned pages
+
+----
+== 5. Citation Templates ==
+
+=== 5.1 Standard Citation Template ===
+
+```
+== References ==
+
+{{BITwiki_References
+ | style = numeric
+ | sort = appearance
+}}
+
+# {{BITwiki_Citation
+ | tier = 1
+ | type = academic
+ | authors = Nakamoto, Satoshi
+ | title = Bitcoin: A Peer-to-Peer Electronic Cash System
+ | date = 2008-10-31
+ | url = https://bitcoin.org/bitcoin.pdf
+ | access_date = 2026-02-09
+ | confidence = established
+}}
+
+# {{BITwiki_Citation
+ | tier = 2
+ | type = technical
+ | authors = Ethereum Foundation
+ | title = Ethereum Whitepaper
+ | date = 2014
+ | url = https://ethereum.org/whitepaper
+ | access_date = 2026-02-09
+ | confidence = well_supported
+}}
+```
+
+=== 5.2 Epistemic Status Markers ===
+
+| Status | Marker | Usage |
+|--------|--------|-------|
+| Established | {{Established}} | Tier 1 sources, consensus |
+| Well Supported | {{WellSupported}} | Tier 2, multiple sources |
+| Supported | {{Supported}} | Tier 3, some evidence |
+| Preliminary | {{Preliminary}} | Early evidence |
+| Speculative | {{Speculative}} | Hypothesis, conjecture |
+| Disputed | {{Disputed}} | Credible disagreement |
+
+----
+== 6. Quality Framework ==
+
+=== 6.1 Article Quality Indicators ===
+
+Rather than rigid citation counts, quality emerges from:
+
+| Dimension | Indicator |
+|-----------|-----------|
+| Source Quality | Tier 1-2 sources for claims |
+| Coverage | All factual claims cited |
+| Diversity | Multiple source types |
+| Recency | Current where applicable |
+| Verifiability | Auditable references |
+
+=== 6.2 Pre-Publication Checklist ===
+
+'''Citation Requirements:'''
+* [ ] Tier 1 sources for exceptional claims
+* [ ] All factual claims cited
+* [ ] References section complete
+* [ ] External links verified
+
+'''Link Requirements:'''
+* [ ] First mentions linked
+* [ ] See Also section populated
+* [ ] No broken links
+
+'''Structure Requirements:'''
+* [ ] References section present
+* [ ] See Also section present
+* [ ] External Links section present
+* [ ] Proper header hierarchy
+
+----
+== 7. Integration with BITwiki Systems ==
+
+=== 7.1 Evidence-Epistemics Framework ===
+
+'''Integration Points:'''
+* [[BITwiki_Evidence_Framework.wiki]] - Citation requirements
+* [[BITwiki_Source_Hierarchy.wiki]] - Tier definitions
+* [[BITwiki_Claim_Validation.wiki]] - Validation workflows
+* [[BITwiki_Epistemic_Tiers.wiki]] - Confidence levels
+* [[BITwiki_Uncertainty_Markers.wiki]] - Status markers
+
+=== 7.2 Schema Matter Integration ===
+
+'''Template References:'''
+* [[Template:BITwiki_Citation]] - Citation formatting
+* [[Template:BITwiki_References]] - Reference section
+* [[Template:BITwiki_Source]] - Source infobox
+
+=== 7.3 Governance Integration ===
+
+'''Quality Assurance:'''
+* [[BITwiki_Editorial_Board.wiki]] - Review standards
+* [[BITwiki_Policy_Catalog.wiki]] - Citation policies
+* [[BITwiki_Quality_Bar.wiki]] - Quality thresholds
+
+----
+== 8. Success Metrics ==
+
+| Metric | Target | Measurement |
+|--------|--------|-------------|
+| Tier 1 Source % | >40% | Quarterly review |
+| Link Density | Contextual | Automated check |
+| Broken Links | <1% | Weekly scan |
+| Citation Coverage | 100% of claims | Random sampling |
+
+----
+== 9. References ==
+
+# Grokpedia Research: `hyperion/research/grokpedia/citation_patterns.md`
+# Grokpedia Research: `hyperion/research/grokpedia/sitemap_analysis.md`
+# Grokpedia Research: `hyperion/research/grokpedia/integration_recommendations.md`
+# BITwiki Evidence Framework: [[BITwiki_Evidence_and_Epistemics.wiki]]
+# BITwiki Source Hierarchy: [[BITwiki_Source_Hierarchy.wiki]]
+
+----
+''Integration guide connecting Grokpedia citation research to BITwiki Evidence-Epistemics framework.''
+
+
+
+
+== 9. References ==
+
+# Grokpedia Research: `hyperion/research/grokpedia/citation_patterns.md`
+# Grokpedia Research: `hyperion/research/grokpedia/sitemap_analysis.md`
+# Grokpedia Research: `hyperion/research/grokpedia/integration_recommendations.md`
+# BITwiki Evidence Framework: [[BITwiki_Evidence_and_Epistemics.wiki]]
+# BITwiki Source Hierarchy: [[BITwiki_Source_Hierarchy.wiki]]
+
+----
+''Integration guide connecting Grokpedia citation research to BITwiki Evidence-Epistemics framework.''

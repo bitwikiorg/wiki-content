@@ -1,0 +1,476 @@
+{{Infobox
+| title = BITwiki Relationship Types: Semantic Connections
+| description = Comprehensive taxonomy of relationship types in BITwiki, defining how entities connect and interact within the knowledge graph. Consolidated from base and versions 1-7.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| revised = 2026-02-18
+| version = 3.1.0
+| epistemic_status = Established
+| confidence = Well-Established
+| license = CC-BY-SA-4.0
+| revision_note = Consolidated from base and versions 1-7
+| ontology = entity_type: relationship-taxonomy
+domain: semantic-connections
+| workflow = state: Active
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+= BITwiki Relationship Types =
+
+== Purpose ==
+
+Relationships connect entities, transforming isolated facts into knowledge graphs. This document defines the complete taxonomy of relationship types, their domains, ranges, and semantics.
+
+
+== Hierarchical Relationships ==
+
+=== Subtopic Of ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A is a subtopic of B |
+| Domain | Topic |
+| Range | Topic |
+| Inverse | Has subtopic |
+| Transitive | Yes |
+
+'''Example:''' Cybernetics subtopic of Systems Science
+
+'''SMW:'''
+```wiki
+[[Subtopic of::Systems Science]]
+[[Has subtopic::Cybernetics]]
+```
+
+'''Query:''' "All subtopics of Systems Science"
+
+=== Implements ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A implements B |
+| Domain | Implementation |
+| Range | Idea |
+| Inverse | Implemented by |
+| Transitive | No |
+
+'''Example:''' Neural network implements learning
+
+'''SMW:'''
+```wiki
+[[Implements::Supervised Learning]]
+[[Implemented by::Neural Network]]
+```
+
+'''Query:''' "All implementations of feedback"
+
+=== Instance Of ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A is an instance of B |
+| Domain | Any |
+| Range | Type |
+| Inverse | Has instance |
+| Transitive | No |
+
+'''Example:''' This thermostat is instance of thermostat
+
+'''SMW:'''
+```wiki
+[[Instance of::Thermostat]]
+[[Has instance::Honeywell T87]]
+```
+
+== Causal Relationships ==
+
+=== Causes ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A causes B |
+| Domain | Any |
+| Range | Any |
+| Properties | Temporal, directional |
+| Transitive | Yes (chain) |
+
+'''Example:''' Feedback causes stability
+
+'''SMW:'''
+```wiki
+[[Causes::Stability]]
+[[Caused by::Feedback]]
+```
+
+'''Query:''' "All effects of increased CO2"
+
+=== Enables ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A enables B |
+| Domain | Any |
+| Range | Any |
+| Properties | Conditional, facilitative |
+| Transitive | Yes |
+
+'''Example:''' Communication enables coordination
+
+'''SMW:'''
+```wiki
+[[Enables::Coordination]]
+[[Enabled by::Communication]]
+```
+
+=== Prevents ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A prevents B |
+| Domain | Any |
+| Range | Any |
+| Properties | Negative causal |
+| Transitive | No |
+
+'''Example:''' Regulation prevents oscillation
+
+'''SMW:'''
+```wiki
+[[Prevents::Oscillation]]
+[[Prevented by::Regulation]]
+```
+
+== Temporal Relationships ==
+
+=== Precedes ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A precedes B in time |
+| Domain | Event |
+| Range | Event |
+| Inverse | Follows |
+| Transitive | Yes |
+
+'''Example:''' Problem definition precedes solution
+
+'''SMW:'''
+```wiki
+[[Precedes::Solution]]
+[[Follows::Problem definition]]
+```
+
+=== Concurrent With ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A occurs concurrently with B |
+| Domain | Event |
+| Range | Event |
+| Properties | Symmetric |
+| Transitive | No |
+
+'''Example:''' Research concurrent with development
+
+'''SMW:'''
+```wiki
+[[Concurrent with::Development]]
+```
+
+=== During ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A occurs during B |
+| Domain | Event |
+| Range | Event |
+| Inverse | Contains |
+| Transitive | Yes |
+
+'''Example:''' Experiment during project
+
+'''SMW:'''
+```wiki
+[[During::Project]]
+[[Contains::Experiment]]
+```
+
+== Spatial Relationships ==
+
+=== Part Of ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A is part of B |
+| Domain | Any |
+| Range | Any |
+| Inverse | Has part |
+| Transitive | Yes |
+
+'''Example:''' Neuron part of brain
+
+'''SMW:'''
+```wiki
+[[Part of::Brain]]
+[[Has part::Neuron]]
+```
+
+=== Located In ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A is located in B |
+| Domain | Physical entity |
+| Range | Location |
+| Inverse | Contains |
+| Transitive | Yes |
+
+'''Example:''' Server located in datacenter
+
+'''SMW:'''
+```wiki
+[[Located in::Datacenter]]
+[[Contains::Server]]
+```
+
+=== Adjacent To ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A is adjacent to B |
+| Domain | Physical entity |
+| Range | Physical entity |
+| Properties | Symmetric |
+| Transitive | No |
+
+'''Example:''' Module adjacent to module
+
+'''SMW:'''
+```wiki
+[[Adjacent to::Module B]]
+```
+
+== Epistemic Relationships ==
+
+=== Supports ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A supports B (evidential) |
+| Domain | Evidence |
+| Range | Claim |
+| Inverse | Supported by |
+| Transitive | No |
+
+'''Example:''' Meta-analysis supports claim
+
+'''SMW:'''
+```wiki
+[[Supports::Claim]]
+[[Supported by::Meta-analysis]]
+```
+
+=== Contradicts ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A contradicts B |
+| Domain | Evidence |
+| Range | Claim |
+| Inverse | Contradicted by |
+| Transitive | No |
+
+'''Example:''' Null result contradicts prediction
+
+'''SMW:'''
+```wiki
+[[Contradicts::Prediction]]
+[[Contradicted by::Null result]]
+```
+
+=== Refines ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A refines B |
+| Domain | Idea |
+| Range | Idea |
+| Inverse | Refined by |
+| Transitive | Yes |
+
+'''Example:''' General relativity refines Newtonian gravity
+
+'''SMW:'''
+```wiki
+[[Refines::Newtonian gravity]]
+[[Refined by::General relativity]]
+```
+
+== Attribution Relationships ==
+
+=== Originates ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A originates B |
+| Domain | Person |
+| Range | Idea |
+| Inverse | Originated by |
+| Transitive | No |
+
+'''Example:''' Wiener originates cybernetics
+
+'''SMW:'''
+```wiki
+[[Originates::Cybernetics]]
+[[Originated by::Wiener]]
+```
+
+=== Contributes To ===
+
+| Property | Value |
+|----------|-------|
+| Definition | A contributes to B |
+| Domain | Person |
+| Range | Project/Idea |
+| Inverse | Has contributor |
+| Transitive | No |
+
+'''Example:''' Bateson contributes to cybernetics
+
+'''SMW:'''
+```wiki
+[[Contributes to::Cybernetics]]
+[[Has contributor::Bateson]]
+```
+
+== Relationship Composition ==
+
+Relationships compose to form paths:
+
+```
+Person --originates--> Idea --implemented by--> Implementation --part of--> Project
+```
+
+This path answers: "What projects contain implementations of ideas originated by this person?"
+
+'''Query:'''
+```wiki
+{{#ask: [[Has entity type::Project]]
+  [[Has part.Implements.Originated by::Norbert Wiener]]
+}}
+```
+
+Relationship composition enables complex, multi-hop queries across the knowledge graph.
+
+== Relationship Properties ==
+
+=== Cardinality ===
+
+'''One-to-One:''' Each A relates to exactly one B
+'''One-to-Many:''' Each A relates to multiple B
+'''Many-to-Many:''' Multiple A relate to multiple B
+
+=== Directionality ===
+
+'''Symmetric:''' If A relates to B, B relates to A
+'''Asymmetric:''' If A relates to B, B may not relate to A
+'''Transitive:''' If A relates to B and B to C, A relates to C
+
+== SMW Implementation ==
+
+=== Property Declaration ===
+
+```wiki
+[[Has type::Page]]
+[[Has inverse::Inverse Property]]
+[[Has cardinality::One-to-many]]
+[[Has directionality::Asymmetric]]
+```
+
+=== Relationship Queries ===
+
+'''All implementations of an idea:'''
+```wiki
+{{#ask: [[Implements::Feedback Loop]]}}
+```
+
+'''All causes of an effect:'''
+```wiki
+{{#ask: [[Causes::Instability]]}}
+```
+
+'''All collaborators of a person:'''
+```wiki
+{{#ask: [[Collaborates with::Person:Name]]}}
+```
+
+'''Hierarchical navigation:'''
+```wiki
+{{#ask: [[Subtopic of::Systems Science]]
+|?Has subtopic
+}}
+```
+
+== Relationship Validation ==
+
+=== Validation Rules ===
+
+# '''Domain Constraint:''' Source must be of correct type
+# '''Range Constraint:''' Target must be of correct type
+# '''Cardinality Constraint:''' Must respect cardinality
+# '''Directionality Constraint:''' Must respect directionality
+
+=== Validation Queries ===
+
+'''Invalid relationships:'''
+```wiki
+{{#ask: [[Has invalid relationship::true]]}}
+```
+
+'''Missing inverse relationships:'''
+```wiki
+{{#ask: [[Has missing inverse::true]]}}
+```
+
+== References ==
+
+# Semantic MediaWiki. (2026). Property types documentation.
+# W3C. (2014). RDF Schema 1.1.
+# OWL 2 Web Ontology Language. (2012).
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+# Smith, B. (2003). Ontology.
+# Guarino, N. (1998). Formal ontology and information systems.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+# Sowa, J.F. (2000). Knowledge Representation.
+# Noy, N.F., & McGuinness, D.L. (2001). Ontology development 101.
+
+[[Has page type::Relationship Taxonomy]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.85]]
+[[Has relationship category count::6]]
+[[Has relationship type count::18]]
+[[Has source count::10]]
+[[Has word count::700]]
+
+== On Relationship Evolution ==
+
+Relationship types are not fixed. They emerge from the need to express connections and evolve as knowledge practices develop. The types here are offered as guidance—tools that have proven useful, not constraints that must be followed.
+
+[[Has page type::Relationship Taxonomy]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.85]]
+[[Has source count::10]]
+[[Has word count::700]]
+[[Has page type::Relationship Taxonomy]]
+[[Has epistemic tier::Established]]
+[[Has confidence trajectory::established]]
+[[Has relationship category count::7]]
+[[Has relationship type count::20]]
+[[Has source count::10]]
+[[Has word count::850]]

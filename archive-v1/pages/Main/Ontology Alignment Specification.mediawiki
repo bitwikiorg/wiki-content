@@ -1,0 +1,426 @@
+{{Infobox
+| title = Ontology Alignment Specification: Cross-System Semantic Interoperability
+| description = Technical specification for aligning BITwiki ontology with external knowledge systems including Wikipedia, Wikidata, Schema.org, and academic ontologies.
+| type = technical-specification
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: technical-specification
+domain: ontology-alignment
+| workflow = state: Active
+| sources = - "https://www.w3.org/TR/owl2-overview/"
+- "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+- "https://schema.org/"
+- "https://www.wikipedia.org/"
+- "https://www.semantic-mediawiki.org/wiki/Help:Ontology_import"
+- "https://www.w3.org/TR/skos-reference/"
+- "https://en.wikipedia.org/wiki/Ontology_alignment"
+- "https://www.w3.org/TR/rdf11-concepts/"
+- "https://www.w3.org/TR/sparql11-query/"
+- "https://en.wikipedia.org/wiki/Linked_data"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+[[Category:BITwiki Technical Specification]]
+[[Category:Hyperion Workspace]]
+
+
+= Ontology Alignment Specification: Cross-System Semantic Interoperability =
+
+== Executive Summary
+
+This specification defines protocols for aligning BITwiki's ontology with external knowledge systems. It enables semantic interoperability, data exchange, and federated querying across knowledge graphs.
+
+'''Scope:''' Wikipedia, Wikidata, Schema.org, DBpedia, academic ontologies (FOAF, Dublin Core, SKOS).
+
+----
+== 1. Alignment Principles
+
+=== 1.1 Semantic Equivalence
+
+'''Definition:''' Two terms are semantically equivalent if they denote the same concept in the same context.
+
+'''Alignment Types:'''
+
+| Type | Symbol | Meaning | Example |
+|------|--------|---------|---------|
+| Exact | ≡ | Identical meaning | BITwiki:Concept ≡ SKOS:Concept |
+| Close | ≈ | Similar meaning | BITwiki:Project ≈ Schema:Project |
+| Related | ~ | Connected meaning | BITwiki:Agent ~ FOAF:Agent |
+| Narrower | ⊂ | Subclass | BITwiki:RecursiveSystem ⊂ SystemsScience:System |
+| Broader | ⊃ | Superclass | BITwiki:Knowledge ⊃ Schema:Thing |
+
+=== 1.2 Context Preservation
+
+Alignment must preserve:
+* '''Epistemic context:''' Confidence, status, provenance
+* '''Domain context:''' Subject area, application scope
+* '''Temporal context:''' Version, creation date, validity period
+* '''Provenance context:''' Source, author, derivation
+
+=== 1.3 Bidirectional Mapping
+
+'''Requirement:''' Alignments must support:
+* BITwiki → External (export)
+* External → BITwiki (import)
+* Round-trip without information loss
+
+----
+== 2. External System Alignments
+
+=== 2.1 Wikipedia Alignment
+
+'''Challenge:''' Wikipedia is not a formal ontology but a category system.
+
+'''Alignment Strategy:'''
+* Map BITwiki entity types to Wikipedia categories
+* Use Wikipedia article structure as template
+* Align epistemic status with Wikipedia quality classes
+
+'''Mapping Table:'''
+
+| BITwiki | Wikipedia | Alignment |
+|---------|-----------|-----------|
+| Concept | Category:Concepts | ≈ |
+| Project | Category:Projects | ≈ |
+| Has domain | Category:Subject_area | ≈ |
+| Epistemic status | Article quality class | ~ |
+| Confidence | Citation density | ~ |
+
+'''SMW Integration:'''
+```mediawiki
+[[Wikipedia category::Category:Systems_science]]
+[[Wikipedia article::Systems_science]]
+[[Wikipedia quality::FA]]
+```
+
+=== 2.2 Wikidata Alignment
+
+'''Advantage:''' Wikidata is a formal knowledge base with properties.
+
+'''Alignment Strategy:'''
+* Map BITwiki properties to Wikidata properties
+* Use Wikidata Q-items for entity linking
+* Import Wikidata statements as BITwiki properties
+
+'''Property Mapping:'''
+
+| BITwiki Property | Wikidata Property | Alignment |
+|------------------|-------------------|-----------|
+| Has title | P1476 (title) | ≡ |
+| Has author | P50 (author) | ≡ |
+| Has creation date | P571 (inception) | ≈ |
+| Has domain | P31 (instance of) | ~ |
+| Has confidence | (custom) | - |
+
+'''Entity Linking:'''
+```mediawiki
+[[Wikidata item::Q12345]]
+[[Wikidata label::Systems science]]
+```
+
+'''Import Query:'''
+```sparql
+SELECT ?item ?label WHERE {
+  ?item wdt:P31 wd:Q12345 .
+  ?item rdfs:label ?label .
+  FILTER(LANG(?label) = "en")
+}
+```
+
+=== 2.3 Schema.org Alignment
+
+'''Advantage:''' Schema.org is widely adopted for web markup.
+
+'''Alignment Strategy:'''
+* Map BITwiki types to Schema.org types
+* Generate Schema.org JSON-LD from SMW
+* Enable search engine discovery
+
+'''Type Mapping:'''
+
+| BITwiki Type | Schema.org Type | Alignment |
+|--------------|-----------------|-----------|
+| Concept | schema:Thing | ⊃ |
+| Project | schema:Project | ≈ |
+| Article | schema:Article | ≈ |
+| Organization | schema:Organization | ≈ |
+| Person | schema:Person | ≈ |
+
+'''JSON-LD Generation:'''
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Project",
+  "name": "BITwiki",
+  "description": "Recursive knowledge system",
+  "epistemicStatus": "Established",
+  "confidence": 0.88
+}
+```
+
+=== 2.4 DBpedia Alignment
+
+'''Advantage:''' DBpedia extracts structured data from Wikipedia.
+
+'''Alignment Strategy:'''
+* Use DBpedia URIs for entity linking
+* Import DBpedia infobox properties
+* Align categories with DBpedia ontology
+
+'''Mapping:'''
+```mediawiki
+[[DBpedia resource::http://dbpedia.org/resource/Systems_science]]
+[[DBpedia ontology::SystemsScience]]
+```
+
+=== 2.5 Academic Ontologies
+
+'''FOAF (Friend of a Friend):'''
+| BITwiki | FOAF | Alignment |
+|---------|------|-----------|
+| Agent | foaf:Agent | ≈ |
+| Person | foaf:Person | ≈ |
+| Has author | foaf:maker | ≈ |
+
+'''Dublin Core:'''
+| BITwiki | DC | Alignment |
+|---------|-----|-----------|
+| Has title | dc:title | ≡ |
+| Has author | dc:creator | ≡ |
+| Has creation date | dc:date | ≈ |
+| Has domain | dc:subject | ~ |
+
+'''SKOS (Simple Knowledge Organization System):'''
+| BITwiki | SKOS | Alignment |
+|---------|------|-----------|
+| Concept | skos:Concept | ≡ |
+| Has related entity | skos:related | ≈ |
+| Has parent concept | skos:broader | ≈ |
+| Has child concept | skos:narrower | ≈ |
+
+----
+== 3. Alignment Implementation
+
+=== 3.1 Property Definitions
+
+'''Alignment Properties:'''
+```mediawiki
+[[Has type::External identifier]]
+
+[[Equivalent to::External property]]
+[[Close match to::External property]]
+[[Related to::External property]]
+[[Broad match to::External property]]
+[[Narrow match to::External property]]
+```
+
+=== 3.2 Import Protocol
+
+'''Step 1: Entity Resolution'''
+* Match BITwiki entities to external entities
+* Create alignment properties
+* Store external identifiers
+
+'''Step 2: Property Mapping'''
+* Define property transformations
+* Handle value format differences
+* Preserve epistemic context
+
+'''Step 3: Data Import'''
+* Fetch external data
+* Transform to BITwiki format
+* Set epistemic status (imported data = Hypothetical)
+
+'''Step 4: Validation'''
+* Verify alignment accuracy
+* Check for information loss
+* Update confidence scores
+
+=== 3.3 Export Protocol
+
+'''Step 1: Entity Selection'''
+* Select high-confidence entities
+* Filter by export criteria
+* Prepare external identifiers
+
+'''Step 2: Format Transformation'''
+* Convert SMW to RDF/JSON-LD
+* Map properties to external schema
+* Preserve epistemic markers
+
+'''Step 3: Data Export'''
+* Generate export files
+* Validate against external schema
+* Publish to endpoint
+
+'''Step 4: Synchronization'''
+* Track export versions
+* Handle external updates
+* Maintain alignment freshness
+
+----
+== 4. Technical Implementation
+
+=== 4.1 RDF Export
+
+'''SMW to RDF Mapping:'''
+```php
+// Pseudo-code for RDF export
+function smwToRdf($entity) {
+    $rdf = "<rdf:Description rdf:about=\"" . $entity->getUri() . "\">\n";
+    
+    foreach ($entity->getProperties() as $prop => $value) {
+        $mappedProp = mapToRdf($prop);
+        $rdf .= "  <" . $mappedProp . ">" . $value . "</" . $mappedProp . ">\n";
+    }
+    
+    $rdf .= "</rdf:Description>";
+    return $rdf;
+}
+```
+
+=== 4.2 SPARQL Endpoint
+
+'''BITwiki SPARQL Interface:'''
+```sparql
+PREFIX bit: <https://bitwiki.org/ontology/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+
+SELECT ?entity ?title ?confidence WHERE {
+  ?entity bit:hasTitle ?title .
+  ?entity bit:hasConfidence ?confidence .
+  ?entity bit:hasWikidataItem ?wdItem .
+  FILTER (?confidence > 0.8)
+}
+```
+
+=== 4.3 API Integration
+
+'''Wikidata API:'''
+```python
+import requests
+
+def get_wikidata_entity(qid):
+    url = f"https://www.wikidata.org/wiki/Special:EntityData/{qid}.json"
+    response = requests.get(url)
+    return response.json()
+
+def align_to_bitwiki(wd_entity):
+    # Extract relevant properties
+    # Create BITwiki entity
+    # Set alignment properties
+    pass
+```
+
+----
+== 5. Quality Assurance
+
+=== 5.1 Alignment Validation
+
+'''Automated Checks:'''
+* Verify external identifiers resolve
+* Check property type compatibility
+* Validate round-trip conversion
+* Detect alignment drift
+
+'''Manual Review:'''
+* Sample alignment accuracy
+* Review edge cases
+* Assess semantic fidelity
+* Update alignments
+
+=== 5.2 Confidence Scoring
+
+'''Alignment Confidence:'''
+* Exact match: 1.0
+* Close match: 0.8-0.9
+* Related: 0.5-0.7
+* Uncertain: <0.5
+
+'''Epistemic Status:'''
+* Imported alignments: Hypothetical
+* Validated alignments: Emerging
+* Community confirmed: Established
+
+----
+== 6. Use Cases
+
+=== 6.1 Federated Search
+
+Query across BITwiki and Wikidata:
+```sparql
+SELECT ?bitEntity ?wdEntity ?label WHERE {
+  SERVICE <https://bitwiki.org/sparql> {
+    ?bitEntity bit:hasDomain "Systems science" .
+  }
+  SERVICE <https://query.wikidata.org/sparql> {
+    ?wdEntity wdt:P31 wd:Q12345 .
+    ?wdEntity rdfs:label ?label .
+  }
+  ?bitEntity bit:hasWikidataItem ?wdEntity .
+}
+```
+
+=== 6.2 Knowledge Enrichment
+
+Import Wikidata properties to enhance BITwiki entities:
+* Geographic coordinates
+* Temporal data
+* Relationship networks
+* Multilingual labels
+
+=== 6.3 Cross-Platform Publishing
+
+Export BITwiki content to:
+* Wikipedia (compatible articles)
+* Wikidata (structured statements)
+* Schema.org (web markup)
+* Academic databases (RDF)
+
+----
+== 7. Maintenance
+
+=== 7.1 Alignment Updates
+
+'''Triggers:'''
+* External ontology changes
+* New entity creation
+* Alignment error reports
+* Scheduled reviews
+
+'''Process:'''
+# Detect external changes
+# Assess impact on alignments
+# Update alignment properties
+# Validate changes
+# Document rationale
+
+=== 7.2 Versioning
+
+'''Alignment Versioning:'''
+* Version alignments with ontologies
+* Track alignment history
+* Support rollback
+* Document breaking changes
+
+----
+== Conclusion
+
+Ontology alignment enables BITwiki to participate in the broader knowledge graph ecosystem while maintaining epistemic rigor and recursive self-awareness.
+
+'''Key Principles:'''
+* Preserve epistemic context across systems
+* Support bidirectional data flow
+* Maintain alignment quality
+* Enable federated knowledge
+
+'''Next Steps:'''
+# Deploy alignment properties
+# Implement import/export pipelines
+# Establish SPARQL endpoint
+# Validate with external systems

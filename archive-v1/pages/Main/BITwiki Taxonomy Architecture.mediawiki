@@ -1,0 +1,483 @@
+{{Infobox
+| title = BITwiki Taxonomy Architecture: Hierarchical Knowledge Organization
+| description = Comprehensive architecture for organizing knowledge hierarchically in BITwiki, including category systems, faceted classification, and semantic tagging.
+| type = ontology
+| author = BITCORE
+| created = 2026-02-12
+| version = 2.established
+| epistemic_status = Established
+| confidence = established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: taxonomy-architecture
+domain: knowledge-organization
+| workflow = state: Beta
+}}
+
+{{Documentation}}
+[[Category:BITwiki Ontology]]
+
+
+= BITwiki Taxonomy Architecture: Hierarchical Knowledge Organization =
+
+== Purpose ==
+
+This document defines the taxonomy architecture for BITwiki. Taxonomy provides the hierarchical structure for organizing knowledge, enabling navigation, discovery, and semantic reasoning.
+
+== Taxonomy Principles ==
+
+=== 1. Hierarchical Organization ===
+
+Knowledge is organized in a tree structure:
+* '''Root:''' Broadest categories
+* '''Branches:''' Intermediate categories
+* '''Leaves:''' Specific entities
+
+'''Example:'''
+```
+Systems Science
+├── Cybernetics
+│   ├── First-Order Cybernetics
+│   ├── Second-Order Cybernetics
+│   └── Third-Order Cybernetics
+├── Systems Theory
+│   ├── General Systems Theory
+│   └── Complex Systems
+└── Information Theory
+```
+
+=== 2. Mutual Exclusivity ===
+
+Each entity belongs to one primary category. Cross-cutting concerns use tags.
+
+=== 3. Exhaustiveness ===
+
+All entities must be categorizable. Uncategorized entities trigger review.
+
+=== 4. Stability ===
+
+Category structure changes require epistemic committee approval.
+
+=== Polyhierarchy ===
+
+Entities may have multiple parents. A neural network is simultaneously:
+* Implementation (of learning algorithms)
+* Topic (in computer science)
+* Project (ongoing research)
+
+This mirrors real knowledge, which resists single categorization.
+
+'''Example:'''
+```
+Neural Networks
+├── Is-a: Implementation
+├── Is-a: Topic
+└── Is-a: Project
+
+Parents:
+├── Implementation → Machine Learning
+├── Topic → Computer Science → AI
+└── Project → Deep Learning Research
+```
+
+'''SMW:'''
+```wiki
+[[Has entity type::Implementation]]
+[[Has entity type::Topic]]
+[[Subtopic of::Machine Learning]]
+[[Subtopic of::Artificial Intelligence]]
+```
+
+=
+
+=== Flexible Boundaries ===
+
+Category boundaries are porous, not rigid. An entity may be:
+* Clearly in category A
+* Partially in category B
+* Borderline for category C
+
+BITwiki handles this through:
+* Explicit boundary definitions
+* Confidence scores on categorization
+* Related categories for edge cases
+
+'''Example:'''
+```wiki
+[[Has entity type::Idea]]
+[[Subtopic of::Cybernetics]]
+[[Has category confidence::0.9]]  # Clearly cybernetics
+[[Related topic::Information Theory]]  # But related to info theory
+[[Related topic::Control Theory]]  # And control theory
+```
+
+=
+
+== Taxonomy Types ==
+
+=== Type 1: Monothetic ===
+
+'''Definition:''' Categories defined by necessary and sufficient conditions.
+
+'''Example:'''
+* Mammal: Warm-blooded AND Has fur AND Produces milk
+
+'''Use:''' Scientific classification, formal ontologies.
+
+'''Advantages:'''
+* Clear boundaries
+* Logical consistency
+* Machine-processable
+
+'''Disadvantages:'''
+* Rigid
+* May not capture nuance
+* Edge cases problematic
+
+=== Type 2: Polythetic ===
+
+'''Definition:''' Categories defined by family resemblance (Wittgenstein).
+
+'''Example:'''
+* Game: Has rules OR Has competition OR Has winners OR Has strategy
+
+'''Use:''' Cultural categories, fuzzy concepts.
+
+'''Advantages:'''
+* Flexible
+* Captures nuance
+* Handles edge cases
+
+'''Disadvantages:'''
+* Fuzzy boundaries
+* Harder to automate
+* May be inconsistent
+
+=== Type 3: Faceted ===
+
+'''Definition:''' Multiple independent dimensions of classification.
+
+'''Example:'''
+* Document: Subject × Date × Author × Format
+
+'''Use:''' Library science, information retrieval.
+
+'''Advantages:'''
+* Multiple entry points
+* Flexible combination
+* Scalable
+
+'''Disadvantages:'''
+* Complex queries
+* May miss relationships
+* Requires standardization
+
+== BITwiki Taxonomy Structure ==
+
+=== Root Categories ===
+
+# '''Portal:Systems Science''' — Study of systems and their properties
+# '''Portal:Epistemology''' — Knowledge about knowledge
+# '''Portal:Technology''' — Technical implementations
+# '''Portal:Mathematics''' — Formal structures
+# '''Portal:Natural Science''' — Physical world
+# '''Portal:Social Science''' — Human systems
+
+=== Category Hierarchy ===
+
+```
+Portal:Systems Science (Level 0)
+├── Category:Cybernetics (Level 1)
+│   ├── Category:First-Order Cybernetics (Level 2)
+│   ├── Category:Second-Order Cybernetics (Level 2)
+│   └── Category:Third-Order Cybernetics (Level 2)
+├── Category:Information Theory (Level 1)
+│   ├── Category:Entropy (Level 2)
+│   └── Category:Channel Capacity (Level 2)
+└── Category:Complexity Science (Level 1)
+    ├── Category:Emergence (Level 2)
+    └── Category:Self-Organization (Level 2)
+```
+
+== Faceted Classification ==
+
+=== Facets ===
+
+'''Subject Facet:'''
+* What is this about?
+* Example: Cybernetics, Epistemology, AI
+
+'''Type Facet:'''
+* What kind of entity?
+* Example: Idea, Implementation, Project
+
+'''Epistemic Facet:'''
+* How certain is this?
+* Example: Hypothetical, Established, Verified
+
+'''Temporal Facet:'''
+* When is this relevant?
+* Example: Historical, Current, Future
+
+'''Domain Facet:'''
+* What field does this belong to?
+* Example: Biology, Physics, Computer Science
+
+=== Facet Combination ===
+
+Entities can be described by multiple facets:
+* Feedback Loop (Subject: Cybernetics, Type: Idea, Epistemic: Established)
+* Neural Network (Subject: AI, Type: Implementation, Epistemic: Verified)
+
+== SMW Implementation ==
+
+=== Category Properties ===
+
+```wiki
+[[Has category::Category:Name]]
+[[Has parent category::Category:Parent]]
+[[Has level::2]]
+[[Has facet::Subject]]
+```
+
+=== Category Queries ===
+
+'''All subcategories:'''
+```wiki
+{{#ask: [[Has parent category::Category:Systems Science]]}}
+```
+
+'''All entities in category:'''
+```wiki
+{{#ask: [[Has category::Category:Cybernetics]]}}
+```
+
+'''Faceted search:'''
+```wiki
+{{#ask: [[Has category::Category:Cybernetics]]
+[[Has entity type::Idea]]
+[[Has epistemic status::Established]]
+}}
+```
+
+== Taxonomy Maintenance ==
+
+=== Adding Categories ===
+
+# Propose new category
+# Identify parent category
+# Define scope and boundaries
+# Epistemic committee review
+# Implementation
+
+=== Merging Categories ===
+
+# Identify redundant categories
+# Assess impact on existing content
+# Plan migration
+# Execute merge
+# Update queries
+
+=== Deprecating Categories ===
+
+# Mark as deprecated
+# Identify replacement category
+# Migrate content
+# Update links
+# Remove after grace period
+
+== Taxonomy Quality ==
+
+=== Metrics ===
+* '''Coverage:''' % of entities categorized
+* '''Depth:''' Average category depth
+* '''Balance:''' Distribution across branches
+* '''Consistency:''' Adherence to principles
+
+=== Quality Checks ===
+* Orphaned categories (no parent)
+* Empty categories (no members)
+* Deep categories (>5 levels)
+* Overlapping categories
+
+== References ==
+
+# Ranganathan, S.R. (1933). Colon Classification.
+# Faceted Application of Subject Terminology (FAST).
+# Library of Congress Subject Headings (LCSH).
+# Dewey Decimal Classification.
+# Wikipedia. (2026). Taxonomy.
+# Semantic MediaWiki. (2026). Category system.
+# Smith, B. (2003). Ontology.
+# Gruber, T.R. (1993). A translation approach to portable ontology specifications.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+
+[[Has page type::Taxonomy Architecture]]
+[[Has epistemic tier::Established]]
+[[Has confidence trajectory::established]]
+[[Has taxonomy type count::3]]
+[[Has facet count::5]]
+[[Has source count::10]]
+[[Has word count::700]]
+
+
+
+
+
+
+=== Root Categories ===
+
+# '''Portal:Systems Science''' — Knowledge of systems
+# '''Portal:Epistemology''' — Knowledge about knowledge
+# '''Portal:Technology''' — Technical implementations
+# '''Portal:Philosophy''' — Foundational inquiry
+# '''Portal:Science''' — Empirical investigation
+
+=== Category Hierarchy Example ===
+
+```
+Portal:Systems Science (Level 0)
+├── Category:Cybernetics (Level 1)
+│ ├── Category:First-Order Cybernetics (Level 2)
+│ ├── Category:Second-Order Cybernetics (Level 2)
+│ └── Category:Third-Order Cybernetics (Level 2)
+├── Category:Information Theory (Level 1)
+│ ├── Category:Entropy (Level 2)
+│ └── Category:Channel Capacity (Level 2)
+└── Category:Complexity Science (Level 1)
+ ├── Category:Emergence (Level 2)
+ └── Category:Self-Organization (Level 2)
+```
+
+== Faceted Classification ==
+
+=== Facet Combination ===
+
+Entities may be described by multiple facets:
+* Feedback Loop (Subject: Cybernetics, Type: Idea, Epistemic: Established)
+* Neural Network (Subject: AI, Type: Implementation, Epistemic: Verified)
+
+== SMW Implementation ==
+
+=== Adding Categories ===
+
+# Propose new category
+# Identify parent category
+# Define scope and boundaries
+# Review and discuss
+# Implement
+
+=== Metrics ===
+* '''Coverage:''' Percentage of entities categorized
+* '''Depth:''' Average category depth
+* '''Balance:''' Distribution across branches
+* '''Consistency:''' Adherence to principles
+
+=== Quality Checks ===
+* Orphaned categories (no parent)
+* Empty categories (no members)
+* Deep categories (>5 levels)
+* Overlapping categories
+
+== On Taxonomy Evolution ==
+
+Taxonomies are not discovered but constructed. They emerge from the need to organize knowledge and evolve as understanding deepens. The architecture here is offered as guidance—scaffolds that have proven useful, not constraints that must be followed.
+
+The guiding question: ''Does this organization enhance discovery or limit it?''
+
+[[Has page type::Taxonomy Architecture]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.86]]
+[[Has source count::10]]
+[[Has word count::700]]
+
+
+
+=== Topic Hierarchy Example ===
+
+```
+Systems Science
+├── Cybernetics
+│ ├── First-Order Cybernetics
+│ │ ├── Feedback Theory
+│ │ └── Control Systems
+│ ├── Second-Order Cybernetics
+│ │ ├── Autopoiesis
+│ │ └── Observer Effects
+│ └── Third-Order Cybernetics
+│     └── Social Systems
+├── Information Theory
+│ ├── Entropy
+│ ├── Channel Capacity
+│ └── Coding Theory
+└── Complex Systems
+    ├── Emergence
+    ├── Self-Organization
+    └── Networks
+```
+
+=== Cross-Cutting Facets ===
+
+Topics also classified by:
+* '''Discipline''': Mathematics, Physics, Biology, Social Science
+* '''Method''': Theoretical, Experimental, Computational, Observational
+* '''Scale''': Micro, Meso, Macro, Global
+* '''Time''': Historical, Contemporary, Emerging
+* '''Application''': Pure, Applied, Interdisciplinary
+
+== Navigation Patterns ==
+
+=== Top-Down ===
+
+Start broad, narrow down:
+```
+Systems Science → Cybernetics → Feedback → Negative Feedback → Thermostat
+```
+
+=== Bottom-Up ===
+
+Start specific, generalize:
+```
+Thermostat → Negative Feedback → Feedback → Cybernetics → Systems Science
+```
+
+=== Lateral ===
+
+Move sideways via related topics:
+```
+Cybernetics ↔ Information Theory ↔ Control Theory ↔ AI
+```
+
+=== Faceted ===
+
+Filter by multiple dimensions:
+```
+Ideas + Verified + 1940s + Cybernetics
+```
+
+== Taxonomy Maintenance ==
+
+=== Stability ===
+
+Category structure changes require:
+* Community discussion
+* Impact assessment
+* Migration plan
+* Epistemic committee approval
+
+=== Growth ===
+
+New categories added when:
+* Sufficient content exists (≥10 entities)
+* Clear boundary definable
+* Parent category exists
+* Community consensus reached
+
+=== Deprecation ===
+
+Categories deprecated when:
+* Superseded by better structure
+* Ambiguous or confusing
+* Empty for extended period
+
+Deprecated categories preserved with redirects, not deleted.

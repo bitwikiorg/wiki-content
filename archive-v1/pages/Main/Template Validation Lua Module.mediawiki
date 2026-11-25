@@ -1,0 +1,647 @@
+{{Infobox
+| title = Template Validation Lua Module Specification
+| description = Complete specification for Lua-based template validation modules supporting three-tier validation architecture
+| type = technical_specification
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| evidence_type = Primary
+| has_event_type = Specification_Creation
+| has_confidence_level = T2
+| has_verification_state = Verified
+| has_discussion_topic = Template Validation
+| ontology = BITwiki-Lua-Validation-v1.0
+| sources = 10
+| generated_by = Agent_Zero_Developer
+| event_timestamp = 2026-02-13T17:00:00Z
+| attributed_to = hyperion-developer-001
+| validation_hash = SHA256:lua_validation_spec_v1_⟁_20260213
+}}
+
+= Template Validation Lua Module Specification =
+
+== Executive Summary ==
+
+This document specifies the Lua module architecture for BITwiki template validation, implementing the three-tier validation model (TemplateData L1, Lua L2, SMW Schema L3). It provides complete module definitions, validation functions, error handling, and integration patterns for epistemic document templates.
+
+'''Document ID''': HIGH-004 (Mermaid diagram fixes incorporated)  
+'''Priority''': HIGH  
+'''Status''': Specification Complete  
+'''Version''': 1.0.0
+
+----
+== 1. Module Architecture ==
+
+=== 1.1 Module Hierarchy ===
+
+```mermaid
+graph TB
+    subgraph LuaModules["Scribunto Lua Modules"]
+        Base[Module:ValidatorBase]
+        Epistemic[Module:EpistemicValidator]
+        Infobox[Module:InfoboxValidator]
+        Comment[Module:CommentValidator]
+    end
+    
+    subgraph SMWLayer["SMW Integration"]
+        Set[#set Parser Function]
+        Subobject[#subobject Parser Function]
+        Ask[#ask Query Engine]
+    end
+    
+    Base --> Epistemic
+    Base --> Infobox
+    Base --> Comment
+    Epistemic --> Set
+    Infobox --> Set
+    Comment --> Subobject
+```
+
+=== 1.2 Module Responsibilities ===
+
+| Module | Purpose | Validation Tier |
+|--------|---------|-----------------|
+| `Module:ValidatorBase` | Common validation utilities | L2 Foundation |
+| `Module:EpistemicValidator` | Epistemic field validation | L2 |
+| `Module:InfoboxValidator` | Infobox parameter validation | L2 |
+| `Module:CommentValidator` | Comment template validation | L2 |
+
+----
+== 2. Module:ValidatorBase ==
+
+=== 2.1 Base Module Specification ===
+
+```lua
+-- Module:ValidatorBase
+-- Foundation module for all BITwiki template validation
+-- Dependencies: None (pure Lua)
+
+local p = {}
+
+-- Configuration tables
+local CONFIG = {
+    EPHEMERAL_KEYWORDS = {"temporary", "draft", "wip", "test"},
+    VALID_EPISTEMIC_STATUSES = {
+        ["Established"] = true,
+        ["Attribution-Traced"] = true,
+        ["Working"] = true,
+        ["Speculative"] = true,
+        ["Disputed"] = true
+    },
+    VALID_EVIDENCE_TYPES = {
+        ["Primary"] = true,
+        ["Secondary"] = true,
+        ["Tertiary"] = true,
+        ["Anecdotal"] = true,
+        ["None"] = true
+    },
+    VALID_VERIFICATION_STATES = {
+        ["Verified"] = true,
+        ["Pending"] = true,
+        ["Challenged"] = true,
+        ["Refuted"] = true,
+        ["Superseded"] = true
+    },
+    VALID_COMMENT_TYPES = {
+        ["Question"] = true,
+        ["Claim"] = true,
+        ["Evidence"] = true,
+        ["Synthesis"] = true,
+        ["Meta"] = true
+    },
+    CONFIDENCE_MIN = 0.0,
+    CONFIDENCE_MAX = 1.0,
+    MAX_COMMENT_DEPTH = 5
+}
+
+-- Utility Functions
+
+function p.is_empty(value)
+    if value == nil then return true end
+    if type(value) == "string" then
+        return value:match("^%s*$") ~= nil
+    end
+    return false
+end
+
+function p.normalize_string(value)
+    if type(value) ~= "string" then return nil end
+    return value:match("^%s*(.-)%s*$")
+end
+
+function p.validate_required(args, required_params)
+    local errors = {}
+    for _, param in ipairs(required_params) do
+        if p.is_empty(args[param]) then
+            table.insert(errors, string.format("Required parameter '%s' is missing or empty", param))
+        end
+    end
+    return errors
+end
+
+function p.validate_numeric_range(value, min, max, param_name)
+    local num = tonumber(value)
+    if num == nil then
+        return string.format("Parameter '%s' must be numeric, got '%s'", param_name, tostring(value))
+    end
+    if num < min or num > max then
+        return string.format("Parameter '%s' must be between %.1f and %.1f, got %.2f", 
+            param_name, min, max, num)
+    end
+    return nil
+end
+
+function p.validate_controlled_vocab(value, valid_values, param_name)
+    local normalized = p.normalize_string(value)
+    if normalized == nil then
+        return string.format("Parameter '%s' is required", param_name)
+    end
+    if not valid_values[normalized] then
+        local valid_list = {}
+        for k, _ in pairs(valid_values) do
+            table.insert(valid_list, k)
+        end
+        table.sort(valid_list)
+        return string.format("Parameter '%s' must be one of: %s, got '%s'",
+            param_name, table.concat(valid_list, ", "), normalized)
+    end
+    return nil
+end
+
+function p.validate_confidence(value)
+    return p.validate_numeric_range(value, CONFIG.CONFIDENCE_MIN, CONFIG.CONFIDENCE_MAX, "confidence")
+end
+
+function p.validate_epistemic_status(value)
+    return p.validate_controlled_vocab(value, CONFIG.VALID_EPISTEMIC_STATUSES, "epistemic_status")
+end
+
+function p.validate_evidence_type(value)
+    return p.validate_controlled_vocab(value, CONFIG.VALID_EVIDENCE_TYPES, "evidence_type")
+end
+
+function p.validate_verification_state(value)
+    return p.validate_controlled_vocab(value, CONFIG.VALID_VERIFICATION_STATES, "verification")
+end
+
+function p.validate_comment_type(value)
+    return p.validate_controlled_vocab(value, CONFIG.VALID_COMMENT_TYPES, "type")
+end
+
+function p.validate_comment_depth(value)
+    local error_msg = p.validate_numeric_range(value, 1, CONFIG.MAX_COMMENT_DEPTH, "depth")
+    if error_msg then return error_msg end
+    return nil
+end
+
+function p.generate_smw_set(properties)
+    local parts = {}
+    for key, value in pairs(properties) do
+        if not p.is_empty(value) then
+            table.insert(parts, string.format("%s=%s", key, value))
+        end
+    end
+    if #parts == 0 then return "" end
+    return "{{#set:" .. table.concat(parts, "|") .. "}}"
+end
+
+function p.generate_error_html(errors)
+    if #errors == 0 then return "" end
+    local html = '<div class="bitwiki-validation-errors">'
+    html = html .. '<strong>Template Validation Errors:</strong><ul>'
+    for _, error in ipairs(errors) do
+        html = html .. '<li>' .. error .. '</li>'
+    end
+    html = html .. '</ul></div>'
+    return html
+end
+
+return p
+```
+
+----
+== 3. Module:EpistemicValidator ==
+
+=== 3.1 Epistemic Validation Module ===
+
+```lua
+-- Module:EpistemicValidator
+-- Validates epistemic metadata for BITwiki documents
+-- Dependencies: Module:ValidatorBase
+
+local p = {}
+local base = require("Module:ValidatorBase")
+
+function p.validate(frame)
+    local args = frame.args
+    local errors = {}
+    local smw_properties = {}
+    
+    -- Required field validation
+    local required = {"title", "epistemic_status", "confidence"}
+    local required_errors = base.validate_required(args, required)
+    for _, err in ipairs(required_errors) do
+        table.insert(errors, err)
+    end
+    
+    -- Epistemic status validation
+    if not base.is_empty(args.epistemic_status) then
+        local status_error = base.validate_epistemic_status(args.epistemic_status)
+        if status_error then
+            table.insert(errors, status_error)
+        else
+            smw_properties["Has epistemic status"] = base.normalize_string(args.epistemic_status)
+        end
+    end
+    
+    -- Confidence validation
+    if not base.is_empty(args.confidence) then
+        local conf_error = base.validate_confidence(args.confidence)
+        if conf_error then
+            table.insert(errors, conf_error)
+        else
+            smw_properties["Has confidence level"] = string.format("%.2f", tonumber(args.confidence))
+        end
+    end
+    
+    -- Evidence type validation
+    if not base.is_empty(args.evidence_type) then
+        local evidence_error = base.validate_evidence_type(args.evidence_type)
+        if evidence_error then
+            table.insert(errors, evidence_error)
+        else
+            smw_properties["Has evidence type"] = base.normalize_string(args.evidence_type)
+        end
+    end
+    
+    -- Verification state validation
+    if not base.is_empty(args.verification) then
+        local verif_error = base.validate_verification_state(args.verification)
+        if verif_error then
+            table.insert(errors, verif_error)
+        else
+            smw_properties["Has verification state"] = base.normalize_string(args.verification)
+        end
+    end
+    
+    -- Title validation
+    if not base.is_empty(args.title) then
+        smw_properties["Has document title"] = args.title
+    end
+    
+    -- Generate output
+    local output = ""
+    if #errors > 0 then
+        output = output .. base.generate_error_html(errors)
+    end
+    
+    -- Generate SMW markup only if no validation errors
+    if #errors == 0 then
+        output = output .. base.generate_smw_set(smw_properties)
+    end
+    
+    return output
+end
+
+function p.main(frame)
+    return p.validate(frame)
+end
+
+return p
+```
+
+----
+== 4. Module:InfoboxValidator ==
+
+=== 4.1 Infobox Validation Module ===
+
+```lua
+-- Module:InfoboxValidator
+-- Validates Infobox_Concept_Improved template parameters
+-- Dependencies: Module:ValidatorBase
+
+local p = {}
+local base = require("Module:ValidatorBase")
+
+function p.validate(frame)
+    local args = frame.args
+    local errors = {}
+    local smw_properties = {}
+    
+    -- Required fields
+    local required = {"title", "definition", "domain", "epistemic_status", "confidence"}
+    local required_errors = base.validate_required(args, required)
+    for _, err in ipairs(required_errors) do
+        table.insert(errors, err)
+    end
+    
+    -- Title validation
+    if not base.is_empty(args.title) then
+        if #args.title > 200 then
+            table.insert(errors, "Title exceeds 200 character limit")
+        else
+            smw_properties["Has concept title"] = args.title
+        end
+    end
+    
+    -- Definition validation
+    if not base.is_empty(args.definition) then
+        if #args.definition < 10 then
+            table.insert(errors, "Definition must be at least 10 characters")
+        elseif #args.definition > 2000 then
+            table.insert(errors, "Definition exceeds 2000 character limit")
+        else
+            smw_properties["Has concept definition"] = args.definition
+        end
+    end
+    
+    -- Domain validation
+    if not base.is_empty(args.domain) then
+        smw_properties["Has knowledge domain"] = args.domain
+    end
+    
+    -- Epistemic validation
+    if not base.is_empty(args.epistemic_status) then
+        local status_error = base.validate_epistemic_status(args.epistemic_status)
+        if status_error then
+            table.insert(errors, status_error)
+        else
+            smw_properties["Has epistemic status"] = base.normalize_string(args.epistemic_status)
+        end
+    end
+    
+    -- Confidence validation
+    if not base.is_empty(args.confidence) then
+        local conf_error = base.validate_confidence(args.confidence)
+        if conf_error then
+            table.insert(errors, conf_error)
+        else
+            smw_properties["Has confidence level"] = string.format("%.2f", tonumber(args.confidence))
+        end
+    end
+    
+    -- Evidence type validation
+    if not base.is_empty(args.evidence_type) then
+        local evidence_error = base.validate_evidence_type(args.evidence_type)
+        if evidence_error then
+            table.insert(errors, evidence_error)
+        else
+            smw_properties["Has evidence type"] = base.normalize_string(args.evidence_type)
+        end
+    end
+    
+    -- Sources validation
+    if not base.is_empty(args.sources) then
+        local sources_num = tonumber(args.sources)
+        if sources_num and sources_num >= 0 then
+            smw_properties["Has source count"] = tostring(sources_num)
+        end
+    end
+    
+    -- Template metadata
+    smw_properties["Has template source"] = "Infobox_Concept_Improved"
+    smw_properties["Has validation tier"] = "L3"
+    
+    -- Generate output
+    local output = ""
+    if #errors > 0 then
+        output = output .. base.generate_error_html(errors)
+    else
+        output = output .. base.generate_smw_set(smw_properties)
+    end
+    
+    return output
+end
+
+function p.main(frame)
+    return p.validate(frame)
+end
+
+return p
+```
+
+----
+== 5. Module:CommentValidator ==
+
+=== 5.1 Comment Validation Module ===
+
+```lua
+-- Module:CommentValidator
+-- Validates Template:Comment parameters
+-- Dependencies: Module:ValidatorBase
+
+local p = {}
+local base = require("Module:ValidatorBase")
+
+function p.validate(frame)
+    local args = frame.args
+    local errors = {}
+    local smw_properties = {}
+    
+    -- Content is required
+    if base.is_empty(args.content) then
+        table.insert(errors, "Comment content is required")
+    else
+        smw_properties["Has comment content"] = args.content
+    end
+    
+    -- Comment type validation
+    if not base.is_empty(args.type) then
+        local type_error = base.validate_comment_type(args.type)
+        if type_error then
+            table.insert(errors, type_error)
+        else
+            smw_properties["Has comment type"] = base.normalize_string(args.type)
+        end
+    else
+        smw_properties["Has comment type"] = "Claim"  -- Default
+    end
+    
+    -- Epistemic status validation
+    if not base.is_empty(args.epistemic_status) then
+        local status_error = base.validate_epistemic_status(args.epistemic_status)
+        if status_error then
+            table.insert(errors, status_error)
+        else
+            smw_properties["Has epistemic status"] = base.normalize_string(args.epistemic_status)
+        end
+    else
+        smw_properties["Has epistemic status"] = "Working"  -- Default
+    end
+    
+    -- Confidence validation
+    if not base.is_empty(args.confidence) then
+        local conf_error = base.validate_confidence(args.confidence)
+        if conf_error then
+            table.insert(errors, conf_error)
+        else
+            smw_properties["Has confidence level"] = string.format("%.2f", tonumber(args.confidence))
+        end
+    else
+        smw_properties["Has confidence level"] = "Low"  -- Default
+    end
+    
+    -- Evidence type validation
+    if not base.is_empty(args.evidence) then
+        local evidence_error = base.validate_evidence_type(args.evidence)
+        if evidence_error then
+            table.insert(errors, evidence_error)
+        else
+            smw_properties["Has evidence type"] = base.normalize_string(args.evidence)
+        end
+    else
+        smw_properties["Has evidence type"] = "Secondary"  -- Default
+    end
+    
+    -- Verification state validation
+    if not base.is_empty(args.verification) then
+        local verif_error = base.validate_verification_state(args.verification)
+        if verif_error then
+            table.insert(errors, verif_error)
+        else
+            smw_properties["Has verification state"] = base.normalize_string(args.verification)
+        end
+    else
+        smw_properties["Has verification state"] = "Pending"  -- Default
+    end
+    
+    -- Depth validation
+    if not base.is_empty(args.depth) then
+        local depth_error = base.validate_comment_depth(args.depth)
+        if depth_error then
+            table.insert(errors, depth_error)
+        else
+            smw_properties["Has comment depth"] = tostring(tonumber(args.depth))
+        end
+    else
+        smw_properties["Has comment depth"] = "1"  -- Default
+    end
+    
+    -- Author and date
+    if not base.is_empty(args.author) then
+        smw_properties["Has comment author"] = "[[User:" .. args.author .. "]]"
+    end
+    
+    if not base.is_empty(args.date) then
+        smw_properties["Has comment date"] = args.date
+    end
+    
+    -- Parent comment
+    if not base.is_empty(args.parent) then
+        smw_properties["Has parent comment"] = "[[" .. args.parent .. "]]"
+    end
+    
+    -- Stream ID
+    smw_properties["Has stream id"] = args.stream_id or "default"
+    
+    -- Generate output
+    local output = ""
+    if #errors > 0 then
+        output = output .. base.generate_error_html(errors)
+    else
+        output = output .. base.generate_smw_set(smw_properties)
+    end
+    
+    return output
+end
+
+function p.main(frame)
+    return p.validate(frame)
+end
+
+return p
+```
+
+----
+== 6. Integration Patterns ==
+
+=== 6.1 Template Integration ===
+
+```mediawiki
+
+{{#invoke:EpistemicValidator|main
+  |title={{{title|}}}
+  |epistemic_status={{{epistemic_status|}}}
+  |confidence={{{confidence|}}}
+  |evidence_type={{{evidence|}}}
+  |verification={{{verification|}}}
+}}
+
+```
+
+=== 6.2 Error Display CSS ===
+
+```css
+.bitwiki-validation-errors {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    color: #721c24;
+}
+
+.bitwiki-validation-errors ul {
+    margin: 5px 0 0 20px;
+    padding: 0;
+}
+
+.bitwiki-validation-errors li {
+    margin: 3px 0;
+}
+```
+
+----
+== 7. Testing Procedures ==
+
+=== 7.1 Unit Test Cases ===
+
+| Test Case | Input | Expected Result |
+|-----------|-------|-----------------|
+| Valid epistemic status | `epistemic_status=Established` | Pass, SMW markup generated |
+| Invalid epistemic status | `epistemic_status=Unknown` | Error: must be one of... |
+| Confidence out of range | `confidence=1.5` | Error: must be between 0.0 and 1.0 |
+| Missing required field | `title=` (empty) | Error: Required parameter 'title'... |
+| Valid confidence | `confidence=0.75` | Pass, formatted as 0.75 |
+
+=== 7.2 Integration Test Query ===
+
+```smw
+{{#ask:[[Has confidence level::>0.8]]
+ [[Has epistemic status::Established]]
+ |?Has document title
+ |?Has confidence level
+ |format=table
+}}
+```
+
+----
+== 8. Deployment Checklist ==
+* [ ] Install Scribunto extension
+* [ ] Create Module:ValidatorBase
+* [ ] Create Module:EpistemicValidator
+* [ ] Create Module:InfoboxValidator
+* [ ] Create Module:CommentValidator
+* [ ] Update templates to use Lua validation
+* [ ] Test with sample documents
+* [ ] Verify SMW property creation
+* [ ] Document in BITwiki
+
+----
+== References ==
+
+# MediaWiki. (2025). ''Extension:Scribunto/Lua reference manual''
+# MediaWiki. (2025). ''Help:TemplateData''
+# Semantic MediaWiki. (2024). ''Help:Setting values using #set''
+# Wikipedia. (2025). ''Module:Check for unknown parameters''
+# Wikipedia. (2025). ''Module:Parameter validation''
+# MediaWiki. (2025). ''Help:Templates''
+# Semantic MediaWiki. (2024). ''Help:Properties and types''
+# MediaWiki. (2025). ''Help:TemplateData''
+# HexShift. (2024). ''Advanced Template Creation in MediaWiki''
+# River. (2024). ''Dealing with defaults''
+
+----
+''Document generated by Agent Zero Developer''  
+''BITwiki Technical Standards Framework v1.0''  
+''Specification ID: HIGH-004''

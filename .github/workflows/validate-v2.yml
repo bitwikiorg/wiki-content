@@ -16,6 +16,7 @@ on:
       - 'SMWSchema/**'
       - 'MediaWiki/**'
       - 'Help/**'
+      - 'archive-v1/**'
       - 'bitwiki-runtime-schema.json'
       - 'manifest.json'
       - '.gitignore'
@@ -78,10 +79,17 @@ jobs:
         if: always()
         run: python scripts/audit_mainspace.py
 
-      - name: Build V2 corpus inventory
+      - name: Build V2 corpus and V1 classification inventories
         if: always()
         run: python scripts/inventory_corpus.py
 
+      - name: Classify V1 page roles before ontology
+        if: always()
+        run: python scripts/classify_v1_page_roles.py
+
+      - name: Classify V1 architecture sources by maturation family
+        if: always()
+        run: python scripts/classify_v1_architecture_families.py
 
       - name: Show validation report
         if: always()
@@ -120,4 +128,7 @@ jobs:
             v2-workflow-audit.json
             v2-mainspace-audit.json
             v2-corpus-inventory.json
+            v1-classification-usage.json
+            v1-page-role-matrix.json
+            v1-architecture-family-matrix.json
           if-no-files-found: warn

@@ -1,0 +1,452 @@
+{{Infobox
+| title = BITwiki Integration Guide: Connecting External Systems
+| description = Comprehensive guide for integrating BITwiki with external systems including APIs, webhooks, and data exchange protocols.
+| type = integration-guide
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: integration-guide
+domain: system-integration
+| workflow = state: Active
+| sources = - "https://www.mediawiki.org/wiki/API:Main_page"
+- "https://www.semantic-mediawiki.org/wiki/Help:API"
+- "https://en.wikipedia.org/wiki/REST"
+- "https://en.wikipedia.org/wiki/Webhook"
+- "https://en.wikipedia.org/wiki/JSON"
+- "https://en.wikipedia.org/wiki/RDF"
+- "https://www.w3.org/TR/sparql11-protocol/"
+- "https://en.wikipedia.org/wiki/OAuth"
+- "https://en.wikipedia.org/wiki/API_management"
+- "https://www.mediawiki.org/wiki/Manual:Database_access"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Integration]]
+[[Category:BITwiki Technical Guide]]
+[[Category:Hyperion Workspace]]
+
+
+= BITwiki Integration Guide: Connecting External Systems =
+
+== Executive Summary
+
+This guide documents methods for integrating BITwiki with external systems including content management systems, research databases, analytics platforms, and knowledge graphs.
+
+'''Scope:''' API access, webhook configuration, data export/import, authentication, rate limiting.
+
+----
+== 1. Integration Architecture
+
+=== 1.1 Integration Patterns
+
+| Pattern | Use Case | Protocol |
+|---------|----------|----------|
+| '''Read API''' | Query BITwiki content | HTTP GET + JSON |
+| '''Write API''' | Create/update content | HTTP POST/PUT + OAuth |
+| '''Webhook''' | Real-time notifications | HTTP POST + JSON |
+| '''Export''' | Bulk data transfer | RDF/JSON/XML |
+| '''Import''' | External data ingestion | SMW + API |
+| '''Federation''' | Cross-wiki queries | SPARQL |
+
+=== 1.2 Security Model
+
+'''Authentication:'''
+* OAuth 2.0 for user-delegated access
+* API keys for system-to-system
+* IP whitelisting for trusted partners
+
+'''Authorization:'''
+* Role-based access control (RBAC)
+* Scope-limited tokens
+* Audit logging for all access
+
+'''Data Protection:'''
+* TLS 1.3 for all connections
+* Epistemic markers preserved in transit
+* Provenance tracking for imported data
+
+----
+== 2. API Reference
+
+=== 2.1 MediaWiki API
+
+'''Base URL:''' `https://bitwiki.org/api.php`
+
+'''Query Content:'''
+```bash
+curl "https://bitwiki.org/api.php?action=query&titles=BITwiki_Constitution&prop=revisions&rvslots=main&rvprop=content&format=json"
+```
+
+'''Search with SMW:'''
+```bash
+curl "https://bitwiki.org/api.php?action=ask&query=[[Has%20entity%20type::Concept]]&format=json"
+```
+
+'''Create Page (Authenticated):'''
+```bash
+curl -X POST "https://bitwiki.org/api.php?action=edit&title=New_Page&text=Content&token=TOKEN&format=json" \
+  -H "Authorization: Bearer API_KEY"
+```
+
+=== 2.2 SMW API
+
+'''Ask Query:'''
+```bash
+curl "https://bitwiki.org/api.php?action=ask&query=[[Has%20confidence::>0.8]]|?Has%20title|?Has%20epistemic%20status&format=json"
+```
+
+'''Browse Properties:'''
+```bash
+curl "https://bitwiki.org/api.php?action=browsebysubject&subject=BITwiki_Constitution&format=json"
+```
+
+'''Export RDF:'''
+```bash
+curl "https://bitwiki.org/index.php?title=Special:ExportRDF/BITwiki_Constitution"
+```
+
+=== 2.3 Response Format
+
+'''Success Response:'''
+```json
+{
+  "query": {
+    "results": {
+      "BITwiki_Constitution": {
+        "printouts": {
+          "Has title": ["BITwiki Constitution"],
+          "Has epistemic status": ["Axiomatic"],
+          "Has confidence": ["1.0"]
+        }
+      }
+    }
+  }
+}
+```
+
+'''Error Response:'''
+```json
+{
+  "error": {
+    "code": "invalidtitle",
+    "info": "Bad title \"Invalid|Title\"."
+  }
+}
+```
+
+----
+== 3. Webhook Configuration
+
+=== 3.1 Event Types
+
+| Event | Trigger | Payload |
+|-------|---------|---------|
+| `page.created` | New page | Page title, author, timestamp |
+| `page.edited` | Edit saved | Diff, author, epistemic change |
+| `page.deleted` | Page removed | Title, deleter, reason |
+| `epistemic.upgraded` | Status increased | Old/new status, confidence |
+| `epistemic.downgraded` | Status decreased | Old/new status, reason |
+| `quality.reviewed` | Audit complete | Score, issues, recommendations |
+
+=== 3.2 Webhook Endpoint
+
+'''Configuration:'''
+```php
+// LocalSettings.php
+$wgBITwikiWebhooks = [
+  'https://external-system.com/webhook/bitwiki' => [
+    'events' => ['page.edited', 'epistemic.upgraded'],
+    'secret' => 'webhook_secret_key',
+    'active' => true
+  ]
+];
+```
+
+'''Payload Structure:'''
+```json
+{
+  "event": "epistemic.upgraded",
+  "timestamp": "2026-02-13T10:30:00Z",
+  "page": {
+    "title": "BITwiki_Constitution",
+    "url": "https://bitwiki.org/BITwiki_Constitution"
+  },
+  "changes": {
+    "old_status": "Emerging",
+    "new_status": "Established",
+    "old_confidence": 0.75,
+    "new_confidence": 0.88
+  },
+  "author": {
+    "username": "Hyperion",
+    "id": 42
+  }
+}
+```
+
+=== 3.3 Signature Verification
+
+```python
+import hmac
+import hashlib
+
+def verify_webhook(payload, signature, secret):
+    expected = hmac.new(
+        secret.encode(),
+        payload.encode(),
+        hashlib.sha256
+    ).hexdigest()
+    return hmac.compare_digest(f"sha256={expected}", signature)
+```
+
+----
+== 4. Data Exchange
+
+=== 4.1 Export Formats
+
+'''RDF/Turtle:'''
+```turtle
+@prefix bit: <https://bitwiki.org/ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+<https://bitwiki.org/BITwiki_Constitution>
+  a bit:Concept ;
+  dc:title "BITwiki Constitution" ;
+  bit:hasEpistemicStatus "Axiomatic" ;
+  bit:hasConfidence "1.0"^^xsd:float ;
+  bit:hasAuthor "Hyperion" .
+```
+
+'''JSON-LD:'''
+```json
+{
+  "@context": {
+    "bit": "https://bitwiki.org/ontology/",
+    "dc": "http://purl.org/dc/elements/1.1/"
+  },
+  "@id": "https://bitwiki.org/BITwiki_Constitution",
+  "@type": "bit:Concept",
+  "dc:title": "BITwiki Constitution",
+  "bit:hasEpistemicStatus": "Axiomatic",
+  "bit:hasConfidence": 1.0
+}
+```
+
+'''CSV Export:'''
+```csv
+Title,Entity Type,Epistemic Status,Confidence,Author
+BITwiki Constitution,Concept,Axiomatic,1.0,Hyperion
+SMW Template System,Technical Guide,Established,0.88,Hyperion
+```
+
+=== 4.2 Import Protocol
+
+'''Step 1: Data Validation'''
+* Check required fields (title, entity type, epistemic status)
+* Validate confidence range (0.0-1.0)
+* Verify source provenance
+
+'''Step 2: Epistemic Marking'''
+* Imported data defaults to "Hypothetical" status
+* Confidence set to 0.5 (neutral)
+* Provenance tracked as import source
+
+'''Step 3: Deduplication'''
+* Check for existing entities with same title
+* Merge or create new as appropriate
+* Preserve both provenance chains
+
+'''Step 4: SMW Import'''
+```bash
+php maintenance/importDump.php import.xml
+```
+
+----
+== 5. Authentication
+
+=== 5.1 OAuth 2.0 Flow
+
+'''Step 1: Authorization Request'''
+```
+https://bitwiki.org/oauth/authorize?
+  response_type=code&
+  client_id=CLIENT_ID&
+  redirect_uri=REDIRECT_URI&
+  scope=read+write&
+  state=STATE
+```
+
+'''Step 2: Token Exchange'''
+```bash
+curl -X POST "https://bitwiki.org/oauth/token" \
+  -d "grant_type=authorization_code" \
+  -d "code=AUTH_CODE" \
+  -d "client_id=CLIENT_ID" \
+  -d "client_secret=CLIENT_SECRET" \
+  -d "redirect_uri=REDIRECT_URI"
+```
+
+'''Step 3: API Access'''
+```bash
+curl "https://bitwiki.org/api.php?action=query&..." \
+  -H "Authorization: Bearer ACCESS_TOKEN"
+```
+
+=== 5.2 API Key Management
+
+'''Generate Key:'''
+```php
+// Special:ApiKeyManager
+$apiKey = hash('sha256', random_bytes(32));
+```
+
+'''Rate Limits:'''
+
+| Tier | Requests/Minute | Use Case |
+|------|-----------------|----------|
+| Public | 60 | Unauthenticated read |
+| Basic | 300 | API key authentication |
+| Premium | 1000 | Verified applications |
+| BITCORE | Unlimited | Internal systems |
+
+----
+== 6. Integration Examples
+
+=== 6.1 Research Database Integration
+
+'''Scenario:''' Import publications from academic database
+
+```python
+import requests
+
+# Fetch from external API
+response = requests.get('https://api.semanticscholar.org/...')
+papers = response.json()
+
+# Transform to BITwiki format
+for paper in papers:
+    bitwiki_page = {
+        'title': paper['title'],
+        'entity_type': 'Source',
+        'epistemic_status': 'Established',
+        'confidence': paper['citation_count'] / 1000,  # Normalized
+        'has_doi': paper['doi'],
+        'has_author': paper['authors']
+    }
+    
+    # Create via BITwiki API
+    requests.post(
+        'https://bitwiki.org/api.php?action=edit',
+        data=bitwiki_page,
+        headers={'Authorization': 'Bearer TOKEN'}
+    )
+```
+
+=== 6.2 Analytics Dashboard
+
+'''Scenario:''' Real-time knowledge graph metrics
+
+```javascript
+// Fetch epistemic distribution
+async function updateDashboard() {
+  const response = await fetch(
+    'https://bitwiki.org/api.php?action=ask&query=[[Has%20epistemic%20status::+]]|?Has%20epistemic%20status&format=json'
+  );
+  const data = await response.json();
+  
+  // Update chart
+  const distribution = countByStatus(data.query.results);
+  chart.update(distribution);
+}
+```
+
+=== 6.3 Slack Notifications
+
+'''Scenario:''' Alert on epistemic status changes
+
+```python
+import requests
+
+def webhook_handler(payload):
+    if payload['event'] == 'epistemic.upgraded':
+        message = f"""
+        📈 Epistemic Upgrade: {payload['page']['title']}
+        {payload['changes']['old_status']} → {payload['changes']['new_status']}
+        Confidence: {payload['changes']['old_confidence']} → {payload['changes']['new_confidence']}
+        """
+        
+        requests.post('https://hooks.slack.com/...', json={
+            'text': message
+        })
+```
+
+----
+== 7. Error Handling
+
+=== 7.1 Common Errors
+
+| Error Code | Cause | Resolution |
+|------------|-------|------------|
+| `invalidtitle` | Illegal characters in title | Sanitize input |
+| `missingparam` | Required parameter absent | Check API docs |
+| `ratelimited` | Too many requests | Implement backoff |
+| `permissiondenied` | Insufficient privileges | Check OAuth scopes |
+| `epistemicviolation` | Invalid status transition | Review status rules |
+
+=== 7.2 Retry Logic
+
+```python
+import time
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+
+retry_strategy = Retry(
+    total=3,
+    backoff_factor=1,
+    status_forcelist=[429, 500, 502, 503, 504]
+)
+
+session = requests.Session()
+session.mount('https://', HTTPAdapter(max_retries=retry_strategy))
+```
+
+----
+== 8. Best Practices
+
+=== 8.1 Performance
+* Cache API responses (respect Cache-Control headers)
+* Use batch operations for bulk updates
+* Request only needed properties
+* Implement client-side rate limiting
+
+=== 8.2 Reliability
+* Handle network timeouts gracefully
+* Implement exponential backoff
+* Log all API interactions
+* Monitor webhook delivery
+
+=== 8.3 Security
+* Never commit API keys to version control
+* Rotate keys regularly
+* Use minimal required scopes
+* Validate webhook signatures
+
+----
+== Conclusion
+
+BITwiki's integration capabilities enable it to function as a hub in the broader knowledge ecosystem. By supporting standard protocols and maintaining epistemic integrity across boundaries, BITwiki extends its recursive knowledge architecture to external systems.
+
+'''Key Principles:'''
+* Preserve epistemic markers in all exchanges
+* Maintain provenance chains across systems
+* Support bidirectional data flow
+* Implement robust error handling
+
+'''Next Steps:'''
+# Deploy OAuth server
+# Configure webhook endpoints
+# Implement RDF export
+# Create integration SDKs

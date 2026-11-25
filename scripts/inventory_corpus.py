@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build an empirical inventory of the current V2 semantic/content corpus.
+"""Build empirical V2 semantic/content corpus and V1 classification inventories.
 
 This script is intentionally descriptive. It does not decide which schema values are
 canonical and it does not mutate wiki content. Its job is to expose what the semantic
@@ -23,6 +23,42 @@ LITERAL_BLOCK_RE = re.compile(
 CATEGORY_RE = re.compile(r"\[\[\s*Category:([^\]|#]+)", re.I)
 REDIRECT_RE = re.compile(r"^\s*#redirect\s*\[\[\s*([^\]|#]+)", re.I | re.M)
 SEMANTIC_RE = re.compile(r"\[\[\s*([^\[\]|]+?)\s*::\s*([^\]|]+)", re.I)
+
+V1_CLASSIFICATION_PROPERTIES = {
+    "has entity type",
+    "has extended type",
+    "has page type",
+    "has domain",
+    "has field",
+    "has category",
+    "has parent",
+    "has child",
+    "has parent topic",
+    "parent topic",
+    "has subtopic",
+    "subtopic of",
+    "has related topic",
+    "related topic",
+    "has epistemic status",
+    "has epistemic tier",
+}
+
+# API-recorded V1 categories whose labels clearly carried an identity/type job.
+V1_IDENTITY_CATEGORIES = {
+    "Topics",
+    "Ideas",
+    "Implementations",
+    "Projects",
+    "Protocols",
+    "Datasets",
+    "People",
+    "Organizations",
+    "Events",
+    "Publications",
+    "Locations",
+    "Technologies",
+    "Concepts",
+}
 
 
 def normalized(value: str) -> str:
@@ -226,16 +262,150 @@ def build_v2_inventory() -> tuple[dict, dict]:
     return inventory, summary
 
 
+def load_v1_index() -> dict[str, dict]:
+    path = Path("archive-v1/index.json")
+    if not path.exists():
+        return {}
+    data = json.loads(path.read_text(encoding="utf-8"))
+    records = data.get("records", data if isinstance(data, list) else [])
+    return {record.get("current_source_path", ""): record for record in records if record.get("current_source_path")}
+
+
+def build_v1_classification_inventory() -> dict:
+    index = load_v1_index()
+    property_counts = Counter()
+    values_by_property: dict[str, Counter] = defaultdict(Counter)
+    api_category_counts = Counter()
+    identity_category_counts = Counter()
+    infobox_type_counts = Counter()
+    pages = []
+    topic_function_counts = Counter()
+    pages_with_signal = 0
+    pages_with_classification_syntax = 0
+    pages_with_identity_category = 0
+    pages_with_infobox = 0
+    subpages = 0
+
+    v1_root = Path("archive-v1/pages/Main")
+    for path in sorted(v1_root.rglob("*.mediawiki")) if v1_root.exists() else []:
+        repo_path = path.as_posix()
+        meta = index.get(repo_path, {})
+        title = meta.get("title") or unquote(path.stem)
+        text = path.read_text(encoding="utf-8")
+        parsed = executable_text(text)
+        annotations = semantic_annotations(parsed)
+        relevant = []
+
+        # API-recorded category memberships from the exhaustive archive are implementation
+        # evidence. Do not infer them again from prose/examples in the page body.
+        categories = sorted(
+            normalized(c.split(":", 1)[1] if c.casefold().startswith("category:") else c)
+            for c in meta.get("categories", [])
+        )
+        identity_categories = sorted(c for c in categories if c in V1_IDENTITY_CATEGORIES)
+        for category in categories:
+            api_category_counts[category] += 1
+            if category in V1_IDENTITY_CATEGORIES:
+                identity_category_counts[category] += 1
+
+        for ann in annotations:
+            key = ann["property"].casefold()
+            if key not in V1_CLASSIFICATION_PROPERTIES:
+                continue
+            property_counts[ann["property"]] += 1
+            values_by_property[ann["property"]][ann["value"]] += 1
+            relevant.append(ann)
+
+            if ann["value"].casefold() == "topic" and key in {"has entity type", "has extended type", "has page type"}:
+                topic_function_counts["entity_or_page_type_source_syntax"] += 1
+            if "topic" in key:
+                topic_function_counts["hierarchy_or_topic_relation_source_syntax"] += 1
+            if key in {"has domain", "has field"}:
+                topic_function_counts["domain_or_field_source_syntax"] += 1
+
+        infobox = template_params(parsed, "Infobox")
+        infobox_type = infobox.get("type")
+        if infobox_type:
+            infobox_type_counts[infobox_type] += 1
+            pages_with_infobox += 1
+
+        topic_literal = bool(re.search(r"\bTopic\b", parsed, re.I))
+        if "/" in title:
+            subpages += 1
+        if relevant:
+            pages_with_classification_syntax += 1
+        if identity_categories:
+            pages_with_identity_category += 1
+        if relevant or infobox_type or topic_literal or identity_categories:
+            pages_with_signal += 1
+
+        # Every V1 Main page is retained in the matrix, including pages with no signal.
+        pages.append(
+            {
+                "path": repo_path,
+                "title": title,
+                "pageid": meta.get("pageid"),
+                "current_revid": meta.get("current_revid"),
+                "revision_count": meta.get("revision_count"),
+                "is_subpage": "/" in title,
+                "api_recorded_categories": categories,
+                "api_recorded_identity_categories": identity_categories,
+                "api_recorded_templates": meta.get("templates", []),
+                "infobox_type_source_parameter": infobox_type,
+                "classification_annotation_source_syntax": relevant,
+                "contains_topic_literal": topic_literal,
+                "has_classification_or_topic_signal": bool(relevant or infobox_type or topic_literal or identity_categories),
+            }
+        )
+
+    topic_pages = [p for p in pages if p["contains_topic_literal"]]
+    return {
+        "scope": "archive-v1/pages/Main",
+        "interpretation": (
+            "Every archived V1 Main page is represented. Category memberships and template callers "
+            "come from the exhaustive MediaWiki API archive and are implementation evidence. "
+            "Semantic/property occurrences and Infobox parameters are recovered from source syntax "
+            "and may include documentation/specification examples; they require page-context review "
+            "before being called deployed schema behavior."
+        ),
+        "summary": {
+            "main_pages_inventoried": len(pages),
+            "subpages": subpages,
+            "pages_with_classification_or_topic_signal": pages_with_signal,
+            "pages_without_classification_or_topic_signal": len(pages) - pages_with_signal,
+            "pages_with_classification_annotation_source_syntax": pages_with_classification_syntax,
+            "pages_with_api_recorded_identity_category": pages_with_identity_category,
+            "pages_with_infobox_type_source_parameter": pages_with_infobox,
+            "pages_containing_topic_literal": len(topic_pages),
+            "api_recorded_category_usage": sorted_counter(api_category_counts),
+            "api_recorded_identity_category_usage": sorted_counter(identity_category_counts),
+            "classification_annotation_source_syntax_usage": sorted_counter(property_counts),
+            "classification_annotation_source_values": {
+                prop: sorted_counter(values)
+                for prop, values in sorted(values_by_property.items(), key=lambda kv: kv[0].casefold())
+            },
+            "infobox_type_source_parameter_usage": sorted_counter(infobox_type_counts),
+            "topic_function_source_signal": sorted_counter(topic_function_counts),
+        },
+        "pages": pages,
+    }
+
 
 def main() -> None:
     v2_inventory, v2_summary = build_v2_inventory()
+    v1_inventory = build_v1_classification_inventory()
 
     Path("v2-corpus-inventory.json").write_text(
         json.dumps(v2_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
+    Path("v1-classification-usage.json").write_text(
+        json.dumps(v1_inventory, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
 
     print("=== V2 corpus summary ===")
     print(json.dumps(v2_summary, indent=2, ensure_ascii=False))
+    print("=== V1 classification summary ===")
+    print(json.dumps(v1_inventory["summary"], indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,501 @@
+{{Infobox
+| title = BITwiki Deployment Guide: Production Implementation
+| description = Step-by-step guide for deploying BITwiki book matter to production MediaWiki instance with SMW configuration.
+| type = deployment-guide
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: deployment-guide
+domain: deployment
+| workflow = state: Active
+| sources = - "https://www.mediawiki.org/wiki/Manual:Installation_guide"
+- "https://www.semantic-mediawiki.org/wiki/Help:Installation"
+- "https://www.mediawiki.org/wiki/Manual:Installing_extensions"
+- "https://www.mediawiki.org/wiki/Manual:LocalSettings.php"
+- "https://www.semantic-mediawiki.org/wiki/Help:Configuration"
+- "https://www.mediawiki.org/wiki/Manual:Backing_up_a_wiki"
+- "https://www.mediawiki.org/wiki/Manual:Restoring_a_wiki"
+- "https://www.mediawiki.org/wiki/Manual:Upgrading"
+- "https://www.semantic-mediawiki.org/wiki/Help:Maintenance_scripts"
+- "https://www.mediawiki.org/wiki/Manual:Performance_tuning"
+}}
+
+{{Documentation}}
+[[Category:BITwiki Deployment]]
+[[Category:BITwiki Technical Guide]]
+[[Category:Hyperion Workspace]]
+
+
+= BITwiki Deployment Guide: Production Implementation =
+
+== Executive Summary
+
+This guide provides step-by-step instructions for deploying BITwiki book matter to a production MediaWiki instance with Semantic MediaWiki (SMW) enabled.
+
+'''Prerequisites:'''
+* MediaWiki 1.39+ installed
+* PHP 8.1+ with required extensions
+* MySQL 8.0+ or PostgreSQL 13+
+* SMW 4.1+ installed and configured
+* Administrative access to wiki
+
+----
+== 1. Pre-Deployment Checklist
+
+=== 1.1 System Requirements
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| PHP | 8.1 | 8.2 |
+| MediaWiki | 1.39 | 1.41 |
+| SMW | 4.1 | 4.1.1 |
+| Database | MySQL 8.0 | MariaDB 10.6 |
+| Memory | 2GB | 4GB |
+| Storage | 10GB | 50GB |
+
+=== 1.2 Required Extensions
+
+'''Core Extensions:'''
+* Semantic MediaWiki (SMW)
+* ParserFunctions
+* Cite
+* SyntaxHighlight
+* TemplateStyles
+
+'''Recommended Extensions:'''
+* VisualEditor
+* WikiEditor
+* CodeEditor
+* ConfirmEdit (CAPTCHA)
+* AbuseFilter
+
+'''BITwiki-Specific:'''
+* Semantic Forms (for structured input)
+* Page Forms (for template-based editing)
+* Header Tabs (for organized display)
+
+=== 1.3 Backup Current System
+
+```bash
+# Backup database
+mysqldump -u wikiuser -p wikidb > backup_$(date +%Y%m%d).sql
+
+# Backup files
+tar -czf wiki_files_$(date +%Y%m%d).tar.gz /var/www/html/wiki/
+
+# Verify backups
+ls -lh backup_*.sql wiki_files_*.tar.gz
+```
+
+----
+== 2. SMW Configuration
+
+=== 2.1 Enable SMW
+
+'''LocalSettings.php:'''
+```php
+// Load SMW
+wfLoadExtension( 'SemanticMediaWiki' );
+enableSemantics( 'bitwiki.org' );
+
+// SMW Settings
+$smwgConfigFileDir = __DIR__ . '/data';
+$smwgEnabledQueryFeatures = SMW_QUERY_ALL;
+$smwgQMaxSize = 5000;
+$smwgQMaxDepth = 10;
+```
+
+=== 2.2 Configure Property Types
+
+'''Create Property: namespace pages:'''
+```bash
+# Run SMW setup
+php extensions/SemanticMediaWiki/maintenance/setupStore.php
+
+# Rebuild data
+php extensions/SemanticMediaWiki/maintenance/rebuildData.php
+```
+
+=== 2.3 Optimize Performance
+
+```php
+// Enable query cache
+$smwgQueryResultCacheType = CACHE_ANYTHING;
+$smwgQueryResultCacheLifetime = 3600;
+
+// Enable property statistics
+$smwgPropertyStatistics = true;
+
+// Configure job queue
+$wgJobRunRate = 10;
+```
+
+----
+== 3. Template Deployment
+
+=== 3.1 Upload Templates
+
+'''Method 1: Direct File Upload'''
+```bash
+# Copy template files
+scp hyperion/book-matter/schema-matter/templates/*.wiki \
+  user@server:/var/www/html/wiki/extensions/SemanticMediaWiki/import/
+
+# Import via maintenance script
+php maintenance/importTextFile.php \
+  --title "Template:Infobox_Concept" \
+  --overwrite \
+  extensions/SemanticMediaWiki/import/Infobox_Concept.wiki
+```
+
+'''Method 2: Wiki Import'''
+```bash
+# Create XML dump
+php maintenance/dumpBackup.php --current > templates.xml
+
+# Import on target
+php maintenance/importDump.php templates.xml
+```
+
+=== 3.2 Verify Template Installation
+
+'''Checklist:'''
+* [ ] Template:Infobox_Concept loads without errors
+* [ ] Template:Epistemic_Marker displays correctly
+* [ ] Template:Document_Header includes properly
+* [ ] SMW properties populate in templates
+* [ ] No transclusion errors in logs
+
+'''Test Query:'''
+```mediawiki
+{{#ask: [[Template:+]]
+|?Has title
+|format=ul
+}}
+```
+
+----
+== 4. Property Deployment
+
+=== 4.1 Create Property Pages
+
+'''Automated Creation:'''
+```bash
+# Generate property pages from definitions
+php maintenance/createPropertyPages.php \
+  --source hyperion/book-matter/schema-matter/SMW_Property_Definitions.md \
+  --namespace "Property:"
+```
+
+'''Manual Creation:'''
+# Navigate to `Property:Has confidence`
+# Add content: `[[Has type::Number]]`
+# Save and verify type assignment
+
+=== 4.2 Configure Property Constraints
+
+'''Range Constraints:'''
+```mediawiki
+[[Has type::Number]]
+[[Has property constraint::Range: 0.0-1.0]]
+[[Has description::Numerical confidence score]]
+```
+
+'''Allowed Values:'''
+```mediawiki
+[[Has type::Text]]
+[[Has allowed value::Axiomatic]]
+[[Has allowed value::Established]]
+[[Has allowed value::Emerging]]
+[[Has allowed value::Hypothetical]]
+[[Has allowed value::Contested]]
+```
+
+=== 4.3 Rebuild Property Data
+
+```bash
+# Rebuild all semantic data
+php extensions/SemanticMediaWiki/maintenance/rebuildData.php -v
+
+# Update property statistics
+php extensions/SemanticMediaWiki/maintenance/updatePropertyStatistics.php
+```
+
+----
+== 5. Content Deployment
+
+=== 5.1 Import Book Matter
+
+'''Step 1: Prepare Content'''
+```bash
+# Convert markdown to wiki markup
+pandoc hyperion/book-matter/constitutional/*.md -t mediawiki -o constitutional.wiki
+
+# Process frontmatter
+python scripts/extract_frontmatter.py constitutional.wiki
+```
+
+'''Step 2: Import Pages'''
+```bash
+# Import with proper categories
+php maintenance/importTextFile.php \
+  --title "BITwiki_Constitution" \
+  --overwrite \
+  constitutional/BITwiki_Constitution.wiki
+```
+
+'''Step 3: Verify Import'''
+```bash
+# Check page exists
+curl "https://bitwiki.org/api.php?action=query&titles=BITwiki_Constitution&format=json"
+
+# Verify SMW data
+php extensions/SemanticMediaWiki/maintenance/rebuildData.php --page "BITwiki_Constitution"
+```
+
+=== 5.2 Set Up Categories
+
+'''Create Category Pages:'''
+```mediawiki
+[[Category:BITwiki]]
+[[Category:BITwiki Constitutional]]
+[[Has description::Foundational principles and governance]]
+```
+
+'''Category Hierarchy:'''
+* Category:BITwiki
+* Category:BITwiki Constitutional
+* Category:BITwiki Ontology
+* Category:BITwiki Evidence-Epistemics
+* Category:BITwiki Schema-Matter
+* Category:BITwiki Governance
+* Category:BITwiki Front-Matter
+* Category:BITwiki Validation
+* Category:BITwiki Research
+
+=== 5.3 Configure Navigation
+
+'''Main Page:'''
+```mediawiki
+= Welcome to BITwiki =
+
+BITwiki is a recursive knowledge system for the age of distributed intelligence.
+
+== Quick Start ==
+* [[BITwiki_Start_Here|Start Here]]
+* [[BITwiki_Constitution|Constitution]]
+* [[BITwiki_Ontology_Index|Ontology]]
+* [[BITwiki_Master_Navigation|Master Navigation]]
+
+== Browse by Domain ==
+{{#ask: [[Has domain::+]]
+|?Has domain
+|format=ul
+}}
+
+== Recent Changes ==
+{{Special:RecentChanges}}
+```
+
+----
+== 6. Quality Validation
+
+=== 6.1 Run Validation Scripts
+
+'''Epistemic Validation:'''
+```bash
+php maintenance/runEpistemicAudit.php \
+  --min-confidence 0.8 \
+  --output report.json
+```
+
+'''Template Validation:'''
+```bash
+php maintenance/checkTemplateUsage.php \
+  --template "Infobox_Concept" \
+  --verbose
+```
+
+'''Link Validation:'''
+```bash
+php maintenance/checkBrokenLinks.php \
+  --namespace 0 \
+  --output broken_links.txt
+```
+
+=== 6.2 Verify SMW Queries
+
+'''Test Queries:'''
+```mediawiki
+{{#ask: [[Has epistemic status::Axiomatic]]
+|?Has title
+|format=ul
+}}
+
+{{#ask: [[Has confidence::>0.8]]
+|?Has title
+|?Has confidence
+|format=table
+}}
+```
+
+=== 6.3 Performance Check
+
+'''Query Performance:'''
+```bash
+# Enable query profiling
+$wgDebugToolbar = true;
+$wgShowDebug = true;
+
+# Check slow queries
+tail -f /var/log/mediawiki/slow-queries.log
+```
+
+----
+== 7. Post-Deployment Tasks
+
+=== 7.1 Configure Backups
+
+'''Automated Backup Script:'''
+```bash
+#!/bin/bash
+# /opt/scripts/backup-bitwiki.sh
+
+DATE=$(date +%Y%m%d)
+BACKUP_DIR="/backups/bitwiki"
+
+# Database backup
+mysqldump -u wikiuser -p'password' wikidb > $BACKUP_DIR/wiki_$DATE.sql
+
+# Files backup
+tar -czf $BACKUP_DIR/wiki_files_$DATE.tar.gz /var/www/html/wiki/
+
+# SMW data export
+php extensions/SemanticMediaWiki/maintenance/exportRDF.php --file $BACKUP_DIR/wiki_$DATE.rdf
+
+# Keep last 7 days
+find $BACKUP_DIR -name "wiki_*.sql" -mtime +7 -delete
+find $BACKUP_DIR -name "wiki_files_*.tar.gz" -mtime +7 -delete
+find $BACKUP_DIR -name "wiki_*.rdf" -mtime +7 -delete
+```
+
+'''Cron Job:'''
+```bash
+# Daily at 2 AM
+0 2 * * * /opt/scripts/backup-bitwiki.sh >> /var/log/bitwiki-backup.log 2>&1
+```
+
+=== 7.2 Set Up Monitoring
+
+'''Log Monitoring:'''
+```bash
+# Watch for errors
+tail -f /var/log/mediawiki/error.log | grep -i "error\|warning\|fatal"
+
+# SMW specific
+tail -f /var/log/mediawiki/smw.log
+```
+
+'''Performance Monitoring:'''
+```bash
+# Page load times
+curl -w "@curl-format.txt" -o /dev/null -s https://bitwiki.org/Special:Statistics
+
+# Query performance
+php extensions/SemanticMediaWiki/maintenance/smwadmin.php --queryprofiling
+```
+
+=== 7.3 Documentation
+
+'''Update Documentation:'''
+* [ ] Document deployment date and version
+* [ ] Record configuration changes
+* [ ] Update troubleshooting guide
+* [ ] Notify stakeholders
+
+----
+== 8. Troubleshooting
+
+=== 8.1 Common Issues
+
+'''SMW Properties Not Showing:'''
+```bash
+# Rebuild semantic data
+php extensions/SemanticMediaWiki/maintenance/rebuildData.php -v
+
+# Clear cache
+php maintenance/purgeCache.php
+```
+
+'''Template Errors:'''
+```bash
+# Check template syntax
+php maintenance/checkSyntax.php --file Template:Infobox_Concept.wiki
+
+# Validate SMW in template
+php extensions/SemanticMediaWiki/maintenance/smwadmin.php --check
+```
+
+'''Slow Queries:'''
+```bash
+# Enable query cache
+$smwgQueryResultCacheType = CACHE_ANYTHING;
+
+# Optimize database
+mysql -u root -p -e "OPTIMIZE TABLE smw_object_ids;"
+```
+
+=== 8.2 Rollback Procedure
+
+'''Emergency Rollback:'''
+```bash
+# Stop web server
+systemctl stop apache2
+
+# Restore database
+mysql -u wikiuser -p wikidb < backup_YYYYMMDD.sql
+
+# Restore files
+tar -xzf wiki_files_YYYYMMDD.tar.gz -C /var/www/html/
+
+# Rebuild SMW
+php extensions/SemanticMediaWiki/maintenance/rebuildData.php
+
+# Start web server
+systemctl start apache2
+```
+
+----
+== 9. Maintenance Schedule
+
+| Task | Frequency | Command |
+|------|-----------|---------|
+| Database backup | Daily | `backup-bitwiki.sh` |
+| SMW data rebuild | Weekly | `rebuildData.php` |
+| Property statistics | Weekly | `updatePropertyStatistics.php` |
+| Cache purge | Monthly | `purgeCache.php` |
+| Link check | Monthly | `checkBrokenLinks.php` |
+| Security updates | As needed | `git pull` |
+| SMW update | Quarterly | Follow SMW upgrade guide |
+
+----
+== Conclusion
+
+Successful BITwiki deployment requires careful planning, systematic execution, and ongoing maintenance. This guide provides the foundation for a robust, scalable knowledge system.
+
+'''Success Metrics:'''
+* All templates load without errors
+* SMW queries return results < 2 seconds
+* Epistemic markers display correctly
+* Backup system operational
+* Monitoring alerts functional
+
+'''Next Steps:'''
+# Complete deployment checklist
+# Train content editors
+# Establish content governance
+# Monitor and optimize performance
+# Plan for scaling

@@ -1,0 +1,210 @@
+{{Infobox
+| title = Infobox Implementation: Template for Implementation Documentation
+| description = Standardized infobox template for documenting implementations in BITwiki, including properties, relationships, and epistemic metadata.
+| type = template
+| author = BITCORE
+| created = 2026-02-12
+| version = 2.established
+| epistemic_status = Established
+| confidence = established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: infobox-template
+domain: implementation-documentation
+| workflow = state: Beta
+}}
+
+{{Documentation}}
+[[Category:BITwiki Templates]]
+
+
+= Infobox Implementation: Template for Implementation Documentation =
+
+== Purpose ==
+
+This template provides a standardized infobox for documenting implementations in BITwiki. Implementations are concrete realizations of ideas.
+
+== Template Structure ==
+
+```wiki
+{{Infobox Implementation
+| name = Implementation Name
+| image = Image file (optional)
+| caption = Image caption
+| description = Brief description
+| implements = Idea being implemented
+| technology = Technology used
+| developer = Developer or organization
+| release_date = Release date
+| status = Active/Deprecated/Experimental
+| domain = Application domain
+| performance = Performance metrics
+| limitations = Known limitations
+| epistemic_status = Hypothetical/Emerging/Established/Verified/Axiomatic
+| confidence_trajectory = established-developing
+| source_count = Number of sources
+}}
+```
+
+== Parameters ==
+
+=== Required Parameters ===
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| name | String | Implementation name |
+| description | Text | Brief description (1-2 sentences) |
+| implements | Page | Idea being implemented |
+| epistemic_status | Enum | One of five tiers |
+| confidence_score | Float | established-1.0 |
+
+=== Optional Parameters ===
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| image | File | Illustrative image |
+| caption | Text | Image caption |
+| technology | Text | Technology used |
+| developer | Page | Developer |
+| release_date | Date | Release date |
+| status | Enum | Active/Deprecated/Experimental |
+| domain | Page | Application domain |
+| performance | Text | Performance metrics |
+| limitations | Text | Known limitations |
+| source_count | Integer | Number of sources |
+
+== Usage Example ==
+
+```wiki
+{{Infobox Implementation
+| name = Neural Network
+| image = Neural_network_diagram.png
+| caption = Feedforward neural network architecture
+| description = A computational model inspired by biological neural networks, capable of learning patterns from data
+| implements = Machine Learning
+| technology = Artificial Neural Networks
+| developer = Multiple researchers
+| release_date = 1943 (McCulloch-Pitts)
+| status = Active
+| domain = Artificial Intelligence
+| performance = State-of-the-art in many tasks
+| limitations = Requires large datasets, black box nature
+| epistemic_status = Verified
+| confidence_score = established
+| source_count = 10000
+}}
+```
+
+== SMW Properties ==
+
+The template automatically generates these SMW properties:
+
+```wiki
+[[Has entity type::Implementation]]
+[[Has name::{{PAGENAME}}]]
+[[Has description::{{{description}}}]]
+[[Implements::{{{implements}}}]]
+[[Has technology::{{{technology}}}]]
+[[Has developer::{{{developer}}}]]
+[[Has release date::{{{release_date}}}]]
+[[Has status::{{{status}}}]]
+[[Has domain::{{{domain}}}]]
+[[Has epistemic status::{{{epistemic_status}}}]]
+[[Has confidence trajectory::{{{confidence_score}}}]]
+[[Has source count::{{{source_count}}}]]
+```
+
+== Styling ==
+
+The infobox uses standard BITwiki styling:
+* Width: 300px
+* Float: Right
+* Background: Light green
+* Border: 1px solid
+* Padding: 10px
+
+== Accessibility ==
+* Images must have alt text
+* Color not used for meaning
+* Screen reader compatible
+* Keyboard navigable
+
+== Validation ==
+
+=== Required Fields ===
+* name: Must not be empty
+* description: Must not be empty
+* implements: Must not be empty
+* epistemic_status: Must be valid tier
+* confidence_score: Must be established-1.0
+
+=== Validation Rules ===
+
+```wiki
+{{#if: {{{name|}}} | | [[Category:Infobox missing name]]}}
+{{#if: {{{description|}}} | | [[Category:Infobox missing description]]}}
+{{#if: {{{implements|}}} | | [[Category:Infobox missing implements]]}}
+{{#if: {{{epistemic_status|}}} | | [[Category:Infobox missing epistemic status]]}}
+{{#ifexpr: {{{confidence_score|0}}} >= 0 and {{{confidence_score|0}}} <= 1 | | [[Category:Infobox invalid confidence]]}}
+```
+
+== Related Templates ==
+* [[Template:Infobox Concept]] — For concepts
+* [[Template:Infobox Idea]] — For ideas
+* [[Template:Infobox Project]] — For projects
+
+== References ==
+
+# Semantic MediaWiki. (2026). Template documentation.
+# Wikipedia. (2026). Infobox guidelines.
+# Schema.org. (2026). Thing type.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+
+[[Has page type::Template]]
+[[Has epistemic tier::Established]]
+[[Has confidence trajectory::established]]
+[[Has parameter count::13]]
+[[Has source count::5]]
+[[Has word count::400]]
+
+
+
+
+
+
+=== Required Fields ===
+* name: Must not be empty
+* description: Must not be empty
+* implements: Must not be empty
+* epistemic_status: Must be valid tier
+* confidence_score: Must be 0.0-1.0
+
+=== Validation Rules ===
+
+```wiki
+{{#if: {{{name|}}} | | [[Category:Infobox missing name]]}}
+{{#if: {{{description|}}} | | [[Category:Infobox missing description]]}}
+{{#if: {{{implements|}}} | | [[Category:Infobox missing implements]]}}
+{{#if: {{{epistemic_status|}}} | | [[Category:Infobox missing epistemic status]]}}
+{{#ifexpr: {{{confidence_score|0}}} >= 0 and {{{confidence_score|0}}} <= 1 | | [[Category:Infobox invalid confidence]]}}
+```
+
+== Related Templates ==
+* [[Template:Infobox Concept]] — For concepts
+* [[Template:Infobox Idea]] — For ideas
+* [[Template:Infobox Project]] — For projects
+
+== References ==
+
+# Semantic MediaWiki. (2026). Template documentation.
+# Wikipedia. (2026). Infobox guidelines.
+# Schema.org. (2026). Thing type.
+# BITwiki Ontology Index. (2026).
+# BITwiki Constitution. (2026).
+
+[[Has page type::Template]]
+[[Has epistemic tier::Established]]
+[[Has confidence score::0.86]]
+[[Has parameter count::13]]
+[[Has source count::5]]
+[[Has word count::400]]

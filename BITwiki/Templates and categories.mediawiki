@@ -33,7 +33,7 @@ Templates are the public wikitext-facing contract. Lua is the deterministic comp
 <code>Template:Knowledge object</code> demonstrates this split: it exposes the authoring contract, invokes <code>Module:Structure</code>, and that wrapper delegates normalization/type checking to <code>Module:BITwiki/Compiler</code> using the runtime schema projection.
 
 == What V1 actually implemented ==
-The exhaustive public V1 archive contains:
+The read-only V1 migration archive under <code>archive-v1/</code> contains:
 * 9 Template namespace pages;
 * 162 used category names;
 * 0 authored Category namespace pages;
@@ -173,7 +173,7 @@ Before a V2 deployment is considered clean:
 # verify semantic properties and category membership after template migrations;
 # verify Lua module dependency order and actual Scribunto behavior for invoked modules;
 # verify redirects/transclusions after every rename;
-# never deploy the historical V1 snapshot at commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code> as current V2 content.
+# never deploy <code>archive-v1/</code> as current V2 content; it is a reconciliation/provenance source until issue #152 is genuinely complete.
 
 See [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], [[BITwiki:MediaWiki substrate]], [[BITwiki:Transclusion]], and [[BITwiki:Contributing]].
 

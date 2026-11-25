@@ -1,0 +1,270 @@
+{{Infobox
+| title = Epistemic Properties
+| description = Comprehensive documentation for Epistemic Properties in the BITwiki schema-matter system
+| type = schema-matter
+| author = BITCORE
+| created = 2026-02-11
+| version = 1.0.0
+| epistemic_status = Attribution-Traced
+| confidence = Established
+| license = CC-BY-SA-4.0
+| ontology = entity_type: epistemic_metadata
+domain: template-system
+| word_count = 331
+| sources_count = 12
+| workflow = state: Beta
+}}
+
+
+{{Schema-Matter Document}}
+{{DISPLAYTITLE:Epistemic Properties}}
+__NOTOC__
+
+{{#set:
+ |Has epistemic status=Attribution-Traced
+ |Has confidence score=0.86
+ |Has ontology=epistemic_metadata
+ |Has document type=Schema-Matter
+ |Has version=1.0.0
+}}
+
+
+# Epistemic Properties
+
+Epistemic properties capture the knowledge state of claims and entities in the knowledge graph. These properties enable quality assessment and trust evaluation.
+
+== Property Definitions ==
+
+=== Has Confidence Level ===
+'''Type''': Text (controlled vocabulary)
+'''SMW Definition''':
+```
+
+[Has type::Text](Has type::Text)(Has type::Text.md)
+[Allows value::High](Allows value::High)(Allows value::High.md)
+[Allows value::Medium](Allows value::Medium)(Allows value::Medium.md)
+[Allows value::Low](Allows value::Low)(Allows value::Low.md)
+[Allows value::Unknown](Allows value::Unknown)(Allows value::Unknown.md)
+
+```
+
+'''Semantics''':
+* '''High''': Strong consensus or multiple independent confirmations
+* '''Medium''': Reasonable evidence but limited confirmation
+* '''Low''': Preliminary or contested information
+* '''Unknown''': No basis for confidence assessment
+
+'''Usage''':
+```
+
+```
+
+=== Has Evidence Strength ===
+'''Type''': Text (controlled vocabulary)
+'''SMW Definition''':
+```
+
+[Has type::Text](Has type::Text)(Has type::Text.md)
+[Allows value::Primary](Allows value::Primary)(Allows value::Primary.md)
+[Allows value::Secondary](Allows value::Secondary)(Allows value::Secondary.md)
+[Allows value::Anecdotal](Allows value::Anecdotal)(Allows value::Anecdotal.md)
+
+```
+
+'''Semantics''':
+* '''Primary''': Direct evidence from original sources (documents, measurements, observations)
+* '''Secondary''': Synthesized or interpreted evidence from primary sources
+* '''Anecdotal''': Informal or unverified reports
+
+'''Usage''':
+```
+
+```
+
+=== Has Verification Status ===
+'''Type''': Text (controlled vocabulary)
+'''SMW Definition''':
+```
+
+[Has type::Text](Has type::Text)(Has type::Text.md)
+[Allows value::Verified](Allows value::Verified)(Allows value::Verified.md)
+[Allows value::Unverified](Allows value::Unverified)(Allows value::Unverified.md)
+[Allows value::Disputed](Allows value::Disputed)(Allows value::Disputed.md)
+[Allows value::Deprecated](Allows value::Deprecated)(Allows value::Deprecated.md)
+
+```
+
+'''Semantics''':
+* '''Verified''': Independently confirmed by multiple sources
+* '''Unverified''': Awaiting confirmation or validation
+* '''Disputed''': Active disagreement among sources
+* '''Deprecated''': Previously accepted but now superseded
+
+'''Usage''':
+```
+
+```
+
+=== Has Epistemic Status ===
+'''Type''': Text (controlled vocabulary)
+'''SMW Definition''':
+```
+
+[Has type::Text](Has type::Text)(Has type::Text.md)
+[Allows value::Attribution-Traced](Allows value::Attribution-Traced)(Allows value::Attribution-Traced.md)
+[Allows value::Source-Documented](Allows value::Source-Documented)(Allows value::Source-Documented.md)
+[Allows value::Emerging](Allows value::Emerging)(Allows value::Emerging.md)
+[Allows value::Hypothetical](Allows value::Hypothetical)(Allows value::Hypothetical.md)
+
+```
+
+'''Semantics''':
+* '''Attribution-Traced''': Complete chain of attribution to original source
+* '''Source-Documented''': Cited to specific document or reference
+* '''Emerging''': New information undergoing validation
+* '''Hypothetical''': Proposed but not yet tested
+
+'''Usage''':
+```
+
+```
+
+== Complete Annotation Example ==
+
+```
+
+{{#set:
+ |Has confidence level=High
+ |Has evidence strength=Primary
+ |Has verification status=Verified
+ |Has epistemic status=Attribution-Traced
+ |Was attributed to=Source:Primary_Archive_2026
+}}
+
+```
+
+== Query Examples ==
+
+=== High Confidence Claims ===
+```
+
+```
+
+=== Verified Primary Sources ===
+```
+
+```
+
+== Epistemological Framework ==
+
+The epistemic properties in the EPV Framework implement a sophisticated theory of knowledge quality and reliability. These properties enable systematic assessment of claims based on multiple dimensions of epistemic virtue.
+
+=== Virtue Epistemology Integration ===
+
+The framework draws upon virtue epistemology, which emphasizes the role of intellectual virtues in knowledge acquisition. Properties like "Has confidence level" and "Has evidence strength" encode assessments of the intellectual virtues exhibited in the production of knowledge claims.
+
+=== Social Epistemology ===
+
+The framework also incorporates insights from social epistemology, recognizing that knowledge is often produced through social processes. Properties like "Has verification status" and "Was attributed to" capture the social dimensions of knowledge validation and attribution.
+
+== Detailed Property Semantics ==
+
+=== Confidence Level Semantics ===
+
+The confidence level property encodes a graded assessment of epistemic certainty. The four levels—High, Medium, Low, Unknown—correspond to different states of epistemic justification:
+* '''High Confidence''': Claims enjoy strong justification, typically through multiple independent confirmations or authoritative sources
+* '''Medium Confidence''': Claims have reasonable support but may lack full confirmation or face minor challenges
+* '''Low Confidence''': Claims are preliminary, contested, or based on limited evidence
+* '''Unknown''': No basis exists for assessing confidence, often due to insufficient information
+
+=== Evidence Strength Semantics ===
+
+Evidence strength reflects the quality and reliability of the sources supporting a claim:
+* '''Primary Evidence''': Direct access to original sources, measurements, or observations
+* '''Secondary Evidence''': Access to synthesized or interpreted accounts of primary sources
+* '''Anecdotal Evidence''': Informal reports or unverified observations
+
+The distinction between primary and secondary evidence is crucial for evaluating the reliability of knowledge claims.
+
+=== Verification Status Semantics ===
+
+Verification status tracks the validation state of claims within the knowledge community:
+* '''Verified''': Claims have been independently confirmed by multiple sources or methods
+* '''Unverified''': Claims await validation or are in the process of being confirmed
+* '''Disputed''': Claims face active disagreement or challenge from credible sources
+* '''Deprecated''': Claims were previously accepted but have been superseded by better evidence
+
+=== Epistemic Status Semantics ===
+
+Epistemic status provides a comprehensive assessment of a claim's position in the knowledge ecosystem:
+* '''Attribution-Traced''': Complete chain of attribution exists, enabling full provenance tracking
+* '''Source-Documented''': Specific sources are cited, though full attribution chains may not be available
+* '''Emerging''': New claims undergoing validation and community assessment
+* '''Hypothetical''': Proposed claims not yet tested or validated
+
+== Epistemic Assessment Methodology ==
+
+=== Multi-Criteria Evaluation ===
+
+Assessing epistemic properties requires evaluating multiple criteria:
+
+# '''Source Reliability''': The credibility and expertise of originating sources
+# '''Evidence Quality''': The strength and relevance of supporting evidence
+# '''Confirmation Status''': The degree of independent verification
+# '''Coherence''': Consistency with established knowledge
+# '''Transparency''': Availability of attribution and methodology
+
+=== Dynamic Assessment ===
+
+Epistemic properties are not static but evolve as new evidence emerges and community consensus develops. Regular review and updating of epistemic metadata is essential for maintaining knowledge quality.
+
+== Integration with Knowledge Quality Assurance ==
+
+The epistemic properties framework supports systematic knowledge quality assurance through:
+* '''Automated Checks''': Queries can identify claims with low confidence or insufficient evidence
+* '''Review Prioritization''': High-impact claims with disputed status can be flagged for expert review
+* '''Attribution Auditing''': Complete provenance chains enable verification of claim origins
+* '''Quality Metrics''': Aggregate statistics on epistemic properties provide knowledge base health indicators
+
+== Practical Guidelines ==
+
+=== Setting Epistemic Properties ===
+
+When annotating claims with epistemic properties:
+
+# Be conservative in assigning high confidence levels
+# Always cite specific sources for attribution-traced status
+# Update properties as new evidence emerges
+# Document the rationale for epistemic assessments
+# Flag claims for review when confidence is uncertain
+
+=== Querying by Epistemic Status ===
+
+Common query patterns include:
+* Finding high-confidence claims for critical applications
+* Identifying unverified claims requiring validation
+* Tracking deprecated claims that may need updating
+* Assessing the overall epistemic health of knowledge domains
+
+
+
+== See Also ==
+* [EPV Framework](EPV Framework)(EPV Framework.md)
+* [Event Types](Event Types)(Event Types.md)
+* [Provenance Model](Provenance Model)(Provenance Model.md)
+
+
+== References ==
+
+# Goldman, A. (1999). Knowledge in a Social World. Oxford.
+# Coady, C. (1992). Testimony: A Philosophical Study. Oxford.
+# Fricker, E. (1994). Against Gullibility. Bimal Krishna Matilal.
+# Lackey, J. (2008). Learning from Words. Oxford.
+# Faulkner, P. (2000). The Social Character of Testimonial Knowledge. JSP.
+# Schmitt, F. (2006). Testimonial Justification and Transindividual Reasons. RSP.
+# Adler, J. (2002). Belief's Own Ethics. MIT Press.
+# Elgin, C. (2017). True Enough. MIT Press.
+# Oreskes, N. (2019). Why Trust Science? Princeton.
+# Collins, H., & Evans, R. (2002). The Third Wave of Science Studies. SSS.
+# Hardwig, J. (1985). Epistemic Dependence. JPhil.
+# Kitcher, P. (1990). The Division of Cognitive Labor. JPhil.

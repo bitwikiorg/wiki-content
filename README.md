@@ -10,7 +10,7 @@ This repository includes the reviewed deployment projection for BITwiki's public
 - **GitHub Pages staging:** https://bitwikiorg.github.io/wiki-content/
 - **BIThub:** https://hub.bitwiki.org/
 - **Canonical branch:** `main`
-- **V1 lineage:** preserved in immutable Git history at snapshot commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4`; retirement/disposition is documented in [`docs/v1-retirement.md`](docs/v1-retirement.md)
+- **V1 migration source:** `archive-v1/` is restored read-only while issue #152 performs content-level reconciliation; see [`docs/v1-reconciliation.md`](docs/v1-reconciliation.md)
 
 > `main` is the integrated repository source of truth. Filesystem folders project MediaWiki/runtime surfaces; they are not themselves the ontology.
 
@@ -107,6 +107,7 @@ Project-specific implementation standards remain in `BITwiki:*`; Main-space page
 ```text
 wiki-content/
 ├── Main/          canonical Main-namespace knowledge, self-model objects, redirects, Book Matter
+├── archive-v1/    read-only V1 migration/provenance source
 ├── BITwiki/       public project architecture, editorial standards, governance, epistemics
 ├── Template/      declarative authoring/invocation and recovered compatibility templates
 ├── Module/        Scribunto/Lua compiler, transformation, projection, diagnostics
@@ -188,7 +189,7 @@ The prior public Cargo-backed queue has been retired from source-controlled Medi
 | Operational request records (not wiki source) | [`ops/knowledge-requests.json`](ops/knowledge-requests.json) |
 | Deployment runbook (not wiki source) | [`docs/deployment.md`](docs/deployment.md) |
 | Runtime mapping manifest | [`manifest.json`](manifest.json) |
-| V1 historical provenance | [`docs/v1-retirement.md`](docs/v1-retirement.md) · immutable snapshot `3100db1d7807b752e41b6ccf7f88498982cfb2d4` |
+| V1 reconciliation | [`docs/v1-reconciliation.md`](docs/v1-reconciliation.md) · source `archive-v1/` · immutable snapshot `3100db1d7807b752e41b6ccf7f88498982cfb2d4` |
 
 ---
 
@@ -203,6 +204,8 @@ python scripts/audit_substrate.py
 python scripts/audit_workflow.py
 python scripts/audit_mainspace.py
 python scripts/inventory_corpus.py
+python scripts/classify_v1_page_roles.py
+python scripts/classify_v1_architecture_families.py
 find Module -type f -name '*.lua' -print0 | xargs -0 -n1 luac5.1 -p
 ```
 
@@ -226,7 +229,7 @@ V1
 → integrate into V2
 ```
 
-The V1 working-tree archive was retired after recovery/disposition under issue #152. The exact public snapshot remains recoverable at commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4`; it is historical evidence, not deployable V2 source or current architecture.
+`archive-v1/` is a read-only migration/provenance source while issue #152 remains open. It is not deployable V2 source or current architecture. Retirement is gated on the content-level reconciliation standard in `docs/v1-reconciliation.md`; Git recoverability alone is not proof of successful migration.
 
 ---
 

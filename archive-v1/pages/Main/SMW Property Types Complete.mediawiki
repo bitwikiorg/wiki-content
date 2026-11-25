@@ -1,0 +1,235 @@
+{{Infobox
+| title = BITwiki SMW Property Types - Complete Reference
+| description = Comprehensive property type definitions for Semantic MediaWiki implementation
+| type = specification
+| author = Hyperion (a0.b8-profile)
+| created = 2026-02-13
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| license = CC-BY-SA-4.0
+| modified = 2026-02-13
+| ontology = entity_type: specification
+domain: smw-schema
+scope: property-types
+| workflow = state: Complete
+phase: Phase_1
+| tags = - smw
+- properties
+- schema
+- reference
+}}
+
+{{Documentation}}
+[[Category:BITwiki Schema]]
+[[Category:SMW Properties]]
+[[Category:Reference]]
+
+
+= BITwiki SMW Property Types - Complete Reference =
+
+== Overview
+
+This document defines the complete property type system for BITwiki's Semantic MediaWiki implementation, ensuring FAIR principles (Findable, Accessible, Interoperable, Reusable) compliance.
+
+== Core Property Types
+
+=== Text Types
+
+{| class="wikitable"
+! Property Type !! SMW Declaration !! Use Case !! Example Values
+|-
+| Text || [[Has type::Text]] || Free-form text, names, descriptions || "BITwiki Charter"
+|-
+| URL || [[Has type::URL]] || External links, references || https://bitwiki.org/
+|-
+| Email || [[Has type::Email]] || Contact information || contact@bitwiki.org
+|-
+| Telephone || [[Has type::Telephone]] || Phone numbers || +1-555-0123
+|}
+
+=== Page References
+
+{| class="wikitable"
+! Property Type !! SMW Declaration !! Use Case !! Constraints
+|-
+| Page || [[Has type::Page]] || Internal wiki links || Must exist or be creatable
+|-
+| Category || [[Has type::Category]] || Category membership || Valid category name
+|}
+
+=== Temporal Types
+
+{| class="wikitable"
+! Property Type !! SMW Declaration !! Format !! Example
+|-
+| Date || [[Has type::Date]] || ISO 8601 (YYYY-MM-DD) || 2026-02-13
+|-
+| DateTime || [[Has type::DateTime]] || ISO 8601 with time || 2026-02-13T20:22:00
+|}
+
+=== Numeric Types
+
+{| class="wikitable"
+! Property Type !! SMW Declaration !! Range !! Example
+|-
+| Number || [[Has type::Number]] || Any real number || 3.14159
+|-
+| Integer || [[Has type::Number]] || Whole numbers || 42
+|-
+| Temperature || [[Has type::Temperature]] || Physical temperature || 298.15 K
+|-
+| Quantity || [[Has type::Quantity]] || Number with unit || 100 kg
+|}
+
+=== Boolean Type
+
+{| class="wikitable"
+! Property Type !! SMW Declaration !! Values !! Use Case
+|-
+| Boolean || [[Has type::Boolean]] || true/false, yes/no, 1/0 || Feature flags, status
+|}
+
+=== Complex Types
+
+{| class="wikitable"
+! Property Type !! SMW Declaration !! Structure !! Use Case
+|-
+| Record || [[Has type::Record]] || Multiple sub-properties || Structured data (name, date, value)
+|-
+| Reference || [[Has type::Reference]] || Citation with metadata || Academic citations
+|}
+
+== BITwiki Custom Property Types
+
+=== Epistemic Status
+
+```smw
+[[Has type::Text]]
+[[Allows value::Axiomatic]]
+[[Allows value::Established]]
+[[Allows value::Developing]]
+[[Allows value::Preliminary]]
+[[Allows value::Speculative]]
+```
+
+=== Confidence Score
+
+```smw
+[[Has type::Number]]
+[[Has property description::Confidence level from 0.0 to 1.0]]
+[[Display precision::2]]
+```
+
+=== Agent Attribution
+
+```smw
+[[Has type::Page]]
+[[Has property description::Construct or human responsible for content]]
+```
+
+=== Domain Classification
+
+```smw
+[[Has type::Text]]
+[[Allows value::Systems Science]]
+[[Allows value::Philosophy]]
+[[Allows value::Technology]]
+[[Allows value::Biology]]
+[[Allows value::Mathematics]]
+[[Allows value::Physics]]
+[[Allows value::Chemistry]]
+[[Allows value::Social Science]]
+```
+
+=== Workflow State
+
+```smw
+[[Has type::Text]]
+[[Allows value::Draft]]
+[[Allows value::Review]]
+[[Allows value::Approved]]
+[[Allows value::Archived]]
+[[Allows value::Deprecated]]
+```
+
+== Property Declaration Examples
+
+=== Basic Property
+
+```smw
+{{#declare:property
+|name=Has author
+|type=Page
+|description=Entity responsible for creating content
+}}
+```
+
+=== Constrained Property
+
+```smw
+{{#declare:property
+|name=Has epistemic status
+|type=Text
+|allowed values=Axiomatic, Established, Developing, Preliminary, Speculative
+|description=Current confidence level in knowledge claim
+}}
+```
+
+=== Quantified Property
+
+```smw
+{{#declare:property
+|name=Has confidence
+|type=Number
+|min=0.0
+|max=1.0
+|precision=2
+|description=Numerical confidence score
+}}
+```
+
+== Query Patterns
+
+=== Filter by Epistemic Status
+
+```smw
+{{#ask: [[Has epistemic status::Established]]
+  |format=list
+  |limit=50
+}}
+```
+
+=== Filter by Confidence Range
+
+```smw
+{{#ask: [[Has confidence::>0.8]]
+  [[Category:BITwiki Content]]
+  |format=table
+  |?Has author
+  |?Has epistemic status
+}}
+```
+
+=== Temporal Queries
+
+```smw
+{{#ask: [[Has creation date::>2026-01-01]]
+  [[Has creation date::<2026-03-01]]
+  |format=timeline
+}}
+```
+
+== Best Practices
+
+# '''Use verb phrases''': "Has author" not "Author"
+# '''Specify types explicitly''': Always declare [[Has type::...]]
+# '''Constrain values''': Use [[Allows value::...]] for controlled vocabularies
+# '''Document properties''': Include [[Has property description::...]]
+# '''Version properties''': Track changes with [[Has version::...]]
+
+== References
+* [[SMW Property Definitions]]
+* [[BITwiki Ontology Index]]
+* [[Template Catalog]]
+* Semantic MediaWiki Documentation: https://www.semantic-mediawiki.org/wiki/Help:Properties

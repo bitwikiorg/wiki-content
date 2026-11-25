@@ -1,0 +1,333 @@
+{{Infobox
+| title = BITwiki vs BITHUB Boundary Specification
+| description = Comprehensive specification of agent boundaries, responsibilities, and interaction protocols between BITwiki and BITHUB systems
+| type = governance_specification
+| version = 1.0.0
+| epistemic_status = Established
+| confidence = Established
+| evidence_type = Primary
+| has_event_type = Specification_Creation
+| has_confidence_level = T2
+| has_verification_state = Verified
+| has_discussion_topic = Agent Architecture
+| ontology = BITwiki-Governance-v1.0
+| sources = 8
+| generated_by = Agent_Zero_Developer
+| event_timestamp = 2026-02-13T16:55:00Z
+| attributed_to = hyperion-developer-001
+| validation_hash = SHA256:bitwiki_bithub_boundary_v1_⟁_20260213
+}}
+
+= BITwiki vs BITHUB Boundary Specification =
+
+== Executive Summary ==
+
+This document establishes the formal boundary specification between '''BITwiki''' (the semantic knowledge management system) and '''BITHUB''' (the agent orchestration infrastructure). It defines agent responsibilities, interaction protocols, data flow boundaries, and escalation procedures to ensure clear separation of concerns while enabling seamless collaboration.
+
+'''Document ID''': HIGH-001  
+'''Priority''': HIGH  
+'''Status''': Active Specification  
+'''Version''': 1.0.0  
+'''Last Updated''': 2026-02-13
+
+----
+== 1. System Architecture Overview ==
+
+=== 1.1 BITwiki System Domain ===
+
+```mermaid
+graph TB
+    subgraph BITwiki["BITwiki Knowledge System"]
+        SMW[Semantic MediaWiki]
+        EPV[EPV Framework]
+        Templates[Template System]
+        Ontology[Ontology Layer]
+        Query[SMW Query Engine]
+    end
+    
+    BITwiki -->|Knowledge Graph| Storage[(Semantic Data Store)]
+    BITwiki -->|Rendered Pages| Web[Web Interface]
+```
+
+'''Core Responsibilities''':
+* Knowledge representation and semantic annotation
+* Epistemic provenance tracking (EPV framework)
+* Template-based document generation
+* Ontology management and validation
+* Queryable knowledge graph maintenance
+
+=== 1.2 BITHUB System Domain ===
+
+```mermaid
+graph TB
+    subgraph BITHUB["BITHUB Agent Infrastructure"]
+        Orchestrator[Agent Orchestrator]
+        Scheduler[Task Scheduler]
+        A2A[A2A Protocol Layer]
+        Memory[Memory System]
+        Subordinates[Subordinate Agents]
+    end
+    
+    BITHUB -->|Task Results| BITwiki
+    BITHUB -->|Agent Coordination| External[External Services]
+```
+
+'''Core Responsibilities''':
+* Agent lifecycle management
+* Task scheduling and execution
+* Inter-agent communication (A2A protocol)
+* Memory persistence and retrieval
+* Subordinate agent orchestration
+
+----
+== 2. Agent Boundary Definitions ==
+
+=== 2.1 BITwiki Agent Responsibilities ===
+
+| Capability | In Scope | Out of Scope |
+|------------|----------|--------------|
+| '''Document Creation''' | Wiki pages, templates, SMW markup | Raw binary files, external databases |
+| '''Knowledge Modeling''' | Ontology design, property schemas | ML model training, statistical inference |
+| '''Validation''' | SMW syntax, YAML frontmatter, epistemic consistency | Runtime performance, security auditing |
+| '''Query Design''' | SMW #ask queries, concept relationships | SQL optimization, distributed query execution |
+| '''Template Development''' | MediaWiki templates, Lua modules | Frontend JavaScript, CSS frameworks |
+
+=== 2.2 BITHUB Agent Responsibilities ===
+
+| Capability | In Scope | Out of Scope |
+|------------|----------|--------------|
+| '''Task Orchestration''' | Scheduling, delegation, monitoring | Business logic implementation |
+| '''Agent Communication''' | A2A protocol, message routing | Semantic interpretation of content |
+| '''Memory Management''' | Persistence, retrieval, forgetting | Epistemic validation of memories |
+| '''Tool Integration''' | Browser, search, code execution | Domain-specific tool development |
+| '''Workflow Automation''' | n8n integration, HTTP requests | Wiki page automation |
+
+=== 2.3 Shared Responsibilities ===
+
+```mermaid
+graph LR
+    subgraph Shared["Shared Domain"]
+        Research[Research Synthesis]
+        Validation[Quality Validation]
+        Documentation[Documentation Generation]
+    end
+    
+    BITwiki -->|Content Standards| Shared
+    BITHUB -->|Process Standards| Shared
+```
+
+'''Collaborative Zones''':
+* Research synthesis and documentation
+* Quality validation and verification
+* File system operations within project scope
+* YAML frontmatter processing
+
+----
+== 3. Data Flow Boundaries ==
+
+=== 3.1 BITwiki → BITHUB Data Flow ===
+
+```mermaid
+sequenceDiagram
+    participant BW as BITwiki
+    participant FS as File System
+    participant BH as BITHUB
+    
+    BW->>FS: Write specification document
+    BW->>FS: Create template files
+    BW->>FS: Update ontology definitions
+    FS->>BH: Read for task execution
+    BH->>BH: Parse YAML frontmatter
+    BH->>BH: Extract SMW properties
+    BH->>FS: Write execution results
+```
+
+'''Permitted Data Types''':
+* Markdown files with YAML frontmatter
+* MediaWiki markup files (.wiki)
+* JSON configuration files
+* SMW query definitions
+* Ontology specifications
+
+=== 3.2 BITHUB → BITwiki Data Flow ===
+
+```mermaid
+sequenceDiagram
+    participant BH as BITHUB
+    participant FS as File System
+    participant BW as BITwiki
+    
+    BH->>FS: Write research output
+    BH->>FS: Create validation reports
+    BH->>FS: Generate template improvements
+    FS->>BW: Read for integration
+    BW->>BW: Validate SMW syntax
+    BW->>BW: Check epistemic consistency
+    BW->>FS: Update knowledge base
+```
+
+'''Permitted Data Types''':
+* Research synthesis documents
+* Validation reports with epistemic metadata
+* Improved template specifications
+* Lua module definitions
+* Configuration updates
+
+=== 3.3 Forbidden Crossings ===
+
+| From | To | Forbidden Action | Reason |
+|------|----|------------------|--------|
+| BITHUB | BITwiki | Direct database writes | Bypass validation layer |
+| BITwiki | BITHUB | Agent spawning | Orchestration is BITHUB domain |
+| BITHUB | External | Unauthenticated API calls | Security boundary |
+| BITwiki | External | Raw HTTP requests | Protocol violation |
+
+----
+== 4. Interaction Protocols ==
+
+=== 4.1 Task Delegation Protocol ===
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant BITHUB
+    participant BITwiki
+    
+    User->>BITHUB: Submit complex task
+    BITHUB->>BITHUB: Analyze task scope
+    alt BITwiki Domain Task
+        BITHUB->>BITwiki: Delegate via call_subordinate
+        BITwiki->>BITwiki: Execute knowledge task
+        BITwiki->>BITHUB: Return results
+    else BITHUB Domain Task
+        BITHUB->>BITHUB: Execute directly
+    end
+    BITHUB->>User: Present final results
+```
+
+'''Delegation Rules''':
+# BITHUB analyzes task and determines domain
+# Knowledge-heavy tasks → BITwiki subordinate
+# Infrastructure tasks → BITHUB execution
+# Mixed tasks → Coordinated execution
+
+=== 4.2 File System Protocol ===
+
+'''BITwiki File Operations''':
+* Read/Write: `/a0/usr/projects/*/book-matter/`
+* Read/Write: `/a0/usr/projects/*/research/`
+* Read: `/a0/usr/projects/*/docs/`
+
+'''BITHUB File Operations''':
+* Read/Write: `/a0/usr/projects/*/`
+* Read/Write: `/a0/tmp/`
+* Execute: System commands, package installation
+
+=== 4.3 Memory Protocol ===
+
+```mermaid
+graph TB
+    subgraph BITwiki_Memory["BITwiki Memory Domain"]
+        KM[Knowledge Memories]
+        OM[Ontology Memories]
+        TM[Template Memories]
+    end
+    
+    subgraph BITHUB_Memory["BITHUB Memory Domain"]
+        PM[Process Memories]
+        CM[Configuration Memories]
+        UM[User Preferences]
+    end
+    
+    BITwiki_Memory -.->|Read-Only| BITHUB_Memory
+    BITHUB_Memory -.->|Write-Only| BITwiki_Memory
+```
+
+'''Memory Access Rules''':
+* BITwiki: Owns knowledge, ontology, template memories
+* BITHUB: Owns process, configuration, user memories
+* Cross-read permitted, cross-write requires validation
+
+----
+== 5. Escalation Procedures ==
+
+=== 5.1 Escalation Triggers ===
+
+| Trigger | From | To | Condition |
+|---------|------|----|-----------|
+| Validation Failure | BITwiki | BITHUB | SMW syntax errors exceed threshold |
+| Scope Ambiguity | BITHUB | User | Task spans both domains |
+| Resource Exhaustion | Either | User | Time/memory limits exceeded |
+| Security Concern | Either | User | Potential data breach |
+
+=== 5.2 Escalation Workflow ===
+
+```mermaid
+graph TD
+    A[Task Execution] --> B{Success?}
+    B -->|Yes| C[Return Results]
+    B -->|No| D{Domain Issue?}
+    D -->|BITwiki| E[BITwiki Recovery]
+    D -->|BITHUB| F[BITHUB Recovery]
+    D -->|Both| G[Escalate to User]
+    E --> H{Resolved?}
+    F --> H
+    H -->|Yes| C
+    H -->|No| G
+```
+
+----
+== 6. Compliance Verification ==
+
+=== 6.1 Boundary Compliance Checklist ===
+* [ ] All SMW markup in `` blocks
+* [ ] No direct database writes from BITHUB
+* [ ] YAML frontmatter on all BITwiki documents
+* [ ] Proper agent profile selection for tasks
+* [ ] File operations within designated paths
+* [ ] Memory access following read/write rules
+
+=== 6.2 Validation Query ===
+
+```smw
+{{#ask:[[Category:Governance Documents]]
+ [[Has document type::Boundary Specification]]
+ |?Has epistemic status
+ |?Has confidence level
+ |?Has verification state
+ |format=table
+}}
+```
+
+----
+== 7. References ==
+
+# BITwiki Technical Standards Framework v1.0
+# BITHUB Agent Orchestration Specification
+# A2A Protocol Specification v0.2
+# EPV Framework Documentation
+# SMW Best Practices Guide
+# Agent Zero System Manual
+# n8n Workflow Documentation
+# MediaWiki Architecture Manual
+
+----
+== Appendix A: Agent Capability Matrix ==
+
+| Capability | BITwiki | BITHUB | Shared |
+|------------|---------|--------|--------|
+| Wiki Markup | ✓ | Read | - |
+| SMW Queries | ✓ | Read | - |
+| Template Design | ✓ | - | - |
+| Lua Modules | ✓ | - | - |
+| Task Scheduling | - | ✓ | - |
+| Agent Spawning | - | ✓ | - |
+| Memory Management | Read | ✓ | Write |
+| File Operations | Project | Full | - |
+| Web Search | - | ✓ | - |
+| Code Execution | - | ✓ | - |
+
+----
+''Document generated by Agent Zero Developer''  
+''BITwiki Governance Framework v1.0''  
+''Specification ID: HIGH-001''

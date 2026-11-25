@@ -1,17 +1,568 @@
-'''Distributed artificial intelligence''' (DAI) studies how multiple computational entities coordinate intelligent activity, including reasoning, planning, learning and distributed problem solving.
+{{Reading depth|base=Distributed artificial intelligence|current=Technical}}
 
-== Scope and origins ==
-Bond and Gasser's 1988 collection documented research in distributed problem solving and interacting agents. Distributed problem solving emphasizes division and coordination of an overall problem; multi-agent systems may additionally include agents with separate goals. DAI is not simply running a neural network across multiple processors, although distributed computation can support DAI.
+= Distributed artificial intelligence — Technical =
 
-== Formal coordination ==
-Represent agents i with local observations o_i, internal states s_i, actions a_i and messages m_i. A joint policy can depend on shared history or decentralized local histories, depending on the information structure. If agents share a task objective, partition the task, allocate work, reconcile partial results and test the combined output. If goals differ, negotiation and incentive design become relevant. Communication may be asynchronous, lossy or delayed; agreement on a value is not identical to agreement on its truth.
+'''Distributed artificial intelligence''' (DAI) studies artificial-intelligence problems in which information, computation, control, goals, or decision rights are distributed across multiple computational entities. Its core technical questions are how to decompose problems, allocate work, coordinate under partial information, communicate efficiently, reconcile local decisions, and remain robust when agents fail or disagree.
 
-== Evaluation and failure modes ==
-Compare centralized, independent and coordinated solutions with equal compute and information access. Record correctness, communication cost, latency, duplication, robustness to node failures and degradation under misleading messages. For artificial agents, preserve task ownership, message provenance and independent validation. Parallel work can amplify common model errors, and decentralization does not guarantee autonomy, security or intelligence.
+Historically, DAI contains two major strands: cooperative distributed problem solving and autonomous multi-agent systems. Modern work also includes decentralized optimization, multi-agent reinforcement learning, distributed planning, and market-based coordination.
+
+== Agent model ==
+
+Let agents be
+
+<math>A=\{1,\ldots,n\}.</math>
+
+Agent <math>i</math> has:
+
+* local observation <math>o_i(t)</math>;
+* internal state <math>s_i(t)</math>;
+* action <math>a_i(t)</math>;
+* local history <math>h_i(t)</math>;
+* message set <math>m_i(t)</math>.
+
+A decentralized policy is
+
+<math>a_i(t)\sim\pi_i(a_i\mid h_i(t),m_i(t)).</math>
+
+The joint action is
+
+<math>\mathbf a_t=(a_1(t),\ldots,a_n(t)).</math>
+
+The coordination problem arises because no agent necessarily observes the full global state.
+
+== Centralized versus decentralized policy ==
+
+A centralized controller with global history <math>h</math> can choose
+
+<math>\mathbf a=\pi_C(h).</math>
+
+A decentralized architecture requires local policies
+
+<math>a_i=\pi_i(h_i).</math>
+
+The decentralized system has an information constraint:
+
+<math>h_i\subseteq h.</math>
+
+The resulting performance gap depends on which information is withheld and whether communication can recover it.
+
+== Problem decomposition ==
+
+Let global problem be <math>P</math> and decomposition
+
+<math>P\rightarrow\{P_1,\ldots,P_k\}.</math>
+
+A useful decomposition minimizes inter-subproblem dependencies.
+
+Define coupling graph <math>G_P</math> with subproblems as nodes and an edge when two subproblems share constraints or state.
+
+Sparse coupling enables more independent parallel solution.
+
+Dense coupling increases coordination cost.
+
+== Parallel speedup ==
+
+If serial runtime is <math>T_1</math> and distributed runtime with <math>n</math> agents is <math>T_n</math>, speedup is
+
+<math>S_n=T_1/T_n.</math>
+
+Ideal linear speedup is <math>S_n=n</math>.
+
+In practice:
+
+<math>T_n=T_{local}+T_{comm}+T_{sync}+T_{merge}.</math>
+
+Communication and reconciliation limit speedup.
+
+Distribution is not automatically faster.
+
+== Task allocation ==
+
+Let tasks be <math>T=\{t_1,\ldots,t_m\}</math> and agent-task utility <math>u_{ij}</math>.
+
+Allocation problem:
+
+<math>\max_X\sum_{i,j}x_{ij}u_{ij}</math>
+
+subject to capacity and assignment constraints.
+
+Centralized assignment solves this with global knowledge.
+
+Distributed allocation uses bids, negotiation, or local protocols.
+
+== Contract Net Protocol ==
+
+Smith's Contract Net Protocol distributes task assignment through announcements and bids.<ref name="contract">[https://doi.org/10.1109/TC.1980.1675516 Smith, R. G. (1980), “The Contract Net Protocol: High-Level Communication and Control in a Distributed Problem Solver.”]</ref>
+
+Basic sequence:
+
+<pre>
+manager announces task
+→ candidate contractors evaluate
+→ bids returned
+→ manager awards contract
+→ contractor executes
+→ result returned
+</pre>
+
+The protocol separates task generation from task execution and allows dynamic resource allocation.
+
+== Contract-net limitations ==
+
+Contract net can fail when:
+
+* communication is expensive;
+* agents bid strategically;
+* tasks have strong interdependencies;
+* bids become stale;
+* one manager is overloaded.
+
+Extensions use distributed managers, combinatorial auctions, or coalition formation.
+
+A negotiation protocol is only as good as its utility model and information assumptions.
+
+== Auction allocation ==
+
+Agent <math>i</math> submits bid <math>b_{ij}</math> for task <math>j</math>.
+
+Auction selects allocation
+
+<math>X^*=argmax_X\sum_{i,j}x_{ij}b_{ij}.</math>
+
+If bids truthfully encode cost or utility, allocation can be efficient under appropriate mechanism assumptions.
+
+Strategic agents may manipulate bids.
+
+Mechanism design becomes necessary when goals differ.
+
+== Coalition formation ==
+
+Some tasks require several agents.
+
+Let coalition <math>C\subseteq A</math> have value <math>v(C)</math>.
+
+Coalition formation asks which partition of agents maximizes system objective.
+
+Search space grows combinatorially.
+
+Approximation and heuristic methods are therefore common.
+
+== Communication topology ==
+
+Agents communicate over graph
+
+<math>G_c=(A,E).</math>
+
+Topology controls who can exchange messages.
+
+Complete graph provides direct connectivity but requires potentially <math>O(n^2)</math> links.
+
+Sparse graphs reduce communication but increase routing delay.
+
+Dynamic networks can change as agents move or fail.
+
+== Communication complexity ==
+
+Let each message have size <math>b</math> bits and total message count <math>M</math>.
+
+Communication cost:
+
+<math>C_{comm}=Mb.</math>
+
+Bandwidth is only one cost.
+
+Latency, energy, and parsing computation also matter.
+
+Algorithms should report communication overhead separately from local computation.
+
+== Asynchronous communication ==
+
+At time <math>t</math>, agent may receive information generated at <math>t-\tau</math>.
+
+Stale state:
+
+<math>\hat s(t)=s(t-\tau).</math>
+
+Large delay can destabilize coordination.
+
+Asynchronous algorithms avoid global barriers but require tolerance to inconsistent local views.
+
+== Consensus ==
+
+Let agents hold scalar estimates <math>x_i(t)</math>.
+
+Linear consensus update:
+
+<math>x_i(t+1)=\sum_jw_{ij}x_j(t).</math>
+
+Under connectivity and weight assumptions,
+
+<math>x_i(t)\rightarrow x^*.</math>
+
+Consensus solves agreement.
+
+It does not establish whether <math>x^*</math> is correct.
+
+== Average consensus ==
+
+With appropriate doubly stochastic weights, consensus can converge to initial average:
+
+<math>x^*=\frac{1}{n}\sum_i x_i(0).</math>
+
+This supports distributed estimation.
+
+Correlated or malicious initial values can still bias the result.
+
+== Byzantine agents ==
+
+A Byzantine agent can send arbitrary or inconsistent messages.
+
+Robust distributed algorithms seek correct or bounded behavior despite up to <math>f</math> faulty agents.
+
+Tolerance depends on topology and protocol.
+
+Ordinary consensus algorithms are not Byzantine robust.
+
+Security assumptions must be explicit.
+
+== Distributed constraint optimization ==
+
+A DCOP can be represented as
+
+<math>\langle A,X,D,F\rangle,</math>
+
+where:
+
+* <math>A</math> = agents;
+* <math>X</math> = variables;
+* <math>D</math> = domains;
+* <math>F</math> = constraint or utility functions.
+
+Agents choose assignments maximizing
+
+<math>\sum_{f\in F}f(\mathbf x_f).</math>
+
+The problem structure determines both computation and required communication.<ref name="dcop">[https://jair.org/index.php/jair/article/view/11146 Fioretto, F., Pontelli, E., and Yeoh, W. (2018), “Distributed Constraint Optimization Problems and Applications: A Survey.”]</ref>
+
+== DCOP algorithms ==
+
+Major classes include:
+
+* search;
+* dynamic programming;
+* local optimization;
+* inference;
+* sampling.
+
+Exact methods can provide optimality guarantees but scale poorly.
+
+Approximate methods trade solution quality for communication or runtime.
+
+The correct choice depends on graph structure and deadline.
+
+== Privacy in DCOPs ==
+
+Agents may not want to reveal:
+
+* utilities;
+* constraints;
+* domains;
+* observations.
+
+A privacy-preserving algorithm minimizes disclosure while still finding good assignments.
+
+Privacy and solution quality can trade off.
+
+Encryption can hide content but may increase computational cost.
+
+== Distributed constraint satisfaction ==
+
+If objective is feasibility rather than optimization, agents seek assignment satisfying all constraints.
+
+This can be represented:
+
+<math>f_j(\mathbf x_j)=1\quad\forall j.</math>
+
+Distributed satisfaction is useful for scheduling and configuration.
+
+Unsatisfiable instances require conflict detection or relaxation.
+
+== Decentralized MDP ==
+
+A decentralized Markov decision process contains global state <math>s</math>, joint action <math>\mathbf a</math>, transition model
+
+<math>P(s'\mid s,\mathbf a),</math>
+
+and shared reward
+
+<math>R(s,\mathbf a).</math>
+
+With full local observability of global state, coordination is already challenging because policies are distributed.
+
+== Dec-POMDP ==
+
+A decentralized partially observable MDP adds local observations
+
+<math>o_i\sim O_i(o_i\mid s).</math>
+
+Agent <math>i</math> selects action based on local observation history, not full state.
+
+Goal:
+
+<math>\max_{\pi_1,\ldots,\pi_n}E\left[\sum_{t=0}^{T}\gamma^tR(s_t,\mathbf a_t)\right].</math>
+
+Even finite-horizon two-agent decentralized control is NEXP-hard in standard formulations.<ref name="complexity">[https://doi.org/10.1287/moor.27.4.819.297 Bernstein, D. S. et al. (2002), “The Complexity of Decentralized Control of Markov Decision Processes.”]</ref>
+
+This formalizes the difficulty of reasoning under decentralized information.
+
+== Belief state ==
+
+A centralized POMDP agent can maintain belief
+
+<math>b(s)=P(s\mid h).</math>
+
+In Dec-POMDPs, no single agent generally possesses the joint history needed for one common belief.
+
+Agents may instead reason about:
+
+* local beliefs;
+* shared history;
+* beliefs about other agents' information.
+
+This recursive uncertainty contributes to complexity.
+
+== Multi-agent reinforcement learning ==
+
+In MARL, each agent learns policy while other agents are also adapting.
+
+From agent <math>i</math>'s perspective:
+
+<math>P(s'\mid s,a_i)</math>
+
+changes as other policies change.
+
+This violates stationarity assumptions of ordinary single-agent RL.
+
+Common approaches include centralized training with decentralized execution.
+
+== Centralized training, decentralized execution ==
+
+During training, algorithm can access global state or other agents' actions.
+
+At execution, each agent uses local observations.
+
+This relaxes learning difficulty without requiring global information during deployment.
+
+It should not be mislabeled fully decentralized training.
+
+== Value decomposition ==
+
+For cooperative MARL, joint action value <math>Q_{tot}</math> can be approximated from local values:
+
+<math>Q_{tot}=F(Q_1,\ldots,Q_n).</math>
+
+Simple additive model:
+
+<math>Q_{tot}=\sum_iQ_i.</math>
+
+More expressive monotonic mixing methods capture interactions.
+
+Factorization imposes assumptions that can limit optimal coordination.
+
+== Emergent communication ==
+
+Agents can learn message protocols.
+
+Sender emits message <math>m</math> based on observation.
+
+Receiver conditions action on <math>m</math>.
+
+Evaluation should test whether communication generalizes to:
+
+* new partners;
+* altered environments;
+* noisy channels.
+
+A private code that works only among one training population can be brittle.
+
+== Negotiation among noncooperative agents ==
+
+If utilities differ, agent <math>i</math> maximizes <math>U_i</math> rather than common reward.
+
+Game-theoretic equilibrium concepts become relevant.
+
+A Nash equilibrium need not maximize social welfare.
+
+DAI therefore distinguishes coordination from cooperation.
+
+== Shared environments and stigmergy ==
+
+Agents can coordinate through environmental traces.
+
+Let environmental marker field be <math>p(x,t)</math>.
+
+Agent updates:
+
+<math>p(x,t+1)=\rho p(x,t)+deposit(x,t),</math>
+
+with decay <math>0<\rho<1</math>.
+
+Other agents respond to <math>p</math>.
+
+This avoids direct messaging but creates environmental memory.
+
+Ant-colony algorithms use related mechanisms.
+
+== Blackboard architecture ==
+
+A shared blackboard stores partial hypotheses.
+
+Knowledge source <math>K_i</math> reads blackboard state <math>B_t</math> and produces update:
+
+<math>B_{t+1}=K_i(B_t).</math>
+
+This is distributed expertise with centralized shared state.
+
+Failure of the blackboard can remain a single point of failure.
+
+== Provenance of partial results ==
+
+For result <math>r</math>, store provenance graph identifying:
+
+* producing agent;
+* input observations;
+* messages used;
+* model version;
+* transformations.
+
+This is essential when results are later merged.
+
+Without provenance, circular dependencies can look like independent evidence.
+
+== Correlated model error ==
+
+Suppose agents share base model error <math>\epsilon_M</math>:
+
+<math>\epsilon_i=\epsilon_M+\eta_i.</math>
+
+Agreement among agents does not remove <math>\epsilon_M</math>.
+
+Agent diversity should be measured at model, data, tool, and information-source levels.
+
+== Fault tolerance ==
+
+Let system performance with failed set <math>F\subseteq A</math> be <math>P(A\setminus F)</math>.
+
+Graceful degradation means performance decreases progressively rather than collapsing for common failures.
+
+Fault injection can test:
+
+* agent loss;
+* communication partition;
+* corrupted messages;
+* stale state.
+
+Claims of resilience require these tests.
+
+== Scalability ==
+
+Measure how computation and communication grow with <math>n</math>.
+
+An algorithm with local computation <math>O(n)</math> but communication <math>O(n^2)</math> may fail at large scale.
+
+Benchmark should vary:
+
+* agents;
+* task coupling;
+* message delay;
+* observation noise.
+
+One fixed-size demonstration does not establish scalability.
+
+== Centralized baseline ==
+
+DAI should be compared with centralized solution under equal information and resource conditions.
+
+If distributed system uses <math>n</math> times more compute, wall-clock advantage may reflect hardware rather than coordination quality.
+
+Report:
+
+* total compute;
+* peak memory;
+* communication;
+* latency;
+* solution quality.
+
+== Independent-agent baseline ==
+
+Also compare coordinated agents to noncommunicating agents.
+
+This isolates benefit of coordination.
+
+If coordination adds no value, distribution alone is not DAI success.
+
+== Human–AI hybrid systems ==
+
+Humans can serve as agents with capabilities unavailable to software.
+
+A hybrid allocation mechanism can route:
+
+* ambiguous cases to humans;
+* repetitive cases to automation.
+
+Performance depends on handoff quality.
+
+Human intervention should not be treated as hidden “oracle” computation when reporting AI capability.
+
+== DAI versus distributed machine learning ==
+
+Data-parallel training distributes matrix operations but usually optimizes one model under centralized objective.
+
+DAI historically concerns multiple reasoning or acting entities.
+
+Distributed machine learning can be a component of DAI but is not equivalent.
+
+== Federated learning ==
+
+Federated learning keeps training data local and aggregates model updates.
+
+Basic round:
+
+<pre>
+server sends model
+→ clients train locally
+→ updates returned
+→ server aggregates
+</pre>
+
+This remains centrally orchestrated in many implementations.
+
+It is distributed learning, not necessarily autonomous multi-agent coordination.
+
+== Epistemic boundary ==
+
+A DAI system is defined by its distributed information and decision structure, not by the number of processes.
+
+A rigorous report states:
+
+# agent boundaries;
+# observation structure;
+# goals;
+# communication graph;
+# coordination protocol;
+# resource assumptions;
+# failure model.
+
+Without these, “multi-agent” or “distributed AI” can be only architectural branding.
 
 == References ==
-* [https://shop.elsevier.com/books/readings-in-distributed-artificial-intelligence/bond/978-0-934613-63-7 Bond and Gasser (1988), Readings in Distributed Artificial Intelligence]
-* [https://aima.cs.berkeley.edu/global-index.html Russell and Norvig, Artificial Intelligence: A Modern Approach]
+
+<references />
+
+* Bond, A. H. and Gasser, L., eds. (1988), ''Readings in Distributed Artificial Intelligence'', Morgan Kaufmann.
+* [https://aima.cs.berkeley.edu/global-index.html Russell, S. and Norvig, P., ''Artificial Intelligence: A Modern Approach''.]
+* [https://jair.org/index.php/jair/article/view/11146 Fioretto, Pontelli and Yeoh (2018), DCOP survey.]
 
 == Reading depth ==
-[[Distributed artificial intelligence/Simple|Simple explanation]]
+
+[[Distributed artificial intelligence/Simple|Simple explanation]] · [[Distributed artificial intelligence|Core article]]

@@ -193,6 +193,7 @@ class SourceContractTests(unittest.TestCase):
             self.assertIn("<references/>", derivative)
         self.assertEqual(simple.count("<onlyinclude>"), 1)
         self.assertEqual(simple.count("</onlyinclude>"), 1)
+        self.assertIn("== From silicon to computers ==", simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0])
         self.assertIn("'''Simple''' · [[Semiconductor/Technical|Technical]]", simple)
         self.assertIn("[[Semiconductor/Simple|Simple]] · '''Technical'''", technical)
         self.assertNotIn("{{Reading depth|", simple)

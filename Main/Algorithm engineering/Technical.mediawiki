@@ -26,7 +26,9 @@ Evidence can reveal:
 
 The update may change the algorithm, data structure, machine model, or benchmark.
 
-== Correctness layer ==
+== Analytical foundations ==
+
+=== Correctness layer ===
 
 For input domain <math>X</math> and specification <math>S(x)</math>, correctness requires:
 
@@ -38,7 +40,7 @@ It cannot prove universal correctness except for finite exhaustive domains.
 
 Formal proof, property checking, and testing therefore serve different roles.
 
-== Cost model ==
+=== Cost model ===
 
 Theoretical runtime can be written
 
@@ -52,7 +54,7 @@ Measured runtime is closer to:
 
 Algorithm engineering studies the relationship between these models.
 
-== Asymptotic analysis ==
+=== Asymptotic analysis ===
 
 Suppose:
 
@@ -68,7 +70,7 @@ Practical ordering depends on coefficients and hardware.
 
 Asymptotics provide scaling structure but not exact crossover points.
 
-== Crossover analysis ==
+=== Crossover analysis ===
 
 Solve
 
@@ -80,7 +82,7 @@ Empirical crossover may differ because cost coefficients change with cache level
 
 Piecewise performance models can be more realistic.
 
-== Roofline-style reasoning ==
+=== Roofline-style reasoning ===
 
 Performance can be bounded by compute throughput and memory bandwidth.
 
@@ -96,7 +98,7 @@ where <math>B</math> is memory bandwidth.
 
 This explains why reducing operation count does not always improve runtime.
 
-== Cache complexity ==
+=== Cache complexity ===
 
 External-memory/cache models count block transfers.
 
@@ -110,7 +112,7 @@ A theoretically optimal RAM algorithm can perform poorly if memory access is ran
 
 Cache-aware design can dominate practical performance for large data.
 
-== Branch behavior ==
+=== Branch behavior ===
 
 Conditional branches can incur misprediction cost.
 
@@ -118,7 +120,7 @@ Branchless implementations can trade extra arithmetic for predictable execution.
 
 Benchmark interpretation should identify whether gains arise from algorithmic structure or microarchitecture.
 
-== Vectorization ==
+=== Vectorization ===
 
 SIMD executes multiple data operations per instruction.
 
@@ -128,7 +130,7 @@ Irregular pointer structures may prevent effective vectorization.
 
 Source-level algorithm choices can therefore affect hardware utilization.
 
-== Parallel speedup ==
+=== Parallel speedup ===
 
 Speedup:
 
@@ -144,7 +146,7 @@ Amdahl-style bound with serial fraction <math>f</math>:
 
 Synchronization and bandwidth can reduce practical speedup further.
 
-== Strong and weak scaling ==
+=== Strong and weak scaling ===
 
 '''Strong scaling''' fixes total problem size while increasing processors.
 
@@ -152,7 +154,7 @@ Synchronization and bandwidth can reduce practical speedup further.
 
 Both should be reported for parallel algorithms because they answer different questions.
 
-== Load balance ==
+=== Load balance ===
 
 Let processor workloads be <math>w_i</math>.
 
@@ -164,7 +166,9 @@ Large imbalance leaves processors idle.
 
 Dynamic scheduling can improve balance at the cost of coordination overhead.
 
-== Experimental hypothesis ==
+== Experimental design and statistics ==
+
+=== Experimental hypothesis ===
 
 A benchmark should test a stated hypothesis.
 
@@ -178,7 +182,7 @@ Then manipulate input size and collect memory-performance counters.
 
 This is stronger than measuring many implementations without a question.
 
-== Input generator ==
+=== Input generator ===
 
 A synthetic input generator defines distribution
 
@@ -190,7 +194,7 @@ If the real workload distribution <math>Q</math> differs from <math>P_\theta</ma
 
 Use both synthetic and real instances where possible.
 
-== Benchmark leakage ==
+=== Benchmark leakage ===
 
 Repeatedly tuning against benchmark set <math>B</math> causes overfitting.
 
@@ -202,7 +206,7 @@ with no adaptive use of <math>B_{test}</math> before final evaluation.
 
 For long-lived competitions, hidden tests are stronger.
 
-== Baseline normalization ==
+=== Baseline normalization ===
 
 Let runtime ratio be
 
@@ -217,7 +221,7 @@ A speedup claim should specify:
 
 Weak or outdated baselines inflate <math>R</math> artificially.
 
-== Randomized algorithms ==
+=== Randomized algorithms ===
 
 For randomized runtime <math>T</math>, report distribution over independent seeds.
 
@@ -227,7 +231,7 @@ Useful summaries:
 
 A single seed cannot characterize stochastic performance.
 
-== Confidence intervals ==
+=== Confidence intervals ===
 
 For mean runtime estimate <math>\bar T</math>, uncertainty can be summarized using a confidence interval when assumptions are appropriate.
 
@@ -235,7 +239,7 @@ Bootstrap intervals are useful for non-normal measurements.
 
 The interval describes sampling uncertainty, not all systematic bias.
 
-== Effect size ==
+=== Effect size ===
 
 Suppose algorithm A is 0.5% faster with tiny p-value after thousands of runs.
 
@@ -243,7 +247,7 @@ The effect may be operationally irrelevant.
 
 Report absolute and relative differences, not significance alone.
 
-== Multiple comparisons ==
+=== Multiple comparisons ===
 
 Testing many algorithms, parameters, and datasets increases false-positive risk.
 
@@ -251,7 +255,9 @@ Predefined evaluation plans and correction procedures improve credibility.
 
 Exploratory benchmark findings should be labeled exploratory.
 
-== Warm-up effects ==
+== Measurement and resource effects ==
+
+=== Warm-up effects ===
 
 Managed runtimes and CPUs can have warm-up behavior:
 
@@ -263,7 +269,7 @@ Discarding or retaining warm-up trials must be justified and documented.
 
 Benchmark harnesses should isolate initialization from steady-state work.
 
-== Timer resolution ==
+=== Timer resolution ===
 
 Very short operations approach timer noise.
 
@@ -275,7 +281,7 @@ Ensure batching does not alter caching or optimization behavior.
 
 Use appropriate monotonic high-resolution clocks.
 
-== CPU affinity ==
+=== CPU affinity ===
 
 OS migration between cores can introduce variance.
 
@@ -285,7 +291,7 @@ But pinning may make benchmark less representative of real deployment.
 
 Experimental control and ecological validity trade off.
 
-== Thermal effects ==
+=== Thermal effects ===
 
 Long benchmark sequences can heat hardware and trigger throttling.
 
@@ -293,7 +299,7 @@ Randomized order and temperature monitoring can detect drift.
 
 Reporting only early or best runs can bias results.
 
-== Energy measurement ==
+=== Energy measurement ===
 
 Energy:
 
@@ -305,7 +311,7 @@ Report both runtime and energy when energy efficiency matters.
 
 Hardware power counters have measurement limitations.
 
-== Memory footprint ==
+=== Memory footprint ===
 
 Peak memory <math>M_{peak}</math> can determine whether an algorithm fits in RAM.
 
@@ -319,7 +325,7 @@ Track:
 
 Memory hierarchy can interact with total footprint.
 
-== I/O complexity ==
+=== I/O complexity ===
 
 For external data, storage bandwidth dominates.
 
@@ -331,7 +337,7 @@ Separate:
 
 A benchmark reading data already cached in memory can dramatically overestimate production throughput.
 
-== Numerical accuracy ==
+=== Numerical accuracy ===
 
 Algorithms using floating point may trade speed for accuracy.
 
@@ -343,7 +349,9 @@ Performance should be reported at comparable accuracy.
 
 A faster approximate solver with much worse error is not a direct replacement.
 
-== Approximation algorithms ==
+== Algorithmic tradeoffs ==
+
+=== Approximation algorithms ===
 
 For minimization, approximation ratio:
 
@@ -355,7 +363,7 @@ Report both theoretical bound and observed gap.
 
 Do not infer a stronger guarantee from benchmark behavior.
 
-== Anytime algorithms ==
+=== Anytime algorithms ===
 
 Anytime algorithm improves solution with runtime.
 
@@ -367,7 +375,7 @@ Compare under equal time budgets.
 
 Final-quality-only comparisons can hide differences in early usable solutions.
 
-== Multiobjective engineering ==
+=== Multiobjective engineering ===
 
 Algorithms can trade:
 
@@ -380,7 +388,9 @@ A Pareto frontier identifies nondominated choices.
 
 One scalar score requires explicit weights reflecting application priorities.
 
-== Profiling ==
+== Profiling, testing, and reproducibility ==
+
+=== Profiling ===
 
 Let function-level cost shares be <math>p_i</math> with
 
@@ -392,7 +402,7 @@ After optimization, bottleneck can move.
 
 Repeated profiling supports the engineering cycle.
 
-== Hardware counters ==
+=== Hardware counters ===
 
 Counters can measure:
 
@@ -405,7 +415,7 @@ Derived metrics such as IPC help diagnose performance.
 
 Counters can be multiplexed or model-specific; their uncertainty should be acknowledged.
 
-== Reproducible artifact ==
+=== Reproducible artifact ===
 
 A strong artifact includes:
 
@@ -418,7 +428,7 @@ A strong artifact includes:
 
 Containers improve repeatability but do not completely fix hardware differences.
 
-== Correctness oracle ==
+=== Correctness oracle ===
 
 For testing, independent oracle <math>O(x)</math> can check:
 
@@ -428,7 +438,7 @@ If both implementations share the same bug or code, independence is reduced.
 
 Property-based invariants can complement reference outputs.
 
-== Differential testing ==
+=== Differential testing ===
 
 Run several independent implementations on same input.
 
@@ -438,7 +448,7 @@ Consensus does not prove correctness.
 
 But differential testing is efficient for finding inconsistencies.
 
-== Fuzz testing ==
+=== Fuzz testing ===
 
 Random or coverage-guided fuzzing explores unusual inputs.
 
@@ -448,7 +458,7 @@ A crash reveals a bug.
 
 Absence of crashes does not prove safety.
 
-== Adversarial inputs ==
+=== Adversarial inputs ===
 
 Worst-case constructions can reveal vulnerabilities hidden by random tests.
 
@@ -456,7 +466,9 @@ Hash tables, quicksort variants, graph heuristics, and compression algorithms ca
 
 Benchmark suites should include them when plausible in deployment.
 
-== Algorithm libraries ==
+== Engineering practice ==
+
+=== Algorithm libraries ===
 
 Libraries make engineered algorithms reusable.
 
@@ -470,7 +482,7 @@ Design concerns include:
 
 A theoretically fast algorithm that is difficult to use correctly may have limited practical value.
 
-== Portfolio selection ==
+=== Portfolio selection ===
 
 Let algorithms <math>A_1,\ldots,A_k</math> and instance features <math>\phi(x)</math>.
 
@@ -482,7 +494,7 @@ Portfolio methods exploit instance heterogeneity.
 
 Selector overhead and misclassification must be included in performance.
 
-== Application feedback ==
+=== Application feedback ===
 
 Real deployment creates new evidence:
 
@@ -493,7 +505,7 @@ Real deployment creates new evidence:
 
 Algorithm engineering should continue after publication when application data reveal model mismatch.
 
-== Reproducible computational research ==
+=== Reproducible computational research ===
 
 [[Reproducible computational research]] supplies practices for preserving code, data, environment, and workflow.
 

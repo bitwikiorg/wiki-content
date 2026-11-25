@@ -1,0 +1,74 @@
+''Reading depth:'' [[Device driver/Simple|Simple]] · '''Technical'''
+
+= Device driver — Technical =
+
+A '''device driver''' implements a device-facing software interface under a particular operating-system, firmware or embedded execution contract. Its behavior is defined jointly by device documentation, bus protocols, the OS driver model, concurrency and memory-ordering rules, and the observable interface promised to clients. A driver may manage physical devices, virtual devices or an abstraction layer over multiple components. This article concerns design and verification principles rather than a universal driver API.
+
+== Scope, responsibilities and engineering boundaries ==
+A driver bridges a client-facing interface and a device-specific control contract. In a typical request journey, an application or kernel subsystem submits an operation, the driver validates and schedules it, maps buffers or programs registers where appropriate, and reports success, partial progress, cancellation or error. Interrupts, polling and completion queues are alternatives rather than universal requirements. Completion ordering and cancellation are correctness obligations, not merely throughput optimizations. This is a generalized model, not an ABI specification.<ref name="linuxcore">Linux kernel documentation, [https://docs.kernel.org/driver-api/driver-model/driver.html Device Drivers] and [https://docs.kernel.org/driver-api/driver-model/binding.html Driver Binding].</ref>
+
+An operating system manages broader process, protection and resource mechanisms; a driver implements a narrower interface. A bootloader primarily transfers execution to a subsequent stage, though it may contain drivers; firmware can execute on a separate controller and implement a protocol used by a host driver. Computer architecture supplies hardware-visible ordering and addressing constraints. These are distinct responsibilities, not an exclusive taxonomy. A driver may be built into the kernel, separately loaded, user-mode or embedded, and may represent a virtual device.
+
+== Origins and architecture ==
+As computers gained diverse peripheral controllers, operating systems separated general resource management from hardware-specific I/O routines. The modern term encompasses in-kernel code, user-mode services, paravirtual interfaces, embedded controller support and device-class drivers. No single historical inventor or driver architecture accounts for all of these systems.
+
+A driver is not identical to the [[Operating system]] kernel, a firmware image or a bootloader. A device may contain independently executing firmware, while a host driver runs on the CPU and communicates using registers, memory queues, interrupts or a bus-specific protocol. A virtual driver may have no dedicated physical device. The OS provides resource allocation, process isolation and subsystem interfaces, but the driver must honor device-specific constraints.
+
+== Device discovery and binding ==
+The Linux driver model provides a concrete example. A bus type defines device–driver matching; registration of either a device or a driver can trigger matching. A successful match leads to probing, where the driver checks compatibility, initializes state and obtains resources. Matching is necessary but not sufficient for successful binding. A probe can return a failure or, when prerequisites are not ready, <code>-EPROBE_DEFER</code>. Linux documentation warns against deferring after creating child devices because it can lead to repeated probes.<ref name="linuxbinding">Linux kernel documentation, [https://docs.kernel.org/driver-api/driver-model/binding.html Driver Binding] and [https://docs.kernel.org/driver-api/driver-model/driver.html Device Drivers].</ref>
+
+A conceptual state machine is ''unbound → probing → bound → quiescing → removed''. This is a teaching abstraction, not a specification of Linux internal state names. Probe failure returns to an unbound state after cleanup; hotplug can invalidate assumptions at any stage. Correctness requires managing reference counts, callbacks, in-flight work and resource ownership. An identifier match alone does not prove firmware compatibility, functional correctness or device authenticity.
+
+In Windows Driver Frameworks, driver and device objects, plug-and-play callbacks, queues and requests structure related responsibilities. KMDF and UMDF differ in execution context and supported operations; neither is a drop-in replacement for a Linux kernel module.<ref name="wdf">Microsoft Learn, [https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/using-the-framework-to-develop-a-driver Using WDF to Develop a Driver] and [https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/umdf-driver-tasks Windows Driver Frameworks].</ref>
+
+== Control path and data path ==
+The control path configures a device, manages power states, handles discovery and changes policy. The data path carries commands, packet descriptors, buffers or completed results. These paths may share locks and state but have different latency, throughput and failure requirements.
+
+For a queue-driven network or storage controller, software may populate a descriptor ring in host memory, make descriptors visible to the device, update a producer index or doorbell register, and later consume completion entries. Hardware-specific ordering rules govern which writes must become visible before the doorbell. The driver must not infer that ordinary CPU source-code order guarantees device-observed order. Some devices instead use programmed I/O, synchronous commands or entirely different protocols.
+
+== Interrupts, polling and completion ==
+An interrupt can notify software that a device needs attention, but the interrupt handler should follow platform restrictions on blocking, allocation and synchronization. Many systems split short immediate interrupt handling from deferred work. Polling avoids some interrupt overhead but consumes CPU cycles; hybrid designs switch strategies with load. A completion may represent success, partial progress, cancellation or an error and must be correlated to the correct request.
+
+Lost wakeups, duplicate completion, stale descriptors and racing cancellation can produce data loss or memory-safety bugs. An implementation should define a single completion owner and test interleavings rather than assume callbacks execute serially.
+
+== DMA mapping and ownership ==
+Direct memory access allows capable devices to access mapped memory without a CPU copying each byte. It does not mean a device can safely access any virtual address. Linux distinguishes DMA-capable addresses from CPU virtual addresses and provides APIs for coherent allocations and streaming mappings. The driver must honor mapping direction, lifetime and synchronization rules, including architecture-specific cache coherency behavior.<ref name="dma">Linux kernel documentation, [https://docs.kernel.org/core-api/dma-api-howto.html DMA API HOWTO].</ref>
+
+An IOMMU may constrain device-visible address ranges and translate addresses, but it does not eliminate malicious device behavior or all implementation errors. Scatter–gather lists can describe discontiguous memory; mapping success, alignment, segment size and device addressing limits must be checked. A common bug class is using a buffer after it has been unmapped or freed.
+
+== Concurrency and device lifetime ==
+Drivers coordinate application threads, worker threads, interrupts, timers, device-initiated events and power transitions. A lock protects a specified invariant, not merely a code region. Sleepable locks and spinlocks have different execution-context constraints. Memory barriers and atomic operations may be necessary where CPUs and devices observe memory asynchronously.
+
+Hot-unplug illustrates why lifetime is a protocol: stop accepting new work, quiesce hardware if possible, cancel or complete pending requests, disable interrupts, unmap DMA, release memory and ensure callbacks cannot access freed state. The order depends on the OS and hardware; this sequence is conceptual rather than an API prescription. Suspend/resume similarly requires saving or reconstructing state under platform power-management contracts.<ref name="linuxbinding"/>
+
+== Performance model: latency, throughput and queueing ==
+A simple illustrative I/O path has fixed software overhead <math>t_s</math>, device service time <math>t_d</math> and waiting time <math>t_q</math>, so observed latency can be decomposed as <math>L=t_s+t_d+t_q</math> if the terms are defined to partition the same request path. The decomposition is an accounting identity, not a claim of independence.
+
+For a purely hypothetical single-server M/M/1 queue with Poisson arrivals, exponential service, stability <math>\lambda<\mu</math> and rates <math>\lambda=800\ \mathrm{s}^{-1}</math>, <math>\mu=1000\ \mathrm{s}^{-1}</math>, mean system time is <math>W=1/(\mu-\lambda)=0.005\ \mathrm{s}</math>. Little's law gives <math>L_q=\lambda W=4</math> requests in the system (here <math>L_q</math> denotes mean number, not latency). If arrivals rise to <math>900\ \mathrm{s}^{-1}</math> with the same assumed service rate, <math>W=0.010\ \mathrm{s}</math> and the mean number is <math>9</math>. These values are independently calculable teaching fixtures, not benchmarks of any driver. Real I/O paths have parallel servers, batching, correlated workloads, variable service distributions and backpressure; M/M/1 predictions may be inappropriate.
+
+Throughput can be limited by link rate, DMA transaction size, interrupt processing, locking, queue depth or memory bandwidth. Reducing CPU overhead does not necessarily reduce end-to-end latency. Polling, batching and larger queues can improve throughput while increasing individual-request waiting time. Profiling must specify hardware, firmware, OS, workload, power state and measurement method.
+
+== Security and isolation ==
+A driver can be exposed to malformed device metadata, adversarial USB or PCIe peripherals, compromised firmware and hostile user requests. Memory safety, bounds checks, integer overflow handling, request authorization, DMA isolation and secure update provenance matter. Kernel-mode drivers generally increase the consequences of a memory-safety defect. User-mode drivers may provide useful fault containment, but actual isolation depends on available privileges and the kernel interface. Signature verification establishes some origin or integrity properties under a defined trust policy; it is not a proof that code is free of vulnerabilities.
+
+A systematic threat model identifies assets, entry points, trusted and untrusted components, privilege boundaries, attacker capabilities and residual risks. Device simulators, fault injection and fuzzing can expose failure modes without assuming that all hardware behavior is trustworthy.
+
+== Verification and limits ==
+Review should cover: (1) matching and unsuccessful probe cleanup; (2) memory and DMA ownership; (3) ordering between descriptor publication and notification; (4) interrupt and completion races; (5) removal during in-flight I/O; (6) suspend/resume and power loss; (7) error injection and bounded retries; (8) permission and isolation boundaries. Unit tests can validate state transitions and arithmetic, while emulators and hardware-in-the-loop tests examine integration. Passing static source tests does not establish OS API conformance or correct operation on actual devices.
+
+Formal methods can model a bounded request state machine and invariants such as ''every accepted request eventually completes or is explicitly cancelled'', subject to fairness and hardware assumptions. Liveness cannot be asserted unconditionally when a device is disconnected, power is lost or the environment stops making progress. Model checking a simplified state machine is not a proof of the full implementation.
+
+== Cross-platform implementation and assurance checklist ==
+Windows Driver Frameworks provide kernel-mode (KMDF) and user-mode (UMDF) models with framework-managed object lifetimes and I/O queues. Linux provides a driver core plus bus-specific interfaces. They are not interchangeable binary interfaces.<ref name="wdfcore">Microsoft Learn, [https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/using-the-framework-to-develop-a-driver Using WDF to Develop a Driver].</ref> A meaningful validation matrix should include discovery and failed probe, deferred dependencies, unplug during in-flight I/O, concurrent cancellation, power transitions, resource exhaustion, malformed device responses, DMA mapping failures and addressability, and reproducible log-based diagnosis. Firmware incompatibility or physical device damage cannot be repaired merely by changing driver software. Driver signatures establish provenance or integrity under a trust policy, not absence of defects.
+
+== Research and platform references ==
+* Linux kernel, [https://docs.kernel.org/driver-api/driver-model/driver.html Driver model] and [https://docs.kernel.org/driver-api/driver-model/binding.html binding documentation], current online edition; Linux-specific behavior.
+* Linux kernel, [https://docs.kernel.org/core-api/dma-api-howto.html DMA API HOWTO], mapping and synchronization contract; platform constraints apply.
+* Microsoft, [https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/using-the-framework-to-develop-a-driver Windows Driver Frameworks], KMDF/UMDF architecture; Windows-specific.
+* [[Operating system]] and [[Computer architecture]] for adjacent abstractions.
+
+== References ==
+<references/>
+
+[[Category:Computer science]]
+[[Category:Engineering]]

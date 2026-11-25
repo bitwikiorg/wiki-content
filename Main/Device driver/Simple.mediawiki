@@ -1,0 +1,42 @@
+''Reading depth:'' '''Simple''' · [[Device driver/Technical|Technical]]
+
+= Device driver — Simple =
+
+<onlyinclude>
+A '''device driver''' is software that helps a computer or other system operate a particular device. The operating system can offer a common way to ask for data or send commands, while the driver knows how to communicate with the device. A driver may control a physical component, such as a network adapter, or a virtual device implemented by software. It is not always a separate program you install: some drivers are built into the operating system.<ref name="linuxsimple">Linux kernel documentation, [https://docs.kernel.org/driver-api/driver-model/binding.html Driver Binding], how systems associate devices and drivers.</ref>
+
+
+== A concrete example ==
+Imagine an application sending a file over a network. The application does not normally need to know the exact command format of every network adapter. The operating system and networking software prepare packets and request transmission. A network driver then communicates with a compatible adapter, possibly placing descriptors in a queue and notifying the device. Later the adapter or driver reports whether work completed. The exact steps depend on the hardware and operating system.
+
+The same general idea applies to keyboards, cameras, graphics processors, storage controllers and sensors. However, different devices expose very different interfaces; not every driver moves data in the same way.
+
+== Finding the right driver ==
+A computer often identifies a device using information supplied by a bus or platform. The operating system looks for a compatible driver and attempts to connect it to the device. In Linux this is called ''binding'', and a driver may run a ''probe'' operation to initialize resources. Finding a matching identifier does not guarantee that the device is ready or functioning.<ref name="linuxsimple"/>
+
+If no suitable driver is present, some features may be unavailable. A driver may also be present but fail because of incompatible firmware, missing dependencies, configuration problems or damaged hardware. Updating a driver can fix a bug, but the newest driver is not automatically the safest or most compatible for every device.
+
+== Driver, firmware and operating system ==
+The '''operating system''' manages broad computer resources and provides interfaces to programs. A '''driver''' provides particular device behavior within or alongside that environment. '''Firmware''' is software associated with a hardware platform or device, often running on its own controller. A '''bootloader''' prepares and starts another program, commonly an operating-system kernel. These roles can overlap in a product but are not synonyms.
+
+For example, a network adapter can contain firmware that controls internal functions, while a driver on the host computer prepares work and interprets responses. Both may be needed, but they execute in different contexts.
+
+== Drivers are not all equally privileged ==
+Some drivers execute in the operating-system kernel, where a serious bug can affect the whole system. Others run in user mode with more limited permissions. Windows Driver Frameworks include both KMDF and UMDF approaches.<ref name="wdfsimple">Microsoft Learn, [https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/using-the-framework-to-develop-a-driver Using WDF to Develop a Driver].</ref> Which is appropriate depends on the device, available operating-system facilities and security requirements.
+
+== What can go wrong? ==
+A device can be unplugged while an operation is running. A driver might receive an unexpected response, time out, exhaust memory or lose power during a transfer. Reliable drivers need to handle these situations without corrupting data or leaving the system in an unsafe state.
+
+A driver update is not the same thing as a hardware repair. Problems should be diagnosed with device information, system logs, compatibility documentation and reproducible tests rather than by guessing that every failure is caused by the driver.
+
+
+</onlyinclude>
+
+== Further reading ==
+The [[Device driver|canonical subject page]] preserves the subject identity. The [[Device driver/Technical|Technical article]] explains how device discovery, interrupts, DMA, queues and concurrency actually work. See also [[Operating system]] and [[Computer architecture]].
+
+== References ==
+<references/>
+
+[[Category:Computer science]]
+[[Category:Engineering]]

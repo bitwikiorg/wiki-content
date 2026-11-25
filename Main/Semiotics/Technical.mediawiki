@@ -1,17 +1,219 @@
-'''Semiotics''' is the study of signs and how they represent or communicate something. Words, images, gestures and other phenomena can function as signs when interpreted in a context. A road sign can instruct a driver even though the physical shape is not itself the action it represents.
+{{Reading depth|base=Semiotics|current=Technical}}
 
-== Sign relations ==
-Peirce's account is triadic: the sign stands for an object in a respect that gives rise to an interpretant, itself not simply the human interpreter. The icon/index/symbol distinction concerns different grounds of signification: resemblance, actual connection and habit or convention. A photograph may combine iconic and indexical features; a word may depend on convention. Saussure's linguistic theory emphasizes differences in a system and the signifier–signified pairing. These models organize different research questions rather than interchangeable definitions.
+= Semiotics — Technical =
 
-== Analysis and evidence ==
-A study of public warnings can collect a corpus of signs, record the setting and intended audience, develop a coding scheme for sign features and test interpretation using independent participants. Inter-rater agreement assesses consistency of the coding scheme; it does not establish that every member of a culture interprets a sign identically. Compare linguistic, visual and social contexts rather than infer a sign's meaning solely from its physical form.
+'''Semiotics''' studies sign relations and semiosis: processes in which something functions as a sign of, for, or in relation to something else. The field contains several historically distinct frameworks. Peircean semeiotic, Saussurean semiology, Morrisian semiotics, structuralist and cultural semiotics, cognitive semiotics, and biosemiotics cannot be reduced to a single formalism without losing substantive theoretical differences.
 
-== Related disciplines and limits ==
-Semantics studies meaning in more specific linguistic and formal settings, pragmatics studies context-dependent use, and information theory measures statistical aspects of messages. A probabilistic channel may transmit a sign accurately without preserving its interpretation across communities. Biosemiotics extends sign-oriented inquiry to living systems, but claims about intentionality or subjective interpretation require independent evidence. Lotman's semiosphere concerns cultural environments of sign processes rather than a single isolated sign.
+A technical account should therefore distinguish the ontology of the sign relation, the mechanism or convention supporting it, the interpreter or system involved, the evidence for the proposed interpretation, and the level of analysis.
+
+== Peircean semeiotic ==
+
+For Charles Sanders Peirce, semeiotic was closely connected to logic and inquiry. A basic Peircean sign relation involves a '''sign''', an '''object''', and an '''interpretant'''. The relation is triadic: the sign represents the object in a way that determines or generates an interpretant, and the interpretant may itself function as a further sign.<ref name="sep-signs">[https://plato.stanford.edu/archives/sum2010/entries/peirce-semiotics/ Stanford Encyclopedia of Philosophy, “Peirce's Theory of Signs.”]</ref>
+
+A useful schematic is
+
+<pre>
+object
+  ↘
+   sign → interpretant → further interpretant …
+</pre>
+
+This is not a causal diagram in the ordinary engineering sense. It represents a theory of signification in which mediation is irreducibly triadic.
+
+Peirce's best-known classification distinguishes the sign's relation to its object as:
+
+* '''iconic''' when signification depends on a relevant quality or resemblance;
+* '''indexical''' when it depends on an actual connection or relation;
+* '''symbolic''' when it depends on habit, rule, or convention.
+
+Concrete signs can instantiate more than one mode. A weather-vane is indexical insofar as its orientation is physically coupled to wind direction while its conventional markings may be symbolic.
+
+Peirce developed multiple additional trichotomies and changed aspects of his terminology over decades. The popular icon–index–symbol scheme is therefore only one small part of his sign theory. The Stanford Encyclopedia notes that Peirce's broader semeiotic also connects to speculative grammar, logical critic, and speculative rhetoric or methodeutic.<ref name="sep-peirce">[https://plato.stanford.edu/entries/peirce/ Stanford Encyclopedia of Philosophy, “Charles Sanders Peirce.”]</ref>
+
+== Saussurean semiology ==
+
+Saussurean semiology begins from a different problem: the structure of linguistic sign systems.
+
+The linguistic sign is conventionally represented as a relation between:
+
+<pre>
+signifier ↔ signified
+</pre>
+
+The signifier concerns the form associated with an expression; the signified concerns the associated concept. Saussure emphasized that linguistic value is relational: a unit functions through differences and contrasts within the language system.
+
+This approach supports structural analysis because meaning cannot be inferred by treating each expression as an isolated label attached to an independently defined thing. Phonological, lexical, and grammatical contrasts constrain the system.
+
+The often-repeated Saussurean claim that the sign is “arbitrary” is also easily misread. It concerns the absence of a necessary natural bond between many linguistic forms and their concepts, not unlimited freedom for an individual speaker to redefine established signs.
+
+Saussure's ''Course in General Linguistics'' was published posthumously from lecture notes compiled by students, so historical reconstruction of his exact views requires attention to the textual history.
+
+== Peirce and Saussure are not interchangeable ==
+
+The Peircean triad and Saussurean signifier–signified relation solve different theoretical problems.
+
+Mapping them as
+
+<pre>
+signifier = sign
+signified = object
+interpreter = interpretant
+</pre>
+
+is not valid. Peirce's interpretant is not simply a human interpreter, and Saussure's signified is not identical to an external Peircean object. Peirce's theory is explicitly triadic and philosophical-logical; Saussure's project is centered on the relational organization of linguistic signs.
+
+Comparative semiotics can relate the traditions, but it must preserve these differences.
+
+== Morris: syntactics, semantics and pragmatics ==
+
+Charles W. Morris's 1938 ''Foundations of the Theory of Signs'' proposed three dimensions:
+
+* '''syntactics''': relations among sign vehicles;
+* '''semantics''': relations between signs and their designata or denotata;
+* '''pragmatics''': relations between signs and interpreters.<ref name="morris">Morris, C. W. (1938), ''Foundations of the Theory of Signs'', University of Chicago Press. [https://books.google.com/books?id=eYJxSmEr7QoC Bibliographic record.]</ref>
+
+This tripartition became influential far beyond Morris's original behaviorist and logical-empiricist setting. Modern [[Semantics]] and [[Pragmatics]] encompass many theories that revise or reject parts of Morris's framework.
+
+The distinction is nevertheless operationally useful. Consider an alert message:
+
+* syntactic analysis can ask whether its structure conforms to a formal grammar;
+* semantic analysis can ask what state it denotes;
+* pragmatic analysis can ask how users interpret and act on it in context.
+
+A complete empirical study may require all three.
+
+== Code, channel and interpretation ==
+
+A semiotic system is not necessarily a formal [[Code]]. In an engineered code, an encoder and decoder may share a fixed mapping
+
+<math>E:M\rightarrow C,\qquad D:C\rightarrow M.</math>
+
+If <math>D(E(m))=m</math>, the representation can be recovered according to the code. This establishes decodability, not semantic equivalence across interpreters.
+
+Likewise, [[Information theory]] can model a channel between random variables <math>X</math> and <math>Y</math>. Mutual information
+
+<math>I(X;Y)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)}</math>
+
+quantifies statistical dependence under a distribution. It does not identify the sign's object, interpretant, cultural meaning, truth conditions, or pragmatic force.
+
+Semiotics and information theory can therefore interact without being reducible to one another.
+
+== Reference, denotation and interpretants ==
+
+Semiotic accounts often distinguish between a sign's relation to an object and the effect of interpreting it. This helps avoid a common error: assuming that meaning is an intrinsic property contained physically inside a sign vehicle.
+
+A word printed on a page has material properties. Its linguistic significance depends on membership in a sign system, conventions, context, and interpretive competence. Reference may also fail: fictional names, mistaken labels, deceptive signs, and obsolete symbols can remain meaningful despite problematic external denotation.
+
+Interpretation is similarly not unconstrained. Communities stabilize meanings through repeated practices, institutions, texts, standards, and correction. Semiotic variability does not imply that every interpretation is equally supported.
+
+== Empirical methods ==
+
+Semiotics is sometimes criticized for relying heavily on interpretive readings. Empirical methods can strengthen claims when the question is empirical.
+
+A study of a visual warning system might specify:
+
+# a corpus of sign designs;
+# features to be coded;
+# an explicit coding manual;
+# independent coders and inter-rater reliability;
+# a participant population;
+# interpretation or response tasks;
+# preregistered hypotheses where appropriate;
+# accuracy, response-time, recall, or behavioral measures;
+# comparisons across cultures, expertise levels, or contexts.
+
+These methods can evaluate how people actually interpret signs. They do not replace conceptual analysis; rather, they distinguish theoretical interpretation from evidence about users.
+
+Ethnography and historical research are appropriate when sign meaning depends on lived practice, institutional context, or historical change. Corpus and computational methods can identify patterns at scale, but frequency alone does not determine meaning.
+
+== Multimodality ==
+
+Actual communication often combines several sign modes:
+
+<pre>
+language + image + gesture + sound + layout + timing
+</pre>
+
+An interface icon can acquire meaning from its graphic form, placement, animation, accompanying label, prior platform conventions, and user action. A film combines visual framing, speech, music, editing, text, and performance.
+
+Analyzing only one channel can therefore miss interactions among modes. Multimodal semiotics studies how these resources jointly contribute to interpretation.
+
+== Cultural semiotics and semiosphere ==
+
+Cultural semiotics expands analysis from isolated signs to systems of texts, codes, genres, institutions, and translations. Juri Lotman's concept of the [[Semiosphere]] treats sign processes as occurring within heterogeneous semiotic environments rather than as independent messages.
+
+Important analytical concepts include boundary, translation, center/periphery relations, cultural memory, and interaction among sign systems. These are theoretical constructs for studying culture, not established physical fields.
+
+Empirical cultural claims still require historical, textual, ethnographic, or other relevant evidence.
+
+== Biosemiotics ==
+
+Biosemiotics applies semiotic concepts to biological organization and communication. Candidate phenomena include animal signals, cellular recognition, genetic processes, and organism–environment interactions.
+
+A crucial distinction is between:
+
+* physical correlation;
+* causal signaling;
+* functional discrimination;
+* representation;
+* intentional communication;
+* conscious interpretation.
+
+These levels should not be equated without argument. A receptor can respond selectively to a molecule through biochemical affinity; whether that interaction should be called semiosis depends on the theoretical framework. It does not by itself establish subjective experience.
+
+Claims about biological “codes” should likewise distinguish literal discrete correspondences, such as aspects of the genetic code, from metaphorical descriptions of regulatory systems.
+
+== Cognitive and computational semiotics ==
+
+Cognitive semiotics combines sign theory with approaches from cognitive science, linguistics, perception, and sometimes experimental methods. Questions include gesture, conceptualization, iconicity, metaphor, joint attention, and multimodal meaning.
+
+Computational semiotic questions arise when software creates, transforms, or interprets representations. An artificial system can implement formal mappings such as
+
+<math>f:X\rightarrow Y</math>
+
+and can achieve high accuracy on reference resolution, classification, translation, or dialogue tasks. These are measurable competencies.
+
+Stronger claims require stronger evidence. Successful symbol manipulation does not logically entail phenomenological meaning, conscious intentionality, or human-like understanding. Conversely, semiotic theory does not demonstrate that computational systems lack all meaningful representational relations. The relevant claim must be operationalized.
+
+== Semiotic analysis and scientific evidence ==
+
+A semiotic interpretation can be evaluated along several dimensions:
+
+* '''textual or structural support''' — does the proposed relation follow from observable sign features and system contrasts?
+* '''historical support''' — is the convention documented in the relevant period?
+* '''community support''' — do members of the relevant group recognize or use the interpretation?
+* '''behavioral support''' — does interpretation predict measurable responses?
+* '''comparative support''' — does the analysis explain differences across cases better than alternatives?
+* '''theoretical coherence''' — are concepts used consistently within the chosen semiotic framework?
+
+No single criterion applies to every study, but explicitly stating the evidence makes semiotic claims more falsifiable and reviewable.
+
+== Failure modes ==
+
+Common failures include:
+
+* mixing Peircean and Saussurean terms as direct equivalents;
+* treating icon, index, and symbol as exhaustive physical object classes;
+* inferring intention from mere correlation;
+* assigning cultural meanings without evidence from the relevant community or history;
+* assuming all observers decode a sign identically;
+* conflating statistical [[Information]] with semantic meaning;
+* treating natural language as a fixed codebook;
+* attributing consciousness to cells or machines simply because they respond selectively to signs;
+* using “semiotic” as a label without specifying the sign relation being claimed.
+
+== Scope ==
+
+Semiotics provides conceptual tools for studying how representation and interpretation operate across language, culture, media, biology, and computation. Its breadth is also its main methodological challenge: claims at different levels require different evidence. A rigorous semiotic account specifies the sign system, theoretical framework, interpreter, context, and evidentiary basis rather than treating “meaning” as self-explanatory.
 
 == References ==
-* [https://plato.stanford.edu/archives/sum2025/entries/peirce-semiotics/ Stanford Encyclopedia of Philosophy, Peirce’s Theory of Signs]
-* [https://plato.stanford.edu/entries/peirce/ Stanford Encyclopedia of Philosophy, Charles Sanders Peirce]
+
+<references />
+
+* Saussure, F. de (1916), ''Cours de linguistique générale''.
+* Eco, U. (1976), ''A Theory of Semiotics'', Indiana University Press.
+* Sebeok, T. A. (2001), ''Signs: An Introduction to Semiotics'', 2nd ed., University of Toronto Press.
 
 == Reading depth ==
-[[Semiotics/Simple|Simple explanation]]
+
+[[Semiotics/Simple|Simple explanation]] · [[Semiotics|Core article]]

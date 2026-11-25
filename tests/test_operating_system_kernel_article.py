@@ -23,6 +23,7 @@ def test_two_localizations_and_canonical_identity():
         assert text.count("<onlyinclude>") == 1
         assert text.count("</onlyinclude>") == 1
     assert "<onlyinclude>" not in core
+    assert "== Different designs ==" in simple.split("<onlyinclude>", 1)[1].split("</onlyinclude>", 1)[0]
     assert "{{#ask:" in core
 
 def test_technical_provenance_and_limits():
@@ -32,7 +33,7 @@ def test_technical_provenance_and_limits():
 
 def test_canonical_relationship():
     text = FILES[0].read_text(encoding="utf-8")
-    assert "[[Operating system]]" in text
+    assert "[[Related to::Operating system|Operating system]]" in text
     assert "{{Knowledge object" in text
 
 def test_unique_core_preservation_and_reference_scope():

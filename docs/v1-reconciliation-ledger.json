@@ -29,15 +29,15 @@
     "sources": 162,
     "status_counts": {
       "deliberately_excluded_test": 21,
-      "superseded": 26,
-      "incorporated": 19,
-      "open_reconciliation": 85,
-      "deprecated": 5,
+      "superseded": 31,
+      "incorporated": 20,
+      "open_reconciliation": 73,
+      "deprecated": 8,
       "already_represented": 5,
-      "historical_only": 1
+      "historical_only": 4
     },
-    "retirement_ready": 77,
-    "open": 85
+    "retirement_ready": 89,
+    "open": 73
   },
   "known_open_families": [
     "epistemics and confidence trails",
@@ -846,14 +846,13 @@
       ],
       "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
+      "reconciliation_status": "deprecated",
       "reconciliation_targets": [
-        "BITwiki/Editorial protocol.mediawiki",
-        "BITwiki/Contributing.mediawiki",
-        "BITwiki/Constitution.mediawiki"
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
       ],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_evidence": "Transparent/reviewable/revisable decisions survive; distributed consensus, weighted convergence, steward voting/reputation metrics and no-veto governance are not current.",
+      "retirement_ready": true
     },
     {
       "title": "BITwiki How to Navigate",
@@ -1110,14 +1109,13 @@
       ],
       "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
+      "reconciliation_status": "superseded",
       "reconciliation_targets": [
-        "BITwiki/Editorial protocol.mediawiki",
-        "BITwiki/Contributing.mediawiki",
-        "BITwiki/Constitution.mediawiki"
+        "BITwiki/Epistemic audit.mediawiki",
+        "BITwiki/Page format.mediawiki"
       ],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_evidence": "Guardrails/specific failure modes survive; mandatory markers, old tiers, fixed workflow stages and blanket metadata rejection do not.",
+      "retirement_ready": true
     },
     {
       "title": "BITwiki Quality Standards",
@@ -1134,14 +1132,14 @@
       ],
       "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
+      "reconciliation_status": "superseded",
       "reconciliation_targets": [
-        "BITwiki/Editorial protocol.mediawiki",
-        "BITwiki/Contributing.mediawiki",
-        "BITwiki/Constitution.mediawiki"
+        "BITwiki/Epistemic audit.mediawiki",
+        "BITwiki/Page format.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
       ],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_evidence": "Multi-dimensional substantive quality review survives; weighted scores, Flesch targets, YAML/source-count/template universals do not.",
+      "retirement_ready": true
     },
     {
       "title": "BITwiki Relationship Pattern Catalog",
@@ -1309,14 +1307,13 @@
       ],
       "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
+      "reconciliation_status": "superseded",
       "reconciliation_targets": [
-        "BITwiki/Editorial protocol.mediawiki",
-        "BITwiki/Contributing.mediawiki",
-        "BITwiki/Constitution.mediawiki"
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
       ],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_evidence": "Accountable stewardship survives; historical steward classes, appointment/term/escalation structure and numerical confidence authority are not constituted current processes.",
+      "retirement_ready": true
     },
     {
       "title": "BITwiki Taxonomy Architecture",
@@ -2377,14 +2374,13 @@
       ],
       "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
+      "reconciliation_status": "deprecated",
       "reconciliation_targets": [
-        "BITwiki/Editorial protocol.mediawiki",
-        "BITwiki/Contributing.mediawiki",
-        "BITwiki/Constitution.mediawiki"
+        "BITwiki/Constitution.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
       ],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_evidence": "Provenance/uncertainty/revisability survive; weighted reputation, confidence-weighted governance, meta-stewards and distributed arbitration are not current mechanisms.",
+      "retirement_ready": true
     },
     {
       "title": "Homeostasis",
@@ -2931,10 +2927,12 @@
       "canonical_targets": [],
       "rationale": "Operational/test artifact retained only through immutable Git history.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
-      "reconciliation_targets": [],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "docs/deployment.md"
+      ],
+      "reconciliation_evidence": "Dated 2026-02 readiness receipt. It cannot establish current deployment; current deployment requires current source/runtime evidence.",
+      "retirement_ready": true
     },
     {
       "title": "PHILOSOPHICAL FRAMEWORK SUMMARY",
@@ -3119,14 +3117,13 @@
       ],
       "rationale": "Historical architecture/source artifact. Durable design signal was classified in the V1 maturation pass and is carried forward at the current canonical family level; the old page is not an active standard.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
+      "reconciliation_status": "deprecated",
       "reconciliation_targets": [
-        "BITwiki/Editorial protocol.mediawiki",
-        "BITwiki/Contributing.mediawiki",
-        "BITwiki/Constitution.mediawiki"
+        "BITwiki/Epistemic audit.mediawiki",
+        "BITwiki/Editorial protocol.mediawiki"
       ],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_evidence": "Layered auditing survives; universal scoring, community confidence voting, fixed panels/classes/dashboards are not current authority.",
+      "retirement_ready": true
     },
     {
       "title": "Query Patterns",
@@ -3493,10 +3490,14 @@
       "canonical_targets": [],
       "rationale": "Operational/test artifact retained only through immutable Git history.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
-      "reconciliation_targets": [],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_status": "incorporated",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Templates and categories.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Central Lua validation, validation-before-emission, centralized vocabularies, reduced duplication and regression testing are current; old module names/vocabularies are obsolete.",
+      "retirement_ready": true
     },
     {
       "title": "Template List",
@@ -3583,10 +3584,13 @@
       "canonical_targets": [],
       "rationale": "Operational/test artifact retained only through immutable Git history.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
-      "reconciliation_targets": [],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Semantic properties.mediawiki"
+      ],
+      "reconciliation_evidence": "Old ParserFunction/TemplateStyles implementation and numeric-confidence fields are obsolete; current compiler preserves validation-before-emission/diagnostics.",
+      "retirement_ready": true
     },
     {
       "title": "Template Validation Lua Module",
@@ -3599,10 +3603,12 @@
       "canonical_targets": [],
       "rationale": "Operational/test artifact retained only through immutable Git history.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
-      "reconciliation_targets": [],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_status": "superseded",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki"
+      ],
+      "reconciliation_evidence": "ValidatorBase family matured into current BITwiki Core/Compiler/Structure/runtime-schema architecture; old confidence/source-count requirements are obsolete.",
+      "retirement_ready": true
     },
     {
       "title": "Template Validation Report",
@@ -3615,10 +3621,13 @@
       "canonical_targets": [],
       "rationale": "Operational/test artifact retained only through immutable Git history.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
-      "reconciliation_targets": [],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_status": "historical_only",
+      "reconciliation_targets": [
+        "BITwiki/Lua architecture.mediawiki",
+        "BITwiki/Templates and categories.mediawiki"
+      ],
+      "reconciliation_evidence": "Old-template audit receipt; useful findings on duplication/weak validation/vocabulary drift/testing are already reflected in current architecture.",
+      "retirement_ready": true
     },
     {
       "title": "Test Page",
@@ -3631,10 +3640,10 @@
       "canonical_targets": [],
       "rationale": "Operational/test artifact retained only through immutable Git history.",
       "prior_premature_disposition": "historical-only",
-      "reconciliation_status": "open_reconciliation",
+      "reconciliation_status": "historical_only",
       "reconciliation_targets": [],
-      "reconciliation_evidence": "Prior family-level destination is not proof that this source's useful claims, distinctions, examples, citations, or mechanisms were incorporated. Direct source-to-canon comparison required.",
-      "retirement_ready": false
+      "reconciliation_evidence": "One-line pywikibot test artifact; no durable knowledge or design requirement.",
+      "retirement_ready": true
     },
     {
       "title": "Validation rules",
@@ -3739,13 +3748,17 @@
     "ontology_semantics_relationships",
     "foundational_constitutional_philosophy",
     "system_architecture_boundary",
-    "deployment_integration_migration_operations"
+    "deployment_integration_migration_operations",
+    "quality_governance_stewardship",
+    "maintenance_validation_test"
   ],
   "family_reports": {
     "epistemics_evidence_provenance": "docs/v1-reconciliation-epistemics.md",
     "ontology_semantics_relationships": "docs/v1-reconciliation-ontology.md",
     "foundational_constitutional_philosophy": "docs/v1-reconciliation-foundations.md",
     "system_architecture_boundary": "docs/v1-reconciliation-system-deployment.md",
-    "deployment_integration_migration_operations": "docs/v1-reconciliation-system-deployment.md"
+    "deployment_integration_migration_operations": "docs/v1-reconciliation-system-deployment.md",
+    "quality_governance_stewardship": "docs/v1-reconciliation-governance-quality.md",
+    "maintenance_validation_test": "docs/v1-reconciliation-governance-quality.md"
   }
 }

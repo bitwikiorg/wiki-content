@@ -1,0 +1,36 @@
+<onlyinclude>'''Thin-film deposition''' is a coupled transport, surface-reaction and microstructure-formation problem. Method selection depends on composition, growth kinetics, substrate temperature, feature geometry, throughput, contamination and acceptable film stress.</onlyinclude>
+
+[[Thin-film deposition/Simple|Read the simple explanation]]
+
+== Physical mechanisms ==
+'''PVD''' transports material from a condensed source to the substrate, including thermal/electron-beam evaporation and plasma sputtering. Sputter yield, angular distribution, background-gas scattering and substrate mobility affect thickness and morphology. Predominantly directional flux can shadow recessed sidewalls; sputtering is not universally line-of-sight under every pressure and geometry.
+
+'''CVD''' supplies volatile precursors whose transport, adsorption, reaction and by-product desorption produce a solid. Deposition can be limited by surface reaction or by mass transfer, with different temperature and flow sensitivities. Plasma-enhanced CVD changes activation pathways and can reduce required substrate temperature, but introduces plasma-related damage considerations.
+
+'''ALD''' separates complementary reactants into pulses and purges, seeking self-limiting surface chemistry. The growth per cycle (GPC) is material- and condition-dependent, and often below a full monolayer. The term ''atomic layer'' does not guarantee exactly one atomic plane per cycle. In high-aspect-ratio features, insufficient exposure or purge time, precursor depletion and parasitic reactions can compromise conformality.
+
+== Surface-kinetic and transport models ==
+A minimal adsorption model, assuming independent equivalent sites and a constant incident flux, uses fractional surface coverage <math>\theta</math> and an effective adsorption coefficient <math>k_a</math>:
+:<math>\frac{d\theta}{dt}=k_a(1-\theta),\qquad \theta(t)=1-e^{-k_at}</math>.
+This is a derived idealization for a single saturating half-reaction, not a universal ALD law: precursor partial pressure, sticking probability, steric effects, desorption, and multi-site reactions alter kinetics. A practical saturation experiment varies precursor dose while holding temperature and purge conditions fixed, then measures growth per cycle and spatial thickness profiles. Apparent plateauing on a planar witness wafer does not establish saturation deep inside a feature. The conformality review by Cremers et al. (2019) discusses the transport regimes and profile-based inverse modelling relevant to this limitation.
+
+== Quantitative models and bounds ==
+For an approximately steady deposition rate <math>R</math> over time <math>t</math>, film thickness is <math>h=Rt</math>. This is a process approximation, not a guarantee of spatial uniformity.
+
+For ALD with approximately constant growth per cycle <math>g</math> and <math>N</math> completed cycles, <math>h\approx Ng</math>. ''Derived illustration, not a measured recipe:'' with assumed <math>g=0.10\,\mathrm{nm/cycle}</math>, 100 cycles yield approximately 10 nm. Actual GPC may change with nucleation, temperature, precursor exposure and substrate chemistry.
+
+A useful local conformality metric is <math>C=h_{\mathrm{sidewall}}/h_{\mathrm{top}}</math> at specified locations. This ratio alone does not establish bottom coverage, uniformity across the wafer, or absence of pinholes. Thickness variation may be assessed by metrology at multiple wafer positions; the reported uniformity metric must specify its definition.
+
+== Research and process-design questions ==
+For a new device architecture, identify the minimum feature opening, aspect ratio, thermal budget, allowable impurity density, interface resistance, and permissible film stress before selecting a deposition route. Compare deposition time, precursor utilization, and measured sidewall/bottom coverage under matched geometries; do not infer a universal PVD/CVD/ALD performance ranking. An unresolved research problem is transferring planar kinetic parameters to heterogeneous, high-aspect-ratio surfaces without mistaking transport-limited growth for intrinsically non-self-limiting chemistry.
+
+== Process verification ==
+Film thickness and optical properties can be evaluated by ellipsometry; cross-sectional electron microscopy can assess local geometry; X-ray reflectivity, spectroscopy and electrical measurements probe other film properties. Each measurement has model and sampling limitations. Control charts, reference wafers and in-situ sensors help detect drift but cannot replace device-level qualification.
+
+== Scope and limitations ==
+Deposition creates a film and does not itself pattern it. Film stress, adhesion, impurities, grain structure and interface defects can dominate performance even at the intended nominal thickness. PVD, CVD and ALD are families of processes rather than mutually exclusive material classes; hybrid and plasma-assisted variants exist.
+
+== Sources ==
+* S. M. George (2010), [https://doi.org/10.1021/cr900056b ''Atomic Layer Deposition: An Overview''], ''Chemical Reviews'' 110, 111–131 (surface chemistry, GPC, cycle limitations).
+* A. K. Rumaiz et al. (2020), [https://doi.org/10.1002/0471238961.0609121313012020.a01.pub3 ''Thin-Film Formation Techniques''] (PVD/CVD transport and geometry).
+* V. Cremers, R. L. Puurunen and J. Dendooven (2019), [https://doi.org/10.1063/1.5060967 ''Conformality in atomic layer deposition''], ''Applied Physics Reviews'' 6(2), 021302 (high-aspect-ratio conformality models and transport assumptions).

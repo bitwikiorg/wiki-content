@@ -164,9 +164,6 @@ def main() -> int:
             "canonical_page": canonical
         })
 
-    if len(calls) < 51:
-        errors.append(f"Migration lost historical request records: expected at least 51, found {len(calls)}.")
-
     report = {
         "status": "ok" if not errors else "error",
         "purpose": "Validate repository-only operational request data without publishing it to MediaWiki.",

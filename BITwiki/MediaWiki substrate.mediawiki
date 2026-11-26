@@ -8,7 +8,7 @@ The authoritative current runtime signals are [[Special:NamespaceInfo]], [[Speci
 
 MediaWiki is also BITwiki's programmable knowledge execution substrate. Authored wikitext, Semantic MediaWiki graph state, Cargo operational state, and Scribunto/Lua computation compose into page, graph, diagnostic, machine-facing, and BIThub-consumable projections. See [[BITwiki:Programmable knowledge substrate]].
 
-== Current reconciliation ==
+== Current source/runtime mapping ==
 
 The captured installation exposes the standard MediaWiki namespaces together with extension namespaces used by Semantic MediaWiki and Scribunto.
 
@@ -31,7 +31,7 @@ The captured installation exposes the standard MediaWiki namespaces together wit
 | Template
 | <code>Template/</code>
 | Reusable declarative composition and public invocation/presentation surfaces
-| Source controlled; live V1 templates recovered for compatibility
+| Source controlled; compatibility templates retained where current callers require them
 |-
 | Property
 | <code>Property/</code>
@@ -158,22 +158,18 @@ BIThub is the user/agent interaction and workflow plane around the durable wiki.
 
 Scribunto/Lua is not the transport layer. Cross-service authentication, networking, retries, secrets and event processing belong outside parse-time module code.
 
-== Compatibility template recovery ==
+== Compatibility templates ==
 
-The live V1 fidelity inventory contains nine templates. They are represented directly in <code>Template/</code> so a reader does not have to excavate the provenance archive to discover runtime dependencies.
+Current source may retain compatibility templates where existing callers or rendered behavior still depend on them.
 
-This recovery does '''not''' declare every V1 visual template part of the V2 design language.
+* <code>Template:Infobox</code> remains a compatibility surface while callers still require its contract.
+* Decorative/header/footer templates may remain compatibility surfaces where callers exist.
+* New knowledge objects should use the reviewed V2 authoring path such as <code>Template:Knowledge object</code>.
+* Retire a compatibility template only after its callers, incoming links and rendered behavior have been verified.
 
-* <code>Template:Infobox</code> is a high-impact compatibility dependency with 80 recorded callers.
-* The BITwiki decorative/header/footer templates have live callers and remain compatibility surfaces until those callers are deliberately migrated.
-* New V2 templates such as <code>Template:Knowledge object</code> are the canonical path for new V2 knowledge objects.
-* A live compatibility template may be retired only after its callers and rendered behavior have been verified.
-
-See <code>Template/README.md</code>. Historical V1 template evidence remains at immutable snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>.
+See <code>Template/README.md</code>.
 
 == Lua: compiler/type-system/inference-and-projection layer ==
-
-V1 specified a larger Lua validation architecture, but the live Module namespace was empty in the captured corpus. The specification is therefore design evidence, not proof that five production modules existed.
 
 V2 began with one bounded module: <code>Module:Structure</code>, initially performing runtime validation of explicit identity supplied to <code>Template:Knowledge object</code>. That proof is now matured into the first <code>Module:BITwiki/*</code> compiler family.
 
@@ -322,11 +318,6 @@ Exact deployment remains additive and non-destructive. Cross-service BIThub/Disc
 
 * [[Special:NamespaceInfo]] — live namespace configuration.
 * [[Special:Version]] — installed extension/runtime surface.
-* [https://github.com/bitwikiorg/wiki-content/blob/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1/siteinfo.json V1 <code>siteinfo.json</code>] — historical MediaWiki API site information captured 2026-08-18; not current runtime authority.
-* <code>v1-fidelity-audit.json</code> — live-versus-archive public fidelity audit.
-* [https://github.com/bitwikiorg/wiki-content/blob/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1/templates/index.json V1 template inventory] — historical template inventory and usage counts.
-* [https://github.com/bitwikiorg/wiki-content/blob/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1/pages/Main/Lua%20Module%20Specifications.mediawiki V1 Lua Module Specifications] — historical architecture design lineage.
-* [https://github.com/bitwikiorg/wiki-content/blob/3100db1d7807b752e41b6ccf7f88498982cfb2d4/archive-v1/pages/Main/Template%20Validation%20Lua%20Module.mediawiki V1 Template Validation Lua Module] — historical validation-module design lineage.
 * [https://www.mediawiki.org/wiki/Extension:Scribunto MediaWiki — Scribunto]
 * [https://www.mediawiki.org/wiki/Extension:Cargo MediaWiki — Cargo]
 * [https://www.semantic-mediawiki.org/wiki/Help:Concepts Semantic MediaWiki — Concepts]

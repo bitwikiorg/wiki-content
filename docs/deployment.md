@@ -6,7 +6,6 @@
 
 - Reconcile target wiki `Special:NamespaceInfo`, `Special:Version`, installed extensions, and current site state before acting. A repository folder is a title projection, not a configured MediaWiki namespace.
 - `manifest.json` owns mapped source folders; `scripts/deployment_plan.py` recursively discovers deployable files, titles, models, dependency order and explicitly declared checkpoints.
-- `archive-v1/` is a read-only migration/provenance source during issue #152 and is never deployable V2 source. Never turn absence from current source into a live-wiki delete operation.
 - Source CI, generated reports, dry runs and staging previews do **not** establish a deployed or approved MediaWiki revision.
 
 ## Verify source before publication
@@ -38,7 +37,7 @@ The last command is a **dry run**. Live writes require `--execute` and separatel
 
 - Treat deployments as **additive and non-destructive by default**. Explicitly review every rename, merge, redirect, overwrite or live deletion against current target revisions and incoming links.
 - After import inspect rendering, actual revision IDs, `Special:AllPages`, categories, wanted templates, redirects and transclusion host pages. For semantic edits inspect `Special:Browse`, `Special:Ask`, properties/concepts and rebuilds as applicable.
-- Preserve live V1 template callers (including `Template:Infobox`) and source lineage until each migration is checked. Do not infer safe deletions from missing V2 files.
+- Before retiring compatibility templates or redirects, verify their current callers, incoming links, rendered behavior, and live target state. Do not infer safe live deletions from missing repository files.
 - Record reviewed source SHA, deployment plan, credentials authority (not secrets), affected titles, operator, checkpoint evidence, pre/post revision IDs and a tested rollback/restore path.
 - Run source checks and compare target state again after the change. A green GitHub Action does not prove the target wiki changed.
 

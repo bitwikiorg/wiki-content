@@ -10,7 +10,6 @@ This repository includes the reviewed deployment projection for BITwiki's public
 - **GitHub Pages staging:** https://bitwikiorg.github.io/wiki-content/
 - **BIThub:** https://hub.bitwiki.org/
 - **Canonical branch:** `main`
-- **V1 migration source:** content reconciliation is complete; `archive-v1/` remains read-only pending the separate retirement operation. See [`docs/v1-reconciliation.md`](docs/v1-reconciliation.md) and [`docs/v1-retirement-dependency-audit.md`](docs/v1-retirement-dependency-audit.md).
 
 > `main` is the integrated repository source of truth. Filesystem folders project MediaWiki/runtime surfaces; they are not themselves the ontology.
 
@@ -107,7 +106,6 @@ Project-specific implementation standards remain in `BITwiki:*`; Main-space page
 ```text
 wiki-content/
 ├── Main/          canonical Main-namespace knowledge, self-model objects, redirects, Book Matter
-├── archive-v1/    read-only V1 migration/provenance source
 ├── BITwiki/       public project architecture, editorial standards, governance, epistemics
 ├── Template/      declarative authoring/invocation and recovered compatibility templates
 ├── Module/        Scribunto/Lua compiler, transformation, projection, diagnostics
@@ -118,7 +116,7 @@ wiki-content/
 ├── MediaWiki/     public runtime/interface configuration pages
 ├── Help/          stable user-facing workflow documentation
 ├── Portal/        Portal:* navigation title projection; not a confirmed namespace
-├── scripts/       archival, validation, audit, inventory, and migration tooling
+├── scripts/       validation, audit, inventory, and deployment tooling
 ├── docs/          non-deployable maintainer deployment runbook
 ├── ops/           non-deployable operational records (still visible in public GitHub)
 ├── .github/       CI and repository automation
@@ -168,7 +166,7 @@ active request
 ≠ canonical Main page
 ```
 
-The prior public Cargo-backed queue has been retired from source-controlled MediaWiki publication. Existing 51 request records are preserved in `ops/knowledge-requests.json`, validated by `scripts/audit_workflow.py`, and **not** a public wiki page or Cargo table. This public GitHub repository is not a private operations database; a confidential workflow requires a separate private migration.
+The prior public Cargo-backed queue has been retired from source-controlled MediaWiki publication. Request records are preserved in `ops/knowledge-requests.json`, validated by `scripts/audit_workflow.py`, and **not** a public wiki page or Cargo table. This public GitHub repository is not a private operations database; a confidential workflow requires a separate private migration.
 
 ---
 
@@ -189,7 +187,6 @@ The prior public Cargo-backed queue has been retired from source-controlled Medi
 | Operational request records (not wiki source) | [`ops/knowledge-requests.json`](ops/knowledge-requests.json) |
 | Deployment runbook (not wiki source) | [`docs/deployment.md`](docs/deployment.md) |
 | Runtime mapping manifest | [`manifest.json`](manifest.json) |
-| V1 reconciliation | [`docs/v1-reconciliation.md`](docs/v1-reconciliation.md) · source `archive-v1/` · immutable snapshot `3100db1d7807b752e41b6ccf7f88498982cfb2d4` |
 
 ---
 
@@ -204,8 +201,6 @@ python scripts/audit_substrate.py
 python scripts/audit_workflow.py
 python scripts/audit_mainspace.py
 python scripts/inventory_corpus.py
-python scripts/classify_v1_page_roles.py
-python scripts/classify_v1_architecture_families.py
 find Module -type f -name '*.lua' -print0 | xargs -0 -n1 luac5.1 -p
 ```
 
@@ -213,23 +208,6 @@ CI treats these checks as executable architecture evidence. Generated JSON repor
 
 Repository validation does not prove the remote MediaWiki deployment. Runtime deployment must still verify module dependency order, Scribunto behavior, relevant SMW state and any supported integration contract. Cargo must be checked if a future reviewed feature actually uses it. Native `mw.smw` access is not assumed; it requires an explicitly deployed and compatible SemanticScribunto capability.
 
----
-
-## V1 → V2
-
-V2 preserves V1 as design and provenance evidence rather than treating it as disposable scaffolding.
-
-```text
-V1
-→ preserve
-→ understand
-→ identify signal
-→ mature primitive
-→ enhance
-→ integrate into V2
-```
-
-`archive-v1/` is a read-only migration/provenance source retained after completion of the content-level reconciliation. It is not deployable V2 source or current architecture. The remaining retirement work is documented in `docs/v1-retirement-dependency-audit.md`; Git recoverability alone was not treated as proof of successful migration.
 
 ---
 
@@ -243,7 +221,7 @@ When a reviewed change alters a directory's responsibility, source-of-truth boun
 2. update the authoritative `BITwiki:*` architecture/standard where applicable;
 3. update the nearest README so a repository reader encounters the current model locally;
 4. update `manifest.json` or executable validation when the invariant is machine-checkable;
-5. preserve historical descriptions as history rather than silently rewriting archival evidence.
+5. preserve relevant provenance where it materially affects the current architecture or content.
 
 READMEs should summarize the current operational contract rather than duplicate entire standards. Detailed semantics belong in canonical wiki architecture pages; READMEs explain how the repository surface participates in them.
 

@@ -192,9 +192,8 @@ def main() -> int:
 
     # Directory-documentation requirements apply to current source/deployment
     # surfaces, not provenance archives, migration evidence, CI metadata, or docs.
-    # Keep this scope aligned with SOURCE_ROOTS so restoring archive-v1 for
-    # reconciliation cannot make historical internal directories look like
-    # undocumented current architecture.
+    # Keep this scope aligned with SOURCE_ROOTS so non-deployable support directories
+    # cannot be mistaken for undocumented current architecture.
     all_dirs = []
     for root_name in SOURCE_ROOTS:
         root = ROOT / root_name

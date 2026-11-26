@@ -1,4 +1,4 @@
-{{Source status|status=source-grounded operational guide|note=Revised against the exhaustive V1 API archive and the V2 programmable-substrate maturation: preserves the 9 implemented templates / 59 wanted templates / 162 used categories evidence while clarifying Template, Lua, SMW, Cargo, and Category responsibilities.}}
+{{Source status|status=source-grounded operational guide|note=Current Template, Lua, SMW, Cargo, Category, and Book Matter responsibilities for BITwiki V2.}}
 
 = Templates and categories =
 
@@ -32,66 +32,6 @@ Templates are the public wikitext-facing contract. Lua is the deterministic comp
 
 <code>Template:Knowledge object</code> demonstrates this split: it exposes the authoring contract, invokes <code>Module:Structure</code>, and that wrapper delegates normalization/type checking to <code>Module:BITwiki/Compiler</code> using the runtime schema projection.
 
-== What V1 actually implemented ==
-The exhaustive public V1 archive contains:
-* 9 Template namespace pages;
-* 162 used category names;
-* 0 authored Category namespace pages;
-* 59 referenced-but-uncreated templates;
-* 8 uncategorized templates;
-* 1 unused template.
-
-This differs materially from the larger system described in <code>Template Catalog</code>, <code>Template List</code>, <code>Template Usage Guide</code> and <code>CATEGORY ARCHITECTURE</code>. Those pages preserve valuable design intent, but intended components are not described as implemented until a corresponding live object exists.
-
-== V1 template dispositions ==
-
-=== Schema ancestor ===
-<code>Template:Infobox</code> is transcluded by 80 pages. It is the main implemented structural template and must be treated as compatibility-critical during migration.
-
-The live template supports only a small parameter set (title, type, status, related implementation and category), while later pages pass richer metadata. V2 must recover that richer schema from the source writings deliberately rather than assuming the template already enforced it.
-
-=== Presentation family ===
-The following live templates are primarily visual/navigation components:
-* <code>Template:BITwiki complex decorative circle</code>
-* <code>Template:BITwiki constructs decorative circle</code>
-* <code>Template:BITwiki footer</code>
-* <code>Template:BITwiki header element</code>
-* <code>Template:BITwiki implementations decorative circle</code>
-* <code>Template:BITwiki projects decorative circle</code>
-* <code>Template:BITwiki simple decorative circle</code>
-
-Their source and callers are preserved. They may be retired only after their remaining callers have been migrated to V2 navigation/presentation.
-
-=== Unused historical shell ===
-<code>Template:BITwiki</code> is the only unused live template. It is a large decorative Digital Codex header shell. Preserve it in the archive; do not treat it as semantic infrastructure.
-
-=== Wanted templates ===
-V1 has 59 wanted template titles. <code>Template:Documentation</code> alone is referenced 82 times; others represent proposed document headers, epistemic markers, evidence tiers, infobox variants, portals, citations and validation helpers.
-
-A wanted template is a '''reference to a missing implementation'''. Preserve it as design-intent evidence. Do not bulk-create all wanted templates in V2.
-
-== V1 Category:BITwiki Templates ==
-The V1 category named <code>BITwiki Templates</code> had seven members, but none of those seven was one of the nine live Template namespace pages. Its members were Main-namespace architecture/index documents:
-
-# [[Category List]]
-# [[Infobox Concept]]
-# [[Infobox Idea]]
-# [[Infobox Implementation]]
-# [[Infobox Project]]
-# [[SMW Template System]]
-# [[Template System Validation Framework]]
-
-This category is therefore evidence of a '''template-system documentation family''', not an inventory of implemented templates.
-
-V2 separates those functions:
-* the exact seven-member V1 category membership remains recoverable at snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>, path <code>archive-v1/categories/members/Category%3ABITwiki Templates.json</code>;
-* actual V1 Template namespace implementation remains recoverable at snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>, path <code>archive-v1/templates/index.json</code>;
-* the four historical Main-namespace Infobox design pages have been reconciled under issue #152: their useful entity-specific fields remain design evidence, but they do not establish four current template contracts. V2 keeps <code>Template:Knowledge object</code> deliberately small and adds specialized structured fields only when repeated articles/queries demonstrate a stable need;
-* <code>SMW Template System</code> has been reconciled into the current Template → Lua → SMW/Cargo separation;
-* <code>Template System Validation Framework</code> has been reconciled into current validation/release rules; its mandatory confidence/status mechanics are not current requirements;
-* [[Category List]] informs the historical classification model; current classification follows the V2 category rules below.
-
-Do not infer Template namespace membership from a page being categorized <code>BITwiki Templates</code>.
 
 == Canonical V2 template rules ==
 A V2 template should have:
@@ -99,11 +39,11 @@ A V2 template should have:
 # documented parameters;
 # one minimal usage example;
 # explicit dependencies where relevant;
-# source/provenance notes when inherited from V1;
+# source/provenance notes when inherited material or transformations matter;
 # template documentation/categories inside <code>&lt;noinclude&gt;</code>;
 # transcluding behavior inside <code>&lt;includeonly&gt;</code> only when that behavior belongs on caller pages.
 
-Use templates as pattern languages, preserving the strong V1 principle: '''consistency without rigidity'''. A template should make repeated structure easier to understand and maintain; it should not force unrelated knowledge into one shape.
+Use templates as pattern languages: '''consistency without rigidity'''. A template should make repeated structure easier to understand and maintain; it should not force unrelated knowledge into one shape.
 
 When logic becomes procedural or reused across several presentation contexts, prefer a small <code>Module:BITwiki/*</code> function returning structured normalized state rather than deeply nested parser functions.
 
@@ -117,8 +57,6 @@ A created V2 Category page should state, when useful:
 Category pages are indexes, not directories. A page may belong to multiple categories. Category hierarchy is a navigation graph, not the ontology.
 
 A category may include SMW/query/Lua-computed views, but those are projections over canonical state. Category membership does not silently create Entity type, Domain, or relationship assertions.
-
-For historical V1 category memberships, inspect <code>archive-v1/categories/index.json</code> and member lists at immutable snapshot commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code>; apply the current V2 rules above.
 
 == State and rendering invariants ==
 
@@ -148,32 +86,17 @@ These are generated reports, not ordinary content pages:
 * [[Special:UnusedCategories]] — created category pages with no members;
 * [[Special:BrokenRedirects]] / [[Special:DoubleRedirects]] — redirect hygiene.
 
-== V1 → V2 migration ==
-<pre>
-archive exact source + complete revision history
-→ capture transclusion/category membership
-→ distinguish implemented object from design-only reference
-→ compare variants
-→ preserve unique writing and behavior
-→ identify the function
-→ choose correct V2 primitive
-→ KEEP / REWRITE / MERGE / REDIRECT / RETIRE
-→ implement
-→ rerun repository + Special-page validation
-</pre>
 
 == Release checks ==
-Before a V2 deployment is considered clean:
-# verify current Template pages against the current live wiki; consult the immutable V1 template inventory only when tracing historical lineage;
-# do not delete <code>Template:Infobox</code> while legacy callers remain;
-# review all 59 V1 wanted templates as design-intent evidence, not an automatic implementation backlog;
+Before a deployment is considered clean:
+# verify current Template pages against the current live wiki;
 # review [[Special:UncategorizedTemplates]], [[Special:UnusedTemplates]] and [[Special:WantedTemplates]];
-# verify current category memberships against current source/live state; consult the immutable V1 category inventory only for historical comparison;
 # review [[Special:Categories]], [[Special:WantedCategories]] and [[Special:UncategorizedPages]];
-# verify semantic properties and category membership after template migrations;
+# verify semantic properties and category membership after template changes;
 # verify Lua module dependency order and actual Scribunto behavior for invoked modules;
 # verify redirects/transclusions after every rename;
-# never deploy the historical V1 snapshot at commit <code>3100db1d7807b752e41b6ccf7f88498982cfb2d4</code> as current V2 content.
+# retire compatibility templates only after current callers and rendered behavior are verified.
+
 
 See [[BITwiki:Programmable knowledge substrate]], [[BITwiki:Lua architecture]], [[BITwiki:MediaWiki substrate]], [[BITwiki:Transclusion]], and [[BITwiki:Contributing]].
 

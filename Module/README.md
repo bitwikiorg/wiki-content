@@ -2,8 +2,6 @@
 
 Source for MediaWiki `Module:*` pages executed by Scribunto/Lua.
 
-The captured live V1 corpus had the Module namespace configured but **zero live Module pages**. V1 nevertheless contains substantial Lua design specifications in the immutable snapshot at commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4` under `archive-v1/pages/Main/`. Those documents are design lineage, not proof that the proposed modules were deployed.
-
 ## V2 role
 
 Lua is BITwiki's deterministic **compiler / domain type-system / bounded-inference / transformation / projection / diagnostics layer** inside MediaWiki.
@@ -99,7 +97,7 @@ Those responsibilities belong to explicit MediaWiki/Discourse extensions, backen
 - Keep simple declarative presentation/semantic emission in templates when wikitext remains clearer.
 - Do not turn parse-time rendering into surprising writes merely because an extension exposes storage functions.
 - Keep graph semantics in Property/SMW state and operational records in Cargo.
-- Do not resurrect obsolete V1 numeric-confidence logic; V2 uses the current epistemic-status model.
+- Do not introduce obsolete numeric-confidence logic; use the current epistemic-status model.
 - A module should have real consumers or remove demonstrated duplication rather than exist as architectural ornament.
 
 ## Validation and deployment

@@ -45,9 +45,9 @@ normalized record + diagnostics
 
 `Knowledge request` is deliberately an operational template, not a second knowledge-object schema. Cargo is appropriate because many request records share a stable lifecycle and need queryable status; Semantic MediaWiki remains the graph layer for canonical knowledge assertions.
 
-## Live V1 compatibility templates
+## Compatibility templates
 
-This directory carries the current source-controlled template set. Historical V1 template evidence remains available through the immutable V1 snapshot; current runtime state must be verified against the live wiki.
+This directory carries the current source-controlled template set. Current runtime state must be verified against the live wiki.
 
 | Template | Captured callers | Disposition |
 |---|---:|---|
@@ -61,9 +61,8 @@ This directory carries the current source-controlled template set. Historical V1
 | `BITwiki simple decorative circle` | 2 | live legacy presentation |
 | `BITwiki` | 0 | live namespace page; review before retirement |
 
-Their presence here preserves migration/runtime fidelity; it **does not make them the V2 visual or composition standard**.
+Their presence here preserves compatibility/runtime behavior; it **does not make them the preferred visual or composition standard**.
 
-Historical evidence: commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4`, paths `archive-v1/templates/`, `archive-v1/pages/Template/`, and `archive-v1/history/Template/`.
 
 ## Design rules
 

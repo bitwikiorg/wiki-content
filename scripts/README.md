@@ -1,6 +1,6 @@
 # Repository scripts
 
-Audit, archival, inventory, classification, fidelity, migration, deployment, and V2 validation utilities.
+Audit, inventory, deployment, and V2 validation utilities.
 
 These scripts are **executable governance over repository source**: they make architecture claims falsifiable, detect drift between representations, generate review evidence, and turn reviewed source into an explicit deployment plan. They are tooling, not wiki content and not a parallel semantic authority.
 
@@ -16,11 +16,7 @@ These scripts are **executable governance over repository source**: they make ar
 | `audit_workflow.py` | Cargo `Knowledge_requests` schema/storage/query and request lifecycle invariants |
 | `audit_mainspace.py` | Main-namespace role inventory without equating file length with quality |
 | `audit_staging_readiness.py` | Per-page, source-SHA-anchored staging checks K01–K18 with explicit editorial and live-runtime unknowns; emits untracked CI artifact |
-| `inventory_corpus.py` | semantic/content corpus and V1 classification evidence; **not** the deployment manifest |
-| `classify_v1_page_roles.py` | V1 page-role evidence before migration/ontology decisions |
-| `classify_v1_architecture_families.py` | V1 architecture-source maturation classification |
-
-The V1 inventory/classification chain is now historical migration tooling: content reconciliation is complete, and these scripts remain only while `archive-v1/` is retained pending the separate retirement change. They are not current runtime/deployment authority.
+| `inventory_corpus.py` | current semantic/content corpus evidence; **not** the deployment manifest |
 
 GitHub Actions also parses every source-controlled `Module/**/*.lua` with a Lua 5.1 compiler before accepting the module source as syntactically valid Scribunto-era Lua.
 

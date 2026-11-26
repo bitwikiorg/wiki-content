@@ -4,7 +4,7 @@
   "repository": "bitwikiorg/wiki-content",
   "format": "MediaWiki wikitext + namespace-native source (Lua/CSS/JS where required)",
   "visibility": "public-only",
-  "status": "source-grounded V2 with V1 content reconciliation complete; archive retirement pending",
+  "status": "source-grounded V2",
   "source_policy": "source-first; preserve authored language, implementation reality, revision history and provenance; distinguish documented design from deployed objects",
   "namespace_paths": {
     "Main": "Main/",
@@ -224,29 +224,6 @@
     "navigation_coverage": "BITwiki/Navigation and coverage research.mediawiki",
     "sensitive_topics": "BITwiki/Sensitive topic scope research.mediawiki"
   },
-  "migration_evidence": {
-    "corpus_inventory": "scripts/inventory_corpus.py",
-    "page_role_classifier": "scripts/classify_v1_page_roles.py",
-    "architecture_family_classifier": "scripts/classify_v1_architecture_families.py",
-    "v1_reconciliation_ledger": "docs/v1-reconciliation-ledger.json",
-    "v1_reconciliation_standard": "docs/v1-reconciliation.md",
-    "v1_snapshot_commit": "3100db1d7807b752e41b6ccf7f88498982cfb2d4",
-    "v1_migration_analysis_commit": "5c98cad2e5c4679d1cac0db6bd421b4167856c32",
-    "v1_main_pages_classified": 162,
-    "v1_architecture_sources_classified": 83,
-    "preserved_deleted_content_snapshot": {
-      "captured": "2026-08-18",
-      "files": [
-        "v1-deleted-content-audit.json",
-        "v1-deleted-unresolved.json"
-      ],
-      "policy": "historical migration evidence; retained while reconciliation remains open"
-    },
-    "v1_main_pages_reconciled": 162,
-    "v1_open_reconciliation_sources": 0,
-    "v1_reconciliation_complete": true,
-    "v1_retirement_dependency_audit": "docs/v1-retirement-dependency-audit.md"
-  },
   "operational_workflows": {
     "knowledge_requests": {
       "records": "ops/knowledge-requests.json",
@@ -269,7 +246,7 @@
     }
   },
   "evidence_policy": {
-    "automation_repository_permissions": "read-only for validation, live-fidelity, deleted-content, and archive-candidate workflows",
+    "automation_repository_permissions": "read-only for validation workflows",
     "generated_reports_tracked": false,
     "distribution": "GitHub Actions artifacts",
     "reason": "current-state validation and verification are commit/run-specific evidence, not canonical mutable repository source",
@@ -280,14 +257,7 @@
       "v2-workflow-audit.json",
       "v2-mainspace-audit.json",
       "v2-deployment-plan.json",
-      "v2-corpus-inventory.json",
-      "v1-classification-usage.json",
-      "v1-page-role-matrix.json",
-      "v1-architecture-family-matrix.json"
-    ],
-    "preserved_historical_exceptions": [
-      "v1-deleted-content-audit.json",
-      "v1-deleted-unresolved.json"
+      "v2-corpus-inventory.json"
     ]
   },
   "canonicalization_loop": [
@@ -302,22 +272,5 @@
     "canonicalize",
     "transclude and relate",
     "publish"
-  ],
-  "v1_history": {
-    "working_tree_status": "retained after completed content reconciliation pending dependency/reference audit and owner-approved retirement",
-    "source_path": "archive-v1/",
-    "snapshot": "2026-08-18T17:20:10Z",
-    "snapshot_commit": "3100db1d7807b752e41b6ccf7f88498982cfb2d4",
-    "public_pages": 186,
-    "main_pages": 162,
-    "revision_bodies": 606,
-    "reconciliation_ledger": "docs/v1-reconciliation-ledger.json",
-    "retirement_status": "not yet authorized; content reconciliation complete, separate retirement review required",
-    "invalidated_retirement_record": "docs/v1-retirement-disposition.json",
-    "limitations": [
-      "two historical file-binary references were unavailable and were never captured",
-      "deleted pre-snapshot revision bodies were not anonymously recoverable; tracked audits document the limitation"
-    ],
-    "retirement_dependency_audit": "docs/v1-retirement-dependency-audit.md"
-  }
+  ]
 }

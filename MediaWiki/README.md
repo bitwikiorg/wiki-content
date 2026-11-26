@@ -34,7 +34,7 @@ SMW import pages define mappings to external vocabularies. Imported labels are n
 
 ## Evidence and deployment
 
-Some files originate from the verified V1 snapshot; exact source and revision evidence remains under the immutable snapshot at commit `3100db1d7807b752e41b6ccf7f88498982cfb2d4` (`archive-v1/pages/MediaWiki/` and `archive-v1/history/MediaWiki/` at that commit). File extensions here reflect repository/source shape for readability; deployment must preserve the actual MediaWiki title and content model.
+File extensions here reflect repository/source shape for readability; deployment must preserve the actual MediaWiki title and content model.
 
 Repository source cannot by itself prove the target installation has the required extension/version/configuration. Reconcile against `Special:Version`, `Special:NamespaceInfo`, captured siteinfo, and `BITwiki/Deployment prerequisites.mediawiki` before deployment.
 
